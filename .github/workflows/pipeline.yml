@@ -56,6 +56,8 @@ jobs:
       # Project build steps lint, test, and build
       - name: Lint
         run: npx nx affected --target=lint --base=${{ env.AFFECTED_BASE }}
+      - name: Check
+        run: npx nx affected --target=check --base=${{ env.AFFECTED_BASE }}
       - name: Test
         run: npx nx affected --target=test --base=${{ env.AFFECTED_BASE }}
       - name: Build

@@ -31,8 +31,10 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - name: Lint
-        run: npm run affected:lint -- --base=origin/${{ github.base_ref }}
+        run: npx nx affected --target=lint --base=${{ env.AFFECTED_BASE }}
+      - name: Check
+        run: npx nx affected --target=check --base=${{ env.AFFECTED_BASE }}
       - name: Test
-        run: npm run affected:test -- --base=origin/${{ github.base_ref }}
+        run: npx nx affected --target=test --base=${{ env.AFFECTED_BASE }}
       - name: Build
-        run: npm run affected:build -- --base=origin/${{ github.base_ref }}
+        run: npx nx affected --target=build --base=${{ env.AFFECTED_BASE }} --configuration production
