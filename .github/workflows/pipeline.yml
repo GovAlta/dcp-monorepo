@@ -73,7 +73,7 @@ jobs:
         with:
           openshift_server_url: ${{ secrets.OPENSHIFT_SERVER }}
           openshift_token: ${{ secrets.OPENSHIFT_TOKEN }}
-          namespace: dcp-dev
+          namespace: dcp-build
 
           # Disables SSL cert checking. Use this if you don't have the certificate authority data.
           insecure_skip_tls_verify: true
@@ -104,7 +104,7 @@ jobs:
         with:
           openshift_server_url: ${{ secrets.OPENSHIFT_SERVER }}
           openshift_token: ${{ secrets.OPENSHIFT_TOKEN }}
-          namespace: dcp-dev
+          namespace: dcp-build
           insecure_skip_tls_verify: true
       - name: Tag Dev
         run: |
@@ -142,7 +142,7 @@ jobs:
         with:
           openshift_server_url: ${{ secrets.OPENSHIFT_SERVER }}
           openshift_token: ${{ secrets.OPENSHIFT_TOKEN }}
-          namespace: dcp-dev
+          namespace: dcp-build
           insecure_skip_tls_verify: true
       - name: Tag Test
         run: |
@@ -180,7 +180,7 @@ jobs:
         with:
           openshift_server_url: ${{ secrets.OPENSHIFT_SERVER }}
           openshift_token: ${{ secrets.OPENSHIFT_TOKEN }}
-          namespace: dcp-dev
+          namespace: dcp-build
           insecure_skip_tls_verify: true
       - name: Tag Prod
         run: |
