@@ -1,0 +1,12 @@
+{
+  "name": "dcp-common",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/dcp-common",
+  "projectType": "library",
+  "targets": {
+    "check": {
+      "executor": "@nxtensions/astro:check"
+    }
+  },
+  "tags": []
+}
