@@ -33,7 +33,7 @@ jobs:
       - name: Lint
         run: npx nx affected --target=lint --base=origin/${{ github.base_ref }}
       - name: Check
-        run: npx nx affected --target=check --base=origin/${{ github.base_ref }}
+        run: npx nx affected --target=check --base=origin/${{ github.base_ref }} --parallel=1
       - name: Test
         run: npx nx affected --target=test --base=origin/${{ github.base_ref }}
       - name: Build
