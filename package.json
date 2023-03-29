@@ -10,6 +10,7 @@
     "@abgov/nx-oc": "^5.1.0",
     "@abgov/react-components": "^4.7.0",
     "@abgov/web-components": "^1.7.0",
+    "@astrojs/mdx": "^0.18.2",
     "@astrojs/react": "^2.1.0",
     "@nrwl/cypress": "15.8.9",
     "@nrwl/eslint-plugin-nx": "15.8.9",
