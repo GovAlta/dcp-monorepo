@@ -33,3 +33,11 @@ npx nx g @nxtensions/astro:application
 OpenShift manifests and deployments are maintained in source control and the pipeline automatically applies them during deployment stages. This is convention based and new applications can follow the existing files to adhere to conventions.
 
 Application specific manifests and supporting files are maintained under `.openshift/<sub_project_name>` with a main template in `<sub_project_name>.yml`.
+
+Apply the manifests for one environment to create the BuildConfig and ImageStream. For example:
+```
+oc login ...
+oc process -f .openshift/dcp-guide/dcp-guide.yml -p PROJECT=dcp-dev -p DEPLOY_TAG=dev | oc apply -f -
+```
+
+Creation of resources in downstream environments is handled by the pipeline when promoting new builds.
