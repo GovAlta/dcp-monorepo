@@ -1,61 +1,103 @@
 ---
 import { DefaultMicrositeLayout } from '@abgov/dcp-common';
 
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import { GoAGrid } from '@abgov/react-components';
+import homeImageconnect from '../assets/Playbook_home_1.png';
+import homeImageMap from '../assets/Playbook_home_2.png';
+import HeroImage from '../components/HeroImage.astro';
 ---
 
-<DefaultMicrositeLayout title="Welcome to Astro.">
+<DefaultMicrositeLayout title="Welcome to DDD playbook.">
+<HeroImage title="Home"/>
   <main>
-    <h1>Welcome to <span class="text-gradient">Astro</span></h1>
-    <p class="instructions">
-      To get started, open the directory <code>src/pages</code> in your project.<br
-      />
-      <strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-    </p>
-    <ul role="list" class="link-card-grid">
-      <Card
-        href="https://docs.astro.build/"
-        title="Documentation"
-        body="Learn how Astro works and explore the official API docs."
-      />
-      <Card
-        href="https://astro.build/integrations/"
-        title="Integrations"
-        body="Supercharge your project with new frameworks and libraries."
-      />
-      <Card
-        href="https://astro.build/themes/"
-        title="Themes"
-        body="Explore a galaxy of community-built starter themes."
-      />
-      <Card
-        href="https://astro.build/chat/"
-        title="Astro Community"
-        body="Come say hi to our amazing Astro Discord community. ❤️"
-      />
-      <Card href="https://nx.dev/" title="Nx" body="Learn more about Nx." />
-      <Card
-        href="https://nrwlcommunity.slack.com/"
-        title="Nrwl Community Slack"
-        body="Come chat in the Nrwl Community Slack. ❤️"
-      />
-    </ul>
+
+    <GoAGrid minChildWidth="30ch">
+      <div><h2><strong>About the Playbook </strong></h2>
+        <p>The Government of Alberta (GoA) Digital Delivery Playbook (“the Playbook”) is <strong>the home of digital service delivery at the GoA.</strong> It describes <strong>how we work with ministry partners</strong>, the kind of <strong>problems we can solve </strong>together, and the <strong>principles</strong> that guide this work.</p>
+        <p>It’s also a <strong>jumping-off point for product teams</strong> across the GoA<strong> </strong>who are seeking <strong>practical guidance</strong> that will help them ramp up quickly and deliver consistently high quality services for Albertans.</p>
+        <p>We are designing the Playbook using the same principles we use to design and develop great services. This means that you can expect the Playbook to evolve over time as we learn more about you<em>.</em></p>
+
+    </div>
+        <div  style="
+            position: relative;
+            padding-bottom:10%; 
+          " id="yui_3_17_2_1_1681402755406_92">
+          <noscript><img src={homeImageconnect} alt="" /></noscript>
+               <img    style="left: 0%; top: -0.0268567%; position: absolute;width: 70%;height:70%;" data-image-resolution="750w"
+               src={homeImageconnect} alt=""
+               >
+    </div>
+    </GoAGrid>
+    <GoAGrid minChildWidth="30ch">
+     
+
+          <div 
+           style="
+              position: relative;             
+              padding-bottom:150%;" id="yui_3_17_2_1_1681402755406_91">
+              <noscript><img src={homeImageMap} alt="" /></noscript>  
+              <img  alt="" data-image-id="62478e63266c637821c47343" data-type="image" 
+              style="  position: absolute;width: 80%;height:80%" data-image-resolution="750w" 
+                 src={homeImageMap}>  
+          </div>
+      
+    
+    <div>
+      <h3><strong>Good public services do what Albertans need them to do, when they need to do it, in a financially sustainable way.</strong></h3>
+      <p>
+        We are the <strong>Digital Design and Delivery</strong> division of Technology and Innovation, made up of designers, strategists, digital architects, developers, and dreamers who are focused on <strong>creating good public services for Albertans.</strong> </p>
+        <p>Our work is about more than digitizing existing services—it's about <strong>keeping pace with how people expect to engage with the government</strong> and ensuring that public services are accessible to all Albertans. </p>
+        <p>With 32 product teams working in collaboration with seven ministries, Service Alberta is leading efforts to design <strong>human-centered government services</strong> across the province.</p>
+    </div>
+     
+    </GoAGrid>
   </main>
+    <div class="nav-content">
+   
+      
+<h2><strong>Explore the Playbook</strong></h2>
+
+<h4><a href="about"><span >What is modern digital delivery?</span></a></h4>
+
+<h4><a href="team"><span >Who is involved?</span></a></h4>
+<h4><a href="stories"><span >Stories</span></a></h4>
+<h4><a href="learnMore"><span >Learn more</span></a></h4>
+
+</div>
+     
+  
+ 
 </DefaultMicrositeLayout>
 
 <style>
   main {
     margin: auto;
     padding: 1.5rem;
-    max-width: 60ch;
+    max-width: 100ch;
   }
-
+img{
+  position: relative;
+    height: auto;
+    padding-top: 17px;
+    padding-bottom: 17px;
+}
   h1 {
     font-size: 3rem;
     font-weight: 800;
     margin: 0;
   }
+
+  .subTitle{
+    white-space: pre-wrap;
+    transition-timing-function: ease;
+    transition-duration: 0.45s;
+    transition-delay: 0.291892s;
+    
+  }
+
+  .slideIn {
+    transform: translate(0,0) !important;
+}
 
   .text-gradient {
     background-image: var(--accent-gradient);
@@ -92,5 +134,14 @@ import Card from '../components/Card.astro';
     grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
     gap: 1rem;
     padding: 0;
+  }
+  .nav-content{
+    background-color: var(--site-background-color);
+    padding: 1rem 25rem;
+    color:var(--goa-color-brand-dark);
+   
+  }
+  .nav-content span{
+    color:var(--goa-color-brand-dark);
   }
 </style>

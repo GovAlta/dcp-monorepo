@@ -1,6 +1,7 @@
 ---
-import { GoAAppHeader, GoAMicrositeHeader } from '@abgov/react-components';
 import '@abgov/web-components/index.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 
 export interface Props {
   title: string;
@@ -32,10 +33,11 @@ const { title } = Astro.props;
   </head>
 
   <body>
-    <GoAMicrositeHeader type="alpha" />
-    <GoAAppHeader url="/" heading="Digital content platform guide" />
+    <Header/>
     <slot />
+    <Footer/>
   </body>
+  
 </html>
 
 <style is:global>
@@ -47,6 +49,7 @@ const { title } = Astro.props;
       #da62c4 30%,
       white 60%
     );
+    --site-background-color:  #C8EEFA
   }
 
   html {

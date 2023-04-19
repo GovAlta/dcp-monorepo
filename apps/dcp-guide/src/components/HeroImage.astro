@@ -1,0 +1,60 @@
+---
+import { GoAHeroBanner } from '@abgov/react-components';
+import homeImage from '../assets/HomeHero.png';
+import storiesImage from '../assets/StoriesHero.png';
+import learnMoreImage from '../assets/LearnMoreHero.png';
+import whatIsHero from '../assets/WhatIsHero.png';
+import whoIsInvolved from '../assets/WhoIsInvolvedHero.png';
+export interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+const getHeroImage = (title: string) =>{
+   switch(title){
+    case "Home":
+        return homeImage;
+    case "Who is Involved?":
+        return whoIsInvolved;
+    case "What is Modern Digital Delivery?":
+        return whatIsHero;
+    case "Stories" :
+        return storiesImage;
+    case "Learn More":
+        return learnMoreImage;
+    default:
+        return "";              
+   }
+}
+---
+
+
+<GoAHeroBanner
+  heading=""
+  backgroundUrl={getHeroImage(title)}
+>
+    
+{(title==="Home")&& <div class="homeHeading">
+    <h1>Government of Alberta<br/> Digital Delivery Playbook</h1>
+    <h4><strong>Using modern digital delivery practices for modern public services.</strong> </h4>
+
+</div>
+}
+{(title!=="Home")&& <div class="heading">
+    <h1>{title}</h1>
+</div>
+}
+
+
+
+  
+</GoAHeroBanner>
+
+<style>
+    .homeHeading{
+        padding-left:24rem;
+    }
+    .heading{
+        text-align: center;
+    }
+</style>
