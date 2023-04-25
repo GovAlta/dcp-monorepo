@@ -1,22 +1,18 @@
 ---
-import { DefaultMicrositeLayout } from '@abgov/dcp-common';
 
 import { GoAGrid } from '@abgov/react-components';
 import homeImageconnect from '../assets/Playbook_home_1.png';
 import homeImageMap from '../assets/Playbook_home_2.png';
-import HeroImage from '../components/HeroImage.astro';
+import  HomeLayout  from '../layouts/homeLayout.astro';
+import {Content as IndexPartI} from './index/index_1.md';
+import {Content as IndexPartII} from './index/index_2.md';
 ---
 
-<DefaultMicrositeLayout title="Welcome to DDD playbook.">
-<HeroImage title="Home"/>
+<HomeLayout title="Home">
   <main>
-
     <GoAGrid minChildWidth="30ch">
-      <div><h2><strong>About the Playbook </strong></h2>
-        <p>The Government of Alberta (GoA) Digital Delivery Playbook (“the Playbook”) is <strong>the home of digital service delivery at the GoA.</strong> It describes <strong>how we work with ministry partners</strong>, the kind of <strong>problems we can solve </strong>together, and the <strong>principles</strong> that guide this work.</p>
-        <p>It’s also a <strong>jumping-off point for product teams</strong> across the GoA<strong> </strong>who are seeking <strong>practical guidance</strong> that will help them ramp up quickly and deliver consistently high quality services for Albertans.</p>
-        <p>We are designing the Playbook using the same principles we use to design and develop great services. This means that you can expect the Playbook to evolve over time as we learn more about you<em>.</em></p>
-
+      <div>
+      <IndexPartI/>
     </div>
         <div  style="
             position: relative;
@@ -29,8 +25,6 @@ import HeroImage from '../components/HeroImage.astro';
     </div>
     </GoAGrid>
     <GoAGrid minChildWidth="30ch">
-     
-
           <div 
            style="
               position: relative;             
@@ -43,105 +37,11 @@ import HeroImage from '../components/HeroImage.astro';
       
     
     <div>
-      <h3><strong>Good public services do what Albertans need them to do, when they need to do it, in a financially sustainable way.</strong></h3>
-      <p>
-        We are the <strong>Digital Design and Delivery</strong> division of Technology and Innovation, made up of designers, strategists, digital architects, developers, and dreamers who are focused on <strong>creating good public services for Albertans.</strong> </p>
-        <p>Our work is about more than digitizing existing services—it's about <strong>keeping pace with how people expect to engage with the government</strong> and ensuring that public services are accessible to all Albertans. </p>
-        <p>With 32 product teams working in collaboration with seven ministries, Service Alberta is leading efforts to design <strong>human-centered government services</strong> across the province.</p>
+<IndexPartII/>
     </div>
      
     </GoAGrid>
   </main>
-    <div class="nav-content">
-   
-      
-<h2><strong>Explore the Playbook</strong></h2>
-
-<h4><a href="about"><span >What is modern digital delivery?</span></a></h4>
-
-<h4><a href="team"><span >Who is involved?</span></a></h4>
-<h4><a href="stories"><span >Stories</span></a></h4>
-<h4><a href="learnMore"><span >Learn more</span></a></h4>
-
-</div>
      
-  
- 
-</DefaultMicrositeLayout>
+</HomeLayout>
 
-<style>
-  main {
-    margin: auto;
-    padding: 1.5rem;
-    max-width: 100ch;
-  }
-img{
-  position: relative;
-    height: auto;
-    padding-top: 17px;
-    padding-bottom: 17px;
-}
-  h1 {
-    font-size: 3rem;
-    font-weight: 800;
-    margin: 0;
-  }
-
-  .subTitle{
-    white-space: pre-wrap;
-    transition-timing-function: ease;
-    transition-duration: 0.45s;
-    transition-delay: 0.291892s;
-    
-  }
-
-  .slideIn {
-    transform: translate(0,0) !important;
-}
-
-  .text-gradient {
-    background-image: var(--accent-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-size: 400%;
-    background-position: 0%;
-  }
-
-  .instructions {
-    line-height: 1.6;
-    margin: 1rem 0;
-    border: 1px solid rgba(var(--accent), 25%);
-    background-color: white;
-    padding: 1rem;
-    border-radius: 0.4rem;
-  }
-
-  .instructions code {
-    font-size: 0.875em;
-    font-weight: bold;
-    background: rgba(var(--accent), 12%);
-    color: rgb(var(--accent));
-    border-radius: 4px;
-    padding: 0.3em 0.45em;
-  }
-
-  .instructions strong {
-    color: rgb(var(--accent));
-  }
-
-  .link-card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-    gap: 1rem;
-    padding: 0;
-  }
-  .nav-content{
-    background-color: var(--site-background-color);
-    padding: 1rem 25rem;
-    color:var(--goa-color-brand-dark);
-   
-  }
-  .nav-content span{
-    color:var(--goa-color-brand-dark);
-  }
-</style>
