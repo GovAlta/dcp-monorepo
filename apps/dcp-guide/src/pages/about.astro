@@ -1,8 +1,340 @@
 ---
-import { DefaultMicrositeLayout } from '@abgov/dcp-common';
-import HeroImage from '../components/HeroImage.astro';
+import BaseLayout from '../layouts/baseLayout.astro';
+import aboutMap from '../assets/Playbook+Delivery+Model-32.png';
+import aboutBeta from '../assets/Playbook_about_beta.png';
+import about_1 from '../assets/Playbook_about_1.png'
+import about_2 from '../assets/Playbook_about_2.png'
+import about_3 from '../assets/Playbook_about_3.png'
+import about_4 from '../assets/Playbook_about_4.png'
+import about_5 from '../assets/Playbook_about_5.png'
+import about_6 from '../assets/Playbook_about_6.png'
+import { GoAGrid } from '@abgov/react-components';
 ---
 
-<DefaultMicrositeLayout title="Welcome to DDD playbook.">
-    <HeroImage title="What is Modern Digital Delivery?"/>
-</DefaultMicrositeLayout>
+<BaseLayout title="What is Modern Digital Delivery?">
+  <main>
+    <div>
+    <h2 style="color:var(--goa-color-brand-dark);">
+      <strong>The Process</strong>
+    </h2>
+    <GoAGrid minChildWidth="30ch">
+      <div>
+        <p>
+          From problem to solution, Digital Design and Delivery (3D) uses a
+          design and build framework that is modelled after leading
+          jurisdictions across Canada (<a href="https://digital.gov.bc.ca/"
+            ><span style="text-decoration:underline">British Columbia</span></a
+          >, <a href="https://www.ontario.ca/page/ontario-digital-service"
+            ><span style="text-decoration:underline">Ontario</span></a
+          >) and internationally (<a
+            href="https://www.gov.uk/government/organisations/government-digital-service"
+            ><span style="text-decoration:underline">United Kingdom</span></a
+          >, <a
+            href="https://www.dta.gov.au/help-and-advice/about-digital-service-standard"
+            ><span style="text-decoration:underline">Australia</span></a
+          >) that have already begun to transform how they deliver digital
+          products and services to their citizens.
+        </p><p>
+          This approach is a departure from software delivery lifecycle models
+          of the past. The 3D Product and Delivery Lead who is assigned to this
+          work can help you understand the process and what to expect during
+          these phases.
+        </p>
+      </div>
+      <div>
+        <p>
+          From a bird's eye view, our projects follow these phases more or less
+          sequentially. The day-to-day work, however, can feel messy and
+          uncomfortable, and there is often overlap between phases.&nbsp;
+        </p><p>
+          User research, insights from usability testing, technology, and
+          regulatory changes throughout the process often shift the direction of
+          the Product Team. These shifts are easily accommodated within agile
+          scrum–this is a benefit of modern digital delivery.
+        </p>
+      </div>
+    </GoAGrid>
+
+    <div
+      style="
+              left:20%;
+              position: relative;
+              padding-bottom:5%;
+            "
+      id="yui_3_17_2_1_1681489619830_301"
+    >
+      <noscript><img src={aboutMap} alt="" /></noscript>
+      <img
+        style="width:60%;height:60%"
+        src={aboutMap}
+        data-image-focal-point="0.5,0.5"
+        alt=""
+        data-load="false"
+        data-image-id="624c71ede17eb9054398cbf6"
+        data-type="image"
+      />
+    </div>
+    <GoAGrid minChildWidth="30ch">
+      <div>
+        <p>
+          Discovery helps define a service’s potential users and how their needs
+          can be met. It can be tempting to skip discovery and design a solution
+          based on similar services or brainstorm potential options immediately.
+          These are solution-oriented design processes, but service design is a
+          user-oriented design process. All services are different, but most
+          projects need 8-12 weeks for discovery. Deliverables may include:
+          Journey maps, user personas, service blueprints, story boards, market
+          analysis
+        </p>
+      </div>
+      <div>
+        <p>
+          While discovery is about research, alpha is about testing hypotheses
+          and experimentation. The purpose of alpha is to determine how to meet
+          the user needs that were identified in discovery. It’s an opportunity
+          to quickly test many different approaches with users before building a
+          service. Alpha is fast-paced and may go in many unexpected directions
+          before defining a potential solution. Try new approaches to solving
+          problems and test them quickly, so that potential issues can be found
+          and fixed before investing too much time and money into one design.
+          Deliverables may include: Prototypes, clickable wireframes, simple
+          paper sketches.
+        </p>
+      </div>
+    </GoAGrid>
+
+    <div style="position: relative; padding-bottom:5%;">
+      <noscript><img src={aboutBeta} alt="" /></noscript>
+      <img
+        style="width:60%;height:60%"
+        src={aboutBeta}
+        data-image-focal-point="0.5,0.5"
+        alt=""
+        data-load="false"
+        data-image-id="624c71ede17eb9054398cbf6"
+        data-type="image"
+      />
+    </div>
+
+    <GoAGrid minChildWidth="30ch">
+      <div>
+      <p>
+        Beta is when the service finally comes to life. The goal of beta is to
+        build a real service that works well for a larger group of people. The
+        prototypes that were developed and tested during alpha are used to build
+        a minimum viable product (MVP) in a live, user-facing environment. An
+        MVP is a version of the service with just enough features to be usable
+        by early users who can then provide feedback for future development. It
+        gets users from point A to point B, but without any bells and whistles.
+        Build quickly and in small segments, taking the time to confirm that
+        each segment of the service is on the right track. Launching a public
+        service is the ultimate usability test, as it collects real data and
+        user feedback. Feedback is used to refine the service, adding and
+        adjusting features until the service is complete. Deliverables may
+        include: Minimum viable product (MVP), a functional version of the
+        service that meets basic user needs.
+      </p>
+    </div>
+    <div>
+      <p>
+        Live begins when the service has reached a point of maturity and all of
+        the main features in the backlog have been built. Feedback mechanisms
+        are built in to ensure users can share their experience, which informs
+        future feature development and improvements. The goal of live is to use
+        analytics, research, and testing to continuously find and address
+        problems that users have. Once problems are uncovered, conduct research
+        to understand the issue. Prototype, test and build new features to
+        improve the service. Deliverables may include: Live product, available
+        to all primary users.
+      </p>
+    </div>
+    </GoAGrid>
+  </div>
+  </main>
+
+  <div style="background-color: var(--goa-color-brand-light);
+  padding: 1rem 25rem;
+  color: var(--goa-color-brand-dark);">
+    <h3 style="color:var(--goa-color-brand-dark);"><strong>Guiding Principles</strong></h3>
+    <p>
+      From early strategic decisions to prototyping and going live, these
+      principles inform the way that we work at every stage of the process.
+    </p>
+    <GoAGrid minChildWidth="20ch">
+      <div>
+        <div
+        style="
+                left:6%;
+                position: relative;
+                padding-bottom:5%;
+              "
+        id="yui_3_17_2_1_1681489619830_301"
+      >
+        <noscript><img src={about_1} alt="" /></noscript>
+        <img
+          style="width:85%;height:85%"
+          src={about_1}
+          data-image-focal-point="0.5,0.5"
+          alt=""
+          data-load="false"
+          data-image-id="624c71ede17eb9054398cbf6"
+          data-type="image"
+        />
+      </div>
+      <p>We put user needs at the centre of service delivery. Users may include Albertans, internal GoA staff, and anyone who has a stake in the way that the service is delivered.
+
+        From the outset of every project, we identify and work directly with users to understand their experience. Sometimes we map the user service journey to identify needs and challenges that users encounter.
+        
+        We continue to engage users throughout the whole digital delivery process, testing the service with real users, and incorporating our findings.</p>
+      </div>
+      <div>
+        <div
+        style="
+                left:6%;
+                position: relative;
+                padding-bottom:5%;
+              "
+        id="yui_3_17_2_1_1681489619830_301"
+      >
+        <noscript><img src={about_2} alt="" /></noscript>
+        <img
+          style="width:85%;height:85%"
+          src={about_2}
+          data-image-focal-point="0.5,0.5"
+          alt=""
+          data-load="false"
+          data-image-id="624c71ede17eb9054398cbf6"
+          data-type="image"
+        />
+      </div>
+        <p>Modern service delivery requires modern ways of working. We are transforming the Government of Alberta into an organization that can deliver world-class digital services.
+
+          This means shifting the way that we work to reduce bureaucracy, empower agile product teams to make decisions, increase digital literacy, and inspire transformation that endures beyond product delivery.</p>
+          </div>
+          <div>
+            <div
+            style="
+                    left:6%;
+                    position: relative;
+                    padding-bottom:5%;
+                  "
+            id="yui_3_17_2_1_1681489619830_301"
+          >
+            <noscript><img src={about_3} alt="" /></noscript>
+            <img
+              style="width:85%;height:85%"
+              src={about_3}
+              data-image-focal-point="0.5,0.5"
+              alt=""
+              data-load="false"
+              data-image-id="624c71ede17eb9054398cbf6"
+              data-type="image"
+            />
+          </div>
+          <p>
+            We use agile methods to design, develop, test, and iterate possible solutions with users.
+
+We don't fixate on one potential solution; instead, we explore possible ideas with users early and often, incorporating findings from usability testing along the way. Our priority is to place something of value in the user's hands as quickly and as often as possible.
+          </p>
+          </div>
+    </GoAGrid>
+    <GoAGrid minChildWidth="20ch">
+      <div>
+        <div
+        style="
+                left:6%;
+                position: relative;
+                padding-bottom:5%;
+              "
+        id="yui_3_17_2_1_1681489619830_301"
+      >
+        <noscript><img src={about_4} alt="" /></noscript>
+        <img
+          style="width:85%;height:85%"
+          src={about_4}
+          data-image-focal-point="0.5,0.5"
+          alt=""
+          data-load="false"
+          data-image-id="624c71ede17eb9054398cbf6"
+          data-type="image"
+        />
+      </div>
+      <p>
+        A modern digital service should be transparent and accountable, both to the public and internally among government stakeholders. 
+
+We are open about our process, sharing our work in progress, tools, standards, and code freely with Albertans and the broader service sector across the country. It also means we communicate openly about our successes and failures.
+      </p>
+      </div>
+      <p>We consider the start-to-finish journey users take to complete their objective. 
+
+        We endeavour to create a resilient and seamless service experience for Albertans across digital and physical channels. In some cases, this may include changes to policies and legislation, processes, and ways in which users interact with the service.</p>
+    <p>We build ecosystems to meet the constant evolution of user needs and technology. 
+
+      This means starting small and scaling up, developing compatible common components, and judiciously choosing the right tool for the job. We believe in being frugal with Albertans’ tax dollars, and endeavour to leverage existing components of the ecosystem wherever possible.</p>
+      </GoAGrid>
+      <GoAGrid minChildWidth="20ch">
+        <div>
+          <div
+          style="
+                  left:6%;
+                  position: relative;
+                  padding-bottom:5%;
+                "
+          id="yui_3_17_2_1_1681489619830_301"
+        >
+          <noscript><img src={about_5} alt="" /></noscript>
+          <img
+            style="width:85%;height:85%"
+            src={about_5}
+            data-image-focal-point="0.5,0.5"
+            alt=""
+            data-load="false"
+            data-image-id="624c71ede17eb9054398cbf6"
+            data-type="image"
+          />
+        </div>
+          <p>We respect that Albertans have entrusted us to handle their personal information with care. We recognize that people own their personal data and have a stake in how the government uses that information.
+
+            In partnership with the Cybersecurity Services and Data, Information and Privacy Services Divisions of Service Alberta, we are committed to implementing privacy, security, and data management best practices that are in line with industry standards and Albertans’ evolving expectations of digital services.</p>
+            
+        </div>
+        <div>
+          <div
+          style="
+                  left:6%;
+                  position: relative;
+                  padding-bottom:5%;
+                "
+          id="yui_3_17_2_1_1681489619830_301"
+        >
+          <noscript><img src={about_6} alt="" /></noscript>
+          <img
+            style="width:85%;height:85%"
+            src={about_6}
+            data-image-focal-point="0.5,0.5"
+            alt=""
+            data-load="false"
+            data-image-id="624c71ede17eb9054398cbf6"
+            data-type="image"
+          />
+        </div>
+        </div>
+        <div>
+        <p>We humbly acknowledge that societal inequities exist and recognize that these inequities can—often unintentionally—manifest in an organizational setting. We are dedicated to policies and practices that strive to mitigate inequities before they happen and confront them if they inadvertently arise. We consider accessibility and diversity as foundational design criteria for any public service. We are committed to designing inclusive government services that prioritize the experiences of users with distinct needs.
+
+              We acknowledge the complex historical relationship that the government has with Indigenous peoples and endeavour to work in the spirit of reconciliation in every project.</p>
+            </div>
+            <div>
+              <p>&nbsp;</p>
+            </div>
+            </GoAGrid>
+  </div>
+</BaseLayout>
+
+<style>
+  .nav-content {
+    background-color: var(--goa-color-brand-light);
+    padding: 1rem 25rem;
+    color: var(--goa-color-brand-dark);
+  }
+</style>
