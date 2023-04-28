@@ -34,27 +34,18 @@ const getHeroImage = (title: string) =>{
   backgroundUrl={getHeroImage(title)}
 >
     
-{(title==="Home")&& <div class="homeHeading">
+{(title==="Home")&& <div >
     <h1>Government of Alberta<br/> Digital Delivery Playbook</h1>
     <h4><strong>Using modern digital delivery practices for modern public services.</strong> </h4>
 
 </div>
 }
-{(title!=="Home")&& <div class="heading">
+{(title!=="Home")&& 
     <h1>{title}</h1>
-</div>
+
 }
 
 
 
   
 </GoAHeroBanner>
-
-<style>
-    .homeHeading{
-        padding-left:24rem;
-    }
-    .heading{
-        text-align: center;
-    }
-</style>

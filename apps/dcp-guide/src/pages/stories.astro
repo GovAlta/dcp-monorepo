@@ -3,13 +3,14 @@ import BaseLayout from '../layouts/baseLayout.astro';
 import { GoAGrid } from '@abgov/react-components';
 import deliveryModel from '../assets/Playbook_stories_1.png';
 import collaborationModel from '../assets/Playbook_stories_2.jpeg';
+import scrumModel from '../assets/Playbook_stories_3.jpeg';
 import { Content as StoryPartI } from './stories/stories_1.md';
 import { Content as StoryPartII } from './stories/stories_2.md';
 import { Content as StoryPartIII } from './stories/stories_3.md';
 ---
 
 <BaseLayout title="Stories">
-  <div class="nav-content">
+  <figure>
     <GoAGrid minChildWidth="30ch">
       <div
         style="
@@ -28,12 +29,33 @@ import { Content as StoryPartIII } from './stories/stories_3.md';
         <StoryPartI />
       </div>
     </GoAGrid>
-  </div>
+  </figure>
 
   <main>
-    <div style=" padding: 1rem 0 0 29rem ">
+    <GoAGrid minChildWidth="30ch">
+   
+        <div
+        style="white-space: pre-wrap;
+        position: relative;             
+        padding-bottom:10%; padding-top:10%  margin-bottom:2rem"
+        id="yui_3_17_2_1_1681489731690_325"
+      >
+        <noscript><img src={scrumModel} alt="" /></noscript>
+        <img
+          data-image-focal-point="0.5,0.5"
+          alt=""
+          data-load="false"
+          data-image-id="623ca057300a72696b28f144"
+          data-type="image"
+          src={scrumModel}
+          style="top:10%;  position: absolute;width: 80%;height:60%;"
+        />
+      </div>
+      <div>
       <StoryPartII />
     </div>
+    
+    </GoAGrid>
     <GoAGrid minChildWidth="30ch">
       <div
         style="white-space: pre-wrap;
@@ -49,7 +71,7 @@ import { Content as StoryPartIII } from './stories/stories_3.md';
           data-image-id="623ca057300a72696b28f144"
           data-type="image"
           src={collaborationModel}
-          style="top:10%;  position: absolute;width: 80%;height:80%;"
+          style="top:10%;  position: absolute;width: 80%;height:60%;"
         />
       </div>
       <div>
@@ -58,10 +80,4 @@ import { Content as StoryPartIII } from './stories/stories_3.md';
     </GoAGrid>
   </main>
 </BaseLayout>
-<style>
-  .nav-content {
-    background-color: var(--goa-color-brand-light);
-    padding: 1rem 25rem;
-    color: var(--goa-color-brand-dark);
-  }
-</style>
+

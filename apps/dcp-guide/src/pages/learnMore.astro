@@ -4,6 +4,7 @@ import BaseLayout from '../layouts/baseLayout.astro';
 
 <BaseLayout title="Learn More">
   <main>
+    <div class="content">
     <h2><strong>Resources</strong></h2>
     <p><strong>Thought Leadership from Digital Design and Delivery</strong></p>
     <ul data-rte-list="default">
@@ -215,5 +216,12 @@ import BaseLayout from '../layouts/baseLayout.astro';
         </p>
       </li>
     </ul>
+</div>
   </main>
 </BaseLayout>
+
+<style>
+    .content{
+        padding-left: 2rem;
+    }
+</style>
