@@ -8,6 +8,9 @@ import about_3 from '../assets/Playbook_about_3.png'
 import about_4 from '../assets/Playbook_about_4.png'
 import about_5 from '../assets/Playbook_about_5.png'
 import about_6 from '../assets/Playbook_about_6.png'
+import about_7 from '../assets/Playbook_about_7.png'
+import about_8 from '../assets/Playbook_about_8.png'
+import about_9 from '../assets/Playbook_about_9.png'
 import { GoAGrid } from '@abgov/react-components';
 ---
 
@@ -102,7 +105,8 @@ import { GoAGrid } from '@abgov/react-components';
         </p>
       </div>
     </GoAGrid>
-
+    <GoAGrid minChildWidth="30ch">
+      <div>
     <div style="position: relative; padding-bottom:5%;">
       <noscript><img src={aboutBeta} alt="" /></noscript>
       <img
@@ -116,7 +120,7 @@ import { GoAGrid } from '@abgov/react-components';
       />
     </div>
 
-    <GoAGrid minChildWidth="30ch">
+    
       <div>
       <p>
         Beta is when the service finally comes to life. The goal of beta is to
@@ -135,7 +139,20 @@ import { GoAGrid } from '@abgov/react-components';
         service that meets basic user needs.
       </p>
     </div>
+  </div>
     <div>
+      <div style="position: relative; padding-bottom:5%;">
+        <noscript><img src={about_8} alt="" /></noscript>
+        <img
+          style="width:60%;height:60%"
+          src={about_8}
+          data-image-focal-point="0.5,0.5"
+          alt=""
+          data-load="false"
+          data-image-id="624c71ede17eb9054398cbf6"
+          data-type="image"
+        />
+      </div>
       <p>
         Live begins when the service has reached a point of maturity and all of
         the main features in the backlog have been built. Feedback mechanisms
@@ -152,9 +169,7 @@ import { GoAGrid } from '@abgov/react-components';
   </div>
   </main>
 
-  <div style="background-color: var(--goa-color-brand-light);
-  padding: 1rem 25rem;
-  color: var(--goa-color-brand-dark);">
+  <figure>
     <h3 style="color:var(--goa-color-brand-dark);"><strong>Guiding Principles</strong></h3>
     <p>
       From early strategic decisions to prototyping and going live, these
@@ -265,13 +280,57 @@ We don't fixate on one potential solution; instead, we explore possible ideas wi
 We are open about our process, sharing our work in progress, tools, standards, and code freely with Albertans and the broader service sector across the country. It also means we communicate openly about our successes and failures.
       </p>
       </div>
+      <div>
+        <div
+        style="
+                left:6%;
+                position: relative;
+                padding-bottom:5%;
+              "
+        id="yui_3_17_2_1_1681489619830_301"
+      >
+        <noscript><img src={about_7} alt="" /></noscript>
+        <img
+          style="width:85%;height:85%"
+          src={about_7}
+          data-image-focal-point="0.5,0.5"
+          alt=""
+          data-load="false"
+          data-image-id="624c71ede17eb9054398cbf6"
+          data-type="image"
+        />
+      </div>
       <p>We consider the start-to-finish journey users take to complete their objective. 
 
         We endeavour to create a resilient and seamless service experience for Albertans across digital and physical channels. In some cases, this may include changes to policies and legislation, processes, and ways in which users interact with the service.</p>
+      </div>
+      <div>
+      <div
+      style="
+              left:6%;
+              position: relative;
+              padding-bottom:5%;
+            "
+      id="yui_3_17_2_1_1681489619830_301"
+    >
+      <noscript><img src={about_9} alt="" /></noscript>
+      <img
+        style="width:85%;height:85%"
+        src={about_9}
+        data-image-focal-point="0.5,0.5"
+        alt=""
+        data-load="false"
+        data-image-id="624c71ede17eb9054398cbf6"
+        data-type="image"
+      />
+    </div>
+  
+     
     <p>We build ecosystems to meet the constant evolution of user needs and technology. 
 
       This means starting small and scaling up, developing compatible common components, and judiciously choosing the right tool for the job. We believe in being frugal with Albertans’ tax dollars, and endeavour to leverage existing components of the ecosystem wherever possible.</p>
-      </GoAGrid>
+    </div>  
+    </GoAGrid>
       <GoAGrid minChildWidth="20ch">
         <div>
           <div
@@ -298,6 +357,7 @@ We are open about our process, sharing our work in progress, tools, standards, a
             In partnership with the Cybersecurity Services and Data, Information and Privacy Services Divisions of Service Alberta, we are committed to implementing privacy, security, and data management best practices that are in line with industry standards and Albertans’ evolving expectations of digital services.</p>
             
         </div>
+        
         <div>
           <div
           style="
@@ -317,9 +377,9 @@ We are open about our process, sharing our work in progress, tools, standards, a
             data-image-id="624c71ede17eb9054398cbf6"
             data-type="image"
           />
+       
         </div>
-        </div>
-        <div>
+        
         <p>We humbly acknowledge that societal inequities exist and recognize that these inequities can—often unintentionally—manifest in an organizational setting. We are dedicated to policies and practices that strive to mitigate inequities before they happen and confront them if they inadvertently arise. We consider accessibility and diversity as foundational design criteria for any public service. We are committed to designing inclusive government services that prioritize the experiences of users with distinct needs.
 
               We acknowledge the complex historical relationship that the government has with Indigenous peoples and endeavour to work in the spirit of reconciliation in every project.</p>
@@ -328,13 +388,5 @@ We are open about our process, sharing our work in progress, tools, standards, a
               <p>&nbsp;</p>
             </div>
             </GoAGrid>
-  </div>
+  </figure>
 </BaseLayout>
-
-<style>
-  .nav-content {
-    background-color: var(--goa-color-brand-light);
-    padding: 1rem 25rem;
-    color: var(--goa-color-brand-dark);
-  }
-</style>

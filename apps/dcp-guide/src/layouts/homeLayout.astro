@@ -5,7 +5,7 @@ import  BaseLayout  from './baseLayout.astro';
 <BaseLayout title="Home">
 
 <slot />
-<div class="nav-content">   
+<figure>   
 <h2><strong>Explore the Playbook</strong></h2>
 
 <h4><a href="/about"><span >What is modern digital delivery?</span></a></h4>
@@ -14,18 +14,12 @@ import  BaseLayout  from './baseLayout.astro';
 <h4><a href="/stories"><span >Stories</span></a></h4>
 <h4><a href="/learnMore"><span >Learn more</span></a></h4>
 
-</div>
+</figure>
 </BaseLayout>
 
 
 <style>
-     .nav-content{
-    background-color: var(--goa-color-brand-light);
-    padding: 1rem 25rem;
-    color:var(--goa-color-brand-dark);
-   
-  }
-  .nav-content span{
+   span{
     color:var(--goa-color-brand-dark);
   }
 </style>

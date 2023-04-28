@@ -6,19 +6,19 @@ html {
   body {
     margin: 0 auto;
     width: 100%;
-    padding: 1rem;
     line-height: 1.5;
   }
   main {
     margin: auto;
     padding: 1.5rem;
-    max-width: 100ch;
+    max-width: 120ch;
   }
 
-  .nav-content {
-    background-color: var(--goa-color-brand-light);
-    padding: 1rem 25rem;
-    color: var(--goa-color-brand-dark);
+  figure {
+      margin:0;
+      background-color: var(--goa-color-brand-light);
+      padding: 1rem 20rem;
+      color: var(--goa-color-brand-dark);
   }
   
   h1 {
