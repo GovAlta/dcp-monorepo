@@ -1,47 +1,8 @@
 ---
-
-import { GoAGrid } from '@abgov/react-components';
-import homeImageconnect from '../assets/Playbook_home_1.png';
-import homeImageMap from '../assets/Playbook_home_2.png';
-import  HomeLayout  from '../layouts/homeLayout.astro';
-import {Content as IndexPartI} from './index/index_1.md';
-import {Content as IndexPartII} from './index/index_2.md';
+import HomeLayout from '../layouts/homeLayout.astro';
+import { Content as Index } from './index/index.mdx';
 ---
 
 <HomeLayout title="Home">
-  <main>
-    <GoAGrid minChildWidth="30ch">
-      <div>
-      <IndexPartI/>
-    </div>
-        <div  style="
-            position: relative;
-            padding-bottom:10%; 
-          " id="yui_3_17_2_1_1681402755406_92">
-          <noscript><img src={homeImageconnect} alt="" /></noscript>
-               <img    style="left: 0%; top: -0.0268567%; position: absolute;width: 70%;height:70%;" data-image-resolution="750w"
-               src={homeImageconnect} alt=""
-               >
-    </div>
-    </GoAGrid>
-    <GoAGrid minChildWidth="30ch">
-          <div 
-           style="
-              position: relative;             
-              padding-bottom:150%;" id="yui_3_17_2_1_1681402755406_91">
-              <noscript><img src={homeImageMap} alt="" /></noscript>  
-              <img  alt="" data-image-id="62478e63266c637821c47343" data-type="image" 
-              style="  position: absolute;width: 80%;height:80%" data-image-resolution="750w" 
-                 src={homeImageMap}>  
-          </div>
-      
-    
-    <div>
-<IndexPartII/>
-    </div>
-     
-    </GoAGrid>
-  </main>
-     
+  <Index />
 </HomeLayout>
-

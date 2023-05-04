@@ -26,31 +26,40 @@ html {
     font-weight: 800;
     margin: 0;
   }
-
-  a {
-    color: var(--color-primary-link);
-    cursor: pointer;
+ 
+  li {
+    margin: 13px 0 0 28px;
+    font-size: 18px;
+    line-height: 28px;
+  }
+  
+  ul {
+    list-style-type: disc;
+    margin-top: 28px;
+  }
+  
+  ul ul {
+    list-style-type: disc;
   }
   
   a:link {
-    color: var(--color-primary);
+    color: #0070c4;
   }
   
   a:visited {
-    color: var(--color-visited-link);
+    color: #756693;
   }
   
   a:hover {
-    color: var(--color-primary-dark);
+    color: #004f84;
   }
   
   a:focus {
     outline-width: thin;
     outline-style: solid;
-    outline-color: var(--color-primary-dark);
+    outline-color: #004f84;
     outline-offset: 0px;
   }
-
   
   /* nav styles */
   
