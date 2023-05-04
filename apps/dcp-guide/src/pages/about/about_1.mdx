@@ -1,0 +1,133 @@
+import aboutMap from '../../assets/Playbook_about_map.png';
+import aboutBeta from '../../assets/Playbook_about_beta.png';
+import about_8 from '../../assets/Playbook_about_8.png';
+
+import { GoAGrid } from '@abgov/react-components';
+
+<main>
+    <div>
+    **<span style="color:  var(--goa-color-brand-dark);">The Process</span>**
+    ----------------------
+    <GoAGrid minChildWidth="30ch">
+      <div>
+       From problem to solution, Digital Design and Delivery (3D) uses a design and build framework that is modelled after leading jurisdictions across Canada ([British Columbia](https://digital.gov.bc.ca/), [Ontario](https://www.ontario.ca/page/ontario-digital-service)) and internationally ([United Kingdom](https://www.gov.uk/government/organisations/government-digital-service), [Australia](https://www.dta.gov.au/help-and-advice/about-digital-service-standard)) that have already begun to transform how they deliver digital products and services to their citizens.
+
+This approach is a departure from software delivery lifecycle models of the past. The 3D Product and Delivery Lead who is assigned to this work can help you understand the process and what to expect during these phases.
+</div>
+<div>
+From a bird's eye view, our projects follow these phases more or less sequentially. The day-to-day work, however, can feel messy and uncomfortable, and there is often overlap between phases.
+
+User research, insights from usability testing, technology, and regulatory changes throughout the process often shift the direction of the Product Team. These shifts are easily accommodated within agile scrum–this is a benefit of modern digital delivery.
+</div>
+</GoAGrid>
+
+    <div
+      style="
+              left:20%;
+              position: relative;
+              padding-bottom:5%;
+            "
+    >
+      <noscript><img src={aboutMap} alt="" /></noscript>
+      <img
+        style="width:60%;height:60%"
+        src={aboutMap}
+        data-image-focal-point="0.5,0.5"
+        alt=""
+        data-load="false"
+        data-image-id="624c71ede17eb9054398cbf6"
+        data-type="image"
+      />
+    </div>
+    <GoAGrid minChildWidth="30ch">
+      <div>
+
+          Discovery helps define a service’s potential users and how their needs
+          can be met. It can be tempting to skip discovery and design a solution
+          based on similar services or brainstorm potential options immediately.
+          These are solution-oriented design processes, but service design is a
+          user-oriented design process. All services are different, but most
+          projects need 8-12 weeks for discovery. Deliverables may include:
+          Journey maps, user personas, service blueprints, story boards, market
+          analysis
+
+      </div>
+      <div>
+
+          While discovery is about research, alpha is about testing hypotheses
+          and experimentation. The purpose of alpha is to determine how to meet
+          the user needs that were identified in discovery. It’s an opportunity
+          to quickly test many different approaches with users before building a
+          service. Alpha is fast-paced and may go in many unexpected directions
+          before defining a potential solution. Try new approaches to solving
+          problems and test them quickly, so that potential issues can be found
+          and fixed before investing too much time and money into one design.
+          Deliverables may include: Prototypes, clickable wireframes, simple
+          paper sketches.
+
+      </div>
+    </GoAGrid>
+    <GoAGrid minChildWidth="30ch">
+      <div>
+    <div style="position: relative; padding-bottom:5%;">
+      <noscript><img src={aboutBeta} alt="" /></noscript>
+      <img
+        style="width:60%;height:60%"
+        src={aboutBeta}
+        data-image-focal-point="0.5,0.5"
+        alt=""
+        data-load="false"
+        data-image-id="624c71ede17eb9054398cbf6"
+        data-type="image"
+      />
+    </div>
+
+
+      <div>
+
+        Beta is when the service finally comes to life. The goal of beta is to
+        build a real service that works well for a larger group of people. The
+        prototypes that were developed and tested during alpha are used to build
+        a minimum viable product (MVP) in a live, user-facing environment. An
+        MVP is a version of the service with just enough features to be usable
+        by early users who can then provide feedback for future development. It
+        gets users from point A to point B, but without any bells and whistles.
+        Build quickly and in small segments, taking the time to confirm that
+        each segment of the service is on the right track. Launching a public
+        service is the ultimate usability test, as it collects real data and
+        user feedback. Feedback is used to refine the service, adding and
+        adjusting features until the service is complete. Deliverables may
+        include: Minimum viable product (MVP), a functional version of the
+        service that meets basic user needs.
+
+    </div>
+
+  </div>
+    <div>
+      <div style="position: relative; padding-bottom:5%;">
+        <noscript><img src={about_8} alt="" /></noscript>
+        <img
+          style="width:60%;height:60%"
+          src={about_8}
+          data-image-focal-point="0.5,0.5"
+          alt=""
+          data-load="false"
+          data-image-id="624c71ede17eb9054398cbf6"
+          data-type="image"
+        />
+      </div>
+     
+        Live begins when the service has reached a point of maturity and all of
+        the main features in the backlog have been built. Feedback mechanisms
+        are built in to ensure users can share their experience, which informs
+        future feature development and improvements. The goal of live is to use
+        analytics, research, and testing to continuously find and address
+        problems that users have. Once problems are uncovered, conduct research
+        to understand the issue. Prototype, test and build new features to
+        improve the service. Deliverables may include: Live product, available
+        to all primary users.
+     
+    </div>
+    </GoAGrid>
+  </div>
+</main>

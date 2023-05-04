@@ -1,83 +1,14 @@
 ---
 import BaseLayout from '../layouts/baseLayout.astro';
-import { GoAGrid } from '@abgov/react-components';
-import deliveryModel from '../assets/Playbook_stories_1.png';
-import collaborationModel from '../assets/Playbook_stories_2.jpeg';
-import scrumModel from '../assets/Playbook_stories_3.jpeg';
-import { Content as StoryPartI } from './stories/stories_1.md';
-import { Content as StoryPartII } from './stories/stories_2.md';
-import { Content as StoryPartIII } from './stories/stories_3.md';
+import { Content as StoryPartI } from './stories/stories_1.mdx';
+import { Content as StoryPartII } from './stories/stories_2.mdx';
+
 ---
 
 <BaseLayout title="Stories">
-  <figure>
-    <GoAGrid minChildWidth="30ch">
-      <div
-        style="
-            position: relative;             
-            padding-bottom:10%;"
-        id="yui_3_17_2_1_1681489731690_301"
-      >
-        <noscript><img src={deliveryModel} alt="" /></noscript>
-        <img
-          style=" width: 100%; height: 100%; position: absolute;"
-          data-image-resolution="750w"
-          src={deliveryModel}
-        />
-      </div>
-      <div>
-        <StoryPartI />
-      </div>
-    </GoAGrid>
-  </figure>
-
-  <main>
-    <GoAGrid minChildWidth="30ch">
-   
-        <div
-        style="white-space: pre-wrap;
-        position: relative;             
-        padding-bottom:10%; padding-top:10%  margin-bottom:2rem"
-        id="yui_3_17_2_1_1681489731690_325"
-      >
-        <noscript><img src={scrumModel} alt="" /></noscript>
-        <img
-          data-image-focal-point="0.5,0.5"
-          alt=""
-          data-load="false"
-          data-image-id="623ca057300a72696b28f144"
-          data-type="image"
-          src={scrumModel}
-          style="top:10%;  position: absolute;width: 80%;height:60%;"
-        />
-      </div>
-      <div>
-      <StoryPartII />
-    </div>
-    
-    </GoAGrid>
-    <GoAGrid minChildWidth="30ch">
-      <div
-        style="white-space: pre-wrap;
-        position: relative;             
-        padding-bottom:10%; padding-top:10%  margin-bottom:2rem"
-        id="yui_3_17_2_1_1681489731690_325"
-      >
-        <noscript><img src={collaborationModel} alt="" /></noscript>
-        <img
-          data-image-focal-point="0.5,0.5"
-          alt=""
-          data-load="false"
-          data-image-id="623ca057300a72696b28f144"
-          data-type="image"
-          src={collaborationModel}
-          style="top:10%;  position: absolute;width: 80%;height:60%;"
-        />
-      </div>
-      <div>
-        <StoryPartIII />
-      </div>
-    </GoAGrid>
-  </main>
+   <figure>
+      <StoryPartI />
+  </figure> 
+  <StoryPartII />
 </BaseLayout>
 
