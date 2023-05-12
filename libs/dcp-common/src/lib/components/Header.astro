@@ -2,105 +2,101 @@
 import { GoAAppHeader } from '@abgov/react-components';
 ---
 
-
-    <GoAAppHeader url="/" heading="Digital content platform guide" >
-      <nav class="site-nav">
-        <ul>
-
-   <li> <a href="/">Home</a></li>
-   <li><a href="/about/index.html">What is Modern Digital Delivery</a></li>
-   <li><a href="/team/index.html">Who is Involved</a></li>
-   <li><a href="/stories/index.html">Stories</a></li>
-   <li><a href="/learnMore/index.html">Learn More</a></li>
-</ul>
-      </nav>
-  </GoAAppHeader>
+<GoAAppHeader url="/" heading="Digital Content Platform Guide">
+  <nav class="site-nav">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/about/index.html">What is Modern Digital Delivery</a></li>
+      <li><a href="/team/index.html">Who is Involved</a></li>
+      <li><a href="/stories/index.html">Stories</a></li>
+      <li><a href="/learnMore/index.html">Learn More</a></li>
+    </ul>
+  </nav>
+</GoAAppHeader>
 
 <style>
-
+goa-app-header>div>div{
+ padding: 0;
+}
 .site-nav {
-  position: absolute;
-  top: 100%;
-  right: 0%;
-  background: #464655;
-  clip-path: circle(0px at top right);
-  transition: clip-path ease-in-out 700ms;
-}
-
-.site-nav--open {
-  clip-path: circle(250% at top right);
-}
-
-.site-nav ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.site-nav li {
-  border-bottom: 1px solid #575766;
-}
-
-.site-nav li:last-child {
-  border-bottom: none;
-}
-
-.site-nav a {
-  color: #121211;
-  display: block;
-  padding: 2em 4em 2em 1.5em;
-  text-decoration: none;
-}
-
-.site-nav a:hover,
-.site-nav a:focus {
-  background: #bed3f7;
-  color: #464655;
-}
-
-.site-nav--icon {
-  display: inline-block;
-  font-size: 1.5em;
-  margin-right: 1em;
-  width: 1.1em;
-  text-align: right;
-  color: rgba(255,255,255,.4);
-}
-
-
-@media (min-width: 700px) {
-  
-  .menu-toggle {
-    display: none;
+    position: absolute;
+    right: 0%;
+    background: #464655;
+    clip-path: circle(0px at top right);
+    transition: clip-path ease-in-out 700ms;
   }
-  
-  .site-nav {
-    height: auto;
-    position: relative;
-    background: transparent;
-    float: right;
-    clip-path: initial;
+
+  .site-nav--open {
+    clip-path: circle(250% at top right);
   }
-  
+
+  .site-nav ul {
+    box-sizing: border-box;
+    display: flex;
+    align-self: stretch;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
   .site-nav li {
-    display: inline-block;
-    border: none;
+    box-sizing: border-box;
+    display: flex;
+    align-self: stretch;
+    align-items: center;
   }
-  
+
+  .site-nav li:last-child {
+    padding: 0 24px 0 12px;
+  }
+
   .site-nav a {
-    padding: 0;
-    margin-left: 3em;
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    align-self: stretch;
+    align-items: center;
+    border-bottom: 4px solid transparent;
+    outline: none;
+    color: #333;
+    font-weight: 700;
+    text-decoration: none;
+    line-height: 1em;
+    white-space: nowrap;
   }
-  
+
   .site-nav a:hover,
   .site-nav a:focus {
-    background: transparent;
+    border-color: #0070c4;
   }
-  
-  .site-nav--icon {
-    display: none;
+
+  @media (min-width: 640px) {
+    .menu-toggle {
+      display: none;
+    }
+
+    .site-nav {
+      height: auto;
+      position: relative;
+      background: transparent;
+      float: right;
+      clip-path: initial;
+    }
+
+    .site-nav li {
+      border: none;
+    }
+
+    .site-nav a {
+      margin-left: 1em;
+    }
+
+    .site-nav a:hover,
+    .site-nav a:focus {
+      background: transparent;
+    }
+
+    .site-nav--icon {
+      display: none;
+    }
   }
-  
-}
-  
 </style>
