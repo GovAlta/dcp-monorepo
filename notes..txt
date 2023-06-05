@@ -1,0 +1,4 @@
+ npx nx workspace-generator new-article  --dry-run
+ npx nx g @nxtensions/astro:application
+
+ npx nx run dcp-common:gen-astro --args="--name=test-article --author=test --title=test"
