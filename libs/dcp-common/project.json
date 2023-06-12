@@ -13,11 +13,11 @@
       "options": {
         "commands": [
           {
-            "command": "npx nx g @nxtensions/astro:application {args.name}",
+            "command": " npx nx workspace-generator astro-boilerplate --title={args.title}",
             "forwardAllArgs": true
           },
           {
-            "command": " npx nx workspace-generator new-article --author={args.author}  --dry-run",
+            "command": "npx nx g @nxtensions/astro:application {args.title} --integrations {args.integrations}",
             "forwardAllArgs": true
           }
         ]
