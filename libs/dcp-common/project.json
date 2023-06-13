@@ -6,6 +6,22 @@
   "targets": {
     "check": {
       "executor": "@nxtensions/astro:check"
+    },
+    "gen-astro":{
+      "executor": "nx:run-commands",
+      "parallel": false,
+      "options": {
+        "commands": [
+          {
+            "command": " npx nx workspace-generator astro-boilerplate --title={args.title}",
+            "forwardAllArgs": true
+          },
+          {
+            "command": "npx nx g @nxtensions/astro:application {args.title} --integrations {args.integrations}",
+            "forwardAllArgs": true
+          }
+        ]
+      }
     }
   },
   "tags": []
