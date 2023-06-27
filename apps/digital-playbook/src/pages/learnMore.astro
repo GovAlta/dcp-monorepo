@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/baseLayout.astro';
+import { Content as LearnMore } from './learnMore/learnMore.mdx';
+---
+
+<BaseLayout title="Learn More">
+  <main>
+    <div class="content">
+      <LearnMore />
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .content {
+    padding-left: 2rem;
+  }
+  .content ul {
+    margin-left: 0;
+    padding-left: 1em;
+  }
+
+  .content li {
+    margin-left: 0;
+  }
+</style>

@@ -1,0 +1,109 @@
+import Playbook_team_1 from '../../assets/Playbook_team_1.png';
+import Playbook_team_2 from '../../assets/Playbook_team_2.png';
+import { GoAGrid,GoAAccordion } from '@abgov/react-components';
+
+<main>
+    <GoAGrid minChildWidth="30ch">
+    <div>
+    ### **<span style="color: var(--goa-color-brand-dark);">The Product Team</span>**
+
+Small multidisciplinary product teams are the engine of delivery. They are embedded with the Ministry Partner to design, prototype, build, and continuously improve services for Albertans and the staff who serve them.
+
+Product Teams are empowered to own the process, to collaborate and make decisions, and to learn and improve based on what they learned from previous sprints. As experts in their respective field, each person serves discrete functions alongside these shared tasks and responsibilities.
+</div>    
+<div style="position: relative; padding-bottom:5%; padding-top:10%">
+    <noscript><img src={Playbook_team_2} alt="" /></noscript>
+    <img
+      style="width:100%;height:100%"
+      src={Playbook_team_2}
+      alt=""
+    />
+  </div>
+</GoAGrid>
+    <GoAGrid minChildWidth="30ch">
+    **<span style="color: var(--goa-color-brand-dark);">Typically, product teams comprise the following roles:</span>**
+            <ul style="list-style-type: none">
+                <li >
+                    <GoAAccordion heading="Product Owner" headingSize="medium">
+                        Embedded in both the Product Team and the partner Ministry, Product Owners are a champion for digital transformation within their department and ministry. They are able to identify subject matter experts and other stakeholders who are important participants of the process. 
+
+                        Product Owners learn the basics of design, agile, and modern technologies in order to prioritize and align needs. The Product Owner typically works closely with the team’s Service Designer to guide the leadership in their strategic decisions about the product.
+
+                        **Ask me about:** Overall product strategy, product management, important ministry stakeholders, long-term vision for the product, ministry processes and procedures.
+                      </GoAAccordion>
+                </li>
+                <li>
+                    <GoAAccordion heading="Service Designer" headingSize="medium">
+                        Service Designers consider the total picture of what is required to deliver a service. This requires understanding the service provider experience and the service user experience.
+
+                        Service Designers use design research to get to know the people and the problem, and they translate these insights into potential new service delivery models that align with Ministry Partners’ goals. Throughout the process, they evaluate the usefulness of prototypes and products, and ensure that users are able to accomplish what they set out to do.
+
+                        Service Designers are expert facilitators and often support Product Owners at governance tables.
+
+                        **Ask me about:** Research methods, design process, usability testing, strategy, systemic design.
+                    </GoAAccordion>
+                </li>
+                <li >
+                    <GoAAccordion heading="Front End Designer" headingSize="medium">
+                        Front End Designers consider the user experience while using a digital product.
+
+                        They design the interface and interactions based on users’ needs, information flow, and business processes. They work closely with Full Stack Developers to ensure that their designs are compatible with the technology.
+
+                        Front End Designers evaluate whether prototypes and products are easy to use and intuitive. They design features and functions that allow users to easily recover from user or system errors. Front End Designers work closely with Service Designers to test the usefulness and usability of the design.
+
+                        **Ask me about:** design system and system components, interactions, colours, typefaces, visual consistency, best practices regarding visual design.
+                    </GoAAccordion>
+                </li>
+                <li>
+                    <GoAAccordion heading="Digital Architect" headingSize="medium">
+                        Digital Architects are responsible for the technical foundation that makes a digital product work within a technology ecosystem. They also champion good software development processes with the Product Team.
+
+                        Digital Architects evaluate technical options that support feature development, data storage, and integration with other systems within the context of user needs and the delivery of the service. They consider factors like reliability, security, privacy, and flexibility.
+
+                        Digital Architects identify a preferred architecture for the Beta phase of product development, and make further recommendations and changes depending on performance needs and evolving technologies.
+
+                        **Ask me about:** Integration between components, open source, data privacy and security, data mapping, dev/ops, hosting environments, storage, cloud.
+                    </GoAAccordion>
+                </li>
+                <li>
+                    <GoAAccordion heading=" Full Stack Developer" headingSize="medium">
+                        Full Stack Developers write the code that powers our digital products. They turn ideas, napkin sketches, and wireframes into real digital products.
+
+                        Full Stack Developers build and test features, create databases, and manage users. Rather than code everything by hand, they strive to reuse or refactor code, a practice that makes the process more efficient overall.
+
+                        Full Stack Developers create a backlog of work and work closely with the Product Owner to estimate effort and prioritize work during each sprint.
+
+                        **Ask me about:** Options for developing features, resolving bugs in the product, troubleshooting, testing, and best practices with respect to development.
+                    </GoAAccordion>
+                </li>
+            </ul>
+            
+    </GoAGrid>
+
+    <GoAGrid minChildWidth="30ch">
+         **<span style="color: var(--goa-color-brand-dark);"><strong>Product teams also include two part time resources:</strong></span>
+            <ul style="list-style-type: none">
+                <li >
+                    <GoAAccordion heading="Scrum Master" headingSize="medium">
+                        Scrum is a framework for agile teams. It relies on time-boxed delivery cycles (also called “sprints”) and ceremonies for planning work, reviewing work, and reflecting on how the team can improve.
+
+                        Scrum Masters evaluate whether Product Teams are delivering on the work they set out to accomplish during their sprint and encourage the team to better and better estimates of work they take on. Rather than dogmatic adherence to formal Agile theory, good Scrum Masters adapt and adjust agile rules to make the best use of resources and context for the product team.
+
+                        **Ask me about:** Agile delivery frameworks, team velocity, user stories, product backlog
+                      </GoAAccordion>
+                </li>
+              
+                <li >
+                    <GoAAccordion heading="Quality Assurance Analyst" headingSize="medium">
+                        Quality Assurance Analysts are responsible for rigorously testing the product in a variety of circumstances to ensure that it works well for users across a range of devices, browsers, and contexts. Creating realistic data and scenarios that simulate edge cases and common uses are key to quality assurance. Error conditions are as important as the “happy path.”
+
+                        **Ask me about:** Testing methodology options, types of testing at different phases of development, means of simulating real data, real interactions and real volume, testing for privacy or security vulnerabilities.
+                      </GoAAccordion>
+                </li>
+            </ul>
+           
+    </GoAGrid>
+
+
+
+</main>
