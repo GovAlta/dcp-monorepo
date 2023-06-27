@@ -1,0 +1,21 @@
+{
+  "name": "tools-scripts",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "tools/scripts",
+  "projectType": "library",
+  "generators": {},
+  "targets": {
+    "create_index": {
+      "executor": "@nx/js:tsc",
+      "options": {
+        "outputPath": "dist/tools/scripts/searchIndex",
+        "main": "tools/scripts/searchIndex/index.ts",
+        "tsConfig": "tools/tsconfig.scripts.json",
+        "assets": [],
+        "buildLibsFromSource": true
+      },
+      "outputs": ["{options.outputPath}"]
+    }
+  },
+  "tags": []
+}
