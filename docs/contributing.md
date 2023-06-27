@@ -27,7 +27,7 @@ There are several places in DDD where you can share information, including [Conf
 
 Use DCP if
 - your audience is wider than DDD,
-- you want to tell your story without unrelated distractions,
+- you want to tell your story without the unrelated distractions of other people's stuff,
 - you want to provide a unique browsing experience to your audience,
 - presentation is important,
 - you need full control over your site and its content.
