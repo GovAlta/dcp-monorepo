@@ -4,10 +4,11 @@ import { useState } from "react";
 // Configs fuse.js
 // https://fusejs.io/api/options.html
 const options = {
-  keys: ["title", "description", "slug", "Content"],
+  keys: ["title", "description", "slug", "Content", "body"],
   includeMatches: true,
   minMatchCharLength: 2,
   threshold: 0.5,
+  ignoreLocation: true
 };
 
 function Search({ searchList }) {

@@ -1,7 +1,6 @@
 ---
 import Search from './Search';
 import searchIndexes from '/public/search.json'
-console.log(searchIndexes)
-const indexes = searchIndexes.filter(index => (!index.title));
+const indexes = searchIndexes.filter(index => index.title);
 ---
 <Search client:load searchList={indexes}></Search>
