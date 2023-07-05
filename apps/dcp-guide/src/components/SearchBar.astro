@@ -1,6 +1,9 @@
 ---
 import Search from './Search';
 import searchIndexes from '/public/search.json'
-const indexes = searchIndexes.filter(index => index.title);
+
+const rawIndexData = await Astro.glob('../pages/**/*.{md,mdx}');
+const indexes = rawIndexData.filter(data => data.frontmatter.slug);
+
 ---
 <Search client:load searchList={indexes}></Search>

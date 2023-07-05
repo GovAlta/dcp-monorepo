@@ -4,7 +4,7 @@ import { useState } from "react";
 // Configs fuse.js
 // https://fusejs.io/api/options.html
 const options = {
-  keys: ["title", "description", "slug", "Content", "body"],
+  keys: ["frontmatter.title", "frontmatter.description", "frontmatter.slug", "frontmatter.Content"],
   includeMatches: true,
   minMatchCharLength: 2,
   threshold: 0.5,
@@ -18,7 +18,7 @@ function Search({ searchList }) {
   const fuse = new Fuse(searchList, options);
 
   // Set a limit to the posts: 5
-  const posts = fuse
+  const results = fuse
     .search(query)
     .map((result) => result.item)
     .slice(0, 5);
@@ -74,17 +74,17 @@ function Search({ searchList }) {
 
       {query.length > 1 && (
         <div className="my-4">
-          Found {posts.length} {posts.length === 1 ? "result" : "results"} for '
+          Found {results.length} {results.length === 1 ? "result" : "results"} for '
           {query}'
         </div>
       )}
 
       <ul className="list-none">
-        {posts &&
-          posts.map((post) => (
+        {results &&
+          results.map((result) => (
             <li className="py-2">
-              <a className="text-lg text-blue-700 hover:text-blue-900 hover:underline underline-offset-2" href={`${post.url}`}>{post.title}</a>
-              <p className="text-sm text-gray-800">{post.description}</p>
+              <a className="text-lg text-blue-700 hover:text-blue-900 hover:underline underline-offset-2" href={`${result.frontmatter.url}`}>{result.frontmatter.title}</a>
+              <p className="text-sm text-gray-800">{result.frontmatter.description}</p>
             </li>
           ))}
       </ul>
