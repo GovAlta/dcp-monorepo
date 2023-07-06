@@ -28,6 +28,16 @@ Run the `application` generator to create a new micro-app:
 npx nx g @nxtensions/astro:application
 ```
 
+## Generating an astro starter app
+
+To generate an Astro app, use the following command, which utilizes a custom generator to create an Astro app starter kit and generate the necessary deployment files:
+
+```
+ npx nx run dcp-common:gen-astro --args="--title=app-title --integrations=react,mdx"
+ ```
+ 
+After executing the command, a basic Astro app structure will be set up in the "app/app-title" directory. You can proceed with customizing and developing your Astro app based on your specific requirements.
+
 ## Deployment
 
 OpenShift manifests and deployments are maintained in source control and the pipeline automatically applies them during deployment stages. This is convention based and new applications can follow the existing files to adhere to conventions.
