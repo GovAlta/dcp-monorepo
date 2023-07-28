@@ -83,6 +83,7 @@ jobs:
         run: |
           for app in $AFFECTED_APPS
           do 
+            oc process -f .openshift/$app/$app.yml | oc apply -l apply-build=true -f - 
             oc start-build $app --from-dir . --follow --wait
           done
       # Set build job outputs for subsequent jobs.
