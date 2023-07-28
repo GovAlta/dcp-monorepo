@@ -28,11 +28,15 @@ objects:
   - apiVersion: image.openshift.io/v1
     kind: ImageStream
     metadata:
+      labels:
+        apply-build: "true"
       name: ${APP_NAME}
       namespace: ${INFRA_PROJECT}
   - apiVersion: build.openshift.io/v1
     kind: BuildConfig
     metadata:
+      labels:
+        apply-build: "true"
       name: ${APP_NAME}
       namespace: ${INFRA_PROJECT}
     spec:
