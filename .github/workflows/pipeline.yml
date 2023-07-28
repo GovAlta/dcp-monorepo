@@ -168,7 +168,7 @@ jobs:
 
   deployProd:
     runs-on: ubuntu-20.04
-    needs: [build, deployTest]
+    needs: [build, deployStaging]
     env:
       AFFECTED_APPS: ${{ needs.build.outputs.affected_apps }}
     environment:
