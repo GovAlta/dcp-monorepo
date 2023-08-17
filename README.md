@@ -15,7 +15,17 @@ npx nx dev dcp-guide
 
 This aligns to the `dev` Astro CLI command instead of the nx convention `serve` target. Similarly the `check` target is included, instead of the `lint` target, for static checks.
 
-### Generating micro-apps
+## Generating an astro starter app using pre-built generator
+
+To generate an Astro app, use the following command, which utilizes a custom generator to create an Astro app starter kit and generate the necessary deployment files:
+
+```
+ npx nx run dcp-common:gen-astro --args="--title=app-title --integrations=react,mdx"
+ ```
+ 
+After executing the command, a basic Astro app structure will be set up in the "app/app-title" directory. You can proceed with customizing and developing your Astro app based on your specific requirements.
+
+### Generating micro-apps on your own
 @nxtensions/astro extension includes generators for applications and libraries.
 
 Run the nx `list` command to see what is available:
@@ -28,15 +38,6 @@ Run the `application` generator to create a new micro-app:
 npx nx g @nxtensions/astro:application
 ```
 
-## Generating an astro starter app
-
-To generate an Astro app, use the following command, which utilizes a custom generator to create an Astro app starter kit and generate the necessary deployment files:
-
-```
- npx nx run dcp-common:gen-astro --args="--title=app-title --integrations=react,mdx"
- ```
- 
-After executing the command, a basic Astro app structure will be set up in the "app/app-title" directory. You can proceed with customizing and developing your Astro app based on your specific requirements.
 
 ## Deployment
 
