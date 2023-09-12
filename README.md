@@ -52,3 +52,15 @@ oc process -f .openshift/dcp-guide/dcp-guide.yml -p PROJECT=dcp-dev -p DEPLOY_TA
 ```
 
 Creation of resources in downstream environments is handled by the pipeline when promoting new builds.
+
+## Accessing the deployed app
+
+Upon app deployment, you can employ the provided URL structure to access it within specific environments. Please note that these URLs are exclusively accessible via an internal network.
+
+dev:  https://{app_name}-dcp-dev.apps.aro.gov.ab.ca
+
+uat:  https://{app_name}-dcp-uat.apps.aro.gov.ab.ca
+
+prod:  https://{app_name}-dcp-prod.apps.aro.gov.ab.ca
+
+As an illustration, to access the "common-capabilities" app within the development environment, you would use the following URL: https://common-capabilities-dcp-dev.apps.aro.gov.ab.ca
