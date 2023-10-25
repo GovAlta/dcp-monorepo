@@ -2,7 +2,10 @@
 export interface Props {
   title: string;
 }
-
+import Header from '../components/Header.astro';
+import {GoAAppFooter} from '@abgov/react-components'
+import '@abgov/web-components/index.css';
+import '@abgov/design-tokens/dist/tokens.css';
 const { title } = Astro.props;
 ---
 
@@ -11,34 +14,27 @@ const { title } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <title>{title}</title>
+    <script>
+      import '@abgov/web-components';
+    </script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
   </head>
-
   <body>
+    <Header />
     <slot />
+    <GoAAppFooter />
   </body>
 </html>
 
 <style is:global>
-  :root {
-    --accent: 124, 58, 237;
-    --accent-gradient: linear-gradient(
-      45deg,
-      rgb(var(--accent)),
-      #da62c4 30%,
-      white 60%
-    );
-  }
 
-  html {
-    font-family: system-ui, sans-serif;
-    background-color: #f6f6f6;
-  }
-
-  code {
-    font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-      DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
-  }
 </style>
