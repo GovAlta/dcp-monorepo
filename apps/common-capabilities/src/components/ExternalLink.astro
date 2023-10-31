@@ -1,0 +1,27 @@
+---
+import { GoAIcon } from '@abgov/react-components';
+
+const { link, text } = Astro.props;
+---
+
+<div class="link-wrapper">
+  <a href={link} rel="noopener noreferrer" target="_blank">
+    {text}
+    <span class="link-icon">
+      <GoAIcon type="open" />
+    </span>
+  </a>
+</div>
+
+<style>
+  .link-wrapper {
+    display: inline-block;
+    color: #0070c4;
+  }
+  .link-wrapper .link-icon {
+    position: relative;
+    top: 3px;
+    right: 2px;
+    margin-left: var(--goa-space-xs);
+  }
+</style>
