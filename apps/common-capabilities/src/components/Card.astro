@@ -1,68 +1,79 @@
 ---
-export interface Props {
-  title: string;
-  body: string;
-  href: string;
-}
+import {
+  GoAChip,
+  GoAContainer,
+  GoAGrid,
+  GoASpacer,
+} from '@abgov/react-components';
+import ExternalLink from './ExternalLink.astro';
 
-const { href, title, body } = Astro.props;
+const { href, title, description, provider } = Astro.props;
 ---
 
-<li class="link-card">
-  <a href={href}>
-    <h2>
-      {title}
-      <span>&rarr;</span>
-    </h2>
-    <p>
-      {body}
-    </p>
-  </a>
-</li>
+<GoAContainer accent="thin">
+  <a id="service-tile-title">{title}</a>
+  <span id="service-tile-subtitle">{provider}</span>
+  <GoASpacer vSpacing="m" />
+  <p id="service-tile-content">
+    {description}
+  </p>
+
+  <div>
+    <b>Contact:</b>
+    <ExternalLink text="ADSP platform" link="https://google.ca" />
+  </div>
+  <GoASpacer vSpacing="m" />
+  <div id="service-tile-chips">
+    <GoAChip mr="s" content="Chip Text" />
+    <GoAChip mr="s" content="Chip Text" />
+    <GoAChip mr="s" content="Chip Text" />
+  </div>
+</GoAContainer>
 
 <style>
-  .link-card {
-    list-style: none;
-    display: flex;
-    padding: 0.15rem;
-    background-color: white;
-    background-image: var(--accent-gradient);
-    background-size: 400%;
-    border-radius: 0.5rem;
-    background-position: 100%;
-    transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-      0 2px 4px -2px rgba(0, 0, 0, 0.1);
-  }
-
-  .link-card > a {
-    width: 100%;
+  a:link {
     text-decoration: none;
-    line-height: 1.4;
-    padding: 1rem 1.3rem;
-    border-radius: 0.35rem;
-    color: #111;
-    background-color: white;
-    opacity: 0.8;
+    color: var(--goa-color-interactive-default);
   }
 
-  h2 {
-    margin: 0;
-    font-size: 1.25rem;
-    transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  a:visited {
+    text-decoration: none;
+    color: var(--goa-color-interactive-default);
   }
 
-  p {
-    margin-top: 0.5rem;
-    margin-bottom: 0;
-    color: #444;
+  a:hover {
+    text-decoration: underline;
+    color: var(--goa-color-interactive-default);
   }
 
-  .link-card:is(:hover, :focus-within) {
-    background-position: 0;
+  a:active {
+    text-decoration: underline;
+    color: var(--goa-color-interactive-default);
   }
-
-  .link-card:is(:hover, :focus-within) h2 {
-    color: rgb(var(--accent));
+  #service-tile-chips {
+    line-height: 2.75rem;
+  }
+  #service-tile-subtitle {
+    color: var(--goa-color-text-secondary);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 28px;
+  }
+  #service-tile-title {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 32px;
+    word-wrap: break-word;
+  }
+  #service-tile-content {
+    width: 300px;
+    display: block;
+    word-wrap: break-word;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
   }
 </style>
