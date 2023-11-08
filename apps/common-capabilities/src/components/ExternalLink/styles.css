@@ -1,0 +1,10 @@
+.link-wrapper {
+  display: inline-block;
+  color: #0070c4;
+}
+.link-wrapper .link-icon {
+  position: relative;
+  top: 3px;
+  right: 2px;
+  margin-left: var(--goa-space-xs);
+}
