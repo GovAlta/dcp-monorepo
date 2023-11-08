@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import apps from '../../datastore.json';
+import apps from '../../content/datastore.json';
 import {
   GoAOneColumnLayout,
   GoAGrid,
