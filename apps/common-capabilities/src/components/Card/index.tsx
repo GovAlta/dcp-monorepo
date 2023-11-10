@@ -18,7 +18,7 @@ const Card = ({ provider, description, title }: CardProps) => {
         <p id="service-tile-content">{description}</p>
 
         <div>
-          <b>Contact:</b>
+          <b>Contact: </b>
           <ExternalLink text="ADSP platform" link="https://google.ca" />
         </div>
         <GoASpacer vSpacing="m" />

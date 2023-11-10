@@ -925,7 +925,7 @@
     },
     {
         "ServiceName": "User survey",
-        "Description": "Module to define release announcements and survey prompts for users and track their responses (Dismissed,postponed,acknowledged)",
+        "Description": "Module to define release announcements and survey prompts for users and track their responses (Dismissed, Postponed, Acknowledged)",
         "FunctionalGroup": "Notifications and Communication",
         "Provider": "SCSS",
         "Environment": "N/A",
