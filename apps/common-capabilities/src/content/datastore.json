@@ -15,7 +15,7 @@
         "AccessMethod": "Slack",
         "AccessMethodDetails": "Digital Design and Delivery",
         "AccessMethodLink": "https://goa-dio.slack.com/channels/adsp-connection",
-        "Email": "adsp@gov.ab.ca ",
+        "Email": "adsp@gov.ab.ca",
         "Phone": "",
         "Prerequisites": "Product teams can get started by accessing an existing tenant or creating a new tenant. Each tenant represents a zone of administrative control and generally products within a common service area can share a tenant.",
         "Comments": "",
@@ -40,7 +40,7 @@
         "AccessMethod": "Slack",
         "AccessMethodDetails": "Digital Design and Delivery",
         "AccessMethodLink": "https://goa-dio.slack.com/channels/adsp-connection",
-        "Email": "adsp@gov.ab.ca ",
+        "Email": "adsp@gov.ab.ca",
         "Phone": "",
         "Prerequisites": "Product teams can get started by accessing an existing tenant or creating a new tenant. Each tenant represents a zone of administrative control and generally products within a common service area can share a tenant.",
         "Comments": "",
@@ -67,7 +67,7 @@
         "AccessMethod": "Slack",
         "AccessMethodDetails": "Digital Design and Delivery",
         "AccessMethodLink": "https://goa-dio.slack.com/channels/adsp-connection",
-        "Email": "adsp@gov.ab.ca ",
+        "Email": "adsp@gov.ab.ca",
         "Phone": "",
         "Prerequisites": "Product teams can get started by accessing an existing tenant or creating a new tenant. Each tenant represents a zone of administrative control and generally products within a common service area can share a tenant.",
         "Comments": "",
@@ -92,7 +92,7 @@
         "AccessMethod": "Slack",
         "AccessMethodDetails": "Digital Design and Delivery",
         "AccessMethodLink": "https://goa-dio.slack.com/channels/adsp-connection",
-        "Email": "adsp@gov.ab.ca ",
+        "Email": "adsp@gov.ab.ca",
         "Phone": "",
         "Prerequisites": "Product teams can get started by accessing an existing tenant or creating a new tenant. Each tenant represents a zone of administrative control and generally products within a common service area can share a tenant.",
         "Comments": "",
@@ -117,7 +117,7 @@
         "AccessMethod": "Slack",
         "AccessMethodDetails": "Digital Design and Delivery",
         "AccessMethodLink": "https://goa-dio.slack.com/channels/adsp-connection",
-        "Email": "adsp@gov.ab.ca ",
+        "Email": "adsp@gov.ab.ca",
         "Phone": "",
         "Prerequisites": "Product teams can get started by accessing an existing tenant or creating a new tenant. Each tenant represents a zone of administrative control and generally products within a common service area can share a tenant.",
         "Comments": "",
@@ -144,7 +144,7 @@
         "AccessMethod": "Slack",
         "AccessMethodDetails": "Digital Design and Delivery",
         "AccessMethodLink": "https://goa-dio.slack.com/channels/adsp-connection",
-        "Email": "adsp@gov.ab.ca ",
+        "Email": "adsp@gov.ab.ca",
         "Phone": "",
         "Prerequisites": "Product teams can get started by accessing an existing tenant or creating a new tenant. Each tenant represents a zone of administrative control and generally products within a common service area can share a tenant.",
         "Comments": "",
@@ -169,7 +169,7 @@
         "AccessMethod": "Slack",
         "AccessMethodDetails": "Digital Design and Delivery",
         "AccessMethodLink": "https://goa-dio.slack.com/channels/adsp-connection",
-        "Email": "adsp@gov.ab.ca ",
+        "Email": "adsp@gov.ab.ca",
         "Phone": "",
         "Prerequisites": "Product teams can get started by accessing an existing tenant or creating a new tenant. Each tenant represents a zone of administrative control and generally products within a common service area can share a tenant.",
         "Comments": "",
@@ -194,7 +194,7 @@
         "AccessMethod": "Slack",
         "AccessMethodDetails": "Digital Design and Delivery",
         "AccessMethodLink": "https://goa-dio.slack.com/channels/adsp-connection",
-        "Email": "adsp@gov.ab.ca ",
+        "Email": "adsp@gov.ab.ca",
         "Phone": "",
         "Prerequisites": "Product teams can get started by accessing an existing tenant or creating a new tenant. Each tenant represents a zone of administrative control and generally products within a common service area can share a tenant.",
         "Comments": "",
@@ -219,7 +219,7 @@
         "AccessMethod": "Slack",
         "AccessMethodDetails": "Digital Design and Delivery",
         "AccessMethodLink": "https://goa-dio.slack.com/channels/adsp-connection",
-        "Email": "adsp@gov.ab.ca ",
+        "Email": "adsp@gov.ab.ca",
         "Phone": "",
         "Prerequisites": "Product teams can get started by accessing an existing tenant or creating a new tenant. Each tenant represents a zone of administrative control and generally products within a common service area can share a tenant.",
         "Comments": "",
@@ -246,7 +246,7 @@
         "AccessMethod": "Slack",
         "AccessMethodDetails": "Digital Design and Delivery",
         "AccessMethodLink": "https://goa-dio.slack.com/channels/adsp-connection",
-        "Email": "adsp@gov.ab.ca ",
+        "Email": "adsp@gov.ab.ca",
         "Phone": "",
         "Prerequisites": "Product teams can get started by accessing an existing tenant or creating a new tenant. Each tenant represents a zone of administrative control and generally products within a common service area can share a tenant.",
         "Comments": "",
@@ -271,7 +271,7 @@
         "AccessMethod": "Slack",
         "AccessMethodDetails": "Digital Design and Delivery",
         "AccessMethodLink": "https://goa-dio.slack.com/channels/adsp-connection",
-        "Email": "adsp@gov.ab.ca ",
+        "Email": "adsp@gov.ab.ca",
         "Phone": "",
         "Prerequisites": "Product teams can get started by accessing an existing tenant or creating a new tenant. Each tenant represents a zone of administrative control and generally products within a common service area can share a tenant.",
         "Comments": "",
@@ -296,7 +296,7 @@
         "AccessMethod": "Slack",
         "AccessMethodDetails": "Digital Design and Delivery",
         "AccessMethodLink": "https://goa-dio.slack.com/channels/adsp-connection",
-        "Email": "adsp@gov.ab.ca ",
+        "Email": "adsp@gov.ab.ca",
         "Phone": "",
         "Prerequisites": "Product teams can get started by accessing an existing tenant or creating a new tenant. Each tenant represents a zone of administrative control and generally products within a common service area can share a tenant.",
         "Comments": "",
@@ -321,7 +321,7 @@
         "AccessMethod": "Slack",
         "AccessMethodDetails": "Digital Design and Delivery",
         "AccessMethodLink": "https://goa-dio.slack.com/channels/adsp-connection",
-        "Email": "adsp@gov.ab.ca ",
+        "Email": "adsp@gov.ab.ca",
         "Phone": "",
         "Prerequisites": "Product teams can get started by accessing an existing tenant or creating a new tenant. Each tenant represents a zone of administrative control and generally products within a common service area can share a tenant.",
         "Comments": "",
@@ -331,10 +331,10 @@
         "id": 13
     },
     {
-        "ServiceName": "   Get Access (CCA)",
+        "ServiceName": "Get Access (CCA)",
         "Description": "Allows child care operators to request access to services provided by Children's Services. Requests are approved by authorized GOA staff.",
         "FunctionalGroup": "User Access and Identity",
-        "Provider": "Children's Services Platform ",
+        "Provider": "Children's Services Platform",
         "Environment": [
             "Openshift"
         ],
@@ -363,7 +363,7 @@
         "ServiceName": "GOA User Management",
         "Description": "Allows GOA staff to manage the access of other GOA staff to the internal applications developed by Children's Services.",
         "FunctionalGroup": "User Access and Identity",
-        "Provider": "Children's Services Platform ",
+        "Provider": "Children's Services Platform",
         "Environment": [
             "Openshift"
         ],
@@ -390,9 +390,9 @@
     },
     {
         "ServiceName": "Get Access (CCA) API",
-        "Description": " An internal API that allows applications developed by Children's Services to get information about users, roles, and groups from the CCDS Keycloak realm.",
+        "Description": "An internal API that allows applications developed by Children's Services to get information about users, roles, and groups from the CCDS Keycloak realm.",
         "FunctionalGroup": "User Access and Identity",
-        "Provider": "Children's Services Platform ",
+        "Provider": "Children's Services Platform",
         "Environment": [
             "Openshift"
         ],
@@ -424,7 +424,7 @@
         "ServiceName": "CCDS Angular Components",
         "Description": "An Angular library that provides UI components and shared code for Angular apps in Children's Services, including authentication and authorization through the CCDS Keycloak realm.",
         "FunctionalGroup": "Data Management",
-        "Provider": "Children's Services Platform ",
+        "Provider": "Children's Services Platform",
         "Environment": [
             "GitHub"
         ],
@@ -453,7 +453,7 @@
         "ServiceName": "CCDS React Components",
         "Description": "A React library that provides UI components and shared code for React apps in Children's Services, including authentication and authorization through the CCDS Keycloak realm.",
         "FunctionalGroup": "Data Management",
-        "Provider": "Children's Services Platform ",
+        "Provider": "Children's Services Platform",
         "Environment": [
             "GitHub"
         ],
@@ -482,9 +482,9 @@
     },
     {
         "ServiceName": "CCDS Web Components",
-        "Description": " A web component library that provides UI components for use by the applications developed by Children's Services.",
+        "Description": "A web component library that provides UI components for use by the applications developed by Children's Services.",
         "FunctionalGroup": "Data Management",
-        "Provider": "Children's Services Platform ",
+        "Provider": "Children's Services Platform",
         "Environment": [
             "GitHub"
         ],
@@ -513,7 +513,7 @@
         "ServiceName": "Licensing API",
         "Description": "An internal API that provides information on all licensed child care providers in Alberta, as well as the staff (Early Childhood Educators) that work there.",
         "FunctionalGroup": "Data Management",
-        "Provider": "Children's Services Platform ",
+        "Provider": "Children's Services Platform",
         "Environment": [
             "Openshift"
         ],
@@ -560,7 +560,7 @@
         "AccessMethod": "",
         "AccessMethodDetails": "Through consultation",
         "AccessMethodLink": "",
-        "Email": "sa.imehelpdesk@gov.ab.c",
+        "Email": "sa.imehelpdesk@gov.ab.ca",
         "Phone": "",
         "Prerequisites": "",
         "Comments": "Legacy shared service that may not always be suitable for digitally redesigned services.",
@@ -589,7 +589,7 @@
         "AccessMethod": "",
         "AccessMethodDetails": "Through consultation",
         "AccessMethodLink": "",
-        "Email": "sa.imehelpdesk@gov.ab.c",
+        "Email": "sa.imehelpdesk@gov.ab.ca",
         "Phone": "",
         "Prerequisites": "",
         "Comments": "Legacy shared service that may not always be suitable for digitally redesigned services.",
@@ -618,7 +618,7 @@
         "AccessMethod": "",
         "AccessMethodDetails": "Through consultation",
         "AccessMethodLink": "",
-        "Email": "sa.imehelpdesk@gov.ab.c",
+        "Email": "sa.imehelpdesk@gov.ab.ca",
         "Phone": "",
         "Prerequisites": "",
         "Comments": "Legacy shared service that may not always be suitable for digitally redesigned services.",
@@ -647,7 +647,7 @@
         "AccessMethod": "",
         "AccessMethodDetails": "Through consultation",
         "AccessMethodLink": "",
-        "Email": "sa.imehelpdesk@gov.ab.c",
+        "Email": "sa.imehelpdesk@gov.ab.ca",
         "Phone": "",
         "Prerequisites": "",
         "Comments": "Legacy shared service that may not always be suitable for digitally redesigned services.",
@@ -676,7 +676,7 @@
         "AccessMethod": "",
         "AccessMethodDetails": "Through consultation",
         "AccessMethodLink": "",
-        "Email": "sa.imehelpdesk@gov.ab.c",
+        "Email": "sa.imehelpdesk@gov.ab.ca",
         "Phone": "",
         "Prerequisites": "",
         "Comments": "Legacy shared service that may not always be suitable for digitally redesigned services.",
@@ -687,7 +687,7 @@
     },
     {
         "ServiceName": "Communication Service",
-        "Description": "Wrapper over Alberta Notify service and is intended to provide fault tolerance & guaranteed delivery ",
+        "Description": "Wrapper over Alberta Notify service and is intended to provide fault tolerance & guaranteed delivery",
         "FunctionalGroup": "Notifications and Communication",
         "Provider": "Advanced Education",
         "Environment": [
@@ -718,7 +718,7 @@
     },
     {
         "ServiceName": "Comments Service",
-        "Description": "Provides functionality associated to attaching comments to an object for storage and retrieval. ",
+        "Description": "Provides functionality associated to attaching comments to an object for storage and retrieval.",
         "FunctionalGroup": "Other Function",
         "Provider": "Advanced Education",
         "Environment": [
@@ -796,7 +796,7 @@
         "AccessMethod": "",
         "AccessMethodDetails": "",
         "AccessMethodLink": "",
-        "Email": "AE-OCSDSFSAMSTeam@gov.ab.ca ",
+        "Email": "AE-OCSDSFSAMSTeam@gov.ab.ca",
         "Phone": "",
         "Prerequisites": "Utilization for Federal SIN Service requires business coordination and agreements to be put in place. This service is a bit coupled with Student Finance System but is used by Apprenticeship and Student Aid (potentially Foundational Learning will be added in the future)",
         "Comments": "Legacy shared service that may not always be suitable for digitally redesigned services.",
@@ -807,7 +807,7 @@
     },
     {
         "ServiceName": "1GX API Service",
-        "Description": " Interfaces between 1GX and GoA business applications.",
+        "Description": "Interfaces between 1GX and GoA business applications.",
         "FunctionalGroup": "Workflow and Process Automation",
         "Provider": "Service Integration",
         "Environment": [
@@ -838,7 +838,7 @@
     },
     {
         "ServiceName": "1GX Legacy IMAGIS Integration",
-        "Description": " \n Interfaces between 1GX and GoA business applications using iSuite to send/receive files in legacy IMAGIS format. This integration is for legacy GoA applications, it will be phased out and replaced by direct API type of integration with 1GX.  ",
+        "Description": "Interfaces between 1GX and GoA business applications using iSuite to send/receive files in legacy IMAGIS format. This integration is for legacy GoA applications, it will be phased out and replaced by direct API type of integration with 1GX.",
         "FunctionalGroup": "",
         "Provider": "Service Integration",
         "Environment": [],
@@ -857,7 +857,7 @@
         "Email": "",
         "Phone": "",
         "Prerequisites": "",
-        "Comments": "This integration is for legacy GoA applications, it will be phased out and replaced by direct API type of integration with 1GX.  ",
+        "Comments": "This integration is for legacy GoA applications, it will be phased out and replaced by direct API type of integration with 1GX.",
         "LastUpdated": "",
         "Reviewed": "",
         "ReviewedBy": "",
@@ -994,7 +994,7 @@
     },
     {
         "ServiceName": "Electronic Signature - Self-Service User Portal",
-        "Description": "Allows the user to access the platform to create and send envelopes, monitor and administer user activity and manage other aspects of the e-signature business process and workflow. ",
+        "Description": "Allows the user to access the platform to create and send envelopes, monitor and administer user activity and manage other aspects of the e-signature business process and workflow.",
         "FunctionalGroup": "Document Processing",
         "Provider": "Service Integration",
         "Environment": [],
@@ -1069,7 +1069,7 @@
     },
     {
         "ServiceName": "QR Code Service",
-        "Description": " Provides confirmation of the authenticity of digital and printed documents claimed as issued under the authority of GoA - Government of Alberta. allows the user to create digital signatures in a form of QR (Quick Response) Code images which can then be verified by using this application or the third party solutions, like mobile or desktop custom applications. ",
+        "Description": "Provides confirmation of the authenticity of digital and printed documents claimed as issued under the authority of GoA - Government of Alberta. allows the user to create digital signatures in a form of QR (Quick Response) Code images which can then be verified by using this application or the third party solutions, like mobile or desktop custom applications.",
         "FunctionalGroup": "Document Processing",
         "Provider": "Service Integration",
         "Environment": [],
@@ -1324,7 +1324,7 @@
         "AccessMethod": "Slack",
         "AccessMethodDetails": "Digital Design and Delivery",
         "AccessMethodLink": "https://goa-dio.slack.com/channels/adsp-connection",
-        "Email": "adsp@gov.ab.ca ",
+        "Email": "adsp@gov.ab.ca",
         "Phone": "",
         "Prerequisites": "Product teams can get started by accessing an existing tenant or creating a new tenant. Each tenant represents a zone of administrative control and generally products within a common service area can share a tenant.",
         "Comments": "",
@@ -1352,7 +1352,7 @@
         "Keywords": [],
         "Status": "Live",
         "Version": "Web components 1.14.0 / Design tokens 1.1.1 / Angular components 2.5.0 / React components 4.14.0",
-        "UseCases": "A design system is a centralized resource that provides guidelines, assets, and code to help teams build digital products. It helps maintain consistency across multiple projects and allows teams to focus on higher-level tasks rather than reinventing low-level elements. ",
+        "UseCases": "A design system is a centralized resource that provides guidelines, assets, and code to help teams build digital products. It helps maintain consistency across multiple projects and allows teams to focus on higher-level tasks rather than reinventing low-level elements.",
         "AccessMethod": "Slack",
         "AccessMethodDetails": "Digital Design and Delivery",
         "AccessMethodLink": "https://goa-dio.slack.com/channels/design-system-support",
@@ -1383,9 +1383,9 @@
         "AccessMethod": "",
         "AccessMethodDetails": "",
         "AccessMethodLink": "",
-        "Email": " vassy.serban@gov.ab.ca \n",
+        "Email": "vassy.serban@gov.ab.ca",
         "Phone": "",
-        "Prerequisites": "Have a Keycloak realm available ",
+        "Prerequisites": "Have a Keycloak realm available",
         "Comments": "",
         "LastUpdated": "",
         "Reviewed": "Yes",
@@ -1410,7 +1410,7 @@
         "AccessMethod": "",
         "AccessMethodDetails": "",
         "AccessMethodLink": "",
-        "Email": " vassy.serban@gov.ab.ca \n",
+        "Email": "vassy.serban@gov.ab.ca",
         "Phone": "",
         "Prerequisites": "The implementation is using BFF Duende framework, license might be required",
         "Comments": "",
@@ -1444,7 +1444,7 @@
         "AccessMethod": "",
         "AccessMethodDetails": "Justice Digital Platform Team",
         "AccessMethodLink": "",
-        "Email": "JSG.PlatformSupport@gov.ab.ca ",
+        "Email": "JSG.PlatformSupport@gov.ab.ca",
         "Phone": "",
         "Prerequisites": "",
         "Comments": "",
@@ -1479,7 +1479,7 @@
         "AccessMethod": "",
         "AccessMethodDetails": "Justice Digital Platform Team",
         "AccessMethodLink": "",
-        "Email": "JSG.PlatformSupport@gov.ab.ca ",
+        "Email": "JSG.PlatformSupport@gov.ab.ca",
         "Phone": "",
         "Prerequisites": "",
         "Comments": "",
@@ -1490,7 +1490,7 @@
     },
     {
         "ServiceName": "Business Reporting Strategy",
-        "Description": "Justice Digital teams are using Amazon QuickSight as a data visualization tool. With QuickSight, all product teams can meet varying analytic needs from the same source of truth through interactive dashboards, paginated reports, and embedded analytics. \n\nProduct teams are also fully automating their Data Pipelines using the a shared architecture pattern. ",
+        "Description": "Justice Digital teams are using Amazon QuickSight as a data visualization tool. With QuickSight, all product teams can meet varying analytic needs from the same source of truth through interactive dashboards, paginated reports, and embedded analytics. \n\nProduct teams are also fully automating their Data Pipelines using the a shared architecture pattern.",
         "FunctionalGroup": "Analytics and Reporting",
         "Provider": "Justice Digital",
         "Environment": [
@@ -1510,7 +1510,7 @@
         "AccessMethod": "",
         "AccessMethodDetails": "Justice Digital Platform Team",
         "AccessMethodLink": "",
-        "Email": "JSG.PlatformSupport@gov.ab.ca ",
+        "Email": "JSG.PlatformSupport@gov.ab.ca",
         "Phone": "",
         "Prerequisites": "",
         "Comments": "",
@@ -1540,7 +1540,7 @@
         "AccessMethod": "",
         "AccessMethodDetails": "Justice Digital Platform Team",
         "AccessMethodLink": "",
-        "Email": "JSG.PlatformSupport@gov.ab.ca ",
+        "Email": "JSG.PlatformSupport@gov.ab.ca",
         "Phone": "",
         "Prerequisites": "",
         "Comments": "",
@@ -1572,7 +1572,7 @@
         "AccessMethod": "",
         "AccessMethodDetails": "Justice Digital Platform Team",
         "AccessMethodLink": "",
-        "Email": "JSG.PlatformSupport@gov.ab.ca ",
+        "Email": "JSG.PlatformSupport@gov.ab.ca",
         "Phone": "",
         "Prerequisites": "",
         "Comments": "",
@@ -1601,7 +1601,7 @@
         "AccessMethod": "",
         "AccessMethodDetails": "Justice Digital Platform Team",
         "AccessMethodLink": "",
-        "Email": "JSG.PlatformSupport@gov.ab.ca ",
+        "Email": "JSG.PlatformSupport@gov.ab.ca",
         "Phone": "",
         "Prerequisites": "",
         "Comments": "",
@@ -1630,7 +1630,7 @@
         "AccessMethod": "",
         "AccessMethodDetails": "Justice Digital Platform Team",
         "AccessMethodLink": "",
-        "Email": "JSG.PlatformSupport@gov.ab.ca ",
+        "Email": "JSG.PlatformSupport@gov.ab.ca",
         "Phone": "",
         "Prerequisites": "",
         "Comments": "",
@@ -1640,7 +1640,7 @@
         "id": 59
     },
     {
-        "ServiceName": "Shared Services ",
+        "ServiceName": "Shared Services",
         "Description": "Document Upload and Download\nJustice Digital services use consistent architecture to facilitate document uploads and downloads.",
         "FunctionalGroup": "File Handling and Storage",
         "Provider": "Justice Digital",
@@ -1666,7 +1666,7 @@
         "AccessMethod": "",
         "AccessMethodDetails": "Justice Digital Platform Team",
         "AccessMethodLink": "",
-        "Email": "JSG.PlatformSupport@gov.ab.ca ",
+        "Email": "JSG.PlatformSupport@gov.ab.ca",
         "Phone": "",
         "Prerequisites": "",
         "Comments": "",
@@ -1676,7 +1676,7 @@
         "id": 60
     },
     {
-        "ServiceName": "Shared Services ",
+        "ServiceName": "Shared Services",
         "Description": "PDF Generation & Merging\nJustice Digital services use consistent architecture to facilitate PDF generation and merging functionality.",
         "FunctionalGroup": "Document Processing",
         "Provider": "Justice Digital",
@@ -1702,7 +1702,7 @@
         "AccessMethod": "",
         "AccessMethodDetails": "Justice Digital Platform Team",
         "AccessMethodLink": "",
-        "Email": "JSG.PlatformSupport@gov.ab.ca ",
+        "Email": "JSG.PlatformSupport@gov.ab.ca",
         "Phone": "",
         "Prerequisites": "",
         "Comments": "",
@@ -1712,7 +1712,7 @@
         "id": 61
     },
     {
-        "ServiceName": "Shared Services ",
+        "ServiceName": "Shared Services",
         "Description": "Stamping Shared Service\nJustice Digital services utilizing the stamping shared services benefit from a consistent application of official court stamps, indicating filing and certification of documents in the digital context. \n\nCourt Directory/Personnel Shared Service\nThe court personnel API allows Justice Digital service/teams to look up metadata, contact information regarding Justices, Judges, Judicial Assistants, Application Judges and their court locations at any point in the service.\n\nMetadata and contact information for Judges, Justices, Judicial assistants, and Application Judges are collected and updated in a single place.\n\nSignatures of Justices and Clerks are managed within the Shared Service and through secure access, can be applied to documents as required.\n\n The shared service serves as the source of truth for this information, where delegated authorities from the courts update information for all other services and systems to pull from.",
         "FunctionalGroup": "Other Function",
         "Provider": "Justice Digital",
@@ -1738,7 +1738,7 @@
         "AccessMethod": "",
         "AccessMethodDetails": "Justice Digital Platform Team",
         "AccessMethodLink": "",
-        "Email": "JSG.PlatformSupport@gov.ab.ca ",
+        "Email": "JSG.PlatformSupport@gov.ab.ca",
         "Phone": "",
         "Prerequisites": "",
         "Comments": "",
@@ -1756,7 +1756,9 @@
         "Language": [],
         "SupportLevel": "",
         "Documentation": "",
-        "Keywords": [],
+        "Keywords": [
+            "Development"
+        ],
         "Status": "TBD",
         "Version": "",
         "UseCases": "",
@@ -1771,5 +1773,276 @@
         "Reviewed": "",
         "ReviewedBy": "",
         "id": 63
+    },
+    {
+        "ServiceName": "Alberta.ca Account",
+        "Description": "An IAM platform that provides federated sign on and identity verification for citizens accessing on-line services",
+        "FunctionalGroup": "User Access and Identity",
+        "Provider": "Platforms - IAM",
+        "Environment": [
+            "Azure Cloud"
+        ],
+        "Language": [
+            "ForgeRock"
+        ],
+        "SupportLevel": "24x7",
+        "Documentation": "https://myalberta.gov.ab.ca/en/myalberta-digital-id",
+        "Keywords": [],
+        "Status": "Production",
+        "Version": "",
+        "UseCases": "",
+        "AccessMethod": "web browser",
+        "AccessMethodDetails": "",
+        "AccessMethodLink": "https://account.alberta.ca",
+        "Email": "account.service-owner@gov.ab.ca",
+        "Phone": "",
+        "Prerequisites": "",
+        "Comments": "",
+        "LastUpdated": "",
+        "Reviewed": "",
+        "ReviewedBy": "",
+        "id": 64
+    },
+    {
+        "ServiceName": "MyAlberta Digital ID for Business (MADI-B)",
+        "Description": "An IAM platform that provides federated sign on for businesses and their staff accessing on-line services.",
+        "FunctionalGroup": "User Access and Identity",
+        "Provider": "Platforms - IAM",
+        "Environment": [
+            "On Prem",
+            "NCC/JJB datacentres"
+        ],
+        "Language": [
+            "ForgeRock"
+        ],
+        "SupportLevel": "24x7",
+        "Documentation": "",
+        "Keywords": [],
+        "Status": "Production",
+        "Version": "",
+        "UseCases": "",
+        "AccessMethod": "web browser",
+        "AccessMethodDetails": "",
+        "AccessMethodLink": "https://business.account.alberta.ca",
+        "Email": "account.service-owner@gov.ab.ca",
+        "Phone": "",
+        "Prerequisites": "",
+        "Comments": "",
+        "LastUpdated": "",
+        "Reviewed": "",
+        "ReviewedBy": "",
+        "id": 65
+    },
+    {
+        "ServiceName": "Unified Alberta.ca Account",
+        "Description": "An IAM platform that will be used to unify Alberta.ca Account, MADI-B, and PED, as well as other IAM systems in the GoA over time.\n\nWill enable multiple types of users under one common IAM solution, including citizen, external businesses and organizations and their staff, and internal GoA staff",
+        "FunctionalGroup": "User Access and Identity",
+        "Provider": "Platforms - IAM",
+        "Environment": [
+            "Azure Cloud",
+	    "On Prem"
+        ],
+        "Language": [
+            ".net", "open source"
+        ],
+        "SupportLevel": "24x7",
+        "Documentation": "",
+        "Keywords": [],
+        "Status": "In Development",
+        "Version": "",
+        "UseCases": "",
+        "AccessMethod": "",
+        "AccessMethodDetails": "",
+        "AccessMethodLink": "",
+        "Email": "",
+        "Phone": "",
+        "Prerequisites": "",
+        "Comments": "",
+        "LastUpdated": "",
+        "Reviewed": "",
+        "ReviewedBy": "",
+        "id": 66
+    },
+    {
+        "ServiceName": "Common Payment Portal",
+        "Description": "A common cloud-based portal which enables business programs from Ministries and Platforms branch to quickly spin up customized payment portals suporting emergency or payment initiatives",
+        "FunctionalGroup": "Payments and Financial Management",
+        "Provider": "Platforms -Common Platforms",
+        "Environment": [
+            "Azure Cloud"
+        ],
+        "Language": [
+            ".NET Core"
+        ],
+        "SupportLevel": "",
+        "Documentation": "",
+        "Keywords": [],
+        "Status": "",
+        "Version": "",
+        "UseCases": "",
+        "AccessMethod": "",
+        "AccessMethodDetails": "",
+        "AccessMethodLink": "",
+        "Email": "",
+        "Phone": "",
+        "Prerequisites": "",
+        "Comments": "",
+        "LastUpdated": "",
+        "Reviewed": "",
+        "ReviewedBy": "",
+        "id": 67
+    },
+    {
+        "ServiceName": "Common Payment Services",
+        "Description": "A common cloud-based API services which enable payment portals with making payments and reconciling payments end-to-end. Payment types are being considered are eTransfer and EFT in bulk.",
+        "FunctionalGroup": "Payments and Financial Management",
+        "Provider": "Platforms -Common Platforms",
+        "Environment": [
+            "Azure Cloud"
+        ],
+        "Language": [
+            ".NET Core"
+        ],
+        "SupportLevel": "",
+        "Documentation": "",
+        "Keywords": [],
+        "Status": "",
+        "Version": "",
+        "UseCases": "",
+        "AccessMethod": "",
+        "AccessMethodDetails": "",
+        "AccessMethodLink": "",
+        "Email": "",
+        "Phone": "",
+        "Prerequisites": "",
+        "Comments": "",
+        "LastUpdated": "",
+        "Reviewed": "",
+        "ReviewedBy": "",
+        "id": 68
+    },
+    {
+        "ServiceName": "Banking  Information Verification  API",
+        "Description": "Allow applications to validate the financial institution number, branch number, as well as the format of the banking account number.",
+        "FunctionalGroup": "Payments and Financial Management",
+        "Provider": "Platforms - Common Data Services",
+        "Environment": [
+            "On Prem"
+        ],
+        "Language": [
+            ".NET Core"
+        ],
+        "SupportLevel": "TBD",
+        "Documentation": "",
+        "Keywords": [
+            "API"
+        ],
+        "Status": "In Development",
+        "Version": "",
+        "UseCases": "",
+        "AccessMethod": "",
+        "AccessMethodDetails": "",
+        "AccessMethodLink": "",
+        "Email": "",
+        "Phone": "",
+        "Prerequisites": "",
+        "Comments": "",
+        "LastUpdated": "",
+        "Reviewed": "",
+        "ReviewedBy": "",
+        "id": 69
+    },
+    {
+        "ServiceName": "Income Validation API",
+        "Description": "Assess the eligibility of an Albertan to apply for a Government of Alberta program that necessitates verification of the applicant's personal income and/or family income under a specific threshold. The use of data for this assessment requires a MOU with CRA and the Department of Treasury Board and Finance, as well as a privacy assessment.",
+        "FunctionalGroup": "Payments and Financial Management",
+        "Provider": "Platforms - Common Data Services",
+        "Environment": [
+            "On Prem"
+        ],
+        "Language": [
+            ".NET Core"
+        ],
+        "SupportLevel": "TBD",
+        "Documentation": "",
+        "Keywords": [
+            "API"
+        ],
+        "Status": "In Development",
+        "Version": "",
+        "UseCases": "",
+        "AccessMethod": "",
+        "AccessMethodDetails": "",
+        "AccessMethodLink": "",
+        "Email": "",
+        "Phone": "",
+        "Prerequisites": "",
+        "Comments": "",
+        "LastUpdated": "",
+        "Reviewed": "",
+        "ReviewedBy": "",
+        "id": 70
+    },
+    {
+        "ServiceName": "Child Care Benefits (CCB) Validation API",
+        "Description": "Assess the eligibility of an Albertan to apply for a Government of Alberta program that necessitates verification of the applicant's child care benefits. The use of data for this assessment requires a MOU with CRA and the Department of Treasury Board and Finance, as well as a privacy assessment.",
+        "FunctionalGroup": "Payments and Financial Management",
+        "Provider": "Platforms - Common Data Services",
+        "Environment": [
+            "On Prem"
+        ],
+        "Language": [
+            ".NET Core"
+        ],
+        "SupportLevel": "TBD",
+        "Documentation": "",
+        "Keywords": [
+            "API"
+        ],
+        "Status": "In Development",
+        "Version": "",
+        "UseCases": "",
+        "AccessMethod": "",
+        "AccessMethodDetails": "",
+        "AccessMethodLink": "",
+        "Email": "",
+        "Phone": "",
+        "Prerequisites": "",
+        "Comments": "",
+        "LastUpdated": "",
+        "Reviewed": "",
+        "ReviewedBy": "",
+        "id": 71
+    },
+    {
+        "ServiceName": "Alberta Vital Statistics API",
+        "Description": "Verify new borns and deceased individuals against the data in Alberta Vital Statistics for a specific Government of Alberta program. This program requires approval from Vital Statistics for data usage, as well as  a privacy assessment.",
+        "FunctionalGroup": "Payments and Financial Management",
+        "Provider": "Platforms - Common Data Services",
+        "Environment": [
+            "On Prem"
+        ],
+        "Language": [
+            ".NET Core"
+        ],
+        "SupportLevel": "TBD",
+        "Documentation": "",
+        "Keywords": [
+            "API"
+        ],
+        "Status": "In Development",
+        "Version": "",
+        "UseCases": "",
+        "AccessMethod": "",
+        "AccessMethodDetails": "",
+        "AccessMethodLink": "",
+        "Email": "",
+        "Phone": "",
+        "Prerequisites": "",
+        "Comments": "",
+        "LastUpdated": "",
+        "Reviewed": "",
+        "ReviewedBy": "",
+        "id": 72
     }
 ]
