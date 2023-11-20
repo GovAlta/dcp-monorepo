@@ -28,7 +28,6 @@ const Header = ({ actionButtons }: any) => {
               <GoAButton
                 leadingIcon="arrow-back"
                 onClick={() => {
-                  console.log('yolo');
                   window.location.href = '/';
                 }}
               >
