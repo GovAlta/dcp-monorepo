@@ -2,16 +2,11 @@
 export interface Props {
   title: string;
 }
-import Header from '../components/Header';
+import Header from '../components/Header.astro';
 import { GoAAppFooter } from '@abgov/react-components';
 import '@abgov/web-components/index.css';
 import '@abgov/design-tokens/dist/tokens.css';
-export interface Props {
-  title: string;
-  actionButtons: any;
-}
-
-const { title, actionButtons } = Astro.props;
+const { title } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -31,18 +26,8 @@ const { title, actionButtons } = Astro.props;
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
   </head>
   <body>
-    <section id="top-page"></section>
-    <Header client:load actionButtons={actionButtons} />
+    <Header />
     <slot />
     <GoAAppFooter />
   </body>
 </html>
-<style is:global>
-  .line-elements {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-    color: var(--goa-color-interactive-default);
-    gap: var(--goa-space-s);
-  }
-</style>

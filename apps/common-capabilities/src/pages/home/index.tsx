@@ -82,7 +82,6 @@ export default function HomePage(): JSX.Element {
                   title={app.ServiceName}
                   provider={app.Provider}
                   description={app.Description}
-                  app={app}
                 />
               ))
             : 'No results found'}
