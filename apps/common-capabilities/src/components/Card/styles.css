@@ -19,6 +19,11 @@ a:active {
 }
 #service-tile-chips {
   line-height: 2.75rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--goa-space-s);
+  
 }
 #service-tile-subtitle {
   color: var(--goa-color-text-secondary);
