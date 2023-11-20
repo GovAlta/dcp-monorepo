@@ -35,7 +35,7 @@ const Card = ({ provider, description, title, app }: CardProps) => {
     <GoAContainer accent="thin">
       <a
         id="service-tile-title"
-        href={`/${title.toLocaleLowerCase().replace(/ /g, '-')}`}
+        href={`/${title.toLocaleLowerCase().replace(/ /g, '-')}/index.html`}
       >
         {title}
       </a>
