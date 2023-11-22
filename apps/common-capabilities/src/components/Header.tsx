@@ -21,7 +21,7 @@ const Header = ({ actionButtons }: any) => {
         backgroundUrl=""
         minHeight="20%"
       >
-        Reusable services for building your custom apps
+        Building blocks for your custom apps
         {actionButtons ? (
           <GoAHeroBannerActions>
             <GoAButtonGroup alignment="start">
