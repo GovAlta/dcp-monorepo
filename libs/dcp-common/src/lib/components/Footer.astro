@@ -2,17 +2,27 @@
 import { GoAAppFooter } from '@abgov/react-components';
 ---
 <div>
-<div class="touch-footer">
+<div class="touch-footer" id="touch-footer">
   <h3 style="white-space: pre-wrap;" ><strong>Get in Touch</strong></h3>
   <p  style="white-space: pre-wrap;">The Digital Design and Delivery division of Technology and Innovation is headquartered in Edmonton.</p>
   <p  style="white-space: pre-wrap;"><strong>Contact Digital Design and Delivery</strong><br></p>
    <p> <a href="mailto:dio@gov.ab.ca"><span class="email-footer"><strong>DIO@gov.ab.ca</strong></span></a></p>
   </div>
 
-<GoAAppFooter>
+  <GoAAppFooter>
 
-</GoAAppFooter>
+  </GoAAppFooter>
 </div>
+
+<script>
+  const currentPath = window.location.pathname;
+  let footerEl: any = document.getElementById('touch-footer');
+  if(currentPath === '/'){
+    footerEl.style.display = 'none';
+  }else{
+    footerEl.style.display = 'block';
+  }
+</script>
 
 <style>
  .touch-footer{

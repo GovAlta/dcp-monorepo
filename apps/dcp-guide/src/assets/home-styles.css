@@ -1,0 +1,104 @@
+.services-wrapper {
+    margin-bottom: var(--goa-spacing-4xl);
+}
+.services-wrapper p {
+  font-size: var(--goa-font-size-4);
+  font-weight: var(--goa-font-weight-regular);
+  line-height: var(--goa-line-height-3);
+  letter-spacing: 0em;
+  text-align: left;
+  color: var(--goa-color-text-default);
+  margin-top: var(--goa-space-m);
+  margin-bottom: var(--goa-space-m);
+}
+.service-card {
+  margin-top: var(--goa-space-xl);
+  height: 240px;
+  border-radius: var(--goa-border-radius-m);
+  border-width: var(--goa-border-width-s);
+  border-style: solid;
+  border-color: var(--goa-color-greyscale-400);
+  border-top-width: 8px;
+  border-top-color: var(--goa-color-brand-default);
+  padding: var(--goa-space-l);
+}
+.service-heading {
+  font-size: var(--goa-font-size-7);
+  font-weight: var(--goa-font-weight-regular);
+  line-height: var(--goa-line-height-4);
+  letter-spacing: 0em;
+  text-align: left;
+  color: var(--goa-color-interactive-default);
+}
+.service-sub-heading {
+  font-size: var(--goa-font-size-4);
+  font-weight: var(--goa-font-weight-bold);
+  line-height: var(--goa-line-height-3);
+  letter-spacing: 0em;
+  text-align: left;
+  color: var(--goa-color-text-secondary);
+}
+.service-contact {
+  font-size: var(--goa-font-size-4);
+  font-weight: var(--goa-font-weight-bold);
+  line-height: var(--goa-line-height-3);
+  letter-spacing: 0em;
+  text-align: left;
+  color: var(--goa-color-text-default);
+  margin-top: var(--goa-space-m);
+  margin-bottom: var(--goa-space-m);
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+.service-contact goa-icon{
+    color: var(--goa-color-brand-default);
+    padding-left:var(--goa-space-2xs);
+}
+.service-contact a{
+    padding-left:var(--goa-space-2xs);
+    text-decoration: underline;
+    font-weight: var(--goa-font-weight-regular);
+    font-size:  var(--goa-font-size-4);
+}
+
+.technologies{
+  display: flex;
+  justify-content: center;
+}
+.technology{
+  width: 248px;
+  height: 256px;
+  padding: var(--goa-space-l);
+  margin-right: var(--goa-spacing-xl);
+}
+
+.technology .img-wrap{
+
+  display: flex;
+  align-items: center; 
+  justify-content: center;
+}
+.technology img{
+  width: 103px;
+  height: 103px;
+}
+.technology p{
+  padding-top:var(--goa-space-l);
+font-size: var(--goa-font-size-4);
+font-weight: var(--goa-font-weight-regular);
+line-height: var(--goa-line-height-3);
+letter-spacing: 0em;
+text-align: center;
+color: var(--goa-color-interactive-default);
+
+}
+
+.techs-note{
+font-size: var(--goa-font-size-3);
+font-weight: var(--goa-font-weight-regular);
+line-height: var(--goa-line-height-2);
+letter-spacing: 0em;
+text-align: left;
+color: #000000;
+}
