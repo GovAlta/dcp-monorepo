@@ -1337,7 +1337,7 @@
         "ServiceName": "DDD Design System",
         "Description": "The Design System team is responsible for creating and maintaining the assets used for building DDD product layouts, interactions, and patterns. The design system is a shared language for designers and developers to create consistent and cohesive user experiences across multiple products and platforms.",
         "FunctionalGroup": "Other Function",
-        "Provider": "?",
+        "Provider": "Digital Design and Delivery",
         "Environment": [
             "N/A"
         ],
@@ -1640,7 +1640,7 @@
         "id": 59
     },
     {
-        "ServiceName": "Shared Services",
+        "ServiceName": "File Handling Shared Services",
         "Description": "Document Upload and Download\nJustice Digital services use consistent architecture to facilitate document uploads and downloads.",
         "FunctionalGroup": "File Handling and Storage",
         "Provider": "Justice Digital",
@@ -1676,7 +1676,7 @@
         "id": 60
     },
     {
-        "ServiceName": "Shared Services",
+        "ServiceName": "Document Processing Shared Services",
         "Description": "PDF Generation & Merging\nJustice Digital services use consistent architecture to facilitate PDF generation and merging functionality.",
         "FunctionalGroup": "Document Processing",
         "Provider": "Justice Digital",
