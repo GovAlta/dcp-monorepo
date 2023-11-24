@@ -1,0 +1,46 @@
+[
+  {
+    "heading": "What are Common Capabilities?",
+    "content": "Common Capabilities refer to a broad range of software components and systems that include applications, APIs, frameworks, libraries, tools, services, and more. These are reusable building blocks designed to streamline various processes and provide value to users."
+  },
+  {
+    "heading": "How can Common Capabilities benefit me",
+    "content": "Common Capabilities offer adaptability for independent or collaborative use, enhancing efficiency and productivity. They can help reduce development time, improve software quality, and promote consistency across projects."
+  },
+  {
+    "heading": "How do Common Capabilities promote collaboration and innovation?",
+    "content": "Common Capabilities encourage collaboration by providing standardized tools and components that teams can use across projects. This promotes innovation by reducing redundancy and allowing developers to focus on unique and creative aspects of their work."
+  },
+  {
+    "heading": "How do I access and use Common Capabilities?",
+    "content": "We are providing a catalogue of the available capabilities and their point of contact. Accessing Common Capabilities typically involves integrating them into your development environment. Feel free to reach out to them for detailed documentation and support resources to guide users on implementation and usage."
+  },
+  {
+    "heading": "Can I contribute to the development of Common Capabilities?",
+    "content": "Many Common Capabilities are open to contributions from various team. You can reach to their point of contact and participate in their development, report issues, or suggest improvements. Check the specific capability's guidelines for contribution."
+  },
+  {
+    "heading": "Can I request customization or development of specific Common Capabilities for my organization?",
+    "content": "Depending on the capability and the development team behind it, customization or development requests may be possible. Contact the responsible team for inquiries. You can always reach out to us using \"Contact Us\" link."
+  },
+  {
+    "heading": "Are there any specific programming languages or technologies that Common Capabilities are limited to?",
+    "content": "Common Capabilities are often designed to be technology-agnostic, meaning they can be used with various programming languages and technologies. However, compatibility may vary, so it's essential to check each capability's documentation for specific details."
+  },
+  {
+    "heading": "How do I integrate Common Capabilities into my existing software or projects?",
+    "content": "Integration methods can vary, but it often involves adding dependencies or making API calls. Documentation and tutorials are usually provided to guide you through the integration process."
+  },
+  {
+    "heading": "Are there any performance considerations when using Common Capabilities?",
+    "content": "Performance considerations can vary depending on the specific capability and how it's used. Check with the individual team if they have any specific documentation for performance tips and guidelines to optimize your implementation."
+  },
+  {
+    "heading": "Can I use Common Capabilities in both on-premises and cloud-based environments?",
+    "content": "Many Common Capabilities are designed to be compatible with various deployment environments. However, specific compatibility may depend on the capability. Consult the documentation for details."
+  },
+  {
+    "heading": "What level of technical expertise is required to implement Common Capabilities effectively?",
+    "content": "The technical expertise required may vary depending on the specific capability and its complexity. Some are user-friendly and suitable for beginners, while others may require more advanced knowledge. Review the documentation and contact the team for details."
+  }
+]

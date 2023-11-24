@@ -23,3 +23,7 @@
 .back-top {
   float: right;
 }
+
+.service-content {
+  white-space: pre-line;
+}
