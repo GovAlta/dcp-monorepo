@@ -1698,7 +1698,7 @@
         "id": 60
     },
     {
-        "ServiceName": "Court Directory Personnel",
+        "ServiceName": "Court Directory/Personnel",
         "Description": "The court personnel API allows Justice Digital service/teams to look up metadata, contact information regarding Justices, Judges, Judicial Assistants, Application Judges and their court locations at any point in the service.\n\nMetadata and contact information for Judges, Justices, Judicial assistants, and Application Judges are collected and updated in a single place.\n\nSignatures of Justices and Clerks are managed within the Shared Service and through secure access, can be applied to documents as required.\n\n The shared service serves as the source of truth for this information, where delegated authorities from the courts update information for all other services and systems to pull from.",
         "FunctionalGroup": "Other Function",
         "Provider": "Justice Digital",
