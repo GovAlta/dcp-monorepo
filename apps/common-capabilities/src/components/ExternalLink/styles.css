@@ -1,6 +1,6 @@
 .link-wrapper {
   display: inline-block;
-  color: #0070c4;
+  color: var(--goa-color-interactive-default);
 }
 .link-wrapper .link-icon {
   position: relative;

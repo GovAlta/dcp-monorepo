@@ -24,21 +24,36 @@ export default function Details({ app }: DetailsProps): JSX.Element {
       name: 'Description',
       id: 'service-overview',
       title: 'Overview',
+      showInSidebar: true,
+      showContent: true,
     },
     {
       name: 'Prerequisites',
       id: 'service-prerequisites',
       title: 'Prerequisites',
+      showInSidebar: true,
+      showContent: true,
     },
     {
       name: 'Comments',
       id: 'service-comments',
       title: 'Additional information',
+      showInSidebar: true,
+      showContent: true,
     },
     {
       name: 'Documentation',
       id: 'service-documentation',
       title: 'Documentation',
+      showInSidebar: true,
+      showContent: true,
+    },
+    {
+      name: 'Email',
+      id: 'service-contact',
+      title: 'Contact',
+      showInSidebar: true,
+      showContent: false, // since it has its own dedicated section
     },
   ];
   useEffect(() => {
@@ -74,10 +89,12 @@ export default function Details({ app }: DetailsProps): JSX.Element {
             <GoASideMenu>
               {items.content.length > 0
                 ? items.content.map((content: any) => {
-                    return (
+                    return content.showInSidebar ? (
                       <a key={`${content.id}`} href={`#${content.id}`}>
                         {content.title}
                       </a>
+                    ) : (
+                      ''
                     );
                   })
                 : ''}
@@ -116,8 +133,8 @@ export default function Details({ app }: DetailsProps): JSX.Element {
 
         <GoASpacer vSpacing="xl" />
         {items.content.length > 0
-          ? items.content.map(({ id, name, title }: any) => {
-              return (
+          ? items.content.map(({ id, name, title, showContent }: any) => {
+              return showContent ? (
                 <div key={`${id}`}>
                   <h3 id={`${id}`}>{title}</h3>
                   {name === 'Documentation' ? (
@@ -126,10 +143,12 @@ export default function Details({ app }: DetailsProps): JSX.Element {
                       link={app.Documentation}
                     />
                   ) : (
-                    <p>{app[name]}</p>
+                    <p className='service-content'>{app[name]}</p>
                   )}
                   <GoASpacer vSpacing="l" />
                 </div>
+              ) : (
+                ''
               );
             })
           : ''}

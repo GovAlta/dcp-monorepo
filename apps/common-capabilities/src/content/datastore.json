@@ -837,58 +837,6 @@
         "id": 30
     },
     {
-        "ServiceName": "1GX Legacy IMAGIS Integration",
-        "Description": "Interfaces between 1GX and GoA business applications using iSuite to send/receive files in legacy IMAGIS format. This integration is for legacy GoA applications, it will be phased out and replaced by direct API type of integration with 1GX.",
-        "FunctionalGroup": "",
-        "Provider": "Service Integration",
-        "Environment": [],
-        "Language": [],
-        "SupportLevel": "Hybrid",
-        "Documentation": "",
-        "Keywords": [
-            "API"
-        ],
-        "Status": "",
-        "Version": "",
-        "UseCases": "",
-        "AccessMethod": "BERNIE",
-        "AccessMethodDetails": "Advanced request required through BERNIE; select the BERNIE service called '1GX Legacy IMAGIS Integration Service'",
-        "AccessMethodLink": "",
-        "Email": "",
-        "Phone": "",
-        "Prerequisites": "",
-        "Comments": "This integration is for legacy GoA applications, it will be phased out and replaced by direct API type of integration with 1GX.",
-        "LastUpdated": "",
-        "Reviewed": "",
-        "ReviewedBy": "",
-        "id": 31
-    },
-    {
-        "ServiceName": "Address Validation Service",
-        "Description": "Allows ease of mailing address data entry and validation through 2 endpoints that allow incremental searches to find the correct address and provide the full address details of the selected result.  This service leverages \"Canada Post - Address Complete\" for it's validation repository.",
-        "FunctionalGroup": "",
-        "Provider": "Service Integration",
-        "Environment": [],
-        "Language": [],
-        "SupportLevel": "Hybrid",
-        "Documentation": "https://myimtconnect.sp.gov.ab.ca/team/t01/SI/_layouts/15/DocIdRedir.aspx?ID=M5R3AFZEYQRY-381049226-59",
-        "Keywords": [],
-        "Status": "",
-        "Version": "",
-        "UseCases": "",
-        "AccessMethod": "SharePoint",
-        "AccessMethodDetails": "Advanced request required through the Service Integration SharePoint site; access the 'Service Integration Intake Request' web form",
-        "AccessMethodLink": "",
-        "Email": "",
-        "Phone": "",
-        "Prerequisites": "Users will need to submit a Address Validation Service Intake Request to the Service Integration Team via online form submission in the service documentation to request this service.",
-        "Comments": "",
-        "LastUpdated": "",
-        "Reviewed": "",
-        "ReviewedBy": "",
-        "id": 32
-    },
-    {
         "ServiceName": "Document Service",
         "Description": "Provides a number of document manipulation features including:  Mail Merges, PDF Form Filling and PDF Redaction.  This service supports a number of input and output formats (.docx, .xlsx, pdf, etc.)  -->  Enhancement requests can be made for additional features",
         "FunctionalGroup": "Document Processing",
@@ -915,7 +863,7 @@
         "LastUpdated": "",
         "Reviewed": "",
         "ReviewedBy": "",
-        "id": 33
+        "id": 31
     },
     {
         "ServiceName": "API Gateway as a Service",
@@ -940,7 +888,7 @@
         "LastUpdated": "",
         "Reviewed": "",
         "ReviewedBy": "",
-        "id": 34
+        "id": 32
     },
     {
         "ServiceName": "ECM (OpenText) Connector Service",
@@ -965,7 +913,7 @@
         "LastUpdated": "",
         "Reviewed": "",
         "ReviewedBy": "",
-        "id": 35
+        "id": 33
     },
     {
         "ServiceName": "SharePoint Online Service",
@@ -990,7 +938,7 @@
         "LastUpdated": "",
         "Reviewed": "",
         "ReviewedBy": "",
-        "id": 36
+        "id": 34
     },
     {
         "ServiceName": "Electronic Signature - Self-Service User Portal",
@@ -1015,7 +963,7 @@
         "LastUpdated": "",
         "Reviewed": "",
         "ReviewedBy": "",
-        "id": 37
+        "id": 35
     },
     {
         "ServiceName": "Email API Service",
@@ -1040,7 +988,7 @@
         "LastUpdated": "",
         "Reviewed": "",
         "ReviewedBy": "",
-        "id": 38
+        "id": 36
     },
     {
         "ServiceName": "Payment Gateway Service",
@@ -1065,7 +1013,7 @@
         "LastUpdated": "",
         "Reviewed": "",
         "ReviewedBy": "",
-        "id": 39
+        "id": 37
     },
     {
         "ServiceName": "QR Code Service",
@@ -1090,7 +1038,7 @@
         "LastUpdated": "",
         "Reviewed": "",
         "ReviewedBy": "",
-        "id": 40
+        "id": 38
     },
     {
         "ServiceName": "Splunk Service",
@@ -1115,7 +1063,7 @@
         "LastUpdated": "",
         "Reviewed": "",
         "ReviewedBy": "",
-        "id": 41
+        "id": 39
     },
     {
         "ServiceName": "Nagios Monitoring Service",
@@ -1140,7 +1088,7 @@
         "LastUpdated": "",
         "Reviewed": "",
         "ReviewedBy": "",
-        "id": 42
+        "id": 40
     },
     {
         "ServiceName": "Request an Enterprise API",
@@ -1165,7 +1113,7 @@
         "LastUpdated": "",
         "Reviewed": "",
         "ReviewedBy": "",
-        "id": 43
+        "id": 41
     },
     {
         "ServiceName": "AB Holidays",
@@ -1192,7 +1140,7 @@
         "LastUpdated": "",
         "Reviewed": "",
         "ReviewedBy": "",
-        "id": 44
+        "id": 42
     },
     {
         "ServiceName": "Keycloak client",
@@ -1221,7 +1169,7 @@
         "LastUpdated": "",
         "Reviewed": "",
         "ReviewedBy": "",
-        "id": 45
+        "id": 43
     },
     {
         "ServiceName": "SCSS Angular components",
@@ -1248,7 +1196,7 @@
         "LastUpdated": "",
         "Reviewed": "",
         "ReviewedBy": "",
-        "id": 46
+        "id": 44
     },
     {
         "ServiceName": "Notifications",
@@ -1277,7 +1225,7 @@
         "LastUpdated": "",
         "Reviewed": "",
         "ReviewedBy": "",
-        "id": 47
+        "id": 45
     },
     {
         "ServiceName": "User survey",
@@ -1306,7 +1254,7 @@
         "LastUpdated": "",
         "Reviewed": "",
         "ReviewedBy": "",
-        "id": 48
+        "id": 46
     },
     {
         "ServiceName": "Verify Service",
@@ -1331,7 +1279,7 @@
         "LastUpdated": "",
         "Reviewed": "",
         "ReviewedBy": "",
-        "id": 49
+        "id": 47
     },
     {
         "ServiceName": "DDD Design System",
@@ -1363,7 +1311,7 @@
         "LastUpdated": "",
         "Reviewed": "",
         "ReviewedBy": "",
-        "id": 50
+        "id": 48
     },
     {
         "ServiceName": "Keycloak integration with DIG",
@@ -1390,7 +1338,7 @@
         "LastUpdated": "",
         "Reviewed": "Yes",
         "ReviewedBy": "Sanchit",
-        "id": 51
+        "id": 49
     },
     {
         "ServiceName": "OAuth BFF flow implementation",
@@ -1417,7 +1365,7 @@
         "LastUpdated": "",
         "Reviewed": "Yes",
         "ReviewedBy": "Sanchit",
-        "id": 52
+        "id": 50
     },
     {
         "ServiceName": "Identity and Access Management Strategy",
@@ -1451,7 +1399,7 @@
         "LastUpdated": "",
         "Reviewed": "",
         "ReviewedBy": "",
-        "id": 53
+        "id": 51
     },
     {
         "ServiceName": "Cloud Native Approach and DevSecOps",
@@ -1486,7 +1434,7 @@
         "LastUpdated": "",
         "Reviewed": "",
         "ReviewedBy": "",
-        "id": 54
+        "id": 52
     },
     {
         "ServiceName": "Business Reporting Strategy",
@@ -1517,7 +1465,7 @@
         "LastUpdated": "",
         "Reviewed": "",
         "ReviewedBy": "",
-        "id": 55
+        "id": 53
     },
     {
         "ServiceName": "Payment Guide",
@@ -1547,7 +1495,7 @@
         "LastUpdated": "",
         "Reviewed": "",
         "ReviewedBy": "",
-        "id": 56
+        "id": 54
     },
     {
         "ServiceName": "Automation Framework Architecture",
@@ -1579,7 +1527,7 @@
         "LastUpdated": "",
         "Reviewed": "",
         "ReviewedBy": "",
-        "id": 57
+        "id": 55
     },
     {
         "ServiceName": "Data Governance Strategy",
@@ -1608,7 +1556,7 @@
         "LastUpdated": "",
         "Reviewed": "",
         "ReviewedBy": "",
-        "id": 58
+        "id": 56
     },
     {
         "ServiceName": "Support Model",
@@ -1637,10 +1585,10 @@
         "LastUpdated": "",
         "Reviewed": "",
         "ReviewedBy": "",
-        "id": 59
+        "id": 57
     },
     {
-        "ServiceName": "File Handling Shared Services",
+        "ServiceName": "Document Upload and Download",
         "Description": "Document Upload and Download\nJustice Digital services use consistent architecture to facilitate document uploads and downloads.",
         "FunctionalGroup": "File Handling and Storage",
         "Provider": "Justice Digital",
@@ -1658,7 +1606,8 @@
             "PDF",
             "Digital Signature",
             "Stamping",
-            "Digital Certification"
+            "Digital Certification",
+            "DDD Edit"
         ],
         "Status": "Live",
         "Version": "",
@@ -1673,10 +1622,10 @@
         "LastUpdated": "",
         "Reviewed": "",
         "ReviewedBy": "",
-        "id": 60
+        "id": 58
     },
     {
-        "ServiceName": "Document Processing Shared Services",
+        "ServiceName": "PDF Generation & Merging",
         "Description": "PDF Generation & Merging\nJustice Digital services use consistent architecture to facilitate PDF generation and merging functionality.",
         "FunctionalGroup": "Document Processing",
         "Provider": "Justice Digital",
@@ -1694,7 +1643,80 @@
             "PDF",
             "Digital Signature",
             "Stamping",
-            "Digital Certification"
+            "Digital Certification",
+            "DDD Edit"
+        ],
+        "Status": "Live",
+        "Version": "",
+        "UseCases": "",
+        "AccessMethod": "",
+        "AccessMethodDetails": "Justice Digital Platform Team",
+        "AccessMethodLink": "",
+        "Email": "JSG.PlatformSupport@gov.ab.ca",
+        "Phone": "",
+        "Prerequisites": "",
+        "Comments": "",
+        "LastUpdated": "",
+        "Reviewed": "",
+        "ReviewedBy": "",
+        "id": 59
+    },
+    {
+        "ServiceName": "Stamping Shared Service",
+        "Description": "Justice Digital services utilizing the stamping shared services benefit from a consistent application of official court stamps, indicating filing and certification of documents in the digital context.",
+        "FunctionalGroup": "Other Function",
+        "Provider": "Justice Digital",
+        "Environment": [
+            "AWS"
+        ],
+        "Language": [
+            "Angular",
+            ".NET (Core)",
+            "TypeScript"
+        ],
+        "SupportLevel": "",
+        "Documentation": "https://goa-dio.atlassian.net/wiki/spaces/JDP/pages/2248015997/Shared+Services",
+        "Keywords": [
+            "Digital Signature",
+            "Stamping",
+            "Digital Certification",
+            "DDD Edit (split)"
+        ],
+        "Status": "Live",
+        "Version": "",
+        "UseCases": "",
+        "AccessMethod": "",
+        "AccessMethodDetails": "Justice Digital Platform Team",
+        "AccessMethodLink": "",
+        "Email": "JSG.PlatformSupport@gov.ab.ca",
+        "Phone": "",
+        "Prerequisites": "",
+        "Comments": "",
+        "LastUpdated": "",
+        "Reviewed": "",
+        "ReviewedBy": "",
+        "id": 60
+    },
+    {
+        "ServiceName": "Court Directory Personnel",
+        "Description": "The court personnel API allows Justice Digital service/teams to look up metadata, contact information regarding Justices, Judges, Judicial Assistants, Application Judges and their court locations at any point in the service.\n\nMetadata and contact information for Judges, Justices, Judicial assistants, and Application Judges are collected and updated in a single place.\n\nSignatures of Justices and Clerks are managed within the Shared Service and through secure access, can be applied to documents as required.\n\n The shared service serves as the source of truth for this information, where delegated authorities from the courts update information for all other services and systems to pull from.",
+        "FunctionalGroup": "Other Function",
+        "Provider": "Justice Digital",
+        "Environment": [
+            "AWS"
+        ],
+        "Language": [
+            "Angular",
+            ".NET (Core)",
+            "TypeScript"
+        ],
+        "SupportLevel": "",
+        "Documentation": "https://goa-dio.atlassian.net/wiki/spaces/JDP/pages/2248015997/Shared+Services",
+        "Keywords": [
+            "Digital Signature",
+            "Stamping",
+            "Digital Certification",
+            "DDD Edit (split)"
         ],
         "Status": "Live",
         "Version": "",
@@ -1710,69 +1732,6 @@
         "Reviewed": "",
         "ReviewedBy": "",
         "id": 61
-    },
-    {
-        "ServiceName": "Shared Services",
-        "Description": "Stamping Shared Service\nJustice Digital services utilizing the stamping shared services benefit from a consistent application of official court stamps, indicating filing and certification of documents in the digital context. \n\nCourt Directory/Personnel Shared Service\nThe court personnel API allows Justice Digital service/teams to look up metadata, contact information regarding Justices, Judges, Judicial Assistants, Application Judges and their court locations at any point in the service.\n\nMetadata and contact information for Judges, Justices, Judicial assistants, and Application Judges are collected and updated in a single place.\n\nSignatures of Justices and Clerks are managed within the Shared Service and through secure access, can be applied to documents as required.\n\n The shared service serves as the source of truth for this information, where delegated authorities from the courts update information for all other services and systems to pull from.",
-        "FunctionalGroup": "Other Function",
-        "Provider": "Justice Digital",
-        "Environment": [
-            "AWS"
-        ],
-        "Language": [
-            "Angular",
-            ".NET (Core)",
-            "TypeScript"
-        ],
-        "SupportLevel": "",
-        "Documentation": "https://goa-dio.atlassian.net/wiki/spaces/JDP/pages/2248015997/Shared+Services",
-        "Keywords": [
-            "PDF",
-            "Digital Signature",
-            "Stamping",
-            "Digital Certification"
-        ],
-        "Status": "Live",
-        "Version": "",
-        "UseCases": "",
-        "AccessMethod": "",
-        "AccessMethodDetails": "Justice Digital Platform Team",
-        "AccessMethodLink": "",
-        "Email": "JSG.PlatformSupport@gov.ab.ca",
-        "Phone": "",
-        "Prerequisites": "",
-        "Comments": "",
-        "LastUpdated": "",
-        "Reviewed": "",
-        "ReviewedBy": "",
-        "id": 62
-    },
-    {
-        "ServiceName": "Stephen Sabey team",
-        "Description": "TBD",
-        "FunctionalGroup": "Other Function",
-        "Provider": "Stephen Sabey's team",
-        "Environment": [],
-        "Language": [],
-        "SupportLevel": "",
-        "Documentation": "",
-        "Keywords": [
-            "Development"
-        ],
-        "Status": "TBD",
-        "Version": "",
-        "UseCases": "",
-        "AccessMethod": "",
-        "AccessMethodDetails": "",
-        "AccessMethodLink": "",
-        "Email": "",
-        "Phone": "",
-        "Prerequisites": "",
-        "Comments": "",
-        "LastUpdated": "",
-        "Reviewed": "",
-        "ReviewedBy": "",
-        "id": 63
     },
     {
         "ServiceName": "Alberta.ca Account",
@@ -1801,7 +1760,7 @@
         "LastUpdated": "",
         "Reviewed": "",
         "ReviewedBy": "",
-        "id": 64
+        "id": 62
     },
     {
         "ServiceName": "MyAlberta Digital ID for Business (MADI-B)",
@@ -1810,7 +1769,7 @@
         "Provider": "Platforms - IAM",
         "Environment": [
             "On Prem",
-            "NCC/JJB datacentres"
+            "NCC and JJB datacentres"
         ],
         "Language": [
             "ForgeRock"
@@ -1831,7 +1790,7 @@
         "LastUpdated": "",
         "Reviewed": "",
         "ReviewedBy": "",
-        "id": 65
+        "id": 63
     },
     {
         "ServiceName": "Unified Alberta.ca Account",
@@ -1839,11 +1798,10 @@
         "FunctionalGroup": "User Access and Identity",
         "Provider": "Platforms - IAM",
         "Environment": [
-            "Azure Cloud",
-	    "On Prem"
+            "Azure Cloud / On Prem"
         ],
         "Language": [
-            ".net", "open source"
+            ".net / open source"
         ],
         "SupportLevel": "24x7",
         "Documentation": "",
@@ -1861,7 +1819,7 @@
         "LastUpdated": "",
         "Reviewed": "",
         "ReviewedBy": "",
-        "id": 66
+        "id": 64
     },
     {
         "ServiceName": "Common Payment Portal",
@@ -1890,7 +1848,7 @@
         "LastUpdated": "",
         "Reviewed": "",
         "ReviewedBy": "",
-        "id": 67
+        "id": 65
     },
     {
         "ServiceName": "Common Payment Services",
@@ -1919,7 +1877,7 @@
         "LastUpdated": "",
         "Reviewed": "",
         "ReviewedBy": "",
-        "id": 68
+        "id": 66
     },
     {
         "ServiceName": "Banking  Information Verification  API",
@@ -1950,7 +1908,7 @@
         "LastUpdated": "",
         "Reviewed": "",
         "ReviewedBy": "",
-        "id": 69
+        "id": 67
     },
     {
         "ServiceName": "Income Validation API",
@@ -1981,7 +1939,7 @@
         "LastUpdated": "",
         "Reviewed": "",
         "ReviewedBy": "",
-        "id": 70
+        "id": 68
     },
     {
         "ServiceName": "Child Care Benefits (CCB) Validation API",
@@ -2012,7 +1970,7 @@
         "LastUpdated": "",
         "Reviewed": "",
         "ReviewedBy": "",
-        "id": 71
+        "id": 69
     },
     {
         "ServiceName": "Alberta Vital Statistics API",
@@ -2043,6 +2001,6 @@
         "LastUpdated": "",
         "Reviewed": "",
         "ReviewedBy": "",
-        "id": 72
+        "id": 70
     }
 ]
