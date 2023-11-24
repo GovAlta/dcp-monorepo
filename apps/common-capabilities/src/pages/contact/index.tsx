@@ -30,7 +30,7 @@ export default function ContactPage(): JSX.Element {
         <div className='line-elements'>
           <GoAIcon type="mail" theme='outline' />
           <ExternalLink
-            link="mailto:TI.Softwaredelivery@ab.gov.ca"
+            link="mailto:TI.Softwaredelivery@ab.gov.ca?subject=Feedback for Common Capabilities"
             text="Common capabilities team"
           />
         </div>
