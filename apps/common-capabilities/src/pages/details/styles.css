@@ -10,10 +10,10 @@
 }
 .service-subtitle {
   color: var(--goa-color-greyscale-700);
-  font-size: 18px;
+  font-size: var(--goa-font-size-4);
   font-style: normal;
-  font-weight: 700;
-  line-height: 28px;
+  font-weight: var(--goa-font-weight-bold);
+  line-height: var(--goa-line-height-3);
 }
 .service-badges {
   display: flex;

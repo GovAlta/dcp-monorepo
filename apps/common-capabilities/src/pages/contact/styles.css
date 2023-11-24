@@ -1,6 +1,6 @@
 .cc-intro {
-  font-size: 18px;
+  font-size: var(--goa-font-size-4);
   font-style: normal;
-  font-weight: 400;
-  line-height: 28px;
+  font-weight: var(--goa-font-weight-regular);
+  line-height: var(--goa-line-height-3);
 }
