@@ -31,7 +31,7 @@ const Header = ({ actionButtons }: any) => {
                   window.location.href = '/';
                 }}
               >
-                Back to services
+                Back to listings
               </GoAButton>
             </GoAButtonGroup>
           </GoAHeroBannerActions>

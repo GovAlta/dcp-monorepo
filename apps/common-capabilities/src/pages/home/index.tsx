@@ -37,32 +37,23 @@ export default function HomePage(): JSX.Element {
       }}
     >
       <GoAOneColumnLayout>
-        <h2>Common capabilities</h2>
+      <h2>Overview</h2>
+        
         <p className="cc-intro">
           Common capabilities encompass a broad spectrum of software components
           and systems ( including applications, APIs, frameworks, libraries,
-          tools, services and various other types) which are building blocks,
-          adaptable for use independently or in conjunction and collectively
-          contribute to enhancing and streamlining processes. These components
-          are characterized by their reusability, potential to improve
-          operational efficiency, alignment with organizational objectives, and
-          compatibility with existing systems. By leveraging common
-          capabilities, we can also foster innovation and productivity. In
-          addition, utilizing common capabilities accelerates the development of
-          user-centric services, eliminating the need to create bespoke
-          solutions for recurring challenges.
+          tools, services and various other types).  These are like building blocks 
+          that can be used on their own or together to improve and simplify processes. 
+          These components are known for being reusable, able to make operations
+           more efficient, in line with the organization's goals, 
+           and compatible with existing systems. We provide here a listing of common capabilities to explore.
+          
         </p>
-        <p className="cc-intro">
-          We provide here a listing of common capabilities so that you can
-          understand what is available. Do contact the respective teams to know
-          more about their suitability and effectively integrate them into your
-          projects.
-        </p>
-
+        
         <GoASpacer vSpacing="2xl" />
 
         <GoAInput
-          placeholder="search"
+          placeholder="Search"
           width="50%"
           name="firstname"
           value={searchFilter}
@@ -71,8 +62,9 @@ export default function HomePage(): JSX.Element {
           }}
         />
 
-        <GoASpacer vSpacing="2xl" />
-        <GoASpacer vSpacing="2xl" />
+        
+        <h3>Explore</h3> 
+        
         <GoAGrid minChildWidth="35ch">
           {/* <div className="tile-wrapper"> */}
           {services.length >= 1
