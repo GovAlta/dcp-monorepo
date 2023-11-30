@@ -1,5 +1,5 @@
 .services-wrapper {
-    margin-bottom: var(--goa-spacing-4xl);
+    margin-bottom: var(--goa-space-4xl);
 }
 .services-wrapper p {
   font-size: var(--goa-font-size-4);
@@ -61,7 +61,10 @@
     font-weight: var(--goa-font-weight-regular);
     font-size:  var(--goa-font-size-4);
 }
+.spacing {
+  padding-bottom: var(--goa-space-2xl);
 
+}
 .technologies{
   display: flex;
   justify-content: center;
@@ -79,10 +82,7 @@
   align-items: center; 
   justify-content: center;
 }
-.technology img{
-  width: 103px;
-  height: 103px;
-}
+
 .technology p{
   padding-top:var(--goa-space-l);
 font-size: var(--goa-font-size-4);
@@ -101,4 +101,8 @@ line-height: var(--goa-line-height-2);
 letter-spacing: 0em;
 text-align: left;
 color: #000000;
+}
+.gap{
+  padding-top: var(--goa-space-l);
+  padding-bottom: var(--goa-space-xl);
 }
