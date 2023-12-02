@@ -143,7 +143,7 @@ export default function Details({ app }: DetailsProps): JSX.Element {
                       link={app.Documentation}
                     />
                   ) : (
-                    <p className='service-content'>{app[name]}</p>
+                    <p className="service-content">{app[name]}</p>
                   )}
                   <GoASpacer vSpacing="l" />
                 </div>
@@ -165,13 +165,23 @@ export default function Details({ app }: DetailsProps): JSX.Element {
                   : ''}
               </b>{' '}
               {app.AccessMethod !== 'Slack' ? app.AccessMethodDetails : ''}
+              <br />
+              <br />
+              {app.AccessMethod !== 'Slack' &&
+              app.AccessMethodDetails! === '' ? (
+                <a href={`${app.AccessMethodLink}`} target="_blank">
+                  {app.AccessMethodLink}
+                </a>
+              ) : (
+                ''
+              )}
             </p>
             {app.Email !== '' ? (
               <div className="line-elements">
                 <GoAIcon type="mail" theme="outline" />
                 <ExternalLink
                   link={`mailto:${app.Email}`}
-                  text={app.ServiceName}
+                  text={app.Provider}
                 />
               </div>
             ) : (

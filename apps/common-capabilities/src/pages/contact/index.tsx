@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {
   GoAAccordion,
   GoAIcon,
@@ -18,15 +18,7 @@ export default function ContactPage(): JSX.Element {
     >
       <GoAThreeColumnLayout>
         <h2>Contact</h2>
-        <GoASpacer vSpacing="2xl" />
-        <h3>Frequently asked questions</h3>
-        {faqs.map((faq) => (
-          <>
-            <GoAAccordion heading={faq.heading}>{faq.content}</GoAAccordion>
-            <GoASpacer vSpacing="m" />
-          </>
-        ))}
-        <h3>Contact us by email</h3>
+        <h3>By email</h3>
         <div className='line-elements'>
           <GoAIcon type="mail" theme='outline' />
           <ExternalLink
@@ -42,6 +34,14 @@ export default function ContactPage(): JSX.Element {
             text="Common capabilities team"
           />
         </div>
+        <GoASpacer vSpacing="2xl" />
+        <h3>Frequently asked questions</h3>
+        {faqs.map((faq) => (
+          <>
+            <GoAAccordion heading={faq.heading}>{faq.content}</GoAAccordion>
+            <GoASpacer vSpacing="m" />
+          </>
+        ))}
       </GoAThreeColumnLayout>
     </div>
   );
