@@ -49,7 +49,7 @@ const Card = ({ provider, description, title, app }: CardProps) => {
           <b>Contact: </b>
           <ExternalLink
             link={`mailto:${app.Email}`}
-            text={app.ServiceName}
+            text={app.Provider}
           />{' '}
         </div>
       ) : (
