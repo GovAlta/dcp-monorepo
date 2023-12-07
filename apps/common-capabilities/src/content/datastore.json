@@ -353,7 +353,7 @@
         "LastUpdated": "",
         "Reviewed": "",
         "ReviewedBy": "",
-        "id": 47
+        "id": 14
     },
     {
         "ServiceName": "Get Access (CCA)",
@@ -382,7 +382,7 @@
         "LastUpdated": "",
         "Reviewed": "Yes",
         "ReviewedBy": "Heather",
-        "id": 14
+        "id": 15
     },
     {
         "ServiceName": "GOA User Management",
@@ -411,7 +411,7 @@
         "LastUpdated": "",
         "Reviewed": "Yes",
         "ReviewedBy": "Heather",
-        "id": 15
+        "id": 16
     },
     {
         "ServiceName": "Get Access (CCA) API",
@@ -443,7 +443,7 @@
         "LastUpdated": "",
         "Reviewed": "Yes",
         "ReviewedBy": "Heather",
-        "id": 16
+        "id": 17
     },
     {
         "ServiceName": "CCDS Angular Components",
@@ -472,7 +472,7 @@
         "LastUpdated": "",
         "Reviewed": "Yes",
         "ReviewedBy": "Heather",
-        "id": 17
+        "id": 18
     },
     {
         "ServiceName": "CCDS React Components",
@@ -503,7 +503,7 @@
         "LastUpdated": "",
         "Reviewed": "Yes",
         "ReviewedBy": "Heather",
-        "id": 18
+        "id": 19
     },
     {
         "ServiceName": "CCDS Web Components",
@@ -532,7 +532,7 @@
         "LastUpdated": "",
         "Reviewed": "Yes",
         "ReviewedBy": "Heather",
-        "id": 19
+        "id": 20
     },
     {
         "ServiceName": "Licensing API",
@@ -563,7 +563,7 @@
         "LastUpdated": "",
         "Reviewed": "Yes",
         "ReviewedBy": "Heather",
-        "id": 20
+        "id": 21
     },
     {
         "ServiceName": "Stakeholder Registry",
@@ -592,7 +592,7 @@
         "LastUpdated": "",
         "Reviewed": "yes",
         "ReviewedBy": "Andrew",
-        "id": 21
+        "id": 22
     },
     {
         "ServiceName": "Program and Provider Registry",
@@ -621,7 +621,7 @@
         "LastUpdated": "",
         "Reviewed": "yes",
         "ReviewedBy": "Andrew",
-        "id": 22
+        "id": 23
     },
     {
         "ServiceName": "Communication Confirmation Service",
@@ -650,7 +650,7 @@
         "LastUpdated": "",
         "Reviewed": "yes",
         "ReviewedBy": "Andrew",
-        "id": 23
+        "id": 24
     },
     {
         "ServiceName": "SMS Gateway",
@@ -679,7 +679,7 @@
         "LastUpdated": "",
         "Reviewed": "yes",
         "ReviewedBy": "Andrew",
-        "id": 24
+        "id": 25
     },
     {
         "ServiceName": "Course Mark Inquiry",
@@ -708,7 +708,7 @@
         "LastUpdated": "",
         "Reviewed": "yes",
         "ReviewedBy": "Andrew",
-        "id": 25
+        "id": 26
     },
     {
         "ServiceName": "Communication Service",
@@ -739,7 +739,7 @@
         "LastUpdated": "",
         "Reviewed": "yes",
         "ReviewedBy": "Andrew",
-        "id": 26
+        "id": 27
     },
     {
         "ServiceName": "Comments Service",
@@ -768,7 +768,7 @@
         "LastUpdated": "",
         "Reviewed": "yes",
         "ReviewedBy": "Andrew",
-        "id": 27
+        "id": 28
     },
     {
         "ServiceName": "Employment Insurance (EI) Gateway",
@@ -799,7 +799,7 @@
         "LastUpdated": "",
         "Reviewed": "yes",
         "ReviewedBy": "Andrew",
-        "id": 28
+        "id": 29
     },
     {
         "ServiceName": "SIN Validation Service",
@@ -828,7 +828,7 @@
         "LastUpdated": "",
         "Reviewed": "yes",
         "ReviewedBy": "Andrew",
-        "id": 29
+        "id": 30
     },
     {
         "ServiceName": "1GX API Service",
@@ -859,7 +859,7 @@
         "LastUpdated": "",
         "Reviewed": "",
         "ReviewedBy": "",
-        "id": 30
+        "id": 31
     },
     {
         "ServiceName": "Document Service",
@@ -888,7 +888,7 @@
         "LastUpdated": "",
         "Reviewed": "",
         "ReviewedBy": "",
-        "id": 31
+        "id": 32
     },
     {
         "ServiceName": "API Gateway as a Service",
@@ -913,7 +913,7 @@
         "LastUpdated": "",
         "Reviewed": "",
         "ReviewedBy": "",
-        "id": 32
+        "id": 33
     },
     {
         "ServiceName": "ECM (OpenText) Connector Service",
@@ -938,7 +938,7 @@
         "LastUpdated": "",
         "Reviewed": "",
         "ReviewedBy": "",
-        "id": 33
+        "id": 34
     },
     {
         "ServiceName": "SharePoint Online Service",
@@ -963,7 +963,7 @@
         "LastUpdated": "",
         "Reviewed": "",
         "ReviewedBy": "",
-        "id": 34
+        "id": 35
     },
     {
         "ServiceName": "Electronic Signature - Self-Service User Portal",
@@ -988,7 +988,7 @@
         "LastUpdated": "",
         "Reviewed": "",
         "ReviewedBy": "",
-        "id": 35
+        "id": 36
     },
     {
         "ServiceName": "Email API Service",
@@ -1013,7 +1013,7 @@
         "LastUpdated": "",
         "Reviewed": "",
         "ReviewedBy": "",
-        "id": 36
+        "id": 37
     },
     {
         "ServiceName": "Payment Gateway Service",
@@ -1038,7 +1038,7 @@
         "LastUpdated": "",
         "Reviewed": "",
         "ReviewedBy": "",
-        "id": 37
+        "id": 38
     },
     {
         "ServiceName": "QR Code Service",
@@ -1063,7 +1063,7 @@
         "LastUpdated": "",
         "Reviewed": "",
         "ReviewedBy": "",
-        "id": 38
+        "id": 39
     },
     {
         "ServiceName": "Splunk Service",
@@ -1088,7 +1088,7 @@
         "LastUpdated": "",
         "Reviewed": "",
         "ReviewedBy": "",
-        "id": 39
+        "id": 40
     },
     {
         "ServiceName": "Nagios Monitoring Service",
@@ -1113,7 +1113,7 @@
         "LastUpdated": "",
         "Reviewed": "",
         "ReviewedBy": "",
-        "id": 40
+        "id": 41
     },
     {
         "ServiceName": "Request an Enterprise API",
@@ -1138,7 +1138,7 @@
         "LastUpdated": "",
         "Reviewed": "",
         "ReviewedBy": "",
-        "id": 41
+        "id": 42
     },
     {
         "ServiceName": "AB Holidays",
@@ -1165,11 +1165,11 @@
         "LastUpdated": "",
         "Reviewed": "",
         "ReviewedBy": "",
-        "id": 42
+        "id": 43
     },
     {
         "ServiceName": "Keycloak client",
-        "Description": "Keycloak client for Angular.",
+        "Description": "p",
         "FunctionalGroup": "User Access and Identity",
         "Provider": "SCSS",
         "Environment": [],
@@ -1194,7 +1194,7 @@
         "LastUpdated": "",
         "Reviewed": "",
         "ReviewedBy": "",
-        "id": 43
+        "id": 44
     },
     {
         "ServiceName": "SCSS Angular components",
@@ -1221,7 +1221,7 @@
         "LastUpdated": "",
         "Reviewed": "",
         "ReviewedBy": "",
-        "id": 44
+        "id": 45
     },
     {
         "ServiceName": "Notifications",
@@ -1250,7 +1250,7 @@
         "LastUpdated": "",
         "Reviewed": "",
         "ReviewedBy": "",
-        "id": 45
+        "id": 46
     },
     {
         "ServiceName": "User survey",
@@ -1279,13 +1279,13 @@
         "LastUpdated": "",
         "Reviewed": "",
         "ReviewedBy": "",
-        "id": 46
+        "id": 47
     },
     {
         "ServiceName": "DDD Design System",
         "Description": "The Design System team is responsible for creating and maintaining the assets used for building DDD product layouts, interactions, and patterns. The design system is a shared language for designers and developers to create consistent and cohesive user experiences across multiple products and platforms.",
         "FunctionalGroup": "Other Function",
-        "Provider": "Digital Design and Delivery",
+        "Provider": "?",
         "Environment": [
             "N/A"
         ],
@@ -1347,7 +1347,7 @@
         "Provider": "Wildfire Platform",
         "Environment": [],
         "Language": [
-            ".NET (Core)"
+            ".NET Core"
         ],
         "SupportLevel": "",
         "Documentation": "https://goa-dio.atlassian.net/wiki/spaces/WDS/pages/2758869310/Admin+RestAPI+request+flow",
@@ -1378,7 +1378,7 @@
         ],
         "Language": [
             "Angular",
-            ".NET (Core)",
+            ".NET Core",
             "IaC using CDK"
         ],
         "SupportLevel": "",
@@ -1414,7 +1414,7 @@
         ],
         "Language": [
             "TypeScript",
-            ".NET (Core)"
+            ".NET Core"
         ],
         "SupportLevel": "",
         "Documentation": "https://goa-dio.atlassian.net/wiki/spaces/JD/pages/2248048887/Architecture+Recommendations+Cloud+Native+approach",
@@ -1588,7 +1588,7 @@
         "id": 57
     },
     {
-        "ServiceName": "Document Upload and Download",
+        "ServiceName": "File Handling Shared Services",
         "Description": "Document Upload and Download\nJustice Digital services use consistent architecture to facilitate document uploads and downloads.",
         "FunctionalGroup": "File Handling and Storage",
         "Provider": "Justice Digital",
@@ -1597,7 +1597,7 @@
         ],
         "Language": [
             "Angular",
-            ".NET (Core)",
+            ".NET Core",
             "TypeScript"
         ],
         "SupportLevel": "",
@@ -1606,8 +1606,7 @@
             "PDF",
             "Digital Signature",
             "Stamping",
-            "Digital Certification",
-            "DDD Edit"
+            "Digital Certification"
         ],
         "Status": "Live",
         "Version": "",
@@ -1625,8 +1624,8 @@
         "id": 58
     },
     {
-        "ServiceName": "PDF Generation & Merging",
-        "Description": "PDF Generation & Merging\nJustice Digital services use consistent architecture to facilitate PDF generation and merging functionality.",
+        "ServiceName": "PDF Generation - Merging",
+        "Description": "Justice Digital services use consistent architecture to facilitate PDF generation and merging functionality.",
         "FunctionalGroup": "Document Processing",
         "Provider": "Justice Digital",
         "Environment": [
@@ -1634,7 +1633,7 @@
         ],
         "Language": [
             "Angular",
-            ".NET (Core)",
+            ".NET Core",
             "TypeScript"
         ],
         "SupportLevel": "",
@@ -1642,9 +1641,7 @@
         "Keywords": [
             "PDF",
             "Digital Signature",
-            "Stamping",
-            "Digital Certification",
-            "DDD Edit"
+            "Digital Certification"
         ],
         "Status": "Live",
         "Version": "",
@@ -1671,16 +1668,16 @@
         ],
         "Language": [
             "Angular",
-            ".NET (Core)",
+            ".NET Core",
             "TypeScript"
         ],
         "SupportLevel": "",
         "Documentation": "https://goa-dio.atlassian.net/wiki/spaces/JDP/pages/2248015997/Shared+Services",
         "Keywords": [
+            "PDF",
             "Digital Signature",
             "Stamping",
-            "Digital Certification",
-            "DDD Edit (split)"
+            "Digital Certification"
         ],
         "Status": "Live",
         "Version": "",
@@ -1698,7 +1695,7 @@
         "id": 60
     },
     {
-        "ServiceName": "Court Directory/Personnel",
+        "ServiceName": "Court Directory-Personnel Shared Service",
         "Description": "The court personnel API allows Justice Digital service/teams to look up metadata, contact information regarding Justices, Judges, Judicial Assistants, Application Judges and their court locations at any point in the service.\n\nMetadata and contact information for Judges, Justices, Judicial assistants, and Application Judges are collected and updated in a single place.\n\nSignatures of Justices and Clerks are managed within the Shared Service and through secure access, can be applied to documents as required.\n\n The shared service serves as the source of truth for this information, where delegated authorities from the courts update information for all other services and systems to pull from.",
         "FunctionalGroup": "Other Function",
         "Provider": "Justice Digital",
@@ -1707,16 +1704,15 @@
         ],
         "Language": [
             "Angular",
-            ".NET (Core)",
+            ".NET Core",
             "TypeScript"
         ],
         "SupportLevel": "",
         "Documentation": "https://goa-dio.atlassian.net/wiki/spaces/JDP/pages/2248015997/Shared+Services",
         "Keywords": [
+            "PDF",
             "Digital Signature",
-            "Stamping",
-            "Digital Certification",
-            "DDD Edit (split)"
+            "Digital Certification"
         ],
         "Status": "Live",
         "Version": "",
@@ -1798,10 +1794,12 @@
         "FunctionalGroup": "User Access and Identity",
         "Provider": "Platforms - IAM",
         "Environment": [
-            "Azure Cloud / On Prem"
+            "Azure Cloud",
+            "On Prem"
         ],
         "Language": [
-            ".net / open source"
+            ".net",
+            "open source"
         ],
         "SupportLevel": "24x7",
         "Documentation": "",
