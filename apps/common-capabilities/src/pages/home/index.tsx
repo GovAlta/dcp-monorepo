@@ -37,19 +37,21 @@ export default function HomePage(): JSX.Element {
       }}
     >
       <GoAOneColumnLayout>
-      <h2>Overview</h2>
-        
+        <h2 id="home-title">Overview</h2>
+        <span className="last-updated">Last updated: 08/12/2023</span>
+        <GoASpacer vSpacing="s" />
+
         <p className="cc-intro">
           Common capabilities encompass a broad spectrum of software components
           and systems ( including applications, APIs, frameworks, libraries,
-          tools, services and various other types).  These are like building blocks 
-          that can be used on their own or together to improve and simplify processes. 
-          These components are known for being reusable, able to make operations
-           more efficient, in line with the organization's goals, 
-           and compatible with existing systems. We provide here a listing of common capabilities to explore.
-          
+          tools, services and various other types). These are like building
+          blocks that can be used on their own or together to improve and
+          simplify processes. These components are known for being reusable,
+          able to make operations more efficient, in line with the
+          organization's goals, and compatible with existing systems. We provide
+          here a listing of common capabilities to explore.
         </p>
-        
+
         <GoASpacer vSpacing="2xl" />
 
         <GoAInput
@@ -62,9 +64,8 @@ export default function HomePage(): JSX.Element {
           }}
         />
 
-        
-        <h3>Explore</h3> 
-        
+        <h3>Services listing</h3>
+
         <GoAGrid minChildWidth="35ch">
           {/* <div className="tile-wrapper"> */}
           {services.length >= 1
