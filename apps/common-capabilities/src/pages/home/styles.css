@@ -27,3 +27,14 @@
   /* flex: 1; */
   /* color: #d9480f; */
 }
+#home-title {
+  margin-top: var(--goa-space-3xl);
+  margin-bottom: var(--goa-space-xs);
+}
+.last-updated {
+  color: var(--goa-color-text-secondary);
+  font-size: var(--goa-font-size-3);
+  font-style: normal;
+  font-weight: var(--goa-font-weight-bold);
+  line-height: var(--goa-line-height-2); 
+}
