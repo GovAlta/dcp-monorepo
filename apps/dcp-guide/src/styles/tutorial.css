@@ -1,0 +1,19 @@
+.tutorial-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.anchorPoints {
+  width: 300px;
+  margin: 12px;
+}
+
+.tutorial-content {
+  margin: var(--goa-space-3xl);
+  width: 100%;
+}
+
+h2.reset {
+  margin: 0;
+  padding: 0;
+}
