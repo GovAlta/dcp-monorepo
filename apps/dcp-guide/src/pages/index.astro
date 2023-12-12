@@ -1,9 +1,9 @@
 ---
 import HomeLayout from '../layouts/homeLayout.astro';
-import { Content as Index } from './index/index.mdx';
+import HomePage from './index/index';
 import '../styles/home-styles.css';
 ---
 
 <HomeLayout title="Home">
-  <Index />
+  <HomePage client:load />
 </HomeLayout>

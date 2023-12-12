@@ -1,25 +1,15 @@
 ---
-import  BaseLayout  from './baseLayout.astro';
+import BaseLayout from './baseLayout.astro';
 ---
 
 <BaseLayout title="Home">
-
-<slot />
-<!-- <figure>   
-<h2><strong>Explore the Playbook</strong></h2>
-
-<h4><a href="/about/index.html"><span >What is modern digital delivery?</span></a></h4>
-
-<h4><a href="/team/index.html"><span >Who is involved?</span></a></h4>
-<h4><a href="/stories/index.html"><span >Stories</span></a></h4>
-<h4><a href="/learnMore/index.html"><span >Learn more</span></a></h4>
-
-</figure> -->
+  <slot />
 </BaseLayout>
-
-
+<!-- <script hoist>
+  import '@abgov/web-components';
+</script> -->
 <style>
-   span{
-    color:var(--goa-color-brand-dark);
+  span {
+    color: var(--goa-color-brand-dark);
   }
 </style>

@@ -5,7 +5,8 @@
 
 .anchorPoints {
   width: 300px;
-  margin: 12px;
+  margin: 84px 12px 12px 32px;
+  height: 200vh;
 }
 
 .tutorial-content {
@@ -13,7 +14,38 @@
   width: 100%;
 }
 
-h2.reset {
+h2.resetSpacing {
   margin: 0;
   padding: 0;
+}
+
+.code-details {
+  padding-top: 4px;
+  background: #f3f3f3;
+  white-space: pre-wrap;
+  font-family: monospace;
+  font-size: 14px;
+  line-height: 16px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+h2.borderWidth,
+h3.borderWidth {
+  padding-bottom: 0.3em;
+  font-size: 1.5em;
+  border-width: 2px !important;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.vertical-line {
+  border-left: 1px solid #adadad;
+  height: 250vh;
+}
+
+.overrides {
+  padding: 0px !important;
+  margin: 0px !important;
 }

@@ -1,11 +1,9 @@
 ---
-import TutorialLayout from '../layouts/tutorialLayout.astro';
 import HomeLayout from '../layouts/homeLayout.astro';
-import { Content as TutorialPartI } from './tutorial/index.mdx';
-import { Content as Index } from './index/index.mdx';
+import TutorialPage from './tutorial/index';
 import '../styles/tutorial.css';
 ---
 
-<HomeLayout title="Home">
-  <TutorialPartI />
+<HomeLayout title="Tutorial">
+  <TutorialPage client:load />
 </HomeLayout>
