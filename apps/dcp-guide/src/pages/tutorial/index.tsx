@@ -19,8 +19,10 @@ export default function TutorialPage() {
   const renderContents = () => {
     return (
       <>
+        <h2 className="resetSpacing">Developer Quickstart</h2>
+        <div className="padding-bottom-l"></div>
         <div className="padding-bottom-l">
-          Last Updated: <strong>12/13/2023</strong>
+          <div className="lastUpdated">Last Updated 12/14/2023</div>
         </div>
         <div className="padding-bottom-l">
           DCP is a platform for digital content products. It includes shared
@@ -52,6 +54,7 @@ export default function TutorialPage() {
         </div>
         <div className="padding-bottom-l">
           <GoAButton
+            testid="devDCPGuideButton"
             type="secondary"
             onClick={async () => {
               await copyToClipBoard('devDCPGuide');
@@ -76,6 +79,7 @@ export default function TutorialPage() {
         <div className="padding-bottom-l">
           <GoAButton
             type="secondary"
+            testid="starterAppButton"
             onClick={async () => {
               await copyToClipBoard('starterApp');
             }}
@@ -101,6 +105,7 @@ export default function TutorialPage() {
         <div className="padding-bottom-l">
           <GoAButton
             type="secondary"
+            testid="generateAppsButton"
             onClick={async () => {
               await copyToClipBoard('generateApps');
             }}
@@ -119,6 +124,7 @@ export default function TutorialPage() {
         <div className="padding-bottom-l">
           <GoAButton
             type="secondary"
+            testid="runAppsButton"
             onClick={async () => {
               await copyToClipBoard('runApps');
             }}
@@ -178,10 +184,13 @@ export default function TutorialPage() {
         </div>
         As an illustration, to access the "common-capabilities" app within the
         development environment, you would use the following URL: <br />
-        <a href="https://common-capabilities-dcp-dev.apps.aro.gov.ab.ca/">
+        <a
+          href="https://common-capabilities-dcp-dev.apps.aro.gov.ab.ca/"
+          data-testid="commonCapabilitiesLink"
+        >
           https://common-capabilities-dcp-dev.apps.aro.gov.ab.ca
         </a>
-        <h3>Documentation </h3>
+        <h3 id="documentation">Documentation </h3>
         <a href="https://github.com/GovAlta/dcp-monorepo">
           Common capabilities Github <GoAIcon size="small" type="open" />
         </a>
@@ -190,6 +199,7 @@ export default function TutorialPage() {
           <GoAIcon type="mail" theme="outline" />
           <a
             href="mailto:TI.Softwaredelivery@ab.gov.ca?subject=Feedback for Common Capabilities"
+            data-testid="emailToLink"
             style={{ margin: '12px' }}
           >
             {' '}
@@ -207,9 +217,14 @@ export default function TutorialPage() {
             Common capabilities team <GoAIcon size="small" type="open" />
           </a>
         </div>
+        <div className="padding-bottom-3xl"></div>
         <GoAButtonGroup alignment="end">
           <a href="#tutorial-top">
-            <GoAButton type="tertiary" trailingIcon="arrow-up-circle">
+            <GoAButton
+              testid="backToTopButton"
+              type="tertiary"
+              trailingIcon="arrow-up-circle"
+            >
               Back to top
             </GoAButton>
           </a>
@@ -222,17 +237,40 @@ export default function TutorialPage() {
     return (
       <>
         <GoABlock direction="column" gap="3xs" alignment="start">
-          <a href="#gettingStarted"> Anchor Point 1</a>
+          <a href="#gettingStarted" testid="anchorPoint1">
+            {' '}
+            Anchor Point 1
+          </a>
           <br />
-          <a href="#starterApp"> Anchor Point 2</a>
+          <a href="#starterApp" data-testid="anchorPoint2">
+            {' '}
+            Anchor Point 2
+          </a>
           <br />
-          <a href="#microApps"> Anchor Point 3</a>
+          <a href="#microApps" data-testid="anchorPoint3">
+            {' '}
+            Anchor Point 3
+          </a>
           <br />
-          <a href="#deployment"> Anchor Point 4</a>
+          <a href="#deployment" data-testid="anchorPoint4">
+            {' '}
+            Anchor Point 4
+          </a>
           <br />
-          <a href="#deployment"> Anchor Point 5</a>
+          <a href="#deployment" data-testid="anchorPoint5">
+            {' '}
+            Anchor Point 5
+          </a>
           <br />
-          <a href="#deployment"> Anchor Point 6</a>
+          <a href="#deployment" data-testid="anchorPoint6">
+            {' '}
+            Anchor Point 6
+          </a>
+          <br />
+          <a href="#documentation" data-testid="anchorPoint7">
+            {' '}
+            Anchor Point 7
+          </a>
         </GoABlock>
       </>
     );
