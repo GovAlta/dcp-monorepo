@@ -3,7 +3,7 @@ import { GoAIcon } from '@abgov/react-components';
 import Astro from '../../assets/astro.png';
 import Github from '../../assets/Github.png';
 import Script from '../../assets/Script.png';
-import '../../styles/tutorial.css';
+import '../../styles/global.css';
 
 export default function HomePage() {
   return (

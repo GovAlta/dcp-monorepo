@@ -25,7 +25,7 @@ import { GoAAppFooter } from '@abgov/react-components';
 <script>
   const currentPath = window.location.pathname;
   let footerEl: any = document.getElementById('touch-footer');
-  const getInTouchFooterExcludes = ['/', '/tutorial/', '/test'];
+  const getInTouchFooterExcludes = ['/'];
 
   if (getInTouchFooterExcludes.indexOf(currentPath) >= 0) {
     footerEl.style.display = 'none';
