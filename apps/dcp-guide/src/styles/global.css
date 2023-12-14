@@ -1,87 +1,26 @@
-html {
-  background-color: #f1f5f9;
-  font-family: sans-serif;
-}
-
-body {
-  margin: 0 auto;
-  width: 100%;
-  line-height: 1.5;
-}
 main {
   margin: auto;
   padding: 1.5rem;
   max-width: 120ch;
 }
 
-figure {
-  margin: 0;
-  background-color: var(--goa-color-brand-light);
-  padding: 1rem 20rem;
-  color: var(--goa-color-brand-dark);
-}
-
-h1 {
-  font-size: 3rem;
-  font-weight: 800;
-  margin: 0;
-}
-
-.hide-footer {
-  display: none;
-}
-
 /* Start Tutorial Page  */
-.tutorial-container {
-  display: flex;
-  flex-direction: row;
-}
 
-.anchorPoints {
-  width: 300px;
-  margin: 84px 12px 12px 32px;
-  height: 200vh;
-}
-
-.tutorial-content {
-  margin: var(--goa-space-3xl);
-  width: 100%;
-}
-
-h2.resetSpacing {
-  margin: 0;
-  padding: 0;
+.resetSpacing {
+  margin: 0px !important;
+  padding: 0px !important;
 }
 
 .code-details {
-  padding-top: 4px;
-  background: #f3f3f3;
+  background: var(--goa-color-greyscale-100);
   white-space: pre-wrap;
   font-family: monospace;
-  font-size: 14px;
-  line-height: 16px;
-  padding-top: 16px;
-  padding-bottom: 16px;
-  padding-left: 16px;
-  padding-right: 16px;
-}
-
-h2.borderWidth,
-h3.borderWidth {
-  padding-bottom: 0.3em;
-  font-size: 1.5em;
-  border-width: 2px !important;
-  border-bottom: 1px solid #f1f1f1;
-}
-
-.vertical-line {
-  border-left: 1px solid #adadad;
-  height: 275 vh;
-}
-
-.overrides {
-  padding: 0px !important;
-  margin: 0px !important;
+  font-size: var(--goa-font-size-2);
+  line-height: var(--goa-space-m);
+  padding-top: var(--goa-space-m);
+  padding-bottom: var(--goa-space-m);
+  padding-left: var(--goa-space-m);
+  padding-right: var(--goa-space-m);
 }
 
 .lastUpdated {
@@ -91,20 +30,6 @@ h3.borderWidth {
   line-height: var(--goa-line-height-3);
   letter-spacing: 0em;
   text-align: left;
-}
-
-.padding-bottom-m {
-  padding-bottom: var(--goa-space-m);
-}
-.padding-bottom-l {
-  padding-bottom: var(--goa-space-l);
-}
-.padding-bottom-xl {
-  padding-bottom: var(--goa-space-xl);
-}
-
-.padding-bottom-3xl {
-  padding-bottom: var(--goa-space-3xl);
 }
 
 /* End Index Page  */
