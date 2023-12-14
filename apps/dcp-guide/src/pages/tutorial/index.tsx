@@ -21,7 +21,9 @@ export default function TutorialPage() {
   const renderContents = () => {
     return (
       <>
-        <h2 className="resetSpacing">Developer Quickstart</h2>
+        <h2 className="resetSpacing" id="tutorial-top">
+          Developer Quickstart
+        </h2>
         <GoASpacer vSpacing="xs" />
         <div className="lastUpdated">Last Updated 12/14/2023</div>
         <GoASpacer vSpacing="l" />
