@@ -37,7 +37,7 @@ export default function TutorialPage() {
         </a>{' '}
         for Astro support.
         <GoASpacer vSpacing="xl" />
-        <h3 id="gettingStarted" class="resetSpacing">
+        <h3 id="gettingStarted" className="resetSpacing">
           Getting Started
         </h3>
         <GoASpacer vSpacing="m" />
@@ -147,7 +147,7 @@ export default function TutorialPage() {
         <GoASpacer vSpacing="l" />
         As an illustration, to access the "common-capabilities" app within the
         development environment, you would use the following URL:
-        <GoASpacer vSpacing="xxs" />
+        <GoASpacer vSpacing="xs" />
         <a
           href="https://common-capabilities-dcp-dev.apps.aro.gov.ab.ca/"
           data-testid="commonCapabilitiesLink"

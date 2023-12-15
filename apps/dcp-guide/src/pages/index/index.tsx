@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { GoAIcon } from '@abgov/react-components';
 import Astro from '../../assets/astro.png';
-import Github from '../../assets/Github.png';
+import Github from '../../assets/github.png';
 import Script from '../../assets/Script.png';
 import '../../styles/global.css';
 
