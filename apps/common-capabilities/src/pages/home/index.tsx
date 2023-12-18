@@ -41,7 +41,7 @@ export default function HomePage(): JSX.Element {
     >
       <GoAOneColumnLayout>
         <h2 id="home-title">Overview</h2>
-        <span className="last-updated">Last updated: December 08,2023</span>
+        <span className="last-updated">Last updated: December 08, 2023</span>
         <GoASpacer vSpacing="s" />
 
         <p className="cc-intro">
