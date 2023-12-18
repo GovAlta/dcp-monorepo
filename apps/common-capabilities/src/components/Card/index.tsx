@@ -15,6 +15,7 @@ interface CardProps {
 }
 
 const Card = ({ provider, description, title, app }: CardProps) => {
+  const maxDescriptionLength = 180; // word count
   const badgesToShow = ['Status', 'FunctionalGroup', 'Language', 'Keywords'];
   const [items, setItems] = useState<any>({
     badges: [],
@@ -42,15 +43,14 @@ const Card = ({ provider, description, title, app }: CardProps) => {
 
       <span id="service-tile-subtitle">{provider}</span>
       <GoASpacer vSpacing="m" />
-      <p id="service-tile-content">{description}</p>
-
+      <p id="service-tile-content">{`${description.substring(
+        0,
+        maxDescriptionLength
+      )}${description.length > maxDescriptionLength ? '.....' : ''}`}</p>
       {app.Email !== '' ? (
         <div>
           <b>Contact: </b>
-          <ExternalLink
-            link={`mailto:${app.Email}`}
-            text={app.Provider}
-          />{' '}
+          <ExternalLink link={`mailto:${app.Email}`} text={app.Provider} />{' '}
         </div>
       ) : (
         ''
