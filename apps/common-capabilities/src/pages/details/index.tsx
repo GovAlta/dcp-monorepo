@@ -18,6 +18,7 @@ export default function Details({ app }: DetailsProps): JSX.Element {
     badges: [],
     content: [],
   });
+
   const badgesToShow = ['FunctionalGroup', 'Language', 'Keywords'];
   const contentToShow = [
     {
@@ -48,14 +49,8 @@ export default function Details({ app }: DetailsProps): JSX.Element {
       showInSidebar: true,
       showContent: true,
     },
-    {
-      name: 'Email',
-      id: 'service-contact',
-      title: 'Contact',
-      showInSidebar: true,
-      showContent: false, // since it has its own dedicated section
-    },
   ];
+
   useEffect(() => {
     if (window.location.hash) {
       const elmnt = document.getElementById(window.location.hash.substring(1));
@@ -76,6 +71,16 @@ export default function Details({ app }: DetailsProps): JSX.Element {
         showContent.push(content);
       }
     });
+    if (app.AccessMethod !== '' || app.Email !== '') {
+      showContent.push({
+        name: 'Email',
+        id: 'service-contact',
+        title: 'Contact',
+        showInSidebar: true,
+        showContent: false, // since it has its own dedicated section
+      });
+    }
+    
     setItems({
       badges: showBadges,
       content: showContent,
@@ -161,12 +166,10 @@ export default function Details({ app }: DetailsProps): JSX.Element {
             <p>
               <b>
                 {app.AccessMethod !== 'Slack' && app.AccessMethod !== ''
-                  ? `${app.AccessMethod}:`
+                  ? `${app.AccessMethod}: `
                   : ''}
-              </b>{' '}
+              </b>
               {app.AccessMethod !== 'Slack' ? app.AccessMethodDetails : ''}
-              <br />
-              <br />
               {app.AccessMethod !== 'Slack' &&
               app.AccessMethodDetails! === '' ? (
                 <a href={`${app.AccessMethodLink}`} target="_blank">
