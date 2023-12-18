@@ -1,6 +1,5 @@
 ---
-import { DefaultMicrositeLayout } from '@abgov/dcp-common';
-
+import DefaultGuideLayout from './defaultGuideLayout.astro';
 import HeroImage from '../components/HeroImage.astro';
 import HeroHome from '../components/HeroHome.astro';
 export interface Props {
@@ -9,15 +8,9 @@ export interface Props {
 const { title } = Astro.props;
 ---
 
-<DefaultMicrositeLayout title="Welcome to DCP playbook.">
-  {(title!=="Home")&& 
-<HeroImage title={title}/>
-}
+<DefaultGuideLayout title="Welcome to DCP Guide.">
+  {title !== 'Home' && <HeroImage title={title} />}
 
-{(title=="Home")&& 
-<HeroHome/>
-}
-<slot />
-     
- 
-</DefaultMicrositeLayout>
+  {title == 'Home' && <HeroHome />}
+  <slot />
+</DefaultGuideLayout>
