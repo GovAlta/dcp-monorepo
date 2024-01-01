@@ -38,7 +38,7 @@ export default function HomePage(): JSX.Element {
       let searchTimestamp = localStorage.getItem('searchTimestamp');
       let now = new Date().getTime();
       let remainingTime = searchTimestamp - now;
-      console.log(remainingTime);
+
       if (remainingTime <= 0) {
         localStorage.removeItem('searchFilter');
         localStorage.removeItem('searchTimestamp');
