@@ -11,7 +11,7 @@ import './styles.css';
 
 export default function HomePage(): JSX.Element {
   const [searchFilter, setSearchFilter] = useState('');
-  const [services, setServices] = useState(apps);
+  const [services, setServices] = useState([]);
 
   const passInput = (input: any) => input;
   const findInArray = (array: any, searchRegExp: any, fields: any) => {
@@ -22,15 +22,39 @@ export default function HomePage(): JSX.Element {
         .some(passInput);
     });
   };
-  const searchRegEx = new RegExp(
-    `${searchFilter.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`,
-    'i'
-  );
 
   useEffect(() => {
+    const searchRegEx = new RegExp(
+      `${searchFilter.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`,
+      'i'
+    );
+    setSearchFilter(localStorage.getItem('searchFilter') || '');
     setServices(
       findInArray(apps, searchRegEx, ['Description', 'ServiceName', 'Provider'])
     );
+    let timeoutId = null;
+
+    if (localStorage.getItem('searchFilter')) {
+      let searchTimestamp = localStorage.getItem('searchTimestamp');
+      let now = new Date().getTime();
+      let remainingTime = searchTimestamp - now;
+
+      if (remainingTime <= 0) {
+        localStorage.removeItem('searchFilter');
+        localStorage.removeItem('searchTimestamp');
+      } else {
+        timeoutId = setTimeout(() => {
+          localStorage.removeItem('searchFilter');
+          localStorage.removeItem('searchTimestamp');
+        }, remainingTime);
+      }
+    }
+
+    return () => {
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+    };
   }, [searchFilter]);
 
   return (
@@ -64,6 +88,11 @@ export default function HomePage(): JSX.Element {
           value={searchFilter}
           onChange={(name: string, value: string) => {
             setSearchFilter(value);
+            localStorage.setItem(
+              'searchTimestamp',
+              new Date().getTime() + 5 * 60 * 1000
+            );
+            localStorage.setItem('searchFilter', value);
           }}
         />
 
