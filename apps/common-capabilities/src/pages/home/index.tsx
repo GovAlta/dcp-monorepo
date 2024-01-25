@@ -1,8 +1,7 @@
 // @ts-nocheck
 import React, { useEffect, useState } from 'react';
-import apps from '../../content/datastore.json';
+import { lastUpdated, services as apps } from '../../content/datastore.json';
 import {
-  GoAOneColumnLayout,
   GoAGrid,
   GoASpacer,
   GoAInput,
@@ -16,12 +15,6 @@ import { extractAvailableFilters, capitalizeFirstWord } from './utils';
 export default function HomePage(): JSX.Element {
   const [searchFilter, setSearchFilter] = useState('');
   const [services, setServices] = useState([]);
-  // const [selectedFilters, setSelectedFilters] = useState({
-  //   Environment: [],
-  //   Languages: [],
-  //   Keywords: [],
-  //   Status: [],
-  // });
   const [selectedFilters, setSelectedFilters] = useState(() => {
     const savedFilters = localStorage.getItem('selectedFilters');
     return savedFilters
@@ -33,6 +26,13 @@ export default function HomePage(): JSX.Element {
           Status: [],
         };
   });
+  let date = new Date(lastUpdated);
+  let formattedDate = date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+
   // grab all the available filters from the services
   const [filters, setFilters] = useState(extractAvailableFilters(services));
 
@@ -84,8 +84,6 @@ export default function HomePage(): JSX.Element {
       );
     });
   };
-
-  // console.log(filters);
 
   // to update the services list when the search value or filters change
   useEffect(() => {
@@ -199,15 +197,7 @@ export default function HomePage(): JSX.Element {
                     env.count
                   })`}
                   checked={selectedFilters[filterCategory].includes(env.value)}
-                  onChange={(name, checked, value) => {
-                    // setSelectedFilters({
-                    //   ...selectedFilters,
-                    //   [filterCategory]: checked
-                    //     ? [...selectedFilters[filterCategory], name]
-                    //     : selectedFilters[filterCategory].filter(
-                    //         (item) => item !== name
-                    //       ),
-                    // });
+                  onChange={(name, checked) => {
                     setSelectedFilters((prevFilters) => {
                       const newFilters = {
                         ...prevFilters,
@@ -236,7 +226,7 @@ export default function HomePage(): JSX.Element {
       }
     >
       <h2 id="home-title">Overview</h2>
-      <span className="last-updated">Last updated: December 08, 2023</span>
+      <span className="last-updated">Last updated: {formattedDate}</span>
       <GoASpacer vSpacing="s" />
 
       <p className="cc-intro">
@@ -262,7 +252,7 @@ export default function HomePage(): JSX.Element {
                 key={app.ServiceName}
                 title={app.ServiceName}
                 provider={app.Provider}
-                description={app.Description}
+                description={app.Summary}
                 app={app}
               />
             ))

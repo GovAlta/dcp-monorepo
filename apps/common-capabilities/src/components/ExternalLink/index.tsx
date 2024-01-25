@@ -12,7 +12,7 @@ const ExternalLink = ({ link, text }: LinkProps) => {
       <a href={link} rel="noopener noreferrer" target="_blank">
         {text}
         <span className="link-icon">
-          <GoAIcon type="open" />
+          <GoAIcon type="open" size='small'/>
         </span>
       </a>
     </div>
