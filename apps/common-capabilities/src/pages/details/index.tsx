@@ -51,7 +51,7 @@ export default function Details({ app }: DetailsProps): JSX.Element {
     {
       name: 'Contact',
       id: 'service-contact',
-      title: 'Contact',
+      title: 'Contact us',
       showInSidebar: app.Contact.methods.length >= 1 ? true : false,
       showContent: app.Contact.methods.length >= 1 ? true : false,
     },

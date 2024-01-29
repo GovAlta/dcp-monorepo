@@ -38,10 +38,11 @@
 }
 
 .contact-type {
-  font-weight: bold;
-  font-size: var(--goa-font-size-s);
-  line-height: var(--goa-line-height-s);
-  color: black;
+  font-size: var(--goa-font-size-4);
+  font-style: normal;
+  font-weight: var(--goa-font-weight-bold);
+  line-height: var(--goa-line-height-3);
+  color: var(--goa-color-greyscale-700);
   text-align: right;
 }
 .items-color > td {
