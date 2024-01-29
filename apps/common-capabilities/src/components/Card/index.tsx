@@ -23,8 +23,13 @@ const Card = ({ provider, description, title, app }: CardProps) => {
   useEffect(() => {
     let showBadges: any[] = [];
     badgesToShow.map((badge) => {
-      if (app[badge] !== '') {
-        showBadges.push(badge);
+      if (app[badge] !== '' && app[badge]?.length > 0) {
+        if (Array.isArray(app[badge]) && !app[badge].includes('other')) {
+          showBadges.push(badge);
+        }
+        if (typeof app[badge] === 'string' && app[badge] !== 'other') {
+          showBadges.push(badge);
+        }
       }
     });
     setItems({

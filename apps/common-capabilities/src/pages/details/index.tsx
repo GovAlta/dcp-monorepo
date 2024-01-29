@@ -9,7 +9,6 @@ import {
 import React, { useEffect, useState } from 'react';
 import './styles.css';
 import ExternalLink from '../../components/ExternalLink';
-
 interface DetailsProps {
   app: any;
 }
@@ -46,8 +45,15 @@ export default function Details({ app }: DetailsProps): JSX.Element {
       name: 'Documentation',
       id: 'service-documentation',
       title: 'Documentation',
-      showInSidebar: true,
-      showContent: true,
+      showInSidebar: app.Documentation.length > 0 ? true : false,
+      showContent: app.Documentation.length > 0 ? true : false,
+    },
+    {
+      name: 'Contact',
+      id: 'service-contact',
+      title: 'Contact us',
+      showInSidebar: app.Contact.methods.length >= 1 ? true : false,
+      showContent: app.Contact.methods.length >= 1 ? true : false,
     },
   ];
 
@@ -63,7 +69,12 @@ export default function Details({ app }: DetailsProps): JSX.Element {
     let showContent: any[] = [];
     badgesToShow.map((badge) => {
       if (app[badge] !== '' && app[badge]?.length > 0) {
-        showBadges.push(badge);
+        if (Array.isArray(app[badge]) && !app[badge].includes('other')) {
+          showBadges.push(badge);
+        }
+        if (typeof app[badge] === 'string' && app[badge] !== 'other') {
+          showBadges.push(badge);
+        }
       }
     });
     contentToShow.map((content) => {
@@ -71,21 +82,87 @@ export default function Details({ app }: DetailsProps): JSX.Element {
         showContent.push(content);
       }
     });
-    if (app.AccessMethod !== '' || app.Email !== '') {
-      showContent.push({
-        name: 'Email',
-        id: 'service-contact',
-        title: 'Contact',
-        showInSidebar: true,
-        showContent: false, // since it has its own dedicated section
-      });
-    }
-    
+
     setItems({
       badges: showBadges,
       content: showContent,
     });
   }, []);
+
+  // table
+  const renderContact = (method: any) => {
+    const contactMethods: any = {
+      Slack: {
+        iconType: 'logo-slack',
+        linkPrefix: '',
+      },
+      Email: {
+        iconType: 'mail',
+        linkPrefix: 'mailto:',
+      },
+      Phone: {
+        iconType: 'call',
+        linkPrefix: 'tel:',
+      },
+      BERNIE: {
+        iconType: 'cart',
+        linkPrefix: '',
+      },
+      Web: {
+        iconType: 'globe',
+        linkPrefix: '',
+      },
+      Sharepoint: {
+        iconType: 'share-social',
+        linkPrefix: '',
+      },
+      Github: {
+        iconType: 'logo-github',
+        linkPrefix: '',
+      },
+    };
+    const methodConfig = contactMethods[method.type] || {};
+    const iconType = methodConfig.iconType || '';
+    const linkPrefix = methodConfig.linkPrefix || '';
+
+    return (
+      <tr className="items-color">
+        <td className="contact-type">{`${method.type}:  `}</td>
+        <td>
+          <GoAIcon type={iconType} theme="outline" />
+        </td>
+        <td>
+          <ExternalLink
+            link={`${linkPrefix}${method.url}`}
+            text={method.value}
+          />
+        </td>
+      </tr>
+    );
+  };
+
+  const renderContent = (name: string, app: any) => {
+    if (name === 'Documentation' && app.Documentation.length > 0) {
+      return app.Documentation.map((doc: any) => (
+        <div>
+          <ExternalLink text={`${doc.name} documentation`} link={doc.url} />
+          <GoASpacer vSpacing="s" />
+        </div>
+      ));
+    }
+
+    if (name === 'Contact') {
+      return (
+        <table className="contact-table">
+          <tbody>
+            {app.Contact.methods.map((method: any) => renderContact(method))}
+          </tbody>
+        </table>
+      );
+    }
+
+    return <p className="service-content">{app[name]}</p>;
+  };
   return (
     <>
       <GoAThreeColumnLayout
@@ -137,89 +214,19 @@ export default function Details({ app }: DetailsProps): JSX.Element {
         </div>
 
         <GoASpacer vSpacing="xl" />
-        {items.content.length > 0
-          ? items.content.map(({ id, name, title, showContent }: any) => {
-              return showContent ? (
-                <div key={`${id}`}>
-                  <h3 id={`${id}`}>{title}</h3>
-                  {name === 'Documentation' ? (
-                    <ExternalLink
-                      text={`${app.ServiceName} documentation`}
-                      link={app.Documentation}
-                    />
-                  ) : (
-                    <p className="service-content">{app[name]}</p>
-                  )}
-                  <GoASpacer vSpacing="l" />
-                </div>
-              ) : (
-                ''
-              );
-            })
-          : ''}
+        {items.content.length > 0 &&
+          items.content.map(({ id, name, title, showContent }: any) => {
+            if (!showContent) return null;
 
-        <GoASpacer vSpacing="xs" />
-
-        {app.AccessMethod !== '' || app.Email !== '' ? (
-          <>
-            <h3 id="service-contact">Contact us</h3>
-            <p>
-              <b>
-                {app.AccessMethod !== 'Slack' && app.AccessMethod !== ''
-                  ? `${app.AccessMethod}: `
-                  : ''}
-              </b>
-              {app.AccessMethod !== 'Slack' ? app.AccessMethodDetails : ''}
-              {app.AccessMethod !== 'Slack' &&
-              app.AccessMethodDetails! === '' ? (
-                <a href={`${app.AccessMethodLink}`} target="_blank">
-                  {app.AccessMethodLink}
-                </a>
-              ) : (
-                ''
-              )}
-            </p>
-            {app.Email !== '' ? (
-              <div className="line-elements">
-                <GoAIcon type="mail" theme="outline" />
-                <ExternalLink
-                  link={`mailto:${app.Email}`}
-                  text={app.Provider}
-                />
+            return (
+              <div key={`${id}`}>
+                <h3 id={`${id}`}>{title}</h3>
+                {renderContent(name, app)}
+                <GoASpacer vSpacing="l" />
               </div>
-            ) : (
-              ''
-            )}
-            {app.Phone !== '' ? (
-              <>
-                <GoASpacer vSpacing="s" />
-                <div className="line-elements">
-                  <GoAIcon type="call" theme="outline" />
-                  <ExternalLink link={`tel:${app.Phone}`} text={app.Phone} />
-                </div>
-              </>
-            ) : (
-              ''
-            )}
-          </>
-        ) : (
-          ''
-        )}
+            );
+          })}
 
-        {app.AccessMethod === 'Slack' ? (
-          <>
-            <h3>Slack support channel</h3>
-            <div className="line-elements">
-              <GoAIcon type="logo-slack" theme="outline" />
-              <ExternalLink
-                link={app.AccessMethodLink}
-                text={app.AccessMethodDetails}
-              />
-            </div>
-          </>
-        ) : (
-          ''
-        )}
         <GoASpacer vSpacing="3xl" />
 
         <div className="line-elements back-top">

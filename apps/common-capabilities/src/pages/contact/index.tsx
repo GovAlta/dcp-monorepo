@@ -26,11 +26,11 @@ export default function ContactPage(): JSX.Element {
             text="Common capabilities team"
           />
         </div>
-        <h3>Slack support channel </h3>
+        <h3>Teams support channel </h3>
         <div className='line-elements'>
-          <GoAIcon type="logo-slack" theme='outline' />
+          <GoAIcon type="person" theme='outline' />
           <ExternalLink
-            link="https://goa-dio.slack.com/channels/commoncapabilities"
+            link="https://teams.microsoft.com/l/channel/19%3aTzamGNMm-n21VoLqbCiU68hxpp3TuCKVAqHurh78-j01%40thread.tacv2/General?groupId=169394f7-780d-40eb-ab1e-a0b68b828b76&tenantId=2bb51c06-af9b-42c5-8bf5-3c3b7b10850b"
             text="Common capabilities team"
           />
         </div>
