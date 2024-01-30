@@ -15,7 +15,7 @@ interface CardProps {
 }
 
 const Card = ({ provider, description, title, app }: CardProps) => {
-  const maxDescriptionLength = 180; // word count
+  const maxDescriptionLength = 200; // word length for short descpription in tile.
   const badgesToShow = ['Status', 'FunctionalGroup', 'Language', 'Keywords'];
   const [items, setItems] = useState<any>({
     badges: [],
