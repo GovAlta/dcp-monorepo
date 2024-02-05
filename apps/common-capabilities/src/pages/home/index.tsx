@@ -247,7 +247,9 @@ export default function HomePage(): JSX.Element {
         processes. These components are known for being reusable, able to make
         operations more efficient, in line with the organization's goals, and
         compatible with existing systems. We provide here a listing of common
-        capabilities to explore. For specific inquiries, we recommend reaching out to the respective teams who are owners for capabilities.
+        capabilities to explore. For specific inquiries, we recommend reaching
+        out to the respective teams who are owners for capabilities. Refer to{' '}
+        <a href="/contact/index.html#faq-section">FAQ</a> page for more details.
       </p>
 
       <GoASpacer vSpacing="xl" />
