@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "02/01/2024, 15:20",
+    "lastUpdated": "02/01/2024, 16:08",
     "mostRecentService": "10/15/2023",
     "dateFormat": "mm/dd/yyyy",
     "services": [
@@ -18,9 +18,9 @@
                 "Openshift"
             ],
             "Language": [
-                "other"
+                "Other"
             ],
-            "UsageMethod": "other",
+            "UsageMethod": "Other",
             "SupportLevel": "Hybrid",
             "Documentation": [
                 {
@@ -57,25 +57,25 @@
             "ServiceName": "1GX Legacy IMAGIS integration",
             "Provider": "Service Integration",
             "Audience": [
-                "other"
+                "Other"
             ],
             "InternalWeightage": "10",
             "Summary": "Interfaces between 1GX and GoA business applications using legacy IMAGIS format.",
             "Description": "Interfaces between 1GX and GoA business applications using iSuite to send/receive files in legacy IMAGIS format. This integration is for legacy GoA applications, it will be phased out and replaced by direct API type of integration with 1GX.",
             "FunctionalGroup": "Workflow and Process Automation",
             "Environment": [
-                "other"
+                "Other"
             ],
             "Language": [
-                "other"
+                "Other"
             ],
-            "UsageMethod": "other",
+            "UsageMethod": "Other",
             "SupportLevel": "Hybrid",
             "Documentation": [],
             "Keywords": [
                 "IMAGIS"
             ],
-            "Status": "other",
+            "Status": "Other",
             "Version": "",
             "UseCases": "",
             "Prerequisites": "",
@@ -101,19 +101,19 @@
             "ServiceName": "Access service",
             "Provider": "Alberta Digital Service Platform (ADSP)",
             "Audience": [
-                "other"
+                "Other"
             ],
             "InternalWeightage": "10",
             "Summary": "A deployment of Keycloak, providing user authentication and authorization services.",
             "Description": "The Access Service is a deployment of Keycloak, which provides Realms to tenants and serves as the basis for user access management.  As a federated IDP, Keycloak provides user authentication and authorization services, helping you to your tenant secure.  On top of Keycloak, the Access Service provides the user roles necessary to use all other ADSP services.",
             "FunctionalGroup": "User Access and Identity",
             "Environment": [
-                "other"
+                "Other"
             ],
             "Language": [
-                "other"
+                "Other"
             ],
-            "UsageMethod": "other",
+            "UsageMethod": "Other",
             "SupportLevel": "Hybrid",
             "Documentation": [
                 {
@@ -155,19 +155,19 @@
             "ServiceName": "Address validation service",
             "Provider": "Service Integration",
             "Audience": [
-                "other"
+                "Other"
             ],
             "InternalWeightage": "10",
             "Summary": "Uses incremental \"Canada Post\" searches to find an address and provide the full address details.",
             "Description": "Allows ease of mailing address data entry and validation through 2 endpoints that allow incremental searches to find the correct address and provide the full address details of the selected result.  This service leverages \"Canada Post - Address Complete\" for it's validation repository.",
             "FunctionalGroup": "Other Function",
             "Environment": [
-                "other"
+                "Other"
             ],
             "Language": [
-                "other"
+                "Other"
             ],
-            "UsageMethod": "other",
+            "UsageMethod": "Other",
             "SupportLevel": "Hybrid",
             "Documentation": [
                 {
@@ -176,7 +176,7 @@
                 }
             ],
             "Keywords": [],
-            "Status": "other",
+            "Status": "Other",
             "Version": "",
             "UseCases": "",
             "Prerequisites": "Users will need to submit a Address Validation Service Intake Request to the Service Integration Team via BERNIE \"Service Integration Consultation\" online form submission to request this service.",
@@ -202,23 +202,23 @@
             "ServiceName": "Alberta holidays",
             "Provider": "SCSS",
             "Audience": [
-                "other"
+                "Other"
             ],
             "InternalWeightage": "10",
             "Summary": "DayJS plugin with information about stat holidays in Alberta",
             "Description": "A DayJS plugin for the information about statutory holidays in Alberta",
             "FunctionalGroup": "Other Function",
             "Environment": [
-                "other"
+                "Other"
             ],
             "Language": [
                 "TypeScript (dayjs)"
             ],
-            "UsageMethod": "other",
-            "SupportLevel": "other",
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
             "Documentation": [],
             "Keywords": [],
-            "Status": "other",
+            "Status": "Other",
             "Version": "",
             "UseCases": "",
             "Prerequisites": "",
@@ -244,7 +244,7 @@
             "ServiceName": "Alberta vital statistics API",
             "Provider": "Platforms - Common Data Services",
             "Audience": [
-                "other"
+                "Other"
             ],
             "InternalWeightage": "10",
             "Summary": "Verify new borns and deceased individuals using Alberta Vital Statistics.",
@@ -282,7 +282,7 @@
             "ServiceName": "Alberta.ca account",
             "Provider": "Platforms - IAM",
             "Audience": [
-                "other"
+                "Other"
             ],
             "InternalWeightage": "100",
             "Summary": "An IAM platform that provides federated sign on and identity verification for citizens accessing on-line services",
@@ -294,7 +294,7 @@
             "Language": [
                 "ForgeRock"
             ],
-            "UsageMethod": "other",
+            "UsageMethod": "Other",
             "SupportLevel": "24x7",
             "Documentation": [
                 {
@@ -334,17 +334,17 @@
             "ServiceName": "API gateway as a service",
             "Provider": "Service Integration",
             "Audience": [
-                "other"
+                "Other"
             ],
             "InternalWeightage": "10",
             "Summary": "Provides protection, monitoring and performance metrics for APIs. Can act as a firewall, router & DDOS protection for APIs. Also supports advanced features like \"custom claims\".",
             "Description": "Provides protection, monitoring and performance metrics for APIs.  The gateway can act as a firewall, router & DDOS protection for APIs and supports advanced features like \"custom claims\".  The gateway service is available for both internal/external and on-prem/cloud APIs.  This service leverages the Digital Identiity Gateway for API authentication.",
             "FunctionalGroup": "User Access and Identity",
             "Environment": [
-                "other"
+                "Other"
             ],
             "Language": [
-                "other"
+                "Other"
             ],
             "UsageMethod": "API",
             "SupportLevel": "Hybrid",
@@ -355,7 +355,7 @@
                 }
             ],
             "Keywords": [],
-            "Status": "other",
+            "Status": "Other",
             "Version": "",
             "UseCases": "",
             "Prerequisites": "Users will need to submit a API gateway as a service Intake Request to the Service Integration Team via BERNIE \"Service Integration Consultation\" online form submission to request this service.",
@@ -381,7 +381,7 @@
             "ServiceName": "Automation framework architecture",
             "Provider": "Justice Digital",
             "Audience": [
-                "other"
+                "Other"
             ],
             "InternalWeightage": "10",
             "Summary": "A guide for developers & QA testers to get started with QA automation within your application.",
@@ -394,10 +394,10 @@
                 "Allure"
             ],
             "Language": [
-                "other"
+                "Other"
             ],
-            "UsageMethod": "other",
-            "SupportLevel": "other",
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
             "Documentation": [
                 {
                     "name": "QA+Automation",
@@ -433,7 +433,7 @@
             "ServiceName": "Banking  information verification API",
             "Provider": "Platforms - Common Data Services",
             "Audience": [
-                "other"
+                "Other"
             ],
             "InternalWeightage": "10",
             "Summary": "Validate financial institution number, branch number, and banking account number format.",
@@ -471,7 +471,7 @@
             "ServiceName": "Business reporting strategy",
             "Provider": "Justice Digital",
             "Audience": [
-                "other"
+                "Other"
             ],
             "InternalWeightage": "10",
             "Summary": "Using Amazon QuickSight visualization tool, create interactive dashboards, reports, and embedded analytics with single source of truth + automate Data Pipelines with a shared architecture pattern.",
@@ -483,8 +483,8 @@
             "Language": [
                 "Python"
             ],
-            "UsageMethod": "other",
-            "SupportLevel": "other",
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
             "Documentation": [
                 {
                     "name": "Business+Reporting",
@@ -520,19 +520,19 @@
             "ServiceName": "Calendar service",
             "Provider": "Alberta Digital Service Platform (ADSP)",
             "Audience": [
-                "other"
+                "Other"
             ],
             "InternalWeightage": "10",
             "Summary": "Schedule events for end users. Front-end calendar widget (daily, weekly, or monthly). Supports persistent events, managing attendees, event queries, and automatic time-zone conversion.",
             "Description": "Provides the capability for scheduling events like meetings, appointments, or similar activities for your application's end users.  ADSP gives you full backend support for creating persistent events, managing attendees, event queries, and automatic time-zone conversion.  It can be used to populate any front-end calendar widget with daily, weekly, or monthly entries.",
             "FunctionalGroup": "Workflow and Process Automation",
             "Environment": [
-                "other"
+                "Other"
             ],
             "Language": [
-                "other"
+                "Other"
             ],
-            "UsageMethod": "other",
+            "UsageMethod": "Other",
             "SupportLevel": "Hybrid",
             "Documentation": [
                 {
@@ -585,7 +585,7 @@
                 "Angular"
             ],
             "UsageMethod": "Code share",
-            "SupportLevel": "other",
+            "SupportLevel": "Other",
             "Documentation": [],
             "Keywords": [
                 "Keycloak"
@@ -629,7 +629,7 @@
                 "React"
             ],
             "UsageMethod": "Code share",
-            "SupportLevel": "other",
+            "SupportLevel": "Other",
             "Documentation": [],
             "Keywords": [
                 "Keycloak"
@@ -673,7 +673,7 @@
                 "Svelte"
             ],
             "UsageMethod": "Code share",
-            "SupportLevel": "other",
+            "SupportLevel": "Other",
             "Documentation": [],
             "Keywords": [],
             "Status": "Live",
@@ -702,7 +702,7 @@
             "ServiceName": "Child care benefits (CCB) validation API",
             "Provider": "Platforms - Common Data Services",
             "Audience": [
-                "other"
+                "Other"
             ],
             "InternalWeightage": "10",
             "Summary": "Validation API for a Alberta government program, child care benefits. Data usage involves a MOU with CRA and Treasury Board and Finance, as well as a privacy assessment.",
@@ -752,8 +752,8 @@
             "Language": [
                 "Web API"
             ],
-            "UsageMethod": "other",
-            "SupportLevel": "other",
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
             "Documentation": [],
             "Keywords": [
                 "API"
@@ -784,7 +784,7 @@
             "ServiceName": "Cloud native approach and DevSecOps",
             "Provider": "Justice Digital",
             "Audience": [
-                "other"
+                "Other"
             ],
             "InternalWeightage": "10",
             "Summary": "Cloud native: build, deploy and manage modern applications in cloud computing environments.",
@@ -800,8 +800,8 @@
                 "TypeScript",
                 ".NET Core"
             ],
-            "UsageMethod": "other",
-            "SupportLevel": "other",
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
             "Documentation": [
                 {
                     "name": "Architecture+Recommendations+Cloud+Native+approach",
@@ -837,7 +837,7 @@
             "ServiceName": "Comments service",
             "Provider": "Advanced Education",
             "Audience": [
-                "other"
+                "Other"
             ],
             "InternalWeightage": "10",
             "Summary": "Provides functionality associated to attaching comments to an object for storage and retrieval.",
@@ -849,8 +849,8 @@
             "Language": [
                 "TypeScript"
             ],
-            "UsageMethod": "other",
-            "SupportLevel": "other",
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
             "Documentation": [],
             "Keywords": [],
             "Status": "Live",
@@ -879,7 +879,7 @@
             "ServiceName": "Common payment portal",
             "Provider": "Platforms -Common Platforms",
             "Audience": [
-                "other"
+                "Other"
             ],
             "InternalWeightage": "10",
             "Summary": "A common cloud-based portal which enables business programs to quickly spin up customized payment portals suporting emergency or payment initiatives",
@@ -891,11 +891,11 @@
             "Language": [
                 ".NET Core"
             ],
-            "UsageMethod": "other",
-            "SupportLevel": "other",
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
             "Documentation": [],
             "Keywords": [],
-            "Status": "other",
+            "Status": "Other",
             "Version": "",
             "UseCases": "",
             "Prerequisites": "",
@@ -915,7 +915,7 @@
             "ServiceName": "Common payment services",
             "Provider": "Platforms -Common Platforms",
             "Audience": [
-                "other"
+                "Other"
             ],
             "InternalWeightage": "10",
             "Summary": "A common cloud-based API services which enable payment portals with making payments and reconciling payments end-to-end.",
@@ -927,11 +927,11 @@
             "Language": [
                 ".NET Core"
             ],
-            "UsageMethod": "other",
-            "SupportLevel": "other",
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
             "Documentation": [],
             "Keywords": [],
-            "Status": "other",
+            "Status": "Other",
             "Version": "",
             "UseCases": "",
             "Prerequisites": "",
@@ -951,7 +951,7 @@
             "ServiceName": "Communication confirmation service",
             "Provider": "Advanced Education",
             "Audience": [
-                "other"
+                "Other"
             ],
             "InternalWeightage": "10",
             "Summary": "Provides a code which can be used to verify email address and SMS messaging.",
@@ -963,8 +963,8 @@
             "Language": [
                 ".NET"
             ],
-            "UsageMethod": "other",
-            "SupportLevel": "other",
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
             "Documentation": [],
             "Keywords": [],
             "Status": "Live",
@@ -993,7 +993,7 @@
             "ServiceName": "Communication service",
             "Provider": "Advanced Education",
             "Audience": [
-                "other"
+                "Other"
             ],
             "InternalWeightage": "10",
             "Summary": "Wrapper over Alberta Notify service and is intended to provide fault tolerance & guaranteed delivery",
@@ -1005,8 +1005,8 @@
             "Language": [
                 "TypeScript"
             ],
-            "UsageMethod": "other",
-            "SupportLevel": "other",
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
             "Documentation": [],
             "Keywords": [
                 "API"
@@ -1037,19 +1037,19 @@
             "ServiceName": "Configuration Service",
             "Provider": "Alberta Digital Service Platform (ADSP)",
             "Audience": [
-                "other"
+                "Other"
             ],
             "InternalWeightage": "10",
             "Summary": "Allows optimally storage, cache, and static data usage within your application. Ensuring persistent, schema-compliant, configuration storage.",
             "Description": "Use the configuration service to optimally store, and cache, static data used to drive your application.  The service ensures persistent, and schema-compliant, configuration storage using a JSON document store. Write operations will be validated against the schema for accurate and consistent data.",
             "FunctionalGroup": "Data Management",
             "Environment": [
-                "other"
+                "Other"
             ],
             "Language": [
-                "other"
+                "Other"
             ],
-            "UsageMethod": "other",
+            "UsageMethod": "Other",
             "SupportLevel": "Hybrid",
             "Documentation": [
                 {
@@ -1089,7 +1089,7 @@
             "ServiceName": "Course mark inquiry",
             "Provider": "Advanced Education",
             "Audience": [
-                "other"
+                "Other"
             ],
             "InternalWeightage": "10",
             "Summary": "Interfaces to Alberta Education to retrieve transcript information.",
@@ -1101,8 +1101,8 @@
             "Language": [
                 ".NET"
             ],
-            "UsageMethod": "other",
-            "SupportLevel": "other",
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
             "Documentation": [],
             "Keywords": [],
             "Status": "Live",
@@ -1145,8 +1145,8 @@
                 ".NET Core",
                 "TypeScript"
             ],
-            "UsageMethod": "other",
-            "SupportLevel": "other",
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
             "Documentation": [
                 {
                     "name": "Shared+Services",
@@ -1194,10 +1194,10 @@
                 "AWS"
             ],
             "Language": [
-                "other"
+                "Other"
             ],
-            "UsageMethod": "other",
-            "SupportLevel": "other",
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
             "Documentation": [
                 {
                     "name": "Data+Governance",
@@ -1233,7 +1233,7 @@
             "ServiceName": "DDD design system",
             "Provider": "Digital Design and Delivery (DDD)",
             "Audience": [
-                "other"
+                "Other"
             ],
             "InternalWeightage": "100",
             "Summary": "A design system for designers and developers to create consistent and cohesive user experiences across multiple products and platforms.",
@@ -1248,8 +1248,8 @@
                 "Angular",
                 "React"
             ],
-            "UsageMethod": "other",
-            "SupportLevel": "other",
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
             "Documentation": [
                 {
                     "name": "design.alberta.ca",
@@ -1291,19 +1291,19 @@
             "ServiceName": "Directory service",
             "Provider": "Alberta Digital Service Platform (ADSP)",
             "Audience": [
-                "other"
+                "Other"
             ],
             "InternalWeightage": "10",
             "Summary": "Provides a central register of service APIs",
             "Description": "As a central register of APIs, the Directory Service gives you a means for service discovery.  They can use the Directory Service to find service URLs and decouple application code from changes in the URL due to, for example, a newer version, or a change in the application's environment.",
             "FunctionalGroup": "Workflow and Process Automation",
             "Environment": [
-                "other"
+                "Other"
             ],
             "Language": [
-                "other"
+                "Other"
             ],
-            "UsageMethod": "other",
+            "UsageMethod": "Other",
             "SupportLevel": "Hybrid",
             "Documentation": [
                 {
@@ -1345,19 +1345,19 @@
             "ServiceName": "Document service",
             "Provider": "Service Integration",
             "Audience": [
-                "other"
+                "Other"
             ],
             "InternalWeightage": "10",
             "Summary": "Document manipulation such as: Mail Merges, PDF Form Filling and PDF Redaction. Supports formats such as .docx, .xlsx, pdf, etc.",
             "Description": "Provides a number of document manipulation features including:  Mail Merges, PDF Form Filling and PDF Redaction.  This service supports a number of input and output formats (.docx, .xlsx, pdf, etc.)  -->  Enhancement requests can be made for additional features",
             "FunctionalGroup": "Document Processing",
             "Environment": [
-                "other"
+                "Other"
             ],
             "Language": [
-                "other"
+                "Other"
             ],
-            "UsageMethod": "other",
+            "UsageMethod": "Other",
             "SupportLevel": "Hybrid",
             "Documentation": [
                 {
@@ -1370,7 +1370,7 @@
                 "Xlsx",
                 "Pdf"
             ],
-            "Status": "other",
+            "Status": "Other",
             "Version": "",
             "UseCases": "",
             "Prerequisites": "Users will need to submit a Document service Intake Request to the Service Integration Team via BERNIE \"Service Integration Consultation\" online form submission to request this service.",
@@ -1396,19 +1396,19 @@
             "ServiceName": "ECM (OpenText) connector service",
             "Provider": "Service Integration",
             "Audience": [
-                "other"
+                "Other"
             ],
             "InternalWeightage": "10",
             "Summary": "Allows basic file management of project-specific content within ECM systems (e.g., file creation, modification, metadata, etc.) for OpenText.",
             "Description": "The Electronic Content Management (ECM) Connector is a representational state transfer (REST) application programming interface (API) that allows file management of Government of Alberta (GoA) content within ECM systems (e.g. file creation, modification, metadata, etc.).\n\nThe ECM Connector takes REST calls and translates them into a format that is understood by the proprietary Open Text LIVELINK web services (LAPI) running on the GoA's OpenText Enterprise Content Servers (ECSS) server.",
             "FunctionalGroup": "File Handling and Storage",
             "Environment": [
-                "other"
+                "Other"
             ],
             "Language": [
-                "other"
+                "Other"
             ],
-            "UsageMethod": "other",
+            "UsageMethod": "Other",
             "SupportLevel": "Hybrid",
             "Documentation": [
                 {
@@ -1417,7 +1417,7 @@
                 }
             ],
             "Keywords": [],
-            "Status": "other",
+            "Status": "Other",
             "Version": "",
             "UseCases": "",
             "Prerequisites": "",
@@ -1443,19 +1443,19 @@
             "ServiceName": "Electronic signature - self-service user portal",
             "Provider": "Service Integration",
             "Audience": [
-                "other"
+                "Other"
             ],
             "InternalWeightage": "10",
             "Summary": "Allows the user to access the platform to create and send envelopes, monitor and administer user activity and manage other aspects of the e-signature business process and workflow.",
             "Description": "The eSignature is a cloud-based service that allows subscribers to prepare and send documents for electronic signatures.  With this service, subscribers can send contracts and agreements to both GoA internal and external clients for signatures and approvals.  The service is secure, cost-effective, timesaving, user-friendly, and compliant with GoA guidelines and standards.  The signed documents are protected, and the signers are uniquely identified by using multiple authentication methods.\n\nThe following tasks can be performed using this request:\n\nRequest a consultation with the eSignature support team\nSubscribe to the eSignature service\nAdd, change, and remove users from your eSignature service subscription\nAssign signature projects to users\nCancel the eSignature service subscription\nYou are encouraged to request a consultation to learn more about the service before subscribing to the service.  During the consultation meeting, you are provided with the service features, costs, and details on the subscription process.",
             "FunctionalGroup": "Document Processing",
             "Environment": [
-                "other"
+                "Other"
             ],
             "Language": [
-                "other"
+                "Other"
             ],
-            "UsageMethod": "other",
+            "UsageMethod": "Other",
             "SupportLevel": "Hybrid",
             "Documentation": [
                 {
@@ -1464,7 +1464,7 @@
                 }
             ],
             "Keywords": [],
-            "Status": "other",
+            "Status": "Other",
             "Version": "",
             "UseCases": "",
             "Prerequisites": "",
@@ -1490,19 +1490,19 @@
             "ServiceName": "Email API service",
             "Provider": "Service Integration",
             "Audience": [
-                "other"
+                "Other"
             ],
             "InternalWeightage": "10",
             "Summary": "A powerful email service with similar or more capabilities than your outlook client.",
             "Description": "Sends emails to one or many recipients with multiple parameters: To, CC and BCC, ability to specify a FROM recipient, supply a subject line, options for the message body such as HTML, Rich Text or Plain Text, and the sender can attach one or more attachments to the  email.  Provides similar formatting capabilities as your outlook client.",
             "FunctionalGroup": "Notifications and Communication",
             "Environment": [
-                "other"
+                "Other"
             ],
             "Language": [
-                "other"
+                "Other"
             ],
-            "UsageMethod": "other",
+            "UsageMethod": "Other",
             "SupportLevel": "Hybrid",
             "Documentation": [
                 {
@@ -1513,7 +1513,7 @@
             "Keywords": [
                 "Email"
             ],
-            "Status": "other",
+            "Status": "Other",
             "Version": "",
             "UseCases": "",
             "Prerequisites": "",
@@ -1539,7 +1539,7 @@
             "ServiceName": "Employment insurance (EI) gateway",
             "Provider": "Advanced Education",
             "Audience": [
-                "other"
+                "Other"
             ],
             "InternalWeightage": "10",
             "Summary": "An API proxy that consumes Government of Canada employment API endpoints and handles security and API aggregation.",
@@ -1551,8 +1551,8 @@
             "Language": [
                 "TypeScript"
             ],
-            "UsageMethod": "other",
-            "SupportLevel": "other",
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
             "Documentation": [],
             "Keywords": [
                 "API"
@@ -1583,19 +1583,19 @@
             "ServiceName": "Event service",
             "Provider": "Alberta Digital Service Platform (ADSP)",
             "Audience": [
-                "other"
+                "Other"
             ],
             "InternalWeightage": "10",
             "Summary": "Provides capability for applications to define, and log, domain events giving an easy implement traceability, auditability, accountability and transparency.  Often coupled with other ADSP services.",
             "Description": "The event service provides the capability for applications to define, and log, domain events.  This gives them an easy way to implement traceability, auditability, accountability and transparency.  In addition the service is often coupled, and used in conjunction with, other ADSP services. E.G an application is using the Notification Service it would use specific domain events to trigger notifications.",
             "FunctionalGroup": "Notifications and Communication",
             "Environment": [
-                "other"
+                "Other"
             ],
             "Language": [
-                "other"
+                "Other"
             ],
-            "UsageMethod": "other",
+            "UsageMethod": "Other",
             "SupportLevel": "Hybrid",
             "Documentation": [
                 {
@@ -1635,7 +1635,7 @@
             "ServiceName": "File handling shared services",
             "Provider": "Justice Digital",
             "Audience": [
-                "other"
+                "Other"
             ],
             "InternalWeightage": "10",
             "Summary": "Document Upload and Download using consistent architecture.",
@@ -1649,8 +1649,8 @@
                 ".NET Core",
                 "TypeScript"
             ],
-            "UsageMethod": "other",
-            "SupportLevel": "other",
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
             "Documentation": [
                 {
                     "name": "Shared+Services",
@@ -1689,19 +1689,19 @@
             "ServiceName": "File service",
             "Provider": "Alberta Digital Service Platform (ADSP)",
             "Audience": [
-                "other"
+                "Other"
             ],
             "InternalWeightage": "10",
             "Summary": "Provides capabilities for uploading and managing files in Microsoft's Azure Blob Storage.  Includes support for virus scanning, access control, retention policy, retrieval, and searching.",
             "Description": "Provides capabilities for uploading and managing files in Microsoft's Azure Blob Storage.  It includes support for virus scanning, access control, retention policy, retrieval, and searching. The service is intended to give applications a means to manage temporary files (e.g. retention policy < 30 days), or whose content is not directly needed by the application's business users.",
             "FunctionalGroup": "File Handling and Storage",
             "Environment": [
-                "other"
+                "Other"
             ],
             "Language": [
-                "other"
+                "Other"
             ],
-            "UsageMethod": "other",
+            "UsageMethod": "Other",
             "SupportLevel": "Hybrid",
             "Documentation": [
                 {
@@ -1741,19 +1741,19 @@
             "ServiceName": "Form service",
             "Provider": "Alberta Digital Service Platform (ADSP)",
             "Audience": [
-                "other"
+                "Other"
             ],
             "InternalWeightage": "10",
             "Summary": "Capture information from users securely, and keep them informed on the status of their submission without requiring them to log in to your application.",
             "Description": "Capture information from users securely, and keep them informed on the status of their submission without requiring them to log in to your application.  Data can be entered and modified over multiple sessions; users are sent a verification code each time they wish to revisit the submission.",
             "FunctionalGroup": "Document Processing",
             "Environment": [
-                "other"
+                "Other"
             ],
             "Language": [
-                "other"
+                "Other"
             ],
-            "UsageMethod": "other",
+            "UsageMethod": "Other",
             "SupportLevel": "Hybrid",
             "Documentation": [],
             "Keywords": [],
@@ -1800,8 +1800,8 @@
             "Language": [
                 "Angular"
             ],
-            "UsageMethod": "other",
-            "SupportLevel": "other",
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
             "Documentation": [],
             "Keywords": [],
             "Status": "Live",
@@ -1843,7 +1843,7 @@
                 "Web API"
             ],
             "UsageMethod": "API",
-            "SupportLevel": "other",
+            "SupportLevel": "Other",
             "Documentation": [],
             "Keywords": [
                 "Keycloak",
@@ -1887,8 +1887,8 @@
             "Language": [
                 "Angular"
             ],
-            "UsageMethod": "other",
-            "SupportLevel": "other",
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
             "Documentation": [],
             "Keywords": [],
             "Status": "Live",
@@ -1932,8 +1932,8 @@
                 ".NET Core",
                 "IaC using CDK"
             ],
-            "UsageMethod": "other",
-            "SupportLevel": "other",
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
             "Documentation": [
                 {
                     "name": "2mv1hUmh",
@@ -1969,7 +1969,7 @@
             "ServiceName": "Income validation API",
             "Provider": "Platforms - Common Data Services",
             "Audience": [
-                "other"
+                "Other"
             ],
             "InternalWeightage": "10",
             "Summary": "Verification of the applicant's personal income and/or family income under a specific threshold.",
@@ -1981,7 +1981,7 @@
             "Language": [
                 ".NET Core"
             ],
-            "UsageMethod": "other",
+            "UsageMethod": "Other",
             "SupportLevel": "TBD",
             "Documentation": [],
             "Keywords": [
@@ -2007,25 +2007,25 @@
             "ServiceName": "Keycloak client",
             "Provider": "SCSS",
             "Audience": [
-                "other"
+                "Other"
             ],
             "InternalWeightage": "10",
             "Summary": "Privately hosted Keycloak client npm package",
             "Description": "Privately hosted Keycloak client npm package",
             "FunctionalGroup": "User Access and Identity",
             "Environment": [
-                "other"
+                "Other"
             ],
             "Language": [
                 "Angular"
             ],
-            "UsageMethod": "other",
-            "SupportLevel": "other",
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
             "Documentation": [],
             "Keywords": [
                 "Keycloak"
             ],
-            "Status": "other",
+            "Status": "Other",
             "Version": "",
             "UseCases": "",
             "Prerequisites": "",
@@ -2051,20 +2051,20 @@
             "ServiceName": "Keycloak integration with DIG",
             "Provider": "Wildfire Platform",
             "Audience": [
-                "other"
+                "Other"
             ],
             "InternalWeightage": "10",
             "Summary": "Pattern to integrate authentication with Alberta.ca MADI-B and GoA Azure AD though DIG.",
             "Description": "Pattern to integrate authentication with Alberta.ca MADI-B and GoA Azure AD though DIG. Keycloak delegates authentication to external IdP but handles user authorization and generate access_token",
             "FunctionalGroup": "User Access and Identity",
             "Environment": [
-                "other"
+                "Other"
             ],
             "Language": [
-                "other"
+                "Other"
             ],
-            "UsageMethod": "other",
-            "SupportLevel": "other",
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
             "Documentation": [
                 {
                     "name": "AutN+AuthZ+Options",
@@ -2074,7 +2074,7 @@
             "Keywords": [
                 "Keycloak"
             ],
-            "Status": "other",
+            "Status": "Other",
             "Version": "",
             "UseCases": "",
             "Prerequisites": "Have a Keycloak realm available",
@@ -2100,7 +2100,7 @@
             "ServiceName": "MyAlberta digital ID for business (MADI-B)",
             "Provider": "Platforms - IAM",
             "Audience": [
-                "other"
+                "Other"
             ],
             "InternalWeightage": "10",
             "Summary": "An IAM platform that provides federated sign on for businesses and their staff accessing on-line services.",
@@ -2113,7 +2113,7 @@
             "Language": [
                 "ForgeRock"
             ],
-            "UsageMethod": "other",
+            "UsageMethod": "Other",
             "SupportLevel": "24x7",
             "Documentation": [],
             "Keywords": [],
@@ -2148,23 +2148,23 @@
             "ServiceName": "Nagios monitoring service",
             "Provider": "Service Integration",
             "Audience": [
-                "other"
+                "Other"
             ],
             "InternalWeightage": "10",
             "Summary": "Enterprise monitoring service (primary platform used within GoA). Has a wide degree of monitoring and alerting options.",
             "Description": "This enterprise monitoring service has a wide degree of monitoring and alerting options that can be setup for your needs.  This is the primary monitoring platform used within GoA.",
             "FunctionalGroup": "Service Monitoring and Support",
             "Environment": [
-                "other"
+                "Other"
             ],
             "Language": [
-                "other"
+                "Other"
             ],
-            "UsageMethod": "other",
+            "UsageMethod": "Other",
             "SupportLevel": "Hybrid",
             "Documentation": [],
             "Keywords": [],
-            "Status": "other",
+            "Status": "Other",
             "Version": "",
             "UseCases": "",
             "Prerequisites": "",
@@ -2190,19 +2190,19 @@
             "ServiceName": "Notification service",
             "Provider": "Alberta Digital Service Platform (ADSP)",
             "Audience": [
-                "other"
+                "Other"
             ],
             "InternalWeightage": "10",
             "Summary": "Enable text or email notifications in your application.  Build customizable templates to send automated personalized messages, such as needing approval, or action reminders.",
             "Description": "Enable text or email notifications in your application through the ADSP Notification Service.  Build customizable templates and use these to send personalized messages to your users upon the occurrence of specific \"domain events\" in your application, such as receiving approval for a submission, or reminders to take some action.",
             "FunctionalGroup": "Notifications and Communication",
             "Environment": [
-                "other"
+                "Other"
             ],
             "Language": [
-                "other"
+                "Other"
             ],
-            "UsageMethod": "other",
+            "UsageMethod": "Other",
             "SupportLevel": "Hybrid",
             "Documentation": [
                 {
@@ -2242,7 +2242,7 @@
             "ServiceName": "Notifications",
             "Provider": "SCSS",
             "Audience": [
-                "other"
+                "Other"
             ],
             "InternalWeightage": "10",
             "Summary": "Provides a message bus interface to AB Notify",
@@ -2254,11 +2254,11 @@
             "Language": [
                 "TypeScript"
             ],
-            "UsageMethod": "other",
-            "SupportLevel": "other",
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
             "Documentation": [],
             "Keywords": [],
-            "Status": "other",
+            "Status": "Other",
             "Version": "",
             "UseCases": "",
             "Prerequisites": "",
@@ -2278,20 +2278,20 @@
             "ServiceName": "OAuth BFF flow implementation",
             "Provider": "Wildfire Platform",
             "Audience": [
-                "other"
+                "Other"
             ],
             "InternalWeightage": "10",
             "Summary": "Notes on OAuth for Browser-Based Apps",
             "Description": "This specification details the threats, attack consequences, security considerations and best practices that must be taken into account when developing browser-based applications that use OAuth 2.0.\n\nPattern to implement OAuth BFF Proxy flow described here\nhttps://datatracker.ietf.org/doc/html/draft-ietf-oauth-browser-based-apps#name-backend-for-frontend-bff-pr",
             "FunctionalGroup": "User Access and Identity",
             "Environment": [
-                "other"
+                "Other"
             ],
             "Language": [
                 ".NET Core"
             ],
-            "UsageMethod": "other",
-            "SupportLevel": "other",
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
             "Documentation": [
                 {
                     "name": "Admin+RestAPI+request+flow",
@@ -2303,7 +2303,7 @@
                 }
             ],
             "Keywords": [],
-            "Status": "other",
+            "Status": "Other",
             "Version": "",
             "UseCases": "",
             "Prerequisites": "The implementation is using BFF Duende framework, license might be required",
@@ -2329,19 +2329,19 @@
             "ServiceName": "Payment gateway service",
             "Provider": "Service Integration",
             "Audience": [
-                "other"
+                "Other"
             ],
             "InternalWeightage": "10",
             "Summary": "A common e-payment service that offers a centralized electronic payment experience.   This service leverage the GoA TD Beanstream platform.",
             "Description": "The Payment Gateway Service (PGS) offers a centralized electronic payment experience with the GoA using the TD Online Mart online payments solution. This standardized approach has many advantages over direct integration with current payment providers, such as:  \n\nApplication insulation from organizational change. When the payment provider changes, the application code does not. Consequently, PGS can seamlessly manage a new payment provider without manual intervention. \nBusiness areas no longer have to complete the Payment Card Industry Self-Assessment Questionnaire (PCI SAQ) A type audits.",
             "FunctionalGroup": "Payments and Financial Management",
             "Environment": [
-                "other"
+                "Other"
             ],
             "Language": [
-                "other"
+                "Other"
             ],
-            "UsageMethod": "other",
+            "UsageMethod": "Other",
             "SupportLevel": "Hybrid",
             "Documentation": [
                 {
@@ -2350,7 +2350,7 @@
                 }
             ],
             "Keywords": [],
-            "Status": "other",
+            "Status": "Other",
             "Version": "",
             "UseCases": "",
             "Prerequisites": "Business area will require a merchant account for their transactions.  This can be obtained through TBF merchant services (the process to obtain a merchant account is documented as part of the onboarding procedures)",
@@ -2387,10 +2387,10 @@
                 "Wordline (Bambora)"
             ],
             "Language": [
-                "other"
+                "Other"
             ],
-            "UsageMethod": "other",
-            "SupportLevel": "other",
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
             "Documentation": [
                 {
                     "name": "Payment+Guide",
@@ -2426,7 +2426,7 @@
             "ServiceName": "PDF generation & merging",
             "Provider": "Justice Digital",
             "Audience": [
-                "other"
+                "Other"
             ],
             "InternalWeightage": "10",
             "Summary": "Justice Digital services use consistent architecture to facilitate PDF generation and merging functionality.",
@@ -2440,8 +2440,8 @@
                 ".NET Core",
                 "TypeScript"
             ],
-            "UsageMethod": "other",
-            "SupportLevel": "other",
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
             "Documentation": [
                 {
                     "name": "Shared+Services",
@@ -2479,19 +2479,19 @@
             "ServiceName": "PDF service",
             "Provider": "Alberta Digital Service Platform (ADSP)",
             "Audience": [
-                "other"
+                "Other"
             ],
             "InternalWeightage": "10",
             "Summary": "Creates customized GOA branded PDF documents for end users. Securely managed using Azure storage.",
             "Description": "Provides the capability for creating customized PDF documents for downloading by end users. By utilizing our editor to create templates and combining them with intake data, developers can easily create GOA branded PDFs.  The documents are uploaded to Azure Blob storage and can be managed there securely, throughout their lifecycle, with the ADSP file service.",
             "FunctionalGroup": "Document Processing",
             "Environment": [
-                "other"
+                "Other"
             ],
             "Language": [
-                "other"
+                "Other"
             ],
-            "UsageMethod": "other",
+            "UsageMethod": "Other",
             "SupportLevel": "Hybrid",
             "Documentation": [
                 {
@@ -2533,7 +2533,7 @@
             "ServiceName": "Program and provider registry",
             "Provider": "Advanced Education",
             "Audience": [
-                "other"
+                "Other"
             ],
             "InternalWeightage": "10",
             "Summary": "Contains programs, providers, specializations, session and cost information of the various private and public school mostly within Alberta.",
@@ -2545,8 +2545,8 @@
             "Language": [
                 ".NET"
             ],
-            "UsageMethod": "other",
-            "SupportLevel": "other",
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
             "Documentation": [],
             "Keywords": [],
             "Status": "Live",
@@ -2575,19 +2575,19 @@
             "ServiceName": "Push service",
             "Provider": "Alberta Digital Service Platform (ADSP)",
             "Audience": [
-                "other"
+                "Other"
             ],
             "InternalWeightage": "10",
             "Summary": "Provides a push mode gateway  for events, such as submissions received or payments made, so clients can receive information without polling.",
             "Description": "Provides a push mode gateway  to events emitted in the event service, so clients can receive information without the need for polling.  Use it to monitor event streams, such as submissions received or payments made, to create a responsive, real-time web application.",
             "FunctionalGroup": "Notifications and Communication",
             "Environment": [
-                "other"
+                "Other"
             ],
             "Language": [
-                "other"
+                "Other"
             ],
-            "UsageMethod": "other",
+            "UsageMethod": "Other",
             "SupportLevel": "Hybrid",
             "Documentation": [
                 {
@@ -2627,19 +2627,19 @@
             "ServiceName": "QR code service",
             "Provider": "Service Integration",
             "Audience": [
-                "other"
+                "Other"
             ],
             "InternalWeightage": "10",
             "Summary": "Create digital signatures QR Code images that can provide authenticity confirmation of Government of Alberta (GoA) digital/printed documents.",
             "Description": "Provides confirmation of the authenticity of digital and printed documents claimed as issued under the authority of GoA - Government of Alberta. Allows the user to create digital signatures in a form of QR (Quick Response) Code images which can then be verified by using this application or the third party solutions, like mobile or desktop custom applications.",
             "FunctionalGroup": "Document Processing",
             "Environment": [
-                "other"
+                "Other"
             ],
             "Language": [
-                "other"
+                "Other"
             ],
-            "UsageMethod": "other",
+            "UsageMethod": "Other",
             "SupportLevel": "Hybrid",
             "Documentation": [
                 {
@@ -2648,7 +2648,7 @@
                 }
             ],
             "Keywords": [],
-            "Status": "other",
+            "Status": "Other",
             "Version": "",
             "UseCases": "",
             "Prerequisites": "",
@@ -2674,19 +2674,19 @@
             "ServiceName": "Request an enterprise API",
             "Provider": "Service Integration",
             "Audience": [
-                "other"
+                "Other"
             ],
             "InternalWeightage": "10",
             "Summary": "Creating and maintaining Enterprise APIs. Please let us know if you have a service that would benefit the enterprise.",
             "Description": "The Service Integration team is responsible for creating and maintaining Enterprise APIs.  If there is a service you think would benefit the enterprise, contact the team and they might be able to create the capability you require.",
             "FunctionalGroup": "Other Function",
             "Environment": [
-                "other"
+                "Other"
             ],
             "Language": [
-                "other"
+                "Other"
             ],
-            "UsageMethod": "other",
+            "UsageMethod": "Other",
             "SupportLevel": "Hybrid",
             "Documentation": [
                 {
@@ -2695,7 +2695,7 @@
                 }
             ],
             "Keywords": [],
-            "Status": "other",
+            "Status": "Other",
             "Version": "",
             "UseCases": "",
             "Prerequisites": "",
@@ -2721,19 +2721,19 @@
             "ServiceName": "Script service",
             "Provider": "Alberta Digital Service Platform (ADSP)",
             "Audience": [
-                "other"
+                "Other"
             ],
             "InternalWeightage": "10",
             "Summary": "Quickly implement algorithmic change without having to redeploy an application. Such as , frequently changed calculations, or per-tenant basis calculations.",
             "Description": "Gives developers the ability to quickly implement algorithmic changes requested by clients, such as policy changes, without having to redeploy the application.  This is particularly useful for calculations that are changed frequently, or for multi-tenant applications that handle calculations on a per-tenant basis.",
             "FunctionalGroup": "Workflow and Process Automation",
             "Environment": [
-                "other"
+                "Other"
             ],
             "Language": [
-                "other"
+                "Other"
             ],
-            "UsageMethod": "other",
+            "UsageMethod": "Other",
             "SupportLevel": "Hybrid",
             "Documentation": [],
             "Keywords": [],
@@ -2768,23 +2768,23 @@
             "ServiceName": "SCSS Angular components",
             "Provider": "SCSS",
             "Audience": [
-                "other"
+                "Other"
             ],
             "InternalWeightage": "10",
             "Summary": "Common Angular UI components",
             "Description": "Common Angular UI components",
             "FunctionalGroup": "Other Function",
             "Environment": [
-                "other"
+                "Other"
             ],
             "Language": [
                 "Angular"
             ],
-            "UsageMethod": "other",
-            "SupportLevel": "other",
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
             "Documentation": [],
             "Keywords": [],
-            "Status": "other",
+            "Status": "Other",
             "Version": "",
             "UseCases": "",
             "Prerequisites": "",
@@ -2804,19 +2804,19 @@
             "ServiceName": "SharePoint online service",
             "Provider": "Service Integration",
             "Audience": [
-                "other"
+                "Other"
             ],
             "InternalWeightage": "10",
             "Summary": "Allows basic file management of project-specific content within ECM systems (e.g., file creation, modification, metadata, etc.).",
             "Description": "The Electronic Content Management (ECM) Connector is a representational state transfer (REST) application programming interface (API) that allows file management of Government of Alberta (GoA) content within ECM systems (e.g. file creation, modification, metadata, etc.).\n\nThe ECM Connector takes REST calls and translates them into a format that is understood by the proprietary Open Text LIVELINK web services (LAPI) running on the GoA's OpenText Enterprise Content Servers (ECSS) server.",
             "FunctionalGroup": "File Handling and Storage",
             "Environment": [
-                "other"
+                "Other"
             ],
             "Language": [
-                "other"
+                "Other"
             ],
-            "UsageMethod": "other",
+            "UsageMethod": "Other",
             "SupportLevel": "Hybrid",
             "Documentation": [
                 {
@@ -2825,7 +2825,7 @@
                 }
             ],
             "Keywords": [],
-            "Status": "other",
+            "Status": "Other",
             "Version": "",
             "UseCases": "",
             "Prerequisites": "",
@@ -2851,7 +2851,7 @@
             "ServiceName": "SIN validation service",
             "Provider": "Advanced Education",
             "Audience": [
-                "other"
+                "Other"
             ],
             "InternalWeightage": "10",
             "Summary": "Sending SIN & profile information to federal government for match and validation purposes.",
@@ -2863,7 +2863,7 @@
             "Language": [
                 ".NET"
             ],
-            "UsageMethod": "other",
+            "UsageMethod": "Other",
             "SupportLevel": "Hybrid",
             "Documentation": [],
             "Keywords": [],
@@ -2893,7 +2893,7 @@
             "ServiceName": "SMS gateway",
             "Provider": "Advanced Education",
             "Audience": [
-                "other"
+                "Other"
             ],
             "InternalWeightage": "10",
             "Summary": "Gateway for sending text messages.",
@@ -2905,8 +2905,8 @@
             "Language": [
                 ".NET"
             ],
-            "UsageMethod": "other",
-            "SupportLevel": "other",
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
             "Documentation": [],
             "Keywords": [],
             "Status": "Live",
@@ -2935,19 +2935,19 @@
             "ServiceName": "Splunk service",
             "Provider": "Service Integration",
             "Audience": [
-                "other"
+                "Other"
             ],
             "InternalWeightage": "10",
             "Summary": "This is an event management and correlation services that provides a holistic view of a service though dashboards, reports and alerts.  Splunk's primary monitoring capability is log/event based.",
             "Description": "Splunk is an advanced and scalable form of software that indexes and searches for log files within a system and analyzes data for operational intelligence. A web-based software platform using real-time processing and provides the Government of Alberta (GoA) business areas with 5 main functions:  collect and index, search and investigate, add knowledge, report, and visualize, monitor and alert, on machine data, websites, applications, within the GoA infrastructure.",
             "FunctionalGroup": "Service Monitoring and Support",
             "Environment": [
-                "other"
+                "Other"
             ],
             "Language": [
-                "other"
+                "Other"
             ],
-            "UsageMethod": "other",
+            "UsageMethod": "Other",
             "SupportLevel": "Hybrid",
             "Documentation": [
                 {
@@ -2956,7 +2956,7 @@
                 }
             ],
             "Keywords": [],
-            "Status": "other",
+            "Status": "Other",
             "Version": "",
             "UseCases": "",
             "Prerequisites": "",
@@ -2982,7 +2982,7 @@
             "ServiceName": "Stakeholder registry",
             "Provider": "Advanced Education",
             "Audience": [
-                "other"
+                "Other"
             ],
             "InternalWeightage": "10",
             "Summary": "Contains people records (users, learners, schools staff) accessed by Advanced Education.",
@@ -2994,8 +2994,8 @@
             "Language": [
                 ".NET"
             ],
-            "UsageMethod": "other",
-            "SupportLevel": "other",
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
             "Documentation": [],
             "Keywords": [],
             "Status": "Live",
@@ -3024,7 +3024,7 @@
             "ServiceName": "Stamping shared service",
             "Provider": "Justice Digital",
             "Audience": [
-                "other"
+                "Other"
             ],
             "InternalWeightage": "10",
             "Summary": "Providing a consistent application of official court stamps for filing and certification of digital context.",
@@ -3038,8 +3038,8 @@
                 ".NET Core",
                 "TypeScript"
             ],
-            "UsageMethod": "other",
-            "SupportLevel": "other",
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
             "Documentation": [
                 {
                     "name": "Shared+Services",
@@ -3078,19 +3078,19 @@
             "ServiceName": "Status service",
             "Provider": "Alberta Digital Service Platform (ADSP)",
             "Audience": [
-                "other"
+                "Other"
             ],
             "InternalWeightage": "10",
             "Summary": "Monitoring the health of applications and services.",
             "Description": "A service for monitoring the health of applications and other services.  You provide a URL for it to ping and it will notify you, or a webhook, if the response occurs in a timely manner or not.  Additionally, the service provides links to a static web page your users can visit to check on your application's status.  You can configure this page to display status updates and notices for planned maintenance or other outages.",
             "FunctionalGroup": "Service Monitoring and Support",
             "Environment": [
-                "other"
+                "Other"
             ],
             "Language": [
-                "other"
+                "Other"
             ],
-            "UsageMethod": "other",
+            "UsageMethod": "Other",
             "SupportLevel": "Hybrid",
             "Documentation": [
                 {
@@ -3130,7 +3130,7 @@
             "ServiceName": "Support model",
             "Provider": "Justice Digital",
             "Audience": [
-                "other"
+                "Other"
             ],
             "InternalWeightage": "10",
             "Summary": "A robust application support model to ensure both operational issues are dealt with; as well as to ensure an open line for direct customer feedback.",
@@ -3140,10 +3140,10 @@
                 "ServiceNow"
             ],
             "Language": [
-                "other"
+                "Other"
             ],
-            "UsageMethod": "other",
-            "SupportLevel": "other",
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
             "Documentation": [
                 {
                     "name": "Support+Model",
@@ -3179,7 +3179,7 @@
             "ServiceName": "Unified Alberta.ca account",
             "Provider": "Platforms - IAM",
             "Audience": [
-                "other"
+                "Other"
             ],
             "InternalWeightage": "10",
             "Summary": "An IAM platform that will be used to unify Alberta.ca Account, MADI-B, and PED, as well as other IAM systems in the GoA over time.",
@@ -3193,7 +3193,7 @@
                 ".NET",
                 "Open source"
             ],
-            "UsageMethod": "other",
+            "UsageMethod": "Other",
             "SupportLevel": "24x7",
             "Documentation": [],
             "Keywords": [],
@@ -3217,7 +3217,7 @@
             "ServiceName": "User survey",
             "Provider": "SCSS",
             "Audience": [
-                "other"
+                "Other"
             ],
             "InternalWeightage": "10",
             "Summary": "Module to define release announcements and survey prompts for users and track their responses (Dismissed, Postponed, Acknowledged)",
@@ -3229,11 +3229,11 @@
             "Language": [
                 "TypeScript"
             ],
-            "UsageMethod": "other",
-            "SupportLevel": "other",
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
             "Documentation": [],
             "Keywords": [],
-            "Status": "other",
+            "Status": "Other",
             "Version": "",
             "UseCases": "",
             "Prerequisites": "",
@@ -3253,19 +3253,19 @@
             "ServiceName": "Value service",
             "Provider": "Alberta Digital Service Platform (ADSP)",
             "Audience": [
-                "other"
+                "Other"
             ],
             "InternalWeightage": "10",
             "Summary": "Provides a temporal-based data store useful for storing such things as event, change, and audit logs.  In addition, it can aggregate KPIs.",
             "Description": "Provides a temporal-based data store that is useful for storing such things as event, change, and audit logs.  In addition, it can be used to aggregate KPI's over some time interval by including metrics along with each entry.  For example, it has been used to log events along with a count metric, and therefore can be used to show how many events are emitted per unit of time.",
             "FunctionalGroup": "Workflow and Process Automation",
             "Environment": [
-                "other"
+                "Other"
             ],
             "Language": [
-                "other"
+                "Other"
             ],
-            "UsageMethod": "other",
+            "UsageMethod": "Other",
             "SupportLevel": "Hybrid",
             "Documentation": [
                 {
@@ -3305,19 +3305,19 @@
             "ServiceName": "Verify service",
             "Provider": "Alberta Digital Service Platform (ADSP)",
             "Audience": [
-                "other"
+                "Other"
             ],
             "InternalWeightage": "10",
             "Summary": "Verify service provides time limited random codes that can be used for validation purposes.",
             "Description": "Verify service provides time limited random codes that can be used for validation purposes. For example, generated codes can be sent to a user by email and requested from an application to verify user access to the email inbox.",
             "FunctionalGroup": "Workflow and Process Automation",
             "Environment": [
-                "other"
+                "Other"
             ],
             "Language": [
-                "other"
+                "Other"
             ],
-            "UsageMethod": "other",
+            "UsageMethod": "Other",
             "SupportLevel": "Hybrid",
             "Documentation": [],
             "Keywords": [],
@@ -3355,7 +3355,7 @@
             "isFilter": true,
             "showBadge": false,
             "dataType": "text",
-            "default": "other"
+            "default": "Other"
         },
         {
             "FieldName": "Audience",
@@ -3363,7 +3363,7 @@
             "isFilter": true,
             "showBadge": false,
             "dataType": "textArray",
-            "default": "other"
+            "default": "Other"
         },
         {
             "FieldName": "FunctionalGroup",
@@ -3371,7 +3371,7 @@
             "isFilter": true,
             "showBadge": false,
             "dataType": "text",
-            "default": "other"
+            "default": "Other"
         },
         {
             "FieldName": "Status",
@@ -3379,7 +3379,7 @@
             "isFilter": true,
             "showBadge": true,
             "dataType": "text",
-            "default": "other"
+            "default": "Other"
         },
         {
             "FieldName": "UsageMethod",
@@ -3387,7 +3387,7 @@
             "isFilter": true,
             "showBadge": true,
             "dataType": "text",
-            "default": "other"
+            "default": "Other"
         },
         {
             "FieldName": "Language",
@@ -3395,7 +3395,7 @@
             "isFilter": true,
             "showBadge": true,
             "dataType": "textArray",
-            "default": "other"
+            "default": "Other"
         },
         {
             "FieldName": "Environment",
@@ -3403,7 +3403,7 @@
             "isFilter": true,
             "showBadge": true,
             "dataType": "textArray",
-            "default": "other"
+            "default": "Other"
         },
         {
             "FieldName": "SupportLevel",
@@ -3411,7 +3411,7 @@
             "isFilter": true,
             "showBadge": true,
             "dataType": "text",
-            "default": "other"
+            "default": "Other"
         },
         {
             "FieldName": "Keywords",

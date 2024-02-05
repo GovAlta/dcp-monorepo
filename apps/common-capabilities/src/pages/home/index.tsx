@@ -36,7 +36,6 @@ export default function HomePage(): JSX.Element {
 
   // grab all the available filters from the services
   const [filters, setFilters] = useState(extractAvailableFilters(services));
-  console.log('filters', extractAvailableFilters(services));
   // filters to show in the side nav
   const filtersList = [
     'Environment',
