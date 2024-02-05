@@ -24,6 +24,7 @@ export default function HomePage(): JSX.Element {
           Languages: [],
           Keywords: [],
           Status: [],
+          FunctionalGroup: [],
         };
   });
   let date = new Date(lastUpdated);
@@ -35,9 +36,14 @@ export default function HomePage(): JSX.Element {
 
   // grab all the available filters from the services
   const [filters, setFilters] = useState(extractAvailableFilters(services));
-
   // filters to show in the side nav
-  const filtersList = ['Environment', 'Languages', 'Keywords', 'Status'];
+  const filtersList = [
+    'Environment',
+    'Languages',
+    'Keywords',
+    'Status',
+    'FunctionalGroup',
+  ];
   const passInput = (input: any) => input;
 
   // searches for items in the services array that match the search and filter
@@ -49,7 +55,8 @@ export default function HomePage(): JSX.Element {
     environmentFilter?: any,
     languageFilter?: any,
     keywordsFilter?: any,
-    statusFilter?: any
+    statusFilter?: any,
+    functionalGroupFilter?: any
   ) => {
     return array.filter((item: any) => {
       // returns true if at least one of fields value match to regexp
@@ -58,29 +65,31 @@ export default function HomePage(): JSX.Element {
         .some(passInput);
 
       const environmentMatch =
-        searchFilter !== '' ||
         environmentFilter.length === 0 ||
         environmentFilter.every((env) => item.Environment.includes(env));
 
       const languageMatch =
-        searchFilter !== '' ||
         languageFilter.length === 0 ||
         languageFilter.every((lang) => item.Language.includes(lang));
 
       const keywordsMatch =
-        searchFilter !== '' ||
         keywordsFilter.length === 0 ||
         keywordsFilter.every((keyword) => item.Keywords.includes(keyword));
 
       const statusMatch =
         statusFilter.length === 0 || statusFilter.includes(item.Status);
 
+      const functionalGroupMatch =
+        functionalGroupFilter.length === 0 ||
+        functionalGroupFilter.includes(item.Status);
+
       return (
         fieldMatch &&
         environmentMatch &&
         languageMatch &&
         keywordsMatch &&
-        statusMatch
+        statusMatch &&
+        functionalGroupMatch
       );
     });
   };
@@ -97,11 +106,12 @@ export default function HomePage(): JSX.Element {
       findServices(
         apps,
         searchRegEx,
-        ['Description', 'ServiceName', 'Provider'],
+        ['Description', 'Summary', 'ServiceName', 'Provider'],
         selectedFilters.Environment,
         selectedFilters.Languages,
         selectedFilters.Keywords,
-        selectedFilters.Status
+        selectedFilters.Status,
+        selectedFilters.FunctionalGroup
       )
     );
     let timeoutId: NodeJS.Timeout | null = null;
@@ -157,6 +167,7 @@ export default function HomePage(): JSX.Element {
                 Languages: [],
                 Keywords: [],
                 Status: [],
+                FunctionalGroup: [],
               });
               localStorage.setItem(
                 'searchTimestamp',
@@ -178,6 +189,7 @@ export default function HomePage(): JSX.Element {
                 Languages: [],
                 Keywords: [],
                 Status: [],
+                FunctionalGroup: [],
               });
             }}
           >
@@ -193,9 +205,7 @@ export default function HomePage(): JSX.Element {
                   key={env.value}
                   label={env.value}
                   name={env.value}
-                  text={`${capitalizeFirstWord(env.value.toLowerCase())} (${
-                    env.count
-                  })`}
+                  text={`${env.value} (${env.count})`}
                   checked={selectedFilters[filterCategory].includes(env.value)}
                   onChange={(name, checked) => {
                     setSelectedFilters((prevFilters) => {

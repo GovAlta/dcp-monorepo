@@ -129,9 +129,9 @@ export default function Details({ app }: DetailsProps): JSX.Element {
       <tr className="items-color">
         <td className="contact-type">{`${method.type}:  `}</td>
         <td>
-          <GoAIcon type={iconType} theme="outline" />
+          <GoAIcon type={iconType} size='small' theme="outline" />
         </td>
-        <td>
+        <td className="td-links">
           <ExternalLink
             link={`${linkPrefix}${method.url}`}
             text={method.value}
