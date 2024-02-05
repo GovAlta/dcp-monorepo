@@ -81,7 +81,7 @@ export default function HomePage(): JSX.Element {
 
       const functionalGroupMatch =
         functionalGroupFilter.length === 0 ||
-        functionalGroupFilter.includes(item.Status);
+        functionalGroupFilter.includes(item.FunctionalGroup);
 
       return (
         fieldMatch &&
