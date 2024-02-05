@@ -46,9 +46,12 @@
   text-align: right;
 }
 .items-color > td {
-  padding: 0 var(--goa-space-xs) var(--goa-space-xs);
+  padding-right: var(--goa-space-xs);
 }
 
 .items-color {
   color: var(--goa-color-interactive-default);
+}
+.td-links {
+  vertical-align: sub;
 }

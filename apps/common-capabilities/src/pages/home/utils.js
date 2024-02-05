@@ -3,12 +3,14 @@ export function extractAvailableFilters(apps) {
   let languageObj = {};
   let statusObj = {};
   let keywordsObj = {};
+  let FunctionalGroupObj = {};
 
   // filters count
   let EnvironmentCount = [];
   let LanguagesCount = [];
   let StatusCount = [];
   let KeywordsCount = [];
+  let FunctionalGroupCount = [];
 
   apps.forEach((item) => {
     if (item.Environment && Array.isArray(item.Environment)) {
@@ -31,6 +33,14 @@ export function extractAvailableFilters(apps) {
       item.Status.toUpperCase() !== 'N/A'
     ) {
       statusObj[item.Status] = (statusObj[item.Status] || 0) + 1;
+    }
+    if (
+      item.FunctionalGroup &&
+      item.FunctionalGroup.trim() !== '' &&
+      item.FunctionalGroup.toUpperCase() !== 'N/A'
+    ) {
+      FunctionalGroupObj[item.FunctionalGroup] =
+        (FunctionalGroupObj[item.FunctionalGroup] || 0) + 1;
     }
     if (item.Keywords && Array.isArray(item.Keywords)) {
       item.Keywords.forEach((keyword) => {
@@ -57,6 +67,10 @@ export function extractAvailableFilters(apps) {
     .map(([value, count]) => ({ value, count }))
     .sort((a, b) => a.value.localeCompare(b.value));
 
+  FunctionalGroupCount = Object.entries(FunctionalGroupObj)
+    .map(([value, count]) => ({ value, count }))
+    .sort((a, b) => a.value.localeCompare(b.value));
+
   KeywordsCount = Object.entries(keywordsObj)
     .map(([value, count]) => ({ value, count }))
     .sort((a, b) => a.value.localeCompare(b.value));
@@ -66,6 +80,7 @@ export function extractAvailableFilters(apps) {
     Languages: { filters: LanguagesCount },
     Status: { filters: StatusCount },
     Keywords: { filters: KeywordsCount },
+    FunctionalGroup: { filters: FunctionalGroupCount },
   };
 }
 export function capitalizeFirstWord(s) {
