@@ -15,6 +15,7 @@ interface CardProps {
 }
 
 const Card = ({ provider, description, title, app }: CardProps) => {
+  const maxDescriptionLength = 200; // word length for short descpription in tile.
   const badgesToShow = ['Status', 'FunctionalGroup', 'Language', 'Keywords'];
   const [items, setItems] = useState<any>({
     badges: [],
@@ -22,8 +23,13 @@ const Card = ({ provider, description, title, app }: CardProps) => {
   useEffect(() => {
     let showBadges: any[] = [];
     badgesToShow.map((badge) => {
-      if (app[badge] !== '') {
-        showBadges.push(badge);
+      if (app[badge] !== '' && app[badge]?.length > 0) {
+        if (Array.isArray(app[badge]) && !app[badge].includes('other')) {
+          showBadges.push(badge);
+        }
+        if (typeof app[badge] === 'string' && app[badge] !== 'other') {
+          showBadges.push(badge);
+        }
       }
     });
     setItems({
@@ -42,15 +48,14 @@ const Card = ({ provider, description, title, app }: CardProps) => {
 
       <span id="service-tile-subtitle">{provider}</span>
       <GoASpacer vSpacing="m" />
-      <p id="service-tile-content">{description}</p>
-
+      <p id="service-tile-content">{`${description.substring(
+        0,
+        maxDescriptionLength
+      )}${description.length > maxDescriptionLength ? '.....' : ''}`}</p>
       {app.Email !== '' ? (
         <div>
           <b>Contact: </b>
-          <ExternalLink
-            link={`mailto:${app.Email}`}
-            text={app.Provider}
-          />{' '}
+          <ExternalLink link={`mailto:${app.Email}`} text={app.Provider} />{' '}
         </div>
       ) : (
         ''

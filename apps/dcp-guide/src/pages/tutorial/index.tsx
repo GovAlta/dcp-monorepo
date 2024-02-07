@@ -170,7 +170,7 @@ export default function TutorialPage() {
         <div className="line-elements">
           <GoAIcon type="mail" theme="outline" />
           <a
-            href="mailto:TI.Softwaredelivery@ab.gov.ca?subject=Feedback for Common Capabilities"
+            href="mailto:TI.Softwaredelivery@gov.ab.ca?subject=Feedback for Common Capabilities"
             data-testid="emailToLink"
             style={{ margin: '12px' }}
           >
