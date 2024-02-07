@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { GoAIcon } from '@abgov/react-components';
+import { GoAIcon, GoAContainer } from '@abgov/react-components';
 import Astro from '../../assets/astro.png';
 import Github from '../../assets/github.png';
 import Script from '../../assets/Script.png';
@@ -52,11 +52,7 @@ export default function HomePage() {
                 src={Astro}
               />
             </div>
-            <p>
-              Astrobuild <br />A the Static Site Generator <br />
-              technology{' '}
-            </p>
-          </div>{' '}
+          </div>
           <div className="technology">
             <div className="img-wrap">
               <noscript>
@@ -69,12 +65,6 @@ export default function HomePage() {
                 src={Github}
               />
             </div>
-            <p>
-              {' '}
-              Git repository <br />
-              Some text about git <br />
-              repository{' '}
-            </p>
           </div>
           <div className="technology">
             <div className="img-wrap">
@@ -88,83 +78,66 @@ export default function HomePage() {
                 src={Script}
               />
             </div>
-            <p>
-              Common deployment
-              <br />
-              scripts
-              <br /> Some text goes here{' '}
-            </p>
           </div>
-        </div>
-        <div></div>
-        <div className="gap">
-          <small className="techs-note">
-            *These technologies allow site developers to quickly get their
-            content up and deployed.
-          </small>
         </div>
 
-        <h3>DCP micro site sample (title needed) </h3>
-        <p>
-          Some sort of highlights of qualification around 80 - 100 characters
-          Some sort of highlights of qualification around 80 - 100 characters
-          Some sort of highlights of qualification around 80 - 100 characters
-          Some sort of highlights of qualification around 80 - 100 characters
-          Some sort of highlights of qualification around 80 - 100 characters
-          Some sort of highlights of qualification around 80 - 100 characters{' '}
-        </p>
         <div className="services-wrapper">
-          <div className="service-card">
-            <div className="service-heading">Service name</div>
-            <div className="service-sub-heading">Service provider name</div>
+          <GoAContainer accent="thin">
+            <div className="service-heading">File Service</div>
+            <div className="service-sub-heading">
+              Alberta Digital Service Platform (ADSP)
+            </div>
             <p>
-              The file service provides the capability to upload and download
-              files. Consumers are registered with their own space (tenant)
-              containing file types that include role based access policy, and
-              can associate files to domain records.
+              Provides capabilities for uploading and managing files in
+              Microsoft's Azure Blob Storage. It includes support for virus
+              scanning, access control, retention policy, retrieval, and
+              searching. The service is intended to give applications a means to
+              manage temporary files (e.g. retention policy &lt; 30 days), or
+              whose content is not directly needed by the application's business
+              users.
             </p>
             <div className="service-contact">
-              Contact:{' '}
-              <a rel="noopener noreferrer" target="_blank">
-                ADSP platform
-              </a>
+              Contact: <a href="mailto:adsp@gov.ab.ca">ADSP platform</a>
               <GoAIcon size="small" type="open" />
             </div>
-          </div>
-          <div className="service-card">
-            <div className="service-heading">Service name</div>
-            <div className="service-sub-heading">Service provider name</div>
+          </GoAContainer>
+          <GoAContainer accent="thin">
+            <div className="service-heading">PDF Service</div>
+            <div className="service-sub-heading">
+              Alberta Digital Service Platform (ADSP)
+            </div>
             <p>
-              The file service provides the capability to upload and download
-              files. Consumers are registered with their own space (tenant)
-              containing file types that include role based access policy, and
-              can associate files to domain records.
+              Provides the capability for creating customized PDF documents for
+              downloading by end users. By utilizing our editor to create
+              templates and combining them with intake data, developers can
+              easily create GOA branded PDFs. The documents are uploaded to
+              Azure Blob storage and can be managed there securely, throughout
+              their lifecycle, with the ADSP file service.
             </p>
             <div className="service-contact">
-              Contact:{' '}
-              <a rel="noopener noreferrer" target="_blank">
-                ADSP platform
-              </a>
+              Contact: <a href="mailto:adsp@gov.ab.ca">ADSP platform</a>
               <GoAIcon size="small" type="open" />
             </div>
-          </div>
-          <div className="service-card">
-            <div className="service-heading">Service name</div>
-            <div className="service-sub-heading">Service provider name</div>
+          </GoAContainer>
+          <GoAContainer accent="thin">
+            <div className="service-heading">Event Service</div>
+            <div className="service-sub-heading">
+              Alberta Digital Service Platform (ADSP)
+            </div>
             <p>
-              The file service provides the capability to upload and download
-              files. Consumers are registered with their own space (tenant)
-              containing file types that include role based access policy, and
-              can associate files to domain records.
+              The event service provides the capability for applications to
+              define, and log, domain events. This gives them an easy way to
+              implement traceability, auditability, accountability and
+              transparency. In addition the service is often coupled, and used
+              in conjunction with, other ADSP services. E.G an application is
+              using the Notification Service it would use specific domain events
+              to trigger notifications.
             </p>
             <div className="service-contact">
-              Contact:{' '}
-              <a rel="noopener noreferrer" target="_blank">
-                ADSP platform
-              </a>
+              Contact: <a href="mailto:adsp@gov.ab.ca">ADSP platform</a>
               <GoAIcon size="small" type="open" />
             </div>
-          </div>
+          </GoAContainer>
         </div>
       </main>
     </>
