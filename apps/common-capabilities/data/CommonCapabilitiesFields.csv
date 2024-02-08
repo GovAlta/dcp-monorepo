@@ -1,0 +1,20 @@
+﻿FieldName,DisplayName,isFilter,showBadge,dataType,default
+Provider,Provider,TRUE,FALSE,text,Other
+Audience,Audience,TRUE,FALSE,textArray,Other
+FunctionalGroup,Functional Group,TRUE,FALSE,text,Other
+Status,Status,TRUE,TRUE,text,Other
+UsageMethod,Usage,TRUE,TRUE,text,Other
+Language,Technology,TRUE,TRUE,textArray,Other
+Environment,Environment,TRUE,TRUE,textArray,Other
+SupportLevel,Support,TRUE,TRUE,text,Other
+Keywords,Tag/Keyword,TRUE,TRUE,textArray,
+,,,,,
+Documentation,Documentation,FALSE,FALSE,urlArray,
+Contact,Contact,FALSE,FALSE,contactList,
+InternalWeightage,InternalWeightage,FALSE,FALSE,int,10
+,,,,,
+,,,,int,
+,,,,text,
+,,,,textArray,
+,,,,urlArray,
+,,,,contactList,

@@ -1,0 +1,3891 @@
+{
+    "lastUpdated": "02/08/2024, 14:41",
+    "mostRecentService": "10/15/2023",
+    "dateFormat": "mm/dd/yyyy",
+    "services": [
+        {
+            "Nominate": "Yes",
+            "ServiceName": "1GX API service",
+            "Provider": "Service Integration",
+            "Audience": [
+                "GOA"
+            ],
+            "InternalWeightage": 100,
+            "Summary": "Interfaces between 1GX and GoA business applications.",
+            "Description": "The 1GX Application Programming Interface (API) Service provides Government of Alberta (GoA) business areas with multiple interfaces between 1GX modules and their business applications. It provides them with the ability to search, create, update, and delete records in real time, directly from their business applications, without accessing 1GX directly.\n\nThis service must be requested by 1GX ministry service managers, as they are responsible for the integrations between 1GX and ministry applications. They will work with application developers, the 1GX Centre of Excellence (CoE) team, and the Service Integration team to determine which API(s) will meet business area requirements.\n\nThe 1GX CoE team approves requests for this service and collaborates with the Service Integration team to collect the requirements needed to configure API Gateway access and security roles",
+            "FunctionalGroup": "Workflow and Process Automation",
+            "Environment": [
+                "Openshift"
+            ],
+            "Language": [
+                "Other"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "Hybrid",
+            "Documentation": [
+                {
+                    "name": "1GX-API-Service.aspx",
+                    "url": "https://abgov.sharepoint.com/sites/S500D27-SI969/SitePages/1GX-API-Service.aspx"
+                }
+            ],
+            "Keywords": [
+                "API"
+            ],
+            "Status": "Live",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "",
+            "Comments": "Requests for this service will only be accepted by your ministry's 1GX Service Manager through a BERNIE RITM.",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "",
+            "ReviewedBy": "",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 1,
+            "Contact": {
+                "details": "Advanced request required through BERNIE; search and select the BERNIE service called '1GX API Service'.",
+                "methods": [
+                    {
+                        "type": "BERNIE",
+                        "value": "bernie.gov.ab.ca",
+                        "url": "https://bernie.gov.ab.ca/"
+                    }
+                ]
+            },
+            "filterText": "service integration,goa,workflow and process automation,live,openshift,hybrid,api"
+        },
+        {
+            "Nominate": "Yes",
+            "ServiceName": "1GX Legacy IMAGIS integration",
+            "Provider": "Service Integration",
+            "Audience": [
+                "Other"
+            ],
+            "InternalWeightage": 100,
+            "Summary": "Interfaces between 1GX and GoA business applications using legacy IMAGIS format.",
+            "Description": "Interfaces between 1GX and GoA business applications using iSuite to send/receive files in legacy IMAGIS format. This integration is for legacy GoA applications, it will be phased out and replaced by direct API type of integration with 1GX.",
+            "FunctionalGroup": "Workflow and Process Automation",
+            "Environment": [
+                "Other"
+            ],
+            "Language": [
+                "Other"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "Hybrid",
+            "Documentation": [],
+            "Keywords": [
+                "IMAGIS"
+            ],
+            "Status": "Other",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "",
+            "Comments": "This integration is for legacy GoA applications, it will be phased out and replaced by direct API type of integration with 1GX.",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "",
+            "ReviewedBy": "",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 2,
+            "Contact": {
+                "details": "Advanced request required through BERNIE; search and select the BERNIE service called '1GX Legacy IMAGIS Integration Service'",
+                "methods": [
+                    {
+                        "type": "BERNIE",
+                        "value": "bernie.gov.ab.ca",
+                        "url": "https://bernie.gov.ab.ca/"
+                    }
+                ]
+            },
+            "filterText": "service integration,workflow and process automation,hybrid,imagis"
+        },
+        {
+            "Nominate": "",
+            "ServiceName": "Access service",
+            "Provider": "Alberta Digital Service Platform (ADSP)",
+            "Audience": [
+                "Other"
+            ],
+            "InternalWeightage": 10,
+            "Summary": "A deployment of Keycloak, providing user authentication and authorization services.",
+            "Description": "The Access Service is a deployment of Keycloak, which provides Realms to tenants and serves as the basis for user access management.  As a federated IDP, Keycloak provides user authentication and authorization services, helping you to your tenant secure.  On top of Keycloak, the Access Service provides the user roles necessary to use all other ADSP services.",
+            "FunctionalGroup": "User Access and Identity",
+            "Environment": [
+                "Other"
+            ],
+            "Language": [
+                "Other"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "Hybrid",
+            "Documentation": [
+                {
+                    "name": "access.alberta.ca",
+                    "url": "https://access.alberta.ca/"
+                }
+            ],
+            "Keywords": [
+                "Keycloak"
+            ],
+            "Status": "Live",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "Product teams can get started by accessing an existing tenant or creating a new tenant. Each tenant represents a zone of administrative control and generally products within a common service area can share a tenant.",
+            "Comments": "",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "",
+            "ReviewedBy": "",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 3,
+            "Contact": {
+                "details": "",
+                "methods": [
+                    {
+                        "type": "Slack",
+                        "value": "adsp-connection",
+                        "url": "https://goa-dio.slack.com/channels/adsp-connection"
+                    },
+                    {
+                        "type": "Email",
+                        "value": "adsp@gov.ab.ca",
+                        "url": "adsp@gov.ab.ca"
+                    }
+                ]
+            },
+            "filterText": "alberta digital service platform (adsp),user access and identity,live,hybrid,keycloak"
+        },
+        {
+            "Nominate": "Yes",
+            "ServiceName": "Address validation service",
+            "Provider": "Service Integration",
+            "Audience": [
+                "Other"
+            ],
+            "InternalWeightage": 100,
+            "Summary": "Uses incremental \"Canada Post\" searches to find an address and provide the full address details.",
+            "Description": "Allows ease of mailing address data entry and validation through 2 endpoints that allow incremental searches to find the correct address and provide the full address details of the selected result.  This service leverages \"Canada Post - Address Complete\" for it's validation repository.",
+            "FunctionalGroup": "Other Function",
+            "Environment": [
+                "Other"
+            ],
+            "Language": [
+                "Other"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "Hybrid",
+            "Documentation": [
+                {
+                    "name": "Address-Validation-Service.aspx",
+                    "url": "https://abgov.sharepoint.com/sites/S500D27-SI969/SitePages/Address-Validation-Service.aspx"
+                }
+            ],
+            "Keywords": [],
+            "Status": "Other",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "Users will need to submit a Address Validation Service Intake Request to the Service Integration Team via BERNIE \"Service Integration Consultation\" online form submission to request this service.",
+            "Comments": "",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "",
+            "ReviewedBy": "",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 4,
+            "Contact": {
+                "details": "Advanced request required through the Service Integration SharePoint site; click the \"Service Request Details\" link to access 'Service Integration Consultation Request \" web form",
+                "methods": [
+                    {
+                        "type": "Sharepoint",
+                        "value": "Address-Validation-Service.aspx",
+                        "url": "https://abgov.sharepoint.com/sites/S500D27-SI969/SitePages/Address-Validation-Service.aspx"
+                    }
+                ]
+            },
+            "filterText": "service integration,other function,hybrid"
+        },
+        {
+            "Nominate": "",
+            "ServiceName": "Alberta holidays",
+            "Provider": "SCSS",
+            "Audience": [
+                "Other"
+            ],
+            "InternalWeightage": 10,
+            "Summary": "DayJS plugin with information about stat holidays in Alberta",
+            "Description": "A DayJS plugin for the information about statutory holidays in Alberta",
+            "FunctionalGroup": "Other Function",
+            "Environment": [
+                "Other"
+            ],
+            "Language": [
+                "TypeScript (dayjs)"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
+            "Documentation": [
+                {
+                    "name": "Instructions and additional information",
+                    "url": "https://github.com/GovAlta-EMU/ab-holiday"
+                }
+            ],
+            "Keywords": [],
+            "Status": "Other",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "",
+            "Comments": "",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "",
+            "ReviewedBy": "",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 5,
+            "Contact": {
+                "details": "Privately hosted npm package",
+                "methods": [
+                    {
+                        "type": "GitHub",
+                        "value": "ab-holiday",
+                        "url": "https://github.com/GovAlta-EMU/ab-holiday"
+                    }
+                ]
+            },
+            "filterText": "scss,other function,typescript (dayjs)"
+        },
+        {
+            "Nominate": "",
+            "ServiceName": "Alberta vital statistics API",
+            "Provider": "Platforms - Common Data Services",
+            "Audience": [
+                "Other"
+            ],
+            "InternalWeightage": 10,
+            "Summary": "Verify new borns and deceased individuals using Alberta Vital Statistics.",
+            "Description": "Verify new borns and deceased individuals against the data in Alberta Vital Statistics for a specific Government of Alberta program. This program requires approval from Vital Statistics for data usage, as well as  a privacy assessment.",
+            "FunctionalGroup": "Payments and Financial Management",
+            "Environment": [
+                "On Prem"
+            ],
+            "Language": [
+                ".NET Core"
+            ],
+            "UsageMethod": "API",
+            "SupportLevel": "TBD",
+            "Documentation": [],
+            "Keywords": [
+                "API"
+            ],
+            "Status": "Alpha",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "",
+            "Comments": "",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "",
+            "ReviewedBy": "",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 6,
+            "Contact": {
+                "details": "",
+                "methods": []
+            },
+            "filterText": "platforms - common data services,payments and financial management,alpha,api,.net core,on prem,tbd,api"
+        },
+        {
+            "Nominate": "YES",
+            "ServiceName": "Alberta.ca account",
+            "Provider": "Platforms - IAM",
+            "Audience": [
+                "Other"
+            ],
+            "InternalWeightage": 100,
+            "Summary": "An IAM platform that provides federated sign on and identity verification for citizens accessing on-line services",
+            "Description": "An IAM platform that provides federated sign on and identity verification for citizens accessing on-line services",
+            "FunctionalGroup": "User Access and Identity",
+            "Environment": [
+                "Azure"
+            ],
+            "Language": [
+                "ForgeRock"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "24x7",
+            "Documentation": [
+                {
+                    "name": "myalberta-digital-id",
+                    "url": "https://myalberta.gov.ab.ca/en/myalberta-digital-id"
+                }
+            ],
+            "Keywords": [],
+            "Status": "Live",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "",
+            "Comments": "",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "",
+            "ReviewedBy": "",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 7,
+            "Contact": {
+                "details": "",
+                "methods": [
+                    {
+                        "type": "Web",
+                        "value": "account.alberta.ca",
+                        "url": "https://account.alberta.ca"
+                    },
+                    {
+                        "type": "Email",
+                        "value": "account.service-owner@gov.ab.ca",
+                        "url": "account.service-owner@gov.ab.ca"
+                    }
+                ]
+            },
+            "filterText": "platforms - iam,user access and identity,live,forgerock,azure,24x7"
+        },
+        {
+            "Nominate": "Yes",
+            "ServiceName": "API gateway as a service",
+            "Provider": "Service Integration",
+            "Audience": [
+                "Other"
+            ],
+            "InternalWeightage": 10,
+            "Summary": "Provides protection, monitoring and performance metrics for APIs. Can act as a firewall, router & DDOS protection for APIs. Also supports advanced features like \"custom claims\".",
+            "Description": "Provides protection, monitoring and performance metrics for APIs.  The gateway can act as a firewall, router & DDOS protection for APIs and supports advanced features like \"custom claims\".  The gateway service is available for both internal/external and on-prem/cloud APIs.  This service leverages the Digital Identiity Gateway for API authentication.",
+            "FunctionalGroup": "User Access and Identity",
+            "Environment": [
+                "Other"
+            ],
+            "Language": [
+                "Other"
+            ],
+            "UsageMethod": "API",
+            "SupportLevel": "Hybrid",
+            "Documentation": [
+                {
+                    "name": "API-Gateway-As-A-Service.aspx",
+                    "url": "https://abgov.sharepoint.com/sites/S500D27-SI969/SitePages/API-Gateway-As-A-Service.aspx"
+                }
+            ],
+            "Keywords": [],
+            "Status": "Other",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "Users will need to submit a API gateway as a service Intake Request to the Service Integration Team via BERNIE \"Service Integration Consultation\" online form submission to request this service.",
+            "Comments": "",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "",
+            "ReviewedBy": "",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 8,
+            "Contact": {
+                "details": "Advanced request required through the Service Integration SharePoint site; click the \"Service Request Details\" link to access 'Service Integration Consultation Request \" web form",
+                "methods": [
+                    {
+                        "type": "Sharepoint",
+                        "value": "API-Gateway-As-A-Service.aspx",
+                        "url": "https://abgov.sharepoint.com/sites/S500D27-SI969/SitePages/API-Gateway-As-A-Service.aspx"
+                    }
+                ]
+            },
+            "filterText": "service integration,user access and identity,api,hybrid"
+        },
+        {
+            "Nominate": "",
+            "ServiceName": "Automation framework architecture",
+            "Provider": "Justice Digital",
+            "Audience": [
+                "Other"
+            ],
+            "InternalWeightage": 10,
+            "Summary": "A guide for developers & QA testers to get started with QA automation within your application.",
+            "Description": "This is QA automation process outlined for service teams. Developers and QA testers should be able to use this as a guide to get started with QA automation within your application.\n\nThis documentation will go over all of the QA automation test frameworks in detail, outline the technology stacks used in this process",
+            "FunctionalGroup": "Other Function",
+            "Environment": [
+                "AWS",
+                "GitHub",
+                "Cypress",
+                "Allure"
+            ],
+            "Language": [
+                "Other"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
+            "Documentation": [
+                {
+                    "name": "QA+Automation",
+                    "url": "https://goa-dio.atlassian.net/wiki/spaces/JD/pages/2195423612/QA+Automation"
+                }
+            ],
+            "Keywords": [
+                "QA"
+            ],
+            "Status": "Live",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "",
+            "Comments": "",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "",
+            "ReviewedBy": "",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 9,
+            "Contact": {
+                "details": "",
+                "methods": [
+                    {
+                        "type": "Email",
+                        "value": "JSG.PlatformSupport@gov.ab.ca",
+                        "url": "JSG.PlatformSupport@gov.ab.ca"
+                    }
+                ]
+            },
+            "filterText": "justice digital,other function,live,aws, github, cypress, allure,qa"
+        },
+        {
+            "Nominate": "",
+            "ServiceName": "Banking  information verification API",
+            "Provider": "Platforms - Common Data Services",
+            "Audience": [
+                "Other"
+            ],
+            "InternalWeightage": 10,
+            "Summary": "Validate financial institution number, branch number, and banking account number format.",
+            "Description": "Allow applications to validate the financial institution number, branch number, as well as the format of the banking account number.",
+            "FunctionalGroup": "Payments and Financial Management",
+            "Environment": [
+                "On Prem"
+            ],
+            "Language": [
+                ".NET Core"
+            ],
+            "UsageMethod": "API",
+            "SupportLevel": "TBD",
+            "Documentation": [],
+            "Keywords": [
+                "API"
+            ],
+            "Status": "Alpha",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "",
+            "Comments": "",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "",
+            "ReviewedBy": "",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 10,
+            "Contact": {
+                "details": "",
+                "methods": []
+            },
+            "filterText": "platforms - common data services,payments and financial management,alpha,api,.net core,on prem,tbd,api"
+        },
+        {
+            "Nominate": "",
+            "ServiceName": "Business reporting strategy",
+            "Provider": "Justice Digital",
+            "Audience": [
+                "Other"
+            ],
+            "InternalWeightage": 10,
+            "Summary": "Using Amazon QuickSight visualization tool, create interactive dashboards, reports, and embedded analytics with single source of truth + automate Data Pipelines with a shared architecture pattern.",
+            "Description": "Justice Digital teams are using Amazon QuickSight as a data visualization tool. With QuickSight, all product teams can meet varying analytic needs from the same source of truth through interactive dashboards, paginated reports, and embedded analytics. \n\nProduct teams are also fully automating their Data Pipelines using a shared architecture pattern.",
+            "FunctionalGroup": "Analytics and Reporting",
+            "Environment": [
+                "AWS"
+            ],
+            "Language": [
+                "Python"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
+            "Documentation": [
+                {
+                    "name": "Business+Reporting",
+                    "url": "https://goa-dio.atlassian.net/wiki/spaces/JD/pages/2583200038/Business+Reporting"
+                }
+            ],
+            "Keywords": [
+                "JD business reporting"
+            ],
+            "Status": "Live",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "",
+            "Comments": "",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "",
+            "ReviewedBy": "",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 11,
+            "Contact": {
+                "details": "",
+                "methods": [
+                    {
+                        "type": "Email",
+                        "value": "JSG.PlatformSupport@gov.ab.ca",
+                        "url": "JSG.PlatformSupport@gov.ab.ca"
+                    }
+                ]
+            },
+            "filterText": "justice digital,analytics and reporting,live,python,aws,jd business reporting"
+        },
+        {
+            "Nominate": "",
+            "ServiceName": "Calendar service",
+            "Provider": "Alberta Digital Service Platform (ADSP)",
+            "Audience": [
+                "Other"
+            ],
+            "InternalWeightage": 10,
+            "Summary": "Schedule events for end users. Front-end calendar widget (daily, weekly, or monthly). Supports persistent events, managing attendees, event queries, and automatic time-zone conversion.",
+            "Description": "Provides the capability for scheduling events like meetings, appointments, or similar activities for your application's end users.  ADSP gives you full backend support for creating persistent events, managing attendees, event queries, and automatic time-zone conversion.  It can be used to populate any front-end calendar widget with daily, weekly, or monthly entries.",
+            "FunctionalGroup": "Workflow and Process Automation",
+            "Environment": [
+                "Other"
+            ],
+            "Language": [
+                "Other"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "Hybrid",
+            "Documentation": [
+                {
+                    "name": "calendar-service.html",
+                    "url": "https://govalta.github.io/adsp-monorepo/services/calendar-service.html"
+                }
+            ],
+            "Keywords": [],
+            "Status": "Live",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "Product teams can get started by accessing an existing tenant or creating a new tenant. Each tenant represents a zone of administrative control and generally products within a common service area can share a tenant.",
+            "Comments": "",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "",
+            "ReviewedBy": "",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 12,
+            "Contact": {
+                "details": "",
+                "methods": [
+                    {
+                        "type": "Slack",
+                        "value": "adsp-connection",
+                        "url": "https://goa-dio.slack.com/channels/adsp-connection"
+                    },
+                    {
+                        "type": "Email",
+                        "value": "adsp@gov.ab.ca",
+                        "url": "adsp@gov.ab.ca"
+                    }
+                ]
+            },
+            "filterText": "alberta digital service platform (adsp),workflow and process automation,live,hybrid"
+        },
+        {
+            "Nominate": "",
+            "ServiceName": "CCDS Angular components",
+            "Provider": "Children's Services Platform",
+            "Audience": [
+                "Children's Services"
+            ],
+            "InternalWeightage": 10,
+            "Summary": "Angular library from Augular apps in Children's Services, which provides UI components and shared code, including authentication and authorization.",
+            "Description": "An Angular library that provides UI components and shared code for Angular apps in Children's Services, including authentication and authorization through the CCDS Keycloak realm.",
+            "FunctionalGroup": "Data Management",
+            "Environment": [
+                "GitHub"
+            ],
+            "Language": [
+                "Angular"
+            ],
+            "UsageMethod": "Code share",
+            "SupportLevel": "Other",
+            "Documentation": [],
+            "Keywords": [
+                "Keycloak"
+            ],
+            "Status": "Live",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "",
+            "Comments": "Used within Children's Services to provide consistent UI and tooling for all Angular projects.",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "",
+            "ReviewedBy": "",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 13,
+            "Contact": {
+                "details": "Discussion required to obtain access or to deploy container in line of business controlled environment",
+                "methods": [
+                    {
+                        "type": "Email",
+                        "value": "heather.objois@gov.ab.ca",
+                        "url": "heather.objois@gov.ab.ca"
+                    }
+                ]
+            },
+            "filterText": "children's services platform,children's services,data management,live,code share,angular,github,keycloak"
+        },
+        {
+            "Nominate": "",
+            "ServiceName": "CCDS React components",
+            "Provider": "Children's Services Platform",
+            "Audience": [
+                "Children's Services"
+            ],
+            "InternalWeightage": 10,
+            "Summary": "React library from React apps in Children's Services, which provides UI components and shared code, including authentication and authorization.",
+            "Description": "A React library that provides UI components and shared code for React apps in Children's Services, including authentication and authorization through the CCDS Keycloak realm.",
+            "FunctionalGroup": "Data Management",
+            "Environment": [
+                "GitHub"
+            ],
+            "Language": [
+                "React"
+            ],
+            "UsageMethod": "Code share",
+            "SupportLevel": "Other",
+            "Documentation": [],
+            "Keywords": [
+                "Keycloak"
+            ],
+            "Status": "Live",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "",
+            "Comments": "Used within Children's Services to provide consistent UI and tooling for all React projects.",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "",
+            "ReviewedBy": "",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 14,
+            "Contact": {
+                "details": "Discussion required to obtain access or to deploy container in line of business controlled environment",
+                "methods": [
+                    {
+                        "type": "Email",
+                        "value": "heather.objois@gov.ab.ca",
+                        "url": "heather.objois@gov.ab.ca"
+                    }
+                ]
+            },
+            "filterText": "children's services platform,children's services,data management,live,code share,react,github,keycloak"
+        },
+        {
+            "Nominate": "",
+            "ServiceName": "CCDS Web components",
+            "Provider": "Children's Services Platform",
+            "Audience": [
+                "Children's Services"
+            ],
+            "InternalWeightage": 10,
+            "Summary": "Web component library from apps in Children's Services, which provides UI components.",
+            "Description": "A web component library that provides UI components for use by the applications developed by Children's Services.",
+            "FunctionalGroup": "Data Management",
+            "Environment": [
+                "GitHub"
+            ],
+            "Language": [
+                "Svelte"
+            ],
+            "UsageMethod": "Code share",
+            "SupportLevel": "Other",
+            "Documentation": [],
+            "Keywords": [],
+            "Status": "Live",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "",
+            "Comments": "Used within Children's Services to provide consistent UI and tooling for all Vue projects.",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "Yes",
+            "ReviewedBy": "Heather",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 15,
+            "Contact": {
+                "details": "Discussion required to obtain access or to deploy container in line of business controlled environment",
+                "methods": [
+                    {
+                        "type": "Email",
+                        "value": "heather.objois@gov.ab.ca",
+                        "url": "heather.objois@gov.ab.ca"
+                    }
+                ]
+            },
+            "filterText": "children's services platform,children's services,data management,live,code share,svelte,github"
+        },
+        {
+            "Nominate": "",
+            "ServiceName": "Child care benefits (CCB) validation API",
+            "Provider": "Platforms - Common Data Services",
+            "Audience": [
+                "Other"
+            ],
+            "InternalWeightage": 10,
+            "Summary": "Validation API for a Alberta government program, child care benefits. Data usage involves a MOU with CRA and Treasury Board and Finance, as well as a privacy assessment.",
+            "Description": "Assess the eligibility of an Albertan to apply for a Government of Alberta program that necessitates verification of the applicant's child care benefits. The use of data for this assessment requires a MOU with CRA and the Department of Treasury Board and Finance, as well as a privacy assessment.",
+            "FunctionalGroup": "Payments and Financial Management",
+            "Environment": [
+                "On Prem"
+            ],
+            "Language": [
+                ".NET Core"
+            ],
+            "UsageMethod": "API",
+            "SupportLevel": "TBD",
+            "Documentation": [],
+            "Keywords": [
+                "API"
+            ],
+            "Status": "Alpha",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "",
+            "Comments": "",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "Yes",
+            "ReviewedBy": "Heather",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 16,
+            "Contact": {
+                "details": "",
+                "methods": []
+            },
+            "filterText": "platforms - common data services,payments and financial management,alpha,api,.net core,on prem,tbd,api"
+        },
+        {
+            "Nominate": "",
+            "ServiceName": "Child care licensing API",
+            "Provider": "Children's Services Platform",
+            "Audience": [
+                "GOA"
+            ],
+            "InternalWeightage": 10,
+            "Summary": "An internal API that provides information on all licensed child care providers in Alberta, as well as the staff (Early Childhood Educators) that work there.",
+            "Description": "An internal API that provides information on all licensed child care providers in Alberta, as well as the staff (Early Childhood Educators) that work there.",
+            "FunctionalGroup": "Data Management",
+            "Environment": [
+                "Openshift"
+            ],
+            "Language": [
+                "Web API"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
+            "Documentation": [],
+            "Keywords": [
+                "API"
+            ],
+            "Status": "Live",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "",
+            "Comments": "Used within Children's service to provide data on licensed child care providers.",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "Yes",
+            "ReviewedBy": "Heather",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 17,
+            "Contact": {
+                "details": "Discussion required to obtain access or to deploy container in line of business controlled environment",
+                "methods": [
+                    {
+                        "type": "Email",
+                        "value": "heather.objois@gov.ab.ca",
+                        "url": "heather.objois@gov.ab.ca"
+                    }
+                ]
+            },
+            "filterText": "children's services platform,goa,data management,live,web api,openshift,api"
+        },
+        {
+            "Nominate": "",
+            "ServiceName": "Cloud native approach and DevSecOps",
+            "Provider": "Justice Digital",
+            "Audience": [
+                "Other"
+            ],
+            "InternalWeightage": 10,
+            "Summary": "Cloud native: build, deploy and manage modern applications in cloud computing environments.",
+            "Description": "Cloud native is the software approach of building, deploying, and managing modern applications in cloud computing environments. Modern companies want to build highly scalable, flexible, and resilient applications that they can update quickly to meet customer demands.",
+            "FunctionalGroup": "Other Function",
+            "Environment": [
+                "AWS",
+                "GitHub",
+                "SonarQube",
+                "Pingdom (Monitoring)"
+            ],
+            "Language": [
+                "TypeScript",
+                ".NET Core"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
+            "Documentation": [
+                {
+                    "name": "Architecture+Recommendations+Cloud+Native+approach",
+                    "url": "https://goa-dio.atlassian.net/wiki/spaces/JD/pages/2248048887/Architecture+Recommendations+Cloud+Native+approach"
+                }
+            ],
+            "Keywords": [
+                "JD cloud native"
+            ],
+            "Status": "Live",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "",
+            "Comments": "",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "Yes",
+            "ReviewedBy": "Heather",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 18,
+            "Contact": {
+                "details": "",
+                "methods": [
+                    {
+                        "type": "Email",
+                        "value": "JSG.PlatformSupport@gov.ab.ca",
+                        "url": "JSG.PlatformSupport@gov.ab.ca"
+                    }
+                ]
+            },
+            "filterText": "justice digital,other function,live,typescript, .net core,aws, github, sonarqube, pingdom (monitoring),jd cloud native"
+        },
+        {
+            "Nominate": "",
+            "ServiceName": "Comments service",
+            "Provider": "Advanced Education",
+            "Audience": [
+                "Other"
+            ],
+            "InternalWeightage": 10,
+            "Summary": "Provides functionality associated to attaching comments to an object for storage and retrieval.",
+            "Description": "Provides functionality associated to attaching comments to an object for storage and retrieval.",
+            "FunctionalGroup": "Other Function",
+            "Environment": [
+                "Container"
+            ],
+            "Language": [
+                "TypeScript"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
+            "Documentation": [],
+            "Keywords": [],
+            "Status": "Live",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "",
+            "Comments": "",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "Yes",
+            "ReviewedBy": "Heather",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 19,
+            "Contact": {
+                "details": "Discussion required to obtain access or to deploy container in line of business controlled environment",
+                "methods": [
+                    {
+                        "type": "Email",
+                        "value": "colter.mcquay@gov.ab.ca",
+                        "url": "colter.mcquay@gov.ab.ca"
+                    }
+                ]
+            },
+            "filterText": "advanced education,other function,live,typescript,container"
+        },
+        {
+            "Nominate": "",
+            "ServiceName": "Common payment portal",
+            "Provider": "Platforms -Common Platforms",
+            "Audience": [
+                "Other"
+            ],
+            "InternalWeightage": 10,
+            "Summary": "A common cloud-based portal which enables business programs to quickly spin up customized payment portals suporting emergency or payment initiatives",
+            "Description": "A common cloud-based portal which enables business programs from Ministries and Platforms branch to quickly spin up customized payment portals suporting emergency or payment initiatives",
+            "FunctionalGroup": "Payments and Financial Management",
+            "Environment": [
+                "Azure"
+            ],
+            "Language": [
+                ".NET Core"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
+            "Documentation": [],
+            "Keywords": [],
+            "Status": "Other",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "",
+            "Comments": "",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "Yes",
+            "ReviewedBy": "Heather",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 20,
+            "Contact": {
+                "details": "",
+                "methods": []
+            },
+            "filterText": "platforms -common platforms,payments and financial management,.net core,azure"
+        },
+        {
+            "Nominate": "",
+            "ServiceName": "Common payment services",
+            "Provider": "Platforms -Common Platforms",
+            "Audience": [
+                "Other"
+            ],
+            "InternalWeightage": 10,
+            "Summary": "A common cloud-based API services which enable payment portals with making payments and reconciling payments end-to-end.",
+            "Description": "A common cloud-based API services which enable payment portals with making payments and reconciling payments end-to-end. Payment types are being considered are eTransfer and EFT in bulk.",
+            "FunctionalGroup": "Payments and Financial Management",
+            "Environment": [
+                "Azure"
+            ],
+            "Language": [
+                ".NET Core"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
+            "Documentation": [],
+            "Keywords": [],
+            "Status": "Other",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "",
+            "Comments": "",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "Yes",
+            "ReviewedBy": "Heather",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 21,
+            "Contact": {
+                "details": "",
+                "methods": []
+            },
+            "filterText": "platforms -common platforms,payments and financial management,.net core,azure"
+        },
+        {
+            "Nominate": "",
+            "ServiceName": "Communication confirmation service",
+            "Provider": "Advanced Education",
+            "Audience": [
+                "Other"
+            ],
+            "InternalWeightage": 10,
+            "Summary": "Provides a code which can be used to verify email address and SMS messaging.",
+            "Description": "Provides a code which can be used to verify email address and SMS messaging.",
+            "FunctionalGroup": "Notifications and Communication",
+            "Environment": [
+                "GoA Network"
+            ],
+            "Language": [
+                ".NET"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
+            "Documentation": [],
+            "Keywords": [],
+            "Status": "Live",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "",
+            "Comments": "Legacy shared service that may not always be suitable for digitally redesigned services.",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "yes",
+            "ReviewedBy": "Andrew",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 22,
+            "Contact": {
+                "details": "Through consultation",
+                "methods": [
+                    {
+                        "type": "Email",
+                        "value": "sa.imehelpdesk@gov.ab.ca",
+                        "url": "sa.imehelpdesk@gov.ab.ca"
+                    }
+                ]
+            },
+            "filterText": "advanced education,notifications and communication,live,.net,goa network"
+        },
+        {
+            "Nominate": "",
+            "ServiceName": "Communication service",
+            "Provider": "Advanced Education",
+            "Audience": [
+                "Other"
+            ],
+            "InternalWeightage": 10,
+            "Summary": "Wrapper over Alberta Notify service and is intended to provide fault tolerance & guaranteed delivery",
+            "Description": "Wrapper over Alberta Notify service and is intended to provide fault tolerance & guaranteed delivery",
+            "FunctionalGroup": "Notifications and Communication",
+            "Environment": [
+                "GoA Network"
+            ],
+            "Language": [
+                "TypeScript"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
+            "Documentation": [],
+            "Keywords": [
+                "API"
+            ],
+            "Status": "Live",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "",
+            "Comments": "Emerging Service integration API may be more suitable. This service is a wrapper around ABNotify",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "yes",
+            "ReviewedBy": "Andrew",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 23,
+            "Contact": {
+                "details": "Discussion required to obtain access or to deploy container in line of business controlled environment",
+                "methods": [
+                    {
+                        "type": "Email",
+                        "value": "andrew.mackenzie@gov.ab.ca",
+                        "url": "andrew.mackenzie@gov.ab.ca"
+                    }
+                ]
+            },
+            "filterText": "advanced education,notifications and communication,live,typescript,goa network,api"
+        },
+        {
+            "Nominate": "",
+            "ServiceName": "Configuration Service",
+            "Provider": "Alberta Digital Service Platform (ADSP)",
+            "Audience": [
+                "Other"
+            ],
+            "InternalWeightage": 10,
+            "Summary": "Allows optimally storage, cache, and static data usage within your application. Ensuring persistent, schema-compliant, configuration storage.",
+            "Description": "Use the configuration service to optimally store, and cache, static data used to drive your application.  The service ensures persistent, and schema-compliant, configuration storage using a JSON document store. Write operations will be validated against the schema for accurate and consistent data.",
+            "FunctionalGroup": "Data Management",
+            "Environment": [
+                "Other"
+            ],
+            "Language": [
+                "Other"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "Hybrid",
+            "Documentation": [
+                {
+                    "name": "configuration-service.html",
+                    "url": "https://govalta.github.io/adsp-monorepo/services/configuration-service.html"
+                }
+            ],
+            "Keywords": [],
+            "Status": "Live",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "Product teams can get started by accessing an existing tenant or creating a new tenant. Each tenant represents a zone of administrative control and generally products within a common service area can share a tenant.",
+            "Comments": "",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "yes",
+            "ReviewedBy": "Andrew",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 24,
+            "Contact": {
+                "details": "",
+                "methods": [
+                    {
+                        "type": "Slack",
+                        "value": "adsp-connection",
+                        "url": "https://goa-dio.slack.com/channels/adsp-connection"
+                    },
+                    {
+                        "type": "Email",
+                        "value": "adsp@gov.ab.ca",
+                        "url": "adsp@gov.ab.ca"
+                    }
+                ]
+            },
+            "filterText": "alberta digital service platform (adsp),data management,live,hybrid"
+        },
+        {
+            "Nominate": "",
+            "ServiceName": "Course mark inquiry",
+            "Provider": "Advanced Education",
+            "Audience": [
+                "Other"
+            ],
+            "InternalWeightage": 10,
+            "Summary": "Interfaces to Alberta Education to retrieve transcript information.",
+            "Description": "Interfaces to Alberta Education to retrieve transcript information.",
+            "FunctionalGroup": "Other Function",
+            "Environment": [
+                "GoA Network"
+            ],
+            "Language": [
+                ".NET"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
+            "Documentation": [],
+            "Keywords": [],
+            "Status": "Live",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "",
+            "Comments": "Legacy shared service that may not always be suitable for digitally redesigned services.",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "yes",
+            "ReviewedBy": "Andrew",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 25,
+            "Contact": {
+                "details": "Through consultation",
+                "methods": [
+                    {
+                        "type": "Email",
+                        "value": "sa.imehelpdesk@gov.ab.ca",
+                        "url": "sa.imehelpdesk@gov.ab.ca"
+                    }
+                ]
+            },
+            "filterText": "advanced education,other function,live,.net,goa network"
+        },
+        {
+            "Nominate": "",
+            "ServiceName": "Court directory/Personnel shared service",
+            "Provider": "Justice Digital",
+            "Audience": [
+                "Justice Digital"
+            ],
+            "InternalWeightage": 10,
+            "Summary": "Justice staff lookup for metadata, contact information and some court locations.\nJustices and Clerks signatures can be applied to documents as required.",
+            "Description": "The court personnel API allows Justice Digital service/teams to look up metadata, contact information regarding Justices, Judges, Judicial Assistants, Application Judges and their court locations at any point in the service.\n\nMetadata and contact information for Judges, Justices, Judicial assistants, and Application Judges are collected and updated in a single place.\n\nSignatures of Justices and Clerks are managed within the Shared Service and through secure access, can be applied to documents as required.\n\n The shared service serves as the source of truth for this information, where delegated authorities from the courts update information for all other services and systems to pull from.",
+            "FunctionalGroup": "Other Function",
+            "Environment": [
+                "AWS"
+            ],
+            "Language": [
+                "Angular",
+                ".NET Core",
+                "TypeScript"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
+            "Documentation": [
+                {
+                    "name": "Shared+Services",
+                    "url": "https://goa-dio.atlassian.net/wiki/spaces/JDP/pages/2248015997/Shared+Services"
+                }
+            ],
+            "Keywords": [
+                "Pdf",
+                "Digital signature",
+                "Digital certification"
+            ],
+            "Status": "Live",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "",
+            "Comments": "",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "yes",
+            "ReviewedBy": "Andrew",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 26,
+            "Contact": {
+                "details": "",
+                "methods": [
+                    {
+                        "type": "Email",
+                        "value": "JSG.PlatformSupport@gov.ab.ca",
+                        "url": "JSG.PlatformSupport@gov.ab.ca"
+                    }
+                ]
+            },
+            "filterText": "justice digital,justice digital,other function,live,angular, .net core, typescript,aws,pdf, digital signature, digital certification"
+        },
+        {
+            "Nominate": "",
+            "ServiceName": "Data governance strategy",
+            "Provider": "Justice Digital",
+            "Audience": [
+                "Justice Digital"
+            ],
+            "InternalWeightage": 10,
+            "Summary": "A data governance plan outlining processes and procedures to ensure data quality, security, and privacy across all shared services of the Justice Digital Services Platform.",
+            "Description": "The Data Governance Plan outlines the processes and procedures to ensure data quality, security, and privacy across all shared services of the Justice Digital Services Platform. It comprises a set of standard operating procedures (SOPs) aimed at promoting consistency, reliability, and compliance in the handling, management, and modification of shared services.",
+            "FunctionalGroup": "Data Management",
+            "Environment": [
+                "AWS"
+            ],
+            "Language": [
+                "Other"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
+            "Documentation": [
+                {
+                    "name": "Data+Governance",
+                    "url": "https://goa-dio.atlassian.net/wiki/spaces/JD/pages/2080768084/Data+Governance"
+                }
+            ],
+            "Keywords": [
+                "Data Governance"
+            ],
+            "Status": "Live",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "",
+            "Comments": "",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "yes",
+            "ReviewedBy": "Andrew",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 27,
+            "Contact": {
+                "details": "",
+                "methods": [
+                    {
+                        "type": "Email",
+                        "value": "JSG.PlatformSupport@gov.ab.ca",
+                        "url": "JSG.PlatformSupport@gov.ab.ca"
+                    }
+                ]
+            },
+            "filterText": "justice digital,justice digital,data management,live,aws,data governance"
+        },
+        {
+            "Nominate": "YES",
+            "ServiceName": "DDD design system",
+            "Provider": "Digital Design and Delivery (DDD)",
+            "Audience": [
+                "Other"
+            ],
+            "InternalWeightage": 100,
+            "Summary": "A design system for designers and developers to create consistent and cohesive user experiences across multiple products and platforms.",
+            "Description": "The Design System team is responsible for creating and maintaining the assets used for building DDD product layouts, interactions, and patterns. The design system is a shared language for designers and developers to create consistent and cohesive user experiences across multiple products and platforms.",
+            "FunctionalGroup": "Other Function",
+            "Environment": [
+                "N/A"
+            ],
+            "Language": [
+                "Web components",
+                "Design tokens",
+                "Angular",
+                "React"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
+            "Documentation": [
+                {
+                    "name": "design.alberta.ca",
+                    "url": "https://design.alberta.ca"
+                }
+            ],
+            "Keywords": [
+                "Design",
+                "Development"
+            ],
+            "Status": "Live",
+            "Version": "Web components 1.14.0 , Design tokens 1.1.1 , Angular components 2.5.0 , React components 4.14.0",
+            "UseCases": "A design system is a centralized resource that provides guidelines, assets, and code to help teams build digital products. It helps maintain consistency across multiple projects and allows teams to focus on higher-level tasks rather than reinventing low-level elements.",
+            "Prerequisites": "",
+            "Comments": "Include the design system in all DDD products; it should act as the foundation for developing the front-end of any government service.",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "yes",
+            "ReviewedBy": "Andrew",
+            "CMRA": "OK",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 28,
+            "Contact": {
+                "details": "",
+                "methods": [
+                    {
+                        "type": "Slack",
+                        "value": "design-system-support",
+                        "url": "https://goa-dio.slack.com/channels/design-system-support"
+                    },
+                    {
+                        "type": "Email",
+                        "value": "sa.designsystemsupport@gov.ab.ca",
+                        "url": "sa.designsystemsupport@gov.ab.ca"
+                    }
+                ]
+            },
+            "filterText": "digital design and delivery (ddd),other function,live,web components, design tokens, angular, react,n/a,design, development"
+        },
+        {
+            "Nominate": "",
+            "ServiceName": "Directory service",
+            "Provider": "Alberta Digital Service Platform (ADSP)",
+            "Audience": [
+                "Other"
+            ],
+            "InternalWeightage": 10,
+            "Summary": "Provides a central register of service APIs",
+            "Description": "As a central register of APIs, the Directory Service gives you a means for service discovery.  They can use the Directory Service to find service URLs and decouple application code from changes in the URL due to, for example, a newer version, or a change in the application's environment.",
+            "FunctionalGroup": "Workflow and Process Automation",
+            "Environment": [
+                "Other"
+            ],
+            "Language": [
+                "Other"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "Hybrid",
+            "Documentation": [
+                {
+                    "name": "directory-service.html",
+                    "url": "https://govalta.github.io/adsp-monorepo/services/directory-service.html"
+                }
+            ],
+            "Keywords": [
+                "API"
+            ],
+            "Status": "Live",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "Product teams can get started by accessing an existing tenant or creating a new tenant. Each tenant represents a zone of administrative control and generally products within a common service area can share a tenant.",
+            "Comments": "",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "yes",
+            "ReviewedBy": "Andrew",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 29,
+            "Contact": {
+                "details": "",
+                "methods": [
+                    {
+                        "type": "Slack",
+                        "value": "adsp-connection",
+                        "url": "https://goa-dio.slack.com/channels/adsp-connection"
+                    },
+                    {
+                        "type": "Email",
+                        "value": "adsp@gov.ab.ca",
+                        "url": "adsp@gov.ab.ca"
+                    }
+                ]
+            },
+            "filterText": "alberta digital service platform (adsp),workflow and process automation,live,hybrid,api"
+        },
+        {
+            "Nominate": "Yes",
+            "ServiceName": "Document service",
+            "Provider": "Service Integration",
+            "Audience": [
+                "Other"
+            ],
+            "InternalWeightage": 100,
+            "Summary": "Document manipulation such as: Mail Merges, PDF Form Filling and PDF Redaction. Supports formats such as .docx, .xlsx, pdf, etc.",
+            "Description": "Provides a number of document manipulation features including:  Mail Merges, PDF Form Filling and PDF Redaction.  This service supports a number of input and output formats (.docx, .xlsx, pdf, etc.)  -->  Enhancement requests can be made for additional features",
+            "FunctionalGroup": "Document Processing",
+            "Environment": [
+                "Other"
+            ],
+            "Language": [
+                "Other"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "Hybrid",
+            "Documentation": [
+                {
+                    "name": "Document-Merge-Service.aspx",
+                    "url": "https://abgov.sharepoint.com/sites/S500D27-SI969/SitePages/Document-Merge-Service.aspx"
+                }
+            ],
+            "Keywords": [
+                "Docx",
+                "Xlsx",
+                "Pdf"
+            ],
+            "Status": "Other",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "Users will need to submit a Document service Intake Request to the Service Integration Team via BERNIE \"Service Integration Consultation\" online form submission to request this service.",
+            "Comments": "",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "yes",
+            "ReviewedBy": "Andrew",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 30,
+            "Contact": {
+                "details": "Advanced request required through the Service Integration SharePoint site; click the \"Requesting a Service\" link to access 'Service Integration Consultation Request \" web form",
+                "methods": [
+                    {
+                        "type": "Sharepoint",
+                        "value": "Document-Merge-Service.aspx",
+                        "url": "https://abgov.sharepoint.com/sites/S500D27-SI969/SitePages/Document-Merge-Service.aspx"
+                    }
+                ]
+            },
+            "filterText": "service integration,document processing,hybrid,docx, xlsx, pdf"
+        },
+        {
+            "Nominate": "Yes",
+            "ServiceName": "ECM (OpenText) connector service",
+            "Provider": "Service Integration",
+            "Audience": [
+                "Other"
+            ],
+            "InternalWeightage": 100,
+            "Summary": "Allows basic file management of project-specific content within ECM systems (e.g., file creation, modification, metadata, etc.) for OpenText.",
+            "Description": "The Electronic Content Management (ECM) Connector is a representational state transfer (REST) application programming interface (API) that allows file management of Government of Alberta (GoA) content within ECM systems (e.g. file creation, modification, metadata, etc.).\n\nThe ECM Connector takes REST calls and translates them into a format that is understood by the proprietary Open Text LIVELINK web services (LAPI) running on the GoA's OpenText Enterprise Content Servers (ECSS) server.",
+            "FunctionalGroup": "File Handling and Storage",
+            "Environment": [
+                "Other"
+            ],
+            "Language": [
+                "Other"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "Hybrid",
+            "Documentation": [
+                {
+                    "name": "ECM-Connector-Service.aspx",
+                    "url": "https://abgov.sharepoint.com/sites/S500D27-SI969/SitePages/ECM-Connector-Service.aspx"
+                }
+            ],
+            "Keywords": [],
+            "Status": "Other",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "",
+            "Comments": "",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "",
+            "ReviewedBy": "",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 31,
+            "Contact": {
+                "details": "Advanced request required through BERNIE; search and select the BERNIE service called 'Electronic Content Management (ECM) Connector'",
+                "methods": [
+                    {
+                        "type": "BERNIE",
+                        "value": "bernie.gov.ab.ca",
+                        "url": "https://bernie.gov.ab.ca/"
+                    }
+                ]
+            },
+            "filterText": "service integration,file handling and storage,hybrid"
+        },
+        {
+            "Nominate": "Yes",
+            "ServiceName": "Electronic signature - self-service user portal",
+            "Provider": "Service Integration",
+            "Audience": [
+                "Other"
+            ],
+            "InternalWeightage": 100,
+            "Summary": "Allows the user to access the platform to create and send envelopes, monitor and administer user activity and manage other aspects of the e-signature business process and workflow.",
+            "Description": "The eSignature is a cloud-based service that allows subscribers to prepare and send documents for electronic signatures.  With this service, subscribers can send contracts and agreements to both GoA internal and external clients for signatures and approvals.  The service is secure, cost-effective, timesaving, user-friendly, and compliant with GoA guidelines and standards.  The signed documents are protected, and the signers are uniquely identified by using multiple authentication methods.\n\nThe following tasks can be performed using this request:\n\nRequest a consultation with the eSignature support team\nSubscribe to the eSignature service\nAdd, change, and remove users from your eSignature service subscription\nAssign signature projects to users\nCancel the eSignature service subscription\nYou are encouraged to request a consultation to learn more about the service before subscribing to the service.  During the consultation meeting, you are provided with the service features, costs, and details on the subscription process.",
+            "FunctionalGroup": "Document Processing",
+            "Environment": [
+                "Other"
+            ],
+            "Language": [
+                "Other"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "Hybrid",
+            "Documentation": [
+                {
+                    "name": "bernie.gov.ab.ca esm",
+                    "url": "https://bernie.gov.ab.ca/esm?id=kb_article&sysparm_article=KB0025486"
+                }
+            ],
+            "Keywords": [],
+            "Status": "Other",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "",
+            "Comments": "",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "",
+            "ReviewedBy": "",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 32,
+            "Contact": {
+                "details": "Advanced request required through BERNIE; search and sekect the BERNIE service called \"eSignature Service\".",
+                "methods": [
+                    {
+                        "type": "BERNIE",
+                        "value": "bernie.gov.ab.ca",
+                        "url": "https://bernie.gov.ab.ca/"
+                    }
+                ]
+            },
+            "filterText": "service integration,document processing,hybrid"
+        },
+        {
+            "Nominate": "Yes",
+            "ServiceName": "Email API service",
+            "Provider": "Service Integration",
+            "Audience": [
+                "Other"
+            ],
+            "InternalWeightage": 100,
+            "Summary": "A powerful email service with similar or more capabilities than your outlook client.",
+            "Description": "Sends emails to one or many recipients with multiple parameters: To, CC and BCC, ability to specify a FROM recipient, supply a subject line, options for the message body such as HTML, Rich Text or Plain Text, and the sender can attach one or more attachments to the  email.  Provides similar formatting capabilities as your outlook client.",
+            "FunctionalGroup": "Notifications and Communication",
+            "Environment": [
+                "Other"
+            ],
+            "Language": [
+                "Other"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "Hybrid",
+            "Documentation": [
+                {
+                    "name": "Email-API-Service.aspx",
+                    "url": "https://abgov.sharepoint.com/sites/S500D27-SI969/SitePages/Email-API-Service.aspx"
+                }
+            ],
+            "Keywords": [
+                "Email"
+            ],
+            "Status": "Other",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "",
+            "Comments": "",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "",
+            "ReviewedBy": "",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 33,
+            "Contact": {
+                "details": "Advanced request required through the Service Integration SharePoint site; click the \"Request the service\" link and access the 'Service Integration Intake Request' web form",
+                "methods": [
+                    {
+                        "type": "Sharepoint",
+                        "value": "Email-API-Service.aspx",
+                        "url": "https://abgov.sharepoint.com/sites/S500D27-SI969/SitePages/Email-API-Service.aspx"
+                    }
+                ]
+            },
+            "filterText": "service integration,notifications and communication,hybrid,email"
+        },
+        {
+            "Nominate": "",
+            "ServiceName": "Employment insurance (EI) gateway",
+            "Provider": "Advanced Education",
+            "Audience": [
+                "Other"
+            ],
+            "InternalWeightage": 10,
+            "Summary": "An API proxy that consumes Government of Canada employment API endpoints and handles security and API aggregation.",
+            "Description": "An API proxy that consumes Government of Canada employment API endpoints and handles security and API aggregation.",
+            "FunctionalGroup": "Workflow and Process Automation",
+            "Environment": [
+                "Container"
+            ],
+            "Language": [
+                "TypeScript"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
+            "Documentation": [],
+            "Keywords": [
+                "API"
+            ],
+            "Status": "Beta",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "",
+            "Comments": "",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "",
+            "ReviewedBy": "",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 34,
+            "Contact": {
+                "details": "Discussion required to obtain access or to deploy container in line of business controlled environment",
+                "methods": [
+                    {
+                        "type": "Email",
+                        "value": "andrew.mackenzie@gov.ab.ca",
+                        "url": "andrew.mackenzie@gov.ab.ca"
+                    }
+                ]
+            },
+            "filterText": "advanced education,workflow and process automation,beta,typescript,container,api"
+        },
+        {
+            "Nominate": "",
+            "ServiceName": "Event service",
+            "Provider": "Alberta Digital Service Platform (ADSP)",
+            "Audience": [
+                "Other"
+            ],
+            "InternalWeightage": 10,
+            "Summary": "Provides capability for applications to define, and log, domain events giving an easy implement traceability, auditability, accountability and transparency.  Often coupled with other ADSP services.",
+            "Description": "The event service provides the capability for applications to define, and log, domain events.  This gives them an easy way to implement traceability, auditability, accountability and transparency.  In addition the service is often coupled, and used in conjunction with, other ADSP services. E.G an application is using the Notification Service it would use specific domain events to trigger notifications.",
+            "FunctionalGroup": "Notifications and Communication",
+            "Environment": [
+                "Other"
+            ],
+            "Language": [
+                "Other"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "Hybrid",
+            "Documentation": [
+                {
+                    "name": "event-service.html",
+                    "url": "https://govalta.github.io/adsp-monorepo/services/event-service.html"
+                }
+            ],
+            "Keywords": [],
+            "Status": "Live",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "Product teams can get started by accessing an existing tenant or creating a new tenant. Each tenant represents a zone of administrative control and generally products within a common service area can share a tenant.",
+            "Comments": "",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "",
+            "ReviewedBy": "",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 35,
+            "Contact": {
+                "details": "",
+                "methods": [
+                    {
+                        "type": "Slack",
+                        "value": "adsp-connection",
+                        "url": "https://goa-dio.slack.com/channels/adsp-connection"
+                    },
+                    {
+                        "type": "Email",
+                        "value": "adsp@gov.ab.ca",
+                        "url": "adsp@gov.ab.ca"
+                    }
+                ]
+            },
+            "filterText": "alberta digital service platform (adsp),notifications and communication,live,hybrid"
+        },
+        {
+            "Nominate": "",
+            "ServiceName": "File handling shared services",
+            "Provider": "Justice Digital",
+            "Audience": [
+                "Other"
+            ],
+            "InternalWeightage": 10,
+            "Summary": "Document Upload and Download using consistent architecture.",
+            "Description": "Document Upload and Download\nJustice Digital services use consistent architecture to facilitate document uploads and downloads.",
+            "FunctionalGroup": "File Handling and Storage",
+            "Environment": [
+                "AWS"
+            ],
+            "Language": [
+                "Angular",
+                ".NET Core",
+                "TypeScript"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
+            "Documentation": [
+                {
+                    "name": "Shared+Services",
+                    "url": "https://goa-dio.atlassian.net/wiki/spaces/JDP/pages/2248015997/Shared+Services"
+                }
+            ],
+            "Keywords": [
+                "Pdf",
+                "Digital signature",
+                "Stamping",
+                "Digital certification"
+            ],
+            "Status": "Live",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "",
+            "Comments": "",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "",
+            "ReviewedBy": "",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 36,
+            "Contact": {
+                "details": "",
+                "methods": [
+                    {
+                        "type": "Email",
+                        "value": "JSG.PlatformSupport@gov.ab.ca",
+                        "url": "JSG.PlatformSupport@gov.ab.ca"
+                    }
+                ]
+            },
+            "filterText": "justice digital,file handling and storage,live,angular, .net core, typescript,aws,pdf, digital signature, stamping, digital certification"
+        },
+        {
+            "Nominate": "",
+            "ServiceName": "File service",
+            "Provider": "Alberta Digital Service Platform (ADSP)",
+            "Audience": [
+                "Other"
+            ],
+            "InternalWeightage": 10,
+            "Summary": "Provides capabilities for uploading and managing files in Microsoft's Azure Blob Storage.  Includes support for virus scanning, access control, retention policy, retrieval, and searching.",
+            "Description": "Provides capabilities for uploading and managing files in Microsoft's Azure Blob Storage.  It includes support for virus scanning, access control, retention policy, retrieval, and searching. The service is intended to give applications a means to manage temporary files (e.g. retention policy < 30 days), or whose content is not directly needed by the application's business users.",
+            "FunctionalGroup": "File Handling and Storage",
+            "Environment": [
+                "Other"
+            ],
+            "Language": [
+                "Other"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "Hybrid",
+            "Documentation": [
+                {
+                    "name": "file-service.html",
+                    "url": "https://govalta.github.io/adsp-monorepo/services/file-service.html"
+                }
+            ],
+            "Keywords": [],
+            "Status": "Live",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "Product teams can get started by accessing an existing tenant or creating a new tenant. Each tenant represents a zone of administrative control and generally products within a common service area can share a tenant.",
+            "Comments": "",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "",
+            "ReviewedBy": "",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 37,
+            "Contact": {
+                "details": "",
+                "methods": [
+                    {
+                        "type": "Slack",
+                        "value": "adsp-connection",
+                        "url": "https://goa-dio.slack.com/channels/adsp-connection"
+                    },
+                    {
+                        "type": "Email",
+                        "value": "adsp@gov.ab.ca",
+                        "url": "adsp@gov.ab.ca"
+                    }
+                ]
+            },
+            "filterText": "alberta digital service platform (adsp),file handling and storage,live,hybrid"
+        },
+        {
+            "Nominate": "",
+            "ServiceName": "Form service",
+            "Provider": "Alberta Digital Service Platform (ADSP)",
+            "Audience": [
+                "Other"
+            ],
+            "InternalWeightage": 10,
+            "Summary": "Capture information from users securely, and keep them informed on the status of their submission without requiring them to log in to your application.",
+            "Description": "Capture information from users securely, and keep them informed on the status of their submission without requiring them to log in to your application.  Data can be entered and modified over multiple sessions; users are sent a verification code each time they wish to revisit the submission.",
+            "FunctionalGroup": "Document Processing",
+            "Environment": [
+                "Other"
+            ],
+            "Language": [
+                "Other"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "Hybrid",
+            "Documentation": [],
+            "Keywords": [],
+            "Status": "Live",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "Product teams can get started by accessing an existing tenant or creating a new tenant. Each tenant represents a zone of administrative control and generally products within a common service area can share a tenant.",
+            "Comments": "",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "",
+            "ReviewedBy": "",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 38,
+            "Contact": {
+                "details": "",
+                "methods": [
+                    {
+                        "type": "Slack",
+                        "value": "adsp-connection",
+                        "url": "https://goa-dio.slack.com/channels/adsp-connection"
+                    },
+                    {
+                        "type": "Email",
+                        "value": "adsp@gov.ab.ca",
+                        "url": "adsp@gov.ab.ca"
+                    }
+                ]
+            },
+            "filterText": "alberta digital service platform (adsp),document processing,live,hybrid"
+        },
+        {
+            "Nominate": "",
+            "ServiceName": "Get access (CCA)",
+            "Provider": "Children's Services Platform",
+            "Audience": [
+                "Children's Services"
+            ],
+            "InternalWeightage": 10,
+            "Summary": "Allows child care operators request access to Children's Services.",
+            "Description": "Allows child care operators to request access to services provided by Children's Services. Requests are approved by authorized GOA staff.",
+            "FunctionalGroup": "User Access and Identity",
+            "Environment": [
+                "Openshift"
+            ],
+            "Language": [
+                "Angular"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
+            "Documentation": [],
+            "Keywords": [],
+            "Status": "Live",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "",
+            "Comments": "Used within Children's Services, but could be extended/reused by other business areas.\nRequires the use of Keycloak.",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "",
+            "ReviewedBy": "",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 39,
+            "Contact": {
+                "details": "Discussion required to obtain access or to deploy container in line of business controlled environment",
+                "methods": [
+                    {
+                        "type": "Email",
+                        "value": "heather.objois@gov.ab.ca",
+                        "url": "heather.objois@gov.ab.ca"
+                    }
+                ]
+            },
+            "filterText": "children's services platform,children's services,user access and identity,live,angular,openshift"
+        },
+        {
+            "Nominate": "",
+            "ServiceName": "Get access (CCA) API",
+            "Provider": "Children's Services Platform",
+            "Audience": [
+                "Children's Services"
+            ],
+            "InternalWeightage": 10,
+            "Summary": "An internal API that allows applications developed by Children's Services to get information about users, roles, and groups from the CCDS Keycloak realm.",
+            "Description": "An internal API that allows applications developed by Children's Services to get information about users, roles, and groups from the CCDS Keycloak realm.",
+            "FunctionalGroup": "User Access and Identity",
+            "Environment": [
+                "Openshift"
+            ],
+            "Language": [
+                "Web API"
+            ],
+            "UsageMethod": "API",
+            "SupportLevel": "Other",
+            "Documentation": [],
+            "Keywords": [
+                "Keycloak",
+                "API"
+            ],
+            "Status": "Live",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "",
+            "Comments": "Used within Children's Services, but could be extended/reused by other business areas.\nRequires the use of Keycloak.",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "",
+            "ReviewedBy": "",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 40,
+            "Contact": {
+                "details": "Discussion required to obtain access or to deploy container in line of business controlled environment",
+                "methods": [
+                    {
+                        "type": "Email",
+                        "value": "heather.objois@gov.ab.ca",
+                        "url": "heather.objois@gov.ab.ca"
+                    }
+                ]
+            },
+            "filterText": "children's services platform,children's services,user access and identity,live,api,web api,openshift,keycloak, api"
+        },
+        {
+            "Nominate": "",
+            "ServiceName": "GOA user management",
+            "Provider": "Children's Services Platform",
+            "Audience": [
+                "Children's Services"
+            ],
+            "InternalWeightage": 10,
+            "Summary": "Allows GOA staff to manage the access of other GOA staff to the internal applications developed by Children's Services.",
+            "Description": "Allows GOA staff to manage the access of other GOA staff to the internal applications developed by Children's Services.",
+            "FunctionalGroup": "User Access and Identity",
+            "Environment": [
+                "Openshift"
+            ],
+            "Language": [
+                "Angular"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
+            "Documentation": [],
+            "Keywords": [],
+            "Status": "Live",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "",
+            "Comments": "Used within Children's Services, but could be extended/reused by other business areas.\nRequires the use of Keycloak.",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "",
+            "ReviewedBy": "",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 41,
+            "Contact": {
+                "details": "Discussion required to obtain access or to deploy container in line of business controlled environment",
+                "methods": [
+                    {
+                        "type": "Email",
+                        "value": "heather.objois@gov.ab.ca",
+                        "url": "heather.objois@gov.ab.ca"
+                    }
+                ]
+            },
+            "filterText": "children's services platform,children's services,user access and identity,live,angular,openshift"
+        },
+        {
+            "Nominate": "",
+            "ServiceName": "Identity and access management strategy",
+            "Provider": "Justice Digital",
+            "Audience": [
+                "Justice Digital"
+            ],
+            "InternalWeightage": 10,
+            "Summary": "A highly available cloud-hosted instance under a single Justice Digital realm.",
+            "Description": "All Justice Digital services are using a highly available cloud-hosted instance under a single Justice Digital realm. This will help reduce disruptions in access to Justice Digital services and enable external users such as lawyers to use multiple Justice Digital services with a single account, making access more streamlined.",
+            "FunctionalGroup": "User Access and Identity",
+            "Environment": [
+                "AWS",
+                "Keycloak"
+            ],
+            "Language": [
+                "Angular",
+                ".NET Core",
+                "IaC using CDK"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
+            "Documentation": [
+                {
+                    "name": "2mv1hUmh",
+                    "url": "https://goa-dio.atlassian.net/l/cp/2mv1hUmh"
+                }
+            ],
+            "Keywords": [
+                "JD IAM"
+            ],
+            "Status": "Live",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "",
+            "Comments": "",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "",
+            "ReviewedBy": "",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 42,
+            "Contact": {
+                "details": "",
+                "methods": [
+                    {
+                        "type": "Email",
+                        "value": "JSG.PlatformSupport@gov.ab.ca",
+                        "url": "JSG.PlatformSupport@gov.ab.ca"
+                    }
+                ]
+            },
+            "filterText": "justice digital,justice digital,user access and identity,live,angular, .net core, iac using cdk,aws, keycloak,jd iam"
+        },
+        {
+            "Nominate": "",
+            "ServiceName": "Income validation API",
+            "Provider": "Platforms - Common Data Services",
+            "Audience": [
+                "Other"
+            ],
+            "InternalWeightage": 10,
+            "Summary": "Verification of the applicant's personal income and/or family income under a specific threshold.",
+            "Description": "Assess the eligibility of an Albertan to apply for a Government of Alberta program that necessitates verification of the applicant's personal income and/or family income under a specific threshold. The use of data for this assessment requires a MOU with CRA and the Department of Treasury Board and Finance, as well as a privacy assessment.",
+            "FunctionalGroup": "Payments and Financial Management",
+            "Environment": [
+                "On Prem"
+            ],
+            "Language": [
+                ".NET Core"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "TBD",
+            "Documentation": [],
+            "Keywords": [
+                "API"
+            ],
+            "Status": "Alpha",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "",
+            "Comments": "",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "",
+            "ReviewedBy": "",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 43,
+            "Contact": {
+                "details": "",
+                "methods": []
+            },
+            "filterText": "platforms - common data services,payments and financial management,alpha,.net core,on prem,tbd,api"
+        },
+        {
+            "Nominate": "",
+            "ServiceName": "Keycloak client",
+            "Provider": "SCSS",
+            "Audience": [
+                "Other"
+            ],
+            "InternalWeightage": 10,
+            "Summary": "Privately hosted Keycloak client npm package",
+            "Description": "Privately hosted Keycloak client npm package",
+            "FunctionalGroup": "User Access and Identity",
+            "Environment": [
+                "Other"
+            ],
+            "Language": [
+                "Angular"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
+            "Documentation": [
+                {
+                    "name": "Instructions and additional information",
+                    "url": "https://github.com/GovAlta-EMU/keycloak-auth-service"
+                }
+            ],
+            "Keywords": [
+                "Keycloak"
+            ],
+            "Status": "Other",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "",
+            "Comments": "",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "",
+            "ReviewedBy": "",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 44,
+            "Contact": {
+                "details": "Privately hosted npm package",
+                "methods": [
+                    {
+                        "type": "GitHub",
+                        "value": "keycloak-auth-service",
+                        "url": "https://github.com/GovAlta-EMU/keycloak-auth-service"
+                    }
+                ]
+            },
+            "filterText": "scss,user access and identity,angular,keycloak"
+        },
+        {
+            "Nominate": "",
+            "ServiceName": "Keycloak integration with DIG",
+            "Provider": "Wildfire Platform",
+            "Audience": [
+                "Other"
+            ],
+            "InternalWeightage": 10,
+            "Summary": "Pattern to integrate authentication with Alberta.ca MADI-B and GoA Azure AD though DIG.",
+            "Description": "Pattern to integrate authentication with Alberta.ca MADI-B and GoA Azure AD though DIG. Keycloak delegates authentication to external IdP but handles user authorization and generate access_token",
+            "FunctionalGroup": "User Access and Identity",
+            "Environment": [
+                "Other"
+            ],
+            "Language": [
+                "Other"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
+            "Documentation": [
+                {
+                    "name": "AutN+AuthZ+Options",
+                    "url": "https://goa-dio.atlassian.net/wiki/spaces/WDS/pages/2777055233/AutN+AuthZ+Options"
+                }
+            ],
+            "Keywords": [
+                "Keycloak"
+            ],
+            "Status": "Other",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "Have a Keycloak realm available",
+            "Comments": "",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "",
+            "ReviewedBy": "",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 45,
+            "Contact": {
+                "details": "",
+                "methods": [
+                    {
+                        "type": "Email",
+                        "value": "vassy.serban@gov.ab.ca",
+                        "url": "vassy.serban@gov.ab.ca"
+                    }
+                ]
+            },
+            "filterText": "wildfire platform,user access and identity,keycloak"
+        },
+        {
+            "Nominate": "",
+            "ServiceName": "MyAlberta digital ID for business (MADI-B)",
+            "Provider": "Platforms - IAM",
+            "Audience": [
+                "Other"
+            ],
+            "InternalWeightage": 10,
+            "Summary": "An IAM platform that provides federated sign on for businesses and their staff accessing on-line services.",
+            "Description": "An IAM platform that provides federated sign on for businesses and their staff accessing on-line services.",
+            "FunctionalGroup": "User Access and Identity",
+            "Environment": [
+                "On Prem",
+                "NCC and JJB datacentres"
+            ],
+            "Language": [
+                "ForgeRock"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "24x7",
+            "Documentation": [],
+            "Keywords": [],
+            "Status": "Live",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "",
+            "Comments": "",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "",
+            "ReviewedBy": "",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 46,
+            "Contact": {
+                "details": "",
+                "methods": [
+                    {
+                        "type": "Web",
+                        "value": "business.account.alberta.ca",
+                        "url": "https://business.account.alberta.ca"
+                    },
+                    {
+                        "type": "Email",
+                        "value": "account.service-owner@gov.ab.ca",
+                        "url": "account.service-owner@gov.ab.ca"
+                    }
+                ]
+            },
+            "filterText": "platforms - iam,user access and identity,live,forgerock,on prem, ncc and jjb datacentres,24x7"
+        },
+        {
+            "Nominate": "Yes",
+            "ServiceName": "Nagios monitoring service",
+            "Provider": "Service Integration",
+            "Audience": [
+                "Other"
+            ],
+            "InternalWeightage": 100,
+            "Summary": "Enterprise monitoring service (primary platform used within GoA). Has a wide degree of monitoring and alerting options.",
+            "Description": "This enterprise monitoring service has a wide degree of monitoring and alerting options that can be setup for your needs.  This is the primary monitoring platform used within GoA.",
+            "FunctionalGroup": "Service Monitoring and Support",
+            "Environment": [
+                "Other"
+            ],
+            "Language": [
+                "Other"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "Hybrid",
+            "Documentation": [],
+            "Keywords": [],
+            "Status": "Other",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "",
+            "Comments": "",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "",
+            "ReviewedBy": "",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 47,
+            "Contact": {
+                "details": "This service can be requested through the BERNIE Portal; search and select BERNIE service called \"GoA: Service Catalogue: Microsoft Defender\"",
+                "methods": [
+                    {
+                        "type": "BERNIE",
+                        "value": "bernie.gov.ab.ca",
+                        "url": "https://bernie.gov.ab.ca/"
+                    }
+                ]
+            },
+            "filterText": "service integration,service monitoring and support,hybrid"
+        },
+        {
+            "Nominate": "",
+            "ServiceName": "Notification service",
+            "Provider": "Alberta Digital Service Platform (ADSP)",
+            "Audience": [
+                "Other"
+            ],
+            "InternalWeightage": 10,
+            "Summary": "Enable text or email notifications in your application.  Build customizable templates to send automated personalized messages, such as needing approval, or action reminders.",
+            "Description": "Enable text or email notifications in your application through the ADSP Notification Service.  Build customizable templates and use these to send personalized messages to your users upon the occurrence of specific \"domain events\" in your application, such as receiving approval for a submission, or reminders to take some action.",
+            "FunctionalGroup": "Notifications and Communication",
+            "Environment": [
+                "Other"
+            ],
+            "Language": [
+                "Other"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "Hybrid",
+            "Documentation": [
+                {
+                    "name": "subscription.adsp.alberta.ca",
+                    "url": "https://subscription.adsp.alberta.ca/"
+                }
+            ],
+            "Keywords": [],
+            "Status": "Live",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "Product teams can get started by accessing an existing tenant or creating a new tenant. Each tenant represents a zone of administrative control and generally products within a common service area can share a tenant.",
+            "Comments": "",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "",
+            "ReviewedBy": "",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 48,
+            "Contact": {
+                "details": "",
+                "methods": [
+                    {
+                        "type": "Slack",
+                        "value": "adsp-connection",
+                        "url": "https://goa-dio.slack.com/channels/adsp-connection"
+                    },
+                    {
+                        "type": "Email",
+                        "value": "adsp@gov.ab.ca",
+                        "url": "adsp@gov.ab.ca"
+                    }
+                ]
+            },
+            "filterText": "alberta digital service platform (adsp),notifications and communication,live,hybrid"
+        },
+        {
+            "Nominate": "",
+            "ServiceName": "Notifications",
+            "Provider": "SCSS",
+            "Audience": [
+                "Other"
+            ],
+            "InternalWeightage": 10,
+            "Summary": "Provides a message bus interface to AB Notify",
+            "Description": "Provides a message bus interface to AB Notify",
+            "FunctionalGroup": "Notifications and Communication",
+            "Environment": [
+                "GoA Network"
+            ],
+            "Language": [
+                "TypeScript"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
+            "Documentation": [],
+            "Keywords": [],
+            "Status": "Other",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "",
+            "Comments": "",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "",
+            "ReviewedBy": "",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 49,
+            "Contact": {
+                "details": "",
+                "methods": []
+            },
+            "filterText": "scss,notifications and communication,typescript,goa network"
+        },
+        {
+            "Nominate": "",
+            "ServiceName": "OAuth BFF flow implementation",
+            "Provider": "Wildfire Platform",
+            "Audience": [
+                "Other"
+            ],
+            "InternalWeightage": 10,
+            "Summary": "Notes on OAuth for Browser-Based Apps",
+            "Description": "This specification details the threats, attack consequences, security considerations and best practices that must be taken into account when developing browser-based applications that use OAuth 2.0.",
+            "FunctionalGroup": "User Access and Identity",
+            "Environment": [
+                "Other"
+            ],
+            "Language": [
+                ".NET Core"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
+            "Documentation": [
+                {
+                    "name": "Admin+RestAPI+request+flow",
+                    "url": "https://goa-dio.atlassian.net/wiki/spaces/WDS/pages/2758869310/Admin+RestAPI+request+flow"
+                },
+                {
+                    "name": "Pattern to implement OAuth BFF Proxy flow",
+                    "url": "https://datatracker.ietf.org/doc/html/draft-ietf-oauth-browser-based-apps#name-backend-for-frontend-bff-pr"
+                }
+            ],
+            "Keywords": [],
+            "Status": "Other",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "The implementation is using BFF Duende framework, license might be required",
+            "Comments": "",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "",
+            "ReviewedBy": "",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 50,
+            "Contact": {
+                "details": "",
+                "methods": [
+                    {
+                        "type": "Email",
+                        "value": "vassy.serban@gov.ab.ca",
+                        "url": "vassy.serban@gov.ab.ca"
+                    }
+                ]
+            },
+            "filterText": "wildfire platform,user access and identity,.net core"
+        },
+        {
+            "Nominate": "Yes",
+            "ServiceName": "Payment gateway service",
+            "Provider": "Service Integration",
+            "Audience": [
+                "Other"
+            ],
+            "InternalWeightage": 100,
+            "Summary": "A common e-payment service that offers a centralized electronic payment experience.   This service leverage the GoA TD Beanstream platform.",
+            "Description": "The Payment Gateway Service (PGS) offers a centralized electronic payment experience with the GoA using the TD Online Mart online payments solution. This standardized approach has many advantages over direct integration with current payment providers, such as:  \n\nApplication insulation from organizational change. When the payment provider changes, the application code does not. Consequently, PGS can seamlessly manage a new payment provider without manual intervention. \nBusiness areas no longer have to complete the Payment Card Industry Self-Assessment Questionnaire (PCI SAQ) A type audits.",
+            "FunctionalGroup": "Payments and Financial Management",
+            "Environment": [
+                "Other"
+            ],
+            "Language": [
+                "Other"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "Hybrid",
+            "Documentation": [
+                {
+                    "name": "Payment-Gateway-Service.aspx",
+                    "url": "https://abgov.sharepoint.com/sites/S500D27-SI969/SitePages/Payment-Gateway-Service.aspx"
+                }
+            ],
+            "Keywords": [],
+            "Status": "Other",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "Business area will require a merchant account for their transactions.  This can be obtained through TBF merchant services (the process to obtain a merchant account is documented as part of the onboarding procedures)",
+            "Comments": "",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "Yes",
+            "ReviewedBy": "Sanchit",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 51,
+            "Contact": {
+                "details": "Advanced request required through the Service Integration SharePoint site; click the \"Request Payment Gateway Service\" link to access the 'Service Integration Consultation Request \" web form",
+                "methods": [
+                    {
+                        "type": "Sharepoint",
+                        "value": "Payment-Gateway-Service.aspx",
+                        "url": "https://abgov.sharepoint.com/sites/S500D27-SI969/SitePages/Payment-Gateway-Service.aspx"
+                    }
+                ]
+            },
+            "filterText": "service integration,payments and financial management,hybrid"
+        },
+        {
+            "Nominate": "",
+            "ServiceName": "Payment guide",
+            "Provider": "Justice Digital",
+            "Audience": [
+                "Justice Digital"
+            ],
+            "InternalWeightage": 10,
+            "Summary": "TD Bambora is the recommended payment solution for service teams within Justice Digital.",
+            "Description": "TD Bambora is the recommended payment solution for service teams within Justice Digital.",
+            "FunctionalGroup": "Payments and Financial Management",
+            "Environment": [
+                "AWS",
+                "Wordline (Bambora)"
+            ],
+            "Language": [
+                "Other"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
+            "Documentation": [
+                {
+                    "name": "Payment+Guide",
+                    "url": "https://goa-dio.atlassian.net/wiki/spaces/JD/pages/2233827335/Payment+Guide"
+                }
+            ],
+            "Keywords": [
+                "Payment"
+            ],
+            "Status": "Live",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "",
+            "Comments": "",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "Yes",
+            "ReviewedBy": "Sanchit",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 52,
+            "Contact": {
+                "details": "",
+                "methods": [
+                    {
+                        "type": "Email",
+                        "value": "JSG.PlatformSupport@gov.ab.ca",
+                        "url": "JSG.PlatformSupport@gov.ab.ca"
+                    }
+                ]
+            },
+            "filterText": "justice digital,justice digital,payments and financial management,live,aws, wordline (bambora),payment"
+        },
+        {
+            "Nominate": "",
+            "ServiceName": "PDF generation & merging",
+            "Provider": "Justice Digital",
+            "Audience": [
+                "Other"
+            ],
+            "InternalWeightage": 10,
+            "Summary": "Justice Digital services use consistent architecture to facilitate PDF generation and merging functionality.",
+            "Description": "Justice Digital services use consistent architecture to facilitate PDF generation and merging functionality.",
+            "FunctionalGroup": "Document Processing",
+            "Environment": [
+                "AWS"
+            ],
+            "Language": [
+                "Angular",
+                ".NET Core",
+                "TypeScript"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
+            "Documentation": [
+                {
+                    "name": "Shared+Services",
+                    "url": "https://goa-dio.atlassian.net/wiki/spaces/JDP/pages/2248015997/Shared+Services"
+                }
+            ],
+            "Keywords": [
+                "Pdf",
+                "Digital signature",
+                "Digital certification"
+            ],
+            "Status": "Live",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "",
+            "Comments": "",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "",
+            "ReviewedBy": "",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 53,
+            "Contact": {
+                "details": "",
+                "methods": [
+                    {
+                        "type": "Email",
+                        "value": "JSG.PlatformSupport@gov.ab.ca",
+                        "url": "JSG.PlatformSupport@gov.ab.ca"
+                    }
+                ]
+            },
+            "filterText": "justice digital,document processing,live,angular, .net core, typescript,aws,pdf, digital signature, digital certification"
+        },
+        {
+            "Nominate": "",
+            "ServiceName": "PDF service",
+            "Provider": "Alberta Digital Service Platform (ADSP)",
+            "Audience": [
+                "Other"
+            ],
+            "InternalWeightage": 10,
+            "Summary": "Creates customized GOA branded PDF documents for end users. Securely managed using Azure storage.",
+            "Description": "Provides the capability for creating customized PDF documents for downloading by end users. By utilizing our editor to create templates and combining them with intake data, developers can easily create GOA branded PDFs.  The documents are uploaded to Azure Blob storage and can be managed there securely, throughout their lifecycle, with the ADSP file service.",
+            "FunctionalGroup": "Document Processing",
+            "Environment": [
+                "Other"
+            ],
+            "Language": [
+                "Other"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "Hybrid",
+            "Documentation": [
+                {
+                    "name": "pdf-service.html",
+                    "url": "https://govalta.github.io/adsp-monorepo/services/pdf-service.html"
+                }
+            ],
+            "Keywords": [
+                "Pdf"
+            ],
+            "Status": "Live",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "Product teams can get started by accessing an existing tenant or creating a new tenant. Each tenant represents a zone of administrative control and generally products within a common service area can share a tenant.",
+            "Comments": "",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "",
+            "ReviewedBy": "",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 54,
+            "Contact": {
+                "details": "",
+                "methods": [
+                    {
+                        "type": "Slack",
+                        "value": "adsp-connection",
+                        "url": "https://goa-dio.slack.com/channels/adsp-connection"
+                    },
+                    {
+                        "type": "Email",
+                        "value": "adsp@gov.ab.ca",
+                        "url": "adsp@gov.ab.ca"
+                    }
+                ]
+            },
+            "filterText": "alberta digital service platform (adsp),document processing,live,hybrid,pdf"
+        },
+        {
+            "Nominate": "",
+            "ServiceName": "Program and provider registry",
+            "Provider": "Advanced Education",
+            "Audience": [
+                "Other"
+            ],
+            "InternalWeightage": 10,
+            "Summary": "Contains programs, providers, specializations, session and cost information of the various private and public school mostly within Alberta.",
+            "Description": "Contains programs, providers, specializations, session and cost information of the various private and public school mostly within Alberta.",
+            "FunctionalGroup": "Data Management",
+            "Environment": [
+                "GoA Network"
+            ],
+            "Language": [
+                ".NET"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
+            "Documentation": [],
+            "Keywords": [],
+            "Status": "Live",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "",
+            "Comments": "Legacy shared service that may not always be suitable for digitally redesigned services.",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "",
+            "ReviewedBy": "",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 55,
+            "Contact": {
+                "details": "Through consultation",
+                "methods": [
+                    {
+                        "type": "Email",
+                        "value": "sa.imehelpdesk@gov.ab.ca",
+                        "url": "sa.imehelpdesk@gov.ab.ca"
+                    }
+                ]
+            },
+            "filterText": "advanced education,data management,live,.net,goa network"
+        },
+        {
+            "Nominate": "",
+            "ServiceName": "Push service",
+            "Provider": "Alberta Digital Service Platform (ADSP)",
+            "Audience": [
+                "Other"
+            ],
+            "InternalWeightage": 10,
+            "Summary": "Provides a push mode gateway  for events, such as submissions received or payments made, so clients can receive information without polling.",
+            "Description": "Provides a push mode gateway  to events emitted in the event service, so clients can receive information without the need for polling.  Use it to monitor event streams, such as submissions received or payments made, to create a responsive, real-time web application.",
+            "FunctionalGroup": "Notifications and Communication",
+            "Environment": [
+                "Other"
+            ],
+            "Language": [
+                "Other"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "Hybrid",
+            "Documentation": [
+                {
+                    "name": "push-service.html",
+                    "url": "https://govalta.github.io/adsp-monorepo/services/push-service.html"
+                }
+            ],
+            "Keywords": [],
+            "Status": "Live",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "Product teams can get started by accessing an existing tenant or creating a new tenant. Each tenant represents a zone of administrative control and generally products within a common service area can share a tenant.",
+            "Comments": "",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "",
+            "ReviewedBy": "",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 56,
+            "Contact": {
+                "details": "",
+                "methods": [
+                    {
+                        "type": "Slack",
+                        "value": "adsp-connection",
+                        "url": "https://goa-dio.slack.com/channels/adsp-connection"
+                    },
+                    {
+                        "type": "Email",
+                        "value": "adsp@gov.ab.ca",
+                        "url": "adsp@gov.ab.ca"
+                    }
+                ]
+            },
+            "filterText": "alberta digital service platform (adsp),notifications and communication,live,hybrid"
+        },
+        {
+            "Nominate": "Yes",
+            "ServiceName": "QR code service",
+            "Provider": "Service Integration",
+            "Audience": [
+                "Other"
+            ],
+            "InternalWeightage": 100,
+            "Summary": "Create digital signatures QR Code images that can provide authenticity confirmation of Government of Alberta (GoA) digital/printed documents.",
+            "Description": "Provides confirmation of the authenticity of digital and printed documents claimed as issued under the authority of GoA - Government of Alberta. Allows the user to create digital signatures in a form of QR (Quick Response) Code images which can then be verified by using this application or the third party solutions, like mobile or desktop custom applications.",
+            "FunctionalGroup": "Document Processing",
+            "Environment": [
+                "Other"
+            ],
+            "Language": [
+                "Other"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "Hybrid",
+            "Documentation": [
+                {
+                    "name": "QR-Code-Service.aspx",
+                    "url": "https://abgov.sharepoint.com/sites/S500D27-SI969/SitePages/QR-Code-Service.aspx"
+                }
+            ],
+            "Keywords": [],
+            "Status": "Other",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "",
+            "Comments": "",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "",
+            "ReviewedBy": "",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 57,
+            "Contact": {
+                "details": "Advanced request required through the Service Integration SharePoint site; click the \"Request QR Code Service\" link to access the 'Service Integration Consultation Request \" web form",
+                "methods": [
+                    {
+                        "type": "Sharepoint",
+                        "value": "QR-Code-Service.aspx",
+                        "url": "https://abgov.sharepoint.com/sites/S500D27-SI969/SitePages/QR-Code-Service.aspx"
+                    }
+                ]
+            },
+            "filterText": "service integration,document processing,hybrid"
+        },
+        {
+            "Nominate": "Yes",
+            "ServiceName": "Request an enterprise API",
+            "Provider": "Service Integration",
+            "Audience": [
+                "Other"
+            ],
+            "InternalWeightage": 100,
+            "Summary": "Creating and maintaining Enterprise APIs. Please let us know if you have a service that would benefit the enterprise.",
+            "Description": "The Service Integration team is responsible for creating and maintaining Enterprise APIs.  If there is a service you think would benefit the enterprise, contact the team and they might be able to create the capability you require.",
+            "FunctionalGroup": "Other Function",
+            "Environment": [
+                "Other"
+            ],
+            "Language": [
+                "Other"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "Hybrid",
+            "Documentation": [
+                {
+                    "name": "S500D27-SI969",
+                    "url": "https://abgov.sharepoint.com/sites/S500D27-SI969"
+                }
+            ],
+            "Keywords": [],
+            "Status": "Other",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "",
+            "Comments": "",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "",
+            "ReviewedBy": "",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 58,
+            "Contact": {
+                "details": "Advanced request required through the Service Integration SharePoint site; click on the \"Service Integration Consultation Request\" link and access the 'Service Integration Consultation\" request web form",
+                "methods": [
+                    {
+                        "type": "Sharepoint",
+                        "value": "Creating-a-New-Request-for-a-Non-BERNIE-Service.aspx",
+                        "url": "https://abgov.sharepoint.com/sites/S500D27-SI969/SitePages/Creating-a-New-Request-for-a-Non-BERNIE-Service.aspx"
+                    }
+                ]
+            },
+            "filterText": "service integration,other function,hybrid"
+        },
+        {
+            "Nominate": "",
+            "ServiceName": "Script service",
+            "Provider": "Alberta Digital Service Platform (ADSP)",
+            "Audience": [
+                "Other"
+            ],
+            "InternalWeightage": 10,
+            "Summary": "Quickly implement algorithmic change without having to redeploy an application. Such as , frequently changed calculations, or per-tenant basis calculations.",
+            "Description": "Gives developers the ability to quickly implement algorithmic changes requested by clients, such as policy changes, without having to redeploy the application.  This is particularly useful for calculations that are changed frequently, or for multi-tenant applications that handle calculations on a per-tenant basis.",
+            "FunctionalGroup": "Workflow and Process Automation",
+            "Environment": [
+                "Other"
+            ],
+            "Language": [
+                "Other"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "Hybrid",
+            "Documentation": [],
+            "Keywords": [],
+            "Status": "Live",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "Product teams can get started by accessing an existing tenant or creating a new tenant. Each tenant represents a zone of administrative control and generally products within a common service area can share a tenant.",
+            "Comments": "",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "",
+            "ReviewedBy": "",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 59,
+            "Contact": {
+                "details": "",
+                "methods": [
+                    {
+                        "type": "Slack",
+                        "value": "adsp-connection",
+                        "url": "https://goa-dio.slack.com/channels/adsp-connection"
+                    },
+                    {
+                        "type": "Email",
+                        "value": "adsp@gov.ab.ca",
+                        "url": "adsp@gov.ab.ca"
+                    }
+                ]
+            },
+            "filterText": "alberta digital service platform (adsp),workflow and process automation,live,hybrid"
+        },
+        {
+            "Nominate": "",
+            "ServiceName": "SCSS Angular components",
+            "Provider": "SCSS",
+            "Audience": [
+                "Other"
+            ],
+            "InternalWeightage": 10,
+            "Summary": "Common Angular UI components",
+            "Description": "Common Angular UI components",
+            "FunctionalGroup": "Other Function",
+            "Environment": [
+                "Other"
+            ],
+            "Language": [
+                "Angular"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
+            "Documentation": [],
+            "Keywords": [],
+            "Status": "Other",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "",
+            "Comments": "Inspiration could be taken for the design library, not for use and being internally deprecated inside SCSS",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "",
+            "ReviewedBy": "",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 60,
+            "Contact": {
+                "details": "",
+                "methods": []
+            },
+            "filterText": "scss,other function,angular"
+        },
+        {
+            "Nominate": "Yes",
+            "ServiceName": "SharePoint online service",
+            "Provider": "Service Integration",
+            "Audience": [
+                "Other"
+            ],
+            "InternalWeightage": 100,
+            "Summary": "Allows basic file management of project-specific content within ECM systems (e.g., file creation, modification, metadata, etc.).",
+            "Description": "The Electronic Content Management (ECM) Connector is a representational state transfer (REST) application programming interface (API) that allows file management of Government of Alberta (GoA) content within ECM systems (e.g. file creation, modification, metadata, etc.).\n\nThe ECM Connector takes REST calls and translates them into a format that is understood by the proprietary Open Text LIVELINK web services (LAPI) running on the GoA's OpenText Enterprise Content Servers (ECSS) server.",
+            "FunctionalGroup": "File Handling and Storage",
+            "Environment": [
+                "Other"
+            ],
+            "Language": [
+                "Other"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "Hybrid",
+            "Documentation": [
+                {
+                    "name": "ECM-Connector-Service.aspx",
+                    "url": "https://abgov.sharepoint.com/sites/S500D27-SI969/SitePages/ECM-Connector-Service.aspx"
+                }
+            ],
+            "Keywords": [],
+            "Status": "Other",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "",
+            "Comments": "",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "",
+            "ReviewedBy": "",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 61,
+            "Contact": {
+                "details": "Advanced request required through the Service Integration SharePoint site; click the \"Request the ECM Connector Service\" link and access the 'Electronic Content Management (ECM) Connector' web form",
+                "methods": [
+                    {
+                        "type": "Sharepoint",
+                        "value": "ECM-Connector-Service.aspx",
+                        "url": "https://abgov.sharepoint.com/sites/S500D27-SI969/SitePages/ECM-Connector-Service.aspx"
+                    }
+                ]
+            },
+            "filterText": "service integration,file handling and storage,hybrid"
+        },
+        {
+            "Nominate": "",
+            "ServiceName": "SIN validation service",
+            "Provider": "Advanced Education",
+            "Audience": [
+                "Other"
+            ],
+            "InternalWeightage": 10,
+            "Summary": "Sending SIN & profile information to federal government for match and validation purposes.",
+            "Description": "Process of batching and sending SIN and tombstone profile information to federal government for match and validation purposes",
+            "FunctionalGroup": "Other Function",
+            "Environment": [
+                "GoA Network"
+            ],
+            "Language": [
+                ".NET"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "Hybrid",
+            "Documentation": [],
+            "Keywords": [],
+            "Status": "Live",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "Utilization for Federal SIN Service requires business coordination and agreements to be put in place. This service is a bit coupled with Student Finance System but is used by Apprenticeship and Student Aid (potentially Foundational Learning will be added in the future)",
+            "Comments": "Legacy shared service that may not always be suitable for digitally redesigned services.",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "",
+            "ReviewedBy": "",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 62,
+            "Contact": {
+                "details": "",
+                "methods": [
+                    {
+                        "type": "Email",
+                        "value": "AE-OCSDSFSAMSTeam@gov.ab.ca",
+                        "url": "AE-OCSDSFSAMSTeam@gov.ab.ca"
+                    }
+                ]
+            },
+            "filterText": "advanced education,other function,live,.net,goa network,hybrid"
+        },
+        {
+            "Nominate": "",
+            "ServiceName": "SMS gateway",
+            "Provider": "Advanced Education",
+            "Audience": [
+                "Other"
+            ],
+            "InternalWeightage": 10,
+            "Summary": "Gateway for sending text messages.",
+            "Description": "Gateway for sending text messages.",
+            "FunctionalGroup": "Notifications and Communication",
+            "Environment": [
+                "GoA Network"
+            ],
+            "Language": [
+                ".NET"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
+            "Documentation": [],
+            "Keywords": [],
+            "Status": "Live",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "",
+            "Comments": "Legacy shared service that may not always be suitable for digitally redesigned services.",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "",
+            "ReviewedBy": "",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 63,
+            "Contact": {
+                "details": "Through consultation",
+                "methods": [
+                    {
+                        "type": "Email",
+                        "value": "sa.imehelpdesk@gov.ab.ca",
+                        "url": "sa.imehelpdesk@gov.ab.ca"
+                    }
+                ]
+            },
+            "filterText": "advanced education,notifications and communication,live,.net,goa network"
+        },
+        {
+            "Nominate": "Yes",
+            "ServiceName": "Splunk service",
+            "Provider": "Service Integration",
+            "Audience": [
+                "Other"
+            ],
+            "InternalWeightage": 100,
+            "Summary": "This is an event management and correlation services that provides a holistic view of a service though dashboards, reports and alerts.  Splunk's primary monitoring capability is log/event based.",
+            "Description": "Splunk is an advanced and scalable form of software that indexes and searches for log files within a system and analyzes data for operational intelligence. A web-based software platform using real-time processing and provides the Government of Alberta (GoA) business areas with 5 main functions:  collect and index, search and investigate, add knowledge, report, and visualize, monitor and alert, on machine data, websites, applications, within the GoA infrastructure.",
+            "FunctionalGroup": "Service Monitoring and Support",
+            "Environment": [
+                "Other"
+            ],
+            "Language": [
+                "Other"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "Hybrid",
+            "Documentation": [
+                {
+                    "name": "Splunk-Service.aspx",
+                    "url": "https://abgov.sharepoint.com/sites/S500D27-SI969/SitePages/Splunk-Service.aspx"
+                }
+            ],
+            "Keywords": [],
+            "Status": "Other",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "",
+            "Comments": "",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "",
+            "ReviewedBy": "",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 64,
+            "Contact": {
+                "details": "Advanced request required through the Service Integration SharePoint site; click the \"Request Splunk Service\" link to access the 'Service Integration Consultation Request' web form",
+                "methods": [
+                    {
+                        "type": "Sharepoint",
+                        "value": "Splunk-Service.aspx",
+                        "url": "https://abgov.sharepoint.com/sites/S500D27-SI969/SitePages/Splunk-Service.aspx"
+                    }
+                ]
+            },
+            "filterText": "service integration,service monitoring and support,hybrid"
+        },
+        {
+            "Nominate": "",
+            "ServiceName": "Stakeholder registry",
+            "Provider": "Advanced Education",
+            "Audience": [
+                "Other"
+            ],
+            "InternalWeightage": 10,
+            "Summary": "Contains people records (users, learners, schools staff) accessed by Advanced Education.",
+            "Description": "Contains people records (users, learners, schools staff) accessed by Advanced Education.",
+            "FunctionalGroup": "Data Management",
+            "Environment": [
+                "GoA Network"
+            ],
+            "Language": [
+                ".NET"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
+            "Documentation": [],
+            "Keywords": [],
+            "Status": "Live",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "",
+            "Comments": "Legacy shared service that may not always be suitable for digitally redesigned services.",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "",
+            "ReviewedBy": "",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 65,
+            "Contact": {
+                "details": "Through consultation",
+                "methods": [
+                    {
+                        "type": "Email",
+                        "value": "sa.imehelpdesk@gov.ab.ca",
+                        "url": "sa.imehelpdesk@gov.ab.ca"
+                    }
+                ]
+            },
+            "filterText": "advanced education,data management,live,.net,goa network"
+        },
+        {
+            "Nominate": "",
+            "ServiceName": "Stamping shared service",
+            "Provider": "Justice Digital",
+            "Audience": [
+                "Other"
+            ],
+            "InternalWeightage": 10,
+            "Summary": "Providing a consistent application of official court stamps for filing and certification of digital context.",
+            "Description": "Justice Digital services utilizing the stamping shared services benefit from a consistent application of official court stamps, indicating filing and certification of documents in the digital context.",
+            "FunctionalGroup": "Other Function",
+            "Environment": [
+                "AWS"
+            ],
+            "Language": [
+                "Angular",
+                ".NET Core",
+                "TypeScript"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
+            "Documentation": [
+                {
+                    "name": "Shared+Services",
+                    "url": "https://goa-dio.atlassian.net/wiki/spaces/JDP/pages/2248015997/Shared+Services"
+                }
+            ],
+            "Keywords": [
+                "Pdf",
+                "Digital signature",
+                "Stamping",
+                "Digital certification"
+            ],
+            "Status": "Live",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "",
+            "Comments": "",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "",
+            "ReviewedBy": "",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 66,
+            "Contact": {
+                "details": "",
+                "methods": [
+                    {
+                        "type": "Email",
+                        "value": "JSG.PlatformSupport@gov.ab.ca",
+                        "url": "JSG.PlatformSupport@gov.ab.ca"
+                    }
+                ]
+            },
+            "filterText": "justice digital,other function,live,angular, .net core, typescript,aws,pdf, digital signature, stamping, digital certification"
+        },
+        {
+            "Nominate": "",
+            "ServiceName": "Status service",
+            "Provider": "Alberta Digital Service Platform (ADSP)",
+            "Audience": [
+                "Other"
+            ],
+            "InternalWeightage": 10,
+            "Summary": "Monitoring the health of applications and services.",
+            "Description": "A service for monitoring the health of applications and other services.  You provide a URL for it to ping and it will notify you, or a webhook, if the response occurs in a timely manner or not.  Additionally, the service provides links to a static web page your users can visit to check on your application's status.  You can configure this page to display status updates and notices for planned maintenance or other outages.",
+            "FunctionalGroup": "Service Monitoring and Support",
+            "Environment": [
+                "Other"
+            ],
+            "Language": [
+                "Other"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "Hybrid",
+            "Documentation": [
+                {
+                    "name": "status.adsp.alberta.ca",
+                    "url": "https://status.adsp.alberta.ca/"
+                }
+            ],
+            "Keywords": [],
+            "Status": "Live",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "Product teams can get started by accessing an existing tenant or creating a new tenant. Each tenant represents a zone of administrative control and generally products within a common service area can share a tenant.",
+            "Comments": "",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "",
+            "ReviewedBy": "",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 67,
+            "Contact": {
+                "details": "",
+                "methods": [
+                    {
+                        "type": "Slack",
+                        "value": "adsp-connection",
+                        "url": "https://goa-dio.slack.com/channels/adsp-connection"
+                    },
+                    {
+                        "type": "Email",
+                        "value": "adsp@gov.ab.ca",
+                        "url": "adsp@gov.ab.ca"
+                    }
+                ]
+            },
+            "filterText": "alberta digital service platform (adsp),service monitoring and support,live,hybrid"
+        },
+        {
+            "Nominate": "",
+            "ServiceName": "Support model",
+            "Provider": "Justice Digital",
+            "Audience": [
+                "Other"
+            ],
+            "InternalWeightage": 10,
+            "Summary": "A robust application support model to ensure both operational issues are dealt with; as well as to ensure an open line for direct customer feedback.",
+            "Description": "Maintaining high-quality services requires a robust application support model to ensure both operational issues are dealt with; as well as to ensure an open line for direct customer feedback. As our services evolve and our user base continues to expand, an integrated support model will allow JD to continue to improve its service delivery capabilities.",
+            "FunctionalGroup": "Other Function",
+            "Environment": [
+                "ServiceNow"
+            ],
+            "Language": [
+                "Other"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
+            "Documentation": [
+                {
+                    "name": "Support+Model",
+                    "url": "https://goa-dio.atlassian.net/wiki/spaces/JDP/pages/2247983316/Support+Model"
+                }
+            ],
+            "Keywords": [
+                "Support"
+            ],
+            "Status": "Live",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "",
+            "Comments": "",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "",
+            "ReviewedBy": "",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 68,
+            "Contact": {
+                "details": "",
+                "methods": [
+                    {
+                        "type": "Email",
+                        "value": "JSG.PlatformSupport@gov.ab.ca",
+                        "url": "JSG.PlatformSupport@gov.ab.ca"
+                    }
+                ]
+            },
+            "filterText": "justice digital,other function,live,servicenow,support"
+        },
+        {
+            "Nominate": "",
+            "ServiceName": "Unified Alberta.ca account",
+            "Provider": "Platforms - IAM",
+            "Audience": [
+                "Other"
+            ],
+            "InternalWeightage": 10,
+            "Summary": "An IAM platform that will be used to unify Alberta.ca Account, MADI-B, and PED, as well as other IAM systems in the GoA over time.",
+            "Description": "An IAM platform that will be used to unify Alberta.ca Account, MADI-B, and PED, as well as other IAM systems in the GoA over time.\n\nWill enable multiple types of users under one common IAM solution, including citizen, external businesses and organizations and their staff, and internal GoA staff",
+            "FunctionalGroup": "User Access and Identity",
+            "Environment": [
+                "Azure",
+                "On Prem"
+            ],
+            "Language": [
+                ".NET",
+                "Open source"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "24x7",
+            "Documentation": [],
+            "Keywords": [],
+            "Status": "Alpha",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "",
+            "Comments": "",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "",
+            "ReviewedBy": "",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 69,
+            "Contact": {
+                "details": "",
+                "methods": []
+            },
+            "filterText": "platforms - iam,user access and identity,alpha,.net, open source,azure, on prem,24x7"
+        },
+        {
+            "Nominate": "",
+            "ServiceName": "User survey",
+            "Provider": "SCSS",
+            "Audience": [
+                "Other"
+            ],
+            "InternalWeightage": 10,
+            "Summary": "Module to define release announcements and survey prompts for users and track their responses (Dismissed, Postponed, Acknowledged)",
+            "Description": "Module to define release announcements and survey prompts for users and track their responses (Dismissed, Postponed, Acknowledged)",
+            "FunctionalGroup": "Notifications and Communication",
+            "Environment": [
+                "N/A"
+            ],
+            "Language": [
+                "TypeScript"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
+            "Documentation": [],
+            "Keywords": [],
+            "Status": "Other",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "",
+            "Comments": "This is a shared code module which teams deploy independently.  Work is planned to make a microservice deployment.  Actual survey results are stored in external system (ms forms), this only tracks if the user opened the survey.",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "",
+            "ReviewedBy": "",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 70,
+            "Contact": {
+                "details": "",
+                "methods": []
+            },
+            "filterText": "scss,notifications and communication,typescript,n/a"
+        },
+        {
+            "Nominate": "",
+            "ServiceName": "Value service",
+            "Provider": "Alberta Digital Service Platform (ADSP)",
+            "Audience": [
+                "Other"
+            ],
+            "InternalWeightage": 10,
+            "Summary": "Provides a temporal-based data store useful for storing such things as event, change, and audit logs.  In addition, it can aggregate KPIs.",
+            "Description": "Provides a temporal-based data store that is useful for storing such things as event, change, and audit logs.  In addition, it can be used to aggregate KPI's over some time interval by including metrics along with each entry.  For example, it has been used to log events along with a count metric, and therefore can be used to show how many events are emitted per unit of time.",
+            "FunctionalGroup": "Workflow and Process Automation",
+            "Environment": [
+                "Other"
+            ],
+            "Language": [
+                "Other"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "Hybrid",
+            "Documentation": [
+                {
+                    "name": "value-service.html",
+                    "url": "https://govalta.github.io/adsp-monorepo/services/value-service.html"
+                }
+            ],
+            "Keywords": [],
+            "Status": "Live",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "Product teams can get started by accessing an existing tenant or creating a new tenant. Each tenant represents a zone of administrative control and generally products within a common service area can share a tenant.",
+            "Comments": "",
+            "LastUpdated": "10/1/2023",
+            "Reviewed": "",
+            "ReviewedBy": "",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 71,
+            "Contact": {
+                "details": "",
+                "methods": [
+                    {
+                        "type": "Slack",
+                        "value": "adsp-connection",
+                        "url": "https://goa-dio.slack.com/channels/adsp-connection"
+                    },
+                    {
+                        "type": "Email",
+                        "value": "adsp@gov.ab.ca",
+                        "url": "adsp@gov.ab.ca"
+                    }
+                ]
+            },
+            "filterText": "alberta digital service platform (adsp),workflow and process automation,live,hybrid"
+        },
+        {
+            "Nominate": "",
+            "ServiceName": "Verify service",
+            "Provider": "Alberta Digital Service Platform (ADSP)",
+            "Audience": [
+                "Other"
+            ],
+            "InternalWeightage": 10,
+            "Summary": "Verify service provides time limited random codes that can be used for validation purposes.",
+            "Description": "Verify service provides time limited random codes that can be used for validation purposes. For example, generated codes can be sent to a user by email and requested from an application to verify user access to the email inbox.",
+            "FunctionalGroup": "Workflow and Process Automation",
+            "Environment": [
+                "Other"
+            ],
+            "Language": [
+                "Other"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "Hybrid",
+            "Documentation": [],
+            "Keywords": [],
+            "Status": "Live",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "Product teams can get started by accessing an existing tenant or creating a new tenant. Each tenant represents a zone of administrative control and generally products within a common service area can share a tenant.",
+            "Comments": "",
+            "LastUpdated": "10/15/2023",
+            "Reviewed": "",
+            "ReviewedBy": "",
+            "CMRA": "",
+            "IM": "",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "Considerations": "",
+            "appId": 72,
+            "Contact": {
+                "details": "",
+                "methods": [
+                    {
+                        "type": "Slack",
+                        "value": "adsp-connection",
+                        "url": "https://goa-dio.slack.com/channels/adsp-connection"
+                    },
+                    {
+                        "type": "Email",
+                        "value": "adsp@gov.ab.ca",
+                        "url": "adsp@gov.ab.ca"
+                    }
+                ]
+            },
+            "filterText": "alberta digital service platform (adsp),workflow and process automation,live,hybrid"
+        }
+    ],
+    "fields": [
+        {
+            "FieldName": "Provider",
+            "DisplayName": "Provider",
+            "isFilter": true,
+            "showBadge": false,
+            "dataType": "text",
+            "default": "Other"
+        },
+        {
+            "FieldName": "Audience",
+            "DisplayName": "Audience",
+            "isFilter": true,
+            "showBadge": false,
+            "dataType": "textArray",
+            "default": "Other"
+        },
+        {
+            "FieldName": "FunctionalGroup",
+            "DisplayName": "Functional Group",
+            "isFilter": true,
+            "showBadge": false,
+            "dataType": "text",
+            "default": "Other"
+        },
+        {
+            "FieldName": "Status",
+            "DisplayName": "Status",
+            "isFilter": true,
+            "showBadge": true,
+            "dataType": "text",
+            "default": "Other"
+        },
+        {
+            "FieldName": "UsageMethod",
+            "DisplayName": "Usage",
+            "isFilter": true,
+            "showBadge": true,
+            "dataType": "text",
+            "default": "Other"
+        },
+        {
+            "FieldName": "Language",
+            "DisplayName": "Technology",
+            "isFilter": true,
+            "showBadge": true,
+            "dataType": "textArray",
+            "default": "Other"
+        },
+        {
+            "FieldName": "Environment",
+            "DisplayName": "Environment",
+            "isFilter": true,
+            "showBadge": true,
+            "dataType": "textArray",
+            "default": "Other"
+        },
+        {
+            "FieldName": "SupportLevel",
+            "DisplayName": "Support",
+            "isFilter": true,
+            "showBadge": true,
+            "dataType": "text",
+            "default": "Other"
+        },
+        {
+            "FieldName": "Keywords",
+            "DisplayName": "Tag/Keyword",
+            "isFilter": true,
+            "showBadge": true,
+            "dataType": "textArray",
+            "default": ""
+        },
+        {
+            "FieldName": "Documentation",
+            "DisplayName": "Documentation",
+            "isFilter": false,
+            "showBadge": false,
+            "dataType": "urlArray",
+            "default": ""
+        },
+        {
+            "FieldName": "Contact",
+            "DisplayName": "Contact",
+            "isFilter": false,
+            "showBadge": false,
+            "dataType": "contactList",
+            "default": ""
+        },
+        {
+            "FieldName": "InternalWeightage",
+            "DisplayName": "InternalWeightage",
+            "isFilter": false,
+            "showBadge": false,
+            "dataType": "int",
+            "default": "10"
+        }
+    ]
+}
