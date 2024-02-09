@@ -22,10 +22,10 @@ export default function TutorialPage() {
     return (
       <>
         <h2 className="resetSpacing" id="tutorial-top">
-          Developer Quickstart
+          Developer quickstart
         </h2>
         <GoASpacer vSpacing="xs" />
-        <div className="lastUpdated">Last Updated 12/14/2023</div>
+        <div className="lastUpdated">Last updated 02/07/2024</div>
         <GoASpacer vSpacing="l" />
         DCP is a platform for digital content products. It includes shared
         libraries and micro-apps for rapid authoring and publishing of content
@@ -38,7 +38,7 @@ export default function TutorialPage() {
         for Astro support.
         <GoASpacer vSpacing="xl" />
         <h3 id="gettingStarted" className="resetSpacing">
-          Getting Started
+          Getting started
         </h3>
         <GoASpacer vSpacing="m" />
         The @nxtensions/astro extension generates projects that use targets
@@ -101,11 +101,31 @@ export default function TutorialPage() {
           npx nx list @nxtensions/astro
         </div>
         <GoASpacer vSpacing="l" />
+        <GoAButton
+          type="secondary"
+          data-testid="starterAppButton"
+          onClick={async () => {
+            await copyToClipBoard('generateApps');
+          }}
+        >
+          Copy code
+        </GoAButton>
+        <GoASpacer vSpacing="l" />
         Run the application generator to create a new micro-app:
         <GoASpacer vSpacing="l" />
         <div className="code-details" id="runApps">
           npx nx g @nxtensions/astro:application
         </div>
+        <GoASpacer vSpacing="l" />
+        <GoAButton
+          type="secondary"
+          data-testid="starterAppButton"
+          onClick={async () => {
+            await copyToClipBoard('runApps');
+          }}
+        >
+          Copy code
+        </GoAButton>
         <GoASpacer vSpacing="s" />
         <h3 id="deployment" className="resetSpacing">
           Deployment
@@ -123,6 +143,16 @@ export default function TutorialPage() {
           oc login ... oc process -f .openshift/dcp-guide/dcp-guide.yml -p
           PROJECT=dcp-dev -p DEPLOY_TAG=dev | oc apply -f -
         </div>
+        <GoASpacer vSpacing="l" />
+        <GoAButton
+          type="secondary"
+          data-testid="starterAppButton"
+          onClick={async () => {
+            await copyToClipBoard('openshiftManifest');
+          }}
+        >
+          Copy code
+        </GoAButton>
         <GoASpacer vSpacing="l" />
         Creation of resources in downstream environments is handled by the
         pipeline when promoting new builds.
@@ -214,25 +244,25 @@ export default function TutorialPage() {
       <>
         <GoASideMenu>
           <a href="#gettingStarted" data-testid="gettingStarted">
-            Getting Started
+            Getting started
           </a>
           <a href="#starterApp" data-testid="starterApp">
-            Anchor Point 2
+            Generating an app
           </a>
           <a href="#microApps" data-testid="microApps">
-            Anchor Point 3
+            Generating micro-apps
           </a>
           <a href="#accessingDeployedApp" data-testid="accessingDeployedApp">
-            Anchor Point 4
+            Deployed app
           </a>
           <a href="#documentation" data-testid="documentation">
-            Anchor Point 5
+            Documentation
           </a>
           <a href="#contactUs" data-testid="contactUs">
-            Anchor Point 6
+            Contact us
           </a>
           <a href="#slackSupport" data-testid="slackSupport">
-            Anchor Point 7
+            Slack support
           </a>
         </GoASideMenu>
       </>
