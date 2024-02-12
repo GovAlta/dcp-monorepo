@@ -8,7 +8,7 @@ from datetime import datetime
 from urllib.parse import urlparse
 
 
-DevMode = False     # <<<======== IMPORTANT ===============
+DevMode = True     # <<<======== IMPORTANT ===============
 
 if not DevMode:
     CSV_fileNames = ['CommonCapabilities']

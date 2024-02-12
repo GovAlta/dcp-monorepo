@@ -1,6 +1,6 @@
 ﻿FieldName,DisplayName,isFilter,showBadge,dataType,default
 Provider,Provider,TRUE,FALSE,text,Other
-Audience,Audience,TRUE,FALSE,textArray,Other
+Audience,Audience,TRUE,FALSE,textArray,GOA
 FunctionalGroup,Functional Group,TRUE,FALSE,text,Other
 Status,Status,TRUE,TRUE,text,Other
 UsageMethod,Usage,TRUE,TRUE,text,Other
