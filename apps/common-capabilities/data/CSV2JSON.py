@@ -8,9 +8,9 @@ from datetime import datetime
 from urllib.parse import urlparse
 
 
-DevMode = True     # <<<======== IMPORTANT ===============
+ProductionData = False     # <<<======== IMPORTANT ===============
 
-if not DevMode:
+if ProductionData:
     CSV_fileNames = ['CommonCapabilities']
     outputDirectories = ['..\\src\\content\\']
 else:
@@ -18,11 +18,22 @@ else:
     outputDirectories = ['..\\..\\..\\..\\..\\ReactJS\\list\public\\']
 
 CSV_fileDir = '.\\'
-if not os.path.exists(CSV_fileDir + 'CommonCapabilitiesFields.csv'):
-    CSV_fileDir = '.\\data\\' 
+fldArray = 'data','common-capabilities','apps', ''   # need the '' for for loop
+tmp = ''
+foundPath = ''
+for addThis in fldArray:
+    if os.path.exists('.'+ tmp + '\CommonCapabilitiesFields.csv'):        
+        foundPath = '.'+ tmp + '\\'
+        break
+    tmp = '\\' + addThis + tmp
 
-outputDirectories = [CSV_fileDir + string for string in outputDirectories]
-outputDirectories += [CSV_fileDir]
+if foundPath == '':
+    print('Could not find files')
+    import sys
+    sys.exit()
+
+outputDirectories = [foundPath + string for string in outputDirectories]
+CSV_fileDir = foundPath
 
 
 def replace_special_characters(text):
@@ -116,7 +127,7 @@ with open(CSV_fileDir + 'CommonCapabilitiesFields.csv', 'r', encoding='utf-8-sig
 
 data = []
 id_counter = 0
-if DevMode: devt = 'in DEVELOPMENT MODE'
+if not ProductionData: devt = 'in DEVELOPMENT MODE'
 else: devt = ''  
 print('\n----[ Create JSON files '+ devt + ' ]------------\nWorking directory: '+ CSV_fileDir +'\nInput: ' + 'CommonCapabilitiesFields.csv')
 for fileName in CSV_fileNames:    

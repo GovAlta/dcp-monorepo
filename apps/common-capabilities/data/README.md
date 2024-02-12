@@ -17,8 +17,10 @@
 
 ### 2) Convert to JSON
   * Open CSV2JSON.py with Visual Studio Code.
-  * Edit for DevMode True or False.
-    This will change input files and output Directories (edit those if required)
+
+  * Edit for ProductionData True or False. This will change input files and output Directories (edit those if required).
+    outputDirectories and CSV_fileNames are arrays. It will skip non-existing folder/files.
+
   * Using Visual Studio Code, run the python code.
 
 
