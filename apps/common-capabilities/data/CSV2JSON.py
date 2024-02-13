@@ -28,7 +28,7 @@ for addThis in fldArray:
     tmp = '\\' + addThis + tmp
 
 if foundPath == '':
-    print('Could not find files')
+    print('-----------------\nCould not find files\n----------------')
     import sys
     sys.exit()
 
@@ -127,9 +127,10 @@ with open(CSV_fileDir + 'CommonCapabilitiesFields.csv', 'r', encoding='utf-8-sig
 
 data = []
 id_counter = 0
-if not ProductionData: devt = 'in DEVELOPMENT MODE'
-else: devt = ''  
-print('\n----[ Create JSON files '+ devt + ' ]------------\nWorking directory: '+ CSV_fileDir +'\nInput: ' + 'CommonCapabilitiesFields.csv')
+if not ProductionData: devt = 'DEVELOPMENT'
+else: devt = 'Production'  
+print('\n\033[1;30m------[ Create JSON files for \033[1;31m'+ devt + '\033[30m ]---------\n\033[0;32mWorking directory: '
+      + CSV_fileDir +'\nInput: ' + 'CommonCapabilitiesFields.csv')
 for fileName in CSV_fileNames:    
     if os.path.exists(CSV_fileDir + fileName + '.csv'):
         print('Input: '+ fileName + '.csv')   
@@ -201,4 +202,4 @@ for folderName in outputDirectories:
             jsonfile.write(json.dumps(data2, indent=4))
         print('Output: ' + folderName + 'datastore.json')
 
-print('------- '+ str(id_counter) + ' total records -------------\n')
+print('\033[1;30m------- '+ str(id_counter) + ' total records -------------\033[0m\n')
