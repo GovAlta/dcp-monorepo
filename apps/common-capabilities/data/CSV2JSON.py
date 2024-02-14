@@ -1,3 +1,4 @@
+import sys
 import csv
 import json
 import os
@@ -7,8 +8,28 @@ from datetime import datetime
 # import requests                 # pip install requests 
 from urllib.parse import urlparse
 
+# print('\n\n', len(sys.argv))
 
-ProductionData = False     # <<<======== IMPORTANT ===============
+# if len(sys.argv) > 1:
+#     arg1 = sys.argv[1]
+#     print("parm",arg1)
+
+
+if len(sys.argv) > 3:
+    print("Usage: python csv2json.py <[P,D]> <output path>")
+    sys.exit(1)
+if len(sys.argv) > 1: DevProdArg = sys.argv[1].upper()
+else: DevProdArg = ''
+if len(sys.argv) > 2: FldArg = sys.argv[2]
+else: FldArg = ''
+
+if len(DevProdArg) > 1:
+    print("Usage: python csv2json.py <[P,D]> <output path>")
+    sys.exit(1)
+
+ProductionData = False     # <<<======== IMPORTANT - Default ===============
+if (DevProdArg != ''):
+    ProductionData = DevProdArg == 'P'
 
 if ProductionData:
     CSV_fileNames = ['CommonCapabilities']
@@ -28,13 +49,30 @@ for addThis in fldArray:
     tmp = '\\' + addThis + tmp
 
 if foundPath == '':
-    print('-----------------\nCould not find files\n----------------')
-    import sys
+    print('\n-----------------\nCould not find files\n----------------\n')
     sys.exit()
+
 
 outputDirectories = [foundPath + string for string in outputDirectories]
 CSV_fileDir = foundPath
 
+if (FldArg != ''):
+    if FldArg[-1] != '\\':
+        FldArg += '\\'    
+    outputDirectories = [FldArg]
+
+haveOutput = False
+for folderName in outputDirectories:
+    if os.path.exists(folderName):
+        haveOutput = True
+        break
+if not haveOutput:
+    print('\n-----------------\nCould not find output folder:', outputDirectories )
+    sys.exit()
+
+
+# Finished checks, I've got everything I need to continue...
+#=================================================
 
 def replace_special_characters(text):
     return text.replace("’", "'").replace("\u200b", " ").replace("\u00a0", " ").strip()
@@ -116,6 +154,17 @@ def createContact(type,url,descr,email,phone, provider):
 
 # ============================================================================================
 
+if DevProdArg == '':
+    colorBlack = '\033[1;30m'
+    colorRed = '\033[1;31m'
+    colorGreen = '\033[0;32m'
+    colorReset = '\033[0m'
+else:
+    colorBlack = ''
+    colorRed = ''
+    colorGreen = ''
+    colorReset = ''  
+
 filterData = []
 with open(CSV_fileDir + 'CommonCapabilitiesFields.csv', 'r', encoding='utf-8-sig') as csvfile:
     csvreader = csv.DictReader(csvfile)
@@ -129,7 +178,7 @@ data = []
 id_counter = 0
 if not ProductionData: devt = 'DEVELOPMENT'
 else: devt = 'Production'  
-print('\n\033[1;30m------[ Create JSON files for \033[1;31m'+ devt + '\033[30m ]---------\n\033[0;32mWorking directory: '
+print('\n' + colorBlack + '------[ Create JSON files for ' + colorRed + devt + colorBlack + ' ]---------\n' + colorGreen +'Working directory: '
       + CSV_fileDir +'\nInput: ' + 'CommonCapabilitiesFields.csv')
 for fileName in CSV_fileNames:    
     if os.path.exists(CSV_fileDir + fileName + '.csv'):
@@ -202,4 +251,4 @@ for folderName in outputDirectories:
             jsonfile.write(json.dumps(data2, indent=4))
         print('Output: ' + folderName + 'datastore.json')
 
-print('\033[1;30m------- '+ str(id_counter) + ' total records -------------\033[0m\n')
+print(colorBlack + '------- '+ str(id_counter) + ' total records -------------'+ colorReset + '\n')

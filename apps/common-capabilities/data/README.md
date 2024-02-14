@@ -5,6 +5,12 @@
   * CommonCapabilitiesFields.csv
   * CommonCapabilitiesSamples.csv  (optional)
 
+## Can be run from command line
+  Usage: python csv2json.py <[P,D]> <output_path>"
+  The first param is P=Prod or D=Development (it only really checks for "P" but it must be one char)
+  if output_path is not entered, it will use the default for either dev or prod.
+
+
 ## Steps
 
 ### 1) Get data
@@ -15,14 +21,16 @@
       * Remove two rows (headers)
       * Save
 
-### 2) Convert to JSON
+### 2) Sample Data
+You can add additional sample CSV files for development. Simply add to the existing CommonCapabilitiesSamples.csv file or add a new file to the CSV_fileNames array under the dev option in the python.
+
+### 3) Convert to JSON
   * Open CSV2JSON.py with Visual Studio Code.
 
   * Edit "ProductionData" True or False. This will change input files and output Directories (edit those if required).
     outputDirectories and CSV_fileNames are arrays. It will skip non-existing folder/files.
 
   * Using Visual Studio Code, run the python code.
-
 
 ### Notes
   #### CommonCapabilitiesFields.csv
