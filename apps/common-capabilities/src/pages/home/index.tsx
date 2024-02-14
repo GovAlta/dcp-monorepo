@@ -128,7 +128,7 @@ export default function HomePage(): JSX.Element {
 
   return (
     <GoAThreeColumnLayout
-      leftColumnWidth="24%"
+      leftColumnWidth="23%"
       nav={
         <div className="home-sidebar">
           <div id="search-label"> Search</div>
