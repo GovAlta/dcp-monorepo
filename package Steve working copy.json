@@ -1,0 +1,39 @@
+{
+  "name": "dcp-monorepo",
+  "version": "0.0.0",
+  "license": "MIT",
+  "scripts": {
+    "postinstall": "node ./tools/scripts/patch-nx-cli.js"
+  },
+  "private": true,
+  "devDependencies": {
+    "@abgov/design-tokens": "^1.1.1",
+    "@abgov/nx-oc": "^5.1.0",
+    "@abgov/react-components": "^4.14.0",
+    "@abgov/web-components": "^1.14.0",
+    "@astrojs/mdx": "^0.19.7",
+    "@astrojs/react": "^2.3.2",
+    "@nrwl/cypress": "15.8.9",
+    "@nrwl/eslint-plugin-nx": "15.8.9",
+    "@nrwl/js": "15.8.9",
+    "@nrwl/linter": "15.8.9",
+    "@nrwl/react": "^15.8.9",
+    "@nrwl/workspace": "15.8.9",
+    "@nxtensions/astro": "^3.4.0",
+    "@types/node": "16.11.7",
+    "@types/react": "^17.0.50 || ^18.0.21",
+    "@types/react-dom": "^17.0.17 || ^18.0.6",
+    "@typescript-eslint/eslint-plugin": "^5.36.1",
+    "@typescript-eslint/parser": "^5.36.1",
+    "astro": "^2.0.0",
+    "cypress": "^12.2.0",
+    "eslint": "~8.15.0",
+    "eslint-config-prettier": "8.1.0",
+    "eslint-plugin-cypress": "^2.10.3",
+    "nx": "15.8.9",
+    "prettier": "^2.6.2",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "typescript": "~4.9.5"
+  }
+}
