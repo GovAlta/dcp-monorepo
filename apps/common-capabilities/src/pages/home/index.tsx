@@ -10,6 +10,7 @@ import {
   GoAAccordion,
   GoAButton,
   GoAButtonGroup,
+  GoADivider
 } from '@abgov/react-components';
 import Card from '../../components/Card';
 import './styles.css';
@@ -127,7 +128,7 @@ export default function HomePage(): JSX.Element {
 
   return (
     <GoAThreeColumnLayout
-      leftColumnWidth="20%"
+      leftColumnWidth="22%"
       nav={
         <div className="home-sidebar">
           <div id="search-label"> Search</div>
@@ -148,7 +149,7 @@ export default function HomePage(): JSX.Element {
               localStorage.setItem('searchFilter', value);
             }}
           />
-          <GoASpacer vSpacing="m" />
+          <GoASpacer vSpacing="l" />
           <GoAButtonGroup alignment="start" gap="compact">
             <GoAButton
               type="primary"
@@ -168,7 +169,7 @@ export default function HomePage(): JSX.Element {
               type="secondary"
               onClick={() => {
                 setFiltersAccordionState(false);
-                setCollapseKey(prevKey => prevKey + 1); // 
+                setCollapseKey((prevKey) => prevKey + 1); //
               }}
             >
               Collapse all
@@ -183,45 +184,52 @@ export default function HomePage(): JSX.Element {
               Expand all
             </GoAButton>
           </GoAButtonGroup>
-          <GoASpacer vSpacing="l" />
+          <GoASpacer vSpacing="xl" />
+          <GoADivider></GoADivider>
+          <GoASpacer vSpacing="xl" />
           {filtersList.map((filterCategory) => (
-            <GoAAccordion
-              key={`${filterCategory} ${collapseKey}`}
-              heading={`${filterCategory} (${filters[filterCategory].filters.length})`}
-              headingSize="small"
-              open={filtersAccordionState}
-            >
-              {filters[filterCategory].filters.map((env) => (
-                <GoACheckbox
-                  key={env.value}
-                  label={env.value}
-                  name={env.value}
-                  text={`${env.value} (${env.count})`}
-                  checked={selectedFilters[filterCategory].includes(env.value)}
-                  onChange={(name, checked) => {
-                    setSelectedFilters((prevFilters) => {
-                      const newFilters = {
-                        ...prevFilters,
-                        [filterCategory]: checked
-                          ? [...prevFilters[filterCategory], name]
-                          : prevFilters[filterCategory].filter(
-                              (item) => item !== name
-                            ),
-                      };
-                      localStorage.setItem(
-                        'selectedFilters',
-                        JSON.stringify(newFilters)
-                      );
-                      localStorage.setItem(
-                        'searchTimestamp',
-                        (new Date().getTime() + 5 * 60 * 1000).toString()
-                      );
-                      return newFilters;
-                    });
-                  }}
-                />
-              ))}
-            </GoAAccordion>
+            <div>
+              <GoAAccordion
+                key={`${filterCategory} ${collapseKey}`}
+                heading={`${filterCategory} (${filters[filterCategory].filters.length})`}
+                headingSize="small"
+                open={filtersAccordionState}
+              >
+                {filters[filterCategory].filters.map((env) => (
+                  <GoACheckbox
+                    key={env.value}
+                    label={env.value}
+                    name={env.value}
+                    text={`${env.value} (${env.count})`}
+                    checked={selectedFilters[filterCategory].includes(
+                      env.value
+                    )}
+                    onChange={(name, checked) => {
+                      setSelectedFilters((prevFilters) => {
+                        const newFilters = {
+                          ...prevFilters,
+                          [filterCategory]: checked
+                            ? [...prevFilters[filterCategory], name]
+                            : prevFilters[filterCategory].filter(
+                                (item) => item !== name
+                              ),
+                        };
+                        localStorage.setItem(
+                          'selectedFilters',
+                          JSON.stringify(newFilters)
+                        );
+                        localStorage.setItem(
+                          'searchTimestamp',
+                          (new Date().getTime() + 5 * 60 * 1000).toString()
+                        );
+                        return newFilters;
+                      });
+                    }}
+                  />
+                ))}
+              </GoAAccordion>
+              <GoASpacer vSpacing="m" />
+            </div>
           ))}
         </div>
       }
