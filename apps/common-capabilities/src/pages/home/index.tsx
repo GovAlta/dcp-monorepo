@@ -7,28 +7,32 @@ import {
   GoAInput,
   GoAThreeColumnLayout,
   GoACheckbox,
+  GoAAccordion,
+  GoAButton,
+  GoAButtonGroup,
 } from '@abgov/react-components';
 import Card from '../../components/Card';
 import './styles.css';
-import { extractAvailableFilters, capitalizeFirstWord } from './utils';
+import { extractAvailableFilters } from './utils';
+import { defaultState, filtersList } from './config';
+
+type Filter = {
+  [key: string]: any[];
+};
 
 export default function HomePage(): JSX.Element {
+  const [collapseKey, setCollapseKey] = useState(0);
   const [searchFilter, setSearchFilter] = useState('');
   const [services, setServices] = useState([]);
+  const [filtersAccordionState, setFiltersAccordionState] = useState(false);
   const [selectedFilters, setSelectedFilters] = useState(() => {
     const savedFilters = localStorage.getItem('selectedFilters');
     return savedFilters
       ? JSON.parse(savedFilters)
-      : {
-          Environment: [],
-          Languages: [],
-          Keywords: [],
-          Status: [],
-          FunctionalGroup: [],
-        };
+      : defaultState.selectedFilters;
   });
-  let date = new Date(lastUpdated);
-  let formattedDate = date.toLocaleDateString('en-US', {
+  const date = new Date(lastUpdated);
+  const formattedDate = date.toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
@@ -36,61 +40,37 @@ export default function HomePage(): JSX.Element {
 
   // grab all the available filters from the services
   const [filters, setFilters] = useState(extractAvailableFilters(services));
-  // filters to show in the side nav
-  const filtersList = [
-    'Environment',
-    'Languages',
-    'Keywords',
-    'Status',
-    'FunctionalGroup',
-  ];
-  const passInput = (input: any) => input;
 
   // searches for items in the services array that match the search and filter
   // however search takes priority over filters
   const findServices = (
-    array: any,
-    searchRegExp: any,
-    fields: any,
-    environmentFilter?: any,
-    languageFilter?: any,
-    keywordsFilter?: any,
-    statusFilter?: any,
-    functionalGroupFilter?: any
+    array: any[],
+    searchRegExp: RegExp,
+    fields: string[],
+    filters: Filter
   ) => {
     return array.filter((item: any) => {
-      // returns true if at least one of fields value match to regexp
       const fieldMatch = fields
-        .map((field: any) => searchRegExp.test(item[field]))
-        .some(passInput);
+        .map((field: string) => searchRegExp.test(item[field]))
+        .some(Boolean);
 
-      const environmentMatch =
-        environmentFilter.length === 0 ||
-        environmentFilter.every((env) => item.Environment.includes(env));
+      const filterMatches = Object.entries(filters).every(
+        ([filterKey, filterValues]) => {
+          if (filterValues.length === 0) {
+            return true;
+          }
 
-      const languageMatch =
-        languageFilter.length === 0 ||
-        languageFilter.every((lang) => item.Language.includes(lang));
+          if (Array.isArray(item[filterKey])) {
+            return filterValues.every((filterValue) =>
+              item[filterKey].includes(filterValue)
+            );
+          }
 
-      const keywordsMatch =
-        keywordsFilter.length === 0 ||
-        keywordsFilter.every((keyword) => item.Keywords.includes(keyword));
-
-      const statusMatch =
-        statusFilter.length === 0 || statusFilter.includes(item.Status);
-
-      const functionalGroupMatch =
-        functionalGroupFilter.length === 0 ||
-        functionalGroupFilter.includes(item.FunctionalGroup);
-
-      return (
-        fieldMatch &&
-        environmentMatch &&
-        languageMatch &&
-        keywordsMatch &&
-        statusMatch &&
-        functionalGroupMatch
+          return filterValues.includes(item[filterKey]);
+        }
       );
+
+      return fieldMatch && filterMatches;
     });
   };
 
@@ -107,13 +87,10 @@ export default function HomePage(): JSX.Element {
         apps,
         searchRegEx,
         ['Description', 'Summary', 'ServiceName', 'Provider'],
-        selectedFilters.Environment,
-        selectedFilters.Languages,
-        selectedFilters.Keywords,
-        selectedFilters.Status,
-        selectedFilters.FunctionalGroup
+        selectedFilters
       )
     );
+
     let timeoutId: NodeJS.Timeout | null = null;
 
     if (localStorage.getItem('searchFilter')) {
@@ -150,25 +127,20 @@ export default function HomePage(): JSX.Element {
 
   return (
     <GoAThreeColumnLayout
+      leftColumnWidth="20%"
       nav={
         <div className="home-sidebar">
           <div id="search-label"> Search</div>
           <GoAInput
             placeholder="Search"
-            // width="50%"
+            width="100%"
             name="search"
             leadingIcon="search"
             value={searchFilter}
             onChange={(name: string, value: string) => {
               setSearchFilter(value);
               localStorage.removeItem('selectedFilters');
-              setSelectedFilters({
-                Environment: [],
-                Languages: [],
-                Keywords: [],
-                Status: [],
-                FunctionalGroup: [],
-              });
+              setSelectedFilters(defaultState.selectedFilters);
               localStorage.setItem(
                 'searchTimestamp',
                 (new Date().getTime() + 5 * 60 * 1000).toString()
@@ -177,29 +149,48 @@ export default function HomePage(): JSX.Element {
             }}
           />
           <GoASpacer vSpacing="m" />
-          <div
-            className="link-button"
-            onClick={() => {
-              localStorage.removeItem('searchFilter');
-              localStorage.removeItem('searchTimestamp');
-              localStorage.removeItem('selectedFilters');
-              setSearchFilter('');
-              setSelectedFilters({
-                Environment: [],
-                Languages: [],
-                Keywords: [],
-                Status: [],
-                FunctionalGroup: [],
-              });
-            }}
-          >
-            Clear all
-          </div>
+          <GoAButtonGroup alignment="start" gap="compact">
+            <GoAButton
+              type="primary"
+              size="compact"
+              onClick={() => {
+                localStorage.removeItem('searchFilter');
+                localStorage.removeItem('searchTimestamp');
+                localStorage.removeItem('selectedFilters');
+                setSearchFilter('');
+                setSelectedFilters(defaultState.selectedFilters);
+              }}
+            >
+              Clear all
+            </GoAButton>
+            <GoAButton
+              size="compact"
+              type="secondary"
+              onClick={() => {
+                setFiltersAccordionState(false);
+                setCollapseKey(prevKey => prevKey + 1); // 
+              }}
+            >
+              Collapse all
+            </GoAButton>
+            <GoAButton
+              size="compact"
+              type="secondary"
+              onClick={() => {
+                setFiltersAccordionState(true);
+              }}
+            >
+              Expand all
+            </GoAButton>
+          </GoAButtonGroup>
           <GoASpacer vSpacing="l" />
           {filtersList.map((filterCategory) => (
-            <div key={filterCategory}>
-              <div id="filter-label">{`${filterCategory} (${filters[filterCategory].filters.length})`}</div>
-              <GoASpacer vSpacing="m" />
+            <GoAAccordion
+              key={`${filterCategory} ${collapseKey}`}
+              heading={`${filterCategory} (${filters[filterCategory].filters.length})`}
+              headingSize="small"
+              open={filtersAccordionState}
+            >
               {filters[filterCategory].filters.map((env) => (
                 <GoACheckbox
                   key={env.value}
@@ -230,7 +221,7 @@ export default function HomePage(): JSX.Element {
                   }}
                 />
               ))}
-            </div>
+            </GoAAccordion>
           ))}
         </div>
       }
