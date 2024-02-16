@@ -2,17 +2,13 @@ import sys
 import csv
 import json
 import os
+import re
 from datetime import datetime
 # To get the URL page name
 # from bs4 import BeautifulSoup   #pip install beautifulsoup4
 # import requests                 # pip install requests 
 from urllib.parse import urlparse
 
-# print('\n\n', len(sys.argv))
-
-# if len(sys.argv) > 1:
-#     arg1 = sys.argv[1]
-#     print("parm",arg1)
 
 
 if len(sys.argv) > 3:
@@ -197,8 +193,7 @@ for fileName in CSV_fileNames:
                         fn = row2["FieldName"]       # int, text, textArray, urlArray, contactList                       
 
                         if row2["isFilter"] == True and  row2["dataType"] != "int" and csv_row[fn] != '':
-                            filterText += ',' + csv_row[fn]
-                        
+                            filterText += ',' + csv_row[fn]                        
 
                         if   row2["dataType"] == "urlArray":    csv_row[fn] = linkList(csv_row[fn])                        
                         elif row2["dataType"] == "textArray":   csv_row[fn] = asArray(csv_row[fn])
@@ -233,6 +228,70 @@ for fileName in CSV_fileNames:
 
                     data.append(csv_row)
 
+
+# ***************** Vote on filter text *********************                     
+def shorten(text): return re.sub('[._ -\\/]', '', text).lower().strip()
+wordCounts = {}
+needEdit = {}
+modifiedRecords = []
+def wordVote(val):
+    if val in wordCounts:        wordCounts[val] += 1
+    else:        wordCounts[val] = 1
+
+def needsEdit(val):
+    short = shorten(val)
+    if short != '' and short in needEdit and needEdit[short] != val:
+        return needEdit[short]
+    else:
+        return {}
+
+for row2 in filterData:
+    fn = row2["FieldName"]
+    if row2["isFilter"] == True:        
+        for dataRow in data:
+            if row2["dataType"] == 'text':
+                if dataRow[fn] != '':                   
+                    wordVote(dataRow[fn])
+            elif row2["dataType"] == 'textArray':
+                    for val in dataRow[fn]:
+                        wordVote(val)
+string_counts_with_group = [{'string': key, 'count': value, 'group': shorten(key)} for key, value in wordCounts.items()]
+groups = set(item['group'] for item in string_counts_with_group)
+# def items_by_group(group): return [item for item in string_counts_with_group if item['group'] == group]
+
+for grp in groups:    
+    items_group_A = [item for item in string_counts_with_group if item['group'] == grp] # items_group_A = items_by_group(grp)
+    if len(items_group_A) > 1:        
+        gstr = ''
+        cnt = 0
+        grp = items_group_A[0]['group']
+        for item in items_group_A:
+            if item['count'] > cnt:
+                cnt = item['count']
+                gstr = item['string']
+        needEdit[grp] = gstr
+# print('needEdit',needEdit)
+        
+for row2 in filterData:
+    fn = row2["FieldName"]
+    if row2["isFilter"] == True:        
+        for dataRow in data:
+            if row2["dataType"] == 'text':
+                updated = needsEdit(dataRow[fn])
+                if updated:
+                    modifiedRecords.append([dataRow['ServiceName'],fn,dataRow[fn],updated])
+                    dataRow[fn] = updated
+
+            elif row2["dataType"] == 'textArray':
+                    for val in dataRow[fn]:
+                        updated = needsEdit(val)
+                        if updated:
+                            i = dataRow[fn].index(val)
+                            modifiedRecords.append([dataRow['ServiceName'],fn,dataRow[fn][i],updated])                            
+                            dataRow[fn][i] = updated
+# ***************** END - Vote on filter text *********************
+
+
 parsed_dates = [datetime.strptime(item['LastUpdated'], '%m/%d/%Y') for item in data]
 mostRecentService = max(parsed_dates).strftime("%m/%d/%Y")
 
@@ -250,5 +309,12 @@ for folderName in outputDirectories:
         with open(folderName +  'datastore.json', 'w') as jsonfile:
             jsonfile.write(json.dumps(data2, indent=4))
         print('Output: ' + folderName + 'datastore.json')
+
+        if len(modifiedRecords) > 0:
+            modifiedRecords.sort()
+            with open(folderName + 'modifiedRecords.txt', 'w') as file:
+                for item in modifiedRecords:
+                    file.write("%s\n" % item)
+            print('AutoFix: modifiedRecords.txt contains '+str(len(modifiedRecords))+' modified records')
 
 print(colorBlack + '------- '+ str(id_counter) + ' total records -------------'+ colorReset + '\n')

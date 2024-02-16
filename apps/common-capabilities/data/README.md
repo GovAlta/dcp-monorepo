@@ -25,12 +25,26 @@
 You can add additional sample CSV files for development. Simply add to the existing CommonCapabilitiesSamples.csv file or add a new file to the CSV_fileNames array under the dev option in the python.
 
 ### 3) Convert to JSON
-  * Open CSV2JSON.py with Visual Studio Code.
 
-  * Edit "ProductionData" True or False. This will change input files and output Directories (edit those if required).
-    outputDirectories and CSV_fileNames are arrays. It will skip non-existing folder/files.
+  1. **Visual Studio Code**
+    * Open CSV2JSON.py with Visual Studio Code.
 
-  * Using Visual Studio Code, run the python code.
+    * Edit "ProductionData" True or False. This will change input files and output Directories (edit those if required).
+      outputDirectories and CSV_fileNames are arrays. It will skip non-existing folder/files.
+
+    * Using Visual Studio Code, run the python code.
+  
+  2. **CMD line**
+    Usage: python csv2json.py <[P,D]> <output_path>"
+    P = Production
+    D = Development
+    The default will run with what is saved in the CSV2JSON.py - currently set to run to development mode. You would need to add an valid output directory to make this work for you.
+
+    OR  
+    **python csv2json.py D c:\myPath\CommonServices**  (must be an pre-existing path)
+
+
+
 
 ### Notes
   #### CommonCapabilitiesFields.csv
