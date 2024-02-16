@@ -312,9 +312,9 @@ for folderName in outputDirectories:
 
         if len(modifiedRecords) > 0:
             modifiedRecords.sort()
-            with open(folderName + 'modifiedRecords.txt', 'w') as file:
+            with open(CSV_fileDir + 'modifiedRecords.txt', 'w') as file:
                 for item in modifiedRecords:
                     file.write("%s\n" % item)
-            print('AutoFix: modifiedRecords.txt contains '+str(len(modifiedRecords))+' modified records')
+            print('AutoFix: '+CSV_fileDir+'modifiedRecords.txt contains '+str(len(modifiedRecords))+' modified records')
 
 print(colorBlack + '------- '+ str(id_counter) + ' total records -------------'+ colorReset + '\n')
