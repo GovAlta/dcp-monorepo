@@ -17,25 +17,40 @@ interface CardProps {
 const Card = ({ provider, description, title, app }: CardProps) => {
   const maxDescriptionLength = 200; // word length for short descpription in tile.
   const badgesToShow = ['Status', 'FunctionalGroup', 'Language', 'Keywords'];
-  const [items, setItems] = useState<any>({
-    badges: [],
-  });
+  const [showBadges, setShowBadges] = useState<JSX.Element[]>([]);
+
   useEffect(() => {
-    let showBadges: any[] = [];
-    badgesToShow.map((badge) => {
+    let badges: JSX.Element[] = [];
+    if (app.InternalWeightage >= 50) {
+      badges.push(
+        <GoABadge key="validated" type="midtone" content="Validated" />
+      );
+    }
+
+    badgesToShow.forEach((badge) => {
       if (app[badge] !== '' && app[badge]?.length > 0) {
-        if (Array.isArray(app[badge]) && !app[badge].includes('other')) {
-          showBadges.push(badge);
+        if (
+          Array.isArray(app[badge]) &&
+          !app[badge].some((item: string) => item.toLowerCase() === 'other')
+        ) {
+          badges.push(
+            <GoABadge key={badge} type="information" content={badge} />
+          );
         }
-        if (typeof app[badge] === 'string' && app[badge] !== 'other') {
-          showBadges.push(badge);
+        if (
+          typeof app[badge] === 'string' &&
+          app[badge].toLowerCase() !== 'other'
+        ) {
+          badges.push(
+            <GoABadge key={badge} type="information" content={badge} />
+          );
         }
       }
     });
-    setItems({
-      badges: showBadges,
-    });
-  }, []);
+
+    setShowBadges(badges);
+  }, [app]);
+
   return (
     // <div>
     <GoAContainer accent="thin">
@@ -63,21 +78,7 @@ const Card = ({ provider, description, title, app }: CardProps) => {
 
       <GoASpacer vSpacing="m" />
       <div id="service-tile-chips">
-        {items.badges.length > 0
-          ? items.badges.map((badge: string) => {
-              return typeof app[badge] === 'string' ? (
-                <div key={`${badge}`}>
-                  <GoABadge type="information" content={app[badge]} />
-                </div>
-              ) : (
-                app[badge].map((item: string) => (
-                  <div key={`${item}`}>
-                    <GoABadge type="information" content={item} />
-                  </div>
-                ))
-              );
-            })
-          : ''}
+        {<div id="service-tile-chips">{showBadges}</div>}
       </div>
     </GoAContainer>
     // </div>

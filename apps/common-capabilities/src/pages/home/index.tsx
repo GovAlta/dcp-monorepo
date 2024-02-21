@@ -10,7 +10,8 @@ import {
   GoAAccordion,
   GoAButton,
   GoAButtonGroup,
-  GoADivider
+  GoACallout,
+  GoADivider,
 } from '@abgov/react-components';
 import Card from '../../components/Card';
 import './styles.css';
@@ -38,6 +39,7 @@ export default function HomePage(): JSX.Element {
     month: 'long',
     day: 'numeric',
   });
+  const recommendedServicesWeightage = 50;
 
   // grab all the available filters from the services
   const [filters, setFilters] = useState(extractAvailableFilters(services));
@@ -234,11 +236,46 @@ export default function HomePage(): JSX.Element {
         </div>
       }
     >
-      <h2 id="home-title">Overview</h2>
+      <h2 id="home-title">Services</h2>
       <span className="last-updated">Last updated: {formattedDate}</span>
-      <GoASpacer vSpacing="s" />
+      <GoASpacer vSpacing="2xl" />
+      <div className="callout-overview">
+        <GoACallout
+          type="information"
+          heading="Recommended capabilities"
+          size="large"
+        >
+          <h4>Why choose them?</h4>
+          <div className="callout-bullets">
+            <ul className="goa-unordered-list">
+              <li>
+                Our validated capabilities have been rigorously tested, refined,
+                and proven, making them the default choice for similar use
+                cases.
+              </li>
+              <li>
+                Efficiency: Leverage capabilities with a track record of success
+                to streamline your development process.
+              </li>
+              <li>
+                Optimised Costs: Cut costs with standardised capabilities.
+              </li>
+              <li>
+                Streamlined Development: Utilise mature components for
+                consistency.
+              </li>
+            </ul>
+          </div>
 
-      <p className="cc-intro">
+          <h4>Encounter unique scenarios?</h4>
+          <p>
+            Share feedback with the respective team—a catalyst for improvement.
+          </p>
+        </GoACallout>
+      </div>
+      <GoASpacer vSpacing="2xl" />
+
+      {/* <p className="cc-intro">
         Common capabilities encompass a broad spectrum of software components
         and systems ( including applications, APIs, frameworks, libraries,
         tools, services and various other types). These are like building blocks
@@ -249,24 +286,53 @@ export default function HomePage(): JSX.Element {
         capabilities to explore. For specific inquiries, we recommend reaching
         out to the respective teams who are owners for capabilities. Refer to{' '}
         <a href="/contact/index.html#faq-section">FAQ</a> page for more details.
-      </p>
+      </p> */}
 
-      <GoASpacer vSpacing="xl" />
+      <h3>Recommended services listing</h3>
+
+      <GoASpacer vSpacing="m" />
+      <GoAGrid minChildWidth="35ch">
+        {/* <div className="tile-wrapper"> */}
+        {services.length >= 1
+          ? services.map((app) => {
+              return app.InternalWeightage >= recommendedServicesWeightage ? (
+                <Card
+                  key={app.ServiceName}
+                  title={app.ServiceName}
+                  provider={app.Provider}
+                  description={app.Summary}
+                  app={app}
+                />
+              ) : (
+                ''
+              );
+            })
+          : 'No results found'}
+        {/* </div> */}
+      </GoAGrid>
+
+      <GoASpacer vSpacing="2xl" />
 
       <h3>Services listing</h3>
+
+      <GoASpacer vSpacing="m" />
 
       <GoAGrid minChildWidth="35ch">
         {/* <div className="tile-wrapper"> */}
         {services.length >= 1
-          ? services.map((app) => (
-              <Card
-                key={app.ServiceName}
-                title={app.ServiceName}
-                provider={app.Provider}
-                description={app.Summary}
-                app={app}
-              />
-            ))
+          ? services.map((app) => {
+              return app.InternalWeightage < recommendedServicesWeightage ? (
+                <Card
+                  key={app.ServiceName}
+                  title={app.ServiceName}
+                  provider={app.Provider}
+                  description={app.Summary}
+                  app={app}
+                />
+              ) : (
+                ''
+              );
+            })
           : 'No results found'}
         {/* </div> */}
       </GoAGrid>

@@ -15,8 +15,7 @@
   padding: 10px var(--goa-space-xs) 7px var(--goa-space-xs);
 }
 .home-sidebar {
-  margin-top: calc(var(--goa-space-4xl) * 2.3);
-  margin-bottom: calc(var(--goa-space-4xl) * 2.3);
+  margin-top: calc(var(--goa-space-2xl));
 }
 #search-label {
   font-size: var(--goa-font-size-3);
@@ -64,4 +63,10 @@
   font-style: normal;
   font-weight: var(--goa-font-weight-bold);
   line-height: var(--goa-line-height-2);
+}
+.callout-bullets {
+  margin-left: 0.75rem;
+}
+.callout-overview {
+  width: 70%;
 }
