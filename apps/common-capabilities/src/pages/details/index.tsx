@@ -67,6 +67,11 @@ export default function Details({ app }: DetailsProps): JSX.Element {
   useEffect(() => {
     let showBadges: any[] = [];
     let showContent: any[] = [];
+    if (app.InternalWeightage >= 50) {
+      showBadges.push(
+        <GoABadge key="validated" type="midtone" content="Validated" />
+      );
+    }
     badgesToShow.forEach((badge) => {
       if (app[badge] !== '' && app[badge]?.length > 0) {
         if (
@@ -202,7 +207,7 @@ export default function Details({ app }: DetailsProps): JSX.Element {
       >
         <div className="service-heading">
           <h2>{app.ServiceName}</h2>
-          {app.Status !== '' ? (
+          {app.Status !== '' && app.Status.toLowerCase() !== 'other' ? (
             <GoABadge type="success" content={app.Status} />
           ) : (
             ''
