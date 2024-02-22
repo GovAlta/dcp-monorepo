@@ -67,13 +67,29 @@ export default function Details({ app }: DetailsProps): JSX.Element {
   useEffect(() => {
     let showBadges: any[] = [];
     let showContent: any[] = [];
-    badgesToShow.map((badge) => {
+    badgesToShow.forEach((badge) => {
       if (app[badge] !== '' && app[badge]?.length > 0) {
-        if (Array.isArray(app[badge]) && !app[badge].includes('other')) {
-          showBadges.push(badge);
+        if (
+          Array.isArray(app[badge]) &&
+          !app[badge].some((item: string) => item.toLowerCase() === 'other')
+        ) {
+          app[badge].forEach((badgeValue: string) => {
+            showBadges.push(
+              <GoABadge
+                key={badgeValue}
+                type="information"
+                content={badgeValue}
+              />
+            );
+          });
         }
-        if (typeof app[badge] === 'string' && app[badge] !== 'other') {
-          showBadges.push(badge);
+        if (
+          typeof app[badge] === 'string' &&
+          app[badge].toLowerCase() !== 'other'
+        ) {
+          showBadges.push(
+            <GoABadge key={badge} type="information" content={app[badge]} />
+          );
         }
       }
     });
@@ -129,7 +145,7 @@ export default function Details({ app }: DetailsProps): JSX.Element {
       <tr className="items-color">
         <td className="contact-type">{`${method.type}:  `}</td>
         <td>
-          <GoAIcon type={iconType} size='small' theme="outline" />
+          <GoAIcon type={iconType} size="small" theme="outline" />
         </td>
         <td className="td-links">
           <ExternalLink
@@ -196,21 +212,7 @@ export default function Details({ app }: DetailsProps): JSX.Element {
         <p className="service-subtitle"> {app.Provider}</p>
 
         <div className="service-badges">
-          {items.badges.length > 0
-            ? items.badges.map((badge: string) => {
-                return typeof app[badge] === 'string' ? (
-                  <div key={`${badge}`}>
-                    <GoABadge type="information" content={app[badge]} />
-                  </div>
-                ) : (
-                  app[badge].map((item: string) => (
-                    <div key={`${item}`}>
-                      <GoABadge type="information" content={item} />
-                    </div>
-                  ))
-                );
-              })
-            : ''}
+          {items.badges.length > 0 ? items.badges : ''}
         </div>
 
         <GoASpacer vSpacing="xl" />
