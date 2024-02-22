@@ -33,16 +33,18 @@ const Card = ({ provider, description, title, app }: CardProps) => {
           Array.isArray(app[badge]) &&
           !app[badge].some((item: string) => item.toLowerCase() === 'other')
         ) {
-          badges.push(
-            <GoABadge key={badge} type="information" content={badge} />
-          );
+          app[badge].forEach((badgeValue: string) => {
+            badges.push(
+              <GoABadge key={badgeValue} type="information" content={badgeValue} />
+            );
+          });
         }
         if (
           typeof app[badge] === 'string' &&
           app[badge].toLowerCase() !== 'other'
         ) {
           badges.push(
-            <GoABadge key={badge} type="information" content={badge} />
+            <GoABadge key={badge} type="information" content={app[badge]} />
           );
         }
       }
