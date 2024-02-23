@@ -249,7 +249,7 @@ export default function HomePage(): JSX.Element {
         compatible with existing systems. We provide here a listing of common
         capabilities to explore. For specific inquiries, we recommend reaching
         out to the respective teams who are owners for capabilities. Refer to{' '}
-        <a href="/contact/index.html#faq-section">FAQ</a> page for more details.
+        <a href="/faq/index.html">FAQ</a> page for more details.
       </p>
 
       <GoASpacer vSpacing="xl" />

@@ -15,6 +15,7 @@ const Header = ({ actionButtons }: any) => {
       <GoAAppHeader url="/" heading="Common capabilities" maxContentWidth="95%">
         <a href="/">Home</a>
         <a href="/contact/index.html">Contact</a>
+        <a href="/faq/index.html">FAQ</a>
       </GoAAppHeader>
       <GoAHeroBanner
         heading="Common capabilities"

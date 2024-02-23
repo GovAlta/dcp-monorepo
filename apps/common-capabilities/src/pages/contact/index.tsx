@@ -6,7 +6,7 @@ import {
   GoAThreeColumnLayout,
 } from '@abgov/react-components';
 import './styles.css';
-import faqs from './faq.json';
+// import faqs from './faq.json';
 import ExternalLink from '../../components/ExternalLink';
 
 export default function ContactPage(): JSX.Element {
@@ -40,14 +40,14 @@ export default function ContactPage(): JSX.Element {
             text="Common capabilities team"
           />
         </div>
-        <GoASpacer vSpacing="2xl" />
+        {/* <GoASpacer vSpacing="2xl" />
         <h3 id="faq-section">Frequently asked questions</h3>
         {faqs.map((faq) => (
           <>
             <GoAAccordion heading={faq.heading}>{faq.content}</GoAAccordion>
             <GoASpacer vSpacing="m" />
           </>
-        ))}
+        ))} */}
       </GoAThreeColumnLayout>
     </div>
   );
