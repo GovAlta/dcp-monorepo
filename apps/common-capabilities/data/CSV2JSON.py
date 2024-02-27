@@ -180,7 +180,15 @@ for fileName in CSV_fileNames:
                 if csv_row["ServiceName"] != "" and csv_row["FunctionalGroup"] != "" :            
                     id_counter += 1
                     csv_row["appId"] = id_counter
-                    
+
+                    QA_Contact = 30 if csv_row["AltContactLink"] == '' and csv_row["Email"] == "" else 0
+                    QA_Doc = 20 if csv_row["Documentation"] == "" else 0
+                    QA_FGroup = 1 if csv_row["FunctionalGroup"] == "Other Function" else 0
+                    QA_Status = 2 if csv_row["Status"] == "" else 0
+                    QA_Lang   = 2 if csv_row["Language"] == "" else 0
+                    QA_Env    = 2 if csv_row["Environment"] == "" else 0                    
+                    csv_row["QA"] = QA_Contact + QA_Doc + QA_FGroup + QA_Status + QA_Lang + QA_Env
+
                     filterText = ''
                     for row2 in filterData:
                         fn = row2["FieldName"]       # int, text, textArray, urlArray, contactList                                
@@ -211,7 +219,8 @@ for fileName in CSV_fileNames:
 
 
                     for delKey in ["Email","Phone","ContactDetails","AltContactMethod","AltContactLink"]:
-                        del csv_row[delKey]
+                        del csv_row[delKey]    
+                    # del csv_row["Nominate"]               
 
                     if csv_row["Description"] == "":
                         csv_row["Description"] = csv_row["Summary"]
@@ -281,7 +290,6 @@ for row2 in filterData:
                             dataRow[fn][i] = updated
 # ***************** END - Vote on filter text *********************
 
-
 parsed_dates = [datetime.strptime(item['LastUpdated'], '%m/%d/%Y') for item in data]
 mostRecentService = max(parsed_dates).strftime("%m/%d/%Y")
 
@@ -299,6 +307,21 @@ for folderName in outputDirectories:
         with open(folderName +  'datastore.json', 'w') as jsonfile:
             jsonfile.write(json.dumps(data2, indent=4))
         print('Output: ' + folderName + 'datastore.json')
+
+
+
+bad_items = [{ 'Provider': item['Provider'], 'ServiceName': item['ServiceName'],              
+               'Documentation': item['Documentation'],'Contact': item['Contact']['methods']
+             } for item in data if item.get('QA') > 10]
+
+if len(bad_items) > 0:
+    print('Need ' +str(len(bad_items))+' data fixes: ' + CSV_fileDir + 'badData.json')    
+    with open(CSV_fileDir + 'badData.csv', 'w', newline='') as csv_file:
+        fieldnames = ['Provider','ServiceName','Documentation','Contact']
+        csv_writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+        csv_writer.writeheader()
+        for item in bad_items:
+            csv_writer.writerow(item)    
 
 if len(modifiedRecords) > 0:
     modifiedRecords.sort()
