@@ -218,7 +218,7 @@ for fileName in CSV_fileNames:
                         print('Summay too long: ' + csv_row["ServiceName"] + ' = ' + str(len(csv_row["Summary"])) )
 
                     for delKey in ["Email","Phone","ContactDetails","AltContactMethod","AltContactLink","Nominate",
-                                   "CMRA","IM","STRA","Risk","Cybersecurity","Considerations" ]:
+                                   "Considerations" ]:
                         del csv_row[delKey]    
 
                     if csv_row["Description"] == "":
