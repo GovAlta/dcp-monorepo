@@ -5,6 +5,7 @@ import os
 import re
 from datetime import datetime
 from urllib.parse import urlparse
+import getpass
 
 try:
     if len(sys.argv) > 3:
@@ -29,12 +30,24 @@ ProductionData = False     # <<<======== IMPORTANT - Default ===============
 if (DevProdArg != ''):
     ProductionData = DevProdArg == 'P'
 
+
+current_user = getpass.getuser()
+
 if ProductionData:
     CSV_fileNames = ['CommonCapabilities']
     outputDirectories = ['..\\src\\content\\']
-else:
+
+elif current_user == 'steve.rozeboom':
     CSV_fileNames = ['CommonCapabilities','CommonCapabilitiesSamples']
     outputDirectories = ['..\\..\\..\\..\\..\\ReactJS\\list\\build\\','..\\..\\..\\..\\..\\ReactJS\\list\public\\']
+
+# elif current_user == 'subbu.mettu':
+#     CSV_fileNames = ['CommonCapabilities','CommonCapabilitiesSamples']
+#     outputDirectories = ['..\\src\\content\\']
+
+else:
+    CSV_fileNames = ['CommonCapabilities','CommonCapabilitiesSamples']
+    outputDirectories = ['..\\src\\content\\']
 
 
 CSV_fileDir = '.\\'
@@ -165,9 +178,9 @@ with open(CSV_fileDir + 'CommonCapabilitiesFields.csv', 'r', encoding='utf-8-sig
 
 data = []
 id_counter = 0
-if not ProductionData: devt = 'DEVELOPMENT'
-else: devt = 'Production'  
-print('\n' + colorBlack + '------[ Create JSON files for ' + colorRed + devt + colorBlack + ' ]---------\n' + colorGreen +'Working directory: '
+if not ProductionData: devMode = 'DEVELOPMENT'
+else: devMode = 'Production'  
+print('\n' + colorBlack + '------[ Create JSON files for ' + current_user +': ' + colorRed + devMode + colorBlack + ' ]---------\n' + colorGreen +'Working directory: '
       + CSV_fileDir +'\nInput: ' + 'CommonCapabilitiesFields.csv')
 for fileName in CSV_fileNames:    
     if os.path.exists(CSV_fileDir + fileName + '.csv'):
@@ -289,12 +302,13 @@ for row2 in filterData:
 
 # ***************** QA report  *********************
 bad_items = [{ 'Provider': item['Provider'], 'ServiceName': item['ServiceName'],'DataIssues': item['DataIssues'],
-               'QA_Score': item['QA'],'Documentation': item['Documentation'],'Contact': item['Contact']['methods']
+               'QA_Score': item['QA'],'Weightage': item['InternalWeightage'],
+               'Documentation': item['Documentation'],'Contact': item['Contact']['methods']
              } for item in data if item.get('QA') > 10 or item.get('DataIssues') != '']
 if len(bad_items) > 0:
     print('There are ' +str(len(bad_items))+' needing more data. Details: ' + CSV_fileDir + 'missingData.json')    
     with open(CSV_fileDir + 'missingData.csv', 'w', newline='') as csv_file:
-        fieldnames = ['Provider','ServiceName','DataIssues','QA_Score','Documentation','Contact']
+        fieldnames = ['Provider','ServiceName','DataIssues','QA_Score','Weightage','Documentation','Contact']
         csv_writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
         csv_writer.writeheader()
         for item in bad_items:
@@ -308,6 +322,7 @@ now = datetime.now()
 current_date = now.strftime("%m/%d/%Y, %H:%M")
 
 data2 = {"lastUpdated": current_date,         
+         "isProductionData": ProductionData,
          "mostRecentService": mostRecentService,
          "dateFormat": "mm/dd/yyyy",
          "services": data,
