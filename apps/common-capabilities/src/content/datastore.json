@@ -1,10 +1,10 @@
 {
-    "lastUpdated": "02/14/2024, 14:45",
-    "mostRecentService": "10/16/2023",
+    "lastUpdated": "03/01/2024, 14:14",
+    "isProductionData": true,
+    "mostRecentService": "02/28/2024",
     "dateFormat": "mm/dd/yyyy",
     "services": [
         {
-            "Nominate": "Yes",
             "ServiceName": "1GX API service",
             "Provider": "Service Integration",
             "Audience": [
@@ -20,7 +20,7 @@
             "Language": [
                 "Other"
             ],
-            "UsageMethod": "Other",
+            "UsageMethod": "API",
             "SupportLevel": "Hybrid",
             "Documentation": [
                 {
@@ -28,9 +28,7 @@
                     "url": "https://abgov.sharepoint.com/sites/S500D27-SI969/SitePages/1GX-API-Service.aspx"
                 }
             ],
-            "Keywords": [
-                "API"
-            ],
+            "Keywords": [],
             "Status": "Live",
             "Version": "",
             "UseCases": "",
@@ -38,14 +36,15 @@
             "Comments": "Requests for this service will only be accepted by your ministry's 1GX Service Manager through a BERNIE RITM.",
             "LastUpdated": "10/1/2023",
             "Reviewed": "",
+            "DataIssues": "",
             "ReviewedBy": "",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
             "appId": 1,
+            "QA": 2,
             "Contact": {
                 "details": "Advanced request required through BERNIE; search and select the BERNIE service called '1GX API Service'.",
                 "methods": [
@@ -56,10 +55,9 @@
                     }
                 ]
             },
-            "filterText": "service integration,goa,workflow and process automation,live,openshift,hybrid,api"
+            "filterText": "service integration,workflow and process automation,goa,live,api,openshift,hybrid"
         },
         {
-            "Nominate": "Yes",
             "ServiceName": "1GX Legacy IMAGIS integration",
             "Provider": "Service Integration",
             "Audience": [
@@ -88,14 +86,15 @@
             "Comments": "This integration is for legacy GoA applications, it will be phased out and replaced by direct API type of integration with 1GX.",
             "LastUpdated": "10/1/2023",
             "Reviewed": "",
+            "DataIssues": "",
             "ReviewedBy": "",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
             "appId": 2,
+            "QA": 26,
             "Contact": {
                 "details": "Advanced request required through BERNIE; search and select the BERNIE service called '1GX Legacy IMAGIS Integration Service'",
                 "methods": [
@@ -109,7 +108,6 @@
             "filterText": "service integration,workflow and process automation,hybrid,imagis"
         },
         {
-            "Nominate": "",
             "ServiceName": "Access service",
             "Provider": "Alberta Digital Service Platform (ADSP)",
             "Audience": [
@@ -143,14 +141,15 @@
             "Comments": "",
             "LastUpdated": "10/1/2023",
             "Reviewed": "",
+            "DataIssues": "",
             "ReviewedBy": "",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
             "appId": 3,
+            "QA": 4,
             "Contact": {
                 "details": "",
                 "methods": [
@@ -169,7 +168,6 @@
             "filterText": "alberta digital service platform (adsp),user access and identity,live,hybrid,keycloak"
         },
         {
-            "Nominate": "Yes",
             "ServiceName": "Address validation service",
             "Provider": "Service Integration",
             "Audience": [
@@ -201,14 +199,15 @@
             "Comments": "",
             "LastUpdated": "10/1/2023",
             "Reviewed": "",
+            "DataIssues": "",
             "ReviewedBy": "",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
             "appId": 4,
+            "QA": 7,
             "Contact": {
                 "details": "Advanced request required through the Service Integration SharePoint site; click the \"Service Request Details\" link to access 'Service Integration Consultation Request \" web form",
                 "methods": [
@@ -222,9 +221,8 @@
             "filterText": "service integration,other function,hybrid"
         },
         {
-            "Nominate": "",
             "ServiceName": "Alberta holidays",
-            "Provider": "SCSS",
+            "Provider": "Seniors, Community and Social Services (SCSS)",
             "Audience": [
                 "GOA"
             ],
@@ -254,14 +252,15 @@
             "Comments": "",
             "LastUpdated": "10/1/2023",
             "Reviewed": "",
+            "DataIssues": "",
             "ReviewedBy": "",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
             "appId": 5,
+            "QA": 5,
             "Contact": {
                 "details": "Privately hosted npm package",
                 "methods": [
@@ -269,13 +268,17 @@
                         "type": "GitHub",
                         "value": "ab-holiday",
                         "url": "https://github.com/GovAlta-EMU/ab-holiday"
+                    },
+                    {
+                        "type": "Email",
+                        "value": "wei.w.wei@gov.ab.ca",
+                        "url": "wei.w.wei@gov.ab.ca"
                     }
                 ]
             },
-            "filterText": "scss,other function,typescript (dayjs)"
+            "filterText": "seniors, community and social services (scss),other function,typescript (dayjs)"
         },
         {
-            "Nominate": "",
             "ServiceName": "Alberta vital statistics API",
             "Provider": "Platforms - Common Data Services",
             "Audience": [
@@ -294,9 +297,7 @@
             "UsageMethod": "API",
             "SupportLevel": "TBD",
             "Documentation": [],
-            "Keywords": [
-                "API"
-            ],
+            "Keywords": [],
             "Status": "Alpha",
             "Version": "",
             "UseCases": "",
@@ -304,23 +305,23 @@
             "Comments": "",
             "LastUpdated": "10/1/2023",
             "Reviewed": "",
+            "DataIssues": "",
             "ReviewedBy": "",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
             "appId": 6,
+            "QA": 50,
             "Contact": {
                 "details": "",
                 "methods": []
             },
-            "filterText": "platforms - common data services,payments and financial management,alpha,api,.net core,on prem,tbd,api"
+            "filterText": "platforms - common data services,payments and financial management,alpha,api,.net core,on prem,tbd"
         },
         {
-            "Nominate": "YES",
-            "ServiceName": "Alberta.ca account",
+            "ServiceName": "Alberta.ca Account",
             "Provider": "Platforms - IAM",
             "Audience": [
                 "GOA"
@@ -343,7 +344,9 @@
                     "url": "https://myalberta.gov.ab.ca/en/myalberta-digital-id"
                 }
             ],
-            "Keywords": [],
+            "Keywords": [
+                "IAM"
+            ],
             "Status": "Live",
             "Version": "",
             "UseCases": "",
@@ -351,16 +354,17 @@
             "Comments": "",
             "LastUpdated": "10/1/2023",
             "Reviewed": "",
+            "DataIssues": "",
             "ReviewedBy": "",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
             "appId": 7,
+            "QA": 0,
             "Contact": {
-                "details": "",
+                "details": "Onboarding and integrations are handled via scheduled consultations. Can reach out to Robert Salloum or Syed Hashmi for further details",
                 "methods": [
                     {
                         "type": "Web",
@@ -369,15 +373,14 @@
                     },
                     {
                         "type": "Email",
-                        "value": "account.service-owner@gov.ab.ca",
-                        "url": "account.service-owner@gov.ab.ca"
+                        "value": "GOA.IAM@gov.ab .ca",
+                        "url": "GOA.IAM@gov.ab .ca"
                     }
                 ]
             },
-            "filterText": "platforms - iam,user access and identity,live,forgerock,azure,24x7"
+            "filterText": "platforms - iam,user access and identity,live,forgerock,azure,24x7,iam"
         },
         {
-            "Nominate": "Yes",
             "ServiceName": "API gateway as a service",
             "Provider": "Service Integration",
             "Audience": [
@@ -409,14 +412,15 @@
             "Comments": "",
             "LastUpdated": "10/1/2023",
             "Reviewed": "",
+            "DataIssues": "",
             "ReviewedBy": "",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
             "appId": 8,
+            "QA": 6,
             "Contact": {
                 "details": "Advanced request required through the Service Integration SharePoint site; click the \"Service Request Details\" link to access 'Service Integration Consultation Request \" web form",
                 "methods": [
@@ -430,7 +434,6 @@
             "filterText": "service integration,user access and identity,api,hybrid"
         },
         {
-            "Nominate": "",
             "ServiceName": "Automation framework architecture",
             "Provider": "Justice Digital",
             "Audience": [
@@ -458,7 +461,7 @@
                 }
             ],
             "Keywords": [
-                "QA"
+                "Development"
             ],
             "Status": "Live",
             "Version": "",
@@ -467,14 +470,15 @@
             "Comments": "",
             "LastUpdated": "10/1/2023",
             "Reviewed": "",
+            "DataIssues": "",
             "ReviewedBy": "",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
             "appId": 9,
+            "QA": 3,
             "Contact": {
                 "details": "",
                 "methods": [
@@ -485,10 +489,9 @@
                     }
                 ]
             },
-            "filterText": "justice digital,other function,live,aws, github, cypress, allure,qa"
+            "filterText": "justice digital,other function,live,aws, github, cypress, allure,development"
         },
         {
-            "Nominate": "",
             "ServiceName": "Banking  information verification API",
             "Provider": "Platforms - Common Data Services",
             "Audience": [
@@ -507,9 +510,7 @@
             "UsageMethod": "API",
             "SupportLevel": "TBD",
             "Documentation": [],
-            "Keywords": [
-                "API"
-            ],
+            "Keywords": [],
             "Status": "Alpha",
             "Version": "",
             "UseCases": "",
@@ -517,22 +518,22 @@
             "Comments": "",
             "LastUpdated": "10/1/2023",
             "Reviewed": "",
+            "DataIssues": "",
             "ReviewedBy": "",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
             "appId": 10,
+            "QA": 50,
             "Contact": {
                 "details": "",
                 "methods": []
             },
-            "filterText": "platforms - common data services,payments and financial management,alpha,api,.net core,on prem,tbd,api"
+            "filterText": "platforms - common data services,payments and financial management,alpha,api,.net core,on prem,tbd"
         },
         {
-            "Nominate": "",
             "ServiceName": "Business reporting strategy",
             "Provider": "Justice Digital",
             "Audience": [
@@ -557,7 +558,7 @@
                 }
             ],
             "Keywords": [
-                "JD business reporting"
+                "Reporting"
             ],
             "Status": "Live",
             "Version": "",
@@ -566,14 +567,15 @@
             "Comments": "",
             "LastUpdated": "10/1/2023",
             "Reviewed": "",
+            "DataIssues": "",
             "ReviewedBy": "",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
             "appId": 11,
+            "QA": 0,
             "Contact": {
                 "details": "",
                 "methods": [
@@ -584,10 +586,9 @@
                     }
                 ]
             },
-            "filterText": "justice digital,analytics and reporting,live,python,aws,jd business reporting"
+            "filterText": "justice digital,analytics and reporting,live,python,aws,reporting"
         },
         {
-            "Nominate": "",
             "ServiceName": "Calendar service",
             "Provider": "Alberta Digital Service Platform (ADSP)",
             "Audience": [
@@ -619,14 +620,15 @@
             "Comments": "",
             "LastUpdated": "10/1/2023",
             "Reviewed": "",
+            "DataIssues": "",
             "ReviewedBy": "",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
             "appId": 12,
+            "QA": 4,
             "Contact": {
                 "details": "",
                 "methods": [
@@ -645,7 +647,6 @@
             "filterText": "alberta digital service platform (adsp),workflow and process automation,live,hybrid"
         },
         {
-            "Nominate": "",
             "ServiceName": "CCDS Angular components",
             "Provider": "Children's Services Platform",
             "Audience": [
@@ -674,14 +675,15 @@
             "Comments": "Used within Children's Services to provide consistent UI and tooling for all Angular projects.",
             "LastUpdated": "10/1/2023",
             "Reviewed": "",
+            "DataIssues": "",
             "ReviewedBy": "",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
             "appId": 13,
+            "QA": 20,
             "Contact": {
                 "details": "Discussion required to obtain access or to deploy container in line of business controlled environment",
                 "methods": [
@@ -692,10 +694,9 @@
                     }
                 ]
             },
-            "filterText": "children's services platform,children's services,data management,live,code share,angular,github,keycloak"
+            "filterText": "children's services platform,data management,children's services,live,code share,angular,github,keycloak"
         },
         {
-            "Nominate": "",
             "ServiceName": "CCDS React components",
             "Provider": "Children's Services Platform",
             "Audience": [
@@ -724,14 +725,15 @@
             "Comments": "Used within Children's Services to provide consistent UI and tooling for all React projects.",
             "LastUpdated": "10/1/2023",
             "Reviewed": "",
+            "DataIssues": "",
             "ReviewedBy": "",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
             "appId": 14,
+            "QA": 20,
             "Contact": {
                 "details": "Discussion required to obtain access or to deploy container in line of business controlled environment",
                 "methods": [
@@ -742,10 +744,9 @@
                     }
                 ]
             },
-            "filterText": "children's services platform,children's services,data management,live,code share,react,github,keycloak"
+            "filterText": "children's services platform,data management,children's services,live,code share,react,github,keycloak"
         },
         {
-            "Nominate": "",
             "ServiceName": "CCDS Web components",
             "Provider": "Children's Services Platform",
             "Audience": [
@@ -772,14 +773,15 @@
             "Comments": "Used within Children's Services to provide consistent UI and tooling for all Vue projects.",
             "LastUpdated": "10/1/2023",
             "Reviewed": "Yes",
+            "DataIssues": "",
             "ReviewedBy": "Heather",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
             "appId": 15,
+            "QA": 20,
             "Contact": {
                 "details": "Discussion required to obtain access or to deploy container in line of business controlled environment",
                 "methods": [
@@ -790,10 +792,9 @@
                     }
                 ]
             },
-            "filterText": "children's services platform,children's services,data management,live,code share,svelte,github"
+            "filterText": "children's services platform,data management,children's services,live,code share,svelte,github"
         },
         {
-            "Nominate": "",
             "ServiceName": "Child care benefits (CCB) validation API",
             "Provider": "Platforms - Common Data Services",
             "Audience": [
@@ -812,9 +813,7 @@
             "UsageMethod": "API",
             "SupportLevel": "TBD",
             "Documentation": [],
-            "Keywords": [
-                "API"
-            ],
+            "Keywords": [],
             "Status": "Alpha",
             "Version": "",
             "UseCases": "",
@@ -822,22 +821,22 @@
             "Comments": "",
             "LastUpdated": "10/1/2023",
             "Reviewed": "Yes",
+            "DataIssues": "",
             "ReviewedBy": "Heather",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
             "appId": 16,
+            "QA": 50,
             "Contact": {
                 "details": "",
                 "methods": []
             },
-            "filterText": "platforms - common data services,payments and financial management,alpha,api,.net core,on prem,tbd,api"
+            "filterText": "platforms - common data services,payments and financial management,alpha,api,.net core,on prem,tbd"
         },
         {
-            "Nominate": "",
             "ServiceName": "Child care licensing API",
             "Provider": "Children's Services Platform",
             "Audience": [
@@ -853,12 +852,10 @@
             "Language": [
                 "Web API"
             ],
-            "UsageMethod": "Other",
+            "UsageMethod": "API",
             "SupportLevel": "Other",
             "Documentation": [],
-            "Keywords": [
-                "API"
-            ],
+            "Keywords": [],
             "Status": "Live",
             "Version": "",
             "UseCases": "",
@@ -866,14 +863,15 @@
             "Comments": "Used within Children's service to provide data on licensed child care providers.",
             "LastUpdated": "10/1/2023",
             "Reviewed": "Yes",
+            "DataIssues": "",
             "ReviewedBy": "Heather",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
             "appId": 17,
+            "QA": 20,
             "Contact": {
                 "details": "Discussion required to obtain access or to deploy container in line of business controlled environment",
                 "methods": [
@@ -884,10 +882,9 @@
                     }
                 ]
             },
-            "filterText": "children's services platform,goa,data management,live,web api,openshift,api"
+            "filterText": "children's services platform,data management,goa,live,api,web api,openshift"
         },
         {
-            "Nominate": "",
             "ServiceName": "Cloud native approach and DevSecOps",
             "Provider": "Justice Digital",
             "Audience": [
@@ -916,7 +913,8 @@
                 }
             ],
             "Keywords": [
-                "JD cloud native"
+                "Cloud",
+                "Development"
             ],
             "Status": "Live",
             "Version": "",
@@ -925,14 +923,15 @@
             "Comments": "",
             "LastUpdated": "10/1/2023",
             "Reviewed": "Yes",
+            "DataIssues": "",
             "ReviewedBy": "Heather",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
             "appId": 18,
+            "QA": 1,
             "Contact": {
                 "details": "",
                 "methods": [
@@ -943,10 +942,9 @@
                     }
                 ]
             },
-            "filterText": "justice digital,other function,live,typescript, .net core,aws, github, sonarqube, pingdom (monitoring),jd cloud native"
+            "filterText": "justice digital,other function,live,typescript, .net core,aws, github, sonarqube, pingdom (monitoring),cloud,development"
         },
         {
-            "Nominate": "",
             "ServiceName": "Comments service",
             "Provider": "Advanced Education",
             "Audience": [
@@ -973,14 +971,15 @@
             "Comments": "",
             "LastUpdated": "10/1/2023",
             "Reviewed": "Yes",
+            "DataIssues": "",
             "ReviewedBy": "Heather",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
             "appId": 19,
+            "QA": 21,
             "Contact": {
                 "details": "Discussion required to obtain access or to deploy container in line of business controlled environment",
                 "methods": [
@@ -994,7 +993,6 @@
             "filterText": "advanced education,other function,live,typescript,container"
         },
         {
-            "Nominate": "",
             "ServiceName": "Common payment portal",
             "Provider": "Platforms -Common Platforms",
             "Audience": [
@@ -1013,7 +1011,10 @@
             "UsageMethod": "Other",
             "SupportLevel": "Other",
             "Documentation": [],
-            "Keywords": [],
+            "Keywords": [
+                "Cloud",
+                "Payment"
+            ],
             "Status": "Other",
             "Version": "",
             "UseCases": "",
@@ -1021,22 +1022,22 @@
             "Comments": "",
             "LastUpdated": "10/1/2023",
             "Reviewed": "Yes",
+            "DataIssues": "",
             "ReviewedBy": "Heather",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
             "appId": 20,
+            "QA": 52,
             "Contact": {
                 "details": "",
                 "methods": []
             },
-            "filterText": "platforms -common platforms,payments and financial management,.net core,azure"
+            "filterText": "platforms -common platforms,payments and financial management,.net core,azure,cloud,payment"
         },
         {
-            "Nominate": "",
             "ServiceName": "Common payment services",
             "Provider": "Platforms -Common Platforms",
             "Audience": [
@@ -1052,10 +1053,13 @@
             "Language": [
                 ".NET Core"
             ],
-            "UsageMethod": "Other",
+            "UsageMethod": "API",
             "SupportLevel": "Other",
             "Documentation": [],
-            "Keywords": [],
+            "Keywords": [
+                "Cloud",
+                "Payment"
+            ],
             "Status": "Other",
             "Version": "",
             "UseCases": "",
@@ -1063,22 +1067,22 @@
             "Comments": "",
             "LastUpdated": "10/1/2023",
             "Reviewed": "Yes",
+            "DataIssues": "",
             "ReviewedBy": "Heather",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
             "appId": 21,
+            "QA": 52,
             "Contact": {
                 "details": "",
                 "methods": []
             },
-            "filterText": "platforms -common platforms,payments and financial management,.net core,azure"
+            "filterText": "platforms -common platforms,payments and financial management,api,.net core,azure,cloud,payment"
         },
         {
-            "Nominate": "",
             "ServiceName": "Communication confirmation service",
             "Provider": "Advanced Education",
             "Audience": [
@@ -1105,14 +1109,15 @@
             "Comments": "Legacy shared service that may not always be suitable for digitally redesigned services.",
             "LastUpdated": "10/1/2023",
             "Reviewed": "yes",
+            "DataIssues": "",
             "ReviewedBy": "Andrew",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
             "appId": 22,
+            "QA": 20,
             "Contact": {
                 "details": "Through consultation",
                 "methods": [
@@ -1126,7 +1131,6 @@
             "filterText": "advanced education,notifications and communication,live,.net,goa network"
         },
         {
-            "Nominate": "",
             "ServiceName": "Communication service",
             "Provider": "Advanced Education",
             "Audience": [
@@ -1142,12 +1146,10 @@
             "Language": [
                 "TypeScript"
             ],
-            "UsageMethod": "Other",
+            "UsageMethod": "API",
             "SupportLevel": "Other",
             "Documentation": [],
-            "Keywords": [
-                "API"
-            ],
+            "Keywords": [],
             "Status": "Live",
             "Version": "",
             "UseCases": "",
@@ -1155,14 +1157,15 @@
             "Comments": "Emerging Service integration API may be more suitable. This service is a wrapper around ABNotify",
             "LastUpdated": "10/1/2023",
             "Reviewed": "yes",
+            "DataIssues": "",
             "ReviewedBy": "Andrew",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
             "appId": 23,
+            "QA": 20,
             "Contact": {
                 "details": "Discussion required to obtain access or to deploy container in line of business controlled environment",
                 "methods": [
@@ -1173,10 +1176,9 @@
                     }
                 ]
             },
-            "filterText": "advanced education,notifications and communication,live,typescript,goa network,api"
+            "filterText": "advanced education,notifications and communication,live,api,typescript,goa network"
         },
         {
-            "Nominate": "",
             "ServiceName": "Configuration Service",
             "Provider": "Alberta Digital Service Platform (ADSP)",
             "Audience": [
@@ -1208,14 +1210,15 @@
             "Comments": "",
             "LastUpdated": "10/1/2023",
             "Reviewed": "yes",
+            "DataIssues": "",
             "ReviewedBy": "Andrew",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
             "appId": 24,
+            "QA": 4,
             "Contact": {
                 "details": "",
                 "methods": [
@@ -1234,7 +1237,6 @@
             "filterText": "alberta digital service platform (adsp),data management,live,hybrid"
         },
         {
-            "Nominate": "",
             "ServiceName": "Course mark inquiry",
             "Provider": "Advanced Education",
             "Audience": [
@@ -1261,14 +1263,15 @@
             "Comments": "Legacy shared service that may not always be suitable for digitally redesigned services.",
             "LastUpdated": "10/1/2023",
             "Reviewed": "yes",
+            "DataIssues": "",
             "ReviewedBy": "Andrew",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
             "appId": 25,
+            "QA": 21,
             "Contact": {
                 "details": "Through consultation",
                 "methods": [
@@ -1282,7 +1285,6 @@
             "filterText": "advanced education,other function,live,.net,goa network"
         },
         {
-            "Nominate": "",
             "ServiceName": "Court directory/Personnel shared service",
             "Provider": "Justice Digital",
             "Audience": [
@@ -1300,7 +1302,7 @@
                 ".NET Core",
                 "TypeScript"
             ],
-            "UsageMethod": "Other",
+            "UsageMethod": "API",
             "SupportLevel": "Other",
             "Documentation": [
                 {
@@ -1320,14 +1322,15 @@
             "Comments": "",
             "LastUpdated": "10/1/2023",
             "Reviewed": "yes",
+            "DataIssues": "",
             "ReviewedBy": "Andrew",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
             "appId": 26,
+            "QA": 1,
             "Contact": {
                 "details": "",
                 "methods": [
@@ -1338,10 +1341,9 @@
                     }
                 ]
             },
-            "filterText": "justice digital,justice digital,other function,live,angular, .net core, typescript,aws,pdf, digital signature, digital certification"
+            "filterText": "justice digital,other function,justice digital,live,api,angular, .net core, typescript,aws,pdf, digital signature, digital certification"
         },
         {
-            "Nominate": "",
             "ServiceName": "Data governance strategy",
             "Provider": "Justice Digital",
             "Audience": [
@@ -1366,7 +1368,8 @@
                 }
             ],
             "Keywords": [
-                "Data Governance"
+                "Data Governance",
+                "Development"
             ],
             "Status": "Live",
             "Version": "",
@@ -1375,14 +1378,15 @@
             "Comments": "",
             "LastUpdated": "10/1/2023",
             "Reviewed": "yes",
+            "DataIssues": "",
             "ReviewedBy": "Andrew",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
             "appId": 27,
+            "QA": 2,
             "Contact": {
                 "details": "",
                 "methods": [
@@ -1393,10 +1397,9 @@
                     }
                 ]
             },
-            "filterText": "justice digital,justice digital,data management,live,aws,data governance"
+            "filterText": "justice digital,data management,justice digital,live,aws,data governance,development"
         },
         {
-            "Nominate": "YES",
             "ServiceName": "DDD design system",
             "Provider": "Digital Design and Delivery (DDD)",
             "Audience": [
@@ -1434,14 +1437,15 @@
             "Comments": "Include the design system in all DDD products; it should act as the foundation for developing the front-end of any government service.",
             "LastUpdated": "10/1/2023",
             "Reviewed": "yes",
+            "DataIssues": "",
             "ReviewedBy": "Andrew",
             "CMRA": "OK",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
             "appId": 28,
+            "QA": 1,
             "Contact": {
                 "details": "",
                 "methods": [
@@ -1460,7 +1464,6 @@
             "filterText": "digital design and delivery (ddd),other function,live,web components, design tokens, angular, react,n/a,design, development"
         },
         {
-            "Nominate": "",
             "ServiceName": "Directory service",
             "Provider": "Alberta Digital Service Platform (ADSP)",
             "Audience": [
@@ -1476,7 +1479,7 @@
             "Language": [
                 "Other"
             ],
-            "UsageMethod": "Other",
+            "UsageMethod": "API",
             "SupportLevel": "Hybrid",
             "Documentation": [
                 {
@@ -1484,9 +1487,7 @@
                     "url": "https://govalta.github.io/adsp-monorepo/services/directory-service.html"
                 }
             ],
-            "Keywords": [
-                "API"
-            ],
+            "Keywords": [],
             "Status": "Live",
             "Version": "",
             "UseCases": "",
@@ -1494,14 +1495,15 @@
             "Comments": "",
             "LastUpdated": "10/1/2023",
             "Reviewed": "yes",
+            "DataIssues": "",
             "ReviewedBy": "Andrew",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
             "appId": 29,
+            "QA": 4,
             "Contact": {
                 "details": "",
                 "methods": [
@@ -1517,10 +1519,9 @@
                     }
                 ]
             },
-            "filterText": "alberta digital service platform (adsp),workflow and process automation,live,hybrid,api"
+            "filterText": "alberta digital service platform (adsp),workflow and process automation,live,api,hybrid"
         },
         {
-            "Nominate": "Yes",
             "ServiceName": "Document service",
             "Provider": "Service Integration",
             "Audience": [
@@ -1536,7 +1537,7 @@
             "Language": [
                 "Other"
             ],
-            "UsageMethod": "Other",
+            "UsageMethod": "Service",
             "SupportLevel": "Hybrid",
             "Documentation": [
                 {
@@ -1556,14 +1557,15 @@
             "Comments": "",
             "LastUpdated": "10/1/2023",
             "Reviewed": "yes",
+            "DataIssues": "",
             "ReviewedBy": "Andrew",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
             "appId": 30,
+            "QA": 6,
             "Contact": {
                 "details": "Advanced request required through the Service Integration SharePoint site; click the \"Requesting a Service\" link to access 'Service Integration Consultation Request \" web form",
                 "methods": [
@@ -1574,10 +1576,9 @@
                     }
                 ]
             },
-            "filterText": "service integration,document processing,hybrid,docx, xlsx, pdf"
+            "filterText": "service integration,document processing,service,hybrid,docx, xlsx, pdf"
         },
         {
-            "Nominate": "Yes",
             "ServiceName": "ECM (OpenText) connector service",
             "Provider": "Service Integration",
             "Audience": [
@@ -1609,14 +1610,15 @@
             "Comments": "",
             "LastUpdated": "10/1/2023",
             "Reviewed": "",
+            "DataIssues": "",
             "ReviewedBy": "",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
             "appId": 31,
+            "QA": 6,
             "Contact": {
                 "details": "Advanced request required through BERNIE; search and select the BERNIE service called 'Electronic Content Management (ECM) Connector'",
                 "methods": [
@@ -1630,7 +1632,6 @@
             "filterText": "service integration,file handling and storage,hybrid"
         },
         {
-            "Nominate": "Yes",
             "ServiceName": "Electronic signature - self-service user portal",
             "Provider": "Service Integration",
             "Audience": [
@@ -1662,14 +1663,15 @@
             "Comments": "",
             "LastUpdated": "10/1/2023",
             "Reviewed": "",
+            "DataIssues": "",
             "ReviewedBy": "",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
             "appId": 32,
+            "QA": 6,
             "Contact": {
                 "details": "Advanced request required through BERNIE; search and sekect the BERNIE service called \"eSignature Service\".",
                 "methods": [
@@ -1683,7 +1685,6 @@
             "filterText": "service integration,document processing,hybrid"
         },
         {
-            "Nominate": "Yes",
             "ServiceName": "Email API service",
             "Provider": "Service Integration",
             "Audience": [
@@ -1717,14 +1718,15 @@
             "Comments": "",
             "LastUpdated": "10/1/2023",
             "Reviewed": "",
+            "DataIssues": "",
             "ReviewedBy": "",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
             "appId": 33,
+            "QA": 6,
             "Contact": {
                 "details": "Advanced request required through the Service Integration SharePoint site; click the \"Request the service\" link and access the 'Service Integration Intake Request' web form",
                 "methods": [
@@ -1738,7 +1740,6 @@
             "filterText": "service integration,notifications and communication,hybrid,email"
         },
         {
-            "Nominate": "",
             "ServiceName": "Employment insurance (EI) gateway",
             "Provider": "Advanced Education",
             "Audience": [
@@ -1754,12 +1755,10 @@
             "Language": [
                 "TypeScript"
             ],
-            "UsageMethod": "Other",
+            "UsageMethod": "API",
             "SupportLevel": "Other",
             "Documentation": [],
-            "Keywords": [
-                "API"
-            ],
+            "Keywords": [],
             "Status": "Beta",
             "Version": "",
             "UseCases": "",
@@ -1767,14 +1766,15 @@
             "Comments": "",
             "LastUpdated": "10/1/2023",
             "Reviewed": "",
+            "DataIssues": "",
             "ReviewedBy": "",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
             "appId": 34,
+            "QA": 20,
             "Contact": {
                 "details": "Discussion required to obtain access or to deploy container in line of business controlled environment",
                 "methods": [
@@ -1785,10 +1785,9 @@
                     }
                 ]
             },
-            "filterText": "advanced education,workflow and process automation,beta,typescript,container,api"
+            "filterText": "advanced education,workflow and process automation,beta,api,typescript,container"
         },
         {
-            "Nominate": "",
             "ServiceName": "Event service",
             "Provider": "Alberta Digital Service Platform (ADSP)",
             "Audience": [
@@ -1820,14 +1819,15 @@
             "Comments": "",
             "LastUpdated": "10/1/2023",
             "Reviewed": "",
+            "DataIssues": "",
             "ReviewedBy": "",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
             "appId": 35,
+            "QA": 4,
             "Contact": {
                 "details": "",
                 "methods": [
@@ -1846,7 +1846,6 @@
             "filterText": "alberta digital service platform (adsp),notifications and communication,live,hybrid"
         },
         {
-            "Nominate": "",
             "ServiceName": "File handling shared services",
             "Provider": "Justice Digital",
             "Audience": [
@@ -1885,14 +1884,15 @@
             "Comments": "",
             "LastUpdated": "10/1/2023",
             "Reviewed": "",
+            "DataIssues": "",
             "ReviewedBy": "",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
             "appId": 36,
+            "QA": 0,
             "Contact": {
                 "details": "",
                 "methods": [
@@ -1906,7 +1906,6 @@
             "filterText": "justice digital,file handling and storage,live,angular, .net core, typescript,aws,pdf, digital signature, stamping, digital certification"
         },
         {
-            "Nominate": "",
             "ServiceName": "File service",
             "Provider": "Alberta Digital Service Platform (ADSP)",
             "Audience": [
@@ -1938,14 +1937,15 @@
             "Comments": "",
             "LastUpdated": "10/1/2023",
             "Reviewed": "",
+            "DataIssues": "",
             "ReviewedBy": "",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
             "appId": 37,
+            "QA": 4,
             "Contact": {
                 "details": "",
                 "methods": [
@@ -1964,7 +1964,6 @@
             "filterText": "alberta digital service platform (adsp),file handling and storage,live,hybrid"
         },
         {
-            "Nominate": "",
             "ServiceName": "Form service",
             "Provider": "Alberta Digital Service Platform (ADSP)",
             "Audience": [
@@ -1991,14 +1990,15 @@
             "Comments": "",
             "LastUpdated": "10/1/2023",
             "Reviewed": "",
+            "DataIssues": "",
             "ReviewedBy": "",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
             "appId": 38,
+            "QA": 24,
             "Contact": {
                 "details": "",
                 "methods": [
@@ -2017,7 +2017,59 @@
             "filterText": "alberta digital service platform (adsp),document processing,live,hybrid"
         },
         {
-            "Nominate": "",
+            "ServiceName": "Forms development",
+            "Provider": "Data and Content Management",
+            "Audience": [
+                "GOA"
+            ],
+            "InternalWeightage": 10,
+            "Summary": "Develops electronic (e.g PDF) and paper forms",
+            "Description": "The Forms Development service provides clients access to a comprehensive forms analysis and design service, which ensures the creation of forms that meet business requirements from an information collection and standards perspective. This service also includes consultative support through recommendations or guidance on best practices. Scenarios may range from how to leverage software capabilities and print technologies to best meet the needs of the client, to introduction to vendors and assistance with management of contracted vendor services, if applicable. All electronic forms are placed on the GoA Form Repository for use by GoA staff. This portal also allows access to approved external agencies (e.g. law enforcement, crisis centers).",
+            "FunctionalGroup": "Document Processing",
+            "Environment": [
+                "Other"
+            ],
+            "Language": [
+                "Other"
+            ],
+            "UsageMethod": "Other",
+            "SupportLevel": "Other",
+            "Documentation": [],
+            "Keywords": [],
+            "Status": "Live",
+            "Version": "",
+            "UseCases": "",
+            "Prerequisites": "",
+            "Comments": "",
+            "LastUpdated": "2/20/2024",
+            "Reviewed": "",
+            "DataIssues": "",
+            "ReviewedBy": "",
+            "CMRA": "No",
+            "IM": "No",
+            "STRA": "",
+            "Risk": "",
+            "Cybersecurity": "",
+            "appId": 39,
+            "QA": 24,
+            "Contact": {
+                "details": "",
+                "methods": [
+                    {
+                        "type": "Web",
+                        "value": "cfr.forms.gov.ab.ca",
+                        "url": "https://cfr.forms.gov.ab.ca/"
+                    },
+                    {
+                        "type": "Email",
+                        "value": "SA.Forms@gov.ab.ca",
+                        "url": "SA.Forms@gov.ab.ca"
+                    }
+                ]
+            },
+            "filterText": "data and content management,document processing,live"
+        },
+        {
             "ServiceName": "Get access (CCA)",
             "Provider": "Children's Services Platform",
             "Audience": [
@@ -2044,14 +2096,15 @@
             "Comments": "Used within Children's Services, but could be extended/reused by other business areas.\nRequires the use of Keycloak.",
             "LastUpdated": "10/1/2023",
             "Reviewed": "",
+            "DataIssues": "",
             "ReviewedBy": "",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
-            "appId": 39,
+            "appId": 40,
+            "QA": 20,
             "Contact": {
                 "details": "Discussion required to obtain access or to deploy container in line of business controlled environment",
                 "methods": [
@@ -2062,10 +2115,9 @@
                     }
                 ]
             },
-            "filterText": "children's services platform,children's services,user access and identity,live,angular,openshift"
+            "filterText": "children's services platform,user access and identity,children's services,live,angular,openshift"
         },
         {
-            "Nominate": "",
             "ServiceName": "Get access (CCA) API",
             "Provider": "Children's Services Platform",
             "Audience": [
@@ -2085,8 +2137,7 @@
             "SupportLevel": "Other",
             "Documentation": [],
             "Keywords": [
-                "Keycloak",
-                "API"
+                "Keycloak"
             ],
             "Status": "Live",
             "Version": "",
@@ -2095,14 +2146,15 @@
             "Comments": "Used within Children's Services, but could be extended/reused by other business areas.\nRequires the use of Keycloak.",
             "LastUpdated": "10/1/2023",
             "Reviewed": "",
+            "DataIssues": "",
             "ReviewedBy": "",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
-            "appId": 40,
+            "appId": 41,
+            "QA": 20,
             "Contact": {
                 "details": "Discussion required to obtain access or to deploy container in line of business controlled environment",
                 "methods": [
@@ -2113,10 +2165,9 @@
                     }
                 ]
             },
-            "filterText": "children's services platform,children's services,user access and identity,live,api,web api,openshift,keycloak, api"
+            "filterText": "children's services platform,user access and identity,children's services,live,api,web api,openshift,keycloak"
         },
         {
-            "Nominate": "",
             "ServiceName": "GOA user management",
             "Provider": "Children's Services Platform",
             "Audience": [
@@ -2143,14 +2194,15 @@
             "Comments": "Used within Children's Services, but could be extended/reused by other business areas.\nRequires the use of Keycloak.",
             "LastUpdated": "10/1/2023",
             "Reviewed": "",
+            "DataIssues": "",
             "ReviewedBy": "",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
-            "appId": 41,
+            "appId": 42,
+            "QA": 20,
             "Contact": {
                 "details": "Discussion required to obtain access or to deploy container in line of business controlled environment",
                 "methods": [
@@ -2161,10 +2213,9 @@
                     }
                 ]
             },
-            "filterText": "children's services platform,children's services,user access and identity,live,angular,openshift"
+            "filterText": "children's services platform,user access and identity,children's services,live,angular,openshift"
         },
         {
-            "Nominate": "",
             "ServiceName": "Identity and access management strategy",
             "Provider": "Justice Digital",
             "Audience": [
@@ -2187,12 +2238,13 @@
             "SupportLevel": "Other",
             "Documentation": [
                 {
-                    "name": "2mv1hUmh",
+                    "name": "Documentation",
                     "url": "https://goa-dio.atlassian.net/l/cp/2mv1hUmh"
                 }
             ],
             "Keywords": [
-                "JD IAM"
+                "Cloud",
+                "IAM"
             ],
             "Status": "Live",
             "Version": "",
@@ -2201,14 +2253,15 @@
             "Comments": "",
             "LastUpdated": "10/1/2023",
             "Reviewed": "",
+            "DataIssues": "",
             "ReviewedBy": "",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
-            "appId": 42,
+            "appId": 43,
+            "QA": 0,
             "Contact": {
                 "details": "",
                 "methods": [
@@ -2219,10 +2272,9 @@
                     }
                 ]
             },
-            "filterText": "justice digital,justice digital,user access and identity,live,angular, .net core, iac using cdk,aws, keycloak,jd iam"
+            "filterText": "justice digital,user access and identity,justice digital,live,angular, .net core, iac using cdk,aws, keycloak,cloud,iam"
         },
         {
-            "Nominate": "",
             "ServiceName": "Income validation API",
             "Provider": "Platforms - Common Data Services",
             "Audience": [
@@ -2238,12 +2290,10 @@
             "Language": [
                 ".NET Core"
             ],
-            "UsageMethod": "Other",
+            "UsageMethod": "API",
             "SupportLevel": "TBD",
             "Documentation": [],
-            "Keywords": [
-                "API"
-            ],
+            "Keywords": [],
             "Status": "Alpha",
             "Version": "",
             "UseCases": "",
@@ -2251,24 +2301,24 @@
             "Comments": "",
             "LastUpdated": "10/1/2023",
             "Reviewed": "",
+            "DataIssues": "",
             "ReviewedBy": "",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
-            "appId": 43,
+            "appId": 44,
+            "QA": 50,
             "Contact": {
                 "details": "",
                 "methods": []
             },
-            "filterText": "platforms - common data services,payments and financial management,alpha,.net core,on prem,tbd,api"
+            "filterText": "platforms - common data services,payments and financial management,alpha,api,.net core,on prem,tbd"
         },
         {
-            "Nominate": "",
             "ServiceName": "Keycloak client",
-            "Provider": "SCSS",
+            "Provider": "Seniors, Community and Social Services (SCSS)",
             "Audience": [
                 "GOA"
             ],
@@ -2300,14 +2350,15 @@
             "Comments": "",
             "LastUpdated": "10/1/2023",
             "Reviewed": "",
+            "DataIssues": "",
             "ReviewedBy": "",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
-            "appId": 44,
+            "appId": 45,
+            "QA": 4,
             "Contact": {
                 "details": "Privately hosted npm package",
                 "methods": [
@@ -2315,13 +2366,17 @@
                         "type": "GitHub",
                         "value": "keycloak-auth-service",
                         "url": "https://github.com/GovAlta-EMU/keycloak-auth-service"
+                    },
+                    {
+                        "type": "Email",
+                        "value": "wei.w.wei@gov.ab.ca",
+                        "url": "wei.w.wei@gov.ab.ca"
                     }
                 ]
             },
-            "filterText": "scss,user access and identity,angular,keycloak"
+            "filterText": "seniors, community and social services (scss),user access and identity,angular,keycloak"
         },
         {
-            "Nominate": "",
             "ServiceName": "Keycloak integration with DIG",
             "Provider": "Wildfire Platform",
             "Audience": [
@@ -2341,7 +2396,7 @@
             "SupportLevel": "Other",
             "Documentation": [
                 {
-                    "name": "AutN+AuthZ+Options",
+                    "name": "Confluence documentation",
                     "url": "https://goa-dio.atlassian.net/wiki/spaces/WDS/pages/2777055233/AutN+AuthZ+Options"
                 }
             ],
@@ -2355,14 +2410,15 @@
             "Comments": "",
             "LastUpdated": "10/1/2023",
             "Reviewed": "",
+            "DataIssues": "",
             "ReviewedBy": "",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
-            "appId": 45,
+            "appId": 46,
+            "QA": 6,
             "Contact": {
                 "details": "",
                 "methods": [
@@ -2376,7 +2432,6 @@
             "filterText": "wildfire platform,user access and identity,keycloak"
         },
         {
-            "Nominate": "",
             "ServiceName": "MyAlberta digital ID for business (MADI-B)",
             "Provider": "Platforms - IAM",
             "Audience": [
@@ -2396,7 +2451,9 @@
             "UsageMethod": "Other",
             "SupportLevel": "24x7",
             "Documentation": [],
-            "Keywords": [],
+            "Keywords": [
+                "IAM"
+            ],
             "Status": "Live",
             "Version": "",
             "UseCases": "",
@@ -2404,16 +2461,17 @@
             "Comments": "",
             "LastUpdated": "10/1/2023",
             "Reviewed": "",
+            "DataIssues": "",
             "ReviewedBy": "",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
-            "appId": 46,
+            "appId": 47,
+            "QA": 20,
             "Contact": {
-                "details": "",
+                "details": "Onboarding and integrations are handled via scheduled consultations. Can reach out to Robert Salloum or Syed Hashmi for further details",
                 "methods": [
                     {
                         "type": "Web",
@@ -2422,15 +2480,14 @@
                     },
                     {
                         "type": "Email",
-                        "value": "account.service-owner@gov.ab.ca",
-                        "url": "account.service-owner@gov.ab.ca"
+                        "value": "GOA.IAM@gov.ab .ca",
+                        "url": "GOA.IAM@gov.ab .ca"
                     }
                 ]
             },
-            "filterText": "platforms - iam,user access and identity,live,forgerock,on prem, ncc and jjb datacentres,24x7"
+            "filterText": "platforms - iam,user access and identity,live,forgerock,on prem, ncc and jjb datacentres,24x7,iam"
         },
         {
-            "Nominate": "Yes",
             "ServiceName": "Nagios monitoring service",
             "Provider": "Service Integration",
             "Audience": [
@@ -2457,28 +2514,28 @@
             "Comments": "",
             "LastUpdated": "10/1/2023",
             "Reviewed": "",
+            "DataIssues": "Contact only has KB results. Request not found",
             "ReviewedBy": "",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
-            "appId": 47,
+            "appId": 48,
+            "QA": 26,
             "Contact": {
                 "details": "This service can be requested through the BERNIE Portal; search and select BERNIE service called \"GoA: Service Catalogue: Microsoft Defender\"",
                 "methods": [
                     {
                         "type": "BERNIE",
-                        "value": "bernie.gov.ab.ca",
-                        "url": "https://bernie.gov.ab.ca/"
+                        "value": "Service Catalogue",
+                        "url": "https://bernie.gov.ab.ca/esm?id=search&spa=1&q=GoA:%20Service%20Catalogue:%20Microsoft%20Defender"
                     }
                 ]
             },
             "filterText": "service integration,service monitoring and support,hybrid"
         },
         {
-            "Nominate": "",
             "ServiceName": "Notification service",
             "Provider": "Alberta Digital Service Platform (ADSP)",
             "Audience": [
@@ -2510,14 +2567,15 @@
             "Comments": "",
             "LastUpdated": "10/1/2023",
             "Reviewed": "",
+            "DataIssues": "",
             "ReviewedBy": "",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
-            "appId": 48,
+            "appId": 49,
+            "QA": 4,
             "Contact": {
                 "details": "",
                 "methods": [
@@ -2536,9 +2594,8 @@
             "filterText": "alberta digital service platform (adsp),notifications and communication,live,hybrid"
         },
         {
-            "Nominate": "",
             "ServiceName": "Notifications",
-            "Provider": "SCSS",
+            "Provider": "Seniors, Community and Social Services (SCSS)",
             "Audience": [
                 "GOA"
             ],
@@ -2563,22 +2620,28 @@
             "Comments": "",
             "LastUpdated": "10/1/2023",
             "Reviewed": "",
+            "DataIssues": "",
             "ReviewedBy": "",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
-            "appId": 49,
+            "appId": 50,
+            "QA": 22,
             "Contact": {
                 "details": "",
-                "methods": []
+                "methods": [
+                    {
+                        "type": "Email",
+                        "value": "wei.w.wei@gov.ab.ca",
+                        "url": "wei.w.wei@gov.ab.ca"
+                    }
+                ]
             },
-            "filterText": "scss,notifications and communication,typescript,goa network"
+            "filterText": "seniors, community and social services (scss),notifications and communication,typescript,goa network"
         },
         {
-            "Nominate": "",
             "ServiceName": "OAuth BFF flow implementation",
             "Provider": "Wildfire Platform",
             "Audience": [
@@ -2614,14 +2677,15 @@
             "Comments": "",
             "LastUpdated": "10/1/2023",
             "Reviewed": "",
+            "DataIssues": "",
             "ReviewedBy": "",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
-            "appId": 50,
+            "appId": 51,
+            "QA": 4,
             "Contact": {
                 "details": "",
                 "methods": [
@@ -2635,7 +2699,6 @@
             "filterText": "wildfire platform,user access and identity,.net core"
         },
         {
-            "Nominate": "Yes",
             "ServiceName": "Payment gateway service",
             "Provider": "Service Integration",
             "Audience": [
@@ -2667,14 +2730,15 @@
             "Comments": "",
             "LastUpdated": "10/1/2023",
             "Reviewed": "Yes",
+            "DataIssues": "",
             "ReviewedBy": "Sanchit",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
-            "appId": 51,
+            "appId": 52,
+            "QA": 6,
             "Contact": {
                 "details": "Advanced request required through the Service Integration SharePoint site; click the \"Request Payment Gateway Service\" link to access the 'Service Integration Consultation Request \" web form",
                 "methods": [
@@ -2688,7 +2752,6 @@
             "filterText": "service integration,payments and financial management,hybrid"
         },
         {
-            "Nominate": "",
             "ServiceName": "Payment guide",
             "Provider": "Justice Digital",
             "Audience": [
@@ -2723,14 +2786,15 @@
             "Comments": "",
             "LastUpdated": "10/1/2023",
             "Reviewed": "Yes",
+            "DataIssues": "",
             "ReviewedBy": "Sanchit",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
-            "appId": 52,
+            "appId": 53,
+            "QA": 2,
             "Contact": {
                 "details": "",
                 "methods": [
@@ -2741,10 +2805,9 @@
                     }
                 ]
             },
-            "filterText": "justice digital,justice digital,payments and financial management,live,aws, wordline (bambora),payment"
+            "filterText": "justice digital,payments and financial management,justice digital,live,aws, wordline (bambora),payment"
         },
         {
-            "Nominate": "",
             "ServiceName": "PDF generation & merging",
             "Provider": "Justice Digital",
             "Audience": [
@@ -2782,14 +2845,15 @@
             "Comments": "",
             "LastUpdated": "10/1/2023",
             "Reviewed": "",
+            "DataIssues": "",
             "ReviewedBy": "",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
-            "appId": 53,
+            "appId": 54,
+            "QA": 0,
             "Contact": {
                 "details": "",
                 "methods": [
@@ -2803,7 +2867,6 @@
             "filterText": "justice digital,document processing,live,angular, .net core, typescript,aws,pdf, digital signature, digital certification"
         },
         {
-            "Nominate": "",
             "ServiceName": "PDF service",
             "Provider": "Alberta Digital Service Platform (ADSP)",
             "Audience": [
@@ -2837,14 +2900,15 @@
             "Comments": "",
             "LastUpdated": "10/1/2023",
             "Reviewed": "",
+            "DataIssues": "",
             "ReviewedBy": "",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
-            "appId": 54,
+            "appId": 55,
+            "QA": 4,
             "Contact": {
                 "details": "",
                 "methods": [
@@ -2863,7 +2927,6 @@
             "filterText": "alberta digital service platform (adsp),document processing,live,hybrid,pdf"
         },
         {
-            "Nominate": "",
             "ServiceName": "Program and provider registry",
             "Provider": "Advanced Education",
             "Audience": [
@@ -2890,14 +2953,15 @@
             "Comments": "Legacy shared service that may not always be suitable for digitally redesigned services.",
             "LastUpdated": "10/1/2023",
             "Reviewed": "",
+            "DataIssues": "",
             "ReviewedBy": "",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
-            "appId": 55,
+            "appId": 56,
+            "QA": 20,
             "Contact": {
                 "details": "Through consultation",
                 "methods": [
@@ -2911,7 +2975,6 @@
             "filterText": "advanced education,data management,live,.net,goa network"
         },
         {
-            "Nominate": "",
             "ServiceName": "Push service",
             "Provider": "Alberta Digital Service Platform (ADSP)",
             "Audience": [
@@ -2943,14 +3006,15 @@
             "Comments": "",
             "LastUpdated": "10/1/2023",
             "Reviewed": "",
+            "DataIssues": "",
             "ReviewedBy": "",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
-            "appId": 56,
+            "appId": 57,
+            "QA": 4,
             "Contact": {
                 "details": "",
                 "methods": [
@@ -2969,7 +3033,6 @@
             "filterText": "alberta digital service platform (adsp),notifications and communication,live,hybrid"
         },
         {
-            "Nominate": "Yes",
             "ServiceName": "QR code service",
             "Provider": "Service Integration",
             "Audience": [
@@ -3001,14 +3064,15 @@
             "Comments": "",
             "LastUpdated": "10/1/2023",
             "Reviewed": "",
+            "DataIssues": "",
             "ReviewedBy": "",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
-            "appId": 57,
+            "appId": 58,
+            "QA": 6,
             "Contact": {
                 "details": "Advanced request required through the Service Integration SharePoint site; click the \"Request QR Code Service\" link to access the 'Service Integration Consultation Request \" web form",
                 "methods": [
@@ -3022,7 +3086,6 @@
             "filterText": "service integration,document processing,hybrid"
         },
         {
-            "Nominate": "Yes",
             "ServiceName": "Request an enterprise API",
             "Provider": "Service Integration",
             "Audience": [
@@ -3042,11 +3105,13 @@
             "SupportLevel": "Hybrid",
             "Documentation": [
                 {
-                    "name": "S500D27-SI969",
+                    "name": "Services that are offered",
                     "url": "https://abgov.sharepoint.com/sites/S500D27-SI969"
                 }
             ],
-            "Keywords": [],
+            "Keywords": [
+                "Development"
+            ],
             "Status": "Other",
             "Version": "",
             "UseCases": "",
@@ -3054,14 +3119,15 @@
             "Comments": "",
             "LastUpdated": "10/1/2023",
             "Reviewed": "",
+            "DataIssues": "",
             "ReviewedBy": "",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
-            "appId": 58,
+            "appId": 59,
+            "QA": 7,
             "Contact": {
                 "details": "Advanced request required through the Service Integration SharePoint site; click on the \"Service Integration Consultation Request\" link and access the 'Service Integration Consultation\" request web form",
                 "methods": [
@@ -3072,10 +3138,9 @@
                     }
                 ]
             },
-            "filterText": "service integration,other function,hybrid"
+            "filterText": "service integration,other function,hybrid,development"
         },
         {
-            "Nominate": "",
             "ServiceName": "Script service",
             "Provider": "Alberta Digital Service Platform (ADSP)",
             "Audience": [
@@ -3102,14 +3167,15 @@
             "Comments": "",
             "LastUpdated": "10/1/2023",
             "Reviewed": "",
+            "DataIssues": "",
             "ReviewedBy": "",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
-            "appId": 59,
+            "appId": 60,
+            "QA": 24,
             "Contact": {
                 "details": "",
                 "methods": [
@@ -3128,9 +3194,8 @@
             "filterText": "alberta digital service platform (adsp),workflow and process automation,live,hybrid"
         },
         {
-            "Nominate": "",
             "ServiceName": "SCSS Angular components",
-            "Provider": "SCSS",
+            "Provider": "Seniors, Community and Social Services (SCSS)",
             "Audience": [
                 "GOA"
             ],
@@ -3155,22 +3220,28 @@
             "Comments": "Inspiration could be taken for the design library, not for use and being internally deprecated inside SCSS",
             "LastUpdated": "10/1/2023",
             "Reviewed": "",
+            "DataIssues": "",
             "ReviewedBy": "",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
-            "appId": 60,
+            "appId": 61,
+            "QA": 25,
             "Contact": {
                 "details": "",
-                "methods": []
+                "methods": [
+                    {
+                        "type": "Email",
+                        "value": "wei.w.wei@gov.ab.ca",
+                        "url": "wei.w.wei@gov.ab.ca"
+                    }
+                ]
             },
-            "filterText": "scss,other function,angular"
+            "filterText": "seniors, community and social services (scss),other function,angular"
         },
         {
-            "Nominate": "Yes",
             "ServiceName": "SharePoint online service",
             "Provider": "Service Integration",
             "Audience": [
@@ -3202,14 +3273,15 @@
             "Comments": "",
             "LastUpdated": "10/1/2023",
             "Reviewed": "",
+            "DataIssues": "",
             "ReviewedBy": "",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
-            "appId": 61,
+            "appId": 62,
+            "QA": 6,
             "Contact": {
                 "details": "Advanced request required through the Service Integration SharePoint site; click the \"Request the ECM Connector Service\" link and access the 'Electronic Content Management (ECM) Connector' web form",
                 "methods": [
@@ -3223,7 +3295,6 @@
             "filterText": "service integration,file handling and storage,hybrid"
         },
         {
-            "Nominate": "",
             "ServiceName": "SIN validation service",
             "Provider": "Advanced Education",
             "Audience": [
@@ -3250,14 +3321,15 @@
             "Comments": "Legacy shared service that may not always be suitable for digitally redesigned services.",
             "LastUpdated": "10/1/2023",
             "Reviewed": "",
+            "DataIssues": "",
             "ReviewedBy": "",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
-            "appId": 62,
+            "appId": 63,
+            "QA": 21,
             "Contact": {
                 "details": "",
                 "methods": [
@@ -3271,7 +3343,6 @@
             "filterText": "advanced education,other function,live,.net,goa network,hybrid"
         },
         {
-            "Nominate": "",
             "ServiceName": "SMS gateway",
             "Provider": "Advanced Education",
             "Audience": [
@@ -3298,14 +3369,15 @@
             "Comments": "Legacy shared service that may not always be suitable for digitally redesigned services.",
             "LastUpdated": "10/1/2023",
             "Reviewed": "",
+            "DataIssues": "",
             "ReviewedBy": "",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
-            "appId": 63,
+            "appId": 64,
+            "QA": 20,
             "Contact": {
                 "details": "Through consultation",
                 "methods": [
@@ -3319,7 +3391,6 @@
             "filterText": "advanced education,notifications and communication,live,.net,goa network"
         },
         {
-            "Nominate": "Yes",
             "ServiceName": "Splunk service",
             "Provider": "Service Integration",
             "Audience": [
@@ -3343,7 +3414,9 @@
                     "url": "https://abgov.sharepoint.com/sites/S500D27-SI969/SitePages/Splunk-Service.aspx"
                 }
             ],
-            "Keywords": [],
+            "Keywords": [
+                "Reporting"
+            ],
             "Status": "Other",
             "Version": "",
             "UseCases": "",
@@ -3351,14 +3424,15 @@
             "Comments": "",
             "LastUpdated": "10/1/2023",
             "Reviewed": "",
+            "DataIssues": "",
             "ReviewedBy": "",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
-            "appId": 64,
+            "appId": 65,
+            "QA": 6,
             "Contact": {
                 "details": "Advanced request required through the Service Integration SharePoint site; click the \"Request Splunk Service\" link to access the 'Service Integration Consultation Request' web form",
                 "methods": [
@@ -3369,10 +3443,9 @@
                     }
                 ]
             },
-            "filterText": "service integration,service monitoring and support,hybrid"
+            "filterText": "service integration,service monitoring and support,hybrid,reporting"
         },
         {
-            "Nominate": "",
             "ServiceName": "Stakeholder registry",
             "Provider": "Advanced Education",
             "Audience": [
@@ -3399,14 +3472,15 @@
             "Comments": "Legacy shared service that may not always be suitable for digitally redesigned services.",
             "LastUpdated": "10/1/2023",
             "Reviewed": "",
+            "DataIssues": "",
             "ReviewedBy": "",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
-            "appId": 65,
+            "appId": 66,
+            "QA": 20,
             "Contact": {
                 "details": "Through consultation",
                 "methods": [
@@ -3420,7 +3494,6 @@
             "filterText": "advanced education,data management,live,.net,goa network"
         },
         {
-            "Nominate": "",
             "ServiceName": "Stamping shared service",
             "Provider": "Justice Digital",
             "Audience": [
@@ -3459,14 +3532,15 @@
             "Comments": "",
             "LastUpdated": "10/1/2023",
             "Reviewed": "",
+            "DataIssues": "",
             "ReviewedBy": "",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
-            "appId": 66,
+            "appId": 67,
+            "QA": 1,
             "Contact": {
                 "details": "",
                 "methods": [
@@ -3480,7 +3554,6 @@
             "filterText": "justice digital,other function,live,angular, .net core, typescript,aws,pdf, digital signature, stamping, digital certification"
         },
         {
-            "Nominate": "",
             "ServiceName": "Status service",
             "Provider": "Alberta Digital Service Platform (ADSP)",
             "Audience": [
@@ -3512,14 +3585,15 @@
             "Comments": "",
             "LastUpdated": "10/1/2023",
             "Reviewed": "",
+            "DataIssues": "",
             "ReviewedBy": "",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
-            "appId": 67,
+            "appId": 68,
+            "QA": 4,
             "Contact": {
                 "details": "",
                 "methods": [
@@ -3538,7 +3612,6 @@
             "filterText": "alberta digital service platform (adsp),service monitoring and support,live,hybrid"
         },
         {
-            "Nominate": "",
             "ServiceName": "Support model",
             "Provider": "Justice Digital",
             "Audience": [
@@ -3572,14 +3645,15 @@
             "Comments": "",
             "LastUpdated": "10/1/2023",
             "Reviewed": "",
+            "DataIssues": "",
             "ReviewedBy": "",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
-            "appId": 68,
+            "appId": 69,
+            "QA": 3,
             "Contact": {
                 "details": "",
                 "methods": [
@@ -3593,15 +3667,14 @@
             "filterText": "justice digital,other function,live,servicenow,support"
         },
         {
-            "Nominate": "",
             "ServiceName": "Unified Alberta.ca account",
             "Provider": "Platforms - IAM",
             "Audience": [
                 "GOA"
             ],
             "InternalWeightage": 10,
-            "Summary": "An IAM platform that will be used to unify Alberta.ca Account, MADI-B, and PED, as well as other IAM systems in the GoA over time.",
-            "Description": "An IAM platform that will be used to unify Alberta.ca Account, MADI-B, and PED, as well as other IAM systems in the GoA over time.\n\nWill enable multiple types of users under one common IAM solution, including citizen, external businesses and organizations and their staff, and internal GoA staff",
+            "Summary": "An IAM platform that will be used to unify Alberta.ca Account and MADI-B, as well as other IAM systems in the GoA over time.",
+            "Description": "An IAM platform that will be used to unify Alberta.ca Account and MADI-B, as well as other IAM systems in the GoA over time.\n\nWill enable multiple types of users under one common IAM solution, including citizen, external businesses and organizations and their staff, and internal GoA staff",
             "FunctionalGroup": "User Access and Identity",
             "Environment": [
                 "Azure",
@@ -3614,72 +3687,38 @@
             "UsageMethod": "Other",
             "SupportLevel": "24x7",
             "Documentation": [],
-            "Keywords": [],
+            "Keywords": [
+                "IAM"
+            ],
             "Status": "Alpha",
             "Version": "",
             "UseCases": "",
             "Prerequisites": "",
             "Comments": "",
-            "LastUpdated": "10/1/2023",
+            "LastUpdated": "2/28/2024",
             "Reviewed": "",
+            "DataIssues": "",
             "ReviewedBy": "",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
-            "appId": 69,
-            "Contact": {
-                "details": "",
-                "methods": []
-            },
-            "filterText": "platforms - iam,user access and identity,alpha,.net, open source,azure, on prem,24x7"
-        },
-        {
-            "Nominate": "",
-            "ServiceName": "User survey",
-            "Provider": "SCSS",
-            "Audience": [
-                "GOA"
-            ],
-            "InternalWeightage": 10,
-            "Summary": "Module to define release announcements and survey prompts for users and track their responses (Dismissed, Postponed, Acknowledged)",
-            "Description": "Module to define release announcements and survey prompts for users and track their responses (Dismissed, Postponed, Acknowledged)",
-            "FunctionalGroup": "Notifications and Communication",
-            "Environment": [
-                "N/A"
-            ],
-            "Language": [
-                "TypeScript"
-            ],
-            "UsageMethod": "Other",
-            "SupportLevel": "Other",
-            "Documentation": [],
-            "Keywords": [],
-            "Status": "Other",
-            "Version": "",
-            "UseCases": "",
-            "Prerequisites": "",
-            "Comments": "This is a shared code module which teams deploy independently.  Work is planned to make a microservice deployment.  Actual survey results are stored in external system (ms forms), this only tracks if the user opened the survey.",
-            "LastUpdated": "10/1/2023",
-            "Reviewed": "",
-            "ReviewedBy": "",
-            "CMRA": "",
-            "IM": "",
-            "STRA": "",
-            "Risk": "",
-            "Cybersecurity": "",
-            "Considerations": "",
             "appId": 70,
+            "QA": 20,
             "Contact": {
-                "details": "",
-                "methods": []
+                "details": "Onboarding and integrations are handled via scheduled consultations. Can reach out to Robert Salloum or Syed Hashmi for further details",
+                "methods": [
+                    {
+                        "type": "Email",
+                        "value": "GOA.IAM@gov.ab .ca",
+                        "url": "GOA.IAM@gov.ab .ca"
+                    }
+                ]
             },
-            "filterText": "scss,notifications and communication,typescript,n/a"
+            "filterText": "platforms - iam,user access and identity,alpha,.net, open source,azure, on prem,24x7,iam"
         },
         {
-            "Nominate": "",
             "ServiceName": "Value service",
             "Provider": "Alberta Digital Service Platform (ADSP)",
             "Audience": [
@@ -3711,14 +3750,15 @@
             "Comments": "",
             "LastUpdated": "10/1/2023",
             "Reviewed": "",
+            "DataIssues": "",
             "ReviewedBy": "",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
             "appId": 71,
+            "QA": 4,
             "Contact": {
                 "details": "",
                 "methods": [
@@ -3737,7 +3777,6 @@
             "filterText": "alberta digital service platform (adsp),workflow and process automation,live,hybrid"
         },
         {
-            "Nominate": "",
             "ServiceName": "Verify service",
             "Provider": "Alberta Digital Service Platform (ADSP)",
             "Audience": [
@@ -3762,16 +3801,17 @@
             "UseCases": "",
             "Prerequisites": "Product teams can get started by accessing an existing tenant or creating a new tenant. Each tenant represents a zone of administrative control and generally products within a common service area can share a tenant.",
             "Comments": "",
-            "LastUpdated": "10/16/2023",
+            "LastUpdated": "10/15/2023",
             "Reviewed": "",
+            "DataIssues": "",
             "ReviewedBy": "",
             "CMRA": "",
             "IM": "",
             "STRA": "",
             "Risk": "",
             "Cybersecurity": "",
-            "Considerations": "",
             "appId": 72,
+            "QA": 24,
             "Contact": {
                 "details": "",
                 "methods": [
@@ -3794,7 +3834,15 @@
         {
             "FieldName": "Provider",
             "DisplayName": "Provider",
-            "isFilter": true,
+            "Filter": "AsIs",
+            "showBadge": false,
+            "dataType": "text",
+            "default": "Other"
+        },
+        {
+            "FieldName": "FunctionalGroup",
+            "DisplayName": "Functional Group",
+            "Filter": "No(Abbr)",
             "showBadge": false,
             "dataType": "text",
             "default": "Other"
@@ -3802,23 +3850,15 @@
         {
             "FieldName": "Audience",
             "DisplayName": "Audience",
-            "isFilter": true,
+            "Filter": "No(Abbr)",
             "showBadge": false,
             "dataType": "textArray",
             "default": "GOA"
         },
         {
-            "FieldName": "FunctionalGroup",
-            "DisplayName": "Functional Group",
-            "isFilter": true,
-            "showBadge": false,
-            "dataType": "text",
-            "default": "Other"
-        },
-        {
             "FieldName": "Status",
             "DisplayName": "Status",
-            "isFilter": true,
+            "Filter": "No(Abbr)",
             "showBadge": true,
             "dataType": "text",
             "default": "Other"
@@ -3826,7 +3866,7 @@
         {
             "FieldName": "UsageMethod",
             "DisplayName": "Usage",
-            "isFilter": true,
+            "Filter": "No(Abbr)",
             "showBadge": true,
             "dataType": "text",
             "default": "Other"
@@ -3834,15 +3874,15 @@
         {
             "FieldName": "Language",
             "DisplayName": "Technology",
-            "isFilter": true,
+            "Filter": "No(Abbr)",
             "showBadge": true,
             "dataType": "textArray",
             "default": "Other"
         },
         {
             "FieldName": "Environment",
-            "DisplayName": "Environment",
-            "isFilter": true,
+            "DisplayName": "Infrastructure",
+            "Filter": "No(Abbr)",
             "showBadge": true,
             "dataType": "textArray",
             "default": "Other"
@@ -3850,7 +3890,7 @@
         {
             "FieldName": "SupportLevel",
             "DisplayName": "Support",
-            "isFilter": true,
+            "Filter": "No(Abbr)",
             "showBadge": true,
             "dataType": "text",
             "default": "Other"
@@ -3858,7 +3898,7 @@
         {
             "FieldName": "Keywords",
             "DisplayName": "Tag/Keyword",
-            "isFilter": true,
+            "Filter": "No(Abbr)",
             "showBadge": true,
             "dataType": "textArray",
             "default": ""
@@ -3866,7 +3906,7 @@
         {
             "FieldName": "Documentation",
             "DisplayName": "Documentation",
-            "isFilter": false,
+            "Filter": "No",
             "showBadge": false,
             "dataType": "urlArray",
             "default": ""
@@ -3874,7 +3914,7 @@
         {
             "FieldName": "Contact",
             "DisplayName": "Contact",
-            "isFilter": false,
+            "Filter": "No",
             "showBadge": false,
             "dataType": "contactList",
             "default": ""
@@ -3882,7 +3922,7 @@
         {
             "FieldName": "InternalWeightage",
             "DisplayName": "InternalWeightage",
-            "isFilter": false,
+            "Filter": "No",
             "showBadge": false,
             "dataType": "int",
             "default": "10"
