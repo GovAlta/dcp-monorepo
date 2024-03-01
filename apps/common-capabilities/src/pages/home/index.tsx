@@ -10,13 +10,13 @@ import {
   GoAAccordion,
   GoAButton,
   GoAButtonGroup,
-  GoACallout,
+  GoADetails,
   GoADivider,
 } from '@abgov/react-components';
 import Card from '../../components/Card';
 import './styles.css';
 import { extractAvailableFilters } from './utils';
-import { defaultState, filtersList } from './config';
+import { defaultState, filtersList, filterListCustom } from './config';
 
 type Filter = {
   [key: string]: any[];
@@ -89,7 +89,7 @@ export default function HomePage(): JSX.Element {
       findServices(
         apps,
         searchRegEx,
-        ['Description', 'Summary', 'ServiceName', 'Provider'],
+        ['Description', 'Summary', 'ServiceName', 'Provider', 'filterText'],
         selectedFilters
       )
     );
@@ -189,30 +189,32 @@ export default function HomePage(): JSX.Element {
           <GoASpacer vSpacing="xl" />
           <GoADivider></GoADivider>
           <GoASpacer vSpacing="xl" />
-          {filtersList.map((filterCategory) => (
+          {filterListCustom.map((filterCategory) => (
             <div>
               <GoAAccordion
-                key={`${filterCategory} ${collapseKey}`}
-                heading={`${filterCategory} (${filters[filterCategory].filters.length})`}
+                key={`${filterCategory.title} ${collapseKey}`}
+                heading={`${filterCategory.title} (${
+                  filters[filterCategory.property].filters.length
+                })`}
                 headingSize="small"
                 open={filtersAccordionState}
               >
-                {filters[filterCategory].filters.map((env) => (
+                {filters[filterCategory.property].filters.map((env) => (
                   <GoACheckbox
                     key={env.value}
                     label={env.value}
                     name={env.value}
                     text={`${env.value} (${env.count})`}
-                    checked={selectedFilters[filterCategory].includes(
+                    checked={selectedFilters[filterCategory.property].includes(
                       env.value
                     )}
                     onChange={(name, checked) => {
                       setSelectedFilters((prevFilters) => {
                         const newFilters = {
                           ...prevFilters,
-                          [filterCategory]: checked
-                            ? [...prevFilters[filterCategory], name]
-                            : prevFilters[filterCategory].filter(
+                          [filterCategory.property]: checked
+                            ? [...prevFilters[filterCategory.property], name]
+                            : prevFilters[filterCategory.property].filter(
                                 (item) => item !== name
                               ),
                         };
@@ -238,8 +240,22 @@ export default function HomePage(): JSX.Element {
     >
       <h2 id="home-title">Services</h2>
       <span className="last-updated">Last updated: {formattedDate}</span>
+      <GoASpacer vSpacing="xs" />
+
+      <p className="cc-intro">
+        Common capabilities encompass a broad spectrum of software components
+        and systems ( including applications, APIs, frameworks, libraries,
+        tools, services and various other types). These are like building blocks
+        that can be used on their own or together to improve and simplify
+        processes. These components are known for being reusable, able to make
+        operations more efficient, in line with the organization's goals, and
+        compatible with existing systems. We provide here a listing of common
+        capabilities to explore. For specific inquiries, we recommend reaching
+        out to the respective teams who are owners for capabilities. Refer to{' '}
+        <a href="/contact/index.html#faq-section">FAQ</a> page for more details.
+      </p>
       <GoASpacer vSpacing="2xl" />
-      <div className="callout-overview">
+      {/* <div className="callout-overview">
         <GoACallout
           type="information"
           heading="Recommended capabilities"
@@ -272,21 +288,21 @@ export default function HomePage(): JSX.Element {
             Share feedback with the respective team—a catalyst for improvement.
           </p>
         </GoACallout>
-      </div>
+      </div> */}
+      <GoADetails heading="Recommended capabilities">
+        <ul>
+          <li>
+            Why use them? To maximize efficiency and optimize costs by
+            leveraging standardized capabilities to streamline your development
+            process.
+          </li>
+          <li>
+            Encounter unique scenarios? Share feedback with the respective team
+            - a catalyst for improvement
+          </li>
+        </ul>
+      </GoADetails>
       <GoASpacer vSpacing="2xl" />
-
-      {/* <p className="cc-intro">
-        Common capabilities encompass a broad spectrum of software components
-        and systems ( including applications, APIs, frameworks, libraries,
-        tools, services and various other types). These are like building blocks
-        that can be used on their own or together to improve and simplify
-        processes. These components are known for being reusable, able to make
-        operations more efficient, in line with the organization's goals, and
-        compatible with existing systems. We provide here a listing of common
-        capabilities to explore. For specific inquiries, we recommend reaching
-        out to the respective teams who are owners for capabilities. Refer to{' '}
-        <a href="/contact/index.html#faq-section">FAQ</a> page for more details.
-      </p> */}
 
       <h3>Recommended services listing</h3>
 

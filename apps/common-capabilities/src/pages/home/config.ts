@@ -6,7 +6,7 @@ export const defaultState = {
     Keywords: [],
     Status: [],
     FunctionalGroup: [],
-  }
+  },
 };
 
 export const filtersList = [
@@ -15,4 +15,27 @@ export const filtersList = [
   'Keywords',
   'Status',
   'FunctionalGroup',
+];
+
+export const filterListCustom = [
+  {
+    title: 'Infrastructure',
+    property: 'Environment',
+  },
+  {
+    title: 'Language',
+    property: 'Language',
+  },
+  {
+    title: 'Keywords',
+    property: 'Keywords',
+  },
+  {
+    title: 'Status',
+    property: 'Status',
+  },
+  {
+    title: 'Functional Group',
+    property: 'FunctionalGroup',
+  },
 ];

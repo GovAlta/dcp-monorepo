@@ -4,3 +4,30 @@
   font-weight: var(--goa-font-weight-regular);
   line-height: var(--goa-line-height-3);
 }
+.contact-table {
+  border-collapse: collapse;
+  border: none;
+}
+
+.contact-table td {
+  border: none;
+}
+
+.contact-type {
+  font-size: var(--goa-font-size-4);
+  font-style: normal;
+  font-weight: var(--goa-font-weight-bold);
+  line-height: var(--goa-line-height-3);
+  color: var(--goa-color-greyscale-700);
+  text-align: right;
+}
+.items-color > td {
+  padding-right: var(--goa-space-xs);
+}
+
+.items-color {
+  color: var(--goa-color-interactive-default);
+}
+.td-links {
+  vertical-align: sub;
+}
