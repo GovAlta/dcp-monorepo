@@ -56,7 +56,7 @@ export default function ContactPage(): JSX.Element {
       {
         type: 'Email',
         url: 'TI.Softwaredelivery@gov.ab.ca?subject=Feedback for Common Capabilities',
-        value: 'Common capabilities team',
+        value: 'TI.Softwaredelivery@gov.ab.ca',
       },
     ]
     return (
