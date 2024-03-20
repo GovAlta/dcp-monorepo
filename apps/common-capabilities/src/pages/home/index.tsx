@@ -15,7 +15,11 @@ import {
 } from '@abgov/react-components';
 import Card from '../../components/Card';
 import './styles.css';
-import { extractAvailableFilters } from './utils';
+import {
+  getAppsFilters,
+  generateFilterObject,
+  generateFilterCounts,
+} from './utils';
 import { defaultState, filtersList, filterListCustom } from './config';
 
 type Filter = {
@@ -27,12 +31,6 @@ export default function HomePage(): JSX.Element {
   const [searchFilter, setSearchFilter] = useState('');
   const [services, setServices] = useState([]);
   const [filtersAccordionState, setFiltersAccordionState] = useState(false);
-  const [selectedFilters, setSelectedFilters] = useState(() => {
-    const savedFilters = localStorage.getItem('selectedFilters');
-    return savedFilters
-      ? JSON.parse(savedFilters)
-      : defaultState.selectedFilters;
-  });
   const date = new Date(lastUpdated);
   const formattedDate = date.toLocaleDateString('en-US', {
     year: 'numeric',
@@ -41,8 +39,26 @@ export default function HomePage(): JSX.Element {
   });
   const recommendedServicesWeightage = 50;
 
-  // grab all the available filters from the services
-  const [filters, setFilters] = useState(extractAvailableFilters(services));
+  // filters state
+  const [filterList, setFilterList] = useState(
+    getAppsFilters(services, filtersList)
+  );
+  const [checkedFilters, setCheckedFilters] = useState(() => {
+    const savedCheckboxState = localStorage.getItem('selectedCheckboxState');
+    return savedCheckboxState
+      ? JSON.parse(savedCheckboxState)
+      : generateFilterObject();
+  });
+  const [selectedFiltersState, setSelectedFiltersState] = useState(() => {
+    const savedFiltersState = localStorage.getItem('selectedFiltersState');
+    return savedFiltersState
+      ? JSON.parse(savedFiltersState)
+      : defaultState.selectedFilters;
+  });
+
+  const [filtersCount, setFiltersCount] = useState(
+    generateFilterCounts(services)
+  );
 
   // searches for items in the services array that match the search and filter
   // however search takes priority over filters
@@ -64,7 +80,7 @@ export default function HomePage(): JSX.Element {
           }
 
           if (Array.isArray(item[filterKey])) {
-            return filterValues.every((filterValue) =>
+            return filterValues.some((filterValue) =>
               item[filterKey].includes(filterValue)
             );
           }
@@ -90,9 +106,10 @@ export default function HomePage(): JSX.Element {
         apps,
         searchRegEx,
         ['Description', 'Summary', 'ServiceName', 'Provider', 'filterText'],
-        selectedFilters
+        selectedFiltersState
       )
     );
+    setFiltersCount(generateFilterCounts(apps));
 
     let timeoutId: NodeJS.Timeout | null = null;
 
@@ -106,12 +123,16 @@ export default function HomePage(): JSX.Element {
       if (remainingTime <= 0) {
         localStorage.removeItem('searchFilter');
         localStorage.removeItem('searchTimestamp');
-        localStorage.removeItem('selectedFilters');
+
+        localStorage.removeItem('selectedCheckboxState');
+        localStorage.removeItem('selectedFiltersState');
       } else {
         timeoutId = setTimeout(() => {
           localStorage.removeItem('searchFilter');
           localStorage.removeItem('searchTimestamp');
-          localStorage.removeItem('selectedFilters');
+
+          localStorage.removeItem('selectedCheckboxState');
+          localStorage.removeItem('selectedFiltersState');
         }, remainingTime);
       }
     }
@@ -121,11 +142,12 @@ export default function HomePage(): JSX.Element {
         clearTimeout(timeoutId);
       }
     };
-  }, [searchFilter, selectedFilters]);
+  }, [searchFilter, selectedFiltersState]);
 
   // to update the filters list when the services list changes
   useEffect(() => {
-    setFilters(extractAvailableFilters(services));
+    setFilterList(getAppsFilters(apps, filtersList));
+    setFiltersCount(generateFilterCounts(services));
   }, [services]);
 
   return (
@@ -142,8 +164,11 @@ export default function HomePage(): JSX.Element {
             value={searchFilter}
             onChange={(name: string, value: string) => {
               setSearchFilter(value);
-              localStorage.removeItem('selectedFilters');
-              setSelectedFilters(defaultState.selectedFilters);
+              //reset filters and checkbox state
+              localStorage.removeItem('selectedCheckboxState');
+              localStorage.removeItem('selectedFiltersState');
+              setCheckedFilters(generateFilterObject());
+              setSelectedFiltersState(defaultState.selectedFilters);
               localStorage.setItem(
                 'searchTimestamp',
                 (new Date().getTime() + 5 * 60 * 1000).toString()
@@ -159,9 +184,12 @@ export default function HomePage(): JSX.Element {
               onClick={() => {
                 localStorage.removeItem('searchFilter');
                 localStorage.removeItem('searchTimestamp');
-                localStorage.removeItem('selectedFilters');
+                localStorage.removeItem('selectedCheckboxState');
+                localStorage.removeItem('selectedFiltersState');
+
                 setSearchFilter('');
-                setSelectedFilters(defaultState.selectedFilters);
+                setCheckedFilters(generateFilterObject());
+                setSelectedFiltersState(defaultState.selectedFilters);
               }}
             >
               Clear all
@@ -194,40 +222,65 @@ export default function HomePage(): JSX.Element {
               <GoAAccordion
                 key={`${filterCategory.title} ${collapseKey}`}
                 heading={`${filterCategory.title} (${
-                  filters[filterCategory.property].filters.length
+                  selectedFiltersState[filterCategory.property].length
                 })`}
                 headingSize="small"
                 open={filtersAccordionState}
               >
-                {filters[filterCategory.property].filters.map((env) => (
+                {filterList[filterCategory.property]?.map((filter) => (
                   <GoACheckbox
-                    key={env.value}
-                    label={env.value}
-                    name={env.value}
-                    text={`${env.value} (${env.count})`}
-                    checked={selectedFilters[filterCategory.property].includes(
-                      env.value
-                    )}
+                    key={filter}
+                    label={filter}
+                    name={filter}
+                    // text={`${filter} (${
+                    //   filtersCount[filterCategory.property][filter]
+                    // })`}
+                    text={`${filter}`}
+                    checked={checkedFilters[filterCategory.property][filter]}
                     onChange={(name, checked) => {
-                      setSelectedFilters((prevFilters) => {
-                        const newFilters = {
+                      // handles checkboxes checked state
+                      setCheckedFilters((prevFilters) => {
+                        const newCheckboxState = {
                           ...prevFilters,
-                          [filterCategory.property]: checked
-                            ? [...prevFilters[filterCategory.property], name]
-                            : prevFilters[filterCategory.property].filter(
-                                (item) => item !== name
-                              ),
+                          [filterCategory.property]: {
+                            ...prevFilters[filterCategory.property],
+                            [name]: checked,
+                          },
                         };
                         localStorage.setItem(
-                          'selectedFilters',
-                          JSON.stringify(newFilters)
+                          'selectedCheckboxState',
+                          JSON.stringify(newCheckboxState)
                         );
-                        localStorage.setItem(
-                          'searchTimestamp',
-                          (new Date().getTime() + 5 * 60 * 1000).toString()
-                        );
-                        return newFilters;
+                        return newCheckboxState;
                       });
+
+                      // handles what filters are selected
+                      setSelectedFiltersState((prevSelectedFiltersState) => {
+                        // if the filter checked is true, add it to the selectedFiltersState or vice versa
+                        const newSelectedFiltersState = {
+                          ...prevSelectedFiltersState,
+                          [filterCategory.property]: checked
+                            ? [
+                                ...prevSelectedFiltersState[
+                                  filterCategory.property
+                                ],
+                                name,
+                              ]
+                            : prevSelectedFiltersState[
+                                filterCategory.property
+                              ].filter((filter) => filter !== name),
+                        };
+                        localStorage.setItem(
+                          'selectedFiltersState',
+                          JSON.stringify(newSelectedFiltersState)
+                        );
+                        return newSelectedFiltersState;
+                      });
+
+                      localStorage.setItem(
+                        'searchTimestamp',
+                        (new Date().getTime() + 5 * 60 * 1000).toString()
+                      );
                     }}
                   />
                 ))}
@@ -255,40 +308,7 @@ export default function HomePage(): JSX.Element {
         <a href="/contact/index.html#faq-section">FAQ</a> page for more details.
       </p>
       <GoASpacer vSpacing="2xl" />
-      {/* <div className="callout-overview">
-        <GoACallout
-          type="information"
-          heading="Recommended capabilities"
-          size="large"
-        >
-          <h4>Why choose them?</h4>
-          <div className="callout-bullets">
-            <ul className="goa-unordered-list">
-              <li>
-                Our validated capabilities have been rigorously tested, refined,
-                and proven, making them the default choice for similar use
-                cases.
-              </li>
-              <li>
-                Efficiency: Leverage capabilities with a track record of success
-                to streamline your development process.
-              </li>
-              <li>
-                Optimised Costs: Cut costs with standardised capabilities.
-              </li>
-              <li>
-                Streamlined Development: Utilise mature components for
-                consistency.
-              </li>
-            </ul>
-          </div>
 
-          <h4>Encounter unique scenarios?</h4>
-          <p>
-            Share feedback with the respective team—a catalyst for improvement.
-          </p>
-        </GoACallout>
-      </div> */}
       <GoADetails heading="Recommended capabilities">
         <ul>
           <li>
