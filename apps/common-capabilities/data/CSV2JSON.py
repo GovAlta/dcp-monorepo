@@ -35,7 +35,7 @@ current_user = getpass.getuser()
 
 if ProductionData:
     CSV_fileNames = ['CommonCapabilities']
-    outputDirectories = ['..\\src\\content\\']
+    outputDirectories = ['..\\src\\content\\','.']
 
 elif current_user == 'steve.rozeboom':
     CSV_fileNames = ['CommonCapabilities','CommonCapabilitiesSamples']
@@ -182,6 +182,7 @@ if not ProductionData: devMode = 'DEVELOPMENT'
 else: devMode = 'Production'  
 print('\n' + colorBlack + '------[ Create JSON files for ' + current_user +': ' + colorRed + devMode + colorBlack + ' ]---------\n' + colorGreen +'Working directory: '
       + CSV_fileDir +'\nInput: ' + 'CommonCapabilitiesFields.csv')
+
 for fileName in CSV_fileNames:    
     if os.path.exists(CSV_fileDir + fileName + '.csv'):
         print('Input: '+ fileName + '.csv')   
@@ -190,21 +191,19 @@ for fileName in CSV_fileNames:
             for row in csvreader:
                 csv_row = {key: replace_special_characters(value) for key, value in row.items()}
 
-                if csv_row["ServiceName"] != "" and csv_row["FunctionalGroup"] != "" :            
-                    id_counter += 1
-                    csv_row["appId"] = id_counter
-
+                if csv_row["ServiceName"] != "" and csv_row["FunctionalGroup"] != "" :
                     QA_Contact = 30 if csv_row["AltContactLink"] == '' and csv_row["Email"] == "" else 0
-                    QA_Doc = 20 if csv_row["Documentation"] == "" else 0
+                    QA_Doc = 20 if csv_row["Documentation"] == "" and (csv_row["Status"] != "Alpha" or QA_Contact > 0) else 0
                     QA_FGroup = 1 if csv_row["FunctionalGroup"] == "Other Function" else 0
                     QA_Status = 2 if csv_row["Status"] == "" else 0
                     QA_Lang   = 2 if csv_row["Language"] == "" else 0
-                    QA_Env    = 2 if csv_row["Environment"] == "" else 0                    
-                    csv_row["QA"] = QA_Contact + QA_Doc + QA_FGroup + QA_Status + QA_Lang + QA_Env
+                    QA_Env    = 2 if csv_row["Environment"] == "" else 0    
+                    QA_Misc   = 12 if csv_row["DataIssues"] != "" else 0    
+                    csv_row["QA"] = QA_Contact + QA_Doc + QA_FGroup + QA_Status + QA_Lang + QA_Env + QA_Misc
 
                     filterText = ''
                     for row2 in filterData:
-                        fn = row2["FieldName"]       # int, text, textArray, urlArray, contactList                                
+                        fn = row2["FieldName"]   # int, text, textArray, urlArray, contactList                                
                         if row2["Filter"] != 'No' and  row2["dataType"] != "int" and csv_row[fn] != '':
                             filterText += ',' + csv_row[fn]                        
 
@@ -230,14 +229,18 @@ for fileName in CSV_fileNames:
                     if len(csv_row["Summary"]) > 200:
                         print('Summay too long: ' + csv_row["ServiceName"] + ' = ' + str(len(csv_row["Summary"])) )
 
-                    for delKey in ["Email","Phone","ContactDetails","AltContactMethod","AltContactLink","Nominate",
-                                   "Considerations" ]:
-                        del csv_row[delKey]    
+                    if csv_row["AltServiceName"] != "":
+                        csv_row["ServiceName"] = csv_row["AltServiceName"]
 
-                    if csv_row["Description"] == "":
+                    if csv_row["Description"] != "":
                         csv_row["Description"] = csv_row["Summary"]
 
-                    data.append(csv_row)
+                    if csv_row["InternalWeightage"] >= 0 or not ProductionData:
+                        for delKey in ["Email","Phone","ContactDetails","AltContactMethod","AltContactLink","Nominate","Considerations","AltServiceName"]:
+                            del csv_row[delKey]
+                        id_counter += 1
+                        csv_row["appId"] = id_counter
+                        data.append(csv_row)
 
 # ***************** Vote on filter text *********************                     
 def shorten(text): return re.sub('[._ -\\/]', '', text).lower().strip()
@@ -306,8 +309,8 @@ bad_items = [{ 'Provider': item['Provider'], 'ServiceName': item['ServiceName'],
                'Documentation': item['Documentation'],'Contact': item['Contact']['methods']
              } for item in data if item.get('QA') > 10 or item.get('DataIssues') != '']
 if len(bad_items) > 0:
-    print('There are ' +str(len(bad_items))+' needing more data. Details: ' + CSV_fileDir + 'missingData.json')    
-    with open(CSV_fileDir + 'missingData.csv', 'w', newline='') as csv_file:
+    print('There are ' +str(len(bad_items))+' records to investigate ' + CSV_fileDir + 'dataToInvestigate.csv')    
+    with open(CSV_fileDir + 'dataToInvestigate.csv', 'w', newline='') as csv_file:
         fieldnames = ['Provider','ServiceName','DataIssues','QA_Score','Weightage','Documentation','Contact']
         csv_writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
         csv_writer.writeheader()
@@ -341,5 +344,8 @@ if len(modifiedRecords) > 0:
         for item in modifiedRecords:
             file.write("%s\n" % item)
     print('AutoFix: '+CSV_fileDir+'modifiedRecords.txt contains '+str(len(modifiedRecords))+' modified records')
+
+if not ProductionData:
+    print('DEVELOPMENT mode = Hidden records have been included in the dataset' )
 
 print(colorBlack + '------- '+ str(id_counter) + ' total records -------------'+ colorReset + '\n')
