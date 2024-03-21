@@ -55,6 +55,7 @@ export default function HomePage(): JSX.Element {
       ? JSON.parse(savedFiltersState)
       : defaultState.selectedFilters;
   });
+
   // to force re-render UI for filter selection counts
   const [rerender, setRerender] = useState("");
   const [filtersCount, setFiltersCount] = useState(
