@@ -56,6 +56,8 @@ export default function HomePage(): JSX.Element {
       : defaultState.selectedFilters;
   });
 
+  // to force re-render UI for filter selection counts
+  const [rerender, setRerender] = useState("");
   const [filtersCount, setFiltersCount] = useState(
     generateFilterCounts(services)
   );
@@ -148,6 +150,7 @@ export default function HomePage(): JSX.Element {
   useEffect(() => {
     setFilterList(getAppsFilters(apps, filtersList));
     setFiltersCount(generateFilterCounts(services));
+    setRerender(" ");
   }, [services]);
 
   return (
@@ -223,7 +226,7 @@ export default function HomePage(): JSX.Element {
                 key={`${filterCategory.title} ${collapseKey}`}
                 heading={`${filterCategory.title} (${
                   selectedFiltersState[filterCategory.property].length
-                })`}
+                }) ${rerender}`}
                 headingSize="small"
                 open={filtersAccordionState}
               >
