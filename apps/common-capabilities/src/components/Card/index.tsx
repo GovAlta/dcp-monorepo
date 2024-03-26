@@ -35,7 +35,11 @@ const Card = ({ provider, description, title, app }: CardProps) => {
         ) {
           app[badge].forEach((badgeValue: string) => {
             badges.push(
-              <GoABadge key={badgeValue} type="information" content={badgeValue} />
+              <GoABadge
+                key={badgeValue}
+                type="information"
+                content={badgeValue}
+              />
             );
           });
         }
@@ -53,6 +57,15 @@ const Card = ({ provider, description, title, app }: CardProps) => {
     setShowBadges(badges);
   }, [app]);
 
+  function getEmail(app: any) {
+    let email = '';
+    if (app.Contact.methods.length >= 1) {
+      email = app.Contact.methods.filter(
+        (method: any) => method.type === 'Email'
+      )[0]?.url;
+    }
+    return email;
+  }
   return (
     // <div>
     <GoAContainer accent="thin">
@@ -69,10 +82,13 @@ const Card = ({ provider, description, title, app }: CardProps) => {
         0,
         maxDescriptionLength
       )}${description.length > maxDescriptionLength ? '.....' : ''}`}</p>
-      {app.Email !== '' ? (
+      {getEmail(app) !== '' ? (
         <div>
           <b>Contact: </b>
-          <ExternalLink link={`mailto:${app.Email}`} text={app.Provider} />{' '}
+          <ExternalLink
+            link={`mailto:${getEmail(app)}`}
+            text={app.Provider}
+          />{' '}
         </div>
       ) : (
         ''
