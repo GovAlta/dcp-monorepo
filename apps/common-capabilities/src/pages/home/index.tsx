@@ -115,7 +115,7 @@ export default function HomePage(): JSX.Element {
 
     let timeoutId: NodeJS.Timeout | null = null;
 
-    if (localStorage.getItem('searchFilter')) {
+    if (localStorage.getItem('searchTimestamp')) {
       let searchTimestamp = localStorage.getItem('searchTimestamp');
       let now = new Date().getTime();
       let remainingTime = searchTimestamp
