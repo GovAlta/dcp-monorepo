@@ -1,20 +1,32 @@
-﻿FieldName,DisplayName,Filter,showBadge,dataType,default
-Provider,Provider,AsIs,FALSE,text,Other
-FunctionalGroup,Functional Group,No(Abbr),FALSE,text,Other
-Audience,Audience,No(Abbr),FALSE,textArray,GOA
-Status,Status,No(Abbr),TRUE,text,Other
-UsageMethod,Usage,No(Abbr),TRUE,text,Other
-Language,Technology,No(Abbr),TRUE,textArray,Other
-Environment,Infrastructure,No(Abbr),TRUE,textArray,Other
-SupportLevel,Support,No(Abbr),TRUE,text,Other
-Keywords,Tag/Keyword,No(Abbr),TRUE,textArray,
-,,,,,
-Documentation,Documentation,No,FALSE,urlArray,
-Contact,Contact,No,FALSE,contactList,
-InternalWeightage,InternalWeightage,No,FALSE,int,10
-,,,,,
-,,AsIs,,int,
-,,No(Abbr),,text,
-,,No,,textArray,
-,,,,urlArray,
-,,,,contactList,
+﻿FieldName,DisplayName,Filter,showBadge,dataType,default,Note,Group
+Provider,Provider,Yes,FALSE,text,Other,,
+FunctionalGroup,Functional Group,Yes-(),FALSE,text,Other,,
+Audience,Audience,Yes-(),FALSE,textArray,GOA,,
+Status,Status,Yes-(),TRUE,text,Other,,
+UsageMethod,Usage,Yes-(),TRUE,text,Other,,
+Language,Technology,Yes-(),TRUE,textArray,Other,,
+Environment,Infrastructure,Yes-(),TRUE,textArray,Other,,
+SupportLevel,Support,Yes-(),TRUE,text,Other,,
+Keywords,Tag/Keyword,Yes-(),TRUE,textArray,,,
+,,,,,,,
+Documentation,Documentation,No,FALSE,urlArray,,,
+InternalWeightage,InternalWeightage,No,FALSE,int,10,,
+Classification,Classification,No,TRUE,text,,Information Security classification,SecurityItem
+CMRA,CMRA,No,TRUE,text,TBD,Content Management Risk Assessment (CMRA) completed for this capability,SecurityItem
+IM,IM,No,FALSE,text,,IM consult is required before using capability,SecurityItem
+Data,Data,No,FALSE,text,,Data team consult required before using this capability,SecurityItem
+STRA,STRA,No,TRUE,text,,Cybersecurity risk assessment completed for this capability,SecurityItem
+Risk,Risk,No,FALSE,text,TBD,Cybersecurity risk assessment required with NEW use of this capability,SecurityItem
+Cybersecurity,Cybersecurity,No,FALSE,text,,Cybersecurity consult required before using capability,SecurityItem
+Controller,,No,FALSE,text,,Information controller,SecurityNote
+Considerations,Considerations,No,FALSE,text,,Special considerations,SecurityNote
+Security,Security,No,FALSE,List,,,Security
+Contact,Contact,No,FALSE,List,,,
+,,,,,,,
+,,,,,,,
+,,Yes,,int,,,SecurityItem
+,,Yes-(),,text,,,SecurityNote
+,,No,,textArray,,,Security
+,,,,urlArray,,,
+,,,,contactList,,,
+,,,,securityList,,,

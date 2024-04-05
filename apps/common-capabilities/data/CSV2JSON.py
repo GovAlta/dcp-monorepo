@@ -4,7 +4,7 @@ import json
 import os
 import re
 from datetime import datetime
-from urllib.parse import urlparse
+import getpass
 
 try:
     if len(sys.argv) > 3:
@@ -29,12 +29,20 @@ ProductionData = False     # <<<======== IMPORTANT - Default ===============
 if (DevProdArg != ''):
     ProductionData = DevProdArg == 'P'
 
+
+current_user = getpass.getuser()
+
 if ProductionData:
     CSV_fileNames = ['CommonCapabilities']
-    outputDirectories = ['..\\src\\content\\']
+    outputDirectories = ['..\\src\\content\\','.\\']
+
+elif current_user == 'steve.rozeboom':
+    CSV_fileNames = ['CommonCapabilities','CommonCapabilitiesSamples']
+    outputDirectories = ['..\\..\\..\\..\\..\\ReactJS\\list\\build\\','..\\..\\..\\..\\..\\ReactJS\\list\public\\','.\\']
+
 else:
     CSV_fileNames = ['CommonCapabilities','CommonCapabilitiesSamples']
-    outputDirectories = ['..\\..\\..\\..\\..\\ReactJS\\list\\build\\','..\\..\\..\\..\\..\\ReactJS\\list\public\\']
+    outputDirectories = ['..\\src\\content\\']
 
 
 CSV_fileDir = '.\\'
@@ -71,75 +79,12 @@ if not haveOutput:
 
 
 # Finished checks, I've got everything I need to continue...
+
 #=================================================
+from functions import replace_special_characters,replace_Bool,linkList,asArray,createContact,createSecurityList
+# from functions import spellingVote
+# from functions import getPageNameFromURLcombo,getPageNameFromURL
 
-def replace_special_characters(text):
-    return text.replace("’", "'").replace("\u200b", " ").replace("\u00a0", " ").strip()
-
-def replace_Bool(value):
-    if value.lower() == 'true':
-        return True
-    elif value.lower() == 'false':
-        return False
-    else:
-        return value;    
-
-def getPageNameFromURLcombo(value):
-    obj = value.strip()
-    name=""
-    url=""
-    if obj != "":
-        position = obj.lower().find('http')
-        if position == 0:
-            name = getPageNameFromURL(obj)
-            url = obj
-        elif position > 0:
-            name = obj[:position].strip()
-            url = obj[position:].strip()
-    return [name,url]
-
-def getPageNameFromURL(url):    
-    parsed_url = urlparse(url)
-    path = parsed_url.path    
-    page_name = path.split("/")[-1]    
-    if page_name == "":
-        page_name = parsed_url.netloc
-    elif len(page_name) < 5:
-        page_name = parsed_url.netloc + " " + page_name
-
-    return page_name.replace("%20", " ")
-
-def linkList(text):    
-    links = []    
-    items_list = text.split("\n") #items_list = text.split(",")
-    for item in items_list:
-        if item != '':            
-            urlArray = getPageNameFromURLcombo(item)
-            links.append({ "name": urlArray[0], "url": urlArray[1] })        
-    return links
-
-def asArray(val):
-    if val == "":
-        return []
-    else:
-      return [item.strip() for item in val.split(',')]
-
-#### CONTACTS ####
-def createContact(type,url,descr,email,phone, provider):
-    contact = { "details": descr, "methods":[] }    
-    methods = []    
-
-    if type != "" or url != "":
-        if (type == ""):
-            type = "Web"
-        urlArray = getPageNameFromURLcombo(url)
-        methods.append({ "type": type, "value": urlArray[0], "url": urlArray[1] })
-     
-    if email != "": methods.append({ "type": "Email", "value": email, "url": email })
-    if phone != "": methods.append({ "type": "Phone", "value": phone, "url": phone })
-
-    contact["methods"] = methods
-    return contact
 
 # ============================================================================================
 
@@ -154,21 +99,28 @@ else:
     colorGreen = ''
     colorReset = ''  
 
-filterData = []
+fieldMetadata = []
 with open(CSV_fileDir + 'CommonCapabilitiesFields.csv', 'r', encoding='utf-8-sig') as csvfile:
     csvreader = csv.DictReader(csvfile)
     for row in csvreader:        
         csv_row = {key: replace_special_characters(value) for key, value in row.items()}
         csv_row = {key: replace_Bool(value) for key, value in row.items()}       
         if csv_row["FieldName"] != "":
-            filterData.append(csv_row)
+            fieldMetadata.append(csv_row)
 
 data = []
 id_counter = 0
-if not ProductionData: devt = 'DEVELOPMENT'
-else: devt = 'Production'  
-print('\n' + colorBlack + '------[ Create JSON files for ' + colorRed + devt + colorBlack + ' ]---------\n' + colorGreen +'Working directory: '
+if not ProductionData: devMode = 'DEVELOPMENT'
+else: devMode = 'Production'  
+print('\n' + colorBlack + '------[ Create JSON files for ' + current_user +': ' + colorRed + devMode + colorBlack + ' ]---------\n' + colorGreen +'Working directory: '
       + CSV_fileDir +'\nInput: ' + 'CommonCapabilitiesFields.csv')
+
+SecurityFields = [item for item in fieldMetadata if item['Group'] == 'SecurityItem']
+SecurityFields = [item['FieldName'] for item in SecurityFields]
+SecurityNotes = [item for item in fieldMetadata if item['Group'] == 'SecurityNote']
+SecurityNotes = [item['FieldName'] for item in SecurityNotes]
+# print(SecurityFields)
+
 for fileName in CSV_fileNames:    
     if os.path.exists(CSV_fileDir + fileName + '.csv'):
         print('Input: '+ fileName + '.csv')   
@@ -177,60 +129,72 @@ for fileName in CSV_fileNames:
             for row in csvreader:
                 csv_row = {key: replace_special_characters(value) for key, value in row.items()}
 
-                if csv_row["ServiceName"] != "" and csv_row["FunctionalGroup"] != "" :            
-                    id_counter += 1
-                    csv_row["appId"] = id_counter
-
+                if csv_row["ServiceName"] != "" and csv_row["FunctionalGroup"] != "" :
                     QA_Contact = 30 if csv_row["AltContactLink"] == '' and csv_row["Email"] == "" else 0
-                    QA_Doc = 20 if csv_row["Documentation"] == "" else 0
+                    QA_Doc = 20 if csv_row["Documentation"] == "" and (csv_row["Status"] != "Alpha" or QA_Contact > 0) else 0
                     QA_FGroup = 1 if csv_row["FunctionalGroup"] == "Other Function" else 0
                     QA_Status = 2 if csv_row["Status"] == "" else 0
                     QA_Lang   = 2 if csv_row["Language"] == "" else 0
-                    QA_Env    = 2 if csv_row["Environment"] == "" else 0                    
-                    csv_row["QA"] = QA_Contact + QA_Doc + QA_FGroup + QA_Status + QA_Lang + QA_Env
+                    QA_Env    = 2 if csv_row["Environment"] == "" else 0    
+                    QA_Misc   = 12 if csv_row["DataIssues"] != "" else 0    
+                    csv_row["QA"] = QA_Contact + QA_Doc + QA_FGroup + QA_Status + QA_Lang + QA_Env + QA_Misc
 
                     filterText = ''
-                    for row2 in filterData:
-                        fn = row2["FieldName"]       # int, text, textArray, urlArray, contactList                                
+                    securityBadge = ''
+                    for row2 in fieldMetadata:
+                        fn = row2["FieldName"]   # int, text, textArray, urlArray, contactList                                
                         if row2["Filter"] != 'No' and  row2["dataType"] != "int" and csv_row[fn] != '':
                             filterText += ',' + csv_row[fn]                        
 
-                        if   row2["dataType"] == "urlArray":    csv_row[fn] = linkList(csv_row[fn])                        
-                        elif row2["dataType"] == "textArray":   csv_row[fn] = asArray(csv_row[fn])
-                        elif row2["dataType"] == "contactList": csv_row["Contact"] = createContact(
-                            csv_row["AltContactMethod"]
-                            ,csv_row["AltContactLink"]
-                            ,csv_row["ContactDetails"]
-                            ,csv_row["Email"]
-                            ,csv_row["Phone"]
-                            ,csv_row["Provider"])
+                        if row2["default"] != '' and len(csv_row[fn]) == 0 and row2["dataType"] != "textArray":
+                            csv_row[fn] =  row2["default"]
 
-                        if row2["default"] != '' and len(csv_row[fn]) == 0:
-                            if row2["dataType"] == "textArray": csv_row[fn] = [row2["default"]]                           
-                            else:                               csv_row[fn] =  row2["default"]
+                        if   row2["dataType"] == "urlArray":
+                            csv_row[fn] = linkList(csv_row[fn])
 
-                        if row2["dataType"] == "int":                            
+                        elif row2["dataType"] == "textArray":
+                            if len(csv_row[fn]) == 0 and row2["default"] != '':
+                                csv_row[fn] = [row2["default"]]
+                            else:
+                                csv_row[fn] = asArray(csv_row[fn])
+
+                        elif row2["dataType"] == "List":  # Lists need be at the bottom of the field list to capture default values
+                            if fn == 'Contact':
+                                csv_row["Contact"] = createContact(csv_row)
+                            elif fn == 'Security':
+                                csv_row["Security"] = createSecurityList(csv_row,SecurityFields,SecurityNotes)
+
+                        elif row2["dataType"] == "int":                            
                             csv_row[fn] = int(csv_row[fn])
-
+ 
                     csv_row["filterText"] = filterText[1:].lower()
-
+                    
                     if len(csv_row["Summary"]) > 200:
                         print('Summay too long: ' + csv_row["ServiceName"] + ' = ' + str(len(csv_row["Summary"])) )
+                  
+                    if csv_row["AltServiceName"] != "":
+                        csv_row["ServiceName"] = csv_row["AltServiceName"]
 
-                    for delKey in ["Email","Phone","ContactDetails","AltContactMethod","AltContactLink","Nominate",
-                                   "Considerations" ]:
-                        del csv_row[delKey]    
-
-                    if csv_row["Description"] == "":
+                    if csv_row["Description"] != "":
                         csv_row["Description"] = csv_row["Summary"]
 
-                    data.append(csv_row)
+                    if csv_row["InternalWeightage"] >= 0 or not ProductionData:
+                        for delKey in ["Email","Phone","ContactDetails","AltContactMethod","AltContactLink","Nominate","AltServiceName"]:
+                            del csv_row[delKey]
+                        for delKey in SecurityFields: del csv_row[delKey]
+                        for delKey in SecurityNotes: del csv_row[delKey]
+
+                        id_counter += 1
+                        csv_row["appId"] = id_counter
+                        data.append(csv_row)
+
 
 # ***************** Vote on filter text *********************                     
-def shorten(text): return re.sub('[._ -\\/]', '', text).lower().strip()
+#spellingVote(data,fieldMetadata)
 wordCounts = {}
 needEdit = {}
 modifiedRecords = []
+def shorten(text): return re.sub('[._ -\\/]', '', text).lower().strip()
 def wordVote(val):
     if val in wordCounts:        wordCounts[val] += 1
     else:        wordCounts[val] = 1
@@ -241,10 +205,10 @@ def needsEdit(val):
         return needEdit[short]
     else:
         return {}
-
-for row2 in filterData:
+# ******    
+for row2 in fieldMetadata:
     fn = row2["FieldName"]
-    if row2["Filter"] != 'No':        
+    if row2["Filter"] != 'No' and row2["dataType"] != 'List':
         for dataRow in data:
             if row2["dataType"] == 'text':
                 if dataRow[fn] != '':                   
@@ -268,7 +232,7 @@ for grp in groups:
                 gstr = item['string']
         needEdit[grp] = gstr
         
-for row2 in filterData:
+for row2 in fieldMetadata:
     fn = row2["FieldName"]
     if row2["Filter"] != 'No':
         for dataRow in data:
@@ -289,12 +253,13 @@ for row2 in filterData:
 
 # ***************** QA report  *********************
 bad_items = [{ 'Provider': item['Provider'], 'ServiceName': item['ServiceName'],'DataIssues': item['DataIssues'],
-               'QA_Score': item['QA'],'Documentation': item['Documentation'],'Contact': item['Contact']['methods']
+               'QA_Score': item['QA'],'Weightage': item['InternalWeightage'],
+               'Documentation': item['Documentation'],'Contact': item['Contact']['methods']
              } for item in data if item.get('QA') > 10 or item.get('DataIssues') != '']
 if len(bad_items) > 0:
-    print('There are ' +str(len(bad_items))+' needing more data. Details: ' + CSV_fileDir + 'missingData.json')    
-    with open(CSV_fileDir + 'missingData.csv', 'w', newline='') as csv_file:
-        fieldnames = ['Provider','ServiceName','DataIssues','QA_Score','Documentation','Contact']
+    print('There are ' +str(len(bad_items))+' records to investigate ' + CSV_fileDir + 'dataToInvestigate.csv')    
+    with open(CSV_fileDir + 'dataToInvestigate.csv', 'w', newline='') as csv_file:
+        fieldnames = ['Provider','ServiceName','DataIssues','QA_Score','Weightage','Documentation','Contact']
         csv_writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
         csv_writer.writeheader()
         for item in bad_items:
@@ -308,10 +273,11 @@ now = datetime.now()
 current_date = now.strftime("%m/%d/%Y, %H:%M")
 
 data2 = {"lastUpdated": current_date,         
+         "isProductionData": ProductionData,
          "mostRecentService": mostRecentService,
          "dateFormat": "mm/dd/yyyy",
          "services": data,
-         "fields": filterData }
+         "fields": fieldMetadata }
 
 for folderName in outputDirectories:
     if os.path.exists(folderName):
@@ -326,5 +292,8 @@ if len(modifiedRecords) > 0:
         for item in modifiedRecords:
             file.write("%s\n" % item)
     print('AutoFix: '+CSV_fileDir+'modifiedRecords.txt contains '+str(len(modifiedRecords))+' modified records')
+
+if not ProductionData:
+    print('DEVELOPMENT mode = Hidden records have been included in the dataset' )
 
 print(colorBlack + '------- '+ str(id_counter) + ' total records -------------'+ colorReset + '\n')
