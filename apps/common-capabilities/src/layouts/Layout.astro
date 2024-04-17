@@ -22,20 +22,47 @@ const { title, actionButtons } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <title>{title}</title>
+
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EK8FLDN0VN"
-    ></script>
     <script>
-      // @ts-ignore
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        // @ts-ignore
-        dataLayer.push(arguments);
+      const hostName = window.location.hostname;
+      if (hostName === 'common-capabilities-dcp-uat.apps.aro.gov.ab.ca') {
+        (function () {
+          // @ts-ignore
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            // @ts-ignore
+            dataLayer.push(arguments);
+          }
+          // @ts-ignore
+          gtag('js', new Date());
+          // @ts-ignore
+          gtag('config', 'G-EK8FLDN0VN');
+          const script = document.createElement('script');
+          script.async = true;
+          script.src =
+            'https://www.googletagmanager.com/gtag/js?id=G-EK8FLDN0VN';
+          document.head.appendChild(script);
+        })();
+      } else {
+        (function () {
+          // @ts-ignore
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            // @ts-ignore
+            dataLayer.push(arguments);
+          }
+          // @ts-ignore
+          gtag('js', new Date());
+          // @ts-ignore
+          gtag('config', 'G-WHP7H3BDJZ');
+          const script = document.createElement('script');
+          script.async = true;
+          script.src =
+            'https://www.googletagmanager.com/gtag/js?id=G-WHP7H3BDJZ';
+          document.head.appendChild(script);
+        })();
       }
-      // @ts-ignore
-      gtag('js', new Date());
-      // @ts-ignore
-      gtag('config', 'G-EK8FLDN0VN');
     </script>
     <script
       type="module"
