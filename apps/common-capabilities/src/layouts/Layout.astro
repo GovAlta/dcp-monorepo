@@ -44,7 +44,7 @@ const { title, actionButtons } = Astro.props;
             'https://www.googletagmanager.com/gtag/js?id=G-EK8FLDN0VN';
           document.head.appendChild(script);
         })();
-      } else {
+      } else if (hostName === 'common-capabilities.digital.gov.ab.ca') {
         (function () {
           // @ts-ignore
           window.dataLayer = window.dataLayer || [];
