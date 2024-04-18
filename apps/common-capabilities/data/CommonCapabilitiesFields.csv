@@ -1,20 +1,44 @@
-﻿FieldName,DisplayName,Filter,showBadge,dataType,default
-Provider,Provider,AsIs,FALSE,text,Other
-FunctionalGroup,Functional Group,No(Abbr),FALSE,text,Other
-Audience,Audience,No(Abbr),FALSE,textArray,GOA
-Status,Status,No(Abbr),TRUE,text,Other
-UsageMethod,Usage,No(Abbr),TRUE,text,Other
-Language,Technology,No(Abbr),TRUE,textArray,Other
-Environment,Infrastructure,No(Abbr),TRUE,textArray,Other
-SupportLevel,Support,No(Abbr),TRUE,text,Other
-Keywords,Tag/Keyword,No(Abbr),TRUE,textArray,
-,,,,,
-Documentation,Documentation,No,FALSE,urlArray,
-Contact,Contact,No,FALSE,contactList,
-InternalWeightage,InternalWeightage,No,FALSE,int,10
-,,,,,
-,,AsIs,,int,
-,,No(Abbr),,text,
-,,No,,textArray,
-,,,,urlArray,
-,,,,contactList,
+﻿Type,FieldName,DisplayName,Filter,ShowBadge,DataType,Default,Group,SubGroup,Note,Extra
+Field,FunctionalGroup,Category,Yes-(),FALSE,text,Was removed,,,,
+Field,Provider,Provider,Yes,FALSE,text,Other,,,,
+Field,Status,Status,Yes-(),TRUE,text,Other,,,,
+Field,Audience,Audience,Yes-(),FALSE,textArray,GOA,,,,
+Field,UsageMethod,Usage,Yes-(),FALSE,text,Other,,,,
+Field,Language,Technology,Yes-(),FALSE,textArray,Other,,,,
+Field,Environment,Infrastructure,Yes-(),FALSE,textArray,Other,,,,
+Field,SupportLevel,Support,No,FALSE,text,Other,,,,
+Field,Keywords,Tag/Keyword,Yes-(),FALSE,textArray,,,,,
+Field,Documentation,Documentation,No,FALSE,urlArray,,,,,
+Field,InternalWeightage,InternalWeightage,No,FALSE,int,10,,,,
+Field,CMRA,Content Management Risk Assessment (CMRA),No,FALSE,text,TBD,Security,Status,,IM
+Field,STRA,Security Threat and Risk Assessment (STRA),No,FALSE,text,,Security,Status,,Cybersecurity
+Field,IM,Information management (IM) consult ,No,FALSE,text,,Security,Required,,IM
+Field,Data,Data team consult,No,FALSE,text,,Security,Required,,Data team
+Field,Risk,Cybersecurity risk assessment,No,FALSE,text,TBD,Security,Required,,Cybersecurity
+Field,Cybersecurity,Cybersecurity consult,No,FALSE,text,,Security,Required,,Cybersecurity
+Field,Classification,Information Security classification,No,FALSE,text,,Security,Info,,IM/Cybersecurity
+Field,Controller,Information controller,No,FALSE,text,,Security,Info,,IM/Cybersecurity
+Field,Considerations,Special considerations,No,FALSE,text,,Security,Info,,Other
+Field,Security,Security,No,FALSE,"Security(Status,Required,Info)",,,,,
+Field,Contact,Contact,No,FALSE,Contacts,,,,,
+Field,SecurityStatus,Current Status,,,text,,Security,,,
+Field,SecurityRequired,Required before using this service,,,text,,Security,,,
+Field,SecurityInfo,Security Details,,,textLong,,Security,,,
+Field,User management,User management,,,,,FunctionalGroup,,"User authentication, authorization, identity verification and management, and role-based access control ",
+Field,Data,Data,,,,,FunctionalGroup,,"Data libraries, records, schemas, configuration storage, audit and log management",
+Field,Forms and documents,Forms and documents,,,,,FunctionalGroup,,"File upload and management, document processing, forms creation, and digital signatures",
+Field,Automation,Automation,,,,,FunctionalGroup,,"Automation Workflow, process automation, and task management",
+Field,Finance,Finance,,,,,FunctionalGroup,,"Payment processing, gateway integration, financial data management, billing, and invoicing",
+Field,Communication,Communication,,,,,FunctionalGroup,,"Messaging, emails, SMS, notifications, and alerts",
+Field,Performance,Performance,,,,,FunctionalGroup,,"Service health monitoring, business performance tracking, and reporting dashboards",
+,,,,,,,,,,
+FieldOption,,,Yes,,int,,,,,
+FieldOption,,,Yes-(),,text,,,,,
+FieldOption,,,No,,textArray,,,,,
+FieldOption,,,,,urlArray,,,,,
+FieldOption,,,,,Contacts,,,,,
+FieldOption,,,,,Obj(...),,,,,
+,,,,,,,,,,
+Lookup,CMO,Content Management Operations,,,,,,,,
+Lookup,CCS,Collaboration and Content Services,,,,,,,,
+Lookup,IMP,Information Management Program,,,,,,,,

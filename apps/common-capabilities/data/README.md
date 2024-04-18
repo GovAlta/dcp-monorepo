@@ -17,7 +17,7 @@
   * Open and delete all data from CommonCapabilities.csv
   * Open https://abgov.sharepoint.com/:x:/s/SoftwareDelivery/EaSU0hg1qglKnzZHHBmPbQsBJx6BKo_zmqNxPRNeBG10Bg
     * Remove any filters
-    * Copy data into CommonCapabilities.csv
+    * **Using excel**, copy data into CommonCapabilities.csv
       * Remove two rows (headers)
       * Save
 
