@@ -70,21 +70,32 @@ def createContact(csv_row):
     if phone != "": methods.append({ "type": "Phone", "value": phone, "url": phone })
     return { "details": descr, "methods":methods}
 
+#===[ SecurityList() ]==========================================================================
 
-def createSecurityList(dataRow,SecurityFields,SecurityNotes):   
-    itemArray = []
+def createSecurityList(dataRow,SecurityGroups,SecurityFields):
+    # itemArray = []
     badges = []
-    for item in SecurityFields:
-        if dataRow[item] != "":
-            itemArray.append({ "Item": item, "Value": dataRow[item] })
-            if dataRow[item].lower() == 'yes':
-                badges.append(item)
-    
-    result = { "Items":itemArray, "Badges": badges }
-    for item in SecurityNotes:
-        result[item] = dataRow[item]
 
-    return result
+    objArray = []
+
+    for grp in SecurityGroups.split(','):        
+        itemArray = []
+        fieldsToGet = [item for item in SecurityFields if item['SubGroup'] == grp]
+        
+
+        for fld in fieldsToGet:     
+            # print(fld['FieldName'])
+            if dataRow[ fld['FieldName']] != '':
+                data2 = {"Field": fld['FieldName'], "Value": dataRow[ fld['FieldName']] }
+                itemArray.append(data2)
+                
+        if len(itemArray) > 0:
+            objArray.append( {"Type":grp, "Items":itemArray})
+
+    # result[grp] = itemArray    
+    # result = { "Items":itemArray, "Badges": SecurityFields }
+
+    return objArray # result
 
 
 # **********************************************************

@@ -6,6 +6,10 @@ import re
 from datetime import datetime
 import getpass
 
+# import colorama
+# colorama.init()
+
+
 try:
     if len(sys.argv) > 3:
         raise Exception('Too many parameters')    
@@ -81,32 +85,37 @@ if not haveOutput:
 # Finished checks, I've got everything I need to continue...
 
 #=================================================
-from functions import replace_special_characters,replace_Bool,linkList,asArray,createContact,createSecurityList
+from functions import replace_special_characters,replace_Bool,linkList,asArray,createContact,createSecurityList #,createSecurityList1
 # from functions import spellingVote
 # from functions import getPageNameFromURLcombo,getPageNameFromURL
 
 
 # ============================================================================================
 
-if DevProdArg == '':
-    colorBlack = '\033[1;30m'
-    colorRed = '\033[1;31m'
-    colorGreen = '\033[0;32m'
-    colorReset = '\033[0m'
-else:
-    colorBlack = ''
-    colorRed = ''
-    colorGreen = ''
-    colorReset = ''  
+if DevProdArg == '':  colorBlack = '\033[1;30m'; colorRed = '\033[1;31m'; colorGreen = '\033[0;32m'; colorReset = '\033[0m'
+else:    colorBlack = ''; colorRed = ''; colorGreen = ''; colorReset = '';  
 
 fieldMetadata = []
+LookUpData = []
 with open(CSV_fileDir + 'CommonCapabilitiesFields.csv', 'r', encoding='utf-8-sig') as csvfile:
     csvreader = csv.DictReader(csvfile)
     for row in csvreader:        
-        csv_row = {key: replace_special_characters(value) for key, value in row.items()}
-        csv_row = {key: replace_Bool(value) for key, value in row.items()}       
-        if csv_row["FieldName"] != "":
-            fieldMetadata.append(csv_row)
+        row = {key: replace_special_characters(value) for key, value in row.items()}
+        row = {key: replace_Bool(value) for key, value in row.items()}       
+        if row["FieldName"] != "":
+            del row["Extra"]
+            if row["Type"] == "Field":                               
+                del row["Type"]
+
+                if  row["Group"] == 'FunctionalGroup':
+                    row["Count"] = 0
+                fieldMetadata.append(row)
+
+            elif row["Type"] == "Lookup":                
+                for delKey in ["Type","Filter","ShowBadge","Note","Group","SubGroup","Default"]:
+                    del row[delKey]
+
+                LookUpData.append(row)
 
 data = []
 id_counter = 0
@@ -115,11 +124,8 @@ else: devMode = 'Production'
 print('\n' + colorBlack + '------[ Create JSON files for ' + current_user +': ' + colorRed + devMode + colorBlack + ' ]---------\n' + colorGreen +'Working directory: '
       + CSV_fileDir +'\nInput: ' + 'CommonCapabilitiesFields.csv')
 
-SecurityFields = [item for item in fieldMetadata if item['Group'] == 'SecurityItem']
-SecurityFields = [item['FieldName'] for item in SecurityFields]
-SecurityNotes = [item for item in fieldMetadata if item['Group'] == 'SecurityNote']
-SecurityNotes = [item['FieldName'] for item in SecurityNotes]
-# print(SecurityFields)
+
+SecurityFields = [item for item in fieldMetadata if item['Group'][:8] == 'Security']
 
 for fileName in CSV_fileNames:    
     if os.path.exists(CSV_fileDir + fileName + '.csv'):
@@ -129,7 +135,7 @@ for fileName in CSV_fileNames:
             for row in csvreader:
                 csv_row = {key: replace_special_characters(value) for key, value in row.items()}
 
-                if csv_row["ServiceName"] != "" and csv_row["FunctionalGroup"] != "" :
+                if csv_row["ServiceName"] != "" and csv_row["Provider"] != "" :
                     QA_Contact = 30 if csv_row["AltContactLink"] == '' and csv_row["Email"] == "" else 0
                     QA_Doc = 20 if csv_row["Documentation"] == "" and (csv_row["Status"] != "Alpha" or QA_Contact > 0) else 0
                     QA_FGroup = 1 if csv_row["FunctionalGroup"] == "Other Function" else 0
@@ -142,32 +148,33 @@ for fileName in CSV_fileNames:
                     filterText = ''
                     securityBadge = ''
                     for row2 in fieldMetadata:
-                        fn = row2["FieldName"]   # int, text, textArray, urlArray, contactList                                
-                        if row2["Filter"] != 'No' and  row2["dataType"] != "int" and csv_row[fn] != '':
-                            filterText += ',' + csv_row[fn]                        
+                        if row2["Filter"] != '':
+                            fn = row2["FieldName"]   # int, text, textArray, urlArray, contactList                                
+                            if row2["Filter"] != 'No' and row2["DataType"] != "int" and csv_row[fn] != '':
+                                filterText += ',' + csv_row[fn].strip()
 
-                        if row2["default"] != '' and len(csv_row[fn]) == 0 and row2["dataType"] != "textArray":
-                            csv_row[fn] =  row2["default"]
+                            if row2["Default"] != '' and len(csv_row[fn]) == 0 and row2["DataType"] != "textArray":
+                                csv_row[fn] =  row2["Default"]
 
-                        if   row2["dataType"] == "urlArray":
-                            csv_row[fn] = linkList(csv_row[fn])
+                            if   row2["DataType"] == "urlArray":
+                                csv_row[fn] = linkList(csv_row[fn])
 
-                        elif row2["dataType"] == "textArray":
-                            if len(csv_row[fn]) == 0 and row2["default"] != '':
-                                csv_row[fn] = [row2["default"]]
-                            else:
-                                csv_row[fn] = asArray(csv_row[fn])
+                            elif row2["DataType"] == "textArray":
+                                if len(csv_row[fn]) == 0 and row2["Default"] != '':
+                                    csv_row[fn] = [row2["Default"]]
+                                else:
+                                    csv_row[fn] = asArray(csv_row[fn])
 
-                        elif row2["dataType"] == "List":  # Lists need be at the bottom of the field list to capture default values
-                            if fn == 'Contact':
+                            elif row2["DataType"] == "Contacts":  # Lists need be at the bottom of the field list to capture default values                                                        
                                 csv_row["Contact"] = createContact(csv_row)
-                            elif fn == 'Security':
-                                csv_row["Security"] = createSecurityList(csv_row,SecurityFields,SecurityNotes)
+                            
+                            elif row2["DataType"][:8] == "Security":
+                                csv_row["Security"] = createSecurityList(csv_row,row2["DataType"][9:-1],SecurityFields)
 
-                        elif row2["dataType"] == "int":                            
-                            csv_row[fn] = int(csv_row[fn])
+                            elif row2["DataType"] == "int":                            
+                                csv_row[fn] = int(csv_row[fn])
  
-                    csv_row["filterText"] = filterText[1:].lower()
+                    csv_row["filterText"] = filterText[1:].lower().strip()
                     
                     if len(csv_row["Summary"]) > 200:
                         print('Summay too long: ' + csv_row["ServiceName"] + ' = ' + str(len(csv_row["Summary"])) )
@@ -175,18 +182,31 @@ for fileName in CSV_fileNames:
                     if csv_row["AltServiceName"] != "":
                         csv_row["ServiceName"] = csv_row["AltServiceName"]
 
-                    if csv_row["Description"] != "":
+                    if csv_row["Description"] == "":
                         csv_row["Description"] = csv_row["Summary"]
 
                     if csv_row["InternalWeightage"] >= 0 or not ProductionData:
                         for delKey in ["Email","Phone","ContactDetails","AltContactMethod","AltContactLink","Nominate","AltServiceName"]:
                             del csv_row[delKey]
-                        for delKey in SecurityFields: del csv_row[delKey]
-                        for delKey in SecurityNotes: del csv_row[delKey]
+                         
+                        for delKey in [item['FieldName'] for item in SecurityFields if item['SubGroup'] != '']:
+                            del csv_row[delKey]  
 
                         id_counter += 1
                         csv_row["appId"] = id_counter
                         data.append(csv_row)
+
+for dataRow in data:
+    notFound = True
+    for catRow in fieldMetadata:
+        if catRow['Group'] == 'FunctionalGroup' and catRow['FieldName'].lower() == dataRow['FunctionalGroup'].lower():
+            catRow['Count'] = catRow['Count'] + 1 # catRow.get('count', 0) + 1
+            notFound = False
+            break
+    if notFound:
+        fieldMetadata.append({"FieldName": dataRow['FunctionalGroup'],"DisplayName": dataRow['FunctionalGroup'],          
+                                "Group": "FunctionalGroup", "Note": "","DataType":'',"Filter":'',"Count": 1 })
+        print('***** ADDED FunctionalGroup: "'+dataRow['FunctionalGroup']+ '"  *******')
 
 
 # ***************** Vote on filter text *********************                     
@@ -208,12 +228,12 @@ def needsEdit(val):
 # ******    
 for row2 in fieldMetadata:
     fn = row2["FieldName"]
-    if row2["Filter"] != 'No' and row2["dataType"] != 'List':
+    if row2["Filter"] != 'No' and row2["DataType"] != 'List' and row2["Filter"] != '':
         for dataRow in data:
-            if row2["dataType"] == 'text':
+            if row2["DataType"] == 'text':
                 if dataRow[fn] != '':                   
                     wordVote(dataRow[fn])
-            elif row2["dataType"] == 'textArray':
+            elif row2["DataType"] == 'textArray':
                     for val in dataRow[fn]:
                         wordVote(val)
 string_counts_with_group = [{'string': key, 'count': value, 'group': shorten(key)} for key, value in wordCounts.items()]
@@ -234,15 +254,15 @@ for grp in groups:
         
 for row2 in fieldMetadata:
     fn = row2["FieldName"]
-    if row2["Filter"] != 'No':
+    if row2["Filter"] != 'No' and row2["Filter"] != '':
         for dataRow in data:
-            if row2["dataType"] == 'text':
+            if row2["DataType"] == 'text':
                 updated = needsEdit(dataRow[fn])
                 if updated:
                     modifiedRecords.append([dataRow['ServiceName'],fn,dataRow[fn],updated])
                     dataRow[fn] = updated
 
-            elif row2["dataType"] == 'textArray':
+            elif row2["DataType"] == 'textArray':
                     for val in dataRow[fn]:
                         updated = needsEdit(val)
                         if updated:
@@ -254,7 +274,8 @@ for row2 in fieldMetadata:
 # ***************** QA report  *********************
 bad_items = [{ 'Provider': item['Provider'], 'ServiceName': item['ServiceName'],'DataIssues': item['DataIssues'],
                'QA_Score': item['QA'],'Weightage': item['InternalWeightage'],
-               'Documentation': item['Documentation'],'Contact': item['Contact']['methods']
+               'Documentation': item['Documentation'],
+               'Contact': item['Contact']['methods']
              } for item in data if item.get('QA') > 10 or item.get('DataIssues') != '']
 if len(bad_items) > 0:
     print('There are ' +str(len(bad_items))+' records to investigate ' + CSV_fileDir + 'dataToInvestigate.csv')    
@@ -272,12 +293,14 @@ mostRecentService = max(parsed_dates).strftime("%m/%d/%Y")
 now = datetime.now() 
 current_date = now.strftime("%m/%d/%Y, %H:%M")
 
-data2 = {"lastUpdated": current_date,         
-         "isProductionData": ProductionData,
-         "mostRecentService": mostRecentService,
-         "dateFormat": "mm/dd/yyyy",
-         "services": data,
-         "fields": fieldMetadata }
+data2 = {"lastUpdated": current_date
+         ,"isProductionData": ProductionData
+         ,"mostRecentService": mostRecentService
+         ,"dateFormat": "mm/dd/yyyy"
+         ,"services": data
+         ,"fields": fieldMetadata
+         ,"LookUp": LookUpData
+        }
 
 for folderName in outputDirectories:
     if os.path.exists(folderName):
