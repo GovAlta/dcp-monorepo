@@ -102,26 +102,28 @@ export default function Landing(): JSX.Element {
         </GoAGrid>
         <GoASpacer vSpacing="2xl" />
         <GoASpacer vSpacing="3xl" />
-        <GoACallout
-          type="information"
-          heading="Start building with our design system"
-        >
-          <p>
-            Use the design system to build your product quickly and align with
-            government standards. The design system includes resources and
-            guidelines for:
-          </p>
-          <ul className="goa-unordered-list cc-list-design-system">
-            <li>Patterns and templates</li>
-            <li>Components</li>
-            <li>Styles</li>
-            <li>Content</li>
-          </ul>
-          <ExternalLink
-            link={'https://design.alberta.ca/'}
-            text={'Explore the design system'}
-          />
-        </GoACallout>
+        <div className="cc-landing-callout">
+          <GoACallout
+            type="information"
+            heading="Start building with our design system"
+          >
+            <p>
+              Use the design system to build your product quickly and align with
+              government standards. The design system includes resources and
+              guidelines for:
+            </p>
+            <ul className="goa-unordered-list cc-list-design-system">
+              <li>Patterns and templates</li>
+              <li>Components</li>
+              <li>Styles</li>
+              <li>Content</li>
+            </ul>
+            <ExternalLink
+              link={'https://design.alberta.ca/'}
+              text={'Explore the design system'}
+            />
+          </GoACallout>
+        </div>
         <GoASpacer vSpacing="4xl" />
       </GoAPageBlock>
     </div>
