@@ -1,19 +1,19 @@
-a:link {
+#service-tile-chips :link {
   text-decoration: none;
   color: var(--goa-color-interactive-default);
 }
 
-a:visited {
+#service-tile-chips :visited {
   text-decoration: none;
   color: var(--goa-color-interactive-default);
 }
 
-a:hover {
+#service-tile-chips :hover {
   text-decoration: underline;
   color: var(--goa-color-interactive-default);
 }
 
-a:active {
+#service-tile-chips :active {
   text-decoration: underline;
   color: var(--goa-color-interactive-default);
 }

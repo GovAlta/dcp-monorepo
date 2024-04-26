@@ -4,7 +4,7 @@ import {
   GoABadge,
   GoAIcon,
   GoASideMenu,
-} from '@abgov/react-components';
+} from '@abgov/react-components-4.20.2';
 import React, { useEffect, useState } from 'react';
 import './styles.css';
 import ExternalLink from '../../components/ExternalLink';

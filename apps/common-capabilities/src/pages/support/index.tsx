@@ -4,12 +4,12 @@ import {
   GoAIcon,
   GoASpacer,
   GoAThreeColumnLayout,
-} from '@abgov/react-components';
+} from '@abgov/react-components-4.20.2';
 import './styles.css';
 import faqs from './faq.json';
 import ExternalLink from '../../components/ExternalLink';
 
-export default function ContactPage(): JSX.Element {
+export default function SupportPage(): JSX.Element {
   useEffect(() => {
     if (window.location.hash) {
       const elmnt = document.getElementById(window.location.hash.substring(1));

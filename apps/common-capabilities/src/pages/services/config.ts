@@ -19,6 +19,10 @@ export const filtersList = [
 
 export const filterListCustom = [
   {
+    title: 'Category',
+    property: 'FunctionalGroup',
+  },
+  {
     title: 'Infrastructure',
     property: 'Environment',
   },
@@ -33,9 +37,5 @@ export const filterListCustom = [
   {
     title: 'Status',
     property: 'Status',
-  },
-  {
-    title: 'Functional Group',
-    property: 'FunctionalGroup',
   },
 ];

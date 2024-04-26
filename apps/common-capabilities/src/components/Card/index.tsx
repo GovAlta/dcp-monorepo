@@ -3,7 +3,7 @@ import {
   GoASpacer,
   GoAChip,
   GoABadge,
-} from '@abgov/react-components';
+} from '@abgov/react-components-4.20.2';
 import React, { useEffect, useState } from 'react';
 import ExternalLink from '../ExternalLink';
 import './styles.css';

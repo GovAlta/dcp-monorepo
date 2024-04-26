@@ -11,6 +11,8 @@
     "@abgov/nx-oc": "^5.1.0",
     "@abgov/react-components": "^4.14.0",
     "@abgov/web-components": "^1.14.0",
+    "@abgov/react-components-4.20.2": "npm:@abgov/react-components@4.20.2",
+    "@abgov/web-components-1.20.3": "npm:@abgov/web-components@1.20.3",
     "@astrojs/mdx": "^0.19.7",
     "@astrojs/react": "^2.2.1",
     "@nrwl/cypress": "15.8.9",
