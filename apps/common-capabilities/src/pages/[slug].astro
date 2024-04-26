@@ -1,8 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { services as apps } from '../content/datastore_old.json';
+import { services as apps } from '../content/datastore.json';
 import Details from './details/index';
-import { GoAButton } from '@abgov/react-components-4.20.2';
 
 export async function getStaticPaths() {
   return apps.map((app) => ({

@@ -13,7 +13,7 @@ export interface Props {
   actionButtons: any;
 }
 
-const { title, actionButtons } = Astro.props;
+const { title } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -76,7 +76,7 @@ const { title, actionButtons } = Astro.props;
   </head>
   <body>
     <section id="top-page"></section>
-    <Header client:load actionButtons={actionButtons} />
+    <Header client:load />
     <slot />
     <GoAAppFooter />
   </body>
