@@ -10,3 +10,6 @@
 .cc-list-design-system {
   margin-left: var(--goa-space-m);
 }
+.cc-landing-callout {
+  width: 75%;
+}
