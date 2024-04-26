@@ -1,4 +1,4 @@
-import { GoAIcon } from '@abgov/react-components';
+import { GoAIcon } from '@abgov/react-components-4.20.2';
 import React from 'react';
 import './styles.css';
 interface LinkProps {

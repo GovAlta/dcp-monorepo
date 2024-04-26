@@ -7,12 +7,12 @@ import {
   GoAInput,
   GoAThreeColumnLayout,
   GoACheckbox,
-  GoAAccordion,
   GoAButton,
   GoAButtonGroup,
   GoADetails,
   GoADivider,
-} from '@abgov/react-components';
+  GoAAccordion,
+} from '@abgov/react-components-4.20.2';
 import Card from '../../components/Card';
 import './styles.css';
 import {
@@ -57,10 +57,7 @@ export default function HomePage(): JSX.Element {
   });
 
   // to force re-render UI for filter selection counts
-  const [rerender, setRerender] = useState("");
-  const [filtersCount, setFiltersCount] = useState(
-    generateFilterCounts(services)
-  );
+  const [rerender, setRerender] = useState('');
 
   // searches for items in the services array that match the search and filter
   // however search takes priority over filters
@@ -111,7 +108,6 @@ export default function HomePage(): JSX.Element {
         selectedFiltersState
       )
     );
-    setFiltersCount(generateFilterCounts(apps));
 
     let timeoutId: NodeJS.Timeout | null = null;
 
@@ -149,9 +145,29 @@ export default function HomePage(): JSX.Element {
   // to update the filters list when the services list changes
   useEffect(() => {
     setFilterList(getAppsFilters(apps, filtersList));
-    setFiltersCount(generateFilterCounts(services));
-    setRerender(" ");
+    setRerender(' ');
   }, [services]);
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const category = urlParams.get('category');
+
+    if (category) {
+      console.log(`Category from URL: ${category}`);
+      // set the state of selectedCheckboxState and selectedFiltersState of category in the functional group
+      setSelectedFiltersState({
+        ...selectedFiltersState,
+        FunctionalGroup: [category, ...selectedFiltersState.FunctionalGroup],
+      });
+      setCheckedFilters({
+        ...checkedFilters,
+        FunctionalGroup: {
+          ...checkedFilters.FunctionalGroup,
+          [category]: true,
+        },
+      });
+    }
+  }, []);
 
   return (
     <GoAThreeColumnLayout
@@ -286,7 +302,7 @@ export default function HomePage(): JSX.Element {
                       );
                     }}
                   />
-                ))}
+                ))}{' '}
               </GoAAccordion>
               <GoASpacer vSpacing="m" />
             </div>
