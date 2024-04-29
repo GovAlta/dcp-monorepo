@@ -60,13 +60,14 @@ export default function Landing(): JSX.Element {
         minHeight="20%"
         textColor="#333333"
         backgroundColor="#F1F1F1"
+        maxContentWidth='1500px'
       >
         <div className="cc-hero-subheading">
           A central hub for discovering and leveraging the foundational
           frameworks that drive success within GoA
         </div>
       </GoAHeroBanner>
-      <GoAPageBlock width="70%">
+      <GoAPageBlock width="1200px">
         <GoASpacer vSpacing="3xl" />
         <h2>
           Common capabilities is designed specifically for developers and
@@ -90,7 +91,7 @@ export default function Landing(): JSX.Element {
 
         <h2>Browse services by category</h2>
         <GoASpacer vSpacing="s" />
-        <GoAGrid minChildWidth="30ch" gap="4xl">
+        <GoAGrid minChildWidth="30ch" gap="3xl">
           {categories.map((category) => (
             <Category
               key={category.title}
