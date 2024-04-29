@@ -18,8 +18,12 @@ The css will be used as the classname as defined in styles.css. "[value]" is a s
 ### Group Column
 There are 5 fixed values as shown below:
 
-#### Top,Spec,Body
-These 3 are used in the details page. Assign the "Group" column to one of these values. The row order will set the display order.
+#### Top / Body
+These 2 are used in the details page. Assign the "Group" column to one of these values to put that data in that block. Top is displayed first. After that, the main difference is that the body fields will show the display name with the data.
+
+#### Spec
+This is a subgroup called by the datatype Specs() which would be used in the body group.
+The row order will set the display order within the specification block.
 
 #### Security
 Are all the security fields. Some use the subgroup that match the security datatype. The other have a fieldname that is derived from the datatype. Eg: SecurityStatus. These will be the group name. A special feature of this is the "Display" can contain column headers.
@@ -27,7 +31,8 @@ Example: "Required before using this service(Assessment/Consult, Required)" will
 Any "Note" will be inserted between the Display text and the group table.
 
 #### FunctionalGroup
-Is a list of the FunctionalGroups and the "Note" is used as the desciption on the home page.
+Is a list of the FunctionalGroups and the "Note" is could be used as the desciption on the home page.
+
 
 
 
