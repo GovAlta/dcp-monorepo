@@ -42,7 +42,7 @@ if ProductionData:
 
 elif current_user == 'steve.rozeboom':
     CSV_fileNames = ['CommonCapabilities','CommonCapabilitiesSamples']
-    outputDirectories = ['..\\..\\..\\..\\..\\ReactJS\\list\\build\\','..\\..\\..\\..\\..\\ReactJS\\list\public\\','.\\']
+    outputDirectories = ['..\\..\\..\\..\\..\\ReactJS\\list\\build\\','..\\..\\..\\..\\..\\ReactJS\\list\public\\','.\\','..\\src\\content\\']
 
 else:
     CSV_fileNames = ['CommonCapabilities','CommonCapabilitiesSamples']
@@ -85,7 +85,7 @@ if not haveOutput:
 # Finished checks, I've got everything I need to continue...
 
 #=================================================
-from functions import replace_special_characters,replace_Bool,linkList,asArray,createContact,createSecurityList #,createSecurityList1
+from functions import replace_special_characters,replace_Bool,linkList,asArray,createContact,createSecurityList
 # from functions import spellingVote
 # from functions import getPageNameFromURLcombo,getPageNameFromURL
 
@@ -147,34 +147,35 @@ for fileName in CSV_fileNames:
 
                     filterText = ''
                     securityBadge = ''
+
+                    for row2 in [item for item in fieldMetadata if item["Filter"] != '' 
+                                 and item["Filter"] != 'No' 
+                                 and item["DataType"] != "int" 
+                                 and csv_row[item["FieldName"]] != '']:
+                        filterText += ',' + csv_row[row2["FieldName"]].strip()
+                    csv_row["filterText"] = filterText[1:].lower().strip()
+
+                    for row2 in [item for item in fieldMetadata if item["Default"] != '' and csv_row[item["FieldName"]] == '']:                        
+                        csv_row[row2["FieldName"]] = row2["Default"]
+
                     for row2 in fieldMetadata:
                         if row2["Filter"] != '':
-                            fn = row2["FieldName"]   # int, text, textArray, urlArray, contactList                                
-                            if row2["Filter"] != 'No' and row2["DataType"] != "int" and csv_row[fn] != '':
-                                filterText += ',' + csv_row[fn].strip()
-
-                            if row2["Default"] != '' and len(csv_row[fn]) == 0 and row2["DataType"] != "textArray":
-                                csv_row[fn] =  row2["Default"]
+                            fn = row2["FieldName"]   # int, text, textArray, urlArray, contactList
 
                             if   row2["DataType"] == "urlArray":
                                 csv_row[fn] = linkList(csv_row[fn])
 
                             elif row2["DataType"] == "textArray":
-                                if len(csv_row[fn]) == 0 and row2["Default"] != '':
-                                    csv_row[fn] = [row2["Default"]]
-                                else:
-                                    csv_row[fn] = asArray(csv_row[fn])
+                                csv_row[fn] = asArray(csv_row[fn])
 
-                            elif row2["DataType"] == "Contacts":  # Lists need be at the bottom of the field list to capture default values                                                        
+                            elif row2["DataType"][:9] == "Contacts(":
                                 csv_row["Contact"] = createContact(csv_row)
                             
-                            elif row2["DataType"][:8] == "Security":
+                            elif row2["DataType"][:9] == "Security(":
                                 csv_row["Security"] = createSecurityList(csv_row,row2["DataType"][9:-1],SecurityFields)
 
                             elif row2["DataType"] == "int":                            
-                                csv_row[fn] = int(csv_row[fn])
- 
-                    csv_row["filterText"] = filterText[1:].lower().strip()
+                                csv_row[fn] = int(csv_row[fn])               
                     
                     if len(csv_row["Summary"]) > 200:
                         print('Summay too long: ' + csv_row["ServiceName"] + ' = ' + str(len(csv_row["Summary"])) )
@@ -189,12 +190,18 @@ for fileName in CSV_fileNames:
                         for delKey in ["Email","Phone","ContactDetails","AltContactMethod","AltContactLink","Nominate","AltServiceName"]:
                             del csv_row[delKey]
                          
-                        for delKey in [item['FieldName'] for item in SecurityFields if item['SubGroup'] != '']:
+                        for delKey in [item['FieldName'] for item in SecurityFields if item['SubGroup'] != '']:                            
                             del csv_row[delKey]  
 
                         id_counter += 1
                         csv_row["appId"] = id_counter
                         data.append(csv_row)
+
+
+for row2 in fieldMetadata:
+    del row2["SubGroup"]     
+    # for delKey in ["SubGroup","Order"]:
+    #     del row2[delKey]     
 
 for dataRow in data:
     notFound = True
@@ -204,7 +211,7 @@ for dataRow in data:
             notFound = False
             break
     if notFound:
-        fieldMetadata.append({"FieldName": dataRow['FunctionalGroup'],"DisplayName": dataRow['FunctionalGroup'],          
+        fieldMetadata.append({"FieldName": dataRow['FunctionalGroup'],"Display": dataRow['FunctionalGroup'],          
                                 "Group": "FunctionalGroup", "Note": "","DataType":'',"Filter":'',"Count": 1 })
         print('***** ADDED FunctionalGroup: "'+dataRow['FunctionalGroup']+ '"  *******')
 
@@ -272,10 +279,10 @@ for row2 in fieldMetadata:
 # ***************** END - Vote on filter text *********************
 
 # ***************** QA report  *********************
-bad_items = [{ 'Provider': item['Provider'], 'ServiceName': item['ServiceName'],'DataIssues': item['DataIssues'],
-               'QA_Score': item['QA'],'Weightage': item['InternalWeightage'],
-               'Documentation': item['Documentation'],
-               'Contact': item['Contact']['methods']
+bad_items = [{ 'Provider': item['Provider'], 'ServiceName': item['ServiceName'],'DataIssues': item['DataIssues']
+               ,'QA_Score': item['QA'],'Weightage': item['InternalWeightage']
+               ,'Documentation': item['Documentation']
+               ,'Contact': item['Contact']['methods']
              } for item in data if item.get('QA') > 10 or item.get('DataIssues') != '']
 if len(bad_items) > 0:
     print('There are ' +str(len(bad_items))+' records to investigate ' + CSV_fileDir + 'dataToInvestigate.csv')    

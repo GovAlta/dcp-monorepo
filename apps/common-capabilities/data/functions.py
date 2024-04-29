@@ -72,16 +72,13 @@ def createContact(csv_row):
 
 #===[ SecurityList() ]==========================================================================
 
-def createSecurityList(dataRow,SecurityGroups,SecurityFields):
-    # itemArray = []
-    badges = []
-
+def createSecurityList(dataRow,SecurityGroups,SecurityFields):  
+ #   badges = []
     objArray = []
 
     for grp in SecurityGroups.split(','):        
         itemArray = []
-        fieldsToGet = [item for item in SecurityFields if item['SubGroup'] == grp]
-        
+        fieldsToGet = [item for item in SecurityFields if item['SubGroup'] == grp]        
 
         for fld in fieldsToGet:     
             # print(fld['FieldName'])

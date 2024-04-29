@@ -5,6 +5,32 @@
   * CommonCapabilitiesFields.csv
   * CommonCapabilitiesSamples.csv  (optional)
 
+
+## CommonCapabilitiesFields.csv
+
+### DataType : Security(Status,Required,Info)
+This is a special datatype for security. The blocks will be shown in order of the keywords in (). These blocks are to be listed in the "SubGroup" column of the Security group fields. For example "CMRA" field has a group="Security" and a SubGroup="Status"
+
+### css Column
+The css will be used as the classname as defined in styles.css. "[value]" is a special case that will be replaced in the classname. Example: "status status[value]" to be converted to "status statusBeta" etc.
+"[value]" by itself can be used to turn, for example, a value of "Other" to a lighter color.
+
+### Group Column
+There are 5 fixed values as shown below:
+
+#### Top,Spec,Body
+These 3 are used in the details page. Assign the "Group" column to one of these values. The row order will set the display order.
+
+#### Security
+Are all the security fields. Some use the subgroup that match the security datatype. The other have a fieldname that is derived from the datatype. Eg: SecurityStatus. These will be the group name. A special feature of this is the "Display" can contain column headers.
+Example: "Required before using this service(Assessment/Consult, Required)" will use the value in () as the table column headers.
+Any "Note" will be inserted between the Display text and the group table.
+
+#### FunctionalGroup
+Is a list of the FunctionalGroups and the "Note" is used as the desciption on the home page.
+
+
+
 ## Can be run from command line
   Usage: python csv2json.py <[P,D]> <output_path>"
   The first param is P=Prod or D=Development (it only really checks for "P" but it must be one char)

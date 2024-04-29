@@ -8,53 +8,18 @@ import {
 import React, { useEffect, useState } from 'react';
 import './styles.css';
 import ExternalLink from '../../components/ExternalLink';
+import { string, type any } from 'astro/zod';
+
 interface DetailsProps {
   app: any;
+  fields: any;  
 }
-export default function Details({ app }: DetailsProps): JSX.Element {
+
+export default function Details({ app, fields}: DetailsProps): JSX.Element {
   const [items, setItems] = useState<any>({
     badges: [],
     content: [],
   });
-
-  const badgesToShow = ['FunctionalGroup', 'Language', 'Keywords'];
-  const contentToShow = [
-    {
-      name: 'Description',
-      id: 'service-overview',
-      title: 'Overview',
-      showInSidebar: true,
-      showContent: true,
-    },
-    {
-      name: 'Prerequisites',
-      id: 'service-prerequisites',
-      title: 'Prerequisites',
-      showInSidebar: true,
-      showContent: true,
-    },
-    {
-      name: 'Comments',
-      id: 'service-comments',
-      title: 'Additional information',
-      showInSidebar: true,
-      showContent: true,
-    },
-    {
-      name: 'Documentation',
-      id: 'service-documentation',
-      title: 'Documentation',
-      showInSidebar: app.Documentation.length > 0 ? true : false,
-      showContent: app.Documentation.length > 0 ? true : false,
-    },
-    {
-      name: 'Contact',
-      id: 'service-contact',
-      title: 'Contact us',
-      showInSidebar: app.Contact.methods.length >= 1 ? true : false,
-      showContent: app.Contact.methods.length >= 1 ? true : false,
-    },
-  ];
 
   useEffect(() => {
     if (window.location.hash) {
@@ -63,83 +28,64 @@ export default function Details({ app }: DetailsProps): JSX.Element {
     }
   }, []);
 
-  useEffect(() => {
-    let showBadges: any[] = [];
-    let showContent: any[] = [];
-    if (app.InternalWeightage >= 50) {
-      showBadges.push(
-        <GoABadge key="validated" type="midtone" content="Validated" />
-      );
+  
+  const getDisplayName = (myFieldList: FieldItem[], fName: string) => {
+    const tmp = myFieldList.find((item: FieldItem) => item.FieldName === fName);
+    if (tmp !== undefined) {
+      return tmp.Display;      
     }
-    badgesToShow.forEach((badge) => {
-      if (app[badge] !== '' && app[badge]?.length > 0) {
-        if (
-          Array.isArray(app[badge]) &&
-          !app[badge].some((item: string) => item.toLowerCase() === 'other')
-        ) {
-          app[badge].forEach((badgeValue: string) => {
-            showBadges.push(
-              <GoABadge
-                key={badgeValue}
-                type="information"
-                content={badgeValue}
-              />
-            );
-          });
-        }
-        if (
-          typeof app[badge] === 'string' &&
-          app[badge].toLowerCase() !== 'other'
-        ) {
-          showBadges.push(
-            <GoABadge key={badge} type="information" content={app[badge]} />
-          );
-        }
-      }
-    });
-    contentToShow.map((content) => {
-      if (app[content.name] !== '') {
-        showContent.push(content);
-      }
-    });
+    return fName;
+  };
 
-    setItems({
-      badges: showBadges,
-      content: showContent,
-    });
-  }, []);
+  interface FieldItem { FieldName: string; Display: string; Note: string; Group: string; Show: boolean; DataType: string; Filter:string; css:string }
 
-  // table
+  interface SecurityProps {
+    fieldList: FieldItem[];
+    group: {Type:string; Items: any[]}
+  }
+
+  const SecurityBlock: React.FC<SecurityProps> = ({ fieldList, group }) => {
+    const tmp = fieldList.find((items: FieldItem) => items.FieldName === 'Security'+group.Type);
+    if (tmp == undefined) {
+      return (<h4 className='tbd'>{'Missing: Security '+group.Type}</h4>)    
+    }        
+    let groupName: string = tmp.Display;
+    let tableTH: string[] = [];
+    const openBracketIndex = tmp.Display.indexOf('(');
+    const closeBracketIndex = tmp.Display.indexOf(')');    
+    if (openBracketIndex !== -1 && closeBracketIndex !== -1) {
+      groupName = tmp.Display.substring(0, openBracketIndex);
+      tableTH = tmp.Display.substring(openBracketIndex + 1, closeBracketIndex).split(',');      
+    }
+  
+    return (<>
+          <span className='security-group'> {groupName} </span>
+          {(tmp.Note !== '' ? <div className='security-group-note'> {tmp.Note} </div> : <></>)}
+          <table className="security-table">
+            <tbody>
+              {(tableTH.length > 0 
+              ? <tr><th colSpan={2}>{tableTH[0]} </th><th>{tableTH[1]} </th></tr>  
+              : <tr><th colSpan={3}></th></tr>
+              )}
+              { group.Items.map((item :any) => (            
+              <tr><td> {getDisplayName(fields, item.Field)}  </td> <td></td>
+              <td className={'service-content '+ tmp.css.replace('[value]', item.Value)}> {item.Value}  </td></tr>
+              )) }
+            </tbody>
+            </table>        
+        </>      
+    );  
+  }
+ 
   const renderContact = (method: any) => {
     const contactMethods: any = {
-      Slack: {
-        iconType: 'logo-slack',
-        linkPrefix: '',
-      },
-      Email: {
-        iconType: 'mail',
-        linkPrefix: 'mailto:',
-      },
-      Phone: {
-        iconType: 'call',
-        linkPrefix: 'tel:',
-      },
-      BERNIE: {
-        iconType: 'cart',
-        linkPrefix: '',
-      },
-      Web: {
-        iconType: 'globe',
-        linkPrefix: '',
-      },
-      Sharepoint: {
-        iconType: 'share-social',
-        linkPrefix: '',
-      },
-      Github: {
-        iconType: 'logo-github',
-        linkPrefix: '',
-      },
+      Slack: {      iconType: 'logo-slack',   linkPrefix: ''       },
+      Email: {      iconType: 'mail',         linkPrefix: 'mailto:'},
+      Phone: {      iconType: 'call',         linkPrefix: 'tel:'   },
+      BERNIE: {     iconType: 'cart',         linkPrefix: ''       },
+      Web:   {      iconType: 'globe',        linkPrefix: ''       },
+      Sharepoint: { iconType: 'share-social', linkPrefix: ''       },
+      Github: {     iconType: 'logo-github',  linkPrefix: ''       },
     };
     const methodConfig = contactMethods[method.type] || {};
     const iconType = methodConfig.iconType || '';
@@ -161,17 +107,37 @@ export default function Details({ app }: DetailsProps): JSX.Element {
     );
   };
 
-  const renderContent = (name: string, app: any) => {
-    if (name === 'Documentation' && app.Documentation.length > 0) {
-      return app.Documentation.map((doc: any) => (
+  const renderContent = (name: string, app: any, fields: FieldItem[], DataType: string, css: string) => {
+    //if (DataType === 'urlArray' && app.Documentation.length > 0) {
+    if (DataType === 'urlArray') {
+      return app[name].map((doc: any) => (
         <div>
-          <ExternalLink text={`${doc.name} documentation`} link={doc.url} />
+          <ExternalLink text={`${doc.name}`} link={doc.url} />
           <GoASpacer vSpacing="s" />
         </div>
       ));
     }
+ 
+    else if (name === 'Specifications' || DataType === 'Specs()' ) {
+      return (
+        <table className="security-specs">
+        <tbody>        
+          {app.InternalWeightage > 49 ? (<tr><td colSpan={3}> <GoABadge key="Recommended" type="midtone" content="Recommended" /> </td></tr>) : ('')}
+          {fieldsSpec.map(({ FieldName, Display, id, DataType, css }: any) => (
+          <tr key={id}>
+            <td>{Display}</td>
+            <td>
+              <span className={css.replace('[value]', app[FieldName])}>
+              { DataType === 'textArray' ? app[FieldName].join(", ") : app[FieldName] }
+              </span></td>
+            </tr>
+          ))}
+        </tbody>
+        </table>
+      );
+    }
 
-    if (name === 'Contact') {
+    else if (name === 'Contact') {
       return (
         <table className="contact-table">
           <tbody>
@@ -181,55 +147,72 @@ export default function Details({ app }: DetailsProps): JSX.Element {
       );
     }
 
-    return <p className="service-content">{app[name]}</p>;
+    else if (name === 'Security') {
+      return (<>
+      <div className='security'>        
+        { app.Security.map((sGroup :any) => (
+          <SecurityBlock group={sGroup} fieldList={fields} />
+          )) }
+      </div>
+      </> );
+    }
+
+    else if (DataType === 'textArray')          
+      return <p className="service-content">{app[name].join(", ")} </p>;
+
+    else    
+      return <p className={'service-content '+ css.replace('[value]', app[name])}>{app[name]}</p>;
   };
+  
+  interface FieldPlus extends FieldItem { id: string; } // Show: boolean;
+
+  const filteredFields = (fields: FieldItem[], filterCondition: string): FieldPlus[] => {
+    return fields.filter((item: FieldItem) =>
+       item.Group === filterCondition && (item.DataType.indexOf('(') > 0
+        || app[item.FieldName].length > 0 
+        || (item.FieldName === 'Contact' && app.Contact.methods.length > 0) ))
+    .map((obj: FieldItem) => ({
+         ...obj
+         ,id: 'myservice-' + obj.FieldName        
+       }));
+  };
+
+  const fieldsBody: FieldPlus[] = filteredFields(fields, 'Body');
+  const fieldsTop:  FieldPlus[] = filteredFields(fields, 'Top');
+  const fieldsSpec: FieldPlus[] = filteredFields(fields, 'Spec');
+
   return (
     <>
       <GoAThreeColumnLayout
-        nav={
-          <div className="details-side-nav">
-            <GoASideMenu>
-              {items.content.length > 0
-                ? items.content.map((content: any) => {
-                    return content.showInSidebar ? (
-                      <a key={`${content.id}`} href={`#${content.id}`}>
-                        {content.title}
-                      </a>
-                    ) : (
-                      ''
-                    );
+        nav= {
+          <div className="details-side-nav">           
+            <GoASideMenu>           
+              { fieldsBody.map((content: any) => {
+                  return ( <a key={`${content.id}`} href={`#${content.id}`}> {content.Display} </a> );
                   })
-                : ''}
+              }
             </GoASideMenu>
+            <br/><br/> (hide menu when printing)
           </div>
         }
-      >
-        <div className="service-heading">
-          <h2>{app.ServiceName}</h2>
-          {app.Status !== '' && app.Status.toLowerCase() !== 'other' ? (
-            <GoABadge type="success" content={app.Status} />
-          ) : (
-            ''
-          )}
-        </div>
-        <GoASpacer vSpacing="xs" />
-        <p className="service-subtitle"> {app.Provider}</p>
-
-        <div className="service-badges">
-          {items.badges.length > 0 ? items.badges : ''}
-        </div>
-
+       >        
+        <GoASpacer vSpacing="xs" />        
+        {fieldsTop.map(({ FieldName, DataType, css }: any) => (
+          <div>
+             <span className={'service-content '+ css.replace('[value]', app[FieldName])}>
+             {DataType === 'textArray' ? app[FieldName].join(", ") : app[FieldName]}
+             </span>
+             </div>
+           ))
+        }
         <GoASpacer vSpacing="xl" />
-        {items.content.length > 0 &&
-          items.content.map(({ id, name, title, showContent }: any) => {
-            if (!showContent) return null;
-
+        {fieldsBody.map(({ FieldName, Display, id, DataType,css }: any) => {            
             return (
               <div key={`${id}`}>
-                <h3 id={`${id}`}>{title}</h3>
-                {renderContent(name, app)}
+                <h3 id={`${id}`}>{Display} </h3>
+                {renderContent(FieldName, app, fields, DataType, css)}
                 <GoASpacer vSpacing="l" />
-              </div>
+              </div>              
             );
           })}
 
