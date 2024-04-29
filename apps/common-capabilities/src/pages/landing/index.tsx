@@ -77,11 +77,14 @@ export default function Landing(): JSX.Element {
         <GoASpacer vSpacing="s" />
         <ul className="goa-unordered-list cc-list-spacing">
           <li>
-            Expedite development and reduce time to market for new solutions
+              Accelerate development by reusing existing capabilities and build new services faster.
           </li>
-          <li>Enhance security and compliance measures</li>
-          <li>Ensure compatibility and synergy across projects</li>
-          <li>Foster collaboration and innovation across teams</li>
+          <li>
+              Enhance security and compliance measures to create ethical services that protect user privacy.
+          </li>
+          <li>
+              Contribute to a culture of collaboration across teams to ensure service delivery efficiency and innovation.
+          </li>
         </ul>
         {/* <ExternalLink
           link={'/gettingstarted/index.html'}
