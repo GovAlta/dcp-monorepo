@@ -12,7 +12,7 @@ const Category: React.FC<Props> = ({ title, description, link }) => {
     <div>
       <h3>{title}</h3>
       <p>{description}</p>
-      <ExternalLink text={title} link={link} />
+      <ExternalLink text={title} link={link} newTab={false} />
     </div>
   );
 };
