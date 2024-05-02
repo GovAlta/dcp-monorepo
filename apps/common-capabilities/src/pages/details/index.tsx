@@ -199,7 +199,7 @@ export default function Details({ app }: DetailsProps): JSX.Element {
                       ''
                     );
                   })
-                : ''}
+                : 'No content'}
             </GoASideMenu>
           </div>
         }

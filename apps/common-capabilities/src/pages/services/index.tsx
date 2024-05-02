@@ -30,7 +30,13 @@ export default function HomePage(): JSX.Element {
   const [collapseKey, setCollapseKey] = useState(0);
   const [searchFilter, setSearchFilter] = useState('');
   const [services, setServices] = useState([]);
-  const [filtersAccordionState, setFiltersAccordionState] = useState(false);
+  const [filtersAccordionState, setFiltersAccordionState] = useState({
+    Environment: false,
+    Language: false,
+    Keywords: false,
+    Status: false,
+    FunctionalGroup: false,
+  });
   const date = new Date(lastUpdated);
   const formattedDate = date.toLocaleDateString('en-US', {
     year: 'numeric',
@@ -166,6 +172,10 @@ export default function HomePage(): JSX.Element {
           [category]: true,
         },
       });
+      setFiltersAccordionState({
+        ...filtersAccordionState,
+        FunctionalGroup: true,
+      });
     }
   }, []);
 
@@ -217,7 +227,13 @@ export default function HomePage(): JSX.Element {
               size="compact"
               type="secondary"
               onClick={() => {
-                setFiltersAccordionState(false);
+                setFiltersAccordionState({
+                  Environment: false,
+                  Language: false,
+                  Keywords: false,
+                  Status: false,
+                  FunctionalGroup: false,
+                });
                 setCollapseKey((prevKey) => prevKey + 1); //
               }}
             >
@@ -227,7 +243,13 @@ export default function HomePage(): JSX.Element {
               size="compact"
               type="secondary"
               onClick={() => {
-                setFiltersAccordionState(true);
+                setFiltersAccordionState({
+                  Environment: true,
+                  Language: true,
+                  Keywords: true,
+                  Status: true,
+                  FunctionalGroup: true,
+                });
               }}
             >
               Expand all
@@ -244,7 +266,7 @@ export default function HomePage(): JSX.Element {
                   selectedFiltersState[filterCategory.property].length
                 }) ${rerender}`}
                 headingSize="small"
-                open={filtersAccordionState}
+                open={filtersAccordionState[filterCategory.property]}
               >
                 {filterList[filterCategory.property]?.map((filter) => (
                   <GoACheckbox
@@ -313,21 +335,6 @@ export default function HomePage(): JSX.Element {
       <h2 id="home-title">Services</h2>
       <span className="last-updated">Last updated: {formattedDate}</span>
       <GoASpacer vSpacing="xs" />
-
-      <p className="cc-intro">
-        Common capabilities encompass a broad spectrum of software components
-        and systems ( including applications, APIs, frameworks, libraries,
-        tools, services and various other types). These are like building blocks
-        that can be used on their own or together to improve and simplify
-        processes. These components are known for being reusable, able to make
-        operations more efficient, in line with the organization's goals, and
-        compatible with existing systems. We provide here a listing of common
-        capabilities to explore. For specific inquiries, we recommend reaching
-        out to the respective teams who are owners for capabilities. Refer to{' '}
-        <a href="/contact/index.html#faq-section">FAQ</a> page for more details.
-      </p>
-      <GoASpacer vSpacing="2xl" />
-
       <GoADetails heading="Recommended capabilities">
         <ul>
           <li>
