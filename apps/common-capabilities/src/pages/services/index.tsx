@@ -159,16 +159,24 @@ export default function HomePage(): JSX.Element {
     const category = urlParams.get('category');
 
     if (category) {
-      console.log(`Category from URL: ${category}`);
+      localStorage.removeItem('searchFilter');
+      localStorage.removeItem('searchTimestamp');
+
+      localStorage.removeItem('selectedCheckboxState');
+      localStorage.removeItem('selectedFiltersState');
+
       // set the state of selectedCheckboxState and selectedFiltersState of category in the functional group
       setSelectedFiltersState({
-        ...selectedFiltersState,
-        FunctionalGroup: [category, ...selectedFiltersState.FunctionalGroup],
+        ...defaultState.selectedFilters,
+        FunctionalGroup: [
+          category,
+          ...defaultState.selectedFilters.FunctionalGroup,
+        ],
       });
       setCheckedFilters({
-        ...checkedFilters,
+        ...generateFilterObject(),
         FunctionalGroup: {
-          ...checkedFilters.FunctionalGroup,
+          ...generateFilterObject().FunctionalGroup,
           [category]: true,
         },
       });
