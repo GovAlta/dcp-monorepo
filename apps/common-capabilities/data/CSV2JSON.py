@@ -36,17 +36,22 @@ if (DevProdArg != ''):
 
 current_user = getpass.getuser()
 
+outputDirData = []
+outputDirFields = ['..\\..\\..\\..\\..\\ReactJS\\list\\build\\','..\\..\\..\\..\\..\\ReactJS\\list\public\\'                         ]
+outputDirConfig = ['..\\src\pages\\details\\']
+
 if ProductionData:
     CSV_fileNames = ['CommonCapabilities']
-    outputDirectories = ['..\\src\\content\\','.\\']
+    outputDirData = ['..\\src\\content\\','.\\']
 
 elif current_user == 'steve.rozeboom':
     CSV_fileNames = ['CommonCapabilities','CommonCapabilitiesSamples']
-    outputDirectories = ['..\\..\\..\\..\\..\\ReactJS\\list\\build\\','..\\..\\..\\..\\..\\ReactJS\\list\public\\','.\\','..\\src\\content\\']
-
+    outputDirData = ['..\\..\\..\\..\\..\\ReactJS\\list\\build\\',
+                         '..\\..\\..\\..\\..\\ReactJS\\list\public\\',
+                         '.\\','..\\src\\content\\']
 else:
     CSV_fileNames = ['CommonCapabilities','CommonCapabilitiesSamples']
-    outputDirectories = ['..\\src\\content\\']
+    outputDirData = ['..\\src\\content\\']
 
 
 CSV_fileDir = '.\\'
@@ -64,21 +69,21 @@ if foundPath == '':
     sys.exit()
 
 
-outputDirectories = [foundPath + string for string in outputDirectories]
+outputDirData = [foundPath + string for string in outputDirData]
 CSV_fileDir = foundPath
 
 if (FldArg != ''):
     if FldArg[-1] != '\\':
         FldArg += '\\'    
-    outputDirectories = [FldArg]
+    outputDirData = [FldArg]
 
 haveOutput = False
-for folderName in outputDirectories:
+for folderName in outputDirData:
     if os.path.exists(folderName):
         haveOutput = True
         break
 if not haveOutput:
-    print('\n-----------------\nCould not find output folder:', outputDirectories )
+    print('\n-----------------\nCould not find output folder:', outputDirData )
     sys.exit()
 
 
@@ -102,17 +107,17 @@ with open(CSV_fileDir + 'CommonCapabilitiesFields.csv', 'r', encoding='utf-8-sig
     for row in csvreader:        
         row = {key: replace_special_characters(value) for key, value in row.items()}
         row = {key: replace_Bool(value) for key, value in row.items()}       
-        if row["FieldName"] != "":
-            del row["Extra"]
-            if row["Type"] == "Field":                               
-                del row["Type"]
+        if row["fieldName"] != "":
+            del row["extra"]
+            if row["type"] == "Field":                               
+                del row["type"]
 
-                if  row["Group"] == 'FunctionalGroup':
-                    row["Count"] = 0
+                if  row["group"] == 'FunctionalGroup':
+                    row["count"] = 0
                 fieldMetadata.append(row)
 
-            elif row["Type"] == "Lookup":                
-                for delKey in ["Type","Filter","ShowBadge","Note","Group","SubGroup","Default"]:
+            elif row["type"] == "Lookup":                
+                for delKey in ["type","filter","showBadge","note","group","subGroup","default"]:
                     del row[delKey]
 
                 LookUpData.append(row)
@@ -125,7 +130,7 @@ print('\n' + colorBlack + '------[ Create JSON files for ' + current_user +': ' 
       + CSV_fileDir +'\nInput: ' + 'CommonCapabilitiesFields.csv')
 
 
-SecurityFields = [item for item in fieldMetadata if item['Group'][:8] == 'Security']
+SecurityFields = [item for item in fieldMetadata if item['group'][:8] == 'Security']
 
 for fileName in CSV_fileNames:    
     if os.path.exists(CSV_fileDir + fileName + '.csv'):
@@ -148,33 +153,33 @@ for fileName in CSV_fileNames:
                     filterText = ''
                     securityBadge = ''
 
-                    for row2 in [item for item in fieldMetadata if item["Filter"] != '' 
-                                 and item["Filter"] != 'No' 
-                                 and item["DataType"] != "int" 
-                                 and csv_row[item["FieldName"]] != '']:
-                        filterText += ',' + csv_row[row2["FieldName"]].strip()
+                    for row2 in [item for item in fieldMetadata if item["filter"] != '' 
+                                 and item["filter"] != 'No' 
+                                 and item["dataType"] != "int" 
+                                 and csv_row[item["fieldName"]] != '']:
+                        filterText += ',' + csv_row[row2["fieldName"]].strip()
                     csv_row["filterText"] = filterText[1:].lower().strip()
 
-                    for row2 in [item for item in fieldMetadata if item["Default"] != '' and csv_row[item["FieldName"]] == '']:                        
-                        csv_row[row2["FieldName"]] = row2["Default"]
+                    for row2 in [item for item in fieldMetadata if item["default"] != '' and csv_row[item["fieldName"]] == '']:                        
+                        csv_row[row2["fieldName"]] = row2["default"]
 
                     for row2 in fieldMetadata:
-                        if row2["Filter"] != '':
-                            fn = row2["FieldName"]   # int, text, textArray, urlArray, contactList
+                        if row2["filter"] != '':
+                            fn = row2["fieldName"]   # int, text, textArray, urlArray, contactList
 
-                            if   row2["DataType"] == "urlArray":
+                            if   row2["dataType"] == "urlArray":
                                 csv_row[fn] = linkList(csv_row[fn])
 
-                            elif row2["DataType"] == "textArray":
+                            elif row2["dataType"] == "textArray":
                                 csv_row[fn] = asArray(csv_row[fn])
 
-                            elif row2["DataType"][:9] == "Contacts(":
+                            elif row2["dataType"][:9] == "Contacts(":
                                 csv_row["Contact"] = createContact(csv_row)
                             
-                            elif row2["DataType"][:9] == "Security(":
-                                csv_row["Security"] = createSecurityList(csv_row,row2["DataType"][9:-1],SecurityFields)
+                            elif row2["dataType"][:9] == "Security(":
+                                csv_row["Security"] = createSecurityList(csv_row,row2["dataType"][9:-1],SecurityFields)
 
-                            elif row2["DataType"] == "int":                            
+                            elif row2["dataType"] == "int":                            
                                 csv_row[fn] = int(csv_row[fn])               
                     
                     if len(csv_row["Summary"]) > 200:
@@ -190,7 +195,7 @@ for fileName in CSV_fileNames:
                         for delKey in ["Email","Phone","ContactDetails","AltContactMethod","AltContactLink","Nominate","AltServiceName"]:
                             del csv_row[delKey]
                          
-                        for delKey in [item['FieldName'] for item in SecurityFields if item['SubGroup'] != '']:                            
+                        for delKey in [item['fieldName'] for item in SecurityFields if item['subGroup'] != '']:
                             del csv_row[delKey]  
 
                         id_counter += 1
@@ -199,20 +204,20 @@ for fileName in CSV_fileNames:
 
 
 for row2 in fieldMetadata:
-    del row2["SubGroup"]     
-    # for delKey in ["SubGroup","Order"]:
+    del row2["subGroup"]     
+    # for delKey in ["subGroup","Order"]:
     #     del row2[delKey]     
 
 for dataRow in data:
     notFound = True
     for catRow in fieldMetadata:
-        if catRow['Group'] == 'FunctionalGroup' and catRow['FieldName'].lower() == dataRow['FunctionalGroup'].lower():
-            catRow['Count'] = catRow['Count'] + 1 # catRow.get('count', 0) + 1
+        if catRow['group'] == 'FunctionalGroup' and catRow['fieldName'].lower() == dataRow['FunctionalGroup'].lower():
+            catRow['count'] = catRow['count'] + 1
             notFound = False
             break
     if notFound:
-        fieldMetadata.append({"FieldName": dataRow['FunctionalGroup'],"Display": dataRow['FunctionalGroup'],          
-                                "Group": "FunctionalGroup", "Note": "","DataType":'',"Filter":'',"Count": 1 })
+        fieldMetadata.append({"fieldName": dataRow['FunctionalGroup'],"display": dataRow['FunctionalGroup'],          
+                                "group": "FunctionalGroup", "showBadge": "", "default": "","note": "","dataType":'',"filter":'',"count": 1 })
         print('***** ADDED FunctionalGroup: "'+dataRow['FunctionalGroup']+ '"  *******')
 
 
@@ -234,13 +239,13 @@ def needsEdit(val):
         return {}
 # ******    
 for row2 in fieldMetadata:
-    fn = row2["FieldName"]
-    if row2["Filter"] != 'No' and row2["DataType"] != 'List' and row2["Filter"] != '':
+    fn = row2["fieldName"]
+    if row2["filter"] != 'No' and row2["dataType"] != 'List' and row2["filter"] != '':
         for dataRow in data:
-            if row2["DataType"] == 'text':
+            if row2["dataType"] == 'text':
                 if dataRow[fn] != '':                   
                     wordVote(dataRow[fn])
-            elif row2["DataType"] == 'textArray':
+            elif row2["dataType"] == 'textArray':
                     for val in dataRow[fn]:
                         wordVote(val)
 string_counts_with_group = [{'string': key, 'count': value, 'group': shorten(key)} for key, value in wordCounts.items()]
@@ -260,16 +265,16 @@ for grp in groups:
         needEdit[grp] = gstr
         
 for row2 in fieldMetadata:
-    fn = row2["FieldName"]
-    if row2["Filter"] != 'No' and row2["Filter"] != '':
+    fn = row2["fieldName"]
+    if row2["filter"] != 'No' and row2["filter"] != '':
         for dataRow in data:
-            if row2["DataType"] == 'text':
+            if row2["dataType"] == 'text':
                 updated = needsEdit(dataRow[fn])
                 if updated:
                     modifiedRecords.append([dataRow['ServiceName'],fn,dataRow[fn],updated])
                     dataRow[fn] = updated
 
-            elif row2["DataType"] == 'textArray':
+            elif row2["dataType"] == 'textArray':
                     for val in dataRow[fn]:
                         updated = needsEdit(val)
                         if updated:
@@ -305,15 +310,44 @@ data2 = {"lastUpdated": current_date
          ,"mostRecentService": mostRecentService
          ,"dateFormat": "mm/dd/yyyy"
          ,"services": data
-         ,"fields": fieldMetadata
-         ,"LookUp": LookUpData
+        #  ,"fields": updated_data # fieldMetadata
+        #  ,"LookUp": LookUpData
         }
 
-for folderName in outputDirectories:
+# Now output to: outputDirData , outputDirFields, outputDirConfig
+
+for folderName in outputDirData:
     if os.path.exists(folderName):
         with open(folderName +  'datastore.json', 'w') as jsonfile:
             jsonfile.write(json.dumps(data2, indent=4))
-        print('Output: ' + folderName + 'datastore.json')
+
+for folderName in outputDirFields:
+    if os.path.exists(folderName):       
+        with open(folderName + 'datafields.json', 'w') as jsonfile:
+           jsonfile.write(json.dumps(fieldMetadata, indent=4))
+
+updated_data = [row for row in fieldMetadata if row.get("Group") != "FunctionalGroup"] 
+for row in updated_data:
+    for delKey in ["filter","showBadge","default"]:
+        del row[delKey]
+
+for item in updated_data:
+    item["property"] = item["fieldName"]
+    item["title"] = item["display"]
+    del item["fieldName"]
+    del item["display"]
+
+for folderName in outputDirConfig:
+    if os.path.exists(folderName):
+        with open(folderName + 'config.ts', 'w') as configfile:
+            configfile.write('export const fieldList = ')  
+            configfile.write(json.dumps(updated_data, indent=4))  
+        
+
+        print('Output: ' + folderName + 'datastore.json & datafields.json')
+
+
+
 
 
 if len(modifiedRecords) > 0:
