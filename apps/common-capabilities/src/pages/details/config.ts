@@ -2,7 +2,7 @@ export const fieldList = [
     {
         "group": "Top",
         "dataType": "text",
-        "css": "",
+        "css": "<span> alignleft",
         "note": "",
         "property": "FunctionalGroup",
         "title": "Category"
@@ -10,18 +10,10 @@ export const fieldList = [
     {
         "group": "Top",
         "dataType": "text",
-        "css": "service-heading",
+        "css": "<h2> service-heading",
         "note": "",
         "property": "ServiceName",
         "title": "Service"
-    },
-    {
-        "group": "Spec",
-        "dataType": "text",
-        "css": "contact-type",
-        "note": "",
-        "property": "Provider",
-        "title": "Provider"
     },
     {
         "group": "Top",
@@ -32,7 +24,7 @@ export const fieldList = [
         "title": "Overview"
     },
     {
-        "group": "Tile",
+        "group": "",
         "dataType": "text",
         "css": "",
         "note": "",
@@ -41,8 +33,16 @@ export const fieldList = [
     },
     {
         "group": "Spec",
+        "dataType": "text",
+        "css": "<span>",
+        "note": "",
+        "property": "Provider",
+        "title": "Provider"
+    },
+    {
+        "group": "Spec",
         "dataType": "status",
-        "css": "contact-type",
+        "css": "<span>",
         "note": "",
         "property": "Status",
         "title": "Status"
@@ -50,7 +50,7 @@ export const fieldList = [
     {
         "group": "",
         "dataType": "textArray",
-        "css": "contact-type",
+        "css": "",
         "note": "",
         "property": "Audience",
         "title": "Audience"
@@ -58,7 +58,7 @@ export const fieldList = [
     {
         "group": "Spec",
         "dataType": "text",
-        "css": "contact-type",
+        "css": "<span>",
         "note": "",
         "property": "Version",
         "title": "Version"
@@ -66,7 +66,7 @@ export const fieldList = [
     {
         "group": "Spec",
         "dataType": "textArray",
-        "css": "contact-type",
+        "css": "",
         "note": "",
         "property": "Language",
         "title": "Language"
@@ -74,7 +74,7 @@ export const fieldList = [
     {
         "group": "Spec",
         "dataType": "textArray",
-        "css": "contact-type",
+        "css": "",
         "note": "",
         "property": "Environment",
         "title": "Infrastructure"
@@ -82,7 +82,7 @@ export const fieldList = [
     {
         "group": "Spec",
         "dataType": "text",
-        "css": "contact-type",
+        "css": "<span>",
         "note": "",
         "property": "UsageMethod",
         "title": "Usage"
@@ -90,13 +90,13 @@ export const fieldList = [
     {
         "group": "",
         "dataType": "text",
-        "css": "contact-type",
+        "css": "",
         "note": "",
         "property": "SupportLevel",
         "title": "Support"
     },
     {
-        "group": "n/a",
+        "group": "",
         "dataType": "textArray",
         "css": "",
         "note": "",
@@ -160,7 +160,7 @@ export const fieldList = [
         "title": "Contact"
     },
     {
-        "group": "n/a",
+        "group": "",
         "dataType": "int",
         "css": "",
         "note": "",

@@ -3,15 +3,12 @@
   align-items: center;
   gap: var(--goa-space-s);
   align-self: stretch;
-
-  font-size: 2em;
   margin: 0px 0px 10px 0px;
 }
 
 .service-heading h2 {
   margin: 0;
 }
-
 .service-subtitle {
   color: var(--goa-color-greyscale-700);
   font-size: var(--goa-font-size-4);
@@ -61,7 +58,7 @@
   vertical-align: sub;
 }
 
-.alignleft { text-align: left;  }
+.alignleft { text-align: left; vertical-align: top;  }
 .borderbottom { border-bottom: 3px solid black; }
 
 /*

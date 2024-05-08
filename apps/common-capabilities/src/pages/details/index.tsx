@@ -214,16 +214,39 @@ const renderContact = (method: any) => {
 
     else if (dataType === 'textArray')          
       if (paragraph)
-        return <p className={"service-content " + css}>{app[name].join(", ")} </p>;
+        return <p className={"service-content " + css}>{app[name].join(", ")}</p>;
       else
-        return <span className={"service-content "+ css}>{app[name].join(", ")} </span>;
+        return <span className={"service-content "+ css}>{app[name].join(", ")}</span>;
 
-    else if (paragraph)        
-        return <p className={'service-content '+ css.replace('[value]', app[name])}>{app[name]} </p>;
     else
-        return <span className={'service-content '+ css.replace('[value]', app[name])}>{app[name]} </span>;
+      return DynamicTag(css, app[name])
 
+    // else if (paragraph)        
+    //     return <p className={'service-content '+ css.replace('[value]', app[name])}>{app[name]} </p>;
+    // else
+    //     //return <span className={'service-content '+ css.replace('[value]', app[name])}>{app[name]} </span>;
+    //     return <span className={'service-content '+ css.replace('[value]', app[name])}>{app[name]} </span>;
   };
+
+  function DynamicTag(style:string, content: string ) {
+  // This function is to allow tags to be entered into the css property.
+  // If font sizes are later allowed to be used in the css. All this could be replaced by a css style entry.
+    const tagArray = splitCss(style)
+    if (tagArray[0] === "<h2")
+      return (<h2 className={'service-content '+ tagArray[1]}>{content}</h2>);
+    else if (tagArray[0] === "<span")
+      return (<span className={'service-content '+ tagArray[1]}>{content}</span>);
+    else 
+      return (<p className={'service-content '+ tagArray[1]}>{content}</p>);
+  }  
+
+  function splitCss(style:string) {
+    const tagArray = style.split('>')
+    if (tagArray.length > 1)
+      return [tagArray[0].toLowerCase(),tagArray[1]]
+    else
+      return ['',tagArray[0]]
+  }
 
 
   interface FieldPlus extends FieldItem { id: string; }
@@ -254,22 +277,24 @@ const renderContact = (method: any) => {
         }
        > 
 
-        <GoASpacer vSpacing="xs" />        
+        
         {items.fieldsTop.map(({ property, dataType, css, id }: any) => (
           <div key={`${id}`}>
+            <GoASpacer vSpacing="xs" />        
              {renderContent(property, app, fields, dataType, css, false)}             
-             <GoASpacer vSpacing="s" />
+             {/* <GoASpacer vSpacing="s" /> */}
           </div>
           ))
         }
 
-        <GoASpacer vSpacing="xl" />
+        <GoASpacer vSpacing="l" />
         {items.fieldsBody.map(({ property, title, id, dataType,css }: any) => {            
             return (
               <div key={`${id}`}>
+                <GoASpacer vSpacing="l" />
                 <h3 id={`${id}`}>{title} </h3>
                 {renderContent(property, app, fields, dataType, css, true)}
-                <GoASpacer vSpacing="l" />
+                
               </div>              
             );
           })}
