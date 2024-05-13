@@ -4,10 +4,12 @@ import {
   GoABadge,
   GoAIcon,
   GoASideMenu,
+  GoATable
 } from '@abgov/react-components-4.20.2';
 import React, { useEffect, useState } from 'react';
 import './styles.css';
 import ExternalLink from '../../components/ExternalLink';
+import {fieldList} from './config';
 interface DetailsProps {
   app: any;
 }
@@ -16,6 +18,8 @@ export default function Details({ app }: DetailsProps): JSX.Element {
     badges: [],
     content: [],
   });
+
+  const [fields, setFields] = useState<any>([]);
 
   const badgesToShow = ['FunctionalGroup', 'Language', 'Keywords'];
   const contentToShow = [
@@ -46,6 +50,13 @@ export default function Details({ app }: DetailsProps): JSX.Element {
       title: 'Documentation',
       showInSidebar: app.Documentation.length > 0 ? true : false,
       showContent: app.Documentation.length > 0 ? true : false,
+    },
+    {
+      name: 'Security',
+      id: 'service-documentation',
+      title: 'Security compliance',
+      showInSidebar: true,
+      showContent: true,
     },
     {
       name: 'Contact',
@@ -107,7 +118,81 @@ export default function Details({ app }: DetailsProps): JSX.Element {
       badges: showBadges,
       content: showContent,
     });
+
+    const fields: any[] = fieldList;
+    setFields(fieldList)
   }, []);
+
+
+  interface FieldItem {
+    property: string; 
+    title: string; 
+    note: string;
+    //group: string;
+    //Show: boolean;
+    //dataType: string;
+    //css:string;
+  }
+
+  const getDisplayName = (myFieldList: FieldItem[], fName: string) => {
+    const tmp = myFieldList.find((item: FieldItem) => item.property === fName);
+    if (tmp !== undefined) {
+      return tmp.title;      
+    }
+    return fName;
+  };
+
+  interface SecurityProps {
+    fieldList: FieldItem[];
+    group: {Type:string; Items: any[]}
+  }
+
+  const SecurityBlock: React.FC<SecurityProps> = ({ fieldList, group }) => {
+    const tmp = fieldList.find((items: FieldItem) => items.property === 'Security'+group.Type);    
+    if (tmp == undefined) {
+      return ( <> <GoABadge key="Recommended" type="emergency"   content={'Missing: '+group.Type} /> </>)
+    }  
+
+    let groupName: string = tmp.title;
+    let tableTH: string[] = [];
+    const openBracketIndex = tmp.title.indexOf('(');
+    const closeBracketIndex = tmp.title.indexOf(')');    
+    if (openBracketIndex !== -1 && closeBracketIndex !== -1) {
+      groupName = tmp.title.substring(0, openBracketIndex);
+      tableTH = tmp.title.substring(openBracketIndex + 1, closeBracketIndex).split(',');      
+    }
+  
+    return (<>          
+          <b>{groupName}</b>
+          {(tmp.note !== '' ?          
+          <>
+          <GoASpacer vSpacing="xs" />
+          {tmp.note}
+          <GoASpacer vSpacing="xs" /></>
+          : <></>)}
+          
+          <GoATable >              
+          {/* <table className="security-table"> */}
+            <tbody>
+              {(tableTH.length > 0 
+              ? <tr className='alignleft borderbottom'><th >{tableTH[0]} </th><th>{tableTH[1]} </th></tr>  
+              : <tr className='alignleft borderbottom'><th></th><th></th></tr>
+              )}
+              { group.Items.map((item :any) => (            
+                <tr key={item.Field+'0'}>
+                <td key={item.Field+'1'}> {getDisplayName(fields, item.Field)}  </td> 
+                <td key={item.Field+'2'} className={'service-content'}> {item.Value}  </td></tr>
+              )) }
+            </tbody>
+            </GoATable>            
+            {/* </table> */}
+            <GoASpacer vSpacing="xl" />         
+        </>      
+    );  
+  }
+
+
+
 
   // table
   const renderContact = (method: any) => {
@@ -179,6 +264,13 @@ export default function Details({ app }: DetailsProps): JSX.Element {
           </tbody>
         </table>
       );
+    }
+    else if (name === 'Security') {
+      return (<>
+          { app.Security.map((sGroup :any, index: any) => (
+          <SecurityBlock key={index} group={sGroup} fieldList={fields} />
+          )) }  
+      </> );
     }
 
     return <p className="service-content">{app[name]}</p>;

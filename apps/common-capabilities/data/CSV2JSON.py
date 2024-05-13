@@ -9,6 +9,8 @@ import getpass
 # import colorama
 # colorama.init()
 
+configFileVersion = ''
+FldArg = ''
 
 try:
     if len(sys.argv) > 3:
@@ -17,10 +19,14 @@ try:
         DevProdArg = sys.argv[1].upper()
     else:
         DevProdArg = ''
-    if len(sys.argv) > 2:
-        FldArg = sys.argv[2]
-    else:
-        FldArg = ''
+
+    if len(sys.argv) > 2:  
+        try:
+            t = int(sys.argv[2] )    
+            configFileVersion = sys.argv[2]
+        except:
+            FldArg = sys.argv[2]   
+
     if len(DevProdArg) > 1:
         raise Exception('use either P or D')
 except Exception as inst:
@@ -36,25 +42,34 @@ if (DevProdArg != ''):
 
 current_user = getpass.getuser()
 
+outputDirData = []
+outputDirFields = ['..\\..\\..\\..\\..\\ReactJS\\list\\build\\','..\\..\\..\\..\\..\\ReactJS\\list\public\\'                         ]
+outputDirConfig = ['..\\src\pages\\details\\']
+configFileVerDir = '..\\..\\..\\..\\'
+
 if ProductionData:
     CSV_fileNames = ['CommonCapabilities']
-    outputDirectories = ['..\\src\\content\\','.\\']
+    outputDirData = ['..\\src\\content\\','.\\']
 
 elif current_user == 'steve.rozeboom':
     CSV_fileNames = ['CommonCapabilities','CommonCapabilitiesSamples']
-    outputDirectories = ['..\\..\\..\\..\\..\\ReactJS\\list\\build\\','..\\..\\..\\..\\..\\ReactJS\\list\public\\','.\\']
-
+    outputDirData = ['..\\..\\..\\..\\..\\ReactJS\\list\\build\\',
+                         '..\\..\\..\\..\\..\\ReactJS\\list\public\\',
+                         '.\\','..\\src\\content\\']
 else:
     CSV_fileNames = ['CommonCapabilities','CommonCapabilitiesSamples']
-    outputDirectories = ['..\\src\\content\\']
-
+    outputDirData = ['..\\src\\content\\']
 
 CSV_fileDir = '.\\'
 fldArray = 'data','common-capabilities','apps', ''   # need the '' for for loop
 tmp = ''
 foundPath = ''
+
+fieldsFile = '\CommonCapabilitiesFields'
 for addThis in fldArray:
-    if os.path.exists('.'+ tmp + '\CommonCapabilitiesFields.csv'):        
+    if configFileVersion != '':
+        fieldsFile = fieldsFile + '@' + configFileVersion
+    if os.path.exists('.'+ tmp + fieldsFile + '.csv' ):        
         foundPath = '.'+ tmp + '\\'
         break
     tmp = '\\' + addThis + tmp
@@ -63,29 +78,31 @@ if foundPath == '':
     print('\n-----------------\nCould not find files\n----------------\n')
     sys.exit()
 
+fieldsFile = fieldsFile + '.csv'
+print(fieldsFile)
 
-outputDirectories = [foundPath + string for string in outputDirectories]
+outputDirData = [foundPath + string for string in outputDirData]
 CSV_fileDir = foundPath
 
 if (FldArg != ''):
     if FldArg[-1] != '\\':
         FldArg += '\\'    
-    outputDirectories = [FldArg]
+    outputDirData = [FldArg]
 
 haveOutput = False
-for folderName in outputDirectories:
+for folderName in outputDirData:
     if os.path.exists(folderName):
         haveOutput = True
         break
 if not haveOutput:
-    print('\n-----------------\nCould not find output folder:', outputDirectories )
+    print('\n-----------------\nCould not find output folder:', outputDirData )
     sys.exit()
 
 
 # Finished checks, I've got everything I need to continue...
 
 #=================================================
-from functions import replace_special_characters,replace_Bool,linkList,asArray,createContact,createSecurityList #,createSecurityList1
+from functions import replace_special_characters,replace_Bool,linkList,asArray,createContact,createSecurityList
 # from functions import spellingVote
 # from functions import getPageNameFromURLcombo,getPageNameFromURL
 
@@ -97,22 +114,22 @@ else:    colorBlack = ''; colorRed = ''; colorGreen = ''; colorReset = '';
 
 fieldMetadata = []
 LookUpData = []
-with open(CSV_fileDir + 'CommonCapabilitiesFields.csv', 'r', encoding='utf-8-sig') as csvfile:
+with open(CSV_fileDir + fieldsFile, 'r', encoding='utf-8-sig') as csvfile:
     csvreader = csv.DictReader(csvfile)
     for row in csvreader:        
         row = {key: replace_special_characters(value) for key, value in row.items()}
         row = {key: replace_Bool(value) for key, value in row.items()}       
-        if row["FieldName"] != "":
-            del row["Extra"]
-            if row["Type"] == "Field":                               
-                del row["Type"]
+        if row["fieldName"] != "":
+            del row["extra"]
+            if row["type"] == "Field":                               
+                del row["type"]
 
-                if  row["Group"] == 'FunctionalGroup':
-                    row["Count"] = 0
+                if  row["group"] == 'FunctionalGroup':
+                    row["count"] = 0
                 fieldMetadata.append(row)
 
-            elif row["Type"] == "Lookup":                
-                for delKey in ["Type","Filter","ShowBadge","Note","Group","SubGroup","Default"]:
+            elif row["type"] == "Lookup":                
+                for delKey in ["type","filter","showBadge","note","group","subGroup","default"]:
                     del row[delKey]
 
                 LookUpData.append(row)
@@ -122,10 +139,10 @@ id_counter = 0
 if not ProductionData: devMode = 'DEVELOPMENT'
 else: devMode = 'Production'  
 print('\n' + colorBlack + '------[ Create JSON files for ' + current_user +': ' + colorRed + devMode + colorBlack + ' ]---------\n' + colorGreen +'Working directory: '
-      + CSV_fileDir +'\nInput: ' + 'CommonCapabilitiesFields.csv')
+      + CSV_fileDir +'\nInput: ' + fieldsFile)
 
 
-SecurityFields = [item for item in fieldMetadata if item['Group'][:8] == 'Security']
+SecurityFields = [item for item in fieldMetadata if item['group'][:8] == 'Security']
 
 for fileName in CSV_fileNames:    
     if os.path.exists(CSV_fileDir + fileName + '.csv'):
@@ -147,34 +164,35 @@ for fileName in CSV_fileNames:
 
                     filterText = ''
                     securityBadge = ''
+
+                    for row2 in [item for item in fieldMetadata if item["filter"] != '' 
+                                 and item["filter"] != 'No' 
+                                 and item["dataType"] != "int" 
+                                 and csv_row[item["fieldName"]] != '']:
+                        filterText += ',' + csv_row[row2["fieldName"]].strip()
+                    csv_row["filterText"] = filterText[1:].lower().strip()
+
+                    for row2 in [item for item in fieldMetadata if item["default"] != '' and csv_row[item["fieldName"]] == '']:                        
+                        csv_row[row2["fieldName"]] = row2["default"]
+
                     for row2 in fieldMetadata:
-                        if row2["Filter"] != '':
-                            fn = row2["FieldName"]   # int, text, textArray, urlArray, contactList                                
-                            if row2["Filter"] != 'No' and row2["DataType"] != "int" and csv_row[fn] != '':
-                                filterText += ',' + csv_row[fn].strip()
+                        if row2["filter"] != '':
+                            fn = row2["fieldName"]   # int, text, textArray, urlArray, contactList
 
-                            if row2["Default"] != '' and len(csv_row[fn]) == 0 and row2["DataType"] != "textArray":
-                                csv_row[fn] =  row2["Default"]
-
-                            if   row2["DataType"] == "urlArray":
+                            if   row2["dataType"] == "urlArray":
                                 csv_row[fn] = linkList(csv_row[fn])
 
-                            elif row2["DataType"] == "textArray":
-                                if len(csv_row[fn]) == 0 and row2["Default"] != '':
-                                    csv_row[fn] = [row2["Default"]]
-                                else:
-                                    csv_row[fn] = asArray(csv_row[fn])
+                            elif row2["dataType"] == "textArray":
+                                csv_row[fn] = asArray(csv_row[fn])
 
-                            elif row2["DataType"] == "Contacts":  # Lists need be at the bottom of the field list to capture default values                                                        
+                            elif row2["dataType"][:9] == "Contacts(":
                                 csv_row["Contact"] = createContact(csv_row)
                             
-                            elif row2["DataType"][:8] == "Security":
-                                csv_row["Security"] = createSecurityList(csv_row,row2["DataType"][9:-1],SecurityFields)
+                            elif row2["dataType"][:9] == "Security(":
+                                csv_row["Security"] = createSecurityList(csv_row,row2["dataType"][9:-1],SecurityFields)
 
-                            elif row2["DataType"] == "int":                            
-                                csv_row[fn] = int(csv_row[fn])
- 
-                    csv_row["filterText"] = filterText[1:].lower().strip()
+                            elif row2["dataType"] == "int":                            
+                                csv_row[fn] = int(csv_row[fn])               
                     
                     if len(csv_row["Summary"]) > 200:
                         print('Summay too long: ' + csv_row["ServiceName"] + ' = ' + str(len(csv_row["Summary"])) )
@@ -185,28 +203,36 @@ for fileName in CSV_fileNames:
                     if csv_row["Description"] == "":
                         csv_row["Description"] = csv_row["Summary"]
 
-                    if csv_row["InternalWeightage"] >= 0 or not ProductionData:
+                    # print(csv_row["InternalWeightage"])
+                    # if not ProductionData:
+                    if int(csv_row["InternalWeightage"]) >= 0 or not ProductionData:
                         for delKey in ["Email","Phone","ContactDetails","AltContactMethod","AltContactLink","Nominate","AltServiceName"]:
                             del csv_row[delKey]
                          
-                        for delKey in [item['FieldName'] for item in SecurityFields if item['SubGroup'] != '']:
+                        for delKey in [item['fieldName'] for item in SecurityFields if item['subGroup'] != '']:
                             del csv_row[delKey]  
 
                         id_counter += 1
                         csv_row["appId"] = id_counter
                         data.append(csv_row)
 
-for dataRow in data:
-    notFound = True
-    for catRow in fieldMetadata:
-        if catRow['Group'] == 'FunctionalGroup' and catRow['FieldName'].lower() == dataRow['FunctionalGroup'].lower():
-            catRow['Count'] = catRow['Count'] + 1 # catRow.get('count', 0) + 1
-            notFound = False
-            break
-    if notFound:
-        fieldMetadata.append({"FieldName": dataRow['FunctionalGroup'],"DisplayName": dataRow['FunctionalGroup'],          
-                                "Group": "FunctionalGroup", "Note": "","DataType":'',"Filter":'',"Count": 1 })
-        print('***** ADDED FunctionalGroup: "'+dataRow['FunctionalGroup']+ '"  *******')
+
+for row2 in fieldMetadata:
+    del row2["subGroup"]     
+    # for delKey in ["subGroup","Order"]:
+    #     del row2[delKey]     
+
+# for dataRow in data:
+#     notFound = True
+#     for catRow in fieldMetadata:
+#         if catRow['group'] == 'FunctionalGroup' and catRow['fieldName'].lower() == dataRow['FunctionalGroup'].lower():
+#             catRow['count'] = catRow['count'] + 1
+#             notFound = False
+#             break
+#     if notFound:
+#         fieldMetadata.append({"fieldName": dataRow['FunctionalGroup'],"display": dataRow['FunctionalGroup'],          
+#                                 "group": "FunctionalGroup", "showBadge": "", "default": "","note": "","dataType":'',"filter":'',"count": 1 })
+#         print('***** ADDED FunctionalGroup: "'+dataRow['FunctionalGroup']+ '"  *******')
 
 
 # ***************** Vote on filter text *********************                     
@@ -227,13 +253,13 @@ def needsEdit(val):
         return {}
 # ******    
 for row2 in fieldMetadata:
-    fn = row2["FieldName"]
-    if row2["Filter"] != 'No' and row2["DataType"] != 'List' and row2["Filter"] != '':
+    fn = row2["fieldName"]
+    if row2["filter"] != 'No' and row2["dataType"] != 'List' and row2["filter"] != '':
         for dataRow in data:
-            if row2["DataType"] == 'text':
+            if row2["dataType"] == 'text':
                 if dataRow[fn] != '':                   
                     wordVote(dataRow[fn])
-            elif row2["DataType"] == 'textArray':
+            elif row2["dataType"] == 'textArray':
                     for val in dataRow[fn]:
                         wordVote(val)
 string_counts_with_group = [{'string': key, 'count': value, 'group': shorten(key)} for key, value in wordCounts.items()]
@@ -253,16 +279,16 @@ for grp in groups:
         needEdit[grp] = gstr
         
 for row2 in fieldMetadata:
-    fn = row2["FieldName"]
-    if row2["Filter"] != 'No' and row2["Filter"] != '':
+    fn = row2["fieldName"]
+    if row2["filter"] != 'No' and row2["filter"] != '':
         for dataRow in data:
-            if row2["DataType"] == 'text':
+            if row2["dataType"] == 'text':
                 updated = needsEdit(dataRow[fn])
                 if updated:
                     modifiedRecords.append([dataRow['ServiceName'],fn,dataRow[fn],updated])
                     dataRow[fn] = updated
 
-            elif row2["DataType"] == 'textArray':
+            elif row2["dataType"] == 'textArray':
                     for val in dataRow[fn]:
                         updated = needsEdit(val)
                         if updated:
@@ -272,10 +298,10 @@ for row2 in fieldMetadata:
 # ***************** END - Vote on filter text *********************
 
 # ***************** QA report  *********************
-bad_items = [{ 'Provider': item['Provider'], 'ServiceName': item['ServiceName'],'DataIssues': item['DataIssues'],
-               'QA_Score': item['QA'],'Weightage': item['InternalWeightage'],
-               'Documentation': item['Documentation'],
-               'Contact': item['Contact']['methods']
+bad_items = [{ 'Provider': item['Provider'], 'ServiceName': item['ServiceName'],'DataIssues': item['DataIssues']
+               ,'QA_Score': item['QA'],'Weightage': item['InternalWeightage']
+               ,'Documentation': item['Documentation']
+               ,'Contact': item['Contact']['methods']
              } for item in data if item.get('QA') > 10 or item.get('DataIssues') != '']
 if len(bad_items) > 0:
     print('There are ' +str(len(bad_items))+' records to investigate ' + CSV_fileDir + 'dataToInvestigate.csv')    
@@ -298,16 +324,47 @@ data2 = {"lastUpdated": current_date
          ,"mostRecentService": mostRecentService
          ,"dateFormat": "mm/dd/yyyy"
          ,"services": data
-         ,"fields": fieldMetadata
-         ,"LookUp": LookUpData
+        #  ,"fields": updated_data # fieldMetadata
+        #  ,"LookUp": LookUpData
         }
 
-for folderName in outputDirectories:
+# Now output to: outputDirData , outputDirFields, outputDirConfig
+
+for folderName in outputDirData:
     if os.path.exists(folderName):
         with open(folderName +  'datastore.json', 'w') as jsonfile:
             jsonfile.write(json.dumps(data2, indent=4))
-        print('Output: ' + folderName + 'datastore.json')
 
+for folderName in outputDirFields:
+    if os.path.exists(folderName):       
+        with open(folderName + 'datafields.json', 'w') as jsonfile:
+           jsonfile.write(json.dumps(fieldMetadata, indent=4))
+
+updated_data = [row for row in fieldMetadata if row.get("Group") != "FunctionalGroup"] 
+for row in updated_data:
+    for delKey in ["filter","default"]:  # "showBadge"
+        del row[delKey]
+
+for item in updated_data:
+    item["property"] = item["fieldName"]
+    item["title"] = item["display"]
+    del item["fieldName"]
+    del item["display"]
+
+securityFields = [item for item in updated_data if item['group'] == 'Security']
+for folderName in outputDirConfig:
+    if os.path.exists(folderName):
+        with open(folderName + 'config.ts', 'w') as configfile:
+            configfile.write('export const fieldList = ')  
+            # configfile.write(json.dumps(updated_data, indent=4))  
+            configfile.write(json.dumps(securityFields, indent=4))             
+        
+        print('Output: ' + folderName + 'datastore.json & datafields.json')
+        if configFileVersion != '':            
+            print('Output: ' + configFileVerDir + 'config_CC-'+configFileVersion + '.ts')
+            with open(configFileVerDir + 'config_CC-'+configFileVersion + '.ts', 'w') as configfile:
+                configfile.write('export const fieldList = ')
+                configfile.write(json.dumps(securityFields, indent=4))  
 
 if len(modifiedRecords) > 0:
     modifiedRecords.sort()
