@@ -15,23 +15,23 @@ export default function Landing(): JSX.Element {
   return (
     <div>
       <GoAHeroBanner
-        heading="Deliver better, faster, smarter services"
+        heading="Technology for better, faster, smarter services"
         minHeight="20%"
         textColor="#333333"
         backgroundColor="#F1F1F1"
         maxContentWidth="1500px"
       >
         <div className="cc-hero-subheading">
-          A central hub for discovering and leveraging the foundational
-          frameworks that drive success within GoA
+          Discover and leverage the technology used by DDD product teams to
+          deliver digital services that are efficient, secure, and compliant.
         </div>
       </GoAHeroBanner>
       <GoAPageBlock width="1200px">
         <GoASpacer vSpacing="3xl" />
         <h2>
-          Common capabilities is designed specifically for developers and
-          solution architects to boost productivity, efficiency, alignment, and
-          collaboration within teams and ministries.
+          Common capabilities is designed for developers and solution architects
+          to explore existing services and technology used within GoA, circulate
+          best practices, and deliver meaningful experiences to all Albertans.
         </h2>
         <GoASpacer vSpacing="s" />
         <ul className="goa-unordered-list cc-list-spacing">
