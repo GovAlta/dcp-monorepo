@@ -2,21 +2,17 @@
   display: flex;
   align-items: center;
   gap: var(--goa-space-s);
-  align-self: stretch;
-  margin: 0px 0px 10px 0px;
+  align-self: stretch;  
 }
 
-.service-heading h2 {
-  margin: 0;
-}
 .service-subtitle {
   color: var(--goa-color-greyscale-700);
   font-size: var(--goa-font-size-4);
   font-style: normal;
   font-weight: var(--goa-font-weight-bold);
-  line-height: var(--goa-line-height-3);
-  margin: 0px 0px 20px 0px;    
+  line-height: var(--goa-line-height-3);  
 }
+
 .service-badges {
   display: flex;
   gap: var(--goa-space-s);
@@ -60,11 +56,3 @@
 
 .alignleft { text-align: left; vertical-align: top;  }
 .borderbottom { border-bottom: 3px solid black; }
-
-/*
-.security-table {border-collapse: collapse; border: none; } 
-.security-table tr td:first-child  { text-align: left; width: 366px; }
-.security-table th {margin: 0px; padding: 3px;             border-bottom: 3px solid black; text-align: left; }
-.security-table td {margin: 0px; padding: 5px 8px 5px 3px; border-bottom: 1px solid rgb(216, 216, 216);} 
-
-.highlight {background-color: rgb(248, 248, 128); font-weight: bolder; } */

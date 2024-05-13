@@ -1,14 +1,7 @@
 export const fieldList = [
     {
         "group": "Top",
-        "dataType": "text",
-        "css": "<span> alignleft",
-        "note": "",
-        "property": "FunctionalGroup",
-        "title": "Category"
-    },
-    {
-        "group": "Top",
+        "showBadge": false,
         "dataType": "text",
         "css": "<h2> service-heading",
         "note": "",
@@ -17,126 +10,70 @@ export const fieldList = [
     },
     {
         "group": "Top",
+        "showBadge": false,
         "dataType": "text",
         "css": "",
-        "note": "",
-        "property": "Description",
-        "title": "Overview"
-    },
-    {
-        "group": "",
-        "dataType": "text",
-        "css": "",
-        "note": "",
-        "property": "Summary",
-        "title": "Summary"
-    },
-    {
-        "group": "Spec",
-        "dataType": "text",
-        "css": "<span>",
         "note": "",
         "property": "Provider",
         "title": "Provider"
     },
     {
         "group": "Spec",
-        "dataType": "status",
-        "css": "<span>",
-        "note": "",
-        "property": "Status",
-        "title": "Status"
-    },
-    {
-        "group": "",
-        "dataType": "textArray",
+        "showBadge": false,
+        "dataType": "Recommended()",
         "css": "",
         "note": "",
-        "property": "Audience",
-        "title": "Audience"
+        "property": "InternalWeightage",
+        "title": "Recommended"
     },
     {
-        "group": "Spec",
-        "dataType": "text",
-        "css": "<span>",
-        "note": "",
-        "property": "Version",
-        "title": "Version"
-    },
-    {
-        "group": "Spec",
-        "dataType": "textArray",
+        "group": "Top",
+        "showBadge": false,
+        "dataType": "Badges()",
         "css": "",
         "note": "",
-        "property": "Language",
-        "title": "Language"
-    },
-    {
-        "group": "Spec",
-        "dataType": "textArray",
-        "css": "",
-        "note": "",
-        "property": "Environment",
-        "title": "Infrastructure"
-    },
-    {
-        "group": "Spec",
-        "dataType": "text",
-        "css": "<span>",
-        "note": "",
-        "property": "UsageMethod",
-        "title": "Usage"
-    },
-    {
-        "group": "",
-        "dataType": "text",
-        "css": "",
-        "note": "",
-        "property": "SupportLevel",
-        "title": "Support"
-    },
-    {
-        "group": "",
-        "dataType": "textArray",
-        "css": "",
-        "note": "",
-        "property": "Keywords",
-        "title": "Tag/Keyword"
+        "property": "Badge",
+        "title": "Badges"
     },
     {
         "group": "Body",
+        "showBadge": false,
+        "dataType": "text",
+        "css": "",
+        "note": "",
+        "property": "Summary",
+        "title": "Overview"
+    },
+    {
+        "group": "n/a",
+        "showBadge": true,
+        "dataType": "text",
+        "css": "<span> alignleft",
+        "note": "",
+        "property": "FunctionalGroup",
+        "title": "Category"
+    },
+    {
+        "group": "n/a",
+        "showBadge": false,
         "dataType": "Specs()",
         "css": "",
         "note": "",
         "property": "Specs",
-        "title": "Specifications"
+        "title": "Specifications  (CC-138)"
     },
     {
         "group": "Body",
+        "showBadge": false,
         "dataType": "text",
         "css": "",
         "note": "",
-        "property": "Prerequisites",
-        "title": "Prerequisites"
+        "property": "Description",
+        "title": "Getting started"
     },
     {
-        "group": "Body",
-        "dataType": "text",
-        "css": "",
-        "note": "",
-        "property": "Comments",
-        "title": "Additional information"
-    },
-    {
-        "group": "Body",
-        "dataType": "urlArray",
-        "css": "",
-        "note": "",
-        "property": "Documentation",
-        "title": "Documentation"
-    },
-    {
-        "group": "Body",
+        "group": "",
+        "showBadge": false,
         "dataType": "text",
         "css": "",
         "note": "",
@@ -145,30 +82,124 @@ export const fieldList = [
     },
     {
         "group": "Body",
+        "showBadge": false,
+        "dataType": "text",
+        "css": "",
+        "note": "",
+        "property": "Prerequisites",
+        "title": "Prerequisites"
+    },
+    {
+        "group": "Body",
+        "showBadge": false,
         "dataType": "Security(Status,Required,Info)",
         "css": "",
         "note": "",
         "property": "Security",
-        "title": "Security compliance"
+        "title": "Security and compliance"
     },
     {
         "group": "Body",
+        "showBadge": false,
+        "dataType": "urlArray",
+        "css": "",
+        "note": "",
+        "property": "Documentation",
+        "title": "Documentation"
+    },
+    {
+        "group": "Body",
+        "showBadge": false,
         "dataType": "Contacts()",
         "css": "",
         "note": "",
         "property": "Contact",
-        "title": "Contact"
+        "title": "Support"
     },
     {
-        "group": "",
-        "dataType": "int",
+        "group": "Body",
+        "showBadge": false,
+        "dataType": "text",
         "css": "",
         "note": "",
-        "property": "InternalWeightage",
-        "title": "InternalWeightage"
+        "property": "Comments",
+        "title": "Comments"
+    },
+    {
+        "group": "Spec",
+        "showBadge": true,
+        "dataType": "status",
+        "css": "<span>",
+        "note": "",
+        "property": "Status",
+        "title": "Status"
+    },
+    {
+        "group": "n/a",
+        "showBadge": true,
+        "dataType": "textArray",
+        "css": "",
+        "note": "",
+        "property": "Audience",
+        "title": "Audience"
+    },
+    {
+        "group": "Spec",
+        "showBadge": false,
+        "dataType": "text",
+        "css": "<span>",
+        "note": "",
+        "property": "Version",
+        "title": "Version"
+    },
+    {
+        "group": "Spec",
+        "showBadge": true,
+        "dataType": "textArray",
+        "css": "",
+        "note": "",
+        "property": "Language",
+        "title": "Language"
+    },
+    {
+        "group": "Spec",
+        "showBadge": true,
+        "dataType": "textArray",
+        "css": "",
+        "note": "",
+        "property": "Environment",
+        "title": "Infrastructure"
+    },
+    {
+        "group": "Spec",
+        "showBadge": true,
+        "dataType": "text",
+        "css": "<span>",
+        "note": "",
+        "property": "UsageMethod",
+        "title": "Usage"
+    },
+    {
+        "group": "n/a",
+        "showBadge": false,
+        "dataType": "text",
+        "css": "",
+        "note": "",
+        "property": "SupportLevel",
+        "title": "Support"
+    },
+    {
+        "group": "n/a",
+        "showBadge": false,
+        "dataType": "textArray",
+        "css": "",
+        "note": "",
+        "property": "Keywords",
+        "title": "Tag/Keyword"
     },
     {
         "group": "Security",
+        "showBadge": false,
         "dataType": "text",
         "css": "",
         "note": "",
@@ -177,6 +208,7 @@ export const fieldList = [
     },
     {
         "group": "Security",
+        "showBadge": false,
         "dataType": "text",
         "css": "",
         "note": "",
@@ -185,6 +217,7 @@ export const fieldList = [
     },
     {
         "group": "Security",
+        "showBadge": false,
         "dataType": "text",
         "css": "",
         "note": "",
@@ -193,6 +226,7 @@ export const fieldList = [
     },
     {
         "group": "Security",
+        "showBadge": false,
         "dataType": "text",
         "css": "",
         "note": "",
@@ -201,6 +235,7 @@ export const fieldList = [
     },
     {
         "group": "Security",
+        "showBadge": false,
         "dataType": "text",
         "css": "",
         "note": "",
@@ -209,6 +244,7 @@ export const fieldList = [
     },
     {
         "group": "Security",
+        "showBadge": false,
         "dataType": "text",
         "css": "",
         "note": "",
@@ -217,6 +253,7 @@ export const fieldList = [
     },
     {
         "group": "Security",
+        "showBadge": false,
         "dataType": "text",
         "css": "",
         "note": "",
@@ -225,6 +262,7 @@ export const fieldList = [
     },
     {
         "group": "Security",
+        "showBadge": false,
         "dataType": "text",
         "css": "",
         "note": "",
@@ -233,6 +271,7 @@ export const fieldList = [
     },
     {
         "group": "Security",
+        "showBadge": false,
         "dataType": "text",
         "css": "",
         "note": "",
@@ -241,6 +280,7 @@ export const fieldList = [
     },
     {
         "group": "Security",
+        "showBadge": "",
         "dataType": "text",
         "css": "",
         "note": "",
@@ -249,22 +289,25 @@ export const fieldList = [
     },
     {
         "group": "Security",
+        "showBadge": "",
         "dataType": "text",
         "css": "",
-        "note": "These items may be required regardless of any previous assessment. Please see \"Getting started\" for details",
+        "note": "",
         "property": "SecurityRequired",
-        "title": "Required before using this service(Assessment/Consult, Required)"
+        "title": "Required before using this service"
     },
     {
         "group": "Security",
+        "showBadge": "",
         "dataType": "textLong",
         "css": "",
-        "note": "Other things that you might want/need to know.",
+        "note": "",
         "property": "SecurityInfo",
         "title": "Security details"
     },
     {
         "group": "FunctionalGroup",
+        "showBadge": "",
         "dataType": "",
         "css": "",
         "note": "User authentication, authorization, identity verification and management, and role-based access control",
@@ -274,6 +317,7 @@ export const fieldList = [
     },
     {
         "group": "FunctionalGroup",
+        "showBadge": "",
         "dataType": "",
         "css": "",
         "note": "Data libraries, records, schemas, configuration storage, audit and log management",
@@ -283,6 +327,7 @@ export const fieldList = [
     },
     {
         "group": "FunctionalGroup",
+        "showBadge": "",
         "dataType": "",
         "css": "",
         "note": "File upload and management, document processing, forms creation, and digital signatures",
@@ -292,6 +337,7 @@ export const fieldList = [
     },
     {
         "group": "FunctionalGroup",
+        "showBadge": "",
         "dataType": "",
         "css": "",
         "note": "Automation Workflow, process automation, and task management",
@@ -301,6 +347,7 @@ export const fieldList = [
     },
     {
         "group": "FunctionalGroup",
+        "showBadge": "",
         "dataType": "",
         "css": "",
         "note": "Payment processing, gateway integration, financial data management, billing, and invoicing",
@@ -310,6 +357,7 @@ export const fieldList = [
     },
     {
         "group": "FunctionalGroup",
+        "showBadge": "",
         "dataType": "",
         "css": "",
         "note": "Messaging, emails, SMS, notifications, and alerts",
@@ -319,6 +367,7 @@ export const fieldList = [
     },
     {
         "group": "FunctionalGroup",
+        "showBadge": "",
         "dataType": "",
         "css": "",
         "note": "Service health monitoring, business performance tracking, and reporting dashboards",
@@ -328,6 +377,7 @@ export const fieldList = [
     },
     {
         "group": "FunctionalGroup",
+        "showBadge": "",
         "dataType": "",
         "css": "",
         "note": "Used for development purposes only",
@@ -337,6 +387,7 @@ export const fieldList = [
     },
     {
         "group": "FunctionalGroup",
+        "showBadge": "",
         "note": "",
         "dataType": "",
         "count": 12,

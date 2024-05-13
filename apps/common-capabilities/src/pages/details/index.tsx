@@ -4,8 +4,9 @@ import {
   GoABadge,
   GoAIcon,
   GoASideMenu,
-  GoATable,
+  GoATable
 } from '@abgov/react-components';
+
 import React, { useEffect, useState } from 'react';
 import './styles.css';
 import ExternalLink from '../../components/ExternalLink';
@@ -16,12 +17,15 @@ interface DetailsProps {
   app: any;
 }
 
+
+
 export default function Details({ app}: DetailsProps): JSX.Element {
 
   const [items, setItems] = useState<any>({    
     fieldsTop: [],
     fieldsSpec: [],
-    fieldsBody: []
+    fieldsBody: [],
+    badges: []
   });
 
   const [fields, setFields] = useState<any>([]);
@@ -33,7 +37,7 @@ export default function Details({ app}: DetailsProps): JSX.Element {
     }
   }, []);
 
-
+  
   useEffect(() => {
     const fields: any[] = fieldList;
     setFields(fieldList)
@@ -41,8 +45,10 @@ export default function Details({ app}: DetailsProps): JSX.Element {
     setItems({
       fieldsBody: filteredFields(fields, 'Body'),
       fieldsTop: filteredFields(fields, 'Top'),
-      fieldsSpec: filteredFields(fields, 'Spec')      
+      fieldsSpec: filteredFields(fields, 'Spec'),
+      badges: getBadges(fields)
     });
+
   }, []);
 
 //====================================================
@@ -55,7 +61,17 @@ export default function Details({ app}: DetailsProps): JSX.Element {
     return fName;
   };
 
-  interface FieldItem { property: string; title: string; note: string; group: string; Show: boolean; dataType: string; filter:string; css:string }
+  interface FieldItem {
+    property: string; 
+    title: string; 
+    note: string;
+    group: string;
+    Show: boolean;
+    dataType: string;
+    filter:string;
+    css:string;
+    showBadge:boolean
+  }
 
   interface SecurityProps {
     fieldList: FieldItem[];
@@ -174,18 +190,20 @@ const renderContact = (method: any) => {
       )
     }
 
-    else if (name === 'Specifications' || dataType === 'Specs()' ) {
+    else if (dataType === 'Specs()' ) {
       return (
         <GoATable>
         {/* <table > */}
         <tbody>        
-          {app.InternalWeightage > 49 ? (<tr><td> <GoABadge key="Recommended" type="midtone"   content="Recommended"  /> </td><td></td></tr>) : ('')}
-          {app.InternalWeightage < 0  ? (<tr><td> <GoABadge key="Removed"     type="emergency" content="To be removed"/> </td><td></td></tr>) : ('')}
+          {/* {app.InternalWeightage > 49 ? (<tr><td> <GoABadge key="Recommended" type="midtone"   content="Recommended"  /> </td><td></td></tr>) : ('')}
+          {app.InternalWeightage < 0  ? (<tr><td> <GoABadge key="Removed"     type="emergency" content="To be removed"/> </td><td></td></tr>) : ('')} */}
 
           {items.fieldsSpec.map(({ property, title, id, dataType, css }: any) => (
           <tr key={id}>
-            <td>{title}</td>
-            <td>{renderContent(property, app, fields, dataType, css, false)}</td>
+            {property === 'InternalWeightage' ?
+             (<> <td>{renderContent(property, app, fields, dataType, css, false)}</td><td></td></>) :
+             (<><td>{title}</td> <td>{renderContent(property, app, fields, dataType, css, false)}</td></>)             
+            }                        
             </tr>
           ))}
         </tbody>
@@ -218,27 +236,46 @@ const renderContact = (method: any) => {
       else
         return <span className={"service-content "+ css}>{app[name].join(", ")}</span>;
 
+    else if (dataType === 'Recommended()') {
+      if (app.InternalWeightage > 49)
+        return ( <GoABadge key="Recommended" type="midtone"   content="Recommended"  /> )
+      else if (app.InternalWeightage < 0)
+        return ( <GoABadge key="Removed"     type="emergency" content="To be removed"/> )
+      else 
+        return null
+      }
+       
+    else if (dataType === 'Badges()') {
+      return (
+        <div className='service-badges'>
+        {items.badges.map(({ property, dataType, id }: any) => (
+          (dataType === 'textArray') ? 
+          app[property].map((item: any, i:any) => renderBadge( property, 'text', item,i)):
+          renderBadge( property, dataType, app[property],1)    
+        ))} </div>
+       ) 
+      }
+
+    else if (dataType === 'Text()') {
+      return DynamicTag(css, getDisplayName(fields,name))
+    }        
+
     else
       return DynamicTag(css, app[name])
-
-    // else if (paragraph)        
-    //     return <p className={'service-content '+ css.replace('[value]', app[name])}>{app[name]} </p>;
-    // else
-    //     //return <span className={'service-content '+ css.replace('[value]', app[name])}>{app[name]} </span>;
-    //     return <span className={'service-content '+ css.replace('[value]', app[name])}>{app[name]} </span>;
   };
 
   function DynamicTag(style:string, content: string ) {
-  // This function is to allow tags to be entered into the css property.
-  // If font sizes are later allowed to be used in the css. All this could be replaced by a css style entry.
+  // This function is to allow tags to be entered into the css property. A workaround to not use size in the css.
+  // If font sizes are later allowed to be used in the css. All this could be removed and replaced by a css entry.
     const tagArray = splitCss(style)
-    if (tagArray[0] === "<h2")
-      return (<h2 className={'service-content '+ tagArray[1]}>{content}</h2>);
-    else if (tagArray[0] === "<span")
-      return (<span className={'service-content '+ tagArray[1]}>{content}</span>);
-    else 
-      return (<p className={'service-content '+ tagArray[1]}>{content}</p>);
-  }  
+    if (tagArray[0] === "<span")    return (<span className={'service-content '+ tagArray[1]}>{content}</span>);
+    else if (tagArray[0] === "<h1") return (<h1   className={'service-content '+ tagArray[1]}>{content}</h1>);
+    else if (tagArray[0] === "<h2") return (<h2   className={'service-content '+ tagArray[1]}>{content}</h2>);
+    else if (tagArray[0] === "<h3") return (<h3   className={'service-content '+ tagArray[1]}>{content}</h3>);
+    else if (tagArray[0] === "<h4") return (<h4   className={'service-content '+ tagArray[1]}>{content}</h4>);
+    else if (tagArray[0] === "<b")  return (<p><b className={'service-content '+ tagArray[1]}>{content}</b></p>);    
+    else                            return (<p    className={'service-content '+ tagArray[1]}>{content}</p>);    
+  }
 
   function splitCss(style:string) {
     const tagArray = style.split('>')
@@ -247,7 +284,6 @@ const renderContact = (method: any) => {
     else
       return ['',tagArray[0]]
   }
-
 
   interface FieldPlus extends FieldItem { id: string; }
 
@@ -262,6 +298,37 @@ const renderContact = (method: any) => {
        }));
   };
 
+  const getBadges = (fields: FieldItem[]): FieldPlus[] => {
+    return fields.filter((item: FieldItem) =>
+       item.showBadge 
+       && (item.dataType === 'text' || item.dataType === 'textArray' || item.dataType === 'Recommended()' )
+       && app[item.property] != 'Other' && app[item.property] != 'n/a'
+       && app[item.property].length > 0
+       )
+    .map((obj: FieldItem) => ({
+         ...obj
+         ,id: 'myservice-' + obj.property        
+       }));
+  };
+
+  const renderBadge = (badge: any, dataType:string , val:any, index:number) => {
+    if (dataType == 'text')
+      return (
+        <GoABadge key={'b-'+badge+index.toString()} type="information" content={val} />
+      )
+    else  if (dataType == 'Recommended()') {      
+      if (app.InternalWeightage > 49)
+        return ( <GoABadge key="Recommended" type="midtone"   content="Recommended"  /> )
+      else if (app.InternalWeightage < 0)
+        return ( <GoABadge key="Removed"     type="emergency" content="To be removed"/> )
+      }
+    else
+      return (
+        <span key={badge+index.toString()+'s'} > <GoABadge key={'b-'+badge+index.toString()} type="emergency"   content={badge} /> </span>      
+      )    
+  };
+
+
   return (
     <>
       <GoAThreeColumnLayout
@@ -275,27 +342,26 @@ const renderContact = (method: any) => {
             </GoASideMenu>            
           </div>
         }
-       > 
-
+       >
         
-        {items.fieldsTop.map(({ property, dataType, css, id }: any) => (
-          <div key={`${id}`}>
-            <GoASpacer vSpacing="xs" />        
-             {renderContent(property, app, fields, dataType, css, false)}             
-             {/* <GoASpacer vSpacing="s" /> */}
-          </div>
+        <GoASpacer vSpacing="xs" />
+        {items.fieldsTop.map(({ property, dataType, css, id }: any) => (          
+          <>
+            {renderContent(property, app, fields, dataType, css, false)}
+            { css.substring(0,2) == '<h' ? 
+            <></> :
+            <GoASpacer vSpacing="l" /> }
+          </>
           ))
         }
-
-        <GoASpacer vSpacing="l" />
+        
         {items.fieldsBody.map(({ property, title, id, dataType,css }: any) => {            
             return (
-              <div key={`${id}`}>
-                <GoASpacer vSpacing="l" />
-                <h3 id={`${id}`}>{title} </h3>
-                {renderContent(property, app, fields, dataType, css, true)}
-                
-              </div>              
+              <>
+                <h3 id={`${id}`}>{title} {css}  </h3>
+                {renderContent(property, app, fields, dataType, css, true)}                
+                <GoASpacer vSpacing="xl" /> 
+              </>              
             );
           })}
 

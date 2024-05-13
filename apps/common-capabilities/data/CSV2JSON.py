@@ -9,6 +9,8 @@ import getpass
 # import colorama
 # colorama.init()
 
+configFileVersion = ''
+FldArg = ''
 
 try:
     if len(sys.argv) > 3:
@@ -17,10 +19,14 @@ try:
         DevProdArg = sys.argv[1].upper()
     else:
         DevProdArg = ''
-    if len(sys.argv) > 2:
-        FldArg = sys.argv[2]
-    else:
-        FldArg = ''
+
+    if len(sys.argv) > 2:  
+        try:
+            t = int(sys.argv[2] )    
+            configFileVersion = sys.argv[2]
+        except:
+            FldArg = sys.argv[2]   
+
     if len(DevProdArg) > 1:
         raise Exception('use either P or D')
 except Exception as inst:
@@ -39,6 +45,7 @@ current_user = getpass.getuser()
 outputDirData = []
 outputDirFields = ['..\\..\\..\\..\\..\\ReactJS\\list\\build\\','..\\..\\..\\..\\..\\ReactJS\\list\public\\'                         ]
 outputDirConfig = ['..\\src\pages\\details\\']
+configFileVerDir = '..\\..\\..\\..\\'
 
 if ProductionData:
     CSV_fileNames = ['CommonCapabilities']
@@ -53,13 +60,16 @@ else:
     CSV_fileNames = ['CommonCapabilities','CommonCapabilitiesSamples']
     outputDirData = ['..\\src\\content\\']
 
-
 CSV_fileDir = '.\\'
 fldArray = 'data','common-capabilities','apps', ''   # need the '' for for loop
 tmp = ''
 foundPath = ''
+
+fieldsFile = '\CommonCapabilitiesFields'
 for addThis in fldArray:
-    if os.path.exists('.'+ tmp + '\CommonCapabilitiesFields.csv'):        
+    if configFileVersion != '':
+        fieldsFile = fieldsFile + '@' + configFileVersion
+    if os.path.exists('.'+ tmp + fieldsFile + '.csv' ):        
         foundPath = '.'+ tmp + '\\'
         break
     tmp = '\\' + addThis + tmp
@@ -68,6 +78,8 @@ if foundPath == '':
     print('\n-----------------\nCould not find files\n----------------\n')
     sys.exit()
 
+fieldsFile = fieldsFile + '.csv'
+print(fieldsFile)
 
 outputDirData = [foundPath + string for string in outputDirData]
 CSV_fileDir = foundPath
@@ -102,7 +114,7 @@ else:    colorBlack = ''; colorRed = ''; colorGreen = ''; colorReset = '';
 
 fieldMetadata = []
 LookUpData = []
-with open(CSV_fileDir + 'CommonCapabilitiesFields.csv', 'r', encoding='utf-8-sig') as csvfile:
+with open(CSV_fileDir + fieldsFile, 'r', encoding='utf-8-sig') as csvfile:
     csvreader = csv.DictReader(csvfile)
     for row in csvreader:        
         row = {key: replace_special_characters(value) for key, value in row.items()}
@@ -127,7 +139,7 @@ id_counter = 0
 if not ProductionData: devMode = 'DEVELOPMENT'
 else: devMode = 'Production'  
 print('\n' + colorBlack + '------[ Create JSON files for ' + current_user +': ' + colorRed + devMode + colorBlack + ' ]---------\n' + colorGreen +'Working directory: '
-      + CSV_fileDir +'\nInput: ' + 'CommonCapabilitiesFields.csv')
+      + CSV_fileDir +'\nInput: ' + fieldsFile)
 
 
 SecurityFields = [item for item in fieldMetadata if item['group'][:8] == 'Security']
@@ -191,7 +203,9 @@ for fileName in CSV_fileNames:
                     if csv_row["Description"] == "":
                         csv_row["Description"] = csv_row["Summary"]
 
-                    if csv_row["InternalWeightage"] >= 0 or not ProductionData:
+                    # print(csv_row["InternalWeightage"])
+                    # if not ProductionData:
+                    if int(csv_row["InternalWeightage"]) >= 0 or not ProductionData:
                         for delKey in ["Email","Phone","ContactDetails","AltContactMethod","AltContactLink","Nominate","AltServiceName"]:
                             del csv_row[delKey]
                          
@@ -328,7 +342,7 @@ for folderName in outputDirFields:
 
 updated_data = [row for row in fieldMetadata if row.get("Group") != "FunctionalGroup"] 
 for row in updated_data:
-    for delKey in ["filter","showBadge","default"]:
+    for delKey in ["filter","default"]:  # "showBadge"
         del row[delKey]
 
 for item in updated_data:
@@ -343,12 +357,13 @@ for folderName in outputDirConfig:
             configfile.write('export const fieldList = ')  
             configfile.write(json.dumps(updated_data, indent=4))  
         
-
         print('Output: ' + folderName + 'datastore.json & datafields.json')
 
-
-
-
+        if configFileVersion != '':            
+            print('Output: ' + configFileVerDir + 'config_CC-'+configFileVersion + '.ts')
+            with open(configFileVerDir + 'config_CC-'+configFileVersion + '.ts', 'w') as configfile:            
+                configfile.write('export const fieldList = ')  
+                configfile.write(json.dumps(updated_data, indent=4))  
 
 if len(modifiedRecords) > 0:
     modifiedRecords.sort()
