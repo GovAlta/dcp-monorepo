@@ -15,7 +15,7 @@
   padding: 10px var(--goa-space-xs) 7px var(--goa-space-xs);
 }
 .home-sidebar {
-  margin-top: calc(var(--goa-space-2xl));
+  /* margin-top: calc(var(--goa-space-2xl)); */
 }
 #search-label {
   font-size: var(--goa-font-size-3);
@@ -54,7 +54,7 @@
   /* color: #d9480f; */
 }
 #home-title {
-  margin-top: var(--goa-space-3xl);
+  /* margin-top: var(--goa-space-3xl); */
   margin-bottom: var(--goa-space-xs);
 }
 .last-updated {

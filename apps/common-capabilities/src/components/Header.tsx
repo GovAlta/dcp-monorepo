@@ -10,8 +10,8 @@ const Header = () => {
       <GoAMicrositeHeader type="beta" maxContentWidth="1500px"/>
       <GoAAppHeader url="/" heading="Common capabilities" maxContentWidth="1500px">
         {/* <a href="/gettingstarted/index.html">Getting started</a> */}
-        {/* <a href="/about/index.html">About</a> */}
-        {/* <a href="/ecosystem/index.html">Eco-system</a> */}
+        <a href="/about/index.html">About</a>
+        <a href="/ecosystem/index.html">Eco-system</a>
         <a href="/services/index.html">Services</a>
         <a href="/support/index.html">Support</a>
       </GoAAppHeader>
