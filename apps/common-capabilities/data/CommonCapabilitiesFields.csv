@@ -1,44 +1,47 @@
-﻿Type,FieldName,DisplayName,Filter,ShowBadge,DataType,Default,Group,SubGroup,Note,Extra
-Field,FunctionalGroup,Category,Yes-(),FALSE,text,Was removed,,,,
-Field,Provider,Provider,Yes,FALSE,text,Other,,,,
-Field,Status,Status,Yes-(),TRUE,text,Other,,,,
-Field,Audience,Audience,Yes-(),FALSE,textArray,GOA,,,,
-Field,UsageMethod,Usage,Yes-(),FALSE,text,Other,,,,
-Field,Language,Technology,Yes-(),FALSE,textArray,Other,,,,
-Field,Environment,Infrastructure,Yes-(),FALSE,textArray,Other,,,,
-Field,SupportLevel,Support,No,FALSE,text,Other,,,,
-Field,Keywords,Tag/Keyword,Yes-(),FALSE,textArray,,,,,
-Field,Documentation,Documentation,No,FALSE,urlArray,,,,,
-Field,InternalWeightage,InternalWeightage,No,FALSE,int,10,,,,
-Field,CMRA,Content Management Risk Assessment (CMRA),No,FALSE,text,TBD,Security,Status,,IM
-Field,STRA,Security Threat and Risk Assessment (STRA),No,FALSE,text,,Security,Status,,Cybersecurity
-Field,IM,Information management (IM) consult ,No,FALSE,text,,Security,Required,,IM
-Field,Data,Data team consult,No,FALSE,text,,Security,Required,,Data team
-Field,Risk,Cybersecurity risk assessment,No,FALSE,text,TBD,Security,Required,,Cybersecurity
-Field,Cybersecurity,Cybersecurity consult,No,FALSE,text,,Security,Required,,Cybersecurity
-Field,Classification,Information Security classification,No,FALSE,text,,Security,Info,,IM/Cybersecurity
-Field,Controller,Information controller,No,FALSE,text,,Security,Info,,IM/Cybersecurity
-Field,Considerations,Special considerations,No,FALSE,text,,Security,Info,,Other
-Field,Security,Security,No,FALSE,"Security(Status,Required,Info)",,,,,
-Field,Contact,Contact,No,FALSE,Contacts,,,,,
-Field,SecurityStatus,Current Status,,,text,,Security,,,
-Field,SecurityRequired,Required before using this service,,,text,,Security,,,
-Field,SecurityInfo,Security Details,,,textLong,,Security,,,
-Field,User management,User management,,,,,FunctionalGroup,,"User authentication, authorization, identity verification and management, and role-based access control ",
-Field,Data,Data,,,,,FunctionalGroup,,"Data libraries, records, schemas, configuration storage, audit and log management",
-Field,Forms and documents,Forms and documents,,,,,FunctionalGroup,,"File upload and management, document processing, forms creation, and digital signatures",
-Field,Automation,Automation,,,,,FunctionalGroup,,"Automation Workflow, process automation, and task management",
-Field,Finance,Finance,,,,,FunctionalGroup,,"Payment processing, gateway integration, financial data management, billing, and invoicing",
-Field,Communication,Communication,,,,,FunctionalGroup,,"Messaging, emails, SMS, notifications, and alerts",
-Field,Performance,Performance,,,,,FunctionalGroup,,"Service health monitoring, business performance tracking, and reporting dashboards",
-,,,,,,,,,,
-FieldOption,,,Yes,,int,,,,,
-FieldOption,,,Yes-(),,text,,,,,
-FieldOption,,,No,,textArray,,,,,
-FieldOption,,,,,urlArray,,,,,
-FieldOption,,,,,Contacts,,,,,
-FieldOption,,,,,Obj(...),,,,,
-,,,,,,,,,,
-Lookup,CMO,Content Management Operations,,,,,,,,
-Lookup,CCS,Collaboration and Content Services,,,,,,,,
-Lookup,IMP,Information Management Program,,,,,,,,
+﻿type,group,subGroup,fieldName,display,filter,showBadge,dataType,default,css,note,extra
+Field,Top,,ServiceName,Service,No,FALSE,text,,<h2> service-heading,,
+Field,Top,,Provider,Provider,Yes,FALSE,text,Other,,,
+Field,Spec,,InternalWeightage,Recommended,No,FALSE,Recommended(),10,,,CC-138
+Field,Top,,Badge,Badges,No,FALSE,Badges(),,,,
+Field,Body,,Summary,Overview,No,FALSE,text,,,,
+Field,n/a,,FunctionalGroup,Category,Yes-(),TRUE,text,Was removed,<span> alignleft,,
+Field,n/a,,Specs,Specifications  (CC-138),No,FALSE,Specs(),,,,
+Field,Body,,Description,Getting started,No,FALSE,text,,,,
+Field,Body,,UseCases,Use cases,No,FALSE,text,,,,
+Field,Body,,Prerequisites,Prerequisites,No,FALSE,text,,,,
+Field,n/a,,Security,Security and compliance,No,FALSE,"Security(Status,Required,Info)",,,,
+Field,Body,,Documentation,Documentation,No,FALSE,urlArray,,,,
+Field,Body,,Contact,Support,No,FALSE,Contacts(),,,,
+Field,Body,,Comments,Comments,No,FALSE,text,,,,
+,,,,,,,,,,,
+Field,Spec,,Status,Status,Yes-(),TRUE,status,Other,<span>,,
+Field,n/a,,Audience,Audience,Yes-(),TRUE,textArray,GOA,,,
+Field,Spec,,Version,Version,No,FALSE,text,,<span>,,
+Field,Spec,,Language,Language,Yes-(),TRUE,textArray,Other,,,
+Field,Spec,,Environment,Infrastructure,Yes-(),TRUE,textArray,Other,,,
+Field,Spec,,UsageMethod,Usage,Yes-(),TRUE,text,Other,<span>,,
+Field,n/a,,SupportLevel,Support,No,FALSE,text,Other,,,
+Field,n/a,,Keywords,Tag/Keyword,Yes-(),FALSE,textArray,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+Field,Security,Status,CMRA,Content Management Risk Assessment (CMRA),No,FALSE,text,TBD,,,IM
+Field,Security,Status,STRA,General cybersecurity risk assessment,No,FALSE,text,,,,Cybersecurity
+Field,Security,Required,IM,Information management (IM) consult ,No,FALSE,text,,,,IM
+Field,Security,Required,Data,Data team consult,No,FALSE,text,,,,Data team
+Field,Security,Required,Risk,Cybersecurity risk assessment,No,FALSE,text,TBD,,,Cybersecurity
+Field,Security,Required,Cybersecurity,Cybersecurity consult,No,FALSE,text,,,,Cybersecurity
+Field,Security,Info,Classification,Information Security classification,No,FALSE,text,,,,IM/Cybersecurity
+Field,Security,Info,Controller,Information controller,No,FALSE,text,,,,IM/Cybersecurity
+Field,Security,Info,Considerations,Special considerations,No,FALSE,text,,,,Other
+Field,Security,,SecurityStatus,"(Risk assessment has been completed,Completed)",,,text,,,We need some text here for an explanation for the user what this section means,
+Field,Security,,SecurityRequired,Required before using this service,,,text,,,We need some text here for an explanation for the user what this section means,
+Field,Security,,SecurityInfo,Security details,,,textLong,,,We need some text here for an explanation for the user what this section means,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+FieldOption,,,,,Yes,,int,,,,
+FieldOption,,,,,Yes-(),,text,,,,
+FieldOption,,,,,No,,textArray,,,,
+FieldOption,,,,,,,urlArray,,,,
+FieldOption,,,,,,,Contacts,,,,
+FieldOption,,,,,,,Obj(...),,,,

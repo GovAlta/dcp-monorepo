@@ -103,17 +103,11 @@ if not haveOutput:
 
 #=================================================
 from functions import replace_special_characters,replace_Bool,linkList,asArray,createContact,createSecurityList
-# from functions import spellingVote
-# from functions import getPageNameFromURLcombo,getPageNameFromURL
+#=================================================
 
-
-# ============================================================================================
-
-if DevProdArg == '':  colorBlack = '\033[1;30m'; colorRed = '\033[1;31m'; colorGreen = '\033[0;32m'; colorReset = '\033[0m'
-else:    colorBlack = ''; colorRed = ''; colorGreen = ''; colorReset = '';  
 
 fieldMetadata = []
-LookUpData = []
+# LookUpData = []
 with open(CSV_fileDir + fieldsFile, 'r', encoding='utf-8-sig') as csvfile:
     csvreader = csv.DictReader(csvfile)
     for row in csvreader:        
@@ -122,23 +116,14 @@ with open(CSV_fileDir + fieldsFile, 'r', encoding='utf-8-sig') as csvfile:
         if row["fieldName"] != "":
             del row["extra"]
             if row["type"] == "Field":                               
-                del row["type"]
+                del row["type"]                
 
-                if  row["group"] == 'FunctionalGroup':
-                    row["count"] = 0
                 fieldMetadata.append(row)
-
-            elif row["type"] == "Lookup":                
-                for delKey in ["type","filter","showBadge","note","group","subGroup","default"]:
-                    del row[delKey]
-
-                LookUpData.append(row)
-
 data = []
 id_counter = 0
 if not ProductionData: devMode = 'DEVELOPMENT'
 else: devMode = 'Production'  
-print('\n' + colorBlack + '------[ Create JSON files for ' + current_user +': ' + colorRed + devMode + colorBlack + ' ]---------\n' + colorGreen +'Working directory: '
+print('\n------[ Create JSON files for ' + current_user +': ' + devMode + ' ]---------\n Working directory: '
       + CSV_fileDir +'\nInput: ' + fieldsFile)
 
 
@@ -217,23 +202,8 @@ for fileName in CSV_fileNames:
                         data.append(csv_row)
 
 
-for row2 in fieldMetadata:
-    del row2["subGroup"]     
-    # for delKey in ["subGroup","Order"]:
-    #     del row2[delKey]     
-
-# for dataRow in data:
-#     notFound = True
-#     for catRow in fieldMetadata:
-#         if catRow['group'] == 'FunctionalGroup' and catRow['fieldName'].lower() == dataRow['FunctionalGroup'].lower():
-#             catRow['count'] = catRow['count'] + 1
-#             notFound = False
-#             break
-#     if notFound:
-#         fieldMetadata.append({"fieldName": dataRow['FunctionalGroup'],"display": dataRow['FunctionalGroup'],          
-#                                 "group": "FunctionalGroup", "showBadge": "", "default": "","note": "","dataType":'',"filter":'',"count": 1 })
-#         print('***** ADDED FunctionalGroup: "'+dataRow['FunctionalGroup']+ '"  *******')
-
+# for row2 in fieldMetadata:
+#     del row2["subGroup"]     
 
 # ***************** Vote on filter text *********************                     
 #spellingVote(data,fieldMetadata)
@@ -324,19 +294,19 @@ data2 = {"lastUpdated": current_date
          ,"mostRecentService": mostRecentService
          ,"dateFormat": "mm/dd/yyyy"
          ,"services": data
-        #  ,"fields": updated_data # fieldMetadata
-        #  ,"LookUp": LookUpData
         }
 
 # Now output to: outputDirData , outputDirFields, outputDirConfig
 
 for folderName in outputDirData:
     if os.path.exists(folderName):
+        print('Output: ' + folderName +  'datastore.json')
         with open(folderName +  'datastore.json', 'w') as jsonfile:
             jsonfile.write(json.dumps(data2, indent=4))
 
 for folderName in outputDirFields:
     if os.path.exists(folderName):       
+        print('Output: ' + folderName +  'datafields.json')
         with open(folderName + 'datafields.json', 'w') as jsonfile:
            jsonfile.write(json.dumps(fieldMetadata, indent=4))
 
@@ -351,20 +321,75 @@ for item in updated_data:
     del item["fieldName"]
     del item["display"]
 
+
+######################################
+
 securityFields = [item for item in updated_data if item['group'] == 'Security']
-for folderName in outputDirConfig:
-    if os.path.exists(folderName):
-        with open(folderName + 'config.ts', 'w') as configfile:
-            configfile.write('export const fieldList = ')  
-            # configfile.write(json.dumps(updated_data, indent=4))  
-            configfile.write(json.dumps(securityFields, indent=4))             
-        
-        print('Output: ' + folderName + 'datastore.json & datafields.json')
-        if configFileVersion != '':            
-            print('Output: ' + configFileVerDir + 'config_CC-'+configFileVersion + '.ts')
-            with open(configFileVerDir + 'config_CC-'+configFileVersion + '.ts', 'w') as configfile:
-                configfile.write('export const fieldList = ')
-                configfile.write(json.dumps(securityFields, indent=4))  
+
+# for folderName in outputDirConfig:
+#     if os.path.exists(folderName):
+#         print('Output: ' + folderName + 'datastore.json & datafields.json')
+        # with open(folderName + 'config@Steve.ts', 'w') as configfile:
+        #     configfile.write('export const fieldList = ') 
+        #     configfile.write(json.dumps(securityFields, indent=4))                
+        # if configFileVersion != '':            
+        #     print('Output: ' + configFileVerDir + 'config@Steve_CC-'+configFileVersion + '.ts')
+        #     with open(configFileVerDir + 'config@Steve_CC-'+configFileVersion + '.ts', 'w') as configfile:
+        #         configfile.write('export const fieldList = ')
+        #         configfile.write(json.dumps(securityFields, indent=4))  
+        ########################################################################
+
+folderName = outputDirConfig[0]
+exportList = ''
+with open(folderName + 'config.ts', 'w') as configfile:
+    print('Output: ' + folderName + 'config.ts')
+    securityGroupList = []
+    for item in [item for item in securityFields if item['subGroup'] == '']:
+        th = []
+        text = ' '+ item['title']
+        for match in re.findall(r'([^()]+)\((.*?)\)', text):
+            text_before, inside_parentheses = match        
+            text = text_before.strip()
+            th = [part.strip() for part in inside_parentheses.split(',')]        
+        securityGroupList.append({ "name": item['property']
+                                  , "dataName": item['property'][8:]
+                                  , "title": text
+                                  , "tableTh": th
+                                  , 'note': item['note']
+                                  , 'fieldList': item['property'][:1].lower() + item['property'][1:]
+                                  , 'id': item['property'].lower() })
+    configfile.write('export const securityGroups = ')      
+    configfile.write(json.dumps(securityGroupList, indent=4))    
+    exportList += ', securityGroups'
+
+    #################
+    securityData = {}
+    # for item in [item for item in securityFields if item['subGroup'] != '']:        
+    for item in [item for item in securityFields]:
+        securityData[item['property']] = {"title": item['title'] , 'id': item['property'].lower() }
+
+    configfile.write('\n\n\nexport const securityData = ')      
+    configfile.write(json.dumps(securityData, indent=4))    
+    exportList += ', securityData'
+
+    items = {}
+    for item in [item for item in updated_data if item['group'] == 'Spec']:
+        items[item['property']] = {"title": item['title'] , 'id': 'spec-'+item['property'].lower() }
+    configfile.write('\n\nexport const specifications = ')      
+    configfile.write(json.dumps(items, indent=4))             
+    exportList += ', specifications'
+
+    items = {}
+    for item in [item for item in updated_data if item['group'] == 'Body']:
+        items[item['property']] = {"title": item['title'] , 'id': 'body-'+item['property'].lower() }
+    configfile.write('\n\nexport const bodyItems = ')      
+    configfile.write(json.dumps(items, indent=4))             
+    exportList += ', bodyItems'
+
+    configfile.write('\n\n\n // import {' + exportList[2:] + '} from \'./config\' ')
+  
+    ##################################################################################################
+
 
 if len(modifiedRecords) > 0:
     modifiedRecords.sort()
@@ -376,4 +401,4 @@ if len(modifiedRecords) > 0:
 if not ProductionData:
     print('DEVELOPMENT mode = Hidden records have been included in the dataset' )
 
-print(colorBlack + '------- '+ str(id_counter) + ' total records -------------'+ colorReset + '\n')
+print('------- '+ str(id_counter) + ' total records -------------\n')

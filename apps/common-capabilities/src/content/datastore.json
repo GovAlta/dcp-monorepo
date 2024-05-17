@@ -1,6 +1,6 @@
 {
-    "lastUpdated": "05/13/2024, 15:30",
-    "isProductionData": false,
+    "lastUpdated": "05/17/2024, 10:39",
+    "isProductionData": true,
     "mostRecentService": "04/16/2024",
     "dateFormat": "mm/dd/yyyy",
     "services": [
@@ -740,92 +740,6 @@
             "appId": 8
         },
         {
-            "ServiceName": "QA automation framework",
-            "Provider": "Justice Digital",
-            "Audience": [
-                "GOA"
-            ],
-            "InternalWeightage": "-20",
-            "Summary": "Guide for developers and QA testers to get started with QA automation within the application.",
-            "Description": "This is QA automation process outlined for service teams. Developers and QA testers should be able to use this as a guide to get started with QA automation within your application.\n\nThis documentation will go over all of the QA automation test frameworks in detail, outline the technology stacks used in this process",
-            "FunctionalGroup": "Was removed",
-            "Environment": [
-                "AWS",
-                "GitHub",
-                "Cypress",
-                "Allure"
-            ],
-            "Language": [
-                "n/a"
-            ],
-            "UsageMethod": "Resource",
-            "SupportLevel": "Other",
-            "Documentation": [
-                {
-                    "name": "QA+Automation",
-                    "url": "https://goa-dio.atlassian.net/wiki/spaces/JD/pages/2195423612/QA+Automation"
-                }
-            ],
-            "Keywords": [
-                "Development"
-            ],
-            "Status": "Live",
-            "Version": "",
-            "UseCases": "",
-            "Prerequisites": "",
-            "Comments": "",
-            "DateAdded": "10/1/2023",
-            "LastUpdated": "10/1/2023",
-            "Reviewed": "",
-            "DataIssues": "",
-            "ReviewedBy": "",
-            "QA": 0,
-            "filterText": "justice digital,was removed,live,n/a,aws, github, cypress, allure,resource,development",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "CMRA",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "STRA",
-                            "Value": "n/a"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "n/a"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "n/a"
-                        }
-                    ]
-                }
-            ],
-            "Contact": {
-                "details": "",
-                "methods": [
-                    {
-                        "type": "Email",
-                        "value": "JSG.PlatformSupport@gov.ab.ca",
-                        "url": "JSG.PlatformSupport@gov.ab.ca"
-                    }
-                ]
-            },
-            "appId": 9
-        },
-        {
             "ServiceName": "Banking validation",
             "Provider": "Platforms - Common Data Services",
             "Audience": [
@@ -908,7 +822,7 @@
                     }
                 ]
             },
-            "appId": 10
+            "appId": 9
         },
         {
             "ServiceName": "Data visualization and reporting",
@@ -991,7 +905,7 @@
                     }
                 ]
             },
-            "appId": 11
+            "appId": 10
         },
         {
             "ServiceName": "Event scheduling",
@@ -1086,239 +1000,7 @@
                     }
                 ]
             },
-            "appId": 12
-        },
-        {
-            "ServiceName": "CCDS Angular components",
-            "Provider": "Children's Services Platform",
-            "Audience": [
-                "Children's Services"
-            ],
-            "InternalWeightage": "-20",
-            "Summary": "Angular library from Augular apps in Children's Services, which provides UI components and shared code, including authentication and authorization.",
-            "Description": "An Angular library that provides UI components and shared code for Angular apps in Children's Services, including authentication and authorization through the CCDS Keycloak realm.",
-            "FunctionalGroup": "Was removed",
-            "Environment": [
-                "GitHub"
-            ],
-            "Language": [
-                "Angular"
-            ],
-            "UsageMethod": "Code",
-            "SupportLevel": "Other",
-            "Documentation": [],
-            "Keywords": [
-                "Keycloak"
-            ],
-            "Status": "Live",
-            "Version": "",
-            "UseCases": "",
-            "Prerequisites": "",
-            "Comments": "Used within Children's Services to provide consistent UI and tooling for all Angular projects.",
-            "DateAdded": "10/1/2023",
-            "LastUpdated": "10/1/2023",
-            "Reviewed": "",
-            "DataIssues": "",
-            "ReviewedBy": "",
-            "QA": 20,
-            "filterText": "children's services platform,was removed,live,children's services,angular,github,code,keycloak",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "CMRA",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "STRA",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "No"
-                        }
-                    ]
-                }
-            ],
-            "Contact": {
-                "details": "Discussion required to obtain access or to deploy container in line of business controlled environment",
-                "methods": [
-                    {
-                        "type": "Email",
-                        "value": "heather.objois@gov.ab.ca",
-                        "url": "heather.objois@gov.ab.ca"
-                    }
-                ]
-            },
-            "appId": 13
-        },
-        {
-            "ServiceName": "CCDS React components",
-            "Provider": "Children's Services Platform",
-            "Audience": [
-                "Children's Services"
-            ],
-            "InternalWeightage": "-20",
-            "Summary": "React library from React apps in Children's Services, which provides UI components and shared code, including authentication and authorization.",
-            "Description": "A React library that provides UI components and shared code for React apps in Children's Services, including authentication and authorization through the CCDS Keycloak realm.",
-            "FunctionalGroup": "Was removed",
-            "Environment": [
-                "GitHub"
-            ],
-            "Language": [
-                "React"
-            ],
-            "UsageMethod": "Code",
-            "SupportLevel": "Other",
-            "Documentation": [],
-            "Keywords": [
-                "Keycloak"
-            ],
-            "Status": "Live",
-            "Version": "",
-            "UseCases": "",
-            "Prerequisites": "",
-            "Comments": "Used within Children's Services to provide consistent UI and tooling for all React projects.",
-            "DateAdded": "10/1/2023",
-            "LastUpdated": "10/1/2023",
-            "Reviewed": "",
-            "DataIssues": "",
-            "ReviewedBy": "",
-            "QA": 20,
-            "filterText": "children's services platform,was removed,live,children's services,react,github,code,keycloak",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "CMRA",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "STRA",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "No"
-                        }
-                    ]
-                }
-            ],
-            "Contact": {
-                "details": "Discussion required to obtain access or to deploy container in line of business controlled environment",
-                "methods": [
-                    {
-                        "type": "Email",
-                        "value": "heather.objois@gov.ab.ca",
-                        "url": "heather.objois@gov.ab.ca"
-                    }
-                ]
-            },
-            "appId": 14
-        },
-        {
-            "ServiceName": "CCDS Web components",
-            "Provider": "Children's Services Platform",
-            "Audience": [
-                "Children's Services"
-            ],
-            "InternalWeightage": "-20",
-            "Summary": "Web component library from apps in Children's Services, which provides UI components.",
-            "Description": "A web component library that provides UI components for use by the applications developed by Children's Services.",
-            "FunctionalGroup": "Was removed",
-            "Environment": [
-                "GitHub"
-            ],
-            "Language": [
-                "Svelte"
-            ],
-            "UsageMethod": "Code",
-            "SupportLevel": "Other",
-            "Documentation": [],
-            "Keywords": [],
-            "Status": "Live",
-            "Version": "",
-            "UseCases": "",
-            "Prerequisites": "",
-            "Comments": "Used within Children's Services to provide consistent UI and tooling for all Vue projects.",
-            "DateAdded": "10/1/2023",
-            "LastUpdated": "10/1/2023",
-            "Reviewed": "Yes",
-            "DataIssues": "",
-            "ReviewedBy": "Heather",
-            "QA": 20,
-            "filterText": "children's services platform,was removed,live,children's services,svelte,github,code",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "CMRA",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "STRA",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "No"
-                        }
-                    ]
-                }
-            ],
-            "Contact": {
-                "details": "Discussion required to obtain access or to deploy container in line of business controlled environment",
-                "methods": [
-                    {
-                        "type": "Email",
-                        "value": "heather.objois@gov.ab.ca",
-                        "url": "heather.objois@gov.ab.ca"
-                    }
-                ]
-            },
-            "appId": 15
+            "appId": 11
         },
         {
             "ServiceName": "Eligibility for child care benefits",
@@ -1394,7 +1076,7 @@
                     }
                 ]
             },
-            "appId": 16
+            "appId": 12
         },
         {
             "ServiceName": "Licensed child care providers",
@@ -1479,95 +1161,7 @@
                     }
                 ]
             },
-            "appId": 17
-        },
-        {
-            "ServiceName": "Cloud native approach and DevSecOps",
-            "Provider": "Justice Digital",
-            "Audience": [
-                "GOA"
-            ],
-            "InternalWeightage": "-20",
-            "Summary": "Cloud native software approach to build, deploy, and manage modern applications in cloud computing environments.",
-            "Description": "Cloud native is the software approach of building, deploying, and managing modern applications in cloud computing environments. Modern companies want to build highly scalable, flexible, and resilient applications that they can update quickly to meet customer demands.",
-            "FunctionalGroup": "Was removed",
-            "Environment": [
-                "AWS",
-                "GitHub",
-                "SonarQube",
-                "Pingdom (Monitoring)"
-            ],
-            "Language": [
-                "TypeScript",
-                ".NET Core"
-            ],
-            "UsageMethod": "Other",
-            "SupportLevel": "Other",
-            "Documentation": [
-                {
-                    "name": "Architecture+Recommendations+Cloud+Native+approach",
-                    "url": "https://goa-dio.atlassian.net/wiki/spaces/JD/pages/2248048887/Architecture+Recommendations+Cloud+Native+approach"
-                }
-            ],
-            "Keywords": [
-                "Cloud",
-                "Development"
-            ],
-            "Status": "Live",
-            "Version": "",
-            "UseCases": "",
-            "Prerequisites": "",
-            "Comments": "",
-            "DateAdded": "10/1/2023",
-            "LastUpdated": "10/1/2023",
-            "Reviewed": "Yes",
-            "DataIssues": "",
-            "ReviewedBy": "Heather",
-            "QA": 0,
-            "filterText": "justice digital,was removed,live,typescript, .net core,aws, github, sonarqube, pingdom (monitoring),cloud,development",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "CMRA",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "STRA",
-                            "Value": "n/a"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "n/a"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "n/a"
-                        }
-                    ]
-                }
-            ],
-            "Contact": {
-                "details": "",
-                "methods": [
-                    {
-                        "type": "Email",
-                        "value": "JSG.PlatformSupport@gov.ab.ca",
-                        "url": "JSG.PlatformSupport@gov.ab.ca"
-                    }
-                ]
-            },
-            "appId": 18
+            "appId": 13
         },
         {
             "ServiceName": "Comments system",
@@ -1652,7 +1246,7 @@
                     }
                 ]
             },
-            "appId": 19
+            "appId": 14
         },
         {
             "ServiceName": "Common cloud-based payment portal",
@@ -1734,7 +1328,7 @@
                 "details": "",
                 "methods": []
             },
-            "appId": 20
+            "appId": 15
         },
         {
             "ServiceName": "Payments and reconciliation",
@@ -1816,7 +1410,7 @@
                 "details": "",
                 "methods": []
             },
-            "appId": 21
+            "appId": 16
         },
         {
             "ServiceName": "Verification codes for confirmation",
@@ -1892,7 +1486,7 @@
                     }
                 ]
             },
-            "appId": 22
+            "appId": 17
         },
         {
             "ServiceName": "Wrapper over Alberta Notify",
@@ -1968,7 +1562,7 @@
                     }
                 ]
             },
-            "appId": 23
+            "appId": 18
         },
         {
             "ServiceName": "Configuration storage",
@@ -2063,7 +1657,7 @@
                     }
                 ]
             },
-            "appId": 24
+            "appId": 19
         },
         {
             "ServiceName": "Transcript information",
@@ -2152,7 +1746,7 @@
                     }
                 ]
             },
-            "appId": 25
+            "appId": 20
         },
         {
             "ServiceName": "Court directory",
@@ -2248,183 +1842,7 @@
                     }
                 ]
             },
-            "appId": 26
-        },
-        {
-            "ServiceName": "Data governance standards",
-            "Provider": "Justice Digital",
-            "Audience": [
-                "Justice Digital"
-            ],
-            "InternalWeightage": "-20",
-            "Summary": "Data governance plan outlining processes and procedures to ensure data quality, security, and privacy across all shared services within Justice Digital's services platform.",
-            "Description": "The Data Governance Plan outlines the processes and procedures to ensure data quality, security, and privacy across all shared services of the Justice Digital Services Platform. It comprises a set of standard operating procedures (SOPs) aimed at promoting consistency, reliability, and compliance in the handling, management, and modification of shared services.",
-            "FunctionalGroup": "Was removed",
-            "Environment": [
-                "AWS"
-            ],
-            "Language": [
-                "Other"
-            ],
-            "UsageMethod": "Other",
-            "SupportLevel": "Other",
-            "Documentation": [
-                {
-                    "name": "Data+Governance",
-                    "url": "https://goa-dio.atlassian.net/wiki/spaces/JD/pages/2080768084/Data+Governance"
-                }
-            ],
-            "Keywords": [
-                "Data Governance",
-                "Development"
-            ],
-            "Status": "Live",
-            "Version": "",
-            "UseCases": "",
-            "Prerequisites": "",
-            "Comments": "",
-            "DateAdded": "10/1/2023",
-            "LastUpdated": "10/1/2023",
-            "Reviewed": "yes",
-            "DataIssues": "",
-            "ReviewedBy": "Andrew",
-            "QA": 2,
-            "filterText": "justice digital,was removed,live,justice digital,aws,data governance,development",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "CMRA",
-                            "Value": "n/a"
-                        },
-                        {
-                            "Field": "STRA",
-                            "Value": "n/a"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "n/a"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "n/a"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "n/a"
-                        }
-                    ]
-                }
-            ],
-            "Contact": {
-                "details": "",
-                "methods": [
-                    {
-                        "type": "Email",
-                        "value": "JSG.PlatformSupport@gov.ab.ca",
-                        "url": "JSG.PlatformSupport@gov.ab.ca"
-                    }
-                ]
-            },
-            "appId": 27
-        },
-        {
-            "ServiceName": "DDD design system",
-            "Provider": "Digital Design and Delivery (DDD)",
-            "Audience": [
-                "GOA"
-            ],
-            "InternalWeightage": "-50",
-            "Summary": "A design system for designers and developers to create consistent and cohesive user experiences across multiple products and platforms.",
-            "Description": "The Design System team is responsible for creating and maintaining the assets used for building DDD product layouts, interactions, and patterns. The design system is a shared language for designers and developers to create consistent and cohesive user experiences across multiple products and platforms.",
-            "FunctionalGroup": "Was removed",
-            "Environment": [
-                "n/a"
-            ],
-            "Language": [
-                "Web components",
-                "Design tokens",
-                "Angular",
-                "React"
-            ],
-            "UsageMethod": "Resource",
-            "SupportLevel": "Other",
-            "Documentation": [
-                {
-                    "name": "design.alberta.ca",
-                    "url": "https://design.alberta.ca"
-                }
-            ],
-            "Keywords": [
-                "Design",
-                "Development"
-            ],
-            "Status": "Live",
-            "Version": "Web components 1.14.0 , Design tokens 1.1.1 , Angular components 2.5.0 , React components 4.14.0",
-            "UseCases": "A design system is a centralized resource that provides guidelines, assets, and code to help teams build digital products. It helps maintain consistency across multiple projects and allows teams to focus on higher-level tasks rather than reinventing low-level elements.",
-            "Prerequisites": "",
-            "Comments": "Include the design system in all DDD products; it should act as the foundation for developing the front-end of any government service.",
-            "DateAdded": "10/1/2023",
-            "LastUpdated": "10/1/2023",
-            "Reviewed": "yes",
-            "DataIssues": "",
-            "ReviewedBy": "Andrew",
-            "QA": 0,
-            "filterText": "digital design and delivery (ddd),was removed,live,web components, design tokens, angular, react,n/a,resource,design, development",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "CMRA",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "STRA",
-                            "Value": "n/a"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "n/a"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "n/a"
-                        }
-                    ]
-                }
-            ],
-            "Contact": {
-                "details": "",
-                "methods": [
-                    {
-                        "type": "Slack",
-                        "value": "design-system-support",
-                        "url": "https://goa-dio.slack.com/channels/design-system-support"
-                    },
-                    {
-                        "type": "Email",
-                        "value": "sa.designsystemsupport@gov.ab.ca",
-                        "url": "sa.designsystemsupport@gov.ab.ca"
-                    }
-                ]
-            },
-            "appId": 28
+            "appId": 21
         },
         {
             "ServiceName": "API directory",
@@ -2519,7 +1937,7 @@
                     }
                 ]
             },
-            "appId": 29
+            "appId": 22
         },
         {
             "ServiceName": "Document manipulation",
@@ -2617,7 +2035,7 @@
                     }
                 ]
             },
-            "appId": 30
+            "appId": 23
         },
         {
             "ServiceName": "ECM connector (OpenText)",
@@ -2715,7 +2133,7 @@
                     }
                 ]
             },
-            "appId": 31
+            "appId": 24
         },
         {
             "ServiceName": "E-signatures self-service portal",
@@ -2812,7 +2230,7 @@
                     }
                 ]
             },
-            "appId": 32
+            "appId": 25
         },
         {
             "ServiceName": "Email platform",
@@ -2905,7 +2323,7 @@
                     }
                 ]
             },
-            "appId": 33
+            "appId": 26
         },
         {
             "ServiceName": "Employment insurance (EI) gateway",
@@ -2981,7 +2399,7 @@
                     }
                 ]
             },
-            "appId": 34
+            "appId": 27
         },
         {
             "ServiceName": "Event logs",
@@ -3080,7 +2498,7 @@
                     }
                 ]
             },
-            "appId": 35
+            "appId": 28
         },
         {
             "ServiceName": "Document upload and download",
@@ -3168,7 +2586,7 @@
                     }
                 ]
             },
-            "appId": 36
+            "appId": 29
         },
         {
             "ServiceName": "File upload and management",
@@ -3263,7 +2681,7 @@
                     }
                 ]
             },
-            "appId": 37
+            "appId": 30
         },
         {
             "ServiceName": "Forms and submission status",
@@ -3357,7 +2775,7 @@
                     }
                 ]
             },
-            "appId": 38
+            "appId": 31
         },
         {
             "ServiceName": "ePDFs and paper forms",
@@ -3447,7 +2865,7 @@
                     }
                 ]
             },
-            "appId": 39
+            "appId": 32
         },
         {
             "ServiceName": "Request access to Children's Services",
@@ -3523,7 +2941,7 @@
                     }
                 ]
             },
-            "appId": 40
+            "appId": 33
         },
         {
             "ServiceName": "Access to Children's Services with API",
@@ -3601,7 +3019,7 @@
                     }
                 ]
             },
-            "appId": 41
+            "appId": 34
         },
         {
             "ServiceName": "GOA user and access management",
@@ -3677,94 +3095,7 @@
                     }
                 ]
             },
-            "appId": 42
-        },
-        {
-            "ServiceName": "Identity and access management strategy",
-            "Provider": "Justice Digital",
-            "Audience": [
-                "Justice Digital"
-            ],
-            "InternalWeightage": "-20",
-            "Summary": "A highly available cloud-hosted instance under a single Justice Digital realm to make access more streamlined.",
-            "Description": "All Justice Digital services are using a highly available cloud-hosted instance under a single Justice Digital realm. This will help reduce disruptions in access to Justice Digital services and enable external users such as lawyers to use multiple Justice Digital services with a single account, making access more streamlined.",
-            "FunctionalGroup": "Was removed",
-            "Environment": [
-                "AWS",
-                "Keycloak"
-            ],
-            "Language": [
-                "Angular",
-                ".NET Core",
-                "IaC using CDK"
-            ],
-            "UsageMethod": "Resource (Environment)",
-            "SupportLevel": "Other",
-            "Documentation": [
-                {
-                    "name": "Documentation",
-                    "url": "https://goa-dio.atlassian.net/l/cp/2mv1hUmh"
-                }
-            ],
-            "Keywords": [
-                "Cloud",
-                "IAM"
-            ],
-            "Status": "Live",
-            "Version": "",
-            "UseCases": "",
-            "Prerequisites": "",
-            "Comments": "",
-            "DateAdded": "10/1/2023",
-            "LastUpdated": "10/1/2023",
-            "Reviewed": "",
-            "DataIssues": "",
-            "ReviewedBy": "",
-            "QA": 0,
-            "filterText": "justice digital,was removed,live,justice digital,angular, .net core, iac using cdk,aws, keycloak,resource (environment),cloud,iam",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "CMRA",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "STRA",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "Required"
-                        }
-                    ]
-                }
-            ],
-            "Contact": {
-                "details": "",
-                "methods": [
-                    {
-                        "type": "Email",
-                        "value": "JSG.PlatformSupport@gov.ab.ca",
-                        "url": "JSG.PlatformSupport@gov.ab.ca"
-                    }
-                ]
-            },
-            "appId": 43
+            "appId": 35
         },
         {
             "ServiceName": "Income validation",
@@ -3853,7 +3184,7 @@
                     }
                 ]
             },
-            "appId": 44
+            "appId": 36
         },
         {
             "ServiceName": "Keycloak client npm package",
@@ -3954,7 +3285,7 @@
                     }
                 ]
             },
-            "appId": 45
+            "appId": 37
         },
         {
             "ServiceName": "Keycloak integration with DIG",
@@ -4037,7 +3368,7 @@
                     }
                 ]
             },
-            "appId": 46
+            "appId": 38
         },
         {
             "ServiceName": "MyAlberta digital ID for business (MADI-B)",
@@ -4134,7 +3465,7 @@
                     }
                 ]
             },
-            "appId": 47
+            "appId": 39
         },
         {
             "ServiceName": "Enterprise monitoring and alerting",
@@ -4233,7 +3564,7 @@
                     }
                 ]
             },
-            "appId": 48
+            "appId": 40
         },
         {
             "ServiceName": "Text and email notifications",
@@ -4328,7 +3659,7 @@
                     }
                 ]
             },
-            "appId": 49
+            "appId": 41
         },
         {
             "ServiceName": "Message bus interface",
@@ -4404,92 +3735,7 @@
                     }
                 ]
             },
-            "appId": 50
-        },
-        {
-            "ServiceName": "OAuth for browser apps",
-            "Provider": "Wildfire Platform",
-            "Audience": [
-                "GOA"
-            ],
-            "InternalWeightage": "-20",
-            "Summary": "Guidebook containing threats, attack consequences, security considerations, and best practices for developing browser-based apps that use OAuth 2.0",
-            "Description": "This specification details the threats, attack consequences, security considerations and best practices that must be taken into account when developing browser-based applications that use OAuth 2.0.",
-            "FunctionalGroup": "Was removed",
-            "Environment": [
-                "Other"
-            ],
-            "Language": [
-                ".NET Core"
-            ],
-            "UsageMethod": "Other",
-            "SupportLevel": "Other",
-            "Documentation": [
-                {
-                    "name": "Admin+RestAPI+request+flow",
-                    "url": "https://goa-dio.atlassian.net/wiki/spaces/WDS/pages/2758869310/Admin+RestAPI+request+flow"
-                },
-                {
-                    "name": "Pattern to implement OAuth BFF Proxy flow",
-                    "url": "https://datatracker.ietf.org/doc/html/draft-ietf-oauth-browser-based-apps#name-backend-for-frontend-bff-pr"
-                }
-            ],
-            "Keywords": [],
-            "Status": "Other",
-            "Version": "",
-            "UseCases": "",
-            "Prerequisites": "The implementation is using BFF Duende framework, license might be required",
-            "Comments": "",
-            "DateAdded": "10/1/2023",
-            "LastUpdated": "10/1/2023",
-            "Reviewed": "",
-            "DataIssues": "",
-            "ReviewedBy": "",
-            "QA": 4,
-            "filterText": "wildfire platform,was removed,.net core",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "CMRA",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "STRA",
-                            "Value": "n/a"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "n/a"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "n/a"
-                        }
-                    ]
-                }
-            ],
-            "Contact": {
-                "details": "",
-                "methods": [
-                    {
-                        "type": "Email",
-                        "value": "vassy.serban@gov.ab.ca",
-                        "url": "vassy.serban@gov.ab.ca"
-                    }
-                ]
-            },
-            "appId": 51
+            "appId": 42
         },
         {
             "ServiceName": "Payment gateway",
@@ -4581,7 +3827,7 @@
                     }
                 ]
             },
-            "appId": 52
+            "appId": 43
         },
         {
             "ServiceName": "TD Bambora for payments",
@@ -4674,7 +3920,7 @@
                     }
                 ]
             },
-            "appId": 53
+            "appId": 44
         },
         {
             "ServiceName": "PDF generation & merging",
@@ -4770,7 +4016,7 @@
                     }
                 ]
             },
-            "appId": 54
+            "appId": 45
         },
         {
             "ServiceName": "GoA branded PDFs",
@@ -4871,7 +4117,7 @@
                     }
                 ]
             },
-            "appId": 55
+            "appId": 46
         },
         {
             "ServiceName": "Programs and providers registry",
@@ -4956,7 +4202,7 @@
                     }
                 ]
             },
-            "appId": 56
+            "appId": 47
         },
         {
             "ServiceName": "Push mode gateway",
@@ -5051,7 +4297,7 @@
                     }
                 ]
             },
-            "appId": 57
+            "appId": 48
         },
         {
             "ServiceName": "QR codes as digital signatures",
@@ -5148,100 +4394,7 @@
                     }
                 ]
             },
-            "appId": 58
-        },
-        {
-            "ServiceName": "Enterprise API",
-            "Provider": "Service Integration",
-            "Audience": [
-                "GOA"
-            ],
-            "InternalWeightage": "-20",
-            "Summary": "Creating and maintaining enterprise APIs.",
-            "Description": "The Service Integration team is responsible for creating and maintaining Enterprise APIs.  If there is a service you think would benefit the enterprise, contact the team and they might be able to create the capability you require.",
-            "FunctionalGroup": "Was removed",
-            "Environment": [
-                "Other"
-            ],
-            "Language": [
-                "Other"
-            ],
-            "UsageMethod": "Resource",
-            "SupportLevel": "Hybrid",
-            "Documentation": [
-                {
-                    "name": "Services that are offered",
-                    "url": "https://abgov.sharepoint.com/sites/S500D27-SI969"
-                }
-            ],
-            "Keywords": [
-                "Development",
-                "Enterprise"
-            ],
-            "Status": "Other",
-            "Version": "",
-            "UseCases": "",
-            "Prerequisites": "",
-            "Comments": "",
-            "DateAdded": "10/1/2023",
-            "LastUpdated": "3/26/2024",
-            "Reviewed": "",
-            "DataIssues": "",
-            "ReviewedBy": "",
-            "QA": 6,
-            "filterText": "service integration,was removed,goa,resource,development, enterprise",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "CMRA",
-                            "Value": "n/a"
-                        },
-                        {
-                            "Field": "STRA",
-                            "Value": "n/a"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "n/a"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "n/a"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "n/a"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Info",
-                    "Items": [
-                        {
-                            "Field": "Controller",
-                            "Value": "Director, Integration Services, TSO"
-                        }
-                    ]
-                }
-            ],
-            "Contact": {
-                "details": "Users are to contact the Service Integration Team via BERNIE to request this service.",
-                "methods": [
-                    {
-                        "type": "BERNIE",
-                        "value": "Service Integration Consultation",
-                        "url": "https://goaprod.service-now.com/esm?id=search&spa=1&q=Service%20Integration%20Consultation"
-                    }
-                ]
-            },
-            "appId": 59
+            "appId": 49
         },
         {
             "ServiceName": "Script and algorithmic modifications",
@@ -5335,85 +4488,7 @@
                     }
                 ]
             },
-            "appId": 60
-        },
-        {
-            "ServiceName": "SCSS Angular components",
-            "Provider": "Seniors, Community and Social Services (SCSS)",
-            "Audience": [
-                "GOA"
-            ],
-            "InternalWeightage": "-20",
-            "Summary": "Common Angular UI components",
-            "Description": "Common Angular UI components",
-            "FunctionalGroup": "Was removed",
-            "Environment": [
-                "Other"
-            ],
-            "Language": [
-                "Angular"
-            ],
-            "UsageMethod": "Code",
-            "SupportLevel": "Other",
-            "Documentation": [],
-            "Keywords": [
-                "Inspiration"
-            ],
-            "Status": "Deprecated",
-            "Version": "",
-            "UseCases": "",
-            "Prerequisites": "",
-            "Comments": "Inspiration could be taken for the design library, not for use and being internally deprecated inside SCSS",
-            "DateAdded": "10/1/2023",
-            "LastUpdated": "10/1/2023",
-            "Reviewed": "",
-            "DataIssues": "",
-            "ReviewedBy": "",
-            "QA": 22,
-            "filterText": "seniors, community and social services (scss),was removed,deprecated,angular,code,inspiration",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "CMRA",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "STRA",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "No"
-                        }
-                    ]
-                }
-            ],
-            "Contact": {
-                "details": "",
-                "methods": [
-                    {
-                        "type": "Email",
-                        "value": "wei.w.wei@gov.ab.ca",
-                        "url": "wei.w.wei@gov.ab.ca"
-                    }
-                ]
-            },
-            "appId": 61
+            "appId": 50
         },
         {
             "ServiceName": "ECM connector (SharePoint)",
@@ -5515,7 +4590,7 @@
                     }
                 ]
             },
-            "appId": 62
+            "appId": 51
         },
         {
             "ServiceName": "SIN validation",
@@ -5600,7 +4675,7 @@
                     }
                 ]
             },
-            "appId": 63
+            "appId": 52
         },
         {
             "ServiceName": "SMS gateway",
@@ -5689,7 +4764,7 @@
                     }
                 ]
             },
-            "appId": 64
+            "appId": 53
         },
         {
             "ServiceName": "Log/event based service monitoring",
@@ -5789,7 +4864,7 @@
                     }
                 ]
             },
-            "appId": 65
+            "appId": 54
         },
         {
             "ServiceName": "Student and staff directory",
@@ -5878,7 +4953,7 @@
                     }
                 ]
             },
-            "appId": 66
+            "appId": 55
         },
         {
             "ServiceName": "Official court stamps",
@@ -5966,7 +5041,7 @@
                     }
                 ]
             },
-            "appId": 67
+            "appId": 56
         },
         {
             "ServiceName": "Application health monitoring",
@@ -6061,90 +5136,7 @@
                     }
                 ]
             },
-            "appId": 68
-        },
-        {
-            "ServiceName": "Application support model",
-            "Provider": "Justice Digital",
-            "Audience": [
-                "GOA"
-            ],
-            "InternalWeightage": "-20",
-            "Summary": "A robust application support model to ensure operational issues are dealt with while ensuring an open line for direct customer feedback.",
-            "Description": "Maintaining high-quality services requires a robust application support model to ensure both operational issues are dealt with; as well as to ensure an open line for direct customer feedback. As our services evolve and our user base continues to expand, an integrated support model will allow JD to continue to improve its service delivery capabilities.",
-            "FunctionalGroup": "Was removed",
-            "Environment": [
-                "ServiceNow"
-            ],
-            "Language": [
-                "Other"
-            ],
-            "UsageMethod": "Resource",
-            "SupportLevel": "Other",
-            "Documentation": [
-                {
-                    "name": "Support+Model",
-                    "url": "https://goa-dio.atlassian.net/wiki/spaces/JDP/pages/2247983316/Support+Model"
-                }
-            ],
-            "Keywords": [
-                "Support"
-            ],
-            "Status": "Live",
-            "Version": "",
-            "UseCases": "",
-            "Prerequisites": "",
-            "Comments": "",
-            "DateAdded": "10/1/2023",
-            "LastUpdated": "10/1/2023",
-            "Reviewed": "",
-            "DataIssues": "",
-            "ReviewedBy": "",
-            "QA": 2,
-            "filterText": "justice digital,was removed,live,servicenow,resource,support",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "CMRA",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "STRA",
-                            "Value": "n/a"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "n/a"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "n/a"
-                        }
-                    ]
-                }
-            ],
-            "Contact": {
-                "details": "",
-                "methods": [
-                    {
-                        "type": "Email",
-                        "value": "JSG.PlatformSupport@gov.ab.ca",
-                        "url": "JSG.PlatformSupport@gov.ab.ca"
-                    }
-                ]
-            },
-            "appId": 69
+            "appId": 57
         },
         {
             "ServiceName": "Unified Alberta.ca account",
@@ -6237,7 +5229,7 @@
                     }
                 ]
             },
-            "appId": 70
+            "appId": 58
         },
         {
             "ServiceName": "Event and activity logs storage",
@@ -6336,7 +5328,7 @@
                     }
                 ]
             },
-            "appId": 71
+            "appId": 59
         },
         {
             "ServiceName": "Verification codes generator",
@@ -6430,7 +5422,7 @@
                     }
                 ]
             },
-            "appId": 72
+            "appId": 60
         }
     ]
 }
