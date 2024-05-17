@@ -20,8 +20,6 @@ export default function Details({ app }: DetailsProps): JSX.Element {
     content: [],
   });
 
-  const [fields, setFields] = useState<any>([]);
-
   const badgesToShow = ['FunctionalGroup', 'Language', 'Keywords'];
   const contentToShow = [
     {
