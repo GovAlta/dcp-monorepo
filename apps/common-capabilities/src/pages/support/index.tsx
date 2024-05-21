@@ -15,7 +15,7 @@ export default function SupportPage(): JSX.Element {
       const elmnt = document.getElementById(window.location.hash.substring(1));
       elmnt?.scrollIntoView(true);
     }
-  });
+  }, []);
   const renderContact = (method: any) => {
     const contactMethods: any = {
       Teams: {
@@ -58,22 +58,20 @@ export default function SupportPage(): JSX.Element {
         url: 'TI.Softwaredelivery@gov.ab.ca?subject=Feedback for Common Capabilities',
         value: 'TI.Softwaredelivery@gov.ab.ca',
       },
-    ]
+    ];
     return (
       <table className="contact-table">
-        <tbody>
-          {contactMethods.map((method) => renderContact(method))}
-        </tbody>
+        <tbody>{contactMethods.map((method) => renderContact(method))}</tbody>
       </table>
     );
-  }
+  };
   return (
     <div
       style={{
         padding: '0px 68px',
       }}
     >
-      <GoAThreeColumnLayout>
+      <GoAThreeColumnLayout maxContentWidth="1500px">
         <h2>Contact</h2>
         {renderContactTable()}
         <GoASpacer vSpacing="2xl" />

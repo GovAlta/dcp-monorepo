@@ -266,63 +266,61 @@ export default function Details({ app }: DetailsProps): JSX.Element {
   };
 
   return (
-    <>
-      <GoAThreeColumnLayout
-        nav={
-          <div className="details-side-nav" key="details-side-nav">
-            <GoASideMenu key='SideMenu'>
-              {items.content.length > 0
-                ? items.content.map((content: any) => {
-                    return content.showInSidebar ? (
-                      <a key={`${content.id}-menu`} href={`#${content.id}`}>
-                        {content.title}
-                      </a>
-                    ) : (
-                      <></>
-                    );
-                  })
-                : 'No content'
-              }
-            </GoASideMenu>
-          </div>
-        }
-      >
-        <div className="service-heading">
-          <h2>{app.ServiceName}</h2>
-          {app.Status !== '' && app.Status.toLowerCase() !== 'other' ? (
-            <GoABadge type="success" content={app.Status} />
-          ) : (
-            ''
-          )}
+    <GoAThreeColumnLayout
+      maxContentWidth="1500px"
+      nav={
+        <div className="details-side-nav">
+          <GoASideMenu>
+            {items.content.length > 0
+              ? items.content.map((content: any) => {
+                  return content.showInSidebar ? (
+                    <a key={`${content.id}`} href={`#${content.id}`}>
+                      {content.title}
+                    </a>
+                  ) : (
+                    ''
+                  );
+                })
+              : 'No content'}
+          </GoASideMenu>
         </div>
-        <GoASpacer vSpacing="xs" />
-        <p className="service-subtitle"> {app.Provider}</p>
+      }
+    >
+      <div className="service-heading">
+        <h2>{app.ServiceName}</h2>
+        {app.Status !== '' && app.Status.toLowerCase() !== 'other' ? (
+          <GoABadge type="success" content={app.Status} />
+        ) : (
+          ''
+        )}
+      </div>
+      <GoASpacer vSpacing="xs" />
+      <p className="service-subtitle"> {app.Provider}</p>
 
-        <div className="service-badges">
-          {items.badges.length > 0 ? items.badges : ''}
-        </div>
+      <div className="service-badges">
+        {items.badges.length > 0 ? items.badges : ''}
+      </div>
 
-        <GoASpacer vSpacing="xl" />
-        {items.content.length > 0 &&
-          items.content.map(({ id, name, title, showContent }: any) => {
-            if (!showContent) return null;
+      <GoASpacer vSpacing="xl" />
+      {items.content.length > 0 &&
+        items.content.map(({ id, name, title, showContent }: any) => {
+          if (!showContent) return null;
 
-            return (
-              <div key={`${id}`}>
-                <h3 id={`${id}`}>{title}</h3>
-                {renderContent(name, app)}
-                <GoASpacer vSpacing="l" />
-              </div>
-            );
-          })}
+          return (
+            <div key={`${id}`}>
+              <h3 id={`${id}`}>{title}</h3>
+              {renderContent(name, app)}
+              <GoASpacer vSpacing="l" />
+            </div>
+          );
+        })}
 
-        <GoASpacer vSpacing="3xl" />
+      <GoASpacer vSpacing="3xl" />
 
-        <div className="line-elements back-top">
-          <a href="#top-page">Back to top</a>
-          <GoAIcon type="arrow-up-circle" theme="outline" />
-        </div>
-      </GoAThreeColumnLayout>
-    </>
+      <div className="line-elements back-top">
+        <a href="#top-page">Back to top</a>
+        <GoAIcon type="arrow-up-circle" theme="outline" />
+      </div>
+    </GoAThreeColumnLayout>
   );
 }
