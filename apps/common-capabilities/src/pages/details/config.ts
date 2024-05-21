@@ -7,7 +7,7 @@ export const securityGroups = [
             "Risk assessment has been completed",
             "Completed"
         ],
-        "note": "We need some text here for an explanation for the user what this section means",
+        "note": "",
         "fieldList": "securityStatus",
         "id": "securitystatus"
     },
@@ -19,7 +19,7 @@ export const securityGroups = [
             "Consultation/assessment",
             "Required"
         ],
-        "note": "We need some text here for an explanation for the user what this section means",
+        "note": "",
         "fieldList": "securityRequired",
         "id": "securityrequired"
     },
@@ -28,7 +28,7 @@ export const securityGroups = [
         "dataName": "Info",
         "title": " Security details",
         "tableTh": [],
-        "note": "We need some text here for an explanation for the user what this section means",
+        "note": "",
         "fieldList": "securityInfo",
         "id": "securityinfo"
     }
@@ -118,6 +118,10 @@ export const bodyItems = {
         "title": "Overview",
         "id": "body-summary"
     },
+    "Specs": {
+        "title": "Specifications",
+        "id": "body-specs"
+    },
     "Description": {
         "title": "Getting started",
         "id": "body-description"
@@ -129,6 +133,10 @@ export const bodyItems = {
     "Prerequisites": {
         "title": "Prerequisites",
         "id": "body-prerequisites"
+    },
+    "Security": {
+        "title": "Security and compliance",
+        "id": "body-security"
     },
     "Documentation": {
         "title": "Documentation",

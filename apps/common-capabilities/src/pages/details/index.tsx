@@ -140,8 +140,7 @@ export default function Details({ app }: DetailsProps): JSX.Element {
     }
 
     return (
-      <>
-        <GoASpacer vSpacing="xl" />
+      <>        
         {group.note != '' ? (
           <>
             <span>{group.note}</span>{' '} {/* <GoAtext ????={group.note} ></GoAtext> */}
@@ -182,7 +181,8 @@ export default function Details({ app }: DetailsProps): JSX.Element {
             ))}
           </tbody>
         </GoATable>
-        <GoASpacer vSpacing="l" />
+        <GoASpacer vSpacing="xl" />
+        {/* <GoASpacer vSpacing="l" /> */}
       </>
     );
   };
@@ -258,7 +258,7 @@ export default function Details({ app }: DetailsProps): JSX.Element {
     } else if (name === 'Security') {
       return (
         <>
-          Overview text is needed
+          {/* Overview text is needed */}
           {securityGroups.map((group: SecurityItem) => (
             <SecurityBlock key={group.id} group={group} />
           ))}
