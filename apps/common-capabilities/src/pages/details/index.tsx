@@ -143,7 +143,7 @@ export default function Details({ app }: DetailsProps): JSX.Element {
       <>        
         {group.note != '' ? (
           <>
-            <span>{group.note}</span>{' '} {/* <GoAtext ????={group.note} ></GoAtext> */}
+            <p>{group.note}</p>{' '} {/* <GoAtext ????={group.note} ></GoAtext> */}
             <GoASpacer vSpacing="m" />
           </>
         ) : null}
@@ -270,6 +270,7 @@ export default function Details({ app }: DetailsProps): JSX.Element {
   return (
     <>
       <GoAThreeColumnLayout
+        maxContentWidth="1500px"
         nav={
           <div className="details-side-nav" key="details-side-nav">
             <GoASideMenu key="SideMenu">
