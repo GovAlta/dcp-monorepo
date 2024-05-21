@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "04/18/2024, 14:36",
+    "lastUpdated": "05/21/2024, 11:57",
     "isProductionData": true,
     "mostRecentService": "04/16/2024",
     "dateFormat": "mm/dd/yyyy",
@@ -10,7 +10,7 @@
             "Audience": [
                 "GOA"
             ],
-            "InternalWeightage": 100,
+            "InternalWeightage": "100",
             "Summary": "Interface between 1GX and GoA business applications",
             "Description": "The 1GX Application Programming Interface (API) Service provides Government of Alberta (GoA) business areas with multiple interfaces between 1GX modules and their business applications. It provides them with the ability to search, create, update, and delete records in real time, directly from their business applications, without accessing 1GX directly.\n\nThis service must be requested by 1GX ministry service managers, as they are responsible for the integrations between 1GX and ministry applications. They will work with application developers, the 1GX Centre of Excellence (CoE) team, and the Service Integration team to determine which API(s) will meet business area requirements.\n\nThe 1GX CoE team approves requests for this service and collaborates with the Service Integration team to collect the requirements needed to configure API Gateway access and security roles",
             "FunctionalGroup": "Automation",
@@ -43,6 +43,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 2,
+            "filterText": "service integration,automation,live,goa,openshift,api,1gx, service",
             "Security": [
                 {
                     "Type": "Status",
@@ -98,7 +99,6 @@
                     }
                 ]
             },
-            "filterText": "automation,service integration,live,goa,api,openshift,1gx, service",
             "appId": 1
         },
         {
@@ -107,7 +107,7 @@
             "Audience": [
                 "GOA"
             ],
-            "InternalWeightage": 100,
+            "InternalWeightage": "100",
             "Summary": "Interface between 1GX and GoA business applications using legacy IMAGIS",
             "Description": "Interfaces between 1GX and GoA business applications using iSuite to send/receive files in legacy IMAGIS format. This integration is for legacy GoA applications, it will be phased out and replaced by direct API type of integration with 1GX.",
             "FunctionalGroup": "Automation",
@@ -141,6 +141,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 2,
+            "filterText": "service integration,automation,live,goa,openshift,api,1gx, imagis, service",
             "Security": [
                 {
                     "Type": "Status",
@@ -168,7 +169,7 @@
                         },
                         {
                             "Field": "Cybersecurity",
-                            "Value": "Yes"
+                            "Value": "Required"
                         }
                     ]
                 },
@@ -196,7 +197,6 @@
                     }
                 ]
             },
-            "filterText": "automation,service integration,live,goa,api,openshift,1gx, imagis, service",
             "appId": 2
         },
         {
@@ -205,7 +205,7 @@
             "Audience": [
                 "GOA"
             ],
-            "InternalWeightage": 10,
+            "InternalWeightage": "10",
             "Summary": "Deployment of Keycloak for user authentication and authorization.",
             "Description": "The Access Service is a deployment of Keycloak, which provides Realms to tenants and serves as the basis for user access management.  As a federated IDP, Keycloak provides user authentication and authorization services, helping you to your tenant secure.  On top of Keycloak, the Access Service provides the user roles necessary to use all other ADSP services.",
             "FunctionalGroup": "User management",
@@ -237,6 +237,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 4,
+            "filterText": "alberta digital service platform (adsp),user management,live,service,keycloak",
             "Security": [
                 {
                     "Type": "Status",
@@ -284,7 +285,6 @@
                     }
                 ]
             },
-            "filterText": "user management,alberta digital service platform (adsp),live,service,keycloak",
             "appId": 3
         },
         {
@@ -293,7 +293,7 @@
             "Audience": [
                 "GOA"
             ],
-            "InternalWeightage": 100,
+            "InternalWeightage": "100",
             "Summary": "Find an address and autopopulate address details using incremental Canada Post searches.",
             "Description": "Allows ease of mailing address data entry and validation through 2 endpoints that allow incremental searches to find the correct address and provide the full address details of the selected result.  This service leverages \"Canada Post - Address Complete\" for it's validation repository.",
             "FunctionalGroup": "Data",
@@ -323,6 +323,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 4,
+            "filterText": "service integration,data,live,goa,service",
             "Security": [
                 {
                     "Type": "Status",
@@ -333,7 +334,7 @@
                         },
                         {
                             "Field": "STRA",
-                            "Value": "Yes"
+                            "Value": "Completed"
                         }
                     ]
                 },
@@ -378,7 +379,6 @@
                     }
                 ]
             },
-            "filterText": "data,service integration,live,goa,service",
             "appId": 4
         },
         {
@@ -387,7 +387,7 @@
             "Audience": [
                 "GOA"
             ],
-            "InternalWeightage": 10,
+            "InternalWeightage": "10",
             "Summary": "DayJS plugin with information about stat holidays in Alberta.",
             "Description": "A DayJS plugin for the information about statutory holidays in Alberta",
             "FunctionalGroup": "Data",
@@ -417,6 +417,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 4,
+            "filterText": "seniors, community and social services (scss),data,typescript (dayjs),code",
             "Security": [
                 {
                     "Type": "Status",
@@ -464,7 +465,6 @@
                     }
                 ]
             },
-            "filterText": "data,seniors, community and social services (scss),code,typescript (dayjs)",
             "appId": 5
         },
         {
@@ -473,7 +473,7 @@
             "Audience": [
                 "GOA"
             ],
-            "InternalWeightage": 10,
+            "InternalWeightage": "10",
             "Summary": "Verify new borns and deceased individuals using Alberta Vital Statistics.",
             "Description": "Verify new borns and deceased individuals against the data in Alberta Vital Statistics for a specific Government of Alberta program. This program requires approval from Vital Statistics for data usage, as well as  a privacy assessment.",
             "FunctionalGroup": "Data",
@@ -498,6 +498,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 0,
+            "filterText": "platforms - common data services,data,alpha,.net core,on prem,api",
             "Security": [
                 {
                     "Type": "Status",
@@ -549,7 +550,6 @@
                     }
                 ]
             },
-            "filterText": "data,platforms - common data services,alpha,api,.net core,on prem",
             "appId": 6
         },
         {
@@ -558,7 +558,7 @@
             "Audience": [
                 "GOA"
             ],
-            "InternalWeightage": 100,
+            "InternalWeightage": "100",
             "Summary": "IAM platform for federated sign on and identity verification for citizens accessing online services.",
             "Description": "IAM platform for federated sign on and identity verification for citizens accessing online services.",
             "FunctionalGroup": "User management",
@@ -590,6 +590,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 0,
+            "filterText": "platforms - iam,user management,live,forgerock,azure,iam",
             "Security": [
                 {
                     "Type": "Status",
@@ -646,7 +647,6 @@
                     }
                 ]
             },
-            "filterText": "user management,platforms - iam,live,forgerock,azure,iam",
             "appId": 7
         },
         {
@@ -655,7 +655,7 @@
             "Audience": [
                 "GOA"
             ],
-            "InternalWeightage": 10,
+            "InternalWeightage": "10",
             "Summary": "Monitoring and performance metrics for APIs with firewall, router, and DDOS protection.",
             "Description": "Provides protection, monitoring and performance metrics for APIs.  The gateway can act as a firewall, router & DDOS protection for APIs and supports advanced features like \"custom claims\".  The gateway service is available for both internal/external and on-prem/cloud APIs.  This service leverages the Digital Identiity Gateway for API authentication.",
             "FunctionalGroup": "Performance",
@@ -685,6 +685,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 4,
+            "filterText": "service integration,performance,live,goa,api",
             "Security": [
                 {
                     "Type": "Status",
@@ -736,7 +737,6 @@
                     }
                 ]
             },
-            "filterText": "performance,service integration,live,goa,api",
             "appId": 8
         },
         {
@@ -745,7 +745,7 @@
             "Audience": [
                 "GOA"
             ],
-            "InternalWeightage": 10,
+            "InternalWeightage": "10",
             "Summary": "Validate financial institution number, branch number, and banking account number format.",
             "Description": "Allow applications to validate the financial institution number, branch number, as well as the format of the banking account number.",
             "FunctionalGroup": "Finance",
@@ -770,6 +770,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 0,
+            "filterText": "platforms - common data services,finance,alpha,.net core,on prem,api",
             "Security": [
                 {
                     "Type": "Status",
@@ -821,7 +822,6 @@
                     }
                 ]
             },
-            "filterText": "finance,platforms - common data services,alpha,api,.net core,on prem",
             "appId": 9
         },
         {
@@ -830,7 +830,7 @@
             "Audience": [
                 "GOA"
             ],
-            "InternalWeightage": 10,
+            "InternalWeightage": "10",
             "Summary": "Using Amazon QuickSight, create interactive dashboards, reports, and embedded analytics with single source of truth.",
             "Description": "Justice Digital teams are using Amazon QuickSight as a data visualization tool. With QuickSight, all product teams can meet varying analytic needs from the same source of truth through interactive dashboards, paginated reports, and embedded analytics. \n\nProduct teams are also fully automating their Data Pipelines using a shared architecture pattern.",
             "FunctionalGroup": "Performance",
@@ -862,6 +862,7 @@
             "DataIssues": "Are Amazon QuickSight and shared architecture framework strategy 2 very different and unrelated things?",
             "ReviewedBy": "",
             "QA": 12,
+            "filterText": "justice digital,performance,live,python,aws,reporting",
             "Security": [
                 {
                     "Type": "Status",
@@ -904,7 +905,6 @@
                     }
                 ]
             },
-            "filterText": "performance,justice digital,live,python,aws,reporting",
             "appId": 10
         },
         {
@@ -913,7 +913,7 @@
             "Audience": [
                 "GOA"
             ],
-            "InternalWeightage": 10,
+            "InternalWeightage": "10",
             "Summary": "Calendar widget for scheduling events, managing attendees and event queries, and automatic time-zone conversion.",
             "Description": "Provides the capability for scheduling events like meetings, appointments, or similar activities for your application's end users.  ADSP gives you full backend support for creating persistent events, managing attendees, event queries, and automatic time-zone conversion.  It can be used to populate any front-end calendar widget with daily, weekly, or monthly entries.",
             "FunctionalGroup": "Automation",
@@ -943,6 +943,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 4,
+            "filterText": "alberta digital service platform (adsp),automation,live",
             "Security": [
                 {
                     "Type": "Status",
@@ -999,7 +1000,6 @@
                     }
                 ]
             },
-            "filterText": "automation,alberta digital service platform (adsp),live",
             "appId": 11
         },
         {
@@ -1008,7 +1008,7 @@
             "Audience": [
                 "GOA"
             ],
-            "InternalWeightage": 10,
+            "InternalWeightage": "10",
             "Summary": "Validation API to assess eligibility for child care benefits.",
             "Description": "Assess the eligibility of an Albertan to apply for a Government of Alberta program that necessitates verification of the applicant's child care benefits. The use of data for this assessment requires a MOU with CRA and the Department of Treasury Board and Finance, as well as a privacy assessment.",
             "FunctionalGroup": "User management",
@@ -1033,6 +1033,7 @@
             "DataIssues": "",
             "ReviewedBy": "Heather",
             "QA": 0,
+            "filterText": "platforms - common data services,user management,alpha,.net core,on prem,api",
             "Security": [
                 {
                     "Type": "Status",
@@ -1060,7 +1061,7 @@
                         },
                         {
                             "Field": "Cybersecurity",
-                            "Value": "Yes"
+                            "Value": "Required"
                         }
                     ]
                 }
@@ -1075,7 +1076,6 @@
                     }
                 ]
             },
-            "filterText": "user management,platforms - common data services,alpha,api,.net core,on prem",
             "appId": 12
         },
         {
@@ -1084,7 +1084,7 @@
             "Audience": [
                 "GOA"
             ],
-            "InternalWeightage": 10,
+            "InternalWeightage": "10",
             "Summary": "Internal API providing information on all licensed child care providers in Alberta, and Early Childhood Educators staff.",
             "Description": "Internal API providing information on all licensed child care providers in Alberta, and Early Childhood Educators staff.",
             "FunctionalGroup": "Data",
@@ -1109,6 +1109,7 @@
             "DataIssues": "",
             "ReviewedBy": "Heather",
             "QA": 20,
+            "filterText": "children's services platform,data,live,goa,web api,openshift,api",
             "Security": [
                 {
                     "Type": "Status",
@@ -1136,7 +1137,7 @@
                         },
                         {
                             "Field": "Cybersecurity",
-                            "Value": "Yes"
+                            "Value": "Required"
                         }
                     ]
                 },
@@ -1160,7 +1161,6 @@
                     }
                 ]
             },
-            "filterText": "data,children's services platform,live,goa,api,web api,openshift",
             "appId": 13
         },
         {
@@ -1169,7 +1169,7 @@
             "Audience": [
                 "GOA"
             ],
-            "InternalWeightage": 10,
+            "InternalWeightage": "10",
             "Summary": "Attach comments to an object for storage and retrieval.",
             "Description": "Used currently within Advanced Education to allow consumers of the api to store and manage comments",
             "FunctionalGroup": "Data",
@@ -1194,6 +1194,7 @@
             "DataIssues": "",
             "ReviewedBy": "Heather",
             "QA": 20,
+            "filterText": "advanced education,data,live,typescript,container,service",
             "Security": [
                 {
                     "Type": "Status",
@@ -1213,7 +1214,7 @@
                     "Items": [
                         {
                             "Field": "IM",
-                            "Value": "Yes"
+                            "Value": "Required"
                         },
                         {
                             "Field": "Risk",
@@ -1245,7 +1246,6 @@
                     }
                 ]
             },
-            "filterText": "data,advanced education,live,service,typescript,container",
             "appId": 14
         },
         {
@@ -1254,7 +1254,7 @@
             "Audience": [
                 "GOA"
             ],
-            "InternalWeightage": 10,
+            "InternalWeightage": "10",
             "Summary": "Common cloud-based portal for business programs to spin up customized payment portals suporting emergency or payment initiatives.",
             "Description": "A common cloud-based portal which enables business programs from Ministries and Platforms branch to quickly spin up customized payment portals suporting emergency or payment initiatives",
             "FunctionalGroup": "Finance",
@@ -1282,6 +1282,7 @@
             "DataIssues": "",
             "ReviewedBy": "Heather",
             "QA": 52,
+            "filterText": "platforms -common platforms,finance,.net core,azure,cloud,payment",
             "Security": [
                 {
                     "Type": "Status",
@@ -1305,11 +1306,11 @@
                         },
                         {
                             "Field": "Risk",
-                            "Value": "Yes"
+                            "Value": "Required"
                         },
                         {
                             "Field": "Cybersecurity",
-                            "Value": "Yes"
+                            "Value": "Required"
                         }
                     ]
                 },
@@ -1327,7 +1328,6 @@
                 "details": "",
                 "methods": []
             },
-            "filterText": "finance,platforms -common platforms,.net core,azure,cloud,payment",
             "appId": 15
         },
         {
@@ -1336,7 +1336,7 @@
             "Audience": [
                 "GOA"
             ],
-            "InternalWeightage": 10,
+            "InternalWeightage": "10",
             "Summary": "Common cloud-based API enabling payment portals with making and reconciling payments end-to-end.",
             "Description": "A common cloud-based API services which enable payment portals with making payments and reconciling payments end-to-end. Payment types are being considered are eTransfer and EFT in bulk.",
             "FunctionalGroup": "Finance",
@@ -1364,6 +1364,7 @@
             "DataIssues": "",
             "ReviewedBy": "Heather",
             "QA": 52,
+            "filterText": "platforms -common platforms,finance,.net core,azure,api,cloud,payment",
             "Security": [
                 {
                     "Type": "Status",
@@ -1387,11 +1388,11 @@
                         },
                         {
                             "Field": "Risk",
-                            "Value": "Yes"
+                            "Value": "Required"
                         },
                         {
                             "Field": "Cybersecurity",
-                            "Value": "Yes"
+                            "Value": "Required"
                         }
                     ]
                 },
@@ -1409,7 +1410,6 @@
                 "details": "",
                 "methods": []
             },
-            "filterText": "finance,platforms -common platforms,api,.net core,azure,cloud,payment",
             "appId": 16
         },
         {
@@ -1418,7 +1418,7 @@
             "Audience": [
                 "GOA"
             ],
-            "InternalWeightage": 10,
+            "InternalWeightage": "10",
             "Summary": "Verification codes to enable SMS and email communication, and confirm channel monitoring.",
             "Description": "Used currently within Advanced Education to allow consumers of the api to send out messages through email and txt message for a recipient to confirm communication channel is being monitored",
             "FunctionalGroup": "Communication",
@@ -1443,6 +1443,7 @@
             "DataIssues": "",
             "ReviewedBy": "Andrew",
             "QA": 20,
+            "filterText": "advanced education,communication,live,.net,goa network",
             "Security": [
                 {
                     "Type": "Status",
@@ -1485,7 +1486,6 @@
                     }
                 ]
             },
-            "filterText": "communication,advanced education,live,.net,goa network",
             "appId": 17
         },
         {
@@ -1494,7 +1494,7 @@
             "Audience": [
                 "GOA"
             ],
-            "InternalWeightage": 10,
+            "InternalWeightage": "10",
             "Summary": "Wrapper over Alberta Notify for fault tolerance and guaranteed delivery.",
             "Description": "Used currently within Advanced Education to wrap Alberta Notify and provides a queue to aid in garunteed delivery in the event MyAlberta Notify is down",
             "FunctionalGroup": "Communication",
@@ -1519,6 +1519,7 @@
             "DataIssues": "",
             "ReviewedBy": "Andrew",
             "QA": 20,
+            "filterText": "advanced education,communication,live,typescript,goa network,api",
             "Security": [
                 {
                     "Type": "Status",
@@ -1561,7 +1562,6 @@
                     }
                 ]
             },
-            "filterText": "communication,advanced education,live,api,typescript,goa network",
             "appId": 18
         },
         {
@@ -1570,7 +1570,7 @@
             "Audience": [
                 "GOA"
             ],
-            "InternalWeightage": 10,
+            "InternalWeightage": "10",
             "Summary": "Store cache and static data used to drive applications ensuring persistent and schema-compliant configuration storage.",
             "Description": "Use the configuration service to optimally store, and cache, static data used to drive your application.  The service ensures persistent, and schema-compliant, configuration storage using a JSON document store. Write operations will be validated against the schema for accurate and consistent data.",
             "FunctionalGroup": "Data",
@@ -1600,6 +1600,7 @@
             "DataIssues": "",
             "ReviewedBy": "Andrew",
             "QA": 4,
+            "filterText": "alberta digital service platform (adsp),data,live",
             "Security": [
                 {
                     "Type": "Status",
@@ -1619,7 +1620,7 @@
                     "Items": [
                         {
                             "Field": "IM",
-                            "Value": "Yes"
+                            "Value": "Required"
                         },
                         {
                             "Field": "Risk",
@@ -1656,7 +1657,6 @@
                     }
                 ]
             },
-            "filterText": "data,alberta digital service platform (adsp),live",
             "appId": 19
         },
         {
@@ -1665,7 +1665,7 @@
             "Audience": [
                 "GOA"
             ],
-            "InternalWeightage": 10,
+            "InternalWeightage": "10",
             "Summary": "Interface for accessing information regarding course marks from Alberta Education.",
             "Description": "Interface is utilized by Advanced Education to pull information regarding course marks from Alberta Education. This information is used for a variety of purposes including Rutherford Scholarship eligibility and as a shared secret for authenticatio purposes in SIAMS.",
             "FunctionalGroup": "Data",
@@ -1690,6 +1690,7 @@
             "DataIssues": "",
             "ReviewedBy": "Andrew",
             "QA": 20,
+            "filterText": "advanced education,data,live,.net,goa network,api",
             "Security": [
                 {
                     "Type": "Status",
@@ -1700,7 +1701,7 @@
                         },
                         {
                             "Field": "STRA",
-                            "Value": "Yes"
+                            "Value": "Completed"
                         }
                     ]
                 },
@@ -1717,7 +1718,7 @@
                         },
                         {
                             "Field": "Cybersecurity",
-                            "Value": "Yes"
+                            "Value": "Required"
                         }
                     ]
                 },
@@ -1745,7 +1746,6 @@
                     }
                 ]
             },
-            "filterText": "data,advanced education,live,api,.net,goa network",
             "appId": 20
         },
         {
@@ -1754,7 +1754,7 @@
             "Audience": [
                 "Justice Digital"
             ],
-            "InternalWeightage": 10,
+            "InternalWeightage": "10",
             "Summary": "Allows Justice Digital staff to lookup for metadata, contact information and court locations.",
             "Description": "The court personnel API allows Justice Digital service/teams to look up metadata, contact information regarding Justices, Judges, Judicial Assistants, Application Judges and their court locations at any point in the service.\n\nMetadata and contact information for Judges, Justices, Judicial assistants, and Application Judges are collected and updated in a single place.\n\nSignatures of Justices and Clerks are managed within the Shared Service and through secure access, can be applied to documents as required.\n\n The shared service serves as the source of truth for this information, where delegated authorities from the courts update information for all other services and systems to pull from.",
             "FunctionalGroup": "Data",
@@ -1790,6 +1790,7 @@
             "DataIssues": "",
             "ReviewedBy": "Andrew",
             "QA": 0,
+            "filterText": "justice digital,data,live,justice digital,angular, .net core, typescript,aws,api,pdf, digital signature, digital certification",
             "Security": [
                 {
                     "Type": "Status",
@@ -1809,15 +1810,15 @@
                     "Items": [
                         {
                             "Field": "IM",
-                            "Value": "Yes"
+                            "Value": "Required"
                         },
                         {
                             "Field": "Risk",
-                            "Value": "Yes"
+                            "Value": "Required"
                         },
                         {
                             "Field": "Cybersecurity",
-                            "Value": "Yes"
+                            "Value": "Required"
                         }
                     ]
                 },
@@ -1841,7 +1842,6 @@
                     }
                 ]
             },
-            "filterText": "data,justice digital,live,justice digital,api,angular, .net core, typescript,aws,pdf, digital signature, digital certification",
             "appId": 21
         },
         {
@@ -1850,7 +1850,7 @@
             "Audience": [
                 "GOA"
             ],
-            "InternalWeightage": 10,
+            "InternalWeightage": "10",
             "Summary": "Central register of APIs to find service URLs and decouple application code.",
             "Description": "As a central register of APIs, the Directory Service gives you a means for service discovery.  They can use the Directory Service to find service URLs and decouple application code from changes in the URL due to, for example, a newer version, or a change in the application's environment.",
             "FunctionalGroup": "Data",
@@ -1880,6 +1880,7 @@
             "DataIssues": "",
             "ReviewedBy": "Andrew",
             "QA": 4,
+            "filterText": "alberta digital service platform (adsp),data,live,api",
             "Security": [
                 {
                     "Type": "Status",
@@ -1936,7 +1937,6 @@
                     }
                 ]
             },
-            "filterText": "data,alberta digital service platform (adsp),live,api",
             "appId": 22
         },
         {
@@ -1945,7 +1945,7 @@
             "Audience": [
                 "GOA"
             ],
-            "InternalWeightage": 100,
+            "InternalWeightage": "100",
             "Summary": "Document manipulation features like mail merges, PDF form filling and PDF redaction.",
             "Description": "Provides a number of document manipulation features including:  Mail Merges, PDF Form Filling and PDF Redaction.  This service supports a number of input and output formats (.docx, .xlsx, pdf, etc.)  -->  Enhancement requests can be made for additional features",
             "FunctionalGroup": "Forms and documents",
@@ -1979,6 +1979,7 @@
             "DataIssues": "",
             "ReviewedBy": "Andrew",
             "QA": 4,
+            "filterText": "service integration,forms and documents,live,goa,service,docx, xlsx, pdf",
             "Security": [
                 {
                     "Type": "Status",
@@ -1998,7 +1999,7 @@
                     "Items": [
                         {
                             "Field": "IM",
-                            "Value": "Yes"
+                            "Value": "Required"
                         },
                         {
                             "Field": "Risk",
@@ -2034,7 +2035,6 @@
                     }
                 ]
             },
-            "filterText": "forms and documents,service integration,live,goa,service,docx, xlsx, pdf",
             "appId": 23
         },
         {
@@ -2043,7 +2043,7 @@
             "Audience": [
                 "GOA"
             ],
-            "InternalWeightage": 100,
+            "InternalWeightage": "100",
             "Summary": "ECM connector for basic file management of project-specific content within ECM systems for OpenText.",
             "Description": "The Electronic Content Management (ECM) Connector is a representational state transfer (REST) application programming interface (API) that allows file management of Government of Alberta (GoA) content within ECM systems (e.g. file creation, modification, metadata, etc.).\n\nThe ECM Connector takes REST calls and translates them into a format that is understood by the proprietary Open Text LIVELINK web services (LAPI) running on the GoA's OpenText Enterprise Content Servers (ECSS) server.",
             "FunctionalGroup": "Forms and documents",
@@ -2076,13 +2076,14 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 4,
+            "filterText": "service integration,forms and documents,live,goa,api,ecm, rest",
             "Security": [
                 {
                     "Type": "Status",
                     "Items": [
                         {
                             "Field": "CMRA",
-                            "Value": "Yes"
+                            "Value": "Completed"
                         },
                         {
                             "Field": "STRA",
@@ -2095,7 +2096,7 @@
                     "Items": [
                         {
                             "Field": "IM",
-                            "Value": "Yes"
+                            "Value": "Required"
                         },
                         {
                             "Field": "Risk",
@@ -2132,7 +2133,6 @@
                     }
                 ]
             },
-            "filterText": "forms and documents,service integration,live,goa,api,ecm, rest",
             "appId": 24
         },
         {
@@ -2141,7 +2141,7 @@
             "Audience": [
                 "GOA"
             ],
-            "InternalWeightage": 100,
+            "InternalWeightage": "100",
             "Summary": "Create and send documents for e-signatures to GoA's internal and external clients.",
             "Description": "The eSignature is a cloud-based service that allows subscribers to prepare and send documents for electronic signatures.  With this service, subscribers can send contracts and agreements to both GoA internal and external clients for signatures and approvals.  The service is secure, cost-effective, timesaving, user-friendly, and compliant with GoA guidelines and standards.  The signed documents are protected, and the signers are uniquely identified by using multiple authentication methods.\n\nThe following tasks can be performed using this request:\n\nRequest a consultation with the eSignature support team\nSubscribe to the eSignature service\nAdd, change, and remove users from your eSignature service subscription\nAssign signature projects to users\nCancel the eSignature service subscription\nYou are encouraged to request a consultation to learn more about the service before subscribing to the service.  During the consultation meeting, you are provided with the service features, costs, and details on the subscription process.",
             "FunctionalGroup": "Forms and documents",
@@ -2174,6 +2174,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 4,
+            "filterText": "service integration,forms and documents,live,goa,service,cloud, signature",
             "Security": [
                 {
                     "Type": "Status",
@@ -2193,7 +2194,7 @@
                     "Items": [
                         {
                             "Field": "IM",
-                            "Value": "Yes"
+                            "Value": "Required"
                         },
                         {
                             "Field": "Risk",
@@ -2229,7 +2230,6 @@
                     }
                 ]
             },
-            "filterText": "forms and documents,service integration,live,goa,service,cloud, signature",
             "appId": 25
         },
         {
@@ -2238,7 +2238,7 @@
             "Audience": [
                 "GOA"
             ],
-            "InternalWeightage": 100,
+            "InternalWeightage": "100",
             "Summary": "Email service with features and formatting capabilities similar to Outlook client.",
             "Description": "Sends emails to one or many recipients with multiple parameters: To, CC and BCC, ability to specify a FROM recipient, supply a subject line, options for the message body such as HTML, Rich Text or Plain Text, and the sender can attach one or more attachments to the  email.  Provides similar formatting capabilities as your outlook client.",
             "FunctionalGroup": "Communication",
@@ -2271,6 +2271,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 4,
+            "filterText": "service integration,communication,live,goa,service,email, service",
             "Security": [
                 {
                     "Type": "Status",
@@ -2322,7 +2323,6 @@
                     }
                 ]
             },
-            "filterText": "communication,service integration,live,goa,service,email, service",
             "appId": 26
         },
         {
@@ -2331,7 +2331,7 @@
             "Audience": [
                 "GOA"
             ],
-            "InternalWeightage": 10,
+            "InternalWeightage": "10",
             "Summary": "API proxy that consumes Government of Canada employment API endpoints and handles security and API aggregation.",
             "Description": "Is being transitioned to Service Integration Group (Chris Wright)",
             "FunctionalGroup": "Automation",
@@ -2356,6 +2356,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 20,
+            "filterText": "advanced education,automation,beta,typescript,container,api",
             "Security": [
                 {
                     "Type": "Status",
@@ -2383,7 +2384,7 @@
                         },
                         {
                             "Field": "Cybersecurity",
-                            "Value": "Yes"
+                            "Value": "Required"
                         }
                     ]
                 }
@@ -2398,7 +2399,6 @@
                     }
                 ]
             },
-            "filterText": "automation,advanced education,beta,api,typescript,container",
             "appId": 27
         },
         {
@@ -2407,7 +2407,7 @@
             "Audience": [
                 "GOA"
             ],
-            "InternalWeightage": 10,
+            "InternalWeightage": "10",
             "Summary": "Capability for applications to define and log domain events to implement traceability, auditability, accountability and transparency.",
             "Description": "The event service provides the capability for applications to define, and log, domain events.  This gives them an easy way to implement traceability, auditability, accountability and transparency.  In addition the service is often coupled, and used in conjunction with, other ADSP services. E.G an application is using the Notification Service it would use specific domain events to trigger notifications.",
             "FunctionalGroup": "Data",
@@ -2437,6 +2437,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 4,
+            "filterText": "alberta digital service platform (adsp),data,live",
             "Security": [
                 {
                     "Type": "Status",
@@ -2456,7 +2457,7 @@
                     "Items": [
                         {
                             "Field": "IM",
-                            "Value": "Yes"
+                            "Value": "Required"
                         },
                         {
                             "Field": "Risk",
@@ -2497,7 +2498,6 @@
                     }
                 ]
             },
-            "filterText": "data,alberta digital service platform (adsp),live",
             "appId": 28
         },
         {
@@ -2506,7 +2506,7 @@
             "Audience": [
                 "GOA"
             ],
-            "InternalWeightage": 10,
+            "InternalWeightage": "10",
             "Summary": "Document upload and download using Justice Digital's consistent architecture.",
             "Description": "Document Upload and Download\nJustice Digital services use consistent architecture to facilitate document uploads and downloads.",
             "FunctionalGroup": "Forms and documents",
@@ -2543,13 +2543,14 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 0,
+            "filterText": "justice digital,forms and documents,live,angular, .net core, typescript,aws,pdf, digital signature, stamping, digital certification",
             "Security": [
                 {
                     "Type": "Status",
                     "Items": [
                         {
                             "Field": "CMRA",
-                            "Value": "Yes"
+                            "Value": "Completed"
                         },
                         {
                             "Field": "STRA",
@@ -2562,7 +2563,7 @@
                     "Items": [
                         {
                             "Field": "IM",
-                            "Value": "Yes"
+                            "Value": "Required"
                         },
                         {
                             "Field": "Risk",
@@ -2570,7 +2571,7 @@
                         },
                         {
                             "Field": "Cybersecurity",
-                            "Value": "Yes"
+                            "Value": "Required"
                         }
                     ]
                 }
@@ -2585,7 +2586,6 @@
                     }
                 ]
             },
-            "filterText": "forms and documents,justice digital,live,angular, .net core, typescript,aws,pdf, digital signature, stamping, digital certification",
             "appId": 29
         },
         {
@@ -2594,7 +2594,7 @@
             "Audience": [
                 "GOA"
             ],
-            "InternalWeightage": 10,
+            "InternalWeightage": "10",
             "Summary": "Uploading and managing files in Microsoft's Azure storage along with support for virus scanning, access control, retention policy, retrieval, and searching.",
             "Description": "Provides capabilities for uploading and managing files in Microsoft's Azure Blob Storage.  It includes support for virus scanning, access control, retention policy, retrieval, and searching. The service is intended to give applications a means to manage temporary files (e.g. retention policy < 30 days), or whose content is not directly needed by the application's business users.",
             "FunctionalGroup": "Forms and documents",
@@ -2624,13 +2624,14 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 4,
+            "filterText": "alberta digital service platform (adsp),forms and documents,live",
             "Security": [
                 {
                     "Type": "Status",
                     "Items": [
                         {
                             "Field": "CMRA",
-                            "Value": "Yes"
+                            "Value": "Completed"
                         },
                         {
                             "Field": "STRA",
@@ -2643,7 +2644,7 @@
                     "Items": [
                         {
                             "Field": "IM",
-                            "Value": "Yes"
+                            "Value": "Required"
                         },
                         {
                             "Field": "Risk",
@@ -2680,7 +2681,6 @@
                     }
                 ]
             },
-            "filterText": "forms and documents,alberta digital service platform (adsp),live",
             "appId": 30
         },
         {
@@ -2689,7 +2689,7 @@
             "Audience": [
                 "GOA"
             ],
-            "InternalWeightage": 10,
+            "InternalWeightage": "10",
             "Summary": "Captures information securely and keeps users informed on the status of submission without logging in.",
             "Description": "Capture information from users securely, and keep them informed on the status of their submission without requiring them to log in to your application.  Data can be entered and modified over multiple sessions; users are sent a verification code each time they wish to revisit the submission.",
             "FunctionalGroup": "Forms and documents",
@@ -2714,6 +2714,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 24,
+            "filterText": "alberta digital service platform (adsp),forms and documents,live",
             "Security": [
                 {
                     "Type": "Status",
@@ -2733,7 +2734,7 @@
                     "Items": [
                         {
                             "Field": "IM",
-                            "Value": "Yes"
+                            "Value": "Required"
                         },
                         {
                             "Field": "Risk",
@@ -2774,7 +2775,6 @@
                     }
                 ]
             },
-            "filterText": "forms and documents,alberta digital service platform (adsp),live",
             "appId": 31
         },
         {
@@ -2783,7 +2783,7 @@
             "Audience": [
                 "GOA"
             ],
-            "InternalWeightage": 10,
+            "InternalWeightage": "10",
             "Summary": "Develop ePDFs and paper forms that meet information collection requirements and standards.",
             "Description": "The Forms Development service provides clients access to a comprehensive forms analysis and design service, which ensures the creation of forms that meet business requirements from an information collection and standards perspective. This service also includes consultative support through recommendations or guidance on best practices. Scenarios may range from how to leverage software capabilities and print technologies to best meet the needs of the client, to introduction to vendors and assistance with management of contracted vendor services, if applicable. All electronic forms are placed on the GoA Form Repository for use by GoA staff. This portal also allows access to approved external agencies (e.g. law enforcement, crisis centers).",
             "FunctionalGroup": "Forms and documents",
@@ -2808,6 +2808,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 24,
+            "filterText": "data and content management,forms and documents,live",
             "Security": [
                 {
                     "Type": "Status",
@@ -2827,7 +2828,7 @@
                     "Items": [
                         {
                             "Field": "IM",
-                            "Value": "Yes"
+                            "Value": "Required"
                         },
                         {
                             "Field": "Risk",
@@ -2864,7 +2865,6 @@
                     }
                 ]
             },
-            "filterText": "forms and documents,data and content management,live",
             "appId": 32
         },
         {
@@ -2873,7 +2873,7 @@
             "Audience": [
                 "Children's Services"
             ],
-            "InternalWeightage": 10,
+            "InternalWeightage": "10",
             "Summary": "Enables child care operators to request access to Children's Services.",
             "Description": "Allows child care operators to request access to services provided by Children's Services. Requests are approved by authorized GOA staff.",
             "FunctionalGroup": "User management",
@@ -2898,6 +2898,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 20,
+            "filterText": "children's services platform,user management,live,children's services,angular,openshift",
             "Security": [
                 {
                     "Type": "Status",
@@ -2925,7 +2926,7 @@
                         },
                         {
                             "Field": "Cybersecurity",
-                            "Value": "Yes"
+                            "Value": "Required"
                         }
                     ]
                 }
@@ -2940,7 +2941,6 @@
                     }
                 ]
             },
-            "filterText": "user management,children's services platform,live,children's services,angular,openshift",
             "appId": 33
         },
         {
@@ -2949,7 +2949,7 @@
             "Audience": [
                 "Children's Services"
             ],
-            "InternalWeightage": 10,
+            "InternalWeightage": "10",
             "Summary": "Internal API enabling apps within Children's Services to get details of users, roles, and groups from the CCDS Keycloak realm.",
             "Description": "Internal API enabling apps within Children's Services to get details of users, roles, and groups from the CCDS Keycloak realm.",
             "FunctionalGroup": "User management",
@@ -2976,6 +2976,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 20,
+            "filterText": "children's services platform,user management,live,children's services,web api,openshift,api,keycloak",
             "Security": [
                 {
                     "Type": "Status",
@@ -3003,7 +3004,7 @@
                         },
                         {
                             "Field": "Cybersecurity",
-                            "Value": "Yes"
+                            "Value": "Required"
                         }
                     ]
                 }
@@ -3018,7 +3019,6 @@
                     }
                 ]
             },
-            "filterText": "user management,children's services platform,live,children's services,api,web api,openshift,keycloak",
             "appId": 34
         },
         {
@@ -3027,7 +3027,7 @@
             "Audience": [
                 "Children's Services"
             ],
-            "InternalWeightage": 10,
+            "InternalWeightage": "10",
             "Summary": "Allows managing access of GOA staff to the internal apps developed by Children's Services.",
             "Description": "Allows managing access of GOA staff to the internal apps developed by Children's Services.",
             "FunctionalGroup": "User management",
@@ -3052,6 +3052,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 20,
+            "filterText": "children's services platform,user management,live,children's services,angular,openshift",
             "Security": [
                 {
                     "Type": "Status",
@@ -3079,7 +3080,7 @@
                         },
                         {
                             "Field": "Cybersecurity",
-                            "Value": "Yes"
+                            "Value": "Required"
                         }
                     ]
                 }
@@ -3094,7 +3095,6 @@
                     }
                 ]
             },
-            "filterText": "user management,children's services platform,live,children's services,angular,openshift",
             "appId": 35
         },
         {
@@ -3103,7 +3103,7 @@
             "Audience": [
                 "GOA"
             ],
-            "InternalWeightage": 10,
+            "InternalWeightage": "10",
             "Summary": "Verification of the applicant's personal and family income to access eligibility for a program.",
             "Description": "Assess the eligibility of an Albertan to apply for a Government of Alberta program that necessitates verification of the applicant's personal income and/or family income under a specific threshold. The use of data for this assessment requires a MOU with CRA and the Department of Treasury Board and Finance, as well as a privacy assessment.",
             "FunctionalGroup": "Finance",
@@ -3128,6 +3128,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 0,
+            "filterText": "platforms - common data services,finance,alpha,.net core,on prem,api",
             "Security": [
                 {
                     "Type": "Status",
@@ -3155,7 +3156,7 @@
                         },
                         {
                             "Field": "Cybersecurity",
-                            "Value": "Yes"
+                            "Value": "Required"
                         }
                     ]
                 },
@@ -3183,7 +3184,6 @@
                     }
                 ]
             },
-            "filterText": "finance,platforms - common data services,alpha,api,.net core,on prem",
             "appId": 36
         },
         {
@@ -3192,7 +3192,7 @@
             "Audience": [
                 "GOA"
             ],
-            "InternalWeightage": 10,
+            "InternalWeightage": "10",
             "Summary": "Privately hosted Keycloak client npm package.",
             "Description": "Privately hosted Keycloak client npm package.",
             "FunctionalGroup": "User management",
@@ -3224,6 +3224,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 4,
+            "filterText": "seniors, community and social services (scss),user management,angular,keycloak",
             "Security": [
                 {
                     "Type": "Status",
@@ -3234,7 +3235,7 @@
                         },
                         {
                             "Field": "STRA",
-                            "Value": "Yes"
+                            "Value": "Completed"
                         }
                     ]
                 },
@@ -3251,7 +3252,7 @@
                         },
                         {
                             "Field": "Cybersecurity",
-                            "Value": "Yes"
+                            "Value": "Required"
                         }
                     ]
                 },
@@ -3284,7 +3285,6 @@
                     }
                 ]
             },
-            "filterText": "user management,seniors, community and social services (scss),angular,keycloak",
             "appId": 37
         },
         {
@@ -3293,7 +3293,7 @@
             "Audience": [
                 "GOA"
             ],
-            "InternalWeightage": 10,
+            "InternalWeightage": "10",
             "Summary": "Pattern to integrate authentication with Alberta.ca MADI-B and GoA Azure AD through DIG.",
             "Description": "Pattern to integrate authentication with Alberta.ca MADI-B and GoA Azure AD though DIG. Keycloak delegates authentication to external IdP but handles user authorization and generate access_token",
             "FunctionalGroup": "User management",
@@ -3325,6 +3325,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 6,
+            "filterText": "wildfire platform,user management,keycloak",
             "Security": [
                 {
                     "Type": "Status",
@@ -3367,7 +3368,6 @@
                     }
                 ]
             },
-            "filterText": "user management,wildfire platform,keycloak",
             "appId": 38
         },
         {
@@ -3376,7 +3376,7 @@
             "Audience": [
                 "GOA"
             ],
-            "InternalWeightage": 10,
+            "InternalWeightage": "10",
             "Summary": "IAM platform for federated sign on and identity verification for citizens accessing online services.",
             "Description": "IAM platform for federated sign on and identity verification for citizens accessing online services.",
             "FunctionalGroup": "User management",
@@ -3404,6 +3404,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 20,
+            "filterText": "platforms - iam,user management,live,forgerock,on prem, ncc and jjb datacentres,iam",
             "Security": [
                 {
                     "Type": "Status",
@@ -3414,7 +3415,7 @@
                         },
                         {
                             "Field": "STRA",
-                            "Value": "Yes"
+                            "Value": "Completed"
                         }
                     ]
                 },
@@ -3464,7 +3465,6 @@
                     }
                 ]
             },
-            "filterText": "user management,platforms - iam,live,forgerock,on prem, ncc and jjb datacentres,iam",
             "appId": 39
         },
         {
@@ -3473,7 +3473,7 @@
             "Audience": [
                 "GOA"
             ],
-            "InternalWeightage": 100,
+            "InternalWeightage": "100",
             "Summary": "GoA's primary enterprise monitoring service with monitoring and alerting options.",
             "Description": "This enterprise monitoring service has a wide degree of monitoring and alerting options that can be setup for your needs.  This is the primary monitoring platform used within GoA.",
             "FunctionalGroup": "Performance",
@@ -3507,6 +3507,7 @@
             "DataIssues": "Grace Li replied to the contact request. Was not aware of this project. There is no documentation at this time",
             "ReviewedBy": "Grace Li",
             "QA": 32,
+            "filterText": "service integration,performance,live,goa,api, python, powershell, bash,perl, .net,on prem, ncc and jjb datacentres,service,nagios, monitoring",
             "Security": [
                 {
                     "Type": "Status",
@@ -3563,7 +3564,6 @@
                     }
                 ]
             },
-            "filterText": "performance,service integration,live,goa,service,api, python, powershell, bash,perl, .net,on prem, ncc and jjb datacentres,nagios, monitoring",
             "appId": 40
         },
         {
@@ -3572,7 +3572,7 @@
             "Audience": [
                 "GOA"
             ],
-            "InternalWeightage": 10,
+            "InternalWeightage": "10",
             "Summary": "Customizable templates and automated text and email notifications.",
             "Description": "Enable text or email notifications in your application through the ADSP Notification Service.  Build customizable templates and use these to send personalized messages to your users upon the occurrence of specific \"domain events\" in your application, such as receiving approval for a submission, or reminders to take some action.",
             "FunctionalGroup": "Communication",
@@ -3602,6 +3602,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 4,
+            "filterText": "alberta digital service platform (adsp),communication,live",
             "Security": [
                 {
                     "Type": "Status",
@@ -3658,7 +3659,6 @@
                     }
                 ]
             },
-            "filterText": "communication,alberta digital service platform (adsp),live",
             "appId": 41
         },
         {
@@ -3667,7 +3667,7 @@
             "Audience": [
                 "GOA"
             ],
-            "InternalWeightage": 10,
+            "InternalWeightage": "10",
             "Summary": "Message bus interface to AB Notify.",
             "Description": "Message bus interface to AB Notify.",
             "FunctionalGroup": "Communication",
@@ -3692,6 +3692,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 22,
+            "filterText": "seniors, community and social services (scss),communication,typescript,goa network",
             "Security": [
                 {
                     "Type": "Status",
@@ -3719,7 +3720,7 @@
                         },
                         {
                             "Field": "Cybersecurity",
-                            "Value": "Yes"
+                            "Value": "Required"
                         }
                     ]
                 }
@@ -3734,7 +3735,6 @@
                     }
                 ]
             },
-            "filterText": "communication,seniors, community and social services (scss),typescript,goa network",
             "appId": 42
         },
         {
@@ -3743,7 +3743,7 @@
             "Audience": [
                 "GOA"
             ],
-            "InternalWeightage": 100,
+            "InternalWeightage": "100",
             "Summary": "Payment gateway service offering a centralized electronic payment experience.",
             "Description": "The Payment Gateway Service (PGS) offers a centralized electronic payment experience with the GoA using the TD Online Mart online payments solution. This standardized approach has many advantages over direct integration with current payment providers, such as:  \n\nApplication insulation from organizational change. When the payment provider changes, the application code does not. Consequently, PGS can seamlessly manage a new payment provider without manual intervention. \nBusiness areas no longer have to complete the Payment Card Industry Self-Assessment Questionnaire (PCI SAQ) A type audits.",
             "FunctionalGroup": "Finance",
@@ -3775,6 +3775,7 @@
             "DataIssues": "",
             "ReviewedBy": "Sanchit",
             "QA": 4,
+            "filterText": "service integration,finance,live,goa,service,payment",
             "Security": [
                 {
                     "Type": "Status",
@@ -3826,7 +3827,6 @@
                     }
                 ]
             },
-            "filterText": "finance,service integration,live,goa,service,payment",
             "appId": 43
         },
         {
@@ -3835,7 +3835,7 @@
             "Audience": [
                 "Justice Digital"
             ],
-            "InternalWeightage": 10,
+            "InternalWeightage": "10",
             "Summary": "TD Bambora, a recommended payment solution for service teams within Justice Digital.",
             "Description": "TD Bambora, a recommended payment solution for service teams within Justice Digital.",
             "FunctionalGroup": "Finance",
@@ -3868,6 +3868,7 @@
             "DataIssues": "",
             "ReviewedBy": "Sanchit",
             "QA": 2,
+            "filterText": "justice digital,finance,live,justice digital,aws, wordline (bambora),payment",
             "Security": [
                 {
                     "Type": "Status",
@@ -3919,7 +3920,6 @@
                     }
                 ]
             },
-            "filterText": "finance,justice digital,live,justice digital,aws, wordline (bambora),payment",
             "appId": 44
         },
         {
@@ -3928,7 +3928,7 @@
             "Audience": [
                 "GOA"
             ],
-            "InternalWeightage": 10,
+            "InternalWeightage": "10",
             "Summary": "PDF generation and merging functionality using Justice Digital's consistent architecture.",
             "Description": "PDF generation and merging functionality using Justice Digital's consistent architecture.",
             "FunctionalGroup": "Forms and documents",
@@ -3964,6 +3964,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 0,
+            "filterText": "justice digital,forms and documents,live,angular, .net core, typescript,aws,pdf, digital signature, digital certification",
             "Security": [
                 {
                     "Type": "Status",
@@ -3983,7 +3984,7 @@
                     "Items": [
                         {
                             "Field": "IM",
-                            "Value": "Yes"
+                            "Value": "Required"
                         },
                         {
                             "Field": "Risk",
@@ -4015,7 +4016,6 @@
                     }
                 ]
             },
-            "filterText": "forms and documents,justice digital,live,angular, .net core, typescript,aws,pdf, digital signature, digital certification",
             "appId": 45
         },
         {
@@ -4024,7 +4024,7 @@
             "Audience": [
                 "GOA"
             ],
-            "InternalWeightage": 10,
+            "InternalWeightage": "10",
             "Summary": "Create customized GoA branded PDF documents for end users, securely managed using Azure Blob storage.",
             "Description": "Provides the capability for creating customized PDF documents for downloading by end users. By utilizing our editor to create templates and combining them with intake data, developers can easily create GOA branded PDFs.  The documents are uploaded to Azure Blob storage and can be managed there securely, throughout their lifecycle, with the ADSP file service.",
             "FunctionalGroup": "Forms and documents",
@@ -4056,6 +4056,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 4,
+            "filterText": "alberta digital service platform (adsp),forms and documents,live,service,pdf",
             "Security": [
                 {
                     "Type": "Status",
@@ -4075,7 +4076,7 @@
                     "Items": [
                         {
                             "Field": "IM",
-                            "Value": "Yes"
+                            "Value": "Required"
                         },
                         {
                             "Field": "Risk",
@@ -4116,7 +4117,6 @@
                     }
                 ]
             },
-            "filterText": "forms and documents,alberta digital service platform (adsp),live,service,pdf",
             "appId": 46
         },
         {
@@ -4125,7 +4125,7 @@
             "Audience": [
                 "GOA"
             ],
-            "InternalWeightage": 10,
+            "InternalWeightage": "10",
             "Summary": "Programs, providers, specializations, session, and cost information of private and public institutions within Alberta.",
             "Description": "Interface is utilized by Advanced Education line of business applications to read centrally managed Public/Private institution information along with Program information",
             "FunctionalGroup": "Data",
@@ -4150,6 +4150,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 20,
+            "filterText": "advanced education,data,live,.net,goa network,api",
             "Security": [
                 {
                     "Type": "Status",
@@ -4201,7 +4202,6 @@
                     }
                 ]
             },
-            "filterText": "data,advanced education,live,api,.net,goa network",
             "appId": 47
         },
         {
@@ -4210,7 +4210,7 @@
             "Audience": [
                 "GOA"
             ],
-            "InternalWeightage": 10,
+            "InternalWeightage": "10",
             "Summary": "Push mode gateway  for events enabling clients to receive information without polling.",
             "Description": "Provides a push mode gateway  to events emitted in the event service, so clients can receive information without the need for polling.  Use it to monitor event streams, such as submissions received or payments made, to create a responsive, real-time web application.",
             "FunctionalGroup": "Automation",
@@ -4240,6 +4240,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 4,
+            "filterText": "alberta digital service platform (adsp),automation,live,service",
             "Security": [
                 {
                     "Type": "Status",
@@ -4296,7 +4297,6 @@
                     }
                 ]
             },
-            "filterText": "automation,alberta digital service platform (adsp),live,service",
             "appId": 48
         },
         {
@@ -4305,7 +4305,7 @@
             "Audience": [
                 "GOA"
             ],
-            "InternalWeightage": 100,
+            "InternalWeightage": "100",
             "Summary": "Create digital signatures as QR codes confirming authenticity of GoA's digital and printed documents.",
             "Description": "Provides confirmation of the authenticity of digital and printed documents claimed as issued under the authority of GoA - Government of Alberta. Allows the user to create digital signatures in a form of QR (Quick Response) Code images which can then be verified by using this application or the third party solutions, like mobile or desktop custom applications.",
             "FunctionalGroup": "Forms and documents",
@@ -4338,6 +4338,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 4,
+            "filterText": "service integration,forms and documents,live,goa,service,qr code, digital",
             "Security": [
                 {
                     "Type": "Status",
@@ -4393,7 +4394,6 @@
                     }
                 ]
             },
-            "filterText": "forms and documents,service integration,live,goa,service,qr code, digital",
             "appId": 49
         },
         {
@@ -4402,7 +4402,7 @@
             "Audience": [
                 "GOA"
             ],
-            "InternalWeightage": 10,
+            "InternalWeightage": "10",
             "Summary": "Implement algorithmic changes without redeploying applications.",
             "Description": "Gives developers the ability to quickly implement algorithmic changes requested by clients, such as policy changes, without having to redeploy the application.  This is particularly useful for calculations that are changed frequently, or for multi-tenant applications that handle calculations on a per-tenant basis.",
             "FunctionalGroup": "Automation",
@@ -4427,6 +4427,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 24,
+            "filterText": "alberta digital service platform (adsp),automation,live,service",
             "Security": [
                 {
                     "Type": "Status",
@@ -4446,7 +4447,7 @@
                     "Items": [
                         {
                             "Field": "IM",
-                            "Value": "Yes"
+                            "Value": "Required"
                         },
                         {
                             "Field": "Risk",
@@ -4487,7 +4488,6 @@
                     }
                 ]
             },
-            "filterText": "automation,alberta digital service platform (adsp),live,service",
             "appId": 50
         },
         {
@@ -4496,7 +4496,7 @@
             "Audience": [
                 "GOA"
             ],
-            "InternalWeightage": 100,
+            "InternalWeightage": "100",
             "Summary": "ECM connector for basic file management of project-specific content within ECM systems for OpenText.",
             "Description": "The Electronic Content Management (ECM) Connector is a representational state transfer (REST) application programming interface (API) that allows file management of Government of Alberta (GoA) content within ECM systems (e.g. file creation, modification, metadata, etc.).\n\nThe ECM Connector takes REST calls and translates them into a format that is understood by the proprietary Open Text LIVELINK web services (LAPI) running on the GoA's OpenText Enterprise Content Servers (ECSS) server.",
             "FunctionalGroup": "Forms and documents",
@@ -4530,17 +4530,18 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 4,
+            "filterText": "service integration,forms and documents,live,goa,service,sharepoint online, ecm, rest",
             "Security": [
                 {
                     "Type": "Status",
                     "Items": [
                         {
                             "Field": "CMRA",
-                            "Value": "Yes"
+                            "Value": "Completed"
                         },
                         {
                             "Field": "STRA",
-                            "Value": "Yes"
+                            "Value": "Completed"
                         }
                     ]
                 },
@@ -4549,7 +4550,7 @@
                     "Items": [
                         {
                             "Field": "IM",
-                            "Value": "Yes"
+                            "Value": "Required"
                         },
                         {
                             "Field": "Risk",
@@ -4589,7 +4590,6 @@
                     }
                 ]
             },
-            "filterText": "forms and documents,service integration,live,goa,service,sharepoint online, ecm, rest",
             "appId": 51
         },
         {
@@ -4598,7 +4598,7 @@
             "Audience": [
                 "GOA"
             ],
-            "InternalWeightage": 10,
+            "InternalWeightage": "10",
             "Summary": "Enables sending SIN and profile information to federal government for match and validation purposes.",
             "Description": "Process of batching and sending SIN and tombstone profile information to federal government for match and validation purposes",
             "FunctionalGroup": "User management",
@@ -4623,6 +4623,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 20,
+            "filterText": "advanced education,user management,live,.net,goa network,api",
             "Security": [
                 {
                     "Type": "Status",
@@ -4650,7 +4651,7 @@
                         },
                         {
                             "Field": "Cybersecurity",
-                            "Value": "Yes"
+                            "Value": "Required"
                         }
                     ]
                 },
@@ -4674,7 +4675,6 @@
                     }
                 ]
             },
-            "filterText": "user management,advanced education,live,api,.net,goa network",
             "appId": 52
         },
         {
@@ -4683,7 +4683,7 @@
             "Audience": [
                 "GOA"
             ],
-            "InternalWeightage": 10,
+            "InternalWeightage": "10",
             "Summary": "Gateway for sending text messages.",
             "Description": "A gateway for sending text messages. It interfaces with the SWIFT SMS vendor.",
             "FunctionalGroup": "Communication",
@@ -4708,6 +4708,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 20,
+            "filterText": "advanced education,communication,live,.net,goa network,api",
             "Security": [
                 {
                     "Type": "Status",
@@ -4718,7 +4719,7 @@
                         },
                         {
                             "Field": "STRA",
-                            "Value": "Yes"
+                            "Value": "Completed"
                         }
                     ]
                 },
@@ -4763,7 +4764,6 @@
                     }
                 ]
             },
-            "filterText": "communication,advanced education,live,api,.net,goa network",
             "appId": 53
         },
         {
@@ -4772,7 +4772,7 @@
             "Audience": [
                 "GOA"
             ],
-            "InternalWeightage": 100,
+            "InternalWeightage": "100",
             "Summary": "Splunk as an event management and correlation software for a holistic view of a service through dashboards, reports, and alerts.",
             "Description": "Splunk is an advanced and scalable form of software that indexes and searches for log files within a system and analyzes data for operational intelligence. A web-based software platform using real-time processing and provides the Government of Alberta (GoA) business areas with 5 main functions:\n - collect and index,\n - search and investigate,\n - add knowledge,\n - report and visualize,\n - monitor and alert,\non machine data, websites, applications, within the GoA infrastructure.",
             "FunctionalGroup": "Performance",
@@ -4804,6 +4804,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 4,
+            "filterText": "service integration,performance,live,goa,service,reporting",
             "Security": [
                 {
                     "Type": "Status",
@@ -4814,7 +4815,7 @@
                         },
                         {
                             "Field": "STRA",
-                            "Value": "Yes"
+                            "Value": "Completed"
                         }
                     ]
                 },
@@ -4823,7 +4824,7 @@
                     "Items": [
                         {
                             "Field": "IM",
-                            "Value": "Yes"
+                            "Value": "Required"
                         },
                         {
                             "Field": "Risk",
@@ -4863,7 +4864,6 @@
                     }
                 ]
             },
-            "filterText": "performance,service integration,live,goa,service,reporting",
             "appId": 54
         },
         {
@@ -4872,7 +4872,7 @@
             "Audience": [
                 "GOA"
             ],
-            "InternalWeightage": 10,
+            "InternalWeightage": "10",
             "Summary": "People records containing information of schools, staff, and students utilized by Advanced Education.",
             "Description": "Interface is utilized by Advanced Education line of business applications to read centrally managed student/learner information",
             "FunctionalGroup": "Data",
@@ -4897,6 +4897,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 20,
+            "filterText": "advanced education,data,live,.net,goa network,api",
             "Security": [
                 {
                     "Type": "Status",
@@ -4907,7 +4908,7 @@
                         },
                         {
                             "Field": "STRA",
-                            "Value": "Yes"
+                            "Value": "Completed"
                         }
                     ]
                 },
@@ -4924,7 +4925,7 @@
                         },
                         {
                             "Field": "Cybersecurity",
-                            "Value": "Yes"
+                            "Value": "Required"
                         }
                     ]
                 },
@@ -4952,7 +4953,6 @@
                     }
                 ]
             },
-            "filterText": "data,advanced education,live,api,.net,goa network",
             "appId": 55
         },
         {
@@ -4961,7 +4961,7 @@
             "Audience": [
                 "GOA"
             ],
-            "InternalWeightage": 10,
+            "InternalWeightage": "10",
             "Summary": "Court stamps for filing and certification of digital documents.",
             "Description": "Justice Digital services utilizing the stamping shared services benefit from a consistent application of official court stamps, indicating filing and certification of documents in the digital context.",
             "FunctionalGroup": "Forms and documents",
@@ -4998,6 +4998,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 0,
+            "filterText": "justice digital,forms and documents,live,angular, .net core, typescript,aws,pdf, digital signature, stamping, digital certification",
             "Security": [
                 {
                     "Type": "Status",
@@ -5017,7 +5018,7 @@
                     "Items": [
                         {
                             "Field": "IM",
-                            "Value": "Yes"
+                            "Value": "Required"
                         },
                         {
                             "Field": "Risk",
@@ -5040,7 +5041,6 @@
                     }
                 ]
             },
-            "filterText": "forms and documents,justice digital,live,angular, .net core, typescript,aws,pdf, digital signature, stamping, digital certification",
             "appId": 56
         },
         {
@@ -5049,7 +5049,7 @@
             "Audience": [
                 "GOA"
             ],
-            "InternalWeightage": 10,
+            "InternalWeightage": "10",
             "Summary": "Monitoring the health of applications and services.",
             "Description": "A service for monitoring the health of applications and other services.  You provide a URL for it to ping and it will notify you, or a webhook, if the response occurs in a timely manner or not.  Additionally, the service provides links to a static web page your users can visit to check on your application's status.  You can configure this page to display status updates and notices for planned maintenance or other outages.",
             "FunctionalGroup": "Performance",
@@ -5079,6 +5079,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 4,
+            "filterText": "alberta digital service platform (adsp),performance,live,service",
             "Security": [
                 {
                     "Type": "Status",
@@ -5135,7 +5136,6 @@
                     }
                 ]
             },
-            "filterText": "performance,alberta digital service platform (adsp),live,service",
             "appId": 57
         },
         {
@@ -5144,7 +5144,7 @@
             "Audience": [
                 "GOA"
             ],
-            "InternalWeightage": 10,
+            "InternalWeightage": "10",
             "Summary": "IAM platform to unify Alberta.ca Account and MADI-B, and other IAM systems in the GoA over time.",
             "Description": "An IAM platform that will be used to unify Alberta.ca Account and MADI-B, as well as other IAM systems in the GoA over time.\n\nWill enable multiple types of users under one common IAM solution, including citizen, external businesses and organizations and their staff, and internal GoA staff",
             "FunctionalGroup": "User management",
@@ -5173,6 +5173,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 0,
+            "filterText": "platforms - iam,user management,alpha,.net, open source,azure, on prem,iam",
             "Security": [
                 {
                     "Type": "Status",
@@ -5183,7 +5184,7 @@
                         },
                         {
                             "Field": "STRA",
-                            "Value": "Yes"
+                            "Value": "Completed"
                         }
                     ]
                 },
@@ -5228,7 +5229,6 @@
                     }
                 ]
             },
-            "filterText": "user management,platforms - iam,alpha,.net, open source,azure, on prem,iam",
             "appId": 58
         },
         {
@@ -5237,7 +5237,7 @@
             "Audience": [
                 "GOA"
             ],
-            "InternalWeightage": 10,
+            "InternalWeightage": "10",
             "Summary": "Temporal-based data store for event, change, and audit logs.",
             "Description": "Provides a temporal-based data store that is useful for storing such things as event, change, and audit logs.  In addition, it can be used to aggregate KPI's over some time interval by including metrics along with each entry.  For example, it has been used to log events along with a count metric, and therefore can be used to show how many events are emitted per unit of time.",
             "FunctionalGroup": "Data",
@@ -5267,6 +5267,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 4,
+            "filterText": "alberta digital service platform (adsp),data,live,service",
             "Security": [
                 {
                     "Type": "Status",
@@ -5286,7 +5287,7 @@
                     "Items": [
                         {
                             "Field": "IM",
-                            "Value": "Yes"
+                            "Value": "Required"
                         },
                         {
                             "Field": "Risk",
@@ -5327,7 +5328,6 @@
                     }
                 ]
             },
-            "filterText": "data,alberta digital service platform (adsp),live,service",
             "appId": 59
         },
         {
@@ -5336,7 +5336,7 @@
             "Audience": [
                 "GOA"
             ],
-            "InternalWeightage": 10,
+            "InternalWeightage": "10",
             "Summary": "Time restricted random codes for verification and user access.",
             "Description": "Verify service provides time limited random codes that can be used for validation purposes. For example, generated codes can be sent to a user by email and requested from an application to verify user access to the email inbox.",
             "FunctionalGroup": "User management",
@@ -5361,6 +5361,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 24,
+            "filterText": "alberta digital service platform (adsp),user management,live,service",
             "Security": [
                 {
                     "Type": "Status",
@@ -5371,7 +5372,7 @@
                         },
                         {
                             "Field": "STRA",
-                            "Value": "Yes"
+                            "Value": "Completed"
                         }
                     ]
                 },
@@ -5421,386 +5422,7 @@
                     }
                 ]
             },
-            "filterText": "user management,alberta digital service platform (adsp),live,service",
             "appId": 60
-        }
-    ],
-    "fields": [
-        {
-            "FieldName": "FunctionalGroup",
-            "DisplayName": "Category",
-            "Filter": "Yes-()",
-            "ShowBadge": false,
-            "DataType": "text",
-            "Default": "Was removed",
-            "Group": "",
-            "SubGroup": "",
-            "Note": ""
-        },
-        {
-            "FieldName": "Provider",
-            "DisplayName": "Provider",
-            "Filter": "Yes",
-            "ShowBadge": false,
-            "DataType": "text",
-            "Default": "Other",
-            "Group": "",
-            "SubGroup": "",
-            "Note": ""
-        },
-        {
-            "FieldName": "Status",
-            "DisplayName": "Status",
-            "Filter": "Yes-()",
-            "ShowBadge": true,
-            "DataType": "text",
-            "Default": "Other",
-            "Group": "",
-            "SubGroup": "",
-            "Note": ""
-        },
-        {
-            "FieldName": "Audience",
-            "DisplayName": "Audience",
-            "Filter": "Yes-()",
-            "ShowBadge": false,
-            "DataType": "textArray",
-            "Default": "GOA",
-            "Group": "",
-            "SubGroup": "",
-            "Note": ""
-        },
-        {
-            "FieldName": "UsageMethod",
-            "DisplayName": "Usage",
-            "Filter": "Yes-()",
-            "ShowBadge": false,
-            "DataType": "text",
-            "Default": "Other",
-            "Group": "",
-            "SubGroup": "",
-            "Note": ""
-        },
-        {
-            "FieldName": "Language",
-            "DisplayName": "Technology",
-            "Filter": "Yes-()",
-            "ShowBadge": false,
-            "DataType": "textArray",
-            "Default": "Other",
-            "Group": "",
-            "SubGroup": "",
-            "Note": ""
-        },
-        {
-            "FieldName": "Environment",
-            "DisplayName": "Infrastructure",
-            "Filter": "Yes-()",
-            "ShowBadge": false,
-            "DataType": "textArray",
-            "Default": "Other",
-            "Group": "",
-            "SubGroup": "",
-            "Note": ""
-        },
-        {
-            "FieldName": "SupportLevel",
-            "DisplayName": "Support",
-            "Filter": "No",
-            "ShowBadge": false,
-            "DataType": "text",
-            "Default": "Other",
-            "Group": "",
-            "SubGroup": "",
-            "Note": ""
-        },
-        {
-            "FieldName": "Keywords",
-            "DisplayName": "Tag/Keyword",
-            "Filter": "Yes-()",
-            "ShowBadge": false,
-            "DataType": "textArray",
-            "Default": "",
-            "Group": "",
-            "SubGroup": "",
-            "Note": ""
-        },
-        {
-            "FieldName": "Documentation",
-            "DisplayName": "Documentation",
-            "Filter": "No",
-            "ShowBadge": false,
-            "DataType": "urlArray",
-            "Default": "",
-            "Group": "",
-            "SubGroup": "",
-            "Note": ""
-        },
-        {
-            "FieldName": "InternalWeightage",
-            "DisplayName": "InternalWeightage",
-            "Filter": "No",
-            "ShowBadge": false,
-            "DataType": "int",
-            "Default": "10",
-            "Group": "",
-            "SubGroup": "",
-            "Note": ""
-        },
-        {
-            "FieldName": "CMRA",
-            "DisplayName": "Content Management Risk Assessment (CMRA)",
-            "Filter": "No",
-            "ShowBadge": false,
-            "DataType": "text",
-            "Default": "TBD",
-            "Group": "Security",
-            "SubGroup": "Status",
-            "Note": ""
-        },
-        {
-            "FieldName": "STRA",
-            "DisplayName": "Security Threat and Risk Assessment (STRA)",
-            "Filter": "No",
-            "ShowBadge": false,
-            "DataType": "text",
-            "Default": "",
-            "Group": "Security",
-            "SubGroup": "Status",
-            "Note": ""
-        },
-        {
-            "FieldName": "IM",
-            "DisplayName": "Information management (IM) consult",
-            "Filter": "No",
-            "ShowBadge": false,
-            "DataType": "text",
-            "Default": "",
-            "Group": "Security",
-            "SubGroup": "Required",
-            "Note": ""
-        },
-        {
-            "FieldName": "Data",
-            "DisplayName": "Data team consult",
-            "Filter": "No",
-            "ShowBadge": false,
-            "DataType": "text",
-            "Default": "",
-            "Group": "Security",
-            "SubGroup": "Required",
-            "Note": ""
-        },
-        {
-            "FieldName": "Risk",
-            "DisplayName": "Cybersecurity risk assessment",
-            "Filter": "No",
-            "ShowBadge": false,
-            "DataType": "text",
-            "Default": "TBD",
-            "Group": "Security",
-            "SubGroup": "Required",
-            "Note": ""
-        },
-        {
-            "FieldName": "Cybersecurity",
-            "DisplayName": "Cybersecurity consult",
-            "Filter": "No",
-            "ShowBadge": false,
-            "DataType": "text",
-            "Default": "",
-            "Group": "Security",
-            "SubGroup": "Required",
-            "Note": ""
-        },
-        {
-            "FieldName": "Classification",
-            "DisplayName": "Information Security classification",
-            "Filter": "No",
-            "ShowBadge": false,
-            "DataType": "text",
-            "Default": "",
-            "Group": "Security",
-            "SubGroup": "Info",
-            "Note": ""
-        },
-        {
-            "FieldName": "Controller",
-            "DisplayName": "Information controller",
-            "Filter": "No",
-            "ShowBadge": false,
-            "DataType": "text",
-            "Default": "",
-            "Group": "Security",
-            "SubGroup": "Info",
-            "Note": ""
-        },
-        {
-            "FieldName": "Considerations",
-            "DisplayName": "Special considerations",
-            "Filter": "No",
-            "ShowBadge": false,
-            "DataType": "text",
-            "Default": "",
-            "Group": "Security",
-            "SubGroup": "Info",
-            "Note": ""
-        },
-        {
-            "FieldName": "Security",
-            "DisplayName": "Security",
-            "Filter": "No",
-            "ShowBadge": false,
-            "DataType": "Security(Status,Required,Info)",
-            "Default": "",
-            "Group": "",
-            "SubGroup": "",
-            "Note": ""
-        },
-        {
-            "FieldName": "Contact",
-            "DisplayName": "Contact",
-            "Filter": "No",
-            "ShowBadge": false,
-            "DataType": "Contacts",
-            "Default": "",
-            "Group": "",
-            "SubGroup": "",
-            "Note": ""
-        },
-        {
-            "FieldName": "SecurityStatus",
-            "DisplayName": "Current Status",
-            "Filter": "",
-            "ShowBadge": "",
-            "DataType": "text",
-            "Default": "",
-            "Group": "Security",
-            "SubGroup": "",
-            "Note": ""
-        },
-        {
-            "FieldName": "SecurityRequired",
-            "DisplayName": "Required before using this service",
-            "Filter": "",
-            "ShowBadge": "",
-            "DataType": "text",
-            "Default": "",
-            "Group": "Security",
-            "SubGroup": "",
-            "Note": ""
-        },
-        {
-            "FieldName": "SecurityInfo",
-            "DisplayName": "Security Details",
-            "Filter": "",
-            "ShowBadge": "",
-            "DataType": "textLong",
-            "Default": "",
-            "Group": "Security",
-            "SubGroup": "",
-            "Note": ""
-        },
-        {
-            "FieldName": "User management",
-            "DisplayName": "User management",
-            "Filter": "",
-            "ShowBadge": "",
-            "DataType": "",
-            "Default": "",
-            "Group": "FunctionalGroup",
-            "SubGroup": "",
-            "Note": "User authentication, authorization, identity verification and management, and role-based access control",
-            "Count": 12
-        },
-        {
-            "FieldName": "Data",
-            "DisplayName": "Data",
-            "Filter": "",
-            "ShowBadge": "",
-            "DataType": "",
-            "Default": "",
-            "Group": "FunctionalGroup",
-            "SubGroup": "",
-            "Note": "Data libraries, records, schemas, configuration storage, audit and log management",
-            "Count": 13
-        },
-        {
-            "FieldName": "Forms and documents",
-            "DisplayName": "Forms and documents",
-            "Filter": "",
-            "ShowBadge": "",
-            "DataType": "",
-            "Default": "",
-            "Group": "FunctionalGroup",
-            "SubGroup": "",
-            "Note": "File upload and management, document processing, forms creation, and digital signatures",
-            "Count": 12
-        },
-        {
-            "FieldName": "Automation",
-            "DisplayName": "Automation",
-            "Filter": "",
-            "ShowBadge": "",
-            "DataType": "",
-            "Default": "",
-            "Group": "FunctionalGroup",
-            "SubGroup": "",
-            "Note": "Automation Workflow, process automation, and task management",
-            "Count": 6
-        },
-        {
-            "FieldName": "Finance",
-            "DisplayName": "Finance",
-            "Filter": "",
-            "ShowBadge": "",
-            "DataType": "",
-            "Default": "",
-            "Group": "FunctionalGroup",
-            "SubGroup": "",
-            "Note": "Payment processing, gateway integration, financial data management, billing, and invoicing",
-            "Count": 6
-        },
-        {
-            "FieldName": "Communication",
-            "DisplayName": "Communication",
-            "Filter": "",
-            "ShowBadge": "",
-            "DataType": "",
-            "Default": "",
-            "Group": "FunctionalGroup",
-            "SubGroup": "",
-            "Note": "Messaging, emails, SMS, notifications, and alerts",
-            "Count": 6
-        },
-        {
-            "FieldName": "Performance",
-            "DisplayName": "Performance",
-            "Filter": "",
-            "ShowBadge": "",
-            "DataType": "",
-            "Default": "",
-            "Group": "FunctionalGroup",
-            "SubGroup": "",
-            "Note": "Service health monitoring, business performance tracking, and reporting dashboards",
-            "Count": 5
-        }
-    ],
-    "LookUp": [
-        {
-            "FieldName": "CMO",
-            "DisplayName": "Content Management Operations",
-            "DataType": ""
-        },
-        {
-            "FieldName": "CCS",
-            "DisplayName": "Collaboration and Content Services",
-            "DataType": ""
-        },
-        {
-            "FieldName": "IMP",
-            "DisplayName": "Information Management Program",
-            "DataType": ""
         }
     ]
 }
