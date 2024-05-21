@@ -4,10 +4,13 @@ import {
   GoABadge,
   GoAIcon,
   GoASideMenu,
+  GoATable,
 } from '@abgov/react-components-4.20.2';
 import React, { useEffect, useState } from 'react';
 import './styles.css';
 import ExternalLink from '../../components/ExternalLink';
+//import {fieldList} from './config';
+import { securityGroups, securityData } from './config';
 interface DetailsProps {
   app: any;
 }
@@ -46,6 +49,13 @@ export default function Details({ app }: DetailsProps): JSX.Element {
       title: 'Documentation',
       showInSidebar: app.Documentation.length > 0 ? true : false,
       showContent: app.Documentation.length > 0 ? true : false,
+    },
+    {
+      name: 'Security',
+      id: 'service-documentation',
+      title: 'Security compliance',
+      showInSidebar: true,
+      showContent: true,
     },
     {
       name: 'Contact',
@@ -109,6 +119,74 @@ export default function Details({ app }: DetailsProps): JSX.Element {
     });
   }, []);
 
+  interface SecurityItem {
+    name: any;
+    title: any;
+    id: any;
+    fieldList: any;
+    tableTh: any;
+    dataName: any;
+    note: any;
+  }
+
+  const SecurityBlock: React.FC<{ group: SecurityItem }> = ({ group }) => {
+    const itemData = app.Security.find(
+      (item: any) => item.Type === group.dataName
+    );
+    if (itemData == undefined) return null;
+
+    function displayName(obj: any, key: string): string | undefined {
+      return obj[key]?.title;
+    }
+
+    return (
+      <>        
+        {group.note != '' ? (
+          <>
+            <p>{group.note}</p>{' '} {/* <GoAtext ????={group.note} ></GoAtext> */}
+            <GoASpacer vSpacing="m" />
+          </>
+        ) : null}
+
+        {group.tableTh.length > 0 ? (
+          <b>{group.title}</b> //  {/* Title_Medium_256 */}
+        ) : null}
+
+        <GoATable>
+          <thead>
+            {group.tableTh.length > 0 ? (
+              <tr>
+                <th>{group.tableTh[0]} </th>
+                <th>{group.tableTh[1]} </th>
+              </tr>
+            ) : (
+              <tr>
+                <th>{group.title}</th>
+                <th></th>
+              </tr>
+            )}
+          </thead>
+          <tbody>
+            {itemData.Items.map((row: any) => (
+              <tr key={row.name + 'tr'}>
+                <td key={row.name + 'td1'}>
+                  {' '}
+                  {displayName(securityData, row['Field'])}{' '}
+                </td>
+                <td key={row.name + 'td2'} className={'service-content'}>
+                  {' '}
+                  {row['Value']}{' '}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </GoATable>
+        <GoASpacer vSpacing="xl" />
+        {/* <GoASpacer vSpacing="l" /> */}
+      </>
+    );
+  };
+
   // table
   const renderContact = (method: any) => {
     const contactMethods: any = {
@@ -164,14 +242,12 @@ export default function Details({ app }: DetailsProps): JSX.Element {
   const renderContent = (name: string, app: any) => {
     if (name === 'Documentation' && app.Documentation.length > 0) {
       return app.Documentation.map((doc: any) => (
-        <div>
+        <div key={doc.name}>
           <ExternalLink text={`${doc.name} documentation`} link={doc.url} />
           <GoASpacer vSpacing="s" />
         </div>
       ));
-    }
-
-    if (name === 'Contact') {
+    } else if (name === 'Contact') {
       return (
         <table className="contact-table">
           <tbody>
@@ -179,66 +255,76 @@ export default function Details({ app }: DetailsProps): JSX.Element {
           </tbody>
         </table>
       );
-    }
-
-    return <p className="service-content">{app[name]}</p>;
+    } else if (name === 'Security') {
+      return (
+        <>
+          {/* Overview text is needed */}
+          {securityGroups.map((group: SecurityItem) => (
+            <SecurityBlock key={group.id} group={group} />
+          ))}
+        </>
+      );
+    } else return <p className="service-content">{app[name]}</p>;
   };
+
   return (
-    <GoAThreeColumnLayout
-      maxContentWidth="1500px"
-      nav={
-        <div className="details-side-nav">
-          <GoASideMenu>
-            {items.content.length > 0
-              ? items.content.map((content: any) => {
-                  return content.showInSidebar ? (
-                    <a key={`${content.id}`} href={`#${content.id}`}>
-                      {content.title}
-                    </a>
-                  ) : (
-                    ''
-                  );
-                })
-              : 'No content'}
-          </GoASideMenu>
+    <>
+      <GoAThreeColumnLayout
+        maxContentWidth="1500px"
+        nav={
+          <div className="details-side-nav" key="details-side-nav">
+            <GoASideMenu key="SideMenu">
+              {items.content.length > 0
+                ? items.content.map((content: any) => {
+                    return content.showInSidebar ? (
+                      <a key={`${content.id}-menu`} href={`#${content.id}`}>
+                        {content.title}
+                      </a>
+                    ) : (
+                      <></>
+                    );
+                  })
+                : 'No content'}
+            </GoASideMenu>
+          </div>
+        }
+      >
+        <div className="service-heading">
+          <h2>{app.ServiceName}</h2>
+          {app.Status !== '' && app.Status.toLowerCase() !== 'other' ? (
+            <GoABadge type="success" content={app.Status} />
+          ) : (
+            ''
+          )}
         </div>
-      }
-    >
-      <div className="service-heading">
-        <h2>{app.ServiceName}</h2>
-        {app.Status !== '' && app.Status.toLowerCase() !== 'other' ? (
-          <GoABadge type="success" content={app.Status} />
-        ) : (
-          ''
-        )}
-      </div>
-      <GoASpacer vSpacing="xs" />
-      <p className="service-subtitle"> {app.Provider}</p>
+        <GoASpacer vSpacing="xs" />
+        <p className="service-subtitle"> {app.Provider}</p>
 
-      <div className="service-badges">
-        {items.badges.length > 0 ? items.badges : ''}
-      </div>
+        <div className="service-badges">
+          {items.badges.length > 0 ? items.badges : ''}
+        </div>
 
-      <GoASpacer vSpacing="xl" />
-      {items.content.length > 0 &&
-        items.content.map(({ id, name, title, showContent }: any) => {
-          if (!showContent) return null;
+        <GoASpacer vSpacing="xl" />
+        {items.content.length > 0 &&
+          items.content.map(({ id, name, title, showContent }: any) => {
+            if (!showContent) return null;
 
-          return (
-            <div key={`${id}`}>
-              <h3 id={`${id}`}>{title}</h3>
-              {renderContent(name, app)}
-              <GoASpacer vSpacing="l" />
-            </div>
-          );
-        })}
+            return (
+              <div key={`${id}`}>
+                <h3 id={`${id}`}>{title}</h3>
+                {renderContent(name, app)}
+                <GoASpacer vSpacing="l" />
+              </div>
+            );
+          })}
 
-      <GoASpacer vSpacing="3xl" />
+        <GoASpacer vSpacing="3xl" />
 
-      <div className="line-elements back-top">
-        <a href="#top-page">Back to top</a>
-        <GoAIcon type="arrow-up-circle" theme="outline" />
-      </div>
-    </GoAThreeColumnLayout>
+        <div className="line-elements back-top">
+          <a href="#top-page">Back to top</a>
+          <GoAIcon type="arrow-up-circle" theme="outline" />
+        </div>
+      </GoAThreeColumnLayout>
+    </>
   );
 }

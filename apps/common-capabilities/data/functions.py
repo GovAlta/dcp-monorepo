@@ -72,21 +72,18 @@ def createContact(csv_row):
 
 #===[ SecurityList() ]==========================================================================
 
-def createSecurityList(dataRow,SecurityGroups,SecurityFields):
-    # itemArray = []
-    badges = []
-
+def createSecurityList(dataRow,SecurityGroups,SecurityFields):  
+ #   badges = []
     objArray = []
 
     for grp in SecurityGroups.split(','):        
         itemArray = []
-        fieldsToGet = [item for item in SecurityFields if item['SubGroup'] == grp]
-        
+        fieldsToGet = [item for item in SecurityFields if item['subGroup'] == grp]        
 
         for fld in fieldsToGet:     
-            # print(fld['FieldName'])
-            if dataRow[ fld['FieldName']] != '':
-                data2 = {"Field": fld['FieldName'], "Value": dataRow[ fld['FieldName']] }
+            # print(fld['fieldName'])
+            if dataRow[ fld['fieldName']] != '':
+                data2 = {"Field": fld['fieldName'], "Value": dataRow[ fld['fieldName']] }
                 itemArray.append(data2)
                 
         if len(itemArray) > 0:
@@ -96,67 +93,4 @@ def createSecurityList(dataRow,SecurityGroups,SecurityFields):
     # result = { "Items":itemArray, "Badges": SecurityFields }
 
     return objArray # result
-
-
-# **********************************************************
-# wordCounts = {}
-# needEdit = {}
-# modifiedRecords = []
-
-# def shorten(text): return re.sub('[._ -\\/]', '', text).lower().strip()
-# def wordVote(val):
-#     if val in wordCounts:        wordCounts[val] += 1
-#     else:        wordCounts[val] = 1
-
-# def needsEdit(val):
-#     short = shorten(val)
-#     if short != '' and short in needEdit and needEdit[short] != val:
-#         return needEdit[short]
-#     else:
-#         return {}
-
-# def spellingVote(data,fieldMetadata):    
-#     for row2 in fieldMetadata:
-#         fn = row2["FieldName"]
-#         if row2["Filter"] != 'No' and row2["dataType"] != 'List':
-#             for dataRow in data:
-#                 if row2["dataType"] == 'text':
-#                     if dataRow[fn] != '':                   
-#                         wordVote(dataRow[fn])
-#                 elif row2["dataType"] == 'textArray':
-#                         for val in dataRow[fn]:
-#                             wordVote(val)
-
-#     string_counts_with_group = [{'string': key, 'count': value, 'group': shorten(key)} for key, value in wordCounts.items()]
-#     groups = set(item['group'] for item in string_counts_with_group)
-
-#     for grp in groups:    
-#         itemGroup = [item for item in string_counts_with_group if item['group'] == grp] # items_group_A = items_by_group(grp)
-#         if len(itemGroup) > 1:        
-#             gstr = ''
-#             cnt = 0
-#             grp = itemGroup[0]['group']
-#             for item in itemGroup:
-#                 if item['count'] > cnt:
-#                     cnt = item['count']
-#                     gstr = item['string']
-#             needEdit[grp] = gstr
-            
-#     for row2 in fieldMetadata:
-#         fn = row2["FieldName"]
-#         if row2["Filter"] != 'No':
-#             for dataRow in data:
-#                 if row2["dataType"] == 'text':
-#                     updated = needsEdit(dataRow[fn])
-#                     if updated:
-#                         modifiedRecords.append([dataRow['ServiceName'],fn,dataRow[fn],updated])
-#                         dataRow[fn] = updated
-
-#                 elif row2["dataType"] == 'textArray':
-#                         for val in dataRow[fn]:
-#                             updated = needsEdit(val)
-#                             if updated:
-#                                 i = dataRow[fn].index(val)
-#                                 modifiedRecords.append([dataRow['ServiceName'],fn,dataRow[fn][i],updated])                            
-#                                 dataRow[fn][i] = updated
-#     return
+ 
