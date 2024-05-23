@@ -134,7 +134,8 @@ export default function Details({ app }: DetailsProps): JSX.Element {
   // table
 
   const renderSpecs = (specification: any) => {
-    if (specification.type == 'text') return <>{app[specification.name]}</>;
+    if (specification.type == 'text') 
+      return <>{app[specification.name]}</>;
     else if (specification.type == 'status')
       return (
         <GoABadge
@@ -264,7 +265,7 @@ export default function Details({ app }: DetailsProps): JSX.Element {
           </div>
         }
       >
-        <GoAButton size="compact" >&larr; Back to listing</GoAButton>
+        <GoAButton size="compact" disabled >&larr; Back to listing</GoAButton>
         {/* window.location.href="/services/index.html" */}
 
         <GoASpacer vSpacing="l" />
