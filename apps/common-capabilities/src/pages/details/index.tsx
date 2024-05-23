@@ -33,10 +33,8 @@ export default function Details({ app }: DetailsProps): JSX.Element {
   }, []);
 
   useEffect(() => {
-    const showContent: any = [];
-    Object.entries(bodyItems).forEach(([name, obj]) => {
-      // const itemsArray = obj.dataIn.split(',');  // if needed to add multiple fields
-      // const myItems = itemsArray.map((field, index) => ({  }));
+    let showContent: any = [];
+    Object.entries(bodyItems).forEach(([name, obj]) => {      
       if (obj.dataIn == '' ? app[name] != '' : app[name][obj.dataIn] != '') {
         const newValue = {
           ...obj,
@@ -85,7 +83,7 @@ export default function Details({ app }: DetailsProps): JSX.Element {
     return (
       <>
         {group.tableTh.length > 0 ? (
-          <b>{group.title}</b> //  {/* Title_Medium_256 */}
+          <b>{group.title}</b>
         ) : null}
 
         {group.note != '' ? (
@@ -130,9 +128,7 @@ export default function Details({ app }: DetailsProps): JSX.Element {
       </>
     );
   };
-
-  // table
-
+  
   const renderSpecs = (specification: any) => {
     if (specification.type == 'text') 
       return <>{app[specification.name]}</>;
