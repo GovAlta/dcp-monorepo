@@ -265,8 +265,10 @@ export default function Details({ app }: DetailsProps): JSX.Element {
           </div>
         }
       >
-        <GoAButton size="compact" disabled >&larr; Back to listing</GoAButton>
-        {/* window.location.href="/services/index.html" */}
+
+        <GoAButton size="compact" leadingIcon="arrow-back" onClick={() => window.location.href="/services/index.html" }>
+          Back to listing
+        </GoAButton>        
 
         <GoASpacer vSpacing="l" />
         <div className="service-heading">
@@ -289,7 +291,11 @@ export default function Details({ app }: DetailsProps): JSX.Element {
 
         <GoASpacer vSpacing="xl" />
         <div >
-          Please feel free to <a href={"/support?Service="+app.ServiceName}>share feedback</a> on this service.
+          Please feel free to&nbsp;
+          <ExternalLink
+            link={`mailto:TI.Softwaredelivery@gov.ab.ca?subject=Common capabilities feedback: ${app.ServiceName}`}            
+            text={'share feedback'}
+          /> on this service.
         </div>
 
         <GoASpacer vSpacing="3xl" />
