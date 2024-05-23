@@ -365,14 +365,14 @@ with open(folderName + 'config.ts', 'w') as configfile:
 
     items = {}
     for item in [item for item in updated_data if item['group'] == 'Spec']:
-        items[item['property']] = {"title": item['title'] , 'id': 'spec-'+item['property'].lower() }
+        items[item['property']] = {"title": item['title'], 'type': item['dataType'] }  # ,  'id': 'body-'+item['property'].lower()                
     configfile.write('\n\nexport const specifications = ')      
     configfile.write(json.dumps(items, indent=4))             
     exportList += ', specifications'
 
     items = {}
     for item in [item for item in updated_data if item['group'] == 'Body']:
-        items[item['property']] = {"title": item['title'] , 'id': 'body-'+item['property'].lower() }
+        items[item['property']] = {"title": item['title'], 'dataIn': item['dataIn'] }  # , 'type': item['dataType'],  'id': 'body-'+item['property'].lower()        
     configfile.write('\n\nexport const bodyItems = ')      
     configfile.write(json.dumps(items, indent=4))             
     exportList += ', bodyItems'
