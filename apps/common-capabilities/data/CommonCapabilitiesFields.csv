@@ -1,47 +1,46 @@
-﻿type,group,subGroup,fieldName,display,filter,showBadge,dataType,default,css,note,extra
-Field,Top,,ServiceName,Service,No,FALSE,text,,<h2> service-heading,,
-Field,Top,,Provider,Provider,Yes,FALSE,text,Other,,,
-Field,Spec,,InternalWeightage,Recommended,No,FALSE,Recommended(),10,,,CC-138
-Field,Top,,Badge,Badges,No,FALSE,Badges(),,,,
-Field,Body,,Summary,Overview,No,FALSE,text,,,,
-Field,n/a,,FunctionalGroup,Category,Yes-(),TRUE,text,Was removed,<span> alignleft,,
-Field,n/a,,Specs,Specifications  (CC-138),No,FALSE,Specs(),,,,
-Field,Body,,Description,Getting started,No,FALSE,text,,,,
-Field,Body,,UseCases,Use cases,No,FALSE,text,,,,
-Field,Body,,Prerequisites,Prerequisites,No,FALSE,text,,,,
-Field,n/a,,Security,Security and compliance,No,FALSE,"Security(Status,Required,Info)",,,,
-Field,Body,,Documentation,Documentation,No,FALSE,urlArray,,,,
-Field,Body,,Contact,Support,No,FALSE,Contacts(),,,,
-Field,Body,,Comments,Comments,No,FALSE,text,,,,
-,,,,,,,,,,,
-Field,Spec,,Status,Status,Yes-(),TRUE,status,Other,<span>,,
-Field,n/a,,Audience,Audience,Yes-(),TRUE,textArray,GOA,,,
-Field,Spec,,Version,Version,No,FALSE,text,,<span>,,
-Field,Spec,,Language,Language,Yes-(),TRUE,textArray,Other,,,
-Field,Spec,,Environment,Infrastructure,Yes-(),TRUE,textArray,Other,,,
-Field,Spec,,UsageMethod,Usage,Yes-(),TRUE,text,Other,<span>,,
-Field,n/a,,SupportLevel,Support,No,FALSE,text,Other,,,
-Field,n/a,,Keywords,Tag/Keyword,Yes-(),FALSE,textArray,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-Field,Security,Status,CMRA,Content Management Risk Assessment (CMRA),No,FALSE,text,TBD,,,IM
-Field,Security,Status,STRA,General cybersecurity risk assessment,No,FALSE,text,,,,Cybersecurity
-Field,Security,Required,IM,Information management (IM) consult ,No,FALSE,text,,,,IM
-Field,Security,Required,Data,Data team consult,No,FALSE,text,,,,Data team
-Field,Security,Required,Risk,Cybersecurity risk assessment,No,FALSE,text,TBD,,,Cybersecurity
-Field,Security,Required,Cybersecurity,Cybersecurity consult,No,FALSE,text,,,,Cybersecurity
-Field,Security,Info,Classification,Information Security classification,No,FALSE,text,,,,IM/Cybersecurity
-Field,Security,Info,Controller,Information controller,No,FALSE,text,,,,IM/Cybersecurity
-Field,Security,Info,Considerations,Special considerations,No,FALSE,text,,,,Other
-Field,Security,,SecurityStatus,"(Risk assessment has been completed,Completed)",,,text,,,We need some text here for an explanation for the user what this section means,
-Field,Security,,SecurityRequired,"Required before using this service (Consultation/assessment,Required)",,,text,,,We need some text here for an explanation for the user what this section means,
-Field,Security,,SecurityInfo,Security details,,,textLong,,,We need some text here for an explanation for the user what this section means,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-FieldOption,,,,,Yes,,int,,,,
-FieldOption,,,,,Yes-(),,text,,,,
-FieldOption,,,,,No,,textArray,,,,
-FieldOption,,,,,,,urlArray,,,,
-FieldOption,,,,,,,Contacts,,,,
-FieldOption,,,,,,,Obj(...),,,,
+﻿type,group,subGroup,fieldName,display,filter,showBadge,dataType,dataIn,default,css,note,extra
+Field,Top,,ServiceName,Service,No,FALSE,text,,,<h2> service-heading,,
+Field,n/a,,InternalWeightage,Recommended,No,FALSE,Recommended(),,10,,,
+Field,n/a,,Summary,Overview,No,FALSE,text,,,,,
+Field,n/a,,FunctionalGroup,Category,Yes-(),TRUE,text,,Was removed,<span> alignleft,,
+Field,Top,,Description,Getting started,No,FALSE,text,,,,,
+Field,Body,,Specs,Specifications,No,FALSE,Specs(),,,,,
+Field,Body,,Prerequisites,Prerequisites,No,FALSE,text,,,,,
+Field,Body,,UseCases,Use cases,No,FALSE,text,,,,,
+Field,Body,,Comments,Additional information,No,FALSE,text,,,,,
+Field,Body,,Security,Security and compliance,No,FALSE,"Security(Status,Required,Info)",,,,,
+Field,Body,,Documentation,Documentation,No,FALSE,urlArray,,,,,
+Field,Body,,Contact,Contact,No,FALSE,Contacts(),methods,,,,
+,,,,,,,,,,,,
+Field,Spec,,Provider,Provider,Yes,FALSE,text,,Other,,,
+Field,Spec,,Status,Status,Yes-(),TRUE,status,,Other,<span>,,
+Field,Spec,,Version,Version,No,FALSE,text,,,<span>,,
+Field,Spec,,Language,Language,Yes-(),TRUE,textArray,,Other,,,
+Field,Spec,,Environment,Infrastructure,Yes-(),TRUE,textArray,,Other,,,
+Field,Spec,,UsageMethod,Usage,Yes-(),TRUE,text,,Other,<span>,,
+Field,n/a,,Audience,Audience,Yes-(),TRUE,textArray,,GOA,,,
+Field,n/a,,SupportLevel,Support,No,FALSE,text,,Other,,,
+Field,n/a,,Keywords,Tag/Keyword,Yes-(),FALSE,textArray,,,,,
+,,,,,,,,,,,,
+,,,,,,,,,,,,
+Field,Security,Status,CMRA,Content Management Risk Assessment (CMRA),No,FALSE,text,,TBD,,,IM
+Field,Security,Status,STRA,General cybersecurity risk assessment,No,FALSE,text,,,,,Cybersecurity
+Field,Security,Required,IM,Information management (IM) consult ,No,FALSE,text,,,,,IM
+Field,Security,Required,Data,Data team consult,No,FALSE,text,,,,,Data team
+Field,Security,Required,Risk,Cybersecurity risk assessment,No,FALSE,text,,TBD,,,Cybersecurity
+Field,Security,Required,Cybersecurity,Cybersecurity consult,No,FALSE,text,,,,,Cybersecurity
+Field,Security,Info,Classification,Information Security classification,No,FALSE,text,,,,,IM/Cybersecurity
+Field,Security,Info,Controller,Information controller,No,FALSE,text,,,,,IM/Cybersecurity
+Field,Security,Info,Considerations,Special considerations,No,FALSE,text,,,,,Other
+Field,Security,,SecurityStatus,"(Risk assessment has been completed,Completed)",,,text,,,,,
+Field,Security,,SecurityRequired,"Required before using this service (Consultation/assessment,Required)",,,text,,,,,
+Field,Security,,SecurityInfo,Security details,,,textLong,,,,,
+,,,,,,,,,,,,
+,,,,,,,,,,,,
+,,,,,,,,,,,,
+FieldOption,,,,,Yes,,int,,,,,
+FieldOption,,,,,Yes-(),,text,,,,,
+FieldOption,,,,,No,,textArray,,,,,
+FieldOption,,,,,,,urlArray,,,,,
+FieldOption,,,,,,,Contacts,,,,,
+FieldOption,,,,,,,Obj(...),,,,,

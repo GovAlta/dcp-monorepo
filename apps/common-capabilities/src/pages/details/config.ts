@@ -87,68 +87,60 @@ export const securityData = {
 }
 
 export const specifications = {
-    "InternalWeightage": {
-        "title": "Recommended",
-        "id": "spec-internalweightage"
+    "Provider": {
+        "title": "Provider",
+        "type": "text"
     },
     "Status": {
         "title": "Status",
-        "id": "spec-status"
+        "type": "status"
     },
     "Version": {
         "title": "Version",
-        "id": "spec-version"
+        "type": "text"
     },
     "Language": {
         "title": "Language",
-        "id": "spec-language"
+        "type": "textArray"
     },
     "Environment": {
         "title": "Infrastructure",
-        "id": "spec-environment"
+        "type": "textArray"
     },
     "UsageMethod": {
         "title": "Usage",
-        "id": "spec-usagemethod"
+        "type": "text"
     }
 }
 
 export const bodyItems = {
-    "Summary": {
-        "title": "Overview",
-        "id": "body-summary"
-    },
     "Specs": {
         "title": "Specifications",
-        "id": "body-specs"
-    },
-    "Description": {
-        "title": "Getting started",
-        "id": "body-description"
-    },
-    "UseCases": {
-        "title": "Use cases",
-        "id": "body-usecases"
+        "dataIn": ""
     },
     "Prerequisites": {
         "title": "Prerequisites",
-        "id": "body-prerequisites"
+        "dataIn": ""
+    },
+    "UseCases": {
+        "title": "Use cases",
+        "dataIn": ""
+    },
+    "Comments": {
+        "title": "Additional information",
+        "dataIn": ""
     },
     "Security": {
         "title": "Security and compliance",
-        "id": "body-security"
+        "dataIn": ""
     },
     "Documentation": {
         "title": "Documentation",
-        "id": "body-documentation"
+        "dataIn": ""
     },
     "Contact": {
-        "title": "Support",
-        "id": "body-contact"
-    },
-    "Comments": {
-        "title": "Comments",
-        "id": "body-comments"
+        "title": "Contact",
+        "dataIn": "methods"
     }
 }
 

@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "05/21/2024, 11:57",
+    "lastUpdated": "05/23/2024, 14:26",
     "isProductionData": true,
     "mostRecentService": "04/16/2024",
     "dateFormat": "mm/dd/yyyy",
@@ -43,7 +43,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 2,
-            "filterText": "service integration,automation,live,goa,openshift,api,1gx, service",
+            "filterText": "automation,service integration,live,openshift,api,goa,1gx, service",
             "Security": [
                 {
                     "Type": "Status",
@@ -141,7 +141,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 2,
-            "filterText": "service integration,automation,live,goa,openshift,api,1gx, imagis, service",
+            "filterText": "automation,service integration,live,openshift,api,goa,1gx, imagis, service",
             "Security": [
                 {
                     "Type": "Status",
@@ -237,7 +237,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 4,
-            "filterText": "alberta digital service platform (adsp),user management,live,service,keycloak",
+            "filterText": "user management,alberta digital service platform (adsp),live,service,keycloak",
             "Security": [
                 {
                     "Type": "Status",
@@ -323,7 +323,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 4,
-            "filterText": "service integration,data,live,goa,service",
+            "filterText": "data,service integration,live,service,goa",
             "Security": [
                 {
                     "Type": "Status",
@@ -417,7 +417,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 4,
-            "filterText": "seniors, community and social services (scss),data,typescript (dayjs),code",
+            "filterText": "data,seniors, community and social services (scss),typescript (dayjs),code",
             "Security": [
                 {
                     "Type": "Status",
@@ -498,7 +498,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 0,
-            "filterText": "platforms - common data services,data,alpha,.net core,on prem,api",
+            "filterText": "data,platforms - common data services,alpha,.net core,on prem,api",
             "Security": [
                 {
                     "Type": "Status",
@@ -590,7 +590,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 0,
-            "filterText": "platforms - iam,user management,live,forgerock,azure,iam",
+            "filterText": "user management,platforms - iam,live,forgerock,azure,iam",
             "Security": [
                 {
                     "Type": "Status",
@@ -685,7 +685,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 4,
-            "filterText": "service integration,performance,live,goa,api",
+            "filterText": "performance,service integration,live,api,goa",
             "Security": [
                 {
                     "Type": "Status",
@@ -770,7 +770,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 0,
-            "filterText": "platforms - common data services,finance,alpha,.net core,on prem,api",
+            "filterText": "finance,platforms - common data services,alpha,.net core,on prem,api",
             "Security": [
                 {
                     "Type": "Status",
@@ -862,7 +862,7 @@
             "DataIssues": "Are Amazon QuickSight and shared architecture framework strategy 2 very different and unrelated things?",
             "ReviewedBy": "",
             "QA": 12,
-            "filterText": "justice digital,performance,live,python,aws,reporting",
+            "filterText": "performance,justice digital,live,python,aws,reporting",
             "Security": [
                 {
                     "Type": "Status",
@@ -943,7 +943,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 4,
-            "filterText": "alberta digital service platform (adsp),automation,live",
+            "filterText": "automation,alberta digital service platform (adsp),live",
             "Security": [
                 {
                     "Type": "Status",
@@ -1033,7 +1033,7 @@
             "DataIssues": "",
             "ReviewedBy": "Heather",
             "QA": 0,
-            "filterText": "platforms - common data services,user management,alpha,.net core,on prem,api",
+            "filterText": "user management,platforms - common data services,alpha,.net core,on prem,api",
             "Security": [
                 {
                     "Type": "Status",
@@ -1109,7 +1109,7 @@
             "DataIssues": "",
             "ReviewedBy": "Heather",
             "QA": 20,
-            "filterText": "children's services platform,data,live,goa,web api,openshift,api",
+            "filterText": "data,children's services platform,live,web api,openshift,api,goa",
             "Security": [
                 {
                     "Type": "Status",
@@ -1194,7 +1194,7 @@
             "DataIssues": "",
             "ReviewedBy": "Heather",
             "QA": 20,
-            "filterText": "advanced education,data,live,typescript,container,service",
+            "filterText": "data,advanced education,live,typescript,container,service",
             "Security": [
                 {
                     "Type": "Status",
@@ -1282,7 +1282,7 @@
             "DataIssues": "",
             "ReviewedBy": "Heather",
             "QA": 52,
-            "filterText": "platforms -common platforms,finance,.net core,azure,cloud,payment",
+            "filterText": "finance,platforms -common platforms,.net core,azure,cloud,payment",
             "Security": [
                 {
                     "Type": "Status",
@@ -1364,7 +1364,7 @@
             "DataIssues": "",
             "ReviewedBy": "Heather",
             "QA": 52,
-            "filterText": "platforms -common platforms,finance,.net core,azure,api,cloud,payment",
+            "filterText": "finance,platforms -common platforms,.net core,azure,api,cloud,payment",
             "Security": [
                 {
                     "Type": "Status",
@@ -1443,7 +1443,7 @@
             "DataIssues": "",
             "ReviewedBy": "Andrew",
             "QA": 20,
-            "filterText": "advanced education,communication,live,.net,goa network",
+            "filterText": "communication,advanced education,live,.net,goa network",
             "Security": [
                 {
                     "Type": "Status",
@@ -1519,7 +1519,7 @@
             "DataIssues": "",
             "ReviewedBy": "Andrew",
             "QA": 20,
-            "filterText": "advanced education,communication,live,typescript,goa network,api",
+            "filterText": "communication,advanced education,live,typescript,goa network,api",
             "Security": [
                 {
                     "Type": "Status",
@@ -1600,7 +1600,7 @@
             "DataIssues": "",
             "ReviewedBy": "Andrew",
             "QA": 4,
-            "filterText": "alberta digital service platform (adsp),data,live",
+            "filterText": "data,alberta digital service platform (adsp),live",
             "Security": [
                 {
                     "Type": "Status",
@@ -1690,7 +1690,7 @@
             "DataIssues": "",
             "ReviewedBy": "Andrew",
             "QA": 20,
-            "filterText": "advanced education,data,live,.net,goa network,api",
+            "filterText": "data,advanced education,live,.net,goa network,api",
             "Security": [
                 {
                     "Type": "Status",
@@ -1790,7 +1790,7 @@
             "DataIssues": "",
             "ReviewedBy": "Andrew",
             "QA": 0,
-            "filterText": "justice digital,data,live,justice digital,angular, .net core, typescript,aws,api,pdf, digital signature, digital certification",
+            "filterText": "data,justice digital,live,angular, .net core, typescript,aws,api,justice digital,pdf, digital signature, digital certification",
             "Security": [
                 {
                     "Type": "Status",
@@ -1880,7 +1880,7 @@
             "DataIssues": "",
             "ReviewedBy": "Andrew",
             "QA": 4,
-            "filterText": "alberta digital service platform (adsp),data,live,api",
+            "filterText": "data,alberta digital service platform (adsp),live,api",
             "Security": [
                 {
                     "Type": "Status",
@@ -1979,7 +1979,7 @@
             "DataIssues": "",
             "ReviewedBy": "Andrew",
             "QA": 4,
-            "filterText": "service integration,forms and documents,live,goa,service,docx, xlsx, pdf",
+            "filterText": "forms and documents,service integration,live,service,goa,docx, xlsx, pdf",
             "Security": [
                 {
                     "Type": "Status",
@@ -2076,7 +2076,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 4,
-            "filterText": "service integration,forms and documents,live,goa,api,ecm, rest",
+            "filterText": "forms and documents,service integration,live,api,goa,ecm, rest",
             "Security": [
                 {
                     "Type": "Status",
@@ -2174,7 +2174,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 4,
-            "filterText": "service integration,forms and documents,live,goa,service,cloud, signature",
+            "filterText": "forms and documents,service integration,live,service,goa,cloud, signature",
             "Security": [
                 {
                     "Type": "Status",
@@ -2271,7 +2271,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 4,
-            "filterText": "service integration,communication,live,goa,service,email, service",
+            "filterText": "communication,service integration,live,service,goa,email, service",
             "Security": [
                 {
                     "Type": "Status",
@@ -2356,7 +2356,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 20,
-            "filterText": "advanced education,automation,beta,typescript,container,api",
+            "filterText": "automation,advanced education,beta,typescript,container,api",
             "Security": [
                 {
                     "Type": "Status",
@@ -2437,7 +2437,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 4,
-            "filterText": "alberta digital service platform (adsp),data,live",
+            "filterText": "data,alberta digital service platform (adsp),live",
             "Security": [
                 {
                     "Type": "Status",
@@ -2543,7 +2543,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 0,
-            "filterText": "justice digital,forms and documents,live,angular, .net core, typescript,aws,pdf, digital signature, stamping, digital certification",
+            "filterText": "forms and documents,justice digital,live,angular, .net core, typescript,aws,pdf, digital signature, stamping, digital certification",
             "Security": [
                 {
                     "Type": "Status",
@@ -2624,7 +2624,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 4,
-            "filterText": "alberta digital service platform (adsp),forms and documents,live",
+            "filterText": "forms and documents,alberta digital service platform (adsp),live",
             "Security": [
                 {
                     "Type": "Status",
@@ -2714,7 +2714,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 24,
-            "filterText": "alberta digital service platform (adsp),forms and documents,live",
+            "filterText": "forms and documents,alberta digital service platform (adsp),live",
             "Security": [
                 {
                     "Type": "Status",
@@ -2808,7 +2808,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 24,
-            "filterText": "data and content management,forms and documents,live",
+            "filterText": "forms and documents,data and content management,live",
             "Security": [
                 {
                     "Type": "Status",
@@ -2898,7 +2898,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 20,
-            "filterText": "children's services platform,user management,live,children's services,angular,openshift",
+            "filterText": "user management,children's services platform,live,angular,openshift,children's services",
             "Security": [
                 {
                     "Type": "Status",
@@ -2976,7 +2976,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 20,
-            "filterText": "children's services platform,user management,live,children's services,web api,openshift,api,keycloak",
+            "filterText": "user management,children's services platform,live,web api,openshift,api,children's services,keycloak",
             "Security": [
                 {
                     "Type": "Status",
@@ -3052,7 +3052,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 20,
-            "filterText": "children's services platform,user management,live,children's services,angular,openshift",
+            "filterText": "user management,children's services platform,live,angular,openshift,children's services",
             "Security": [
                 {
                     "Type": "Status",
@@ -3128,7 +3128,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 0,
-            "filterText": "platforms - common data services,finance,alpha,.net core,on prem,api",
+            "filterText": "finance,platforms - common data services,alpha,.net core,on prem,api",
             "Security": [
                 {
                     "Type": "Status",
@@ -3224,7 +3224,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 4,
-            "filterText": "seniors, community and social services (scss),user management,angular,keycloak",
+            "filterText": "user management,seniors, community and social services (scss),angular,keycloak",
             "Security": [
                 {
                     "Type": "Status",
@@ -3325,7 +3325,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 6,
-            "filterText": "wildfire platform,user management,keycloak",
+            "filterText": "user management,wildfire platform,keycloak",
             "Security": [
                 {
                     "Type": "Status",
@@ -3404,7 +3404,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 20,
-            "filterText": "platforms - iam,user management,live,forgerock,on prem, ncc and jjb datacentres,iam",
+            "filterText": "user management,platforms - iam,live,forgerock,on prem, ncc and jjb datacentres,iam",
             "Security": [
                 {
                     "Type": "Status",
@@ -3507,7 +3507,7 @@
             "DataIssues": "Grace Li replied to the contact request. Was not aware of this project. There is no documentation at this time",
             "ReviewedBy": "Grace Li",
             "QA": 32,
-            "filterText": "service integration,performance,live,goa,api, python, powershell, bash,perl, .net,on prem, ncc and jjb datacentres,service,nagios, monitoring",
+            "filterText": "performance,service integration,live,api, python, powershell, bash,perl, .net,on prem, ncc and jjb datacentres,service,goa,nagios, monitoring",
             "Security": [
                 {
                     "Type": "Status",
@@ -3602,7 +3602,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 4,
-            "filterText": "alberta digital service platform (adsp),communication,live",
+            "filterText": "communication,alberta digital service platform (adsp),live",
             "Security": [
                 {
                     "Type": "Status",
@@ -3692,7 +3692,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 22,
-            "filterText": "seniors, community and social services (scss),communication,typescript,goa network",
+            "filterText": "communication,seniors, community and social services (scss),typescript,goa network",
             "Security": [
                 {
                     "Type": "Status",
@@ -3775,7 +3775,7 @@
             "DataIssues": "",
             "ReviewedBy": "Sanchit",
             "QA": 4,
-            "filterText": "service integration,finance,live,goa,service,payment",
+            "filterText": "finance,service integration,live,service,goa,payment",
             "Security": [
                 {
                     "Type": "Status",
@@ -3868,7 +3868,7 @@
             "DataIssues": "",
             "ReviewedBy": "Sanchit",
             "QA": 2,
-            "filterText": "justice digital,finance,live,justice digital,aws, wordline (bambora),payment",
+            "filterText": "finance,justice digital,live,aws, wordline (bambora),justice digital,payment",
             "Security": [
                 {
                     "Type": "Status",
@@ -3964,7 +3964,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 0,
-            "filterText": "justice digital,forms and documents,live,angular, .net core, typescript,aws,pdf, digital signature, digital certification",
+            "filterText": "forms and documents,justice digital,live,angular, .net core, typescript,aws,pdf, digital signature, digital certification",
             "Security": [
                 {
                     "Type": "Status",
@@ -4056,7 +4056,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 4,
-            "filterText": "alberta digital service platform (adsp),forms and documents,live,service,pdf",
+            "filterText": "forms and documents,alberta digital service platform (adsp),live,service,pdf",
             "Security": [
                 {
                     "Type": "Status",
@@ -4150,7 +4150,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 20,
-            "filterText": "advanced education,data,live,.net,goa network,api",
+            "filterText": "data,advanced education,live,.net,goa network,api",
             "Security": [
                 {
                     "Type": "Status",
@@ -4240,7 +4240,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 4,
-            "filterText": "alberta digital service platform (adsp),automation,live,service",
+            "filterText": "automation,alberta digital service platform (adsp),live,service",
             "Security": [
                 {
                     "Type": "Status",
@@ -4338,7 +4338,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 4,
-            "filterText": "service integration,forms and documents,live,goa,service,qr code, digital",
+            "filterText": "forms and documents,service integration,live,service,goa,qr code, digital",
             "Security": [
                 {
                     "Type": "Status",
@@ -4427,7 +4427,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 24,
-            "filterText": "alberta digital service platform (adsp),automation,live,service",
+            "filterText": "automation,alberta digital service platform (adsp),live,service",
             "Security": [
                 {
                     "Type": "Status",
@@ -4530,7 +4530,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 4,
-            "filterText": "service integration,forms and documents,live,goa,service,sharepoint online, ecm, rest",
+            "filterText": "forms and documents,service integration,live,service,goa,sharepoint online, ecm, rest",
             "Security": [
                 {
                     "Type": "Status",
@@ -4623,7 +4623,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 20,
-            "filterText": "advanced education,user management,live,.net,goa network,api",
+            "filterText": "user management,advanced education,live,.net,goa network,api",
             "Security": [
                 {
                     "Type": "Status",
@@ -4708,7 +4708,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 20,
-            "filterText": "advanced education,communication,live,.net,goa network,api",
+            "filterText": "communication,advanced education,live,.net,goa network,api",
             "Security": [
                 {
                     "Type": "Status",
@@ -4804,7 +4804,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 4,
-            "filterText": "service integration,performance,live,goa,service,reporting",
+            "filterText": "performance,service integration,live,service,goa,reporting",
             "Security": [
                 {
                     "Type": "Status",
@@ -4897,7 +4897,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 20,
-            "filterText": "advanced education,data,live,.net,goa network,api",
+            "filterText": "data,advanced education,live,.net,goa network,api",
             "Security": [
                 {
                     "Type": "Status",
@@ -4998,7 +4998,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 0,
-            "filterText": "justice digital,forms and documents,live,angular, .net core, typescript,aws,pdf, digital signature, stamping, digital certification",
+            "filterText": "forms and documents,justice digital,live,angular, .net core, typescript,aws,pdf, digital signature, stamping, digital certification",
             "Security": [
                 {
                     "Type": "Status",
@@ -5079,7 +5079,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 4,
-            "filterText": "alberta digital service platform (adsp),performance,live,service",
+            "filterText": "performance,alberta digital service platform (adsp),live,service",
             "Security": [
                 {
                     "Type": "Status",
@@ -5173,7 +5173,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 0,
-            "filterText": "platforms - iam,user management,alpha,.net, open source,azure, on prem,iam",
+            "filterText": "user management,platforms - iam,alpha,.net, open source,azure, on prem,iam",
             "Security": [
                 {
                     "Type": "Status",
@@ -5267,7 +5267,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 4,
-            "filterText": "alberta digital service platform (adsp),data,live,service",
+            "filterText": "data,alberta digital service platform (adsp),live,service",
             "Security": [
                 {
                     "Type": "Status",
@@ -5361,7 +5361,7 @@
             "DataIssues": "",
             "ReviewedBy": "",
             "QA": 24,
-            "filterText": "alberta digital service platform (adsp),user management,live,service",
+            "filterText": "user management,alberta digital service platform (adsp),live,service",
             "Security": [
                 {
                     "Type": "Status",

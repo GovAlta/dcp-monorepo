@@ -5,67 +5,26 @@ import {
   GoAIcon,
   GoASideMenu,
   GoATable,
+  GoAButton
 } from '@abgov/react-components-4.20.2';
 import React, { useEffect, useState } from 'react';
 import './styles.css';
 import ExternalLink from '../../components/ExternalLink';
-//import {fieldList} from './config';
-import { securityGroups, securityData } from './config';
+import {
+  securityGroups,
+  securityData,
+  specifications,
+  bodyItems,
+} from './config';
 interface DetailsProps {
   app: any;
 }
 export default function Details({ app }: DetailsProps): JSX.Element {
-  const [items, setItems] = useState<any>({
-    badges: [],
+  const [items, setItems] = useState<any>({    
     content: [],
+    specs: [],
   });
-
-  const badgesToShow = ['FunctionalGroup', 'Language', 'Keywords'];
-  const contentToShow = [
-    {
-      name: 'Description',
-      id: 'service-overview',
-      title: 'Overview',
-      showInSidebar: true,
-      showContent: true,
-    },
-    {
-      name: 'Prerequisites',
-      id: 'service-prerequisites',
-      title: 'Prerequisites',
-      showInSidebar: true,
-      showContent: true,
-    },
-    {
-      name: 'Comments',
-      id: 'service-comments',
-      title: 'Additional information',
-      showInSidebar: true,
-      showContent: true,
-    },
-    {
-      name: 'Documentation',
-      id: 'service-documentation',
-      title: 'Documentation',
-      showInSidebar: app.Documentation.length > 0 ? true : false,
-      showContent: app.Documentation.length > 0 ? true : false,
-    },
-    {
-      name: 'Security',
-      id: 'service-documentation',
-      title: 'Security compliance',
-      showInSidebar: true,
-      showContent: true,
-    },
-    {
-      name: 'Contact',
-      id: 'service-contact',
-      title: 'Contact us',
-      showInSidebar: app.Contact.methods.length >= 1 ? true : false,
-      showContent: app.Contact.methods.length >= 1 ? true : false,
-    },
-  ];
-
+ 
   useEffect(() => {
     if (window.location.hash) {
       const elmnt = document.getElementById(window.location.hash.substring(1));
@@ -74,48 +33,30 @@ export default function Details({ app }: DetailsProps): JSX.Element {
   }, []);
 
   useEffect(() => {
-    let showBadges: any[] = [];
-    let showContent: any[] = [];
-    if (app.InternalWeightage >= 50) {
-      showBadges.push(
-        <GoABadge key="validated" type="midtone" content="Validated" />
-      );
-    }
-    badgesToShow.forEach((badge) => {
-      if (app[badge] !== '' && app[badge]?.length > 0) {
-        if (
-          Array.isArray(app[badge]) &&
-          !app[badge].some((item: string) => item.toLowerCase() === 'other')
-        ) {
-          app[badge].forEach((badgeValue: string) => {
-            showBadges.push(
-              <GoABadge
-                key={badgeValue}
-                type="information"
-                content={badgeValue}
-              />
-            );
-          });
-        }
-        if (
-          typeof app[badge] === 'string' &&
-          app[badge].toLowerCase() !== 'other'
-        ) {
-          showBadges.push(
-            <GoABadge key={badge} type="information" content={app[badge]} />
-          );
-        }
+    let showContent: any = [];
+    Object.entries(bodyItems).forEach(([name, obj]) => {      
+      if (obj.dataIn == '' ? app[name] != '' : app[name][obj.dataIn] != '') {
+        const newValue = {
+          ...obj,
+          id: `body-${name.toLowerCase()}`,
+          showContent: true,
+          showInSidebar: true,
+        };
+        showContent.push({ name, ...newValue });
       }
     });
-    contentToShow.map((content) => {
-      if (app[content.name] !== '') {
-        showContent.push(content);
+
+    const showSpecs: any = [];
+    Object.entries(specifications).forEach(([name, obj]) => {
+      if (app[name] != '') {
+        const newValue = { ...obj, id: `spec-${name.toLowerCase()}` };
+        showSpecs.push({ name, ...newValue });
       }
     });
 
     setItems({
-      badges: showBadges,
       content: showContent,
+      specs: showSpecs,
     });
   }, []);
 
@@ -140,27 +81,27 @@ export default function Details({ app }: DetailsProps): JSX.Element {
     }
 
     return (
-      <>        
+      <>
+        {group.tableTh.length > 0 ? (
+          <b>{group.title}</b>
+        ) : null}
+
         {group.note != '' ? (
           <>
-            <p>{group.note}</p>{' '} {/* <GoAtext ????={group.note} ></GoAtext> */}
             <GoASpacer vSpacing="m" />
+            <>{group.note}</>
           </>
         ) : null}
 
-        {group.tableTh.length > 0 ? (
-          <b>{group.title}</b> //  {/* Title_Medium_256 */}
-        ) : null}
-
-        <GoATable>
+        <GoATable key={group.id}>
           <thead>
             {group.tableTh.length > 0 ? (
-              <tr>
+              <tr key={'tr1' + group.id}>
                 <th>{group.tableTh[0]} </th>
                 <th>{group.tableTh[1]} </th>
               </tr>
             ) : (
-              <tr>
+              <tr key={'tr2' + group.id}>
                 <th>{group.title}</th>
                 <th></th>
               </tr>
@@ -168,26 +109,42 @@ export default function Details({ app }: DetailsProps): JSX.Element {
           </thead>
           <tbody>
             {itemData.Items.map((row: any) => (
-              <tr key={row.name + 'tr'}>
-                <td key={row.name + 'td1'}>
-                  {' '}
-                  {displayName(securityData, row['Field'])}{' '}
-                </td>
-                <td key={row.name + 'td2'} className={'service-content'}>
-                  {' '}
-                  {row['Value']}{' '}
-                </td>
-              </tr>
+              <>
+                <tr key={row.name + 'tr'}>
+                  <td key={row.name + 'td1'}>
+                    {' '}
+                    {displayName(securityData, row['Field'])}{' '}
+                  </td>
+                  <td key={row.name + 'td2'} className={'service-content'}>
+                    {' '}
+                    {row['Value']}{' '}
+                  </td>
+                </tr>
+              </>
             ))}
           </tbody>
         </GoATable>
-        <GoASpacer vSpacing="xl" />
-        {/* <GoASpacer vSpacing="l" /> */}
+        <GoASpacer vSpacing="xl" />    
       </>
     );
   };
+  
+  const renderSpecs = (specification: any) => {
+    if (specification.type == 'text') 
+      return <>{app[specification.name]}</>;
+    else if (specification.type == 'status')
+      return (
+        <GoABadge
+          key={specification.id}
+          type={app[specification.name] == 'Live' ? 'success' : 'midtone'}
+          content={app[specification.name]}
+        />
+      );
+    else if (specification.type == 'textArray')
+      return <>{app[specification.name].join(', ')}</>;
+    else return <>{specification.type}?</>;
+  };
 
-  // table
   const renderContact = (method: any) => {
     const contactMethods: any = {
       Slack: {
@@ -242,11 +199,31 @@ export default function Details({ app }: DetailsProps): JSX.Element {
   const renderContent = (name: string, app: any) => {
     if (name === 'Documentation' && app.Documentation.length > 0) {
       return app.Documentation.map((doc: any) => (
-        <div key={doc.name}>
-          <ExternalLink text={`${doc.name} documentation`} link={doc.url} />
-          <GoASpacer vSpacing="s" />
+        <div key={doc.name}>        
+           <ExternalLink text={`${doc.name}`} link={doc.url} />
+           <GoASpacer vSpacing="s" />        
         </div>
+        
       ));
+    } else if (name === 'Specs') {
+      return (
+        <>
+          {app.InternalWeightage >= 50 ? (
+            <GoABadge key="validated" type="midtone" content="Recommended" />
+          ) : null}
+          <GoATable>
+            {/* <thead> <tr><th></th><th></th></tr> </thead> */}
+            <tbody>
+              {items.specs.map((obj: any) => (
+                <tr>
+                  <td>{obj.title}</td>
+                  <td>{renderSpecs(obj)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </GoATable>
+        </>
+      );
     } else if (name === 'Contact') {
       return (
         <table className="contact-table">
@@ -257,8 +234,7 @@ export default function Details({ app }: DetailsProps): JSX.Element {
       );
     } else if (name === 'Security') {
       return (
-        <>
-          {/* Overview text is needed */}
+        <>          
           {securityGroups.map((group: SecurityItem) => (
             <SecurityBlock key={group.id} group={group} />
           ))}
@@ -276,39 +252,30 @@ export default function Details({ app }: DetailsProps): JSX.Element {
             <GoASideMenu key="SideMenu">
               {items.content.length > 0
                 ? items.content.map((content: any) => {
-                    return content.showInSidebar ? (
-                      <a key={`${content.id}-menu`} href={`#${content.id}`}>
-                        {content.title}
-                      </a>
-                    ) : (
-                      <></>
-                    );
+                    return (
+                      <a key={`${content.id}-menu`} href={`#${content.id}`}>{content.title}</a>
+                    ); 
                   })
                 : 'No content'}
             </GoASideMenu>
           </div>
         }
       >
+
+        <GoAButton size="compact" leadingIcon="arrow-back" onClick={() => window.location.href="/services/index.html" }>
+          Back to listing
+        </GoAButton>        
+
+        <GoASpacer vSpacing="l" />
         <div className="service-heading">
-          <h2>{app.ServiceName}</h2>
-          {app.Status !== '' && app.Status.toLowerCase() !== 'other' ? (
-            <GoABadge type="success" content={app.Status} />
-          ) : (
-            ''
-          )}
+          <h2>{app.ServiceName}</h2>          
         </div>
-        <GoASpacer vSpacing="xs" />
-        <p className="service-subtitle"> {app.Provider}</p>
-
-        <div className="service-badges">
-          {items.badges.length > 0 ? items.badges : ''}
-        </div>
-
+        <GoASpacer vSpacing="l" />
+        <p className='service-content'> {app.Description}</p>
+        
         <GoASpacer vSpacing="xl" />
         {items.content.length > 0 &&
           items.content.map(({ id, name, title, showContent }: any) => {
-            if (!showContent) return null;
-
             return (
               <div key={`${id}`}>
                 <h3 id={`${id}`}>{title}</h3>
@@ -318,8 +285,17 @@ export default function Details({ app }: DetailsProps): JSX.Element {
             );
           })}
 
-        <GoASpacer vSpacing="3xl" />
+        <GoASpacer vSpacing="xl" />
+        <div >
+          Please feel free to&nbsp;
+          <ExternalLink
+            link={`mailto:TI.Softwaredelivery@gov.ab.ca?subject=Common capabilities feedback: ${app.ServiceName}`}            
+            text={'share feedback'}
+          /> on this service.
+        </div>
 
+        <GoASpacer vSpacing="3xl" />
+        
         <div className="line-elements back-top">
           <a href="#top-page">Back to top</a>
           <GoAIcon type="arrow-up-circle" theme="outline" />
