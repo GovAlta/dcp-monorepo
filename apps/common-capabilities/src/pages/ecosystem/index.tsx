@@ -26,6 +26,7 @@ export default function EcoSystemPage(): JSX.Element {
     <GoAThreeColumnLayout
       maxContentWidth="1550px"
       rightColumnWidth='8%'
+      leftColumnWidth='22%'
       nav={
         <GoASideMenu>
           {sideNavItems.map((item) => (

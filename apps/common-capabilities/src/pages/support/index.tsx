@@ -72,16 +72,28 @@ export default function SupportPage(): JSX.Element {
       }}
     >
       <GoAThreeColumnLayout maxContentWidth="1500px">
-        <h2>Contact</h2>
+        <h1>Support</h1>
+        <p>
+          The common capabilities team is open to feedback, requests, concerns,
+          and any inquiries regarding the existing capabilities or about your
+          experience using common capabilities platform.{' '}
+        </p>
+        <GoASpacer vSpacing="xl" />
+        <h2>Have questions or concerns?</h2>
+        <p>
+          Feel free to reach out to us with any other questions or concerns you
+          may have. Our team will get back you within 3-4 days with a response
+          or to discuss more in detail.
+        </p>
         {renderContactTable()}
         <GoASpacer vSpacing="2xl" />
-        <h3 id="faq-section">Frequently asked questions</h3>
+        {/* <h3 id="faq-section">Frequently asked questions</h3>
         {faqs.map((faq) => (
           <>
             <GoAAccordion heading={faq.heading}>{faq.content}</GoAAccordion>
             <GoASpacer vSpacing="m" />
           </>
-        ))}
+        ))} */}
       </GoAThreeColumnLayout>
     </div>
   );
