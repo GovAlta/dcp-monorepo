@@ -48,10 +48,10 @@ export default function Landing(): JSX.Element {
             service delivery efficiency and innovation.
           </li>
         </ul>
-        {/* <ExternalLink
+        <ExternalLink
           link={'/gettingstarted/index.html'}
           text={'Getting started'}
-        /> */}
+        />
         <GoASpacer vSpacing="l" />
 
         <h2>Browse services by category</h2>
