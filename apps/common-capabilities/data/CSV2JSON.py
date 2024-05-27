@@ -343,12 +343,13 @@ with open(folderName + 'config.ts', 'w') as configfile:
             text = text_before.strip()
             th = [part.strip() for part in inside_parentheses.split(',')]        
         securityGroupList.append({ "name": item['property']
-                                  , "dataName": item['property'][8:]
+                                  , "dataSecurityType": item['property'][8:]
                                   , "title": text
                                   , "tableTh": th
                                   , 'note': item['note']
-                                  , 'fieldList': item['property'][:1].lower() + item['property'][1:]
-                                  , 'id': item['property'].lower() })
+                                #   , 'fieldList': item['property'][:1].lower() + item['property'][1:]
+                                #   , 'id': item['property'].lower()
+                                  })
     configfile.write('export const securityGroups = ')      
     configfile.write(json.dumps(securityGroupList, indent=4))    
     exportList += ', securityGroups'
@@ -357,7 +358,7 @@ with open(folderName + 'config.ts', 'w') as configfile:
     securityData = {}
     # for item in [item for item in securityFields if item['subGroup'] != '']:        
     for item in [item for item in securityFields]:
-        securityData[item['property']] = {"title": item['title'] , 'id': item['property'].lower() }
+        securityData[item['property']] = {"title": item['title'] }  # , 'id': item['property'].lower()
 
     configfile.write('\n\n\nexport const securityData = ')      
     configfile.write(json.dumps(securityData, indent=4))    

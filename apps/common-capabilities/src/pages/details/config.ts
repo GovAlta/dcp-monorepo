@@ -1,88 +1,64 @@
 export const securityGroups = [
     {
         "name": "SecurityStatus",
-        "dataName": "Status",
-        "title": "",
-        "tableTh": [
-            "Risk assessment has been completed",
-            "Completed"
-        ],
-        "note": "",
-        "fieldList": "securityStatus",
-        "id": "securitystatus"
+        "dataSecurityType": "Status",
+        "title": " Risk assessment completion status",
+        "tableTh": [],
+        "note": ""
     },
     {
         "name": "SecurityRequired",
-        "dataName": "Required",
-        "title": "Required before using this service",
-        "tableTh": [
-            "Consultation/assessment",
-            "Required"
-        ],
-        "note": "",
-        "fieldList": "securityRequired",
-        "id": "securityrequired"
+        "dataSecurityType": "Required",
+        "title": " Required before using this service",
+        "tableTh": [],
+        "note": ""
     },
     {
         "name": "SecurityInfo",
-        "dataName": "Info",
+        "dataSecurityType": "Info",
         "title": " Security details",
         "tableTh": [],
-        "note": "",
-        "fieldList": "securityInfo",
-        "id": "securityinfo"
+        "note": ""
     }
 ]
 
 
 export const securityData = {
     "CMRA": {
-        "title": "Content Management Risk Assessment (CMRA)",
-        "id": "cmra"
+        "title": "Content Management Risk Assessment (CMRA)"
     },
     "STRA": {
-        "title": "General cybersecurity risk assessment",
-        "id": "stra"
+        "title": "General cybersecurity risk assessment"
     },
     "IM": {
-        "title": "Information management (IM) consult",
-        "id": "im"
+        "title": "Information management (IM) consult"
     },
     "Data": {
-        "title": "Data team consult",
-        "id": "data"
+        "title": "Data team consult"
     },
     "Risk": {
-        "title": "Cybersecurity risk assessment",
-        "id": "risk"
+        "title": "Cybersecurity risk assessment"
     },
     "Cybersecurity": {
-        "title": "Cybersecurity consult",
-        "id": "cybersecurity"
+        "title": "Cybersecurity consult"
     },
     "Classification": {
-        "title": "Information Security classification",
-        "id": "classification"
+        "title": "Information Security classification"
     },
     "Controller": {
-        "title": "Information controller",
-        "id": "controller"
+        "title": "Information controller"
     },
     "Considerations": {
-        "title": "Special considerations",
-        "id": "considerations"
+        "title": "Special considerations"
     },
     "SecurityStatus": {
-        "title": "(Risk assessment has been completed,Completed)",
-        "id": "securitystatus"
+        "title": "Risk assessment completion status"
     },
     "SecurityRequired": {
-        "title": "Required before using this service (Consultation/assessment,Required)",
-        "id": "securityrequired"
+        "title": "Required before using this service"
     },
     "SecurityInfo": {
-        "title": "Security details",
-        "id": "securityinfo"
+        "title": "Security details"
     }
 }
 

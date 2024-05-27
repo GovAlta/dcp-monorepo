@@ -32,8 +32,8 @@ Field,Security,Required,Cybersecurity,Cybersecurity consult,No,FALSE,text,,,,,Cy
 Field,Security,Info,Classification,Information Security classification,No,FALSE,text,,,,,IM/Cybersecurity
 Field,Security,Info,Controller,Information controller,No,FALSE,text,,,,,IM/Cybersecurity
 Field,Security,Info,Considerations,Special considerations,No,FALSE,text,,,,,Other
-Field,Security,,SecurityStatus,"(Risk assessment has been completed,Completed)",,,text,,,,,
-Field,Security,,SecurityRequired,"Required before using this service (Consultation/assessment,Required)",,,text,,,,,
+Field,Security,,SecurityStatus,Risk assessment completion status,,,text,,,,,
+Field,Security,,SecurityRequired,Required before using this service,,,text,,,,,
 Field,Security,,SecurityInfo,Security details,,,textLong,,,,,
 ,,,,,,,,,,,,
 ,,,,,,,,,,,,
