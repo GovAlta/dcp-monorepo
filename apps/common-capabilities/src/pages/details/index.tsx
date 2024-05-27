@@ -46,9 +46,9 @@ export default function Details({ app }: DetailsProps): JSX.Element {
       }
     });
 
-    const showSpecs: any = [];
+    let showSpecs: any = [];
     Object.entries(specifications).forEach(([name, obj]) => {
-      if (app[name] != '') {
+      if (app[name] != '' && app[name] != 'Other') {
         const newValue = { ...obj, id: `spec-${name.toLowerCase()}` };
         showSpecs.push({ name, ...newValue });
       }
@@ -66,13 +66,13 @@ export default function Details({ app }: DetailsProps): JSX.Element {
     id: any;
     fieldList: any;
     tableTh: any;
-    dataName: any;
+    dataSecurityType: any;
     note: any;
   }
 
   const SecurityBlock: React.FC<{ group: SecurityItem }> = ({ group }) => {
     const itemData = app.Security.find(
-      (item: any) => item.Type === group.dataName
+      (item: any) => item.Type === group.dataSecurityType
     );
     if (itemData == undefined) return null;
 
@@ -110,12 +110,12 @@ export default function Details({ app }: DetailsProps): JSX.Element {
           <tbody>
             {itemData.Items.map((row: any) => (
               <>
-                <tr key={row.name + 'tr'}>
-                  <td key={row.name + 'td1'}>
+                <tr key={'tr'}>
+                  <td key={'td1'}>
                     {' '}
                     {displayName(securityData, row['Field'])}{' '}
                   </td>
-                  <td key={row.name + 'td2'} className={'service-content'}>
+                  <td key={'td2'} className={'service-content'}>
                     {' '}
                     {row['Value']}{' '}
                   </td>
@@ -275,7 +275,7 @@ export default function Details({ app }: DetailsProps): JSX.Element {
         
         <GoASpacer vSpacing="xl" />
         {items.content.length > 0 &&
-          items.content.map(({ id, name, title, showContent }: any) => {
+          items.content.map(({ id, name, title }: any) => {
             return (
               <div key={`${id}`}>
                 <h3 id={`${id}`}>{title}</h3>
