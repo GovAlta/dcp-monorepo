@@ -34,6 +34,21 @@ export const DDDDirectory = [
     name: 'Heather Archibald',
     designation: 'Director, Service Standard',
   },
+    {
+    provider: 'Platforms - Common Data services',
+    name: 'Caleb Kwok',
+    designation: 'Director, Common Data Services',
+  },
+  {
+    provider: 'Platforms - Identity and Access Management',
+    name: 'Robert Salloum',
+    designation: 'Director, Identity and Access Management',
+  },
+  {
+    provider: 'Platforms - Payment',
+    name: 'Tu Duong-Witte',
+    designation: 'Director, Common Platforms',
+  },
 ];
 
 export const enterpriseDirectory = [
@@ -84,21 +99,6 @@ export const portfolioPlatformDirectory = [
     provider: 'Wildfire Platform',
     name: 'N/A',
     designation: 'N/A',
-  },
-  {
-    provider: 'Platforms - Common Data services',
-    name: 'Caleb Kwok',
-    designation: 'Director, Common Data Services',
-  },
-  {
-    provider: 'Platforms - Identity and Access Management',
-    name: 'Robert Salloum',
-    designation: 'Director, Identity and Access Management',
-  },
-  {
-    provider: 'Platforms - Payment',
-    name: 'Tu Duong-Witte',
-    designation: 'Director, Common Platforms',
   },
 ];
 
