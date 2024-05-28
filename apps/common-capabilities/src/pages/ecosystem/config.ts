@@ -11,8 +11,8 @@ export const DDDDirectory = [
   },
   {
     provider: 'Design System',
-    name: 'N/A',
-    designation: 'N/A',
+    name: 'Mark Elamatha',
+    designation: 'Product Owner',
   },
   {
     provider: 'Data and Content Management',
