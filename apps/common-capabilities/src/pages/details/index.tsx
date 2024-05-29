@@ -5,7 +5,7 @@ import {
   GoAIcon,
   GoASideMenu,
   GoATable,
-  GoAButton
+  GoAButton,
 } from '@abgov/react-components-4.20.2';
 import React, { useEffect, useState } from 'react';
 import './styles.css';
@@ -20,11 +20,11 @@ interface DetailsProps {
   app: any;
 }
 export default function Details({ app }: DetailsProps): JSX.Element {
-  const [items, setItems] = useState<any>({    
+  const [items, setItems] = useState<any>({
     content: [],
     specs: [],
   });
- 
+
   useEffect(() => {
     if (window.location.hash) {
       const elmnt = document.getElementById(window.location.hash.substring(1));
@@ -34,7 +34,7 @@ export default function Details({ app }: DetailsProps): JSX.Element {
 
   useEffect(() => {
     let showContent: any = [];
-    Object.entries(bodyItems).forEach(([name, obj]) => {      
+    Object.entries(bodyItems).forEach(([name, obj]) => {
       if (obj.dataIn == '' ? app[name] != '' : app[name][obj.dataIn] != '') {
         const newValue = {
           ...obj,
@@ -61,13 +61,11 @@ export default function Details({ app }: DetailsProps): JSX.Element {
   }, []);
 
   interface SecurityItem {
-    name: any;
-    title: any;
-    id: any;
-    fieldList: any;
+    name: string;
+    title: string;
     tableTh: any;
-    dataSecurityType: any;
-    note: any;
+    dataSecurityType: string;
+    note: string;
   }
 
   const SecurityBlock: React.FC<{ group: SecurityItem }> = ({ group }) => {
@@ -82,9 +80,7 @@ export default function Details({ app }: DetailsProps): JSX.Element {
 
     return (
       <>
-        {group.tableTh.length > 0 ? (
-          <b>{group.title}</b>
-        ) : null}
+        {group.tableTh.length > 0 ? <b>{group.title}</b> : null}
 
         {group.note != '' ? (
           <>
@@ -93,29 +89,30 @@ export default function Details({ app }: DetailsProps): JSX.Element {
           </>
         ) : null}
 
-        <GoATable key={group.id}>
+        <GoATable key={group.name} width="70%">
           <thead>
             {group.tableTh.length > 0 ? (
-              <tr key={'tr1' + group.id}>
+              <tr key={'tr2' + group.name}>
                 <th>{group.tableTh[0]} </th>
                 <th>{group.tableTh[1]} </th>
               </tr>
             ) : (
-              <tr key={'tr2' + group.id}>
+              <tr key={'tr1' + group.name}>
                 <th>{group.title}</th>
                 <th></th>
               </tr>
             )}
           </thead>
           <tbody>
-            {itemData.Items.map((row: any) => (
+            {itemData.Items.map((row: any, index: any) => (
               <>
-                <tr key={'tr'}>
-                  <td key={'td1'}>
+                <tr key={`tr-${group.name}${index}`}>
+                  <td key={`td1-${index}`}>
                     {' '}
                     {displayName(securityData, row['Field'])}{' '}
                   </td>
-                  <td key={'td2'} className={'service-content'}>
+                  <td key={`td2-${index}`} className={'service-content'}>
+
                     {' '}
                     {row['Value']}{' '}
                   </td>
@@ -124,14 +121,13 @@ export default function Details({ app }: DetailsProps): JSX.Element {
             ))}
           </tbody>
         </GoATable>
-        <GoASpacer vSpacing="xl" />    
+        <GoASpacer vSpacing="xl" />
       </>
     );
   };
-  
+
   const renderSpecs = (specification: any) => {
-    if (specification.type == 'text') 
-      return <>{app[specification.name]}</>;
+    if (specification.type == 'text') return <>{app[specification.name]}</>;
     else if (specification.type == 'status')
       return (
         <GoABadge
@@ -199,29 +195,28 @@ export default function Details({ app }: DetailsProps): JSX.Element {
   const renderContent = (name: string, app: any) => {
     if (name === 'Documentation' && app.Documentation.length > 0) {
       return app.Documentation.map((doc: any) => (
-        <div key={doc.name}>        
-           <ExternalLink text={`${doc.name}`} link={doc.url} />
-           <GoASpacer vSpacing="s" />        
+        <div key={doc.name}>
+          <ExternalLink text={`${doc.name}`} link={doc.url} />
+          <GoASpacer vSpacing="s" />
         </div>
-        
       ));
     } else if (name === 'Specs') {
       return (
         <>
           {app.InternalWeightage >= 50 ? (
-            <GoABadge key="validated" type="midtone" content="Recommended" />
+            <GoABadge key="validated" type="midtone" content="Recommended"  />
           ) : null}
-          <GoATable>
+          <table>
             {/* <thead> <tr><th></th><th></th></tr> </thead> */}
-            <tbody>
+            <tbody className="specs-table">
               {items.specs.map((obj: any) => (
                 <tr>
-                  <td>{obj.title}</td>
+                  <td className="td-right">{obj.title}:</td>
                   <td>{renderSpecs(obj)}</td>
                 </tr>
               ))}
             </tbody>
-          </GoATable>
+          </table>
         </>
       );
     } else if (name === 'Contact') {
@@ -234,9 +229,9 @@ export default function Details({ app }: DetailsProps): JSX.Element {
       );
     } else if (name === 'Security') {
       return (
-        <>          
+        <>
           {securityGroups.map((group: SecurityItem) => (
-            <SecurityBlock key={group.id} group={group} />
+            <SecurityBlock key={`block${group.name}`} group={group} />
           ))}
         </>
       );
@@ -253,26 +248,31 @@ export default function Details({ app }: DetailsProps): JSX.Element {
               {items.content.length > 0
                 ? items.content.map((content: any) => {
                     return (
-                      <a key={`${content.id}-menu`} href={`#${content.id}`}>{content.title}</a>
-                    ); 
+                      <a key={`${content.id}-menu`} href={`#${content.id}`}>
+                        {content.title}
+                      </a>
+                    );
                   })
                 : 'No content'}
             </GoASideMenu>
           </div>
         }
       >
-
-        <GoAButton size="compact" leadingIcon="arrow-back" onClick={() => window.location.href="/services/index.html" }>
+        <GoAButton
+          size="compact"
+          leadingIcon="arrow-back"
+          onClick={() => (window.location.href = '/services/index.html')}
+        >
           Back to listing
-        </GoAButton>        
+        </GoAButton>
 
         <GoASpacer vSpacing="l" />
         <div className="service-heading">
-          <h2>{app.ServiceName}</h2>          
+          <h2>{app.ServiceName}</h2>
         </div>
         <GoASpacer vSpacing="l" />
-        <p className='service-content'> {app.Description}</p>
-        
+        <p className="service-content"> {app.Description}</p>
+
         <GoASpacer vSpacing="xl" />
         {items.content.length > 0 &&
           items.content.map(({ id, name, title }: any) => {
@@ -286,16 +286,17 @@ export default function Details({ app }: DetailsProps): JSX.Element {
           })}
 
         <GoASpacer vSpacing="xl" />
-        <div >
-          Please feel free to&nbsp;
+        <div>
+          Please feel free to{' '}
           <ExternalLink
-            link={`mailto:TI.Softwaredelivery@gov.ab.ca?subject=Common capabilities feedback: ${app.ServiceName}`}            
+            link={`mailto:TI.Softwaredelivery@gov.ab.ca?subject=Common capabilities feedback: ${app.ServiceName}`}
             text={'share feedback'}
-          /> on this service.
+          />{' '}
+          on this service.
         </div>
 
         <GoASpacer vSpacing="3xl" />
-        
+
         <div className="line-elements back-top">
           <a href="#top-page">Back to top</a>
           <GoAIcon type="arrow-up-circle" theme="outline" />
