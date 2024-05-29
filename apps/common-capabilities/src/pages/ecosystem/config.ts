@@ -11,8 +11,8 @@ export const DDDDirectory = [
   },
   {
     provider: 'Design System',
-    name: 'N/A',
-    designation: 'N/A',
+    name: 'Mark Elamatha',
+    designation: 'Product Owner',
   },
   {
     provider: 'Data and Content Management',
@@ -33,6 +33,21 @@ export const DDDDirectory = [
     provider: 'Digital Service Standards',
     name: 'Heather Archibald',
     designation: 'Director, Service Standard',
+  },
+    {
+    provider: 'Platforms - Common Data services',
+    name: 'Caleb Kwok',
+    designation: 'Director, Common Data Services',
+  },
+  {
+    provider: 'Platforms - Identity and Access Management',
+    name: 'Robert Salloum',
+    designation: 'Director, Identity and Access Management',
+  },
+  {
+    provider: 'Platforms - Payment',
+    name: 'Tu Duong-Witte',
+    designation: 'Director, Common Platforms',
   },
 ];
 
@@ -84,21 +99,6 @@ export const portfolioPlatformDirectory = [
     provider: 'Wildfire Platform',
     name: 'N/A',
     designation: 'N/A',
-  },
-  {
-    provider: 'Platforms - Common Data services',
-    name: 'Caleb Kwok',
-    designation: 'Director, Common Data Services',
-  },
-  {
-    provider: 'Platforms - Identity and Access Management',
-    name: 'Robert Salloum',
-    designation: 'Director, Identity and Access Management',
-  },
-  {
-    provider: 'Platforms - Payment',
-    name: 'Tu Duong-Witte',
-    designation: 'Director, Common Platforms',
   },
 ];
 

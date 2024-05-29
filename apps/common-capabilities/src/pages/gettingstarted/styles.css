@@ -1,0 +1,7 @@
+.back-top {
+  float: right;
+}
+
+.bold-text {
+  font-weight: var(--goa-font-weight-bold);
+}

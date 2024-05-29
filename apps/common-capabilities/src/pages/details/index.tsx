@@ -112,6 +112,7 @@ export default function Details({ app }: DetailsProps): JSX.Element {
                     {displayName(securityData, row['Field'])}{' '}
                   </td>
                   <td key={`td2-${index}`} className={'service-content'}>
+
                     {' '}
                     {row['Value']}{' '}
                   </td>
