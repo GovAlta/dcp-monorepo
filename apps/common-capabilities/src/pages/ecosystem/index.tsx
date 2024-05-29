@@ -97,7 +97,7 @@ export default function EcoSystemPage(): JSX.Element {
         <li>Design, development, and maintenance directives</li>
         <li>Accessibility directives</li>
       </ol>
-      <GoASpacer vSpacing="l" />
+      <GoASpacer vSpacing="3xs" />
 
       <h3>Digital Design and Delivery directory </h3>
       <GoATable>
@@ -132,7 +132,7 @@ export default function EcoSystemPage(): JSX.Element {
         <li>Integration with broader or legacy systems</li>
         <li>Adherence to portfolio-specific requirements</li>
       </ol>
-      <GoASpacer vSpacing="l" />
+      <GoASpacer vSpacing="3xs" />
 
       <h3>Portfolio platform teams directory</h3>
       <GoATable>
@@ -167,7 +167,7 @@ export default function EcoSystemPage(): JSX.Element {
         <li>Customization requirements</li>
         <li>Adherence to development timelines</li>
       </ol>
-      <GoASpacer vSpacing="l" />
+      <GoASpacer vSpacing="3xs" />
 
       <h2 id="product">Product</h2>
       <p>
