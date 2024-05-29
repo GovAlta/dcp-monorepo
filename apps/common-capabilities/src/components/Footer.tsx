@@ -10,7 +10,7 @@ const Footer = () => {
     <>
       <GoAAppFooter maxContentWidth="1500px">
         <GoAAppFooterNavSection maxColumnCount={1}>
-          <a href="/gettingstarted/index.html">Getting started</a>
+          <a href="/gettingstarted/index.html#getting-started">Getting started</a>
           <a href="/about/index.html">About</a>
           <a href="/ecosystem/index.html">Eco-system</a>
         </GoAAppFooterNavSection>
