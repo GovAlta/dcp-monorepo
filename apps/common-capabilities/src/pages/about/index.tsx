@@ -35,7 +35,7 @@ export default function AboutPage(): JSX.Element {
             <h2 id={section.id}>{section.title}</h2>
             {section.content}
           </React.Fragment>
-          <GoASpacer vSpacing="l" />
+          <GoASpacer vSpacing="3xs" />
         </>
       ))}
     </GoAThreeColumnLayout>

@@ -49,7 +49,7 @@ export default function Landing(): JSX.Element {
           </li>
         </ul>
         <ExternalLink
-          link={'/gettingstarted/index.html'}
+          link={'/gettingstarted/index.html#getting-started'}
           text={'Getting started'}
         />
         <GoASpacer vSpacing="l" />
