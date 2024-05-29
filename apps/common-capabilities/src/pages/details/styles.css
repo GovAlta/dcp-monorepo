@@ -28,6 +28,25 @@
   white-space: pre-line;
 }
 
+.specs-table {
+  border-collapse: collapse;
+  border: none;  
+}
+
+.specs-table td {
+  padding-top: 14px; 
+  padding-right: 14px;  
+}
+
+/* .specs-table td:first-child {
+font-weight: 600;
+} */
+
+.td-right {
+  text-align: right;
+}
+
+
 .contact-table {
   border-collapse: collapse;
   border: none;

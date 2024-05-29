@@ -3,8 +3,9 @@ export interface Props {
   title: string;
 }
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 // import { GoAAppFooter } from '@abgov/react-components';
-import { GoAAppFooter } from '@abgov/react-components-4.20.2';
+// import { GoAAppFooter } from '@abgov/react-components-4.20.2';
 // import '@abgov/web-components/index.css';
 import '@abgov/design-tokens/dist/tokens.css';
 import '@abgov/web-components-1.20.3/index.css';
@@ -78,7 +79,7 @@ const { title } = Astro.props;
       <section id="top-page"></section>
       <Header client:load />
       <slot />
-      <GoAAppFooter maxContentWidth="1500px"/>
+      <Footer client:load />
   </body>
 </html>
 <style is:global>
