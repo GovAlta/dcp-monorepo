@@ -18,15 +18,15 @@ const Card = ({ provider, description, title, app }: CardProps) => {
   const maxDescriptionLength = 200; // word length for short descpription in tile.
   const badgesToShow = ['Status']; //, 'FunctionalGroup', 'Language', 'Keywords'];
   const [showBadges, setShowBadges] = useState<JSX.Element[]>([]);
+
+  function badgeType(value:any) {    
+    if (value == 'Live')
+      return "success"
+    else      
+      return "midtone"
+  }
   
-  useEffect(() => {
-    function badgeType(value:any) {    
-      if (value == 'Live')
-        return "success"
-      else      
-        return "midtone"
-    }
-  
+  useEffect(() => {    
     let badges: JSX.Element[] = [];
     if (app.InternalWeightage >= 50) {
       badges.push(
