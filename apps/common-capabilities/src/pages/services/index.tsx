@@ -341,10 +341,10 @@ export default function HomePage(): JSX.Element {
         </div>
       }
     >
-      <h2 id="home-title">Services</h2>
-      <span className="last-updated">Last updated: {formattedDate}</span>
+      <h1 id="home-title">Services</h1>
+      {/* <span className="last-updated">Last updated: {formattedDate}</span> */}
       <GoASpacer vSpacing="xs" />
-      <GoADetails heading="Recommended capabilities">
+      {/* <GoADetails heading="Recommended capabilities">
         <ul>
           <li>
             Why use them? To maximize efficiency and optimize costs by
@@ -357,17 +357,20 @@ export default function HomePage(): JSX.Element {
           </li>
         </ul>
       </GoADetails>
-      <GoASpacer vSpacing="2xl" />
+      <GoASpacer vSpacing="2xl" /> */}
 
-      <h3>Recommended services listing</h3>
+      <h2>Recommended services listing</h2>
+      Recommended services are standard components built for the product teams to reuse. 
+      We highly recommend leveraging these standard services with the "Recommended" tag 
+      to streamline your development process, maximize efficiency, and optimize costs.
 
-      <GoASpacer vSpacing="m" />
-      <GoAGrid minChildWidth="35ch">
+      <GoASpacer vSpacing="xl" />
+      <GoAGrid minChildWidth="35ch" gap='2xl'>
         {/* <div className="tile-wrapper"> */}
         {services.length >= 1
           ? services.map((app) => {
               return app.InternalWeightage >= recommendedServicesWeightage ? (
-                <Card
+                <Card                  
                   key={app.ServiceName}
                   title={app.ServiceName}
                   provider={app.Provider}
@@ -382,17 +385,20 @@ export default function HomePage(): JSX.Element {
         {/* </div> */}
       </GoAGrid>
 
-      <GoASpacer vSpacing="2xl" />
+      <GoASpacer vSpacing="l" />
 
-      <h3>Services listing</h3>
+      <h2>Other services</h2>
+      Other services include services built to serve specific use cases and might not be suitable to 
+      be used by the product teams. We still encourage you to the reach out to the service providers
+      to collaborate or share knowledge and best practices if you are building something similar.
 
-      <GoASpacer vSpacing="m" />
+      <GoASpacer vSpacing="xl" />
 
-      <GoAGrid minChildWidth="35ch">
+      <GoAGrid minChildWidth="35ch" gap='2xl'>
         {/* <div className="tile-wrapper"> */}
         {services.length >= 1
           ? services.map((app) => {
-              return app.InternalWeightage < recommendedServicesWeightage ? (
+              return app.InternalWeightage < recommendedServicesWeightage ? (                
                 <Card
                   key={app.ServiceName}
                   title={app.ServiceName}
@@ -400,6 +406,7 @@ export default function HomePage(): JSX.Element {
                   description={app.Summary}
                   app={app}
                 />
+                
               ) : (
                 ''
               );
