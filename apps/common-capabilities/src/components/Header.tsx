@@ -7,7 +7,7 @@ import {
 const Header = () => {
   return (
     <>
-      <GoAMicrositeHeader type="beta" maxContentWidth="1500px"/>
+      <GoAMicrositeHeader type="live" maxContentWidth="1500px"/>
       <GoAAppHeader url="/" heading="Common capabilities" maxContentWidth="1500px">
         <a href="/gettingstarted/index.html#getting-started">Getting started</a>
         <a href="/about/index.html">About</a>
