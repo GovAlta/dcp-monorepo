@@ -187,6 +187,9 @@ export default function HomePage(): JSX.Element {
     }
   }, []);
 
+  const recommendedServices = services.filter((item: any) => item.InternalWeightage >= recommendedServicesWeightage )
+  const otherServices = services.filter((item: any) => item.InternalWeightage < recommendedServicesWeightage )  
+
   return (
     <GoAThreeColumnLayout
       leftColumnWidth="23%"
@@ -365,11 +368,10 @@ export default function HomePage(): JSX.Element {
       to streamline your development process, maximize efficiency, and optimize costs.
 
       <GoASpacer vSpacing="xl" />
-      <GoAGrid minChildWidth="35ch" gap='2xl'>
-        {/* <div className="tile-wrapper"> */}
-        {services.length >= 1
-          ? services.map((app) => {
-              return app.InternalWeightage >= recommendedServicesWeightage ? (
+      <GoAGrid minChildWidth="35ch" gap='2xl'>     
+        {recommendedServices.length > 0
+          ? recommendedServices.map((app) => {
+              return (
                 <Card                  
                   key={app.ServiceName}
                   title={app.ServiceName}
@@ -377,12 +379,9 @@ export default function HomePage(): JSX.Element {
                   description={app.Summary}
                   app={app}
                 />
-              ) : (
-                ''
               );
             })
-          : 'No results found'}
-        {/* </div> */}
+          : 'No recommended services found'}
       </GoAGrid>
 
       <GoASpacer vSpacing="l" />
@@ -394,25 +393,20 @@ export default function HomePage(): JSX.Element {
 
       <GoASpacer vSpacing="xl" />
 
-      <GoAGrid minChildWidth="35ch" gap='2xl'>
-        {/* <div className="tile-wrapper"> */}
-        {services.length >= 1
-          ? services.map((app) => {
-              return app.InternalWeightage < recommendedServicesWeightage ? (                
+      <GoAGrid minChildWidth="35ch" gap='2xl'>        
+        {otherServices.length > 0
+          ? otherServices.map((app) => {
+              return (
                 <Card
                   key={app.ServiceName}
                   title={app.ServiceName}
                   provider={app.Provider}
                   description={app.Summary}
                   app={app}
-                />
-                
-              ) : (
-                ''
+                />                
               );
             })
-          : 'No results found'}
-        {/* </div> */}
+          : 'No other services found'}        
       </GoAGrid>
     </GoAThreeColumnLayout>
   );
