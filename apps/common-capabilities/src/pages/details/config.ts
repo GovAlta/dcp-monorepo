@@ -102,16 +102,16 @@ export const bodyItems = {
         "title": "Use cases",
         "dataIn": ""
     },
+    "Documentation": {
+        "title": "Documentation",
+        "dataIn": ""
+    },
     "Comments": {
         "title": "Additional information",
         "dataIn": ""
     },
     "Security": {
         "title": "Security and compliance",
-        "dataIn": ""
-    },
-    "Documentation": {
-        "title": "Documentation",
         "dataIn": ""
     },
     "Contact": {

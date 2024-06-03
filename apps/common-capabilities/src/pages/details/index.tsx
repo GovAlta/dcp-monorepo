@@ -211,7 +211,7 @@ export default function Details({ app }: DetailsProps): JSX.Element {
             <tbody className="specs-table">
               {items.specs.map((obj: any) => (
                 <tr>
-                  <td className="td-right">{obj.title}:</td>
+                  <td className='spec-type' >{obj.title}:</td>
                   <td>{renderSpecs(obj)}</td>
                 </tr>
               ))}
@@ -259,12 +259,15 @@ export default function Details({ app }: DetailsProps): JSX.Element {
         }
       >
         <GoAButton
+          type="tertiary"
           size="compact"
           leadingIcon="arrow-back"
           onClick={() => (window.location.href = '/services/index.html')}
         >
           Back to listing
         </GoAButton>
+
+
 
         <GoASpacer vSpacing="l" />
         <div className="service-heading">
@@ -278,7 +281,7 @@ export default function Details({ app }: DetailsProps): JSX.Element {
           items.content.map(({ id, name, title }: any) => {
             return (
               <div key={`${id}`}>
-                <h3 id={`${id}`}>{title}</h3>
+                <h3 id={`${id}`} className='service-title'>{title}</h3>
                 {renderContent(name, app)}
                 <GoASpacer vSpacing="l" />
               </div>
