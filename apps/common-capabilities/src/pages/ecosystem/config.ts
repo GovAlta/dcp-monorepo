@@ -12,8 +12,7 @@ export const DDDDirectory = [
   {
     provider: 'Design System',
     name: 'Mark Elamatha',
-    designation:
-      'Director, Digital Capability & EngagementDirector, Digital Capability & Engagement',
+    designation: 'Product Owner, Design System',
   },
   {
     provider: 'Data and Content Management',
@@ -55,9 +54,8 @@ export const DDDDirectory = [
 export const enterpriseDirectory = [
   {
     provider: 'Alberta.ca',
-    name: 'Shelley Gangl',
-    designation:
-      'Exec. Director, Outreach Communications and Public Engagement',
+    name: 'Chelsea Chapman',
+    designation: 'Director, Content and Customer Experience',
   },
   {
     provider: 'Service Integrations',
