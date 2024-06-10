@@ -6,13 +6,14 @@ export const DDDDirectory = [
   },
   {
     provider: 'Alberta Digital Services Platform (ADSP)',
-    name: 'N/A',
-    designation: 'N/A',
+    name: 'Ting Zuge',
+    designation: 'Exec. Director, Software Delivery',
   },
   {
     provider: 'Design System',
     name: 'Mark Elamatha',
-    designation: 'Product Owner',
+    designation:
+      'Director, Digital Capability & EngagementDirector, Digital Capability & Engagement',
   },
   {
     provider: 'Data and Content Management',
@@ -34,7 +35,7 @@ export const DDDDirectory = [
     name: 'Heather Archibald',
     designation: 'Director, Service Standard',
   },
-    {
+  {
     provider: 'Platforms - Common Data services',
     name: 'Caleb Kwok',
     designation: 'Director, Common Data Services',
@@ -54,13 +55,19 @@ export const DDDDirectory = [
 export const enterpriseDirectory = [
   {
     provider: 'Alberta.ca',
-    name: 'N/A',
-    designation: 'N/A',
+    name: 'Shelley Gangl',
+    designation:
+      'Exec. Director, Outreach Communications and Public Engagement',
+  },
+  {
+    provider: 'Service Integrations',
+    name: 'Chris Wright',
+    designation: 'Director, Integration Services',
   },
   {
     provider: '1GX',
     name: 'John Faustino',
-    designation: 'Director, Integration Services',
+    designation: 'Director, 1GX Process and Technology Excellence',
   },
   {
     provider: 'CloudOps',
@@ -69,36 +76,36 @@ export const enterpriseDirectory = [
   },
   {
     provider: 'Enterprise Solutions',
-    name: 'N/A',
-    designation: 'N/A',
+    name: 'Chad Bostock',
+    designation: 'Director, Platform Strategy',
   },
 ];
 
 export const portfolioPlatformDirectory = [
   {
     provider: 'Seniors, Community and Social Services (SCSS) Platform',
-    name: 'N/A',
-    designation: 'N/A',
+    name: 'Helen Maze',
+    designation: 'Director, Product Delivery',
   },
   {
     provider: 'Children and Family Services (CFS) Platform',
-    name: 'N/A',
-    designation: 'N/A',
+    name: 'Caroline Hendley',
+    designation: 'Director, Product Delivery',
   },
   {
     provider: 'Justice Digital',
-    name: 'N/A',
-    designation: 'N/A',
+    name: 'Brandon Sawada',
+    designation: 'Director, Product Delivery',
   },
   {
     provider: 'Advanced Education (AE) Digital',
-    name: 'N/A',
-    designation: 'N/A',
+    name: 'Caroline Hendley',
+    designation: 'Director, Product Delivery',
   },
   {
     provider: 'Wildfire Platform',
-    name: 'N/A',
-    designation: 'N/A',
+    name: 'Davis Levine',
+    designation: 'Service Designer',
   },
 ];
 
