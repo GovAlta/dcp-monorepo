@@ -221,11 +221,20 @@ export default function Details({ app }: DetailsProps): JSX.Element {
       );
     } else if (name === 'Contact') {
       return (
+        <>
+        {app.Contact.details != '' ? (
+            <>
+            {app.Contact.details}
+            <GoASpacer vSpacing="s" />
+            </>
+          ) : null}
+
         <table className="contact-table">
           <tbody>
             {app.Contact.methods.map((method: any) => renderContact(method))}
           </tbody>
         </table>
+        </>
       );
     } else if (name === 'Security') {
       return (
