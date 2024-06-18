@@ -1,9 +1,9 @@
 apiVersion: template.openshift.io/v1
 kind: Template
 metadata:
-  name: digital-strategy
+  name: digital-standards
 labels:
-  app: digital-strategy
+  app: digital-standards
 parameters:
   - name: INFRA_PROJECT
     description: Project used for build infrastructure.
@@ -17,7 +17,7 @@ parameters:
   - name: APP_NAME
     description: Name of the application.
     displayName: Application Name
-    value: digital-strategy
+    value: digital-standards
     required: true
   - name: DEPLOY_TAG
     description: Tag of the ImageStream to deploy.
@@ -59,8 +59,8 @@ objects:
         dockerStrategy:
           buildArgs:
             - name: PROJECT
-              value: digital-strategy
-          dockerfilePath: .openshift/digital-strategy/Dockerfile
+              value: digital-standards
+          dockerfilePath: .openshift/digital-standards/Dockerfile
         type: Docker
       triggers: []
   - apiVersion: v1
