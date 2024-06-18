@@ -8,7 +8,7 @@ const Header = () => {
   return (
     <>
       <GoAMicrositeHeader type="beta" maxContentWidth="1500px" />
-      <GoAAppHeader url="/" heading="Digital strategy" maxContentWidth="1500px">
+      <GoAAppHeader url="/" heading="Digital standards" maxContentWidth="1500px">
         <a href="/service-standards/index.html">Service standards</a>
         <a href="/strategy-principals/index.html">Strategy principals</a>
       </GoAAppHeader>
