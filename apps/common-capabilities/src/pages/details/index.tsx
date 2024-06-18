@@ -167,7 +167,7 @@ export default function Details({ app }: DetailsProps): JSX.Element {
         iconType: 'share-social',
         linkPrefix: '',
       },
-      Github: {
+      GitHub: {
         iconType: 'logo-github',
         linkPrefix: '',
       },

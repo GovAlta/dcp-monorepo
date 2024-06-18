@@ -19,7 +19,7 @@ export default function Landing(): JSX.Element {
         minHeight="20%"
         textColor="#333333"
         backgroundColor="#F1F1F1"
-        maxContentWidth="1500px"
+        maxContentWidth="1200px"
       >
         <div className="cc-hero-subheading">
           Discover and leverage the technology used by DDD product teams to
