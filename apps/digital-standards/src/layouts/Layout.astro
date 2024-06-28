@@ -1,9 +1,10 @@
 ---
-import Header from '../components/Header';
-import Footer from '../components/Footer';
 import '@abgov/design-tokens/dist/tokens.css';
 import '@abgov/web-components-1.20.3/index.css';
+import PageLayout from "./Layout/index"
 
+
+const { hideNav } = Astro.props
 ---
 
 <!DOCTYPE html>
@@ -24,12 +25,21 @@ import '@abgov/web-components-1.20.3/index.css';
 	</head>
 
 	<body>
-		<Header client:load/>
-		<slot />
-		<Footer client:load/>
+		<PageLayout client:load hideNav={hideNav}>
+			<slot />
+		</PageLayout>
 	</body>
 </html>
 
-<style is:global>
 
+<style is:global>
+	.line-elements {
+		display: flex;
+		flex-direction: row;
+		gap: var(--goa-space-m);
+		color: var(--goa-color-interactive-default);
+	}
+	.back-top {
+		float: right;
+	}
 </style>

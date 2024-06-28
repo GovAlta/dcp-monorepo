@@ -1,10 +1,8 @@
 ---
-import { GoAThreeColumnLayout } from '@abgov/react-components-4.20.2';
 import Layout from '../layouts/Layout.astro';
+import ServiceStandardsPage from './service-standards/index';
 ---
 
 <Layout>
-    <GoAThreeColumnLayout>
-        <h1>Service standards</h1>
-    </GoAThreeColumnLayout>
+    <ServiceStandardsPage client:load />
 </Layout>
