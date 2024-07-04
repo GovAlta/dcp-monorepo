@@ -24,13 +24,13 @@ const Layout = ({ children, hideNav = false }: any) => {
                   <a href="/service-standards/index.html">
                     Digital Service Standards
                   </a>
-                  <a href="">
+                  <a href="/strategy-principals/index.html">
                     Digital Service Principles
                   </a>
-                  <a href="">
+                  <a href="/service-help/index.html">
                     How Digital Service Standards team can help
                   </a>
-                  <a href="">
+                  <a href="/service-performance/index.html">
                     Service Performance
                   </a>
                 </GoASideMenuGroup>
