@@ -6,9 +6,9 @@ const BackToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
   return (
-    <div className="line-elements back-top">
-      <a onClick={scrollToTop}>Back to top</a>
-      <GoAIcon type="arrow-up-circle" theme="outline" />
+    <div className='back-top'>
+    <a onClick={scrollToTop} className='vtop'>Back to top </a> 
+    <a onClick={scrollToTop}><GoAIcon type="arrow-up-circle" theme="outline" /> </a>
     </div>
   );
 };
