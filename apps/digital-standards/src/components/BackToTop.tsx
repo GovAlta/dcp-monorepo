@@ -7,7 +7,7 @@ const BackToTop = () => {
   };
   return (
     <div className='back-top'>
-    <a onClick={scrollToTop} className='vtop'>Back to top </a> 
+    <a onClick={scrollToTop} className='back-top-text'>Back to top</a>
     <a onClick={scrollToTop}><GoAIcon type="arrow-up-circle" theme="outline" /> </a>
     </div>
   );
