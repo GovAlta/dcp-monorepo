@@ -15,7 +15,7 @@ const Layout = ({ children, hideNav = false }: any) => {
       <GoAThreeColumnLayout
         maxContentWidth="1540px"
         rightColumnWidth="30ch"
-        leftColumnWidth="33ch"
+        leftColumnWidth="35ch"
         nav={
           hideNav ? null : (
             <div>
@@ -24,7 +24,7 @@ const Layout = ({ children, hideNav = false }: any) => {
                   <a href="/service-standards/index.html">
                     Digital Service Standards
                   </a>
-                  <a href="/strategy-principals/index.html">
+                  <a href="/service-principles/index.html">
                     Digital Service Principles
                   </a>
                   <a href="/service-help/index.html">
