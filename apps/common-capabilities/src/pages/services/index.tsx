@@ -12,6 +12,7 @@ import {
   GoADetails,
   GoADivider,
   GoAAccordion,
+  GoACallout,
 } from '@abgov/react-components-4.20.2';
 import Card from '../../components/Card';
 import './styles.css';
@@ -344,8 +345,9 @@ export default function HomePage(): JSX.Element {
         </div>
       }
     >
-      <h1 id="home-title">Services</h1>
-      {/* <span className="last-updated">Last updated: {formattedDate}</span> */}
+      <h1 id="home-title">Services</h1>      
+      <span className="last-updated">Last updated: {formattedDate}</span>
+
       <GoASpacer vSpacing="xs" />
       {/* <GoADetails heading="Recommended capabilities">
         <ul>
@@ -381,7 +383,8 @@ export default function HomePage(): JSX.Element {
                 />
               );
             })
-          : 'No recommended services found'}
+          : <GoACallout type="information" size="medium" heading="No recommended services found based on your search / filter options"></GoACallout>
+          }         
       </GoAGrid>
 
       <GoASpacer vSpacing="l" />
@@ -406,7 +409,8 @@ export default function HomePage(): JSX.Element {
                 />                
               );
             })
-          : 'No other services found'}        
+          : <GoACallout type="information" size="medium" heading="No other services found based on your search / filter options"></GoACallout>
+          }
       </GoAGrid>
     </GoAThreeColumnLayout>
   );

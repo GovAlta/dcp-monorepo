@@ -183,10 +183,12 @@ for fileName in CSV_fileNames:
                     # if not ProductionData:
                     if int(csv_row["InternalWeightage"]) >= 0 or not ProductionData:
                         for delKey in ["Email","Phone","ContactDetails","AltContactMethod","AltContactLink","Nominate","AltServiceName"]:
-                            del csv_row[delKey]
+                            if delKey in csv_row:
+                                del csv_row[delKey]
                          
                         for delKey in [item['fieldName'] for item in SecurityFields if item['subGroup'] != '']:
-                            del csv_row[delKey]  
+                            if delKey in csv_row:
+                                del csv_row[delKey]  
 
                         id_counter += 1
                         csv_row["appId"] = id_counter
