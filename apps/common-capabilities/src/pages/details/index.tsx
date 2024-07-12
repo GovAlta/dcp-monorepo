@@ -10,6 +10,7 @@ import {
 import React, { useEffect, useState } from 'react';
 import './styles.css';
 import ExternalLink from '../../components/ExternalLink';
+import BackToTop from '../../components/BackToTop';
 import {
   securityGroups,
   securityData,
@@ -308,11 +309,8 @@ export default function Details({ app }: DetailsProps): JSX.Element {
         </div>
 
         <GoASpacer vSpacing="3xl" />
+        <BackToTop />
 
-        <div className="line-elements back-top">
-          <a href="#top-page">Back to top</a>
-          <GoAIcon type="arrow-up-circle" theme="outline" />
-        </div>
       </GoAThreeColumnLayout>
     </>
   );
