@@ -24,11 +24,11 @@ export const securityGroups = [
 
 
 export const securityData = {
-    "CMRA": {
-        "title": "Content Management Risk Assessment (CMRA)"
-    },
     "STRA": {
         "title": "General cybersecurity risk assessment"
+    },
+    "CmraReq": {
+        "title": "Content Management Risk Assessment (CMRA)"
     },
     "IM": {
         "title": "Information management (IM) consult"

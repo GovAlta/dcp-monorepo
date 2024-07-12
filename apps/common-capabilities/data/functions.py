@@ -72,25 +72,20 @@ def createContact(csv_row):
 
 #===[ SecurityList() ]==========================================================================
 
-def createSecurityList(dataRow,SecurityGroups,SecurityFields):  
- #   badges = []
+def createSecurityList(dataRow,SecurityGroups,SecurityFields):
     objArray = []
 
     for grp in SecurityGroups.split(','):        
         itemArray = []
         fieldsToGet = [item for item in SecurityFields if item['subGroup'] == grp]        
 
-        for fld in fieldsToGet:     
-            # print(fld['fieldName'])
-            if dataRow[ fld['fieldName']] != '':
-                data2 = {"Field": fld['fieldName'], "Value": dataRow[ fld['fieldName']] }
-                itemArray.append(data2)
+        for fld in fieldsToGet:        
+            fname = fld['fieldName']
+            if fname in dataRow and dataRow[fname] != '':
+                itemArray.append({"Field": fname, "Value": dataRow[fname]})
                 
         if len(itemArray) > 0:
             objArray.append( {"Type":grp, "Items":itemArray})
-
-    # result[grp] = itemArray    
-    # result = { "Items":itemArray, "Badges": SecurityFields }
 
     return objArray # result
  

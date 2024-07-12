@@ -23,8 +23,9 @@ Field,n/a,,SupportLevel,Support,No,FALSE,text,,Other,,,
 Field,n/a,,Keywords,Tag/Keyword,Yes-(),FALSE,textArray,,,,,
 ,,,,,,,,,,,,
 ,,,,,,,,,,,,
-Field,Security,Status,CMRA,Content Management Risk Assessment (CMRA),No,FALSE,text,,TBD,,,IM
+,Security,Status,CMRA,General Content Management Risk Assessment,No,FALSE,text,,TBD,,,IM
 Field,Security,Status,STRA,General cybersecurity risk assessment,No,FALSE,text,,,,,Cybersecurity
+Field,Security,Required,CmraReq,Content Management Risk Assessment (CMRA),No,FALSE,text,,,,,
 Field,Security,Required,IM,Information management (IM) consult ,No,FALSE,text,,,,,IM
 Field,Security,Required,Data,Data team consult,No,FALSE,text,,,,,Data team
 Field,Security,Required,Risk,Cybersecurity risk assessment,No,FALSE,text,,TBD,,,Cybersecurity
