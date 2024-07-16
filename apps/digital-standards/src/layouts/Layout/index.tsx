@@ -33,6 +33,9 @@ const Layout = ({ children, hideNav = false }: any) => {
                   <a href="/service-performance/index.html">
                     Service Performance
                   </a>
+                  <a href="/service-assessments/index.html">
+                    Service Assessments
+                  </a>
                 </GoASideMenuGroup>
               </GoASideMenu>
             </div>
