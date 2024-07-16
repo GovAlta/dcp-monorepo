@@ -13,6 +13,7 @@ const Header = () => {
         <a href="/strategy-principals/index.html">Service Principals</a>
         <a href="/service-performance/index.html">Service Performance</a>
         <a href="/service-help/index.html">Service help</a>
+        <a href="/service-assessments/index.html">Service assessments</a>
       </GoAAppHeader>
     </>
   );
