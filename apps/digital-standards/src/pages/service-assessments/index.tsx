@@ -19,7 +19,6 @@ import {
         </GoAButton>
         <GoASpacer vSpacing="l" />
         <h1>Service Assessments</h1>
-    <p>Learn about the service assessment process, who it involves, when a service should be assessed, and how to book.</p>
     <p>If your service is in the discovery phase you should have the following in place before booking an assessment:</p>
 <p>Have developed opportunity cards or have begun writing your release proposal.</p>
 <p>Have defined user group(s) and problem statement(s)</p>
@@ -28,7 +27,7 @@ import {
 <ul>
 <li>Familiarize yourself with the Digital Service Standards.</li>
 <li>Booking an assessment</li>
-<li>To book an assessment email the Service Standards Unit at ServiceStandards@abgov.onmicrosoft.com.</li>
+<li>To book an assessment email the Service Standards Unit at <a href="mailto:ServiceStandards@abgov.onmicrosoft.com">ServiceStandards@abgov.onmicrosoft.com</a>.</li>
 </ul>
 <h2>Who should attend the assessment</h2>
 <p>It is recommended that at least the following team members attend the assessment:</p>
@@ -56,7 +55,7 @@ import {
 <li>Any follow-up questions from the assessment team will be provided by email.</li>
 <li>A report based on the findings of the assessment will be emailed to your team.</li>
 </ul>
-<p>Any questions, comments, and feedback about the report, assessment or process can be sent to ServiceStandards@abgov.onmicrosoft.com</p>
+<p>Any questions, comments, and feedback about the report, assessment or process can be sent to <a href="mailto:ServiceStandards@abgov.onmicrosoft.com">ServiceStandards@abgov.onmicrosoft.com</a>.</p>
 <p>&nbsp;</p>
         
         <GoASpacer vSpacing="2xl" />
