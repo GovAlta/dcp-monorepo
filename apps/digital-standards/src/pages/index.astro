@@ -1,7 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import LandingPage from './landing';
 ---
 
 <Layout hideNav={true} hideHero={false}>
-	<h1>Landing main page</h1>
+	<LandingPage client:load />
 </Layout>
