@@ -14,6 +14,7 @@ import {
   sideNavItems,
 } from './config';
 import './styles.css';
+import BackToTop from '../../components/BackToTop';
 
 export default function EcoSystemPage(): JSX.Element {
   useEffect(() => {
@@ -182,10 +183,7 @@ export default function EcoSystemPage(): JSX.Element {
         <li>Specific user requirements</li>
       </ol>
       <GoASpacer vSpacing="l" />
-      <div className="line-elements back-top">
-        <a href="#top-page">Back to top</a>
-        <GoAIcon type="arrow-up-circle" theme="outline" />
-      </div>
+      <BackToTop />
     </GoAThreeColumnLayout>
   );
 }

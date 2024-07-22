@@ -4,7 +4,7 @@ import '@abgov/web-components-1.20.3/index.css';
 import PageLayout from "./Layout/index"
 
 
-const { hideNav } = Astro.props
+const { hideNav, hideHero } = Astro.props
 ---
 
 <!DOCTYPE html>
@@ -25,7 +25,7 @@ const { hideNav } = Astro.props
 	</head>
 
 	<body>
-		<PageLayout client:load hideNav={hideNav}>
+		<PageLayout client:load hideNav={hideNav} hideHero={hideHero}>
 			<slot />
 		</PageLayout>
 	</body>
@@ -41,5 +41,5 @@ const { hideNav } = Astro.props
 	}
 	.back-top {
 		float: right;
-	}
+	}	
 </style>

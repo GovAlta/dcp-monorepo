@@ -1,0 +1,7 @@
+#service-tile-title {
+  font-size: var(--goa-font-size-7);
+  font-style: normal;
+  font-weight: var(--goa-font-weight-regular);
+  line-height: var(--goa-line-height-4);
+  word-wrap: break-word;
+}

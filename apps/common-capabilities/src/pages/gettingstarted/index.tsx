@@ -7,6 +7,7 @@ import {
 import React, { useEffect, useState } from 'react';
 import { sideNavItems } from './config';
 import './styles.css';
+import BackToTop from '../../components/BackToTop';
 
 export default function GettingStartedPage(): JSX.Element {
   const [activeSection, setActiveSection] = useState('getting-started');
@@ -291,6 +292,7 @@ export default function GettingStartedPage(): JSX.Element {
     );
   };
 
+
   return (
     <GoAThreeColumnLayout
       maxContentWidth="1550px"
@@ -312,10 +314,7 @@ export default function GettingStartedPage(): JSX.Element {
       <>
         {activeSection === 'getting-started' && renderGettingStarted()}
         {activeSection === 'glossary' && renderGlossary()}
-        <div className="line-elements back-top">
-          <a href="#top-page">Back to top</a>
-          <GoAIcon type="arrow-up-circle" theme="outline" />
-        </div>
+        <BackToTop />
       </>
     </GoAThreeColumnLayout>
   );

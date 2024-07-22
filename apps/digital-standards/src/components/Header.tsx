@@ -10,7 +10,7 @@ const Header = () => {
       <GoAMicrositeHeader type="beta" maxContentWidth="1500px" />
       <GoAAppHeader url="/" heading="Digital Standards" maxContentWidth="1500px">
         <a href="/service-standards/index.html">Service Standards</a>
-        <a href="/strategy-principals/index.html">Service Principals</a>
+        <a href="/service-principles/index.html">Service Principals</a>
         <a href="/service-performance/index.html">Service Performance</a>
         <a href="/service-help/index.html">Service help</a>
         <a href="/service-assessments/index.html">Service assessments</a>

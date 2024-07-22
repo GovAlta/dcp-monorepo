@@ -1,4 +1,4 @@
-import { GoAIcon, GoAButton } from '@abgov/react-components-4.20.2';
+import { GoAButton } from '@abgov/react-components-4.20.2';
 import React from 'react';
 
 const BackToTop = () => {
@@ -11,7 +11,7 @@ const BackToTop = () => {
     Back to top
     </GoAButton>    
     </div>    
-  );  
+  );
 };
 
 export default BackToTop;
