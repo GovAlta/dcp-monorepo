@@ -20,17 +20,15 @@ export default function ServiceAssessments(): JSX.Element {
         If your service is in the discovery phase you should have the following
         in place before booking an assessment:
       </p>
-      <p>
-        Have developed opportunity cards or have begun writing your release
-        proposal.
-      </p>
-      <p>Have defined user group(s) and problem statement(s)</p>
-      <p>
-        All other services in any phase of the digital service design lifecycle
-        may book an assessment at any time.
-      </p>
+      <ul className="goa-unordered-list">
+       <li>Have developed opportunity cards or have begun writing your release
+       proposal.</li> 
+      <li>Have defined user group(s) and problem statement(s)</li>
+      </ul>
+       <p> All other services in any phase of the digital service design lifecycle
+        may book an assessment at any time.</p>
       <p>Before booking an assessment:</p>
-      <ul>
+      <ul className="goa-unordered-list">
         <li>Familiarize yourself with the Digital Service Standards.</li>
         <li>Booking an assessment</li>
         <li>
@@ -46,7 +44,7 @@ export default function ServiceAssessments(): JSX.Element {
         It is recommended that at least the following team members attend the
         assessment:
       </p>
-      <ul>
+      <ul className="goa-unordered-list">
         <li>Product Owner</li>
         <li>Product Development Lead</li>
         <li>Service Designer</li>
@@ -56,18 +54,17 @@ export default function ServiceAssessments(): JSX.Element {
       <p>
         When the assessment is booked you will receive a link to an assessment
         tool. This assessment tool is designed to prepare your team for all
-        questions and topics discussed in the assessment meetings. Please review
-        this tool ahead of time.
+        questions and topics discussed in the assessment meetings. Please complete this tool 24 business hours ahead of the assessment meeting.
       </p>
-      <p>What will happen during the assessment</p>
+      <h2>What will happen during the assessment</h2>
       <p>
-        The assessments will be conducted by a minimum of two members of the
+        The assessment will be conducted by a minimum of two members of the
         Digital Service Standards team and often will also include a Practice
         Area Director. The following items are often covered in all assessments
         regardless of the digital service design lifecycle phase:
       </p>
       <p>An overview of the service including:</p>
-      <ul>
+      <ul className="goa-unordered-list">
         <li>
           Details about the user group(s) and what problem the service is
           solving.
@@ -88,7 +85,7 @@ export default function ServiceAssessments(): JSX.Element {
         opportunity cards or Executive presentation slide decks.
       </p>
       <h2>What will happen after the assessment</h2>
-      <ul>
+      <ul className="goa-unordered-list">
         <li>
           Any follow-up questions from the assessment team will be provided by
           email.
