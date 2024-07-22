@@ -72,7 +72,7 @@ export default function LandingPage() {
           </p>
         </GoAContainer>
         <GoAContainer type="interactive" accent="thin">
-          <a id="service-tile-title" href={`add_url_here`}>
+          <a id="service-tile-title" href={`service-assessments/index.html`}>
             Digital service standards assessment
           </a>
           <GoASpacer vSpacing="m" />
