@@ -5,6 +5,7 @@ import {
   GoAHeroBanner,
   GoAPageBlock,
   GoASpacer,
+  GoAButton,
 } from '@abgov/react-components-4.20.2';
 import './styles.css';
 import ExternalLink from '../../components/ExternalLink';
@@ -15,45 +16,20 @@ export default function Landing(): JSX.Element {
   return (
     <div>
       <GoAHeroBanner
-        heading="Technology for better, faster, smarter services"
+        heading="Discover standard services designed for product teams within GoA"
         minHeight="20%"
         textColor="#333333"
         backgroundColor="#F1F1F1"
         maxContentWidth="1200px"
       >
         <div className="cc-hero-subheading">
-          Discover and leverage the technology used by DDD product teams to
-          deliver digital services that are efficient, secure, and compliant.
+          Built for developers, digital architects, and service integration
+          experts to explore existing software, tools, and APIs.
         </div>
       </GoAHeroBanner>
-      <GoAPageBlock width="1200px">
-        <GoASpacer vSpacing="3xl" />
-        <h2>
-          Common capabilities is designed for developers and solution architects
-          to explore existing services and technology used within GoA, circulate
-          best practices, and deliver meaningful experiences to all Albertans.
-        </h2>
-        <GoASpacer vSpacing="s" />
-        <ul className="goa-unordered-list cc-list-spacing">
-          <li>
-            Accelerate development by reusing existing capabilities and build
-            new services faster.
-          </li>
-          <li>
-            Enhance security and compliance measures to create ethical services
-            that protect user privacy.
-          </li>
-          <li>
-            Contribute to a culture of collaboration across teams to ensure
-            service delivery efficiency and innovation.
-          </li>
-        </ul>
-        <ExternalLink
-          link={'/gettingstarted/index.html#getting-started'}
-          text={'Getting started'}
-        />
-        <GoASpacer vSpacing="l" />
 
+      <GoASpacer vSpacing="l" />
+      <GoAPageBlock width="1200px">
         <h2>Browse services by category</h2>
         <GoASpacer vSpacing="s" />
         <GoAGrid minChildWidth="30ch" gap="2xl">
@@ -66,30 +42,64 @@ export default function Landing(): JSX.Element {
             />
           ))}
         </GoAGrid>
+
         <GoASpacer vSpacing="2xl" />
-        <GoASpacer vSpacing="3xl" />
-        <div className="cc-landing-callout">
-          <GoACallout
-            type="information"
-            heading="Start building with our design system"
-          >
-            <p>
-              Use the design system to build your product quickly and align with
-              government standards. The design system includes resources and
-              guidelines for:
-            </p>
-            <ul className="goa-unordered-list cc-list-design-system">
-              <li>Patterns and templates</li>
-              <li>Components</li>
-              <li>Styles</li>
-              <li>Content</li>
-            </ul>
-            <ExternalLink
-              link={'https://design.alberta.ca/'}
-              text={'Explore the design system'}
-            />
-          </GoACallout>
-        </div>
+        <GoAButton
+          type="primary"
+          size="normal"
+          variant="normal"
+          trailingIcon="arrow-forward"
+          onClick={() => (window.location.href = '/services/index.html')}
+        >
+          Browse all services
+        </GoAButton>
+
+        <GoASpacer vSpacing="l" />
+        <h2>Using common capabilities helps you:</h2>
+        <ul className="goa-unordered-list cc-list-design-system">
+          <li>
+            Explore and find existing services including software, tools, and
+            APIs that you can reuse or repurpose.
+          </li>
+          <li>
+            Review and evaluate various GoA services based on your development
+            needs in one place.
+          </li>
+          <li>
+            Connect with service providers and teams who built or maintain the
+            service to learn more about implementation or access the
+            documentation to obtain code.
+          </li>
+        </ul>
+
+        <ExternalLink
+          link={'/gettingstarted/index.html'}
+          text={
+            'Learn how common capabilities is different from other similar resources that exist within GoA'
+          }
+          newTab={false}
+        />
+
+        <GoASpacer vSpacing="l" />
+
+        <h2>Start building with the design system</h2>
+        <p>
+          Use the design system to build your product quickly and align with
+          government standards. The design system includes resources and
+          guidelines for:
+        </p>
+        <ul className="goa-unordered-list cc-list-design-system">
+          <li>Patterns and templates</li>
+          <li>Components</li>
+          <li>Styles</li>
+          <li>Content</li>
+        </ul>
+
+        <ExternalLink
+          link={'https://design.alberta.ca/'}
+          text={'Go to design system'}
+        />
+
         <GoASpacer vSpacing="4xl" />
       </GoAPageBlock>
     </div>
