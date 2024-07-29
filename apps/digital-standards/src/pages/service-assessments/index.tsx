@@ -2,6 +2,7 @@ import { GoASpacer, GoAButton, GoAIcon } from '@abgov/react-components-4.20.2';
 import React from 'react';
 import Feedback from '../../components/Feedback';
 import BackToTop from '../../components/BackToTop';
+import ExternalLink from '../../components/ExternalLink';
 
 export default function ServiceAssessments(): JSX.Element {
   return (
@@ -33,8 +34,11 @@ export default function ServiceAssessments(): JSX.Element {
         <li>Familiarize yourself with the Digital Service Standards.</li>
         <li>Booking an assessment</li>
         <li>
-          To book an assessment email the Service Standards Team at <a href="mailto:ServiceStandards@abgov.onmicrosoft.com" target="_blank">
-          ServiceStandards@abgov.onmicrosoft.com<GoAIcon type="open" size="small"></GoAIcon></a>.
+          To book an assessment email the Digital Service Standards Team at 
+          <ExternalLink
+            link={"mailto:DigitalServiceStandards@gov.ab.ca"}
+            text={"DigitalServiceStandards@gov.ab.ca"}
+          />
         </li>
       </ul>
       <GoASpacer vSpacing="l" />
@@ -99,8 +103,11 @@ export default function ServiceAssessments(): JSX.Element {
       </ul>
       <p>
         Any questions, comments, and feedback about the report, assessment or
-        process can be sent to <a href="mailto:ServiceStandards@abgov.onmicrosoft.com" target="_blank">
-        ServiceStandards@abgov.onmicrosoft.com<GoAIcon type="open" size="small"></GoAIcon></a>.
+        process can be sent to 
+        <ExternalLink
+            link={"mailto:DigitalServiceStandards@gov.ab.ca"}
+            text={"DigitalServiceStandards@gov.ab.ca"}
+          />.
       </p>
       <GoASpacer vSpacing="2xl" />
       <Feedback />
