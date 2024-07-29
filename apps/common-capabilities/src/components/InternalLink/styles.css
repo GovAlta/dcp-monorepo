@@ -1,0 +1,10 @@
+.link-wrapper {
+  display: inline-block;
+  color: var(--goa-color-interactive-default);
+}
+.link-wrapper .link-icon {
+  position: relative;
+  top: 3px;
+  right: 2px;
+  margin-left: var(--goa-space-xs);
+}
