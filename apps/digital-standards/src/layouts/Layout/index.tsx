@@ -1,4 +1,5 @@
 import React from 'react';
+import { useEffect } from 'react';
 import Header from '../../components/Header';
 import {
   GoAThreeColumnLayout,
@@ -8,7 +9,15 @@ import {
 } from '@abgov/react-components-4.20.2';
 import Footer from '../../components/Footer';
 
-const Layout = ({ children, hideNav = false, hideHero = true }: any) => {
+const Layout = ({ children, hideNav = false, hideHero = true }: any) => {  
+
+  useEffect(() => {
+    globalThis.adspFeedback.initialize({
+      tenant: 'common_capabilities',
+    });
+  });
+
+
   return (
     <>
       <section id="top-page"></section>
