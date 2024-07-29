@@ -1,4 +1,4 @@
-import { GoASpacer, GoAButton } from '@abgov/react-components-4.20.2';
+import { GoASpacer, GoAButton, GoAIcon } from '@abgov/react-components-4.20.2';
 import React from 'react';
 import Feedback from '../../components/Feedback';
 import BackToTop from '../../components/BackToTop';
@@ -16,6 +16,7 @@ export default function ServiceAssessments(): JSX.Element {
       </GoAButton>
       <GoASpacer vSpacing="l" />
       <h1>Service Assessments</h1>
+      <GoASpacer vSpacing="l" />
       <p>
         If your service is in the discovery phase you should have the following
         in place before booking an assessment:
@@ -32,13 +33,11 @@ export default function ServiceAssessments(): JSX.Element {
         <li>Familiarize yourself with the Digital Service Standards.</li>
         <li>Booking an assessment</li>
         <li>
-          To book an assessment email the Service Standards Unit at{' '}
-          <a href="mailto:ServiceStandards@abgov.onmicrosoft.com">
-            ServiceStandards@abgov.onmicrosoft.com
-          </a>
-          .
+          To book an assessment email the Service Standards Team at <a href="mailto:ServiceStandards@abgov.onmicrosoft.com" target="_blank">
+          ServiceStandards@abgov.onmicrosoft.com<GoAIcon type="open" size="small"></GoAIcon></a>.
         </li>
       </ul>
+      <GoASpacer vSpacing="l" />
       <h2>Who should attend the assessment</h2>
       <p>
         It is recommended that at least the following team members attend the
@@ -50,12 +49,14 @@ export default function ServiceAssessments(): JSX.Element {
         <li>Service Designer</li>
         <li>Scrum Master (alpha, beta, and live assessments)</li>
       </ul>
+      <GoASpacer vSpacing="l" />
       <h2>How to prepare for an assessment</h2>
       <p>
         When the assessment is booked you will receive a link to an assessment
         tool. This assessment tool is designed to prepare your team for all
         questions and topics discussed in the assessment meetings. Please complete this tool 24 business hours ahead of the assessment meeting.
       </p>
+      <GoASpacer vSpacing="l" />
       <h2>What will happen during the assessment</h2>
       <p>
         The assessment will be conducted by a minimum of two members of the
@@ -84,6 +85,7 @@ export default function ServiceAssessments(): JSX.Element {
         The team will be asked to provide any relevant documentation like
         opportunity cards or Executive presentation slide decks.
       </p>
+      <GoASpacer vSpacing="l" />
       <h2>What will happen after the assessment</h2>
       <ul className="goa-unordered-list">
         <li>
@@ -97,16 +99,10 @@ export default function ServiceAssessments(): JSX.Element {
       </ul>
       <p>
         Any questions, comments, and feedback about the report, assessment or
-        process can be sent to{' '}
-        <a href="mailto:ServiceStandards@abgov.onmicrosoft.com">
-          ServiceStandards@abgov.onmicrosoft.com
-        </a>
-        .
+        process can be sent to <a href="mailto:ServiceStandards@abgov.onmicrosoft.com" target="_blank">
+        ServiceStandards@abgov.onmicrosoft.com<GoAIcon type="open" size="small"></GoAIcon></a>.
       </p>
-      <p>&nbsp;</p>
-
       <GoASpacer vSpacing="2xl" />
-
       <Feedback />
       <BackToTop />
     </div>
