@@ -14,6 +14,7 @@ const Header = () => {
         <a href="/service-performance/index.html">Service Performance</a>
         <a href="/service-help/index.html">Service help</a>
         <a href="/service-assessments/index.html">Service assessments</a>
+        <a href="/service-glossary/index.html">Service glossary</a>
       </GoAAppHeader>
     </>
   );

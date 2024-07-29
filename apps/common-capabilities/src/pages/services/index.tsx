@@ -346,23 +346,10 @@ export default function HomePage(): JSX.Element {
       }
     >
       <h1 id="home-title">Services</h1>      
-      <span className="last-updated">Last updated: {formattedDate}</span>
-
-      <GoASpacer vSpacing="xs" />
-      {/* <GoADetails heading="Recommended capabilities">
-        <ul>
-          <li>
-            Why use them? To maximize efficiency and optimize costs by
-            leveraging standardized capabilities to streamline your development
-            process.
-          </li>
-          <li>
-            Encounter unique scenarios? Share feedback with the respective team
-            - a catalyst for improvement
-          </li>
-        </ul>
-      </GoADetails>
-      <GoASpacer vSpacing="2xl" /> */}
+      <span className="last-updated">Last updated: {formattedDate}</span>      
+      <br />
+      <span className="last-updated">Showing {recommendedServices.length + otherServices.length} of {apps.length} results </span> 
+      <GoASpacer vSpacing="s" />      
 
       <h2>Recommended services listing</h2>
       Recommended services are standard components built for the product teams to reuse. 

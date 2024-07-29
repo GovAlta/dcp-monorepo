@@ -23,175 +23,128 @@ export default function GettingStartedPage(): JSX.Element {
     return (
       <>
         <h1 id="getting-started">Getting started</h1>
-        <h2>What are services?</h2>
+        <h2>What do we mean by services?</h2>
         <p>
-          Services on common capabilities are the digital tools and technologies
-          built by enterprise, platform, product, and portfolio teams in the
-          Government of Alberta. These services are standalone but work
-          alongside other services and are reusable depending on the business
-          context.
+          Services on common capabilities are the digital tools, software, code,
+          and APIs built by enterprise, platform, product, and portfolio teams
+          in the Government of Alberta. These services are standalone but work
+          alongside other services and are reusable or can be repurposed
+          depending on the business context.
         </p>
 
-        <h2>Navigating through service categories</h2>
+        <GoASpacer vSpacing="s" />
+        <h2>What kind of services does common capabilities feature? </h2>
         <p>
-          The services are organised into service categories enabling the
-          developers and solution architects to discover and explore services
-          based on development focus or context.
-        </p>
-        <p>
-          Follow the steps below to get the most value out of common
-          capabilities:
+          Common capabilities features two kinds of services:
           <ol className="goa-ordered-list">
-            <li>Explore the services on the ‘Services’ page.</li>
             <li>
-              Identify the ones that align with your development focus or
-              business context and evaluate them further by going through the
-              service specifications, documentation, and support resources on
-              the service details page.
+              <b>Standard services:</b> Standard components built for the DDD
+              product teams to reuse or repurpose as per their use case and
+              development needs. Standard components are usually provided by the
+              following enterprise and DDD platform teams:
+              <ul className="goa-unordered-list">
+                <li>Alberta.ca</li>
+                <li>Service Integrations</li>
+                <li>1GX</li>
+                <li>CloudOps</li>
+                <li>Enterprise Solutions</li>
+                <li>Alberta Digital Service Platform (ADSP)</li>
+              </ul>
+              <a href="/ecosystem/index.html">
+                Learn more about the teams and the GoA eco-system
+              </a>
             </li>
+            <GoASpacer vSpacing="s" />
             <li>
-              Reach out to the provider teams using the contact details to
-              discuss possibilities of utilization of the service for your use
-              case or sharing knowledge and best practices.
+              <p>
+                <b>Services built to serve specific use cases</b> and are not
+                standard or reusable for the DDD product teams. These services
+                are built by portfolio platform teams in ministries that have
+                distinct requirements.
+              </p>
+              <p>The ministries that have portfolio platform teams include: </p>
+              <ul className="goa-unordered-list">
+                <li>Seniors, Community and Social Services (SCSS) Platform</li>
+                <li>Children and Family Services (CFS) Platform</li>
+                <li>Justice Digital</li>
+                <li>Advanced Education (AE) Digital</li>
+                <li>Wildfire Platform</li>
+              </ul>
             </li>
           </ol>
-        </p>
-
-        <h2>Evaluating a service</h2>
-        <p>
-          The catalog provides information around technical specifications,
-          features, prerequisites, security measures, and documentation to help
-          in evaluating whether the service is appropriate for your business use
-          case.
-        </p>
-        <p>
-          Some of the essential considerations while evaluating a service for
-          your requirements are as follows:
+          <a href="/services/index.html">Explore services → </a>
         </p>
 
         <GoASpacer vSpacing="l" />
 
-        <h3>Recommended vs Other services</h3>
+        <h2>What do we mean by “reuse” or “repurpose”?</h2>
         <p>
-          One of the purposes for common capabilities is to nudge teams to use
-          ‘recommended’ services. The idea is to standardize the usage of common
-          components serving similar purposes. Recommended services are standard
-          components that can be used by any product team within the Government
-          of Alberta and are mostly provided by the following enterprise and DDD
-          platform teams:
-          <ul className="goa-unordered-list">
-            <li>Alberta.ca</li>
-            <li>Service Integrations</li>
-            <li>1GX</li>
-            <li>CloudOps</li>
-            <li>Enterprise Solutions</li>
-            <li>Alberta Digital Service Platform (ADSP)</li>
-          </ul>
-          <a href="/ecosystem/index.html">
-            Learn more about the teams and the GoA eco-system
-          </a>
+          Though standard services are designed as common components for DDD
+          product teams, it does not imply that the standard services are always
+          ready to use.
         </p>
         <p>
-          ‘Other’ services are built by portfolio teams to serve specific use
-          cases in some ministries that have distinct requirements. Such
-          services are not standard and might not be suitable to be used by the
-          product teams. We still encourage you to the reach out to the
-          providers of these services to collaborate or share knowledge and best
-          practices if you are building a similar service.
+          Product teams can either reuse the standard service as it is if it
+          fits the requirements or make tweaks to the service to align it with
+          their needs.
         </p>
-        <h3>Status: Live, Beta, and Alpha</h3>
         <p>
-          The status of the service is another important criteria while choosing
-          a service. The status defines the phase of development the service is
-          currently in and is reflected by the ‘Live, ‘Beta’, or ‘Alpha’ tags. A
-          ‘Live’ service is more reliable than a service that is still in
-          ‘Alpha’ or Beta’ phase considering the testing and iterations it has
-          gone through. If you find an ‘Alpha’ or ‘Beta’ service that aligns
-          with your use case, we encourage you to reach out to the provider team
-          and discuss the possibility of collaboration.
-        </p>
-        <h3>Other common considerations</h3>
-        <p>
-          There are other factors like the status, language, infrastructure,
-          features, usage, implementation, security standards and compliance
-          measures, and prerequisites that may affect your decision of utilising
-          a service. To make an informed decision, it is essential to evaluate
-          the service on the service details page, reviewing the documentation,
-          and contacting the provider for further support.
+          By reuse or repurpose we mean that while the service framework or code
+          is ready and fully functional, product teams should assess the service
+          thoroughly with the service provider team and utilize it by making
+          necessary modifications.
         </p>
 
-        <h2>Accessing and implementing a service</h2>
+        <GoASpacer vSpacing="l" />
+        <h2>
+          How common capabilities is different from other similar resources that
+          exist within GoA?
+        </h2>
         <p>
-          Accessing a service involves integrating them into your development
-          environment. Developers must reach out to the providers of these
-          services to discuss possibilities and access detailed documentation
-          and support resources. The point of contacts for each service are
-          available on the individual service pages for you to get guidance on
-          usage and implementation of the service.
+          Common capabilities is a directory that gives you an aggregated and
+          comprehensive list of all services that exist within GoA for you to
+          explore, review, compare, and evaluate as per your use case and
+          development needs in one single place.
+        </p>
+        <p>
+          Some provider teams offer their own repositories of service
+          documentation. These repositories only include the services and
+          resources that the respective provider team owns or maintains.
         </p>
 
         <p>
-          Some of the possible concerns that you may need to check on the
-          service details page or discuss with the provider team could be:
-        </p>
+          You may be familiar or may come across some of the repositories listed
+          below:
+          <ol className="goa-ordered-list">
+            <li>
+              <a href="https://abgov.sharepoint.com/sites/S500D27-SI969/SitePages/SPO-Home.aspx">
+                Integration improvement
+              </a>
+              : A repository of services owned and maintained by the Service
+              Integration team.
+            </li>
 
-        <GoASpacer vSpacing="3xs" />
-        <h3>Integration of the service into existing software or projects</h3>
-        <p>
-          This often involves adding dependencies or making API calls. Visit the
-          service details page or ask the provider team for documentation and
-          tutorials to guide you through the integration process.
-        </p>
+            <li>
+              <a href="https://abgov.sharepoint.com/sites/S500D27-SI969/SitePages/SPO-Home.aspx">
+                ADSP
+              </a>
+              : A repository of services owned and maintained by the Alberta
+              Digital Services Platform (ADSP).
+            </li>
 
-        <GoASpacer vSpacing="3xs" />
-        <h3>Technical expertise required</h3>
-        <p>
-          Depends on the service and its complexity. Some services are
-          user-friendly and suitable for beginners, while others may require
-          more advanced knowledge. Review the documentation and contact the
-          teams for details.
-        </p>
-
-        <GoASpacer vSpacing="3xs" />
-
-        <h3>Customization or development of specific services</h3>
-        <p>
-          Standard services are often designed to be technology-agnostic and can
-          be used with various programming languages and technologies. However,
-          compatibility may vary, so it's essential to check each the service
-          documentation for specific details.
-        </p>
-
-        <GoASpacer vSpacing="3xs" />
-
-        <h3>Performance considerations</h3>
-        <p>
-          Depends on the specific service and how it's used. The provider teams
-          can help you with specific documentation for performance tips and
-          guidelines to <b>optimize</b> your implementation.
-        </p>
-
-        <GoASpacer vSpacing="3xs" />
-
-        <h3>On-premises and cloud-based environment</h3>
-        <p>
-          Most services are designed to be compatible with various deployment
-          environments. Review the documentation or consult the teams for
-          details.
-        </p>
-
-        <GoASpacer vSpacing="3xs" />
-
-        <h3>Contributing to common capabilities</h3>
-        <p>
-          Many teams are open to contributions from other teams. Check the
-          service guidelines for contribution or reach out to their point of
-          contact from the service details page and participate in their
-          development, report issues, or suggest improvements.
+            <li>
+              <a href="https://bernie.gov.ab.ca/esm?id=sc_cat_item&sys_id=f3769a161b0a451464f6b99f034bcbdc">
+                GitHub
+              </a>
+              : Repository to obtain code that can be accessed by generating a
+              request on Bernie.
+            </li>
+          </ol>
         </p>
       </>
     );
   };
+
   const renderGlossary = () => {
     return (
       <>
@@ -291,7 +244,6 @@ export default function GettingStartedPage(): JSX.Element {
       </>
     );
   };
-
 
   return (
     <GoAThreeColumnLayout
