@@ -11,12 +11,11 @@ import Footer from '../../components/Footer';
 
 const Layout = ({ children, hideNav = false, hideHero = true }: any) => {  
 
-  useEffect(() => {
-    globalThis.adspFeedback.initialize({
-      tenant: 'common_capabilities',
-    });
-  });
-
+  // useEffect(() => {
+  //   globalThis.adspFeedback.initialize({
+  //     tenant: 'common_capabilities',
+  //   });
+  // });
 
   return (
     <>

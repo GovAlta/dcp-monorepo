@@ -1,10 +1,17 @@
 import React from 'react';
+import { useEffect } from 'react';
 import {
   GoAMicrositeHeader,
   GoAAppHeader,
 } from '@abgov/react-components-4.20.2';
 
 const Header = () => {
+  useEffect(() => {
+    globalThis.adspFeedback.initialize({
+      tenant: 'common_capabilities',
+    });
+  });
+
   return (
     <>
       <GoAMicrositeHeader type="live" maxContentWidth="1500px"/>

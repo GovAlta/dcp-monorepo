@@ -27,6 +27,7 @@ const { title } = Astro.props;
     <title>{title}</title>
 
     <!-- Google tag (gtag.js) -->
+
     <script>
       const hostName = window.location.hostname;
       if (hostName === 'common-capabilities-dcp-uat.apps.aro.gov.ab.ca') {
@@ -46,6 +47,12 @@ const { title } = Astro.props;
           script.src =
             'https://www.googletagmanager.com/gtag/js?id=G-1DJCQRHZ8D';
           document.head.appendChild(script);
+
+          const feedbackscript = document.createElement('script');
+          script.async = true;
+          script.src =
+            'https://feedback-service.adsp-uat.alberta.ca/feedback/v1/script/adspFeedback.js';
+          document.head.appendChild(feedbackscript);
         })();
       } else if (hostName === 'common-capabilities.digital.gov.ab.ca') {
         (function () {
@@ -64,6 +71,12 @@ const { title } = Astro.props;
           script.src =
             'https://www.googletagmanager.com/gtag/js?id=G-4TW8MFQ4GT';
           document.head.appendChild(script);
+
+          const feedbackscript = document.createElement('script');
+          script.async = true;
+          script.src =
+            'https://feedback-service.adsp.alberta.ca/feedback/v1/script/adspFeedback.js';
+          document.head.appendChild(feedbackscript);
         })();
       }
     </script>
