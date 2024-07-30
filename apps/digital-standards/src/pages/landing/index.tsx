@@ -29,7 +29,7 @@ export default function LandingPage() {
       <GoAGrid gap="xl" minChildWidth="320px">
         <GoAContainer type="interactive" accent="thin">
           <a id="service-tile-title" href={`service-standards/index.html`}>
-            Digital service standards
+            Digital Service Standards
           </a>
           <GoASpacer vSpacing="m" />
           <p>
@@ -40,7 +40,7 @@ export default function LandingPage() {
         </GoAContainer>
         <GoAContainer type="interactive" accent="thin">
           <a id="service-tile-title" href={`service-principles/index.html`}>
-            Digital service principles
+            Digital Service Principles
           </a>
           <GoASpacer vSpacing="m" />
           <p>
@@ -51,7 +51,7 @@ export default function LandingPage() {
         </GoAContainer>
         <GoAContainer type="interactive" accent="thin">
           <a id="service-tile-title" href={`service-help/index.html`}>
-            Digital service standards team
+            Digital Service Standards Team
           </a>
           <GoASpacer vSpacing="m" />
           <p>
@@ -62,7 +62,7 @@ export default function LandingPage() {
         </GoAContainer>
         <GoAContainer type="interactive" accent="thin">
           <a id="service-tile-title" href={`service-performance/index.html`}>
-            Service performance program
+            Service Performance Program
           </a>
           <GoASpacer vSpacing="m" />
           <p>
@@ -73,12 +73,12 @@ export default function LandingPage() {
         </GoAContainer>
         <GoAContainer type="interactive" accent="thin">
           <a id="service-tile-title" href={`service-assessments/index.html`}>
-            Digital service standards assessment
+            Digital Service Standards Assessment
           </a>
           <GoASpacer vSpacing="m" />
           <p>
             Based on the Digital Service Standards, clear criteria have been
-            established for the evaluation of services.
+            established for the evaluation of services. Learn when and how to get an assessment.
           </p>
         </GoAContainer>
       </GoAGrid>
