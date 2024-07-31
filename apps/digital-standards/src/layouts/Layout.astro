@@ -25,7 +25,7 @@ const { hideNav, hideHero } = Astro.props
 	</head>
 
 	<body>
-		<PageLayout client:load hideNav={hideNav} hideHero={hideHero}>
+		<PageLayout client:only hideNav={hideNav} hideHero={hideHero}>
 			<slot />
 		</PageLayout>
 	</body>

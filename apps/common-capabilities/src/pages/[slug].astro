@@ -17,6 +17,6 @@ export async function getStaticPaths() {
 const { app } = Astro.props;
 ---
 
-<Layout actionButtons={true} title={`${app.ServiceName}-${app.Provider}`}>
+<Layout title={`${app.ServiceName}-${app.Provider}`}>
   <Details client:load app={app} />
 </Layout>
