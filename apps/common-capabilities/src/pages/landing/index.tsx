@@ -16,7 +16,7 @@ export default function Landing(): JSX.Element {
   return (
     <div>
       <GoAHeroBanner
-        heading="Discover standard services designed for product teams within GoA"
+        heading="Discover services designed for product teams within GoA"
         minHeight="20%"
         textColor="#333333"
         backgroundColor="#F1F1F1"
