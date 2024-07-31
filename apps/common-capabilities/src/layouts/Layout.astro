@@ -9,9 +9,10 @@ import Footer from '../components/Footer';
 // import '@abgov/web-components/index.css';
 import '@abgov/design-tokens/dist/tokens.css';
 import '@abgov/web-components-1.20.3/index.css';
+import PageLayout from "./layout/index";
+
 export interface Props {
   title: string;
-  actionButtons: any;
 }
 
 const { title } = Astro.props;
@@ -89,9 +90,9 @@ const { title } = Astro.props;
   </head>
   <body>
       <section id="top-page"></section>
-      <Header client:load />
-      <slot />
-      <Footer client:load />
+      <PageLayout client:only title={title}>
+        <slot />
+      </PageLayout>
   </body>
 </html>
 <style is:global>
