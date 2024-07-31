@@ -7,15 +7,24 @@ import {
 
 const Header = () => {
   useEffect(() => {
-    globalThis.adspFeedback.initialize({
-      tenant: 'common_capabilities',
-    });
+    if (
+      window.location.hostname ===
+      'common-capabilities-dcp-uat.apps.aro.gov.ab.ca'
+    ) {
+      globalThis.adspFeedback.initialize({
+        tenant: 'common_capabilities',
+      });
+    }
   });
-  
+
   return (
     <>
-      <GoAMicrositeHeader type="live" maxContentWidth="1500px"/>
-      <GoAAppHeader url="/" heading="Common capabilities" maxContentWidth="1500px">
+      <GoAMicrositeHeader type="live" maxContentWidth="1500px" />
+      <GoAAppHeader
+        url="/"
+        heading="Common capabilities"
+        maxContentWidth="1500px"
+      >
         <a href="/gettingstarted/index.html#getting-started">Getting started</a>
         <a href="/about/index.html">About</a>
         <a href="/ecosystem/index.html">Eco-system</a>
