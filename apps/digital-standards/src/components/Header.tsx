@@ -9,11 +9,9 @@ const Header = () => {
     <>
       <GoAMicrositeHeader type="beta" maxContentWidth="1500px" />
       <GoAAppHeader url="/" heading="Digital Standards" maxContentWidth="1500px">
-        <a href="/service-standards/index.html">Service Standards</a>
-        <a href="/service-principles/index.html">Service Principals</a>
-        <a href="/service-performance/index.html">Service Performance</a>
-        <a href="/service-help/index.html">Service help</a>
-        <a href="/service-glossary/index.html">Service glossary</a>
+        <a href="/service-standards/index.html">Standards</a>
+        <a href="/service-performance/index.html">Performance</a>
+        <a href="/service-glossary/index.html">Glossary</a>
       </GoAAppHeader>
     </>
   );
