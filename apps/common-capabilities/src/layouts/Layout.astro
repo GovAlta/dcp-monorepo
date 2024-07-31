@@ -45,12 +45,12 @@ const { title } = Astro.props;
           script.async = true;
           script.src =
             'https://www.googletagmanager.com/gtag/js?id=G-1DJCQRHZ8D';
-          document.head.appendChild(script);
-
-          const feedbackscript = document.createElement('script');
-          script.async = true;
-          script.src =
+            
+            const feedbackscript = document.createElement('script');
+            feedbackscript.async = true;
+            feedbackscript.src =
             'https://feedback-service.adsp-uat.alberta.ca/feedback/v1/script/adspFeedback.js';
+          document.head.appendChild(script);
           document.head.appendChild(feedbackscript);
         })();
       } else if (hostName === 'common-capabilities.digital.gov.ab.ca') {
@@ -69,12 +69,12 @@ const { title } = Astro.props;
           script.async = true;
           script.src =
             'https://www.googletagmanager.com/gtag/js?id=G-4TW8MFQ4GT';
-          document.head.appendChild(script);
-
-          const feedbackscript = document.createElement('script');
-          script.async = true;
-          script.src =
+            
+            const feedbackscript = document.createElement('script');
+            feedbackscript.async = true;
+            feedbackscript.src =
             'https://feedback-service.adsp.alberta.ca/feedback/v1/script/adspFeedback.js';
+          document.head.appendChild(script);
           document.head.appendChild(feedbackscript);
         })();
       }
