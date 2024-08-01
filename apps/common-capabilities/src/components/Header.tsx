@@ -9,7 +9,8 @@ const Header = () => {
   useEffect(() => {
     if (
       window.location.hostname ===
-      'common-capabilities-dcp-uat.apps.aro.gov.ab.ca'
+        'common-capabilities-dcp-uat.apps.aro.gov.ab.ca' ||
+      window.location.hostname === 'common-capabilities.digital.gov.ab.ca'
     ) {
       globalThis.adspFeedback.initialize({
         tenant: 'common_capabilities',
