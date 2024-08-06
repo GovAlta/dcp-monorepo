@@ -9,7 +9,7 @@ import BackToTop from '../../components/BackToTop';
 
 export default function ServiceStandards(): JSX.Element {
   return (
-    <div>
+    <div data-pagefind-body>
       <GoAButton
         type="tertiary"
         size="compact"
@@ -20,7 +20,7 @@ export default function ServiceStandards(): JSX.Element {
       </GoAButton>
       <GoASpacer vSpacing="l" />
 
-      <h1>Digital Service standards</h1>
+      <h1 id='digital-service-standards'>Digital Service standards</h1>
       <GoASpacer vSpacing="l" />
       <h2>What are Digital Service Standards?</h2>
       <p>
@@ -35,7 +35,7 @@ export default function ServiceStandards(): JSX.Element {
 
       <GoASpacer vSpacing="3xs" />
 
-      <h2>Why Digital Service Standards?</h2>
+      <h2 id='why-digital-service-standards'>Why Digital Service Standards?</h2>
       <p>
         By aligning to digital service standards, the Government of Alberta sets
         clear expectations on how we will deliver{' '}
@@ -58,7 +58,7 @@ export default function ServiceStandards(): JSX.Element {
         heading="Standard no. 1 - Design with users"
         open={false}
       >
-        <h4>Relavent principles: The standard’s aspirations</h4>
+        <h4 id='principles-1'>Relavent principles: The standard’s aspirations</h4>
         <p>
           <b>No. 1</b>– Understand users and their needs before the solution. A
           deep and ongoing understanding of the user’s experience will guide the
@@ -83,7 +83,7 @@ export default function ServiceStandards(): JSX.Element {
           creating unnecessary complexity for users.
         </p>
 
-        <h4>Goals: Why the standard matters</h4>
+        <h4 id='goals-1'>Goals: Why the standard matters</h4>
         <p>
           Designing services with and for users should aim to do the following:
         </p>

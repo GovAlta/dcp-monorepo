@@ -9,7 +9,7 @@ import './styles.css';
 
 export default function LandingPage() {
   return (
-    <div>
+    <div data-pagefind-body>
       <h2>Digital service standards program</h2>
       <p>
         Through the standards, with new supports and guidance, we’re shifting
@@ -85,5 +85,6 @@ export default function LandingPage() {
       <GoASpacer vSpacing="2xl" />
       <Feedback />
     </div>
+
   );
 }

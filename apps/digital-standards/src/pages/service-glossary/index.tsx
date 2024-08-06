@@ -27,7 +27,7 @@ const GlossaryPage = () => {
     const uniqueLetters = Object.keys(groupedItems);
   
     return (
-      <div>
+      <div data-pagefind-body>
        <GoAButton
         type="tertiary"
         size="compact"

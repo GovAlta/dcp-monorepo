@@ -9,6 +9,15 @@
       "executor": "@nxtensions/astro:build",
       "options": {}
     },
+    "postbuild": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "npx pagefind --site dist/apps/digital-standards"
+        ],
+        "parallel": false
+      }
+    },
     "dev": {
       "executor": "@nxtensions/astro:dev",
       "options": {}

@@ -5,7 +5,7 @@ import BackToTop from '../../components/BackToTop';
 
 export default function ServiceHelp() {
   return (
-    <div>
+    <div data-pagefind-body>
       <GoAButton
         type="tertiary"
         size="compact"

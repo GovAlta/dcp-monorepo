@@ -10,7 +10,7 @@ import BackToTop from '../../components/BackToTop';
 
 const StrategyPrinciples = () => {
   return (
-    <div>
+    <div data-pagefind-body>
       <GoAButton
         type="tertiary"
         size="compact"

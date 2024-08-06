@@ -6,7 +6,7 @@ import ExternalLink from '../../components/ExternalLink';
 
 export default function ServiceAssessments(): JSX.Element {
   return (
-    <div>
+    <div data-pagefind-body>
       <GoAButton
         type="tertiary"
         size="compact"

@@ -9,7 +9,7 @@ import Feedback from '../../components/Feedback';
 
 export default function ServicePerformance() {
   return (
-    <div>
+    <div data-pagefind-body>
       <GoAButton
         type="tertiary"
         size="compact"
