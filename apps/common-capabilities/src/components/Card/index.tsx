@@ -30,7 +30,7 @@ const Card = ({ provider, description, title, app }: CardProps) => {
     let badges: JSX.Element[] = [];
     if (app.InternalWeightage >= 50) {
       badges.push(
-        <GoABadge key="recommended" type="midtone" content="Recommended" />
+        <GoABadge key="recommended" type="information" content="Recommended" />
       );
     }
   
