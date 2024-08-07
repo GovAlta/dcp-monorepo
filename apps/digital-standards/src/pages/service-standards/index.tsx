@@ -4,7 +4,6 @@ import {
   GoAButton,
 } from '@abgov/react-components-4.20.2';
 import React from 'react';
-import Feedback from '../../components/Feedback';
 import BackToTop from '../../components/BackToTop';
 
 export default function ServiceStandards(): JSX.Element {
@@ -719,8 +718,6 @@ export default function ServiceStandards(): JSX.Element {
         </ul>
       </GoAAccordion>
       <GoASpacer vSpacing="2xl" />
-
-      <Feedback />
       <BackToTop />
     </div>
   );

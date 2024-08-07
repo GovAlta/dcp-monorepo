@@ -1,6 +1,5 @@
 import { GoAButton, GoASpacer } from '@abgov/react-components-4.20.2';
 import React from 'react';
-import Feedback from '../../components/Feedback';
 import BackToTop from '../../components/BackToTop';
 
 export default function ServiceHelp() {
@@ -77,8 +76,7 @@ export default function ServiceHelp() {
           </li>
         </ul>
       </p>
-      <GoASpacer vSpacing="2xl" />
-      <Feedback />
+      <GoASpacer vSpacing="2xl" />      
       <BackToTop />
     </div>
   );
