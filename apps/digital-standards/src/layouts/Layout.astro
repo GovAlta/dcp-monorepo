@@ -15,13 +15,32 @@ const { hideNav, hideHero } = Astro.props
 		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Digital standards</title>
-		<script
-		type="module"
-		src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
-	  ></script>
-	  <script
-		nomodule
-		src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>  
+
+		<script type="module"
+			src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js">
+	    </script>
+
+		<script nomodule
+			src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js">
+		</script>
+
+		<script>
+			const hostName = window.location.hostname;			
+			if (hostName === 'digital-standards.digital.gov.ab.ca') {			
+				const feedbackscript = document.createElement('script');
+				feedbackscript.async = true;
+				feedbackscript.src =
+				'https://feedback-service.adsp.alberta.ca/feedback/v1/script/adspFeedback.js';		
+				document.head.appendChild(feedbackscript);
+			}
+			else if (hostName === 'digital-standards-dcp-uat.apps.aro.gov.ab.ca' || hostName === 'localhost') {				
+				const feedbackscript = document.createElement('script');
+				feedbackscript.async = true;
+				feedbackscript.src =
+				'https://feedback-service.adsp-uat.alberta.ca/feedback/v1/script/adspFeedback.js';
+				document.head.appendChild(feedbackscript);
+			}			
+		</script>
 	</head>
 
 	<body>

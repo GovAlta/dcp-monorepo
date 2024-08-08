@@ -1,6 +1,5 @@
 import { GoAButton, GoASpacer } from '@abgov/react-components-4.20.2';
 import React from 'react';
-import Feedback from '../../components/Feedback';
 import BackToTop from '../../components/BackToTop';
 import {
   glossaryItems
@@ -77,10 +76,7 @@ const GlossaryPage = () => {
           ))}          
         </div>
 
-        <GoASpacer vSpacing="3xl" />
-        <Feedback />
-      
-
+        <GoASpacer vSpacing="l" />
       </div>
     );
   };  

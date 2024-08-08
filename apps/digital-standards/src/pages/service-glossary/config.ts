@@ -1,6 +1,7 @@
 
 // Please note: Sort is automaticlly done in the app.
 // All new term can be added at the bottom
+// Warning: If you want to use a single apostrophe, you must preface it with a backslash. Eg: people's becomes people\'s
 
 export const glossaryItems = [
 
