@@ -4,7 +4,6 @@ import {
   GoASpacer,
 } from '@abgov/react-components-4.20.2';
 import React from 'react';
-import Feedback from '../../components/Feedback';
 import './styles.css';
 
 export default function LandingPage() {
@@ -82,8 +81,7 @@ export default function LandingPage() {
           </p>
         </GoAContainer>
       </GoAGrid>
-      <GoASpacer vSpacing="2xl" />
-      <Feedback />
+      <GoASpacer vSpacing="2xl" />      
     </div>
 
   );

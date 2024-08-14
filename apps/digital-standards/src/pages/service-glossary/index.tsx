@@ -1,6 +1,5 @@
 import { GoAButton, GoASpacer } from '@abgov/react-components-4.20.2';
 import React, { useEffect } from 'react';
-import Feedback from '../../components/Feedback';
 import BackToTop from '../../components/BackToTop';
 import { glossaryItems } from './config';
 import './styles.css';
@@ -86,9 +85,6 @@ const GlossaryPage = () => {
           ) : null
         )}
       </div>
-
-      <GoASpacer vSpacing="3xl" />
-      <Feedback />
     </div>
   );
 };

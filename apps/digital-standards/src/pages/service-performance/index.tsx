@@ -5,7 +5,6 @@ import {
 } from '@abgov/react-components-4.20.2';
 import React, { useEffect } from 'react';
 import BackToTop from '../../components/BackToTop';
-import Feedback from '../../components/Feedback';
 
 export default function ServicePerformance() {
   useEffect(() => {
@@ -359,7 +358,6 @@ export default function ServicePerformance() {
         </p>
       </GoAAccordion>
       <GoASpacer vSpacing="2xl" />
-      <Feedback />
       <BackToTop />
     </div>
   );

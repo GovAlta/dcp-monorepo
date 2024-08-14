@@ -5,7 +5,6 @@ import {
   GoASpacer,
 } from '@abgov/react-components-4.20.2';
 import React, { useEffect } from 'react';
-import Feedback from '../../components/Feedback';
 import BackToTop from '../../components/BackToTop';
 
 const StrategyPrinciples = () => {
@@ -177,7 +176,6 @@ const StrategyPrinciples = () => {
       </GoAGrid>
       
       <GoASpacer vSpacing="l" />
-      <Feedback />
       <BackToTop />
     </div>
   );

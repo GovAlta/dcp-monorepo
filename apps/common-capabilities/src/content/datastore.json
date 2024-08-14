@@ -3714,7 +3714,7 @@
                     {
                         "type": "BERNIE",
                         "value": "Service Integration Consultation",
-                        "url": "https://goaprod.service-now.com/esm?id=search&spa=1&q=Service%20Integration%20Consultation"
+                        "url": "https://goaprod.service-now.com/esm?id=search&spa=1&q=Payment%20Gateway%20Service"
                     }
                 ]
             },

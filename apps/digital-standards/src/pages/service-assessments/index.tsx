@@ -1,6 +1,5 @@
 import { GoASpacer, GoAButton, GoAIcon } from '@abgov/react-components-4.20.2';
 import React, { useEffect } from 'react';
-import Feedback from '../../components/Feedback';
 import BackToTop from '../../components/BackToTop';
 import ExternalLink from '../../components/ExternalLink';
 
@@ -126,8 +125,7 @@ export default function ServiceAssessments(): JSX.Element {
         />
         .
       </p>
-      <GoASpacer vSpacing="2xl" />
-      <Feedback />
+      <GoASpacer vSpacing="2xl" />      
       <BackToTop />
     </div>
   );
