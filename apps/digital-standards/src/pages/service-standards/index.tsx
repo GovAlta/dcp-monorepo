@@ -3,11 +3,17 @@ import {
   GoAAccordion,
   GoAButton,
 } from '@abgov/react-components-4.20.2';
-import React from 'react';
+import React, { useEffect } from 'react';
 import Feedback from '../../components/Feedback';
 import BackToTop from '../../components/BackToTop';
 
 export default function ServiceStandards(): JSX.Element {
+  useEffect(() => {
+    if (window.location.hash) {
+      const elmnt = document.getElementById(window.location.hash.substring(1));
+      elmnt?.scrollIntoView(true);
+    }
+  }, []);
   return (
     <div data-pagefind-body>
       <GoAButton
@@ -58,7 +64,7 @@ export default function ServiceStandards(): JSX.Element {
         heading="Standard no. 1 - Design with users"
         open={false}
       >
-        <h4 id='principles-1'>Relavent principles: The standard’s aspirations</h4>
+        <h4>Relevant principles: The standard’s aspirations</h4>
         <p>
           <b>No. 1</b>– Understand users and their needs before the solution. A
           deep and ongoing understanding of the user’s experience will guide the
@@ -83,7 +89,7 @@ export default function ServiceStandards(): JSX.Element {
           creating unnecessary complexity for users.
         </p>
 
-        <h4 id='goals-1'>Goals: Why the standard matters</h4>
+        <h4>Goals: Why the standard matters</h4>
         <p>
           Designing services with and for users should aim to do the following:
         </p>

@@ -9,8 +9,14 @@
       "executor": "@nxtensions/astro:build",
       "options": {}
     },
-    "postbuild": {
+    "buildcustom": {
       "executor": "nx:run-commands",
+      "dependsOn": [
+        {
+          "target": "build",
+          "projects": "self"
+        }
+      ],
       "options": {
         "commands": [
           "npx pagefind --site dist/apps/digital-standards"
@@ -25,7 +31,7 @@
     "preview": {
       "dependsOn": [
         {
-          "target": "build",
+          "target": "postbuild",
           "projects": "self"
         }
       ],
