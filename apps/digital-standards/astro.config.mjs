@@ -5,4 +5,5 @@ import mdx from '@astrojs/mdx';
 export default defineConfig({
   outDir: '../../dist/apps/digital-standards',
   integrations: [react(), mdx()],
+  trailingSlash: 'always'
 });
