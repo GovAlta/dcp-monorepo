@@ -1,10 +1,16 @@
 import { GoAButton, GoASpacer } from '@abgov/react-components-4.20.2';
-import React from 'react';
+import React, { useEffect } from 'react';
 import BackToTop from '../../components/BackToTop';
 
 export default function ServiceHelp() {
+  useEffect(() => {
+    if (window.location.hash) {
+      const elmnt = document.getElementById(window.location.hash.substring(1));
+      elmnt?.scrollIntoView(true);
+    }
+  }, []);
   return (
-    <div>
+    <div data-pagefind-body>
       <GoAButton
         type="tertiary"
         size="compact"
@@ -14,9 +20,9 @@ export default function ServiceHelp() {
         Back
       </GoAButton>
       <GoASpacer vSpacing="l" />
-      <h1>How DSS will help</h1>
+      <h1 id="how-dss-will-help">How DSS will help</h1>
       <GoASpacer vSpacing="l" />
-      <h2>We are here to help.</h2>
+      <h2 id="we-are-here-to-help">We are here to help.</h2>
       <p>
         As delivery teams explore and adopt new ways of working, the Digital
         Service Standards Team will be available to provide guidance and make
@@ -25,10 +31,10 @@ export default function ServiceHelp() {
         resources, methodologies and assessment processes.
       </p>
       <GoASpacer vSpacing="l" />
-      <h3>
+      <h3 id="refer-below-for-how-the-digital-service-standards-team-can-assist-you">
         Refer below for how the Digital Service Standards team can assist you.
       </h3>
-      <h4>Assessment coordination</h4>
+      <h4 id="assessment-coordination">Assessment coordination</h4>
       <p>
         <ul className="goa-unordered-list">
           <li>
@@ -46,7 +52,7 @@ export default function ServiceHelp() {
           </li>
         </ul>
       </p>
-      <h4>Adoption monitoring</h4>
+      <h4 id="adoption-monitoring">Adoption monitoring</h4>
       <p>
         <ul className="goa-unordered-list">
           <li>
@@ -62,7 +68,7 @@ export default function ServiceHelp() {
           </li>
         </ul>
       </p>
-      <h4>Support signposting</h4>
+      <h4 id="support-signposting">Support signposting</h4>
       <p>
         <ul className="goa-unordered-list">
           <li>

@@ -1,0 +1,110 @@
+---
+import '@abgov/design-tokens/dist/tokens.css';
+import '@abgov/web-components-1.20.3/index.css';
+import Layout from '../layouts/Layout';
+
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Digital standards</title>
+		<link href="/pagefind/pagefind-ui.css" rel="stylesheet">
+		<script src="/pagefind/pagefind-ui.js" is:inline></script>
+		<script
+		type="module"
+		src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+	  ></script>
+	  <script
+		nomodule
+		src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>  
+	</head>
+
+	<body>
+		<Layout client:load hideNav={true}>
+			<h1>Search</h1>
+			<div id="search">
+			</div>
+		</Layout>
+		<script type="module">
+			window.addEventListener('DOMContentLoaded', (event) => {
+				//@ts-ignore
+				new PagefindUI({ 
+					element: "#search", 
+					showSubResults: true,
+					excerptLength: 50, 
+					debounceTimeoutMs: 500,
+				});
+			});
+		</script>
+
+	</body>
+</html>
+
+<style is:global>
+	:root {
+		--pagefind-ui-scale: 1;
+	}
+	.pagefind-ui__search-input{
+		border: var(--goa-border-width-s) solid var(--goa-color-text-default) !important;
+	}
+	.pagefind-ui__search-input:hover{
+		border: var(--goa-border-width-m) solid var(--goa-color-interactive-hover) !important;
+	}
+	.pagefind-ui__result-link{
+		color: var(--goa-color-interactive-default) !important;
+		font-weight: var(--goa-font-weight-regular) !important;
+		font-size: var(--goa-font-size-4) !important;
+	}
+	.pagefind-ui__result{
+		display: block !important;
+		border-bottom: var(--goa-color-greyscale-200) var(--goa-border-width-s) solid !important;
+		padding: 0 !important;
+		border-top: none  !important;
+	}
+	.pagefind-ui__result-nested{
+		padding-top: var(--goa-space-m) !important; 
+	}
+	.pagefind-ui__result-nested:last-child {
+		padding-bottom: var(--goa-space-m);
+	}
+
+
+	.pagefind-ui__result-thumb{
+		margin-top: var(--goa-space-none) !important;
+		width: var(--goa-icon-size-m) !important;
+	}
+	.pagefind-ui__result-excerpt{
+		padding-top: var(--goa-space-xs) !important;
+		padding-bottom: var(--goa-space-xs) !important;
+	}
+	.pagefind-ui__result-link {
+		text-decoration: underline !important;
+	}
+	.pagefind-ui__result-link:visited {
+		color: #7A01AA !important;
+	}
+	.pagefind-ui__button{
+		color: var(--goa-color-interactive-default) !important;
+		font-weight: var(--goa-font-weight-regular) !important;
+	}
+	.pagefind-ui__button:hover{
+		border: var(--goa-color-interactive-hover) var(--goa-border-width-m) solid !important;
+	}
+	mark{
+		background-color: #F7F7F7 !important;
+		font-weight: var(--goa-font-weight-bold) !important;
+	}
+	.pagefind-ui__message{
+		color: var(--goa-color-text-secondary) !important;
+		font-weight: var(--goa-font-weight-medium) !important;
+		border-bottom: none !important;
+		padding-top: var(--goa-space-none) !important;
+		padding-bottom: var(--goa-space-none) !important;
+	}
+
+</style>

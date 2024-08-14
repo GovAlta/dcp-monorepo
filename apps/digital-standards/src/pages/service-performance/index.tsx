@@ -3,12 +3,18 @@ import {
   GoAButton,
   GoASpacer,
 } from '@abgov/react-components-4.20.2';
-import React from 'react';
+import React, { useEffect } from 'react';
 import BackToTop from '../../components/BackToTop';
 
 export default function ServicePerformance() {
+  useEffect(() => {
+    if (window.location.hash) {
+      const elmnt = document.getElementById(window.location.hash.substring(1));
+      elmnt?.scrollIntoView(true);
+    }
+  }, []);
   return (
-    <div>
+    <div data-pagefind-body>
       <GoAButton
         type="tertiary"
         size="compact"
@@ -18,7 +24,7 @@ export default function ServicePerformance() {
         Back
       </GoAButton>
       <GoASpacer vSpacing="l" />
-      <h1>Service Performance</h1>
+      <h1 id="service-performance">Service Performance</h1>
       <p>
         Digital Service Standards and Service Performance are a foundational
         commitment of the Digital Strategy.
@@ -55,7 +61,9 @@ export default function ServicePerformance() {
         heading="Standard no. 3 - Focus on outcomes"
         open={false}
       >
-        <h4>Relavent principles: The standard’s aspirations</h4>
+        <h4 id="relavent-principles">
+          Relavent principles: The standard’s aspirations
+        </h4>
         <p>
           <b>No. 4</b> – Operate a reliable service. Ensure services operate,
           improve, and adapt to changing user needs with minimum disruption.
@@ -70,7 +78,7 @@ export default function ServicePerformance() {
           service work for users and share performance data.
         </p>
 
-        <h4>Overview: What the standard represents</h4>
+        <h4 id="overview">Overview: What the standard represents</h4>
         <p>
           Digital service teams should continuously monitor how effectively
           their services meet Albertans’ expectations by collecting and
@@ -80,7 +88,7 @@ export default function ServicePerformance() {
           meet user expectations.
         </p>
 
-        <h4>Goals: Why the standard matters</h4>
+        <h4 id="goals">Goals: Why the standard matters</h4>
         <p>Focusing on service performance should:</p>
         <ul className="goa-unordered-list">
           <li>
@@ -104,7 +112,7 @@ export default function ServicePerformance() {
           </li>
         </ul>
 
-        <h4>In action: How to follow the standard in practice</h4>
+        <h4 id="action">In action: How to follow the standard in practice</h4>
         <p>Digital service teams should:</p>
         <ul className="goa-unordered-list">
           <li>
@@ -141,7 +149,7 @@ export default function ServicePerformance() {
           </li>
         </ul>
 
-        <h4>
+        <h4 id="assessment">
           Assessment criteria: Examples of how to measure alignment to the
           Service Standards
         </h4>

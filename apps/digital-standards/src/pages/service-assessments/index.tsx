@@ -1,11 +1,17 @@
 import { GoASpacer, GoAButton, GoAIcon } from '@abgov/react-components-4.20.2';
-import React from 'react';
+import React, { useEffect } from 'react';
 import BackToTop from '../../components/BackToTop';
 import ExternalLink from '../../components/ExternalLink';
 
 export default function ServiceAssessments(): JSX.Element {
+  useEffect(() => {
+    if (window.location.hash) {
+      const elmnt = document.getElementById(window.location.hash.substring(1));
+      elmnt?.scrollIntoView(true);
+    }
+  }, []);
   return (
-    <div>
+    <div data-pagefind-body>
       <GoAButton
         type="tertiary"
         size="compact"
@@ -15,33 +21,40 @@ export default function ServiceAssessments(): JSX.Element {
         Back
       </GoAButton>
       <GoASpacer vSpacing="l" />
-      <h1>Service Assessments</h1>
+      <h1 id="service-assessments">Service Assessments</h1>
       <GoASpacer vSpacing="l" />
       <p>
         If your service is in the discovery phase you should have the following
         in place before booking an assessment:
       </p>
       <ul className="goa-unordered-list">
-       <li>Have developed opportunity cards or have begun writing your release
-       proposal.</li> 
-      <li>Have defined user group(s) and problem statement(s)</li>
+        <li>
+          Have developed opportunity cards or have begun writing your release
+          proposal.
+        </li>
+        <li>Have defined user group(s) and problem statement(s)</li>
       </ul>
-       <p> All other services in any phase of the digital service design lifecycle
-        may book an assessment at any time.</p>
+      <p>
+        {' '}
+        All other services in any phase of the digital service design lifecycle
+        may book an assessment at any time.
+      </p>
       <p>Before booking an assessment:</p>
       <ul className="goa-unordered-list">
         <li>Familiarize yourself with the Digital Service Standards.</li>
         <li>Booking an assessment</li>
         <li>
-          To book an assessment email the Digital Service Standards Team at 
+          To book an assessment email the Digital Service Standards Team at
           <ExternalLink
-            link={"mailto:DigitalServiceStandards@gov.ab.ca"}
-            text={"DigitalServiceStandards@gov.ab.ca"}
+            link={'mailto:DigitalServiceStandards@gov.ab.ca'}
+            text={'DigitalServiceStandards@gov.ab.ca'}
           />
         </li>
       </ul>
       <GoASpacer vSpacing="l" />
-      <h2>Who should attend the assessment</h2>
+      <h2 id="who-should-attend-the-assessment">
+        Who should attend the assessment
+      </h2>
       <p>
         It is recommended that at least the following team members attend the
         assessment:
@@ -53,14 +66,17 @@ export default function ServiceAssessments(): JSX.Element {
         <li>Scrum Master (alpha, beta, and live assessments)</li>
       </ul>
       <GoASpacer vSpacing="l" />
-      <h2>How to prepare for an assessment</h2>
+      <h2 id="how-to-prepare-for-an-assessment">
+        How to prepare for an assessment
+      </h2>
       <p>
         When the assessment is booked you will receive a link to an assessment
         tool. This assessment tool is designed to prepare your team for all
-        questions and topics discussed in the assessment meetings. Please complete this tool 24 business hours ahead of the assessment meeting.
+        questions and topics discussed in the assessment meetings. Please
+        complete this tool 24 business hours ahead of the assessment meeting.
       </p>
       <GoASpacer vSpacing="l" />
-      <h2>What will happen during the assessment</h2>
+      <h2 id="what-will-happen-during-the-assessment">What will happen during the assessment</h2>
       <p>
         The assessment will be conducted by a minimum of two members of the
         Digital Service Standards team and often will also include a Practice
@@ -89,7 +105,7 @@ export default function ServiceAssessments(): JSX.Element {
         opportunity cards or Executive presentation slide decks.
       </p>
       <GoASpacer vSpacing="l" />
-      <h2>What will happen after the assessment</h2>
+      <h2 id="what-will-happen-after-the-assessment">What will happen after the assessment</h2>
       <ul className="goa-unordered-list">
         <li>
           Any follow-up questions from the assessment team will be provided by
@@ -102,11 +118,12 @@ export default function ServiceAssessments(): JSX.Element {
       </ul>
       <p>
         Any questions, comments, and feedback about the report, assessment or
-        process can be sent to 
+        process can be sent to
         <ExternalLink
-            link={"mailto:DigitalServiceStandards@gov.ab.ca"}
-            text={"DigitalServiceStandards@gov.ab.ca"}
-          />.
+          link={'mailto:DigitalServiceStandards@gov.ab.ca'}
+          text={'DigitalServiceStandards@gov.ab.ca'}
+        />
+        .
       </p>
       <GoASpacer vSpacing="2xl" />      
       <BackToTop />

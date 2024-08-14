@@ -9,6 +9,18 @@
       "executor": "@nxtensions/astro:build",
       "options": {}
     },
+    "buildcustom": {
+      "executor": "nx:run-commands",
+      "dependsOn": [
+        {
+          "target": "build",
+          "projects": "self"
+        }
+      ],
+      "options": {
+        "commands": []
+      }
+    },
     "dev": {
       "executor": "@nxtensions/astro:dev",
       "options": {}

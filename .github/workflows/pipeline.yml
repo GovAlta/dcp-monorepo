@@ -61,7 +61,7 @@ jobs:
       - name: Test
         run: npx nx affected --target=test --base=${{ env.AFFECTED_BASE }}
       - name: Build
-        run: npx nx affected --target=build --base=${{ env.AFFECTED_BASE }} --configuration production
+        run: npx nx affected --target=buildcustom --base=${{ env.AFFECTED_BASE }} --configuration production
       # Set affected apps to env for later steps and jobs.
       - name: Set AFFECTED_APPS for OC steps
         run: echo "AFFECTED_APPS=$(npx nx affected:apps --plain --base=${{ env.AFFECTED_BASE }})" >> $GITHUB_ENV

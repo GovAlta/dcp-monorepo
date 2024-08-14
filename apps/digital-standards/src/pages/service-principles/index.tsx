@@ -4,12 +4,18 @@ import {
   GoAButton,
   GoASpacer,
 } from '@abgov/react-components-4.20.2';
-import React from 'react';
+import React, { useEffect } from 'react';
 import BackToTop from '../../components/BackToTop';
 
 const StrategyPrinciples = () => {
+  useEffect(() => {
+    if (window.location.hash) {
+      const elmnt = document.getElementById(window.location.hash.substring(1));
+      elmnt?.scrollIntoView(true);
+    }
+  }, []);
   return (
-    <div>
+    <div data-pagefind-body>
       <GoAButton
         type="tertiary"
         size="compact"
@@ -19,7 +25,7 @@ const StrategyPrinciples = () => {
         Back
       </GoAButton>
       <GoASpacer vSpacing="l" />
-      <h1>Digital Service Principles</h1>
+      <h1 id="digital-service-principles">Digital Service Principles</h1>
       <p>
         A set of 14 Digital Service Principles will guide how we work with
         in-house and vendor teams to design, deliver, and operate digital
@@ -32,7 +38,9 @@ const StrategyPrinciples = () => {
 
       <GoAGrid gap="xl" minChildWidth="320px">
         <GoAContainer type="non-interactive" accent="thin">
-          <h3>Understand users and their needs before the solution.</h3>
+          <h3 id="understand-users-and-their-needs-before-the-solution">
+            Understand users and their needs before the solution.
+          </h3>
           <p>
             Develop a deep and ongoing understanding of who the service users
             are, how they behave, and what that means for the design and
@@ -40,14 +48,18 @@ const StrategyPrinciples = () => {
           </p>
         </GoAContainer>
         <GoAContainer accent="thin" type="non-interactive">
-          <h3>Make the service accessible and inclusive. </h3>
+          <h3 id="make-the-service-accessible-and-inclusive">
+            Make the service accessible and inclusive. 
+          </h3>
           <p>
             Design the service for inclusion so that all who need it can use it.
             A diverse, inclusive delivery team improves the chance of success.
           </p>
         </GoAContainer>
         <GoAContainer accent="thin" type="non-interactive">
-          <h3>Establish and empower the right team.</h3>
+          <h3 id="establish-and-empower-the-right-team">
+            Establish and empower the right team.
+          </h3>
           <p>
             Put in place a multidisciplinary team that can create, operate, and
             continuously improve the service in a sustainable way. A suitably
@@ -56,7 +68,9 @@ const StrategyPrinciples = () => {
           </p>
         </GoAContainer>
         <GoAContainer accent="thin" type="non-interactive">
-          <h3>Design and test the service from end to end. </h3>
+          <h3 id="design-and-test-the-service-from-end-to-end">
+            Design and test the service from end to end. 
+          </h3>
           <p>
             Design a seamless, resilient, omnichannel experience that meets user
             needs. Test end-to-end, early and often, with users to validate
@@ -64,7 +78,9 @@ const StrategyPrinciples = () => {
           </p>
         </GoAContainer>
         <GoAContainer accent="thin" type="non-interactive">
-          <h3>Iterate and improve frequently. </h3>
+          <h3 id="iterate-and-improve-frequently">
+            Iterate and improve frequently. 
+          </h3>
           <p>
             Start small and scale the service rapidly using agile ways of
             working. Design with users and continuously improve services based
@@ -72,7 +88,9 @@ const StrategyPrinciples = () => {
           </p>
         </GoAContainer>
         <GoAContainer accent="thin" type="non-interactive">
-          <h3> Choose the right tools and technology. </h3>
+          <h3 id="choose-the-right-tools-and-technology">
+            Choose the right tools and technology. 
+          </h3>
           <p>
             Choose technology that is scalable, interoperable, secure,
             accessible, and open, showing a bias to small pieces of technology,
@@ -80,14 +98,14 @@ const StrategyPrinciples = () => {
           </p>
         </GoAContainer>
         <GoAContainer accent="thin" type="non-interactive">
-          <h3>Operate a reliable service.</h3>
+          <h3 id="operate-a-reliable-service">Operate a reliable service.</h3>
           <p>
             Sustainably resource the service so it can operate, improve, and
             adapt to changing user needs with minimum disruption for users.
           </p>
         </GoAContainer>
         <GoAContainer accent="thin" type="non-interactive">
-          <h3>Work in the open.</h3>
+          <h3 id="work-in-the-open">Work in the open.</h3>
           <p>
             Make new source code and non-sensitive data open and reusable.
             Expose the service via an API that can be used within and (where
@@ -97,7 +115,9 @@ const StrategyPrinciples = () => {
           </p>
         </GoAContainer>
         <GoAContainer accent="thin" type="non-interactive">
-          <h3>Structure budgets and contracts to support agile delivery.</h3>
+          <h3 id="structure-budgets-and-contracts-to-support-agile-delivery">
+            Structure budgets and contracts to support agile delivery.
+          </h3>
           <p>
             When buying products, services, or solutions, apply modular
             contracting principles to mitigate risk, avoid vendor lock-in, and
@@ -105,7 +125,7 @@ const StrategyPrinciples = () => {
           </p>
         </GoAContainer>
         <GoAContainer accent="thin" type="non-interactive">
-          <h3>
+          <h3 id="use-and-contribute-to-open-standards-common-components-and-patterns">
             Use and contribute to open standards, common components and
             patterns.
           </h3>
@@ -116,7 +136,9 @@ const StrategyPrinciples = () => {
           </p>
         </GoAContainer>
         <GoAContainer accent="thin" type="non-interactive">
-          <h3>Create a secure, ethical service that protects user privacy.</h3>
+          <h3 id="create-a-secure-ethical-service-that-protects-user-privacy">
+            Create a secure, ethical service that protects user privacy
+          </h3>
           <p>
             Identify the data the service will use, store, or create. Apply
             privacy by design principles and appropriate legal and security
@@ -125,7 +147,7 @@ const StrategyPrinciples = () => {
           </p>
         </GoAContainer>
         <GoAContainer accent="thin" type="non-interactive">
-          <h3>Measure performance.</h3>
+          <h3 id="measure-performance">Measure performance.</h3>
           <p>
             Measure how well all parts of the service work for users, including
             how people interact with it in real time and publish performance
@@ -133,7 +155,9 @@ const StrategyPrinciples = () => {
           </p>
         </GoAContainer>
         <GoAContainer accent="thin" type="non-interactive">
-          <h3> Make the service simple to use. </h3>
+          <h3 id="make-the-service-simple-to-use">
+            Make the service simple to use. 
+          </h3>
           <p>
             Ensure that users can do what they need to do as simply as possible
             and succeed the first time with
@@ -141,7 +165,7 @@ const StrategyPrinciples = () => {
           minimal help.
         </GoAContainer>
         <GoAContainer accent="thin" type="non-interactive">
-          <h3>Make data useable.</h3>
+          <h3 id="make-data-useable">Make data useable.</h3>
           <p>
             Ensure data will map into other services, and follows standards for
             data governance, metadata management, and quality assurance. Also,
@@ -158,3 +182,4 @@ const StrategyPrinciples = () => {
 };
 
 export default StrategyPrinciples;
+

@@ -3,12 +3,18 @@ import {
   GoAAccordion,
   GoAButton,
 } from '@abgov/react-components-4.20.2';
-import React from 'react';
+import React, { useEffect } from 'react';
 import BackToTop from '../../components/BackToTop';
 
 export default function ServiceStandards(): JSX.Element {
+  useEffect(() => {
+    if (window.location.hash) {
+      const elmnt = document.getElementById(window.location.hash.substring(1));
+      elmnt?.scrollIntoView(true);
+    }
+  }, []);
   return (
-    <div>
+    <div data-pagefind-body>
       <GoAButton
         type="tertiary"
         size="compact"
@@ -19,7 +25,7 @@ export default function ServiceStandards(): JSX.Element {
       </GoAButton>
       <GoASpacer vSpacing="l" />
 
-      <h1>Digital Service standards</h1>
+      <h1 id='digital-service-standards'>Digital Service standards</h1>
       <GoASpacer vSpacing="l" />
       <h2>What are Digital Service Standards?</h2>
       <p>
@@ -34,7 +40,7 @@ export default function ServiceStandards(): JSX.Element {
 
       <GoASpacer vSpacing="3xs" />
 
-      <h2>Why Digital Service Standards?</h2>
+      <h2 id='why-digital-service-standards'>Why Digital Service Standards?</h2>
       <p>
         By aligning to digital service standards, the Government of Alberta sets
         clear expectations on how we will deliver{' '}
@@ -57,7 +63,7 @@ export default function ServiceStandards(): JSX.Element {
         heading="Standard no. 1 - Design with users"
         open={false}
       >
-        <h4>Relavent principles: The standard’s aspirations</h4>
+        <h4>Relevant principles: The standard’s aspirations</h4>
         <p>
           <b>No. 1</b>– Understand users and their needs before the solution. A
           deep and ongoing understanding of the user’s experience will guide the
