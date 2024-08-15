@@ -38,6 +38,49 @@ Run the `application` generator to create a new micro-app:
 npx nx g @nxtensions/astro:application
 ```
 
+### Adding custombuild command
+
+The `buildcustom` target has been introduced to provide flexibility in adding custom post-build steps to the build process. This allows for tasks such as indexing the app for search to be executed after the build is complete.
+
+Once the app is generated it is important to add this command to `project.json` file in our project. Otherwise the build will fail.
+
+```javascript
+"buildcustom": {
+  "executor": "nx:run-commands",
+  "dependsOn": [
+    {
+      "target": "build",
+      "projects": "self"
+    }
+  ],
+  "options": {
+    "commands": []
+  }
+}
+```
+
+### Adding Custom Post-Build Steps
+
+To add custom post-build steps, simply add commands to the commands array in the options section of the buildcustom target. For example:
+
+```javascript
+"buildcustom": {
+  "executor": "nx:run-commands",
+  "dependsOn": [
+    {
+      "target": "build",
+      "projects": "self"
+    }
+  ],
+  "options": {
+    "commands": [
+      "npx pagefind --site dist/apps/app_name"
+    ]
+  }
+}
+```
+
+after the build is complete. It will start executing the commands under the `commands` array. In this case, it will index the site.
 
 ## Deployment
 
@@ -64,3 +107,36 @@ uat:  https://{app_name}-dcp-uat.apps.aro.gov.ab.ca
 prod:  https://{app_name}-dcp-prod.apps.aro.gov.ab.ca
 
 As an illustration, to access the "common-capabilities" app within the development environment, you would use the following URL: https://common-capabilities-dcp-dev.apps.aro.gov.ab.ca
+
+## Implementing Search component in your app
+
+Refer to `digital-standards` app for example on the setup
+
+### Overview
+
+The Search component is a reusable feature that can be easily integrated into various apps within our ecosystem. To utilize this component, we need to follow a simple implementation process and add a crucial step to our build process.
+
+### Implementation Steps
+
+1. **Import the Search component**: Import the Search component into your app's codebase.
+
+```javascript
+import { Search as DCPSearch} from "@abgov/dcp-common"
+```
+    
+2. **Use the Search component**: Use the Search component in your app's JSX/HTML.
+```jsx
+<DCPSearch title="Digital Standards"/>
+```
+
+### Build Process Update
+
+To enable the Search component to function correctly, we need to add an additional step to our build process. After building the app, we need to index the site using Pagefind.
+
+**Add the following command to your `buildcustom` step under `options.commands`**:
+```bash
+npx pagefind --site dist/apps/app_name
+```
+Replace `app_name` with the actual name of your app.
+
+This command will index your app's site, making it searchable using the Search component after the build stage.
