@@ -38,12 +38,13 @@ export default function HomePage(): JSX.Element {
     Status: false,
     FunctionalGroup: false,
   });
-  const date = new Date(lastUpdated);
-  const formattedDate = date.toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
+
+ // const date = new Date(lastUpdated);
+  // const formattedDate = date.toLocaleDateString('en-US', {
+  //   year: 'numeric',
+  //   month: 'long',
+  //   day: 'numeric',
+  // });
   const recommendedServicesWeightage = 50;
 
   // filters state
@@ -346,8 +347,7 @@ export default function HomePage(): JSX.Element {
       }
     >
       <h1 id="home-title">Services</h1>      
-      <span className="last-updated">Last updated: {formattedDate}</span>      
-      <br />
+      {/* <span className="last-updated">Last updated: {formattedDate}</span>   <br /> */}      
       <span className="last-updated">Showing {recommendedServices.length + otherServices.length} of {apps.length} results </span> 
       <GoASpacer vSpacing="s" />      
 

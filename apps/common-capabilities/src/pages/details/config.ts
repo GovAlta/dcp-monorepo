@@ -1,22 +1,37 @@
 export const securityGroups = [
     {
-        "name": "SecurityStatus",
-        "dataSecurityType": "Status",
-        "title": " Risk assessment completion status",
+        "name": "STRA",
+        "dataSecurityType": "",
+        "title": " General cybersecurity risk assessment",
+        "items": [
+            "STRA"
+        ],
         "tableTh": [],
         "note": ""
     },
     {
-        "name": "SecurityRequired",
-        "dataSecurityType": "Required",
-        "title": " Required before using this service",
+        "name": "Cybersecurity",
+        "dataSecurityType": "urity",
+        "title": " Cybersecurity consult",
+        "items": [
+            "CmraReq",
+            "IM",
+            "Data",
+            "Risk",
+            "Cybersecurity"
+        ],
         "tableTh": [],
         "note": ""
     },
     {
-        "name": "SecurityInfo",
-        "dataSecurityType": "Info",
-        "title": " Security details",
+        "name": "Considerations",
+        "dataSecurityType": "ations",
+        "title": " Special considerations",
+        "items": [
+            "Classification",
+            "Controller",
+            "Considerations"
+        ],
         "tableTh": [],
         "note": ""
     }

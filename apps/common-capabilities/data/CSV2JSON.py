@@ -136,7 +136,7 @@ for fileName in CSV_fileNames:
                     QA_Lang   = 2 if csv_row["Language"] == "" else 0
                     QA_Env    = 2 if csv_row["Environment"] == "" else 0    
                     QA_Misc   = 12 if csv_row["DataIssues"] != "" else 0    
-                    csv_row["QA"] = QA_Contact + QA_Doc + QA_FGroup + QA_Status + QA_Lang + QA_Env + QA_Misc
+                    # csv_row["QA"] = QA_Contact + QA_Doc + QA_FGroup + QA_Status + QA_Lang + QA_Env + QA_Misc
 
                     filterText = ''
                     securityBadge = ''
@@ -186,9 +186,9 @@ for fileName in CSV_fileNames:
                             if delKey in csv_row:
                                 del csv_row[delKey]
                          
-                        for delKey in [item['fieldName'] for item in SecurityFields if item['subGroup'] != '']:
-                            if delKey in csv_row:
-                                del csv_row[delKey]  
+                        # for delKey in [item['fieldName'] for item in SecurityFields if item['subGroup'] != '']:
+                        #     if delKey in csv_row:
+                        #         del csv_row[delKey]  
 
                         id_counter += 1
                         csv_row["appId"] = id_counter
@@ -261,48 +261,22 @@ for row2 in fieldMetadata:
 # ***************** END - Vote on filter text *********************
 
 # ***************** QA report  *********************
-bad_items = [{ 'Provider': item['Provider'], 'ServiceName': item['ServiceName'],'DataIssues': item['DataIssues']
-               ,'QA_Score': item['QA'],'Weightage': item['InternalWeightage']
-               ,'Documentation': item['Documentation']
-               ,'Contact': item['Contact']['methods']
-             } for item in data if item.get('QA') > 10 or item.get('DataIssues') != '']
-if len(bad_items) > 0:
-    print('There are ' +str(len(bad_items))+' records to investigate ' + CSV_fileDir + 'dataToInvestigate.csv')    
-    with open(CSV_fileDir + 'dataToInvestigate.csv', 'w', newline='') as csv_file:
-        fieldnames = ['Provider','ServiceName','DataIssues','QA_Score','Weightage','Documentation','Contact']
-        csv_writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
-        csv_writer.writeheader()
-        for item in bad_items:
-            csv_writer.writerow(item)
+# bad_items = [{ 'Provider': item['Provider'], 'ServiceName': item['ServiceName'],'DataIssues': item['DataIssues']
+#                ,'QA_Score': item['QA'],'Weightage': item['InternalWeightage']
+#                ,'Documentation': item['Documentation']
+#                ,'Contact': item['Contact']['methods']
+#              } for item in data if item.get('QA') > 10 or item.get('DataIssues') != '']
+# if len(bad_items) > 0:
+#     print('There are ' +str(len(bad_items))+' records to investigate ' + CSV_fileDir + 'dataToInvestigate.csv')    
+#     with open(CSV_fileDir + 'dataToInvestigate.csv', 'w', newline='') as csv_file:
+#         fieldnames = ['Provider','ServiceName','DataIssues','QA_Score','Weightage','Documentation','Contact']
+#         csv_writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+#         csv_writer.writeheader()
+#         for item in bad_items:
+#             csv_writer.writerow(item)
 # ***************** END - QA report  *********************
-                            
-parsed_dates = [datetime.strptime(item['LastUpdated'], '%m/%d/%Y') for item in data]
-mostRecentService = max(parsed_dates).strftime("%m/%d/%Y")
 
-now = datetime.now() 
-current_date = now.strftime("%m/%d/%Y, %H:%M")
-
-data2 = {"lastUpdated": current_date
-         ,"isProductionData": ProductionData
-         ,"mostRecentService": mostRecentService
-         ,"dateFormat": "mm/dd/yyyy"
-         ,"services": data
-        }
-
-# Now output to: outputDirData , outputDirFields, outputDirConfig
-
-for folderName in outputDirData:
-    if os.path.exists(folderName):
-        print('Output: ' + folderName +  'datastore.json')
-        with open(folderName +  'datastore.json', 'w') as jsonfile:
-            jsonfile.write(json.dumps(data2, indent=4))
-
-for folderName in outputDirFields:
-    if os.path.exists(folderName):       
-        print('Output: ' + folderName +  'datafields.json')
-        with open(folderName + 'datafields.json', 'w') as jsonfile:
-           jsonfile.write(json.dumps(fieldMetadata, indent=4))
-
+######################################
 updated_data = [row for row in fieldMetadata if row.get("Group") != "FunctionalGroup"] 
 for row in updated_data:
     for delKey in ["filter","default"]:  # "showBadge"
@@ -314,23 +288,9 @@ for item in updated_data:
     del item["fieldName"]
     del item["display"]
 
-
-######################################
-
 securityFields = [item for item in updated_data if item['group'] == 'Security']
 
-# for folderName in outputDirConfig:
-#     if os.path.exists(folderName):
-#         print('Output: ' + folderName + 'datastore.json & datafields.json')
-        # with open(folderName + 'config@Steve.ts', 'w') as configfile:
-        #     configfile.write('export const fieldList = ') 
-        #     configfile.write(json.dumps(securityFields, indent=4))                
-        # if configFileVersion != '':            
-        #     print('Output: ' + configFileVerDir + 'config@Steve_CC-'+configFileVersion + '.ts')
-        #     with open(configFileVerDir + 'config@Steve_CC-'+configFileVersion + '.ts', 'w') as configfile:
-        #         configfile.write('export const fieldList = ')
-        #         configfile.write(json.dumps(securityFields, indent=4))  
-        ########################################################################
+######################################
 
 folderName = outputDirConfig[0]
 exportList = ''
@@ -338,6 +298,10 @@ with open(folderName + 'config.ts', 'w') as configfile:
     print('Output: ' + folderName + 'config.ts')
     securityGroupList = []
     for item in [item for item in securityFields if item['subGroup'] == '']:
+        itemList = []
+        for item in [item2 for item2 in securityFields if item2['subGroup'] == item['property'][8:] ]:
+            itemList.append(item['property'])
+
         th = []
         text = ' '+ item['title']
         for match in re.findall(r'([^()]+)\((.*?)\)', text):
@@ -347,6 +311,7 @@ with open(folderName + 'config.ts', 'w') as configfile:
         securityGroupList.append({ "name": item['property']
                                   , "dataSecurityType": item['property'][8:]
                                   , "title": text
+                                  , 'items': itemList 
                                   , "tableTh": th
                                   , 'note': item['note']
                                 #   , 'fieldList': item['property'][:1].lower() + item['property'][1:]
@@ -383,6 +348,42 @@ with open(folderName + 'config.ts', 'w') as configfile:
     configfile.write('\n\n\n // import {' + exportList[2:] + '} from \'./config\' ')
   
     ##################################################################################################
+
+
+# currently not using Security in final data. Maybe in the future. However it was used to build the config file
+for row in data:
+    for delKey in ["Security"]:
+        del row[delKey]
+
+# ************** Output data *************************                           
+parsed_dates = [datetime.strptime(item['LastUpdated'], '%m/%d/%Y') for item in data]
+mostRecentService = max(parsed_dates).strftime("%m/%d/%Y")
+
+now = datetime.now() 
+current_date = now.strftime("%m/%d/%Y, %H:%M")
+
+data2 = {"lastUpdated": current_date
+         ,"isProductionData": ProductionData
+         ,"mostRecentService": mostRecentService
+         ,"dateFormat": "mm/dd/yyyy"
+         ,"services": data
+        }
+
+# Now output to: outputDirData , outputDirFields, outputDirConfig
+
+for folderName in outputDirData:
+    if os.path.exists(folderName):
+        print('Output: ' + folderName +  'datastore.json')
+        with open(folderName +  'datastore.json', 'w') as jsonfile:
+            jsonfile.write(json.dumps(data2, indent=4))
+
+for folderName in outputDirFields:
+    if os.path.exists(folderName):       
+        print('Output: ' + folderName +  'datafields.json')
+        with open(folderName + 'datafields.json', 'w') as jsonfile:
+           jsonfile.write(json.dumps(fieldMetadata, indent=4))
+
+# ****************** finished with data ***************
 
 
 if len(modifiedRecords) > 0:

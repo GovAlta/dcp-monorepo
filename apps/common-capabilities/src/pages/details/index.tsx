@@ -70,10 +70,10 @@ export default function Details({ app }: DetailsProps): JSX.Element {
   }
 
   const SecurityBlock: React.FC<{ group: SecurityItem }> = ({ group }) => {
-    const itemData = app.Security.find(
-      (item: any) => item.Type === group.dataSecurityType
-    );
-    if (itemData == undefined) return null;
+    
+    //---[ app.Security is from the JSON data ]---
+    // const itemData = app.Security.find( (item: any) => item.Type === group.dataSecurityType);
+    // if (itemData == undefined) return null;
 
     function displayName(obj: any, key: string): string | undefined {
       return obj[key]?.title;
@@ -105,7 +105,20 @@ export default function Details({ app }: DetailsProps): JSX.Element {
             )}
           </thead>
           <tbody>
-            {itemData.Items.map((row: any, index: any) => (
+             {group.items             
+             .filter(item => app[item] !== '')
+             .map((item: any, index: any) => (
+              <>
+                <tr key={`tr-${group.name}${index}`}>
+                  <td key={`td1-${index}`}> {' '} {displayName(securityData, item)}{' '}  </td>
+                  <td key={`td2-${index}`} className={'service-content'}>
+                     {' '}
+                    {app[item]}{' '}
+                  </td>
+                </tr>
+              </>
+            ))} 
+            {/* {itemData.Items.map((row: any, index: any) => (
               <>
                 <tr key={`tr-${group.name}${index}`}>
                   <td key={`td1-${index}`}>
@@ -119,7 +132,7 @@ export default function Details({ app }: DetailsProps): JSX.Element {
                   </td>
                 </tr>
               </>
-            ))}
+            ))} */}
           </tbody>
         </GoATable>
         <GoASpacer vSpacing="xl" />
@@ -205,7 +218,7 @@ export default function Details({ app }: DetailsProps): JSX.Element {
       return (
         <>
           {app.InternalWeightage >= 50 ? (
-            <GoABadge key="validated" type="midtone" content="Recommended"  />
+            <GoABadge key="validated" type="information" content="Recommended"  />
           ) : null}
           <table>
             {/* <thead> <tr><th></th><th></th></tr> </thead> */}
@@ -241,7 +254,7 @@ export default function Details({ app }: DetailsProps): JSX.Element {
       return (
         <>
           {securityGroups.map((group: SecurityItem) => (
-            <SecurityBlock key={`block${group.name}`} group={group} />
+            <SecurityBlock key={`block${group.name}`} group={group} />            
           ))}
         </>
       );
