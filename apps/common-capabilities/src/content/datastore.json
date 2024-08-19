@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "07/11/2024, 13:54",
+    "lastUpdated": "08/16/2024, 15:22",
     "isProductionData": true,
     "mostRecentService": "04/16/2024",
     "dateFormat": "mm/dd/yyyy",
@@ -42,50 +42,17 @@
             "Reviewed": "",
             "DataIssues": "",
             "ReviewedBy": "",
+            "Controller": "API does not store content so not applicable. The solution that uses the API will require IC (DM or delegated role, often at the program ED/Director level).",
+            "Classification": "n/a",
             "CMRA": "No",
-            "QA": 2,
+            "CmraReq": "",
+            "IM": "No",
+            "Data": "",
+            "STRA": "No",
+            "Risk": "No",
+            "Cybersecurity": "No",
+            "Considerations": "",
             "filterText": "automation,service integration,live,openshift,api,goa,1gx, service",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "STRA",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Info",
-                    "Items": [
-                        {
-                            "Field": "Classification",
-                            "Value": "n/a"
-                        },
-                        {
-                            "Field": "Controller",
-                            "Value": "API does not store content so not applicable. The solution that uses the API will require IC (DM or delegated role, often at the program ED/Director level)."
-                        }
-                    ]
-                }
-            ],
             "Contact": {
                 "details": "Advanced request required through BERNIE: search and select the BERNIE service called '1GX API Service'.",
                 "methods": [
@@ -137,50 +104,17 @@
             "Reviewed": "",
             "DataIssues": "",
             "ReviewedBy": "",
+            "Controller": "Interface does not store content so not applicable. The overall solution will require IC (DM or delegated role, often at the program ED/Director level).",
+            "Classification": "n/a",
             "CMRA": "No",
-            "QA": 4,
+            "CmraReq": "",
+            "IM": "No",
+            "Data": "",
+            "STRA": "No",
+            "Risk": "No",
+            "Cybersecurity": "Required",
+            "Considerations": "",
             "filterText": "automation,service integration,live,api,goa,1gx, imagis, service",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "STRA",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "Required"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Info",
-                    "Items": [
-                        {
-                            "Field": "Classification",
-                            "Value": "n/a"
-                        },
-                        {
-                            "Field": "Controller",
-                            "Value": "Interface does not store content so not applicable. The overall solution will require IC (DM or delegated role, often at the program ED/Director level)."
-                        }
-                    ]
-                }
-            ],
             "Contact": {
                 "details": "Advanced request required through BERNIE; search and select the BERNIE service called '1GX Legacy IMAGIS Integration Service'.",
                 "methods": [
@@ -225,37 +159,17 @@
             "Reviewed": "",
             "DataIssues": "",
             "ReviewedBy": "",
+            "Controller": "",
+            "Classification": "",
             "CMRA": "No",
-            "QA": 20,
+            "CmraReq": "",
+            "IM": "No",
+            "Data": "",
+            "STRA": "No",
+            "Risk": "No",
+            "Cybersecurity": "Required",
+            "Considerations": "",
             "filterText": "user management,children's services platform,live,web api,openshift,api,children's services,keycloak",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "STRA",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "Required"
-                        }
-                    ]
-                }
-            ],
             "Contact": {
                 "details": "Discussion required to obtain access or to deploy container in line of business controlled environment",
                 "methods": [
@@ -303,50 +217,17 @@
             "Reviewed": "",
             "DataIssues": "",
             "ReviewedBy": "",
+            "Controller": "Brad Wile(Director, Information Technology,  Legal Aid Alberta)",
+            "Classification": "Public",
             "CMRA": "No",
-            "QA": 4,
+            "CmraReq": "",
+            "IM": "No",
+            "Data": "",
+            "STRA": "Completed",
+            "Risk": "No",
+            "Cybersecurity": "No",
+            "Considerations": "",
             "filterText": "data,service integration,live,service,goa",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "STRA",
-                            "Value": "Completed"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Info",
-                    "Items": [
-                        {
-                            "Field": "Classification",
-                            "Value": "Public"
-                        },
-                        {
-                            "Field": "Controller",
-                            "Value": "Brad Wile(Director, Information Technology,  Legal Aid Alberta)"
-                        }
-                    ]
-                }
-            ],
             "Contact": {
                 "details": "Users are to contact the Service Integration Team via BERNIE to request this service.",
                 "methods": [
@@ -394,37 +275,17 @@
             "Reviewed": "",
             "DataIssues": "",
             "ReviewedBy": "",
+            "Controller": "",
+            "Classification": "",
             "CMRA": "No",
-            "QA": 4,
+            "CmraReq": "",
+            "IM": "No",
+            "Data": "",
+            "STRA": "No",
+            "Risk": "No",
+            "Cybersecurity": "No",
+            "Considerations": "",
             "filterText": "data,seniors, community and social services (scss),typescript (dayjs),code",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "STRA",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "No"
-                        }
-                    ]
-                }
-            ],
             "Contact": {
                 "details": "Privately hosted npm package",
                 "methods": [
@@ -472,46 +333,17 @@
             "Reviewed": "",
             "DataIssues": "",
             "ReviewedBy": "",
+            "Controller": "Director, Business & Vital Event Registries, Service Alberta",
+            "Classification": "",
             "CMRA": "No",
-            "QA": 0,
+            "CmraReq": "",
+            "IM": "No",
+            "Data": "",
+            "STRA": "No",
+            "Risk": "No",
+            "Cybersecurity": "No",
+            "Considerations": "",
             "filterText": "data,platforms - common data services,alpha,.net core,on prem,api",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "STRA",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Info",
-                    "Items": [
-                        {
-                            "Field": "Controller",
-                            "Value": "Director, Business & Vital Event Registries, Service Alberta"
-                        }
-                    ]
-                }
-            ],
             "Contact": {
                 "details": "",
                 "methods": [
@@ -561,46 +393,17 @@
             "Reviewed": "",
             "DataIssues": "",
             "ReviewedBy": "",
+            "Controller": "Executive Director, Platforms, DDD",
+            "Classification": "",
             "CMRA": "No",
-            "QA": 0,
+            "CmraReq": "",
+            "IM": "No",
+            "Data": "",
+            "STRA": "No",
+            "Risk": "No",
+            "Cybersecurity": "No",
+            "Considerations": "",
             "filterText": "user management,platforms - iam,live,forgerock,azure,iam",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "STRA",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Info",
-                    "Items": [
-                        {
-                            "Field": "Controller",
-                            "Value": "Executive Director, Platforms, DDD"
-                        }
-                    ]
-                }
-            ],
             "Contact": {
                 "details": "Onboarding and integrations are handled via scheduled consultations. Can reach out to Robert Salloum or Syed Hashmi for further details",
                 "methods": [
@@ -653,46 +456,17 @@
             "Reviewed": "yes",
             "DataIssues": "",
             "ReviewedBy": "Andrew",
+            "Controller": "Executive Director, Software Delivery, DDD",
+            "Classification": "",
             "CMRA": "No",
-            "QA": 4,
+            "CmraReq": "",
+            "IM": "No",
+            "Data": "",
+            "STRA": "No",
+            "Risk": "No",
+            "Cybersecurity": "No",
+            "Considerations": "",
             "filterText": "data,alberta digital service platform (adsp),live,api",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "STRA",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Info",
-                    "Items": [
-                        {
-                            "Field": "Controller",
-                            "Value": "Executive Director, Software Delivery, DDD"
-                        }
-                    ]
-                }
-            ],
             "Contact": {
                 "details": "",
                 "methods": [
@@ -745,46 +519,17 @@
             "Reviewed": "",
             "DataIssues": "",
             "ReviewedBy": "",
+            "Controller": "Executive Director, Software Delivery, DDD",
+            "Classification": "",
             "CMRA": "No",
-            "QA": 4,
+            "CmraReq": "",
+            "IM": "No",
+            "Data": "",
+            "STRA": "No",
+            "Risk": "No",
+            "Cybersecurity": "No",
+            "Considerations": "",
             "filterText": "performance,alberta digital service platform (adsp),live,service",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "STRA",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Info",
-                    "Items": [
-                        {
-                            "Field": "Controller",
-                            "Value": "Executive Director, Software Delivery, DDD"
-                        }
-                    ]
-                }
-            ],
             "Contact": {
                 "details": "",
                 "methods": [
@@ -839,37 +584,17 @@
             "Reviewed": "",
             "DataIssues": "",
             "ReviewedBy": "",
+            "Controller": "",
+            "Classification": "",
             "CMRA": "No",
-            "QA": 4,
+            "CmraReq": "",
+            "IM": "No",
+            "Data": "",
+            "STRA": "No",
+            "Risk": "No",
+            "Cybersecurity": "No",
+            "Considerations": "",
             "filterText": "user management,alberta digital service platform (adsp),live,service,keycloak",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "STRA",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "No"
-                        }
-                    ]
-                }
-            ],
             "Contact": {
                 "details": "",
                 "methods": [
@@ -917,46 +642,17 @@
             "Reviewed": "",
             "DataIssues": "",
             "ReviewedBy": "",
+            "Controller": "Executive Director, Platforms, DDD",
+            "Classification": "",
             "CMRA": "No",
-            "QA": 0,
+            "CmraReq": "",
+            "IM": "No",
+            "Data": "",
+            "STRA": "No",
+            "Risk": "No",
+            "Cybersecurity": "No",
+            "Considerations": "",
             "filterText": "finance,platforms - common data services,alpha,.net core,on prem,api",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "STRA",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Info",
-                    "Items": [
-                        {
-                            "Field": "Controller",
-                            "Value": "Executive Director, Platforms, DDD"
-                        }
-                    ]
-                }
-            ],
             "Contact": {
                 "details": "",
                 "methods": [
@@ -999,46 +695,17 @@
             "Reviewed": "Yes",
             "DataIssues": "",
             "ReviewedBy": "Heather",
+            "Controller": "",
+            "Classification": "",
             "CMRA": "No",
-            "QA": 20,
+            "CmraReq": "",
+            "IM": "Required",
+            "Data": "",
+            "STRA": "No",
+            "Risk": "No",
+            "Cybersecurity": "No",
+            "Considerations": "If system has functionality to attach semi structured or unstructured content, IMP and/or CMO Consult/CMRA should be done.",
             "filterText": "data,advanced education,live,typescript,container,service",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "STRA",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "Required"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Info",
-                    "Items": [
-                        {
-                            "Field": "Considerations",
-                            "Value": "If system has functionality to attach semi structured or unstructured content, IMP and/or CMO Consult/CMRA should be done."
-                        }
-                    ]
-                }
-            ],
             "Contact": {
                 "details": "Discussion required to obtain access or to deploy container in line of business controlled environment",
                 "methods": [
@@ -1084,46 +751,17 @@
             "Reviewed": "Yes",
             "DataIssues": "",
             "ReviewedBy": "Heather",
+            "Controller": "Executive Director, Platforms, DDD",
+            "Classification": "",
             "CMRA": "No",
-            "QA": 52,
+            "CmraReq": "",
+            "IM": "No",
+            "Data": "",
+            "STRA": "No",
+            "Risk": "Required",
+            "Cybersecurity": "Required",
+            "Considerations": "",
             "filterText": "finance,platforms -common platforms,.net core,azure,cloud,payment",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "STRA",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "Required"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "Required"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Info",
-                    "Items": [
-                        {
-                            "Field": "Controller",
-                            "Value": "Executive Director, Platforms, DDD"
-                        }
-                    ]
-                }
-            ],
             "Contact": {
                 "details": "",
                 "methods": []
@@ -1165,46 +803,17 @@
             "Reviewed": "yes",
             "DataIssues": "",
             "ReviewedBy": "Andrew",
+            "Controller": "Executive Director, Platforms, DDD",
+            "Classification": "",
             "CMRA": "No",
-            "QA": 4,
+            "CmraReq": "",
+            "IM": "Required",
+            "Data": "",
+            "STRA": "No",
+            "Risk": "No",
+            "Cybersecurity": "No",
+            "Considerations": "",
             "filterText": "data,alberta digital service platform (adsp),live",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "STRA",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "Required"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Info",
-                    "Items": [
-                        {
-                            "Field": "Controller",
-                            "Value": "Executive Director, Platforms, DDD"
-                        }
-                    ]
-                }
-            ],
             "Contact": {
                 "details": "",
                 "methods": [
@@ -1263,46 +872,17 @@
             "Reviewed": "yes",
             "DataIssues": "",
             "ReviewedBy": "Andrew",
+            "Controller": "",
+            "Classification": "",
             "CMRA": "No",
-            "QA": 0,
+            "CmraReq": "",
+            "IM": "Required",
+            "Data": "",
+            "STRA": "No",
+            "Risk": "Required",
+            "Cybersecurity": "Required",
+            "Considerations": "IMP consult re: electronic signatures may be needed.",
             "filterText": "data,justice digital,live,angular, .net core, typescript,aws,api,justice digital,pdf, digital signature, digital certification",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "STRA",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "Required"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "Required"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "Required"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Info",
-                    "Items": [
-                        {
-                            "Field": "Considerations",
-                            "Value": "IMP consult re: electronic signatures may be needed."
-                        }
-                    ]
-                }
-            ],
             "Contact": {
                 "details": "",
                 "methods": [
@@ -1352,37 +932,17 @@
             "Reviewed": "",
             "DataIssues": "Are Amazon QuickSight and shared architecture framework strategy 2 very different and unrelated things?",
             "ReviewedBy": "",
+            "Controller": "",
+            "Classification": "",
             "CMRA": "No",
-            "QA": 12,
+            "CmraReq": "",
+            "IM": "No",
+            "Data": "",
+            "STRA": "n/a",
+            "Risk": "n/a",
+            "Cybersecurity": "n/a",
+            "Considerations": "",
             "filterText": "performance,justice digital,live,python,aws,reporting",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "STRA",
-                            "Value": "n/a"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "n/a"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "n/a"
-                        }
-                    ]
-                }
-            ],
             "Contact": {
                 "details": "",
                 "methods": [
@@ -1434,50 +994,17 @@
             "Reviewed": "yes",
             "DataIssues": "",
             "ReviewedBy": "Andrew",
+            "Controller": "Director, Integration Services, TSO",
+            "Classification": "",
             "CMRA": "No",
-            "QA": 4,
+            "CmraReq": "",
+            "IM": "Required",
+            "Data": "",
+            "STRA": "No",
+            "Risk": "No",
+            "Cybersecurity": "No",
+            "Considerations": "CMO - Forms teams may need to be consulted.",
             "filterText": "forms and documents,service integration,live,service,goa,docx, xlsx, pdf",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "STRA",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "Required"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Info",
-                    "Items": [
-                        {
-                            "Field": "Controller",
-                            "Value": "Director, Integration Services, TSO"
-                        },
-                        {
-                            "Field": "Considerations",
-                            "Value": "CMO - Forms teams may need to be consulted."
-                        }
-                    ]
-                }
-            ],
             "Contact": {
                 "details": "Users are to contact the Service Integration Team via BERNIE to request this service.",
                 "methods": [
@@ -1532,41 +1059,17 @@
             "Reviewed": "",
             "DataIssues": "",
             "ReviewedBy": "",
+            "Controller": "",
+            "Classification": "",
             "CMRA": "Completed",
-            "QA": 0,
+            "CmraReq": "Required",
+            "IM": "Required",
+            "Data": "",
+            "STRA": "No",
+            "Risk": "No",
+            "Cybersecurity": "Required",
+            "Considerations": "",
             "filterText": "forms and documents,justice digital,live,angular, .net core, typescript,aws,pdf, digital signature, stamping, digital certification",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "STRA",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "CmraReq",
-                            "Value": "Required"
-                        },
-                        {
-                            "Field": "IM",
-                            "Value": "Required"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "Required"
-                        }
-                    ]
-                }
-            ],
             "Contact": {
                 "details": "",
                 "methods": [
@@ -1617,50 +1120,17 @@
             "Reviewed": "",
             "DataIssues": "",
             "ReviewedBy": "",
+            "Controller": "Director, Integration Services, TSO",
+            "Classification": "",
             "CMRA": "Completed",
-            "QA": 4,
+            "CmraReq": "Required",
+            "IM": "Required",
+            "Data": "",
+            "STRA": "No",
+            "Risk": "No",
+            "Cybersecurity": "No",
+            "Considerations": "",
             "filterText": "forms and documents,service integration,live,api,goa,ecm, rest",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "STRA",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "CmraReq",
-                            "Value": "Required"
-                        },
-                        {
-                            "Field": "IM",
-                            "Value": "Required"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Info",
-                    "Items": [
-                        {
-                            "Field": "Controller",
-                            "Value": "Director, Integration Services, TSO"
-                        }
-                    ]
-                }
-            ],
             "Contact": {
                 "details": "",
                 "methods": [
@@ -1717,58 +1187,17 @@
             "Reviewed": "",
             "DataIssues": "",
             "ReviewedBy": "",
+            "Controller": "Corporate CIO",
+            "Classification": "n/a",
             "CMRA": "Completed",
-            "QA": 4,
+            "CmraReq": "Required",
+            "IM": "Required",
+            "Data": "",
+            "STRA": "Completed",
+            "Risk": "No",
+            "Cybersecurity": "No",
+            "Considerations": "IMP, CCS, CMO",
             "filterText": "forms and documents,service integration,live,service,goa,sharepoint online, ecm, rest",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "STRA",
-                            "Value": "Completed"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "CmraReq",
-                            "Value": "Required"
-                        },
-                        {
-                            "Field": "IM",
-                            "Value": "Required"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Info",
-                    "Items": [
-                        {
-                            "Field": "Classification",
-                            "Value": "n/a"
-                        },
-                        {
-                            "Field": "Controller",
-                            "Value": "Corporate CIO"
-                        },
-                        {
-                            "Field": "Considerations",
-                            "Value": "IMP, CCS, CMO"
-                        }
-                    ]
-                }
-            ],
             "Contact": {
                 "details": "Users are to contact the Service Integration Team via BERNIE to request this service.",
                 "methods": [
@@ -1811,37 +1240,17 @@
             "Reviewed": "Yes",
             "DataIssues": "",
             "ReviewedBy": "Heather",
+            "Controller": "",
+            "Classification": "",
             "CMRA": "No",
-            "QA": 0,
+            "CmraReq": "",
+            "IM": "No",
+            "Data": "",
+            "STRA": "No",
+            "Risk": "No",
+            "Cybersecurity": "Required",
+            "Considerations": "",
             "filterText": "user management,platforms - common data services,alpha,.net core,on prem,api",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "STRA",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "Required"
-                        }
-                    ]
-                }
-            ],
             "Contact": {
                 "details": "",
                 "methods": [
@@ -1892,46 +1301,17 @@
             "Reviewed": "",
             "DataIssues": "",
             "ReviewedBy": "",
+            "Controller": "Director, Integration Services, TSO",
+            "Classification": "",
             "CMRA": "No",
-            "QA": 4,
+            "CmraReq": "",
+            "IM": "No",
+            "Data": "",
+            "STRA": "No",
+            "Risk": "No",
+            "Cybersecurity": "No",
+            "Considerations": "",
             "filterText": "communication,service integration,live,service,goa,email, service",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "STRA",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Info",
-                    "Items": [
-                        {
-                            "Field": "Controller",
-                            "Value": "Director, Integration Services, TSO"
-                        }
-                    ]
-                }
-            ],
             "Contact": {
                 "details": "Users are to contact the Service Integration Team via BERNIE to request this service.",
                 "methods": [
@@ -1974,37 +1354,17 @@
             "Reviewed": "",
             "DataIssues": "",
             "ReviewedBy": "",
+            "Controller": "",
+            "Classification": "",
             "CMRA": "No",
-            "QA": 20,
+            "CmraReq": "",
+            "IM": "No",
+            "Data": "",
+            "STRA": "No",
+            "Risk": "No",
+            "Cybersecurity": "Required",
+            "Considerations": "",
             "filterText": "automation,advanced education,beta,typescript,container,api",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "STRA",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "Required"
-                        }
-                    ]
-                }
-            ],
             "Contact": {
                 "details": "Discussion required to obtain access or to deploy container in line of business controlled environment",
                 "methods": [
@@ -2056,46 +1416,17 @@
             "Reviewed": "",
             "DataIssues": "Grace Li replied to the contact request. Was not aware of this project. There is no documentation at this time",
             "ReviewedBy": "Grace Li",
+            "Controller": "Director, Integration Services, TSO",
+            "Classification": "",
             "CMRA": "No",
-            "QA": 32,
+            "CmraReq": "",
+            "IM": "No",
+            "Data": "",
+            "STRA": "No",
+            "Risk": "No",
+            "Cybersecurity": "No",
+            "Considerations": "",
             "filterText": "performance,service integration,live,api, python, powershell, bash,perl, .net,on prem, ncc and jjb datacentres,service,goa,nagios, monitoring",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "STRA",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Info",
-                    "Items": [
-                        {
-                            "Field": "Controller",
-                            "Value": "Director, Integration Services, TSO"
-                        }
-                    ]
-                }
-            ],
             "Contact": {
                 "details": "This can be requested via a generic BERNIE request.\nAssign to SA:Monitoring Support_ASGN group.",
                 "methods": [
@@ -2143,46 +1474,17 @@
             "Reviewed": "",
             "DataIssues": "",
             "ReviewedBy": "",
+            "Controller": "",
+            "Classification": "",
             "CMRA": "No",
-            "QA": 24,
+            "CmraReq": "",
+            "IM": "Required",
+            "Data": "",
+            "STRA": "n/a",
+            "Risk": "n/a",
+            "Cybersecurity": "n/a",
+            "Considerations": "Completed forms must be stored in compliance with records management policies and procedures.\nConsult with CMO-forms may be requested.",
             "filterText": "forms and documents,data and content management,live",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "STRA",
-                            "Value": "n/a"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "Required"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "n/a"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "n/a"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Info",
-                    "Items": [
-                        {
-                            "Field": "Considerations",
-                            "Value": "Completed forms must be stored in compliance with records management policies and procedures.\nConsult with CMO-forms may be requested."
-                        }
-                    ]
-                }
-            ],
             "Contact": {
                 "details": "",
                 "methods": [
@@ -2238,50 +1540,17 @@
             "Reviewed": "",
             "DataIssues": "",
             "ReviewedBy": "",
+            "Controller": "Director, Integration Services, TSO",
+            "Classification": "",
             "CMRA": "No",
-            "QA": 4,
+            "CmraReq": "",
+            "IM": "Required",
+            "Data": "",
+            "STRA": "No",
+            "Risk": "No",
+            "Cybersecurity": "No",
+            "Considerations": "IMP consult re: electronic signatures may be requested.",
             "filterText": "forms and documents,service integration,live,service,goa,cloud, signature",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "STRA",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "Required"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Info",
-                    "Items": [
-                        {
-                            "Field": "Controller",
-                            "Value": "Director, Integration Services, TSO"
-                        },
-                        {
-                            "Field": "Considerations",
-                            "Value": "IMP consult re: electronic signatures may be requested."
-                        }
-                    ]
-                }
-            ],
             "Contact": {
                 "details": "Advanced request required through the Service Integration SharePoint Site: Click the 'eSignature - Self-Service User Portal (ConsignO) link. Please refer to the Activity Details in the documentaion for all contact options.",
                 "methods": [
@@ -2329,50 +1598,17 @@
             "Reviewed": "",
             "DataIssues": "",
             "ReviewedBy": "",
+            "Controller": "Executive Director, Software Delivery, DDD",
+            "Classification": "",
             "CMRA": "No",
-            "QA": 4,
+            "CmraReq": "",
+            "IM": "Required",
+            "Data": "",
+            "STRA": "No",
+            "Risk": "No",
+            "Cybersecurity": "No",
+            "Considerations": "IMP Consult re: log management may be requested.",
             "filterText": "data,alberta digital service platform (adsp),live,service",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "STRA",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "Required"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Info",
-                    "Items": [
-                        {
-                            "Field": "Controller",
-                            "Value": "Executive Director, Software Delivery, DDD"
-                        },
-                        {
-                            "Field": "Considerations",
-                            "Value": "IMP Consult re: log management may be requested."
-                        }
-                    ]
-                }
-            ],
             "Contact": {
                 "details": "",
                 "methods": [
@@ -2425,50 +1661,17 @@
             "Reviewed": "",
             "DataIssues": "",
             "ReviewedBy": "",
+            "Controller": "Executive Director, Software Delivery, DDD",
+            "Classification": "",
             "CMRA": "No",
-            "QA": 4,
+            "CmraReq": "",
+            "IM": "Required",
+            "Data": "",
+            "STRA": "No",
+            "Risk": "No",
+            "Cybersecurity": "No",
+            "Considerations": "IMP Consult re: log management may be requested.",
             "filterText": "data,alberta digital service platform (adsp),live",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "STRA",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "Required"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Info",
-                    "Items": [
-                        {
-                            "Field": "Controller",
-                            "Value": "Executive Director, Software Delivery, DDD"
-                        },
-                        {
-                            "Field": "Considerations",
-                            "Value": "IMP Consult re: log management may be requested."
-                        }
-                    ]
-                }
-            ],
             "Contact": {
                 "details": "",
                 "methods": [
@@ -2521,46 +1724,17 @@
             "Reviewed": "",
             "DataIssues": "",
             "ReviewedBy": "",
+            "Controller": "Executive Director, Platforms, DDD",
+            "Classification": "",
             "CMRA": "No",
-            "QA": 4,
+            "CmraReq": "",
+            "IM": "No",
+            "Data": "",
+            "STRA": "No",
+            "Risk": "No",
+            "Cybersecurity": "No",
+            "Considerations": "",
             "filterText": "automation,alberta digital service platform (adsp),live",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "STRA",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Info",
-                    "Items": [
-                        {
-                            "Field": "Controller",
-                            "Value": "Executive Director, Platforms, DDD"
-                        }
-                    ]
-                }
-            ],
             "Contact": {
                 "details": "",
                 "methods": [
@@ -2613,50 +1787,17 @@
             "Reviewed": "",
             "DataIssues": "",
             "ReviewedBy": "",
+            "Controller": "Executive Director, Software Delivery, DDD",
+            "Classification": "",
             "CMRA": "Completed",
-            "QA": 4,
+            "CmraReq": "Required",
+            "IM": "Required",
+            "Data": "",
+            "STRA": "No",
+            "Risk": "No",
+            "Cybersecurity": "No",
+            "Considerations": "",
             "filterText": "forms and documents,alberta digital service platform (adsp),live",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "STRA",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "CmraReq",
-                            "Value": "Required"
-                        },
-                        {
-                            "Field": "IM",
-                            "Value": "Required"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Info",
-                    "Items": [
-                        {
-                            "Field": "Controller",
-                            "Value": "Executive Director, Software Delivery, DDD"
-                        }
-                    ]
-                }
-            ],
             "Contact": {
                 "details": "",
                 "methods": [
@@ -2704,50 +1845,17 @@
             "Reviewed": "",
             "DataIssues": "",
             "ReviewedBy": "",
+            "Controller": "Executive Director, Software Delivery, DDD",
+            "Classification": "",
             "CMRA": "No",
-            "QA": 24,
+            "CmraReq": "",
+            "IM": "Required",
+            "Data": "",
+            "STRA": "No",
+            "Risk": "No",
+            "Cybersecurity": "No",
+            "Considerations": "CMO - Forms team may need to be consulted.",
             "filterText": "forms and documents,alberta digital service platform (adsp),live",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "STRA",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "Required"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Info",
-                    "Items": [
-                        {
-                            "Field": "Controller",
-                            "Value": "Executive Director, Software Delivery, DDD"
-                        },
-                        {
-                            "Field": "Considerations",
-                            "Value": "CMO - Forms team may need to be consulted."
-                        }
-                    ]
-                }
-            ],
             "Contact": {
                 "details": "",
                 "methods": [
@@ -2802,50 +1910,17 @@
             "Reviewed": "",
             "DataIssues": "",
             "ReviewedBy": "",
+            "Controller": "Executive Director, Software Delivery, DDD",
+            "Classification": "",
             "CMRA": "No",
-            "QA": 4,
+            "CmraReq": "",
+            "IM": "Required",
+            "Data": "",
+            "STRA": "No",
+            "Risk": "No",
+            "Cybersecurity": "No",
+            "Considerations": "May require consult with CMO - forms",
             "filterText": "forms and documents,alberta digital service platform (adsp),live,service,pdf",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "STRA",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "Required"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Info",
-                    "Items": [
-                        {
-                            "Field": "Controller",
-                            "Value": "Executive Director, Software Delivery, DDD"
-                        },
-                        {
-                            "Field": "Considerations",
-                            "Value": "May require consult with CMO - forms"
-                        }
-                    ]
-                }
-            ],
             "Contact": {
                 "details": "",
                 "methods": [
@@ -2893,37 +1968,17 @@
             "Reviewed": "",
             "DataIssues": "",
             "ReviewedBy": "",
+            "Controller": "",
+            "Classification": "",
             "CMRA": "No",
-            "QA": 20,
+            "CmraReq": "",
+            "IM": "No",
+            "Data": "",
+            "STRA": "No",
+            "Risk": "No",
+            "Cybersecurity": "Required",
+            "Considerations": "",
             "filterText": "user management,children's services platform,live,angular,openshift,children's services",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "STRA",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "Required"
-                        }
-                    ]
-                }
-            ],
             "Contact": {
                 "details": "Discussion required to obtain access or to deploy container in line of business controlled environment",
                 "methods": [
@@ -2966,50 +2021,17 @@
             "Reviewed": "",
             "DataIssues": "",
             "ReviewedBy": "",
+            "Controller": "Executive Director, Platforms, DDD",
+            "Classification": "",
             "CMRA": "No",
-            "QA": 0,
+            "CmraReq": "",
+            "IM": "No",
+            "Data": "",
+            "STRA": "No",
+            "Risk": "No",
+            "Cybersecurity": "Required",
+            "Considerations": "MOU is required between the  data business owner and the program area.",
             "filterText": "finance,platforms - common data services,alpha,.net core,on prem,api",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "STRA",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "Required"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Info",
-                    "Items": [
-                        {
-                            "Field": "Controller",
-                            "Value": "Executive Director, Platforms, DDD"
-                        },
-                        {
-                            "Field": "Considerations",
-                            "Value": "MOU is required between the  data business owner and the program area."
-                        }
-                    ]
-                }
-            ],
             "Contact": {
                 "details": "",
                 "methods": [
@@ -3059,50 +2081,17 @@
             "Reviewed": "",
             "DataIssues": "",
             "ReviewedBy": "",
+            "Controller": "Joel Agustin, Risk Reduction Education Specialist, Public Safety and Emergency Services",
+            "Classification": "Protected B",
             "CMRA": "No",
-            "QA": 4,
+            "CmraReq": "",
+            "IM": "No",
+            "Data": "",
+            "STRA": "Completed",
+            "Risk": "No",
+            "Cybersecurity": "Required",
+            "Considerations": "",
             "filterText": "user management,seniors, community and social services (scss),angular,keycloak",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "STRA",
-                            "Value": "Completed"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "Required"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Info",
-                    "Items": [
-                        {
-                            "Field": "Classification",
-                            "Value": "Protected B"
-                        },
-                        {
-                            "Field": "Controller",
-                            "Value": "Joel Agustin, Risk Reduction Education Specialist, Public Safety and Emergency Services"
-                        }
-                    ]
-                }
-            ],
             "Contact": {
                 "details": "Privately hosted npm package",
                 "methods": [
@@ -3157,37 +2146,17 @@
             "Reviewed": "",
             "DataIssues": "",
             "ReviewedBy": "",
+            "Controller": "",
+            "Classification": "",
             "CMRA": "No",
-            "QA": 6,
+            "CmraReq": "",
+            "IM": "No",
+            "Data": "",
+            "STRA": "n/a",
+            "Risk": "n/a",
+            "Cybersecurity": "n/a",
+            "Considerations": "",
             "filterText": "user management,wildfire platform,keycloak",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "STRA",
-                            "Value": "n/a"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "n/a"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "n/a"
-                        }
-                    ]
-                }
-            ],
             "Contact": {
                 "details": "",
                 "methods": [
@@ -3230,46 +2199,17 @@
             "Reviewed": "Yes",
             "DataIssues": "",
             "ReviewedBy": "Heather",
+            "Controller": "Director, Strategic Design, Children and Family Services",
+            "Classification": "",
             "CMRA": "No",
-            "QA": 20,
+            "CmraReq": "",
+            "IM": "No",
+            "Data": "",
+            "STRA": "No",
+            "Risk": "No",
+            "Cybersecurity": "Required",
+            "Considerations": "",
             "filterText": "data,children's services platform,live,web api,openshift,api,goa",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "STRA",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "Required"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Info",
-                    "Items": [
-                        {
-                            "Field": "Controller",
-                            "Value": "Director, Strategic Design, Children and Family Services"
-                        }
-                    ]
-                }
-            ],
             "Contact": {
                 "details": "Discussion required to obtain access or to deploy container in line of business controlled environment",
                 "methods": [
@@ -3319,54 +2259,17 @@
             "Reviewed": "",
             "DataIssues": "",
             "ReviewedBy": "",
+            "Controller": "Executive Director, Business System Operations, TSO",
+            "Classification": "Protected A",
             "CMRA": "No",
-            "QA": 4,
+            "CmraReq": "",
+            "IM": "Required",
+            "Data": "",
+            "STRA": "Completed",
+            "Risk": "No",
+            "Cybersecurity": "No",
+            "Considerations": "IMP Consult re: log management may be requested.",
             "filterText": "performance,service integration,live,service,goa,reporting",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "STRA",
-                            "Value": "Completed"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "Required"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Info",
-                    "Items": [
-                        {
-                            "Field": "Classification",
-                            "Value": "Protected A"
-                        },
-                        {
-                            "Field": "Controller",
-                            "Value": "Executive Director, Business System Operations, TSO"
-                        },
-                        {
-                            "Field": "Considerations",
-                            "Value": "IMP Consult re: log management may be requested."
-                        }
-                    ]
-                }
-            ],
             "Contact": {
                 "details": "Advanced request required through the Service Integration SharePoint site; click the 'Service Integration Consultation' Request web form.",
                 "methods": [
@@ -3409,37 +2312,17 @@
             "Reviewed": "",
             "DataIssues": "",
             "ReviewedBy": "",
+            "Controller": "",
+            "Classification": "",
             "CMRA": "No",
-            "QA": 22,
+            "CmraReq": "",
+            "IM": "No",
+            "Data": "",
+            "STRA": "No",
+            "Risk": "No",
+            "Cybersecurity": "Required",
+            "Considerations": "",
             "filterText": "communication,seniors, community and social services (scss),typescript,goa network",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "STRA",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "Required"
-                        }
-                    ]
-                }
-            ],
             "Contact": {
                 "details": "",
                 "methods": [
@@ -3485,50 +2368,17 @@
             "Reviewed": "",
             "DataIssues": "",
             "ReviewedBy": "",
+            "Controller": "Executive Director, Platforms, DDD",
+            "Classification": "Protected A",
             "CMRA": "No",
-            "QA": 20,
+            "CmraReq": "",
+            "IM": "No",
+            "Data": "",
+            "STRA": "Completed",
+            "Risk": "No",
+            "Cybersecurity": "No",
+            "Considerations": "",
             "filterText": "user management,platforms - iam,live,forgerock,on prem, ncc and jjb datacentres,iam",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "STRA",
-                            "Value": "Completed"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Info",
-                    "Items": [
-                        {
-                            "Field": "Classification",
-                            "Value": "Protected A"
-                        },
-                        {
-                            "Field": "Controller",
-                            "Value": "Executive Director, Platforms, DDD"
-                        }
-                    ]
-                }
-            ],
             "Contact": {
                 "details": "Onboarding and integrations are handled via scheduled consultations. Can reach out to Robert Salloum or Syed Hashmi for further details",
                 "methods": [
@@ -3588,37 +2438,17 @@
             "Reviewed": "",
             "DataIssues": "",
             "ReviewedBy": "",
+            "Controller": "",
+            "Classification": "",
             "CMRA": "No",
-            "QA": 0,
+            "CmraReq": "",
+            "IM": "Required",
+            "Data": "",
+            "STRA": "No",
+            "Risk": "No",
+            "Cybersecurity": "No",
+            "Considerations": "",
             "filterText": "forms and documents,justice digital,live,angular, .net core, typescript,aws,pdf, digital signature, stamping, digital certification",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "STRA",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "Required"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "No"
-                        }
-                    ]
-                }
-            ],
             "Contact": {
                 "details": "",
                 "methods": [
@@ -3668,53 +2498,24 @@
             "Reviewed": "Yes",
             "DataIssues": "",
             "ReviewedBy": "Sanchit",
+            "Controller": "",
+            "Classification": "",
             "CMRA": "No",
-            "QA": 4,
+            "CmraReq": "",
+            "IM": "No",
+            "Data": "",
+            "STRA": "No",
+            "Risk": "No",
+            "Cybersecurity": "No",
+            "Considerations": "SARTR Merchant Services engagement required before use merchantservices@gov.ab.ca",
             "filterText": "finance,service integration,live,service,goa,payment",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "STRA",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Info",
-                    "Items": [
-                        {
-                            "Field": "Considerations",
-                            "Value": "SARTR Merchant Services engagement required before use merchantservices@gov.ab.ca"
-                        }
-                    ]
-                }
-            ],
             "Contact": {
                 "details": "Advanced request required through the Service Integration SharePoint site; click the 'Service Integration Consultation' Request web form.",
                 "methods": [
                     {
                         "type": "BERNIE",
                         "value": "Service Integration Consultation",
-                        "url": "https://goaprod.service-now.com/esm?id=search&spa=1&q=Payment%20Gateway%20Service"
+                        "url": "https://goaprod.service-now.com/esm?id=search&spa=1&t=esm_sc&q=Payment%20Gateway%20Service"
                     }
                 ]
             },
@@ -3753,46 +2554,17 @@
             "Reviewed": "Yes",
             "DataIssues": "",
             "ReviewedBy": "Heather",
+            "Controller": "Executive Director, Platforms, DDD",
+            "Classification": "",
             "CMRA": "No",
-            "QA": 52,
+            "CmraReq": "",
+            "IM": "No",
+            "Data": "",
+            "STRA": "No",
+            "Risk": "Required",
+            "Cybersecurity": "Required",
+            "Considerations": "",
             "filterText": "finance,platforms -common platforms,.net core,azure,api,cloud,payment",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "STRA",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "Required"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "Required"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Info",
-                    "Items": [
-                        {
-                            "Field": "Controller",
-                            "Value": "Executive Director, Platforms, DDD"
-                        }
-                    ]
-                }
-            ],
             "Contact": {
                 "details": "",
                 "methods": []
@@ -3840,46 +2612,17 @@
             "Reviewed": "",
             "DataIssues": "",
             "ReviewedBy": "",
+            "Controller": "",
+            "Classification": "",
             "CMRA": "No",
-            "QA": 0,
+            "CmraReq": "",
+            "IM": "Required",
+            "Data": "",
+            "STRA": "No",
+            "Risk": "No",
+            "Cybersecurity": "No",
+            "Considerations": "May require consult with CMO - forms",
             "filterText": "forms and documents,justice digital,live,angular, .net core, typescript,aws,pdf, digital signature, digital certification",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "STRA",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "Required"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Info",
-                    "Items": [
-                        {
-                            "Field": "Considerations",
-                            "Value": "May require consult with CMO - forms"
-                        }
-                    ]
-                }
-            ],
             "Contact": {
                 "details": "",
                 "methods": [
@@ -3927,46 +2670,17 @@
             "Reviewed": "",
             "DataIssues": "",
             "ReviewedBy": "",
+            "Controller": "Executive Director, Platforms, DDD",
+            "Classification": "",
             "CMRA": "No",
-            "QA": 4,
+            "CmraReq": "",
+            "IM": "No",
+            "Data": "",
+            "STRA": "No",
+            "Risk": "No",
+            "Cybersecurity": "No",
+            "Considerations": "",
             "filterText": "performance,service integration,live,api,goa",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "STRA",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Info",
-                    "Items": [
-                        {
-                            "Field": "Controller",
-                            "Value": "Executive Director, Platforms, DDD"
-                        }
-                    ]
-                }
-            ],
             "Contact": {
                 "details": "Users are to contact the Service Integration Team via BERNIE to request this service.",
                 "methods": [
@@ -4009,46 +2723,17 @@
             "Reviewed": "",
             "DataIssues": "",
             "ReviewedBy": "",
+            "Controller": "Director, Data Mgmt and Governance, Adv Education",
+            "Classification": "",
             "CMRA": "No",
-            "QA": 20,
+            "CmraReq": "",
+            "IM": "No",
+            "Data": "",
+            "STRA": "No",
+            "Risk": "No",
+            "Cybersecurity": "No",
+            "Considerations": "",
             "filterText": "data,advanced education,live,.net,goa network,api",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "STRA",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Info",
-                    "Items": [
-                        {
-                            "Field": "Controller",
-                            "Value": "Director, Data Mgmt and Governance, Adv Education"
-                        }
-                    ]
-                }
-            ],
             "Contact": {
                 "details": "Through consultation",
                 "methods": [
@@ -4096,46 +2781,17 @@
             "Reviewed": "",
             "DataIssues": "",
             "ReviewedBy": "",
+            "Controller": "Executive Director, Software Delivery, DDD",
+            "Classification": "",
             "CMRA": "No",
-            "QA": 4,
+            "CmraReq": "",
+            "IM": "No",
+            "Data": "",
+            "STRA": "No",
+            "Risk": "No",
+            "Cybersecurity": "No",
+            "Considerations": "",
             "filterText": "automation,alberta digital service platform (adsp),live,service",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "STRA",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Info",
-                    "Items": [
-                        {
-                            "Field": "Controller",
-                            "Value": "Executive Director, Software Delivery, DDD"
-                        }
-                    ]
-                }
-            ],
             "Contact": {
                 "details": "",
                 "methods": [
@@ -4191,50 +2847,17 @@
             "Reviewed": "",
             "DataIssues": "",
             "ReviewedBy": "",
+            "Controller": "Director, Integration Services, TSO",
+            "Classification": "",
             "CMRA": "No",
-            "QA": 4,
+            "CmraReq": "",
+            "IM": "No",
+            "Data": "",
+            "STRA": "No",
+            "Risk": "No",
+            "Cybersecurity": "No",
+            "Considerations": "IMP consult re: electronic signatures may be requested.",
             "filterText": "forms and documents,service integration,live,service,goa,qr code, digital",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "STRA",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Info",
-                    "Items": [
-                        {
-                            "Field": "Controller",
-                            "Value": "Director, Integration Services, TSO"
-                        },
-                        {
-                            "Field": "Considerations",
-                            "Value": "IMP consult re: electronic signatures may be requested."
-                        }
-                    ]
-                }
-            ],
             "Contact": {
                 "details": "Advanced request required through the Service Integration SharePoint site; click the \"Request QR Code Service\" link to access the 'QR Code Service' web form.",
                 "methods": [
@@ -4277,37 +2900,17 @@
             "Reviewed": "",
             "DataIssues": "",
             "ReviewedBy": "",
+            "Controller": "",
+            "Classification": "",
             "CMRA": "No",
-            "QA": 20,
+            "CmraReq": "",
+            "IM": "No",
+            "Data": "",
+            "STRA": "No",
+            "Risk": "No",
+            "Cybersecurity": "Required",
+            "Considerations": "",
             "filterText": "user management,children's services platform,live,angular,openshift,children's services",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "STRA",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "Required"
-                        }
-                    ]
-                }
-            ],
             "Contact": {
                 "details": "Discussion required to obtain access or to deploy container in line of business controlled environment",
                 "methods": [
@@ -4350,50 +2953,17 @@
             "Reviewed": "",
             "DataIssues": "",
             "ReviewedBy": "",
+            "Controller": "Executive Director, Software Delivery, DDD",
+            "Classification": "",
             "CMRA": "No",
-            "QA": 24,
+            "CmraReq": "",
+            "IM": "Required",
+            "Data": "",
+            "STRA": "No",
+            "Risk": "No",
+            "Cybersecurity": "No",
+            "Considerations": "IMP Consult re: log management may be requested.",
             "filterText": "automation,alberta digital service platform (adsp),live,service",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "STRA",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "Required"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Info",
-                    "Items": [
-                        {
-                            "Field": "Controller",
-                            "Value": "Executive Director, Software Delivery, DDD"
-                        },
-                        {
-                            "Field": "Considerations",
-                            "Value": "IMP Consult re: log management may be requested."
-                        }
-                    ]
-                }
-            ],
             "Contact": {
                 "details": "",
                 "methods": [
@@ -4441,46 +3011,17 @@
             "Reviewed": "",
             "DataIssues": "",
             "ReviewedBy": "",
+            "Controller": "Director, Business and System Integration, Adv Education",
+            "Classification": "",
             "CMRA": "No",
-            "QA": 20,
+            "CmraReq": "",
+            "IM": "No",
+            "Data": "",
+            "STRA": "No",
+            "Risk": "No",
+            "Cybersecurity": "Required",
+            "Considerations": "",
             "filterText": "user management,advanced education,live,.net,goa network,api",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "STRA",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "Required"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Info",
-                    "Items": [
-                        {
-                            "Field": "Controller",
-                            "Value": "Director, Business and System Integration, Adv Education"
-                        }
-                    ]
-                }
-            ],
             "Contact": {
                 "details": "",
                 "methods": [
@@ -4523,50 +3064,17 @@
             "Reviewed": "",
             "DataIssues": "",
             "ReviewedBy": "",
+            "Controller": "n/a",
+            "Classification": "Ptorected B",
             "CMRA": "No",
-            "QA": 20,
+            "CmraReq": "",
+            "IM": "No",
+            "Data": "",
+            "STRA": "Completed",
+            "Risk": "No",
+            "Cybersecurity": "No",
+            "Considerations": "",
             "filterText": "communication,advanced education,live,.net,goa network,api",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "STRA",
-                            "Value": "Completed"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Info",
-                    "Items": [
-                        {
-                            "Field": "Classification",
-                            "Value": "Ptorected B"
-                        },
-                        {
-                            "Field": "Controller",
-                            "Value": "n/a"
-                        }
-                    ]
-                }
-            ],
             "Contact": {
                 "details": "Through consultation",
                 "methods": [
@@ -4609,50 +3117,17 @@
             "Reviewed": "",
             "DataIssues": "",
             "ReviewedBy": "",
+            "Controller": "Executive Director, Planning, Data and\nPerformance, Advanced Education",
+            "Classification": "Protected B",
             "CMRA": "No",
-            "QA": 20,
+            "CmraReq": "",
+            "IM": "No",
+            "Data": "",
+            "STRA": "Completed",
+            "Risk": "No",
+            "Cybersecurity": "Required",
+            "Considerations": "",
             "filterText": "data,advanced education,live,.net,goa network,api",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "STRA",
-                            "Value": "Completed"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "Required"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Info",
-                    "Items": [
-                        {
-                            "Field": "Classification",
-                            "Value": "Protected B"
-                        },
-                        {
-                            "Field": "Controller",
-                            "Value": "Executive Director, Planning, Data and\nPerformance, Advanced Education"
-                        }
-                    ]
-                }
-            ],
             "Contact": {
                 "details": "Through consultation",
                 "methods": [
@@ -4703,46 +3178,17 @@
             "Reviewed": "Yes",
             "DataIssues": "",
             "ReviewedBy": "Sanchit",
+            "Controller": "",
+            "Classification": "",
             "CMRA": "n/a",
-            "QA": 2,
+            "CmraReq": "",
+            "IM": "n/a",
+            "Data": "",
+            "STRA": "n/a",
+            "Risk": "n/a",
+            "Cybersecurity": "n/a",
+            "Considerations": "SARTR Merchant Services engagement required before use merchantservices@gov.ab.ca",
             "filterText": "finance,justice digital,live,aws, wordline (bambora),justice digital,payment",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "STRA",
-                            "Value": "n/a"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "n/a"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "n/a"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "n/a"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Info",
-                    "Items": [
-                        {
-                            "Field": "Considerations",
-                            "Value": "SARTR Merchant Services engagement required before use merchantservices@gov.ab.ca"
-                        }
-                    ]
-                }
-            ],
             "Contact": {
                 "details": "",
                 "methods": [
@@ -4790,46 +3236,17 @@
             "Reviewed": "",
             "DataIssues": "",
             "ReviewedBy": "",
+            "Controller": "Director, Integration Services, TSO",
+            "Classification": "",
             "CMRA": "No",
-            "QA": 4,
+            "CmraReq": "",
+            "IM": "No",
+            "Data": "",
+            "STRA": "No",
+            "Risk": "No",
+            "Cybersecurity": "No",
+            "Considerations": "",
             "filterText": "communication,alberta digital service platform (adsp),live",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "STRA",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Info",
-                    "Items": [
-                        {
-                            "Field": "Controller",
-                            "Value": "Director, Integration Services, TSO"
-                        }
-                    ]
-                }
-            ],
             "Contact": {
                 "details": "",
                 "methods": [
@@ -4877,50 +3294,17 @@
             "Reviewed": "yes",
             "DataIssues": "",
             "ReviewedBy": "Andrew",
+            "Controller": "Director, Red Tape Reduction & Student Records, Education",
+            "Classification": "Protected B",
             "CMRA": "No",
-            "QA": 20,
+            "CmraReq": "",
+            "IM": "No",
+            "Data": "",
+            "STRA": "Completed",
+            "Risk": "No",
+            "Cybersecurity": "Required",
+            "Considerations": "",
             "filterText": "data,advanced education,live,.net,goa network,api",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "STRA",
-                            "Value": "Completed"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "Required"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Info",
-                    "Items": [
-                        {
-                            "Field": "Classification",
-                            "Value": "Protected B"
-                        },
-                        {
-                            "Field": "Controller",
-                            "Value": "Director, Red Tape Reduction & Student Records, Education"
-                        }
-                    ]
-                }
-            ],
             "Contact": {
                 "details": "Through consultation",
                 "methods": [
@@ -4967,50 +3351,17 @@
             "Reviewed": "",
             "DataIssues": "",
             "ReviewedBy": "",
+            "Controller": "Executive Director, Platforms, DDD",
+            "Classification": "n/a",
             "CMRA": "No",
-            "QA": 0,
+            "CmraReq": "",
+            "IM": "No",
+            "Data": "",
+            "STRA": "Completed",
+            "Risk": "No",
+            "Cybersecurity": "No",
+            "Considerations": "",
             "filterText": "user management,platforms - iam,alpha,.net, open source,azure, on prem,iam",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "STRA",
-                            "Value": "Completed"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Info",
-                    "Items": [
-                        {
-                            "Field": "Classification",
-                            "Value": "n/a"
-                        },
-                        {
-                            "Field": "Controller",
-                            "Value": "Executive Director, Platforms, DDD"
-                        }
-                    ]
-                }
-            ],
             "Contact": {
                 "details": "Onboarding and integrations are handled via scheduled consultations. Can reach out to Robert Salloum or Syed Hashmi for further details",
                 "methods": [
@@ -5053,37 +3404,17 @@
             "Reviewed": "yes",
             "DataIssues": "",
             "ReviewedBy": "Andrew",
+            "Controller": "",
+            "Classification": "",
             "CMRA": "No",
-            "QA": 20,
+            "CmraReq": "",
+            "IM": "No",
+            "Data": "",
+            "STRA": "No",
+            "Risk": "No",
+            "Cybersecurity": "No",
+            "Considerations": "",
             "filterText": "communication,advanced education,live,.net,goa network",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "STRA",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "No"
-                        }
-                    ]
-                }
-            ],
             "Contact": {
                 "details": "Through consultation",
                 "methods": [
@@ -5126,50 +3457,17 @@
             "Reviewed": "",
             "DataIssues": "",
             "ReviewedBy": "",
+            "Controller": "Executive Director, Software Delivery, DDD",
+            "Classification": "n/a",
             "CMRA": "No",
-            "QA": 24,
+            "CmraReq": "",
+            "IM": "No",
+            "Data": "",
+            "STRA": "Completed",
+            "Risk": "No",
+            "Cybersecurity": "No",
+            "Considerations": "",
             "filterText": "user management,alberta digital service platform (adsp),live,service",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "STRA",
-                            "Value": "Completed"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Info",
-                    "Items": [
-                        {
-                            "Field": "Classification",
-                            "Value": "n/a"
-                        },
-                        {
-                            "Field": "Controller",
-                            "Value": "Executive Director, Software Delivery, DDD"
-                        }
-                    ]
-                }
-            ],
             "Contact": {
                 "details": "",
                 "methods": [
@@ -5217,37 +3515,17 @@
             "Reviewed": "yes",
             "DataIssues": "",
             "ReviewedBy": "Andrew",
+            "Controller": "",
+            "Classification": "",
             "CMRA": "No",
-            "QA": 20,
+            "CmraReq": "",
+            "IM": "No",
+            "Data": "",
+            "STRA": "No",
+            "Risk": "No",
+            "Cybersecurity": "No",
+            "Considerations": "",
             "filterText": "communication,advanced education,live,typescript,goa network,api",
-            "Security": [
-                {
-                    "Type": "Status",
-                    "Items": [
-                        {
-                            "Field": "STRA",
-                            "Value": "No"
-                        }
-                    ]
-                },
-                {
-                    "Type": "Required",
-                    "Items": [
-                        {
-                            "Field": "IM",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Risk",
-                            "Value": "No"
-                        },
-                        {
-                            "Field": "Cybersecurity",
-                            "Value": "No"
-                        }
-                    ]
-                }
-            ],
             "Contact": {
                 "details": "Discussion required to obtain access or to deploy container in line of business controlled environment",
                 "methods": [
