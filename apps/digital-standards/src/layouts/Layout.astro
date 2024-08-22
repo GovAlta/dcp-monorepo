@@ -26,19 +26,54 @@ const { hideNav, hideHero } = Astro.props
 
 		<script>
 			const hostName = window.location.hostname;			
-			if (hostName === 'digital-standards.digital.gov.ab.ca') {			
-				const feedbackscript = document.createElement('script');
-				feedbackscript.async = true;
-				feedbackscript.src =
-				'https://feedback-service.adsp.alberta.ca/feedback/v1/script/adspFeedback.js';		
-				document.head.appendChild(feedbackscript);
+			if (hostName === 'digital-standards.digital.gov.ab.ca') {	
+				(function () {
+					// @ts-ignore
+					window.dataLayer = window.dataLayer || [];
+					function gtag() {
+						// @ts-ignore
+						dataLayer.push(arguments);
+					}
+					// @ts-ignore
+					gtag('js', new Date());
+					// @ts-ignore
+					gtag('config', 'G-XZPW2XSJB8');
+					const script = document.createElement('script');
+					script.async = true;
+					script.src =
+						'https://www.googletagmanager.com/gtag/js?id=G-XZPW2XSJB8';
+					
+					const feedbackscript = document.createElement('script');
+					feedbackscript.async = true;
+					feedbackscript.src =
+					'https://feedback-service.adsp.alberta.ca/feedback/v1/script/adspFeedback.js';		
+					document.head.appendChild(feedbackscript);
+						
+				})();		
 			}
-			else if (hostName === 'digital-standards-dcp-uat.apps.aro.gov.ab.ca' || hostName === 'localhost') {				
-				const feedbackscript = document.createElement('script');
-				feedbackscript.async = true;
-				feedbackscript.src =
-				'https://feedback-service.adsp-uat.alberta.ca/feedback/v1/script/adspFeedback.js';
-				document.head.appendChild(feedbackscript);
+			else if (hostName === 'digital-standards-dcp-uat.apps.aro.gov.ab.ca' || hostName === 'localhost') {		
+				(function () {
+					// @ts-ignore
+					window.dataLayer = window.dataLayer || [];
+					function gtag() {
+						// @ts-ignore
+						dataLayer.push(arguments);
+					}
+					// @ts-ignore
+					gtag('js', new Date());
+					// @ts-ignore
+					gtag('config', 'G-07PN9BK15G');
+					const script = document.createElement('script');
+					script.async = true;
+					script.src =
+						'https://www.googletagmanager.com/gtag/js?id=G-07PN9BK15G';
+						
+					const feedbackscript = document.createElement('script');
+					feedbackscript.async = true;
+					feedbackscript.src =
+					'https://feedback-service.adsp-uat.alberta.ca/feedback/v1/script/adspFeedback.js';
+					document.head.appendChild(feedbackscript);
+				})();				
 			}			
 		</script>
 	</head>

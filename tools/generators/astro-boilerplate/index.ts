@@ -1,4 +1,4 @@
-import { Tree, formatFiles, installPackagesTask, generateFiles } from '@nrwl/devkit';
+import { Tree, formatFiles, generateFiles } from '@nrwl/devkit';
 import { libraryGenerator } from '@nrwl/workspace/generators';
 import * as path from 'path';
 
@@ -24,6 +24,5 @@ export default async function (host: Tree, schema: any) {
   );
   await formatFiles(host);
   return () => {
-    installPackagesTask(host);
   };
 }
