@@ -367,17 +367,17 @@
             "Description": "IAM platform for federated sign on and identity verification for citizens accessing online services.",
             "FunctionalGroup": "User management",
             "Environment": [
-                "Azure"
+                "On prem"
             ],
             "Language": [
-                "ForgeRock"
+                "Open Source"
             ],
             "UsageMethod": "Other",
             "SupportLevel": "24x7",
             "Documentation": [
                 {
-                    "name": "myalberta-digital-id",
-                    "url": "https://myalberta.gov.ab.ca/en/myalberta-digital-id"
+                    "name": "alberta-ca-account",
+                    "url": "https://www.alberta.ca/alberta-ca-account"
                 }
             ],
             "Keywords": [
