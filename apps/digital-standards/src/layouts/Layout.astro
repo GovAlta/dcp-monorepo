@@ -37,9 +37,9 @@ const { hideNav, hideHero } = Astro.props
 					const feedbackscript = document.createElement('script');
 					feedbackscript.async = true;
 					feedbackscript.src =
-					'https://feedback-service.adsp.alberta.ca/feedback/v1/script/adspFeedback.js';		
+					'https://feedback-service.adsp.alberta.ca/feedback/v1/script/adspFeedback.js';	
+					document.head.appendChild(script);	
 					document.head.appendChild(feedbackscript);
-						
 				})();		
 			}
 			else if (hostName === 'digital-standards-dcp-uat.apps.aro.gov.ab.ca') {		
@@ -63,6 +63,7 @@ const { hideNav, hideHero } = Astro.props
 					feedbackscript.async = true;
 					feedbackscript.src =
 					'https://feedback-service.adsp-uat.alberta.ca/feedback/v1/script/adspFeedback.js';
+					document.head.appendChild(script);
 					document.head.appendChild(feedbackscript);
 				})();				
 			}			
