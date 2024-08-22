@@ -15,18 +15,9 @@ const { hideNav, hideHero } = Astro.props
 		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Digital standards</title>
-
-		<script type="module"
-			src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js">
-	    </script>
-
-		<script nomodule
-			src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js">
-		</script>
-
 		<script>
 			const hostName = window.location.hostname;			
-			if (hostName === 'digital.gov.ab.ca' || 'digital-standards.digital.gov.ab.ca') {	
+			if (hostName === 'digital.gov.ab.ca') {	
 				(function () {
 					// @ts-ignore
 					window.dataLayer = window.dataLayer || [];
@@ -51,7 +42,7 @@ const { hideNav, hideHero } = Astro.props
 						
 				})();		
 			}
-			else if (hostName === 'digital-standards-dcp-uat.apps.aro.gov.ab.ca' || hostName === 'localhost') {		
+			else if (hostName === 'digital-standards-dcp-uat.apps.aro.gov.ab.ca') {		
 				(function () {
 					// @ts-ignore
 					window.dataLayer = window.dataLayer || [];
@@ -76,6 +67,14 @@ const { hideNav, hideHero } = Astro.props
 				})();				
 			}			
 		</script>
+		<script type="module"
+			src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js">
+	    </script>
+
+		<script nomodule
+			src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js">
+		</script>
+
 	</head>
 
 	<body>
