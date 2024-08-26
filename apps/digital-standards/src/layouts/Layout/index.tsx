@@ -35,19 +35,19 @@ const Layout = ({ children, hideNav = false, hideHero = true }: any) => {
             <div>
               <GoASideMenu>
                 <GoASideMenuGroup heading="Digital Service Standards Program">
-                  <a href="/service-standards/index.html">
+                  <a href="/service-standards/">
                     Digital Service Standards
                   </a>
-                  <a href="/service-principles/index.html">
+                  <a href="/service-principles/">
                     Digital Service Principles
                   </a>
-                  <a href="/service-help/index.html">
+                  <a href="/service-help/">
                     How Digital Service Standards team can help
                   </a>
-                  <a href="/service-performance/index.html">
+                  <a href="/service-performance/">
                     Service Performance
                   </a>
-                  <a href="/service-assessments/index.html">
+                  <a href="/service-assessments/">
                     Service Assessments
                   </a>
                 </GoASideMenuGroup>

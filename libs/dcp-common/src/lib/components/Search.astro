@@ -33,6 +33,7 @@ const { title } = Astro.props;
 		</div>
 		<script type="module">
 			window.addEventListener('DOMContentLoaded', (event) => {
+				setTimeout(() => {
 				//@ts-ignore
 				new PagefindUI({ 
 					element: "#search", 
@@ -40,6 +41,7 @@ const { title } = Astro.props;
 					excerptLength: 50, 
 					debounceTimeoutMs: 500,
 				});
+			}, 100);
 			});
 		</script>
 	</body>

@@ -24,10 +24,10 @@ const Header = () => {
         heading="Digital Standards"
         maxContentWidth="1500px"
       >
-        <a href="/service-standards/index.html">Standards</a>
-        <a href="/service-performance/index.html">Performance</a>
-        <a href="/service-glossary/index.html">Glossary</a>
-        <a href="/search/index.html">
+        <a href="/service-standards/">Standards</a>
+        <a href="/service-performance/">Performance</a>
+        <a href="/service-glossary/">Glossary</a>
+        <a href="/search/">
           <GoAIcon type="search" />
         </a>
       </GoAAppHeader>
