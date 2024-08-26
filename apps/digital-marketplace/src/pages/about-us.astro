@@ -59,8 +59,8 @@ import aboutUsImage from '../img/about-us-graphic.png';
                         <nav class="goa-adm-nav-menu">
                             <ul>
                                 <li class="goa-adm-nav-active-item"><a href="/about-us/">About us</a></li>
-                                <li><a href="/for-buyers/">Buyers</a></li>
                                 <li><a href="/for-suppliers/">Suppliers</a></li>
+                                <li><a href="/for-buyers/">Buyers</a></li>
                                 <li><a href="/for-partners/">Partners and stakeholders</a></li>
                                 <li><a href="/contact-us/">Contact us</a></li>
                             </ul>
@@ -73,7 +73,7 @@ import aboutUsImage from '../img/about-us-graphic.png';
 
         <main>
       
-            <div class="goa-adm-body-header">
+            <div class="goa-adm-body-header goa-adm-body-full">
                 <div class="container">
                     <div class="goa-adm-body-header-content">
                         <div class="goa-adm-breadcrumbs">
@@ -84,10 +84,10 @@ import aboutUsImage from '../img/about-us-graphic.png';
                         </div>
                         <h1>About the Alberta Digital Marketplace</h1>
                     </div>
-
                     <div class="goa-adm-body-header-graphic">
-                        
-    
+                        <div class="goa-adm-body-full-side-one"></div>
+                        <div class="goa-adm-body-full-middle"></div>
+                        <div class="goa-adm-body-full-side-two"></div>
                     </div>
                 </div>
             </div>
@@ -149,6 +149,17 @@ import aboutUsImage from '../img/about-us-graphic.png';
             * 
             ******************************************************************************/
 
+            window.addEventListener('load', function () {
+                var fieldset = document.querySelectorAll('form > fieldset > fieldset');
+                if (fieldset.length > 0) {
+                    for (var c = 0; c < fieldset.length; c++) {
+                        if(fieldset[c].children.length <= 6) {
+                            fieldset[c].classList.add('adm-single-column');
+                        }
+                    };
+                };
+            }, false);
+
             /* Mobile Menu Toggle ****/
 
             var mobileBtn = document.querySelector('button.goa-adm-button');
@@ -175,51 +186,63 @@ import aboutUsImage from '../img/about-us-graphic.png';
                 };
             }, false);
 
-            window.addEventListener('load', function () {
-                var fieldset = document.querySelectorAll('form > fieldset > fieldset');
-                if (fieldset.length > 0) {
-                    for (var c = 0; c < fieldset.length; c++) {
-                        if(fieldset[c].children.length <= 6) {
-                            fieldset[c].classList.add('adm-single-column');
-                        }
-                    };
-                };
-            }, false);
-
             var formFieldset = document.querySelectorAll('form > fieldset > fieldset');
             if (formFieldset.length > 0) {
                 for (var o = 0; o < formFieldset.length; o++) {
-                    var otherInput = formFieldset[o].querySelector('.goa-option > input[name="other"]');
-                    var formFieldset = formFieldset[o];
-                            
-                    var otherDiv = document.createElement('div');
-                    var otherLabel = document.createElement('label');
-                    var otherInput = document.createElement('input');
-                    var otherRequired = document.createElement('span');
-                    var randomIdOther = Math.random();
+                    var formOther = formFieldset[o];
+                    
+                    (function (formOther) {
+                        
+                        var otherDiv = document.createElement('div');
+                        var otherLabel = document.createElement('label');
+                        var otherInput = document.createElement('input');
+                        var otherRequired = document.createElement('span');
+                        var randomIdOther = Math.random();
 
-                    otherDiv.classList.add('goa-field', 'goa-if-other', 'goa--required');
-                    otherRequired.classList.add('required');
-                    otherLabel.setAttribute('for', 'if-other-' + randomIdOther);
-                    otherInput.setAttribute('id', 'if-other-' + randomIdOther);
-                    otherInput.setAttribute('name', 'if-other-' + randomIdOther);
-                    otherInput.setAttribute('type', 'text');
-                    otherInput.setAttribute('value', '');
-                    otherInput.setAttribute('required', 'required');
-                    otherInput.setAttribute('aria-required', 'true');
+                        otherDiv.classList.add('goa-field', 'goa-if-other', 'goa--required');
+                        otherLabel.innerText = 'If "other" is selected, please specify '
+                        otherRequired.classList.add('required');
+                        otherRequired.innerText = '*';
+                        otherLabel.setAttribute('for', 'if-other-' + randomIdOther);
+                        otherInput.setAttribute('id', 'if-other-' + randomIdOther);
+                        otherInput.setAttribute('name', 'if-other-' + randomIdOther);
+                        otherInput.setAttribute('type', 'text');
+                        otherInput.setAttribute('value', '');
+                        otherInput.setAttribute('required', 'required');
+                        otherInput.setAttribute('aria-required', 'true');
 
-                    otherLabel.appendChild(otherRequired);
-                    otherDiv.appendChild(otherLabel);
-                    otherDiv.appendChild(otherInput);
-                    formFieldset.parentNode.insertBefore(otherDiv, formFieldset.nextSibling);
+                        otherLabel.appendChild(otherRequired);
+                        otherDiv.appendChild(otherLabel);
+                        otherDiv.appendChild(otherInput);
+                        formOther.parentNode.insertBefore(otherDiv, formOther.nextSibling);
 
-                    otherInput.addEventListener('click', function () {
-                        if (otherInput.checked == true) {
-                            console.log(otherDiv);
-                        } else if (otherInput.checked == false) {
-                            otherDiv.remove();
+                        var otherInput = formOther.querySelector('.goa-option > input[value*="other"]');
+                        var mscInput = formOther.querySelectorAll('.goa-option > input[type="radio"]:not([value*="other"])');
+
+                        if (otherInput) {
+                            otherInput.addEventListener('click', function () {
+                                if (otherInput.checked) {
+                                    formOther.classList.add('show-other');
+                                } else {
+                                    formOther.classList.remove('show-other');
+                                };
+                            });
+                        } 
+                        
+                        if (mscInput.length > 0) {
+                            for (var io = 0; io < mscInput.length; io++) {
+                                
+                                (function (mscInput) {
+                                    var mscInput = mscInput[io];
+                                    mscInput.addEventListener('click', function () {
+                                        if (!otherInput.checked) {
+                                            formOther.classList.remove('show-other');
+                                        };
+                                    });
+                                }) (mscInput);
+                            };
                         };
-                    });
+                    })(formOther);
                 };
             };
 
