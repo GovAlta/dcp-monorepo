@@ -1,0 +1,56 @@
+{
+  "name": "cc-form-gateway",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/cc-form-gateway/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "platform": "node",
+        "outputPath": "dist/apps/cc-form-gateway",
+        "format": ["cjs"],
+        "bundle": false,
+        "main": "apps/cc-form-gateway/src/main.ts",
+        "tsConfig": "apps/cc-form-gateway/tsconfig.app.json",
+        "assets": ["apps/cc-form-gateway/src/assets"],
+        "generatePackageJson": true,
+        "esbuildOptions": {
+          "sourcemap": true,
+          "outExtension": {
+            ".js": ".js"
+          }
+        }
+      },
+      "configurations": {
+        "development": {},
+        "production": {
+          "esbuildOptions": {
+            "sourcemap": false,
+            "outExtension": {
+              ".js": ".js"
+            }
+          }
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "cc-form-gateway:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "cc-form-gateway:build:development"
+        },
+        "production": {
+          "buildTarget": "cc-form-gateway:build:production"
+        }
+      }
+    }
+  }
+}
