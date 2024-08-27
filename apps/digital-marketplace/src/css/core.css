@@ -1,6 +1,6 @@
 /******************************************************************************
 * Alberta Digital Marketplace
-* Custom stylesheet for the Application Wrapper template
+* Custom stylesheet
 * 
 ******************************************************************************/
 
@@ -161,7 +161,7 @@ a:focus {
 
 .container {
     margin: 0 auto;
-    max-width: 1280px;
+    max-width: 1184px;
     width: calc(100% - 64px);
 }
 
@@ -338,6 +338,9 @@ a:focus {
     display: grid;
     justify-content: space-between;
     column-gap: 24px;
+}
+
+body:not(.adm-home-page) .goa-adm-body-header > .container {
     grid-template-columns: repeat(2, 1fr);
 }
 
@@ -511,9 +514,201 @@ a:focus {
     margin: 0 auto;
 }
 
+/* HOME PAGE ****************************/ 
+
 body.adm-home-page .goa-adm-body-header {
     border-bottom: none;
-    padding-bottom: 0;
+    position: relative;
+}
+
+body.adm-home-page main {
+    overflow: hidden;
+}
+
+body.adm-home-page .goa-adm-body-header > .container > .goa-adm-body-header-content > p.lede {
+    max-width: 365px;
+}
+
+body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-header-graphic > *,
+body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-header-graphic > * > * {
+    background: transparent;
+    position: relative;
+    display: flex;
+}
+
+body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-full-side-two {
+    justify-content: flex-end;
+}
+
+body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-full-side-two-img:after {
+    content: '';
+    width: 0;
+    height: 2px;
+    background-color: #005072;
+    display: block;
+    position: absolute;
+    bottom: 17px;
+    right: 100%; 
+    z-index: -1;
+}
+
+body.adm-home-page.loaded .goa-adm-body-header.goa-adm-body-full .goa-adm-body-full-side-two-img:after {
+    width: 200vw;
+}
+
+body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-owl-eye,
+body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-full-side-two-img:before,
+body.adm-home-page .goa-adm-body-header.goa-adm-body-full:after,
+body.adm-home-page .goa-adm-body-header.goa-adm-body-full .sun-cloud > * {
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    animation-duration: 5s;
+    animation-delay: -30s;
+}
+
+body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-full-side-two-img:before {
+    content: '';
+    width: 44px;
+    height: 62px;
+    background: transparent url("../img/flower-home-page.svg");
+    background-size: cover;
+    position: absolute;
+    display: block;
+    bottom: 60px;
+    left: -158px;
+    right: -33px;
+    margin: 0 auto;
+    animation-name: flower;
+}
+
+body.adm-home-page .goa-adm-body-header.goa-adm-body-full:after {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 200vw;
+    height: 100%;
+    background: transparent url("../img/clouds.png");
+    background-repeat: repeat-x;
+    background-size: contain;
+    animation-timing-function: linear;
+    animation-duration: 5s;
+    animation-duration: 60s;
+    animation-name: slidein;
+    z-index: -100;
+    max-height: 155px;
+}
+
+body.adm-home-page .goa-adm-body-header.goa-adm-body-full .sun-cloud {
+    position: absolute;
+    right: 350px;
+}
+
+body.adm-home-page .goa-adm-body-header.goa-adm-body-full .sun-cloud > svg:first-child {
+    animation-name: sunUp;
+    animation-delay: 0s;
+}
+
+
+body.adm-home-page .goa-adm-body-header.goa-adm-body-full .sun-cloud > svg:last-child {
+    animation-name: cloudSide;
+    animation-delay: 0s;
+    position: relative;
+    right: 110px;
+}
+
+body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-owl {
+    position: absolute;
+    content: "";
+    right: 44px;
+    bottom: 0;
+    height: 120px;
+}
+
+body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-owl-eye {
+    width: 120px;
+    height: 100%;
+    background: transparent url("../img/owleye.png");
+    background-size: cover;
+    animation-name: owleye;
+    z-index: -1;
+}
+
+body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-owl-line {
+    width: 270px;
+    height: 88px;
+    background: transparent url("../img/owleye-lines.png") repeat-x center;
+    background-size: contain;
+    position: absolute;
+    z-index: -1;
+    right: 75%;
+    top: 16px;
+} 
+
+body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-home-tablet-graphic {
+    display: none;
+}
+
+@keyframes sunUp {
+    0% {
+        transform: translateY(0);
+    }
+  
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes cloudSide {
+    0% {
+        transform: translateX(0);
+    }
+  
+    50% {
+        transform: translateX(14px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slidein {
+    from {
+      transform: translateX(0%);
+    }
+  
+    to {
+      transform: translateX(-1335px);
+    }
+}
+
+@keyframes owleye {
+    from {
+        transform: rotate(0);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes flower {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.3);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
 
 /* HOME PAGE CARDS ****************************/
@@ -722,10 +917,12 @@ section.goa-adm-sign-up-form form fieldset {
 .goa-field.goa-name > .goa-field-name-container {
     display: flex;
     column-gap: 24px;
+    flex-wrap: wrap;
 }
 
-.goa-field.goa-name > .goa-field-name-container > .goa-field {
+.goa-field.goa-name > .goa-field-name-container > input {
     flex-grow: 1;
+    width: auto;
 }
 
 .goa-field > label,
@@ -773,14 +970,16 @@ section.goa-adm-sign-up-form form fieldset > fieldset.adm-single-column {
 .goa-field input:not([type='checkbox']):hover,
 .goa-field select:hover {
     background-color: #d9d9d9;
-    transition: all 0.5s ease;
+    transition: background-color 0.5s ease;
 }
 
 .goa-field input:not([type='checkbox']):focus,
 .goa-field select:focus,
-div.goa-option [type='checkbox']:checked:focus + label:before {
+div.goa-option [type='checkbox']:focus + label:before,
+div.goa-option [type='radio']:focus + label:before {
     outline: 3px solid #FFB500;
     outline-offset: 0;
+    transition: background-color 0.5s ease;
 }
 
 div.goa-option {
@@ -828,8 +1027,8 @@ div.goa-option [type='radio']:checked + label:after {
     position: relative;
     top: 0;
     left: 0;
-    width: 42px;
-    height: 42px;
+    width: 32px;
+    height: 32px;
     display: block;
     border: 1px solid #666;
     border-radius: 7px;
@@ -861,12 +1060,12 @@ div.goa-option [type='radio']:checked + label:after {
 }
 
 div.goa-option [type='checkbox']:checked + label:before {
-    background-color: #333333;
-	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 16 16' shape-rendering='geometricPrecision'%3E%3Cpath d='M1 10L6 14L15 1' fill='transparent' stroke='%23fff' stroke-width='2' stroke-endcap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-color: #0070C4;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 16 16' shape-rendering='geometricPrecision'%3E%3Cpath d='M1 10L6 14L15 1' fill='transparent' stroke='%23fff' stroke-width='2' stroke-endcap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
 }
 
 div.goa-option [type='radio']:checked + label:after {
-    border: 12px solid #333;
+    border: 9px solid #0070C4;
 }
 
 
@@ -924,11 +1123,31 @@ section.goa-adm-sign-up-form .goa-adm-disclaimer {
     max-width: 700px;
 }
 
-section.goa-adm-sign-up-form .goa-adm-disclaimer > p {
+.form-item--error-message {
+    display: none;
+}
+
+.goa-error .form-item--error-message {
+    display: block;
+}
+
+.goa-field.goa-error input:not([type='checkbox']) {
+    border-color: #ec040b;
+}
+
+section.goa-adm-sign-up-form .goa-adm-disclaimer > p,
+.form-item--error-message  {
     font-size: 0.875rem;
     line-height: 1.5rem;
 }
 
+div.goa-validation.goa-error p, .form-item--error-message {
+    color: #ec040b;
+}
+
+.goa-field.goa-name > .goa-field-name-container > .form-item--error-message {
+    width: 100%;
+}
 
 /* FOOTER ****************************/
 
@@ -953,7 +1172,7 @@ section.goa-adm-sign-up-form .goa-adm-disclaimer > p {
     flex-wrap: wrap;
     align-items: center;
     width: calc(100% - 48px);
-    max-width: 1280px;
+    max-width: 1184px;
 }
 
 .goa-adm-footer .goa-logo {
@@ -987,47 +1206,170 @@ section.goa-adm-sign-up-form .goa-adm-disclaimer > p {
     
 ****************************/
 
+@media screen and (min-width: 1820px) {
+
+    /* HOME PAGE ****************************/
+
+    body.adm-home-page .goa-adm-body-header {
+        border-bottom: none;
+        position: relative;
+        padding: 136px 0 180px;
+    }
+    
+    body.adm-home-page .goa-adm-body-header > .container > .goa-adm-body-header-content {
+        max-width: 670px;
+    }
+    
+    body.adm-home-page .goa-adm-body-header > .container > .goa-adm-body-header-content > p.lede {
+        max-width: 515px;
+    }
+}
+
 @media screen and (max-width: 1380px) {
+
     .container {
         max-width: 1184px;
+    }
+
+    /* HOME PAGE ****************************/
+
+    body.adm-home-page .goa-adm-body-full .goa-adm-body-header-graphic {
+        justify-content: flex-end;
+    }
+
+    body.adm-home-page .goa-adm-body-header.goa-adm-body-full .sun-cloud {
+        right: 200px;
+    }
+
+    body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-header-graphic > .goa-adm-body-full-side-one {
+        display: none;
+    }
+
+    body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-header-graphic > .goa-adm-body-full-side-two {
+        max-width: 710px;
+    }
+
+    body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-header-graphic > .goa-adm-body-full-side-two > .goa-adm-body-full-side-two-img > svg {
+        width: 100%;
+    }
+
+    body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-full-side-two-img:after {
+        bottom: 59px;
+    }
+
+    body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-full-side-two-img:before {
+        width: 32px;
+        height: 46px;
+        bottom: 100px;
+        left: -134px;
+    }
+
+    body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-owl {
+        bottom: 10px;
+    }
+
+    body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-owl-line {
+        width: 180px;
     }
 }
 
 @media screen and (max-width: 1229px) {
+
     .container {
         margin: 0 32px;
+    }
+    
+    body:not(.adm-home-page) .goa-adm-body-full .goa-adm-body-header-graphic > .goa-adm-body-full-side-one {
+        background: transparent;
+        flex-basis: 50%;
+    }
+
+    body:not(.adm-home-page) .goa-adm-body-full .goa-adm-body-header-graphic > .goa-adm-body-full-side-two {
+        background-position-x: left;
+        flex-basis: 50%;
+    }
+
+    /* HOME PAGE ****************************/
+
+    body.adm-home-page .goa-adm-body-full .goa-adm-body-header-graphic {
+        justify-content: flex-end;
     }
 
     .goa-adm-body-full:after {
         width: 100%;
     }
-    
-    .goa-adm-body-full .goa-adm-body-header-graphic > .goa-adm-body-full-side-one {
-        background: transparent;
-        flex-basis: 50%;
+
+    body.adm-home-page .goa-adm-body-header.goa-adm-body-full .sun-cloud {
+        right: 125px;
+        top: 50px;
     }
 
-    .goa-adm-body-full .goa-adm-body-header-graphic > .goa-adm-body-full-side-two {
-        background-position-x: left;
-        flex-basis: 50%;
+    body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-header-graphic > .goa-adm-body-full-side-two {
+        max-width: 610px;
+    }
+
+    body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-header-graphic > .goa-adm-body-full-side-two > .goa-adm-body-full-side-two-img > svg {
+        width: 100%;
+    }
+
+    body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-full-side-two-img:before {
+        bottom: 110px;
+        left: -121px;
+    }
+
+    body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-full-side-two-img:after {
+        bottom: 84px;
+    }
+
+    body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-owl {
+        right: 24px;
+        bottom: 10px;
     }
 }
 
 @media screen and (max-width: 899px) {
 
-    .goa-adm-nav-menu {
+    .goa-adm-nav-button,
+    body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-header-graphic {
+        position: relative;
+    }
+
+    .goa-adm-nav-menu,
+    body.adm-home-page .goa-adm-body-header.goa-adm-body-full:after,
+    .goa-adm-nav-button,
+    body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-header-graphic > *:not(.goa-adm-home-tablet-graphic) {
         display: none;
     }
 
-    .goa-adm-nav-button {
+    .goa-adm-nav-button,
+    body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-header-graphic .goa-adm-home-tablet-graphic {
         display: block;
+        width: 100%;
     }
 
-    .goa-adm-body-header > .container {
+    body.adm-home-page .goa-adm-body-header.goa-adm-body-full {
+        padding: 24px 0 0;
+    }
+
+    body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-header-graphic .goa-adm-home-tablet-graphic > img {
+        width: calc(100% + 64px);
+        position: relative;
+        left: -32px;
+    }
+
+    body.adm-home-page .goa-adm-body-header > .container {
+        gap: 48px;
+    }
+
+    body.adm-home-page .goa-adm-body-header > .container > .goa-adm-body-header-content > p.lede {
+        max-width: 100%;
+    }
+
+    body:not(.adm-home-page) .goa-adm-body-header > .container {
         grid-template-columns: repeat(1, 1fr);
     }
 
-    .goa-adm-body-header:not(.goa-adm-body-full) > .container > .goa-adm-body-header-content {
+    .goa-adm-body-header > .container > .goa-adm-body-header-content {
         max-width: 100%;
     }
 
@@ -1137,6 +1479,8 @@ section.goa-adm-sign-up-form .goa-adm-disclaimer > p {
         width: calc(100% - 48px);
     }
 
+    /* HEADER ****************************/
+
     .goa-adm-body-header > .container > .goa-adm-body-header-graphic > svg {
         height: 100%;
         max-width: 500px;
@@ -1204,7 +1548,8 @@ section.goa-adm-sign-up-form .goa-adm-disclaimer > p {
     }
 
     .goa-adm-timeline > ul.progressbar > li:before,
-    .goa-adm-timeline > ul.progressbar > li:first-child:before {
+    .goa-adm-timeline > ul.progressbar > li:first-child:before,
+    .goa-adm-timeline > ul.progressbar > li:last-child:before {
         display: block;
         content: '';
         width: 24px;
@@ -1255,6 +1600,8 @@ section.goa-adm-sign-up-form .goa-adm-disclaimer > p {
 }
 
 @media screen and (max-width: 499px) {
+
+    /* HEADER ****************************/
 
     .goa-adm-microsite-header > .container {
         padding: 12px 24px;
