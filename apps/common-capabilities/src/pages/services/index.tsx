@@ -195,7 +195,7 @@ export default function HomePage(): JSX.Element {
   return (
     <GoAThreeColumnLayout
       leftColumnWidth="23%"
-      maxContentWidth='1550px'
+      maxContentWidth="1550px"
       nav={
         <div className="home-sidebar">
           <div id="search-label"> Search</div>
@@ -346,58 +346,81 @@ export default function HomePage(): JSX.Element {
         </div>
       }
     >
-      <h1 id="home-title">Services</h1>      
-      {/* <span className="last-updated">Last updated: {formattedDate}</span>   <br /> */}      
-      <span className="last-updated">Showing {recommendedServices.length + otherServices.length} of {apps.length} results </span> 
-      <GoASpacer vSpacing="s" />      
+      <h1 id="home-title">Services</h1>
+      {/* <span className="last-updated">Last updated: {formattedDate}</span>   <br /> */}
+      <div className="back-top">
+        <GoAButton
+          type="tertiary"
+          size="compact"
+          variant="normal"
+          trailingIcon="add"
+          onClick={() => alert('In development - coming soon')}
+          disabled={'true'}
+        >
+          Add service
+        </GoAButton>
+      </div>
 
+      <span className="last-updated">
+        Showing {recommendedServices.length + otherServices.length} of{' '}
+        {apps.length} results{' '}
+      </span>
+      <GoASpacer vSpacing="s" />
+      
       <h2>Recommended services listing</h2>
-      Recommended services are standard components built for the product teams to reuse. 
-      We highly recommend leveraging these standard services with the "Recommended" tag 
-      to streamline your development process, maximize efficiency, and optimize costs.
-
+      Recommended services are standard components built for the product teams
+      to reuse. We highly recommend leveraging these standard services with the
+      "Recommended" tag to streamline your development process, maximize
+      efficiency, and optimize costs.
       <GoASpacer vSpacing="xl" />
-      <GoAGrid minChildWidth="35ch" gap='2xl'>     
-        {recommendedServices.length > 0
-          ? recommendedServices.map((app) => {
-              return (
-                <Card                  
-                  key={app.ServiceName}
-                  title={app.ServiceName}
-                  provider={app.Provider}
-                  description={app.Summary}
-                  app={app}
-                />
-              );
-            })
-          : <GoACallout type="information" size="medium" heading="No recommended services found based on your search / filter options"></GoACallout>
-          }         
+      <GoAGrid minChildWidth="35ch" gap="2xl">
+        {recommendedServices.length > 0 ? (
+          recommendedServices.map((app) => {
+            return (
+              <Card
+                key={app.ServiceName}
+                title={app.ServiceName}
+                provider={app.Provider}
+                description={app.Summary}
+                app={app}
+              />
+            );
+          })
+        ) : (
+          <GoACallout
+            type="information"
+            size="medium"
+            heading="No recommended services found based on your search / filter options"
+          ></GoACallout>
+        )}
       </GoAGrid>
-
       <GoASpacer vSpacing="l" />
-
       <h2>Other services</h2>
-      Other services include services built to serve specific use cases and might not be suitable to 
-      be used by the product teams. We still encourage you to the reach out to the service providers
-      to collaborate or share knowledge and best practices if you are building something similar.
-
+      Other services include services built to serve specific use cases and
+      might not be suitable to be used by the product teams. We still encourage
+      you to the reach out to the service providers to collaborate or share
+      knowledge and best practices if you are building something similar.
       <GoASpacer vSpacing="xl" />
-
-      <GoAGrid minChildWidth="35ch" gap='2xl'>        
-        {otherServices.length > 0
-          ? otherServices.map((app) => {
-              return (
-                <Card
-                  key={app.ServiceName}
-                  title={app.ServiceName}
-                  provider={app.Provider}
-                  description={app.Summary}
-                  app={app}
-                />                
-              );
-            })
-          : <GoACallout type="information" size="medium" heading="No other services found based on your search / filter options"></GoACallout>
-          }
+      <GoAGrid minChildWidth="35ch" gap="2xl">
+        {otherServices.length > 0 ? (
+          otherServices.map((app) => {
+            return (
+              <Card
+                key={app.ServiceName}
+                title={app.ServiceName}
+                provider={app.Provider}
+                description={app.Summary}
+                app={app}
+              />
+            );
+          })
+        ) : (
+          <GoACallout
+            type="information"
+            size="medium"
+            heading="No other services found based on your search / filter options"
+          ></GoACallout>
+        )}
       </GoAGrid>
     </GoAThreeColumnLayout>
   );

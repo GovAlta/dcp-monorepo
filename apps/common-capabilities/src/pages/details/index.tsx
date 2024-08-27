@@ -290,7 +290,18 @@ export default function Details({ app }: DetailsProps): JSX.Element {
           Back to listing
         </GoAButton>
 
-
+        <div className="back-top">
+          <GoAButton
+            type="tertiary"
+            size="compact"
+            variant="normal"
+            trailingIcon="create"            
+            onClick={() => alert('In development - coming soon')}
+            disabled = {'true'}
+          >
+            Edit service
+          </GoAButton>
+        </div>
 
         <GoASpacer vSpacing="l" />
         <div className="service-heading">
@@ -304,7 +315,9 @@ export default function Details({ app }: DetailsProps): JSX.Element {
           items.content.map(({ id, name, title }: any) => {
             return (
               <div key={`${id}`}>
-                <h3 id={`${id}`} className='service-title'>{title}</h3>
+                <h3 id={`${id}`} className="service-title">
+                  {title}
+                </h3>
                 {renderContent(name, app)}
                 <GoASpacer vSpacing="l" />
               </div>
@@ -323,7 +336,6 @@ export default function Details({ app }: DetailsProps): JSX.Element {
 
         <GoASpacer vSpacing="3xl" />
         <BackToTop />
-
       </GoAThreeColumnLayout>
     </>
   );
