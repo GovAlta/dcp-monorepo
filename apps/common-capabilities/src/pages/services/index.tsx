@@ -348,7 +348,8 @@ export default function HomePage(): JSX.Element {
     >
       <h1 id="home-title">Services</h1>
       {/* <span className="last-updated">Last updated: {formattedDate}</span>   <br /> */}
-      <div className="back-top">
+      
+      {/* <div className="back-top">
         <GoAButton
           type="tertiary"
           size="compact"
@@ -359,7 +360,7 @@ export default function HomePage(): JSX.Element {
         >
           Add service
         </GoAButton>
-      </div>
+      </div> */}
 
       <span className="last-updated">
         Showing {recommendedServices.length + otherServices.length} of{' '}

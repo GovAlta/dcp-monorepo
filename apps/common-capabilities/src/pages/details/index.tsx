@@ -290,18 +290,17 @@ export default function Details({ app }: DetailsProps): JSX.Element {
           Back to listing
         </GoAButton>
 
-        <div className="back-top">
+        {/* <div className="back-top">
           <GoAButton
             type="tertiary"
             size="compact"
             variant="normal"
             trailingIcon="create"            
-            onClick={() => alert('In development - coming soon')}
-            disabled = {'true'}
+            onClick={() => alert('In development - coming soon')}            
           >
             Edit service
           </GoAButton>
-        </div>
+        </div> */}
 
         <GoASpacer vSpacing="l" />
         <div className="service-heading">
