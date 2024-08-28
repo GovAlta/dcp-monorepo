@@ -64,8 +64,11 @@ jobs:
         run: npx nx affected --target=buildcustom --base=${{ env.AFFECTED_BASE }} --configuration production
       # Set affected apps to env for later steps and jobs.
       - name: Set AFFECTED_APPS for OC steps
+        # run: |
+        #   AFFECTED_APPS=$(npx nx show projects --affected --plain --base="${{ env.AFFECTED_BASE }}" 2>/dev/null | tr -d '\n')
+        #   echo "AFFECTED_APPS=$AFFECTED_APPS" >> $GITHUB_ENV      
         run: |
-          AFFECTED_APPS=$(npx nx show projects --affected --plain --base="${{ env.AFFECTED_BASE }}" 2>/dev/null | tr -d '\n')
+          AFFECTED_APPS=$(npx nx show projects)
           echo "AFFECTED_APPS=$AFFECTED_APPS" >> $GITHUB_ENV      
       - run: npm prune --production
 
