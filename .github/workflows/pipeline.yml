@@ -12,10 +12,6 @@
 name: Pipeline
 
 on:
-  push:
-    branches:
-      - main
-
   workflow_dispatch:
     inputs:
       SELECTED_BASE:
@@ -67,9 +63,8 @@ jobs:
         # run: |
         #   AFFECTED_APPS=$(npx nx show projects --affected --plain --base="${{ env.AFFECTED_BASE }}" 2>/dev/null | tr -d '\n')
         #   echo "AFFECTED_APPS=$AFFECTED_APPS" >> $GITHUB_ENV      
-        run: |
-          AFFECTED_APPS=$(npx nx show projects)
-          echo "AFFECTED_APPS=$AFFECTED_APPS" >> $GITHUB_ENV      
+        # run: echo "AFFECTED_APPS=$(npx nx affected:apps --plain --base=${{ env.AFFECTED_BASE }})" >> $GITHUB_ENV
+        run: echo "AFFECTED_APPS=${{ inputs.AFFECTED_APPS }}" >> $GITHUB_ENV
       - run: npm prune --production
 
       # Run the OC BuildConfigs for create containers.
@@ -190,20 +185,20 @@ jobs:
           insecure_skip_tls_verify: true
       - name: Tag Prod
         run: |
-          for app in $(echo $AFFECTED_APPS | sed -e "s/ digital-marketplace//g")
+          for app in $AFFECTED_APPS
           do 
             oc tag $app:test $app:prod
           done
       - run: oc project dcp-prod
       - name: Apply Manifests
         run: |
-          for app in $(echo $AFFECTED_APPS | sed -e "s/ digital-marketplace//g")
+          for app in $AFFECTED_APPS
           do
             oc process -f .openshift/$app/$app.yml -p PROJECT=dcp-prod -p DEPLOY_TAG=prod | oc apply -f -
           done
       - name: Deploy Prod
         run: |
-          for app in $(echo $AFFECTED_APPS | sed -e "s/ digital-marketplace//g")
+          for app in $AFFECTED_APPS
           do            
             oc rollout latest dc/$app
             oc rollout status dc/$app
