@@ -96,8 +96,7 @@ objects:
       name: ${APP_NAME}
       namespace: ${PROJECT}
     spec:
-      replicas: 3
-      revisionHistoryLimit: 3
+      replicas: 1
       selector:
         name: ${APP_NAME}
       strategy:
