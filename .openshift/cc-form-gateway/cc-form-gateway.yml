@@ -1,0 +1,178 @@
+apiVersion: template.openshift.io/v1
+kind: Template
+metadata:
+  name: cc-form-gateway
+labels:
+  app: cc-form-gateway
+parameters:
+  - name: INFRA_PROJECT
+    description: Project used for build infrastructure.
+    displayName: Infrastructure Project
+    value: dcp-build
+    required: true
+  - name: PROJECT
+    description: Project to set up.
+    displayName: Project
+    required: true
+  - name: APP_NAME
+    description: Name of the application.
+    displayName: Application Name
+    value: cc-form-gateway
+    required: true
+  - name: DEPLOY_TAG
+    description: Tag of the ImageStream to deploy.
+    displayName: Deploy Tag
+    value: latest
+    required: true
+objects:
+  - apiVersion: v1
+    kind: Service
+    metadata:
+      name: ${APP_NAME}
+      namespace: ${PROJECT}
+    spec:
+      ports:
+        - name: http
+          port: 3333
+          protocol: TCP
+          targetPort: 3333
+      selector:
+        name: ${APP_NAME}
+        component: api
+      sessionAffinity: None
+      type: ClusterIP
+  - apiVersion: image.openshift.io/v1
+    kind: ImageStream
+    metadata:
+      labels:
+        apply-build: 'true'
+        component: api
+      name: ${APP_NAME}
+      namespace: ${INFRA_PROJECT}
+  - apiVersion: build.openshift.io/v1
+    kind: BuildConfig
+    metadata:
+      labels:
+        apply-build: 'true'
+      name: ${APP_NAME}
+      namespace: ${INFRA_PROJECT}
+    spec:
+      output:
+        to:
+          kind: ImageStreamTag
+          name: '${APP_NAME}:latest'
+      resources:
+        limits:
+          cpu: 300m
+          memory: 1Gi
+        requests:
+          cpu: 100m
+          memory: 200Mi
+      runPolicy: Serial
+      source:
+        binary: {}
+        type: Binary
+      strategy:
+        dockerStrategy:
+          buildArgs:
+            - name: PROJECT
+              value: cc-form-gateway
+          dockerfilePath: .openshift/cc-form-gateway/Dockerfile
+        type: Docker
+      triggers: []
+  - apiVersion: v1
+    kind: ConfigMap
+    metadata:
+      name: ${APP_NAME}
+      namespace: ${PROJECT}
+    data:
+      configuration: |-
+        {
+          "foo": "bar"
+        }
+  - apiVersion: apps.openshift.io/v1
+    kind: DeploymentConfig
+    metadata:
+      labels:
+        app: ${APP_NAME}
+        component: api
+      name: ${APP_NAME}
+      namespace: ${PROJECT}
+    spec:
+      replicas: 3
+      revisionHistoryLimit: 3
+      selector:
+        name: ${APP_NAME}
+      strategy:
+        type: Rolling
+        rollingParams:
+          timeoutSeconds: 600
+          maxUnavailable: 25%
+          maxSurge: 25%
+        activeDeadlineSeconds: 21600
+        resources:
+          limits:
+            cpu: 400m
+            memory: 400Mi
+          requests:
+            cpu: 40m
+            memory: 100Mi
+      template:
+        metadata:
+          labels:
+            name: ${APP_NAME}
+        spec:
+          containers:
+            - name: ${APP_NAME}
+              imagePullPolicy: IfNotPresent
+              ports:
+                - containerPort: 3333
+                  name: http
+                  protocol: TCP
+              resources:
+                requests:
+                  cpu: 20m
+                  memory: 100Mi
+                limits:
+                  cpu: 200m
+                  memory: 512Mi
+              terminationMessagePath: /dev/termination-log
+              volumeMounts:
+                - mountPath: /opt/app-root/src/config
+                  name: config-volume
+          dnsPolicy: ClusterFirst
+          restartPolicy: Always
+          schedulerName: default-scheduler
+          volumes:
+            - configMap:
+                defaultMode: 420
+                items:
+                  - key: configuration
+                    path: config.json
+                name: ${APP_NAME}
+              name: config-volume
+      triggers:
+        - imageChangeParams:
+            containerNames:
+              - ${APP_NAME}
+            from:
+              kind: ImageStreamTag
+              name: '${APP_NAME}:${DEPLOY_TAG}'
+              namespace: ${INFRA_PROJECT}
+          type: ImageChange
+  - apiVersion: route.openshift.io/v1
+    kind: Route
+    metadata:
+      name: ${APP_NAME}
+      component: api
+      namespace: ${PROJECT}
+    spec:
+      port:
+        targetPort: http
+      tls:
+        termination: edge
+      to:
+        kind: Service
+        name: ${APP_NAME}
+        weight: 100
+      wildcardPolicy: None

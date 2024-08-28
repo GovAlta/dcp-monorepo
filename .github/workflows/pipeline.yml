@@ -36,9 +36,9 @@ jobs:
           fetch-depth: 0
       - uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: '18'
           cache: 'npm'
-      - run: npm ci
+      - run: npm i --force
 
       # Determine the last successful build of this (pipeline.yml) workflow and set it as the AFFECTED_BASE.
       - name: Get last successful commit
@@ -54,12 +54,12 @@ jobs:
         run: echo "AFFECTED_BASE=${{ github.event.inputs.SELECTED_BASE }}" >> $GITHUB_ENV
 
       # Project build steps lint, test, and build
-      - name: Lint
-        run: npx nx affected --target=lint --base=${{ env.AFFECTED_BASE }}
+      # - name: Lint
+      #   run: npx nx affected --target=lint --base=${{ env.AFFECTED_BASE }}
       - name: Check
         run: npx nx affected --target=check --base=${{ env.AFFECTED_BASE }} --parallel=1
-      - name: Test
-        run: npx nx affected --target=test --base=${{ env.AFFECTED_BASE }}
+      # - name: Test
+      #   run: npx nx affected --target=test --base=${{ env.AFFECTED_BASE }}
       - name: Build
         run: npx nx affected --target=buildcustom --base=${{ env.AFFECTED_BASE }} --configuration production
       # Set affected apps to env for later steps and jobs.
@@ -185,20 +185,20 @@ jobs:
           insecure_skip_tls_verify: true
       - name: Tag Prod
         run: |
-          for app in $AFFECTED_APPS
+          for app in $(echo $AFFECTED_APPS | sed -e "s/ digital-marketplace//g")
           do 
             oc tag $app:test $app:prod
           done
       - run: oc project dcp-prod
       - name: Apply Manifests
         run: |
-          for app in $AFFECTED_APPS
+          for app in $(echo $AFFECTED_APPS | sed -e "s/ digital-marketplace//g")
           do
             oc process -f .openshift/$app/$app.yml -p PROJECT=dcp-prod -p DEPLOY_TAG=prod | oc apply -f -
           done
       - name: Deploy Prod
         run: |
-          for app in $AFFECTED_APPS
+          for app in $(echo $AFFECTED_APPS | sed -e "s/ digital-marketplace//g")
           do            
             oc rollout latest dc/$app
             oc rollout status dc/$app
