@@ -21,10 +21,12 @@ import partners_thumb from '../img/stakeholder-icon-home.svg';
 		<!-- social -->
 		<meta name="twitter:card" content="summary" />
 		<meta property="og:type" content="article" />
-		<meta property="og:title" content="Page title" />
+		<meta property="og:title" content="Welcome to the Alberta Digital Marketplace" />
 		<meta property="og:description" content="Page description / summary." />
 		<meta property="og:image" content="/assets/sharing/share-alberta.png" />
 		<meta property="og:url" content="/build/beta/home.htm" />
+
+        <script is:inline src="https://feedback-service.adsp-uat.alberta.ca/feedback/v1/script/adspFeedback.js"></script>
 	
     </head>
 
@@ -292,11 +294,6 @@ import partners_thumb from '../img/stakeholder-icon-home.svg';
                 };
             }, false);
 
-            window.addEventListener("DOMContentLoaded", function(event){
-                var bodyHome = document.querySelector('body');
-                bodyHome.classList.add('loaded');
-            });
-
             /* Mobile Menu Toggle ****/
 
             var mobileBtn = document.querySelector('button.goa-adm-button');
@@ -377,11 +374,13 @@ import partners_thumb from '../img/stakeholder-icon-home.svg';
                                 
                                 (function (mscInput) {
                                     var mscInput = mscInput[io];
-                                    mscInput.addEventListener('click', function () {
-                                        if (!otherInput.checked) {
-                                            formOther.classList.remove('show-other');
-                                        };
-                                    });
+                                    if (otherInput) {
+                                        mscInput.addEventListener('click', function () {
+                                            if (!otherInput.checked) {
+                                                formOther.classList.remove('show-other');
+                                            };
+                                        });
+                                    };
                                 }) (mscInput);
                             };
                         };
@@ -394,6 +393,13 @@ import partners_thumb from '../img/stakeholder-icon-home.svg';
             function getViewportWidth() {
                 return (window.innerWidth ? window.innerWidth : (document.documentElement && document.documentElement.clientWidth ? document.documentElement.clientWidth : (document.body && document.body.clientWidth ? document.body.clientWidth : 0)));
             };
+            
+            window.onload = function() {
+                var body = document.querySelector('body');
+                body.classList.add('loaded');
+            };
+
+            adspFeedback.initialize({tenant: 'digital_marketplace'});
 
         </script>
 
