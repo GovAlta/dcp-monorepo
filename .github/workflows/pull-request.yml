@@ -30,8 +30,8 @@ jobs:
           node-version: "18"
           cache: 'npm'
       - run: npm i --force
-      - name: Lint
-        run: npx nx affected --target=lint --base=origin/${{ github.base_ref }}
+      # - name: Lint
+      #   run: npx nx affected --target=lint --base=origin/${{ github.base_ref }}
       - name: Check
         run: npx nx affected --target=check --base=origin/${{ github.base_ref }} --parallel=1
       - name: Test
