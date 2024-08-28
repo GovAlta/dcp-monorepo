@@ -73,6 +73,7 @@ body, select, textarea, button {
 
 a, button {
     cursor: pointer;
+	font-family: "acumin-pro-semi-condensed", sans-serif;
 }
 
 body {
@@ -165,6 +166,17 @@ a:focus {
     width: calc(100% - 64px);
 }
 
+html[dir=rtl] h2:after {
+    left: auto;
+    right: 2px;
+}
+
+html[dir=rtl] .goa-adm-body ul,
+html[dir=rtl] .goa-adm-body ol {
+    padding-right: 28px;
+    padding-left: 0;
+}
+
 /* NAVIGATION ****************************/
 
 /* logo ***/
@@ -191,7 +203,6 @@ a:focus {
     margin: 14px 12px 14px 0;
     padding: 2px 8px 6px;
     border-radius: 3px;
-    /* color: #333333; */
     font-weight: 700;
     display: inline-block;
 }
@@ -277,7 +288,6 @@ a:focus {
     content:'';
     display: block;
     background: transparent url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10.0737 11.5603C10.0331 11.601 9.9671 11.601 9.92642 11.5603L4.96434 6.59825C4.6389 6.27281 4.11126 6.27281 3.78583 6.59825C3.46039 6.92369 3.46039 7.45132 3.78583 7.77676L9.41082 13.4018C9.73626 13.7272 10.2639 13.7272 10.5893 13.4018L16.2143 7.77676C16.5398 7.45132 16.5398 6.92369 16.2143 6.59825C15.8889 6.27281 15.3613 6.27281 15.0358 6.59825L10.0737 11.5603Z' fill='%23006dcc'/%3E%3C/svg%3E%0A") no-repeat center center;
-    right: 0;
     width: 20px;
     height: 20px;
     margin: 1px 0 0 8px;
@@ -321,6 +331,14 @@ a:focus {
     bottom: -5px;
     transition: all 0.25s ease;
     opacity: 1;
+}
+
+html[dir=rtl] .goa-adm-microsite-header-type {
+    margin: 14px 0 14px 12px;
+}
+
+html[dir=rtl] .goa-adm-nav-button button.goa-adm-button:after {
+    margin: 1px 8px 0 0;
 }
 
 /* HEADER ****************************/
@@ -439,6 +457,17 @@ body:not(.adm-home-page) .goa-adm-body-header > .container {
     line-height: 1.75rem;
 }
 
+html[dir=rtl] .goa-adm-breadcrumbs > ul > li.goa-adm-breadcrumbs-active {
+    padding-right: 1.75rem;
+    padding-left: 0;
+}
+
+html[dir=rtl] .goa-adm-breadcrumbs > ul > li:not(:first-child):before {
+    right: 7px;
+    left: auto;
+    transform: rotate(180deg);
+}
+
 /* lede ***/
 
 .goa-adm-body-header > .container > .goa-adm-body-header-content > p.lede {
@@ -542,18 +571,21 @@ body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-full-sid
 
 body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-full-side-two-img:after {
     content: '';
+    display: block;
     width: 0;
     height: 2px;
     background-color: #005072;
-    display: block;
     position: absolute;
     bottom: 17px;
     right: 100%; 
     z-index: -1;
+    transition: width 2s ease;
 }
 
 body.adm-home-page.loaded .goa-adm-body-header.goa-adm-body-full .goa-adm-body-full-side-two-img:after {
+    display: block;
     width: 200vw;
+    transition: width 2s ease;
 }
 
 body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-owl-eye,
@@ -566,25 +598,10 @@ body.adm-home-page .goa-adm-body-header.goa-adm-body-full .sun-cloud > * {
     animation-delay: -30s;
 }
 
-body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-full-side-two-img:before {
-    content: '';
-    width: 44px;
-    height: 62px;
-    background: transparent url("../img/flower-home-page.svg");
-    background-size: cover;
-    position: absolute;
-    display: block;
-    bottom: 60px;
-    left: -158px;
-    right: -33px;
-    margin: 0 auto;
-    animation-name: flower;
-}
-
 body.adm-home-page .goa-adm-body-header.goa-adm-body-full:after {
     content: "";
     position: absolute;
-    top: 0px;
+    top: 40px;
     left: 0px;
     width: 200vw;
     height: 100%;
@@ -596,7 +613,7 @@ body.adm-home-page .goa-adm-body-header.goa-adm-body-full:after {
     animation-duration: 60s;
     animation-name: slidein;
     z-index: -100;
-    max-height: 155px;
+    max-height: 200px;
 }
 
 body.adm-home-page .goa-adm-body-header.goa-adm-body-full .sun-cloud {
@@ -628,7 +645,7 @@ body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-owl {
 body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-owl-eye {
     width: 120px;
     height: 100%;
-    background: transparent url("../img/owleye.png");
+    background: transparent url("../img/owleye.svg");
     background-size: cover;
     animation-name: owleye;
     z-index: -1;
@@ -637,13 +654,28 @@ body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-owl-eye 
 body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-owl-line {
     width: 270px;
     height: 88px;
-    background: transparent url("../img/owleye-lines.png") repeat-x center;
+    background: transparent url("../img/owleye-lines.svg") repeat-x center;
     background-size: contain;
     position: absolute;
     z-index: -1;
     right: 75%;
     top: 16px;
 } 
+
+body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-full-side-two-img:before {
+    content: '';
+    width: 44px;
+    height: 62px;
+    background: transparent url("../img/flower-home-page.svg");
+    background-size: cover;
+    position: absolute;
+    display: block;
+    bottom: 60px;
+    left: -158px;
+    right: -33px;
+    margin: 0 auto;
+    animation-name: flower;
+}
 
 body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-home-tablet-graphic {
     display: none;
@@ -877,6 +909,40 @@ a.goa-adm-button-link:hover:after {
     width: 50%;
 }
 
+html[dir=rtl] .goa-adm-timeline > .progressbar > li:first-child:before {
+    left: auto;
+    right: 50%;
+}
+
+html[dir=rtl] .goa-adm-timeline > .progressbar > li:last-child:before {
+    right: auto;
+    left: 50%;
+}
+
+html[dir=rtl] .goa-adm-timeline > ul.progressbar {
+    padding: 0;
+}
+
+html[dir=rtl] .goa-adm-timeline > .progressbar > li {
+    padding: 0 32px 0 0;
+    text-align: right;
+}
+
+html[dir=rtl] .goa-adm-timeline > ul.progressbar > li > * {
+    padding: 0 24px 0 0;
+}
+
+html[dir=rtl] .goa-adm-timeline > ul.progressbar:before {
+    right: -7px;
+    left: auto;
+}
+
+html[dir=rtl] .goa-adm-timeline > ul.progressbar > li:before,
+html[dir=rtl] .goa-adm-timeline > ul.progressbar > li:first-child:before,
+html[dir=rtl] .goa-adm-timeline > ul.progressbar > li:last-child:before {
+    right: 0;
+}
+
 /* FORM ****************************/
 
 section.goa-adm-sign-up-form {
@@ -954,7 +1020,7 @@ section.goa-adm-sign-up-form form fieldset > fieldset.adm-single-column {
     z-index: 5000;
     height: 68px;
     position: relative;
-    background: #F1F1F1;
+    background: #FFFFFF;
     box-sizing: border-box;
     width: 100%;
     padding: 6px 24px 10px;
@@ -969,7 +1035,7 @@ section.goa-adm-sign-up-form form fieldset > fieldset.adm-single-column {
 
 .goa-field input:not([type='checkbox']):hover,
 .goa-field select:hover {
-    background-color: #d9d9d9;
+    background-color: #F1F1F1;
     transition: background-color 0.5s ease;
 }
 
@@ -1049,7 +1115,7 @@ div.goa-option [type='radio']:not(:checked)+ label:before {
 
 div.goa-option [type='checkbox']:not(:checked):hover + label:before,
 div.goa-option [type='radio']:not(:checked):hover + label:before {
-    background-color: #D9D9D9;
+    background-color: #F1F1F1;
     transition: all 0.5s ease;
 }
 
@@ -1062,6 +1128,11 @@ div.goa-option [type='radio']:checked + label:after {
 div.goa-option [type='checkbox']:checked + label:before {
     background-color: #0070C4;
 	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 16 16' shape-rendering='geometricPrecision'%3E%3Cpath d='M1 10L6 14L15 1' fill='transparent' stroke='%23fff' stroke-width='2' stroke-endcap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    transition: none;
+}
+
+div.goa-option [type='checkbox']:not(:checked) + label:before {
+    transition: none;
 }
 
 div.goa-option [type='radio']:checked + label:after {
@@ -1149,6 +1220,33 @@ div.goa-validation.goa-error p, .form-item--error-message {
     width: 100%;
 }
 
+html[dir=rtl] div.goa-option [type='checkbox']:not(:checked) + label:before,
+html[dir=rtl] div.goa-option [type='checkbox']:checked + label:before,
+html[dir=rtl] div.goa-option [type='radio']:not(:checked) + label:before,
+html[dir=rtl] div.goa-option [type='radio']:checked + label:before,
+html[dir=rtl] div.goa-option [type='radio']:checked + label:after {
+    margin-right: 0;
+    margin-left: 12px;
+}
+
+html[dir=rtl] div.goa-option [type='checkbox']:not(:checked),
+html[dir=rtl] div.goa-option [type='checkbox']:checked,
+html[dir=rtl] div.goa-option [type='radio']:not(:checked),
+html[dir=rtl] div.goa-option [type='radio']:checked {
+    left: auto;
+    right: 6px;
+}
+
+html[dir=rtl] div.goa-option [type='radio']:checked + label:after {
+    left: auto;
+    right: 0;
+}
+
+html[dir=rtl] .goa-adm-sign-up-form form .goa-adm-buttons .goa-adm-button:after {
+    margin: 2px 8px 0 0;
+    transform: rotate(180deg);
+}
+
 /* FOOTER ****************************/
 
 .goa-adm-footer {    
@@ -1198,6 +1296,179 @@ div.goa-validation.goa-error p, .form-item--error-message {
 .goa-copyright {
     font-size: 0.875rem;
     line-height: 1.313rem;
+}
+
+/* FEEDBACK OVERRIDES ****************************/
+
+.adsp-fb + .overlay {
+    z-index: 1000000;
+}
+
+.adsp-fb h3 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+}
+
+.full-width-hr-container .styled-hr-bottom {
+    box-shadow: 0 -3px 7px rgba(0, 0, 0, 0.25);
+    background: #DCDCDC;
+}
+
+.adsp-fb .adsp-fb-form {
+    padding: 0 0 24px;
+}
+
+.adsp-fb .adsp-fb-form-rating {
+    margin-top: 16px;
+}
+
+.adsp-fb .adsp-fb-form > * {
+    padding: 0 24px;
+}
+
+.adsp-fb .adsp-fb-form > .h3-sub-title {
+    padding: 24px 24px 0 !important;
+}
+
+.styled-hr-top {
+    box-shadow: none;
+}
+
+.adsp-fb .adsp-fb-actions {
+    margin-top: 26px;
+}
+
+.adsp-fb .adsp-fb-container-heading {
+    box-shadow: 0 2px 7px rgba(0, 0, 0, 0.25);
+    position: relative;
+    z-index: 1000;
+}
+
+.adsp-fb .adsp-fb-form-container {
+    border-radius: 10px;
+    border-color: #DCDCDC;
+    box-shadow: 0 2px 7px rgba(0, 0, 0, 0.25);
+}
+
+.adsp-fb button {
+    text-decoration: none;
+    padding: 9px 18px 12px;
+    font-weight: 700;
+    border-radius: 8px;
+    background: #006dcc;
+    color: #ffffff;
+    border: none;
+    display: inline-block;
+    position: relative;
+    font-size: 1.125rem;
+}
+
+.adsp-fb .adsp-fb-form-comment textarea {
+    margin-left: 0;
+}
+
+.adsp-fb button.adsp-fb-form-primary {
+    margin-left: 12px;
+}
+
+.adsp-fb button.adsp-fb-form-secondary {
+    padding: 9px 16px 12px;
+    background: transparent;
+    border: 2px solid #006dcc;
+    color: #006dcc;
+}
+
+.adsp-fb button.adsp-fb-form-primary:hover {
+    background: #333333;
+}
+
+.adsp-fb button.adsp-fb-form-secondary:hover {
+    color: #333333;
+    border-color: #333333;
+    background: transparent;
+}
+
+.adsp-fb button:focus,
+.adsp-fb button:active,
+.adsp-fb .adsp-fb-form-comment textarea:focus,
+.feedback-close-button:active,
+.feedback-close-button:focus,
+.adsp-fb button.adsp-fb-form-secondary:focus,
+.adsp-fb button.adsp-fb-form-secondary:active {
+    box-shadow: none;
+    outline: 3px solid #FFB500;
+    transform: none;
+}
+
+.adsp-fb button.adsp-fb-form-secondary:focus,
+.adsp-fb button.adsp-fb-form-secondary:active {
+    background-color: transparent;
+    border-radius: 8px;
+    border: 2px solid #006dcc;
+}
+
+.adsp-fb .adsp-fb-form-container[data-error='true'] .adsp-fb-error {
+    padding:  28px 0;
+}
+
+.adsp-fb .adsp-fb-form-container .adsp-fb-sent {
+    padding:  28px 24px
+}
+
+.adsp-fb .adsp-fb-content {
+    margin-bottom: 0;
+    padding: 24px !important;
+}
+
+.styled-hr-bottom {
+    width: calc(100% + 24px);
+}
+
+.adsp-fb .adsp-fb-form-comment span {
+    font-size: 0.875rem;
+    line-height: 1.5rem;
+}
+
+.adsp-fb .adsp-fb-badge:hover {
+    background: #333333;
+}
+
+@media screen and (max-width: 640px) {
+
+    .adsp-fb-badge {
+        display: none;
+    }
+
+    .adsp-fb h3 {
+        font-size: 1.125rem;
+        line-height: 1.75rem;
+    }
+
+    .adsp-fb .adsp-fb-form-container {
+        border-radius: 0; 
+        box-shadow: none;
+    }
+
+    .adsp-fb .adsp-fb-actions {
+        position: relative;
+    }
+
+    .adsp-fb .adsp-fb-form {
+        max-height: 400px !important;
+    }
+
+    .adsp-fb .adsp-fb-form-rating {
+        gap: 24px;
+    }
+
+    .adsp-fb .adsp-fb-form-rating > div > p {
+        margin: 0 0 0 4px;
+    }
+
+    .adsp-fb button.adsp-fb-form-primary {
+        margin-left: 0;
+        margin-top: 0;
+    }
 }
 
 /**************************
@@ -1596,6 +1867,10 @@ div.goa-validation.goa-error p, .form-item--error-message {
 
     section.goa-adm-sign-up-form form fieldset > fieldset {
         grid-template-columns: repeat(1, 1fr);
+    }
+
+    html[dir=rtl] section.goa-adm-sign-up-form h2 {
+        text-align: right;
     }
 }
 
