@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default {
-  displayName: 'cc-form-gateway-e2e',
+  displayName: 'dcp-proxy-api-e2e',
   preset: '../../jest.preset.js',
   globalSetup: '<rootDir>/src/support/global-setup.ts',
   globalTeardown: '<rootDir>/src/support/global-teardown.ts',
@@ -15,5 +15,5 @@ export default {
     ],
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory: '../../coverage/cc-form-gateway-e2e',
+  coverageDirectory: '../../coverage/dcp-proxy-api-e2e',
 };

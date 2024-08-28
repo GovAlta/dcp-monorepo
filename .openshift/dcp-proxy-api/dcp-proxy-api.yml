@@ -1,9 +1,9 @@
 apiVersion: template.openshift.io/v1
 kind: Template
 metadata:
-  name: cc-form-gateway
+  name: dcp-proxy-api
 labels:
-  app: cc-form-gateway
+  app: dcp-proxy-api
 parameters:
   - name: INFRA_PROJECT
     description: Project used for build infrastructure.
@@ -17,7 +17,7 @@ parameters:
   - name: APP_NAME
     description: Name of the application.
     displayName: Application Name
-    value: cc-form-gateway
+    value: dcp-proxy-api
     required: true
   - name: DEPLOY_TAG
     description: Tag of the ImageStream to deploy.
@@ -74,8 +74,8 @@ objects:
         dockerStrategy:
           buildArgs:
             - name: PROJECT
-              value: cc-form-gateway
-          dockerfilePath: .openshift/cc-form-gateway/Dockerfile
+              value: dcp-proxy-api
+          dockerfilePath: .openshift/dcp-proxy-api/Dockerfile
         type: Docker
       triggers: []
   - apiVersion: v1

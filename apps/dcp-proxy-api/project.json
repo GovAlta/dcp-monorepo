@@ -1,7 +1,7 @@
 {
-  "name": "cc-form-gateway",
+  "name": "dcp-proxy-api",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/cc-form-gateway/src",
+  "sourceRoot": "apps/dcp-proxy-api/src",
   "projectType": "application",
   "tags": [],
   "targets": {
@@ -11,12 +11,12 @@
       "defaultConfiguration": "production",
       "options": {
         "platform": "node",
-        "outputPath": "dist/apps/cc-form-gateway",
+        "outputPath": "dist/apps/dcp-proxy-api",
         "format": ["cjs"],
         "bundle": false,
-        "main": "apps/cc-form-gateway/src/main.ts",
-        "tsConfig": "apps/cc-form-gateway/tsconfig.app.json",
-        "assets": ["apps/cc-form-gateway/src/assets"],
+        "main": "apps/dcp-proxy-api/src/main.ts",
+        "tsConfig": "apps/dcp-proxy-api/tsconfig.app.json",
+        "assets": ["apps/dcp-proxy-api/src/assets"],
         "generatePackageJson": true,
         "esbuildOptions": {
           "sourcemap": true,
@@ -55,14 +55,14 @@
       "executor": "@nx/js:node",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "cc-form-gateway:build"
+        "buildTarget": "dcp-proxy-api:build"
       },
       "configurations": {
         "development": {
-          "buildTarget": "cc-form-gateway:build:development"
+          "buildTarget": "dcp-proxy-api:build:development"
         },
         "production": {
-          "buildTarget": "cc-form-gateway:build:production"
+          "buildTarget": "dcp-proxy-api:build:production"
         }
       }
     }
