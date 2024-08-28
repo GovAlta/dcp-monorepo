@@ -38,7 +38,6 @@ objects:
           targetPort: 3333
       selector:
         name: ${APP_NAME}
-        component: api
       sessionAffinity: None
       type: ClusterIP
   - apiVersion: image.openshift.io/v1
@@ -46,7 +45,6 @@ objects:
     metadata:
       labels:
         apply-build: 'true'
-        component: api
       name: ${APP_NAME}
       namespace: ${INFRA_PROJECT}
   - apiVersion: build.openshift.io/v1
@@ -95,7 +93,6 @@ objects:
     metadata:
       labels:
         app: ${APP_NAME}
-        component: api
       name: ${APP_NAME}
       namespace: ${PROJECT}
     spec:
@@ -104,12 +101,10 @@ objects:
       selector:
         name: ${APP_NAME}
       strategy:
-        type: Rolling
-        rollingParams:
-          timeoutSeconds: 600
-          maxUnavailable: 25%
-          maxSurge: 25%
+        type: Recreate
         activeDeadlineSeconds: 21600
+        recreateParams:
+          timeoutSeconds: 600
         resources:
           limits:
             cpu: 400m
@@ -131,11 +126,11 @@ objects:
                   protocol: TCP
               resources:
                 requests:
-                  cpu: 20m
-                  memory: 100Mi
-                limits:
                   cpu: 200m
-                  memory: 512Mi
+                  memory: 300Mi
+                limits:
+                  cpu: 300m
+                  memory: 500Mi
               terminationMessagePath: /dev/termination-log
               volumeMounts:
                 - mountPath: /opt/app-root/src/config
@@ -164,7 +159,6 @@ objects:
     kind: Route
     metadata:
       name: ${APP_NAME}
-      component: api
       namespace: ${PROJECT}
     spec:
       port:
