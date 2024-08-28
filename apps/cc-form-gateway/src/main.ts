@@ -1,5 +1,5 @@
 import express from 'express';
-import * as cors from 'cors';
+import cors from 'cors';
 
 const host = process.env.HOST ?? 'localhost';
 // const port = process.env.PORT ? Number(process.env.PORT) : 33;
