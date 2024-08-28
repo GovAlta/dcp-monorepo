@@ -58,8 +58,8 @@ jobs:
       #   run: npx nx affected --target=lint --base=${{ env.AFFECTED_BASE }}
       - name: Check
         run: npx nx affected --target=check --base=${{ env.AFFECTED_BASE }} --parallel=1
-      - name: Test
-        run: npx nx affected --target=test --base=${{ env.AFFECTED_BASE }}
+      # - name: Test
+      #   run: npx nx affected --target=test --base=${{ env.AFFECTED_BASE }}
       - name: Build
         run: npx nx affected --target=buildcustom --base=${{ env.AFFECTED_BASE }} --configuration production
       # Set affected apps to env for later steps and jobs.

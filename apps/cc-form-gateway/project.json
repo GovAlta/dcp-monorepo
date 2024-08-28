@@ -37,6 +37,20 @@
         }
       }
     },
+    "buildcustom": {
+      "executor": "nx:run-commands",
+      "dependsOn": [
+        {
+          "target": "build",
+          "projects": "self"
+        }
+      ],
+      "options": {
+        "commands": [
+        ],
+        "parallel": false
+      }
+    },
     "serve": {
       "executor": "@nx/js:node",
       "defaultConfiguration": "development",
