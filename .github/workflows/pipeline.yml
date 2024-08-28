@@ -17,6 +17,9 @@ on:
       SELECTED_BASE:
         description: Value for --base= in nx affected commands
         required: false
+      AFFECTED_APPS:
+        description: Comma separated list of affected apps
+        required: true
 
 jobs:
   build:
