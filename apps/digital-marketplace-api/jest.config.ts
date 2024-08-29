@@ -1,11 +1,11 @@
 /* eslint-disable */
 export default {
-  displayName: 'dcp-proxy-api',
+  displayName: 'digital-marketplace-api',
   preset: '../../jest.preset.js',
   testEnvironment: 'node',
   transform: {
     '^.+\\.[tj]s$': ['ts-jest', { tsconfig: '<rootDir>/tsconfig.spec.json' }],
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory: '../../coverage/apps/dcp-proxy-api',
+  coverageDirectory: '../../coverage/apps/digital-marketplace-api',
 };
