@@ -1,7 +1,7 @@
 {
-  "name": "dcp-proxy-api",
+  "name": "digital-marketplace-api",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/dcp-proxy-api/src",
+  "sourceRoot": "apps/digital-marketplace-api/src",
   "projectType": "application",
   "tags": [],
   "targets": {
@@ -11,12 +11,12 @@
       "defaultConfiguration": "production",
       "options": {
         "platform": "node",
-        "outputPath": "dist/apps/dcp-proxy-api",
+        "outputPath": "dist/apps/digital-marketplace-api",
         "format": ["cjs"],
         "bundle": false,
-        "main": "apps/dcp-proxy-api/src/main.ts",
-        "tsConfig": "apps/dcp-proxy-api/tsconfig.app.json",
-        "assets": ["apps/dcp-proxy-api/src/assets"],
+        "main": "apps/digital-marketplace-api/src/main.ts",
+        "tsConfig": "apps/digital-marketplace-api/tsconfig.app.json",
+        "assets": ["apps/digital-marketplace-api/src/assets"],
         "generatePackageJson": true,
         "esbuildOptions": {
           "sourcemap": true,
@@ -55,14 +55,14 @@
       "executor": "@nx/js:node",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "dcp-proxy-api:build"
+        "buildTarget": "digital-marketplace-api:build"
       },
       "configurations": {
         "development": {
-          "buildTarget": "dcp-proxy-api:build:development"
+          "buildTarget": "digital-marketplace-api:build:development"
         },
         "production": {
-          "buildTarget": "dcp-proxy-api:build:production"
+          "buildTarget": "digital-marketplace-api:build:production"
         }
       }
     }

@@ -1,9 +1,9 @@
 apiVersion: template.openshift.io/v1
 kind: Template
 metadata:
-  name: dcp-proxy-api
+  name: digital-marketplace-api
 labels:
-  app: dcp-proxy-api
+  app: digital-marketplace-api
 parameters:
   - name: INFRA_PROJECT
     description: Project used for build infrastructure.
@@ -17,7 +17,7 @@ parameters:
   - name: APP_NAME
     description: Name of the application.
     displayName: Application Name
-    value: dcp-proxy-api
+    value: digital-marketplace-api
     required: true
   - name: DEPLOY_TAG
     description: Tag of the ImageStream to deploy.
@@ -74,8 +74,8 @@ objects:
         dockerStrategy:
           buildArgs:
             - name: PROJECT
-              value: dcp-proxy-api
-          dockerfilePath: .openshift/dcp-proxy-api/Dockerfile
+              value: digital-marketplace-api
+          dockerfilePath: .openshift/digital-marketplace-api/Dockerfile
         type: Docker
       triggers: []
   - apiVersion: v1
