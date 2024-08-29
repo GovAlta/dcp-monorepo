@@ -140,6 +140,7 @@ h3 {
     line-height: 2.625rem;
     word-break: break-word;
     position: relative;
+    color: #005072;
 }
 
 a:link {
@@ -156,8 +157,9 @@ a:hover {
 }
 
 a:focus {
-    outline: 1px solid #FFB500;
-    border-radius: 3px;
+    outline: 3px solid #FFB500;
+    border-radius: 4px;    
+    outline-offset: 2px;
 }
 
 .container {
@@ -320,8 +322,8 @@ html[dir=rtl] .goa-adm-body ol {
     width: 100%;
     bottom: 0px;
     position: absolute;
-    background: #333333;
-    height: 1px;
+    background: #0070C4;
+    height: 2px;
     transition: all 0.25s ease;
     opacity: 0;
 }
@@ -365,6 +367,10 @@ body:not(.adm-home-page) .goa-adm-body-header > .container {
 .goa-adm-body-header > .container > .goa-adm-body-header-content {
     max-width: 600px;
     width: 100%;
+}
+
+.goa-adm-body-header > .container > .goa-adm-body-header-content > h1 {
+    max-width: 500px;
 }
 
 .goa-adm-body-header > .container > .goa-adm-body-header-graphic > svg {
@@ -481,7 +487,7 @@ html[dir=rtl] .goa-adm-breadcrumbs > ul > li:not(:first-child):before {
     display: block;
     position: relative;
     height: 100%;
-    padding: 64px 0;
+    padding: 80px 0;
 }
 
 .goa-adm-body > .container > section:not(:first-child) {
@@ -598,40 +604,9 @@ body.adm-home-page .goa-adm-body-header.goa-adm-body-full .sun-cloud > * {
     animation-delay: -30s;
 }
 
-body.adm-home-page .goa-adm-body-header.goa-adm-body-full:after {
-    content: "";
-    position: absolute;
-    top: 40px;
-    left: 0px;
-    width: 200vw;
-    height: 100%;
-    background: transparent url("../img/clouds.png");
-    background-repeat: repeat-x;
-    background-size: contain;
-    animation-timing-function: linear;
-    animation-duration: 5s;
-    animation-duration: 60s;
-    animation-name: slidein;
-    z-index: -100;
-    max-height: 200px;
-}
-
 body.adm-home-page .goa-adm-body-header.goa-adm-body-full .sun-cloud {
     position: absolute;
     right: 350px;
-}
-
-body.adm-home-page .goa-adm-body-header.goa-adm-body-full .sun-cloud > svg:first-child {
-    animation-name: sunUp;
-    animation-delay: 0s;
-}
-
-
-body.adm-home-page .goa-adm-body-header.goa-adm-body-full .sun-cloud > svg:last-child {
-    animation-name: cloudSide;
-    animation-delay: 0s;
-    position: relative;
-    right: 110px;
 }
 
 body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-owl {
@@ -640,15 +615,6 @@ body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-owl {
     right: 44px;
     bottom: 0;
     height: 120px;
-}
-
-body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-owl-eye {
-    width: 120px;
-    height: 100%;
-    background: transparent url("../img/owleye.svg");
-    background-size: cover;
-    animation-name: owleye;
-    z-index: -1;
 }
 
 body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-owl-line {
@@ -661,87 +627,6 @@ body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-owl-line
     right: 75%;
     top: 16px;
 } 
-
-body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-full-side-two-img:before {
-    content: '';
-    width: 44px;
-    height: 62px;
-    background: transparent url("../img/flower-home-page.svg");
-    background-size: cover;
-    position: absolute;
-    display: block;
-    bottom: 60px;
-    left: -158px;
-    right: -33px;
-    margin: 0 auto;
-    animation-name: flower;
-}
-
-body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-home-tablet-graphic {
-    display: none;
-}
-
-@keyframes sunUp {
-    0% {
-        transform: translateY(0);
-    }
-  
-    50% {
-        transform: translateY(-10px);
-    }
-
-    100% {
-        transform: translateY(0);
-    }
-}
-
-@keyframes cloudSide {
-    0% {
-        transform: translateX(0);
-    }
-  
-    50% {
-        transform: translateX(14px);
-    }
-
-    100% {
-        transform: translateX(0);
-    }
-}
-
-@keyframes slidein {
-    from {
-      transform: translateX(0%);
-    }
-  
-    to {
-      transform: translateX(-1335px);
-    }
-}
-
-@keyframes owleye {
-    from {
-        transform: rotate(0);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-@keyframes flower {
-    0% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.3);
-    }
-
-    100% {
-        transform: scale(1);
-    }
-}
 
 /* HOME PAGE CARDS ****************************/
 
@@ -923,24 +808,13 @@ html[dir=rtl] .goa-adm-timeline > ul.progressbar {
     padding: 0;
 }
 
-html[dir=rtl] .goa-adm-timeline > .progressbar > li {
-    padding: 0 32px 0 0;
-    text-align: right;
-}
-
 html[dir=rtl] .goa-adm-timeline > ul.progressbar > li > * {
     padding: 0 24px 0 0;
 }
 
 html[dir=rtl] .goa-adm-timeline > ul.progressbar:before {
-    right: -7px;
+    right: 15px;
     left: auto;
-}
-
-html[dir=rtl] .goa-adm-timeline > ul.progressbar > li:before,
-html[dir=rtl] .goa-adm-timeline > ul.progressbar > li:first-child:before,
-html[dir=rtl] .goa-adm-timeline > ul.progressbar > li:last-child:before {
-    right: 0;
 }
 
 /* FORM ****************************/
@@ -1046,6 +920,7 @@ div.goa-option [type='radio']:focus + label:before {
     outline: 3px solid #FFB500;
     outline-offset: 0;
     transition: background-color 0.5s ease;
+    background-color: #F1F1F1;
 }
 
 div.goa-option {
@@ -1220,6 +1095,40 @@ div.goa-validation.goa-error p, .form-item--error-message {
     width: 100%;
 }
 
+/* success message ***/
+
+section.goa-adm-sign-up-form.goa-adm-form-success {
+    padding: 48px 48px 52px;
+}
+
+section.goa-adm-sign-up-form.goa-adm-form-success .goa-adm-form-container {
+    max-width: auto;
+    margin: 0;
+}
+
+section.goa-adm-sign-up-form.goa-adm-form-success .goa-adm-form-container > form > p {
+    margin: 24px 0;
+}
+
+section.goa-adm-sign-up-form.goa-adm-form-success .goa-adm-form-container > form > a.goa-adm-button-link {
+    border: none;
+    color: #ffffff;
+    background: #006dcc;
+}
+
+section.goa-adm-sign-up-form.goa-adm-form-success .goa-adm-form-container > form > a.goa-adm-button-link:hover {
+    background: #333333;
+}
+
+section.goa-adm-sign-up-form.goa-adm-form-success .goa-adm-form-container > form > a.goa-adm-button-link::after {
+    background: transparent url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M6.59808 15.0351C6.27264 15.3605 6.27264 15.8882 6.59808 16.2136C6.92352 16.539 7.45116 16.539 7.77659 16.2136L13.4016 10.5886C13.727 10.2632 13.727 9.73553 13.4016 9.41009L7.77659 3.78509C7.45116 3.45966 6.92352 3.45966 6.59808 3.78509C6.27264 4.11053 6.27264 4.63817 6.59808 4.9636L11.5602 9.92569C11.6008 9.96637 11.6008 10.0323 11.5602 10.073L6.59808 15.0351Z' fill='%23ffffff'/%3E%3C/svg%3E%0A") no-repeat center center;
+}
+
+section.goa-adm-sign-up-form.goa-adm-form-success h2,
+section.goa-adm-sign-up-form.goa-adm-form-success .goa-adm-form-container .goa-adm-disclaimer {
+    display: none;
+}
+
 html[dir=rtl] div.goa-option [type='checkbox']:not(:checked) + label:before,
 html[dir=rtl] div.goa-option [type='checkbox']:checked + label:before,
 html[dir=rtl] div.goa-option [type='radio']:not(:checked) + label:before,
@@ -1257,7 +1166,7 @@ html[dir=rtl] .goa-adm-sign-up-form form .goa-adm-buttons .goa-adm-button:after 
     box-shadow: 0 0px 8px rgb(51, 51, 51, 0.11);
     vertical-align: top;
     position: relative;
-    border-bottom: 1rem solid #333333;
+    border-bottom: 1rem solid #005072;
 }
 
 .goa-adm-footer > .goa-adm-footer-container {
@@ -1300,57 +1209,68 @@ html[dir=rtl] .goa-adm-sign-up-form form .goa-adm-buttons .goa-adm-button:after 
 
 /* FEEDBACK OVERRIDES ****************************/
 
-.adsp-fb + .overlay {
+body .adsp-fb + .overlay {
     z-index: 1000000;
 }
 
-.adsp-fb h3 {
-    font-size: 1.5rem;
-    line-height: 2rem;
+body .adsp-fb .adsp-fb-badge {
+    z-index: 10000;
 }
 
-.full-width-hr-container .styled-hr-bottom {
+body .adsp-fb .adsp-fb-container-heading {
+    padding-right: 24px;
+    padding-left: 24px;
+}
+
+body .adsp-fb h3 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    color: #333333;
+}
+
+body .adsp-fb .full-width-hr-container .styled-hr-bottom {
     box-shadow: 0 -3px 7px rgba(0, 0, 0, 0.25);
     background: #DCDCDC;
 }
 
-.adsp-fb .adsp-fb-form {
+body .adsp-fb .adsp-fb-form {
     padding: 0 0 24px;
 }
 
-.adsp-fb .adsp-fb-form-rating {
+body .adsp-fb .adsp-fb-form-rating {
     margin-top: 16px;
 }
 
-.adsp-fb .adsp-fb-form > * {
+body .adsp-fb .adsp-fb-form > * {
     padding: 0 24px;
 }
 
-.adsp-fb .adsp-fb-form > .h3-sub-title {
+body .adsp-fb .adsp-fb-form > .h3-sub-title {
     padding: 24px 24px 0 !important;
 }
 
-.styled-hr-top {
+body .adsp-fb .styled-hr-top {
     box-shadow: none;
+    background: transparent;
 }
 
-.adsp-fb .adsp-fb-actions {
+body .adsp-fb .adsp-fb-actions {
     margin-top: 26px;
 }
 
-.adsp-fb .adsp-fb-container-heading {
+body .adsp-fb .adsp-fb-container-heading {
     box-shadow: 0 2px 7px rgba(0, 0, 0, 0.25);
     position: relative;
     z-index: 1000;
 }
 
-.adsp-fb .adsp-fb-form-container {
+body .adsp-fb .adsp-fb-form-container {
     border-radius: 10px;
     border-color: #DCDCDC;
     box-shadow: 0 2px 7px rgba(0, 0, 0, 0.25);
 }
 
-.adsp-fb button {
+body .adsp-fb button {
     text-decoration: none;
     padding: 9px 18px 12px;
     font-weight: 700;
@@ -1363,109 +1283,121 @@ html[dir=rtl] .goa-adm-sign-up-form form .goa-adm-buttons .goa-adm-button:after 
     font-size: 1.125rem;
 }
 
-.adsp-fb .adsp-fb-form-comment textarea {
+body .adsp-fb .adsp-fb-form-comment textarea {
     margin-left: 0;
 }
 
-.adsp-fb button.adsp-fb-form-primary {
+body .adsp-fb button.adsp-fb-form-primary {
     margin-left: 12px;
 }
 
-.adsp-fb button.adsp-fb-form-secondary {
+body .adsp-fb button.adsp-fb-form-secondary {
     padding: 9px 16px 12px;
     background: transparent;
     border: 2px solid #006dcc;
     color: #006dcc;
 }
 
-.adsp-fb button.adsp-fb-form-primary:hover {
+body .adsp-fb button.adsp-fb-form-primary:hover {
     background: #333333;
 }
 
-.adsp-fb button.adsp-fb-form-secondary:hover {
+body .adsp-fb button.adsp-fb-form-secondary:hover {
     color: #333333;
     border-color: #333333;
     background: transparent;
 }
 
-.adsp-fb button:focus,
-.adsp-fb button:active,
-.adsp-fb .adsp-fb-form-comment textarea:focus,
-.feedback-close-button:active,
-.feedback-close-button:focus,
-.adsp-fb button.adsp-fb-form-secondary:focus,
-.adsp-fb button.adsp-fb-form-secondary:active {
+body .adsp-fb button:focus,
+body .adsp-fb button:active,
+body .adsp-fb .adsp-fb-form-comment textarea:focus,
+body .adsp-fb .feedback-close-button:active,
+body .adsp-fb .feedback-close-button:focus,
+body .adsp-fb button.adsp-fb-form-secondary:focus,
+body .adsp-fb button.adsp-fb-form-secondary:active {
     box-shadow: none;
     outline: 3px solid #FFB500;
     transform: none;
 }
 
-.adsp-fb button.adsp-fb-form-secondary:focus,
-.adsp-fb button.adsp-fb-form-secondary:active {
+body .adsp-fb button.adsp-fb-form-secondary:focus,
+body .adsp-fb button.adsp-fb-form-secondary:active {
     background-color: transparent;
     border-radius: 8px;
     border: 2px solid #006dcc;
 }
 
-.adsp-fb .adsp-fb-form-container[data-error='true'] .adsp-fb-error {
+body .adsp-fb .adsp-fb-form-container[data-error='true'] .adsp-fb-error {
     padding:  28px 0;
 }
 
-.adsp-fb .adsp-fb-form-container .adsp-fb-sent {
+body .adsp-fb .adsp-fb-form-container .adsp-fb-sent {
     padding:  28px 24px
 }
 
-.adsp-fb .adsp-fb-content {
+body .adsp-fb .adsp-fb-content {
     margin-bottom: 0;
     padding: 24px !important;
 }
 
-.styled-hr-bottom {
+body .adsp-fb .styled-hr-bottom {
     width: calc(100% + 24px);
 }
 
-.adsp-fb .adsp-fb-form-comment span {
+body .adsp-fb .adsp-fb-form-comment span {
     font-size: 0.875rem;
     line-height: 1.5rem;
 }
 
-.adsp-fb .adsp-fb-badge:hover {
+body .adsp-fb .adsp-fb-badge:hover {
     background: #333333;
+}
+
+body .adsp-fb button#feedback-close-success {
+    margin-bottom: 24px;
+}
+
+body .adsp-fb .adsp-fb-form-container[data-completed='true'] .adsp-fb-form {
+    height: 275px !important;
 }
 
 @media screen and (max-width: 640px) {
 
-    .adsp-fb-badge {
-        display: none;
+    body .adsp-fb .adsp-fb-badge {
+        /*display: none;*/
+        top: 77vh;
+        font-size: 12px;
+        padding: 12px 0px;
+        line-height: 1.5rem;
     }
 
-    .adsp-fb h3 {
+    body .adsp-fb h3 {
         font-size: 1.125rem;
         line-height: 1.75rem;
     }
 
-    .adsp-fb .adsp-fb-form-container {
+    body .adsp-fb .adsp-fb-form-container {
         border-radius: 0; 
         box-shadow: none;
     }
 
-    .adsp-fb .adsp-fb-actions {
+    body .adsp-fb .adsp-fb-actions {
         position: relative;
     }
 
-    .adsp-fb .adsp-fb-form {
+    body .adsp-fb .adsp-fb-form {
         max-height: 400px !important;
     }
 
-    .adsp-fb .adsp-fb-form-rating {
+    body .adsp-fb .adsp-fb-form-rating {
         gap: 24px;
     }
 
-    .adsp-fb .adsp-fb-form-rating > div > p {
+    body .adsp-fb .adsp-fb-form-rating > div > p {
         margin: 0 0 0 4px;
     }
 
-    .adsp-fb button.adsp-fb-form-primary {
+    body .adsp-fb button.adsp-fb-form-primary {
         margin-left: 0;
         margin-top: 0;
     }
@@ -1493,6 +1425,129 @@ html[dir=rtl] .goa-adm-sign-up-form form .goa-adm-buttons .goa-adm-button:after 
     
     body.adm-home-page .goa-adm-body-header > .container > .goa-adm-body-header-content > p.lede {
         max-width: 515px;
+    }
+}
+
+@media screen and (min-width: 900px) {
+
+    body.adm-home-page .goa-adm-body-header.goa-adm-body-full .sun-cloud > svg:first-child {
+        animation-name: sunUp;
+        animation-delay: 0s;
+    }
+
+    body.adm-home-page .goa-adm-body-header.goa-adm-body-full .sun-cloud > svg:last-child {
+        animation-name: cloudSide;
+        animation-delay: 0s;
+        position: relative;
+        right: 110px;
+    }
+
+    body.adm-home-page .goa-adm-body-header.goa-adm-body-full:after {
+        content: "";
+        position: absolute;
+        top: 40px;
+        left: 0px;
+        width: 200vw;
+        height: 100%;
+        background: transparent url("../img/clouds.png");
+        background-repeat: repeat-x;
+        background-size: contain;
+        animation-timing-function: linear;
+        animation-duration: 5s;
+        animation-duration: 60s;
+        animation-name: slidein;
+        z-index: -100;
+        max-height: 200px;
+    }
+
+    body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-owl-eye {
+        width: 120px;
+        height: 100%;
+        background: transparent url("../img/owleye.svg");
+        background-size: cover;
+        animation-name: owleye;
+        z-index: -1;
+    }
+
+    body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-full-side-two-img:before {
+        content: '';
+        width: 44px;
+        height: 62px;
+        background: transparent url("../img/flower-home-page.svg");
+        background-size: cover;
+        position: absolute;
+        display: block;
+        bottom: 60px;
+        left: -158px;
+        right: -33px;
+        margin: 0 auto;
+        animation-name: flower;
+    }
+
+    body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-home-tablet-graphic {
+        display: none;
+    }
+
+    @keyframes sunUp {
+        0% {
+            transform: translateY(0);
+        }
+    
+        50% {
+            transform: translateY(-10px);
+        }
+
+        100% {
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes cloudSide {
+        0% {
+            transform: translateX(0);
+        }
+    
+        50% {
+            transform: translateX(14px);
+        }
+
+        100% {
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes slidein {
+        from {
+        transform: translateX(0%);
+        }
+    
+        to {
+        transform: translateX(-1335px);
+        }
+    }
+
+    @keyframes owleye {
+        from {
+            transform: rotate(0);
+        }
+
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    @keyframes flower {
+        0% {
+            transform: scale(1);
+        }
+
+        50% {
+            transform: scale(1.3);
+        }
+
+        100% {
+            transform: scale(1);
+        }
     }
 }
 
@@ -1652,6 +1707,10 @@ html[dir=rtl] .goa-adm-sign-up-form form .goa-adm-buttons .goa-adm-button:after 
         align-items: center;
     }
 
+    .goa-adm-body-header > .container > .goa-adm-body-header-content > h1 {
+        max-width: 100%;
+    }
+
     .goa-adm-main-header {
         position: relative;
         z-index: 10000;
@@ -1750,6 +1809,10 @@ html[dir=rtl] .goa-adm-sign-up-form form .goa-adm-buttons .goa-adm-button:after 
         width: calc(100% - 48px);
     }
 
+    .goa-adm-body {
+        padding: 64px 0;
+    }
+
     /* HEADER ****************************/
 
     .goa-adm-body-header > .container > .goa-adm-body-header-graphic > svg {
@@ -1789,14 +1852,14 @@ html[dir=rtl] .goa-adm-sign-up-form form .goa-adm-buttons .goa-adm-button:after 
         position: relative;
     }
 
-    .goa-adm-timeline > ul.progressbar:before {
+    .goa-adm-timeline > ul.progressbar:before {        
         position: absolute;
         bottom: 0px;
-        top: 0;
-        left: 11px;
-        width: 32px;
+        top: 12px;
+        left: 15px;
+        width: 3px;
         content: '';
-        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='1' viewBox='0 0 32 1'%3E%3Crect x='8' y='0' width='1' height='1' fill='%23919191' /%3E%3C/svg%3E") repeat-y top left;
+        background: #005072;
     }
 
     .goa-adm-timeline > ul.progressbar > li {
@@ -1826,8 +1889,8 @@ html[dir=rtl] .goa-adm-sign-up-form form .goa-adm-buttons .goa-adm-button:after 
         width: 24px;
         height: 24px;
         border-radius: 20px;
-        border: 5px solid #333333;
-        background: #DCDCDC;
+        border: 5px solid #005072;
+        background: #40CE97;
         position: absolute;
         left: 0;
         top: 0;
@@ -1849,10 +1912,22 @@ html[dir=rtl] .goa-adm-sign-up-form form .goa-adm-buttons .goa-adm-button:after 
     .goa-adm-timeline > .progressbar > li:before {
         display: none;
     }
+    
+    html[dir=rtl] .goa-adm-timeline > .progressbar > li {
+        padding: 0 32px 0 0;
+        text-align: right;
+    }
+
+    html[dir=rtl] .goa-adm-timeline > ul.progressbar > li:before,
+    html[dir=rtl] .goa-adm-timeline > ul.progressbar > li:first-child:before,
+    html[dir=rtl] .goa-adm-timeline > ul.progressbar > li:last-child:before {
+        right: 0;
+    }
 
     /* FORMS ****************************/
 
-    section.goa-adm-sign-up-form {
+    section.goa-adm-sign-up-form,
+    section.goa-adm-sign-up-form.goa-adm-form-success {
         box-shadow: none;
         padding: 0 0;
     }
