@@ -174,11 +174,13 @@ import "../css/core.css"
                                     <div class="goa-field goa-org goa--required">
                                         <label for="org">Organization name <span class="required">*</span></label>
                                         <input id="org" name="org" type="text" value="" required="required" aria-required="true">
+                                        <strong class="error form-item--error-message">Enter your organization name</strong>
                                     </div>
                                     
                                     <div class="goa-field goa-role goa--required">
                                         <label for="role">Role within organization <span class="required">*</span></label>
                                         <input id="role" name="role" type="text" value="" required="required" aria-required="true">
+                                        <strong class="error form-item--error-message">State your role within organization</strong>
                                     </div>
 
                                     <div class="goa-field goa-name goa--required">
@@ -186,22 +188,26 @@ import "../css/core.css"
                                         <div class="goa-field-name-container">
                                             <input id="first-name" name="name" type="text" value="" required="required" aria-required="true" placeholder="First name">
                                             <input id="last-name" name="name" type="text" value="" required="required" aria-required="true" placeholder="Last name">
+                                            <strong class="error form-item--error-message">Enter your full name</strong>
                                         </div>
                                     </div>
 
                                     <div class="goa-field goa-email goa--required">
                                         <label for="email">Work email <span class="required">*</span></label>
                                         <input id="email" name="email" type="email" value="" required="required" aria-required="true">
+                                        <strong class="error form-item--error-message">Enter in a valid email</strong>
                                     </div>
 
                                     <div class="goa-field goa-website goa--optional">
                                         <label for="website">Website <span class="optional">[optional]</span></label>
-                                        <input id="website" name="website" type="url" value="" required="required" aria-required="true">
+                                        <input id="website" name="website" type="url" value=""  aria-required="false">
+                                        <strong class="error form-item--error-message">Enter a valid website URL</strong>
                                     </div>
 
                                     <div class="goa-field goa-head-office goa--required">
                                         <label for="head-office">Where is your head office? <span class="required">*</span></label>
                                         <input id="head-office" name="head-office" type="text" value="" required="required" aria-required="true">
+                                        <strong class="error form-item--error-message">Enter the location of your head office</strong>
                                     </div>
 
                                     <fieldset>
@@ -221,6 +227,7 @@ import "../css/core.css"
                                         <div class="goa-option">
                                             <input id="other" name="radio" value="other" type="radio"><label for="other">Other</label>
                                         </div>
+                                        <strong class="error form-item--error-message">Select an option</strong>
                                     </fieldset>
 
                                     <div class="goa-field goa-agreement goa--required">
