@@ -362,6 +362,7 @@ html[dir=rtl] .goa-adm-nav-button button.goa-adm-button:after {
 
 body:not(.adm-home-page) .goa-adm-body-header > .container {
     grid-template-columns: repeat(2, 1fr);
+    align-items: flex-start;
 }
 
 .goa-adm-body-header > .container > .goa-adm-body-header-content {
@@ -369,12 +370,9 @@ body:not(.adm-home-page) .goa-adm-body-header > .container {
     width: 100%;
 }
 
-.goa-adm-body-header > .container > .goa-adm-body-header-content > h1 {
-    max-width: 500px;
-}
-
 .goa-adm-body-header > .container > .goa-adm-body-header-graphic > svg {
     width: 100%;
+    height: 100%;
     margin: 0 auto;
     position: relative;
     right: 0;
@@ -627,6 +625,125 @@ body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-owl-line
     right: 75%;
     top: 16px;
 } 
+body.adm-home-page .goa-adm-body-header.goa-adm-body-full .sun-cloud > svg:first-child {
+    animation-name: sunUp;
+    animation-delay: 0s;
+}
+
+body.adm-home-page .goa-adm-body-header.goa-adm-body-full .sun-cloud > svg:last-child {
+    animation-name: cloudSide;
+    animation-delay: 0s;
+    position: relative;
+    right: 110px;
+}
+
+body.adm-home-page .goa-adm-body-header.goa-adm-body-full:after {
+    content: "";
+    position: absolute;
+    top: 40px;
+    left: 0px;
+    width: 200vw;
+    height: 100%;
+    background: transparent url("../img/clouds.png");
+    background-repeat: repeat-x;
+    background-size: contain;
+    animation-timing-function: linear;
+    animation-duration: 5s;
+    animation-duration: 60s;
+    animation-name: slidein;
+    z-index: -100;
+    max-height: 200px;
+}
+
+body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-owl-eye {
+    width: 120px;
+    height: 100%;
+    background: transparent url("../img/owleye.svg");
+    background-size: cover;
+    animation-name: owleye;
+    z-index: -1;
+}
+
+body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-full-side-two-img:before {
+    content: '';
+    width: 44px;
+    height: 62px;
+    background: transparent url("../img/flower-home-page.svg");
+    background-size: cover;
+    position: absolute;
+    display: block;
+    bottom: 60px;
+    left: -158px;
+    right: -33px;
+    margin: 0 auto;
+    animation-name: flower;
+}
+
+body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-home-tablet-graphic {
+    display: none;
+}
+
+@keyframes sunUp {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes cloudSide {
+    0% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(14px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slidein {
+    from {
+    transform: translateX(0%);
+    }
+
+    to {
+    transform: translateX(-1335px);
+    }
+}
+
+@keyframes owleye {
+    from {
+        transform: rotate(0);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes flower {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.3);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
 
 /* HOME PAGE CARDS ****************************/
 
@@ -708,6 +825,7 @@ a.goa-adm-button-link:hover {
 
 a.goa-adm-button-link:focus {
     outline: 3px solid #FFB500;
+    outline-offset: 0;
 }
 
 a.goa-adm-button-link:after {
@@ -1428,129 +1546,6 @@ body .adsp-fb .adsp-fb-form-container[data-completed='true'] .adsp-fb-form {
     }
 }
 
-@media screen and (min-width: 900px) {
-
-    body.adm-home-page .goa-adm-body-header.goa-adm-body-full .sun-cloud > svg:first-child {
-        animation-name: sunUp;
-        animation-delay: 0s;
-    }
-
-    body.adm-home-page .goa-adm-body-header.goa-adm-body-full .sun-cloud > svg:last-child {
-        animation-name: cloudSide;
-        animation-delay: 0s;
-        position: relative;
-        right: 110px;
-    }
-
-    body.adm-home-page .goa-adm-body-header.goa-adm-body-full:after {
-        content: "";
-        position: absolute;
-        top: 40px;
-        left: 0px;
-        width: 200vw;
-        height: 100%;
-        background: transparent url("../img/clouds.png");
-        background-repeat: repeat-x;
-        background-size: contain;
-        animation-timing-function: linear;
-        animation-duration: 5s;
-        animation-duration: 60s;
-        animation-name: slidein;
-        z-index: -100;
-        max-height: 200px;
-    }
-
-    body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-owl-eye {
-        width: 120px;
-        height: 100%;
-        background: transparent url("../img/owleye.svg");
-        background-size: cover;
-        animation-name: owleye;
-        z-index: -1;
-    }
-
-    body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-full-side-two-img:before {
-        content: '';
-        width: 44px;
-        height: 62px;
-        background: transparent url("../img/flower-home-page.svg");
-        background-size: cover;
-        position: absolute;
-        display: block;
-        bottom: 60px;
-        left: -158px;
-        right: -33px;
-        margin: 0 auto;
-        animation-name: flower;
-    }
-
-    body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-home-tablet-graphic {
-        display: none;
-    }
-
-    @keyframes sunUp {
-        0% {
-            transform: translateY(0);
-        }
-    
-        50% {
-            transform: translateY(-10px);
-        }
-
-        100% {
-            transform: translateY(0);
-        }
-    }
-
-    @keyframes cloudSide {
-        0% {
-            transform: translateX(0);
-        }
-    
-        50% {
-            transform: translateX(14px);
-        }
-
-        100% {
-            transform: translateX(0);
-        }
-    }
-
-    @keyframes slidein {
-        from {
-        transform: translateX(0%);
-        }
-    
-        to {
-        transform: translateX(-1335px);
-        }
-    }
-
-    @keyframes owleye {
-        from {
-            transform: rotate(0);
-        }
-
-        to {
-            transform: rotate(360deg);
-        }
-    }
-
-    @keyframes flower {
-        0% {
-            transform: scale(1);
-        }
-
-        50% {
-            transform: scale(1.3);
-        }
-
-        100% {
-            transform: scale(1);
-        }
-    }
-}
-
 @media screen and (max-width: 1380px) {
 
     .container {
@@ -1653,11 +1648,49 @@ body .adsp-fb .adsp-fb-form-container[data-completed='true'] .adsp-fb-form {
     }
 }
 
+@media (min-width: 900px) and (max-width:1079px) {
+
+    body.adm-home-page .goa-adm-body-header.goa-adm-body-full h1, 
+    body .goa-adm-body-header:not(.goa-adm-body-full) h1 {
+        font-size: 3rem;
+        line-height: 3.5rem;
+    } 
+
+    body.adm-home-page .goa-adm-body-header.goa-adm-body-full {
+        padding: 64px 0 230px;
+    }
+
+    body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-full-side-two-img:before {
+        bottom: 60px;
+    }
+    
+    body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-full-side-two-img:after {
+        bottom: 30px;
+    }
+
+    body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-owl {
+        bottom: -35px;
+    }
+}
+
+@media screen and (max-width:1079px) {
+
+    body:not(.adm-home-page) .goa-adm-body-header > .container h1 > br {
+        display: none;
+    }
+    
+}
+
 @media screen and (max-width: 899px) {
 
     .goa-adm-nav-button,
     body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-header-graphic {
         position: relative;
+    }
+    
+    .goa-adm-body-header > .container > .goa-adm-body-header-graphic > svg {
+        height: 100%;
+        max-width: 500px;
     }
 
     .goa-adm-nav-menu,
@@ -1814,11 +1847,6 @@ body .adsp-fb .adsp-fb-form-container[data-completed='true'] .adsp-fb-form {
     }
 
     /* HEADER ****************************/
-
-    .goa-adm-body-header > .container > .goa-adm-body-header-graphic > svg {
-        height: 100%;
-        max-width: 500px;
-    }
 
     .goa-adm-body-header > .container > .goa-adm-body-header-content > p.lede {
         margin-bottom: 0;
@@ -2000,7 +2028,6 @@ body .adsp-fb .adsp-fb-form-container[data-completed='true'] .adsp-fb-form {
 
     .goa-field.goa-name > .goa-field-name-container {
         flex-direction: column;
-        gap: 8px;
     }
 
     /* FOOTER ***************/
