@@ -295,8 +295,26 @@ html[dir=rtl] .goa-adm-body ol {
     margin: 1px 0 0 8px;
 }
 
+.goa-adm-nav-button button.goa-adm-button[aria-expanded='true'] {
+    background: #F1F1F1;
+}
+
 .goa-adm-nav-button button.goa-adm-button[aria-expanded='true']:after {
     background: transparent url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M9.92642 8.43967C9.9671 8.39899 10.0331 8.39899 10.0737 8.43967L15.0358 13.4018C15.3613 13.7272 15.8889 13.7272 16.2143 13.4018C16.5398 13.0763 16.5398 12.5487 16.2143 12.2232L10.5893 6.59825C10.2639 6.27281 9.73626 6.27281 9.41083 6.59825L3.78583 12.2232C3.46039 12.5487 3.46039 13.0763 3.78583 13.4018C4.11126 13.7272 4.6389 13.7272 4.96434 13.4018L9.92642 8.43967Z' fill='%23006dcc'/%3E%3C/svg%3E%0A") no-repeat center center;
+} 
+
+.goa-adm-nav-button button.goa-adm-button:hover {
+    color: #333333;
+}
+
+.goa-adm-nav-button button.goa-adm-button:hover:after {
+    content:'';
+    display: block;
+    background: transparent url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10.0737 11.5603C10.0331 11.601 9.9671 11.601 9.92642 11.5603L4.96434 6.59825C4.6389 6.27281 4.11126 6.27281 3.78583 6.59825C3.46039 6.92369 3.46039 7.45132 3.78583 7.77676L9.41082 13.4018C9.73626 13.7272 10.2639 13.7272 10.5893 13.4018L16.2143 7.77676C16.5398 7.45132 16.5398 6.92369 16.2143 6.59825C15.8889 6.27281 15.3613 6.27281 15.0358 6.59825L10.0737 11.5603Z' fill='%23333333'/%3E%3C/svg%3E%0A") no-repeat center center;
+}
+
+.goa-adm-nav-button button.goa-adm-button[aria-expanded='true']:hover:after {
+    background: transparent url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M9.92642 8.43967C9.9671 8.39899 10.0331 8.39899 10.0737 8.43967L15.0358 13.4018C15.3613 13.7272 15.8889 13.7272 16.2143 13.4018C16.5398 13.0763 16.5398 12.5487 16.2143 12.2232L10.5893 6.59825C10.2639 6.27281 9.73626 6.27281 9.41083 6.59825L3.78583 12.2232C3.46039 12.5487 3.46039 13.0763 3.78583 13.4018C4.11126 13.7272 4.6389 13.7272 4.96434 13.4018L9.92642 8.43967Z' fill='%23333333'/%3E%3C/svg%3E%0A") no-repeat center center;
 } 
 
 .goa-adm-nav-menu > ul > li {
@@ -647,9 +665,9 @@ body.adm-home-page .goa-adm-body-header.goa-adm-body-full:after {
     background: transparent url("../img/clouds.png");
     background-repeat: repeat-x;
     background-size: contain;
-    animation-timing-function: linear;
+    animation-timing-function: ease-in-out;
     animation-duration: 5s;
-    animation-duration: 60s;
+    animation-duration: 90s;
     animation-name: slidein;
     z-index: -100;
     max-height: 200px;
@@ -712,12 +730,16 @@ body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-home-tablet-g
 }
 
 @keyframes slidein {
-    from {
+    0% {
     transform: translateX(0%);
     }
 
-    to {
+    50% {
     transform: translateX(-1335px);
+    }
+    
+    0% {
+        transform: translateX(0%);
     }
 }
 
@@ -823,7 +845,8 @@ a.goa-adm-button-link:hover {
     color: #333333;
 }
 
-a.goa-adm-button-link:focus {
+a.goa-adm-button-link:focus,
+.goa-adm-nav-button button.goa-adm-button:focus {
     outline: 3px solid #FFB500;
     outline-offset: 0;
 }
@@ -1333,6 +1356,8 @@ body .adsp-fb + .overlay {
 
 body .adsp-fb .adsp-fb-badge {
     z-index: 10000;
+    bottom: 15vh;
+    top: auto;
 }
 
 body .adsp-fb .adsp-fb-container-heading {
@@ -1480,14 +1505,6 @@ body .adsp-fb .adsp-fb-form-container[data-completed='true'] .adsp-fb-form {
 }
 
 @media screen and (max-width: 640px) {
-
-    body .adsp-fb .adsp-fb-badge {
-        /*display: none;*/
-        top: 77vh;
-        font-size: 12px;
-        padding: 12px 0px;
-        line-height: 1.5rem;
-    }
 
     body .adsp-fb h3 {
         font-size: 1.125rem;
@@ -1792,6 +1809,10 @@ body .adsp-fb .adsp-fb-form-container[data-completed='true'] .adsp-fb-form {
         border-radius: 0;
     }
 
+    nav.goa-adm-nav-menu a:hover {
+        background: #f1f1f1;
+    }
+
     nav.goa-adm-nav-menu a:focus {
         outline-offset: -3px;
         outline-width: 3px;
@@ -1844,6 +1865,14 @@ body .adsp-fb .adsp-fb-form-container[data-completed='true'] .adsp-fb-form {
 
     .goa-adm-body {
         padding: 64px 0;
+    }
+
+    body .adsp-fb .adsp-fb-badge {
+        /*display: none;*/
+        bottom: 12vh;
+        font-size: 12px;
+        padding: 12px 0px;
+        line-height: 1.5rem;
     }
 
     /* HEADER ****************************/
