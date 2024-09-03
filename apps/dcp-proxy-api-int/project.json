@@ -1,0 +1,70 @@
+{
+  "name": "dcp-proxy-api-int",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/dcp-proxy-api-int/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "platform": "node",
+        "outputPath": "dist/apps/dcp-proxy-api-int",
+        "format": ["cjs"],
+        "bundle": false,
+        "main": "apps/dcp-proxy-api-int/src/main.ts",
+        "tsConfig": "apps/dcp-proxy-api-int/tsconfig.app.json",
+        "assets": ["apps/dcp-proxy-api-int/src/assets"],
+        "generatePackageJson": true,
+        "esbuildOptions": {
+          "sourcemap": true,
+          "outExtension": {
+            ".js": ".js"
+          }
+        }
+      },
+      "configurations": {
+        "development": {},
+        "production": {
+          "esbuildOptions": {
+            "sourcemap": false,
+            "outExtension": {
+              ".js": ".js"
+            }
+          }
+        }
+      }
+    },
+    "buildcustom": {
+      "executor": "nx:run-commands",
+      "dependsOn": [
+        {
+          "target": "build",
+          "projects": "self"
+        }
+      ],
+      "options": {
+        "commands": [
+        ],
+        "parallel": false
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "dcp-proxy-api-int:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "dcp-proxy-api-int:build:development"
+        },
+        "production": {
+          "buildTarget": "dcp-proxy-api-int:build:production"
+        }
+      }
+    }
+  }
+}

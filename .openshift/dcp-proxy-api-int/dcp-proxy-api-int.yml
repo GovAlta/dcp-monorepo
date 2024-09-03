@@ -1,0 +1,171 @@
+apiVersion: template.openshift.io/v1
+kind: Template
+metadata:
+  name: dcp-proxy-api-int
+labels:
+  app: dcp-proxy-api-int
+parameters:
+  - name: INFRA_PROJECT
+    description: Project used for build infrastructure.
+    displayName: Infrastructure Project
+    value: dcp-build
+    required: true
+  - name: PROJECT
+    description: Project to set up.
+    displayName: Project
+    required: true
+  - name: APP_NAME
+    description: Name of the application.
+    displayName: Application Name
+    value: dcp-proxy-api-int
+    required: true
+  - name: DEPLOY_TAG
+    description: Tag of the ImageStream to deploy.
+    displayName: Deploy Tag
+    value: latest
+    required: true
+objects:
+  - apiVersion: v1
+    kind: Service
+    metadata:
+      name: ${APP_NAME}
+      namespace: ${PROJECT}
+    spec:
+      ports:
+        - name: http
+          port: 3333
+          protocol: TCP
+          targetPort: 3333
+      selector:
+        name: ${APP_NAME}
+      sessionAffinity: None
+      type: ClusterIP
+  - apiVersion: image.openshift.io/v1
+    kind: ImageStream
+    metadata:
+      labels:
+        apply-build: 'true'
+      name: ${APP_NAME}
+      namespace: ${INFRA_PROJECT}
+  - apiVersion: build.openshift.io/v1
+    kind: BuildConfig
+    metadata:
+      labels:
+        apply-build: 'true'
+      name: ${APP_NAME}
+      namespace: ${INFRA_PROJECT}
+    spec:
+      output:
+        to:
+          kind: ImageStreamTag
+          name: '${APP_NAME}:latest'
+      resources:
+        limits:
+          cpu: 300m
+          memory: 1Gi
+        requests:
+          cpu: 100m
+          memory: 200Mi
+      runPolicy: Serial
+      source:
+        binary: {}
+        type: Binary
+      strategy:
+        dockerStrategy:
+          buildArgs:
+            - name: PROJECT
+              value: dcp-proxy-api-int
+          dockerfilePath: .openshift/dcp-proxy-api-int/Dockerfile
+        type: Docker
+      triggers: []
+  - apiVersion: v1
+    kind: ConfigMap
+    metadata:
+      name: ${APP_NAME}
+      namespace: ${PROJECT}
+    data:
+      configuration: |-
+        {
+          "foo": "bar"
+        }
+  - apiVersion: apps.openshift.io/v1
+    kind: DeploymentConfig
+    metadata:
+      labels:
+        app: ${APP_NAME}
+      name: ${APP_NAME}
+      namespace: ${PROJECT}
+    spec:
+      replicas: 1
+      selector:
+        name: ${APP_NAME}
+      strategy:
+          type: Recreate
+          recreateParams:
+            timeoutSeconds: 600
+          resources:
+            limits:
+              cpu: 200m
+              memory: 200Mi
+            requests:
+              cpu: 20m
+              memory: 50Mi
+          activeDeadlineSeconds: 21600
+      template:
+        metadata:
+          labels:
+            name: ${APP_NAME}
+        spec:
+          containers:
+            - name: ${APP_NAME}
+              imagePullPolicy: IfNotPresent
+              ports:
+                - containerPort: 3333
+                  name: http
+                  protocol: TCP
+              resources:
+                limits:
+                  cpu: 200m
+                  memory: 200Mi
+                requests:
+                  cpu: 20m
+                  memory: 50Mi
+              terminationMessagePath: /dev/termination-log
+              volumeMounts:
+                - mountPath: /opt/app-root/src/config
+                  name: config-volume
+          dnsPolicy: ClusterFirst
+          restartPolicy: Always
+          schedulerName: default-scheduler
+          volumes:
+            - configMap:
+                defaultMode: 420
+                items:
+                  - key: configuration
+                    path: config.json
+                name: ${APP_NAME}
+              name: config-volume
+      triggers:
+        - imageChangeParams:
+            containerNames:
+              - ${APP_NAME}
+            from:
+              kind: ImageStreamTag
+              name: '${APP_NAME}:${DEPLOY_TAG}'
+              namespace: ${INFRA_PROJECT}
+          type: ImageChange
+  - apiVersion: route.openshift.io/v1
+    kind: Route
+    metadata:
+      name: ${APP_NAME}
+      namespace: ${PROJECT}
+    spec:
+      port:
+        targetPort: http
+      tls:
+        termination: edge
+      to:
+        kind: Service
+        name: ${APP_NAME}
+        weight: 100
+      wildcardPolicy: None
