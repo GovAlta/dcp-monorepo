@@ -88,6 +88,15 @@ objects:
       KEYCLOAK_ROOT_URL: 'https://access.adsp-dev.gov.ab.ca'
       LOG_LEVEL: debug
       PORT: "3333"
+  - apiVersion: v1
+    kind: Secret
+    metadata:
+      name: ${APP_NAME}
+      namespace: ${PROJECT}
+    stringData:
+      CLIENT_ID: urn:ads:digital_marketplace:public
+      REALM: 9ddc3790-b16d-48f6-be99-3a5c6ea71326
+      CLIENT_SECRET:
   - apiVersion: apps.openshift.io/v1
     kind: DeploymentConfig
     metadata:
