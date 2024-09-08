@@ -96,7 +96,7 @@ objects:
       DIRECTORY_URL: 'https://directory-service.adsp-dev.gov.ab.ca'
       KEYCLOAK_ROOT_URL: 'https://access.adsp-dev.gov.ab.ca'
       LOG_LEVEL: debug
-      PORT: 3333
+      PORT: "3333"
   - apiVersion: apps.openshift.io/v1
     kind: DeploymentConfig
     metadata:
