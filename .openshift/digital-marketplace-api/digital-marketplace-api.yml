@@ -79,15 +79,6 @@ objects:
         type: Docker
       triggers: []
   - apiVersion: v1
-    kind: Secret
-    metadata:
-      name: ${APP_NAME}
-      namespace: ${PROJECT}
-    stringData:
-      CLIENT_ID: urn:ads:digital_marketplace:public
-      REALM: 9ddc3790-b16d-48f6-be99-3a5c6ea71326
-      CLIENT_SECRET:
-  - apiVersion: v1
     kind: ConfigMap
     metadata:
       name: ${APP_NAME}
@@ -126,7 +117,12 @@ objects:
             name: ${APP_NAME}
         spec:
           containers:
-            - name: ${APP_NAME}
+            - envFrom:
+                - configMapRef:
+                    name: ${APP_NAME}
+                - secretRef:
+                    name: ${APP_NAME}
+              name: ${APP_NAME}
               imagePullPolicy: IfNotPresent
               ports:
                 - containerPort: 3333
