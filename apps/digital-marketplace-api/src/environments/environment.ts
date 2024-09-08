@@ -13,7 +13,7 @@ export const environment = envalid.cleanEnv(
     CLIENT_ID: envalid.str({ default: '' }),
     CLIENT_SECRET: envalid.str({ default: '' }),
     LOG_LEVEL: envalid.str({ default: 'debug' }),
-    PORT: envalid.num({ default: 3333 }),
+    PORT: envalid.str({ default: "3333" }),
     DIRECTORY_URL: envalid.url({ default: '' }),
   },
   {
