@@ -96,7 +96,6 @@ objects:
     stringData:
       CLIENT_ID: urn:ads:digital_marketplace:public
       REALM: 9ddc3790-b16d-48f6-be99-3a5c6ea71326
-      CLIENT_SECRET:
   - apiVersion: apps.openshift.io/v1
     kind: DeploymentConfig
     metadata:
@@ -131,6 +130,22 @@ objects:
                     name: ${APP_NAME}
                 - secretRef:
                     name: ${APP_NAME}
+              env:
+                  - name: CLIENT_ID
+                    valueFrom:
+                      secretKeyRef:
+                        name: ${APP_NAME}
+                        key: CLIENT_ID
+                  - name: CLIENT_SECRET
+                    valueFrom:
+                      secretKeyRef:
+                        name: ${APP_NAME}
+                        key: CLIENT_SECRET
+                  - name: REALM
+                    valueFrom:
+                      secretKeyRef:
+                        name: ${APP_NAME}
+                        key: REALM
               name: ${APP_NAME}
               imagePullPolicy: IfNotPresent
               ports:
