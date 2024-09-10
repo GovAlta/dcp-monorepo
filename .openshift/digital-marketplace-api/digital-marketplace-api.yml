@@ -88,7 +88,7 @@ objects:
       KEYCLOAK_ROOT_URL: 'https://access.adsp-dev.gov.ab.ca'
       LOG_LEVEL: debug
       PORT: "3333"
-      REALM: "9ddc3790-b16d-48f6-be99-3a5c6ea71326'"
+      REALM: "9ddc3790-b16d-48f6-be99-3a5c6ea71326"
   - apiVersion: apps.openshift.io/v1
     kind: DeploymentConfig
     metadata:
