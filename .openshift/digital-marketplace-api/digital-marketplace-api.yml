@@ -84,10 +84,11 @@ objects:
       name: ${APP_NAME}
       namespace: ${PROJECT}
     data:
-      configuration: |-
-        {
-          "foo": "bar"
-        }
+      DIRECTORY_URL: 'https://directory-service.adsp-dev.gov.ab.ca'
+      KEYCLOAK_ROOT_URL: 'https://access.adsp-dev.gov.ab.ca'
+      LOG_LEVEL: debug
+      PORT: "3333"
+      REALM: "9ddc3790-b16d-48f6-be99-3a5c6ea71326'"
   - apiVersion: apps.openshift.io/v1
     kind: DeploymentConfig
     metadata:
@@ -117,6 +118,9 @@ objects:
             name: ${APP_NAME}
         spec:
           containers:
+            - envFrom:
+                - configMapRef:
+                    name: ${APP_NAME}
             - name: ${APP_NAME}
               imagePullPolicy: IfNotPresent
               ports:
