@@ -125,28 +125,7 @@ objects:
             name: ${APP_NAME}
         spec:
           containers:
-            - envFrom:
-                - configMapRef:
-                    name: ${APP_NAME}
-                - secretRef:
-                    name: ${APP_NAME}
-              env:
-                  - name: CLIENT_ID
-                    valueFrom:
-                      secretKeyRef:
-                        name: ${APP_NAME}
-                        key: CLIENT_ID
-                  - name: CLIENT_SECRET
-                    valueFrom:
-                      secretKeyRef:
-                        name: ${APP_NAME}
-                        key: CLIENT_SECRET
-                  - name: REALM
-                    valueFrom:
-                      secretKeyRef:
-                        name: ${APP_NAME}
-                        key: REALM
-              name: ${APP_NAME}
+            - name: ${APP_NAME}
               imagePullPolicy: IfNotPresent
               ports:
                 - containerPort: 3333
