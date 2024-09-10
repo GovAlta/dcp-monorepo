@@ -84,8 +84,8 @@ objects:
       name: ${APP_NAME}
       namespace: ${PROJECT}
     data:
-      DIRECTORY_URL: 'https://directory-service.adsp-dev.gov.ab.ca'
-      KEYCLOAK_ROOT_URL: 'https://access.adsp-dev.gov.ab.ca'
+      DIRECTORY_URL: 'https://directory-service.adsp-uat.gov.ab.ca'
+      KEYCLOAK_ROOT_URL: 'https://access.adsp-uat.gov.ab.ca'
       LOG_LEVEL: debug
       PORT: "3333"
   - apiVersion: apps.openshift.io/v1
