@@ -1,25 +1,83 @@
 import express from 'express';
 import cors from 'cors';
-import { environment } from './environment';
+import { environment } from './environments/environment';
+import {
+  AdspId,
+  ServiceMetricsValueDefinition,
+  initializeService,
+  instrumentAxios,
+} from '@abgov/adsp-service-sdk';
+import helmet from 'helmet';
+import { createLogger } from '@abgov/adsp-service-sdk/src/utils';
+import { configurePassport } from './access/configure';
+import * as passport from 'passport';
+import { applyGatewayMiddleware } from './routes/forms';
+import compression from 'compression';
 
 
-const port = process.env.PORT ? Number(process.env.PORT) : 3333;
+const logger = createLogger('digital_marketplace', environment.LOG_LEVEL);
 
-const app = express();
+const initializeApp = async (): Promise<express.Application> => {
+  const app = express();
 
-app.use(cors());
 
-app.get('/', (req, res) => {
-  res.send({ message: 'Hello API' });
-});
+  app.use(helmet());
+  app.use(cors());
+  app.use(compression());
+  app.use(express.json({ limit: '1mb' }));
 
-app.listen(port, () => {
-  console.log(`[ ready ] ${port}`);
-  console.log(`[ env ] KEYCLOAK_ROOT_URL: ${environment.KEYCLOAK_ROOT_URL}`);
-  console.log(`[ env ] REALM: ${environment.REALM}`);
-  console.log(`[ env ] CLIENT_ID: ${environment.CLIENT_ID}`);
-  console.log(`[ env ] CLIENT_SECRET: ${environment.CLIENT_SECRET}`);
-  console.log(`[ env ] LOG_LEVEL: ${environment.LOG_LEVEL}`);
-  console.log(`[ env ] PORT: ${environment.PORT}`);
-  console.log(`[ env ] DIRECTORY_URL: ${environment.DIRECTORY_URL}`);
+  instrumentAxios(logger);
+
+  const serviceId = AdspId.parse(environment.CLIENT_ID);
+  const accessServiceUrl = new URL(environment.KEYCLOAK_ROOT_URL);
+
+  const {
+    healthCheck,
+    metricsHandler,
+    traceHandler,
+    tenantStrategy,
+    directory,
+    tokenProvider
+  } = await initializeService(
+    {
+      serviceId,
+      realm: environment.REALM,
+      displayName: 'digital-marketplace gateway',
+      description: 'Gateway to provide anonymous and session access to some marketplace functionality.',
+      values: [ServiceMetricsValueDefinition],
+      clientSecret: environment.CLIENT_SECRET,
+      accessServiceUrl,
+      directoryUrl: new URL(environment.DIRECTORY_URL)
+    },
+    { logger }
+  );
+
+  configurePassport(app, passport, { tenantStrategy });
+
+  app.use(metricsHandler);
+  app.use(traceHandler);
+
+  app.use("/marketplace", passport.authenticate(['tenant', 'anonymous'], { session: false }))
+  await applyGatewayMiddleware(app, {
+    logger,
+    directory,
+    tokenProvider
+  });
+
+
+  app.get('/health', async (req, res) => {
+    const platform = await healthCheck();
+    res.json(platform);
+  });
+
+  return app;
+};
+
+
+
+initializeApp().then((app) => {
+  const port = environment.PORT ? Number(environment.PORT) : 3333;
+  app.listen(port, () => {
+    console.log(`[ ready ] ${environment.PORT}`);
+  });
 });
