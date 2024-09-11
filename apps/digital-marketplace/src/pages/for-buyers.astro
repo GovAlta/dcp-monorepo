@@ -1,5 +1,7 @@
 ---
 import "../css/core.css"
+// import { GoACircularProgress } from '@abgov/react-components-4.20.2';
+
 ---
 <!DOCTYPE html>
 <html lang="en-CA" dir="ltr">
@@ -22,7 +24,16 @@ import "../css/core.css"
 		<meta property="og:image" content="/assets/sharing/share-alberta.png" />
 		<meta property="og:url" content="/build/beta/home.htm" />
         
+        <!-- feedback -->
         <script is:inline src="https://feedback-service.adsp-uat.alberta.ca/feedback/v1/script/adspFeedback.js"></script>
+
+        <!-- axios submit -->
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        
+        <style>
+            .responseMessage {font-weight: 600; color: rgb(11, 86, 184); font-size:x-large; margin-top: 5px; padding: 5px;}            
+            .responseError {color: red; }
+        </style>
 	
     </head>
 
@@ -127,6 +138,7 @@ import "../css/core.css"
             <div class="goa-adm-body">
                 
                 <div class="container">
+
                     <section class="goa-adm-benefits"><!-- CUSTOMIZABLE -->
                         <h2>Benefits for a buyer</h2>
                         <ul>
@@ -177,7 +189,7 @@ import "../css/core.css"
                     <section class="goa-adm-sign-up-form">
                         <h2>Buyer sign-up form</h2>
                         <div class="goa-adm-form-container">
-                            <form>
+                            <form id="buyers-form">
                                 <fieldset>
                                     
                                     <div class="goa-field goa-org goa--required">
@@ -210,22 +222,33 @@ import "../css/core.css"
                                     <fieldset>
                                         <legend>Organization type <span class="required">*</span></legend>
                                         <div class="goa-option">
-                                            <input id="goa" name="org-type" value="goa" type="radio"><label for="goa">Government of Alberta </label>
+                                            <input id="goa" name="org-type" value="goa" type="radio" required
+                                            onchange="showOther('org-type')"><label for="goa">Government of Alberta </label>
                                         </div>
                                         <div class="goa-option">
-                                            <input id="muni-aca-school" name="org-type" value="muni-aca-school" type="radio"><label for="muni-aca-school">Municipalities, Academic Institutions, School Boards and Health Organization  </label>
+                                            <input id="muni-aca-school" name="org-type" value="muni-aca-school" type="radio"
+                                            onchange="showOther('org-type')"><label for="muni-aca-school">Municipalities, Academic Institutions, School Boards and Health Organization  </label>
                                         </div>
                                         <div class="goa-option">
-                                            <input id="abcs" name="org-type" value="abcs" type="radio"><label for="abcs">Agencies, Boards and Commissions  </label>
+                                            <input id="abcs" name="org-type" value="abcs" type="radio"
+                                            onchange="showOther('org-type')"><label for="abcs">Agencies, Boards and Commissions  </label>
                                         </div>
                                         <div class="goa-option">
-                                            <input id="crown" name="org-type" value="crown" type="radio"><label for="crown">CROWN (Provincial Corporations)</label>
+                                            <input id="crown" name="org-type" value="crown" type="radio"
+                                            onchange="showOther('org-type')"><label for="crown">CROWN (Provincial Corporations)</label>
                                         </div>
                                         <div class="goa-option">
-                                            <input id="indig" name="org-type" value="indig" type="radio"><label for="indig">INDIG (Indigenous Communities)</label>
+                                            <input id="indig" name="org-type" value="indig" type="radio"><label for="indig"
+                                            onchange="showOther('org-type')">INDIG (Indigenous Communities)</label>
                                         </div>
                                         <div class="goa-option">
-                                            <input id="other-org" name="org-type" value="other-org" type="radio"><label for="other-org">Other</label>
+                                            <input id="other-org" name="org-type" value="other" type="radio"
+                                            onchange="showOther('org-type')"><label for="other-org">Other</label>
+                                        </div>
+                                        <div id="other-org-type" class="goa-field goa--required">
+                                            <label for="org-type-other">Please specify your other organization type <span class="required">*</span></label>
+                                            <input id="org-type-other" name="org-type-other" type="text" value="" aria-required="true">
+                                            <strong class="error form-item--error-message">Enter the your other org type</strong>
                                         </div>
                                         <strong class="error form-item--error-message">Select an organization type</strong>
                                     </fieldset>
@@ -245,25 +268,34 @@ import "../css/core.css"
                                     <fieldset>
                                         <legend>Describe your interest in the Alberta Digital Marketplace <span class="required">*</span></legend>
                                         <div class="goa-option">
-                                            <input id="tech-buyer" name="interest" type="radio"><label for="tech-buyer">I am a tech buyer </label>
+                                            <input id="tech-buyer" name="interest" value="tech buyer" type="radio" required
+                                            onchange="showOther('interest')"><label for="tech-buyer">I am a tech buyer </label>
                                         </div>
                                         <div class="goa-option">
-                                            <input id="work-with-start-ups" name="interest" type="radio"><label for="work-with-start-ups">I work with tech start-ups or other vendors </label>
+                                            <input id="work-with-start-ups" name="interest" value="work with" type="radio"
+                                            onchange="showOther('interest')"><label for="work-with-start-ups">I work with tech start-ups or other vendors </label>
                                         </div>
                                         <div class="goa-option">
-                                            <input id="other" name="interest" value="other" type="radio"><label for="other">Other</label>
+                                            <input id="other" name="interest" value="other" type="radio"                                             
+                                             onchange="showOther('interest')"><label for="other">Other</label>
+                                        </div>
+                                        <div id="other-interest" class="goa-field goa--required">
+                                            <label for="interest-other">Please specify your other interest</label>
+                                            <input id="interest-other" name="interest-other" type="text" value="" aria-required="true">
+                                            <strong class="error form-item--error-message">Enter the your other interest</strong>
                                         </div>
                                         <strong class="error form-item--error-message">Select an option</strong>
                                     </fieldset>
 
-                                    <div class="goa-field goa-agreement goa--required">
-                                        <div class="goa-option">
-                                            <input id="agreement" name="agreement" type="checkbox"><label for="agreement">I would like to be contacted for future engagements, surveys, and events.</label>
+                                    <div class="goa-field goa-agreement goa--required">                                        
+                                        <div class="goa-option">                                            
+                                            <input id="agreement" name="agreement" value='1' type="checkbox"><label for="agreement">I would like to be contacted for future engagements, surveys, and events.</label>
                                         </div>
                                     </div>
 
                                     <div class="goa-adm-buttons">
-                                        <button name="buttonSubmit" class="goa-adm-button">Submit form</button>
+                                        <button id="buttonSubmit" name="buttonSubmit" class="goa-adm-button" >Submit form</button>                                     
+                                        <div class="responseMessage" id="responseMessage"></div>
                                     </div>
                                 </fieldset>
                             </form>
@@ -293,6 +325,94 @@ import "../css/core.css"
         </main>
 
         <script type="text/javascript">
+
+            function showOther(fld) {
+                const radios = document.getElementsByName(fld);    
+                let selectedValue = '';
+                for (const radio of radios) {
+                    if (radio.checked) {
+                        selectedValue = radio.value;
+                        break;
+                    }
+                }                
+                document.getElementById('other-'+fld).style.display = (selectedValue == 'other') ? 'block' :'none';
+
+                if (selectedValue == 'other') {
+                    document.getElementById(fld+'-other').setAttribute('required', '');                    
+                } else {
+                    document.getElementById(fld+'-other').removeAttribute('required');
+                }
+            }
+
+            function structureFormData(formData) {
+                const jsonData = {};
+                formData.forEach((value, key) => {
+                    if (value != '') {
+                        jsonData[key] = value;
+                    }                    
+                });
+                return jsonData;
+            }
+
+            var otherRadioList = ["interest","org-type"]
+            otherRadioList.forEach(function(item) {
+                document.getElementById('other-'+item).style.display = 'none';
+                });
+            
+            if (window.location.hostname.toLowerCase().includes('uat') || window.location.hostname == 'localhost') {
+                var postUrl = 'https://digital-marketplace-api-dcp-uat.apps.aro.gov.ab.ca/marketplace/v1/forms/buyer';
+            } else {
+                var postUrl = 'https://digital-marketplace-api-dcp.apps.aro.gov.ab.ca/marketplace/v1/forms/buyer';
+            }
+
+            // Handle form submission
+            document.getElementById('buyers-form').addEventListener('submit', async function(event) {
+                event.preventDefault();
+
+                try {
+          
+                    var buttonSubmit = document.getElementById('buttonSubmit');
+                    buttonSubmit.disabled = true;
+                    buttonSubmit.innerText = 'Saving...'                    
+                    
+                    const formData = new FormData(this);
+                    const jsonData = structureFormData(formData);
+              
+                    //---- Replace the orig field with the "other" value --------
+                    otherRadioList.forEach(function(item) {
+                        if (jsonData[item] == 'other') {
+                            jsonData[item] = jsonData[item +'-other'];                    
+                        }
+                        delete jsonData[item+'-other'];                    
+                    });
+                    jsonData['agreement'] = (jsonData['agreement'] != undefined);
+                 
+                    const response = await axios.post(postUrl, jsonData, { headers: {'Content-Type': 'application/json'} });
+
+                    if (response.statusText != 'OK') {
+                    // if (response.status != 200) {                    
+                        throw new Error(`Server error: ${response.statusText}`);
+                    }
+                    document.getElementById('responseMessage').textContent = `Saved: ${jsonData['first-name']} ${jsonData['last-name']}, ${jsonData['role']}, ${jsonData['org-name']}`;
+                    console.log('id',response.data.result.id)
+                
+                    // clear inputs
+                    var elements = document.getElementsByTagName("input");
+                    for (var ii=0; ii < elements.length; ii++) {
+                        if (elements[ii].type == "text")  {  elements[ii].value = ""; }
+                        if (elements[ii].type == "radio") {  elements[ii].checked = false; }                        
+                    }                 
+
+                } catch (error) {
+                    document.getElementById('responseMessage').classList.add("responseError");
+                    document.getElementById('responseMessage').textContent = `Error: ${error.message}, refresh page to try again`;
+                    buttonSubmit.innerText = 'Submit error';
+                }
+                buttonSubmit.disabled = false;
+                buttonSubmit.innerText = 'Submit form';              
+            });
+
+
 
             /******************************************************************************
             * adm-scripts
@@ -336,73 +456,6 @@ import "../css/core.css"
                 };
             }, false);
 
-            var formFieldset = document.querySelectorAll('form > fieldset > fieldset');
-            if (formFieldset.length > 0) {
-                for (var o = 0; o < formFieldset.length; o++) {
-                    var formOther = formFieldset[o];
-                    
-                    (function (formOther) {
-                        
-                        var otherDiv = document.createElement('div');
-                        var otherLabel = document.createElement('label');
-                        var otherInput = document.createElement('input');
-                        var otherRequired = document.createElement('span');
-                        var otherError = document.createElement('strong');
-
-                        var randomIdOther = Math.floor(Math.random() * 1000) + 1;
-
-                        otherDiv.classList.add('goa-field', 'goa-if-other', 'goa--required');
-                        otherLabel.innerText = 'If "other" is selected, please specify '
-                        otherRequired.classList.add('required');
-                        otherRequired.innerText = '*';
-                        otherError.classList.add("error");
-                        otherError.classList.add("form-item--error-message");
-                        otherError.innerText = 'Specify your other value';
-                        otherLabel.setAttribute('for', 'if-other-' + randomIdOther);
-                        otherInput.setAttribute('id', 'if-other-' + randomIdOther);
-                        otherInput.setAttribute('name', 'if-other-' + randomIdOther);
-                        otherInput.setAttribute('type', 'text');
-                        otherInput.setAttribute('value', '');
-                        otherInput.setAttribute('required', 'required');
-                        otherInput.setAttribute('aria-required', 'true');
-
-                        otherLabel.appendChild(otherRequired);
-                        otherDiv.appendChild(otherLabel);
-                        otherDiv.appendChild(otherInput);
-                        otherDiv.appendChild(otherError);
-                        formOther.parentNode.insertBefore(otherDiv, formOther.nextSibling);
-
-                        var otherInput = formOther.querySelector('.goa-option > input[value*="other"]');
-                        var mscInput = formOther.querySelectorAll('.goa-option > input[type="radio"]:not([value*="other"])');
-
-                        if (otherInput) {
-                            otherInput.addEventListener('click', function () {
-                                if (otherInput.checked) {
-                                    formOther.classList.add('show-other');
-                                } else {
-                                    formOther.classList.remove('show-other');
-                                };
-                            });
-                        } 
-                        
-                        if (mscInput.length > 0) {
-                            for (var io = 0; io < mscInput.length; io++) {
-                                
-                                (function (mscInput) {
-                                    var mscInput = mscInput[io];
-                                    if (otherInput) {
-                                        mscInput.addEventListener('click', function () {
-                                            if (!otherInput.checked) {
-                                                formOther.classList.remove('show-other');
-                                            };
-                                        });
-                                    };
-                                }) (mscInput);
-                            };
-                        };
-                    })(formOther);
-                };
-            };
 
             /* getViewportWidth **********************************************/
 
