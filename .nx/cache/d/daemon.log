@@ -1,0 +1,1443 @@
+[NX Daemon Server] - 2024-09-10T21:07:17.674Z - Started listening on: \\.\pipe\nx\C:\Users\JOANNA~1.HAL\AppData\Local\Temp\788c8976c263c46d81e4\d.sock
+[NX Daemon Server] - 2024-09-10T21:07:17.700Z - [WATCHER]: Subscribed to changes within: c:\Users\joanna.halliday\OneDrive - Government of Alberta\Desktop\dcp-monorepo (native)
+[NX Daemon Server] - 2024-09-10T21:07:17.702Z - Established a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-10T21:07:17.704Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-10T21:07:17.718Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-10T21:07:17.733Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-09-10T21:07:19.076Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-10T21:07:19.077Z - [REQUEST]: 
+[NX Daemon Server] - 2024-09-10T21:07:19.077Z - [REQUEST]: 
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-10T21:07:24.056Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-09-10T21:07:24.059Z - Time taken for 'total for creating and serializing project graph' 6323.5042ms
+[NX Daemon Server] - 2024-09-10T21:07:24.060Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-09-10T21:07:24.060Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 6323. Response time: 4.
+[NX Daemon Server] - 2024-09-10T21:07:24.068Z - [REQUEST]: Responding to the client. handleRequestFileData
+[NX Daemon Server] - 2024-09-10T21:07:24.068Z - Done responding to the client handleRequestFileData
+[NX Daemon Server] - 2024-09-10T21:07:24.068Z - Handled REQUEST_FILE_DATA. Handling time: 1. Response time: 0.
+[NX Daemon Server] - 2024-09-10T21:07:24.070Z - Closed a connection. Number of open connections: 0
+[NX Daemon Server] - 2024-09-10T21:07:35.863Z - Established a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-10T21:07:35.863Z - Closed a connection. Number of open connections: 0
+[NX Daemon Server] - 2024-09-10T21:07:35.864Z - Established a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-10T21:07:35.869Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-09-10T21:07:35.869Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-09-10T21:07:35.871Z - Time taken for 'total for creating and serializing project graph' 0.3482000000003609ms
+[NX Daemon Server] - 2024-09-10T21:07:35.871Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-09-10T21:07:35.871Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 2.
+[NX Daemon Server] - 2024-09-10T21:07:35.933Z - [REQUEST]: Responding to the client. handleHashTasks
+[NX Daemon Server] - 2024-09-10T21:07:35.933Z - Done responding to the client handleHashTasks
+[NX Daemon Server] - 2024-09-10T21:07:35.933Z - Handled HASH_TASKS. Handling time: 14. Response time: 0.
+[NX Daemon Server] - 2024-09-10T21:07:48.385Z - [WATCHER]: 0 file(s) created or restored, 2 file(s) modified, 0 file(s) deleted
+[NX Daemon Server] - 2024-09-10T21:07:48.386Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-09-10T21:07:48.501Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-10T21:07:48.501Z - [REQUEST]: NODE_M~1/nx/bin/run-executor.js,NODE_M~1/nx/src/TASKS-~1/fork.js
+[NX Daemon Server] - 2024-09-10T21:07:48.501Z - [REQUEST]: 
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-10T21:07:48.620Z - Time taken for 'hash changed files from watcher' 13.268700000000536ms
+[NX Daemon Server] - 2024-09-10T21:07:49.407Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-10T21:07:49.408Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-10T21:07:49.408Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-10T21:07:49.411Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-09-10T21:07:49.412Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-09-10T21:07:49.414Z - Time taken for 'total for creating and serializing project graph' 0.39530000000377186ms
+[NX Daemon Server] - 2024-09-10T21:07:49.414Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-09-10T21:07:49.414Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 1. Response time: 2.
+[NX Daemon Server] - 2024-09-10T21:07:49.422Z - [REQUEST]: Responding to the client. handleRequestFileData
+[NX Daemon Server] - 2024-09-10T21:07:49.423Z - Done responding to the client handleRequestFileData
+[NX Daemon Server] - 2024-09-10T21:07:49.423Z - Handled REQUEST_FILE_DATA. Handling time: 0. Response time: 1.
+[NX Daemon Server] - 2024-09-10T21:07:49.424Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-10T21:10:03.758Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-09-10T21:10:03.761Z - [WATCHER]: apps/digital-standards/src/components/Header.tsx was modified
+[NX Daemon Server] - 2024-09-10T21:10:03.865Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-10T21:10:03.865Z - [REQUEST]: apps/digital-standards/src/components/Header.tsx
+[NX Daemon Server] - 2024-09-10T21:10:03.865Z - [REQUEST]: 
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-10T21:10:03.963Z - Time taken for 'hash changed files from watcher' 1.1490000000048894ms
+[NX Daemon Server] - 2024-09-10T21:10:04.776Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-10T21:10:04.777Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-10T21:10:04.777Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-10T21:10:04.780Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-09-10T21:10:04.780Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-09-10T21:10:04.781Z - Time taken for 'total for creating and serializing project graph' 0.19060000000172295ms
+[NX Daemon Server] - 2024-09-10T21:10:04.781Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-09-10T21:10:04.782Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 1.
+[NX Daemon Server] - 2024-09-10T21:10:04.792Z - [REQUEST]: Responding to the client. handleRequestFileData
+[NX Daemon Server] - 2024-09-10T21:10:04.792Z - Done responding to the client handleRequestFileData
+[NX Daemon Server] - 2024-09-10T21:10:04.792Z - Handled REQUEST_FILE_DATA. Handling time: 1. Response time: 0.
+[NX Daemon Server] - 2024-09-10T21:10:04.793Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-10T21:11:42.231Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-09-10T21:11:42.234Z - [WATCHER]: apps/digital-standards/src/components/Header.tsx was modified
+[NX Daemon Server] - 2024-09-10T21:11:42.350Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-10T21:11:42.350Z - [REQUEST]: apps/digital-standards/src/components/Header.tsx
+[NX Daemon Server] - 2024-09-10T21:11:42.350Z - [REQUEST]: 
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-10T21:11:42.430Z - Time taken for 'hash changed files from watcher' 9.291900000011083ms
+[NX Daemon Server] - 2024-09-10T21:11:43.247Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-10T21:11:43.248Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-10T21:11:43.248Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-10T21:11:43.251Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-09-10T21:11:43.251Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-09-10T21:11:43.253Z - Time taken for 'total for creating and serializing project graph' 0.2315999999991618ms
+[NX Daemon Server] - 2024-09-10T21:11:43.253Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-09-10T21:11:43.253Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 2.
+[NX Daemon Server] - 2024-09-10T21:11:43.262Z - [REQUEST]: Responding to the client. handleRequestFileData
+[NX Daemon Server] - 2024-09-10T21:11:43.262Z - Done responding to the client handleRequestFileData
+[NX Daemon Server] - 2024-09-10T21:11:43.262Z - Handled REQUEST_FILE_DATA. Handling time: 1. Response time: 0.
+[NX Daemon Server] - 2024-09-10T21:11:43.263Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-10T21:12:37.521Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-09-10T21:12:37.523Z - [WATCHER]: apps/digital-standards/src/pages/service-glossary/index.tsx was modified
+[NX Daemon Server] - 2024-09-10T21:12:37.628Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-10T21:12:37.628Z - [REQUEST]: apps/digital-standards/src/pages/service-glossary/index.tsx
+[NX Daemon Server] - 2024-09-10T21:12:37.628Z - [REQUEST]: 
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-10T21:12:37.703Z - Time taken for 'hash changed files from watcher' 0.571799999976065ms
+[NX Daemon Server] - 2024-09-10T21:12:38.528Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-10T21:12:38.528Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-10T21:12:38.528Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-10T21:12:38.531Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-09-10T21:12:38.531Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-09-10T21:12:38.532Z - Time taken for 'total for creating and serializing project graph' 0.35499999998137355ms
+[NX Daemon Server] - 2024-09-10T21:12:38.533Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-09-10T21:12:38.533Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 2.
+[NX Daemon Server] - 2024-09-10T21:12:38.540Z - [REQUEST]: Responding to the client. handleRequestFileData
+[NX Daemon Server] - 2024-09-10T21:12:38.540Z - Done responding to the client handleRequestFileData
+[NX Daemon Server] - 2024-09-10T21:12:38.540Z - Handled REQUEST_FILE_DATA. Handling time: 1. Response time: 0.
+[NX Daemon Server] - 2024-09-10T21:12:38.541Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-10T21:13:05.049Z - [WATCHER]: apps/digital-standards/src/components/Header.tsx was modified
+[NX Daemon Server] - 2024-09-10T21:13:05.049Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-09-10T21:13:05.155Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-10T21:13:05.155Z - [REQUEST]: apps/digital-standards/src/components/Header.tsx
+[NX Daemon Server] - 2024-09-10T21:13:05.155Z - [REQUEST]: 
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-10T21:13:05.230Z - Time taken for 'hash changed files from watcher' 0.7096000000019558ms
+[NX Daemon Server] - 2024-09-10T21:13:06.062Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-10T21:13:06.062Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-10T21:13:06.062Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-10T21:13:06.065Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-09-10T21:13:06.065Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-09-10T21:13:06.067Z - Time taken for 'total for creating and serializing project graph' 0.18949999997857958ms
+[NX Daemon Server] - 2024-09-10T21:13:06.068Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-09-10T21:13:06.068Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 3.
+[NX Daemon Server] - 2024-09-10T21:13:06.074Z - [REQUEST]: Responding to the client. handleRequestFileData
+[NX Daemon Server] - 2024-09-10T21:13:06.074Z - Done responding to the client handleRequestFileData
+[NX Daemon Server] - 2024-09-10T21:13:06.074Z - Handled REQUEST_FILE_DATA. Handling time: 0. Response time: 0.
+[NX Daemon Server] - 2024-09-10T21:13:06.075Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-10T21:15:24.075Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-09-10T21:15:24.078Z - [WATCHER]: apps/digital-standards/src/pages/service-glossary/config.ts was modified
+[NX Daemon Server] - 2024-09-10T21:15:24.195Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-10T21:15:24.195Z - [REQUEST]: apps/digital-standards/src/pages/service-glossary/config.ts
+[NX Daemon Server] - 2024-09-10T21:15:24.195Z - [REQUEST]: 
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-10T21:15:24.270Z - Time taken for 'hash changed files from watcher' 10.477799999993294ms
+[NX Daemon Server] - 2024-09-10T21:15:25.105Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-10T21:15:25.105Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-10T21:15:25.105Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-10T21:15:25.108Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-09-10T21:15:25.108Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-09-10T21:15:25.110Z - Time taken for 'total for creating and serializing project graph' 0.3294999999925494ms
+[NX Daemon Server] - 2024-09-10T21:15:25.110Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-09-10T21:15:25.110Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 2.
+[NX Daemon Server] - 2024-09-10T21:15:25.117Z - [REQUEST]: Responding to the client. handleRequestFileData
+[NX Daemon Server] - 2024-09-10T21:15:25.117Z - Done responding to the client handleRequestFileData
+[NX Daemon Server] - 2024-09-10T21:15:25.117Z - Handled REQUEST_FILE_DATA. Handling time: 1. Response time: 0.
+[NX Daemon Server] - 2024-09-10T21:15:25.118Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-10T21:15:38.005Z - [WATCHER]: apps/digital-standards/src/pages/landing/index.tsx was modified
+[NX Daemon Server] - 2024-09-10T21:15:38.005Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-09-10T21:15:38.115Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-10T21:15:38.115Z - [REQUEST]: apps/digital-standards/src/pages/landing/index.tsx
+[NX Daemon Server] - 2024-09-10T21:15:38.115Z - [REQUEST]: 
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-10T21:15:38.244Z - Time taken for 'hash changed files from watcher' 1.8780999999726191ms
+[NX Daemon Server] - 2024-09-10T21:15:39.018Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-10T21:15:39.018Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-10T21:15:39.018Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-10T21:15:39.020Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-09-10T21:15:39.020Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-09-10T21:15:39.022Z - Time taken for 'total for creating and serializing project graph' 0.19490000000223517ms
+[NX Daemon Server] - 2024-09-10T21:15:39.022Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-09-10T21:15:39.022Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 2.
+[NX Daemon Server] - 2024-09-10T21:15:39.028Z - [REQUEST]: Responding to the client. handleRequestFileData
+[NX Daemon Server] - 2024-09-10T21:15:39.028Z - Done responding to the client handleRequestFileData
+[NX Daemon Server] - 2024-09-10T21:15:39.028Z - Handled REQUEST_FILE_DATA. Handling time: 1. Response time: 0.
+[NX Daemon Server] - 2024-09-10T21:15:39.029Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-10T21:15:50.061Z - [WATCHER]: apps/digital-standards/src/pages/landing/styles.css was modified
+[NX Daemon Server] - 2024-09-10T21:15:50.061Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-09-10T21:15:50.169Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-10T21:15:50.169Z - [REQUEST]: apps/digital-standards/src/pages/landing/styles.css
+[NX Daemon Server] - 2024-09-10T21:15:50.169Z - [REQUEST]: 
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-10T21:15:50.236Z - Time taken for 'hash changed files from watcher' 0.592899999988731ms
+[NX Daemon Server] - 2024-09-10T21:15:51.068Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-10T21:15:51.068Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-10T21:15:51.069Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-10T21:15:51.071Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-09-10T21:15:51.072Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-09-10T21:15:51.074Z - Time taken for 'total for creating and serializing project graph' 0.4758000000147149ms
+[NX Daemon Server] - 2024-09-10T21:15:51.075Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-09-10T21:15:51.075Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 1. Response time: 3.
+[NX Daemon Server] - 2024-09-10T21:15:51.082Z - [REQUEST]: Responding to the client. handleRequestFileData
+[NX Daemon Server] - 2024-09-10T21:15:51.082Z - Done responding to the client handleRequestFileData
+[NX Daemon Server] - 2024-09-10T21:15:51.082Z - Handled REQUEST_FILE_DATA. Handling time: 1. Response time: 0.
+[NX Daemon Server] - 2024-09-10T21:15:51.083Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-10T21:15:56.347Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-09-10T21:15:56.354Z - [WATCHER]: apps/digital-standards/src/pages/service-help/index.tsx was modified
+[NX Daemon Server] - 2024-09-10T21:15:56.467Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-10T21:15:56.467Z - [REQUEST]: apps/digital-standards/src/pages/service-help/index.tsx
+[NX Daemon Server] - 2024-09-10T21:15:56.467Z - [REQUEST]: 
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-10T21:15:56.677Z - Time taken for 'hash changed files from watcher' 11.879799999995157ms
+[NX Daemon Server] - 2024-09-10T21:15:57.361Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-10T21:15:57.362Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-10T21:15:57.362Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-10T21:15:57.376Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-09-10T21:15:57.376Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-09-10T21:15:57.378Z - Time taken for 'total for creating and serializing project graph' 0.22499999997671694ms
+[NX Daemon Server] - 2024-09-10T21:15:57.378Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-09-10T21:15:57.378Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 2.
+[NX Daemon Server] - 2024-09-10T21:15:57.383Z - [REQUEST]: Responding to the client. handleRequestFileData
+[NX Daemon Server] - 2024-09-10T21:15:57.384Z - Done responding to the client handleRequestFileData
+[NX Daemon Server] - 2024-09-10T21:15:57.384Z - Handled REQUEST_FILE_DATA. Handling time: 0. Response time: 1.
+[NX Daemon Server] - 2024-09-10T21:15:57.385Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-10T21:16:42.989Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-09-10T21:16:42.992Z - [WATCHER]: apps/digital-standards/src/components/Header.tsx was modified
+[NX Daemon Server] - 2024-09-10T21:16:43.102Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-10T21:16:43.102Z - [REQUEST]: apps/digital-standards/src/components/Header.tsx
+[NX Daemon Server] - 2024-09-10T21:16:43.102Z - [REQUEST]: 
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-10T21:16:43.184Z - Time taken for 'hash changed files from watcher' 3.0688000000081956ms
+[NX Daemon Server] - 2024-09-10T21:16:44.008Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-10T21:16:44.009Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-10T21:16:44.009Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-10T21:16:44.012Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-09-10T21:16:44.012Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-09-10T21:16:44.013Z - Time taken for 'total for creating and serializing project graph' 0.1894000000320375ms
+[NX Daemon Server] - 2024-09-10T21:16:44.014Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-09-10T21:16:44.014Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 2.
+[NX Daemon Server] - 2024-09-10T21:16:44.019Z - [REQUEST]: Responding to the client. handleRequestFileData
+[NX Daemon Server] - 2024-09-10T21:16:44.019Z - Done responding to the client handleRequestFileData
+[NX Daemon Server] - 2024-09-10T21:16:44.019Z - Handled REQUEST_FILE_DATA. Handling time: 1. Response time: 0.
+[NX Daemon Server] - 2024-09-10T21:16:44.020Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-10T21:18:21.815Z - [WATCHER]: apps/digital-standards/src/pages/service-glossary/index.tsx was modified
+[NX Daemon Server] - 2024-09-10T21:18:21.816Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-09-10T21:18:21.931Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-10T21:18:21.931Z - [REQUEST]: apps/digital-standards/src/pages/service-glossary/index.tsx
+[NX Daemon Server] - 2024-09-10T21:18:21.931Z - [REQUEST]: 
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-10T21:18:22.079Z - Time taken for 'hash changed files from watcher' 11.96730000001844ms
+[NX Daemon Server] - 2024-09-10T21:18:22.824Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-10T21:18:22.824Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-10T21:18:22.825Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-10T21:18:22.829Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-09-10T21:18:22.830Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-09-10T21:18:22.831Z - Time taken for 'total for creating and serializing project graph' 0.5920000000623986ms
+[NX Daemon Server] - 2024-09-10T21:18:22.832Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-09-10T21:18:22.832Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 1. Response time: 2.
+[NX Daemon Server] - 2024-09-10T21:18:22.842Z - [REQUEST]: Responding to the client. handleRequestFileData
+[NX Daemon Server] - 2024-09-10T21:18:22.842Z - Done responding to the client handleRequestFileData
+[NX Daemon Server] - 2024-09-10T21:18:22.842Z - Handled REQUEST_FILE_DATA. Handling time: 1. Response time: 0.
+[NX Daemon Server] - 2024-09-10T21:18:22.843Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-10T21:19:12.991Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-09-10T21:19:12.993Z - [WATCHER]: apps/digital-standards/src/pages/service-glossary/index.tsx was modified
+[NX Daemon Server] - 2024-09-10T21:19:13.096Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-10T21:19:13.096Z - [REQUEST]: apps/digital-standards/src/pages/service-glossary/index.tsx
+[NX Daemon Server] - 2024-09-10T21:19:13.096Z - [REQUEST]: 
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-10T21:19:13.166Z - Time taken for 'hash changed files from watcher' 0.872899999958463ms
+[NX Daemon Server] - 2024-09-10T21:19:14.008Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-10T21:19:14.009Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-10T21:19:14.009Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-10T21:19:14.011Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-09-10T21:19:14.011Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-09-10T21:19:14.012Z - Time taken for 'total for creating and serializing project graph' 0.22829999995883554ms
+[NX Daemon Server] - 2024-09-10T21:19:14.013Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-09-10T21:19:14.013Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 2.
+[NX Daemon Server] - 2024-09-10T21:19:14.017Z - [REQUEST]: Responding to the client. handleRequestFileData
+[NX Daemon Server] - 2024-09-10T21:19:14.018Z - Done responding to the client handleRequestFileData
+[NX Daemon Server] - 2024-09-10T21:19:14.018Z - Handled REQUEST_FILE_DATA. Handling time: 0. Response time: 1.
+[NX Daemon Server] - 2024-09-10T21:19:14.019Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-10T21:19:21.068Z - [WATCHER]: apps/digital-standards/src/pages/service-glossary/index.tsx was modified
+[NX Daemon Server] - 2024-09-10T21:19:21.068Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-09-10T21:19:21.179Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-10T21:19:21.179Z - [REQUEST]: apps/digital-standards/src/pages/service-glossary/index.tsx
+[NX Daemon Server] - 2024-09-10T21:19:21.179Z - [REQUEST]: 
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-10T21:19:21.257Z - Time taken for 'hash changed files from watcher' 4.925799999968149ms
+[NX Daemon Server] - 2024-09-10T21:19:22.080Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-10T21:19:22.080Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-10T21:19:22.080Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-10T21:19:22.082Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-09-10T21:19:22.083Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-09-10T21:19:22.084Z - Time taken for 'total for creating and serializing project graph' 0.2656999999890104ms
+[NX Daemon Server] - 2024-09-10T21:19:22.085Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-09-10T21:19:22.085Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 1. Response time: 2.
+[NX Daemon Server] - 2024-09-10T21:19:22.090Z - [REQUEST]: Responding to the client. handleRequestFileData
+[NX Daemon Server] - 2024-09-10T21:19:22.090Z - Done responding to the client handleRequestFileData
+[NX Daemon Server] - 2024-09-10T21:19:22.090Z - Handled REQUEST_FILE_DATA. Handling time: 1. Response time: 0.
+[NX Daemon Server] - 2024-09-10T21:19:22.091Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-10T21:19:25.563Z - [WATCHER]: apps/digital-standards/src/components/Header.tsx was modified
+[NX Daemon Server] - 2024-09-10T21:19:25.563Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-09-10T21:19:25.671Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-10T21:19:25.671Z - [REQUEST]: apps/digital-standards/src/components/Header.tsx
+[NX Daemon Server] - 2024-09-10T21:19:25.671Z - [REQUEST]: 
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-10T21:19:25.753Z - Time taken for 'hash changed files from watcher' 1.170299999997951ms
+[NX Daemon Server] - 2024-09-10T21:19:26.574Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-10T21:19:26.574Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-10T21:19:26.574Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-10T21:19:26.576Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-09-10T21:19:26.576Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-09-10T21:19:26.577Z - Time taken for 'total for creating and serializing project graph' 0.14639999996870756ms
+[NX Daemon Server] - 2024-09-10T21:19:26.577Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-09-10T21:19:26.577Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 1.
+[NX Daemon Server] - 2024-09-10T21:19:26.582Z - [REQUEST]: Responding to the client. handleRequestFileData
+[NX Daemon Server] - 2024-09-10T21:19:26.582Z - Done responding to the client handleRequestFileData
+[NX Daemon Server] - 2024-09-10T21:19:26.582Z - Handled REQUEST_FILE_DATA. Handling time: 1. Response time: 0.
+[NX Daemon Server] - 2024-09-10T21:19:26.582Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-10T21:21:57.516Z - [WATCHER]: apps/digital-standards/src/components/Footer.tsx was modified
+[NX Daemon Server] - 2024-09-10T21:21:57.516Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-09-10T21:21:57.626Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-10T21:21:57.626Z - [REQUEST]: apps/digital-standards/src/components/Footer.tsx
+[NX Daemon Server] - 2024-09-10T21:21:57.626Z - [REQUEST]: 
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-10T21:21:57.711Z - Time taken for 'hash changed files from watcher' 0.5943999999435619ms
+[NX Daemon Server] - 2024-09-10T21:21:58.530Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-10T21:21:58.530Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-10T21:21:58.530Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-10T21:21:58.533Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-09-10T21:21:58.533Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-09-10T21:21:58.535Z - Time taken for 'total for creating and serializing project graph' 0.31140000000596046ms
+[NX Daemon Server] - 2024-09-10T21:21:58.535Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-09-10T21:21:58.536Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 3.
+[NX Daemon Server] - 2024-09-10T21:21:58.542Z - [REQUEST]: Responding to the client. handleRequestFileData
+[NX Daemon Server] - 2024-09-10T21:21:58.542Z - Done responding to the client handleRequestFileData
+[NX Daemon Server] - 2024-09-10T21:21:58.542Z - Handled REQUEST_FILE_DATA. Handling time: 0. Response time: 0.
+[NX Daemon Server] - 2024-09-10T21:21:58.543Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-10T21:27:01.920Z - [WATCHER]: apps/digital-standards/src/pages/service-assessments/index.tsx was modified
+[NX Daemon Server] - 2024-09-10T21:27:01.921Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-09-10T21:27:02.029Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-10T21:27:02.029Z - [REQUEST]: apps/digital-standards/src/pages/service-assessments/index.tsx
+[NX Daemon Server] - 2024-09-10T21:27:02.029Z - [REQUEST]: 
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-10T21:27:02.175Z - Time taken for 'hash changed files from watcher' 1.3919999999925494ms
+[NX Daemon Server] - 2024-09-10T21:27:02.940Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-10T21:27:02.940Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-10T21:27:02.941Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-10T21:27:02.948Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-09-10T21:27:02.948Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-09-10T21:27:02.950Z - Time taken for 'total for creating and serializing project graph' 0.39410000015050173ms
+[NX Daemon Server] - 2024-09-10T21:27:02.950Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-09-10T21:27:02.950Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 2.
+[NX Daemon Server] - 2024-09-10T21:27:02.959Z - [REQUEST]: Responding to the client. handleRequestFileData
+[NX Daemon Server] - 2024-09-10T21:27:02.959Z - Done responding to the client handleRequestFileData
+[NX Daemon Server] - 2024-09-10T21:27:02.959Z - Handled REQUEST_FILE_DATA. Handling time: 1. Response time: 0.
+[NX Daemon Server] - 2024-09-10T21:27:02.960Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-10T21:32:48.846Z - [WATCHER]: apps/digital-standards/src/pages/landing/index.tsx was modified
+[NX Daemon Server] - 2024-09-10T21:32:48.847Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-09-10T21:32:48.956Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-10T21:32:48.956Z - [REQUEST]: apps/digital-standards/src/pages/landing/index.tsx
+[NX Daemon Server] - 2024-09-10T21:32:48.956Z - [REQUEST]: 
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-10T21:32:49.210Z - Time taken for 'hash changed files from watcher' 7.9191000000573695ms
+[NX Daemon Server] - 2024-09-10T21:32:49.857Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-10T21:32:49.858Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-10T21:32:49.858Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-10T21:32:49.861Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-09-10T21:32:49.861Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-09-10T21:32:49.863Z - Time taken for 'total for creating and serializing project graph' 0.2584999999962747ms
+[NX Daemon Server] - 2024-09-10T21:32:49.863Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-09-10T21:32:49.863Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 1. Response time: 2.
+[NX Daemon Server] - 2024-09-10T21:32:49.871Z - [REQUEST]: Responding to the client. handleRequestFileData
+[NX Daemon Server] - 2024-09-10T21:32:49.871Z - Done responding to the client handleRequestFileData
+[NX Daemon Server] - 2024-09-10T21:32:49.871Z - Handled REQUEST_FILE_DATA. Handling time: 1. Response time: 0.
+[NX Daemon Server] - 2024-09-10T21:32:49.872Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-10T21:33:35.626Z - [WATCHER]: apps/digital-standards/src/pages/landing/index.tsx was modified
+[NX Daemon Server] - 2024-09-10T21:33:35.626Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-09-10T21:33:35.736Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-10T21:33:35.736Z - [REQUEST]: apps/digital-standards/src/pages/landing/index.tsx
+[NX Daemon Server] - 2024-09-10T21:33:35.736Z - [REQUEST]: 
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-10T21:33:35.826Z - Time taken for 'hash changed files from watcher' 0.6705000000074506ms
+[NX Daemon Server] - 2024-09-10T21:33:36.633Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-10T21:33:36.633Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-10T21:33:36.633Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-10T21:33:36.635Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-09-10T21:33:36.635Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-09-10T21:33:36.636Z - Time taken for 'total for creating and serializing project graph' 0.166399999987334ms
+[NX Daemon Server] - 2024-09-10T21:33:36.637Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-09-10T21:33:36.637Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 2.
+[NX Daemon Server] - 2024-09-10T21:33:36.642Z - [REQUEST]: Responding to the client. handleRequestFileData
+[NX Daemon Server] - 2024-09-10T21:33:36.642Z - Done responding to the client handleRequestFileData
+[NX Daemon Server] - 2024-09-10T21:33:36.642Z - Handled REQUEST_FILE_DATA. Handling time: 1. Response time: 0.
+[NX Daemon Server] - 2024-09-10T21:33:36.643Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-10T21:33:39.359Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-09-10T21:33:39.362Z - [WATCHER]: package-lock.json was modified
+[NX Daemon Server] - 2024-09-10T21:33:39.479Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-10T21:33:39.479Z - [REQUEST]: package-lock.json
+[NX Daemon Server] - 2024-09-10T21:33:39.479Z - [REQUEST]: 
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-10T21:33:39.552Z - Time taken for 'hash changed files from watcher' 2.000400000018999ms
+[NX Daemon Server] - 2024-09-10T21:33:40.367Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-10T21:33:40.367Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-10T21:33:40.367Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-10T21:33:40.369Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-09-10T21:33:40.369Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-09-10T21:33:40.370Z - Time taken for 'total for creating and serializing project graph' 0.17409999994561076ms
+[NX Daemon Server] - 2024-09-10T21:33:40.370Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-09-10T21:33:40.370Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 1.
+[NX Daemon Server] - 2024-09-10T21:33:40.375Z - [REQUEST]: Responding to the client. handleRequestFileData
+[NX Daemon Server] - 2024-09-10T21:33:40.375Z - Done responding to the client handleRequestFileData
+[NX Daemon Server] - 2024-09-10T21:33:40.375Z - Handled REQUEST_FILE_DATA. Handling time: 1. Response time: 0.
+[NX Daemon Server] - 2024-09-10T21:33:40.376Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-10T22:19:29.874Z - [WATCHER]: .nx/cache/d/server-process.json was modified
+[NX Daemon Server] - 2024-09-10T22:19:29.977Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-10T22:19:29.977Z - [REQUEST]: .nx/cache/d/server-process.json
+[NX Daemon Server] - 2024-09-10T22:19:29.977Z - [REQUEST]: 
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-10T22:19:30.204Z - Time taken for 'hash changed files from watcher' 1.9648000001907349ms
+[NX Daemon Server] - 2024-09-11T10:50:37.117Z - There are 1 open connections. Reset inactivity timer.
+[NX Daemon Server] - 2024-09-11T15:06:30.421Z - There are 1 open connections. Reset inactivity timer.
+[NX Daemon Server] - 2024-09-11T18:06:30.204Z - There are 1 open connections. Reset inactivity timer.
+[NX Daemon Server] - 2024-09-11T19:01:09.608Z - [WATCHER]: apps/digital-standards/src/components/Header.tsx was modified
+[NX Daemon Server] - 2024-09-11T19:01:09.610Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-09-11T19:01:09.830Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-11T19:01:09.830Z - [REQUEST]: apps/digital-standards/src/components/Header.tsx
+[NX Daemon Server] - 2024-09-11T19:01:09.830Z - [REQUEST]: 
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-11T19:01:10.115Z - Time taken for 'hash changed files from watcher' 13.11039999127388ms
+[NX Daemon Server] - 2024-09-11T19:01:10.540Z - [WATCHER]: apps/digital-standards/src/pages/landing/index.tsx was modified
+[NX Daemon Server] - 2024-09-11T19:01:10.541Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-09-11T19:01:10.618Z - [WATCHER]: 0 file(s) created or restored, 2 file(s) modified, 0 file(s) deleted
+[NX Daemon Server] - 2024-09-11T19:01:10.619Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-09-11T19:01:10.970Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-11T19:01:10.970Z - [REQUEST]: apps/digital-standards/src/pages/landing/index.tsx,apps/digital-standards/src/pages/service-glossary/index.tsx,apps/digital-standards/src/pages/service-glossary/config.ts
+[NX Daemon Server] - 2024-09-11T19:01:10.970Z - [REQUEST]: 
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-11T19:01:11.083Z - Time taken for 'hash changed files from watcher' 15.992200002074242ms
+[NX Daemon Server] - 2024-09-11T19:01:11.671Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-11T19:01:11.672Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-11T19:01:11.672Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-11T19:01:11.675Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-09-11T19:01:11.676Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-09-11T19:01:11.678Z - Time taken for 'total for creating and serializing project graph' 0.4503999948501587ms
+[NX Daemon Server] - 2024-09-11T19:01:11.678Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-09-11T19:01:11.678Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 1. Response time: 2.
+[NX Daemon Server] - 2024-09-11T19:01:11.691Z - [REQUEST]: Responding to the client. handleRequestFileData
+[NX Daemon Server] - 2024-09-11T19:01:11.692Z - Done responding to the client handleRequestFileData
+[NX Daemon Server] - 2024-09-11T19:01:11.692Z - Handled REQUEST_FILE_DATA. Handling time: 0. Response time: 1.
+[NX Daemon Server] - 2024-09-11T19:01:11.693Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-11T22:01:11.738Z - There are 1 open connections. Reset inactivity timer.
+[NX Daemon Server] - 2024-09-11T22:16:41.488Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-09-11T22:16:41.564Z - [WATCHER]: apps/digital-standards/src/pages/landing/index.tsx was modified
+[NX Daemon Server] - 2024-09-11T22:16:41.701Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-11T22:16:41.702Z - [REQUEST]: apps/digital-standards/src/pages/landing/index.tsx
+[NX Daemon Server] - 2024-09-11T22:16:41.702Z - [REQUEST]: 
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-11T22:16:42.426Z - Time taken for 'hash changed files from watcher' 26.829199999570847ms
+[NX Daemon Server] - 2024-09-11T22:16:42.637Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-11T22:16:42.639Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-11T22:16:42.639Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-11T22:16:42.645Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-09-11T22:16:42.646Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-09-11T22:16:42.649Z - Time taken for 'total for creating and serializing project graph' 0.9107999950647354ms
+[NX Daemon Server] - 2024-09-11T22:16:42.650Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-09-11T22:16:42.650Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 1. Response time: 4.
+[NX Daemon Server] - 2024-09-11T22:16:42.722Z - [REQUEST]: Responding to the client. handleRequestFileData
+[NX Daemon Server] - 2024-09-11T22:16:42.722Z - Done responding to the client handleRequestFileData
+[NX Daemon Server] - 2024-09-11T22:16:42.722Z - Handled REQUEST_FILE_DATA. Handling time: 1. Response time: 0.
+[NX Daemon Server] - 2024-09-11T22:16:42.724Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T06:48:42.969Z - There are 1 open connections. Reset inactivity timer.
+[NX Daemon Server] - 2024-09-12T14:45:14.334Z - There are 1 open connections. Reset inactivity timer.
+[NX Daemon Server] - 2024-09-12T15:30:19.843Z - [WATCHER]: 1 file(s) created or restored, 0 file(s) modified, 1 file(s) deleted
+[NX Daemon Server] - 2024-09-12T15:30:19.844Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-09-12T15:30:19.949Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-12T15:30:19.949Z - [REQUEST]: apps/digital-standards/src/pages/service-glossary.astro
+[NX Daemon Server] - 2024-09-12T15:30:19.949Z - [REQUEST]: apps/digital-standards/src/pages/service-glossary.txt
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-12T15:30:20.268Z - Time taken for 'hash changed files from watcher' 1.8703000247478485ms
+[NX Daemon Server] - 2024-09-12T15:30:20.725Z - Time taken for 'total execution time for createProjectGraph()' 474.3114999830723ms
+[NX Daemon Server] - 2024-09-12T15:30:20.856Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:30:20.857Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:30:20.857Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:30:20.861Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-09-12T15:30:20.862Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-09-12T15:30:20.864Z - Time taken for 'total for creating and serializing project graph' 0.46720001101493835ms
+[NX Daemon Server] - 2024-09-12T15:30:20.864Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-09-12T15:30:20.864Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 1. Response time: 2.
+[NX Daemon Server] - 2024-09-12T15:30:20.874Z - [REQUEST]: Responding to the client. handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:30:20.874Z - Done responding to the client handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:30:20.874Z - Handled REQUEST_FILE_DATA. Handling time: 1. Response time: 0.
+[NX Daemon Server] - 2024-09-12T15:30:20.875Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:30:24.225Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-09-12T15:30:24.230Z - [WATCHER]: apps/digital-standards/src/pages/service-glossary.astro was modified
+[NX Daemon Server] - 2024-09-12T15:30:24.341Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-12T15:30:24.341Z - [REQUEST]: apps/digital-standards/src/pages/service-glossary.astro
+[NX Daemon Server] - 2024-09-12T15:30:24.341Z - [REQUEST]: 
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-12T15:30:24.475Z - Time taken for 'hash changed files from watcher' 8.813400000333786ms
+[NX Daemon Server] - 2024-09-12T15:30:25.260Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:30:25.260Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:30:25.260Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:30:25.267Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-09-12T15:30:25.268Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-09-12T15:30:25.270Z - Time taken for 'total for creating and serializing project graph' 0.9584999978542328ms
+[NX Daemon Server] - 2024-09-12T15:30:25.271Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-09-12T15:30:25.271Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 1. Response time: 3.
+[NX Daemon Server] - 2024-09-12T15:30:25.282Z - [REQUEST]: Responding to the client. handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:30:25.282Z - Done responding to the client handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:30:25.283Z - Handled REQUEST_FILE_DATA. Handling time: 1. Response time: 1.
+[NX Daemon Server] - 2024-09-12T15:30:25.284Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:31:01.487Z - [WATCHER]: apps/digital-standards/src/pages/service-glossary.astro was modified
+[NX Daemon Server] - 2024-09-12T15:31:01.488Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-09-12T15:31:01.599Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-12T15:31:01.599Z - [REQUEST]: apps/digital-standards/src/pages/service-glossary.astro
+[NX Daemon Server] - 2024-09-12T15:31:01.599Z - [REQUEST]: 
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-12T15:31:01.700Z - Time taken for 'hash changed files from watcher' 4.178700000047684ms
+[NX Daemon Server] - 2024-09-12T15:31:02.492Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:31:02.492Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:31:02.492Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:31:02.495Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-09-12T15:31:02.495Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-09-12T15:31:02.497Z - Time taken for 'total for creating and serializing project graph' 0.2217000126838684ms
+[NX Daemon Server] - 2024-09-12T15:31:02.497Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-09-12T15:31:02.497Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 2.
+[NX Daemon Server] - 2024-09-12T15:31:02.520Z - [REQUEST]: Responding to the client. handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:31:02.520Z - Done responding to the client handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:31:02.520Z - Handled REQUEST_FILE_DATA. Handling time: 17. Response time: 0.
+[NX Daemon Server] - 2024-09-12T15:31:02.522Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:31:56.493Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-09-12T15:31:56.496Z - [WATCHER]: apps/digital-standards/src/pages/service-glossary/index.tsx was modified
+[NX Daemon Server] - 2024-09-12T15:31:56.605Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-12T15:31:56.605Z - [REQUEST]: apps/digital-standards/src/pages/service-glossary/index.tsx
+[NX Daemon Server] - 2024-09-12T15:31:56.605Z - [REQUEST]: 
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-12T15:31:56.682Z - Time taken for 'hash changed files from watcher' 0.6371999979019165ms
+[NX Daemon Server] - 2024-09-12T15:31:57.509Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:31:57.509Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:31:57.509Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:31:57.512Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-09-12T15:31:57.512Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-09-12T15:31:57.514Z - Time taken for 'total for creating and serializing project graph' 0.28040000796318054ms
+[NX Daemon Server] - 2024-09-12T15:31:57.515Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-09-12T15:31:57.515Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 3.
+[NX Daemon Server] - 2024-09-12T15:31:57.523Z - [REQUEST]: Responding to the client. handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:31:57.523Z - Done responding to the client handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:31:57.523Z - Handled REQUEST_FILE_DATA. Handling time: 1. Response time: 0.
+[NX Daemon Server] - 2024-09-12T15:31:57.525Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:31:58.916Z - [WATCHER]: apps/digital-standards/src/pages/service-glossary/config.ts was modified
+[NX Daemon Server] - 2024-09-12T15:31:58.917Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-09-12T15:31:59.025Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-12T15:31:59.025Z - [REQUEST]: apps/digital-standards/src/pages/service-glossary/config.ts
+[NX Daemon Server] - 2024-09-12T15:31:59.025Z - [REQUEST]: 
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-12T15:31:59.105Z - Time taken for 'hash changed files from watcher' 0.48360002040863037ms
+[NX Daemon Server] - 2024-09-12T15:31:59.929Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:31:59.930Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:31:59.930Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:31:59.932Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-09-12T15:31:59.933Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-09-12T15:31:59.934Z - Time taken for 'total for creating and serializing project graph' 0.28619998693466187ms
+[NX Daemon Server] - 2024-09-12T15:31:59.936Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-09-12T15:31:59.936Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 1. Response time: 3.
+[NX Daemon Server] - 2024-09-12T15:31:59.942Z - [REQUEST]: Responding to the client. handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:31:59.942Z - Done responding to the client handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:31:59.942Z - Handled REQUEST_FILE_DATA. Handling time: 1. Response time: 0.
+[NX Daemon Server] - 2024-09-12T15:31:59.943Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:32:27.833Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-09-12T15:32:27.838Z - [WATCHER]: apps/digital-standards/src/pages/service-glossary/config.ts was modified
+[NX Daemon Server] - 2024-09-12T15:32:27.958Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-12T15:32:27.958Z - [REQUEST]: apps/digital-standards/src/pages/service-glossary/config.ts
+[NX Daemon Server] - 2024-09-12T15:32:27.958Z - [REQUEST]: 
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-12T15:32:28.035Z - Time taken for 'hash changed files from watcher' 16.126599997282028ms
+[NX Daemon Server] - 2024-09-12T15:32:28.856Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:32:28.857Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:32:28.857Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:32:28.860Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-09-12T15:32:28.861Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-09-12T15:32:28.864Z - Time taken for 'total for creating and serializing project graph' 0.3271999955177307ms
+[NX Daemon Server] - 2024-09-12T15:32:28.865Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-09-12T15:32:28.865Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 1. Response time: 4.
+[NX Daemon Server] - 2024-09-12T15:32:28.875Z - [REQUEST]: Responding to the client. handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:32:28.875Z - Done responding to the client handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:32:28.875Z - Handled REQUEST_FILE_DATA. Handling time: 1. Response time: 0.
+[NX Daemon Server] - 2024-09-12T15:32:28.876Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:32:45.149Z - [WATCHER]: apps/digital-standards/src/pages/service-glossary/config.ts was modified
+[NX Daemon Server] - 2024-09-12T15:32:45.149Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-09-12T15:32:45.253Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-12T15:32:45.253Z - [REQUEST]: apps/digital-standards/src/pages/service-glossary/config.ts
+[NX Daemon Server] - 2024-09-12T15:32:45.253Z - [REQUEST]: 
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-12T15:32:45.542Z - Time taken for 'hash changed files from watcher' 1.596100002527237ms
+[NX Daemon Server] - 2024-09-12T15:32:46.163Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:32:46.164Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:32:46.164Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:32:46.166Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-09-12T15:32:46.166Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-09-12T15:32:46.167Z - Time taken for 'total for creating and serializing project graph' 0.12380000948905945ms
+[NX Daemon Server] - 2024-09-12T15:32:46.167Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-09-12T15:32:46.167Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 1.
+[NX Daemon Server] - 2024-09-12T15:32:46.172Z - [REQUEST]: Responding to the client. handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:32:46.172Z - Done responding to the client handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:32:46.172Z - Handled REQUEST_FILE_DATA. Handling time: 0. Response time: 0.
+[NX Daemon Server] - 2024-09-12T15:32:46.173Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:33:04.380Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-09-12T15:33:04.385Z - [WATCHER]: apps/digital-standards/src/pages/service-glossary/config.ts was modified
+[NX Daemon Server] - 2024-09-12T15:33:04.502Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-12T15:33:04.502Z - [REQUEST]: apps/digital-standards/src/pages/service-glossary/config.ts
+[NX Daemon Server] - 2024-09-12T15:33:04.502Z - [REQUEST]: 
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-12T15:33:04.588Z - Time taken for 'hash changed files from watcher' 13.378900021314621ms
+[NX Daemon Server] - 2024-09-12T15:33:05.396Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:33:05.396Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:33:05.397Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:33:05.399Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-09-12T15:33:05.399Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-09-12T15:33:05.400Z - Time taken for 'total for creating and serializing project graph' 0.2183000147342682ms
+[NX Daemon Server] - 2024-09-12T15:33:05.401Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-09-12T15:33:05.401Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 2.
+[NX Daemon Server] - 2024-09-12T15:33:05.407Z - [REQUEST]: Responding to the client. handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:33:05.407Z - Done responding to the client handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:33:05.407Z - Handled REQUEST_FILE_DATA. Handling time: 1. Response time: 0.
+[NX Daemon Server] - 2024-09-12T15:33:05.408Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:33:20.103Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-09-12T15:33:20.106Z - [WATCHER]: apps/digital-standards/src/pages/service-glossary/config.ts was modified
+[NX Daemon Server] - 2024-09-12T15:33:20.221Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-12T15:33:20.221Z - [REQUEST]: apps/digital-standards/src/pages/service-glossary/config.ts
+[NX Daemon Server] - 2024-09-12T15:33:20.221Z - [REQUEST]: 
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-12T15:33:20.314Z - Time taken for 'hash changed files from watcher' 1.672100007534027ms
+[NX Daemon Server] - 2024-09-12T15:33:21.115Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:33:21.115Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:33:21.116Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:33:21.117Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-09-12T15:33:21.118Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-09-12T15:33:21.119Z - Time taken for 'total for creating and serializing project graph' 0.11760002374649048ms
+[NX Daemon Server] - 2024-09-12T15:33:21.119Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-09-12T15:33:21.119Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 1. Response time: 1.
+[NX Daemon Server] - 2024-09-12T15:33:21.123Z - [REQUEST]: Responding to the client. handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:33:21.123Z - Done responding to the client handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:33:21.123Z - Handled REQUEST_FILE_DATA. Handling time: 0. Response time: 0.
+[NX Daemon Server] - 2024-09-12T15:33:21.124Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:33:34.542Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-09-12T15:33:34.545Z - [WATCHER]: apps/digital-standards/src/pages/service-glossary/config.ts was modified
+[NX Daemon Server] - 2024-09-12T15:33:34.653Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-12T15:33:34.653Z - [REQUEST]: apps/digital-standards/src/pages/service-glossary/config.ts
+[NX Daemon Server] - 2024-09-12T15:33:34.653Z - [REQUEST]: 
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-12T15:33:34.787Z - Time taken for 'hash changed files from watcher' 0.9777999818325043ms
+[NX Daemon Server] - 2024-09-12T15:33:35.557Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:33:35.558Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:33:35.558Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:33:35.561Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-09-12T15:33:35.561Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-09-12T15:33:35.562Z - Time taken for 'total for creating and serializing project graph' 0.22659999132156372ms
+[NX Daemon Server] - 2024-09-12T15:33:35.562Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-09-12T15:33:35.562Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 1.
+[NX Daemon Server] - 2024-09-12T15:33:35.568Z - [REQUEST]: Responding to the client. handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:33:35.568Z - Done responding to the client handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:33:35.568Z - Handled REQUEST_FILE_DATA. Handling time: 1. Response time: 0.
+[NX Daemon Server] - 2024-09-12T15:33:35.569Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:35:43.366Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-09-12T15:35:43.369Z - [WATCHER]: apps/digital-standards/src/pages/service-glossary/config.ts was modified
+[NX Daemon Server] - 2024-09-12T15:35:43.497Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-12T15:35:43.497Z - [REQUEST]: apps/digital-standards/src/pages/service-glossary/config.ts
+[NX Daemon Server] - 2024-09-12T15:35:43.497Z - [REQUEST]: 
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-12T15:35:43.586Z - Time taken for 'hash changed files from watcher' 21.73489999771118ms
+[NX Daemon Server] - 2024-09-12T15:35:44.390Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:35:44.391Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:35:44.392Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:35:44.397Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-09-12T15:35:44.397Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-09-12T15:35:44.400Z - Time taken for 'total for creating and serializing project graph' 0.552299976348877ms
+[NX Daemon Server] - 2024-09-12T15:35:44.400Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-09-12T15:35:44.401Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 4.
+[NX Daemon Server] - 2024-09-12T15:35:44.411Z - [REQUEST]: Responding to the client. handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:35:44.411Z - Done responding to the client handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:35:44.411Z - Handled REQUEST_FILE_DATA. Handling time: 1. Response time: 0.
+[NX Daemon Server] - 2024-09-12T15:35:44.412Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:35:59.495Z - [WATCHER]: apps/digital-standards/src/pages/service-glossary/config.ts was modified
+[NX Daemon Server] - 2024-09-12T15:35:59.495Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-09-12T15:35:59.597Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-12T15:35:59.597Z - [REQUEST]: apps/digital-standards/src/pages/service-glossary/config.ts
+[NX Daemon Server] - 2024-09-12T15:35:59.597Z - [REQUEST]: 
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-12T15:35:59.665Z - Time taken for 'hash changed files from watcher' 0.4936000108718872ms
+[NX Daemon Server] - 2024-09-12T15:36:00.505Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:36:00.505Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:36:00.505Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:36:00.508Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-09-12T15:36:00.508Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-09-12T15:36:00.510Z - Time taken for 'total for creating and serializing project graph' 0.23389998078346252ms
+[NX Daemon Server] - 2024-09-12T15:36:00.510Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-09-12T15:36:00.510Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 2.
+[NX Daemon Server] - 2024-09-12T15:36:00.516Z - [REQUEST]: Responding to the client. handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:36:00.516Z - Done responding to the client handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:36:00.516Z - Handled REQUEST_FILE_DATA. Handling time: 0. Response time: 0.
+[NX Daemon Server] - 2024-09-12T15:36:00.517Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:38:27.023Z - [WATCHER]: apps/digital-standards/src/pages/service-glossary/config.ts was modified
+[NX Daemon Server] - 2024-09-12T15:38:27.023Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-09-12T15:38:27.141Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-12T15:38:27.141Z - [REQUEST]: apps/digital-standards/src/pages/service-glossary/config.ts
+[NX Daemon Server] - 2024-09-12T15:38:27.141Z - [REQUEST]: 
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-12T15:38:27.329Z - Time taken for 'hash changed files from watcher' 11.533399999141693ms
+[NX Daemon Server] - 2024-09-12T15:38:28.016Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:38:28.017Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:38:28.017Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:38:28.020Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-09-12T15:38:28.020Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-09-12T15:38:28.022Z - Time taken for 'total for creating and serializing project graph' 0.2515000104904175ms
+[NX Daemon Server] - 2024-09-12T15:38:28.023Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-09-12T15:38:28.023Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 3.
+[NX Daemon Server] - 2024-09-12T15:38:28.031Z - [REQUEST]: Responding to the client. handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:38:28.032Z - Done responding to the client handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:38:28.032Z - Handled REQUEST_FILE_DATA. Handling time: 0. Response time: 1.
+[NX Daemon Server] - 2024-09-12T15:38:28.033Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:46:41.270Z - [WATCHER]: apps/digital-standards/src/pages/service-glossary/config.ts was modified
+[NX Daemon Server] - 2024-09-12T15:46:41.270Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-09-12T15:46:41.406Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-12T15:46:41.406Z - [REQUEST]: apps/digital-standards/src/pages/service-glossary/config.ts
+[NX Daemon Server] - 2024-09-12T15:46:41.406Z - [REQUEST]: 
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-12T15:46:41.548Z - Time taken for 'hash changed files from watcher' 24.950100004673004ms
+[NX Daemon Server] - 2024-09-12T15:46:42.277Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:46:42.277Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:46:42.278Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:46:42.281Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-09-12T15:46:42.281Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-09-12T15:46:42.284Z - Time taken for 'total for creating and serializing project graph' 0.3095000088214874ms
+[NX Daemon Server] - 2024-09-12T15:46:42.285Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-09-12T15:46:42.285Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 4.
+[NX Daemon Server] - 2024-09-12T15:46:42.294Z - [REQUEST]: Responding to the client. handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:46:42.295Z - Done responding to the client handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:46:42.295Z - Handled REQUEST_FILE_DATA. Handling time: 0. Response time: 1.
+[NX Daemon Server] - 2024-09-12T15:46:42.296Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:46:56.647Z - [WATCHER]: apps/digital-standards/src/pages/service-glossary/config.ts was modified
+[NX Daemon Server] - 2024-09-12T15:46:56.648Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-09-12T15:46:56.753Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-12T15:46:56.753Z - [REQUEST]: apps/digital-standards/src/pages/service-glossary/config.ts
+[NX Daemon Server] - 2024-09-12T15:46:56.753Z - [REQUEST]: 
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-12T15:46:56.828Z - Time taken for 'hash changed files from watcher' 0.6215000152587891ms
+[NX Daemon Server] - 2024-09-12T15:46:57.658Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:46:57.658Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:46:57.659Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:46:57.661Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-09-12T15:46:57.661Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-09-12T15:46:57.662Z - Time taken for 'total for creating and serializing project graph' 0.13419997692108154ms
+[NX Daemon Server] - 2024-09-12T15:46:57.662Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-09-12T15:46:57.662Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 1.
+[NX Daemon Server] - 2024-09-12T15:46:57.667Z - [REQUEST]: Responding to the client. handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:46:57.667Z - Done responding to the client handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:46:57.667Z - Handled REQUEST_FILE_DATA. Handling time: 1. Response time: 0.
+[NX Daemon Server] - 2024-09-12T15:46:57.667Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:47:35.456Z - [WATCHER]: apps/digital-standards/src/pages/service-glossary/config.ts was modified
+[NX Daemon Server] - 2024-09-12T15:47:35.456Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-09-12T15:47:35.563Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-12T15:47:35.563Z - [REQUEST]: apps/digital-standards/src/pages/service-glossary/config.ts
+[NX Daemon Server] - 2024-09-12T15:47:35.563Z - [REQUEST]: 
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-12T15:47:35.633Z - Time taken for 'hash changed files from watcher' 0.7452999949455261ms
+[NX Daemon Server] - 2024-09-12T15:47:36.467Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:47:36.468Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:47:36.468Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:47:36.472Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-09-12T15:47:36.472Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-09-12T15:47:36.473Z - Time taken for 'total for creating and serializing project graph' 0.3359000086784363ms
+[NX Daemon Server] - 2024-09-12T15:47:36.473Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-09-12T15:47:36.474Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 1. Response time: 2.
+[NX Daemon Server] - 2024-09-12T15:47:36.480Z - [REQUEST]: Responding to the client. handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:47:36.480Z - Done responding to the client handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:47:36.480Z - Handled REQUEST_FILE_DATA. Handling time: 1. Response time: 0.
+[NX Daemon Server] - 2024-09-12T15:47:36.481Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:47:37.411Z - [WATCHER]: apps/digital-standards/src/pages/service-glossary/config.ts was modified
+[NX Daemon Server] - 2024-09-12T15:47:37.411Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-09-12T15:47:37.526Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-12T15:47:37.526Z - [REQUEST]: apps/digital-standards/src/pages/service-glossary/config.ts
+[NX Daemon Server] - 2024-09-12T15:47:37.526Z - [REQUEST]: 
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-12T15:47:37.628Z - Time taken for 'hash changed files from watcher' 10.551399976015091ms
+[NX Daemon Server] - 2024-09-12T15:47:38.424Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:47:38.424Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:47:38.424Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:47:38.427Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-09-12T15:47:38.427Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-09-12T15:47:38.429Z - Time taken for 'total for creating and serializing project graph' 0.2556999921798706ms
+[NX Daemon Server] - 2024-09-12T15:47:38.429Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-09-12T15:47:38.429Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 2.
+[NX Daemon Server] - 2024-09-12T15:47:38.435Z - [REQUEST]: Responding to the client. handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:47:38.436Z - Done responding to the client handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:47:38.436Z - Handled REQUEST_FILE_DATA. Handling time: 0. Response time: 1.
+[NX Daemon Server] - 2024-09-12T15:47:38.436Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:48:06.856Z - [WATCHER]: apps/digital-standards/src/pages/service-glossary/config.ts was modified
+[NX Daemon Server] - 2024-09-12T15:48:06.856Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-09-12T15:48:06.963Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-12T15:48:06.963Z - [REQUEST]: apps/digital-standards/src/pages/service-glossary/config.ts
+[NX Daemon Server] - 2024-09-12T15:48:06.964Z - [REQUEST]: 
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-12T15:48:07.093Z - Time taken for 'hash changed files from watcher' 0.9021999835968018ms
+[NX Daemon Server] - 2024-09-12T15:48:07.866Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:48:07.866Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:48:07.866Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:48:07.869Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-09-12T15:48:07.869Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-09-12T15:48:07.871Z - Time taken for 'total for creating and serializing project graph' 0.29440000653266907ms
+[NX Daemon Server] - 2024-09-12T15:48:07.872Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-09-12T15:48:07.872Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 3.
+[NX Daemon Server] - 2024-09-12T15:48:07.879Z - [REQUEST]: Responding to the client. handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:48:07.880Z - Done responding to the client handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:48:07.880Z - Handled REQUEST_FILE_DATA. Handling time: 0. Response time: 1.
+[NX Daemon Server] - 2024-09-12T15:48:07.881Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:48:47.251Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-09-12T15:48:47.254Z - [WATCHER]: apps/digital-standards/src/pages/service-glossary/config.ts was modified
+[NX Daemon Server] - 2024-09-12T15:48:47.361Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-12T15:48:47.361Z - [REQUEST]: apps/digital-standards/src/pages/service-glossary/config.ts
+[NX Daemon Server] - 2024-09-12T15:48:47.361Z - [REQUEST]: 
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-12T15:48:47.457Z - Time taken for 'hash changed files from watcher' 1.003499984741211ms
+[NX Daemon Server] - 2024-09-12T15:48:48.264Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:48:48.264Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:48:48.264Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:48:48.267Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-09-12T15:48:48.267Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-09-12T15:48:48.269Z - Time taken for 'total for creating and serializing project graph' 0.20669999718666077ms
+[NX Daemon Server] - 2024-09-12T15:48:48.270Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-09-12T15:48:48.270Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 3.
+[NX Daemon Server] - 2024-09-12T15:48:48.280Z - [REQUEST]: Responding to the client. handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:48:48.280Z - Done responding to the client handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:48:48.280Z - Handled REQUEST_FILE_DATA. Handling time: 1. Response time: 0.
+[NX Daemon Server] - 2024-09-12T15:48:48.281Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:50:41.413Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-09-12T15:50:41.416Z - [WATCHER]: apps/digital-standards/src/pages/service-glossary/config.ts was modified
+[NX Daemon Server] - 2024-09-12T15:50:41.533Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-12T15:50:41.533Z - [REQUEST]: apps/digital-standards/src/pages/service-glossary/config.ts
+[NX Daemon Server] - 2024-09-12T15:50:41.533Z - [REQUEST]: 
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-12T15:50:41.627Z - Time taken for 'hash changed files from watcher' 10.771699994802475ms
+[NX Daemon Server] - 2024-09-12T15:50:42.434Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:50:42.434Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:50:42.435Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:50:42.438Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-09-12T15:50:42.438Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-09-12T15:50:42.440Z - Time taken for 'total for creating and serializing project graph' 0.21660000085830688ms
+[NX Daemon Server] - 2024-09-12T15:50:42.440Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-09-12T15:50:42.440Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 2.
+[NX Daemon Server] - 2024-09-12T15:50:42.446Z - [REQUEST]: Responding to the client. handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:50:42.447Z - Done responding to the client handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:50:42.447Z - Handled REQUEST_FILE_DATA. Handling time: 0. Response time: 1.
+[NX Daemon Server] - 2024-09-12T15:50:42.448Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:51:03.503Z - [WATCHER]: apps/digital-standards/src/pages/service-glossary/config.ts was modified
+[NX Daemon Server] - 2024-09-12T15:51:03.504Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-09-12T15:51:03.612Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-12T15:51:03.612Z - [REQUEST]: apps/digital-standards/src/pages/service-glossary/config.ts
+[NX Daemon Server] - 2024-09-12T15:51:03.612Z - [REQUEST]: 
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-12T15:51:03.794Z - Time taken for 'hash changed files from watcher' 1.343199998140335ms
+[NX Daemon Server] - 2024-09-12T15:51:04.510Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:51:04.510Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:51:04.510Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:51:04.514Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-09-12T15:51:04.515Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-09-12T15:51:04.517Z - Time taken for 'total for creating and serializing project graph' 0.48809999227523804ms
+[NX Daemon Server] - 2024-09-12T15:51:04.518Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-09-12T15:51:04.518Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 1. Response time: 3.
+[NX Daemon Server] - 2024-09-12T15:51:04.530Z - [REQUEST]: Responding to the client. handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:51:04.531Z - Done responding to the client handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:51:04.531Z - Handled REQUEST_FILE_DATA. Handling time: 0. Response time: 1.
+[NX Daemon Server] - 2024-09-12T15:51:04.532Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:51:08.326Z - [WATCHER]: apps/digital-standards/src/pages/service-glossary/config.ts was modified
+[NX Daemon Server] - 2024-09-12T15:51:08.326Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-09-12T15:51:08.439Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-12T15:51:08.439Z - [REQUEST]: apps/digital-standards/src/pages/service-glossary/config.ts
+[NX Daemon Server] - 2024-09-12T15:51:08.439Z - [REQUEST]: 
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-12T15:51:08.532Z - Time taken for 'hash changed files from watcher' 0.9514999985694885ms
+[NX Daemon Server] - 2024-09-12T15:51:09.353Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:51:09.353Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:51:09.354Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:51:09.358Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-09-12T15:51:09.358Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-09-12T15:51:09.360Z - Time taken for 'total for creating and serializing project graph' 0.33320000767707825ms
+[NX Daemon Server] - 2024-09-12T15:51:09.361Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-09-12T15:51:09.361Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 3.
+[NX Daemon Server] - 2024-09-12T15:51:09.370Z - [REQUEST]: Responding to the client. handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:51:09.371Z - Done responding to the client handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:51:09.371Z - Handled REQUEST_FILE_DATA. Handling time: 0. Response time: 1.
+[NX Daemon Server] - 2024-09-12T15:51:09.372Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:52:41.814Z - [WATCHER]: apps/dcp-guide/src/pages/about/about_2.mdx was modified
+[NX Daemon Server] - 2024-09-12T15:52:41.814Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-09-12T15:52:41.920Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-12T15:52:41.920Z - [REQUEST]: apps/dcp-guide/src/pages/about/about_2.mdx
+[NX Daemon Server] - 2024-09-12T15:52:41.920Z - [REQUEST]: 
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-12T15:52:42.042Z - Time taken for 'hash changed files from watcher' 1.6261000037193298ms
+[NX Daemon Server] - 2024-09-12T15:52:42.826Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:52:42.826Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:52:42.826Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:52:42.829Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-09-12T15:52:42.829Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-09-12T15:52:42.830Z - Time taken for 'total for creating and serializing project graph' 0.1768999993801117ms
+[NX Daemon Server] - 2024-09-12T15:52:42.830Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-09-12T15:52:42.831Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 2.
+[NX Daemon Server] - 2024-09-12T15:52:42.838Z - [REQUEST]: Responding to the client. handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:52:42.838Z - Done responding to the client handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:52:42.838Z - Handled REQUEST_FILE_DATA. Handling time: 1. Response time: 1.
+[NX Daemon Server] - 2024-09-12T15:52:42.839Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:52:44.521Z - [WATCHER]: apps/dcp-guide/src/pages/about/about_1.mdx was modified
+[NX Daemon Server] - 2024-09-12T15:52:44.521Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-09-12T15:52:44.630Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-12T15:52:44.630Z - [REQUEST]: apps/dcp-guide/src/pages/about/about_1.mdx
+[NX Daemon Server] - 2024-09-12T15:52:44.630Z - [REQUEST]: 
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-12T15:52:44.725Z - Time taken for 'hash changed files from watcher' 0.6557999849319458ms
+[NX Daemon Server] - 2024-09-12T15:52:45.529Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:52:45.529Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:52:45.530Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:52:45.531Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-09-12T15:52:45.532Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-09-12T15:52:45.532Z - Time taken for 'total for creating and serializing project graph' 0.11320000886917114ms
+[NX Daemon Server] - 2024-09-12T15:52:45.533Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-09-12T15:52:45.533Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 1. Response time: 1.
+[NX Daemon Server] - 2024-09-12T15:52:45.540Z - [REQUEST]: Responding to the client. handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:52:45.540Z - Done responding to the client handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:52:45.541Z - Handled REQUEST_FILE_DATA. Handling time: 0. Response time: 1.
+[NX Daemon Server] - 2024-09-12T15:52:45.542Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:52:58.599Z - [WATCHER]: apps/dcp-guide/src/layouts/baseLayout.astro was modified
+[NX Daemon Server] - 2024-09-12T15:52:58.600Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-09-12T15:52:58.704Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-12T15:52:58.704Z - [REQUEST]: apps/dcp-guide/src/layouts/baseLayout.astro
+[NX Daemon Server] - 2024-09-12T15:52:58.704Z - [REQUEST]: 
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-12T15:52:58.787Z - Time taken for 'hash changed files from watcher' 0.4334999918937683ms
+[NX Daemon Server] - 2024-09-12T15:52:59.610Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:52:59.610Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:52:59.611Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:52:59.613Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-09-12T15:52:59.614Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-09-12T15:52:59.616Z - Time taken for 'total for creating and serializing project graph' 0.28199997544288635ms
+[NX Daemon Server] - 2024-09-12T15:52:59.616Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-09-12T15:52:59.616Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 1. Response time: 2.
+[NX Daemon Server] - 2024-09-12T15:52:59.627Z - [REQUEST]: Responding to the client. handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:52:59.627Z - Done responding to the client handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:52:59.627Z - Handled REQUEST_FILE_DATA. Handling time: 1. Response time: 0.
+[NX Daemon Server] - 2024-09-12T15:52:59.628Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:53:13.661Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-09-12T15:53:13.665Z - [WATCHER]: apps/common-capabilities/src/pages/about/index.tsx was modified
+[NX Daemon Server] - 2024-09-12T15:53:13.774Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-12T15:53:13.774Z - [REQUEST]: apps/common-capabilities/src/pages/about/index.tsx
+[NX Daemon Server] - 2024-09-12T15:53:13.774Z - [REQUEST]: 
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-12T15:53:13.915Z - Time taken for 'hash changed files from watcher' 0.9270000159740448ms
+[NX Daemon Server] - 2024-09-12T15:53:14.671Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:53:14.672Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:53:14.672Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:53:14.675Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-09-12T15:53:14.675Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-09-12T15:53:14.677Z - Time taken for 'total for creating and serializing project graph' 0.3190000057220459ms
+[NX Daemon Server] - 2024-09-12T15:53:14.678Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-09-12T15:53:14.678Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 3.
+[NX Daemon Server] - 2024-09-12T15:53:14.685Z - [REQUEST]: Responding to the client. handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:53:14.685Z - Done responding to the client handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:53:14.685Z - Handled REQUEST_FILE_DATA. Handling time: 1. Response time: 0.
+[NX Daemon Server] - 2024-09-12T15:53:14.686Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:53:24.056Z - [WATCHER]: apps/common-capabilities/src/pages/details/index.tsx was modified
+[NX Daemon Server] - 2024-09-12T15:53:24.057Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-09-12T15:53:24.164Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-12T15:53:24.164Z - [REQUEST]: apps/common-capabilities/src/pages/details/index.tsx
+[NX Daemon Server] - 2024-09-12T15:53:24.164Z - [REQUEST]: 
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-12T15:53:24.273Z - Time taken for 'hash changed files from watcher' 0.5990999937057495ms
+[NX Daemon Server] - 2024-09-12T15:53:25.072Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:53:25.073Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:53:25.073Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:53:25.076Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-09-12T15:53:25.076Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-09-12T15:53:25.078Z - Time taken for 'total for creating and serializing project graph' 0.2143000066280365ms
+[NX Daemon Server] - 2024-09-12T15:53:25.078Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-09-12T15:53:25.078Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 2.
+[NX Daemon Server] - 2024-09-12T15:53:25.085Z - [REQUEST]: Responding to the client. handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:53:25.085Z - Done responding to the client handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:53:25.085Z - Handled REQUEST_FILE_DATA. Handling time: 1. Response time: 0.
+[NX Daemon Server] - 2024-09-12T15:53:25.086Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:54:17.244Z - [WATCHER]: apps/common-capabilities/src/pages/landing/index.tsx was modified
+[NX Daemon Server] - 2024-09-12T15:54:17.244Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-09-12T15:54:17.350Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-12T15:54:17.350Z - [REQUEST]: apps/common-capabilities/src/pages/landing/index.tsx
+[NX Daemon Server] - 2024-09-12T15:54:17.351Z - [REQUEST]: 
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-12T15:54:17.593Z - Time taken for 'hash changed files from watcher' 0.8287000060081482ms
+[NX Daemon Server] - 2024-09-12T15:54:18.247Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:54:18.248Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:54:18.248Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:54:18.251Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-09-12T15:54:18.252Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-09-12T15:54:18.254Z - Time taken for 'total for creating and serializing project graph' 0.5630000233650208ms
+[NX Daemon Server] - 2024-09-12T15:54:18.254Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-09-12T15:54:18.254Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 1. Response time: 2.
+[NX Daemon Server] - 2024-09-12T15:54:18.262Z - [REQUEST]: Responding to the client. handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:54:18.262Z - Done responding to the client handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:54:18.262Z - Handled REQUEST_FILE_DATA. Handling time: 1. Response time: 0.
+[NX Daemon Server] - 2024-09-12T15:54:18.263Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:58:13.255Z - [WATCHER]: apps/digital-standards/src/pages/service-glossary/config.ts was modified
+[NX Daemon Server] - 2024-09-12T15:58:13.256Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-09-12T15:58:13.381Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-12T15:58:13.381Z - [REQUEST]: apps/digital-standards/src/pages/service-glossary/config.ts
+[NX Daemon Server] - 2024-09-12T15:58:13.381Z - [REQUEST]: 
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-12T15:58:13.519Z - Time taken for 'hash changed files from watcher' 19.844900012016296ms
+[NX Daemon Server] - 2024-09-12T15:58:14.276Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:58:14.276Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:58:14.277Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:58:14.282Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-09-12T15:58:14.283Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-09-12T15:58:14.285Z - Time taken for 'total for creating and serializing project graph' 0.5175999999046326ms
+[NX Daemon Server] - 2024-09-12T15:58:14.285Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-09-12T15:58:14.285Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 1. Response time: 2.
+[NX Daemon Server] - 2024-09-12T15:58:14.293Z - [REQUEST]: Responding to the client. handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:58:14.293Z - Done responding to the client handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:58:14.293Z - Handled REQUEST_FILE_DATA. Handling time: 1. Response time: 0.
+[NX Daemon Server] - 2024-09-12T15:58:14.294Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:58:29.050Z - [WATCHER]: apps/digital-standards/src/pages/service-glossary/config.ts was modified
+[NX Daemon Server] - 2024-09-12T15:58:29.051Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-09-12T15:58:29.159Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-12T15:58:29.160Z - [REQUEST]: apps/digital-standards/src/pages/service-glossary/config.ts
+[NX Daemon Server] - 2024-09-12T15:58:29.160Z - [REQUEST]: 
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-12T15:58:29.237Z - Time taken for 'hash changed files from watcher' 0.7599000036716461ms
+[NX Daemon Server] - 2024-09-12T15:58:30.066Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:58:30.066Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:58:30.066Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:58:30.068Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-09-12T15:58:30.069Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-09-12T15:58:30.070Z - Time taken for 'total for creating and serializing project graph' 0.16589999198913574ms
+[NX Daemon Server] - 2024-09-12T15:58:30.070Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-09-12T15:58:30.070Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 1. Response time: 1.
+[NX Daemon Server] - 2024-09-12T15:58:30.076Z - [REQUEST]: Responding to the client. handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:58:30.076Z - Done responding to the client handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:58:30.076Z - Handled REQUEST_FILE_DATA. Handling time: 1. Response time: 0.
+[NX Daemon Server] - 2024-09-12T15:58:30.077Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:58:37.527Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-09-12T15:58:37.530Z - [WATCHER]: apps/digital-standards/src/pages/service-glossary/index.tsx was modified
+[NX Daemon Server] - 2024-09-12T15:58:37.651Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-12T15:58:37.651Z - [REQUEST]: apps/digital-standards/src/pages/service-glossary/index.tsx
+[NX Daemon Server] - 2024-09-12T15:58:37.652Z - [REQUEST]: 
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-12T15:58:37.770Z - Time taken for 'hash changed files from watcher' 14.724999994039536ms
+[NX Daemon Server] - 2024-09-12T15:58:38.535Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:58:38.536Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:58:38.536Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:58:38.539Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-09-12T15:58:38.540Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-09-12T15:58:38.542Z - Time taken for 'total for creating and serializing project graph' 0.35249999165534973ms
+[NX Daemon Server] - 2024-09-12T15:58:38.543Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-09-12T15:58:38.543Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 1. Response time: 3.
+[NX Daemon Server] - 2024-09-12T15:58:38.552Z - [REQUEST]: Responding to the client. handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:58:38.553Z - Done responding to the client handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:58:38.553Z - Handled REQUEST_FILE_DATA. Handling time: 1. Response time: 1.
+[NX Daemon Server] - 2024-09-12T15:58:38.554Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:59:01.978Z - [WATCHER]: apps/digital-standards/src/pages/service-glossary/index.tsx was modified
+[NX Daemon Server] - 2024-09-12T15:59:01.978Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-09-12T15:59:02.085Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-12T15:59:02.086Z - [REQUEST]: apps/digital-standards/src/pages/service-glossary/index.tsx
+[NX Daemon Server] - 2024-09-12T15:59:02.086Z - [REQUEST]: 
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-12T15:59:02.165Z - Time taken for 'hash changed files from watcher' 2.1247000098228455ms
+[NX Daemon Server] - 2024-09-12T15:59:02.990Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:59:02.990Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T15:59:02.990Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T15:59:02.992Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-09-12T15:59:02.992Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-09-12T15:59:02.993Z - Time taken for 'total for creating and serializing project graph' 0.10760000348091125ms
+[NX Daemon Server] - 2024-09-12T15:59:02.993Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-09-12T15:59:02.993Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 1.
+[NX Daemon Server] - 2024-09-12T15:59:02.998Z - [REQUEST]: Responding to the client. handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:59:02.998Z - Done responding to the client handleRequestFileData
+[NX Daemon Server] - 2024-09-12T15:59:02.998Z - Handled REQUEST_FILE_DATA. Handling time: 1. Response time: 0.
+[NX Daemon Server] - 2024-09-12T15:59:02.998Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T16:00:35.672Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-09-12T16:00:35.674Z - [WATCHER]: apps/digital-standards/src/pages/service-glossary/config.ts was modified
+[NX Daemon Server] - 2024-09-12T16:00:35.790Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-12T16:00:35.790Z - [REQUEST]: apps/digital-standards/src/pages/service-glossary/config.ts
+[NX Daemon Server] - 2024-09-12T16:00:35.790Z - [REQUEST]: 
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-12T16:00:35.865Z - Time taken for 'hash changed files from watcher' 11.655000001192093ms
+[NX Daemon Server] - 2024-09-12T16:00:36.689Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T16:00:36.689Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T16:00:36.689Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T16:00:36.691Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-09-12T16:00:36.691Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-09-12T16:00:36.693Z - Time taken for 'total for creating and serializing project graph' 0.17010000348091125ms
+[NX Daemon Server] - 2024-09-12T16:00:36.693Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-09-12T16:00:36.693Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 2.
+[NX Daemon Server] - 2024-09-12T16:00:36.703Z - [REQUEST]: Responding to the client. handleRequestFileData
+[NX Daemon Server] - 2024-09-12T16:00:36.703Z - Done responding to the client handleRequestFileData
+[NX Daemon Server] - 2024-09-12T16:00:36.703Z - Handled REQUEST_FILE_DATA. Handling time: 1. Response time: 0.
+[NX Daemon Server] - 2024-09-12T16:00:36.704Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T16:00:51.606Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-09-12T16:00:51.611Z - [WATCHER]: apps/digital-standards/src/pages/service-glossary/config.ts was modified
+[NX Daemon Server] - 2024-09-12T16:00:51.718Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-12T16:00:51.719Z - [REQUEST]: apps/digital-standards/src/pages/service-glossary/config.ts
+[NX Daemon Server] - 2024-09-12T16:00:51.719Z - [REQUEST]: 
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-12T16:00:51.807Z - Time taken for 'hash changed files from watcher' 1.0556999742984772ms
+[NX Daemon Server] - 2024-09-12T16:00:52.644Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T16:00:52.645Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T16:00:52.645Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T16:00:52.652Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-09-12T16:00:52.653Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-09-12T16:00:52.655Z - Time taken for 'total for creating and serializing project graph' 0.3921000063419342ms
+[NX Daemon Server] - 2024-09-12T16:00:52.656Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-09-12T16:00:52.656Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 1. Response time: 3.
+[NX Daemon Server] - 2024-09-12T16:00:52.665Z - [REQUEST]: Responding to the client. handleRequestFileData
+[NX Daemon Server] - 2024-09-12T16:00:52.665Z - Done responding to the client handleRequestFileData
+[NX Daemon Server] - 2024-09-12T16:00:52.665Z - Handled REQUEST_FILE_DATA. Handling time: 1. Response time: 0.
+[NX Daemon Server] - 2024-09-12T16:00:52.666Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T16:01:08.464Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-09-12T16:01:08.468Z - [WATCHER]: apps/digital-standards/src/pages/service-glossary/config.ts was modified
+[NX Daemon Server] - 2024-09-12T16:01:08.587Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-12T16:01:08.588Z - [REQUEST]: apps/digital-standards/src/pages/service-glossary/config.ts
+[NX Daemon Server] - 2024-09-12T16:01:08.588Z - [REQUEST]: 
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-12T16:01:08.703Z - Time taken for 'hash changed files from watcher' 15.249099999666214ms
+[NX Daemon Server] - 2024-09-12T16:01:09.484Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T16:01:09.484Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T16:01:09.485Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T16:01:09.489Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-09-12T16:01:09.489Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-09-12T16:01:09.491Z - Time taken for 'total for creating and serializing project graph' 0.29159998893737793ms
+[NX Daemon Server] - 2024-09-12T16:01:09.491Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-09-12T16:01:09.491Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 2.
+[NX Daemon Server] - 2024-09-12T16:01:09.497Z - [REQUEST]: Responding to the client. handleRequestFileData
+[NX Daemon Server] - 2024-09-12T16:01:09.497Z - Done responding to the client handleRequestFileData
+[NX Daemon Server] - 2024-09-12T16:01:09.497Z - Handled REQUEST_FILE_DATA. Handling time: 0. Response time: 0.
+[NX Daemon Server] - 2024-09-12T16:01:09.498Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T16:01:24.648Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-09-12T16:01:24.654Z - [WATCHER]: apps/digital-standards/src/pages/service-glossary/config.ts was modified
+[NX Daemon Server] - 2024-09-12T16:01:24.770Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-12T16:01:24.770Z - [REQUEST]: apps/digital-standards/src/pages/service-glossary/config.ts
+[NX Daemon Server] - 2024-09-12T16:01:24.770Z - [REQUEST]: 
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-12T16:01:24.843Z - Time taken for 'hash changed files from watcher' 0.5991999804973602ms
+[NX Daemon Server] - 2024-09-12T16:01:25.669Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T16:01:25.670Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T16:01:25.670Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T16:01:25.672Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-09-12T16:01:25.672Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-09-12T16:01:25.673Z - Time taken for 'total for creating and serializing project graph' 0.18599998950958252ms
+[NX Daemon Server] - 2024-09-12T16:01:25.674Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-09-12T16:01:25.674Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 2.
+[NX Daemon Server] - 2024-09-12T16:01:25.679Z - [REQUEST]: Responding to the client. handleRequestFileData
+[NX Daemon Server] - 2024-09-12T16:01:25.679Z - Done responding to the client handleRequestFileData
+[NX Daemon Server] - 2024-09-12T16:01:25.679Z - Handled REQUEST_FILE_DATA. Handling time: 0. Response time: 0.
+[NX Daemon Server] - 2024-09-12T16:01:25.680Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T16:38:17.217Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-09-12T16:38:17.245Z - [WATCHER]: apps/digital-standards/src/pages/service-glossary/config.ts was modified
+[NX Daemon Server] - 2024-09-12T16:38:17.374Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-12T16:38:17.374Z - [REQUEST]: apps/digital-standards/src/pages/service-glossary/config.ts
+[NX Daemon Server] - 2024-09-12T16:38:17.374Z - [REQUEST]: 
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-12T16:38:17.625Z - Time taken for 'hash changed files from watcher' 18.719999998807907ms
+[NX Daemon Server] - 2024-09-12T16:38:18.231Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T16:38:18.231Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T16:38:18.232Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T16:38:18.235Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-09-12T16:38:18.235Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-09-12T16:38:18.237Z - Time taken for 'total for creating and serializing project graph' 0.3686999976634979ms
+[NX Daemon Server] - 2024-09-12T16:38:18.238Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-09-12T16:38:18.238Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 3.
+[NX Daemon Server] - 2024-09-12T16:38:18.248Z - [REQUEST]: Responding to the client. handleRequestFileData
+[NX Daemon Server] - 2024-09-12T16:38:18.249Z - Done responding to the client handleRequestFileData
+[NX Daemon Server] - 2024-09-12T16:38:18.249Z - Handled REQUEST_FILE_DATA. Handling time: 0. Response time: 1.
+[NX Daemon Server] - 2024-09-12T16:38:18.249Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T16:38:34.117Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-09-12T16:38:34.120Z - [WATCHER]: apps/digital-standards/src/pages/service-glossary/config.ts was modified
+[NX Daemon Server] - 2024-09-12T16:38:34.228Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-12T16:38:34.228Z - [REQUEST]: apps/digital-standards/src/pages/service-glossary/config.ts
+[NX Daemon Server] - 2024-09-12T16:38:34.228Z - [REQUEST]: 
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-12T16:38:34.296Z - Time taken for 'hash changed files from watcher' 0.5212000012397766ms
+[NX Daemon Server] - 2024-09-12T16:38:35.139Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T16:38:35.139Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T16:38:35.139Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T16:38:35.141Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-09-12T16:38:35.142Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-09-12T16:38:35.142Z - Time taken for 'total for creating and serializing project graph' 0.16390001773834229ms
+[NX Daemon Server] - 2024-09-12T16:38:35.143Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-09-12T16:38:35.143Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 1. Response time: 1.
+[NX Daemon Server] - 2024-09-12T16:38:35.149Z - [REQUEST]: Responding to the client. handleRequestFileData
+[NX Daemon Server] - 2024-09-12T16:38:35.149Z - Done responding to the client handleRequestFileData
+[NX Daemon Server] - 2024-09-12T16:38:35.149Z - Handled REQUEST_FILE_DATA. Handling time: 0. Response time: 0.
+[NX Daemon Server] - 2024-09-12T16:38:35.150Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T16:39:12.012Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-09-12T16:39:12.026Z - [WATCHER]: 0 file(s) created or restored, 4 file(s) modified, 0 file(s) deleted
+[NX Daemon Server] - 2024-09-12T16:39:12.154Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-09-12T16:39:12.154Z - [REQUEST]: apps/digital-standards/src/components/Header.tsx,.nx/cache/d/server-process.json,apps/digital-standards/src/pages/service-glossary/config.ts,apps/digital-standards/src/pages/service-glossary/index.tsx
+[NX Daemon Server] - 2024-09-12T16:39:12.154Z - [REQUEST]: 
+
+ NX   @nxtensions/astro is a v1 plugin.
+
+Nx has recently released a v2 model for project graph plugins. The `processProjectGraph` method is deprecated. Plugins should use some combination of `createNodes` and `createDependencies` instead.
+
+[NX Daemon Server] - 2024-09-12T16:39:12.261Z - Time taken for 'hash changed files from watcher' 16.174300014972687ms
+[NX Daemon Server] - 2024-09-12T16:39:13.023Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T16:39:13.024Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-09-12T16:39:13.024Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-09-12T16:39:13.028Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-09-12T16:39:13.028Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-09-12T16:39:13.031Z - Time taken for 'total for creating and serializing project graph' 0.42320001125335693ms
+[NX Daemon Server] - 2024-09-12T16:39:13.031Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-09-12T16:39:13.031Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 3.
+[NX Daemon Server] - 2024-09-12T16:39:13.038Z - [REQUEST]: Responding to the client. handleRequestFileData
+[NX Daemon Server] - 2024-09-12T16:39:13.039Z - Done responding to the client handleRequestFileData
+[NX Daemon Server] - 2024-09-12T16:39:13.039Z - Handled REQUEST_FILE_DATA. Handling time: 0. Response time: 1.
+[NX Daemon Server] - 2024-09-12T16:39:13.040Z - Closed a connection. Number of open connections: 1
