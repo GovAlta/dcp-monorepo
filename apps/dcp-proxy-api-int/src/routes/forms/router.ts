@@ -66,11 +66,13 @@ export function downloadBuyerFormData(
   
       const csv = [headers.map((header) => `"${header.replace(/"/g, '""')}"`).join(",")].concat(
         formDetails.map((form) => {
-          return Object.entries(form.data).map(([key, value]) => {
+          return headers.map((header) => {
+            const value = form.data[header];
             return `"${String(value).replace(/"/g, '""').replace(/,/g, '\,')}"`;
           }).join(",");
         })
       );
+
       res.setHeader('Content-Disposition', 'attachment; filename="forms.csv"');
       res.setHeader('Content-Type', 'text/csv');
       res.send(Buffer.from(csv.join("\n")));
