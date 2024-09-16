@@ -9,7 +9,7 @@ import './styles.css';
 export default function LandingPage() {
   return (
     <div data-pagefind-body>
-      <h2>Digital service standards program</h2>
+      <h2>Digital Service Standards Program</h2>
       <p>
         Through the standards, with new supports and guidance, we’re shifting
         how teams develop and produce user-centred products and services for

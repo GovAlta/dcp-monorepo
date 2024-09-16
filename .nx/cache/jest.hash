@@ -1,0 +1,86 @@
+{
+  "12429682466189541921": {
+    "test": {
+      "command": "jest",
+      "options": {
+        "cwd": "apps/dcp-proxy-api-int"
+      },
+      "cache": true,
+      "inputs": [
+        "default",
+        "^production",
+        {
+          "externalDependencies": [
+            "jest"
+          ]
+        }
+      ],
+      "outputs": [
+        "{workspaceRoot}\\coverage\\apps\\dcp-proxy-api-int"
+      ]
+    }
+  },
+  "14309992470122327806": {
+    "test": {
+      "command": "jest",
+      "options": {
+        "cwd": "apps/dcp-proxy-api-int-e2e"
+      },
+      "cache": true,
+      "inputs": [
+        "default",
+        "^production",
+        {
+          "externalDependencies": [
+            "jest"
+          ]
+        }
+      ],
+      "outputs": [
+        "{workspaceRoot}\\coverage\\dcp-proxy-api-int-e2e"
+      ]
+    }
+  },
+  "15538799146987691063": {
+    "test": {
+      "command": "jest",
+      "options": {
+        "cwd": "apps/digital-marketplace-api"
+      },
+      "cache": true,
+      "inputs": [
+        "default",
+        "^production",
+        {
+          "externalDependencies": [
+            "jest"
+          ]
+        }
+      ],
+      "outputs": [
+        "{workspaceRoot}\\coverage\\apps\\digital-marketplace-api"
+      ]
+    }
+  },
+  "14362563007747916583": {
+    "test": {
+      "command": "jest",
+      "options": {
+        "cwd": "apps/digital-marketplace-api-e2e"
+      },
+      "cache": true,
+      "inputs": [
+        "default",
+        "^production",
+        {
+          "externalDependencies": [
+            "jest"
+          ]
+        }
+      ],
+      "outputs": [
+        "{workspaceRoot}\\coverage\\digital-marketplace-api-e2e"
+      ]
+    }
+  }
+}

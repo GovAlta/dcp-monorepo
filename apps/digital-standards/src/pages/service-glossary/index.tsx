@@ -4,6 +4,7 @@ import BackToTop from '../../components/BackToTop';
 import { glossaryItems } from './config';
 import './styles.css';
 
+
 type glossaryItem = {
   term: string;
   definition: string;
@@ -44,8 +45,7 @@ const GlossaryPage = () => {
       <GoASpacer vSpacing="2xl" />
       <h1 id="glossary">Glossary</h1>
       <p>
-        This Glossary is a collection of important terms with their meanings
-        used on this website.
+        This Glossary is a collection of important terms used by the Digital Service Standards and Product teams.
       </p>
       <GoASpacer vSpacing="l" />
 

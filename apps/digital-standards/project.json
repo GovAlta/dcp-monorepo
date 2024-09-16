@@ -31,7 +31,7 @@
     "preview": {
       "dependsOn": [
         {
-          "target": "postbuild",
+          "target": "buildcustom",
           "projects": "self"
         }
       ],
