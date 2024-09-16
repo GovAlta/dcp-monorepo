@@ -1,0 +1,188 @@
+{
+    "type": "object",
+    "properties": {
+
+      "ServiceName": {"type": "string"},      
+      "Summary": {"type": "string"},
+      "Description": {"type": "string"},
+      "InternalWeightage": {"type": "boolean"},
+
+      "Provider": {"type": "string",
+        "enum": [
+          "Advanced Education",
+          "Alberta Digital Service Platform (ADSP)",
+          "Children's Services Platform",
+          "Data and Content Management",
+          "Digital Design and Delivery (DDD)",
+          "Justice Digital",
+          "Platforms - Common Data Services",
+          "Platforms - IAM",
+          "Platforms -Common Platforms",
+          "Seniors, Community and Social Services (SCSS)",
+          "Service Integration",
+          "Wildfire Platform"
+        ]
+      },
+
+      "FunctionalGroup": {
+        "type": "string",
+        "enum": [
+          "Automation",
+          "Communication",
+          "Data",
+          "Finance",
+          "Forms and documents",
+          "Performance",
+          "User management"
+        ]
+      },
+      "Environment": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {"type": "string",
+            "enum": [
+              "Allure",
+              "AWS",
+              "Azure",
+              "Container",
+              "Cypress",
+              "GitHub",
+              "GoA Network",
+              "Keycloak",
+              "NCC and JJB datacentre",
+              "On Prem",
+              "OpenShift",
+              "Pingdom",
+              "ServiceNow",
+              "SonarQube",
+              "Wordline",
+              "Web API",
+              "Web components",
+              "Other"
+            ] }
+          }
+        }
+      },
+
+      "Language": {"type": "array","items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "enum": [
+                ".NET",
+                ".NET Core",
+                "Angular",
+                "API",
+                "Bash",
+                "Design tokens",
+                "ForgeRock",
+                "IaC using CDK",
+                "Open source",
+                "Perl",
+                "PowerShell",
+                "Python",
+                "React",
+                "Svelte",
+                "TypeScript",                
+                "Web API",
+                "Web components"
+              ]
+            }
+          }
+        }
+      },
+
+      "Documentation": {"type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {"type": "string"},
+          "url": {"type": "string"}
+          }
+        }
+      },
+
+      "Keywords": {"type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "keyword": {"type": "string", "enum": [
+            "1GX",
+            "Cloud",
+            "Data Governance",
+            "Design",
+            "Development",
+            "Digital",
+            "Digital certification",
+            "Digital signature",
+            "Docx",
+            "ECM",
+            "Email",
+            "Enterprise",
+            "IAM",
+            "IMAGIS",
+            "Inspiration",
+            "Keycloak",
+            "Monitoring",
+            "Nagios",
+            "Payment",
+            "Pdf",
+            "QR Code",
+            "Reporting",
+            "REST",
+            "Service",
+            "SharePoint Online",
+            "Signature",
+            "Stamping",
+            "Support",
+            "Xlsx"
+          ]}
+          }
+        }
+      },
+
+      "UsageMethod": {"type": "string","enum": ["API","Service","Code"] },
+      "Status": {"type": "string","enum": ["Live","Alpha","Beta","Deprecated"]},
+      "Version": {"type": "string"},
+      "UseCases": {"type": "string"},
+      "Prerequisites": {"type": "string"},
+      "Comments": {"type": "string"},
+
+      "CMRA": {"type": "string"},
+      "STRA": {"type": "boolean"},
+      
+      "CmraReq": {"type": "boolean"},
+      "IM": {"type": "boolean"},      
+      "Data": {"type": "boolean"},
+      "Risk": {"type": "boolean"},
+      "Cybersecurity": {"type": "boolean"},
+
+      "Classification": {"type": "string", "enum": ["Public","Protected A","Protected B","Protected C" ]},
+      "Controller": {"type": "string"},
+      "Considerations": {"type": "string"},
+            
+      "Contact": {
+        "type": "object",
+        "properties": {
+          "details": {"type": "string" },
+          "methods": {
+            "type": "array",
+            "items": {"type": "object", "properties": {
+                "method": {"type": "string", "enum": ["email","BERNIE","GitHub","Slack","Web","Phone"] },
+                "value": {"type": "string"},
+                "url": {"type": "string" }
+             }
+            }
+          }
+        }
+      },
+          
+      "filterText": {"type": "string"}
+      ,"SupportLevel": {"type": "string" }
+      ,"Audience": { "type": "array","items": { "type": "object", "properties": { "name": { "type": "string" }}}}
+
+    }
+  }
