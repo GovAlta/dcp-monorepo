@@ -1,0 +1,9 @@
+.responseMessage {
+    font-weight: 600;
+    color: rgb(11, 86, 184);
+    font-size:large;
+    margin-top: 5px;
+    padding: 5px;
+}
+
+.responseError {color: red; }
