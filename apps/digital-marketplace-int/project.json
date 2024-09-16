@@ -1,0 +1,49 @@
+{
+  "name": "digital-marketplace-int",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/digital-marketplace-int/src",
+  "targets": {
+    "build": {
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "executor": "@nxtensions/astro:build",
+      "options": {}
+    },
+    "buildcustom": {
+      "executor": "nx:run-commands",
+      "dependsOn": [
+        {
+          "target": "build",
+          "projects": "self"
+        }
+      ],
+      "options": {
+        "commands": [
+          "npx pagefind --site dist/apps/digital-marketplace-int"
+        ],
+        "parallel": false
+      }
+    },
+    "dev": {
+      "executor": "@nxtensions/astro:dev",
+      "options": {}
+    },
+    "preview": {
+      "dependsOn": [
+        {
+          "target": "buildcustom",
+          "projects": "self"
+        }
+      ],
+      "executor": "@nxtensions/astro:preview",
+      "options": {}
+    },
+    "check": {
+      "executor": "@nxtensions/astro:check"
+    },
+    "sync": {
+      "executor": "@nxtensions/astro:sync"
+    }
+  },
+  "tags": []
+}
