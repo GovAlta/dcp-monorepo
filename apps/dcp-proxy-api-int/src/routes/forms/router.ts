@@ -17,16 +17,23 @@ export function downloadBuyerFormData(
     try {
       const token = await tokenProvider.getAccessToken();
 
-      const submittedBuyerForms = await axios.get(
-        `${formApiUrl}/forms?criteria={"definitionIdEquals":"buyer-form"}&top=5000`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      let after: string | undefined;
+      const submittedBuyerForms: any[] = [];
+      do {
+        const { data: res } = await axios.get(
+          `${formApiUrl}/forms?criteria={"definitionIdEquals":"buyer-form"}&top=10${after ? `&after=${after}` : ''}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        submittedBuyerForms.push(...res.results);
+        after = res.page.next ? `"${res.page.next}${res.results[res.results.length - 1].id}"` : undefined;
+        console.log("after id",after);
+      } while (after !== undefined);
 
-      const submittedForms = submittedBuyerForms.data.results;
+      const submittedForms = submittedBuyerForms;
       let formDetailsPromises: Promise<any>[] = [];
       const formDetails: any[] = [];
       for (const form of submittedForms) {
@@ -97,16 +104,23 @@ export function downloadSupplierFormData(
     try {
       const token = await tokenProvider.getAccessToken();
 
-      const submittedSupplierForms = await axios.get(
-        `${formApiUrl}/forms?criteria={"definitionIdEquals":"supplier-form"}&top=5000`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      let after: string | undefined;
+      const submittedSupplierForms: any[] = [];
+      do {
+        const { data: res } = await axios.get(
+          `${formApiUrl}/forms?criteria={"definitionIdEquals":"supplier-form"}&top=10${after ? `&after=${after}` : ''}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        submittedSupplierForms.push(...res.results);
+        after = res.page.next ? `"${res.page.next}${res.results[res.results.length - 1].id}"` : undefined;
+        console.log("after id",after);
+      } while (after !== undefined);
 
-      const submittedForms = submittedSupplierForms.data.results;
+      const submittedForms = submittedSupplierForms;
       let formDetailsPromises: Promise<any>[] = [];
       const formDetails: any[] = [];
       for (const form of submittedForms) {
@@ -177,16 +191,23 @@ export function downloadPartnerFormData(
     try {
       const token = await tokenProvider.getAccessToken();
 
-      const submittedPartnerForms = await axios.get(
-        `${formApiUrl}/forms?criteria={"definitionIdEquals":"partner-form"}&top=5000`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      let after: string | undefined;
+      const submittedPartnerForms: any[] = [];
+      do {
+        const { data: res } = await axios.get(
+          `${formApiUrl}/forms?criteria={"definitionIdEquals":"partner-form"}&top=10${after ? `&after=${after}` : ''}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        submittedPartnerForms.push(...res.results);
+        after = res.page.next ? `"${res.page.next}${res.results[res.results.length - 1].id}"` : undefined;
+        console.log("after id",after);
+      } while (after !== undefined);
 
-      const submittedForms = submittedPartnerForms.data.results;
+      const submittedForms = submittedPartnerForms;
       let formDetailsPromises: Promise<any>[] = [];
       const formDetails: any[] = [];
       for (const form of submittedForms) {
