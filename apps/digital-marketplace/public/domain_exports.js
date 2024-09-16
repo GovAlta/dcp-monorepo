@@ -5,9 +5,10 @@ function isProd() {
 
 export function getFeedbackUrl() {
     if (isProd()) {
-        return 'prod url goes here'  
+        return 'https://feedback-service.adsp.alberta.ca/feedback/v1/script/adspFeedback.js';
+      
     } else {
-        return 'https://feedback-service.adsp-uat.alberta.ca/feedback/v1/script/adspFeedback.js';        
+        return 'https://feedback-service.adsp-uat.alberta.ca/feedback/v1/script/adspFeedback.js'; 
     }
 }
 

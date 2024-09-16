@@ -13,4 +13,10 @@ function formPostUrl() {
     }
 }
 
-adspFeedback.initialize({tenant: 'digital_marketplace'});
+if (globalThis.adspFeedback != undefined) {
+    adspFeedback.initialize({
+        tenant: 'digital_marketplace'
+    })
+} else {
+    console.log('adspFeedback not avaliable');
+}
