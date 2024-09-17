@@ -13,4 +13,3 @@ function formPostUrl() {
     }
 }
 
-adspFeedback.initialize({ tenant: 'digital_marketplace' });

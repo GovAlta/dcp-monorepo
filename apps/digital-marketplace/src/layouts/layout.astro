@@ -63,9 +63,12 @@ const { title, page, bodyClass } = Astro.props;
                 feedbackscript.async = true;
                 feedbackscript.src = getFeedbackUrl();            
                 document.head.appendChild(feedbackscript);
-            })();            
+            })();        
+            
+            window.addEventListener('load', () => {
+                window.adspFeedback.initialize({ tenant: 'digital_marketplace' });
+            });
         </script>
-       
   </head>
 
   <body class={bodyClass ? bodyClass : ""}>
