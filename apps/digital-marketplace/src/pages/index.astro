@@ -2,13 +2,12 @@
 import "../css/core.css"
 import hero_mobile from '../img/hero-mobile-tablet.svg';
 import suppliers_thumb from '../img/supplier-icon-home.svg';
-import buyers_thumb from '../img/buyers-icon-home.svg';
 import partners_thumb from '../img/stakeholder-icon-home.svg';
 
 import BaseLayout from '../layouts/layout.astro';
 ---
 
-<BaseLayout title="Welcome | Alberta Digital Marketplace" page="Buyers" bodyClass="adm-home-page" > 
+<BaseLayout title="Welcome | Alberta Digital Marketplace" page="" bodyClass="adm-home-page" > 
 
         <main>
                 <div class="goa-adm-body-header goa-adm-body-full">
@@ -147,7 +146,7 @@ import BaseLayout from '../layouts/layout.astro';
                 
                 <div class="container">
                     <section class="goa-adm-intro"><!-- CUSTOMIZABLE -->
-                        <p>The Alberta Digital Marketplace is an upcoming initiative led by the Ministry of Technology and Innovation. Our objective with this platform is to make it more convenient for public sector buyers to access supplier information, connect with suppliers for digital products and services.</p>
+                        <p>Step into the future with the Alberta government! We want to partner with top-tier technology vendors and service design professionals from coast to coast to create cutting-edge, impactful solutions that make life easier for Albertans, wherever they are, on any device. Join us on this exciting journey and be part of something truly remarkable.</p>
                     </section>
 
 					
@@ -159,34 +158,26 @@ import BaseLayout from '../layouts/layout.astro';
                                     <img src={suppliers_thumb} alt="Suppliers illustration">
                                 </div>
 								<h3>Supplier</h3>
-								<div class="goa-adm-single-card-content"><p>Do you have a technology product or service? Be the first to know about government initiatives.</p></div>
+								<div class="goa-adm-single-card-content"><p>Do you have the technology and vision to help shape the future? We want to hear ideas that support government initiatives to create impactful, accessible digital experiences for Albertans.</p></div>
 								<div class="goa-adm-single-card-link"><a class="goa-adm-button-link goa-adm-secondary" href="/for-suppliers/">View supplier benefits</a></div>
 							</div>
-
-							<div class="goa-adm-single-card">
-								<div class="goa-adm-single-card-thumb">
-                                    <img src={buyers_thumb} alt="Buyers illustration">
-                                </div>
-								<h3>Buyer</h3>
-								<div class="goa-adm-single-card-content"><p>Stay updated as a government agency, board, commission or an educational institute at municipal or provincial level.</p></div>
-								<div class="goa-adm-single-card-link"><a class="goa-adm-button-link goa-adm-secondary" href="/for-buyers/">View buyer benefits</a></div>
-							</div>
-							
 							<div class="goa-adm-single-card">
 								<div class="goa-adm-single-card-thumb">
                                     <img src={partners_thumb} alt="Partners illustration">
                                 </div>
 								<h3>Community partner</h3>
-								<div class="goa-adm-single-card-content"><p>Curious? Keep connected to the government as a digitally curious Albertan, another government or community organization.</p></div>
+								<div class="goa-adm-single-card-content"><p>Curious? Keep connected as a digitally curious Albertan, another government or community organization.</p></div>
 								<div class="goa-adm-single-card-link"><a class="goa-adm-button-link goa-adm-secondary" href="/for-partners/">View partner benefits</a></div>
 							</div>
 						</div>
                     </section>
+                    <section class="goa-adm-intro"><!-- CUSTOMIZABLE -->
+                        <p>We're seeking talented vendors who are passionate about making a real impact for Albertans. Explore open opportunities and see how you can join us on this journey.</p>
+                    </section>
 
 					
                     <section class="goa-adm-apc-callout"><!-- CUSTOMIZABLE -->
-                        <h2>Interested in exploring current digital opportunities?</h2>
-                        <p>Check out Alberta Purchasing Connection, the official platform for government and public sector procurements.</p>
+                        <h2>Discover more about our opportunities and procurement process today.</h2>
 						<a class="goa-adm-button-link" href="https://purchasing.alberta.ca/search" target=_blank>Explore opportunities</a>
                     </section>
                 </div>
