@@ -78,16 +78,6 @@ objects:
           dockerfilePath: .openshift/digital-marketplace-api/Dockerfile
         type: Docker
       triggers: []
-  - apiVersion: v1
-    kind: ConfigMap
-    metadata:
-      name: ${APP_NAME}
-      namespace: ${PROJECT}
-    data:
-      DIRECTORY_URL: 'https://directory-service.adsp-uat.alberta.ca'
-      KEYCLOAK_ROOT_URL: 'https://access-uat.alberta.ca'
-      LOG_LEVEL: debug
-      PORT: "3333"
   - apiVersion: apps.openshift.io/v1
     kind: DeploymentConfig
     metadata:
@@ -96,21 +86,24 @@ objects:
       name: ${APP_NAME}
       namespace: ${PROJECT}
     spec:
-      replicas: 1
+      replicas: 3
+      revisionHistoryLimit: 3
       selector:
         name: ${APP_NAME}
       strategy:
-          type: Recreate
-          recreateParams:
-            timeoutSeconds: 600
-          resources:
-            limits:
-              cpu: 200m
-              memory: 200Mi
-            requests:
-              cpu: 20m
-              memory: 50Mi
-          activeDeadlineSeconds: 21600
+        type: Rolling
+        rollingParams:
+          timeoutSeconds: 600
+          maxUnavailable: 25%
+          maxSurge: 25%
+        activeDeadlineSeconds: 21600
+        resources:
+          limits:
+            cpu: 400m
+            memory: 400Mi
+          requests:
+            cpu: 40m
+            memory: 100Mi
       template:
         metadata:
           labels:
@@ -130,11 +123,11 @@ objects:
                   protocol: TCP
               resources:
                 limits:
-                  cpu: 200m
-                  memory: 200Mi
+                  cpu: 300m
+                  memory: 500Mi
                 requests:
-                  cpu: 20m
-                  memory: 50Mi
+                  cpu: 200m
+                  memory: 300Mi
               terminationMessagePath: /dev/termination-log
           dnsPolicy: ClusterFirst
           restartPolicy: Always
