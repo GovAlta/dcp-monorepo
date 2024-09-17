@@ -78,30 +78,13 @@ async function submitForm(formName,otherRadioList,formData,checkBoxes) {
             }
             delete jsonData[item+'-other'];                    
         });
-
-        var postUrl = `${formPostUrl()}${formName}`;
-
-        if (!isProd()) {
-            if (!jsonData['agreement'])
-                console.log('Will send in UAT by agreeing to be contacted' );
-            console.log('postUrl:',postUrl.replace('https://',''));
-            console.log('data',jsonData);
-        }
-        
-        if (isProd() || jsonData['agreement']) {            
-            const response = await axios.post(postUrl, jsonData, { headers: {'Content-Type': 'application/json'} });            
-            if (response.statusText != 'OK') {
-                console.log(response);
-            // if (response.status != 200) {                    
-                // throw new Error(`Server error: ${response.statusText}`);
-                throw new Error(`Server error: ${response.errorMessage}`);                
-            }
-
-            if (!isProd()) {
-                document.getElementById('responseMessage3').textContent = response.data.result.id;
-                console.log('id',response.data.result.id)
-            }            
+   
+        const response = await axios.post(`${formPostUrl()}${formName}`, jsonData, { headers: {'Content-Type': 'application/json'} });            
+        if (response.statusText != 'OK') {
+            console.log(response);        
+            throw new Error(`Server error: ${response.errorMessage}`);                
         }        
+        // console.log('id',response.data.result.id)
         
         document.getElementById('responseMessage').className = "responseMessage";
         document.getElementById('responseMessage').textContent = `${jsonData['first-name']} ${jsonData['last-name']} has been successfully submitted.`;
