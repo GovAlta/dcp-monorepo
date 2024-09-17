@@ -78,17 +78,8 @@ async function submitForm(formName,otherRadioList,formData,checkBoxes) {
             }
             delete jsonData[item+'-other'];                    
         });
-
-        var postUrl = `${formPostUrl()}${formName}`;
-
-        if (!isProd()) {
-            if (!jsonData['agreement'])
-                console.log('Will send in UAT by agreeing to be contacted' );
-            console.log('postUrl:',postUrl.replace('https://',''));
-            console.log('data',jsonData);
-        }
-    
-        const response = await axios.post(postUrl, jsonData, { headers: {'Content-Type': 'application/json'} });            
+   
+        const response = await axios.post(`${formPostUrl()}${formName}`, jsonData, { headers: {'Content-Type': 'application/json'} });            
         if (response.statusText != 'OK') {
             console.log(response);        
             throw new Error(`Server error: ${response.errorMessage}`);                
