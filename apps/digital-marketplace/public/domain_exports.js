@@ -1,10 +1,18 @@
+function domanin() {
+    switch(window.location.hostname.toLowerCase()) {
+        case 'digitalmarketplace.alberta.ca':
+          return 'PROD';
 
-function isProd() {  
-    return window.location.hostname.toLowerCase() == 'digitalmarketplace.alberta.ca';
+        case 'digital-marketplace-dcp-uat.apps.aro.gov.ab.ca':
+          return 'UAT';
+
+        default:
+          return "?";
+      }    
 }
 
 export function getFeedbackUrl() {
-    if (isProd()) {
+    if (domanin() == 'PROD') {
         return 'https://feedback-service.adsp.alberta.ca/feedback/v1/script/adspFeedback.js';
       
     } else {
@@ -12,11 +20,10 @@ export function getFeedbackUrl() {
     }
 }
 
-export function getGoogle() {  // Start the code with a ? to disable
-    if (isProd()) { 
-        return '??? G-QWERTY'        
-    }       
-    else {        
-        return '??? G-1234567890';
-    }
+export function getGoogle() {
+    switch(domanin()) {
+        case 'PROD':  return 'G-95TDFJFW58';
+        case 'UAT':   return 'G-MEL64N8Q28';
+        default:      return "?";   // first character == "?" will disable
+      }
 }
