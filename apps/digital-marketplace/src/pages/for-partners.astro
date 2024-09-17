@@ -12,11 +12,11 @@ import BaseLayout from '../layouts/layout.astro';
                         <div class="goa-adm-breadcrumbs">
                             <ul>
                                 <li><a href="/">Home</a></li>
-                                <li class="goa-adm-breadcrumbs-active">Partners and stakeholders</li>
+                                <li class="goa-adm-breadcrumbs-active">Community Partner</li>
                             </ul>
                         </div>
                         <h1>Government tech initiatives delivered right to your inbox</h1>
-                        <p class="lede">Discover unique ways of staying connected to the government.</p>
+                        <p class="lede">Discover unique opportunities to connect and collaborate with innovators, tech entrepreneurs, and Government of Alberta all in one convenient place.</p>
                     </div>
 
                     <div class="goa-adm-body-header-graphic">
@@ -106,7 +106,7 @@ import BaseLayout from '../layouts/layout.astro';
                     </section>
                     
                     <section class="goa-adm-sign-up-form">
-                        <h2>Community partner and stakeholder sign-up form</h2>
+                        <h2>Community partner sign-up form</h2>
                         <div class="goa-adm-form-container">
                             <form id="user-form">
                                 <fieldset>
@@ -116,11 +116,11 @@ import BaseLayout from '../layouts/layout.astro';
                                         <input id="org-name" name="org-name" type="text" value="" required="required" aria-required="true">
                                         <strong class="error form-item--error-message">Enter your organization name</strong>
                                     </div>
-                                    
-                                    <div class="goa-field goa-role goa--required">
-                                        <label for="role">Role within organization <span class="required">*</span></label>
-                                        <input id="role" name="role" type="text" value="" required="required" aria-required="true">
-                                        <strong class="error form-item--error-message">State your role within organization</strong>
+
+                                    <div class="goa-field goa-email goa--required">
+                                        <label for="email">Work email <span class="required">*</span></label>
+                                        <input id="email" name="email" type="email" value="" required="required" aria-required="true">
+                                        <strong class="error form-item--error-message">Enter in a valid email</strong>
                                     </div>
 
                                     <div class="goa-field goa-name goa--required">
@@ -132,53 +132,11 @@ import BaseLayout from '../layouts/layout.astro';
                                         </div>
                                     </div>
 
-                                    <div class="goa-field goa-email goa--required">
-                                        <label for="email">Work email <span class="required">*</span></label>
-                                        <input id="email" name="email" type="email" value="" required="required" aria-required="true">
-                                        <strong class="error form-item--error-message">Enter in a valid email</strong>
-                                    </div>
-
                                     <div class="goa-field goa-website goa--optional">
                                         <label for="website">Website <span class="optional">[optional]</span></label>
                                         <input id="website" name="website" type="url" value=""  aria-required="false">
                                         <strong class="error form-item--error-message">Enter a valid website URL</strong>
                                     </div>
-
-                                    <div class="goa-field goa-head-office goa--required">
-                                        <label for="head-office">Where is your head office? <span class="required">*</span></label>
-                                        <input id="head-office" name="head-office" type="text" value="" required="required" aria-required="true">
-                                        <strong class="error form-item--error-message">Enter the location of your head office</strong>
-                                    </div>
-
-                                    <fieldset>
-                                        <legend>Describe your interest in the Alberta Digital Marketplace  <span class="required">*</span></legend>
-                                        <div class="goa-option">
-                                            <input id="comms-org" name="interest" value="comms-org" type="radio" required 
-                                            onchange="showOther('interest')"><label for="comms-org">I work for a community organization</label>
-                                        </div>
-                                        <div class="goa-option">
-                                            <input id="start-ups" name="interest" value="start-ups" type="radio"
-                                            onchange="showOther('interest')"><label for="start-ups">I am connected to start-up's</label>
-                                        </div>
-                                        <div class="goa-option">
-                                            <input id="investor" name="interest" value="investor" type="radio"
-                                            onchange="showOther('interest')"><label for="investor">I am an investor</label>
-                                        </div>
-                                        <div class="goa-option">
-                                            <input id="curious-digital-transform" name="interest" value="curious-digital-transform" type="radio"
-                                            onchange="showOther('interest')"><label for="curious-digital-transform">I am curious about Alberta's digital transformation </label>
-                                        </div>
-                                        <div class="goa-option">
-                                            <input id="other" name="interest" value="other" type="radio"
-                                            onchange="showOther('interest')"><label for="other">Other</label>
-                                        </div>
-                                        <div id="other-interest" class="goa-field goa--required">
-                                            <label for="interest-other">Please specify your other interest</label>
-                                            <input id="interest-other" name="interest-other" type="text" value="" aria-required="true">
-                                            <strong class="error form-item--error-message">Enter the your other interest</strong>
-                                        </div>
-                                        <strong class="error form-item--error-message">Select an option</strong>
-                                    </fieldset>
 
                                     <div class="goa-field goa-agreement goa--required">
                                         <div class="goa-option">

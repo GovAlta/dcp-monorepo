@@ -16,7 +16,7 @@ import BaseLayout from '../layouts/layout.astro';
                             </ul>
                         </div>
                         <h1>Maximize your impact in the <br/>public sector</h1>
-                        <p class="lede">Be the first to know about government initiatives, community engagements, programs and events.</p>
+                        <p class="lede">Join Alberta's Digital Marketplace if you provide innovative solutions in digital services, AI, IT solutions, data management, cybersecurity, and more to power the next generation of public services.</p>
                     </div>
 
                     <div class="goa-adm-body-header-graphic">
@@ -62,9 +62,9 @@ import BaseLayout from '../layouts/layout.astro';
                     <section class="goa-adm-benefits"><!-- CUSTOMIZABLE -->
                         <h2>Benefits for a supplier</h2>
                         <ul>
-                            <li>Attend vendor showcases and stakeholder engagements to increase visibility and reach within the public sector.</li>
+                            <li>Network, attend vendor showcase events and other stakeholder engagements to increase visibility and reach within the public sector.</li>
                             <li>Demonstrate your strengths and capabilities to attract buyers, build connections and convert them into long-term partnerships.</li>
-                            <li>Collaborate on pilot programs to experience our services first-hand and help us deliver programs that meet user needs.</li>
+                            <li>Engage with us on various initiatives to deliver programs that meet the need of Albertans.</li>
                         </ul>
                     </section>
                     
@@ -78,7 +78,7 @@ import BaseLayout from '../layouts/layout.astro';
                                     </div>
                                     
                                     <div class="goa-adm-timeline-desc">
-                                        <p>Join our mailing list by sharing some basic details about your organization.</p>
+                                        <p>Join our mailing list by sharing details about your organization.</p>
                                     </div>
                                 </li>
                                 <li>
@@ -97,7 +97,7 @@ import BaseLayout from '../layouts/layout.astro';
                                     </div>
                                     
                                     <div class="goa-adm-timeline-desc">
-                                        <p>Start receiving updates about initiatives tailored to your expertise.</p>
+                                        <p>Start receiving latest news and updates about initiatives tailored to your expertise.</p>
                                     </div>
                                 </li>
                             </ul>
@@ -116,11 +116,11 @@ import BaseLayout from '../layouts/layout.astro';
                                         <input id="org-name" name="org-name" type="text" value="" required="required" aria-required="true">
                                         <strong class="error form-item--error-message">Enter your organization name</strong>
                                     </div>
-                                    
-                                    <div class="goa-field goa-role goa--required">
-                                        <label for="role">Role within organization <span class="required">*</span></label>
-                                        <input id="role" name="role" type="text" value="" required="required" aria-required="true">
-                                        <strong class="error form-item--error-message">State your role within organization</strong>
+
+                                    <div class="goa-field goa-email goa--required">
+                                        <label for="email">Work email <span class="required">*</span></label>
+                                        <input id="email" name="email" type="email" value="" required="required" aria-required="true">
+                                        <strong class="error form-item--error-message">Enter in a valid email</strong>
                                     </div>
 
                                     <div class="goa-field goa-name goa--required">
@@ -132,92 +132,21 @@ import BaseLayout from '../layouts/layout.astro';
                                         </div>
                                     </div>
 
-                                    <div class="goa-field goa-email goa--required">
-                                        <label for="email">Work email <span class="required">*</span></label>
-                                        <input id="email" name="email" type="email" value="" required="required" aria-required="true">
-                                        <strong class="error form-item--error-message">Enter in a valid email</strong>
-                                    </div>
-
-                                    <fieldset>
-                                        <legend>What sector do you work in? <span class="required">*</span></legend>
-                                        <div class="goa-option">
-                                            <input id="hardware-products" name="sector" value="hardware-products" type="checkbox"><label for="hardware-products">Hardware products and services</label>
-                                        </div>
-                                        <div class="goa-option">
-                                            <input id="software-products" name="sector" value="software-products" type="checkbox"><label for="software-products">Software products and services</label>
-                                        </div>
-                                        <div class="goa-option">
-                                            <input id="telecomms" name="sector" value="telecomms" type="checkbox"><label for="telecomms">Telecommunications</label>
-                                        </div>
-                                        <div class="goa-option">
-                                            <input id="consulting" name="sector" value="consulting" type="checkbox"><label for="consulting">Consulting services</label>
-                                        </div>
-                                        <div class="goa-option">
-                                            <input id="data-centers" name="sector" value="data-centers" type="checkbox"><label for="data-centers">Data centers </label>
-                                        </div>
-                                        <div class="goa-option">
-                                            <input id="data" name="sector" value="data" type="checkbox"><label for="data">Data products and services</label>
-                                        </div>
-                                        <div class="goa-option">
-                                            <input id="cloud" name="sector" value="cloud" type="checkbox"><label for="cloud">Cloud Services </label>
-                                        </div>
-                                        <div class="goa-option">
-                                            <input id="cyber" name="sector" value="cyber" type="checkbox"><label for="cyber">Cybersecurity products and services</label>
-                                        </div>
-                                        <div class="goa-option">
-                                            <input id="ai-services" name="sector" value="ai-services" type="checkbox"><label for="ai-services">AI products and services</label>
-                                        </div>
-                                        <div class="goa-option">
-                                            <input id="other" name="sector" value="other" type="checkbox" value="other"
-                                            onchange="showOther2('sector',this)"><label for="other">Other</label>
-                                        </div>
-                                        <div id="other-sector" class="goa-field goa--required">
-                                            <label for="sector-other">Please specify your other sector</label>
-                                            <input id="sector-other" name="sector-other" type="text" value="" aria-required="true">
-                                            <strong class="error form-item--error-message">Enter the your other sector</strong>
-                                        </div>
-                                        <strong class="error form-item--error-message">Select the sector you work in</strong>
-                                    </fieldset>
-
                                     <div class="goa-field goa-website goa--optional">
                                         <label for="website">Website <span class="optional">[optional]</span></label>
                                         <input id="website" name="website" type="url" value=""  aria-required="false">
                                         <strong class="error form-item--error-message">Enter a valid website URL</strong>
                                     </div>
 
-                                    <div class="goa-field goa-head-office goa--required">
-                                        <label for="head-office">Where is your head office? <span class="required">*</span></label>
-                                        <input id="head-office" name="head-office" type="text" value="" required="required" aria-required="true">
-                                        <strong class="error form-item--error-message">Enter the location of your head office</strong>
-                                    </div>
-
-                                    <fieldset>
-                                        <legend>Describe your interest in the Alberta Digital Marketplace <span class="required">*</span></legend>
-                                        <div class="goa-option">
-                                            <input id="worked-with-goa" name="interest" value="Have worked" type="radio" required><label for="worked-with-goa">I have worked with the Government of Alberta </label>
-                                        </div>
-                                        <div class="goa-option">
-                                            <input id="curently-work-goa" name="interest" value="Currently work" type="radio"><label for="curently-work-goa">I currently work with the Government of Alberta </label>
-                                        </div>
-                                        <div class="goa-option">
-                                            <input id="like-to-work-goa" name="interest"  value="Like to work"type="radio"><label for="like-to-work-goa">I would like to work with the Government of Alberta </label>
-                                        </div>
-                                        <strong class="error form-item--error-message">Select an option</strong>
-                                    </fieldset>
-
                                     <div class="goa-field goa-agreement goa--required">
                                         <div class="goa-option">
                                             <input id="agreement" name="agreement" type="checkbox"><label for="agreement">I would like to be contacted for future engagements, surveys, and events.</label>
                                         </div>
                                     </div>
-
                                     <div class="goa-adm-buttons">                            
                                         <button id="buttonSubmit" name="buttonSubmit" class="goa-adm-button" >Submit form</button>
                                         <div class="responseMessage" id="responseMessage"></div>                                        
                                     </div>
-
-                                     
-
                                 </fieldset>
                             </form>
                             <div class="goa-adm-disclaimer">
