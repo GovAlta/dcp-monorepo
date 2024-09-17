@@ -58,19 +58,13 @@ export function downloadBuyerFormData(
         formDetails.push(...responses);
       }
 
-      const headers = [
-        'email',
-        'role',
-        'agreement',
-        'first-name',
-        'last-name',
-        'interest',
-        'org-name',
-        'website',
-        'head-office',
-        'org-type',
-      ];
-  
+      const formDefinition = await axios.get(`${formApiUrl}/definitions/buyer-form`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+
+      const headers = Object.keys(formDefinition.data.dataSchema.properties);
       const csv = [headers.map((header) => `"${header.replace(/"/g, '""')}"`).join(",")].concat(
         formDetails.map((form) => {
           return headers.map((header) => {
@@ -145,19 +139,13 @@ export function downloadSupplierFormData(
         formDetails.push(...responses);
       }
 
-      const headers = [
-        'email',
-        'role',
-        'agreement',
-        'first-name',
-        'last-name',
-        'interest',
-        'org-name',
-        'website',
-        'head-office',
-        'sector'
-      ];
-  
+      const formDefinition = await axios.get(`${formApiUrl}/definitions/supplier-form`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+
+      const headers = Object.keys(formDefinition.data.dataSchema.properties);
       const csv = [headers.map((header) => `"${header.replace(/"/g, '""')}"`).join(",")].concat(
         formDetails.map((form) => {
           return headers.map((header) => {
@@ -232,18 +220,13 @@ export function downloadPartnerFormData(
         formDetails.push(...responses);
       }
 
-      const headers = [
-        'email',
-        'role',
-        'agreement',
-        'first-name',
-        'last-name',
-        'interest',
-        'org-name',
-        'website',
-        'head-office',
-      ];
-  
+      const formDefinition = await axios.get(`${formApiUrl}/definitions/partner-form`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+
+      const headers = Object.keys(formDefinition.data.dataSchema.properties);
       const csv = [headers.map((header) => `"${header.replace(/"/g, '""')}"`).join(",")].concat(
         formDetails.map((form) => {
           return headers.map((header) => {
