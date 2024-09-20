@@ -35,7 +35,7 @@ const { title, page, bodyClass } = Astro.props;
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
         <script type="module">
-            import { getFeedbackUrl, getGoogle } from '/domain_exports.js';        
+            import { getFeedbackUrl, getGoogle, getCaptchaSiteKey } from '/domain_exports.js';        
             
             (function () {
                 var gCode = getGoogle();
@@ -56,6 +56,20 @@ const { title, page, bodyClass } = Astro.props;
                     document.head.appendChild(script);
                 } else {
                     console.log('No Google analytics')
+                }
+                const siteKey = getCaptchaSiteKey();
+                if (siteKey) {
+                    const elementId = 'recaptcha-script';
+                    const element = document.getElementById(elementId);
+                    if (!element) {
+                        const script = document.createElement('script');
+                        script.type = 'text/javascript';
+                        script.src = `https://www.google.com/recaptcha/api.js?render=${siteKey}`;
+                        script.id = elementId;
+                        document.body.appendChild(script);
+                    }else{
+                        console.log('No recaptcha')
+                    }
                 }
                 
                 //---[ feedback ]---
@@ -101,7 +115,7 @@ const { title, page, bodyClass } = Astro.props;
                         <button class="goa-adm-button" aria-expanded="false">Menu</button>
                     </div>
                     <nav class="goa-adm-nav-menu">
-                        <ul>                           
+                        <ul>
                             <li class={page === 'About' ? 'goa-adm-nav-active-item':''}><a href="/about-us/">About</a></li>
                             <li class={page === 'Suppliers' ? 'goa-adm-nav-active-item':''}><a href="/for-suppliers/">Suppliers</a></li>
                             <li class={page === 'Partners' ? 'goa-adm-nav-active-item':''}><a href="/for-partners/">Community partners</a></li>

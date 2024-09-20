@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/layout.astro';
 ---
 
-<BaseLayout title="Suppliers | Alberta Digital Marketplace" page="Suppliers">  
+<BaseLayout title="Suppliers | Alberta Digital Marketplace" page="ERROR-TEST">  
 
         <main>
       
@@ -105,25 +105,22 @@ import BaseLayout from '../layouts/layout.astro';
                         
                     </section>
                     
-                    <section class="goa-adm-sign-up-form goa-adm-form-success">
+                    <section class="goa-adm-sign-up-form">
                         <h2>Buyer sign-up form</h2>
                         <div class="goa-adm-form-container">
                             <form>
-                                <h3>Thank you for signing up!</h3>
-                                <p>Visit Alberta Purchasing Connection to explore digital opportunities.</p>
-                                <a class="goa-adm-button-link" href="https://purchasing.alberta.ca/search" target="_blank">Explore opportunities</a>
-                                <!--fieldset>
+                                <fieldset>
                                     
                                     <div class="goa-field goa-org goa--required goa-error">
                                         <label for="org">Organization name <span class="required">*</span></label>
                                         <input id="org" name="org" type="text" value="" required="required" aria-required="true">
                                         <strong class="error form-item--error-message">Enter your organization name</strong>
                                     </div>
-                                    
-                                    <div class="goa-field goa-role goa--required goa-error">
-                                        <label for="role">Role within organization <span class="required">*</span></label>
-                                        <input id="role" name="role" type="text" value="" required="required" aria-required="true">
-                                        <strong class="error form-item--error-message">State your role within organization</strong>
+
+                                    <div class="goa-field goa-email goa--required goa-error">
+                                        <label for="email">Work email <span class="required">*</span></label>
+                                        <input id="email" name="email" type="email" value="" required="required" aria-required="true">
+                                        <strong class="error form-item--error-message">Enter in a valid email</strong>
                                     </div>
 
                                     <div class="goa-field goa-name goa--required goa-error">
@@ -135,60 +132,11 @@ import BaseLayout from '../layouts/layout.astro';
                                         </div>
                                     </div>
 
-                                    <div class="goa-field goa-email goa--required goa-error">
-                                        <label for="email">Work email <span class="required">*</span></label>
-                                        <input id="email" name="email" type="email" value="" required="required" aria-required="true">
-                                        <strong class="error form-item--error-message">Enter in a valid email</strong>
-                                    </div>
-
-                                    <fieldset class="goa-error">
-                                        <legend>Organization type <span class="required">*</span></legend>
-                                        <div class="goa-option">
-                                            <input id="goa" name="radio" value="goa" type="radio"><label for="goa">Government of Alberta </label>
-                                        </div>
-                                        <div class="goa-option">
-                                            <input id="muni-aca-school" name="radio" value="muni-aca-school" type="radio"><label for="muni-aca-school">Municipalities, Academic Institutions, School Boards and Health Organization  </label>
-                                        </div>
-                                        <div class="goa-option">
-                                            <input id="abcs" name="radio" value="abcs" type="radio"><label for="abcs">Agencies, Boards and Commissions  </label>
-                                        </div>
-                                        <div class="goa-option">
-                                            <input id="crown" name="radio" value="crown" type="radio"><label for="crown">CROWN (Provincial Corporations)</label>
-                                        </div>
-                                        <div class="goa-option">
-                                            <input id="indig" name="radio" value="indig" type="radio"><label for="indig">INDIG (Indigenous Communities)</label>
-                                        </div>
-                                        <div class="goa-option">
-                                            <input id="other-org" name="radio" value="other-org" type="radio"><label for="other-org">Other</label>
-                                        </div>
-                                        <strong class="error form-item--error-message">Select an organization type</strong>
-                                    </fieldset>
-
                                     <div class="goa-field goa-website goa--optional goa-error">
                                         <label for="website">Website <span class="optional">[optional]</span></label>
-                                        <input id="website" name="website" type="url" value="" aria-required="false">
+                                        <input id="website" name="website" type="url" value=""  aria-required="false">
                                         <strong class="error form-item--error-message">Enter a valid website URL</strong>
                                     </div>
-
-                                    <div class="goa-field goa-head-office goa--required goa-error">
-                                        <label for="head-office">Where is your head office? <span class="required">*</span></label>
-                                        <input id="head-office" name="head-office" type="text" value="" required="required" aria-required="true">
-                                        <strong class="error form-item--error-message">Enter the location of your head office</strong>
-                                    </div>
-
-                                    <fieldset class="goa-error">
-                                        <legend>Describe your interest in the Alberta Digital Marketplace <span class="required">*</span></legend>
-                                        <div class="goa-option">
-                                            <input id="tech-buyer" name="radio-2" type="radio"><label for="tech-buyer">I am a tech buyer </label>
-                                        </div>
-                                        <div class="goa-option">
-                                            <input id="work-with-start-ups" name="radio-2" type="radio"><label for="work-with-start-ups">I work with tech start-ups or other vendors </label>
-                                        </div>
-                                        <div class="goa-option">
-                                            <input id="other" name="radio-2" value="other" type="radio"><label for="other">Other</label>
-                                        </div>
-                                        <strong class="error form-item--error-message">Select an option</strong>
-                                    </fieldset>
 
                                     <div class="goa-field goa-agreement goa--required">
                                         <div class="goa-option">
@@ -199,7 +147,7 @@ import BaseLayout from '../layouts/layout.astro';
                                     <div class="goa-adm-buttons">
                                         <button name="buttonSubmit" class="goa-adm-button">Submit form</button>
                                     </div>
-                                </fieldset-->
+                                </fieldset>
                             </form>
                             <div class="goa-adm-disclaimer">
                                 <p>The information you provide is being collected under section 33(c) of the <a href="https://open.alberta.ca/publications/f25"><em>Freedom of Information and Protection of Privacy (FOIP) Act</em></a> and will be protected under the provisions of the Act. Questions regarding the collection, use and disclosure may be directed to [program area contact info here].</p>

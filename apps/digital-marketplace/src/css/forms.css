@@ -7,3 +7,7 @@
 }
 
 .responseError {color: red; }
+
+.inputError {    
+    border: 5px solid red !important;        
+}

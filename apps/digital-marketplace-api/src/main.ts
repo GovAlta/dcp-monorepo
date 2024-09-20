@@ -61,7 +61,8 @@ const initializeApp = async (): Promise<express.Application> => {
   await applyGatewayMiddleware(app, {
     logger,
     directory,
-    tokenProvider
+    tokenProvider,
+    RECAPTCHA_SECRET: environment.RECAPTCHA_SECRET,
   });
 
 
