@@ -3,11 +3,14 @@
 // This will create a JSON file as text values. Except, "checkBoxes" groups will have the value as an array
 
 const validation = [
-    {field: 'email',        rule: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,   failed: 'Please enter a valid email format'},
- // {field: 'email',        rule: /@gov/,   failed: 'must me a gov email'},  <=== example of another rule on the same input
-    {field: 'org-name',     rule: /^[a-zA-Z\s-\d]+$/,  failed: 'Please do not use any special characters'},        
-    {field: 'first-name',   rule: /^[a-zA-Z\s-]+$/,    failed: 'Please check your first name'},
-    {field: 'last-name',    rule: /^[a-zA-Z\s-]+$/,    failed: 'Please do not use any special characters'},
+    {field: 'email',     rule: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,   failed: 'Please enter a valid email format'},
+ // {field: 'email',     rule: /@gov/,   failed: 'must me a gov email'},  <=== example of another rule on the same input
+    {field: 'org-name',  rule: /^[a-zA-Z\s-\d]+$/,  failed: 'Please do not use any special characters'},        
+    {field: 'first-name',rule: /^[a-zA-Z\s-]+$/,    failed: 'Please check your first name'},
+    {field: 'last-name', rule: /^[a-zA-Z\s-]+$/,    failed: 'Please do not use any special characters'},
+
+    {field: 'website',   rule: /^(https?:\/\/)?([a-zA-Z0-9_-]+\.)?[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})(\/[a-zA-Z0-9#_-]*)*(\?[a-zA-Z0-9=&_%-]*)?(#\S*)?$/,
+        failed: 'Please check your website address'}
 ];
 
 function getValidationInfo(fieldName) {
@@ -283,3 +286,4 @@ async function submitForm(formName) {
   buttonSubmit.disabled = false;
   buttonSubmit.innerText = 'Submit form';
 }
+
