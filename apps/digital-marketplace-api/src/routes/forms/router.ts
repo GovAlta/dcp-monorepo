@@ -2,16 +2,48 @@ import { TokenProvider } from '@abgov/adsp-service-sdk';
 import { RequestHandler, Router } from 'express';
 import { Logger } from 'winston';
 import axios from 'axios';
+import { SiteVerifyResponse } from './types';
 
 interface RouterOptions {
   logger: Logger;
   tokenProvider: TokenProvider;
   formApiUrl: URL;
+  eventServiceUrl: URL;
+  RECAPTCHA_SECRET?: string;
 }
 
+export function verifyCaptcha(logger: Logger, RECAPTCHA_SECRET: string, SCORE_THRESHOLD = 0.5): RequestHandler {
+  return async (req, _res, next) => {
+    if (!RECAPTCHA_SECRET) {
+      next();
+    } else {
+      try {
+        const { token } = req.body;
+        const { data } = await axios.post<SiteVerifyResponse>(
+          `https://www.google.com/recaptcha/api/siteverify?secret=${RECAPTCHA_SECRET}&response=${token}`
+        );
+        console.log(data);
+
+        if (!data.success || !['submit'].includes(data.action) || data.score < SCORE_THRESHOLD) {
+          logger.warn(
+            `Captcha verification failed for form gateway with result '${data.success}' on action '${data.action}' with score ${data.score}.`,
+            { context: 'DigitalMarketplace' }
+          );
+
+          return _res.status(401).send('Request rejected because captcha verification not successful.');
+        }
+
+        next();
+      } catch (err) {
+        next(err);
+      }
+    }
+  };
+}
 export function submitSupplierForm(
   logger: Logger,
   formApiUrl: URL,
+  eventServiceUrl: URL,
   tokenProvider: TokenProvider
 ): RequestHandler {
   return async (req, res) => {
@@ -33,6 +65,21 @@ export function submitSupplierForm(
         }
       );
 
+      if (submitSupplierForm.data.status === 'submitted') {
+        await axios.post(`${eventServiceUrl}/events`, {
+          "namespace": "marketplace",
+          "name": "notify-user",
+          "timestamp": new Date().toISOString(),
+          "payload": {
+            "userEmail": supplierFormData.email
+          }
+        }, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          }
+        })
+      }
+
       res.status(200).send({
         result: {
           id: submitSupplierForm.data.id,
@@ -53,6 +100,7 @@ export function submitSupplierForm(
 export function submitStakeholderForm(
   logger: Logger,
   formApiUrl: URL,
+  eventServiceUrl: URL,
   tokenProvider: TokenProvider
 ): RequestHandler {
   return async (req, res) => {
@@ -74,6 +122,21 @@ export function submitStakeholderForm(
         }
       );
 
+      if (submitStakeholderForm.data.status === 'submitted') {
+        await axios.post(`${eventServiceUrl}/events`, {
+          "namespace": "marketplace",
+          "name": "notify-user",
+          "timestamp": new Date().toISOString(),
+          "payload": {
+            "userEmail": partnerFormData.email
+          }
+        }, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          }
+        })
+      }
+
       res.status(200).send({
         result: {
           id: submitStakeholderForm.data.id,
@@ -94,6 +157,7 @@ export function submitStakeholderForm(
 export function submitBuyerForm(
   logger: Logger,
   formApiUrl: URL,
+  eventServiceUrl: URL,
   tokenProvider: TokenProvider
 ): RequestHandler {
   return async (req, res) => {
@@ -115,6 +179,20 @@ export function submitBuyerForm(
         }
       );
 
+      if (submitBuyerForm.data.status === 'submitted') {
+        await axios.post(`${eventServiceUrl}/events`, {
+          "namespace": "marketplace",
+          "name": "notify-user",
+          "timestamp": new Date().toISOString(),
+          "payload": {
+            "userEmail": buyerFormData.email
+          }
+        }, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          }
+        })
+      }
       res.status(200).send({
         result: {
           id: submitBuyerForm.data.id,
@@ -137,20 +215,25 @@ export function createFormsRouter({
   logger,
   tokenProvider,
   formApiUrl,
+  eventServiceUrl,
+  RECAPTCHA_SECRET
 }: RouterOptions): Router {
   const router = Router();
 
   router.post(
     '/forms/buyer',
-    submitBuyerForm(logger, formApiUrl, tokenProvider)
+    verifyCaptcha(logger, RECAPTCHA_SECRET, 0.7),
+    submitBuyerForm(logger, formApiUrl, eventServiceUrl, tokenProvider)
   );
   router.post(
     '/forms/supplier',
-    submitSupplierForm(logger, formApiUrl, tokenProvider)
+    verifyCaptcha(logger, RECAPTCHA_SECRET, 0.7),
+    submitSupplierForm(logger, formApiUrl, eventServiceUrl, tokenProvider)
   );
   router.post(
     '/forms/stakeholder',
-    submitStakeholderForm(logger, formApiUrl, tokenProvider)
+    verifyCaptcha(logger, RECAPTCHA_SECRET, 0.7),
+    submitStakeholderForm(logger, formApiUrl, eventServiceUrl, tokenProvider)
   );
 
   return router;
