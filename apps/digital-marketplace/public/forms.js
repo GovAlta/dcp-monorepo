@@ -271,7 +271,6 @@ async function submitForm(formName) {
           const recaptcha = await window.grecaptcha.execute(siteKey, {
             action: 'submit',
           });
-          console.log("recaptchaToken",recaptcha);
           jsonData['token'] = recaptcha;
           const response = await axios.post(
             `${formPostUrl()}${formName}`,
