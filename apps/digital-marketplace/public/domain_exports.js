@@ -5,6 +5,7 @@ function domanin() {
       return 'PROD';
 
     case 'digital-marketplace-dcp-uat.apps.aro.gov.ab.ca':
+    case 'digital-marketplace-dcp-dev.apps.aro.gov.ab.ca':
     case 'localhost':
       return 'UAT';
 
