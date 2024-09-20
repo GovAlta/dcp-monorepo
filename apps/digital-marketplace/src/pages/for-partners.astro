@@ -101,11 +101,10 @@ import BaseLayout from '../layouts/layout.astro';
                                     </div>
                                 </li>
                             </ul>
-                        </div>
-                        
+                        </div>                        
                     </section>
                     
-                    <section class="goa-adm-sign-up-form">
+                    <section id="sign-up-form" class="goa-adm-sign-up-form">
                         <h2>Community partner sign-up form</h2>
                         <div class="goa-adm-form-container">
                             <form id="user-form">
@@ -154,23 +153,33 @@ import BaseLayout from '../layouts/layout.astro';
                             </div>
                         </div>
                     </section>
+
+                    <section id="successDiv" class="goa-adm-sign-up-form goa-adm-form-success">                                
+                        <div class="goa-adm-form-container">
+                            <form>
+                                <h3>Thank you for signing up!</h3>
+                                <p>Visit Alberta Purchasing Connection to explore digital opportunities.</p>
+                                <a class="goa-adm-button-link" href="https://purchasing.alberta.ca/search" target="_blank">Explore opportunities</a>
+                            </form>                       
+                        </div>
+                    </section>
                 </div>
             </div>
         </main>
 </BaseLayout>
 
 <script type="text/javascript">
-    
-        var otherRadioList = ["interest"];        
-        otherRadioList.forEach(function(item) {
-            document.getElementById('other-'+item).style.display = 'none';
-            });
-      
-        // Handle form submission
-        document.getElementById('user-form').addEventListener('submit', async function(event) {
-            event.preventDefault();
-            const formData = new FormData(this);
-            submitForm('partner',otherRadioList,formData);
-        });   
+            
+    // Handle form submission
+    const button = document.getElementById('buttonSubmit');
+    button.addEventListener('click', function(event) {
+        event.preventDefault();             
+        submitForm('stakeholder');        
+    });
+
+    window.addEventListener('load', () => {
+      document.getElementById('successDiv').style.display = 'none';
+      document.getElementById('sign-up-form').style.display = 'block';               
+    });
 
 </script>
