@@ -525,7 +525,7 @@ html[dir=rtl] .goa-adm-breadcrumbs > ul > li:not(:first-child):before {
 }
 
 .goa-adm-body > .container > section:not(:first-child) {
-    margin: 64px 0 0;
+    margin: 72px 0 0;
 }
 
 .goa-adm-body > .container > section > p {
@@ -790,7 +790,7 @@ body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-home-tablet-g
 
 .goa-adm-cards-info > .goa-adm-cards {
     display: grid;
-    gap: 24px;
+    gap: 13%;
     grid-template-columns: repeat(2, 1fr);
 }
 
@@ -826,7 +826,7 @@ body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-home-tablet-g
 
 .goa-adm-body > .container > section.goa-adm-apc-callout {
     padding: 48px 64px;
-    margin: 90px 0 0;
+    margin: 40px 0 0;
     color: #ffffff;
     background: linear-gradient(90deg, #0081A2 0%, #0081A2 48.5%, #00AAD2 100%);
     border-radius: 30px;
@@ -1746,6 +1746,10 @@ body .adsp-fb .adsp-fb-form-container[data-completed='true'] .adsp-fb-form {
     body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-owl {
         bottom: -35px;
     }
+
+    .goa-adm-cards-info > .goa-adm-cards {
+        gap: 5%;
+    }
 }
 
 @media screen and (max-width:1079px) {
@@ -1913,7 +1917,7 @@ body .adsp-fb .adsp-fb-form-container[data-completed='true'] .adsp-fb-form {
         line-height: 2rem;
     }
 
-    main p > a:link {
+    main section:not(.goa-adm-sign-up-form) p > a:link {
         text-underline-offset: .375rem;
         text-decoration-thickness: .0625rem;
     }

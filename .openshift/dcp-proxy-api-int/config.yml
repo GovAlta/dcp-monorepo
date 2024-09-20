@@ -1,7 +1,7 @@
   - apiVersion: v1
     kind: ConfigMap
     metadata:
-      name: digital-marketplace-api
+      name: dcp-proxy-api-int
       namespace: dcp-prod
     data:
       DIRECTORY_URL: 'https:///directory-service.adsp.alberta.ca'
@@ -11,9 +11,9 @@
   - apiVersion: v1
     kind: Secret
     metadata:
-      name: digital-marketplace-api
+      name: dcp-proxy-api-int
       namespace: dcp-prod
     stringData:
-      CLIENT_ID:
+      CLIENT_ID: 
       CLIENT_SECRET: 
       REALM: 

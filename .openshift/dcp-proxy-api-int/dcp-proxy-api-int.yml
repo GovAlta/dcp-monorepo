@@ -78,16 +78,6 @@ objects:
           dockerfilePath: .openshift/dcp-proxy-api-int/Dockerfile
         type: Docker
       triggers: []
-  - apiVersion: v1
-    kind: ConfigMap
-    metadata:
-      name: ${APP_NAME}
-      namespace: ${PROJECT}
-    data:
-      DIRECTORY_URL: 'https://directory-service.adsp-uat.alberta.ca'
-      KEYCLOAK_ROOT_URL: 'https://access-uat.alberta.ca'
-      LOG_LEVEL: debug
-      PORT: "3333"
   - apiVersion: apps.openshift.io/v1
     kind: DeploymentConfig
     metadata:
