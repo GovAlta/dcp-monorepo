@@ -8,6 +8,7 @@ import './styles.css';
 type glossaryItem = {
   term: string;
   definition: string;
+  allowLink:boolean;
 };
 
 const GlossaryPage = () => {
@@ -73,7 +74,12 @@ const GlossaryPage = () => {
                   <>
                     <div key={item.term}>
                       <h5 id={item.term.replace(/\s+/g, '')}>{item.term}</h5>
-                      <span>{item.definition}</span>
+                      {/* <span>{item.definition}</span> */}
+
+                      {item.allowLink ?
+                          <span dangerouslySetInnerHTML={{ __html: item.definition }}></span>
+                        : <span>{item.definition}</span>}
+
                     </div>
                     <GoASpacer vSpacing="xs" />
                   </>
