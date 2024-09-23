@@ -9,7 +9,7 @@ const validation = [
   },
   // {field: 'email',     rule: /@gov/,   failed: 'must me a gov email'},  <=== example of another rule on the same input
   {
-    field: 'org-name',   
+    field: 'org-name',
     rule: /^[a-zA-Z0-9&.,' -]{2,100}$/,
     failed: 'Please do not use any special characters.',
   },
@@ -223,9 +223,6 @@ inputs.forEach((input) => {
 async function submitForm(formName) {
   try {
     let isOk = true;
-    var buttonSubmit = document.getElementById('buttonSubmit');
-    buttonSubmit.disabled = true;
-    buttonSubmit.innerText = 'Submitting...';
 
     const dataArray = getFormDataArray();
     //console.log('dataArray',dataArray);
@@ -256,7 +253,6 @@ async function submitForm(formName) {
           jsonData[input.name] = input.value;
         }
       });
-
       const { getCaptchaSiteKey } = await import('./domain_exports.js');
       const siteKey = getCaptchaSiteKey();
       if (window.grecaptcha) {
@@ -265,53 +261,55 @@ async function submitForm(formName) {
             action: 'submit',
           });
           jsonData['token'] = recaptcha;
-      
-         });
-        }
-        else {
-          console.log(recaptcha);
-          throw new Error(`captcha error`);
-        }
-      
-        //----[ post ]------          
-        // console.log('simulatePost');        
-        // const response = await simulatePost(jsonData['agreement']); // Await the response here
+          var buttonSubmit = document.getElementById('buttonSubmit');
+          buttonSubmit.disabled = true;
+          buttonSubmit.innerText = 'Submitting...';
+    
+          //----[ post ]------
+          // console.log('simulatePost');
+          // const response = await simulatePost(jsonData['agreement']); // Await the response here
 
-        const response = await axios.post(`${formPostUrl()}${formName}`,
-          jsonData, { headers: { 'Content-Type': 'application/json' } }
-        );
-        //----[ end post ]------
+          const response = await axios.post(`${formPostUrl()}${formName}`,
+            jsonData, { headers: { 'Content-Type': 'application/json' } }
+          );
+          //----[ end post ]------
 
-        if (response.statusText != 'OK') {
-          console.log(response);
-          throw new Error(`Server error: ${response.errorMessage}`);
-        }          
-        
-        document.getElementById('successDiv').style.display = 'block';
-        document.getElementById('sign-up-form').style.display = 'none';
-  
-        //----[ clear inputs ]------
-        var elements = document.getElementsByTagName('input');
-        for (var ii = 0; ii < elements.length; ii++) {
-          if (['text', 'email', 'url'].includes(elements[ii].type)) {
-            elements[ii].value = '';
+          if (response.statusText != 'OK') {
+            console.log(response);
+            throw new Error(`Server error: ${response.errorMessage}`);
           }
-          if (elements[ii].type == 'radio') {
-            elements[ii].checked = false;
-          }
-          if (elements[ii].type == 'checkbox') {
-            elements[ii].checked = false;
-          }
-        }
 
+          document.getElementById('successDiv').style.display = 'block';
+          document.getElementById('sign-up-form').style.display = 'none';
+
+          //----[ clear inputs ]------
+          var elements = document.getElementsByTagName('input');
+          for (var ii = 0; ii < elements.length; ii++) {
+            if (['text', 'email', 'url'].includes(elements[ii].type)) {
+              elements[ii].value = '';
+            }
+            if (elements[ii].type == 'radio') {
+              elements[ii].checked = false;
+            }
+            if (elements[ii].type == 'checkbox') {
+              elements[ii].checked = false;
+            }
+          }
+        });
+      } else {
+        console.log(recaptcha);
+        throw new Error(`captcha error`);
+      }
     } else {
       document.getElementById('responseMessage').className = 'responseError';
-      document.getElementById('responseMessage').textContent = 'Please review your inputs';
+      document.getElementById('responseMessage').textContent =
+        'Please review your inputs';
     }
-
   } catch (error) {
-    document.getElementById('responseMessage').classList.add('responseError');  
-    document.getElementById('responseMessage').innerText = `Unable to submit: ${error.message}`;
+    document.getElementById('responseMessage').classList.add('responseError');
+    document.getElementById(
+      'responseMessage'
+    ).innerText = `Unable to submit: ${error.message}`;
     buttonSubmit.innerText = 'Submit error';
   }
 
@@ -319,15 +317,16 @@ async function submitForm(formName) {
   buttonSubmit.innerText = 'Submit form';
 }
 
-function simulatePost(isOk) {  
+function simulatePost(isOk) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      let statusText = isOk ? 'OK':'Internal Server Error';
-      let statusCode = isOk ? 200:500;      
-      const response = new Response(null, {        
+      let statusText = isOk ? 'OK' : 'Internal Server Error';
+      let statusCode = isOk ? 200 : 500;
+      const response = new Response(null, {
         status: statusCode,
         statusText: statusText,
-        error: statusCode !== 200 ? { message: `${statusText} occurred!` } : null
+        error:
+          statusCode !== 200 ? { message: `${statusText} occurred!` } : null,
       });
       resolve(response);
     }, 2500); // 2.5 second delay
