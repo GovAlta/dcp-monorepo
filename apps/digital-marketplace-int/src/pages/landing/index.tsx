@@ -37,14 +37,7 @@ export default function LandingPage() {
   return (
     <div className="landing-page">
       <h1>Digital Marketplace portal</h1>
-      <div className="buttons">
-        <button
-          disabled={isLoading}
-          className="button"
-          onClick={() => downloadFormDataByRole('buyer')}
-        >
-          Download buyer data
-        </button>
+      <div className="buttons">        
         <button
           disabled={isLoading}
           className="button"
