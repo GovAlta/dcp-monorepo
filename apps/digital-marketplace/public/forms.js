@@ -1,29 +1,27 @@
-// to be used in buyer, suppliers and partners
-
-// This will create a JSON file as text values. Except, "checkBoxes" groups will have the value as an array
-
+// to be used in suppliers and partners
+// This will create a JSON file as text values. Exception of "checkBoxes" groups will have the value as an array
 
 const validation = [
   {
     field: 'email',
     rule: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-    failed: 'Please enter a valid email format',
+    failed: 'Please enter a valid email',
   },
   // {field: 'email',     rule: /@gov/,   failed: 'must me a gov email'},  <=== example of another rule on the same input
   {
-    field: 'org-name',
-    rule: /^[a-zA-Z\s-\d]+$/,
-    failed: 'Please do not use any special characters',
+    field: 'org-name',   
+    rule: /^[a-zA-Z0-9&.,' -]{2,100}$/,
+    failed: 'Please do not use any special characters.',
   },
   {
     field: 'first-name',
-    rule: /^[a-zA-Z\s-]+$/,
-    failed: 'Please check your first name',
+    rule: /^[a-zA-ZÀ-ÖØ-öø-ÿ' -]{2,50}$/,
+    failed: 'Please do not use any special characters.',
   },
   {
     field: 'last-name',
-    rule: /^[a-zA-Z\s-]+$/,
-    failed: 'Please do not use any special characters',
+    rule: /^[a-zA-ZÀ-ÖØ-öø-ÿ' -]{2,50}$/,
+    failed: 'Please do not use any special characters.',
   },
 
   {
@@ -259,11 +257,6 @@ async function submitForm(formName) {
         }
       });
 
-      // if (window.location.hostname == 'localhost')
-      // {
-      //   console.log('data to submit',jsonData);
-      // } else {
-
       const { getCaptchaSiteKey } = await import('./domain_exports.js');
       const siteKey = getCaptchaSiteKey();
       if (window.grecaptcha) {
@@ -272,58 +265,71 @@ async function submitForm(formName) {
             action: 'submit',
           });
           jsonData['token'] = recaptcha;
-          const response = await axios.post(
-            `${formPostUrl()}${formName}`,
-            jsonData,
-            { headers: { 'Content-Type': 'application/json' } }
-          );
-          if (response.statusText != 'OK') {
-            console.log(response);
-            throw new Error(`Server error: ${response.errorMessage}`);
+      
+         });
+        }
+        else {
+          console.log(recaptcha);
+          throw new Error(`captcha error`);
+        }
+      
+        //----[ post ]------          
+        // console.log('simulatePost');        
+        // const response = await simulatePost(jsonData['agreement']); // Await the response here
+
+        const response = await axios.post(`${formPostUrl()}${formName}`,
+          jsonData, { headers: { 'Content-Type': 'application/json' } }
+        );
+        //----[ end post ]------
+
+        if (response.statusText != 'OK') {
+          console.log(response);
+          throw new Error(`Server error: ${response.errorMessage}`);
+        }          
+        
+        document.getElementById('successDiv').style.display = 'block';
+        document.getElementById('sign-up-form').style.display = 'none';
+  
+        //----[ clear inputs ]------
+        var elements = document.getElementsByTagName('input');
+        for (var ii = 0; ii < elements.length; ii++) {
+          if (['text', 'email', 'url'].includes(elements[ii].type)) {
+            elements[ii].value = '';
           }
-          // console.log('id',response.data.result.id)
-          // }
-    
-          document.getElementById('responseMessage').className = 'responseMessage';
-          document.getElementById(
-            'responseMessage'
-          ).textContent = `${jsonData['first-name']} ${jsonData['last-name']} has been successfully submitted.`;
-    
-          document.getElementById('successDiv').style.display = 'block';
-          document.getElementById('sign-up-form').style.display = 'none';
-    
-          // clear inputs
-          var elements = document.getElementsByTagName('input');
-          for (var ii = 0; ii < elements.length; ii++) {
-            if (['text', 'email', 'url'].includes(elements[ii].type)) {
-              elements[ii].value = '';
-            }
-            if (elements[ii].type == 'radio') {
-              elements[ii].checked = false;
-            }
-            if (elements[ii].type == 'checkbox') {
-              elements[ii].checked = false;
-            }
+          if (elements[ii].type == 'radio') {
+            elements[ii].checked = false;
           }
-        });
-      }
+          if (elements[ii].type == 'checkbox') {
+            elements[ii].checked = false;
+          }
+        }
 
     } else {
       document.getElementById('responseMessage').className = 'responseError';
-      document.getElementById('responseMessage').textContent =
-        'Please review your inputs';
+      document.getElementById('responseMessage').textContent = 'Please review your inputs';
     }
-  } catch (error) {
-    console.log('Error', error);
-    //console.log('Error', error.response.data.errorMessage);
 
-    document.getElementById('responseMessage').classList.add('responseError');
-    document.getElementById(
-      'responseMessage'
-    ).innerHTML = `Error: ${error.message}<br />${error.response.data.errorMessage}`;
+  } catch (error) {
+    document.getElementById('responseMessage').classList.add('responseError');  
+    document.getElementById('responseMessage').innerText = `Unable to submit: ${error.message}`;
     buttonSubmit.innerText = 'Submit error';
   }
 
   buttonSubmit.disabled = false;
   buttonSubmit.innerText = 'Submit form';
+}
+
+function simulatePost(isOk) {  
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      let statusText = isOk ? 'OK':'Internal Server Error';
+      let statusCode = isOk ? 200:500;      
+      const response = new Response(null, {        
+        status: statusCode,
+        statusText: statusText,
+        error: statusCode !== 200 ? { message: `${statusText} occurred!` } : null
+      });
+      resolve(response);
+    }, 2500); // 2.5 second delay
+  });
 }
