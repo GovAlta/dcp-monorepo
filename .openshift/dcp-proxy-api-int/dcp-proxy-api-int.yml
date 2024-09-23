@@ -78,16 +78,6 @@ objects:
           dockerfilePath: .openshift/dcp-proxy-api-int/Dockerfile
         type: Docker
       triggers: []
-  - apiVersion: v1
-    kind: ConfigMap
-    metadata:
-      name: ${APP_NAME}
-      namespace: ${PROJECT}
-    data:
-      configuration: |-
-        {
-          "foo": "bar"
-        }
   - apiVersion: apps.openshift.io/v1
     kind: DeploymentConfig
     metadata:
@@ -117,7 +107,12 @@ objects:
             name: ${APP_NAME}
         spec:
           containers:
-            - name: ${APP_NAME}
+            - envFrom:
+                - configMapRef:
+                    name: ${APP_NAME}
+                - secretRef:
+                    name: ${APP_NAME}
+              name: ${APP_NAME}
               imagePullPolicy: IfNotPresent
               ports:
                 - containerPort: 3333
@@ -131,20 +126,9 @@ objects:
                   cpu: 20m
                   memory: 50Mi
               terminationMessagePath: /dev/termination-log
-              volumeMounts:
-                - mountPath: /opt/app-root/src/config
-                  name: config-volume
           dnsPolicy: ClusterFirst
           restartPolicy: Always
           schedulerName: default-scheduler
-          volumes:
-            - configMap:
-                defaultMode: 420
-                items:
-                  - key: configuration
-                    path: config.json
-                name: ${APP_NAME}
-              name: config-volume
       triggers:
         - imageChangeParams:
             containerNames:

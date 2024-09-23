@@ -1,5 +1,5 @@
 {
-  "12429682466189541921": {
+  "17653152994908468429": {
     "test": {
       "command": "jest",
       "options": {
@@ -16,11 +16,11 @@
         }
       ],
       "outputs": [
-        "{workspaceRoot}\\coverage\\apps\\dcp-proxy-api-int"
+        "{workspaceRoot}/coverage/apps/dcp-proxy-api-int"
       ]
     }
   },
-  "14309992470122327806": {
+  "433053962299372287": {
     "test": {
       "command": "jest",
       "options": {
@@ -37,11 +37,11 @@
         }
       ],
       "outputs": [
-        "{workspaceRoot}\\coverage\\dcp-proxy-api-int-e2e"
+        "{workspaceRoot}/coverage/dcp-proxy-api-int-e2e"
       ]
     }
   },
-  "15538799146987691063": {
+  "3298316873933101260": {
     "test": {
       "command": "jest",
       "options": {
@@ -58,11 +58,11 @@
         }
       ],
       "outputs": [
-        "{workspaceRoot}\\coverage\\apps\\digital-marketplace-api"
+        "{workspaceRoot}/coverage/apps/digital-marketplace-api"
       ]
     }
   },
-  "14362563007747916583": {
+  "398160715444875312": {
     "test": {
       "command": "jest",
       "options": {
@@ -79,7 +79,7 @@
         }
       ],
       "outputs": [
-        "{workspaceRoot}\\coverage\\digital-marketplace-api-e2e"
+        "{workspaceRoot}/coverage/digital-marketplace-api-e2e"
       ]
     }
   }

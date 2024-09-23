@@ -36,7 +36,7 @@
               }
             ],
             "outputs": [
-              "{workspaceRoot}\\coverage\\digital-marketplace-api-e2e"
+              "{workspaceRoot}/coverage/digital-marketplace-api-e2e"
             ],
             "executor": "nx:run-commands",
             "configurations": {}
@@ -102,7 +102,7 @@
               }
             ],
             "outputs": [
-              "{workspaceRoot}\\coverage\\apps\\digital-marketplace-api"
+              "{workspaceRoot}/coverage/apps/digital-marketplace-api"
             ],
             "executor": "nx:run-commands",
             "configurations": {}
@@ -191,6 +191,96 @@
         "implicitDependencies": []
       }
     },
+    "digital-marketplace-int": {
+      "name": "digital-marketplace-int",
+      "type": "app",
+      "data": {
+        "root": "apps/digital-marketplace-int",
+        "targets": {
+          "lint": {
+            "cache": true,
+            "inputs": [
+              "default",
+              "{workspaceRoot}/.eslintrc.json",
+              "{workspaceRoot}/.eslintignore"
+            ],
+            "executor": "nx:run-commands",
+            "options": {
+              "cwd": "apps/digital-marketplace-int",
+              "command": "eslint ."
+            },
+            "configurations": {}
+          },
+          "build": {
+            "executor": "@nxtensions/astro:build",
+            "dependsOn": [
+              "^build"
+            ],
+            "inputs": [
+              "production",
+              "^production"
+            ],
+            "outputs": [
+              "{workspaceRoot}/dist/{projectRoot}"
+            ],
+            "options": {},
+            "configurations": {}
+          },
+          "check": {
+            "executor": "@nxtensions/astro:check",
+            "inputs": [
+              "production",
+              "^production"
+            ],
+            "options": {},
+            "configurations": {}
+          },
+          "buildcustom": {
+            "executor": "nx:run-commands",
+            "dependsOn": [
+              {
+                "target": "build",
+                "projects": "self"
+              }
+            ],
+            "options": {
+              "commands": [
+                "npx pagefind --site dist/apps/digital-marketplace-int"
+              ],
+              "parallel": false
+            },
+            "configurations": {}
+          },
+          "dev": {
+            "executor": "@nxtensions/astro:dev",
+            "options": {},
+            "configurations": {}
+          },
+          "preview": {
+            "dependsOn": [
+              {
+                "target": "buildcustom",
+                "projects": "self"
+              }
+            ],
+            "executor": "@nxtensions/astro:preview",
+            "options": {},
+            "configurations": {}
+          },
+          "sync": {
+            "executor": "@nxtensions/astro:sync",
+            "options": {},
+            "configurations": {}
+          }
+        },
+        "name": "digital-marketplace-int",
+        "$schema": "../../node_modules/nx/schemas/project-schema.json",
+        "projectType": "application",
+        "sourceRoot": "apps/digital-marketplace-int/src",
+        "tags": [],
+        "implicitDependencies": []
+      }
+    },
     "dcp-proxy-api-int-e2e": {
       "name": "dcp-proxy-api-int-e2e",
       "type": "e2e",
@@ -227,7 +317,7 @@
               }
             ],
             "outputs": [
-              "{workspaceRoot}\\coverage\\dcp-proxy-api-int-e2e"
+              "{workspaceRoot}/coverage/dcp-proxy-api-int-e2e"
             ],
             "executor": "nx:run-commands",
             "configurations": {}
@@ -468,7 +558,7 @@
               }
             ],
             "outputs": [
-              "{workspaceRoot}\\coverage\\apps\\dcp-proxy-api-int"
+              "{workspaceRoot}/coverage/apps/dcp-proxy-api-int"
             ],
             "executor": "nx:run-commands",
             "configurations": {}
@@ -13828,6 +13918,33 @@
         "type": "static"
       }
     ],
+    "digital-marketplace-int": [
+      {
+        "source": "digital-marketplace-int",
+        "target": "npm:astro",
+        "type": "static"
+      },
+      {
+        "source": "digital-marketplace-int",
+        "target": "npm:@astrojs/react",
+        "type": "static"
+      },
+      {
+        "source": "digital-marketplace-int",
+        "target": "npm:@astrojs/mdx",
+        "type": "static"
+      },
+      {
+        "source": "digital-marketplace-int",
+        "target": "npm:axios",
+        "type": "static"
+      },
+      {
+        "source": "digital-marketplace-int",
+        "target": "npm:react",
+        "type": "static"
+      }
+    ],
     "dcp-proxy-api-int-e2e": [
       {
         "source": "dcp-proxy-api-int-e2e",
@@ -13897,12 +14014,57 @@
     "dcp-proxy-api-int": [
       {
         "source": "dcp-proxy-api-int",
+        "target": "npm:@abgov/adsp-service-sdk",
+        "type": "static"
+      },
+      {
+        "source": "dcp-proxy-api-int",
         "target": "npm:express",
         "type": "static"
       },
       {
         "source": "dcp-proxy-api-int",
+        "target": "npm:passport",
+        "type": "static"
+      },
+      {
+        "source": "dcp-proxy-api-int",
+        "target": "npm:passport-anonymous",
+        "type": "static"
+      },
+      {
+        "source": "dcp-proxy-api-int",
+        "target": "npm:dotenv",
+        "type": "static"
+      },
+      {
+        "source": "dcp-proxy-api-int",
+        "target": "npm:envalid",
+        "type": "static"
+      },
+      {
+        "source": "dcp-proxy-api-int",
         "target": "npm:cors",
+        "type": "static"
+      },
+      {
+        "source": "dcp-proxy-api-int",
+        "target": "npm:helmet",
+        "type": "static"
+      },
+      {
+        "source": "dcp-proxy-api-int",
+        "target": "npm:compression",
+        "type": "static"
+      },
+      {
+        "source": "dcp-proxy-api-int",
+        "target": "npm:winston",
+        "type": "static"
+      },
+      {
+        "source": "dcp-proxy-api-int",
+        "target": "npm:axios",
         "type": "static"
       }
     ],
