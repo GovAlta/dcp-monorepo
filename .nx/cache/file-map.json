@@ -88,223 +88,937 @@
   "fileMap": {
     "nonProjectFiles": [
       {
-        "file": ".vscode/extensions.json",
-        "hash": "14184111578169322842"
-      },
-      {
-        "file": ".openshift/digital-marketplace-api/digital-marketplace-api.yml",
-        "hash": "12662678611416811085"
-      },
-      {
-        "file": ".gitignore",
-        "hash": "9002323618042213393"
-      },
-      {
-        "file": ".openshift/environments.yml",
-        "hash": "13908488406275058211"
-      },
-      {
-        "file": "LICENSE",
-        "hash": "7157688261501247528"
-      },
-      {
-        "file": "oc",
+        "file": "libs/.gitkeep",
         "hash": "3244421341483603138"
-      },
-      {
-        "file": "jest.preset.js",
-        "hash": "7473220183190921152"
-      },
-      {
-        "file": ".editorconfig",
-        "hash": "11532813898455409296"
-      },
-      {
-        "file": "docs/contributing.md",
-        "hash": "9969543485534443888"
       },
       {
         "file": ".eslintrc.json",
         "hash": "6076523549091800167"
       },
       {
-        "file": ".openshift/digital-standards/digital-standards.yml",
-        "hash": "13813063432354923654"
-      },
-      {
-        "file": "package-lock.json",
-        "hash": "14804933706755471695"
-      },
-      {
-        "file": "package.json",
-        "hash": "16007434710092861315"
-      },
-      {
-        "file": ".openshift/dcp-proxy-api-int/Dockerfile",
-        "hash": "13762995466986898530"
-      },
-      {
-        "file": "apps/.gitkeep",
-        "hash": "3244421341483603138"
-      },
-      {
-        "file": "tools/tsconfig.tools.json",
-        "hash": "11810713488198132402"
-      },
-      {
-        "file": "tools/generators/.gitkeep",
-        "hash": "3244421341483603138"
-      },
-      {
-        "file": ".openshift/dcp-guide/Dockerfile",
-        "hash": "15266127262460062378"
-      },
-      {
-        "file": ".openshift/digital-standards/Dockerfile",
-        "hash": "15266127262460062378"
-      },
-      {
         "file": ".openshift/common-capabilities/Dockerfile",
         "hash": "15266127262460062378"
-      },
-      {
-        "file": ".openshift/digital-marketplace/digital-marketplace.yml",
-        "hash": "5829915914675289747"
-      },
-      {
-        "file": "README.md",
-        "hash": "6157153880910221512"
-      },
-      {
-        "file": "tsconfig.base.json",
-        "hash": "16899823733375598152"
-      },
-      {
-        "file": ".prettierrc",
-        "hash": "6820402234827505055"
-      },
-      {
-        "file": "tools/generators/astro-boilerplate/openshift/__appName__/nginx.conf",
-        "hash": "14661028847227963135"
-      },
-      {
-        "file": ".eslintignore",
-        "hash": "13404745306227114823"
-      },
-      {
-        "file": ".openshift/digital-playbook/nginx.conf",
-        "hash": "14661028847227963135"
-      },
-      {
-        "file": ".openshift/dcp-guide/nginx.conf",
-        "hash": "14661028847227963135"
-      },
-      {
-        "file": ".openshift/common-capabilities/nginx.conf",
-        "hash": "14661028847227963135"
-      },
-      {
-        "file": ".openshift/digital-standards/nginx.conf",
-        "hash": "3859811901775556663"
-      },
-      {
-        "file": ".openshift/digital-marketplace-api/Dockerfile",
-        "hash": "13762995466986898530"
       },
       {
         "file": ".openshift/digital-marketplace/nginx.conf",
         "hash": "3859811901775556663"
       },
       {
+        "file": "apps/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": ".openshift/dcp-proxy-api-int/Dockerfile",
+        "hash": "13762995466986898530"
+      },
+      {
+        "file": "LICENSE",
+        "hash": "7157688261501247528"
+      },
+      {
+        "file": "tsconfig.base.json",
+        "hash": "16899823733375598152"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "9002323618042213393"
+      },
+      {
+        "file": ".openshift/dcp-guide/nginx.conf",
+        "hash": "14661028847227963135"
+      },
+      {
         "file": ".prettierignore",
         "hash": "1324685984948235314"
       },
       {
-        "file": ".github/workflows/pipeline.yml",
-        "hash": "988629591289947422"
-      },
-      {
-        "file": ".openshift/common-capabilities/common-capabilities.yml",
-        "hash": "4319256707776510466"
-      },
-      {
-        "file": "tools/generators/astro-boilerplate/index.ts",
-        "hash": "7784784068882512865"
-      },
-      {
-        "file": ".openshift/digital-playbook/Dockerfile",
-        "hash": "15266127262460062378"
-      },
-      {
-        "file": "NODE_M~1/nx/bin/run-executor.js",
-        "hash": "11098590799264319067"
-      },
-      {
-        "file": ".openshift/environment.infra.yml",
-        "hash": "4286320657652649450"
-      },
-      {
-        "file": "tools/generators/astro-boilerplate/schema.json",
-        "hash": "15019451438509613320"
-      },
-      {
-        "file": ".openshift/dcp-guide/dcp-guide.yml",
-        "hash": "13123356914074505104"
-      },
-      {
-        "file": "jest.config.ts",
-        "hash": "7544409015863045561"
-      },
-      {
-        "file": ".github/workflows/pull-request.yml",
-        "hash": "1724420267610458716"
-      },
-      {
-        "file": ".openshift/digital-marketplace/Dockerfile",
-        "hash": "15266127262460062378"
-      },
-      {
-        "file": "tools/generators/astro-boilerplate/openshift/__appName__/Dockerfile",
-        "hash": "15266127262460062378"
-      },
-      {
-        "file": ".openshift/digital-playbook/digital-playbook.yml",
-        "hash": "14202307058868305117"
+        "file": "oc",
+        "hash": "3244421341483603138"
       },
       {
         "file": "nx.json",
         "hash": "1141676348984620234"
       },
       {
-        "file": "NODE_M~1/nx/src/TASKS-~1/fork.js",
-        "hash": "7612735544873856743"
+        "file": ".openshift/digital-playbook/Dockerfile",
+        "hash": "15266127262460062378"
+      },
+      {
+        "file": ".openshift/environment.infra.yml",
+        "hash": "4286320657652649450"
+      },
+      {
+        "file": ".github/workflows/pipeline.yml",
+        "hash": "988629591289947422"
+      },
+      {
+        "file": "tools/generators/astro-boilerplate/schema.json",
+        "hash": "15019451438509613320"
+      },
+      {
+        "file": ".nx/cache/d/server-process.json",
+        "hash": "1148716876981939850"
+      },
+      {
+        "file": ".openshift/digital-standards/Dockerfile",
+        "hash": "15266127262460062378"
+      },
+      {
+        "file": ".openshift/digital-marketplace-api/digital-marketplace-api.yml",
+        "hash": "12662678611416811085"
+      },
+      {
+        "file": ".openshift/digital-marketplace-api/Dockerfile",
+        "hash": "13762995466986898530"
+      },
+      {
+        "file": ".openshift/common-capabilities/common-capabilities.yml",
+        "hash": "4319256707776510466"
+      },
+      {
+        "file": ".openshift/digital-standards/digital-standards.yml",
+        "hash": "13813063432354923654"
+      },
+      {
+        "file": ".openshift/dcp-guide/dcp-guide.yml",
+        "hash": "13123356914074505104"
+      },
+      {
+        "file": ".openshift/dcp-guide/Dockerfile",
+        "hash": "15266127262460062378"
+      },
+      {
+        "file": "tools/generators/astro-boilerplate/openshift/__appName__/nginx.conf",
+        "hash": "14661028847227963135"
+      },
+      {
+        "file": "package-lock.json",
+        "hash": "14804933706755471695"
       },
       {
         "file": "tools/scripts/patch-nx-cli.js",
         "hash": "7666026627822222481"
       },
       {
-        "file": ".nx/cache/d/server-process.json",
-        "hash": "6801765611335322149"
+        "file": ".openshift/digital-playbook/nginx.conf",
+        "hash": "14661028847227963135"
       },
       {
-        "file": "libs/.gitkeep",
-        "hash": "3244421341483603138"
+        "file": ".openshift/digital-playbook/digital-playbook.yml",
+        "hash": "14202307058868305117"
       },
       {
-        "file": ".npmrc",
-        "hash": "14394914753764189439"
+        "file": ".github/workflows/pull-request.yml",
+        "hash": "1724420267610458716"
+      },
+      {
+        "file": ".prettierrc",
+        "hash": "6820402234827505055"
+      },
+      {
+        "file": ".openshift/environments.yml",
+        "hash": "13908488406275058211"
+      },
+      {
+        "file": "README.md",
+        "hash": "6157153880910221512"
+      },
+      {
+        "file": "tools/generators/astro-boilerplate/openshift/__appName__/Dockerfile",
+        "hash": "15266127262460062378"
+      },
+      {
+        "file": ".editorconfig",
+        "hash": "11532813898455409296"
+      },
+      {
+        "file": "jest.config.ts",
+        "hash": "7544409015863045561"
+      },
+      {
+        "file": "tools/tsconfig.tools.json",
+        "hash": "11810713488198132402"
+      },
+      {
+        "file": "package.json",
+        "hash": "16007434710092861315"
+      },
+      {
+        "file": ".eslintignore",
+        "hash": "13404745306227114823"
+      },
+      {
+        "file": ".openshift/digital-marketplace/digital-marketplace.yml",
+        "hash": "5829915914675289747"
       },
       {
         "file": "tools/generators/astro-boilerplate/openshift/__appName__/__appName__.yml",
         "hash": "2760425700996074588"
       },
       {
+        "file": "tools/generators/astro-boilerplate/index.ts",
+        "hash": "7784784068882512865"
+      },
+      {
+        "file": ".npmrc",
+        "hash": "14394914753764189439"
+      },
+      {
+        "file": "docs/contributing.md",
+        "hash": "9969543485534443888"
+      },
+      {
+        "file": ".openshift/common-capabilities/nginx.conf",
+        "hash": "14661028847227963135"
+      },
+      {
         "file": ".openshift/dcp-proxy-api-int/dcp-proxy-api-int.yml",
         "hash": "10683383643232402330"
+      },
+      {
+        "file": ".vscode/extensions.json",
+        "hash": "14184111578169322842"
+      },
+      {
+        "file": "tools/generators/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": ".openshift/digital-marketplace/Dockerfile",
+        "hash": "15266127262460062378"
+      },
+      {
+        "file": "jest.preset.js",
+        "hash": "7473220183190921152"
+      },
+      {
+        "file": ".openshift/digital-standards/nginx.conf",
+        "hash": "3859811901775556663"
       }
     ],
     "projectFileMap": {
+      "digital-marketplace-api-e2e": [
+        {
+          "file": "apps/digital-marketplace-api-e2e/.eslintrc.json",
+          "hash": "14921153827776288937"
+        },
+        {
+          "file": "apps/digital-marketplace-api-e2e/jest.config.ts",
+          "hash": "8137032934928602206"
+        },
+        {
+          "file": "apps/digital-marketplace-api-e2e/project.json",
+          "hash": "566756007996957183"
+        },
+        {
+          "file": "apps/digital-marketplace-api-e2e/src/digital-marketplace-api/digital-marketplace-api.spec.ts",
+          "hash": "3026045886657059088",
+          "deps": [
+            "npm:axios"
+          ]
+        },
+        {
+          "file": "apps/digital-marketplace-api-e2e/src/support/global-setup.ts",
+          "hash": "18221119270488052961"
+        },
+        {
+          "file": "apps/digital-marketplace-api-e2e/src/support/global-teardown.ts",
+          "hash": "17927034305001160425"
+        },
+        {
+          "file": "apps/digital-marketplace-api-e2e/src/support/test-setup.ts",
+          "hash": "4165311015569872896",
+          "deps": [
+            "npm:axios"
+          ]
+        },
+        {
+          "file": "apps/digital-marketplace-api-e2e/tsconfig.json",
+          "hash": "1422418700492434985"
+        },
+        {
+          "file": "apps/digital-marketplace-api-e2e/tsconfig.spec.json",
+          "hash": "5623794208198348967"
+        }
+      ],
+      "dcp-proxy-api-int-e2e": [
+        {
+          "file": "apps/dcp-proxy-api-int-e2e/.eslintrc.json",
+          "hash": "14921153827776288937"
+        },
+        {
+          "file": "apps/dcp-proxy-api-int-e2e/jest.config.ts",
+          "hash": "6760272200099554078"
+        },
+        {
+          "file": "apps/dcp-proxy-api-int-e2e/project.json",
+          "hash": "13316072668496171117"
+        },
+        {
+          "file": "apps/dcp-proxy-api-int-e2e/src/digital-marketplace-api/digital-marketplace-api.spec.ts",
+          "hash": "3026045886657059088",
+          "deps": [
+            "npm:axios"
+          ]
+        },
+        {
+          "file": "apps/dcp-proxy-api-int-e2e/src/support/global-setup.ts",
+          "hash": "18221119270488052961"
+        },
+        {
+          "file": "apps/dcp-proxy-api-int-e2e/src/support/global-teardown.ts",
+          "hash": "17927034305001160425"
+        },
+        {
+          "file": "apps/dcp-proxy-api-int-e2e/src/support/test-setup.ts",
+          "hash": "4165311015569872896",
+          "deps": [
+            "npm:axios"
+          ]
+        },
+        {
+          "file": "apps/dcp-proxy-api-int-e2e/tsconfig.json",
+          "hash": "1422418700492434985"
+        },
+        {
+          "file": "apps/dcp-proxy-api-int-e2e/tsconfig.spec.json",
+          "hash": "5623794208198348967"
+        }
+      ],
+      "dcp-proxy-api-int": [
+        {
+          "file": "apps/dcp-proxy-api-int/.eslintrc.json",
+          "hash": "14921153827776288937"
+        },
+        {
+          "file": "apps/dcp-proxy-api-int/jest.config.ts",
+          "hash": "8909602463717158047"
+        },
+        {
+          "file": "apps/dcp-proxy-api-int/project.json",
+          "hash": "16195300069899940839"
+        },
+        {
+          "file": "apps/dcp-proxy-api-int/src/assets/.gitkeep",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/dcp-proxy-api-int/src/main.ts",
+          "hash": "7850580464770257333",
+          "deps": [
+            "npm:express",
+            "npm:cors"
+          ]
+        },
+        {
+          "file": "apps/dcp-proxy-api-int/tsconfig.app.json",
+          "hash": "6761865598368362404"
+        },
+        {
+          "file": "apps/dcp-proxy-api-int/tsconfig.json",
+          "hash": "7462419380158041776"
+        },
+        {
+          "file": "apps/dcp-proxy-api-int/tsconfig.spec.json",
+          "hash": "11194536110028348959"
+        }
+      ],
+      "dcp-common": [
+        {
+          "file": "libs/dcp-common/README.md",
+          "hash": "18100490124476826190"
+        },
+        {
+          "file": "libs/dcp-common/project.json",
+          "hash": "10957496814618270990"
+        },
+        {
+          "file": "libs/dcp-common/src/env.d.ts",
+          "hash": "17949546991706631409"
+        },
+        {
+          "file": "libs/dcp-common/src/index.js",
+          "hash": "6003743894156881857"
+        },
+        {
+          "file": "libs/dcp-common/src/lib/DcpCommon.astro",
+          "hash": "16015459477108500850"
+        },
+        {
+          "file": "libs/dcp-common/src/lib/components/Footer.astro",
+          "hash": "9952465420274518873",
+          "deps": [
+            "npm:@abgov/react-components"
+          ]
+        },
+        {
+          "file": "libs/dcp-common/src/lib/components/Header.astro",
+          "hash": "15134764439488417515",
+          "deps": [
+            "npm:@abgov/react-components"
+          ]
+        },
+        {
+          "file": "libs/dcp-common/src/lib/components/Search.astro",
+          "hash": "7938155499976741697",
+          "deps": [
+            "npm:@abgov/design-tokens",
+            "npm:@abgov/web-components-1.20.3"
+          ]
+        },
+        {
+          "file": "libs/dcp-common/src/lib/layouts/DefaultMicrositeLayout.astro",
+          "hash": "16873809127553623353",
+          "deps": [
+            "npm:@abgov/web-components"
+          ]
+        },
+        {
+          "file": "libs/dcp-common/src/styles/global.css",
+          "hash": "8574089990118340052"
+        },
+        {
+          "file": "libs/dcp-common/tsconfig.json",
+          "hash": "5252452901398787685"
+        }
+      ],
+      "digital-standards": [
+        {
+          "file": "apps/digital-standards/astro.config.mjs",
+          "hash": "3590172297314656371",
+          "deps": [
+            "npm:astro",
+            "npm:@astrojs/react",
+            "npm:@astrojs/mdx"
+          ]
+        },
+        {
+          "file": "apps/digital-standards/project.json",
+          "hash": "12794547463247249917"
+        },
+        {
+          "file": "apps/digital-standards/public/favicon.ico",
+          "hash": "2812105842299921059"
+        },
+        {
+          "file": "apps/digital-standards/src/components/BackToTop.tsx",
+          "hash": "4926517911146956748",
+          "deps": [
+            "npm:@abgov/react-components-4.20.2",
+            "npm:react"
+          ]
+        },
+        {
+          "file": "apps/digital-standards/src/components/ExternalLink/index.tsx",
+          "hash": "12026659674276509566",
+          "deps": [
+            "npm:@abgov/react-components-4.20.2",
+            "npm:react"
+          ]
+        },
+        {
+          "file": "apps/digital-standards/src/components/ExternalLink/styles.css",
+          "hash": "8109524059464827697"
+        },
+        {
+          "file": "apps/digital-standards/src/components/Footer.tsx",
+          "hash": "10333195279335601077",
+          "deps": [
+            "npm:react",
+            "npm:@abgov/react-components-4.20.2"
+          ]
+        },
+        {
+          "file": "apps/digital-standards/src/components/Header.tsx",
+          "hash": "17598734163871041337",
+          "deps": [
+            "npm:react",
+            "npm:@abgov/react-components-4.20.2"
+          ]
+        },
+        {
+          "file": "apps/digital-standards/src/env.d.ts",
+          "hash": "102372912030843394"
+        },
+        {
+          "file": "apps/digital-standards/src/layouts/Layout.astro",
+          "hash": "4726561880145720204",
+          "deps": [
+            "npm:@abgov/design-tokens",
+            "npm:@abgov/web-components-1.20.3"
+          ]
+        },
+        {
+          "file": "apps/digital-standards/src/layouts/Layout/index.tsx",
+          "hash": "3218199793300091689",
+          "deps": [
+            "npm:react",
+            "npm:@abgov/react-components-4.20.2"
+          ]
+        },
+        {
+          "file": "apps/digital-standards/src/pages/index.astro",
+          "hash": "11193221264521149037"
+        },
+        {
+          "file": "apps/digital-standards/src/pages/landing/index.tsx",
+          "hash": "2986096499170742016",
+          "deps": [
+            "npm:@abgov/react-components-4.20.2",
+            "npm:react"
+          ]
+        },
+        {
+          "file": "apps/digital-standards/src/pages/landing/styles.css",
+          "hash": "9461241420375673741"
+        },
+        {
+          "file": "apps/digital-standards/src/pages/search.astro",
+          "hash": "18223491801672154871",
+          "deps": [
+            "dcp-common",
+            "npm:@abgov/react-components-4.20.2"
+          ]
+        },
+        {
+          "file": "apps/digital-standards/src/pages/service-assessments.astro",
+          "hash": "5519680189410967525"
+        },
+        {
+          "file": "apps/digital-standards/src/pages/service-assessments/index.tsx",
+          "hash": "15923084829232635754",
+          "deps": [
+            "npm:@abgov/react-components-4.20.2",
+            "npm:react"
+          ]
+        },
+        {
+          "file": "apps/digital-standards/src/pages/service-glossary.astro",
+          "hash": "14375307509332528332"
+        },
+        {
+          "file": "apps/digital-standards/src/pages/service-glossary/config.ts",
+          "hash": "16679108981926630669"
+        },
+        {
+          "file": "apps/digital-standards/src/pages/service-glossary/index.tsx",
+          "hash": "14983812076400567602",
+          "deps": [
+            "npm:@abgov/react-components-4.20.2",
+            "npm:react"
+          ]
+        },
+        {
+          "file": "apps/digital-standards/src/pages/service-glossary/styles.css",
+          "hash": "11203769089258611933"
+        },
+        {
+          "file": "apps/digital-standards/src/pages/service-help.astro",
+          "hash": "4676216413128682747"
+        },
+        {
+          "file": "apps/digital-standards/src/pages/service-help/index.tsx",
+          "hash": "10065356399768904371",
+          "deps": [
+            "npm:@abgov/react-components-4.20.2",
+            "npm:react"
+          ]
+        },
+        {
+          "file": "apps/digital-standards/src/pages/service-performance.astro",
+          "hash": "3159868893022375207"
+        },
+        {
+          "file": "apps/digital-standards/src/pages/service-performance/index.tsx",
+          "hash": "246547500404352860",
+          "deps": [
+            "npm:@abgov/react-components-4.20.2",
+            "npm:react"
+          ]
+        },
+        {
+          "file": "apps/digital-standards/src/pages/service-principles.astro",
+          "hash": "3531423101840758947"
+        },
+        {
+          "file": "apps/digital-standards/src/pages/service-principles/index.tsx",
+          "hash": "1579825752321318934",
+          "deps": [
+            "npm:@abgov/react-components-4.20.2",
+            "npm:react"
+          ]
+        },
+        {
+          "file": "apps/digital-standards/src/pages/service-standards.astro",
+          "hash": "7445482518472825904"
+        },
+        {
+          "file": "apps/digital-standards/src/pages/service-standards/index.tsx",
+          "hash": "604074847423466469",
+          "deps": [
+            "npm:@abgov/react-components-4.20.2",
+            "npm:react"
+          ]
+        },
+        {
+          "file": "apps/digital-standards/tsconfig.json",
+          "hash": "16552852661372573997"
+        }
+      ],
+      "digital-marketplace-api": [
+        {
+          "file": "apps/digital-marketplace-api/.eslintrc.json",
+          "hash": "14921153827776288937"
+        },
+        {
+          "file": "apps/digital-marketplace-api/jest.config.ts",
+          "hash": "2666276772848086248"
+        },
+        {
+          "file": "apps/digital-marketplace-api/project.json",
+          "hash": "13521550247848761174"
+        },
+        {
+          "file": "apps/digital-marketplace-api/src/access/configure.ts",
+          "hash": "3536773880213727315",
+          "deps": [
+            "npm:@abgov/adsp-service-sdk",
+            "npm:express",
+            "npm:passport",
+            "npm:passport-anonymous"
+          ]
+        },
+        {
+          "file": "apps/digital-marketplace-api/src/assets/.gitkeep",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/digital-marketplace-api/src/environments/environment.ts",
+          "hash": "2556951174130468234",
+          "deps": [
+            "npm:dotenv",
+            "npm:envalid",
+            "npm:util"
+          ]
+        },
+        {
+          "file": "apps/digital-marketplace-api/src/main.ts",
+          "hash": "6989784053258114313",
+          "deps": [
+            "npm:express",
+            "npm:cors",
+            "npm:@abgov/adsp-service-sdk",
+            "npm:helmet",
+            "npm:passport",
+            "npm:compression"
+          ]
+        },
+        {
+          "file": "apps/digital-marketplace-api/src/routes/forms/index.ts",
+          "hash": "14985498886477079475",
+          "deps": [
+            "npm:@abgov/adsp-service-sdk",
+            "npm:express",
+            "npm:winston"
+          ]
+        },
+        {
+          "file": "apps/digital-marketplace-api/src/routes/forms/router.ts",
+          "hash": "11467353910302943846",
+          "deps": [
+            "npm:@abgov/adsp-service-sdk",
+            "npm:express",
+            "npm:winston",
+            "npm:axios"
+          ]
+        },
+        {
+          "file": "apps/digital-marketplace-api/tsconfig.app.json",
+          "hash": "6761865598368362404"
+        },
+        {
+          "file": "apps/digital-marketplace-api/tsconfig.json",
+          "hash": "7462419380158041776"
+        },
+        {
+          "file": "apps/digital-marketplace-api/tsconfig.spec.json",
+          "hash": "11194536110028348959"
+        }
+      ],
+      "dcp-guide": [
+        {
+          "file": "apps/dcp-guide/astro.config.mjs",
+          "hash": "15177160314854436408",
+          "deps": [
+            "npm:astro",
+            "npm:@astrojs/mdx",
+            "npm:@astrojs/react"
+          ]
+        },
+        {
+          "file": "apps/dcp-guide/project.json",
+          "hash": "13869161323824896524"
+        },
+        {
+          "file": "apps/dcp-guide/public/favicon.ico",
+          "hash": "2812105842299921059"
+        },
+        {
+          "file": "apps/dcp-guide/public/favicon.svg",
+          "hash": "12424760545971120038"
+        },
+        {
+          "file": "apps/dcp-guide/src/assets/ACO1-2.jpeg",
+          "hash": "946947806378636844"
+        },
+        {
+          "file": "apps/dcp-guide/src/assets/HomeHero.png",
+          "hash": "1147975178509744480"
+        },
+        {
+          "file": "apps/dcp-guide/src/assets/LearnMoreHero.png",
+          "hash": "1173791000371873672"
+        },
+        {
+          "file": "apps/dcp-guide/src/assets/Playbook_about_1.png",
+          "hash": "4816707071271787906"
+        },
+        {
+          "file": "apps/dcp-guide/src/assets/Playbook_about_2.png",
+          "hash": "11580076408041883863"
+        },
+        {
+          "file": "apps/dcp-guide/src/assets/Playbook_about_3.png",
+          "hash": "6040757078406237034"
+        },
+        {
+          "file": "apps/dcp-guide/src/assets/Playbook_about_4.png",
+          "hash": "1562536430158957339"
+        },
+        {
+          "file": "apps/dcp-guide/src/assets/Playbook_about_5.png",
+          "hash": "17226941068156707345"
+        },
+        {
+          "file": "apps/dcp-guide/src/assets/Playbook_about_6.png",
+          "hash": "14470161040625299321"
+        },
+        {
+          "file": "apps/dcp-guide/src/assets/Playbook_about_7.png",
+          "hash": "16898831951469632560"
+        },
+        {
+          "file": "apps/dcp-guide/src/assets/Playbook_about_8.png",
+          "hash": "8104611935544998070"
+        },
+        {
+          "file": "apps/dcp-guide/src/assets/Playbook_about_9.png",
+          "hash": "16902019369441045594"
+        },
+        {
+          "file": "apps/dcp-guide/src/assets/Playbook_about_beta.png",
+          "hash": "11945928817543763900"
+        },
+        {
+          "file": "apps/dcp-guide/src/assets/Playbook_about_discovery.png",
+          "hash": "1084222788951875879"
+        },
+        {
+          "file": "apps/dcp-guide/src/assets/Playbook_about_map.png",
+          "hash": "8877326047826532644"
+        },
+        {
+          "file": "apps/dcp-guide/src/assets/Playbook_home_1.png",
+          "hash": "3104061684063664554"
+        },
+        {
+          "file": "apps/dcp-guide/src/assets/Playbook_home_2.png",
+          "hash": "1982362402940772225"
+        },
+        {
+          "file": "apps/dcp-guide/src/assets/Playbook_stories_1.png",
+          "hash": "5965941874923668427"
+        },
+        {
+          "file": "apps/dcp-guide/src/assets/Playbook_stories_2.jpeg",
+          "hash": "946947806378636844"
+        },
+        {
+          "file": "apps/dcp-guide/src/assets/Playbook_stories_3.jpeg",
+          "hash": "9919192694868511018"
+        },
+        {
+          "file": "apps/dcp-guide/src/assets/Playbook_team_1.png",
+          "hash": "2754241726711665551"
+        },
+        {
+          "file": "apps/dcp-guide/src/assets/Playbook_team_2.png",
+          "hash": "10642311261686858947"
+        },
+        {
+          "file": "apps/dcp-guide/src/assets/Script.png",
+          "hash": "10958399424311468633"
+        },
+        {
+          "file": "apps/dcp-guide/src/assets/StoriesHero.png",
+          "hash": "7576546311345547438"
+        },
+        {
+          "file": "apps/dcp-guide/src/assets/WhatIsHero.png",
+          "hash": "10917164792378909956"
+        },
+        {
+          "file": "apps/dcp-guide/src/assets/WhoIsInvolvedHero.png",
+          "hash": "17417846533912417320"
+        },
+        {
+          "file": "apps/dcp-guide/src/assets/astro.png",
+          "hash": "1916890049967672064"
+        },
+        {
+          "file": "apps/dcp-guide/src/assets/github.png",
+          "hash": "7404635172674467568"
+        },
+        {
+          "file": "apps/dcp-guide/src/components/Card.astro",
+          "hash": "6049995050645675643"
+        },
+        {
+          "file": "apps/dcp-guide/src/components/Footer.astro",
+          "hash": "10788691894719724686",
+          "deps": [
+            "npm:@abgov/react-components"
+          ]
+        },
+        {
+          "file": "apps/dcp-guide/src/components/Header.astro",
+          "hash": "4783682185711426139",
+          "deps": [
+            "npm:@abgov/react-components"
+          ]
+        },
+        {
+          "file": "apps/dcp-guide/src/components/HeroHome.astro",
+          "hash": "791628478313323813"
+        },
+        {
+          "file": "apps/dcp-guide/src/components/HeroImage.astro",
+          "hash": "16990604587582063427",
+          "deps": [
+            "npm:@abgov/react-components"
+          ]
+        },
+        {
+          "file": "apps/dcp-guide/src/components/HomeService.astro",
+          "hash": "6416364318208313900"
+        },
+        {
+          "file": "apps/dcp-guide/src/env.d.ts",
+          "hash": "17949546991706631409"
+        },
+        {
+          "file": "apps/dcp-guide/src/layouts/Layout.astro",
+          "hash": "14231909525727738419",
+          "deps": [
+            "npm:@abgov/web-components"
+          ]
+        },
+        {
+          "file": "apps/dcp-guide/src/layouts/baseLayout.astro",
+          "hash": "1522433444547832584"
+        },
+        {
+          "file": "apps/dcp-guide/src/layouts/defaultGuideLayout.astro",
+          "hash": "11593407306585365478",
+          "deps": [
+            "npm:@abgov/web-components"
+          ]
+        },
+        {
+          "file": "apps/dcp-guide/src/layouts/homeLayout.astro",
+          "hash": "15968605387523177016"
+        },
+        {
+          "file": "apps/dcp-guide/src/layouts/tutorialLayout.astro",
+          "hash": "15968605387523177016"
+        },
+        {
+          "file": "apps/dcp-guide/src/pages/about.astro",
+          "hash": "10896850618430362598"
+        },
+        {
+          "file": "apps/dcp-guide/src/pages/about/about_1.mdx",
+          "hash": "18385520341662478744"
+        },
+        {
+          "file": "apps/dcp-guide/src/pages/about/about_2.mdx",
+          "hash": "1837897448946150391"
+        },
+        {
+          "file": "apps/dcp-guide/src/pages/index.astro",
+          "hash": "16680147237251289203"
+        },
+        {
+          "file": "apps/dcp-guide/src/pages/index/index.tsx",
+          "hash": "8364018490501707138",
+          "deps": [
+            "npm:react",
+            "npm:@abgov/react-components"
+          ]
+        },
+        {
+          "file": "apps/dcp-guide/src/pages/learnMore.astro",
+          "hash": "6160375559861125909"
+        },
+        {
+          "file": "apps/dcp-guide/src/pages/learnMore/learnMore.mdx",
+          "hash": "4146427720495136"
+        },
+        {
+          "file": "apps/dcp-guide/src/pages/stories.astro",
+          "hash": "7329817024666784849"
+        },
+        {
+          "file": "apps/dcp-guide/src/pages/stories/stories_1.mdx",
+          "hash": "6023838573454656328"
+        },
+        {
+          "file": "apps/dcp-guide/src/pages/stories/stories_2.mdx",
+          "hash": "3985360638685655922"
+        },
+        {
+          "file": "apps/dcp-guide/src/pages/team.astro",
+          "hash": "15093686050872783488"
+        },
+        {
+          "file": "apps/dcp-guide/src/pages/team/team_1.mdx",
+          "hash": "3034071236638407783"
+        },
+        {
+          "file": "apps/dcp-guide/src/pages/team/team_2.mdx",
+          "hash": "9334936315890047805"
+        },
+        {
+          "file": "apps/dcp-guide/src/pages/tutorial.astro",
+          "hash": "13956002703203930536"
+        },
+        {
+          "file": "apps/dcp-guide/src/pages/tutorial/index.tsx",
+          "hash": "155367788588628898",
+          "deps": [
+            "npm:react",
+            "npm:@abgov/react-components"
+          ]
+        },
+        {
+          "file": "apps/dcp-guide/src/styles/global.css",
+          "hash": "8709884063171193268"
+        },
+        {
+          "file": "apps/dcp-guide/tsconfig.json",
+          "hash": "3449047817311425716"
+        }
+      ],
       "common-capabilities": [
         {
           "file": "apps/common-capabilities/README.md",
@@ -589,50 +1303,6 @@
           "hash": "897880881217798237"
         }
       ],
-      "dcp-proxy-api-int-e2e": [
-        {
-          "file": "apps/dcp-proxy-api-int-e2e/.eslintrc.json",
-          "hash": "14921153827776288937"
-        },
-        {
-          "file": "apps/dcp-proxy-api-int-e2e/jest.config.ts",
-          "hash": "6760272200099554078"
-        },
-        {
-          "file": "apps/dcp-proxy-api-int-e2e/project.json",
-          "hash": "13316072668496171117"
-        },
-        {
-          "file": "apps/dcp-proxy-api-int-e2e/src/digital-marketplace-api/digital-marketplace-api.spec.ts",
-          "hash": "3026045886657059088",
-          "deps": [
-            "npm:axios"
-          ]
-        },
-        {
-          "file": "apps/dcp-proxy-api-int-e2e/src/support/global-setup.ts",
-          "hash": "18221119270488052961"
-        },
-        {
-          "file": "apps/dcp-proxy-api-int-e2e/src/support/global-teardown.ts",
-          "hash": "17927034305001160425"
-        },
-        {
-          "file": "apps/dcp-proxy-api-int-e2e/src/support/test-setup.ts",
-          "hash": "4165311015569872896",
-          "deps": [
-            "npm:axios"
-          ]
-        },
-        {
-          "file": "apps/dcp-proxy-api-int-e2e/tsconfig.json",
-          "hash": "1422418700492434985"
-        },
-        {
-          "file": "apps/dcp-proxy-api-int-e2e/tsconfig.spec.json",
-          "hash": "5623794208198348967"
-        }
-      ],
       "digital-marketplace": [
         {
           "file": "apps/digital-marketplace/astro.config.mjs",
@@ -734,44 +1404,6 @@
         {
           "file": "apps/digital-marketplace/tsconfig.json",
           "hash": "16552852661372573997"
-        }
-      ],
-      "dcp-proxy-api-int": [
-        {
-          "file": "apps/dcp-proxy-api-int/.eslintrc.json",
-          "hash": "14921153827776288937"
-        },
-        {
-          "file": "apps/dcp-proxy-api-int/jest.config.ts",
-          "hash": "8909602463717158047"
-        },
-        {
-          "file": "apps/dcp-proxy-api-int/project.json",
-          "hash": "16195300069899940839"
-        },
-        {
-          "file": "apps/dcp-proxy-api-int/src/assets/.gitkeep",
-          "hash": "3244421341483603138"
-        },
-        {
-          "file": "apps/dcp-proxy-api-int/src/main.ts",
-          "hash": "7850580464770257333",
-          "deps": [
-            "npm:express",
-            "npm:cors"
-          ]
-        },
-        {
-          "file": "apps/dcp-proxy-api-int/tsconfig.app.json",
-          "hash": "6761865598368362404"
-        },
-        {
-          "file": "apps/dcp-proxy-api-int/tsconfig.json",
-          "hash": "7462419380158041776"
-        },
-        {
-          "file": "apps/dcp-proxy-api-int/tsconfig.spec.json",
-          "hash": "11194536110028348959"
         }
       ],
       "digital-playbook": [
@@ -980,646 +1612,6 @@
         {
           "file": "apps/digital-playbook/tsconfig.json",
           "hash": "5252452901398787685"
-        }
-      ],
-      "dcp-guide": [
-        {
-          "file": "apps/dcp-guide/astro.config.mjs",
-          "hash": "15177160314854436408",
-          "deps": [
-            "npm:astro",
-            "npm:@astrojs/mdx",
-            "npm:@astrojs/react"
-          ]
-        },
-        {
-          "file": "apps/dcp-guide/project.json",
-          "hash": "13869161323824896524"
-        },
-        {
-          "file": "apps/dcp-guide/public/favicon.ico",
-          "hash": "2812105842299921059"
-        },
-        {
-          "file": "apps/dcp-guide/public/favicon.svg",
-          "hash": "12424760545971120038"
-        },
-        {
-          "file": "apps/dcp-guide/src/assets/ACO1-2.jpeg",
-          "hash": "946947806378636844"
-        },
-        {
-          "file": "apps/dcp-guide/src/assets/HomeHero.png",
-          "hash": "1147975178509744480"
-        },
-        {
-          "file": "apps/dcp-guide/src/assets/LearnMoreHero.png",
-          "hash": "1173791000371873672"
-        },
-        {
-          "file": "apps/dcp-guide/src/assets/Playbook_about_1.png",
-          "hash": "4816707071271787906"
-        },
-        {
-          "file": "apps/dcp-guide/src/assets/Playbook_about_2.png",
-          "hash": "11580076408041883863"
-        },
-        {
-          "file": "apps/dcp-guide/src/assets/Playbook_about_3.png",
-          "hash": "6040757078406237034"
-        },
-        {
-          "file": "apps/dcp-guide/src/assets/Playbook_about_4.png",
-          "hash": "1562536430158957339"
-        },
-        {
-          "file": "apps/dcp-guide/src/assets/Playbook_about_5.png",
-          "hash": "17226941068156707345"
-        },
-        {
-          "file": "apps/dcp-guide/src/assets/Playbook_about_6.png",
-          "hash": "14470161040625299321"
-        },
-        {
-          "file": "apps/dcp-guide/src/assets/Playbook_about_7.png",
-          "hash": "16898831951469632560"
-        },
-        {
-          "file": "apps/dcp-guide/src/assets/Playbook_about_8.png",
-          "hash": "8104611935544998070"
-        },
-        {
-          "file": "apps/dcp-guide/src/assets/Playbook_about_9.png",
-          "hash": "16902019369441045594"
-        },
-        {
-          "file": "apps/dcp-guide/src/assets/Playbook_about_beta.png",
-          "hash": "11945928817543763900"
-        },
-        {
-          "file": "apps/dcp-guide/src/assets/Playbook_about_discovery.png",
-          "hash": "1084222788951875879"
-        },
-        {
-          "file": "apps/dcp-guide/src/assets/Playbook_about_map.png",
-          "hash": "8877326047826532644"
-        },
-        {
-          "file": "apps/dcp-guide/src/assets/Playbook_home_1.png",
-          "hash": "3104061684063664554"
-        },
-        {
-          "file": "apps/dcp-guide/src/assets/Playbook_home_2.png",
-          "hash": "1982362402940772225"
-        },
-        {
-          "file": "apps/dcp-guide/src/assets/Playbook_stories_1.png",
-          "hash": "5965941874923668427"
-        },
-        {
-          "file": "apps/dcp-guide/src/assets/Playbook_stories_2.jpeg",
-          "hash": "946947806378636844"
-        },
-        {
-          "file": "apps/dcp-guide/src/assets/Playbook_stories_3.jpeg",
-          "hash": "9919192694868511018"
-        },
-        {
-          "file": "apps/dcp-guide/src/assets/Playbook_team_1.png",
-          "hash": "2754241726711665551"
-        },
-        {
-          "file": "apps/dcp-guide/src/assets/Playbook_team_2.png",
-          "hash": "10642311261686858947"
-        },
-        {
-          "file": "apps/dcp-guide/src/assets/Script.png",
-          "hash": "10958399424311468633"
-        },
-        {
-          "file": "apps/dcp-guide/src/assets/StoriesHero.png",
-          "hash": "7576546311345547438"
-        },
-        {
-          "file": "apps/dcp-guide/src/assets/WhatIsHero.png",
-          "hash": "10917164792378909956"
-        },
-        {
-          "file": "apps/dcp-guide/src/assets/WhoIsInvolvedHero.png",
-          "hash": "17417846533912417320"
-        },
-        {
-          "file": "apps/dcp-guide/src/assets/astro.png",
-          "hash": "1916890049967672064"
-        },
-        {
-          "file": "apps/dcp-guide/src/assets/github.png",
-          "hash": "7404635172674467568"
-        },
-        {
-          "file": "apps/dcp-guide/src/components/Card.astro",
-          "hash": "6049995050645675643"
-        },
-        {
-          "file": "apps/dcp-guide/src/components/Footer.astro",
-          "hash": "10788691894719724686",
-          "deps": [
-            "npm:@abgov/react-components"
-          ]
-        },
-        {
-          "file": "apps/dcp-guide/src/components/Header.astro",
-          "hash": "4783682185711426139",
-          "deps": [
-            "npm:@abgov/react-components"
-          ]
-        },
-        {
-          "file": "apps/dcp-guide/src/components/HeroHome.astro",
-          "hash": "791628478313323813"
-        },
-        {
-          "file": "apps/dcp-guide/src/components/HeroImage.astro",
-          "hash": "16990604587582063427",
-          "deps": [
-            "npm:@abgov/react-components"
-          ]
-        },
-        {
-          "file": "apps/dcp-guide/src/components/HomeService.astro",
-          "hash": "6416364318208313900"
-        },
-        {
-          "file": "apps/dcp-guide/src/env.d.ts",
-          "hash": "17949546991706631409"
-        },
-        {
-          "file": "apps/dcp-guide/src/layouts/Layout.astro",
-          "hash": "14231909525727738419",
-          "deps": [
-            "npm:@abgov/web-components"
-          ]
-        },
-        {
-          "file": "apps/dcp-guide/src/layouts/baseLayout.astro",
-          "hash": "1522433444547832584"
-        },
-        {
-          "file": "apps/dcp-guide/src/layouts/defaultGuideLayout.astro",
-          "hash": "11593407306585365478",
-          "deps": [
-            "npm:@abgov/web-components"
-          ]
-        },
-        {
-          "file": "apps/dcp-guide/src/layouts/homeLayout.astro",
-          "hash": "15968605387523177016"
-        },
-        {
-          "file": "apps/dcp-guide/src/layouts/tutorialLayout.astro",
-          "hash": "15968605387523177016"
-        },
-        {
-          "file": "apps/dcp-guide/src/pages/about.astro",
-          "hash": "10896850618430362598"
-        },
-        {
-          "file": "apps/dcp-guide/src/pages/about/about_1.mdx",
-          "hash": "18385520341662478744"
-        },
-        {
-          "file": "apps/dcp-guide/src/pages/about/about_2.mdx",
-          "hash": "1837897448946150391"
-        },
-        {
-          "file": "apps/dcp-guide/src/pages/index.astro",
-          "hash": "16680147237251289203"
-        },
-        {
-          "file": "apps/dcp-guide/src/pages/index/index.tsx",
-          "hash": "8364018490501707138",
-          "deps": [
-            "npm:react",
-            "npm:@abgov/react-components"
-          ]
-        },
-        {
-          "file": "apps/dcp-guide/src/pages/learnMore.astro",
-          "hash": "6160375559861125909"
-        },
-        {
-          "file": "apps/dcp-guide/src/pages/learnMore/learnMore.mdx",
-          "hash": "4146427720495136"
-        },
-        {
-          "file": "apps/dcp-guide/src/pages/stories.astro",
-          "hash": "7329817024666784849"
-        },
-        {
-          "file": "apps/dcp-guide/src/pages/stories/stories_1.mdx",
-          "hash": "6023838573454656328"
-        },
-        {
-          "file": "apps/dcp-guide/src/pages/stories/stories_2.mdx",
-          "hash": "3985360638685655922"
-        },
-        {
-          "file": "apps/dcp-guide/src/pages/team.astro",
-          "hash": "15093686050872783488"
-        },
-        {
-          "file": "apps/dcp-guide/src/pages/team/team_1.mdx",
-          "hash": "3034071236638407783"
-        },
-        {
-          "file": "apps/dcp-guide/src/pages/team/team_2.mdx",
-          "hash": "9334936315890047805"
-        },
-        {
-          "file": "apps/dcp-guide/src/pages/tutorial.astro",
-          "hash": "13956002703203930536"
-        },
-        {
-          "file": "apps/dcp-guide/src/pages/tutorial/index.tsx",
-          "hash": "155367788588628898",
-          "deps": [
-            "npm:react",
-            "npm:@abgov/react-components"
-          ]
-        },
-        {
-          "file": "apps/dcp-guide/src/styles/global.css",
-          "hash": "8709884063171193268"
-        },
-        {
-          "file": "apps/dcp-guide/tsconfig.json",
-          "hash": "3449047817311425716"
-        }
-      ],
-      "digital-marketplace-api-e2e": [
-        {
-          "file": "apps/digital-marketplace-api-e2e/.eslintrc.json",
-          "hash": "14921153827776288937"
-        },
-        {
-          "file": "apps/digital-marketplace-api-e2e/jest.config.ts",
-          "hash": "8137032934928602206"
-        },
-        {
-          "file": "apps/digital-marketplace-api-e2e/project.json",
-          "hash": "566756007996957183"
-        },
-        {
-          "file": "apps/digital-marketplace-api-e2e/src/digital-marketplace-api/digital-marketplace-api.spec.ts",
-          "hash": "3026045886657059088",
-          "deps": [
-            "npm:axios"
-          ]
-        },
-        {
-          "file": "apps/digital-marketplace-api-e2e/src/support/global-setup.ts",
-          "hash": "18221119270488052961"
-        },
-        {
-          "file": "apps/digital-marketplace-api-e2e/src/support/global-teardown.ts",
-          "hash": "17927034305001160425"
-        },
-        {
-          "file": "apps/digital-marketplace-api-e2e/src/support/test-setup.ts",
-          "hash": "4165311015569872896",
-          "deps": [
-            "npm:axios"
-          ]
-        },
-        {
-          "file": "apps/digital-marketplace-api-e2e/tsconfig.json",
-          "hash": "1422418700492434985"
-        },
-        {
-          "file": "apps/digital-marketplace-api-e2e/tsconfig.spec.json",
-          "hash": "5623794208198348967"
-        }
-      ],
-      "digital-standards": [
-        {
-          "file": "apps/digital-standards/astro.config.mjs",
-          "hash": "3590172297314656371",
-          "deps": [
-            "npm:astro",
-            "npm:@astrojs/react",
-            "npm:@astrojs/mdx"
-          ]
-        },
-        {
-          "file": "apps/digital-standards/project.json",
-          "hash": "12794547463247249917"
-        },
-        {
-          "file": "apps/digital-standards/public/favicon.ico",
-          "hash": "2812105842299921059"
-        },
-        {
-          "file": "apps/digital-standards/src/components/BackToTop.tsx",
-          "hash": "4926517911146956748",
-          "deps": [
-            "npm:@abgov/react-components-4.20.2",
-            "npm:react"
-          ]
-        },
-        {
-          "file": "apps/digital-standards/src/components/ExternalLink/index.tsx",
-          "hash": "12026659674276509566",
-          "deps": [
-            "npm:@abgov/react-components-4.20.2",
-            "npm:react"
-          ]
-        },
-        {
-          "file": "apps/digital-standards/src/components/ExternalLink/styles.css",
-          "hash": "8109524059464827697"
-        },
-        {
-          "file": "apps/digital-standards/src/components/Footer.tsx",
-          "hash": "10333195279335601077",
-          "deps": [
-            "npm:react",
-            "npm:@abgov/react-components-4.20.2"
-          ]
-        },
-        {
-          "file": "apps/digital-standards/src/components/Header.tsx",
-          "hash": "17598734163871041337",
-          "deps": [
-            "npm:react",
-            "npm:@abgov/react-components-4.20.2"
-          ]
-        },
-        {
-          "file": "apps/digital-standards/src/env.d.ts",
-          "hash": "102372912030843394"
-        },
-        {
-          "file": "apps/digital-standards/src/layouts/Layout.astro",
-          "hash": "4726561880145720204",
-          "deps": [
-            "npm:@abgov/design-tokens",
-            "npm:@abgov/web-components-1.20.3"
-          ]
-        },
-        {
-          "file": "apps/digital-standards/src/layouts/Layout/index.tsx",
-          "hash": "3218199793300091689",
-          "deps": [
-            "npm:react",
-            "npm:@abgov/react-components-4.20.2"
-          ]
-        },
-        {
-          "file": "apps/digital-standards/src/pages/index.astro",
-          "hash": "11193221264521149037"
-        },
-        {
-          "file": "apps/digital-standards/src/pages/landing/index.tsx",
-          "hash": "2986096499170742016",
-          "deps": [
-            "npm:@abgov/react-components-4.20.2",
-            "npm:react"
-          ]
-        },
-        {
-          "file": "apps/digital-standards/src/pages/landing/styles.css",
-          "hash": "9461241420375673741"
-        },
-        {
-          "file": "apps/digital-standards/src/pages/search.astro",
-          "hash": "18223491801672154871",
-          "deps": [
-            "dcp-common",
-            "npm:@abgov/react-components-4.20.2"
-          ]
-        },
-        {
-          "file": "apps/digital-standards/src/pages/service-assessments.astro",
-          "hash": "5519680189410967525"
-        },
-        {
-          "file": "apps/digital-standards/src/pages/service-assessments/index.tsx",
-          "hash": "15923084829232635754",
-          "deps": [
-            "npm:@abgov/react-components-4.20.2",
-            "npm:react"
-          ]
-        },
-        {
-          "file": "apps/digital-standards/src/pages/service-glossary/config.ts",
-          "hash": "4040712970777593629"
-        },
-        {
-          "file": "apps/digital-standards/src/pages/service-glossary/index.tsx",
-          "hash": "9560793180822036761",
-          "deps": [
-            "npm:@abgov/react-components-4.20.2",
-            "npm:react"
-          ]
-        },
-        {
-          "file": "apps/digital-standards/src/pages/service-glossary/styles.css",
-          "hash": "11203769089258611933"
-        },
-        {
-          "file": "apps/digital-standards/src/pages/service-help.astro",
-          "hash": "4676216413128682747"
-        },
-        {
-          "file": "apps/digital-standards/src/pages/service-help/index.tsx",
-          "hash": "10065356399768904371",
-          "deps": [
-            "npm:@abgov/react-components-4.20.2",
-            "npm:react"
-          ]
-        },
-        {
-          "file": "apps/digital-standards/src/pages/service-performance.astro",
-          "hash": "3159868893022375207"
-        },
-        {
-          "file": "apps/digital-standards/src/pages/service-performance/index.tsx",
-          "hash": "246547500404352860",
-          "deps": [
-            "npm:@abgov/react-components-4.20.2",
-            "npm:react"
-          ]
-        },
-        {
-          "file": "apps/digital-standards/src/pages/service-principles.astro",
-          "hash": "3531423101840758947"
-        },
-        {
-          "file": "apps/digital-standards/src/pages/service-principles/index.tsx",
-          "hash": "1579825752321318934",
-          "deps": [
-            "npm:@abgov/react-components-4.20.2",
-            "npm:react"
-          ]
-        },
-        {
-          "file": "apps/digital-standards/src/pages/service-standards.astro",
-          "hash": "7445482518472825904"
-        },
-        {
-          "file": "apps/digital-standards/src/pages/service-standards/index.tsx",
-          "hash": "604074847423466469",
-          "deps": [
-            "npm:@abgov/react-components-4.20.2",
-            "npm:react"
-          ]
-        },
-        {
-          "file": "apps/digital-standards/tsconfig.json",
-          "hash": "16552852661372573997"
-        },
-        {
-          "file": "apps/digital-standards/src/pages/service-glossary.astro",
-          "hash": "14375307509332528332"
-        }
-      ],
-      "dcp-common": [
-        {
-          "file": "libs/dcp-common/README.md",
-          "hash": "18100490124476826190"
-        },
-        {
-          "file": "libs/dcp-common/project.json",
-          "hash": "10957496814618270990"
-        },
-        {
-          "file": "libs/dcp-common/src/env.d.ts",
-          "hash": "17949546991706631409"
-        },
-        {
-          "file": "libs/dcp-common/src/index.js",
-          "hash": "6003743894156881857"
-        },
-        {
-          "file": "libs/dcp-common/src/lib/DcpCommon.astro",
-          "hash": "16015459477108500850"
-        },
-        {
-          "file": "libs/dcp-common/src/lib/components/Footer.astro",
-          "hash": "9952465420274518873",
-          "deps": [
-            "npm:@abgov/react-components"
-          ]
-        },
-        {
-          "file": "libs/dcp-common/src/lib/components/Header.astro",
-          "hash": "15134764439488417515",
-          "deps": [
-            "npm:@abgov/react-components"
-          ]
-        },
-        {
-          "file": "libs/dcp-common/src/lib/components/Search.astro",
-          "hash": "7938155499976741697",
-          "deps": [
-            "npm:@abgov/design-tokens",
-            "npm:@abgov/web-components-1.20.3"
-          ]
-        },
-        {
-          "file": "libs/dcp-common/src/lib/layouts/DefaultMicrositeLayout.astro",
-          "hash": "16873809127553623353",
-          "deps": [
-            "npm:@abgov/web-components"
-          ]
-        },
-        {
-          "file": "libs/dcp-common/src/styles/global.css",
-          "hash": "8574089990118340052"
-        },
-        {
-          "file": "libs/dcp-common/tsconfig.json",
-          "hash": "5252452901398787685"
-        }
-      ],
-      "digital-marketplace-api": [
-        {
-          "file": "apps/digital-marketplace-api/.eslintrc.json",
-          "hash": "14921153827776288937"
-        },
-        {
-          "file": "apps/digital-marketplace-api/jest.config.ts",
-          "hash": "2666276772848086248"
-        },
-        {
-          "file": "apps/digital-marketplace-api/project.json",
-          "hash": "13521550247848761174"
-        },
-        {
-          "file": "apps/digital-marketplace-api/src/access/configure.ts",
-          "hash": "3536773880213727315",
-          "deps": [
-            "npm:@abgov/adsp-service-sdk",
-            "npm:express",
-            "npm:passport",
-            "npm:passport-anonymous"
-          ]
-        },
-        {
-          "file": "apps/digital-marketplace-api/src/assets/.gitkeep",
-          "hash": "3244421341483603138"
-        },
-        {
-          "file": "apps/digital-marketplace-api/src/environments/environment.ts",
-          "hash": "2556951174130468234",
-          "deps": [
-            "npm:dotenv",
-            "npm:envalid",
-            "npm:util"
-          ]
-        },
-        {
-          "file": "apps/digital-marketplace-api/src/main.ts",
-          "hash": "6989784053258114313",
-          "deps": [
-            "npm:express",
-            "npm:cors",
-            "npm:@abgov/adsp-service-sdk",
-            "npm:helmet",
-            "npm:passport",
-            "npm:compression"
-          ]
-        },
-        {
-          "file": "apps/digital-marketplace-api/src/routes/forms/index.ts",
-          "hash": "14985498886477079475",
-          "deps": [
-            "npm:@abgov/adsp-service-sdk",
-            "npm:express",
-            "npm:winston"
-          ]
-        },
-        {
-          "file": "apps/digital-marketplace-api/src/routes/forms/router.ts",
-          "hash": "11467353910302943846",
-          "deps": [
-            "npm:@abgov/adsp-service-sdk",
-            "npm:express",
-            "npm:winston",
-            "npm:axios"
-          ]
-        },
-        {
-          "file": "apps/digital-marketplace-api/tsconfig.app.json",
-          "hash": "6761865598368362404"
-        },
-        {
-          "file": "apps/digital-marketplace-api/tsconfig.json",
-          "hash": "7462419380158041776"
-        },
-        {
-          "file": "apps/digital-marketplace-api/tsconfig.spec.json",
-          "hash": "11194536110028348959"
         }
       ]
     }
