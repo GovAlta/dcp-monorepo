@@ -273,22 +273,12 @@ async function submitForm(formName) {
       });
       // otherReplacement(jsonData);
 
-      const simulate = jsonData['simulatePost'];
-      const failCaptcha = jsonData['failCaptcha'];
-      const failPost = jsonData['failPost'];
-      delete jsonData['simulatePost'];
-      delete jsonData['failCaptcha'];
-      delete jsonData['failPost'];
-
       const { getCaptchaSiteKey } = await import('./domain_exports.js');
       const siteKey = getCaptchaSiteKey();
 
       const recaptcha = await new Promise((resolve, reject) => {
         window.grecaptcha.ready(async () => {
-          try {
-            if (failCaptcha) {
-              throw new Error('captcha fail test');
-            }
+          try {            
             const token = await window.grecaptcha.execute(siteKey, {
               action: 'submit',
             });
@@ -305,13 +295,9 @@ async function submitForm(formName) {
       buttonSubmit.disabled = true;
       buttonSubmit.innerText = 'Submitting...';
 
-      // #region : Post
-      if (simulate) {
-        console.log('Simulated: Will not be saved and no email notice');
-      }
-      const response = simulate
-        ? await simulatePost(!failPost)
-        : await axios.post(`${formPostUrl()}${formName}`, jsonData, {
+      // #region : Post     
+      // const response = await simulatePost(jsonData['agreement']);
+      const response = await axios.post(`${formPostUrl()}${formName}`, jsonData, {
             headers: { 'Content-Type': 'application/json' },
           });
 
