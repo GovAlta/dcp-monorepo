@@ -1,4 +1,4 @@
-function domanin() {
+export function domain() {
   switch (window.location.hostname.toLowerCase()) {
     case 'digitalmarketplace.alberta.ca':
     case 'digital-marketplace-dcp-prod.apps.aro.gov.ab.ca':
@@ -15,7 +15,7 @@ function domanin() {
 }
 
 export function getFeedbackUrl() {
-  if (domanin() == 'PROD') {
+  if (domain() == 'PROD') {
     return 'https://feedback-service.adsp.alberta.ca/feedback/v1/script/adspFeedback.js';
   } else {
     return 'https://feedback-service.adsp-uat.alberta.ca/feedback/v1/script/adspFeedback.js';
@@ -23,7 +23,7 @@ export function getFeedbackUrl() {
 }
 
 export function getGoogle() {
-  switch (domanin()) {
+  switch (domain()) {
     case 'PROD':
       return 'G-95TDFJFW58';
     case 'UAT':
@@ -34,7 +34,7 @@ export function getGoogle() {
 }
 
 export function getCaptchaSiteKey() {
-  switch (domanin()) {
+  switch (domain()) {
     case 'PROD':
       return '6LcudEgqAAAAAL01WTH7rW8TEwCbfV_6YUttrudr';
     case 'UAT':

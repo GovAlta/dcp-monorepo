@@ -110,6 +110,14 @@ import BaseLayout from '../layouts/layout.astro';
                             <form id="user-form">
                                 <fieldset>
                                     
+                                    <div id="UatDiv" class="goa-option" style='display:none; border:1px solid navy; padding:5px'>
+                                        
+                                        <input id="failCaptcha" name="failCaptcha" value="captcha" type="checkbox"><label for="failCaptcha">captcha failure</label>
+                                        <input id="simulatePost" name="simulatePost" value="live" type="checkbox"><label for="simulatePost">Simulate Post</label>
+                                        <input id="failPost" name="failPost" value="post" type="checkbox"><label for="failPost">Post failure (if simulated) </label>
+                                        Note, this testing options will NOT be visible in production.
+                                    </div>
+
                                     <div class="goa-field goa-org goa--required">
                                         <label for="org-name">Organization name <span class="required">*</span></label>
                                         <input id="org-name" name="org-name" type="text" value="" required="required" aria-required="true">
@@ -182,4 +190,9 @@ import BaseLayout from '../layouts/layout.astro';
       document.getElementById('sign-up-form').style.display = 'block';               
     });
 
+</script>
+
+<script type="module">
+    import { domain } from '/domain_exports.js';
+    document.getElementById('UatDiv').style.display = domain() == 'PROD'? 'none':'block';
 </script>
