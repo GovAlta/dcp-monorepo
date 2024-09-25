@@ -96,7 +96,9 @@ function getFormDataArray() {
         sameFieldcount = 1;
 
         if (lastInput.type == 'checkbox' && lastInput.value != null) {
-          checkboxValues.push(lastInput.value);
+          if (lastInput.nameCount > 1) {
+            checkboxValues.push(lastInput.value);
+          }
         }
         if (checkboxValues.length != 0) {
           lastInput.value = checkboxValues;
@@ -220,101 +222,16 @@ inputs.forEach((input) => {
   });
 });
 
-async function submitForm(formName) {
-  try {
-    let isOk = true;
-
-    const dataArray = getFormDataArray();
-    //console.log('dataArray',dataArray);
-
-    isOk = setErrorMessage(
-      dataArray.filter((item) => item.isValid),
-      isOk
-    );
-    isOk = setErrorMessage(
-      dataArray.filter((item) => !item.isValid),
-      isOk
-    );
-
-    //---- Replace the orig field with the "other" value --------   PUT THIS BACK IN  *************************
-    // if (otherRadioList != undefined) {
-    //   otherRadioList.forEach(function (item) {
-    //     if (jsonData[item] == 'other') {
-    //       jsonData[item] = jsonData[item + '-other'];
-    //     }
-    //     delete jsonData[item + '-other'];
-    //   });
-    // }
-
-    if (isOk) {
-      var jsonData = {};
-      dataArray.forEach((input) => {
-        if (input.value != null) {
-          jsonData[input.name] = input.value;
-        }
-      });
-      const { getCaptchaSiteKey } = await import('./domain_exports.js');
-      const siteKey = getCaptchaSiteKey();
-      if (window.grecaptcha) {
-        window.grecaptcha.ready(async () => {
-          const recaptcha = await window.grecaptcha.execute(siteKey, {
-            action: 'submit',
-          });
-          jsonData['token'] = recaptcha;
-          var buttonSubmit = document.getElementById('buttonSubmit');
-          buttonSubmit.disabled = true;
-          buttonSubmit.innerText = 'Submitting...';
-    
-          //----[ post ]------
-          // console.log('simulatePost');
-          // const response = await simulatePost(jsonData['agreement']); // Await the response here
-
-          const response = await axios.post(`${formPostUrl()}${formName}`,
-            jsonData, { headers: { 'Content-Type': 'application/json' } }
-          );
-          //----[ end post ]------
-
-          if (response.statusText != 'OK') {
-            console.log(response);
-            throw new Error(`Server error: ${response.errorMessage}`);
-          }
-
-          document.getElementById('successDiv').style.display = 'block';
-          document.getElementById('sign-up-form').style.display = 'none';
-
-          //----[ clear inputs ]------
-          var elements = document.getElementsByTagName('input');
-          for (var ii = 0; ii < elements.length; ii++) {
-            if (['text', 'email', 'url'].includes(elements[ii].type)) {
-              elements[ii].value = '';
-            }
-            if (elements[ii].type == 'radio') {
-              elements[ii].checked = false;
-            }
-            if (elements[ii].type == 'checkbox') {
-              elements[ii].checked = false;
-            }
-          }
-        });
-      } else {
-        console.log(recaptcha);
-        throw new Error(`captcha error`);
-      }
-    } else {
-      document.getElementById('responseMessage').className = 'responseError';
-      document.getElementById('responseMessage').textContent =
-        'Please review your inputs';
-    }
-  } catch (error) {
-    document.getElementById('responseMessage').classList.add('responseError');
-    document.getElementById(
-      'responseMessage'
-    ).innerText = `Unable to submit: ${error.message}`;
-    buttonSubmit.innerText = 'Submit error';
-  }
-
-  buttonSubmit.disabled = false;
-  buttonSubmit.innerText = 'Submit form';
+function otherReplacement(jsonData) {
+  //---- Replace the orig field with the "other" value --- code needs updating
+  // if (otherRadioList != undefined) {
+  //   otherRadioList.forEach(function (item) {
+  //     if (jsonData[item] == 'other') {
+  //       jsonData[item] = jsonData[item + '-other'];
+  //     }
+  //     delete jsonData[item + '-other'];
+  //   });
+  // }
 }
 
 function simulatePost(isOk) {
@@ -325,10 +242,82 @@ function simulatePost(isOk) {
       const response = new Response(null, {
         status: statusCode,
         statusText: statusText,
-        error:
-          statusCode !== 200 ? { message: `${statusText} occurred!` } : null,
+        error: statusCode !== 200 ? { message: `${statusText} occurred!` } : null,
+        errorMessage: statusCode !== 200 ? `${statusText} occurred!`: null,
       });
       resolve(response);
-    }, 2500); // 2.5 second delay
+    }, 2000); // 2 second delay
   });
+}
+//==========================================================
+async function submitForm(formName) {
+  try {
+    let isOk = true;
+    const dataArray = getFormDataArray();
+
+    isOk = setErrorMessage(
+      dataArray.filter((item) => item.isValid),
+      isOk
+    );
+    isOk = setErrorMessage(
+      dataArray.filter((item) => !item.isValid),
+      isOk
+    );
+ 
+    if (isOk) {
+      var jsonData = {};
+      dataArray.forEach((input) => {
+        if (input.value != null) {
+          jsonData[input.name] = input.value;
+        }
+      });
+      // otherReplacement(jsonData);
+
+      const { getCaptchaSiteKey } = await import('./domain_exports.js');
+      const siteKey = getCaptchaSiteKey();
+
+      const recaptcha = await new Promise((resolve, reject) => {
+        window.grecaptcha.ready(async () => {
+          try {            
+            const token = await window.grecaptcha.execute(siteKey, {
+              action: 'submit',
+            });
+            resolve(token); // Resolve the promise with the recaptcha token
+          } catch (error) {
+            reject(new Error(`Recaptcha error: ${error.message}`)); // Reject the promise with an error
+          }
+        });
+      });
+
+      jsonData['token'] = recaptcha;
+
+      var buttonSubmit = document.getElementById('buttonSubmit');
+      buttonSubmit.disabled = true;
+      buttonSubmit.innerText = 'Submitting...';
+
+      // #region : Post     
+      // const response = await simulatePost(jsonData['agreement']);
+      const response = await axios.post(`${formPostUrl()}${formName}`, jsonData, {
+            headers: { 'Content-Type': 'application/json' },
+          });
+
+      if (response.statusText !== 'OK') {
+        console.log(response);
+        throw new Error(`Post server error: ${response.errorMessage}`);
+      }
+      // #endregion : post
+      document.getElementById('successDiv').style.display = 'block';
+      document.getElementById('sign-up-form').style.display = 'none';
+
+    } else { // !Ok
+      document.getElementById('responseMessage').className = 'responseError';
+      document.getElementById('responseMessage').textContent = 'Please review your inputs';
+    }
+  } catch (error) {
+    document.getElementById('responseMessage').classList.add('responseError');
+    document.getElementById('responseMessage').innerText = `Unable to submit: ${error.message}`;   
+  }
+  var buttonSubmit = document.getElementById('buttonSubmit');
+  buttonSubmit.disabled = false;
+  buttonSubmit.innerText = 'Submit form';
 }
