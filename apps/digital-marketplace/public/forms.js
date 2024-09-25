@@ -7,27 +7,31 @@ const validation = [
     rule: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
     failed: 'Please enter a valid email',
   },
-  // {field: 'email',     rule: /@gov/,   failed: 'must me a gov email'},  <=== example of another rule on the same input
+  // {field: 'email', mustFail: true, rule: /@gov/, failed: 'must not be a gov email'},  <=== example of another rule on the same input
   {
     field: 'org-name',
     rule: /^[a-zA-Z0-9&.,' -]{2,100}$/,
-    failed: 'Please do not use any special characters.',
+    failed: 'Please enter between 2 and 100 characters and without any special characters.',
   },
   {
     field: 'first-name',
     rule: /^[a-zA-ZÀ-ÖØ-öø-ÿ' -]{2,50}$/,
-    failed: 'Please do not use any special characters.',
+    failed: 'Please enter between 2 and 50 characters and without any special characters.',
   },
   {
     field: 'last-name',
     rule: /^[a-zA-ZÀ-ÖØ-öø-ÿ' -]{2,50}$/,
-    failed: 'Please do not use any special characters.',
+    failed: 'Please enter between 2 and 50 characters and without any special characters.',
   },
-
+  {
+    field: 'website',   
+    rule: /^(https?:\/\/)?([a-zA-Z0-9_-]+\.)?[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})(\/[a-zA-Z0-9#_-]*)*(\?[a-zA-Z0-9=&_%-]*)?(#\S*)?$/,
+    failed: 'Please check your website address.',
+  },
   {
     field: 'website',
-    rule: /^(https?:\/\/)?([a-zA-Z0-9_-]+\.)?[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})(\/[a-zA-Z0-9#_-]*)*(\?[a-zA-Z0-9=&_%-]*)?(#\S*)?$/,
-    failed: 'Please check your website address',
+    rule: /^(https?:\/\/)/,    
+    failed: 'Must include http:// or https://',
   },
 ];
 
@@ -37,7 +41,7 @@ function getValidationInfo(fieldName) {
 
   let ruleArray = [];
   matchingFields.forEach((x) => {
-    let item2 = { regEx: x.rule, failed: x.failed };
+    let item2 = { regEx: x.rule, failed: x.failed, mustFail: x.mustFail == undefined ? false : x.mustFail };
     ruleArray.push(item2);
   });
   return ruleArray == [] ? null : ruleArray;
@@ -113,7 +117,7 @@ function getFormDataArray() {
   });
 
   if (checkboxValues.length != 0) {
-    // deal with if last was a checkbox...
+    // if last was a checkbox group...
     lastInput.value = checkboxValues;
   } else if (lastInput.type == 'checkbox' && lastInput.nameCount == 1) {
     lastInput.value = lastInput.checked;
@@ -128,18 +132,17 @@ function getFormDataArray() {
     } else if (item.check != null && item.value != null) {
       item.isValid = true;
       item.check.forEach((c) => {
+        // c.mustFail not accounted for yet
+        //if (item.isValid && !c.regEx.test(item.value)) { // Stops at first failure
         if (!c.regEx.test(item.value)) {
-          item.errorMsg = c.failed;
-          item.isValid = false;
-        } else {
-          item.isValid = true;
+          item.errorMsg = (item.errorMsg == undefined? "": item.errorMsg + " ") + c.failed;
+          item.isValid = false;          
         }
       });
     } else {
       item.isValid = true;
     }
   });
-  //    console.log(allFields);
   return allFields;
 }
 
@@ -296,7 +299,10 @@ async function submitForm(formName) {
       buttonSubmit.innerText = 'Submitting...';
 
       // #region : Post     
-      // const response = await simulatePost(jsonData['agreement']);
+      // console.log(`${formPostUrl()}${formName}`);
+      // console.log('jsonData', jsonData);
+      //const response = await simulatePost(jsonData['agreement']);
+            
       const response = await axios.post(`${formPostUrl()}${formName}`, jsonData, {
             headers: { 'Content-Type': 'application/json' },
           });
