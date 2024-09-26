@@ -53,6 +53,7 @@ function testInput(checkArray, fldValue,fldErrorMsg) {
       fldErrorMsg = (fldErrorMsg == undefined? "": fldErrorMsg + " ") + c.failed;
       isThisValid = false;
     }
+
   });
   return { message:fldErrorMsg, isValid: isThisValid };
 }
@@ -190,7 +191,6 @@ function getFormDataArray() {
     } 
   });
   // #endregion
-  
   return allFields;
 }
 
@@ -306,7 +306,7 @@ async function submitForm(formName) {
       // #region : Post     
       // console.log(`${formPostUrl()}${formName}`);
       // console.log('jsonData', jsonData);
-     // const response = await simulatePost(jsonData['agreement']);
+      // const response = await simulatePost(jsonData['agreement']);
             
       const response = await axios.post(`${formPostUrl()}${formName}`, jsonData, {
             headers: { 'Content-Type': 'application/json' },
