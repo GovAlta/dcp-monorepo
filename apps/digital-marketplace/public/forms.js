@@ -306,11 +306,11 @@ async function submitForm(formName) {
       // #region : Post     
       // console.log(`${formPostUrl()}${formName}`);
       // console.log('jsonData', jsonData);
-      const response = await simulatePost(jsonData['agreement']);
+     // const response = await simulatePost(jsonData['agreement']);
             
-      // const response = await axios.post(`${formPostUrl()}${formName}`, jsonData, {
-      //       headers: { 'Content-Type': 'application/json' },
-      //     });
+      const response = await axios.post(`${formPostUrl()}${formName}`, jsonData, {
+            headers: { 'Content-Type': 'application/json' },
+          });
 
       if (response.statusText !== 'OK') {
         console.log(response);
