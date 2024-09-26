@@ -1,51 +1,103 @@
 // to be used in suppliers and partners
 // This will create a JSON file as text values. Exception of "checkBoxes" groups will have the value as an array
 
-const validation = [
-  {
-    field: 'email',
-    rule: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-    failed: 'Please enter a valid email',
-  },
-  // {field: 'email', mustFail: true, rule: /@gov/, failed: 'must not be a gov email'},  <=== example of another rule on the same input
-  {
-    field: 'org-name',
-    rule: /^[a-zA-Z0-9&.,' -]{2,100}$/,
-    failed: 'Please enter between 2 and 100 characters and without any special characters.',
-  },
-  {
-    field: 'first-name',
-    rule: /^[a-zA-ZÀ-ÖØ-öø-ÿ' -]{2,50}$/,
-    failed: 'Please enter between 2 and 50 characters and without any special characters.',
-  },
-  {
-    field: 'last-name',
-    rule: /^[a-zA-ZÀ-ÖØ-öø-ÿ' -]{2,50}$/,
-    failed: 'Please enter between 2 and 50 characters and without any special characters.',
-  },
-  {
-    field: 'website',   
-    rule: /^(https?:\/\/)?([a-zA-Z0-9_-]+\.)?[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})(\/[a-zA-Z0-9#_-]*)*(\?[a-zA-Z0-9=&_%-]*)?(#\S*)?$/,
-    failed: 'Please check your website address.',
-  },
-  {
-    field: 'website',
-    rule: /^(https?:\/\/)/,    
-    failed: 'Must include http:// or https://',
-  },
-];
+const validationCheck = {
+  email: [
+    {
+      regEx: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+      failed: 'Please enter a valid email',
+    },
+  ],
+  'org-name': [
+    {
+      regEx: /^[a-zA-Z0-9&.,' -]+$/, failed: "Name should use letters, numbers, spaces or &'.,- ",
+    },
+    {
+      regEx: /^(.){2,100}$/, failed: 'Must be between 2 and 100 characters long.',
+    },
+  ],
+  'first-name': [
+    {
+      regEx: /^[a-zA-ZÀ-ÖØ-öø-ÿ' -]+$/, failed: 'First name should use letters, spaces, dash or apostrophe.',
+    },
+    {
+      regEx: /^(.){2,40}$/, failed: 'Must be between 2 and 40 characters long.',
+    },
+  ],
+  'last-name': [
+    {
+      regEx: /^[a-zA-ZÀ-ÖØ-öø-ÿ' -]+$/, failed: 'Last name should use letters, spaces, dash or apostrophe.',
+    },
+    {
+      regEx: /^(.){2,60}$/, failed: 'Must be between 2 and 60 characters long.',
+    },
+  ],
+  website: [
+    {
+      regEx: /^(https?:\/\/)?([a-zA-Z0-9_-]+\.)?[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})(\/[a-zA-Z0-9#_-]*)*(\?[a-zA-Z0-9=&_%-]*)?(#\S*)?$/,
+      failed: 'Please check your website address.',
+    },
+    { regEx: /^(https?:\/\/)/, failed: 'Must include http:// or https://' },
+  ],
+};
 
-function getValidationInfo(fieldName) {
-  const matchingFields = validation.filter((item) => item.field === fieldName);
-  if (matchingFields.length == 0) return null;
+function testInput(checkArray, fldValue,fldErrorMsg) {
+  if (checkArray == undefined || fldValue.length == 0) {
+    return { message:'', isValid: true };
+  }
+  let isThisValid = true;  
+  checkArray.forEach((c) => {
+    // c.mustFail not accounted for yet
+    //if (item.isValid && !c.regEx.test(item.value)) { // Stops at first failure
+    if (!c.regEx.test(fldValue)) {
+      fldErrorMsg = (fldErrorMsg == undefined? "": fldErrorMsg + " ") + c.failed;
+      isThisValid = false;
+    }
 
-  let ruleArray = [];
-  matchingFields.forEach((x) => {
-    let item2 = { regEx: x.rule, failed: x.failed, mustFail: x.mustFail == undefined ? false : x.mustFail };
-    ruleArray.push(item2);
   });
-  return ruleArray == [] ? null : ruleArray;
+  return { message:fldErrorMsg, isValid: isThisValid };
 }
+
+function validateInput(fld) {
+  testResult = testInput(validationCheck[fld.name], fld.value,''); 
+  showErrorMessage(fld.name, testResult.isValid, testResult.message );
+  document.getElementById('responseMessage').innerText = '';   
+}
+
+function showErrorMessage(inputName, isValid, errorMessage ) {
+  let fldOk = true
+  var inputElement = document.getElementById(inputName);
+  if (inputElement == null)
+    inputElement = document.getElementsByName(inputName)[0];
+
+  var strong = document.getElementById(`${inputName}-error`);  
+
+  if (isValid) {
+    inputElement.className = 'goa-field';
+    if (strong != null) {
+      strong.style.display = 'none';
+    }
+  } else {
+    fldOk = false;
+    inputElement.classList.add('inputError');
+    if (strong != null) {
+      if (errorMessage != '') {
+        strong.innerText = errorMessage;
+      }
+      strong.style.display = 'block';
+    }
+  }
+  return fldOk;
+}
+
+function setErrorMessages(data, ok) {  
+  data.forEach((input) => {
+    ok &= showErrorMessage(input.name,input.isValid, input.errorMsg);
+  });
+  return ok;
+}
+
+
 
 function getValue(type, orig, ck) {
   switch (type) {
@@ -62,6 +114,7 @@ function getFormDataArray() {
   let inputs = document.querySelectorAll('#user-form input');
   //console.log(inputs);
 
+  // #region : Build dataArray (include collecting checkboxes)
   let allFields = [];
   let checkboxValues = [];
   let sameFieldcount = 1;
@@ -73,10 +126,7 @@ function getFormDataArray() {
       required: o.required,
       checked: o.checked,
       nameCount: 1,
-      type: o.type,
-      check: ['radio', 'checkbox'].includes(o.type)
-        ? null
-        : getValidationInfo(o.name),
+      type: o.type      
     };
 
     if (currentInput.name == lastInput.name) {
@@ -123,26 +173,24 @@ function getFormDataArray() {
     lastInput.value = lastInput.checked;
   }
   allFields.push(lastInput);
+  // #endregion
 
-  //---------[ Do validity checks ]-------------
-  allFields.forEach((item) => {
-    if (item.required && item.value == null) {
-      item.isValid = false;
-      item.errorMsg = ''; //'This is required';
-    } else if (item.check != null && item.value != null) {
-      item.isValid = true;
-      item.check.forEach((c) => {
-        // c.mustFail not accounted for yet
-        //if (item.isValid && !c.regEx.test(item.value)) { // Stops at first failure
-        if (!c.regEx.test(item.value)) {
-          item.errorMsg = (item.errorMsg == undefined? "": item.errorMsg + " ") + c.failed;
-          item.isValid = false;          
-        }
-      });
-    } else {
-      item.isValid = true;
-    }
+
+  // #region : [ Validity checks ]
+  allFields.forEach((fld) => {
+
+    fld.isValid = true;
+    if (fld.required && fld.value == null) {
+      fld.isValid = false;
+      fld.errorMsg = ''; //'This is required';
+    } else if (fld.check != null && fld.value != null) {
+
+      let testResult = testInput(fld.check, fld.value, fld.errorMsg );
+      fld.errorMsg = testResult.message;
+      fld.isValid = testResult.isValid;
+    } 
   });
+  // #endregion
   return allFields;
 }
 
@@ -177,52 +225,15 @@ function showOther(fld) {
   }
 }
 
-function getStrong(fld) {
-  var sibling = fld.nextElementSibling;
-  while (sibling != undefined) {
-    if (sibling.tagName === 'STRONG') {
-      return sibling;
-    }
-    sibling = sibling.nextElementSibling;
-  }
-  return null;
-}
-
-function setErrorMessage(data, ok) {
-  data.forEach((input) => {
-    var inputElement = document.getElementById(input.name);
-    if (inputElement == null)
-      inputElement = document.getElementsByName(input.name)[0];
-
-    var strong = getStrong(inputElement);
-    if (strong == null) strong = getStrong(inputElement.parentElement);
-
-    if (input.isValid) {
-      inputElement.className = 'goa-field';
-      if (strong != null) {
-        strong.style.display = 'none';
-      }
-    } else {
-      ok = false;
-      inputElement.classList.add('inputError');
-      if (strong != null) {
-        if (input.errorMsg != '') {
-          strong.innerText = input.errorMsg;
-        }
-        strong.style.display = 'block';
-      }
-    }
-  });
-  return ok;
-}
-
 const inputs = document.querySelectorAll('input');
-
 // Add an input event listener to each input field
 inputs.forEach((input) => {
   input.addEventListener('input', function () {
     this.classList.remove('error-visible');
   });
+  input.addEventListener('blur', function() {
+    validateInput(this);
+  });  
 });
 
 function otherReplacement(jsonData) {
@@ -258,14 +269,8 @@ async function submitForm(formName) {
     let isOk = true;
     const dataArray = getFormDataArray();
 
-    isOk = setErrorMessage(
-      dataArray.filter((item) => item.isValid),
-      isOk
-    );
-    isOk = setErrorMessage(
-      dataArray.filter((item) => !item.isValid),
-      isOk
-    );
+    isOk = setErrorMessages( dataArray.filter((item) => item.isValid),  isOk );
+    isOk = setErrorMessages( dataArray.filter((item) => !item.isValid), isOk );
  
     if (isOk) {
       var jsonData = {};
@@ -301,7 +306,7 @@ async function submitForm(formName) {
       // #region : Post     
       // console.log(`${formPostUrl()}${formName}`);
       // console.log('jsonData', jsonData);
-      //const response = await simulatePost(jsonData['agreement']);
+      // const response = await simulatePost(jsonData['agreement']);
             
       const response = await axios.post(`${formPostUrl()}${formName}`, jsonData, {
             headers: { 'Content-Type': 'application/json' },
