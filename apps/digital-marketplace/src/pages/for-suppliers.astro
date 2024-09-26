@@ -113,13 +113,13 @@ import BaseLayout from '../layouts/layout.astro';
                                     <div class="goa-field goa-org goa--required">
                                         <label for="org-name">Organization name <span class="required">*</span></label>
                                         <input id="org-name" name="org-name" type="text" value="" required="required" aria-required="true">
-                                        <strong class="error form-item--error-message">Enter your organization name</strong>
+                                        <strong id="org-name-error" class="error form-item--error-message">Enter your organization name</strong>
                                     </div>
 
                                     <div class="goa-field goa-email goa--required">
                                         <label for="email">Work email <span class="required">*</span></label>
                                         <input id="email" name="email" type="email" value="" required="required" aria-required="true">
-                                        <strong class="error form-item--error-message">Enter in a valid email</strong>
+                                        <strong id="email-error" class="error form-item--error-message">Enter in a valid email</strong>
                                     </div>
 
                                     <div class="goa-field goa-name goa--required">
@@ -127,14 +127,15 @@ import BaseLayout from '../layouts/layout.astro';
                                         <div class="goa-field-name-container">
                                             <input id="first-name" name="first-name" type="text" value="" required="required" aria-required="true" placeholder="First name">
                                             <input id="last-name" name="last-name" type="text" value="" required="required" aria-required="true" placeholder="Last name">
-                                            <strong class="error form-item--error-message">Enter your full name</strong>
+                                            <strong id="first-name-error" class="error form-item--error-message">Enter your full name</strong>
+                                            <strong id="last-name-error" class="error form-item--error-message"></strong>
                                         </div>
                                     </div>
 
                                     <div class="goa-field goa-website goa--optional">
                                         <label for="website">Website <span class="optional">[optional]</span></label>
                                         <input id="website" name="website" type="url" value=""  aria-required="false">
-                                        <strong class="error form-item--error-message">Enter a valid website URL</strong>
+                                        <strong id="website-error" class="error form-item--error-message">Enter a valid website URL</strong>
                                     </div>
 
                                     <div class="goa-field goa-agreement goa--required">
