@@ -1298,6 +1298,7 @@ div.goa-validation.goa-error p, .form-item--error-message {
 
 section.goa-adm-sign-up-form.goa-adm-form-success {
     padding: 48px 48px 52px;
+    display: none;
 }
 
 section.goa-adm-sign-up-form.goa-adm-form-success .goa-adm-form-container {
