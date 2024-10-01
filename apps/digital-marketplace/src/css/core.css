@@ -1294,6 +1294,52 @@ div.goa-validation.goa-error p, .form-item--error-message {
     width: 100%;
 }
 
+.goa-adm-recaptcha a,
+.goa-adm-disclaimer a {
+    color: #0070C4;
+}
+
+.goa-adm-recaptcha a:hover,
+.goa-adm-disclaimer a:hover {
+    color: #333333;
+} 
+
+.goa-adm-disclaimer a[target=_blank]:after {
+    width: 18px;
+    height: 18px;
+}
+
+.goa-adm-recaptcha {
+    display: flex;
+    margin: 32px 0 0;
+    flex-wrap: wrap;
+}
+
+.goa-adm-recaptcha > * {
+    font-size: 0.875rem;
+    line-height: 1.5rem;
+    margin-right: 0;
+}
+
+.goa-adm-recaptcha > p {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: 700;
+    width: 100%
+}
+
+.goa-adm-recaptcha > p > * {
+    font-weight: 400;
+}
+
+.goa-adm-recaptcha > p > a {
+    margin: 0 4px;
+}
+
+.goa-adm-recaptcha > p > a:nth-child(2) {
+    margin-left: 0;
+}
+
 /* success message ***/
 
 section.goa-adm-sign-up-form.goa-adm-form-success {
