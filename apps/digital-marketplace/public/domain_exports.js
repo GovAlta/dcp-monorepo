@@ -36,7 +36,7 @@ export function getGoogle() {
 export function getCaptchaSiteKey() {
   switch (domain()) {
     case 'PROD':
-      return '6LcudEgqAAAAAL01WTH7rW8TEwCbfV_6YUttrudr';
+      return '6LcudEgqAAAAAOZbmzzvKwQHyAsG8ZvQWpwoNx5m';
     case 'UAT':
       return '6LcNdUgqAAAAAPQb9tND2WEVpjctW07ua5mGdclm';
     default:
