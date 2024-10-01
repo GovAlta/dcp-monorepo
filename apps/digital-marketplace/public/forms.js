@@ -324,7 +324,7 @@ async function submitForm(formName) {
             headers: { 'Content-Type': 'application/json' },
           });
 
-      if (response.statusText !== 'OK') {
+      if (response.status !== 200) {
         console.log(response);
         throw new Error(`Post server error: ${response.errorMessage}`);
       }
