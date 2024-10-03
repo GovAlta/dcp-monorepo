@@ -61,6 +61,10 @@ html {
     color: #333333;
 }
 
+.grecaptcha-badge { 
+    visibility: hidden !important;
+}
+
 body, select, textarea, button {
     margin: 0px;
     padding: 90px 0px 0px;
