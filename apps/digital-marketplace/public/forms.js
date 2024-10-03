@@ -2,65 +2,46 @@
 // This will create a JSON file as text values. Exception of "checkBoxes" groups will have the value as an array
 
 const validationCheck = {
-  'org-name': [
-    { regEx: /^(?!\s)(.*?)(?<!\s)$/, failed: 'No leading or trailing spaces' },
-    {
-      regEx: /^[a-zA-Z0-9&.,' -]+$/,
-      failed: "Name should use letters, numbers, spaces or &'.,- ",
-    },
-    {
-      regEx: /^(.){2,100}$/,
-      failed: 'Must be between 2 and 100 characters long.',
-    },
+  'type-email': [    
+    { regEx: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, failed: 'Please enter a valid email.'},
   ],
-  email: [
-    { regEx: /^(?!\s)(.*?)(?<!\s)$/, failed: 'No leading or trailing spaces' },
-    {
-      regEx: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-      failed: 'Please enter a valid email.',
-    },
+  'type-url': [
+    { regEx: /^(https?:\/\/)?([a-zA-Z0-9_-]+\.)?[a-zA-Z0-9-]+(\.[a-zA-Z]{2,}){1,4}(\/[a-zA-Z0-9#_-]*)*(\?[a-zA-Z0-9=&_%-]*)?(#\S*)?$/,
+        failed: "Please check the web address." }
+ // { regEx: /^(https?:\/\/)/, failed: 'Must include http:// or https://' },    
+  ],  
+
+  // ADSP data schema
+  // "website": { "type": "string",  "title": "Website"  
+  // "pattern": "^(https?:\\/\\/)?([a-zA-Z0-9_-]+\\.)?[a-zA-Z0-9-]+(\\.[a-zA-Z]{2,}){1,4}(\\/[a-zA-Z0-9#_-]*)*(\\?[a-zA-Z0-9=&_%-]*)?(#\\S*)?$",
+    
+
+  'org-name': [
+    { regEx: /^[a-zA-Z0-9&.,' -]+$/, failed: "Name should use letters, numbers, spaces or &'.,- " },
+    { regEx: /^(.){2,100}$/, failed: 'Must be between 2 and 100 characters long.' },
   ],
   'first-name': [
-    { regEx: /^(?!\s)(.*?)(?<!\s)$/, failed: 'No leading or trailing spaces' },
-    {
-      regEx: /^[a-zA-ZÀ-ÖØ-öø-ÿ' -]+$/,
-      failed: 'First name should use letters, spaces, dash or apostrophe.',
-    },
-    {
-      regEx: /^(.){2,40}$/,
-      failed: 'Must be between 2 and 40 characters long.',
-    },
+    { regEx: /^[a-zA-ZÀ-ÖØ-öø-ÿ]+[a-zA-ZÀ-ÖØ-öø-ÿ' -]+[a-zA-ZÀ-ÖØ-öø-ÿ]+$/, failed: 'First name should use letters, spaces, dash or apostrophe.' },
+    { regEx: /^(.){2,40}$/, failed: 'Must be between 2 and 40 characters long.'},
   ],
   'last-name': [
-    { regEx: /^(?!\s)(.*?)(?<!\s)$/, failed: 'No leading or trailing spaces' },
-    {
-      regEx: /^[a-zA-ZÀ-ÖØ-öø-ÿ' -]+$/,
-      failed: 'Last name should use letters, spaces, dash or apostrophe.',
-    },
-    {
-      regEx: /^(.){2,60}$/,
-      failed: 'Must be between 2 and 60 characters long.',
-    },
-  ],
-  website: [
-    { regEx: /^(?!\s)(.*?)(?<!\s)$/, failed: 'No leading or trailing spaces' },
-    { regEx: /^(https?:\/\/)/, failed: 'Must include http:// or https://' },
-    {
-      regEx:
-        /^(https?:\/\/)?([a-zA-Z0-9_-]+\.)?[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})(\/[a-zA-Z0-9#_-]*)*(\?[a-zA-Z0-9=&_%-]*)?(#\S*)?$/,
-      failed: 'Please check your website address.',
-    },
-  ],
+    { regEx: /^[a-zA-ZÀ-ÖØ-öø-ÿ]+[a-zA-ZÀ-ÖØ-öø-ÿ' -]+[a-zA-ZÀ-ÖØ-öø-ÿ]+$/, failed: 'Last name should use letters, spaces, dash or apostrophe.' },
+    { regEx: /^(.){2,60}$/, failed: 'Must be between 2 and 60 characters long.' },
+  ]  
 };
 
-function testInput(fld, fldErrorMsg) {
-  let checkArray = validationCheck[fld.name];
+function testInput(fld, fldErrorMsg) {  
+  let byName = validationCheck[fld.name];
+  let byType  = validationCheck['type-'+fld.type];  
+  let checkArray = (byName != undefined && byType != undefined) ? byName.concat(byType) : (byType == undefined ) ? byName : byType;
+
   if (fld.value == null || checkArray == undefined || fld.value.length == 0) {
     return { message: '', isValid: true };
   }
   let isThisValid = true;
+
   checkArray.forEach((c) => {    
-    if (!c.regEx.test(fld.value)) {
+    if (!c.regEx.test(fld.value.trim())) {
       fldErrorMsg =
         (fldErrorMsg == undefined ? '' : fldErrorMsg + ' ') + c.failed;
       isThisValid = false;
@@ -69,7 +50,7 @@ function testInput(fld, fldErrorMsg) {
   return { message: fldErrorMsg, isValid: isThisValid };
 }
 
-function validateInput(fld) {
+function validateInput(fld) {  // from onBlur()
   testResult = testInput(fld, '');
   showErrorMessage(fld.name, testResult.isValid, testResult.message);
   document.getElementById('responseMessage').innerText = '';
@@ -115,7 +96,7 @@ function getValue(type, orig, ck) {
     case 'checkbox':
       return ck ? orig : null;
     default:
-      return orig == '' ? null : orig;
+      return orig == '' ? null : orig.trim();
   }
 }
 
@@ -196,7 +177,7 @@ function getFormDataArray() {
     }
   });
   // #endregion
-  
+
   return allFields;
 }
 
@@ -318,7 +299,7 @@ async function submitForm(formName) {
       // #region : Post
       // console.log(`${formPostUrl()}${formName}`);
       // console.log('jsonData', jsonData);
-     // const response = await simulatePost(jsonData['agreement']);
+      // const response = await simulatePost(jsonData['agreement']);
             
       const response = await axios.post(`${formPostUrl()}${formName}`, jsonData, {
             headers: { 'Content-Type': 'application/json' },
@@ -326,9 +307,10 @@ async function submitForm(formName) {
 
       if (response.status !== 200) {
         console.log(response);
-        throw new Error(`Post server error: ${response.errorMessage}`);
+        throw new Error(`Post error: ${response.errorMessage}`);
       }
       // #endregion : post
+
       document.getElementById('successDiv').style.display = 'block';
       document.getElementById('sign-up-form').style.display = 'none';
     } else {
