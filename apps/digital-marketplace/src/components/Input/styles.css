@@ -1,0 +1,17 @@
+.optional {
+  color: #666666;
+  font-size: 0.875rem;
+  line-height: 1.313rem;
+  font-weight: 400;
+}
+
+.goa-error{
+    color: #ec040b;
+}
+.inputError {
+    border: 2px solid red !important;
+}
+
+.label {
+    font-weight: 700;
+}

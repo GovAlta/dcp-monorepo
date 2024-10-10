@@ -1035,6 +1035,8 @@ section.goa-adm-sign-up-form form fieldset {
     padding: 0;
 }
 
+
+/* TODO remove */
 .goa-field.goa--optional span.optional {
     color: #666666;
     font-size: 0.875rem;
@@ -1053,6 +1055,7 @@ section.goa-adm-sign-up-form form fieldset {
     width: auto;
 }
 
+/* TODO remove */
 .goa-field > label,
 fieldset > legend {
     font-weight: 700;
@@ -1262,14 +1265,11 @@ section.goa-adm-sign-up-form .goa-adm-disclaimer {
     max-width: 700px;
 }
 
-.form-item--error-message {
-    display: none;
-}
-
 .goa-error .form-item--error-message {
     display: block;
 }
 
+/* TODO remove */
 .goa-field input.inputError {
     border: 2px solid red !important;
 }
@@ -1291,6 +1291,10 @@ section.goa-adm-sign-up-form .goa-adm-disclaimer > p,
 }
 
 div.goa-validation.goa-error p, .form-item--error-message {
+    color: #ec040b;
+}
+/* TODO remove */
+.goa-error{
     color: #ec040b;
 }
 
