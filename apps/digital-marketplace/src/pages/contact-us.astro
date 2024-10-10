@@ -1,43 +1,10 @@
 ---
 import BaseLayout from '../layouts/layout.astro';
-import hero_mobile from '../img/hero-mobile-tablet.svg';
+import ContactPage from './contact-us/index';
 ---
 
-<BaseLayout title="Contact us | Alberta Digital Marketplace" page="Contact">  
-
-        <main>
-      
-            <div class="goa-adm-body-header goa-adm-body-full">
-                <div class="container">
-                    <div class="goa-adm-body-header-content">
-                        <div class="goa-adm-breadcrumbs">
-                            <ul>
-                                <li><a href="/">Home</a></li>
-                                <li class="goa-adm-breadcrumbs-active">Contact</li>
-                            </ul>
-                        </div>
-                        <h1>Contact</h1>
-                    </div>
-
-                    <div class="goa-adm-body-header-graphic">
-                        <div class="goa-adm-home-tablet-graphic">
-                            <img src={hero_mobile} alt="Illustration of Alberta's landscape">
-                        </div>
-                        <div class="goa-adm-body-full-middle"></div>
-                        <div class="goa-adm-body-full-side-two"></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="goa-adm-body">
-                
-                <div class="container">
-                    <section class="goa-adm-contact goa-adm-center-aligned"><!-- CUSTOMIZABLE -->
-                        <h2>Let's build a digital future of public services together!</h2>
-                        <p>Connect with us at <a href="mailto:digital.outreach@gov.ab.ca">digital.outreach@gov.ab.ca</a></p>
-                        <p><strong>Hours:</strong></br>Monday to Friday from 8:30am - 4:00pm</p>
-                    </section>
-                </div>
-            </div>
-        </main>     
+<BaseLayout title="Contact us | Alberta Digital Marketplace" page="Contact">
+    <main>
+    <ContactPage client:load />
+    </main>
 </BaseLayout>
