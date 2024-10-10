@@ -20,7 +20,7 @@ export default function SignupForm() {
     success,
     handleChange,
     handleBlur,
-    handleSubmitSupplier,
+    handleSubmitPartner,
     loading,
     apiError,
   } = useForm(initialValues, validateForm, validateField, signUpFormConfig);
@@ -136,7 +136,7 @@ export default function SignupForm() {
                 type="submit"
                 className="goa-adm-button"
                 disabled={loading}
-                onClick={handleSubmitSupplier}
+                onClick={handleSubmitPartner}
               >
                 {loading ? 'Submitting...' : 'Submit Form'}
               </button>

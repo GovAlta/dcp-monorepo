@@ -94,7 +94,7 @@ const useForm = (
         });
         jsonData['token'] = recaptcha;
         const response = await axios.post(
-          `${formPostUrl()}/partner`,
+          `${formPostUrl()}/stakeholder`,
           jsonData,
           {
             headers: { 'Content-Type': 'application/json' },
