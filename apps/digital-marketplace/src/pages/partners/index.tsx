@@ -55,68 +55,7 @@ export default function PartnersPage() {
             </div>
           </section>
 
-          <section id="sign-up-form" className="goa-adm-sign-up-form">
-            <h2>Community partner sign-up form</h2>
-
-            <div className="goa-adm-form-container">
-              <SignupForm />
-
-              <div className="goa-adm-disclaimer">
-                <p>
-                  The information you provide is being collected under section
-                  33(c) of the{' '}
-                  <a
-                    href="https://open.alberta.ca/publications/f25"
-                    target="_blank"
-                  >
-                    <em>
-                      Freedom of Information and Protection of Privacy (FOIP)
-                      Act
-                    </em>
-                  </a>{' '}
-                  and will be protected under the provisions of the Act.
-                  Questions regarding the collection, use and disclosure may be
-                  directed to [program area contact info here].
-                </p>
-              </div>
-
-              <div className="goa-adm-recaptcha">
-                <p>
-                  Protected by reCAPTCHA:
-                  <br />
-                  <a href="https://www.google.com/intl/en/policies/privacy/">
-                    Privacy
-                  </a>
-                  <span>-</span>
-                  <a href="https://www.google.com/intl/en/policies/terms/">
-                    Terms
-                  </a>
-                </p>
-              </div>
-            </div>
-          </section>
-
-          <section
-            id="successDiv"
-            className="goa-adm-sign-up-form goa-adm-form-success"
-          >
-            <div className="goa-adm-form-container">
-              <form>
-                <h3>Thank you for signing up!</h3>
-                <p>
-                  Visit Alberta Purchasing Connection to explore digital
-                  opportunities.
-                </p>
-                <a
-                  className="goa-adm-button-link"
-                  href="https://purchasing.alberta.ca/search"
-                  target="_blank"
-                >
-                  Explore opportunities
-                </a>
-              </form>
-            </div>
-          </section>
+          <SignupForm />
         </div>
       </div>
     </>
