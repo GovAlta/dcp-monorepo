@@ -27,7 +27,14 @@ const useForm = (
   const handleSubmitSupplier = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     const validationErrors = validateForm(values, signUpFormConfig);
-    const jsonData = { ...values };
+    
+    const rawJsonData = { ...values };
+    const jsonData = Object.fromEntries(
+      Object.entries(rawJsonData).map(([key, value]) => [
+        key,
+        typeof value === 'string' ? value.trim() : value
+      ])
+    );
     if (values['website'] === '') {
       delete jsonData['website'];
     }
@@ -115,7 +122,7 @@ const useForm = (
   };
   const handleBlur = (e: { target: { name: any } }) => {
     const { name } = e.target;
-    console.log(signUpFormConfig);
+    // console.log(signUpFormConfig);
     const fieldConfig = signUpFormConfig[name];
     if (fieldConfig) {
       const error = validateField(name, values[name], fieldConfig);
