@@ -38,7 +38,7 @@ export const signUpFormConfig: any = {
         failed: 'Must be between 2 and 100 characters long',
       },
       {
-        regEx: /^[a-zA-Z0-9 ]+$/,
+        regEx: /^[a-zA-Z0-9' -]+$/,
         failed: `Name should use letters, numbers, spaces`,
       },
     ],
@@ -54,7 +54,7 @@ export const signUpFormConfig: any = {
         failed: 'Must be between 2 and 100 characters long',
       },
       {
-        regEx: /^[a-zA-Z0-9 ]+$/,
+        regEx: /^[a-zA-Z0-9' -]+$/,
         failed: `Name should use letters, numbers, spaces`,
       },
     ],

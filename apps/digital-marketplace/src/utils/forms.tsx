@@ -14,7 +14,8 @@ export const validateForm = (
 
   return errors;
 };
-export const validateField = (name: string, value: any, fieldConfig: any) => {
+export const validateField = (name: string, rawValue: any, fieldConfig: any) => {
+  const value = String(rawValue).trim();
   if (fieldConfig.required && !value) {
     return fieldConfig.messages.required;
   }
