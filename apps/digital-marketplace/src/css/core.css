@@ -651,7 +651,7 @@ body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-full-sid
     transition: width 1.25s ease-in-out;
 }
 
-body.adm-home-page.loaded .goa-adm-body-header.goa-adm-body-full .goa-adm-body-full-side-two-img:after {
+body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-full-side-two-img:after {
     display: block;
     width: 200vw;
     transition: width 1.25s ease-in-out;
