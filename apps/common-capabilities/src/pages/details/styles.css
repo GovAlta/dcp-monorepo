@@ -3,6 +3,7 @@
   align-items: center;
   gap: var(--goa-space-s);
   align-self: stretch;
+  justify-content: space-between;
 }
 
 .service-heading h2 {
@@ -35,12 +36,12 @@
 
 .specs-table {
   border-collapse: collapse;
-  border: none;  
+  border: none;
 }
 
 .specs-table td {
-  padding-top: 14px; 
-  padding-right: 14px;  
+  padding-top: 14px;
+  padding-right: 14px;
 }
 
 /* .specs-table td:first-child {

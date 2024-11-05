@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import {
   GoAMicrositeHeader,
   GoAAppHeader,
-} from '@abgov/react-components-4.20.2';
+} from '@abgov/react-components';
 
 const Header = () => {
   useEffect(() => {
