@@ -15,7 +15,7 @@ import { applyGatewayMiddleware } from './routes/listings';
 import compression from 'compression';
 
 
-const logger = createLogger('digital_marketplace', environment.LOG_LEVEL);
+const logger = createLogger('cc_api', environment.LOG_LEVEL);
 
 const initializeApp = async (): Promise<express.Application> => {
   const app = express();
@@ -42,8 +42,8 @@ const initializeApp = async (): Promise<express.Application> => {
     {
       serviceId,
       realm: environment.REALM,
-      displayName: 'digital-marketplace gateway',
-      description: 'Gateway to provide anonymous and session access to some marketplace functionality.',
+      displayName: 'cc_api gateway',
+      description: 'Gateway to provide anonymous and session access to some common capabilities app functionality.',
       values: [ServiceMetricsValueDefinition],
       clientSecret: environment.CLIENT_SECRET,
       accessServiceUrl,
