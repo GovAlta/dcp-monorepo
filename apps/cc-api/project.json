@@ -1,0 +1,70 @@
+{
+  "name": "cc-api",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/cc-api/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "platform": "node",
+        "outputPath": "dist/apps/cc-api",
+        "format": ["cjs"],
+        "bundle": false,
+        "main": "apps/cc-api/src/main.ts",
+        "tsConfig": "apps/cc-api/tsconfig.app.json",
+        "assets": ["apps/cc-api/src/assets"],
+        "generatePackageJson": true,
+        "esbuildOptions": {
+          "sourcemap": true,
+          "outExtension": {
+            ".js": ".js"
+          }
+        }
+      },
+      "configurations": {
+        "development": {},
+        "production": {
+          "esbuildOptions": {
+            "sourcemap": false,
+            "outExtension": {
+              ".js": ".js"
+            }
+          }
+        }
+      }
+    },
+    "buildcustom": {
+      "executor": "nx:run-commands",
+      "dependsOn": [
+        {
+          "target": "build",
+          "projects": "self"
+        }
+      ],
+      "options": {
+        "commands": [
+        ],
+        "parallel": false
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "cc-api:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "cc-api:build:development"
+        },
+        "production": {
+          "buildTarget": "cc-api:build:production"
+        }
+      }
+    }
+  }
+}
