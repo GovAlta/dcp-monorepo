@@ -3,6 +3,21 @@ import { RequestHandler, Router } from 'express';
 import { Logger } from 'winston';
 import axios from 'axios';
 
+function formatToMST(dateStr) {
+  const date = new Date(dateStr); 
+  const formattedDateMST = new Intl.DateTimeFormat('en-CA', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false,
+    timeZone: 'America/Denver' // Adjusts for MST with DST
+  }).format(date);
+
+  return formattedDateMST.replace(',', '');
+}
+
 interface RouterOptions {
   logger: Logger;
   tokenProvider: TokenProvider;
@@ -21,7 +36,7 @@ export function downloadBuyerFormData(
       const submittedBuyerForms: any[] = [];
       do {
         const { data: res } = await axios.get(
-          `${formApiUrl}/forms?criteria={"definitionIdEquals":"buyer-form"}&top=10${after ? `&after=${after}` : ''}`,
+          `${formApiUrl}/forms?criteria={"definitionIdEquals":"buyer-form"}&top=50${after ? `&after=${after}` : ''}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -43,11 +58,14 @@ export function downloadBuyerFormData(
               headers: {
                 Authorization: `Bearer ${token}`,
               },
+            })            
+            .then((response) => {
+              response.data.data.created = formatToMST(form.created);
+              return response.data;
             })
-            .then((response) => response.data)
         );
 
-        if (formDetailsPromises.length >= 10) {
+        if (formDetailsPromises.length >= 20) {
           const responses = await Promise.all(formDetailsPromises);
           formDetails.push(...responses);
           formDetailsPromises = [];
@@ -64,7 +82,7 @@ export function downloadBuyerFormData(
         },
       })
 
-      const headers = Object.keys(formDefinition.data.dataSchema.properties);
+      const headers = [...Object.keys(formDefinition.data.dataSchema.properties),"created"];      
       const csv = [headers.map((header) => `"${header.replace(/"/g, '""')}"`).join(",")].concat(
         formDetails.map((form) => {
           return headers.map((header) => {
@@ -102,7 +120,7 @@ export function downloadSupplierFormData(
       const submittedSupplierForms: any[] = [];
       do {
         const { data: res } = await axios.get(
-          `${formApiUrl}/forms?criteria={"definitionIdEquals":"supplier-form"}&top=10${after ? `&after=${after}` : ''}`,
+          `${formApiUrl}/forms?criteria={"definitionIdEquals":"supplier-form"}&top=50${after ? `&after=${after}` : ''}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -111,7 +129,7 @@ export function downloadSupplierFormData(
         );
         submittedSupplierForms.push(...res.results);
         after = res.page.next ? `"${res.page.next}${res.results[res.results.length - 1].id}"` : undefined;
-        console.log("after id",after);
+//        console.log("after id",after);
       } while (after !== undefined);
 
       const submittedForms = submittedSupplierForms;
@@ -125,10 +143,13 @@ export function downloadSupplierFormData(
                 Authorization: `Bearer ${token}`,
               },
             })
-            .then((response) => response.data)
+            .then((response) => {
+              response.data.data.created = formatToMST(form.created);
+              return response.data;
+            })
         );
 
-        if (formDetailsPromises.length >= 10) {
+        if (formDetailsPromises.length >= 20) {
           const responses = await Promise.all(formDetailsPromises);
           formDetails.push(...responses);
           formDetailsPromises = [];
@@ -145,7 +166,7 @@ export function downloadSupplierFormData(
         },
       })
 
-      const headers = Object.keys(formDefinition.data.dataSchema.properties);
+      const headers = [...Object.keys(formDefinition.data.dataSchema.properties),"created"];
       const csv = [headers.map((header) => `"${header.replace(/"/g, '""')}"`).join(",")].concat(
         formDetails.map((form) => {
           return headers.map((header) => {
@@ -183,7 +204,7 @@ export function downloadPartnerFormData(
       const submittedPartnerForms: any[] = [];
       do {
         const { data: res } = await axios.get(
-          `${formApiUrl}/forms?criteria={"definitionIdEquals":"partner-form"}&top=10${after ? `&after=${after}` : ''}`,
+          `${formApiUrl}/forms?criteria={"definitionIdEquals":"partner-form"}&top=50${after ? `&after=${after}` : ''}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -205,11 +226,14 @@ export function downloadPartnerFormData(
               headers: {
                 Authorization: `Bearer ${token}`,
               },
+            })            
+            .then((response) => {
+              response.data.data.created = formatToMST(form.created);
+              return response.data;
             })
-            .then((response) => response.data)
         );
 
-        if (formDetailsPromises.length >= 10) {
+        if (formDetailsPromises.length >= 20) {
           const responses = await Promise.all(formDetailsPromises);
           formDetails.push(...responses);
           formDetailsPromises = [];
@@ -226,7 +250,7 @@ export function downloadPartnerFormData(
         },
       })
 
-      const headers = Object.keys(formDefinition.data.dataSchema.properties);
+      const headers = [...Object.keys(formDefinition.data.dataSchema.properties),"created"];      
       const csv = [headers.map((header) => `"${header.replace(/"/g, '""')}"`).join(",")].concat(
         formDetails.map((form) => {
           return headers.map((header) => {
