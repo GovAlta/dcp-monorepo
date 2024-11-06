@@ -29,6 +29,7 @@ export default function UpdateServicePage({service}: UpdateServicePageProps): JS
 
   return (
     <ServiceFormWrapper
+      pageHeader={`Update ${service.ServiceName}`}
       service={service}
       handleSubmit={handleSubmit}
     />

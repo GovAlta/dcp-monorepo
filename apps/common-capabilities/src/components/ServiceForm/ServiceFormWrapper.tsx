@@ -9,6 +9,7 @@ import useFetch from '../../hooks/useFetch';
 import { JsonSchema, UISchemaElement } from '@jsonforms/core';
 
 type ServiceFormWrapperProps = {
+    pageHeader: string;
     service?: Service;
     handleSubmit: (data: Service) => Promise<any>;
 }
@@ -18,7 +19,7 @@ type SchemaResponse = {
   uiSchema: UISchemaElement;  
 };
 
-export default function ServiceFormWrapper({service, handleSubmit}: ServiceFormWrapperProps) {
+export default function ServiceFormWrapper({pageHeader, service, handleSubmit}: ServiceFormWrapperProps) {
   const config = getGatewayConfigs();
   const schemaUrl = `${config.url}/schema`;
   
@@ -49,7 +50,7 @@ export default function ServiceFormWrapper({service, handleSubmit}: ServiceFormW
         leftColumnWidth="18%"
       >
         <div>
-          <h1>Add a service</h1>
+          <h1>{pageHeader}</h1>
 
           {content}
         </div>
