@@ -5,9 +5,9 @@ import { Service } from '../../types/types';
 import ServiceFormWrapper from '../../components/ServiceForm/ServiceFormWrapper';
 
 export default function AddServicePage() {
-  const config = getGatewayConfigs();
-
   const handleSubmit = useCallback((data: Service) => {
+    const config = getGatewayConfigs();
+
     return new Promise((resolve, reject) => {
       axios.post(
         `${config.url}/services`, // TODO update this

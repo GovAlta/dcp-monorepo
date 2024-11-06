@@ -33,12 +33,19 @@ const serviceConfigs: ServiceConfig = {
 }
 
 function getEnv() {
-    //
-    // window.location.hostname.toLowerCase() == 'digitalmarketplace.alberta.ca' ||
-    // window.location.hostname.toLowerCase() ==
-    // 'digital-marketplace-dcp-prod.apps.aro.gov.ab.ca'
+    const url = window.location.hostname.toLowerCase();
+    const match = url.match(/common-capabilities-dcp-(\w+)\.apps\.aro\.gov\.ab\.ca/);
+    const env = match ? match[1] : null;
 
-  return Environment.uat;
+    if (!env) {
+      if (url === 'localhost') {
+        return Environment.dev;
+      } else if (url === 'common-capabilities.digital.gov.ab.ca') {
+        return Environment.prod;
+      }
+    }
+
+  return Environment[env as keyof typeof Environment];
 }
 
 export function getGatewayConfigs() {
