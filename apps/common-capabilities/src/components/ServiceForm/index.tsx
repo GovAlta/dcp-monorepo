@@ -1,13 +1,12 @@
 import React, { useCallback, useRef, useState } from 'react';
 import { ContextProviderFactory, GoARenderers, GoACells } from '@abgov/jsonforms-components';
-import type { JsonSchema4, JsonSchema7, UISchemaElement } from '@jsonforms/core';
+import type { JsonSchema, UISchemaElement } from '@jsonforms/core';
 import { JsonForms } from '@jsonforms/react';
 import './styles.css';
 import { GoAButton, GoAModal, GoANotification } from '@abgov/react-components';
 import type { Service } from '../../types/types';
 
-export type JsonSchema = JsonSchema4 | JsonSchema7;
-export type ServiceFormWrapperProps = {
+type ServiceFormProps = {
   data?: Service;
   dataSchema: JsonSchema;
   onSubmit?: (data: Service) => Promise<any>;
@@ -41,7 +40,7 @@ const FormWrapper = ({ data, dataSchema, uiSchema, readOnly }: {
   );
 }
 
-const ServiceForm = ({ data, dataSchema, uiSchema, onSubmit }: ServiceFormWrapperProps) => {
+const ServiceForm = ({ data, dataSchema, uiSchema, onSubmit }: ServiceFormProps) => {
   const [submitStatus, setSubmitStatus] = useState<SubmitStatus>(SubmitStatus.NotSubmitted);
   const [error, setError] = useState<Error | null>(null);
   const errorRef = useRef<Error | null>();
@@ -61,7 +60,7 @@ const ServiceForm = ({ data, dataSchema, uiSchema, onSubmit }: ServiceFormWrappe
         setSubmitStatus(SubmitStatus.NotSubmitted);
       }
     }
-  }, [error, setSubmitStatus, setError]);
+  }, [error, setSubmitStatus, setError, onSubmit]);
 
   const onDialogDismiss = useCallback(() => {
     setError(null);
@@ -80,7 +79,10 @@ const ServiceForm = ({ data, dataSchema, uiSchema, onSubmit }: ServiceFormWrappe
             {`Error when submitting service form: ${error.message}`}
           </GoANotification>
       }
-      <GoAModal open={submitStatus === SubmitStatus.Submitted} heading="Your service has been successfully submitted for review">
+      <GoAModal 
+        open={submitStatus === SubmitStatus.Submitted} 
+        heading="Your service has been successfully submitted for review"
+      >
         <GoAButton type="primary" onClick={()=>  window.location.href='/services/index.html'}>
           Back to services
         </GoAButton>

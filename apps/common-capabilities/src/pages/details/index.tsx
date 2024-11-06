@@ -17,6 +17,7 @@ import {
   specifications,
   bodyItems,
 } from './config';
+import { getServicePathName } from '../../utils/common';
 
 interface DetailsProps {
   app: any;
@@ -296,7 +297,7 @@ export default function Details({ app }: DetailsProps): JSX.Element {
         <div className="service-heading">
           <h2>{app.ServiceName}</h2>
           <GoAButton
-            onClick={() => (window.location.href = '/updateservice/index.html')}>
+            onClick={() => (window.location.href = `/${getServicePathName(app.ServiceName)}/update/index.html`)}>
             Update
           </GoAButton>
         </div>

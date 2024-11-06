@@ -1,15 +1,13 @@
 import React, { useCallback } from 'react';
-import ServiceForm from '../../components/ServiceForm';
-import { GoAThreeColumnLayout } from '@abgov/react-components';
 import axios from 'axios';
 import { getGatewayConfigs } from '../../utils/configs';
-import FormDataSchema from '../../content/schemas/data/formintake.json';
-import FormUISchema from '../../content/schemas/ui/formintake.json';
+import { Service } from '../../types/types';
+import ServiceFormWrapper from '../../components/ServiceForm/ServiceFormWrapper';
 
 export default function AddServicePage() {
-  const submitService = useCallback((data: any) => {
-    const config = getGatewayConfigs();
+  const config = getGatewayConfigs();
 
+  const handleSubmit = useCallback((data: Service) => {
     return new Promise((resolve, reject) => {
       axios.post(
         `${config.url}/services`, // TODO update this
@@ -26,20 +24,8 @@ export default function AddServicePage() {
   }, []);
 
   return (
-    <GoAThreeColumnLayout
-      maxContentWidth="1550px"
-      rightColumnWidth="8%"
-      leftColumnWidth="18%"
-    >
-      <div>
-        <h1>Add a service</h1>
-
-        <ServiceForm
-          dataSchema={FormDataSchema}
-          onSubmit={submitService}
-          uiSchema={FormUISchema}
-        />
-      </div>
-    </GoAThreeColumnLayout>
+    <ServiceFormWrapper
+      handleSubmit={handleSubmit}
+    />
   );
 };
