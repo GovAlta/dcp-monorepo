@@ -11,32 +11,55 @@ interface RouterOptions {
   RECAPTCHA_SECRET?: string;
 }
 
-export function healthCheck(
+
+export function getFormsSchema(
   logger: Logger,
   formApiUrl: URL,
-  eventServiceUrl: URL,
   tokenProvider: TokenProvider
 ): RequestHandler {
   return async (req, res) => {
 
-    res.status(200).send({
-      status: 'healthy',
-    });
+    try {
+      const token = await tokenProvider.getAccessToken();
+      const { definitionId } = req.params;
+
+      const getFormsSchemaData = await axios.get(
+        `${formApiUrl}/definitions/${definitionId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+
+      res.status(200).send({
+        dataSChema: getFormsSchemaData.data.dataSchema,
+        uiSchema: getFormsSchemaData.data.uiSchema
+      });
+    } catch (e) {
+      if (axios.isAxiosError(e)) {
+        res.status(e.response.status).send(e.response.data);
+        logger.error(e.response.data, 'failed to get forms schema');
+      } else {
+        res.status(400).send({ error: e });
+        logger.error(e, 'failed to get forms schema');
+      }
+    }
 
   }
 }
 
-  export function createListingsRouter({
-    logger,
-    tokenProvider,
-    formApiUrl,
-    eventServiceUrl,
-  }: RouterOptions): Router {
-    const router = Router();
+export function createListingsRouter({
+  logger,
+  tokenProvider,
+  formApiUrl,
+  eventServiceUrl,
+}: RouterOptions): Router {
+  const router = Router();
 
-    router.get(
-      '/listings/health',
-      healthCheck(logger, formApiUrl, eventServiceUrl, tokenProvider)
-    );
-    return router;
-  }
+  router.get(
+    '/listings/schema/:definitionId',
+    getFormsSchema(logger, formApiUrl, tokenProvider)
+  );
+  return router;
+}
