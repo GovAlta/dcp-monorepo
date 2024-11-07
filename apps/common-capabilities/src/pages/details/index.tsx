@@ -207,9 +207,13 @@ export default function Details({ app }: DetailsProps): JSX.Element {
   };
 
   const renderRoadmap = (roadmap: any) => {
+
+    if (!roadmap || roadmap.length === 0)
+      return null;
+
     return (      
       <ul className='roadmap'>
-        {roadmap.map((item:any, index:any) => (
+        {roadmap?.map((item:any, index:any) => (
           <li key={index}>
             <span className='spec-type'>{item.when}</span> - {item.title}
           </li>
@@ -247,7 +251,7 @@ export default function Details({ app }: DetailsProps): JSX.Element {
       );
     } 
     else if (name === 'Roadmap') {
-      return (<> {renderRoadmap(app.Roadmap)}</>);
+      return renderRoadmap(app.Roadmap);
     }
     else if (name === 'Contact') {
       return (

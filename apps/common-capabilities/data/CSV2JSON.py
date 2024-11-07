@@ -182,13 +182,10 @@ for fileName in CSV_fileNames:
                     if csv_row["Description"] == "":
                         csv_row["Description"] = csv_row["Summary"]
                     
-                    rMap = create_roadmap(csv_row["Timeline"] ,csv_row["TimelineEvent"])
-                    if (len(rMap) > 0):
-                        csv_row["Roadmap"] = rMap
+                    csv_row["Roadmap"] = create_roadmap(csv_row["Timeline"] ,csv_row["TimelineEvent"])
                     csv_row["Recommended"] = int(csv_row["InternalWeightage"]) >= 50
-                    # csv_row["EditorName"] = ""
-                    # csv_row["EditorEmail"] = ""
-                                     
+                    csv_row["EditorName"] = ""
+                    csv_row["EditorEmail"] = ""                                     
 
                     if int(csv_row["InternalWeightage"]) >= 0 or not ProductionData:
                         for delKey in ["DateAdded","LastUpdated","Timeline","TimelineEvent","Email","Phone","ContactDetails","AltContactMethod","AltContactLink","Nominate","AltServiceName"]:
