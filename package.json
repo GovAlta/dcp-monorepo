@@ -3,16 +3,15 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "postinstall": "node ./tools/scripts/patch-nx-cli.js && patch-package",
+    "postinstall": "node ./tools/scripts/patch-nx-cli.js",
     "service": "node"
   },
   "private": true,
   "devDependencies": {
     "@abgov/design-tokens": "^1.1.1",
-    "@abgov/jsonforms-components": "^1.37.1",
-    "@abgov/react-components": "^4.20.2",
-    "@abgov/web-components": "1.14.0",
-    "@abgov/web-components-1.20.3": "npm:@abgov/web-components@1.20.3",
+    "@abgov/jsonforms-components": "^1.40.1",
+    "@abgov/react-components": "4.20.2",
+    "@abgov/web-components": "1.20.3",
     "@astrojs/mdx": "^0.19.7",
     "@astrojs/react": "^2.2.1",
     "@jsonforms/core": "3.2.1",
@@ -51,7 +50,6 @@
     "jest-environment-node": "^29.4.1",
     "nx": "18.2.4",
     "pagefind": "^1.1.0",
-    "patch-package": "^8.0.0",
     "postinstall-postinstall": "^2.1.0",
     "prettier": "^2.6.2",
     "react": "^18.2.0",

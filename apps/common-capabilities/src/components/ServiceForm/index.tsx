@@ -3,7 +3,7 @@ import { ContextProviderFactory, GoARenderers, GoACells } from '@abgov/jsonforms
 import type { JsonSchema, UISchemaElement } from '@jsonforms/core';
 import { JsonForms } from '@jsonforms/react';
 import './styles.css';
-import { GoAButton, GoAModal, GoANotification } from '@abgov/react-components';
+import { GoAButton, GoACircularProgress, GoAModal, GoANotification } from '@abgov/react-components';
 import type { Service } from '../../types/types';
 
 type ServiceFormProps = {
@@ -11,7 +11,7 @@ type ServiceFormProps = {
   dataSchema: JsonSchema;
   onSubmit?: (data: Service) => Promise<any>;
   uiSchema: UISchemaElement;
-};
+}
 
 enum SubmitStatus {
   NotSubmitted,
@@ -66,9 +66,16 @@ const ServiceForm = ({ data, dataSchema, uiSchema, onSubmit }: ServiceFormProps)
     setError(null);
   }, [setError]);
 
-    // TODO some form of saving indicator?
+
   return (
     <>
+      <div className="progress-indicator">
+        <GoACircularProgress 
+          variant="inline" 
+          size="small" 
+          message="Submitting your service for review..." 
+          visible={submitStatus === SubmitStatus.Submitting} />
+      </div>
       {
         error && 
           <GoANotification 

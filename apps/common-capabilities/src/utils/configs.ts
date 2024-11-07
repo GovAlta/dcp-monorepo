@@ -5,7 +5,7 @@ enum Environment {
 }
 
 type GatewayConfigs = {
-  url: string;
+  baseUrl: string;
 }
 
 type ServiceConfig = {
@@ -17,17 +17,17 @@ type ServiceConfig = {
 const serviceConfigs: ServiceConfig = {
   dev: {
     gateway: {
-      url: 'https://ccl-api-dcp-dev.apps.aro.gov.ab.ca'
+      baseUrl: 'https://cc-api-dcp-dev.apps.aro.gov.ab.ca',
     }
   },
   uat: {
     gateway: {
-      url: 'https://ccl-api-dcp-uat.apps.aro.gov.ab.ca'
+      baseUrl: 'https://cc-api-dcp-uat.apps.aro.gov.ab.ca'
     }
   },
   prod: {
     gateway: {
-      url: 'https://ccl-api-dcp-prod.apps.aro.gov.ab.ca'
+      baseUrl: 'https://cc-api-dcp-prod.apps.aro.gov.ab.ca'
     }
   }
 }
@@ -48,8 +48,15 @@ function getEnv() {
   return Environment[env as keyof typeof Environment];
 }
 
-export function getGatewayConfigs() {
-  const env = getEnv();
+export function getGatewayConfigs(env?: Environment) {
+  env ??= getEnv();
 
   return serviceConfigs[env].gateway;
+}
+
+export function getSchemaUrl(definition: string) {
+  const schemaEnv = getEnv() === Environment.prod ? Environment.prod : Environment.uat;
+  const configs = getGatewayConfigs(schemaEnv);
+
+  return `${configs.baseUrl}/cc/v1/listings/schema/${definition}`;
 }

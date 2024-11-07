@@ -10,7 +10,7 @@ export default function AddServicePage() {
 
     return new Promise((resolve, reject) => {
       axios.post(
-        `${config.url}/services`, // TODO update this
+        `${config.baseUrl}/services`, // TODO update this
         data,
         {
           headers: {
@@ -29,4 +29,4 @@ export default function AddServicePage() {
       handleSubmit={handleSubmit}
     />
   );
-};
+}

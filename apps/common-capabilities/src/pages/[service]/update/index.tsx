@@ -4,7 +4,7 @@ import ServiceFormWrapper from '../../../components/ServiceForm/ServiceFormWrapp
 import { getGatewayConfigs } from 'apps/common-capabilities/src/utils/configs';
 import { Service } from 'apps/common-capabilities/src/types/types';
 
-export interface UpdateServicePageProps {
+type UpdateServicePageProps = {
   service: Service;
 }
 
@@ -14,7 +14,7 @@ export default function UpdateServicePage({service}: UpdateServicePageProps): JS
 
     return new Promise((resolve, reject) => {
       axios.put(
-        `${config.url}/services`, // TODO update this
+        `${config.baseUrl}/services`, // TODO update this
         data,
         {
           headers: {
