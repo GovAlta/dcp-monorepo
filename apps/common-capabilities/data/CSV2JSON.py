@@ -93,7 +93,7 @@ if not haveOutput:
 # Finished checks, I've got everything I need to continue...
 
 #=================================================
-from functions import replace_special_characters,replace_Bool,linkList,asArray,createContact,createSecurityList
+from functions import replace_special_characters,replace_Bool,linkList,asArray,asLineArray,createContact,createSecurityList,create_roadmap
 #=================================================
 
 
@@ -158,6 +158,9 @@ for fileName in CSV_fileNames:
                             if   row2["dataType"] == "urlArray":
                                 csv_row[fn] = linkList(csv_row[fn])
 
+                            elif row2["dataType"] == "lineArray":
+                                csv_row[fn] = asLineArray(csv_row[fn])
+
                             elif row2["dataType"] == "textArray":
                                 csv_row[fn] = asArray(csv_row[fn])
 
@@ -178,11 +181,17 @@ for fileName in CSV_fileNames:
 
                     if csv_row["Description"] == "":
                         csv_row["Description"] = csv_row["Summary"]
+                    
+                    rMap = create_roadmap(csv_row["Timeline"] ,csv_row["TimelineEvent"])
+                    if (len(rMap) > 0):
+                        csv_row["Roadmap"] = rMap
+                    csv_row["Recommended"] = int(csv_row["InternalWeightage"]) >= 50
+                    # csv_row["EditorName"] = ""
+                    # csv_row["EditorEmail"] = ""
+                                     
 
-                    # print(csv_row["InternalWeightage"])
-                    # if not ProductionData:
                     if int(csv_row["InternalWeightage"]) >= 0 or not ProductionData:
-                        for delKey in ["Email","Phone","ContactDetails","AltContactMethod","AltContactLink","Nominate","AltServiceName"]:
+                        for delKey in ["DateAdded","LastUpdated","Timeline","TimelineEvent","Email","Phone","ContactDetails","AltContactMethod","AltContactLink","Nominate","AltServiceName"]:
                             if delKey in csv_row:
                                 del csv_row[delKey]
                          
@@ -192,11 +201,9 @@ for fileName in CSV_fileNames:
 
                         id_counter += 1
                         csv_row["appId"] = id_counter
+                       
                         data.append(csv_row)
 
-
-# for row2 in fieldMetadata:
-#     del row2["subGroup"]     
 
 # ***************** Vote on filter text *********************                     
 #spellingVote(data,fieldMetadata)
@@ -259,22 +266,6 @@ for row2 in fieldMetadata:
                             modifiedRecords.append([dataRow['ServiceName'],fn,dataRow[fn][i],updated])                            
                             dataRow[fn][i] = updated
 # ***************** END - Vote on filter text *********************
-
-# ***************** QA report  *********************
-# bad_items = [{ 'Provider': item['Provider'], 'ServiceName': item['ServiceName'],'DataIssues': item['DataIssues']
-#                ,'QA_Score': item['QA'],'Weightage': item['InternalWeightage']
-#                ,'Documentation': item['Documentation']
-#                ,'Contact': item['Contact']['methods']
-#              } for item in data if item.get('QA') > 10 or item.get('DataIssues') != '']
-# if len(bad_items) > 0:
-#     print('There are ' +str(len(bad_items))+' records to investigate ' + CSV_fileDir + 'dataToInvestigate.csv')    
-#     with open(CSV_fileDir + 'dataToInvestigate.csv', 'w', newline='') as csv_file:
-#         fieldnames = ['Provider','ServiceName','DataIssues','QA_Score','Weightage','Documentation','Contact']
-#         csv_writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
-#         csv_writer.writeheader()
-#         for item in bad_items:
-#             csv_writer.writerow(item)
-# ***************** END - QA report  *********************
 
 ######################################
 updated_data = [row for row in fieldMetadata if row.get("Group") != "FunctionalGroup"] 
@@ -355,16 +346,13 @@ for row in data:
     for delKey in ["Security"]:
         del row[delKey]
 
-# ************** Output data *************************                           
-parsed_dates = [datetime.strptime(item['LastUpdated'], '%m/%d/%Y') for item in data]
-mostRecentService = max(parsed_dates).strftime("%m/%d/%Y")
+# ************** Output data *************************
 
 now = datetime.now() 
 current_date = now.strftime("%m/%d/%Y, %H:%M")
 
 data2 = {"lastUpdated": current_date
-         ,"isProductionData": ProductionData
-         ,"mostRecentService": mostRecentService
+         ,"isProductionData": ProductionData         
          ,"dateFormat": "mm/dd/yyyy"
          ,"services": data
         }
