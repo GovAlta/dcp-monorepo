@@ -1,5 +1,13 @@
 from urllib.parse import urlparse
 
+def create_roadmap(whenList,eventList):    
+    if len(whenList) > 0 and len(whenList) == len(eventList):        
+        return [{'when': timeline, 'title': event} for timeline, event in zip(whenList, eventList)]
+    else:        
+        return []
+
+
+
 def replace_special_characters(text):
     return text.replace("’", "'").replace("\u200b", " ").replace("\u00a0", " ").strip()
 
@@ -44,6 +52,14 @@ def linkList(text):
             urlArray = getPageNameFromURLcombo(item)
             links.append({ "name": urlArray[0], "url": urlArray[1] })        
     return links
+
+
+def asLineArray(val):
+    if val == "":
+        return []
+    else:
+      return [item.strip() for item in val.split('\n')]
+
 
 def asArray(val):
     if val == "":
