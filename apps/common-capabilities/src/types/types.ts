@@ -1,8 +1,3 @@
-export type Documentation = {
-  name: string;
-  url: string;
-}
-
 type Contact = {
   details: string;
   methods: Array<{method: string, value: string, url: string}>;
