@@ -45,8 +45,7 @@ export default function HomePage(): JSX.Element {
   //   month: 'long',
   //   day: 'numeric',
   // });
-  const recommendedServicesWeightage = 50;
-
+  
   // filters state
   const [filterList, setFilterList] = useState(
     getAppsFilters(services, filtersList)
@@ -189,8 +188,8 @@ export default function HomePage(): JSX.Element {
     }
   }, []);
 
-  const recommendedServices = services.filter((item: any) => item.InternalWeightage >= recommendedServicesWeightage )
-  const otherServices = services.filter((item: any) => item.InternalWeightage < recommendedServicesWeightage )
+  const recommendedServices = services.filter((item: any) => item.Recommended )
+  const otherServices = services.filter((item: any) => !item.Recommended )
 
   return (
     <GoAThreeColumnLayout

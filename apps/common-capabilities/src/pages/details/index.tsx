@@ -209,6 +209,22 @@ export default function Details({ app }: DetailsProps): JSX.Element {
     );
   };
 
+  const renderRoadmap = (roadmap: any) => {
+
+    if (!roadmap || roadmap.length === 0)
+      return null;
+
+    return (      
+      <ul className='roadmap'>
+        {roadmap?.map((item:any, index:any) => (
+          <li key={index}>
+            <span className='spec-type'>{item.when}</span> - {item.title}
+          </li>
+        ))}
+      </ul>
+    );
+  };
+
   const renderContent = (name: string, app: any) => {
     if (name === 'Documentation' && app.Documentation.length > 0) {
       return app.Documentation.map((doc: any) => (
@@ -220,7 +236,7 @@ export default function Details({ app }: DetailsProps): JSX.Element {
     } else if (name === 'Specs') {
       return (
         <>
-          {app.InternalWeightage >= 50 ? (
+          {app.Recommended ? (
             <GoABadge key="validated" type="information" content="Recommended"  />
           ) : null}
           <table>
@@ -236,7 +252,11 @@ export default function Details({ app }: DetailsProps): JSX.Element {
           </table>
         </>
       );
-    } else if (name === 'Contact') {
+    } 
+    else if (name === 'Roadmap') {
+      return renderRoadmap(app.Roadmap);
+    }
+    else if (name === 'Contact') {
       return (
         <>
         {app.Contact.details != '' ? (
