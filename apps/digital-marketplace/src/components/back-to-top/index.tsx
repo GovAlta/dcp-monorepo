@@ -21,9 +21,8 @@ const BackToTop = () => {
     useEffect(() => {
         window.addEventListener("scroll", toggleVisible);
         return () => window.removeEventListener("scroll", toggleVisible);
-    })
+    }, []);
     
-
     return (
         <>
         <div className={visible ? "goa-adm-back-to-top active" : "goa-adm-back-to-top"}>
