@@ -4,15 +4,15 @@
     position: fixed;
     right: 3%;
     bottom: -150px;
-    -webkit-transition: all ease .2s;
-    transition: all ease .2s;
+    -webkit-transition: all ease-in-out 500ms;
+    transition: all ease-in-out 500ms;
     z-index: 10000;
 }
 
 .goa-adm-back-to-top.active {
     bottom: 5rem;
-    -webkit-transition: all ease .2s;
-    transition: all ease .2s;
+    -webkit-transition: all ease-in-out 500ms;
+    transition: all ease-in-out 500ms;
 }
 
 .goa-adm-back-to-top-btn {

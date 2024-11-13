@@ -6,11 +6,7 @@ const BackToTop = () => {
 
     const toggleVisible = () => {
         const scrolled = document.documentElement.scrollTop;
-        if (scrolled > 700) {
-            setVisible(true);
-        } else if (scrolled <= 700) {
-            setVisible(false);
-        }
+        setVisible(scrolled > 700);
     };
 
     const scrollToTop = () => {
@@ -24,7 +20,9 @@ const BackToTop = () => {
 
     useEffect(() => {
         window.addEventListener("scroll", toggleVisible);
+        return () => window.removeEventListener("scroll", toggleVisible);
     })
+    
 
     return (
         <>
