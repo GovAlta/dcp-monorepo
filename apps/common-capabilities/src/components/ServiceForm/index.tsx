@@ -1,9 +1,19 @@
-import React, { useCallback, useRef, useState } from 'react';
-import { ContextProviderFactory, GoARenderers, GoACells } from '@abgov/jsonforms-components';
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { 
+  ContextProviderFactory, 
+  GoARenderers, 
+  GoACells, 
+  createDefaultAjv 
+} from '@abgov/jsonforms-components';
 import type { JsonSchema, UISchemaElement } from '@jsonforms/core';
 import { JsonForms } from '@jsonforms/react';
 import './styles.css';
-import { GoAButton, GoACircularProgress, GoAModal, GoANotification } from '@abgov/react-components';
+import { 
+  GoAButton, 
+  GoACircularProgress, 
+  GoAModal, 
+  GoANotification 
+} from '@abgov/react-components';
 import type { Service } from '../../types/types';
 
 type ServiceFormProps = {
@@ -27,8 +37,11 @@ const FormWrapper = ({ data, dataSchema, uiSchema, readOnly }: {
    uiSchema: UISchemaElement;
    readOnly: boolean;
 }) => {
+  const ajv = useMemo(() => createDefaultAjv(dataSchema), [dataSchema]);
+
   return (
     <JsonForms
+      ajv={ajv}
       schema={dataSchema}
       cells={GoACells}
       uischema={uiSchema}
