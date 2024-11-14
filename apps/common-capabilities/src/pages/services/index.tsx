@@ -1,6 +1,5 @@
 // @ts-nocheck
-import React, { useEffect, useState } from 'react';
-import { lastUpdated, services as apps } from '../../content/datastore.json';
+import React, { useEffect, useState, useMemo } from 'react';
 import {
   GoAGrid,
   GoASpacer,
@@ -22,6 +21,9 @@ import {
   generateFilterCounts,
 } from './utils';
 import { defaultState, filtersList, filterListCustom } from './config';
+import useFetch from '../../hooks/useFetch';
+import { getApiUrl } from '../../utils/configs';
+import { ServiceListingResponse } from '../../types/types';
 
 type Filter = {
   [key: string]: any[];
@@ -38,13 +40,16 @@ export default function HomePage(): JSX.Element {
     Status: false,
     FunctionalGroup: false,
   });
+  const listingUrl = useMemo(() => getApiUrl('/listings/services'), []); 
+  const [data, error, isLoading] = useFetch<ServiceListingResponse>(listingUrl);
+  const [apps, setApps] = useState([]);
 
- // const date = new Date(lastUpdated);
-  // const formattedDate = date.toLocaleDateString('en-US', {
-  //   year: 'numeric',
-  //   month: 'long',
-  //   day: 'numeric',
-  // });
+
+  useEffect(() => {
+    if (!isLoading && data) {
+      setApps(data.services);
+    }
+  }, [data, isLoading]);
   
   // filters state
   const [filterList, setFilterList] = useState(
@@ -54,7 +59,7 @@ export default function HomePage(): JSX.Element {
     const savedCheckboxState = localStorage.getItem('selectedCheckboxState');
     return savedCheckboxState
       ? JSON.parse(savedCheckboxState)
-      : generateFilterObject();
+      : generateFilterObject(apps);
   });
   const [selectedFiltersState, setSelectedFiltersState] = useState(() => {
     const savedFiltersState = localStorage.getItem('selectedFiltersState');
@@ -147,19 +152,19 @@ export default function HomePage(): JSX.Element {
         clearTimeout(timeoutId);
       }
     };
-  }, [searchFilter, selectedFiltersState]);
+  }, [searchFilter, selectedFiltersState, apps]);
 
   // to update the filters list when the services list changes
   useEffect(() => {
     setFilterList(getAppsFilters(apps, filtersList));
     setRerender(' ');
-  }, [services]);
+  }, [services, apps]);
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const category = urlParams.get('category');
 
-    if (category) {
+    if (category && apps?.length > 0) {
       localStorage.removeItem('searchFilter');
       localStorage.removeItem('searchTimestamp');
 
@@ -175,9 +180,9 @@ export default function HomePage(): JSX.Element {
         ],
       });
       setCheckedFilters({
-        ...generateFilterObject(),
+        ...generateFilterObject(apps),
         FunctionalGroup: {
-          ...generateFilterObject().FunctionalGroup,
+          ...generateFilterObject(apps).FunctionalGroup,
           [category]: true,
         },
       });
@@ -186,7 +191,7 @@ export default function HomePage(): JSX.Element {
         FunctionalGroup: true,
       });
     }
-  }, []);
+  }, [apps]);
 
   const recommendedServices = services.filter((item: any) => item.Recommended )
   const otherServices = services.filter((item: any) => !item.Recommended )  
@@ -209,7 +214,7 @@ export default function HomePage(): JSX.Element {
               //reset filters and checkbox state
               localStorage.removeItem('selectedCheckboxState');
               localStorage.removeItem('selectedFiltersState');
-              setCheckedFilters(generateFilterObject());
+              setCheckedFilters(generateFilterObject(apps));
               setSelectedFiltersState(defaultState.selectedFilters);
               localStorage.setItem(
                 'searchTimestamp',
@@ -230,7 +235,7 @@ export default function HomePage(): JSX.Element {
                 localStorage.removeItem('selectedFiltersState');
 
                 setSearchFilter('');
-                setCheckedFilters(generateFilterObject());
+                setCheckedFilters(generateFilterObject(apps));
                 setSelectedFiltersState(defaultState.selectedFilters);
               }}
             >
@@ -290,7 +295,7 @@ export default function HomePage(): JSX.Element {
                     //   filtersCount[filterCategory.property][filter]
                     // })`}
                     text={`${filter}`}
-                    checked={checkedFilters[filterCategory.property][filter]}
+                    checked={checkedFilters[filterCategory.property]?.[filter]}
                     onChange={(name, checked) => {
                       // handles checkboxes checked state
                       setCheckedFilters((prevFilters) => {

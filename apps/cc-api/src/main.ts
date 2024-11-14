@@ -13,13 +13,13 @@ import { configurePassport } from './access/configure';
 import * as passport from 'passport';
 import { applyGatewayMiddleware } from './routes/listings';
 import compression from 'compression';
+import { getCache } from './cache';
 
 
 const logger = createLogger('cc_api', environment.LOG_LEVEL);
 
 const initializeApp = async (): Promise<express.Application> => {
   const app = express();
-
 
   app.use(helmet());
   app.use(cors());
@@ -30,6 +30,7 @@ const initializeApp = async (): Promise<express.Application> => {
 
   const serviceId = AdspId.parse(environment.CLIENT_ID);
   const accessServiceUrl = new URL(environment.KEYCLOAK_ROOT_URL);
+  const cache = getCache(logger);
 
   const {
     healthCheck,
@@ -62,6 +63,7 @@ const initializeApp = async (): Promise<express.Application> => {
     logger,
     directory,
     tokenProvider,
+    cache
   });
 
 
@@ -81,3 +83,4 @@ initializeApp().then((app) => {
     console.log(`[ ready ] ${environment.PORT}`);
   });
 });
+

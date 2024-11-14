@@ -1,5 +1,4 @@
 import { filtersList } from './config';
-import { services } from '../../content/datastore.json';
 
 export function capitalizeFirstWord(s) {
   return s.replace(/(^|[^a-zA-Z])[a-z]/g, (match) => match.toUpperCase());
@@ -38,7 +37,7 @@ export function getAppsFilters(apps, filterKeys) {
   return filters;
 }
 
-export function generateFilterObject() {
+export function generateFilterObject(services) {
   const appFilters = getAppsFilters(services, filtersList);
 
   const filterObject = {};
@@ -53,7 +52,7 @@ export function generateFilterObject() {
   return filterObject;
 }
 
-export function generateFilterCounts(apps) {
+export function generateFilterCounts(filteredServices, services) {
   // get list of all filters available
   const filters =  getAppsFilters(services, filtersList);
 
@@ -65,7 +64,7 @@ export function generateFilterCounts(apps) {
     }
   }
 
-  for (const service of apps) {
+  for (const service of filteredServices) {
     for (const filterType of Object.keys(filterCounts)) {
       const filters = service[filterType];
       if (filters) {
