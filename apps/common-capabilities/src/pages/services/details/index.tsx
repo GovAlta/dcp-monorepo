@@ -7,59 +7,80 @@ import {
   GoATable,
   GoAButton,
 } from '@abgov/react-components-4.20.2';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import './styles.css';
-import ExternalLink from '../../components/ExternalLink';
-import BackToTop from '../../components/BackToTop';
+import ExternalLink from '../../../components/ExternalLink';
+import BackToTop from '../../../components/BackToTop';
 import {
   securityGroups,
   securityData,
   specifications,
   bodyItems,
 } from './config';
-interface DetailsProps {
-  app: any;
+import useFetch from '../../../hooks/useFetch';
+import { getApiUrl } from '../../../utils/configs';
+
+type ServiceDetailsResponse = {
+  serviceInfo: any;
 }
-export default function Details({ app }: DetailsProps): JSX.Element {
+
+export default function Details(): JSX.Element {
+  const id = useMemo(() => {
+    const urlSearchParams = new URLSearchParams(window.location.search);
+    const params = Object.fromEntries(urlSearchParams.entries());
+    return params.id;
+  }, []);
+  const detailsUrl = useMemo(() => getApiUrl(`/listings/services/${id}`), []); 
+  const [data, error, isLoading] = useFetch<ServiceDetailsResponse>(detailsUrl);
+  const [app, setApp] = useState<any>(undefined);
+
   const [items, setItems] = useState<any>({
     content: [],
     specs: [],
   });
 
   useEffect(() => {
-    if (window.location.hash) {
+    if (!isLoading && data) {
+      setApp(data.serviceInfo);
+    }
+  }, [data, isLoading]);
+
+  useEffect(() => {
+    if (window.location.hash && app) {
       const elmnt = document.getElementById(window.location.hash.substring(1));
       elmnt?.scrollIntoView(true);
     }
-  }, []);
+  }, [app]);
 
   useEffect(() => {
-    let showContent: any = [];
-    Object.entries(bodyItems).forEach(([name, obj]) => {
-      if (obj.dataIn == '' ? app[name] != '' : app[name][obj.dataIn] != '') {
-        const newValue = {
-          ...obj,
-          id: `body-${name.toLowerCase()}`,
-          showContent: true,
-          showInSidebar: true,
-        };
-        showContent.push({ name, ...newValue });
-      }
-    });
+    if (app) {
+      let showContent: any = [];
+      Object.entries(bodyItems).forEach(([name, obj]) => {
+        if (obj.dataIn == '' ? app[name] != '' : app[name][obj.dataIn] != '') {
+          const newValue = {
+            ...obj,
+            id: `body-${name.toLowerCase()}`,
+            showContent: true,
+            showInSidebar: true,
+          };
+          showContent.push({ name, ...newValue });
+        }
+      });
 
-    let showSpecs: any = [];
-    Object.entries(specifications).forEach(([name, obj]) => {
-      if (app[name] != '' && app[name] != 'Other') {
-        const newValue = { ...obj, id: `spec-${name.toLowerCase()}` };
-        showSpecs.push({ name, ...newValue });
-      }
-    });
+      let showSpecs: any = [];
+      Object.entries(specifications).forEach(([name, obj]) => {
+        if (app[name] != '' && app[name] != 'Other') {
+          const newValue = { ...obj, id: `spec-${name.toLowerCase()}` };
+          showSpecs.push({ name, ...newValue });
+        }
+      });
 
-    setItems({
-      content: showContent,
-      specs: showSpecs,
-    });
-  }, []);
+      setItems({
+        content: showContent,
+        specs: showSpecs,
+      });
+    }
+  }, [app]);
 
   interface SecurityItem {
     name: string;
@@ -310,39 +331,43 @@ export default function Details({ app }: DetailsProps): JSX.Element {
           Back to listing
         </GoAButton>
 
+        {(isLoading || !app) ? (
+          <></>
+        ) : (
+        <>
+          <GoASpacer vSpacing="l" />
+          <div className="service-heading">
+            <h2>{app.ServiceName}</h2>
+          </div>
+          <GoASpacer vSpacing="l" />
+          <p className="service-content"> {app.Description}</p>
 
+          <GoASpacer vSpacing="xl" />
+          {items.content.length > 0 &&
+            items.content.map(({ id, name, title }: any) => {
+              return (
+                <div key={`${id}`}>
+                  <h3 id={`${id}`} className='service-title'>{title}</h3>
+                  {renderContent(name, app)}
+                  <GoASpacer vSpacing="l" />
+                </div>
+              );
+            })}
 
-        <GoASpacer vSpacing="l" />
-        <div className="service-heading">
-          <h2>{app.ServiceName}</h2>
-        </div>
-        <GoASpacer vSpacing="l" />
-        <p className="service-content"> {app.Description}</p>
+          <GoASpacer vSpacing="xl" />
+          <div>
+            Please feel free to{' '}
+            <ExternalLink
+              link={`mailto:TI.Softwaredelivery@gov.ab.ca?subject=Common capabilities feedback: ${app.ServiceName}`}
+              text={'share feedback'}
+            />{' '}
+            on this service.
+          </div>
 
-        <GoASpacer vSpacing="xl" />
-        {items.content.length > 0 &&
-          items.content.map(({ id, name, title }: any) => {
-            return (
-              <div key={`${id}`}>
-                <h3 id={`${id}`} className='service-title'>{title}</h3>
-                {renderContent(name, app)}
-                <GoASpacer vSpacing="l" />
-              </div>
-            );
-          })}
-
-        <GoASpacer vSpacing="xl" />
-        <div>
-          Please feel free to{' '}
-          <ExternalLink
-            link={`mailto:TI.Softwaredelivery@gov.ab.ca?subject=Common capabilities feedback: ${app.ServiceName}`}
-            text={'share feedback'}
-          />{' '}
-          on this service.
-        </div>
-
-        <GoASpacer vSpacing="3xl" />
-        <BackToTop />
+          <GoASpacer vSpacing="3xl" />
+          <BackToTop />
+        </>)
+      }
 
       </GoAThreeColumnLayout>
     </>

@@ -5,7 +5,7 @@ import {
   GoABadge,
 } from '@abgov/react-components-4.20.2';
 import React, { useEffect, useState } from 'react';
-import ExternalLink from '../ExternalLink';
+import ExternalLink from '../../components/ExternalLink';
 import './styles.css';
 interface CardProps {
   provider: string;
@@ -73,7 +73,7 @@ const Card = ({ provider, description, title, app }: CardProps) => {
       </div>
 
       <a id="service-tile-title"
-        href={`/${title.toLocaleLowerCase().replace(/ |\//g, '-')}/index.html`} >
+        href={`/services/details?id=${app.appId}`} >
         {title}        
       </a>      
       <GoASpacer vSpacing="m" />

@@ -1,4 +1,5 @@
 enum Environment {
+  local = 'local',
   dev = 'dev',
   uat = 'uat',
   prod = 'prod'
@@ -15,6 +16,11 @@ type ServiceConfig = {
 }
 
 const serviceConfigs: ServiceConfig = {
+  local: {
+    gateway: {
+      baseUrl: 'http://localhost:3333'
+    }
+  },
   dev: {
     gateway: {
       baseUrl: 'https://cc-api-dcp-dev.apps.aro.gov.ab.ca',
@@ -39,7 +45,7 @@ function getEnv() {
 
     if (!env) {
       if (url === 'localhost') {
-        return Environment.dev;
+        return Environment.local;
       } else if (url === 'common-capabilities.digital.gov.ab.ca') {
         return Environment.prod;
       }
@@ -56,6 +62,7 @@ export function getGatewayConfigs(env?: Environment) {
 
 export function getApiUrl(path: string) {
   const trimmedPath = path.startsWith('/') ? path.substring(1) : path;
+  
   return `${getGatewayConfigs().baseUrl}/cc/v1/${trimmedPath}`;
 }
 
