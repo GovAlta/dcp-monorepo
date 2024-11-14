@@ -1,5 +1,6 @@
 import { ServiceListingResponse } from "../types/types";
 import axios from "axios";
+import { getApiUrl } from "./configs";
 
 export type AxioServiceResponse = {
     data?: ServiceListingResponse
@@ -9,7 +10,8 @@ export async function getAstroStaticPaths(paramKey: string) {
     const paths: any = [];
 
     try {
-      const result: AxioServiceResponse = await axios.get('http://localhost:3333/cc/v1/listings/services');
+      const servicesUrl = getApiUrl('listings/services');
+      const result: AxioServiceResponse = await axios.get(servicesUrl);
   
       if (result?.data?.services) {
         result?.data?.services?.forEach((service) => {
@@ -25,7 +27,6 @@ export async function getAstroStaticPaths(paramKey: string) {
       }
     } catch (e) {
       console.log(e);
-      throw e;
     }
   
     return paths;
