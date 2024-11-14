@@ -1,5 +1,6 @@
 import React from 'react';
 import UnderstandingHeaderImg from '../../img/illustration-understanding-procurement.svg';
+import './styles.css';
 
 export default function UnderstandingHeader() {
   return (
