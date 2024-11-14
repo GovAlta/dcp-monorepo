@@ -12,6 +12,7 @@ import {
   GoADivider,
   GoAAccordion,
   GoACallout,
+  GoACircularProgress,
 } from '@abgov/react-components-4.20.2';
 import Card from '../../components/Card';
 import './styles.css';
@@ -43,7 +44,6 @@ export default function HomePage(): JSX.Element {
   const listingUrl = useMemo(() => getApiUrl('/listings/services'), []); 
   const [data, error, isLoading] = useFetch<ServiceListingResponse>(listingUrl);
   const [apps, setApps] = useState([]);
-
 
   useEffect(() => {
     if (!isLoading && data) {
@@ -196,7 +196,9 @@ export default function HomePage(): JSX.Element {
   const recommendedServices = services.filter((item: any) => item.Recommended )
   const otherServices = services.filter((item: any) => !item.Recommended )  
 
-  return (
+  return isLoading || !data ? (
+    <GoACircularProgress variant="fullscreen" size="large" message="Loading service list..." visible={true} />
+  ) : (
     <GoAThreeColumnLayout
       leftColumnWidth="23%"
       maxContentWidth='1550px'

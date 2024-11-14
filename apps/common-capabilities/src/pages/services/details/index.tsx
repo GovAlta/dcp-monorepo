@@ -6,6 +6,7 @@ import {
   GoASideMenu,
   GoATable,
   GoAButton,
+  GoACircularProgress,
 } from '@abgov/react-components-4.20.2';
 import React, { useEffect, useMemo, useState } from 'react';
 import './styles.css';
@@ -302,39 +303,37 @@ export default function Details(): JSX.Element {
     } else return <p className="service-content">{app[name]}</p>;
   };
 
-  return (
-    <>
-      <GoAThreeColumnLayout
-        maxContentWidth="1500px"
-        nav={
-          <div className="details-side-nav" key="details-side-nav">
-            <GoASideMenu key="SideMenu">
-              {items.content.length > 0
-                ? items.content.map((content: any) => {
-                    return (
-                      <a key={`${content.id}-menu`} href={`#${content.id}`}>
-                        {content.title}
-                      </a>
-                    );
-                  })
-                : 'No content'}
-            </GoASideMenu>
-          </div>
-        }
-      >
-        <GoAButton
-          type="tertiary"
-          size="compact"
-          leadingIcon="arrow-back"
-          onClick={() => (window.location.href = '/services/index.html')}
+  return (isLoading || !app) ? (
+      <GoACircularProgress variant="fullscreen" size="large" message="Loading service details..." visible={true} />
+    ) : (
+      <>
+        <GoAThreeColumnLayout
+          maxContentWidth="1500px"
+          nav={
+            <div className="details-side-nav" key="details-side-nav">
+              <GoASideMenu key="SideMenu">
+                {items.content.length > 0
+                  ? items.content.map((content: any) => {
+                      return (
+                        <a key={`${content.id}-menu`} href={`#${content.id}`}>
+                          {content.title}
+                        </a>
+                      );
+                    })
+                  : 'No content'}
+              </GoASideMenu>
+            </div>
+          }
         >
-          Back to listing
-        </GoAButton>
-
-        {(isLoading || !app) ? (
-          <></>
-        ) : (
-        <>
+          <GoAButton
+            type="tertiary"
+            size="compact"
+            leadingIcon="arrow-back"
+            onClick={() => (window.location.href = '/services/index.html')}
+          >
+            Back to listing
+          </GoAButton>
+          
           <GoASpacer vSpacing="l" />
           <div className="service-heading">
             <h2>{app.ServiceName}</h2>
@@ -366,10 +365,8 @@ export default function Details(): JSX.Element {
 
           <GoASpacer vSpacing="3xl" />
           <BackToTop />
-        </>)
-      }
 
-      </GoAThreeColumnLayout>
-    </>
+        </GoAThreeColumnLayout>
+      </>
   );
 }
