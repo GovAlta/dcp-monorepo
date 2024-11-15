@@ -13,7 +13,7 @@ type ServiceFormWrapperProps = {
 }
 
 type SchemaResponse = {
-  dataSchema: JsonSchema;
+  dataSChema: JsonSchema;
   uiSchema: UISchemaElement;  
 }
 
@@ -27,7 +27,7 @@ export default function ServiceFormWrapper({pageHeader, service, handleSubmit}: 
     content = (
       <ServiceForm
         data={service}
-        dataSchema={data?.dataSchema}
+        dataSchema={data?.dataSChema}
         onSubmit={handleSubmit}
         uiSchema={data?.uiSchema}
       />

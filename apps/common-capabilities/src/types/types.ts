@@ -34,4 +34,6 @@ export type Service = {
   filterText: string;
   SupportLevel: string;
   Audience: Array<{name: string}>;
+  EditorName: string,
+  EditorEmail: string
 }

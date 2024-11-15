@@ -94,7 +94,7 @@ export function newListing(
       const listingApiCall = await axios.post(
         `${formApiUrl}/forms`,
         {
-          definitionId: 'common-capabilities-intake',
+          definitionId: 'jim-test',
           data: {
             ...requestBody.formData,
             appId: (!requestBody.formData.appId || uuidValidate(requestBody.formData.appId))
@@ -111,20 +111,20 @@ export function newListing(
       )
 
       // Notify the user about their submission
-      if (listingApiCall.data.status === 'submitted') {
-        await axios.post(`${eventServiceUrl}/events`, {
-          "namespace": "common-capabilities",
-          "name": requestBody.formData.appId ? "listing-submitted-edit" : "listing-submitted-new",
-          "timestamp": new Date().toISOString(),
-          "payload": {
-            "userEmail": requestBody.formData.EditorEmail
-          }
-        }, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          }
-        })
-      }
+      // if (listingApiCall.data.status === 'submitted') {
+      //   await axios.post(`${eventServiceUrl}/events`, {
+      //     "namespace": "common-capabilities",
+      //     "name": requestBody.formData.appId ? "listing-submitted-edit" : "listing-submitted-new",
+      //     "timestamp": new Date().toISOString(),
+      //     "payload": {
+      //       "userEmail": requestBody.formData.EditorEmail
+      //     }
+      //   }, {
+      //     headers: {
+      //       Authorization: `Bearer ${token}`,
+      //     }
+      //   })
+      // }
       res.status(201).send({
         result: {
           id: listingApiCall.data.id,

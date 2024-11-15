@@ -1,27 +1,9 @@
-import React, { useCallback } from 'react';
-import axios from 'axios';
-import { getGatewayConfigs } from '../../utils/configs';
-import { Service } from '../../types/types';
+import React from 'react';
 import ServiceFormWrapper from '../../components/ServiceForm/ServiceFormWrapper';
+import useForm from '../../hooks/useFormSubmit';
 
 export default function AddServicePage() {
-  const handleSubmit = useCallback((data: Service) => {
-    const config = getGatewayConfigs();
-
-    return new Promise((resolve, reject) => {
-      axios.post(
-        `${config.baseUrl}/services`, // TODO update this
-        data,
-        {
-          headers: {
-            'Content-Type': 'application/json;charset=utf-8',
-          }
-        }
-      )
-      .then(resolve)
-      .catch(reject);
-    });
-  }, []);
+  const { handleSubmit } = useForm();
 
   return (
     <ServiceFormWrapper

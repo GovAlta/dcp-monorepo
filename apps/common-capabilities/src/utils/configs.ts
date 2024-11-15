@@ -1,4 +1,5 @@
 enum Environment {
+  local = 'local',
   dev = 'dev',
   uat = 'uat',
   prod = 'prod'
@@ -15,6 +16,11 @@ type ServiceConfig = {
 }
 
 const serviceConfigs: ServiceConfig = {
+  local: {
+    gateway: {
+      baseUrl: 'http://localhost:3333'
+    }
+  },
   dev: {
     gateway: {
       baseUrl: 'https://cc-api-dcp-dev.apps.aro.gov.ab.ca',
@@ -39,7 +45,7 @@ function getEnv() {
 
     if (!env) {
       if (url === 'localhost') {
-        return Environment.dev;
+        return Environment.local;
       } else if (url === 'common-capabilities.digital.gov.ab.ca') {
         return Environment.prod;
       }
@@ -48,10 +54,16 @@ function getEnv() {
   return Environment[env as keyof typeof Environment];
 }
 
-export function getGatewayConfigs(env?: Environment) {
+function getGatewayConfigs(env?: Environment) {
   env ??= getEnv();
 
   return serviceConfigs[env].gateway;
+}
+
+export function getApiUrl(path: string) {
+  const trimmedPath = path.startsWith('/') ? path.substring(1) : path;
+  
+  return `${getGatewayConfigs().baseUrl}/cc/v1/${trimmedPath}`;
 }
 
 export function getSchemaUrl(definition: string) {
@@ -59,4 +71,15 @@ export function getSchemaUrl(definition: string) {
   const configs = getGatewayConfigs(schemaEnv);
 
   return `${configs.baseUrl}/cc/v1/listings/schema/${definition}`;
+}
+
+export function getCaptchaSiteKey() {
+  switch (getEnv()) {
+    case Environment.prod:
+      return 'prod-key';
+    case Environment.uat:
+      return 'uat-key';
+    default:
+      return '?'; // first character == "?" will disable
+  }
 }
