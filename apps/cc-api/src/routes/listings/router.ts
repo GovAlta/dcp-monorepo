@@ -3,8 +3,7 @@ import { RequestHandler, Router } from 'express';
 import { Logger } from 'winston';
 import axios from 'axios';
 import { SiteVerifyResponse } from './types';
-
-
+import { v4 as uuidv4, validate as uuidValidate } from 'uuid';
 interface RouterOptions {
   logger: Logger;
   tokenProvider: TokenProvider;
@@ -96,7 +95,12 @@ export function newListing(
         `${formApiUrl}/forms`,
         {
           definitionId: 'common-capabilities-intake',
-          data: requestBody.formData,
+          data: {
+            ...requestBody.formData,
+            appId: (!requestBody.formData.appId || uuidValidate(requestBody.formData.appId))
+              ? uuidv4()
+              : requestBody.formData.appId,
+          },
           submit: true
         },
         {
