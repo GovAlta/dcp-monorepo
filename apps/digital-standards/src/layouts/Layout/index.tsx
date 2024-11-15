@@ -5,7 +5,7 @@ import {
   GoASideMenu,
   GoASideMenuGroup,
   GoAHeroBanner,
-} from '@abgov/react-components-4.20.2';
+} from '@abgov/react-components';
 import Footer from '../../components/Footer';
 
 const Layout = ({ children, hideNav = false, hideHero = true }: any) => {

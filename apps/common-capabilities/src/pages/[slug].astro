@@ -2,11 +2,12 @@
 import Layout from '../layouts/Layout.astro';
 import { services as apps } from '../content/datastore.json';
 import Details from './details/index';
+import { getServicePathName } from '../utils/common';
 
 export async function getStaticPaths() {
   return apps.map((app) => ({
     params: {
-      slug: app.ServiceName.toLocaleLowerCase().replace(/ |\//g, '-'),
+      slug: getServicePathName(app.ServiceName),
     },
     props: {
       app,

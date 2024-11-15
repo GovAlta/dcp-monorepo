@@ -61,7 +61,7 @@ export function getFormsSchema(
       )
 
       res.status(200).send({
-        dataSChema: getFormsSchemaData.data.dataSchema,
+        dataSchema: getFormsSchemaData.data.dataSchema,
         uiSchema: getFormsSchemaData.data.uiSchema
       });
     } catch (e) {
