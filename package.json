@@ -50,7 +50,6 @@
     "jest-environment-node": "^29.4.1",
     "nx": "18.2.4",
     "pagefind": "^1.1.0",
-    "postinstall-postinstall": "^2.1.0",
     "prettier": "^2.6.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

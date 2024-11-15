@@ -47,13 +47,11 @@ export default function ServiceFormWrapper({pageHeader, service, handleSubmit}: 
         rightColumnWidth="8%"
         leftColumnWidth="18%"
       >
-        <div>
-          <h1>{pageHeader}</h1>
-          <div className="progress-indicator">
-            <GoACircularProgress variant="inline" size="large" message="Loading form information..." visible={isLoading} />
-          </div>
-          {content}
+        <h1>{pageHeader}</h1>
+        <div className="progress-indicator">
+          <GoACircularProgress variant="inline" size="large" message="Loading form information..." visible={isLoading} />
         </div>
+        {content}
       </GoAThreeColumnLayout>
     </>
   );
