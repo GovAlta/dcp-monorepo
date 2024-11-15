@@ -13,7 +13,7 @@ type ServiceFormWrapperProps = {
 }
 
 type SchemaResponse = {
-  dataSChema: JsonSchema;
+  dataSchema: JsonSchema;
   uiSchema: UISchemaElement;  
 }
 
@@ -27,18 +27,16 @@ export default function ServiceFormWrapper({pageHeader, service, handleSubmit}: 
     content = (
       <ServiceForm
         data={service}
-        dataSchema={data?.dataSChema}
+        dataSchema={data?.dataSchema}
         onSubmit={handleSubmit}
         uiSchema={data?.uiSchema}
       />
     );
   } else if (error) {
     content = (
-      <div>
-        <GoANotification type="emergency" ariaLive="assertive">
-          Failed to load form definitions. Please try again later.
-        </GoANotification>
-      </div>
+      <GoANotification type="emergency" ariaLive="assertive">
+        Failed to load form definitions. Please try again later.
+      </GoANotification>
     );
   }
 

@@ -67,10 +67,7 @@ export function getApiUrl(path: string) {
 }
 
 export function getSchemaUrl(definition: string) {
-  const schemaEnv = getEnv() === Environment.prod ? Environment.prod : Environment.uat;
-  const configs = getGatewayConfigs(schemaEnv);
-
-  return `${configs.baseUrl}/cc/v1/listings/schema/${definition}`;
+  return getApiUrl(`listings/schema/${definition}`);
 }
 
 export function getCaptchaSiteKey() {
