@@ -34,10 +34,12 @@ yarn-error.log
 testem.log
 /typings
 .nx/cache
-.env
 
 # System Files
 .DS_Store
 Thumbs.db
 
 .astro
+
+# Environment file
+.env

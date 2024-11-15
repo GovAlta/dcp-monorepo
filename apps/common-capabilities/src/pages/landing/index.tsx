@@ -6,7 +6,7 @@ import {
   GoAPageBlock,
   GoASpacer,
   GoAButton,
-} from '@abgov/react-components-4.20.2';
+} from '@abgov/react-components';
 import './styles.css';
 import ExternalLink from '../../components/ExternalLink';
 import Category from './category';

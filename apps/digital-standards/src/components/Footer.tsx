@@ -2,7 +2,7 @@ import React from 'react';
 import {
   GoAAppFooter,
   GoAThreeColumnLayout
-} from '@abgov/react-components-4.20.2';
+} from '@abgov/react-components';
 
 const Footer = () => {
   return (

@@ -8,6 +8,7 @@ export type ServiceListingResponse = {
 };
 
 export type Service = {
+  AppId: string;
   ServiceName: string;
   Summary: string;
   Description: string;
@@ -38,4 +39,6 @@ export type Service = {
   filterText: string;
   SupportLevel: string;
   Audience: Array<{name: string}>;
+  EditorName: string,
+  EditorEmail: string
 }

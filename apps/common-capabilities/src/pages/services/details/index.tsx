@@ -6,9 +6,9 @@ import {
   GoASideMenu,
   GoATable,
   GoAButton,
-  GoACircularProgress,
-} from '@abgov/react-components-4.20.2';
-import React, { useEffect, useMemo, useState } from 'react';
+  GoACircularProgress
+} from '@abgov/react-components';
+import React, { useEffect, useState, useMemo } from 'react';
 import './styles.css';
 import ExternalLink from '../../../components/ExternalLink';
 import BackToTop from '../../../components/BackToTop';
@@ -92,7 +92,7 @@ export default function Details(): JSX.Element {
   }
 
   const SecurityBlock: React.FC<{ group: SecurityItem }> = ({ group }) => {
-    
+
     //---[ app.Security is from the JSON data ]---
     // const itemData = app.Security.find( (item: any) => item.Type === group.dataSecurityType);
     // if (itemData == undefined) return null;
@@ -127,7 +127,7 @@ export default function Details(): JSX.Element {
             )}
           </thead>
           <tbody>
-             {group.items             
+             {group.items
              .filter(item => app[item] !== '')
              .map((item: any, index: any) => (
               <>
@@ -139,7 +139,7 @@ export default function Details(): JSX.Element {
                   </td>
                 </tr>
               </>
-            ))} 
+            ))}
             {/* {itemData.Items.map((row: any, index: any) => (
               <>
                 <tr key={`tr-${group.name}${index}`}>
@@ -296,7 +296,7 @@ export default function Details(): JSX.Element {
       return (
         <>
           {securityGroups.map((group: SecurityItem) => (
-            <SecurityBlock key={`block${group.name}`} group={group} />            
+            <SecurityBlock key={`block${group.name}`} group={group} />
           ))}
         </>
       );
@@ -333,11 +333,15 @@ export default function Details(): JSX.Element {
           >
             Back to listing
           </GoAButton>
-          
+
           <GoASpacer vSpacing="l" />
           <div className="service-heading">
-            <h2>{app.ServiceName}</h2>
-          </div>
+          <h2>{app.ServiceName}</h2>
+          <GoAButton
+            onClick={() => (window.location.href = `/updateservice?id=${app.appId}`)}>
+            Update
+          </GoAButton>
+        </div>
           <GoASpacer vSpacing="l" />
           <p className="service-content"> {app.Description}</p>
 

@@ -53,6 +53,11 @@
   /* flex: 1; */
   /* color: #d9480f; */
 }
+.home-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 #home-title {
   /* margin-top: var(--goa-space-3xl); */
   margin-bottom: var(--goa-space-xs);
@@ -69,4 +74,7 @@
 }
 .callout-overview {
   width: 70%;
+}
+.add-service {
+  float: right;
 }

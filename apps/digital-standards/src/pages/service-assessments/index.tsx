@@ -1,4 +1,4 @@
-import { GoASpacer, GoAButton, GoAIcon } from '@abgov/react-components-4.20.2';
+import { GoASpacer, GoAButton, GoAIcon } from '@abgov/react-components';
 import React, { useEffect } from 'react';
 import BackToTop from '../../components/BackToTop';
 import ExternalLink from '../../components/ExternalLink';

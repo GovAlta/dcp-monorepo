@@ -54,7 +54,7 @@ function getEnv() {
   return Environment[env as keyof typeof Environment];
 }
 
-export function getGatewayConfigs(env?: Environment) {
+function getGatewayConfigs(env?: Environment) {
   env ??= getEnv();
 
   return serviceConfigs[env].gateway;
@@ -67,8 +67,16 @@ export function getApiUrl(path: string) {
 }
 
 export function getSchemaUrl(definition: string) {
-  const schemaEnv = getEnv() === Environment.prod ? Environment.prod : Environment.uat;
-  const configs = getGatewayConfigs(schemaEnv);
+  return getApiUrl(`listings/schema/${definition}`);
+}
 
-  return `${configs.baseUrl}/cc/v1/listings/schema/${definition}`;
+export function getCaptchaSiteKey() {
+  switch (getEnv()) {
+    case Environment.prod:
+      return 'prod-key';
+    case Environment.uat:
+      return 'uat-key';
+    default:
+      return '?'; // first character == "?" will disable
+  }
 }

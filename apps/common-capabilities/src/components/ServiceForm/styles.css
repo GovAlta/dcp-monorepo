@@ -1,0 +1,10 @@
+.navigation-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.progress-indicator {
+  display: flex;
+  justify-content: center;
+}

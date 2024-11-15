@@ -2,7 +2,7 @@ import {
   GoASideMenu,
   GoASpacer,
   GoAThreeColumnLayout,
-} from '@abgov/react-components-4.20.2';
+} from '@abgov/react-components';
 import React, { useEffect } from 'react';
 import { aboutPageContent } from './content';
 

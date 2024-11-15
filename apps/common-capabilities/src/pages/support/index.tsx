@@ -4,7 +4,7 @@ import {
   GoAIcon,
   GoASpacer,
   GoAThreeColumnLayout,
-} from '@abgov/react-components-4.20.2';
+} from '@abgov/react-components';
 import './styles.css';
 import faqs from './faq.json';
 import ExternalLink from '../../components/ExternalLink';
