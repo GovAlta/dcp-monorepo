@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 
 import hero_mobile from '../../img/hero-mobile-tablet.svg';
-import suppliers_thumb from '../../img/supplier-icon-home.svg';
-import partners_thumb from '../../img/stakeholder-icon-home.svg';
+import concierge_thumb from '../../img/icon-handshake.svg';
+import join_thumb from '../../img/icon-join.svg';
 import handShakeLine from '../../img/handShakeLine.svg';
 
 const HomePage = () => {
@@ -147,35 +147,27 @@ const HomePage = () => {
         </div>
       </div>
 
-      <div className="goa-adm-body">
+      <div className="goa-adm-body" id="main">
         <div className="container">
           {/* CUSTOMIZABLE */}
           <section className="goa-adm-intro">
+            <h2>Step into the future with the Alberta government</h2>
             <p>
-              Step into the future with the Alberta government! We want to
-              partner with top-tier technology vendors and service design
-              professionals from coast to coast to create cutting-edge,
-              impactful solutions that make life easier for Albertans, wherever
-              they are, on any device. Join us on this exciting journey and be
-              part of something truly remarkable.
+              We want to partner with top-tier technology vendors and service design professionals coast to coast. Together, we will create cutting-edge solutions that makes life easier for Albertans - wherever they are and on whatever device they use. Join us on this exciting journey and be part of something truly remarkable.
             </p>
           </section>
 
           {/* CUSTOMIZABLE */}
           <section className="goa-adm-cards-info">
-            <h2>Sign up and keep up to date</h2>
             <div className="goa-adm-cards">
               <div className="goa-adm-single-card">
                 <div className="goa-adm-single-card-thumb">
-                  <img src={suppliers_thumb} alt="Suppliers illustration" />
+                  <img src={concierge_thumb} alt="Illustration of a handshake" />
                 </div>
-                <h3>Suppliers</h3>
+                <h3>Procurement Concierge Program</h3>
                 <div className="goa-adm-single-card-content">
                   <p>
-                    Do you have the technology and vision to help shape the
-                    future? We want to hear ideas that support government
-                    initiatives to create impactful, accessible digital
-                    experiences for Albertans.
+                    Boost your procurement knowledge with one-on-one support and access a libraryof self-serve resources designed to make yourvendor journey easier.
                   </p>
                 </div>
                 <div className="goa-adm-single-card-link">
@@ -183,19 +175,18 @@ const HomePage = () => {
                     className="goa-adm-button-link goa-adm-secondary"
                     href="/for-suppliers/"
                   >
-                    View supplier benefits
+                    View program
                   </a>
                 </div>
               </div>
               <div className="goa-adm-single-card">
                 <div className="goa-adm-single-card-thumb">
-                  <img src={partners_thumb} alt="Partners illustration" />
+                  <img src={join_thumb} alt="Illustration of two people and a plus icon" />
                 </div>
-                <h3>Community partners</h3>
+                <h3>Join the Alberta Digital Marketplace</h3>
                 <div className="goa-adm-single-card-content">
                   <p>
-                    Curious? Keep connected as a digitally curious Albertan,
-                    another government or community organization.
+                    Help us build the future of Alberta's public digital services by engaging with us on a variety of initiatives to deliver programs that meet the needs of Albertans.
                   </p>
                 </div>
                 <div className="goa-adm-single-card-link">
@@ -203,34 +194,25 @@ const HomePage = () => {
                     className="goa-adm-button-link goa-adm-secondary"
                     href="/for-partners/"
                   >
-                    View partner benefits
+                    Sign up
                   </a>
                 </div>
               </div>
             </div>
           </section>
           {/* CUSTOMIZABLE */}
-          <section className="goa-adm-intro">
-            <p>
-              We're seeking talented vendors who are passionate about making a
-              real impact for Albertans. Explore open opportunities and see how
-              you can join us on this journey.
-            </p>
-          </section>
 
           {/* CUSTOMIZABLE */}
           <section className="goa-adm-apc-callout">
-            <h2>
-              Discover more about our opportunities and procurement process
-              today.
-            </h2>
+            <h2>Have a vision for Alberta's digital future?</h2>
+            <p>The GoA is looking for talented vendors who are passionate about making a real impact. Let's deliver impactful and accessible digital experiences together. For procurement opportunities, visit the Alberta Purchasing Connection (APC).</p>
             <a
               className="goa-adm-button-link"
               href="https://purchasing.alberta.ca/search"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Explore opportunities
+              Explore APC opportunities
             </a>
           </section>
         </div>

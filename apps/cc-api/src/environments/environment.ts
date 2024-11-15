@@ -14,6 +14,7 @@ export const environment = envalid.cleanEnv(
     CLIENT_SECRET: envalid.str({ default: '' }),
     LOG_LEVEL: envalid.str({ default: 'debug' }),
     PORT: envalid.str({ default: "3333" }),
+    RECAPTCHA_SECRET: envalid.str({ default: '' }),
     DIRECTORY_URL: envalid.url({ default: 'https://directory-service.adsp-uat.alberta.ca' }),
   },
   {
