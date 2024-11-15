@@ -1,0 +1,84 @@
+.goa-adm-timeline-item {
+    position: relative;
+}
+
+.goa-adm-timeline-item .goa-adm-timeline-heading {
+    display: flex;
+    gap: 1rem;
+}
+
+.goa-adm-timeline-item .goa-adm-timeline-heading > * {
+    border: 2px solid #005072;
+    font-weight: 700;
+    background: #40CE97;
+}
+
+.goa-adm-timeline-item:before {
+    position: absolute;
+    bottom: 0px;
+    top: 14px;
+    left: 21px;
+    width: 2px;
+    content: "";
+    background: #005072;
+    height: 100%;
+}
+
+.goa-adm-timeline-item .goa-adm-timeline-heading > .goa-adm-timeline-id:before {
+    content: "";
+    position: absolute;
+    top: 18px;
+    left: 21px;
+    width: 48px;
+    height: 2px;
+    background: #005072;
+    z-index: -1;
+}
+
+.goa-adm-timeline-item:last-child:after {
+    position: absolute;
+    bottom: -16px;
+    left: 18px;
+    width: 8px;
+    height: 8px;
+    content: "";
+    border-radius: 100%;
+    background: #005072;
+}
+
+.goa-adm-timeline-id {
+    padding: 0 0 4px;
+    min-width: 42px;
+    width: 42px;
+    height: 42px;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.goa-adm-timeline-title {
+    border-radius: 4px;
+    flex-grow: 1;
+    padding: 4px 12px 6px;
+}
+
+.goa-adm-timeline-content {
+    padding: 0 0 2.5rem 4rem;
+}
+
+.goa-adm-timeline-content ol {
+    margin: 1.5rem 0 0;
+}
+
+.goa-adm-timeline-content ul li,
+.goa-adm-timeline-content ol li {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+}
+
+.goa-adm-timeline-item:last-child .goa-adm-timeline-content {
+    padding-bottom: 1rem;
+    margin-bottom: 3.5rem;
+}

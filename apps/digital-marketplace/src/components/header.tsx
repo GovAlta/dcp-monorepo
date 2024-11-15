@@ -7,6 +7,9 @@ const Header = ({ page }: any) => {
   return (
     <>
       <header>
+        <div className="goa-adm-skiplinks">
+          <a href="#main">Skip to content</a>
+        </div>
         <div className="goa-adm-microsite-header">
           <div className="container">
             {/* <!--div className="goa-adm-microsite-header-type"><span>Alpha</span></div--> */}
@@ -38,9 +41,8 @@ const Header = ({ page }: any) => {
               </div>
               <nav className="goa-adm-nav-menu">
                 <ul>
-                <li className={page === 'About'     ? 'goa-adm-nav-active-item' : ''}> <a href="/about-us/">About</a></li>
-                <li className={page === 'Suppliers' ? 'goa-adm-nav-active-item' : ''}> <a href="/for-suppliers/">Suppliers</a></li>
-                <li className={page === 'Partners'  ? 'goa-adm-nav-active-item' : ''}> <a href="/for-partners/">Community partners</a></li>
+                <li className={page === 'About' ? 'goa-adm-nav-active-item' : ''}> <a href="/about-us/">About</a></li>
+                <li className={page === 'Understanding Procurement' ? 'goa-adm-nav-active-item' : ''}> <a href="/understanding-procurement/">Understanding Procurement</a></li>
                 <li className={page === 'Contact'   ? 'goa-adm-nav-active-item' : ''}> <a href="/contact-us/">Contact</a></li>
                 </ul>
               </nav>

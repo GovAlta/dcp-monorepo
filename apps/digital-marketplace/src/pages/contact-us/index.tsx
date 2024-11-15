@@ -32,7 +32,7 @@ const ContactPage = () => {
         </div>
       </div>
 
-      <div className="goa-adm-body">
+      <div className="goa-adm-body" id="main">
         <div className="container">
           <section className="goa-adm-contact goa-adm-center-aligned">
             <h2>Let's build a digital future of public services together!</h2>

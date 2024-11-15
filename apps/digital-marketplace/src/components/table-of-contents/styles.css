@@ -1,0 +1,44 @@
+.goa-adm-toc ul {
+    margin-top: 24px;
+    list-style-type: none;
+}
+
+.goa-adm-toc > h3 {
+    margin-top: 0;
+}
+
+.goa-adm-toc > ul {
+    padding-left: 0;
+}
+
+.goa-adm-toc > ul li {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    line-height: 1.75rem;
+    margin: 0;
+    padding: 0 0 1.5rem;
+}
+
+.goa-adm-toc > ul > li.goa-adm-toc-level-1 + li.goa-adm-toc-level-2,
+.goa-adm-toc > ul > li.goa-adm-toc-level-2 + li.goa-adm-toc-level-1 {
+    margin-top: 0.5rem;
+}
+
+.goa-adm-toc > ul li > a {
+    font-size: 1.125rem;
+}
+
+.goa-adm-toc > ul li.goa-adm-toc-level-2 {
+    padding-left: 2rem;
+}
+
+.goa-adm-toc > ul li.goa-adm-toc-level-2:before {
+    position: absolute;
+    top: -9px;
+    left: 3px;
+    width: 2px;
+    content: "";
+    background: #D9D9D9;
+    height: 100%;
+}
