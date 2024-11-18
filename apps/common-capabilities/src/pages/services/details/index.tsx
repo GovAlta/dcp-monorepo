@@ -34,7 +34,6 @@ export default function Details(): JSX.Element {
   const detailsUrl = useMemo(() => getApiUrl(`/listings/services/${id}`), []); 
   const [data, error, isLoading] = useFetch<ServiceDetailsResponse>(detailsUrl);
   const [app, setApp] = useState<any>(undefined);
-
   const [items, setItems] = useState<any>({
     content: [],
     specs: [],

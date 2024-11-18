@@ -21,7 +21,7 @@ function reqestErrorHandler(error: Error, logger: Logger, customMessage: string,
 }
 
 function mapServiceInfo(serviceInfo) {
-    const services = serviceInfo.data?.[VALUE_SERVICE_NAME_SPACE];
+    const services = serviceInfo.data?.[VALUE_SERVICE_NAME_SPACE] || {};
     const serviceId = Object.keys(services)[0];
     const serviceDetails = services?.[serviceId]?.[0]?.value;
 

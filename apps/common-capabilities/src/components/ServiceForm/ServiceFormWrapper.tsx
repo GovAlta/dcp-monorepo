@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import ServiceForm from '../../components/ServiceForm';
 import { GoACircularProgress, GoANotification, GoAThreeColumnLayout } from '@abgov/react-components';
 import { getSchemaUrl } from '../../utils/configs';
@@ -18,7 +18,7 @@ type SchemaResponse = {
 }
 
 export default function ServiceFormWrapper({pageHeader, service, handleSubmit}: ServiceFormWrapperProps) {
-  const schemaUrl = getSchemaUrl('common-capabilities-intake');
+  const schemaUrl = useMemo(() => getSchemaUrl('common-capabilities-intake'), []);
   const [data, error, isLoading] = useFetch<SchemaResponse>(schemaUrl);
 
   let content;

@@ -62,7 +62,7 @@ export function getFormsSchema(
       let definitionSchema = cachedSchemas?.[definitionId];
 
       if (!definitionSchema) {
-        logger.info(`No schema found in cache for definitionId=${definitionId}, fetching from value service...`);
+        logger.info(`No schema found in cache for definitionId=${definitionId}, fetching from form service...`);
 
         const getFormsSchemaData = await axios.get(
           `${formApiUrl}/definitions/${definitionId}`,
