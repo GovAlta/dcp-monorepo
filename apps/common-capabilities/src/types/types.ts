@@ -3,7 +3,12 @@ type Contact = {
   methods: Array<{method: string, value: string, url: string}>;
 }
 
+export type ServiceListingResponse = {
+  services: Array<Service>;
+};
+
 export type Service = {
+  AppId: string;
   ServiceName: string;
   Summary: string;
   Description: string;

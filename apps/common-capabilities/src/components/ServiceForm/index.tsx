@@ -79,7 +79,6 @@ const ServiceForm = ({ data, dataSchema, uiSchema, onSubmit }: ServiceFormProps)
     setError(null);
   }, [setError]);
 
-
   return (
     <>
       <div className="progress-indicator">

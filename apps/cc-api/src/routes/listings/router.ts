@@ -2,14 +2,20 @@ import { TokenProvider } from '@abgov/adsp-service-sdk';
 import { RequestHandler, Router } from 'express';
 import { Logger } from 'winston';
 import axios from 'axios';
+import { getService, getServices } from './services';
+import { DataCache, FormSchema } from '../../cache/types';
+import { CacheKeys } from '../../cache';
 import { SiteVerifyResponse } from './types';
 import { v4 as uuidv4, validate as uuidValidate } from 'uuid';
+
 interface RouterOptions {
   logger: Logger;
   tokenProvider: TokenProvider;
   formApiUrl: URL;
   eventServiceUrl: URL;
+  valueServiceUrl: URL;
   RECAPTCHA_SECRET?: string;
+  cache: DataCache;
 }
 
 export function verifyCaptcha(logger: Logger, RECAPTCHA_SECRET: string, SCORE_THRESHOLD = 0.5): RequestHandler {
@@ -40,30 +46,47 @@ export function verifyCaptcha(logger: Logger, RECAPTCHA_SECRET: string, SCORE_TH
     }
   };
 }
+
 export function getFormsSchema(
   logger: Logger,
   formApiUrl: URL,
-  tokenProvider: TokenProvider
+  tokenProvider: TokenProvider,
+  cache: DataCache
 ): RequestHandler {
   return async (req, res) => {
 
     try {
       const token = await tokenProvider.getAccessToken();
       const { definitionId } = req.params;
+      const cachedSchemas = await cache.get(CacheKeys.SCHEMA) as FormSchema;
+      let definitionSchema = cachedSchemas?.[definitionId];
 
-      const getFormsSchemaData = await axios.get(
-        `${formApiUrl}/definitions/${definitionId}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      )
+      if (!definitionSchema) {
+        logger.info(`No schema found in cache for definitionId=${definitionId}, fetching from form service...`);
 
-      res.status(200).send({
-        dataSchema: getFormsSchemaData.data.dataSchema,
-        uiSchema: getFormsSchemaData.data.uiSchema
-      });
+        const getFormsSchemaData = await axios.get(
+          `${formApiUrl}/definitions/${definitionId}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        
+        definitionSchema = {
+          dataSchema: getFormsSchemaData.data.dataSchema,
+          uiSchema: getFormsSchemaData.data.uiSchema
+        };
+
+        const cacheUpdates = Object.assign({}, cachedSchemas, {
+          [definitionId]: definitionSchema
+        });
+
+        await cache.set(CacheKeys.SCHEMA, cacheUpdates);
+        logger.info(`Successfully fetched schema for definitionId=${definitionId}`);
+      }
+
+      res.status(200).send(definitionSchema);
     } catch (e) {
       if (axios.isAxiosError(e)) {
         res.status(e.response.status).send(e.response.data);
@@ -144,24 +167,45 @@ export function newListing(
   }
 }
 
+function clearCache(cache: DataCache): RequestHandler {
+  return async (req, res) => {
+    await cache.clear();
+    res.status(200).send();
+  }
+}
 
 export function createListingsRouter({
   logger,
   tokenProvider,
   formApiUrl,
+  valueServiceUrl,
   eventServiceUrl,
+  cache,
 }: RouterOptions): Router {
   const router = Router();
 
   router.get(
     '/listings/schema/:definitionId',
-    getFormsSchema(logger, formApiUrl, tokenProvider)
+    getFormsSchema(logger, formApiUrl, tokenProvider, cache)
   );
 
   router.post(
     '/listings',
     // verifyCaptcha(logger, RECAPTCHA_SECRET, 0.7),
     newListing(logger, formApiUrl, eventServiceUrl, tokenProvider)
-  )
+  );
+
+  router.get(
+    '/listings/services',
+    getServices(logger, valueServiceUrl, tokenProvider, cache)
+  );
+
+  router.get(
+    '/listings/services/:serviceId',
+    getService(logger, valueServiceUrl, tokenProvider, cache)
+  );
+
+  router.post('/cache/clear', clearCache(cache));
+
   return router;
 }

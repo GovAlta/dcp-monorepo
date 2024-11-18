@@ -6,63 +6,81 @@ import {
   GoASideMenu,
   GoATable,
   GoAButton,
+  GoACircularProgress
 } from '@abgov/react-components';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import './styles.css';
-import ExternalLink from '../../components/ExternalLink';
-import BackToTop from '../../components/BackToTop';
+import ExternalLink from '../../../components/ExternalLink';
+import BackToTop from '../../../components/BackToTop';
 import {
   securityGroups,
   securityData,
   specifications,
   bodyItems,
 } from './config';
-import { getServicePathName } from '../../utils/common';
+import useFetch from '../../../hooks/useFetch';
+import { getApiUrl } from '../../../utils/configs';
 
-interface DetailsProps {
-  app: any;
+type ServiceDetailsResponse = {
+  serviceInfo: any;
 }
 
-export default function Details({ app }: DetailsProps): JSX.Element {
+export default function Details(): JSX.Element {
+  const id = useMemo(() => {
+    const urlSearchParams = new URLSearchParams(window.location.search);
+    const params = Object.fromEntries(urlSearchParams.entries());
+    return params.id;
+  }, []);
+  const detailsUrl = useMemo(() => getApiUrl(`/listings/services/${id}`), []); 
+  const [data, error, isLoading] = useFetch<ServiceDetailsResponse>(detailsUrl);
+  const [app, setApp] = useState<any>(undefined);
   const [items, setItems] = useState<any>({
     content: [],
     specs: [],
   });
 
   useEffect(() => {
-    if (window.location.hash) {
+    if (!isLoading && data) {
+      setApp(data.serviceInfo);
+    }
+  }, [data, isLoading]);
+
+  useEffect(() => {
+    if (window.location.hash && app) {
       const elmnt = document.getElementById(window.location.hash.substring(1));
       elmnt?.scrollIntoView(true);
     }
-  }, []);
+  }, [app]);
 
   useEffect(() => {
-    let showContent: any = [];
-    Object.entries(bodyItems).forEach(([name, obj]) => {
-      if (obj.dataIn == '' ? app[name] != '' : app[name][obj.dataIn] != '') {
-        const newValue = {
-          ...obj,
-          id: `body-${name.toLowerCase()}`,
-          showContent: true,
-          showInSidebar: true,
-        };
-        showContent.push({ name, ...newValue });
-      }
-    });
+    if (app) {
+      let showContent: any = [];
+      Object.entries(bodyItems).forEach(([name, obj]) => {
+        if (obj.dataIn == '' ? app[name] != '' : app[name][obj.dataIn] != '') {
+          const newValue = {
+            ...obj,
+            id: `body-${name.toLowerCase()}`,
+            showContent: true,
+            showInSidebar: true,
+          };
+          showContent.push({ name, ...newValue });
+        }
+      });
 
-    let showSpecs: any = [];
-    Object.entries(specifications).forEach(([name, obj]) => {
-      if (app[name] != '' && app[name] != 'Other') {
-        const newValue = { ...obj, id: `spec-${name.toLowerCase()}` };
-        showSpecs.push({ name, ...newValue });
-      }
-    });
+      let showSpecs: any = [];
+      Object.entries(specifications).forEach(([name, obj]) => {
+        if (app[name] != '' && app[name] != 'Other') {
+          const newValue = { ...obj, id: `spec-${name.toLowerCase()}` };
+          showSpecs.push({ name, ...newValue });
+        }
+      });
 
-    setItems({
-      content: showContent,
-      specs: showSpecs,
-    });
-  }, []);
+      setItems({
+        content: showContent,
+        specs: showSpecs,
+      });
+    }
+  }, [app]);
 
   interface SecurityItem {
     name: string;
@@ -284,72 +302,74 @@ export default function Details({ app }: DetailsProps): JSX.Element {
     } else return <p className="service-content">{app[name]}</p>;
   };
 
-  return (
-    <>
-      <GoAThreeColumnLayout
-        maxContentWidth="1500px"
-        nav={
-          <div className="details-side-nav" key="details-side-nav">
-            <GoASideMenu key="SideMenu">
-              {items.content.length > 0
-                ? items.content.map((content: any) => {
-                    return (
-                      <a key={`${content.id}-menu`} href={`#${content.id}`}>
-                        {content.title}
-                      </a>
-                    );
-                  })
-                : 'No content'}
-            </GoASideMenu>
-          </div>
-        }
-      >
-        <GoAButton
-          type="tertiary"
-          size="compact"
-          leadingIcon="arrow-back"
-          onClick={() => (window.location.href = '/services/index.html')}
+  return (isLoading || !app) ? (
+      <GoACircularProgress variant="fullscreen" size="large" message="Loading service details..." visible={true} />
+    ) : (
+      <>
+        <GoAThreeColumnLayout
+          maxContentWidth="1500px"
+          nav={
+            <div className="details-side-nav" key="details-side-nav">
+              <GoASideMenu key="SideMenu">
+                {items.content.length > 0
+                  ? items.content.map((content: any) => {
+                      return (
+                        <a key={`${content.id}-menu`} href={`#${content.id}`}>
+                          {content.title}
+                        </a>
+                      );
+                    })
+                  : 'No content'}
+              </GoASideMenu>
+            </div>
+          }
         >
-          Back to listing
-        </GoAButton>
+          <GoAButton
+            type="tertiary"
+            size="compact"
+            leadingIcon="arrow-back"
+            onClick={() => (window.location.href = '/services/index.html')}
+          >
+            Back to listing
+          </GoAButton>
 
-        <GoASpacer vSpacing="l" />
-        <div className="service-heading">
+          <GoASpacer vSpacing="l" />
+          <div className="service-heading">
           <h2>{app.ServiceName}</h2>
           <GoAButton
-            onClick={() => (window.location.href = `/${getServicePathName(app.ServiceName)}/update/index.html`)}>
+            onClick={() => (window.location.href = `/updateservice?id=${app.appId}`)}>
             Update
           </GoAButton>
         </div>
-        <GoASpacer vSpacing="l" />
-        <p className="service-content"> {app.Description}</p>
+          <GoASpacer vSpacing="l" />
+          <p className="service-content"> {app.Description}</p>
 
-        <GoASpacer vSpacing="xl" />
-        {items.content.length > 0 &&
-          items.content.map(({ id, name, title }: any) => {
-            return (
-              <div key={`${id}`}>
-                <h3 id={`${id}`} className='service-title'>{title}</h3>
-                {renderContent(name, app)}
-                <GoASpacer vSpacing="l" />
-              </div>
-            );
-          })}
+          <GoASpacer vSpacing="xl" />
+          {items.content.length > 0 &&
+            items.content.map(({ id, name, title }: any) => {
+              return (
+                <div key={`${id}`}>
+                  <h3 id={`${id}`} className='service-title'>{title}</h3>
+                  {renderContent(name, app)}
+                  <GoASpacer vSpacing="l" />
+                </div>
+              );
+            })}
 
-        <GoASpacer vSpacing="xl" />
-        <div>
-          Please feel free to{' '}
-          <ExternalLink
-            link={`mailto:TI.Softwaredelivery@gov.ab.ca?subject=Common capabilities feedback: ${app.ServiceName}`}
-            text={'share feedback'}
-          />{' '}
-          on this service.
-        </div>
+          <GoASpacer vSpacing="xl" />
+          <div>
+            Please feel free to{' '}
+            <ExternalLink
+              link={`mailto:TI.Softwaredelivery@gov.ab.ca?subject=Common capabilities feedback: ${app.ServiceName}`}
+              text={'share feedback'}
+            />{' '}
+            on this service.
+          </div>
 
-        <GoASpacer vSpacing="3xl" />
-        <BackToTop />
+          <GoASpacer vSpacing="3xl" />
+          <BackToTop />
 
-      </GoAThreeColumnLayout>
-    </>
+        </GoAThreeColumnLayout>
+      </>
   );
 }

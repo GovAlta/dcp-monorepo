@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import ServiceForm from '../../components/ServiceForm';
 import { GoACircularProgress, GoANotification, GoAThreeColumnLayout } from '@abgov/react-components';
 import { getSchemaUrl } from '../../utils/configs';
@@ -18,7 +18,7 @@ type SchemaResponse = {
 }
 
 export default function ServiceFormWrapper({pageHeader, service, handleSubmit}: ServiceFormWrapperProps) {
-  const schemaUrl = getSchemaUrl('common-capabilities-intake');
+  const schemaUrl = useMemo(() => getSchemaUrl('common-capabilities-intake'), []);
   const [data, error, isLoading] = useFetch<SchemaResponse>(schemaUrl);
 
   let content;
@@ -47,13 +47,11 @@ export default function ServiceFormWrapper({pageHeader, service, handleSubmit}: 
         rightColumnWidth="8%"
         leftColumnWidth="18%"
       >
-        <div>
-          <h1>{pageHeader}</h1>
-          <div className="progress-indicator">
-            <GoACircularProgress variant="inline" size="large" message="Loading form information..." visible={isLoading} />
-          </div>
-          {content}
+        <h1>{pageHeader}</h1>
+        <div className="progress-indicator">
+          <GoACircularProgress variant="inline" size="large" message="Loading form information..." visible={isLoading} />
         </div>
+        {content}
       </GoAThreeColumnLayout>
     </>
   );
