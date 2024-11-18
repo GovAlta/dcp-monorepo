@@ -52,6 +52,12 @@
     margin: 3rem 0 0;
 }
 
+.goa-adm-accordion ul li > span.list-note {
+    display: block;
+    margin: 1rem 0 0 1rem;
+    font-style: italic;
+}
+
 @media screen and (max-width: 767px) {
     .goa-adm-body.goa-adm-procurement > .container {
         display: flex;

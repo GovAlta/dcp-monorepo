@@ -5,7 +5,7 @@ const AfterSigningAccordion = () => {
     return (
         <>
         <Accordion title="Supplier enablement" content={
-            <p>You may need to complete additional steps to finalize your supplier status. You may need to complete additional steps to finalize your supplier status, like submitting compliance documents or setting up payment details. If you aren't already, register to the SAP Ariba/Business network. There is no cost to suppliers when doing business with the GoA in SAP Business Network in 1GX.</p>
+            <p>You may need to complete additional steps to finalize your supplier status, like submitting compliance documents or setting up payment details. If you aren’t already, register to the SAP Ariba/Business network. There is no cost to suppliers when doing business with the GoA in SAP Business Network in 1GX.</p>
         } />
 
         <Accordion title="Receive and confirm purchase orders" content={
@@ -17,10 +17,10 @@ const AfterSigningAccordion = () => {
 
         <Accordion title="Invoicing and payments" content={
             <ol>
-                <li>Upon delivery completion, submit an invoice through SAP Ariba, the application in 1GX that processes orders, invoices, and payments (or as instructed in the contract). </li>
+                <li>Upon delivery completion, submit an invoice through SAP Ariba, the application in 1GX that processes orders, invoices, and payments (or as instructed in the contract).</li>
                 <li>Ensure your invoice is accurate and matches the PO, including itemized charges, quantities, and any other required details.</li>
-                <li>Use the <a href="https://support.ariba.com/item/view/194879" target="_blank">1GX supplier information</a> portal to learn more and get started in SAP Business Network.</li>
-                <li>Please follow up with the GoA's payment department through the contact information provided in the contract if you face any issues with payment. </li>
+                <li>Use the <a href="https://support.ariba.com/item/view/194879" target="_blank">1GX supplier information portal</a> to learn more and get started in SAP Business Network</li>
+                <li>Please follow up with GoA's payment department through the contact information provided in the contract if you face any issues with payment.</li>
             </ol>
         } />
         </>
