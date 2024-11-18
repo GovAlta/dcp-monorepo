@@ -58,35 +58,20 @@ export function getFormsSchema(
     try {
       const token = await tokenProvider.getAccessToken();
       const { definitionId } = req.params;
-      const cachedSchemas = await cache.get(CacheKeys.SCHEMA) as FormSchema;
-      let definitionSchema = cachedSchemas?.[definitionId];
 
-      if (!definitionSchema) {
-        logger.info(`No schema found in cache for definitionId=${definitionId}, fetching from form service...`);
+      const getFormsSchemaData = await axios.get(
+        `${formApiUrl}/definitions/${definitionId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
 
-        const getFormsSchemaData = await axios.get(
-          `${formApiUrl}/definitions/${definitionId}`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
-        
-        definitionSchema = {
-          dataSchema: getFormsSchemaData.data.dataSchema,
-          uiSchema: getFormsSchemaData.data.uiSchema
-        };
-
-        const cacheUpdates = Object.assign({}, cachedSchemas, {
-          [definitionId]: definitionSchema
-        });
-
-        await cache.set(CacheKeys.SCHEMA, cacheUpdates);
-        logger.info(`Successfully fetched schema for definitionId=${definitionId}`);
-      }
-
-      res.status(200).send(definitionSchema);
+      res.status(200).send({
+        dataSchema: getFormsSchemaData.data.dataSchema,
+        uiSchema: getFormsSchemaData.data.uiSchema
+      });
     } catch (e) {
       if (axios.isAxiosError(e)) {
         res.status(e.response.status).send(e.response.data);
@@ -96,7 +81,7 @@ export function getFormsSchema(
         logger.error(e, 'failed to get forms schema');
       }
     }
-
+    
   }
 }
 
@@ -120,6 +105,7 @@ export function newListing(
           definitionId: 'common-capabilities-intake',
           data: {
             ...requestBody.formData,
+            lastUpdatedDate: new Date().toISOString(),
             appId: (!requestBody.formData.appId || uuidValidate(requestBody.formData.appId))
               ? uuidv4()
               : requestBody.formData.appId,

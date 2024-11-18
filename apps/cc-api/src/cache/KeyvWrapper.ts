@@ -3,7 +3,7 @@ import type { DataCache } from "./types";
 import { CacheConfigs } from '.';
 import { Logger } from 'winston';
 
-const DEFAULT_TTL = 60 * 60 * 1000;
+const DEFAULT_TTL = 60 * 60 * 1000; // 1 hour
 
 export default class KeyvWrapper implements DataCache {
     #cache;
