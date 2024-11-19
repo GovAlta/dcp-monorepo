@@ -73,7 +73,7 @@ const Card = ({ provider, description, title, app }: CardProps) => {
       </div>
 
       <a id="service-tile-title"
-        href={`/services/details/index.html?id=${app.appId}`} >
+        href={`/services/details?id=${app.appId}`} >
         {title}        
       </a>      
       <GoASpacer vSpacing="m" />
