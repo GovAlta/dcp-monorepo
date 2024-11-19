@@ -3,8 +3,7 @@ import { RequestHandler, Router } from 'express';
 import { Logger } from 'winston';
 import axios from 'axios';
 import { getService, getServices } from './services';
-import { DataCache, FormSchema } from '../../cache/types';
-import { CacheKeys } from '../../cache';
+import { DataCache } from '../../cache/types';
 import { SiteVerifyResponse } from './types';
 import { v4 as uuidv4, validate as uuidValidate } from 'uuid';
 
@@ -167,6 +166,7 @@ export function createListingsRouter({
   valueServiceUrl,
   eventServiceUrl,
   cache,
+  RECAPTCHA_SECRET
 }: RouterOptions): Router {
   const router = Router();
 
@@ -177,7 +177,7 @@ export function createListingsRouter({
 
   router.post(
     '/listings',
-    // verifyCaptcha(logger, RECAPTCHA_SECRET, 0.7),
+    verifyCaptcha(logger, RECAPTCHA_SECRET, 0.7),
     newListing(logger, formApiUrl, eventServiceUrl, tokenProvider)
   );
 
