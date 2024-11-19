@@ -357,7 +357,7 @@ export default function HomePage(): JSX.Element {
           Services
         </h1>
         <GoAButton
-          onClick={() => (window.location.href = '/addservice/index.html')}
+          onClick={() => (window.location.href = '/addservice')}
         >
           New service
         </GoAButton>

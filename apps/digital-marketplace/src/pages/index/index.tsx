@@ -4,6 +4,7 @@ import hero_mobile from '../../img/hero-mobile-tablet.svg';
 import concierge_thumb from '../../img/icon-handshake.svg';
 import join_thumb from '../../img/icon-join.svg';
 import handShakeLine from '../../img/handShakeLine.svg';
+import './styles.css';
 
 const HomePage = () => {
   // useEffect(() => { }, []);
@@ -167,7 +168,7 @@ const HomePage = () => {
                 <h3>Procurement Concierge Program</h3>
                 <div className="goa-adm-single-card-content">
                   <p>
-                    Boost your procurement knowledge with one-on-one support and access a libraryof self-serve resources designed to make yourvendor journey easier.
+                    Boost your procurement knowledge with one-on-one support and access a library of self-serve resources designed to make your vendor journey easier.
                   </p>
                 </div>
                 <div className="goa-adm-single-card-link">

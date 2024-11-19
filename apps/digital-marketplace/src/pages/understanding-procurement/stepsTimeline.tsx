@@ -6,7 +6,7 @@ const StepsTimeline = () => {
         <>
             <Timeline number={1} heading="Register or sign in on APC" content={
                 <>
-                <p>Go to the <a href="https://purchasing.alberta.ca/" target="_blank">APC website</a> and sign in to your account. If you have not registered yet, we recommend doing so to access and download requests for proposals (RFPs), requests for quotes (RFQ), pre-qualification requests (PQRs), and other details for procurement opportunities.</p>
+                <p>Go to the <a href="https://purchasing.alberta.ca/" target="_blank">APC website</a> and sign in to your account. If you have not registered yet, you must do so to access and download requests for proposals (RFPs), requests for quotes (RFQ), pre-qualification requests (PQRs), and other details for procurement opportunities.</p>
                 <p>APC is the official platform for viewing and downloading solicitation documents.</p>
                 </>
             }/>
@@ -30,13 +30,13 @@ const StepsTimeline = () => {
                 <ol>
                     <li>Develop a response that clearly addresses all provisions (mandatory and desirable) and showcases your organization's ability to fulfill the contract. While suppliers may have a strong sales pitch, the GoA requires that all responses meet specific evaluation criteria to ensure a fair and consistent evaluation. Be sure to develop a proposal that addresses each provision accordingly.</li>
                     <li>Ensure that all necessary documentation is included, such as pricing, timelines, certifications, or additional materials requested. Review your response for clarity, spelling, grammar, and accuracy.</li>
-                    <li>Ensure your response complies with the required format, page limits, and submission methods. Follow the submission instructions provided in the solicitation document and send your response to the email provided before the deadline.</li>
+                    <li>Ensure your response complies with the required format, page limits, and submission methods. Follow the submission instructions provided in the solicitation document and send your response to the email address provided before the closing deadline.</li>
                 </ol>
                 
                 <p><strong>Track your submission</strong></p>
                 <ol>
                     <li>After submission, responses go through an initial screening to ensure they meet the administrative, functional and technical mandatory requirements described in the solicitation.</li>
-                    <li>Compliant responses are then evaluated based on the criteria defined in the solicitation - this includes both mandatory and desirable provisions.</li>
+                    <li>Compliant responses are then evaluated based on the criteria defined in the solicitation - this includes both mandatory and desirable provisions</li>
                     <li>Shortlisted responses may be invited for presentations or further discussions.</li>
                     <li>Once the evaluation is complete, the GoA makes an award decision.</li>
                 </ol>
@@ -52,7 +52,7 @@ const StepsTimeline = () => {
                 <p>The GoA may contact you to discuss specific contract terms. Ensure that you understand all terms and conditions and ask for clarification if needed.</p>
                 
                 <p><strong>Sign the contract</strong></p>
-                <p>Sign the contract electronically or as instructed, which will finalize your relationship with the GoA as a supplier.</p>
+                <p>Sign the contract as instructed, which will finalize your relationship with the GoA as a supplier.</p>
                 </>
             }/>
         </>
