@@ -9,7 +9,6 @@ import { createListingsRouter } from './router';
 import { DataCache } from '../../cache/types';
 import { fetchServices } from './services';
 import cron from 'node-cron';
-import { environment } from '../../environments/environment';
 
 const FORM_API_ID = adspId`urn:ads:platform:form-service:v1`;
 const EVENT_API_ID = adspId`urn:ads:platform:event-service:v1`;
@@ -55,7 +54,6 @@ export async function applyGatewayMiddleware(
     eventServiceUrl,
     valueServiceUrl,
     cache,
-    RECAPTCHA_SECRET: environment.RECAPTCHA_SECRET
   });
   
   app.use('/cc/v1', listingsRouter);

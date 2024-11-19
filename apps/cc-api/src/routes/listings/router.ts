@@ -6,6 +6,7 @@ import { getService, getServices } from './services';
 import { DataCache } from '../../cache/types';
 import { SiteVerifyResponse } from './types';
 import { v4 as uuidv4, validate as uuidValidate } from 'uuid';
+import { environment } from '../../environments/environment';
 
 interface RouterOptions {
   logger: Logger;
@@ -13,7 +14,6 @@ interface RouterOptions {
   formApiUrl: URL;
   eventServiceUrl: URL;
   valueServiceUrl: URL;
-  RECAPTCHA_SECRET?: string;
   cache: DataCache;
 }
 
@@ -166,7 +166,6 @@ export function createListingsRouter({
   valueServiceUrl,
   eventServiceUrl,
   cache,
-  RECAPTCHA_SECRET
 }: RouterOptions): Router {
   const router = Router();
 
@@ -177,7 +176,7 @@ export function createListingsRouter({
 
   router.post(
     '/listings',
-    verifyCaptcha(logger, RECAPTCHA_SECRET, 0.7),
+    verifyCaptcha(logger, environment.RECAPTCHA_SECRET, 0.7),
     newListing(logger, formApiUrl, eventServiceUrl, tokenProvider)
   );
 
