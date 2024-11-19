@@ -1,3 +1,9 @@
+declare global {
+  interface Window {
+    grecaptcha: any;
+  }
+}
+
 type Contact = {
   details: string;
   methods: Array<{method: string, value: string, url: string}>;
