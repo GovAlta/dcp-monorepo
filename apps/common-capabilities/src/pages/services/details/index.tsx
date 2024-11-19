@@ -337,7 +337,7 @@ export default function Details(): JSX.Element {
           <div className="service-heading">
           <h2>{app.ServiceName}</h2>
           <GoAButton
-            onClick={() => (window.location.href = `/updateservice/index.html?id=${app.appId}`)}>
+            onClick={() => (window.location.href = `/updateservice?id=${app.appId}`)}>
             Update
           </GoAButton>
         </div>
