@@ -84,6 +84,26 @@ const { title } = Astro.props;
     <script
       nomodule
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    <!-- recaptcha -->
+    <script>
+      import { getCaptchaSiteKey } from '../utils/configs';
+
+      const siteKey = getCaptchaSiteKey();
+      if (siteKey) {
+          const elementId = 'recaptcha-script';
+          const element = document.getElementById(elementId);
+          if (!element) {
+              const script = document.createElement('script');
+              script.type = 'text/javascript';
+              script.src = `https://www.google.com/recaptcha/api.js?render=${siteKey}`;
+              script.id = elementId;
+              document.body.appendChild(script);
+          } else {
+              console.log('No recaptcha registered');
+          }
+      }
+    </script>
   </head>
   <body>
       <section id="top-page"></section>

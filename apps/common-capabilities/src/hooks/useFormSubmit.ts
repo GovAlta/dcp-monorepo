@@ -6,9 +6,10 @@ const useForm = () => {
   const handleSubmit = async (data: Service) => {    
     const siteKey = getCaptchaSiteKey();
     return new Promise((resolve, reject) => {
-      (window as any).grecaptcha.ready(async () => {
+      const { grecaptcha } = window;
+      grecaptcha.ready(async () => {
         try {
-          const token = await (window as any).grecaptcha.execute(siteKey, {
+          const token = await grecaptcha.execute(siteKey, {
             action: 'submit',
           });
 
