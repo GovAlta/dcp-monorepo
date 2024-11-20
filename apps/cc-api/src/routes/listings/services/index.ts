@@ -27,9 +27,13 @@ function mapServiceInfo(serviceInfo) {
     const services = serviceInfo.data?.[VALUE_SERVICE_NAME_SPACE] || {};
     const serviceId = Object.keys(services)[0];
     const serviceDetails = services?.[serviceId]?.[0]?.value;
+    const lastUpdatedDate = services?.[serviceId]?.[0]?.timestamp;
 
     if (serviceDetails && Object.keys(serviceDetails).length > 0) {
-        return serviceDetails;
+        return {
+            ...serviceDetails,
+            lastUpdatedDate: lastUpdatedDate || serviceDetails.lastUpdatedDate
+        };
     } else {
         return undefined;
     }

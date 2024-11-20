@@ -19,8 +19,18 @@ const { title } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    <script hoist>
-      import '@abgov/web-components';
+    <script>
+        function loadWebComponents() {
+          //@ts-ignore
+          import('@abgov/web-components')
+            .catch(err => {
+              console.error('Failed to load web components:', err);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+          loadWebComponents();
+        });
     </script>
     <script
       type="module"

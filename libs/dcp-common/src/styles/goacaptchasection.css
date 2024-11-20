@@ -1,0 +1,38 @@
+.goa-adm-recaptcha a {
+    color: #0070C4;
+}
+
+.goa-adm-recaptcha a:hover {
+    color: #333333;
+} 
+
+.goa-adm-recaptcha {
+    display: flex;
+    margin: 2rem 0 0;
+    flex-wrap: wrap;
+}
+
+.goa-adm-recaptcha > * {
+    font-size: 0.875rem;
+    line-height: 1.5rem;
+    margin-right: 0;
+}
+
+.goa-adm-recaptcha > p {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: 700;
+    width: 100%
+}
+
+.goa-adm-recaptcha > p > * {
+    font-weight: 400;
+}
+
+.goa-adm-recaptcha > p > a {
+    margin: 0 4px;
+}
+
+.goa-adm-recaptcha > p > a:nth-child(2) {
+    margin-left: 0;
+}

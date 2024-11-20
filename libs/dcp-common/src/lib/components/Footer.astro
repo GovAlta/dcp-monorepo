@@ -23,14 +23,21 @@ import { GoAAppFooter } from '@abgov/react-components';
 </div>
 
 <script>
+  function setFooterElementDisplay(display: string) {
+    let footerEl: any = document.getElementById('touch-footer');
+    
+    if (footerEl && footerEl.style) {
+      footerEl.style.display = display;
+    }
+  }
+
   const currentPath = window.location.pathname;
-  let footerEl: any = document.getElementById('touch-footer');
   const getInTouchFooterExcludes = ['/'];
 
   if (getInTouchFooterExcludes.indexOf(currentPath) >= 0) {
-    footerEl.style.display = 'none';
+    setFooterElementDisplay('none');
   } else {
-    footerEl.style.display = 'block';
+    setFooterElementDisplay('block');
   }
 </script>
 
