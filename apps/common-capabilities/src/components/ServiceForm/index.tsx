@@ -15,6 +15,7 @@ import {
   GoANotification 
 } from '@abgov/react-components';
 import type { Service } from '../../types/types';
+import { GoACaptchaSection } from '@abgov/dcp-common';
 
 type ServiceFormProps = {
   data?: Service;
@@ -117,6 +118,7 @@ const ServiceForm = ({ data, dataSchema, uiSchema, onSubmit }: ServiceFormProps)
           uiSchema={uiSchema}
           readOnly={submitStatus === SubmitStatus.Submitting}/>
       </ContextProvider>
+      <GoACaptchaSection />
     </>
   );
 }

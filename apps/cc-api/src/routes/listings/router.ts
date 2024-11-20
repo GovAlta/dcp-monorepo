@@ -104,7 +104,6 @@ export function newListing(
           definitionId: 'common-capabilities-intake',
           data: {
             ...requestBody.formData,
-            lastUpdatedDate: new Date().toISOString(),
             appId: (!requestBody.formData.appId || uuidValidate(requestBody.formData.appId))
               ? uuidv4()
               : requestBody.formData.appId,
