@@ -28,6 +28,8 @@ const { title } = Astro.props;
             });
         }
 
+        // delay import of webcomponents until page is fully loaded
+        // this prevents certain webcomponents from being registered multiple times
         document.addEventListener('DOMContentLoaded', () => {
           loadWebComponents();
         });

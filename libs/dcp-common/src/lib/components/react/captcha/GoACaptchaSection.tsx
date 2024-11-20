@@ -1,5 +1,5 @@
 import React from "react";
-import "../../../styles/goacaptchasection.css";
+import "./styles.css";
 
 export default function GoACaptchaSection() {
     return (
