@@ -33,7 +33,7 @@ export default function UpdateServicePage(): JSX.Element {
     <GoACircularProgress variant="fullscreen" size="large" message="Loading service details..." visible={true} />
   ) : (
     <ServiceFormWrapper
-      pageHeader={`Update ${service.ServiceName}`}
+      pageHeader={`Update ${service.serviceName}`}
       service={service}
       handleSubmit={handleSubmit}
     />

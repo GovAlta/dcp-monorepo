@@ -44,15 +44,9 @@ export default function HomePage(): JSX.Element {
   const listingUrl = useMemo(() => getApiUrl('/listings/services'), []); 
   const [data, error, isLoading] = useFetch<ServiceListingResponse>(listingUrl);
   const [apps, setApps] = useState([]);
-
-  useEffect(() => {
-    if (!isLoading && data) {
-      setApps(data.services);
-    }
-  }, [data, isLoading]);
   
   // filters state
-  const [filterList, setFilterList] = useState(
+  const [appFilters, setFilterList] = useState(
     getAppsFilters(services, filtersList)
   );
   const [checkedFilters, setCheckedFilters] = useState(() => {
@@ -90,19 +84,20 @@ export default function HomePage(): JSX.Element {
             return true;
           }
 
-          if (Array.isArray(item[filterKey])) {
-            return filterValues.some((filterValue) =>
-              item[filterKey].includes(filterValue)
-            );
-          }
-
-          return filterValues.includes(item[filterKey]);
+          return filterValues.some((filterValue) => appFilters.indexedItems[filterValue]?.has(item.appId));
         }
       );
 
       return fieldMatch && filterMatches;
     });
   };
+
+  useEffect(() => {
+    if (!isLoading && data) {
+      setApps(data.services);
+      setFilterList(getAppsFilters(data.services, filtersList));
+    }
+  }, [data, isLoading]);
 
   // to update the services list when the search value or filters change
   useEffect(() => {
@@ -116,7 +111,7 @@ export default function HomePage(): JSX.Element {
       findServices(
         apps,
         searchRegEx,
-        ['description', 'summary', 'serviceName', 'provider', 'filterText'],
+        ['description', 'summary', 'serviceName', 'provider', 'filterText', ...filtersList],
         selectedFiltersState
       )
     );
@@ -153,12 +148,6 @@ export default function HomePage(): JSX.Element {
       }
     };
   }, [searchFilter, selectedFiltersState, apps]);
-
-  // to update the filters list when the services list changes
-  useEffect(() => {
-    setFilterList(getAppsFilters(apps, filtersList));
-    setRerender(' ');
-  }, [services, apps]);
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -249,11 +238,11 @@ export default function HomePage(): JSX.Element {
               type="secondary"
               onClick={() => {
                 setFiltersAccordionState({
-                  Environment: false,
-                  Language: false,
-                  Keywords: false,
-                  Status: false,
-                  FunctionalGroup: false,
+                  environment: false,
+                  language: false,
+                  keywords: false,
+                  status: false,
+                  functionalGroup: false,
                 });
                 setCollapseKey((prevKey) => prevKey + 1); //
               }}
@@ -266,11 +255,11 @@ export default function HomePage(): JSX.Element {
               type="secondary"
               onClick={() => {
                 setFiltersAccordionState({
-                  Environment: true,
-                  Language: true,
-                  Keywords: true,
-                  Status: true,
-                  FunctionalGroup: true,
+                  environment: true,
+                  language: true,
+                  keywords: true,
+                  status: true,
+                  functionalGroup: true,
                 });
               }}
             >
@@ -291,7 +280,7 @@ export default function HomePage(): JSX.Element {
                 headingSize="small"
                 open={filtersAccordionState[filterCategory.property]}
               >
-                {filterList[filterCategory.property]?.map((filter) => (
+                {appFilters.filters[filterCategory.property]?.map((filter) => (
                   <GoACheckbox
                     key={filter}
                     label={filter}

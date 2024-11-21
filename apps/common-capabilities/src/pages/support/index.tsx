@@ -18,11 +18,11 @@ export default function SupportPage(): JSX.Element {
   }, []);
   const renderContact = (method: any) => {
     const contactMethods: any = {
-      Teams: {
+      teams: {
         iconType: 'person',
         linkPrefix: '',
       },
-      Email: {
+      email: {
         iconType: 'mail',
         linkPrefix: 'mailto:',
       },
@@ -49,12 +49,12 @@ export default function SupportPage(): JSX.Element {
   const renderContactTable = () => {
     const contactMethods = [
       {
-        type: 'Teams',
+        type: 'teams',
         url: 'https://teams.microsoft.com/l/channel/19%3aTzamGNMm-n21VoLqbCiU68hxpp3TuCKVAqHurh78-j01%40thread.tacv2/General?groupId=169394f7-780d-40eb-ab1e-a0b68b828b76&tenantId=2bb51c06-af9b-42c5-8bf5-3c3b7b10850b',
         value: 'Common capabilities team',
       },
       {
-        type: 'Email',
+        type: 'email',
         url: 'TI.Softwaredelivery@gov.ab.ca?subject=Feedback for Common Capabilities',
         value: 'TI.Softwaredelivery@gov.ab.ca',
       },

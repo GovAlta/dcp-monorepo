@@ -92,10 +92,6 @@ export default function Details(): JSX.Element {
 
   const SecurityBlock: React.FC<{ group: SecurityItem }> = ({ group }) => {
 
-    //---[ app.security is from the JSON data ]---
-    // const itemData = app.security.find( (item: any) => item.Type === group.dataSecurityType);
-    // if (itemData == undefined) return null;
-
     function displayName(obj: any, key: string): string | undefined {
       return obj[key]?.title;
     }
@@ -139,21 +135,6 @@ export default function Details(): JSX.Element {
                 </tr>
               </>
             ))}
-            {/* {itemData.Items.map((row: any, index: any) => (
-              <>
-                <tr key={`tr-${group.name}${index}`}>
-                  <td key={`td1-${index}`}>
-                    {' '}
-                    {displayName(securityData, row['Field'])}{' '}
-                  </td>
-                  <td key={`td2-${index}`} className={'service-content'}>
-
-                    {' '}
-                    {row['Value']}{' '}
-                  </td>
-                </tr>
-              </>
-            ))} */}
           </tbody>
         </GoATable>
         <GoASpacer vSpacing="xl" />

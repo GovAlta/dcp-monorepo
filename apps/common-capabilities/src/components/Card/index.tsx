@@ -1,11 +1,9 @@
 import {
   GoAContainer,
   GoASpacer,
-  GoAChip,
   GoABadge,
 } from '@abgov/react-components';
 import React, { useEffect, useState } from 'react';
-import ExternalLink from '../../components/ExternalLink';
 import './styles.css';
 interface CardProps {
   provider: string;
@@ -36,21 +34,6 @@ const Card = ({ provider, description, title, app }: CardProps) => {
   
     badgesToShow.forEach((badge) => {
       if (app[badge] !== '' && app[badge]?.length > 0) {
-        // if (
-        //   Array.isArray(app[badge]) &&
-        //   !app[badge].some((item: string) => item.toLowerCase() === 'other')
-        // ) {          
-        //   app[badge].forEach((badgeValue: string) => {
-        //     badges.push(
-        //       <GoABadge
-        //         key={badgeValue}
-        //         type="information"
-        //         content={badgeValue}
-        //       />
-        //     );
-        //   });
-        // }
-
         if (
           typeof app[badge] === 'string' &&
           app[badge].toLowerCase() !== 'other'
