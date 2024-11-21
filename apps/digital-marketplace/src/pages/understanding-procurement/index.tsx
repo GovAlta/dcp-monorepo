@@ -16,9 +16,26 @@ const UnderstandingProcurementPage = () => {
       <div className="goa-adm-body goa-adm-procurement" id="main">
         <div className="container">
           <div className="goa-adm-procurement-content">
+            <section className="goa-adm-procurement-trade">
+              <h2 id="procurement-trade">GoA procurement policies and trade agreements</h2>
+              <h3 id="accountability-framework">Procurement Accountability Framework (PAF)</h3>
+              <p>The <a href="https://open.alberta.ca/publications/procurement-accountability-framework-manual-2018#detailed" target="_blank">Procurement Accountability Framework (PAF)</a> provides guidelines for GoA procurement and aims to:</p>
+              <ul>
+                <li>Enhance transparency and fairness in the GoA procurement process.</li>
+                <li>Increase consistency in contracting activities.</li>
+                <li>Provide controls and shared values.</li>
+                <li>Expand rigour and accountability in ministry procurement processes.</li>
+              </ul>
+
+              <h3 id="trade-agreements">Trade agreements</h3>
+              <p>Suppliers looking to do business with the GoA are subject to several <a href="https://www.alberta.ca/alberta-trade-agreements" target="_blank">Trade Agreements</a> that establish the rules and guidelines for procurement. These agreements aim to promote fair competition, ensure transparency, and create a level playing field for suppliers across various jurisdictions.</p>
+
+              <h4>Trade agreement threshold</h4>
+              <p>The threshold for a specific trade agreement refers to the minimum financial value at which the public procurement processes become subject to international/ interprovincial trade agreements. When the procurement exceeds a certain financial threshold, GoA must follow the rules of the applicable trade agreement, which could include providing more public notice, ensuring non-discriminatory access to the bidding process, and adhering to specific transparency and fairness rules. You can find more information on the trade agreement thresholds by agreement and category, from January 1, 2024 to December 31, 2025 <a href="https://www.alberta.ca/contract-opportunities-with-the-government-of-alberta" target="_blank">here</a>.</p>
+            </section>
             <section className="goa-adm-different-ways">
               <h2 id="different-ways">Different ways the Government of Alberta (GoA) procures</h2>
-              <p>Understanding the various procurement methods used by the GoA is essential for suppliers seeking to engage effectively in public sector opportunities. The GoA uses a variety of approaches depending on the project, ranging from open competitions where many suppliers can participate to specialized requests for more unique or complex needs. Each approach follows clear guidelines to keep things transparent, fair, and aligned with Alberta's digital and operational goals.</p>
+              <p>Understanding the various procurement methods used by the GoA is essential for suppliers seeking to engage effectively in public sector opportunities. The GoA uses a variety of approaches depending on the project, ranging from open competitions where many suppliers can participate to specialized requests for more unique or complex needs. Each approach follows clear guidelines to keep the process transparent, fair, and aligned with Alberta's digital and operational goals.</p>
 
               <div className="goa-adm-accordion">
                 <DifferentWaysAccordion />
@@ -31,7 +48,7 @@ const UnderstandingProcurementPage = () => {
               <p>This guide will walk you through the process of participating in GoA procurement opportunities, from setting up your APC account to getting paid.</p>
 
               <h3 id="about-apc">About the Alberta Purchasing Connection (APC)</h3>
-              <p>The GoA uses an electronic tendering system called <a href="https://purchasing.alberta.ca/" target="_blank">Alberta Purchasing Connection (APC)</a>. The tendering system enables you to view, download, and apply for opportunities that have been posted by the GoA and MASH organizations (municipalities, academic institutions, school boards, and the health sector). Users need to register on APC to download public purchasing opportunities and respond to the solicitation request to offer their goods and services to the GoA.</p>
+              <p>The GoA uses an electronic tendering system called <a href="https://purchasing.alberta.ca/" target="_blank">Alberta Purchasing Connection (APC)</a>. The tendering system enables you to view, download, and apply for opportunities that have been posted by the GoA and and other public sector organizations, such as municipalities, academic institutions, school boards, and the health sector. Users may browse the site, but will need to register on APC to download public purchasing opportunities and respond to offer their goods and services to the GoA.</p>
 
               <h3 id="who-can-register">Who can register on APC?</h3>
               <div className="goa-adm-cards">
@@ -42,7 +59,7 @@ const UnderstandingProcurementPage = () => {
                   <h4>Buyers</h4>
                   <div className="goa-adm-single-card-content">
                     <p>
-                      Public service employees who manage procurement for the Government of Alberta, the MASH/ABC sectors, provincial corporations, and indigenous communities.
+                      Public service employees who manage procurement for the Government of Alberta, the MASH/ABC sectors, provincial corporations, and indigenous communities
                     </p>
                   </div>
                 </div>
@@ -69,30 +86,6 @@ const UnderstandingProcurementPage = () => {
               <div className="goa-adm-accordion">
                 <AfterSigningAccordion />
               </div>
-            </section>
-            <section className="goa-adm-procurement-trade">
-              <h2 id="procurement-trade">GoA procurement policies and trade agreements</h2>
-              <h3 id="accountability-framework">Procurement Accountability Framework (PAF)</h3>
-              <p>The <a href="https://open.alberta.ca/publications/procurement-accountability-framework-manual-2018#detailed" target="_blank">Procurement Accountability Framework (PAF)</a> provides guidelines for GoA procurement and aims to:</p>
-              <ul>
-                <li>Enhance transparency and fairness in the GoA procurement process.</li>
-                <li>Increase consistency in contracting activities.</li>
-                <li>Provide controls and shared values.</li>
-                <li>Expand rigour and accountability in ministry procurement processes.</li>
-              </ul>
-
-              <h3 id="trade-agreements">Trade agreements</h3>
-              <p>Suppliers looking to do business with the GoA are subject to several trade agreements that establish the rules and guidelines for procurement. These agreements aim to promote fair competition, ensure transparency, and create a level playing field for suppliers across various jurisdictions.</p>
-              <ul>
-                <li><a href="https://www.cfta-alec.ca/" target="_blank">New West Partnership Trade Agreement</a> (NWPTA)</li>
-                <li><a href="https://www.international.gc.ca/trade-commerce/trade-agreements-accords-commerciaux/agr-acc/ceta-aecg/index.aspx?lang=eng" target="_blank">Comprehensive Economic Trade Agreement</a> (CETA) Canada and European Union</li>
-                <li><a href="https://www.international.gc.ca/trade-commerce/trade-agreements-accords-commerciaux/agr-acc/cuktca-acccru/read_agreement-consultez_accord.aspx?lang=eng" target="_blank">Trade Continuity Agreement</a> (TCA) Canada and United Kingdom</li>
-                <li><a href="https://www.international.gc.ca/trade-commerce/trade-agreements-accords-commerciaux/agr-acc/cptpp-ptpgp/index.aspx?lang=eng" target="_blank">Comprehensive and Progressive Agreement for Trans-Pacific Partnership</a> (CPTPP)</li>
-                <li><a href="https://www.wto.org/english/tratop_e/gproc_e/gp_gpa_e.htm" target="_blank">World Trade Organization on Government Procurement Agreement</a> (WTO GPA)</li>
-              </ul>
-
-              <h4>Trade agreement threshold</h4>
-              <p>The threshold for a specific trade agreement refers to the minimum financial value at which the public procurement processes become subject to international/ interprovincial trade agreements. When the procurement exceeds a certain financial threshold, GoA must follow the rules of the applicable trade agreement, which could include providing more public notice, ensuring non-discriminatory access to the bidding process, and adhering to specific transparency and fairness rules. You can find more information on the trade agreement thresholds by agreement and category, from January 1, 2024 to December 31, 2025 <a href="https://www.alberta.ca/contract-opportunities-with-the-government-of-alberta" target="_blank">here</a>.</p>
             </section>
             <section className="goa-adm-further-reading">
               <h2 id="further-reading">Further reading</h2>

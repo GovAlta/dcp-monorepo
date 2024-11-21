@@ -73,9 +73,11 @@ export function getSchemaUrl(definition: string) {
 export function getCaptchaSiteKey() {
   switch (getEnv()) {
     case Environment.prod:
-      return 'prod-key';
+      return '6LcaDIMqAAAAANe6sjq3lcjDCMFYeaucnQRQ2h76';
+    case Environment.local:
+    case Environment.dev:
     case Environment.uat:
-      return 'uat-key';
+      return '6LcEDIMqAAAAAFcF-DAoBUVWXIBNYVswsv_7JAgN';
     default:
       return '?'; // first character == "?" will disable
   }
