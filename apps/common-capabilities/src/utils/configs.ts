@@ -45,7 +45,7 @@ function getEnv() {
 
     if (!env) {
       if (url === 'localhost') {
-        return Environment.local;
+        return Environment.uat;
       } else if (url === 'common-capabilities.digital.gov.ab.ca') {
         return Environment.prod;
       }

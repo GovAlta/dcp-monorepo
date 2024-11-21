@@ -1,44 +1,44 @@
 ﻿type,group,subGroup,fieldName,display,filter,showBadge,dataType,dataIn,default,css,note,extra
-Field,Top,,ServiceName,Service,No,FALSE,text,,,<h2> service-heading,,
-Field,n/a,,InternalWeightage,Recommended,No,FALSE,Recommended(),,10,,,
-Field,n/a,,Summary,Overview,No,FALSE,text,,,,,
-Field,n/a,,FunctionalGroup,Category,Yes-(),TRUE,text,,Was removed,<span> alignleft,,
-Field,Top,,Description,Getting started,No,FALSE,text,,,,,
-Field,Body,,Specs,Specifications,No,FALSE,Specs(),,,,,
-Field,Body,,Roadmap,Roadmap,No,FALSE,Roadmap(),,,,,
-Field,Body,,Prerequisites,Prerequisites,No,FALSE,text,,,,,
-Field,Body,,UseCases,Use cases,No,FALSE,text,,,,,
-Field,Body,,Documentation,Documentation,No,FALSE,urlArray,,,,,
-Field,Body,,Comments,Additional information,No,FALSE,text,,,,,
-Field,Body,,Security,Security and compliance,No,FALSE,"Security(Status,Required,Info)",,,,,
-Field,Body,,Contact,Contact,No,FALSE,Contacts(),methods,,,,
+Field,Top,,serviceName,Service,No,FALSE,text,,,<h2> service-heading,,
+Field,n/a,,internalWeightage,Recommended,No,FALSE,Recommended(),,10,,,
+Field,n/a,,summary,Overview,No,FALSE,text,,,,,
+Field,n/a,,functionalGroup,Category,Yes-(),TRUE,text,,Was removed,<span> alignleft,,
+Field,Top,,description,Getting started,No,FALSE,text,,,,,
+Field,Body,,specs,Specifications,No,FALSE,Specs(),,,,,
+Field,Body,,roadmap,Roadmap,No,FALSE,Roadmap(),,,,,
+Field,Body,,prerequisites,Prerequisites,No,FALSE,text,,,,,
+Field,Body,,useCases,Use cases,No,FALSE,text,,,,,
+Field,Body,,documentation,Documentation,No,FALSE,urlArray,,,,,
+Field,Body,,comments,Additional information,No,FALSE,text,,,,,
+Field,Body,,security,Security and compliance,No,FALSE,"Security(Status,Required,Info)",,,,,
+Field,Body,,contact,Contact,No,FALSE,Contacts(),methods,,,,
 ,,,,,,,,,,,,
-Field,Spec,,Provider,Provider,Yes,FALSE,text,,Other,,,
-Field,Spec,,Status,Status,Yes-(),TRUE,status,,Other,<span>,,
-Field,,,Timeline,Roadmap,No,FALSE,lineArray,,,,,
-Field,,,TimelineEvent,Roadmap Event,No,FALSE,lineArray,,,,,
-Field,Spec,,Version,Version,No,FALSE,text,,,<span>,,
-Field,Spec,,Language,Language,Yes-(),TRUE,textArray,,Other,,,
-Field,Spec,,Environment,Infrastructure,Yes-(),TRUE,textArray,,Other,,,
-Field,Spec,,UsageMethod,Usage,Yes-(),TRUE,text,,Other,<span>,,
-Field,n/a,,Audience,Audience,Yes-(),TRUE,textArray,,GOA,,,
-Field,n/a,,SupportLevel,Support,No,FALSE,text,,Other,,,
-Field,n/a,,Keywords,Tag/Keyword,Yes-(),FALSE,textArray,,,,,
+Field,Spec,,provider,Provider,Yes,FALSE,text,,Other,,,
+Field,Spec,,status,Status,Yes-(),TRUE,status,,Other,<span>,,
+Field,,,timeline,Roadmap,No,FALSE,lineArray,,,,,
+Field,,,timelineEvent,Roadmap Event,No,FALSE,lineArray,,,,,
+Field,Spec,,version,Version,No,FALSE,text,,,<span>,,
+Field,Spec,,language,Language,Yes-(),TRUE,textArray,,Other,,,
+Field,Spec,,environment,Infrastructure,Yes-(),TRUE,textArray,,Other,,,
+Field,Spec,,usageMethod,Usage,Yes-(),TRUE,text,,Other,<span>,,
+Field,n/a,,audience,Audience,Yes-(),TRUE,textArray,,GOA,,,
+Field,n/a,,supportLevel,Support,No,FALSE,text,,Other,,,
+Field,n/a,,keywords,Tag/Keyword,Yes-(),FALSE,textArray,,,,,
 ,,,,,,,,,,,,
 ,,,,,,,,,,,,
-,Security,Status,CMRA,General Content Management Risk Assessment,No,FALSE,text,,,,,IM
-Field,Security,Status,STRA,General cybersecurity risk assessment,No,FALSE,text,,,,,Cybersecurity
-Field,Security,Required,CmraReq,Content Management Risk Assessment (CMRA),No,FALSE,text,,,,,
-Field,Security,Required,IM,Information management (IM) consult ,No,FALSE,text,,,,,IM
-Field,Security,Required,Data,Data team consult,No,FALSE,text,,,,,Data team
-Field,Security,Required,Risk,Cybersecurity risk assessment,No,FALSE,text,,,,,Cybersecurity
-Field,Security,Required,Cybersecurity,Cybersecurity consult,No,FALSE,text,,,,,Cybersecurity
-Field,Security,Info,Classification,Information Security classification,No,FALSE,text,,,,,IM/Cybersecurity
-Field,Security,Info,Controller,Information controller,No,FALSE,text,,,,,IM/Cybersecurity
-Field,Security,Info,Considerations,Special considerations,No,FALSE,text,,,,,Other
-Field,Security,,SecurityStatus,Risk assessment completion status,,,text,,,,,
-Field,Security,,SecurityRequired,Required before using this service,,,text,,,,,
-Field,Security,,SecurityInfo,Security details,,,textLong,,,,,
+,Security,Status,cmra,General Content Management Risk Assessment,No,FALSE,text,,,,,IM
+Field,Security,Status,stra,General cybersecurity risk assessment,No,FALSE,text,,,,,Cybersecurity
+Field,Security,Required,cmraReq,Content Management Risk Assessment (CMRA),No,FALSE,text,,,,,
+Field,Security,Required,im,Information management (IM) consult ,No,FALSE,text,,,,,IM
+Field,Security,Required,data,Data team consult,No,FALSE,text,,,,,Data team
+Field,Security,Required,risk,Cybersecurity risk assessment,No,FALSE,text,,,,,Cybersecurity
+Field,Security,Required,cybersecurity,Cybersecurity consult,No,FALSE,text,,,,,Cybersecurity
+Field,Security,Info,classification,Information Security classification,No,FALSE,text,,,,,IM/Cybersecurity
+Field,Security,Info,controller,Information controller,No,FALSE,text,,,,,IM/Cybersecurity
+Field,Security,Info,considerations,Special considerations,No,FALSE,text,,,,,Other
+Field,Security,,securityStatus,Risk assessment completion status,,,text,,,,,
+Field,Security,,securityRequired,Required before using this service,,,text,,,,,
+Field,Security,,securityInfo,Security details,,,textLong,,,,,
 ,,,,,,,,,,,,
 ,,,,,,,,,,,,
 ,,,,,,,,,,,,

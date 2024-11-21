@@ -16,7 +16,7 @@ interface CardProps {
 
 const Card = ({ provider, description, title, app }: CardProps) => {
   const maxDescriptionLength = 200; // word length for short descpription in tile.
-  const badgesToShow = ['Status']; //, 'FunctionalGroup', 'Language', 'Keywords'];
+  const badgesToShow = ['status']; //, 'FunctionalGroup', 'Language', 'Keywords'];
   const [showBadges, setShowBadges] = useState<JSX.Element[]>([]);
 
   function badgeType(value:any) {    
@@ -28,7 +28,7 @@ const Card = ({ provider, description, title, app }: CardProps) => {
   
   useEffect(() => {    
     let badges: JSX.Element[] = [];
-    if (app.InternalWeightage >= 50) {
+    if (app.recommended) {
       badges.push(
         <GoABadge key="recommended" type="information" content="Recommended" />
       );

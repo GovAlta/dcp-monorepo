@@ -35,11 +35,11 @@ export default function HomePage(): JSX.Element {
   const [searchFilter, setSearchFilter] = useState('');
   const [services, setServices] = useState([]);
   const [filtersAccordionState, setFiltersAccordionState] = useState({
-    Environment: false,
-    Language: false,
-    Keywords: false,
-    Status: false,
-    FunctionalGroup: false,
+    environment: false,
+    language: false,
+    keywords: false,
+    status: false,
+    functionalGroup: false,
   });
   const listingUrl = useMemo(() => getApiUrl('/listings/services'), []); 
   const [data, error, isLoading] = useFetch<ServiceListingResponse>(listingUrl);
@@ -116,7 +116,7 @@ export default function HomePage(): JSX.Element {
       findServices(
         apps,
         searchRegEx,
-        ['Description', 'Summary', 'ServiceName', 'Provider', 'filterText'],
+        ['description', 'summary', 'serviceName', 'provider', 'filterText'],
         selectedFiltersState
       )
     );
@@ -174,27 +174,27 @@ export default function HomePage(): JSX.Element {
       // set the state of selectedCheckboxState and selectedFiltersState of category in the functional group
       setSelectedFiltersState({
         ...defaultState.selectedFilters,
-        FunctionalGroup: [
+        functionalGroup: [
           category,
-          ...defaultState.selectedFilters.FunctionalGroup,
+          ...defaultState.selectedFilters.functionalGroup,
         ],
       });
       setCheckedFilters({
         ...generateFilterObject(apps),
-        FunctionalGroup: {
-          ...generateFilterObject(apps).FunctionalGroup,
+        functionalGroup: {
+          ...generateFilterObject(apps).functionalGroup,
           [category]: true,
         },
       });
       setFiltersAccordionState({
         ...filtersAccordionState,
-        FunctionalGroup: true,
+        functionalGroup: true,
       });
     }
   }, [apps]);
 
-  const recommendedServices = services.filter((item: any) => item.Recommended )
-  const otherServices = services.filter((item: any) => !item.Recommended )
+  const recommendedServices = services.filter((item: any) => item.recommended )
+  const otherServices = services.filter((item: any) => !item.recommended )
 
   return isLoading || !data ? (
     <GoACircularProgress variant="fullscreen" size="large" message="Loading service list..." visible={true} />
@@ -243,6 +243,7 @@ export default function HomePage(): JSX.Element {
             >
               Clear all
             </GoAButton>
+
             <GoAButton
               size="compact"
               type="secondary"
@@ -259,6 +260,7 @@ export default function HomePage(): JSX.Element {
             >
               Collapse all
             </GoAButton>
+
             <GoAButton
               size="compact"
               type="secondary"
@@ -272,8 +274,9 @@ export default function HomePage(): JSX.Element {
                 });
               }}
             >
-              Expand all
+              Expand all            
             </GoAButton>
+
           </GoAButtonGroup>
           <GoASpacer vSpacing="xl" />
           <GoADivider></GoADivider>
@@ -379,10 +382,10 @@ export default function HomePage(): JSX.Element {
           recommendedServices.map((app) => {
             return (
               <Card
-                key={app.ServiceName}
-                title={app.ServiceName}
-                provider={app.Provider}
-                description={app.Summary}
+                key={app.serviceName}
+                title={app.serviceName}
+                provider={app.provider}
+                description={app.summary}
                 app={app}
               />
             );
@@ -407,10 +410,10 @@ export default function HomePage(): JSX.Element {
           otherServices.map((app) => {
             return (
               <Card
-                key={app.ServiceName}
-                title={app.ServiceName}
-                provider={app.Provider}
-                description={app.Summary}
+                key={app.serviceName}
+                title={app.serviceName}
+                provider={app.provider}
+                description={app.summary}
                 app={app}
               />
             );

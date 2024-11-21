@@ -1,36 +1,36 @@
 export const securityGroups = [
     {
-        "name": "STRA",
+        "name": "stra",
         "dataSecurityType": "",
         "title": " General cybersecurity risk assessment",
         "items": [
-            "STRA"
+            "stra"
         ],
         "tableTh": [],
         "note": ""
     },
     {
-        "name": "Cybersecurity",
+        "name": "cybersecurity",
         "dataSecurityType": "urity",
         "title": " Cybersecurity consult",
         "items": [
-            "CmraReq",
-            "IM",
-            "Data",
-            "Risk",
-            "Cybersecurity"
+            "cmraReq",
+            "im",
+            "data",
+            "risk",
+            "cybersecurity"
         ],
         "tableTh": [],
         "note": ""
     },
     {
-        "name": "Considerations",
+        "name": "considerations",
         "dataSecurityType": "ations",
         "title": " Special considerations",
         "items": [
-            "Classification",
-            "Controller",
-            "Considerations"
+            "classification",
+            "controller",
+            "considerations"
         ],
         "tableTh": [],
         "note": ""
@@ -39,101 +39,101 @@ export const securityGroups = [
 
 
 export const securityData = {
-    "STRA": {
+    "stra": {
         "title": "General cybersecurity risk assessment"
     },
-    "CmraReq": {
+    "cmraReq": {
         "title": "Content Management Risk Assessment (CMRA)"
     },
-    "IM": {
+    "im": {
         "title": "Information management (IM) consult"
     },
-    "Data": {
+    "data": {
         "title": "Data team consult"
     },
-    "Risk": {
+    "risk": {
         "title": "Cybersecurity risk assessment"
     },
-    "Cybersecurity": {
+    "cybersecurity": {
         "title": "Cybersecurity consult"
     },
-    "Classification": {
+    "classification": {
         "title": "Information Security classification"
     },
-    "Controller": {
+    "controller": {
         "title": "Information controller"
     },
-    "Considerations": {
+    "considerations": {
         "title": "Special considerations"
     },
-    "SecurityStatus": {
+    "securityStatus": {
         "title": "Risk assessment completion status"
     },
-    "SecurityRequired": {
+    "securityRequired": {
         "title": "Required before using this service"
     },
-    "SecurityInfo": {
+    "securityInfo": {
         "title": "Security details"
     }
 }
 
 export const specifications = {
-    "Provider": {
+    "provider": {
         "title": "Provider",
         "type": "text"
     },
-    "Status": {
+    "status": {
         "title": "Status",
         "type": "status"
     },
-    "Version": {
+    "version": {
         "title": "Version",
         "type": "text"
     },
-    "Language": {
+    "language": {
         "title": "Language",
         "type": "textArray"
     },
-    "Environment": {
+    "environment": {
         "title": "Infrastructure",
         "type": "textArray"
     },
-    "UsageMethod": {
+    "usageMethod": {
         "title": "Usage",
         "type": "text"
     }
 }
 
 export const bodyItems = {
-    "Specs": {
+    "specs": {
         "title": "Specifications",
         "dataIn": ""
     },
-    "Roadmap": {
+    "roadmap": {
         "title": "Roadmap",
         "dataIn": ""
     },
-    "Prerequisites": {
+    "prerequisites": {
         "title": "Prerequisites",
         "dataIn": ""
     },
-    "UseCases": {
+    "useCases": {
         "title": "Use cases",
         "dataIn": ""
     },
-    "Documentation": {
+    "documentation": {
         "title": "Documentation",
         "dataIn": ""
     },
-    "Comments": {
+    "comments": {
         "title": "Additional information",
         "dataIn": ""
     },
-    "Security": {
+    "security": {
         "title": "Security and compliance",
         "dataIn": ""
     },
-    "Contact": {
+    "contact": {
         "title": "Contact",
         "dataIn": "methods"
     }
