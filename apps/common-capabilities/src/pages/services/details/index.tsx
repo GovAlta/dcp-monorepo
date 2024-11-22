@@ -19,6 +19,7 @@ import {
   bodyItems,
 } from './config';
 import useFetch from '../../../hooks/useFetch';
+import useScrollToHash from '../../../hooks/useScrollToHash';
 import { getApiUrl } from '../../../utils/configs';
 
 type ServiceDetailsResponse = {
@@ -39,18 +40,13 @@ export default function Details(): JSX.Element {
     specs: [],
   });
 
+  useScrollToHash();
+
   useEffect(() => {
     if (!isLoading && data) {
       setApp(data.serviceInfo);
     }
   }, [data, isLoading]);
-
-  useEffect(() => {
-    if (window.location.hash && app) {
-      const elmnt = document.getElementById(window.location.hash.substring(1));
-      elmnt?.scrollIntoView(true);
-    }
-  }, [app]);
 
   useEffect(() => {
     if (app) {
