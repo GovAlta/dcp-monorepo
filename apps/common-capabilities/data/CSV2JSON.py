@@ -128,14 +128,14 @@ for fileName in CSV_fileNames:
             for row in csvreader:
                 csv_row = {key: replace_special_characters(value) for key, value in row.items()}
 
-                if csv_row["ServiceName"] != "" and csv_row["Provider"] != "" :
-                    QA_Contact = 30 if csv_row["AltContactLink"] == '' and csv_row["Email"] == "" else 0
-                    QA_Doc = 20 if csv_row["Documentation"] == "" and (csv_row["Status"] != "Alpha" or QA_Contact > 0) else 0
-                    QA_FGroup = 1 if csv_row["FunctionalGroup"] == "Other Function" else 0
-                    QA_Status = 2 if csv_row["Status"] == "" else 0
-                    QA_Lang   = 2 if csv_row["Language"] == "" else 0
-                    QA_Env    = 2 if csv_row["Environment"] == "" else 0    
-                    QA_Misc   = 12 if csv_row["DataIssues"] != "" else 0    
+                if csv_row["serviceName"] != "" and csv_row["provider"] != "" :
+                    QA_Contact = 30 if csv_row["altContactLink"] == '' and csv_row["email"] == "" else 0
+                    QA_Doc = 20 if csv_row["documentation"] == "" and (csv_row["status"] != "Alpha" or QA_Contact > 0) else 0
+                    QA_FGroup = 1 if csv_row["functionalGroup"] == "Other Function" else 0
+                    QA_Status = 2 if csv_row["status"] == "" else 0
+                    QA_Lang   = 2 if csv_row["language"] == "" else 0
+                    QA_Env    = 2 if csv_row["environment"] == "" else 0    
+                    QA_Misc   = 12 if csv_row["dataIssues"] != "" else 0    
                     # csv_row["QA"] = QA_Contact + QA_Doc + QA_FGroup + QA_Status + QA_Lang + QA_Env + QA_Misc
 
                     filterText = ''
@@ -165,33 +165,38 @@ for fileName in CSV_fileNames:
                                 csv_row[fn] = asArray(csv_row[fn])
 
                             elif row2["dataType"][:9] == "Contacts(":
-                                csv_row["Contact"] = createContact(csv_row)
+                                csv_row["contact"] = createContact(csv_row)
                             
                             elif row2["dataType"][:9] == "Security(":
-                                csv_row["Security"] = createSecurityList(csv_row,row2["dataType"][9:-1],SecurityFields)
+                                csv_row["security"] = createSecurityList(csv_row,row2["dataType"][9:-1],SecurityFields)
 
                             elif row2["dataType"] == "int":                            
                                 csv_row[fn] = int(csv_row[fn])               
                     
-                    if len(csv_row["Summary"]) > 200:
+                    if len(csv_row["summary"]) > 200:
                         print('Summay too long: ' + csv_row["ServiceName"] + ' = ' + str(len(csv_row["Summary"])) )
                   
-                    if csv_row["AltServiceName"] != "":
-                        csv_row["ServiceName"] = csv_row["AltServiceName"]
+                    if csv_row["altServiceName"] != "":
+                        csv_row["serviceName"] = csv_row["altServiceName"]
 
-                    if csv_row["Description"] == "":
-                        csv_row["Description"] = csv_row["Summary"]
+                    if csv_row["description"] == "":
+                        csv_row["description"] = csv_row["summary"]
                     
-                    csv_row["Roadmap"] = create_roadmap(csv_row["Timeline"] ,csv_row["TimelineEvent"])
-                    csv_row["Recommended"] = int(csv_row["InternalWeightage"]) >= 50
-                    csv_row["EditorName"] = ""
-                    csv_row["EditorEmail"] = ""                                     
+                    csv_row["roadmap"] = create_roadmap(csv_row["timeline"] ,csv_row["timelineEvent"])
+                    csv_row["recommended"] = int(csv_row["internalWeightage"]) >= 50
+                    csv_row["editorName"] = ""
+                    csv_row["editorEmail"] = ""                                     
 
-                    if int(csv_row["InternalWeightage"]) >= 0 or not ProductionData:
-                        for delKey in ["DateAdded","LastUpdated","Timeline","TimelineEvent","Email","Phone","ContactDetails","AltContactMethod","AltContactLink","Nominate","AltServiceName"]:
+                    if int(csv_row["internalWeightage"]) >= 0 or not ProductionData:
+                        for delKey in ["dateAdded","lastUpdated","timeline","timelineEvent","email","phone","contactDetails","altContactMethod","altContactLink","nominate","altServiceName"]:
                             if delKey in csv_row:
                                 del csv_row[delKey]
-                         
+
+                        if ProductionData: 
+                            for delKey in ["internalWeightage","dataIssues","reviewed","reviewedBy"]:
+                                if delKey in csv_row:
+                                    del csv_row[delKey]
+                                                        
                         # for delKey in [item['fieldName'] for item in SecurityFields if item['subGroup'] != '']:
                         #     if delKey in csv_row:
                         #         del csv_row[delKey]  
@@ -202,70 +207,70 @@ for fileName in CSV_fileNames:
                         data.append(csv_row)
 
 
-# ***************** Vote on filter text *********************                     
-#spellingVote(data,fieldMetadata)
-wordCounts = {}
-needEdit = {}
+# # ***************** Vote on filter text *********************                     
 modifiedRecords = []
-def shorten(text): return re.sub('[._ -\\/]', '', text).lower().strip()
-def wordVote(val):
-    if val in wordCounts:        wordCounts[val] += 1
-    else:        wordCounts[val] = 1
+# #spellingVote(data,fieldMetadata)
+# wordCounts = {}
+# needEdit = {}
+# def shorten(text): return re.sub('[._ -\\/]', '', text).lower().strip()
+# def wordVote(val):
+#     if val in wordCounts:        wordCounts[val] += 1
+#     else:        wordCounts[val] = 1
 
-def needsEdit(val):
-    short = shorten(val)
-    if short != '' and short in needEdit and needEdit[short] != val:
-        return needEdit[short]
-    else:
-        return {}
-# ******    
-for row2 in fieldMetadata:
-    fn = row2["fieldName"]
-    if row2["filter"] != 'No' and row2["dataType"] != 'List' and row2["filter"] != '':
-        for dataRow in data:
-            if row2["dataType"] == 'text':
-                if dataRow[fn] != '':                   
-                    wordVote(dataRow[fn])
-            elif row2["dataType"] == 'textArray':
-                    for val in dataRow[fn]:
-                        wordVote(val)
-string_counts_with_group = [{'string': key, 'count': value, 'group': shorten(key)} for key, value in wordCounts.items()]
-groups = set(item['group'] for item in string_counts_with_group)
-# def items_by_group(group): return [item for item in string_counts_with_group if item['group'] == group]
+# def needsEdit(val):
+#     short = shorten(val)
+#     if short != '' and short in needEdit and needEdit[short] != val:
+#         return needEdit[short]
+#     else:
+#         return {}
+# # ******    
+# for row2 in fieldMetadata:
+#     fn = row2["fieldName"]
+#     if row2["filter"] != 'No' and row2["dataType"] != 'List' and row2["filter"] != '':
+#         for dataRow in data:
+#             if row2["dataType"] == 'text':
+#                 if dataRow[fn] != '':                   
+#                     wordVote(dataRow[fn])
+#             elif row2["dataType"] == 'textArray':                    
+#                     for val in dataRow[fn]:
+#                         wordVote(val)
+# string_counts_with_group = [{'string': key, 'count': value, 'group': shorten(key)} for key, value in wordCounts.items()]
+# groups = set(item['group'] for item in string_counts_with_group)
+# # def items_by_group(group): return [item for item in string_counts_with_group if item['group'] == group]
 
-for grp in groups:    
-    itemGroup = [item for item in string_counts_with_group if item['group'] == grp] # items_group_A = items_by_group(grp)
-    if len(itemGroup) > 1:        
-        gstr = ''
-        cnt = 0
-        grp = itemGroup[0]['group']
-        for item in itemGroup:
-            if item['count'] > cnt:
-                cnt = item['count']
-                gstr = item['string']
-        needEdit[grp] = gstr
+# for grp in groups:    
+#     itemGroup = [item for item in string_counts_with_group if item['group'] == grp] # items_group_A = items_by_group(grp)
+#     if len(itemGroup) > 1:        
+#         gstr = ''
+#         cnt = 0
+#         grp = itemGroup[0]['group']
+#         for item in itemGroup:
+#             if item['count'] > cnt:
+#                 cnt = item['count']
+#                 gstr = item['string']
+#         needEdit[grp] = gstr
         
-for row2 in fieldMetadata:
-    fn = row2["fieldName"]
-    if row2["filter"] != 'No' and row2["filter"] != '':
-        for dataRow in data:
-            if row2["dataType"] == 'text':
-                updated = needsEdit(dataRow[fn])
-                if updated:
-                    modifiedRecords.append([dataRow['ServiceName'],fn,dataRow[fn],updated])
-                    dataRow[fn] = updated
+# for row2 in fieldMetadata:
+#     fn = row2["fieldName"]
+#     if row2["filter"] != 'No' and row2["filter"] != '':
+#         for dataRow in data:
+#             if row2["dataType"] == 'text':
+#                 updated = needsEdit(dataRow[fn])
+#                 if updated:
+#                     modifiedRecords.append([dataRow['ServiceName'],fn,dataRow[fn],updated])
+#                     dataRow[fn] = updated
 
-            elif row2["dataType"] == 'textArray':
-                    for val in dataRow[fn]:
-                        updated = needsEdit(val)
-                        if updated:
-                            i = dataRow[fn].index(val)
-                            modifiedRecords.append([dataRow['ServiceName'],fn,dataRow[fn][i],updated])                            
-                            dataRow[fn][i] = updated
-# ***************** END - Vote on filter text *********************
+#             elif row2["dataType"] == 'textArray':
+#                     for val in dataRow[fn]:
+#                         updated = needsEdit(val)
+#                         if updated:
+#                             i = dataRow[fn].index(val)
+#                             modifiedRecords.append([dataRow['ServiceName'],fn,dataRow[fn][i],updated])                            
+#                             dataRow[fn][i] = updated
+# # ***************** END - Vote on filter text *********************
 
 ######################################
-updated_data = [row for row in fieldMetadata if row.get("Group") != "FunctionalGroup"] 
+updated_data = [row for row in fieldMetadata if row.get("Group") != "functionalGroup"] 
 for row in updated_data:
     for delKey in ["filter","default"]:  # "showBadge"
         del row[delKey]
@@ -340,7 +345,7 @@ with open(folderName + 'config.ts', 'w') as configfile:
 
 # currently not using Security in final data. Maybe in the future. However it was used to build the config file
 for row in data:
-    for delKey in ["Security"]:
+    for delKey in ["security"]:
         del row[delKey]
 
 # ************** Output data *************************

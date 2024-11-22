@@ -35,24 +35,18 @@ export default function HomePage(): JSX.Element {
   const [searchFilter, setSearchFilter] = useState('');
   const [services, setServices] = useState([]);
   const [filtersAccordionState, setFiltersAccordionState] = useState({
-    Environment: false,
-    Language: false,
-    Keywords: false,
-    Status: false,
-    FunctionalGroup: false,
+    environment: false,
+    language: false,
+    keywords: false,
+    status: false,
+    functionalGroup: false,
   });
   const listingUrl = useMemo(() => getApiUrl('/listings/services'), []); 
   const [data, error, isLoading] = useFetch<ServiceListingResponse>(listingUrl);
   const [apps, setApps] = useState([]);
-
-  useEffect(() => {
-    if (!isLoading && data) {
-      setApps(data.services);
-    }
-  }, [data, isLoading]);
   
   // filters state
-  const [filterList, setFilterList] = useState(
+  const [appFilters, setFilterList] = useState(
     getAppsFilters(services, filtersList)
   );
   const [checkedFilters, setCheckedFilters] = useState(() => {
@@ -90,19 +84,20 @@ export default function HomePage(): JSX.Element {
             return true;
           }
 
-          if (Array.isArray(item[filterKey])) {
-            return filterValues.some((filterValue) =>
-              item[filterKey].includes(filterValue)
-            );
-          }
-
-          return filterValues.includes(item[filterKey]);
+          return filterValues.some((filterValue) => appFilters.indexedItems[filterValue]?.has(item.appId));
         }
       );
 
       return fieldMatch && filterMatches;
     });
   };
+
+  useEffect(() => {
+    if (!isLoading && data) {
+      setApps(data.services);
+      setFilterList(getAppsFilters(data.services, filtersList));
+    }
+  }, [data, isLoading]);
 
   // to update the services list when the search value or filters change
   useEffect(() => {
@@ -116,7 +111,7 @@ export default function HomePage(): JSX.Element {
       findServices(
         apps,
         searchRegEx,
-        ['Description', 'Summary', 'ServiceName', 'Provider', 'filterText'],
+        ['description', 'summary', 'serviceName', 'provider', 'filterText', ...filtersList],
         selectedFiltersState
       )
     );
@@ -154,12 +149,6 @@ export default function HomePage(): JSX.Element {
     };
   }, [searchFilter, selectedFiltersState, apps]);
 
-  // to update the filters list when the services list changes
-  useEffect(() => {
-    setFilterList(getAppsFilters(apps, filtersList));
-    setRerender(' ');
-  }, [services, apps]);
-
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const category = urlParams.get('category');
@@ -174,27 +163,27 @@ export default function HomePage(): JSX.Element {
       // set the state of selectedCheckboxState and selectedFiltersState of category in the functional group
       setSelectedFiltersState({
         ...defaultState.selectedFilters,
-        FunctionalGroup: [
+        functionalGroup: [
           category,
-          ...defaultState.selectedFilters.FunctionalGroup,
+          ...defaultState.selectedFilters.functionalGroup,
         ],
       });
       setCheckedFilters({
         ...generateFilterObject(apps),
-        FunctionalGroup: {
-          ...generateFilterObject(apps).FunctionalGroup,
+        functionalGroup: {
+          ...generateFilterObject(apps).functionalGroup,
           [category]: true,
         },
       });
       setFiltersAccordionState({
         ...filtersAccordionState,
-        FunctionalGroup: true,
+        functionalGroup: true,
       });
     }
   }, [apps]);
 
-  const recommendedServices = services.filter((item: any) => item.Recommended )
-  const otherServices = services.filter((item: any) => !item.Recommended )
+  const recommendedServices = services.filter((item: any) => item.recommended )
+  const otherServices = services.filter((item: any) => !item.recommended )
 
   return isLoading || !data ? (
     <GoACircularProgress variant="fullscreen" size="large" message="Loading service list..." visible={true} />
@@ -243,37 +232,40 @@ export default function HomePage(): JSX.Element {
             >
               Clear all
             </GoAButton>
+
             <GoAButton
               size="compact"
               type="secondary"
               onClick={() => {
                 setFiltersAccordionState({
-                  Environment: false,
-                  Language: false,
-                  Keywords: false,
-                  Status: false,
-                  FunctionalGroup: false,
+                  environment: false,
+                  language: false,
+                  keywords: false,
+                  status: false,
+                  functionalGroup: false,
                 });
                 setCollapseKey((prevKey) => prevKey + 1); //
               }}
             >
               Collapse all
             </GoAButton>
+
             <GoAButton
               size="compact"
               type="secondary"
               onClick={() => {
                 setFiltersAccordionState({
-                  Environment: true,
-                  Language: true,
-                  Keywords: true,
-                  Status: true,
-                  FunctionalGroup: true,
+                  environment: true,
+                  language: true,
+                  keywords: true,
+                  status: true,
+                  functionalGroup: true,
                 });
               }}
             >
-              Expand all
+              Expand all            
             </GoAButton>
+
           </GoAButtonGroup>
           <GoASpacer vSpacing="xl" />
           <GoADivider></GoADivider>
@@ -288,7 +280,7 @@ export default function HomePage(): JSX.Element {
                 headingSize="small"
                 open={filtersAccordionState[filterCategory.property]}
               >
-                {filterList[filterCategory.property]?.map((filter) => (
+                {appFilters.filters[filterCategory.property]?.map((filter) => (
                   <GoACheckbox
                     key={filter}
                     label={filter}
@@ -379,10 +371,10 @@ export default function HomePage(): JSX.Element {
           recommendedServices.map((app) => {
             return (
               <Card
-                key={app.ServiceName}
-                title={app.ServiceName}
-                provider={app.Provider}
-                description={app.Summary}
+                key={app.serviceName}
+                title={app.serviceName}
+                provider={app.provider}
+                description={app.summary}
                 app={app}
               />
             );
@@ -407,10 +399,10 @@ export default function HomePage(): JSX.Element {
           otherServices.map((app) => {
             return (
               <Card
-                key={app.ServiceName}
-                title={app.ServiceName}
-                provider={app.Provider}
-                description={app.Summary}
+                key={app.serviceName}
+                title={app.serviceName}
+                provider={app.provider}
+                description={app.summary}
                 app={app}
               />
             );

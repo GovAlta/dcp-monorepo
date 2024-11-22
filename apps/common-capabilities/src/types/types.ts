@@ -14,37 +14,37 @@ export type ServiceListingResponse = {
 };
 
 export type Service = {
-  AppId: string;
-  ServiceName: string;
-  Summary: string;
-  Description: string;
-  InternalWeightage: boolean;
-  Provider: string;
-  FunctionalGroup: string;
-  Environment: Array<{name: string}>;
-  Language: Array<{name: string}>;
-  Documentation: Array<string>;
-  Keywords: Array<{keyword: string}>;
-  UsageMethod: string;
-  Status: string;
-  Version: string;
-  UseCases: string;
-  Prerequisites: string;
-  Comments: string;
-  CMRA: string;
-  STRA: boolean;
-  CmraReq: boolean;
-  IM: boolean;
-  Data: boolean;
-  Risk: boolean;
-  Cybersecurity: boolean;
-  Classification: string;
-  Controller: string;
-  Considerations: string;
-  Contact: Contact;
+  appId: string;
+  serviceName: string;
+  summary: string;
+  description: string;
+  recommended: boolean;
+  provider: string;
+  functionalGroup: string;
+  environment: Array<{item: string}>;
+  language: Array<{item: string}>;
+  documentation: Array<{url: string, name: string}>;
+  keywords: Array<{item: string}>;
+  usageMethod: string;
+  status: string;
+  version: string;
+  useCases: string;
+  prerequisites: string;
+  comments: string;
+  cmra: string;
+  stra: string;
+  cmraReq: string;
+  im: string;
+  data: string;
+  risk: string;
+  cybersecurity: string;
+  classification: string;
+  controller: string;
+  considerations: string;
+  contact: Contact;
   filterText: string;
-  SupportLevel: string;
-  Audience: Array<{name: string}>;
-  EditorName: string,
-  EditorEmail: string
+  supportLevel: string;
+  audience: Array<{item: string}>;
+  editorName: string,
+  editorEmail: string
 }

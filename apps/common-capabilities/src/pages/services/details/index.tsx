@@ -69,7 +69,7 @@ export default function Details(): JSX.Element {
 
       let showSpecs: any = [];
       Object.entries(specifications).forEach(([name, obj]) => {
-        if (app[name] != '' && app[name] != 'Other') {
+        if (app[name] != '' && app[name] != 'Other' && app[name][0]?.item !== 'Other') {
           const newValue = { ...obj, id: `spec-${name.toLowerCase()}` };
           showSpecs.push({ name, ...newValue });
         }
@@ -91,10 +91,6 @@ export default function Details(): JSX.Element {
   }
 
   const SecurityBlock: React.FC<{ group: SecurityItem }> = ({ group }) => {
-
-    //---[ app.Security is from the JSON data ]---
-    // const itemData = app.Security.find( (item: any) => item.Type === group.dataSecurityType);
-    // if (itemData == undefined) return null;
 
     function displayName(obj: any, key: string): string | undefined {
       return obj[key]?.title;
@@ -139,21 +135,6 @@ export default function Details(): JSX.Element {
                 </tr>
               </>
             ))}
-            {/* {itemData.Items.map((row: any, index: any) => (
-              <>
-                <tr key={`tr-${group.name}${index}`}>
-                  <td key={`td1-${index}`}>
-                    {' '}
-                    {displayName(securityData, row['Field'])}{' '}
-                  </td>
-                  <td key={`td2-${index}`} className={'service-content'}>
-
-                    {' '}
-                    {row['Value']}{' '}
-                  </td>
-                </tr>
-              </>
-            ))} */}
           </tbody>
         </GoATable>
         <GoASpacer vSpacing="xl" />
@@ -172,40 +153,25 @@ export default function Details(): JSX.Element {
         />
       );
     else if (specification.type == 'textArray')
-      return <>{app[specification.name].join(', ')}</>;
+
+      // To be used when using string arrays:
+      // return <>{app[specification.name].join(', ')}</>;  
+   
+      // using object array:
+      return <>{app[specification.name].map((obj: { item: any; }) => obj.item).join(', ')}</>;
+
     else return <>{specification.type}?</>;
   };
 
   const renderContact = (method: any) => {
     const contactMethods: any = {
-      Slack: {
-        iconType: 'logo-slack',
-        linkPrefix: '',
-      },
-      Email: {
-        iconType: 'mail',
-        linkPrefix: 'mailto:',
-      },
-      Phone: {
-        iconType: 'call',
-        linkPrefix: 'tel:',
-      },
-      BERNIE: {
-        iconType: 'cart',
-        linkPrefix: '',
-      },
-      Web: {
-        iconType: 'globe',
-        linkPrefix: '',
-      },
-      Sharepoint: {
-        iconType: 'share-social',
-        linkPrefix: '',
-      },
-      GitHub: {
-        iconType: 'logo-github',
-        linkPrefix: '',
-      },
+      Slack:      {iconType: 'logo-slack',  linkPrefix: '',},
+      Email:      {iconType: 'mail',  linkPrefix: 'mailto:',},
+      Phone:      {iconType: 'call',  linkPrefix: 'tel:',},
+      BERNIE:     {iconType: 'cart',  linkPrefix: '',},
+      Web:        {iconType: 'globe', linkPrefix: '',},
+      Sharepoint: {iconType: 'share-social',  linkPrefix: '',},
+      GitHub:     {iconType: 'logo-github',   linkPrefix: '',},
     };
     const methodConfig = contactMethods[method.type] || {};
     const iconType = methodConfig.iconType || '';
@@ -244,17 +210,17 @@ export default function Details(): JSX.Element {
   };
 
   const renderContent = (name: string, app: any) => {
-    if (name === 'Documentation' && app.Documentation.length > 0) {
-      return app.Documentation.map((doc: any) => (
+    if (name === 'documentation' && app.documentation.length > 0) {
+      return app.documentation.map((doc: any) => (
         <div key={doc.name}>
           <ExternalLink text={`${doc.name}`} link={doc.url} />
           <GoASpacer vSpacing="s" />
         </div>
       ));
-    } else if (name === 'Specs') {
+    } else if (name === 'specs') {
       return (
         <>
-          {app.Recommended ? (
+          {app.recommended ? (
             <GoABadge key="validated" type="information" content="Recommended"  />
           ) : null}
           <table>
@@ -271,27 +237,27 @@ export default function Details(): JSX.Element {
         </>
       );
     } 
-    else if (name === 'Roadmap') {
-      return renderRoadmap(app.Roadmap);
+    else if (name === 'roadmap') {
+      return renderRoadmap(app.roadmap);
     }
-    else if (name === 'Contact') {
+    else if (name === 'contact') {
       return (
         <>
-        {app.Contact.details != '' ? (
+        {app.contact.details != '' ? (
             <>
-            {app.Contact.details}
+            {app.contact.details}
             <GoASpacer vSpacing="s" />
             </>
           ) : null}
 
         <table className="contact-table">
           <tbody>
-            {app.Contact.methods.map((method: any) => renderContact(method))}
+            {app.contact.methods.map((method: any) => renderContact(method))}
           </tbody>
         </table>
         </>
       );
-    } else if (name === 'Security') {
+    } else if (name === 'security') {
       return (
         <>
           {securityGroups.map((group: SecurityItem) => (
@@ -335,14 +301,14 @@ export default function Details(): JSX.Element {
 
           <GoASpacer vSpacing="l" />
           <div className="service-heading">
-          <h2>{app.ServiceName}</h2>
+          <h2>{app.serviceName}</h2>
           <GoAButton
             onClick={() => (window.location.href = `/updateservice/index.html?id=${app.appId}`)}>
             Update
           </GoAButton>
         </div>
           <GoASpacer vSpacing="l" />
-          <p className="service-content"> {app.Description}</p>
+          <p className="service-content"> {app.description}</p>
 
           <GoASpacer vSpacing="xl" />
           {items.content.length > 0 &&
@@ -360,7 +326,7 @@ export default function Details(): JSX.Element {
           <div>
             Please feel free to{' '}
             <ExternalLink
-              link={`mailto:TI.Softwaredelivery@gov.ab.ca?subject=Common capabilities feedback: ${app.ServiceName}`}
+              link={`mailto:TI.Softwaredelivery@gov.ab.ca?subject=Common capabilities feedback: ${app.serviceName}`}
               text={'share feedback'}
             />{' '}
             on this service.

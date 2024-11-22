@@ -6,6 +6,7 @@ export function capitalizeFirstWord(s) {
 
 export function getAppsFilters(apps, filterKeys) {
   const filters = {};
+  const indexedItems = {};
 
   apps.forEach((app) => {
     filterKeys.forEach((key) => {
@@ -16,7 +17,16 @@ export function getAppsFilters(apps, filterKeys) {
             if (!filters[key]) {
               filters[key] = new Set();
             }
-            filters[key].add(element);
+            if (typeof element === 'object') {
+              filters[key].add(...Object.values(element));
+
+              Object.values(element).forEach((value) => {
+                indexedItems[value] = (indexedItems[value] || new Set()).add(app.appId);
+              });
+            } else {
+              filters[key].add(element);
+              indexedItems[element] = (indexedItems[element] || new Set()).add(app.appId);
+            }
           });
         } else {
           // If the property is not an array, add it directly to the filter
@@ -24,6 +34,7 @@ export function getAppsFilters(apps, filterKeys) {
             filters[key] = new Set();
           }
           filters[key].add(app[key]);
+          indexedItems[app[key]] = (indexedItems[app[key]] || new Set()).add(app.appId);
         }
       }
     });
@@ -34,17 +45,20 @@ export function getAppsFilters(apps, filterKeys) {
     filters[key] = Array.from(filters[key]).sort();
   }
 
-  return filters;
+  return {
+    filters,
+    indexedItems
+  };
 }
 
 export function generateFilterObject(services) {
-  const appFilters = getAppsFilters(services, filtersList);
+  const { filters } = getAppsFilters(services, filtersList);
 
   const filterObject = {};
 
-  for (const key in appFilters) {
+  for (const key in filters) {
     filterObject[key] = {};
-    appFilters[key].forEach((filterValue) => {
+    filters[key].forEach((filterValue) => {
       filterObject[key][filterValue] = false;
     });
   }
@@ -54,7 +68,7 @@ export function generateFilterObject(services) {
 
 export function generateFilterCounts(filteredServices, services) {
   // get list of all filters available
-  const filters =  getAppsFilters(services, filtersList);
+  const { filters } =  getAppsFilters(services, filtersList);
 
   const filterCounts = {};
   for (const filterType of Object.keys(filters)) {

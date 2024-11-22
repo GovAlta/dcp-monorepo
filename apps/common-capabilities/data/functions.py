@@ -65,16 +65,19 @@ def asArray(val):
     if val == "":
         return []
     else:
-      return [item.strip() for item in val.split(',')]
+      # return [item.strip() for item in val.split(',')]
+      return [{"item": item.strip()} for item in val.split(',')]
+    
+
 
 #### CONTACTS ####
 # def createContact(type,url,descr,email,phone, provider):
 def createContact(csv_row):    
-    type = csv_row["AltContactMethod"]
-    url = csv_row["AltContactLink"]
-    descr = csv_row["ContactDetails"]
-    email = csv_row["Email"]
-    phone = csv_row["Phone"]
+    type = csv_row["altContactMethod"]
+    url = csv_row["altContactLink"]
+    descr = csv_row["contactDetails"]
+    email = csv_row["email"]
+    phone = csv_row["phone"]
    
     methods = []
     if type != "" or url != "":
