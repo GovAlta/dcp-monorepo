@@ -124,9 +124,9 @@ export function newListing(
             "name": requestBody.formData.appId ? "listing-submitted-edit" : "listing-submitted-new",
             "timestamp": new Date().toISOString(),
             "payload": {
-              "userEmail": requestBody.formData.EditorEmail,
-              appName: requestBody.formData.ServiceName,
-              userName: requestBody.formData.EditorName
+              "userEmail": requestBody.formData.editorEmail,
+              appName: requestBody.formData.serviceName,
+              userName: requestBody.formData.editorName
             }
           }, {
             headers: {
@@ -145,9 +145,9 @@ export function newListing(
                   "timestamp": new Date().toISOString(),
                   "payload": {
                     "userEmail": reviewerEmail,
-                    appName: requestBody.formData.ServiceName,
-                    userName: requestBody.formData.EditorName,
-                    editorEmail: requestBody.formData.EditorEmail
+                    appName: requestBody.formData.serviceName,
+                    userName: requestBody.formData.editorName,
+                    editorEmail: requestBody.formData.editorEmail
                   }
                 }, {
                   headers: {
