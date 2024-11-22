@@ -1,0 +1,3 @@
+triggered events: form-service:submission-dispositioned
+
+roles: urn:ads:platform:form-service -> form-admin
