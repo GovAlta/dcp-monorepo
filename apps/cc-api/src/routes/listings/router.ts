@@ -49,8 +49,7 @@ export function verifyCaptcha(logger: Logger, RECAPTCHA_SECRET: string, SCORE_TH
 export function getFormsSchema(
   logger: Logger,
   formApiUrl: URL,
-  tokenProvider: TokenProvider,
-  cache: DataCache
+  tokenProvider: TokenProvider
 ): RequestHandler {
   return async (req, res) => {
 
@@ -80,7 +79,7 @@ export function getFormsSchema(
         logger.error(e, 'failed to get forms schema');
       }
     }
-    
+
   }
 }
 
@@ -117,20 +116,55 @@ export function newListing(
         }
       )
 
-      // Notify the user about their submission
       if (listingApiCall.data.status === 'submitted') {
-        await axios.post(`${eventServiceUrl}/events`, {
-          "namespace": "common-capabilities",
-          "name": requestBody.formData.appId ? "listing-submitted-edit" : "listing-submitted-new",
-          "timestamp": new Date().toISOString(),
-          "payload": {
-            "userEmail": requestBody.formData.EditorEmail
+        try {
+          // Notify the user about their submission
+          await axios.post(`${eventServiceUrl}/events`, {
+            "namespace": "common-capabilities",
+            "name": requestBody.formData.appId ? "listing-submitted-edit" : "listing-submitted-new",
+            "timestamp": new Date().toISOString(),
+            "payload": {
+              "userEmail": requestBody.formData.EditorEmail,
+              appName: requestBody.formData.ServiceName,
+              userName: requestBody.formData.EditorName
+            }
+          }, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            }
+          })
+          const reviewerEmails = environment.REVIEWER_EMAILS.split(",");
+
+          // Notify the reviewers
+          await Promise.all(
+            reviewerEmails.map(
+              (reviewerEmail) =>
+                axios.post(`${eventServiceUrl}/events`, {
+                  "namespace": "common-capabilities",
+                  "name": requestBody.formData.appId ? "listing-submitted-edit-reviewer" : "listing-submitted-new-reviewer",
+                  "timestamp": new Date().toISOString(),
+                  "payload": {
+                    "userEmail": reviewerEmail,
+                    appName: requestBody.formData.ServiceName,
+                    userName: requestBody.formData.EditorName,
+                    editorEmail: requestBody.formData.EditorEmail
+                  }
+                }, {
+                  headers: {
+                    Authorization: `Bearer ${token}`,
+                  }
+                })
+            )
+          );
+        } catch (e) {
+          if (axios.isAxiosError(e)) {
+            res.status(e.response.status).send(e.response.data);
+            logger.error(e.response.data, 'failed to notify reviewers');
+          } else {
+            res.status(400).send({ error: e });
+            logger.error(e, 'failed to notify reviewers');
           }
-        }, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          }
-        })
+        }
       }
       res.status(201).send({
         result: {
@@ -170,7 +204,7 @@ export function createListingsRouter({
 
   router.get(
     '/listings/schema/:definitionId',
-    getFormsSchema(logger, formApiUrl, tokenProvider, cache)
+    getFormsSchema(logger, formApiUrl, tokenProvider)
   );
 
   router.post(
