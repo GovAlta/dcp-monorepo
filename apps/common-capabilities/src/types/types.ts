@@ -21,10 +21,10 @@ export type Service = {
   recommended: boolean;
   provider: string;
   functionalGroup: string;
-  environment: Array<{name: string}>;
-  language: Array<{name: string}>;
-  documentation: Array<string>;
-  keywords: Array<{keyword: string}>;
+  environment: Array<{item: string}>;
+  language: Array<{item: string}>;
+  documentation: Array<{url: string, name: string}>;
+  keywords: Array<{item: string}>;
   usageMethod: string;
   status: string;
   version: string;
@@ -32,19 +32,19 @@ export type Service = {
   prerequisites: string;
   comments: string;
   cmra: string;
-  stra: boolean;
-  cmraReq: boolean;
-  im: boolean;
-  data: boolean;
-  risk: boolean;
-  cybersecurity: boolean;
+  stra: string;
+  cmraReq: string;
+  im: string;
+  data: string;
+  risk: string;
+  cybersecurity: string;
   classification: string;
   controller: string;
   considerations: string;
   contact: Contact;
   filterText: string;
   supportLevel: string;
-  audience: Array<{name: string}>;
+  audience: Array<{item: string}>;
   editorName: string,
   editorEmail: string
 }
