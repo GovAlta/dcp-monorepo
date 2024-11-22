@@ -65,7 +65,7 @@ export default function Details(): JSX.Element {
 
       let showSpecs: any = [];
       Object.entries(specifications).forEach(([name, obj]) => {
-        if (app[name] != '' && app[name] != 'Other' && app[name][0]?.item !== 'Other') {
+        if (app[name] && app[name] !== 'Other' && app[name][0]?.item !== 'Other') {
           const newValue = { ...obj, id: `spec-${name.toLowerCase()}` };
           showSpecs.push({ name, ...newValue });
         }
@@ -206,7 +206,7 @@ export default function Details(): JSX.Element {
   };
 
   const renderContent = (name: string, app: any) => {
-    if (name === 'documentation' && app.documentation.length > 0) {
+    if (name === 'documentation' && app.documentation?.length > 0) {
       return app.documentation.map((doc: any) => (
         <div key={doc.name}>
           <ExternalLink text={`${doc.name}`} link={doc.url} />
@@ -248,7 +248,7 @@ export default function Details(): JSX.Element {
 
         <table className="contact-table">
           <tbody>
-            {app.contact.methods.map((method: any) => renderContact(method))}
+            {app.contact?.methods?.map((method: any) => renderContact(method))}
           </tbody>
         </table>
         </>
