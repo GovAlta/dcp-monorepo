@@ -105,13 +105,12 @@ export const specifications = {
 }
 
 /**
- * dataIn indicates the property where the item should be found in list of array form.
+ * dataIn indicates the property where the data should be found
  * each property in the array can be of a path to the data in case of nested objects
  * i.e.
- * {a: {b: {c: 1}}}
- * dataIn: ['a'] -> {b: {c: 1}}
- * dataIn: ['a.b'] -> {c: 1}
- * dataIn: ['a.b.c'] -> 1
+ * {contact: {methods: [{url: "https://example.com"}]}}
+ * dataIn: ['contact'] -> {methods: [{url: "https://example.com"}]}
+ * dataIn: ['contact.methods'] -> [{url: "https://example.com"}]
  */
 export const bodyItems = {
     "specs": {
