@@ -25,6 +25,18 @@ type ServiceDetailsResponse = {
   serviceInfo: any;
 }
 
+interface SecurityItem {
+  name: string;
+  title: string;
+  tableTh: any;
+  dataSecurityType: string;
+  note: string;
+}
+
+function get(obj: any, path: string) {
+  return path.split('.').reduce((acc, key: string) => acc?.[key], obj); 
+}
+
 export default function Details(): JSX.Element {
   const id = useMemo(() => {
     const urlSearchParams = new URLSearchParams(window.location.search);
@@ -56,7 +68,9 @@ export default function Details(): JSX.Element {
     if (app) {
       let showContent: any = [];
       Object.entries(bodyItems).forEach(([name, obj]) => {
-        if (obj.dataIn == '' ? app[name] != '' : app[name][obj.dataIn] != '') {
+        const hasData = obj.dataIn ? obj.dataIn.some((path) => get(app, path)) : app[name];
+        // const hasData = obj.dataIn ? app[name][obj.dataIn] != '' : app[name] !== ''
+        if (hasData) {
           const newValue = {
             ...obj,
             id: `body-${name.toLowerCase()}`,
@@ -81,14 +95,6 @@ export default function Details(): JSX.Element {
       });
     }
   }, [app]);
-
-  interface SecurityItem {
-    name: string;
-    title: string;
-    tableTh: any;
-    dataSecurityType: string;
-    note: string;
-  }
 
   const SecurityBlock: React.FC<{ group: SecurityItem }> = ({ group }) => {
 
