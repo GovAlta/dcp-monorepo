@@ -2,8 +2,8 @@
 -- with the corr  esponding payload as the input.
 
 -- Define Namespace and Name used for values
-local publishedIndex = "testing"
-local namespace = "roy-test-do-not-delete"
+local publishedIndex = "published-index"
+local namespace = "common-capabilities"
 local debug="Done"
 
 -- Helper functions
@@ -86,11 +86,11 @@ function validateFormData(formId, formData)
   if 
     isNilOrNull(formData)
     or not hasKeys(formData, "data")
-    or isNilOrNull(formData) 
+    or isNilOrNull(formData["data"]) 
     or not hasKeys(formData["data"], "appId")
     or isNilOrNull(formData["data"]["appId"])
-    or not hasKeys(formData["data"], "editorsName")
-    or not hasKeys(formData["data"], "editorsEmail")
+    or not hasKeys(formData["data"], "editorName")
+    or not hasKeys(formData["data"], "editorEmail")
     or not hasKeys(formData["data"], "serviceName")
   then
     trace("Form '"..formId.."' not found or has invalid data.")
@@ -102,8 +102,8 @@ function getFormData(formId, disposition)
   local formData = adsp.GetFormData(formId)
   validateFormData(formId, formData)
   return { 
-    name = formData.data.editorsName,
-    emailAddress = formData.data.editorsEmail,
+    name = formData.data.editorName,
+    emailAddress = formData.data.editorEmail,
     appId = formData.data.appId,
     status = disposition.status,
     reason = disposition.reason,
@@ -140,12 +140,12 @@ end
 
 function triggerNotification(eventType, formData)
     local payload = {
-      name = formData.name,
-      emailAddress = formData.emailAddress,
-      reason = formData.reason,
-      serviceName = formData.serviceName
+      ["userName"] = formData.name,
+      ["userEmail"] = formData.emailAddress,
+      ["reason"] = formData.reason,
+      ["appName"] = formData.serviceName
     }
-    adsp.SendDomainEvent ("common-capabilities", eventType, nil, nil, payload)
+    adsp.SendDomainEvent("common-capabilities", eventType, nil, nil, payload)
 end
 
 -- Main --
@@ -158,7 +158,9 @@ local formData = getFormData(formId, disposition)
 if status == "accepted" then
   updateIndex(formData.appId)
   updateFormData(formData.data)
+  triggerNotification("listing-accepted", formData)
+else
+  triggerNotification("listing-rejected", formData)
 end
-triggerNotification("listing-"..status, formData)
 
 return debug
