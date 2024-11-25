@@ -86,7 +86,7 @@ function validateFormData(formId, formData)
   if 
     isNilOrNull(formData)
     or not hasKeys(formData, "data")
-    or isNilOrNull(formData) 
+    or isNilOrNull(formData["data"]) 
     or not hasKeys(formData["data"], "appId")
     or isNilOrNull(formData["data"]["appId"])
     or not hasKeys(formData["data"], "editorName")
@@ -140,12 +140,12 @@ end
 
 function triggerNotification(eventType, formData)
     local payload = {
-      name = formData.name,
-      emailAddress = formData.emailAddress,
-      reason = formData.reason,
-      serviceName = formData.serviceName
+      ["userName"] = formData.name,
+      ["userEmail"] = formData.emailAddress,
+      ["reason"] = formData.reason,
+      ["appName"] = formData.serviceName
     }
-    adsp.SendDomainEvent ("common-capabilities", eventType, nil, nil, payload)
+    adsp.SendDomainEvent("common-capabilities", eventType, nil, nil, payload)
 end
 
 -- Main --
@@ -158,7 +158,9 @@ local formData = getFormData(formId, disposition)
 if status == "accepted" then
   updateIndex(formData.appId)
   updateFormData(formData.data)
+  triggerNotification("listing-accepted", formData)
+else
+  triggerNotification("listing-rejected", formData)
 end
-triggerNotification("listing-"..status, formData)
 
 return debug
