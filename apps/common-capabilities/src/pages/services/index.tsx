@@ -271,7 +271,7 @@ export default function HomePage(): JSX.Element {
           <GoADivider></GoADivider>
           <GoASpacer vSpacing="xl" />
           {filterListCustom.map((filterCategory) => (
-            <div>
+            <div key={filterCategory.property}>
               <GoAAccordion
                 key={`${filterCategory.title} ${collapseKey}`}
                 heading={`${filterCategory.title} (${
