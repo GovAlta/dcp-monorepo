@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "react-flatpickr": "^3.10.13"
+  },
+  "devDependencies": {
+    "@types/react-flatpickr": "^3.8.11"
+  }
+}

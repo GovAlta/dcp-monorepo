@@ -74,3 +74,18 @@
 ul.no-list-bullet {
     list-style-type: none;
 }
+
+.goa-adm-accordion-item ul.no-list-bullet > li > ul,
+.goa-adm-accordion-item ol.no-list-bullet > li > ul {
+    list-style-type: disc;
+    padding: 0 0 0 1.5rem;
+}
+
+html[dir=rtl] .goa-adm-accordion-item ul.no-list-bullet > li > ul,
+html[dir=rtl] .goa-adm-accordion-item ol.no-list-bullet > li > ul {
+    padding: 0 1.5rem 0 0;
+}
+
+html[dir=rtl] ul.no-list-bullet {
+    padding-right: 0;
+}

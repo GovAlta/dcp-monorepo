@@ -7,7 +7,7 @@ const DifferentWaysAccordion = () => {
         <Accordion title="Open Solicitation" content={
             <ul className="no-list-bullet">
                 <li><strong>What:</strong> Open solicitations are competitive procurement processes available to all suppliers. They are posted on the Alberta Purchasing Connection (APC) to ensure compliance, wide access, and foster competition.</li>
-                <li><strong>When:</strong> Open solicitation is required when the procurement value meets or exceeds thresholds set by Trade Agreements (see below). It is typically for goods valued at or above $10,000 and services valued at or above $75,000.</li>
+                <li><strong>When:</strong> Open solicitation is required when the procurement value meets or exceeds thresholds set by Trade Agreements (see above). It is typically for goods valued at or above $10,000 and services valued at or above $75,000. </li>
                 <li><strong>How:</strong> The solicitation documents are accessible to all interested suppliers, including specifications, terms, conditions, and submission requirements and provide comprehensive details. Responses are evaluated based on established criteria without preference for a specific supplier. Contracts are awarded to the supplier whose submission offers the best value based on the established criteria.</li>
             </ul>
         } />

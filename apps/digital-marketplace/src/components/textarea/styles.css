@@ -1,0 +1,37 @@
+textarea {
+    transition: all 0.5s ease;
+}
+
+textarea {
+    margin: 8px 0;
+    z-index: 5000;
+    height: 200px;
+    position: relative;
+    background: #FFFFFF;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 16px 1.25rem 20px;
+    margin-bottom: 0;
+    border-radius: 10px;
+    border: 1px solid #ADADAD;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    font-weight: 400;
+    color: #333333;
+    font-family: acumin-pro-semi-condensed, sans-serif;
+}
+
+textarea {
+}
+
+textarea:hover{
+    background-color: #F1F1F1;
+    transition: background-color 0.5s ease;
+}
+
+textarea:focus {
+    outline: 3px solid #FFB500;
+    outline-offset: 0;
+    transition: background-color 0.5s ease;
+    background-color: #F1F1F1;
+}

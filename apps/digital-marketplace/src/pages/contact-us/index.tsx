@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import hero_mobile from '../../img/hero-mobile-tablet.svg';
+import './styles.css';
 
 const ContactPage = () => {
 
