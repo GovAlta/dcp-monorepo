@@ -5,6 +5,7 @@ import useFetch from '../../hooks/useFetch';
 import { GoACircularProgress } from '@abgov/react-components';
 import useForm from '../../hooks/useFormSubmit';
 import { getApiUrl } from '../../utils/configs';
+import BackButton from '../../components/BackButton';
 
 type ServiceDetailsResponse = {
   serviceInfo: Service
@@ -29,10 +30,13 @@ export default function UpdateServicePage(): JSX.Element {
     }
   }, [data, isLoading]);
 
+  const backLink = <BackButton text="Back to details" onClick={() => { history.back(); }} />;
+
   return isLoading || !service ? (
     <GoACircularProgress variant="fullscreen" size="large" message="Loading service details..." visible={true} />
   ) : (
     <ServiceFormWrapper
+      backLink={backLink}
       pageHeader={`Update ${service.serviceName}`}
       service={service}
       handleSubmit={handleSubmit}
