@@ -7,6 +7,7 @@ import useFetch from '../../hooks/useFetch';
 import { JsonSchema, UISchemaElement } from '@jsonforms/core';
 
 type ServiceFormWrapperProps = {
+    backLink?: JSX.Element;
     pageHeader: string;
     service?: Service;
     handleSubmit: (data: Service) => Promise<any>;
@@ -17,7 +18,7 @@ type SchemaResponse = {
   uiSchema: UISchemaElement;  
 }
 
-export default function ServiceFormWrapper({pageHeader, service, handleSubmit}: ServiceFormWrapperProps) {
+export default function ServiceFormWrapper({backLink,pageHeader, service, handleSubmit}: ServiceFormWrapperProps) {
   const schemaUrl = useMemo(() => getSchemaUrl('common-capabilities-intake'), []);
   const [data, error, isLoading] = useFetch<SchemaResponse>(schemaUrl);
 
@@ -47,6 +48,7 @@ export default function ServiceFormWrapper({pageHeader, service, handleSubmit}: 
         rightColumnWidth="8%"
         leftColumnWidth="18%"
       >
+        {backLink}
         <h1>{pageHeader}</h1>
         <div className="progress-indicator">
           <GoACircularProgress variant="inline" size="large" message="Loading form information..." visible={isLoading} />

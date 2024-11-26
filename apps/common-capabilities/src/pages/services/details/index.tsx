@@ -11,6 +11,7 @@ import {
 import React, { useEffect, useState, useMemo } from 'react';
 import './styles.css';
 import ExternalLink from '../../../components/ExternalLink';
+import BackButton from '../../../components/BackButton';
 import BackToTop from '../../../components/BackToTop';
 import {
   securityGroups,
@@ -296,15 +297,7 @@ export default function Details(): JSX.Element {
             </div>
           }
         >
-          <GoAButton
-            type="tertiary"
-            size="compact"
-            leadingIcon="arrow-back"
-            onClick={() => (window.location.href = '/services/index.html')}
-          >
-            Back to listing
-          </GoAButton>
-
+          <BackButton text="Back to listing" onClick={() => (window.location.href = '/services/index.html')} />
           <GoASpacer vSpacing="l" />
           <div className="service-heading">
           <h2>{app.serviceName}</h2>
