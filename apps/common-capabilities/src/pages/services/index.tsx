@@ -271,7 +271,7 @@ export default function HomePage(): JSX.Element {
           <GoADivider></GoADivider>
           <GoASpacer vSpacing="xl" />
           {filterListCustom.map((filterCategory) => (
-            <div>
+            <div key={filterCategory.property}>
               <GoAAccordion
                 key={`${filterCategory.title} ${collapseKey}`}
                 heading={`${filterCategory.title} (${
@@ -371,7 +371,7 @@ export default function HomePage(): JSX.Element {
           recommendedServices.map((app) => {
             return (
               <Card
-                key={app.serviceName}
+                key={app.appId}
                 title={app.serviceName}
                 provider={app.provider}
                 description={app.summary}
@@ -399,7 +399,7 @@ export default function HomePage(): JSX.Element {
           otherServices.map((app) => {
             return (
               <Card
-                key={app.serviceName}
+                key={app.appId}
                 title={app.serviceName}
                 provider={app.provider}
                 description={app.summary}

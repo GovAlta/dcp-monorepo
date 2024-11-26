@@ -69,7 +69,6 @@ export default function Details(): JSX.Element {
       let showContent: any = [];
       Object.entries(bodyItems).forEach(([name, obj]) => {
         const hasData = obj.dataIn ? obj.dataIn.some((path) => get(app, path)) : app[name];
-        // const hasData = obj.dataIn ? app[name][obj.dataIn] != '' : app[name] !== ''
         if (hasData) {
           const newValue = {
             ...obj,
