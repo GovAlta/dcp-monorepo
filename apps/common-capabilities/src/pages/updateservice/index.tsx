@@ -25,7 +25,7 @@ export default function UpdateServicePage(): JSX.Element {
   useEffect(() => {
     if (!isLoading && data) {
       // editor name and email needs to be of current editing user, thus needs to be cleared out from loaded data
-      const serviceInfo = Object.assign({}, data.serviceInfo, { EditorName: "", EditorEmail: "" });
+      const serviceInfo = Object.assign({}, data.serviceInfo, { editorName: "", editorEmail: "" });
       setService(serviceInfo);
     }
   }, [data, isLoading]);
