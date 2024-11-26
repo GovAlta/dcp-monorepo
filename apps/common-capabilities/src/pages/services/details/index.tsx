@@ -34,10 +34,6 @@ interface SecurityItem {
   note: string;
 }
 
-function get(obj: any, path: string) {
-  return path.split('.').reduce((acc, key: string) => acc?.[key], obj); 
-}
-
 export default function Details(): JSX.Element {
   const id = useMemo(() => {
     const urlSearchParams = new URLSearchParams(window.location.search);
@@ -69,7 +65,7 @@ export default function Details(): JSX.Element {
     if (app) {
       let showContent: any = [];
       Object.entries(bodyItems).forEach(([name, obj]) => {
-        const hasData = obj.dataIn ? obj.dataIn.some((path) => get(app, path)) : app[name];
+        const hasData = obj.validate ? obj.validate(app) : app[name];
         if (hasData) {
           const newValue = {
             ...obj,
@@ -105,11 +101,10 @@ export default function Details(): JSX.Element {
     return (
       <>
         {group.tableTh.length > 0 ? <b>{group.title}</b> : null}
-
         {group.note != '' ? (
           <>
             <GoASpacer vSpacing="m" />
-            <>{group.note}</>
+            {group.note}
           </>
         ) : null}
 
@@ -131,15 +126,13 @@ export default function Details(): JSX.Element {
              {group.items
              .filter(item => app[item] !== '')
              .map((item: any, index: any) => (
-              <>
                 <tr key={`tr-${group.name}${index}`}>
                   <td key={`td1-${index}`}> {' '} {displayName(securityData, item)}{' '}  </td>
                   <td key={`td2-${index}`} className={'service-content'}>
-                     {' '}
+                      {' '}
                     {app[item]}{' '}
                   </td>
                 </tr>
-              </>
             ))}
           </tbody>
         </GoATable>
@@ -184,7 +177,7 @@ export default function Details(): JSX.Element {
     const linkPrefix = methodConfig.linkPrefix || '';
 
     return (
-      <tr className="items-color">
+      <tr className="items-color" key={method.type}>
         <td className="contact-type">{`${method.type}:  `}</td>
         <td>
           <GoAIcon type={iconType} size="small" theme="outline" />
@@ -200,7 +193,6 @@ export default function Details(): JSX.Element {
   };
 
   const renderRoadmap = (roadmap: any) => {
-
     if (!roadmap || roadmap.length === 0)
       return null;
 
@@ -217,12 +209,16 @@ export default function Details(): JSX.Element {
 
   const renderContent = (name: string, app: any) => {
     if (name === 'documentation' && app.documentation?.length > 0) {
-      return app.documentation.map((doc: any) => (
-        <div key={doc.name}>
-          <ExternalLink text={`${doc.name}`} link={doc.url} />
-          <GoASpacer vSpacing="s" />
-        </div>
-      ));
+      return app.documentation.map((doc: any) => {
+        if (Object.keys(doc).length > 0) {
+          return (
+            <div key={doc.name}>
+              <ExternalLink text={`${doc.name}`} link={doc.url} />
+              <GoASpacer vSpacing="s" />
+            </div>
+          );
+        }
+      });
     } else if (name === 'specs') {
       return (
         <>
@@ -230,10 +226,9 @@ export default function Details(): JSX.Element {
             <GoABadge key="validated" type="information" content="Recommended"  />
           ) : null}
           <table>
-            {/* <thead> <tr><th></th><th></th></tr> </thead> */}
             <tbody className="specs-table">
               {items.specs.map((obj: any) => (
-                <tr>
+                <tr key={obj.id}>
                   <td className='spec-type' >{obj.title}:</td>
                   <td>{renderSpecs(obj)}</td>
                 </tr>

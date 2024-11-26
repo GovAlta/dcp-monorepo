@@ -6,7 +6,21 @@ declare global {
 
 type Contact = {
   details: string;
-  methods: Array<{method: string, value: string, url: string}>;
+  methods: Array<{type: string, value: string, url: string}>;
+}
+
+enum RoadmapStatus {
+  Commited = "Commited",
+  Tentative = "Tentative",
+}
+
+type Roadmap = {
+  title: string;
+  when: string;
+  status: RoadmapStatus;
+  type: string;
+  description: string;
+  impacts: Array<{item: string}>
 }
 
 export type ServiceListingResponse = {
@@ -47,4 +61,5 @@ export type Service = {
   audience: Array<{item: string}>;
   editorName: string,
   editorEmail: string
+  roadmap: Array<Roadmap>
 }
