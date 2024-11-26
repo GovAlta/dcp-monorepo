@@ -99,3 +99,7 @@ export function generateFilterCounts(filteredServices, services) {
 
   return filterCounts;
 }
+
+export function getProperty(obj, path) {
+  return path.split('.').reduce((acc, key) => acc?.[key], obj); 
+}

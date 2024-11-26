@@ -1,3 +1,6 @@
+import { Service } from "../../../types/types";
+import { getProperty } from "../utils"; 
+
 export const securityGroups = [
     {
         "name": "stra",
@@ -105,44 +108,41 @@ export const specifications = {
 }
 
 /**
- * dataIn indicates the property where the data should be found
- * each property in the array can be of a path to the data in case of nested objects
- * i.e.
- * {contact: {methods: [{url: "https://example.com"}]}}
- * dataIn: ['contact'] -> {methods: [{url: "https://example.com"}]}
- * dataIn: ['contact.methods'] -> [{url: "https://example.com"}]
+ * list of sections to display within details
+ * @property {string} title title of the section
+ * @property {function} validate checks of the service info has information to populate in the
  */
 export const bodyItems = {
     "specs": {
         "title": "Specifications",
-        "dataIn": Object.keys(specifications)
+        "validate": (service: Service) => Object.keys(specifications).some(spec => getProperty(service, spec))
     },
     "roadmap": {
         "title": "Roadmap",
-        "dataIn": null
+        "validate": (service: Service) => service?.roadmap?.some(item => item.title)
     },
     "prerequisites": {
         "title": "Prerequisites",
-        "dataIn": null
+        "validate": null
     },
     "useCases": {
         "title": "Use cases",
-        "dataIn": null
+        "validate": null
     },
     "documentation": {
         "title": "Documentation",
-        "dataIn": null
+        "validate": (service: Service) => service.documentation?.some(doc => doc.url)
     },
     "comments": {
         "title": "Additional information",
-        "dataIn": null
+        "validate": null
     },
     "security": {
         "title": "Security and compliance",
-        "dataIn": securityGroups.flatMap(group => group.items)
+        "validate": (service: Service) => securityGroups.flatMap(group => group.items).some(item => getProperty(service, item))
     },
     "contact": {
         "title": "Contact",
-        "dataIn": ["contact.methods"]
+        "validate": (service: Service) => service.contact?.methods?.some(method => method.type)
     }
 }
