@@ -174,7 +174,7 @@ const HomePage = () => {
                 <div className="goa-adm-single-card-link">
                   <a
                     className="goa-adm-button-link goa-adm-secondary"
-                    href="/for-suppliers/"
+                    href="/supplier-outreach-program/"
                   >
                     View program
                   </a>
@@ -193,7 +193,7 @@ const HomePage = () => {
                 <div className="goa-adm-single-card-link">
                   <a
                     className="goa-adm-button-link goa-adm-secondary"
-                    href="/for-partners/"
+                    href="/join/"
                   >
                     Sign up
                   </a>
