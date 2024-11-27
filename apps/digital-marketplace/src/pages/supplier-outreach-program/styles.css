@@ -135,7 +135,7 @@ div.goa-option [type='checkbox']:not(:checked),
 div.goa-option [type='checkbox']:checked,
 div.goa-option [type='radio']:not(:checked),
 div.goa-option [type='radio']:checked {
-    z-Index: 1;
+    z-index: 1;
     box-sizing: border-box;
     position: absolute;
     top: 6px;
@@ -147,7 +147,7 @@ div.goa-option [type='checkbox']:not(:checked) + label,
 div.goa-option [type='checkbox']:checked + label,
 div.goa-option [type='radio']:not(:checked) + label,
 div.goa-option [type='radio']:checked + label {
-    z-Index: 2;
+    z-index: 2;
     box-sizing: border-box;
     position: relative;
     top: 0;
@@ -167,7 +167,7 @@ div.goa-option [type='checkbox']:checked + label:before,
 div.goa-option [type='radio']:not(:checked) + label:before,
 div.goa-option [type='radio']:checked + label:before,
 div.goa-option [type='radio']:checked + label:after {
-    z-Index: 10000;
+    z-index: 10000;
     box-sizing: border-box;
     position: relative;
     top: 0;

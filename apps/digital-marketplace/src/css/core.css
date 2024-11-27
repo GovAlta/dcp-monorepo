@@ -245,7 +245,7 @@ div.goa-adm-skiplinks {
 
 div.goa-adm-skiplinks a {
     position: absolute;
-    z-Index: 10000000;
+    z-index: 10000000;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
