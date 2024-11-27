@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from './header';
+import { GoASkeleton } from "@abgov/react-components";
 import DifferentWaysAccordion from './differentWaysAccordion';
 import AfterSigningAccordion from './afterSigningAccordion';
 import StepsTimeline from './stepsTimeline';
@@ -99,6 +100,7 @@ const UnderstandingProcurementPage = () => {
           </div>
           
           <div className="goa-adm-procurement-toc">
+            <GoASkeleton type="text" size={2} lineCount={3}></GoASkeleton>
             <TableOfContents />
           </div>
         </div>

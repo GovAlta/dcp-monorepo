@@ -37,6 +37,7 @@ function TableOfContents() {
   return (
     <nav className="goa-adm-toc">
       <h3>Table of contents</h3>
+      
       <ul>
         {headings.map((heading) => (
           <li className={`goa-adm-toc-level-${heading.level - 1}`} key={heading.id}>
