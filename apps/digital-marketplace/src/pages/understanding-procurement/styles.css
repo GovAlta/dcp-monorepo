@@ -1,3 +1,86 @@
+@import "@abgov/web-components/index.css";
+
+body, select, textarea, button {
+    margin: 0px;
+    background: #fff;
+    font-family: acumin-pro-semi-condensed, sans-serif;
+    font-weight: 400;
+	font-size: 1.125rem;
+    line-height: 1.75rem;
+}
+
+h1, h2, h3, h4, h5, h6, strong, b, dt {
+    font-weight: 700;
+}
+
+h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 4rem;
+    line-height: 4.5rem;
+    word-break: break-word;
+    color: #0081A2;
+}
+
+h2 {
+    margin: 0;
+    padding: 0;
+    line-height: 2.75rem;
+    font-size: 2.25rem;
+    word-break: break-word;
+    position: relative;
+    color: #005072;
+    }
+
+h2:after {
+    content: '';
+    display: block;
+    width: 53px;
+    background: #D9D9D9;
+    height: 7px;
+    border-radius: 4px;
+    position: absolute;
+    bottom: -1.75rem;
+    left: 2px;
+}
+
+h3 {
+    padding: 0;    
+    font-size: 1.75rem;
+    line-height: 2.5rem;
+    word-break: break-word;
+    position: relative;
+    color: #005072;
+}
+
+h3 + * {
+    margin: 2rem 0 0;
+}
+
+h4 {
+    margin: 0;
+    padding: 0;    
+    word-break: break-word;
+    position: relative;
+    color: #005072;
+}
+
+ul, ol {
+    padding: 0;
+}
+
+a {
+    color: #006dcc;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    text-underline-offset: .375rem;
+    text-decoration-thickness: .0625rem;
+}
+
+p {
+    margin: 1.5rem 0 0;
+}
 .goa-adm-body.goa-adm-procurement > .container p > a[target=_blank]:after,
 .goa-adm-body.goa-adm-procurement > .container ul li > a[target=_blank]:after,
 .goa-adm-body.goa-adm-procurement > .container ol li > a[target=_blank]:after {
@@ -159,6 +242,21 @@ html[dir=rtl] .goa-adm-body.goa-adm-procurement > .container > .goa-adm-procurem
         content: "";
         background: #D9D9D9;
         height: 1px;
+    }
+
+    h1 {
+        font-size: 2.25rem;
+        line-height: 2.75rem;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+        line-height: 2.25rem;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+        line-height: 2rem;
     }
 }
 

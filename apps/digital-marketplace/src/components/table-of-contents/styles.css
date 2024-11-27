@@ -39,7 +39,7 @@
     left: 3px;
     width: 2px;
     content: "";
-    background: #D9D9D9;
+    background: #F1F1f1;
     height: 100%;
 }
 
@@ -50,4 +50,16 @@ html[dir=rtl] .goa-adm-toc > ul li.goa-adm-toc-level-2 {
 html[dir=rtl] .goa-adm-toc > ul li.goa-adm-toc-level-2:before {
     right: 3px;
     left: auto;
+}
+
+.goa-adm-toc > ul.goa-loader li {
+    display: block;
+}
+
+.goa-adm-toc > ul.goa-loader li:before {
+    display: none;
+}
+
+.goa-adm-toc > ul.goa-loader li.short {
+    padding-right: 4rem;
 }
