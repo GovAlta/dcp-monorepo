@@ -556,6 +556,7 @@ div.goa-field-split .goa-date input {
 
 div.goa-field select {
     max-width: 250px;
+    cursor: pointer;
 }
 
 div.goa-field div.goa-date {
