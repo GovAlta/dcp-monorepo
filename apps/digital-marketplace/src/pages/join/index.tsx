@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from './header';
-import SignupForm from './signUpForm';
+import SignupForm from './SignUpForm';
 
 export default function JoinPage() {
   return (

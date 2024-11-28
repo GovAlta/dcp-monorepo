@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from './header';
-import ApptForm from './apptForm';
+import ApptForm from './ApptForm';
 import appointment_thumb from '../../img/icon-appointment.svg';
 import understanding_thumb from '../../img/icon-understanding-procurement.svg';
 import coming_thumb from '../../img/icon-coming-soon.svg';
