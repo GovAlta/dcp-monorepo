@@ -82,3 +82,22 @@
     padding-bottom: 1rem;
     margin-bottom: 3.5rem;
 }
+
+html[dir=rtl] .goa-adm-timeline-item:before {
+    right: 21px;
+    left: auto;
+}
+
+html[dir=rtl] .goa-adm-timeline-item .goa-adm-timeline-heading > .goa-adm-timeline-id:before {
+    right: 21px;
+    left: auto;
+}
+
+html[dir=rtl] .goa-adm-timeline-item:last-child:after {
+    right: 18px;
+    left: auto;
+}
+
+html[dir=rtl] .goa-adm-timeline-content {
+    padding: 0 4rem 2.5rem 0;
+}

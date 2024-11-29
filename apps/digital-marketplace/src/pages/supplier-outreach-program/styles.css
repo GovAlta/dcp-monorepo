@@ -1,0 +1,788 @@
+html {
+    scroll-behavior: smooth;
+}
+
+section.goa-adm-sign-up-form {
+    border-radius: 16px;
+    box-shadow: 0 2px 20px rgb(51, 51, 51, 0.11);
+    padding: 4rem 36px;
+}
+
+section.goa-adm-sign-up-form .goa-adm-form-container {
+    max-width: 860px;
+    margin: 0 auto 0;
+    width: 100%;
+}
+
+section.goa-adm-sign-up-form h2 + .goa-adm-form-container {
+    margin-top: 3rem;
+}
+
+section.goa-adm-sign-up-form h2 {
+    text-align: center;
+}
+
+section.goa-adm-sign-up-form h2::after {
+    display: none;
+}
+
+section.goa-adm-sign-up-form form fieldset {
+    border: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 0;
+    margin: 0;
+}
+
+section#sign-up-form.goa-adm-sign-up-form {
+    padding: 3rem 36px;
+}
+
+section#sign-up-form.goa-adm-sign-up-form > .goa-adm-form-success {
+    padding: 1.25rem 1.5rem 1.5rem;
+    font-size: 1.5rem;
+    line-height: 2.25rem;
+}
+
+section#sign-up-form.goa-adm-sign-up-form h3 {
+    margin-top: 0;
+}
+
+.goa-field.goa--optional span.optional {
+    color: #666666;
+    font-size: 0.875rem;
+    line-height: 1.313rem;
+    font-weight: 400;
+}
+
+.goa-field.goa-name > .goa-field-name-container {
+    display: flex;
+    column-gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.goa-field.goa-name > .goa-field-name-container > input {
+    flex-grow: 1;
+    width: auto;
+}
+
+.goa-field > label,
+fieldset > legend {
+    font-weight: 700;
+}
+
+fieldset > legend {
+    margin-bottom: 20px;
+}
+
+section.goa-adm-sign-up-form form fieldset > fieldset {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 0;
+}
+
+section.goa-adm-sign-up-form form fieldset > fieldset.adm-single-column {
+    grid-template-columns: repeat(1, 1fr);
+}
+
+.goa-field input {
+    transition: all 0.5s ease;
+}
+
+.goa-field input:not([type='checkbox']),
+.goa-field select {
+    margin: 8px 0;
+    z-index: 5000;
+    height: 53px;
+    position: relative;
+    background: #FFFFFF;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 6px 1rem 10px;
+    border-radius: 10px;
+    border: 1px solid #ADADAD;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    font-weight: 400;
+    color: #333333;
+    font-family: acumin-pro-semi-condensed, sans-serif;
+}
+
+.goa-field input:not([type='checkbox']):hover,
+.goa-field select:hover {
+    background-color: #F1F1F1;
+    transition: background-color 0.5s ease;
+}
+
+.goa-field input:not([type='checkbox']):focus,
+.goa-field select:focus,
+div.goa-option [type='checkbox']:focus + label:before,
+div.goa-option [type='radio']:focus + label:before {
+    outline: 3px solid #FFB500;
+    outline-offset: 0;
+    transition: background-color 0.5s ease;
+    background-color: #F1F1F1;
+}
+
+div.goa-option {
+    position: relative;
+}
+
+div.goa-option [type='checkbox']:not(:checked),
+div.goa-option [type='checkbox']:checked,
+div.goa-option [type='radio']:not(:checked),
+div.goa-option [type='radio']:checked {
+    z-index: 1;
+    box-sizing: border-box;
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    margin: 0;
+}
+
+div.goa-option [type='checkbox']:not(:checked) + label,
+div.goa-option [type='checkbox']:checked + label,
+div.goa-option [type='radio']:not(:checked) + label,
+div.goa-option [type='radio']:checked + label {
+    z-index: 2;
+    box-sizing: border-box;
+    position: relative;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    font-weight: 400;
+    cursor: pointer;
+    display: inline-block;
+    word-break: normal;
+    display: flex;
+    align-items: center;
+}
+
+div.goa-option [type='checkbox']:not(:checked) + label:before,
+div.goa-option [type='checkbox']:checked + label:before,
+div.goa-option [type='radio']:not(:checked) + label:before,
+div.goa-option [type='radio']:checked + label:before,
+div.goa-option [type='radio']:checked + label:after {
+    z-index: 10000;
+    box-sizing: border-box;
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 2rem;
+    height: 2rem;
+    display: block;
+    border: 1px solid #666;
+    border-radius: 7px;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-position: center center;
+    content: '';
+    flex-shrink: 0;
+    margin-right: 12px;
+    align-self: flex-start;
+}
+
+
+div.goa-option [type='checkbox']:not(:checked) + label:before,
+div.goa-option [type='radio']:not(:checked)+ label:before {   
+    transition: background 0.5s ease;
+} 
+
+div.goa-option [type='checkbox']:not(:checked):hover + label:before,
+div.goa-option [type='radio']:not(:checked):hover + label:before {
+    background-color: #F1F1F1;
+    transition: background 0.5s ease;
+}
+
+div.goa-option [type='radio']:not(:checked) + label:before,
+div.goa-option [type='radio']:checked + label:before,
+div.goa-option [type='radio']:checked + label:after {
+    border-radius: 100%;
+}
+
+div.goa-option [type='checkbox']:checked + label:before {
+    background-color: #0070C4;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 16 16' shape-rendering='geometricPrecision'%3E%3Cpath d='M1 10L6 14L15 1' fill='transparent' stroke='%23fff' stroke-width='2' stroke-endcap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    transition: none;
+}
+
+div.goa-option [type='checkbox']:not(:checked) + label:before {
+    transition: none;
+}
+
+div.goa-option [type='radio']:checked + label:after {
+    border: 9px solid #0070C4;
+}
+
+
+div.goa-option [type='radio']:checked + label:after {
+    position: absolute;
+    left: 0;
+}
+
+fieldset:not(.show-other) + .goa-field.goa-if-other {
+    display: none;
+}
+
+.goa-adm-sign-up-form form .goa-adm-buttons {
+    margin: 1rem 0 0;
+}
+
+.goa-adm-sign-up-form form .goa-adm-buttons .goa-adm-button {
+    display: flex;
+    padding: 10px 16px 14px 20px;
+    justify-content: center;
+    align-items: center;
+    background: #0070C4;
+    border-radius: 10px;
+    border: 0;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    transition: none;
+}
+
+.goa-adm-sign-up-form form .goa-adm-buttons .goa-adm-button:hover {
+    background-color: #333333;
+    transition: none;
+}
+
+.goa-adm-sign-up-form form .goa-adm-buttons .goa-adm-button:after {
+    width: 20px;
+    height: 20px;
+    display: block;
+    margin: 2px 0 0 8px;
+    content: '';
+    background: transparent url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M6.59808 15.0351C6.27264 15.3605 6.27264 15.8882 6.59808 16.2136C6.92352 16.539 7.45116 16.539 7.77659 16.2136L13.4016 10.5886C13.727 10.2632 13.727 9.73553 13.4016 9.41009L7.77659 3.78509C7.45116 3.45966 6.92352 3.45966 6.59808 3.78509C6.27264 4.11053 6.27264 4.63817 6.59808 4.9636L11.5602 9.92569C11.6008 9.96637 11.6008 10.0323 11.5602 10.073L6.59808 15.0351Z' fill='white'/%3E%3C/svg%3E%0A") no-repeat center center;
+    background-size: cover;
+}
+
+.goa-adm-sign-up-form form .goa-adm-buttons .goa-adm-button:focus {
+    box-shadow: none;
+    outline: 3px solid #FFB500;
+}
+
+section.goa-adm-sign-up-form .goa-adm-disclaimer {
+    margin: 2rem 0 0;
+    max-width: 700px;
+}
+
+.goa-error .form-item--error-message {
+    display: block;
+}
+
+.goa-option > .goa-field {
+    margin: 0.5rem 0 0;
+}
+
+.goa-field-split {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+}
+
+#get-started {
+    scroll-margin-top: 24px;
+}
+
+.goa-field select:required:invalid {
+    color: #858585;
+}
+
+.goa-field select:required:invalid option:not(:disabled) {
+    color: #333333;
+}
+
+body .flatpickr-months .flatpickr-month,
+body .flatpickr-weekdays,
+body .flatpickr-current-month .flatpickr-monthDropdown-months,
+.flatpickr-weekdaycontainer span.flatpickr-weekday {
+    background: #005072;
+	font-family: "acumin-pro-semi-condensed", sans-serif;
+    color: #ffffff;
+}
+ 
+body .dayContainer .flatpickr-day {
+    line-height: 35px;
+}
+
+body .flatpickr-day.today:not(:hover):not(.selected) {
+    font-weight: 700;
+    border: 0;
+    border-bottom: 3px solid #005072;
+    border-radius: 0;
+    line-height: 37px;
+}
+
+body .flatpickr-day.selected,
+body .flatpickr-day.startRange,
+body .flatpickr-day.endRange,
+body .flatpickr-day.selected.inRange,
+body .flatpickr-day.startRange.inRange,
+body .flatpickr-day.endRange.inRange,
+body .flatpickr-day.selected:focus,
+body .flatpickr-day.startRange:focus,
+body .flatpickr-day.endRange:focus,
+body .flatpickr-day.selected:hover,
+body .flatpickr-day.startRange:hover,
+body .flatpickr-day.endRange:hover,
+body .flatpickr-day.selected.prevMonthDay,
+body .flatpickr-day.startRange.prevMonthDay,
+body .flatpickr-day.endRange.prevMonthDay,
+body .flatpickr-day.selected.nextMonthDay,
+body .flatpickr-day.startRange.nextMonthDay,
+body .flatpickr-day.endRange.nextMonthDay {
+    background: #005072;
+    border-color: #005072;
+}
+
+body .flatpickr-calendar.arrowTop:after {
+    border-bottom-color: #005072;
+}
+
+.goa-field input.inputError {
+    border: 2px solid red !important;
+}
+
+.goa-field.goa-error input:not([type='checkbox']) {
+    border-color: #ec040b;
+}
+
+div.goa-option [type='radio'].inputError:not(:checked) + label:before,
+div.goa-option [type='checkbox'].inputError:not(:checked) + label:before {
+    border: 2px solid #ec040b !important;
+}
+
+div.goa-option [type='checkbox'].inputError:not(:checked) + label + strong {
+    margin-top: 0.75rem;
+    display: block;
+}
+
+.goa-adm-buttons .responseError {
+    margin-top: 1.5rem;
+    font-size: 16px;
+    font-style: italic;
+}
+
+section.goa-adm-sign-up-form .goa-adm-disclaimer > p,
+.form-item--error-message  {
+    font-size: 0.875rem;
+    line-height: 1.5rem;
+}
+
+div.goa-validation.goa-error p, .form-item--error-message {
+    color: #ec040b;
+}
+
+.goa-error{
+    color: #ec040b;
+}
+
+.goa-field.goa-name > .goa-field-name-container > .form-item--error-message {
+    width: 100%;
+}
+
+.goa-adm-recaptcha a,
+.goa-adm-disclaimer a {
+    color: #0070C4;
+}
+
+.goa-adm-recaptcha a:hover,
+.goa-adm-disclaimer a:hover {
+    color: #333333;
+} 
+
+.goa-adm-disclaimer a[target=_blank]:after {
+    width: 18px;
+    height: 18px;
+}
+
+.goa-adm-recaptcha {
+    display: flex;
+    margin: 2rem 0 0;
+    flex-wrap: wrap;
+}
+
+.goa-adm-recaptcha > * {
+    font-size: 0.875rem;
+    line-height: 1.5rem;
+    margin-right: 0;
+}
+
+.goa-adm-recaptcha > p {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: 700;
+    width: 100%
+}
+
+.goa-adm-recaptcha > p > * {
+    font-weight: 400;
+}
+
+.goa-adm-recaptcha > p > a {
+    margin: 0 4px;
+}
+
+.goa-adm-recaptcha > p > a:nth-child(2) {
+    margin-left: 0;
+}
+
+/* success message ***/
+
+section.goa-adm-sign-up-form.goa-adm-form-success {
+    padding: 3rem 3rem 52px;
+    display: none;
+}
+
+section.goa-adm-sign-up-form.goa-adm-form-success .goa-adm-form-container {
+    max-width: auto;
+    margin: 0;
+}
+
+section.goa-adm-sign-up-form.goa-adm-form-success .goa-adm-form-container > form > p {
+    margin: 1.5rem 0;
+}
+
+section.goa-adm-sign-up-form.goa-adm-form-success .goa-adm-form-container > form > a.goa-adm-button-link {
+    border: none;
+    color: #ffffff;
+    background: #006dcc;
+    padding: 8px 40px 10px 18px;
+}
+
+section.goa-adm-sign-up-form.goa-adm-form-success .goa-adm-form-container > form > a.goa-adm-button-link:hover {
+    background: #333333;
+}
+
+section.goa-adm-sign-up-form.goa-adm-form-success .goa-adm-form-container > form > a.goa-adm-button-link::after {
+    right: 14px;
+    top: 12px;
+    background: transparent url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M12.5 2.5C12.5 2.15482 12.7798 1.875 13.125 1.875H17.5C17.8452 1.875 18.125 2.15482 18.125 2.5V6.875C18.125 7.22018 17.8452 7.5 17.5 7.5C17.1548 7.5 16.875 7.22018 16.875 6.875V4.00888L9.19194 11.6919C8.94786 11.936 8.55214 11.936 8.30806 11.6919C8.06398 11.4479 8.06398 11.0521 8.30806 10.8081L15.9911 3.125H13.125C12.7798 3.125 12.5 2.84518 12.5 2.5ZM4.0625 5.625C3.81386 5.625 3.5754 5.72377 3.39959 5.89959C3.22377 6.0754 3.125 6.31386 3.125 6.5625V15.9375C3.125 16.1861 3.22377 16.4246 3.39959 16.6004C3.5754 16.7762 3.81386 16.875 4.0625 16.875H13.4375C13.5606 16.875 13.6825 16.8508 13.7963 16.8036C13.91 16.7565 14.0134 16.6875 14.1004 16.6004C14.1875 16.5134 14.2565 16.41 14.3036 16.2963C14.3508 16.1825 14.375 16.0606 14.375 15.9375V8.75C14.375 8.40482 14.6548 8.125 15 8.125C15.3452 8.125 15.625 8.40482 15.625 8.75V15.9375C15.625 16.2248 15.5684 16.5092 15.4585 16.7746C15.3486 17.04 15.1874 17.2812 14.9843 17.4843C14.7812 17.6874 14.54 17.8486 14.2746 17.9585C14.0092 18.0684 13.7248 18.125 13.4375 18.125H4.0625C3.48234 18.125 2.92594 17.8945 2.5157 17.4843C2.10547 17.0741 1.875 16.5177 1.875 15.9375V6.5625C1.875 5.98234 2.10547 5.42594 2.5157 5.0157C2.92594 4.60547 3.48234 4.375 4.0625 4.375H10.6047C10.9499 4.375 11.2297 4.65482 11.2297 5C11.2297 5.34518 10.9499 5.625 10.6047 5.625H4.0625Z' fill='%23ffffff'/%3E%3C/svg%3E%0A") no-repeat center center;
+}
+
+section.goa-adm-sign-up-form.goa-adm-form-success h2,
+section.goa-adm-sign-up-form.goa-adm-form-success .goa-adm-form-container .goa-adm-disclaimer {
+    display: none;
+}
+
+html[dir=rtl] div.goa-option [type='checkbox']:not(:checked) + label:before,
+html[dir=rtl] div.goa-option [type='checkbox']:checked + label:before,
+html[dir=rtl] div.goa-option [type='radio']:not(:checked) + label:before,
+html[dir=rtl] div.goa-option [type='radio']:checked + label:before,
+html[dir=rtl] div.goa-option [type='radio']:checked + label:after {
+    margin-right: 0;
+    margin-left: 12px;
+}
+
+html[dir=rtl] div.goa-option [type='checkbox']:not(:checked),
+html[dir=rtl] div.goa-option [type='checkbox']:checked,
+html[dir=rtl] div.goa-option [type='radio']:not(:checked),
+html[dir=rtl] div.goa-option [type='radio']:checked {
+    left: auto;
+    right: 6px;
+}
+
+html[dir=rtl] div.goa-option [type='radio']:checked + label:after {
+    left: auto;
+    right: 0;
+}
+
+html[dir=rtl] .goa-adm-sign-up-form form .goa-adm-buttons .goa-adm-button:after {
+    margin: 2px 8px 0 0;
+    transform: rotate(180deg);
+}
+
+div.goa-adm-appt-callout {
+	box-sizing: border-box;
+	display: inline-block;
+	position: relative;
+	width: 100%;
+	margin: 3rem 0 0;
+	padding: 1.5rem;
+	border-color: #004a8f;
+	border-width: 0;
+	border-left-width: 3rem;
+	border-style: solid;
+	background: #f1f1f1;
+}
+
+div.goa-adm-appt-callout > * {
+    margin: 0;
+}
+
+div.goa-adm-appt-callout:before {
+    position: absolute;
+    top: 26px;
+    left: -36px;
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center center;
+    content: '';
+}
+
+div.goa-adm-appt-callout:before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23fff' d='M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,20a9,9,0,1,1,9-9A9,9,0,0,1,12,21Z'/%3E%3Cpath fill='%23fff' d='M15.16,15.5h-2V9a1,1,0,0,0-1-1H9.82a1,1,0,0,0,0,2h1.36V15.5h-2a1,1,0,1,0,0,2h6a1,1,0,0,0,0-2Z'/%3E%3Cpath fill='%23fff' d='M12,7.33A1.29,1.29,0,1,0,10.73,6,1.29,1.29,0,0,0,12,7.33Z'/%3E%3C/svg%3E");
+}
+
+.goa-field.goa-agreement {
+    border-top: none;
+    padding: 0;
+}
+
+div.goa-option [type='checkbox']:not(:checked) + label,
+div.goa-option [type='checkbox']:checked + label {
+    font-weight: 700;
+}
+
+div.goa-field select,
+div.goa-field-split .goa-date input {
+    padding-right: 3rem;
+    background: #ffffff url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M6.25 16C6.25 10.617 10.617 6.25 16 6.25C21.383 6.25 25.75 10.617 25.75 16C25.75 21.383 21.383 25.75 16 25.75C10.617 25.75 6.25 21.383 6.25 16ZM16 7.75C11.4455 7.75 7.75 11.4455 7.75 16C7.75 20.5545 11.4455 24.25 16 24.25C20.5545 24.25 24.25 20.5545 24.25 16C24.25 11.4455 20.5545 7.75 16 7.75Z' fill='%23333333'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M16 9.25C16.4142 9.25 16.75 9.58579 16.75 10V16H20.5C20.9142 16 21.25 16.3358 21.25 16.75C21.25 17.1642 20.9142 17.5 20.5 17.5H16C15.5858 17.5 15.25 17.1642 15.25 16.75V10C15.25 9.58579 15.5858 9.25 16 9.25Z' fill='%23333333'/%3E%3C/svg%3E%0A") no-repeat 98% center;
+    background-size: 40px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+div.goa-field-split .goa-date input {
+    background: #ffffff url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M17.875 16C18.4963 16 19 15.4963 19 14.875C19 14.2537 18.4963 13.75 17.875 13.75C17.2537 13.75 16.75 14.2537 16.75 14.875C16.75 15.4963 17.2537 16 17.875 16Z' fill='%23333333'/%3E%3Cpath d='M21.625 16C22.2463 16 22.75 15.4963 22.75 14.875C22.75 14.2537 22.2463 13.75 21.625 13.75C21.0037 13.75 20.5 14.2537 20.5 14.875C20.5 15.4963 21.0037 16 21.625 16Z' fill='%23333333'/%3E%3Cpath d='M17.875 19.75C18.4963 19.75 19 19.2463 19 18.625C19 18.0037 18.4963 17.5 17.875 17.5C17.2537 17.5 16.75 18.0037 16.75 18.625C16.75 19.2463 17.2537 19.75 17.875 19.75Z' fill='%23333333'/%3E%3Cpath d='M21.625 19.75C22.2463 19.75 22.75 19.2463 22.75 18.625C22.75 18.0037 22.2463 17.5 21.625 17.5C21.0037 17.5 20.5 18.0037 20.5 18.625C20.5 19.2463 21.0037 19.75 21.625 19.75Z' fill='%23333333'/%3E%3Cpath d='M10.375 19.75C10.9963 19.75 11.5 19.2463 11.5 18.625C11.5 18.0037 10.9963 17.5 10.375 17.5C9.75368 17.5 9.25 18.0037 9.25 18.625C9.25 19.2463 9.75368 19.75 10.375 19.75Z' fill='%23333333'/%3E%3Cpath d='M14.125 19.75C14.7463 19.75 15.25 19.2463 15.25 18.625C15.25 18.0037 14.7463 17.5 14.125 17.5C13.5037 17.5 13 18.0037 13 18.625C13 19.2463 13.5037 19.75 14.125 19.75Z' fill='%23333333'/%3E%3Cpath d='M10.375 23.5C10.9963 23.5 11.5 22.9963 11.5 22.375C11.5 21.7537 10.9963 21.25 10.375 21.25C9.75368 21.25 9.25 21.7537 9.25 22.375C9.25 22.9963 9.75368 23.5 10.375 23.5Z' fill='%23333333'/%3E%3Cpath d='M14.125 23.5C14.7463 23.5 15.25 22.9963 15.25 22.375C15.25 21.7537 14.7463 21.25 14.125 21.25C13.5037 21.25 13 21.7537 13 22.375C13 22.9963 13.5037 23.5 14.125 23.5Z' fill='%23333333'/%3E%3Cpath d='M17.875 23.5C18.4963 23.5 19 22.9963 19 22.375C19 21.7537 18.4963 21.25 17.875 21.25C17.2537 21.25 16.75 21.7537 16.75 22.375C16.75 22.9963 17.2537 23.5 17.875 23.5Z' fill='%23333333'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M10.75 6.25C10.75 5.83579 10.4142 5.5 10 5.5C9.58579 5.5 9.25 5.83579 9.25 6.25V7H8.5C6.84315 7 5.5 8.34315 5.5 10V23.5C5.5 25.1569 6.84315 26.5 8.5 26.5H23.5C25.1569 26.5 26.5 25.1569 26.5 23.5V10C26.5 8.34315 25.1569 7 23.5 7H22.75V6.25C22.75 5.83579 22.4142 5.5 22 5.5C21.5858 5.5 21.25 5.83579 21.25 6.25V7H10.75V6.25ZM23.5 8.5C24.3284 8.5 25 9.17157 25 10V10.75H7V10C7 9.17157 7.67157 8.5 8.5 8.5H23.5ZM7 12.25V23.5C7 24.3284 7.67157 25 8.5 25H23.5C24.3284 25 25 24.3284 25 23.5V12.25H7Z' fill='%23333333'/%3E%3C/svg%3E%0A") no-repeat 98% center;
+}
+
+div.goa-field select {
+    max-width: 250px;
+    cursor: pointer;
+}
+
+div.goa-field div.goa-date {
+    max-width: 340px;
+}
+
+div.goa-date + div.goa-field {
+    display: flex;
+    flex-direction: column;
+}
+
+section.goa-adm-sign-up-form > .goa-adm-form-success p.links {
+    margin-top: 16px;
+}
+
+.goa-adm-coming-soon {
+    border-radius: 30px;
+    box-shadow: 0 0px 12px rgb(51, 51, 51, 0.11);
+    padding: 2rem 2rem 2.5rem;
+}
+
+.goa-adm-coming-soon .goa-adm-coming-soon-container {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.goa-adm-coming-soon .goa-adm-coming-soon-container > .goa-adm-coming-soon-content > h3 {
+    margin: 0;
+}
+
+.goa-adm-coming-soon .goa-adm-coming-soon-container > .goa-adm-coming-soon-content > p {
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    line-height: 2.25rem;
+}
+
+.goa-field label > p {
+    margin: 0;
+}
+
+/* BUTTONS ****************************/
+
+a.goa-adm-button-link {
+    text-decoration: none;
+    padding: 8px 2rem 10px 18px;
+    font-weight: 700;
+    border-radius: 8px;
+    background: #ffffff;
+    border: 2px solid #006dcc;
+    color: #006dcc;
+    display: inline-block;
+    position: relative;
+}
+
+a.goa-adm-button-link:hover {
+    border-color: #333333;
+    color: #333333;
+}
+
+a.goa-adm-button-link:focus,
+.goa-adm-nav-button button.goa-adm-button:focus {
+    outline: 3px solid #FFB500;
+    outline-offset: 0;
+}
+
+a.goa-adm-button-link:after {
+    width: 20px;
+    height: 20px;
+    display: block;
+    margin: 0 0 0 8px;
+    content: '';
+    background: transparent url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M6.59808 15.0351C6.27264 15.3605 6.27264 15.8882 6.59808 16.2136C6.92352 16.539 7.45116 16.539 7.77659 16.2136L13.4016 10.5886C13.727 10.2632 13.727 9.73553 13.4016 9.41009L7.77659 3.78509C7.45116 3.45966 6.92352 3.45966 6.59808 3.78509C6.27264 4.11053 6.27264 4.63817 6.59808 4.9636L11.5602 9.92569C11.6008 9.96637 11.6008 10.0323 11.5602 10.073L6.59808 15.0351Z' fill='%23006dcc'/%3E%3C/svg%3E%0A") no-repeat center center;
+    background-size: cover;
+    position: absolute;
+    right: 10px;
+    top: 13px;
+}
+
+a.goa-adm-button-link:hover:after {
+    background: transparent url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M6.59808 15.0351C6.27264 15.3605 6.27264 15.8882 6.59808 16.2136C6.92352 16.539 7.45116 16.539 7.77659 16.2136L13.4016 10.5886C13.727 10.2632 13.727 9.73553 13.4016 9.41009L7.77659 3.78509C7.45116 3.45966 6.92352 3.45966 6.59808 3.78509C6.27264 4.11053 6.27264 4.63817 6.59808 4.9636L11.5602 9.92569C11.6008 9.96637 11.6008 10.0323 11.5602 10.073L6.59808 15.0351Z' fill='%23333333'/%3E%3C/svg%3E%0A") no-repeat center center;
+}
+
+/* CARDS ****************************/
+
+.goa-adm-cards {
+    display: grid;
+    gap: 13%;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.goa-adm-cards > * {
+    flex-grow: 1;
+    width: 100%;
+}
+
+.goa-adm-cards > .goa-adm-single-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.goa-adm-cards > .goa-adm-single-card > .goa-adm-single-card-thumb {
+    max-height: 95px;
+}
+
+.goa-adm-cards > .goa-adm-single-card > .goa-adm-single-card-thumb > img {
+    height: 100%;
+}
+
+.goa-adm-body > .container > section > * + div.goa-adm-cards {
+    margin-top: 90px;
+}
+
+.goa-adm-cards-info > .goa-adm-cards > .goa-adm-single-card > .goa-adm-single-card-content {
+    height: 100%;
+    font-size: 1.5rem;
+    line-height: 2.25rem;
+    margin: 1.5rem 0;
+}
+
+.goa-adm-cards-info > .goa-adm-cards > .goa-adm-single-card > .goa-adm-single-card-content > p {
+    margin-top: 0;
+}
+
+.goa-adm-cards > .goa-adm-single-card > h3,
+.goa-adm-cards > .goa-adm-single-card > h4 {
+    margin: 1.5rem 0 0;
+}
+
+@media (min-width: 900px) and (max-width:1079px) {
+    
+    .goa-adm-cards-info > .goa-adm-cards {
+        gap: 5%;
+    }
+}
+
+@media screen and (max-width: 899px) {
+
+    /* CARDS ****************************/
+
+    .goa-adm-cards-info > .goa-adm-cards {
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 3rem;
+    }
+
+}
+
+@media (min-width: 768px) and (max-width: 899px) {
+
+    /* CARDS ****************************/
+
+    .goa-adm-procurement .goa-adm-cards {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 4rem;
+    } 
+
+}
+
+@media screen and (max-width: 767px) {
+    section.goa-adm-sign-up-form,
+    section.goa-adm-sign-up-form.goa-adm-form-success,
+    section#sign-up-form.goa-adm-sign-up-form,
+    section#sign-up-form.goa-adm-sign-up-form > .goa-adm-form-success {
+        box-shadow: none;
+        padding: 0 0;
+    }
+
+    section.goa-adm-sign-up-form h2 {
+        text-align: left;
+    }
+
+    section.goa-adm-sign-up-form .goa-adm-form-container {
+        margin: 0 auto;
+    }
+
+    section.goa-adm-sign-up-form h2 + .goa-adm-form-container {
+        margin-top: 40px;
+    }
+
+    section.goa-adm-sign-up-form form fieldset > fieldset {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    html[dir=rtl] section.goa-adm-sign-up-form h2 {
+        text-align: right;
+    }
+
+    .goa-adm-coming-soon .goa-adm-coming-soon-container > .goa-adm-coming-soon-content > p {  
+        font-size: 1.125rem;
+        line-height: 1.75rem;
+    }
+}
+
+@media (min-width: 550px) and (max-width: 767px) {
+    .goa-adm-cards {
+        gap: 2rem;
+    } 
+}
+
+@media screen and (max-width: 549px) {
+    .goa-field.goa-name > .goa-field-name-container {
+        flex-direction: column;
+    }
+    
+    .goa-adm-coming-soon .goa-adm-coming-soon-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* CARDS ****************************/
+
+    .goa-adm-cards,
+    .goa-adm-cards-info > .goa-adm-cards {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 4rem;
+    } 
+}
+
+@media screen and (max-width: 499px) {
+    .goa-field-split {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    div.goa-field-split div.goa-date,
+    div.goa-field-split select {
+        max-width: 100%;
+    }
+}

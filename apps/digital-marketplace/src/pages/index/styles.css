@@ -1,3 +1,268 @@
+
+
+body.adm-home-page .goa-adm-body-header {
+    border-bottom: none;
+    position: relative;
+    padding: 56px 0 143px;
+}
+
+body.adm-home-page .goa-adm-body {
+    padding-top: 1.5rem;
+}
+
+body.adm-home-page main {
+    overflow: hidden;
+}
+
+body.adm-home-page .goa-adm-body-header > .container > .goa-adm-body-header-content > p.lede {
+    max-width: 365px;
+    margin-bottom: 1em;
+}
+
+.goa-adm-body-header.goa-adm-body-full .goa-adm-body-header-graphic > *,
+.goa-adm-body-header.goa-adm-body-full .goa-adm-body-header-graphic > * > * {
+    position: relative;
+    display: flex;
+}
+
+body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-header-graphic > *,
+body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-header-graphic > * > * {
+    background: transparent;
+}
+
+body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-header-graphic > * > .goa-adm-body-full-side-one-img > svg {
+    position: relative;
+    left: -1px;
+}
+
+body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-full-side-two {
+    justify-content: flex-end;
+}
+
+body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-full-side-two-img:after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background-color: #005072;
+    position: absolute;
+    bottom: 15px;
+    right: 100%; 
+    z-index: -1;
+    transition: width 1.25s ease-in-out;
+}
+
+body.adm-home-page.loaded .goa-adm-body-header.goa-adm-body-full .goa-adm-body-full-side-two-img:after {
+    display: block;
+    width: 200vw;
+    transition: width 1.25s ease-in-out;
+}
+
+body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-owl-eye,
+body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-full-side-two-img:before,
+body.adm-home-page .goa-adm-body-header.goa-adm-body-full:after,
+body.adm-home-page .goa-adm-body-header.goa-adm-body-full .sun-cloud > * {
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    animation-duration: 5s;
+    animation-delay: -30s;
+}
+
+body.adm-home-page .goa-adm-body-header.goa-adm-body-full .sun-cloud {
+    position: absolute;
+    right: 350px;
+}
+
+body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-owl {
+    position: absolute;
+    content: "";
+    right: 60px;
+    bottom: -30px;
+    height: 100px;
+}
+
+body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-owl-line {
+    width: 200px;
+    height: 75px;
+    background: transparent url("../../img/owleye-lines.svg") repeat-x center;
+    background-size: contain;
+    position: absolute;
+    z-index: -1;
+    right: 65%;
+    top: 13px;
+} 
+
+body.adm-home-page .goa-adm-body-header.goa-adm-body-full .sun-cloud > svg:first-child {
+    animation-name: sunUp;
+    animation-delay: 0s;
+}
+
+body.adm-home-page .goa-adm-body-header.goa-adm-body-full .sun-cloud > svg:last-child {
+    animation-name: cloudSide;
+    animation-delay: 0s;
+    position: relative;
+    right: 110px;
+}
+
+body.adm-home-page .goa-adm-body-header.goa-adm-body-full:after {
+    content: "";
+    position: absolute;
+    top: 40px;
+    left: 0px;
+    width: 200vw;
+    height: 100%;
+    background: transparent url("../../img/clouds.png");
+    background-repeat: repeat-x;
+    background-size: contain;
+    animation-timing-function: ease-in-out;
+    animation-duration: 5s;
+    animation-duration: 90s;
+    animation-name: slidein;
+    z-index: -100;
+    max-height: 200px;
+}
+
+body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-owl-eye {
+    width: 100px;
+    height: 100%;
+    background: transparent url("../../img/owleye.svg");
+    background-size: cover;
+    animation-name: owleye;
+    z-index: -1;
+}
+
+body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-full-side-two-img:before {
+    content: '';
+    width: 30px;
+    height: 42px;
+    background: transparent url("../../img/flower-home-page.svg");
+    background-size: cover;
+    position: absolute;
+    display: block;
+    bottom: 40px;
+    left: -98px;
+    right: -33px;
+    margin: 0 auto;
+    animation-name: flower;
+}
+.goa-adm-body-header.goa-adm-body-full + .goa-adm-body {
+    padding: 1.75rem 0 120px;
+}
+
+.goa-adm-body-full + .goa-adm-body > .container > section:first-child {
+    margin: 1.5rem 0 0;
+}
+
+.goa-adm-body-header.goa-adm-body-full {
+    padding: 56px 0 260px;
+}
+
+.goa-adm-body-full .goa-adm-body-header-graphic {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    z-index: -1;
+}
+
+.goa-adm-body-full:after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background-color: #005072;
+    display: block;
+    position: absolute;
+    bottom: 77px;
+    right: 0;
+}
+
+.goa-adm-body-full .goa-adm-body-header-graphic > * {
+    height: 100%;
+}
+
+.goa-adm-body-header.goa-adm-body-full .goa-adm-body-header-graphic > *,
+.goa-adm-body-header.goa-adm-body-full .goa-adm-body-header-graphic > * > * {
+    position: relative;
+    display: flex;
+}
+
+.goa-adm-body-header.goa-adm-body-full .goa-adm-home-tablet-graphic {
+    display: none;
+}
+
+.goa-adm-body-header.goa-adm-body-full .goa-adm-body-header-graphic>.goa-adm-body-full-side-two {
+    flex-basis:100%;
+}
+
+@keyframes sunUp {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes cloudSide {
+    0% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(14px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slidein {
+    0% {
+    transform: translateX(0%);
+    }
+
+    50% {
+    transform: translateX(-1335px);
+    }
+    
+    0% {
+        transform: translateX(0%);
+    }
+}
+
+@keyframes owleye {
+    from {
+        transform: rotate(0);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes flower {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.3);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
 a.goa-adm-button-link[target=_blank] {
     text-decoration: none;
     padding: 8px 2.5rem 10px 18px;
@@ -33,4 +298,370 @@ a.goa-adm-button-link[target=_blank]:hover {
 
 a.goa-adm-button-link[target=_blank]:hover:after {
     background: transparent url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M12.5 2.5C12.5 2.15482 12.7798 1.875 13.125 1.875H17.5C17.8452 1.875 18.125 2.15482 18.125 2.5V6.875C18.125 7.22018 17.8452 7.5 17.5 7.5C17.1548 7.5 16.875 7.22018 16.875 6.875V4.00888L9.19194 11.6919C8.94786 11.936 8.55214 11.936 8.30806 11.6919C8.06398 11.4479 8.06398 11.0521 8.30806 10.8081L15.9911 3.125H13.125C12.7798 3.125 12.5 2.84518 12.5 2.5ZM4.0625 5.625C3.81386 5.625 3.5754 5.72377 3.39959 5.89959C3.22377 6.0754 3.125 6.31386 3.125 6.5625V15.9375C3.125 16.1861 3.22377 16.4246 3.39959 16.6004C3.5754 16.7762 3.81386 16.875 4.0625 16.875H13.4375C13.5606 16.875 13.6825 16.8508 13.7963 16.8036C13.91 16.7565 14.0134 16.6875 14.1004 16.6004C14.1875 16.5134 14.2565 16.41 14.3036 16.2963C14.3508 16.1825 14.375 16.0606 14.375 15.9375V8.75C14.375 8.40482 14.6548 8.125 15 8.125C15.3452 8.125 15.625 8.40482 15.625 8.75V15.9375C15.625 16.2248 15.5684 16.5092 15.4585 16.7746C15.3486 17.04 15.1874 17.2812 14.9843 17.4843C14.7812 17.6874 14.54 17.8486 14.2746 17.9585C14.0092 18.0684 13.7248 18.125 13.4375 18.125H4.0625C3.48234 18.125 2.92594 17.8945 2.5157 17.4843C2.10547 17.0741 1.875 16.5177 1.875 15.9375V6.5625C1.875 5.98234 2.10547 5.42594 2.5157 5.0157C2.92594 4.60547 3.48234 4.375 4.0625 4.375H10.6047C10.9499 4.375 11.2297 4.65482 11.2297 5C11.2297 5.34518 10.9499 5.625 10.6047 5.625H4.0625Z' fill='%23333333'/%3E%3C/svg%3E%0A") no-repeat center center;
+}
+
+html[dir=rtl] body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-full-side-one,
+html[dir=rtl] body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-full-side-two {
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
+    justify-content: flex-start;
+}
+
+html[dir=rtl] body.adm-home-page .goa-adm-body-header.goa-adm-body-full .sun-cloud {
+    left: 350px;
+    right: auto;
+}
+
+html[dir=rtl] body.adm-home-page .goa-adm-body-header.goa-adm-body-full .sun-cloud > svg:last-child {
+    right: -110px;
+}
+
+html[dir=rtl] body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-full-side-one {
+    z-index: 10000;
+}
+
+html[dir=rtl] body.adm-home-page .goa-adm-body-header.goa-adm-body-full:after {
+    right: 0;
+    left: auto;
+}
+
+html[dir=rtl] body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-owl {
+    left: 60px;
+    right: auto;
+}
+
+html[dir=rtl] body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-owl-line {
+    left: 65%;
+    right: auto;
+}
+
+/* CARDS ****************************/
+
+.goa-adm-cards {
+    display: grid;
+    gap: 13%;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.goa-adm-cards > * {
+    flex-grow: 1;
+    width: 100%;
+}
+
+.goa-adm-cards > .goa-adm-single-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.goa-adm-cards > .goa-adm-single-card > .goa-adm-single-card-thumb {
+    max-height: 95px;
+}
+
+.goa-adm-cards > .goa-adm-single-card > .goa-adm-single-card-thumb > img {
+    height: 100%;
+}
+
+.goa-adm-body > .container > section > * + div.goa-adm-cards {
+    margin-top: 90px;
+}
+
+.goa-adm-cards-info > .goa-adm-cards > .goa-adm-single-card > .goa-adm-single-card-content {
+    height: 100%;
+    font-size: 1.5rem;
+    line-height: 2.25rem;
+    margin: 1.5rem 0;
+}
+
+.goa-adm-cards-info > .goa-adm-cards > .goa-adm-single-card > .goa-adm-single-card-content > p {
+    margin-top: 0;
+}
+
+.goa-adm-cards > .goa-adm-single-card > h3,
+.goa-adm-cards > .goa-adm-single-card > h4 {
+    margin: 1.5rem 0 0;
+}
+
+/* BUTTONS ****************************/
+
+a.goa-adm-button-link {
+    text-decoration: none;
+    padding: 8px 2rem 10px 18px;
+    font-weight: 700;
+    border-radius: 8px;
+    background: #ffffff;
+    border: 2px solid #006dcc;
+    color: #006dcc;
+    display: inline-block;
+    position: relative;
+}
+
+a.goa-adm-button-link:hover {
+    border-color: #333333;
+    color: #333333;
+}
+
+a.goa-adm-button-link:focus,
+.goa-adm-nav-button button.goa-adm-button:focus {
+    outline: 3px solid #FFB500;
+    outline-offset: 0;
+}
+
+a.goa-adm-button-link:after {
+    width: 20px;
+    height: 20px;
+    display: block;
+    margin: 0 0 0 8px;
+    content: '';
+    background: transparent url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M6.59808 15.0351C6.27264 15.3605 6.27264 15.8882 6.59808 16.2136C6.92352 16.539 7.45116 16.539 7.77659 16.2136L13.4016 10.5886C13.727 10.2632 13.727 9.73553 13.4016 9.41009L7.77659 3.78509C7.45116 3.45966 6.92352 3.45966 6.59808 3.78509C6.27264 4.11053 6.27264 4.63817 6.59808 4.9636L11.5602 9.92569C11.6008 9.96637 11.6008 10.0323 11.5602 10.073L6.59808 15.0351Z' fill='%23006dcc'/%3E%3C/svg%3E%0A") no-repeat center center;
+    background-size: cover;
+    position: absolute;
+    right: 10px;
+    top: 13px;
+}
+
+a.goa-adm-button-link:hover:after {
+    background: transparent url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M6.59808 15.0351C6.27264 15.3605 6.27264 15.8882 6.59808 16.2136C6.92352 16.539 7.45116 16.539 7.77659 16.2136L13.4016 10.5886C13.727 10.2632 13.727 9.73553 13.4016 9.41009L7.77659 3.78509C7.45116 3.45966 6.92352 3.45966 6.59808 3.78509C6.27264 4.11053 6.27264 4.63817 6.59808 4.9636L11.5602 9.92569C11.6008 9.96637 11.6008 10.0323 11.5602 10.073L6.59808 15.0351Z' fill='%23333333'/%3E%3C/svg%3E%0A") no-repeat center center;
+}
+
+/* CALLOUT ****************************/
+
+.goa-adm-body > .container > section.goa-adm-apc-callout {
+    padding: 3rem;
+    color: #ffffff;
+    background: linear-gradient(90deg, #0081A2 0%, #0081A2 48.5%, #00AAD2 100%);
+    border-radius: 30px;
+}
+
+.goa-adm-body > .container > section.goa-adm-apc-callout > h2 {
+    color: #ffffff;
+}
+
+.goa-adm-body > .container > section.goa-adm-apc-callout > h2:after {
+    display: none;
+}
+
+.goa-adm-body > .container > section.goa-adm-apc-callout > a {
+    margin-top: 1.5rem;
+}
+
+@media screen and (min-width: 1820px) {
+
+    body.adm-home-page .goa-adm-body-header {
+        border-bottom: none;
+        position: relative;
+        padding: 75px 0 196px;
+    }
+    
+    body.adm-home-page .goa-adm-body-header > .container > .goa-adm-body-header-content {
+        max-width: 670px;
+    }
+    
+    body.adm-home-page .goa-adm-body-header > .container > .goa-adm-body-header-content > p.lede {
+        max-width: 515px;
+    }
+}
+
+@media screen and (max-width: 1479px) {
+
+    body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-header-graphic > .goa-adm-body-full-side-one {
+        display: none;
+    }
+
+}
+
+@media screen and (max-width: 1380px) {
+
+    body.adm-home-page .goa-adm-body-full .goa-adm-body-header-graphic {
+        justify-content: flex-end;
+    }
+
+    body.adm-home-page .goa-adm-body-header.goa-adm-body-full .sun-cloud {
+        right: 200px;
+    }
+
+    body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-header-graphic > .goa-adm-body-full-side-two {
+        max-width: 709px;
+    }
+
+    body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-header-graphic > .goa-adm-body-full-side-two > .goa-adm-body-full-side-two-img > svg {
+        width: 100%;
+    }
+
+    body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-full-side-two-img:after {
+        bottom: 44px;
+    }
+
+    body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-full-side-two-img:before {
+        bottom: 70px;
+        left: -88px;
+    }
+
+    body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-owl {
+        bottom: -18px;
+    }
+
+    body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-owl-line {
+        width: 180px;
+    }
+}
+
+@media screen and (max-width: 1229px) {
+
+    body.adm-home-page .goa-adm-body-full .goa-adm-body-header-graphic {
+        justify-content: flex-end;
+    }
+
+    body.adm-home-page .goa-adm-body-header.goa-adm-body-full .sun-cloud {
+        right: 125px;
+        top: 50px;
+    }
+
+    body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-header-graphic > .goa-adm-body-full-side-two {
+        max-width: 610px;
+    }
+
+    body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-header-graphic > .goa-adm-body-full-side-two > .goa-adm-body-full-side-two-img > svg {
+        width: 100%;
+    }
+
+    body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-full-side-two-img:before {
+        bottom: 84px;
+        left: -82px;
+    }
+
+    body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-full-side-two-img:after {
+        bottom: 70px;
+    }
+
+    body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-owl {
+        right: 1.5rem;
+        bottom: 10px;
+    }
+}
+
+@media (min-width: 900px) and (max-width:1079px) {
+
+    body.adm-home-page .goa-adm-body-header.goa-adm-body-full h1 {
+        font-size: 3rem;
+        line-height: 3.5rem;
+    } 
+
+    body.adm-home-page .goa-adm-body-header.goa-adm-body-full {
+        padding: 4rem 0 212px;
+    }
+
+    body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-full-side-two-img:before {
+        bottom: 60px;
+    }
+    
+    body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-full-side-two-img:after {
+        bottom: 43px;
+    }
+
+    body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-owl {
+        bottom: -18px;
+        right: 35px;
+    }
+    
+    .goa-adm-cards-info > .goa-adm-cards {
+        gap: 5%;
+    }
+}
+
+@media screen and (max-width: 899px) {
+
+    body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-header-graphic {
+        position: relative;
+    }
+
+    body.adm-home-page .goa-adm-body-header.goa-adm-body-full:after,
+    body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-header-graphic > *:not(.goa-adm-home-tablet-graphic) {
+        display: none;
+    }
+
+    body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm-body-header-graphic .goa-adm-home-tablet-graphic {
+        display: block;
+        width: 100%;
+    }
+
+    body.adm-home-page .goa-adm-body-header.goa-adm-body-full {
+        padding: 1.5rem 0 0;
+    }
+
+    body.adm-home-page .goa-adm-body-header > .container {
+        gap: 3rem;
+    }
+
+    body.adm-home-page .goa-adm-body-header > .container > .goa-adm-body-header-content > p.lede {
+        max-width: 100%;
+    }
+
+    .goa-adm-body-header.goa-adm-body-full .goa-adm-body-header-graphic .goa-adm-home-tablet-graphic > img {
+        width: calc(100% + 4rem);
+        position: relative;
+        left: -2rem;
+    }
+
+    /* CARDS ****************************/
+
+    .goa-adm-cards-info > .goa-adm-cards {
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 3rem;
+    }
+
+}
+
+@media (min-width: 768px) and (max-width: 899px) {
+
+    /* CARDS ****************************/
+
+    .goa-adm-procurement .goa-adm-cards {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 4rem;
+    } 
+
+}
+
+@media screen and (max-width: 767px) {
+
+    /* CALLOUT ****************************/
+
+    .goa-adm-body > .container > section.goa-adm-apc-callout {
+        padding: 40px 36px;
+    }
+}
+
+@media (min-width: 550px) and (max-width: 767px) {
+    .goa-adm-cards {
+        gap: 2rem;
+    } 
+}
+
+@media screen and (max-width: 549px) {
+    
+    .goa-adm-body-header.goa-adm-body-full .goa-adm-body-header-graphic .goa-adm-home-tablet-graphic > img {
+        width: calc(100% + 3rem);
+        position: relative;
+        left: -1.5rem;
+    }
+
+    /* CALLOUT ****************************/
+
+    .goa-adm-body > .container > section.goa-adm-apc-callout {
+        padding: 40px 1.5rem;
+        border-radius: 10px;
+    }
+
+    /* CARDS ****************************/
+
+    .goa-adm-cards,
+    .goa-adm-cards-info > .goa-adm-cards {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 4rem;
+    } 
+
 }

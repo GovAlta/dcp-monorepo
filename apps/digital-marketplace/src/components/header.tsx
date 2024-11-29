@@ -42,7 +42,9 @@ const Header = ({ page }: any) => {
               <nav className="goa-adm-nav-menu">
                 <ul>
                 <li className={page === 'About' ? 'goa-adm-nav-active-item' : ''}> <a href="/about-us/">About</a></li>
+                <li className={page === 'Supplier Outreach Program' ? 'goa-adm-nav-active-item' : ''}> <a href="/supplier-outreach-program/">Supplier Outreach Program</a></li>
                 <li className={page === 'Understanding Procurement' ? 'goa-adm-nav-active-item' : ''}> <a href="/understanding-procurement/">Understanding Procurement</a></li>
+                <li className={page === 'Join' ? 'goa-adm-nav-active-item' : ''}> <a href="/join/">Join</a></li>
                 <li className={page === 'Contact'   ? 'goa-adm-nav-active-item' : ''}> <a href="/contact-us/">Contact</a></li>
                 </ul>
               </nav>

@@ -10,7 +10,7 @@
 }
 
 .goa-adm-back-to-top.active {
-    bottom: 5rem;
+    bottom: 7rem;
     -webkit-transition: all ease-in-out 500ms;
     transition: all ease-in-out 500ms;
 }
@@ -45,6 +45,11 @@
 
 .goa-adm-back-to-top-btn:focus {
     outline: 3px solid #FFB500;
+}
+
+html[dir=rtl] .goa-adm-back-to-top {
+    left: 3%;
+    right: auto;
 }
 
 @media screen and (max-width: 499px) {

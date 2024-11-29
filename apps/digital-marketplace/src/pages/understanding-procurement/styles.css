@@ -1,4 +1,89 @@
-.goa-adm-body.goa-adm-procurement > .container p > a[target=_blank]:after {
+@import "@abgov/web-components/index.css";
+
+body, select, textarea, button {
+    margin: 0px;
+    background: #fff;
+    font-family: acumin-pro-semi-condensed, sans-serif;
+    font-weight: 400;
+	font-size: 1.125rem;
+    line-height: 1.75rem;
+}
+
+h1, h2, h3, h4, h5, h6, strong, b, dt {
+    font-weight: 700;
+}
+
+h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 4rem;
+    line-height: 4.5rem;
+    word-break: break-word;
+    color: #0081A2;
+}
+
+h2 {
+    margin: 0;
+    padding: 0;
+    line-height: 2.75rem;
+    font-size: 2.25rem;
+    word-break: break-word;
+    position: relative;
+    color: #005072;
+    }
+
+h2:after {
+    content: '';
+    display: block;
+    width: 53px;
+    background: #D9D9D9;
+    height: 7px;
+    border-radius: 4px;
+    position: absolute;
+    bottom: -1.75rem;
+    left: 2px;
+}
+
+h3 {
+    padding: 0;    
+    font-size: 1.75rem;
+    line-height: 2.5rem;
+    word-break: break-word;
+    position: relative;
+    color: #005072;
+}
+
+h3 + * {
+    margin: 2rem 0 0;
+}
+
+h4 {
+    margin: 0;
+    padding: 0;    
+    word-break: break-word;
+    position: relative;
+    color: #005072;
+}
+
+ul, ol {
+    padding: 0;
+}
+
+a {
+    color: #006dcc;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    text-underline-offset: .375rem;
+    text-decoration-thickness: .0625rem;
+}
+
+p {
+    margin: 1.5rem 0 0;
+}
+.goa-adm-body.goa-adm-procurement > .container p > a[target=_blank]:after,
+.goa-adm-body.goa-adm-procurement > .container ul li > a[target=_blank]:after,
+.goa-adm-body.goa-adm-procurement > .container ol li > a[target=_blank]:after {
     content: "";
     width: 1.25rem;
     height: 1.25rem;
@@ -58,6 +143,86 @@
     font-style: italic;
 }
 
+html[dir=rtl] .goa-adm-body.goa-adm-procurement > .container > .goa-adm-procurement-content:after {
+    left: -52px;
+    right: auto;
+}
+
+/* CARDS ****************************/
+
+.goa-adm-cards {
+    display: grid;
+    gap: 13%;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.goa-adm-cards > * {
+    flex-grow: 1;
+    width: 100%;
+}
+
+.goa-adm-cards > .goa-adm-single-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.goa-adm-cards > .goa-adm-single-card > .goa-adm-single-card-thumb {
+    max-height: 95px;
+}
+
+.goa-adm-cards > .goa-adm-single-card > .goa-adm-single-card-thumb > img {
+    height: 100%;
+}
+
+.goa-adm-body > .container > section > * + div.goa-adm-cards {
+    margin-top: 90px;
+}
+
+.goa-adm-cards-info > .goa-adm-cards > .goa-adm-single-card > .goa-adm-single-card-content {
+    height: 100%;
+    font-size: 1.5rem;
+    line-height: 2.25rem;
+    margin: 1.5rem 0;
+}
+
+.goa-adm-cards-info > .goa-adm-cards > .goa-adm-single-card > .goa-adm-single-card-content > p {
+    margin-top: 0;
+}
+
+.goa-adm-cards > .goa-adm-single-card > h3,
+.goa-adm-cards > .goa-adm-single-card > h4 {
+    margin: 1.5rem 0 0;
+}
+
+@media (min-width: 900px) and (max-width:1079px) {
+    
+    .goa-adm-cards-info > .goa-adm-cards {
+        gap: 5%;
+    }
+}
+
+@media screen and (max-width: 899px) {
+
+    /* CARDS ****************************/
+
+    .goa-adm-cards-info > .goa-adm-cards {
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 3rem;
+    }
+
+}
+
+@media (min-width: 768px) and (max-width: 899px) {
+
+    /* CARDS ****************************/
+
+    .goa-adm-procurement .goa-adm-cards {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 4rem;
+    } 
+
+}
+
 @media screen and (max-width: 767px) {
     .goa-adm-body.goa-adm-procurement > .container {
         display: flex;
@@ -78,4 +243,37 @@
         background: #D9D9D9;
         height: 1px;
     }
+
+    h1 {
+        font-size: 2.25rem;
+        line-height: 2.75rem;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+        line-height: 2.25rem;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+        line-height: 2rem;
+    }
+}
+
+@media (min-width: 550px) and (max-width: 767px) {
+    .goa-adm-cards {
+        gap: 2rem;
+    } 
+}
+
+@media screen and (max-width: 549px) {
+
+    /* CARDS ****************************/
+
+    .goa-adm-cards,
+    .goa-adm-cards-info > .goa-adm-cards {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 4rem;
+    } 
+
 }
