@@ -12,7 +12,7 @@ const Header = () => {
         'common-capabilities-dcp-uat.apps.aro.gov.ab.ca' ||
       window.location.hostname === 'common-capabilities.digital.gov.ab.ca'
     ) {
-      globalThis.adspFeedback.initialize({
+      globalThis.adspFeedback?.initialize?.({
         tenant: 'common_capabilities',
       });
     }
