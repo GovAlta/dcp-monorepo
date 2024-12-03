@@ -21,9 +21,9 @@ interface MiddlewareOptions {
   cache: DataCache;
 }
 
-function refreshServicesCache(valueServiceUrl, tokenProvider, cache, logger) {
+async function refreshServicesCache(valueServiceUrl, tokenProvider, cache, logger) {
   try {
-    fetchServices(valueServiceUrl, tokenProvider, cache, logger);
+    await fetchServices(valueServiceUrl, tokenProvider, cache, logger);
   } catch (error) {
     logger.error(`Failed to refresh services cache: ${error}`);
   }
