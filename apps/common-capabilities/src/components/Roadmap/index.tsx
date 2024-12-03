@@ -40,5 +40,5 @@ export default function Roadmap({ roadmap }: RoadmapProps) {
         </GoAAccordion>
     ));
 
-    return roadmap ? content: null;
+    return roadmap ? content : null;
 };
