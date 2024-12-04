@@ -21,6 +21,7 @@ import {
 } from './config';
 import useFetch from '../../../hooks/useFetch';
 import { getApiUrl } from '../../../utils/configs';
+import Roadmap from 'apps/common-capabilities/src/components/Roadmap';
 
 type ServiceDetailsResponse = {
   serviceInfo: any;
@@ -196,14 +197,8 @@ export default function Details(): JSX.Element {
     if (!roadmap || roadmap.length === 0)
       return null;
 
-    return (      
-      <ul className='roadmap'>
-        {roadmap?.map((item:any, index:any) => (
-          <li key={index}>
-            <span className='spec-type'>{item.when}</span> - {item.title}
-          </li>
-        ))}
-      </ul>
+    return (
+      <Roadmap roadmap={roadmap} />
     );
   };
 
