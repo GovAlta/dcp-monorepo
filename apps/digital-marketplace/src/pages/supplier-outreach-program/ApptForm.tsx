@@ -7,6 +7,11 @@ import Textarea from '../../components/textarea';
 import Flatpickr from 'react-flatpickr';
 import "flatpickr/dist/themes/material_green.css";
 
+enum ContactType {
+  EMAIL = 'Email',
+  PHONE = 'Phone',
+}
+
 export default function ApptForm() {
   const initialValues = {
     orgName: '',
@@ -25,7 +30,7 @@ export default function ApptForm() {
     success,
     handleChange,
     handleBlur,
-    handleSubmitPartner,
+    handleSubmit,
     loading,
     apiError,
   } = useForm(initialValues, validateForm, validateField, apptFormConfig);
@@ -36,6 +41,17 @@ export default function ApptForm() {
   // Handler to update the selected contact method
   const handleContactMethodChange = (event: any) => {
     setContactMethod(event.target.value);
+  };
+
+  const handleDateChange = (date: any) => {
+    let dateString;
+
+    if (date?.[0]) {
+      const d = new Date(date?.[0]);
+      dateString = `${d.getMonth() + 1}-${d.getDate()}-${d.getFullYear()}`;
+    }
+
+    handleChange?.({ target: { name: 'date', value: dateString } } as any);
   };
 
   return (
@@ -155,14 +171,14 @@ export default function ApptForm() {
                           id="email-select"
                           type="radio"
                           name="signUpType"
-                          value="email-select"
-                          checked={contactMethod === 'email-select'}
+                          value={ContactType.EMAIL}
+                          checked={contactMethod === ContactType.EMAIL}
                           onChange={handleContactMethodChange}
                       />
                       <label htmlFor="email-select">
                           Email
                       </label>
-                      {contactMethod === 'email-select' && (
+                      {contactMethod === ContactType.EMAIL && (
                           <>
                           <div className='goa-field goa-contact-input'>
                               <FormField
@@ -185,21 +201,21 @@ export default function ApptForm() {
                             id="phone-select"
                             type="radio"
                             name="signUpType"
-                            value="phone-select"
-                            checked={contactMethod === 'phone-select'}
+                            value={ContactType.PHONE}
+                            checked={contactMethod === ContactType.PHONE}
                             onChange={handleContactMethodChange}
                         />
                         <label htmlFor="phone-select">
                             Phone
                         </label>
-                        {contactMethod === 'phone-select' && ( 
+                        {contactMethod === ContactType.PHONE && ( 
                             <>
                             <div className='goa-field goa-contact-input'>
                                 <FormField
                                     id="phone"
                                     name="phone"
-                                    type="phone"
-                                    value={values.phone}
+                                    type="phone" // TODO: user selects a contact type, should the other be wiped? what is the expected behaviour where user checks one fills it in then checks the other.
+                                    value={values.phone} // maybe a prefered typed and only validate that field but allow user to enter both?
                                     onChange={handleChange}
                                     onBlur={handleBlur}
                                     error={errors.phone}
@@ -218,19 +234,27 @@ export default function ApptForm() {
                   </label>
                   <div className="goa-field-split">
                     <div className="goa-date" style={{ flex: '1' }}>
-                      <Flatpickr className="goa-date-picker" placeholder="Date" aria-label="Select a Date" options={{  minDate: "today",  altFormat: "F j, Y", dateFormat: "F j, Y", }} />
+                      <Flatpickr 
+                        className="goa-date-picker"
+                        name="date"
+                        placeholder="Date" 
+                        aria-label="Select a Date" 
+                        options={{ minDate: "today",  altFormat: "F j, Y", dateFormat: "F j, Y", }}
+                        onChange={handleDateChange}
+                      />
                     </div>
                     <div className="goa-field goa--required">
                       <select
                         id="time-dateTime"
-                        name="time-dateTime"
+                        name="when"
                         aria-label="Select a Time"
                         required={true}
                         defaultValue={""}
+                        onChange={handleChange as any}
                       >
                           <option value="" disabled>Time</option>
-                          <option value="morning">9:00 AM to 12:00 PM</option>
-                          <option value="afternoon">1:00 PM to 3:00 PM</option>
+                          <option value="AM">9:00 AM to 12:00 PM</option>
+                          <option value="PM">1:00 PM to 3:00 PM</option>
                       </select>
                     </div>
                   </div>
@@ -258,7 +282,7 @@ export default function ApptForm() {
                     type="submit"
                     className="goa-adm-button"
                     disabled={loading}
-                    onClick={handleSubmitPartner}
+                    onClick={handleSubmit}
                   >
                     {loading ? 'Submitting...' : 'Submit Form'}
                   </button>
