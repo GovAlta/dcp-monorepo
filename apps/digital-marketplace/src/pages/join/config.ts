@@ -1,85 +1,97 @@
-export const signUpFormConfig: any = {
-  signUpType: {
-    required: true,
-    messages: {
-      required: 'Select one of the options'
+import { FormConfig } from "../../contexts/types";
+
+export const signUpFormConfig: FormConfig = {
+  properties: {
+    signUpType: {
+      required: true,
+      messages: {
+        required: 'Select one of the options'
+      },
+      validate: [],
+      includedInPayload: false,
     },
-    validate: [],
-  },
-  orgName: {
-    required: true,
-    messages: {
-      required: 'Enter your organization name',
+    orgName: {
+      required: true,
+      messages: {
+        required: 'Enter your organization name',
+      },
+      validate: [
+        {
+          regEx: /^(.){2,100}$/,
+          failed: 'Must be between 2 and 100 characters long',
+        },
+        {
+          regEx: /^[a-zA-Z0-9&.,' -]+$/,
+          failed: `Name should use letters, numbers, spaces or &'.,- "`,
+        },
+      ],
+      includedInPayload: true,
     },
-    validate: [
-      {
-        regEx: /^(.){2,100}$/,
-        failed: 'Must be between 2 and 100 characters long',
+    email: {
+      required: true,
+      messages: {
+        required: 'Enter your email address',
       },
-      {
-        regEx: /^[a-zA-Z0-9&.,' -]+$/,
-        failed: `Name should use letters, numbers, spaces or &'.,- "`,
-      },
-    ],
-  },
-  email: {
-    required: true,
-    messages: {
-      required: 'Enter your email address',
+      validate: [
+        {
+          regEx: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+          failed: 'Invalid email address',
+        },
+      ],
+      includedInPayload: true,
     },
-    validate: [
-      {
-        regEx: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-        failed: 'Invalid email address',
+    firstName: {
+      required: true,
+      messages: {
+        required: 'Enter your first name',
       },
-    ],
-  },
-  firstName: {
-    required: true,
-    messages: {
-      required: 'Enter your first name',
+      validate: [
+        {
+          regEx: /^(.){2,100}$/,
+          failed: 'Must be between 2 and 100 characters long',
+        },
+        {
+          regEx: /^[a-zA-Z0-9' -]+$/,
+          failed: `Name should use letters, numbers, spaces`,
+        },
+      ],
+      includedInPayload: true,
     },
-    validate: [
-      {
-        regEx: /^(.){2,100}$/,
-        failed: 'Must be between 2 and 100 characters long',
+    lastName: {
+      required: true,
+      messages: {
+        required: 'Enter your last name',
       },
-      {
-        regEx: /^[a-zA-Z0-9' -]+$/,
-        failed: `Name should use letters, numbers, spaces`,
-      },
-    ],
-  },
-  lastName: {
-    required: true,
-    messages: {
-      required: 'Enter your last name',
+      validate: [
+        {
+          regEx: /^(.){2,100}$/,
+          failed: 'Must be between 2 and 100 characters long',
+        },
+        {
+          regEx: /^[a-zA-Z0-9' -]+$/,
+          failed: `Name should use letters, numbers, spaces`,
+        },
+      ],
+      includedInPayload: true,
     },
-    validate: [
-      {
-        regEx: /^(.){2,100}$/,
-        failed: 'Must be between 2 and 100 characters long',
-      },
-      {
-        regEx: /^[a-zA-Z0-9' -]+$/,
-        failed: `Name should use letters, numbers, spaces`,
-      },
-    ],
+    website: {
+      required: false,
+      messages: {},
+      validate: [
+        {
+          regEx:
+            /^(https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)$/,
+          failed: 'Please check the web address.',
+        },
+      ],
+      includedInPayload: true,
+    },
+    agreement: {
+      required: false,
+      messages: {},
+      validate: [],
+      includedInPayload: true,
+    },
   },
-  website: {
-    required: false,
-    messages: {},
-    validate: [
-      {
-        regEx:
-          /^(https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)$/,
-        failed: 'Please check the web address.',
-      },
-    ],
-  },
-  agreement: {
-    required: false,
-    messages: {},
-    validate: [],
-  },
+  getEntityUrl: (gatewayUrl: string, values: any) => `${gatewayUrl}/${values.signUspType}`,
 };
