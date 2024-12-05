@@ -1,0 +1,9 @@
+{
+    "token_base_url": "https://access.alberta.ca",
+    "realm": "{your client realm}",
+    "client_id": "urn:ads:cc:internal",
+    "client_secret": "{your secret here}",
+    "value_service_url": "https://value-service.adsp.alberta.ca/value/v1",
+    "value_service_name_space": "common-capabilities",
+    "value_service_listing_name": "published-index"
+}

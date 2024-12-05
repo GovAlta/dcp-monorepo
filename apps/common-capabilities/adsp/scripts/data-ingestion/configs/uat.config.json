@@ -1,0 +1,9 @@
+{
+    "token_base_url": "https://access-uat.alberta.ca",
+    "realm": "9b2d9233-4d9f-432d-9471-9f95861db16d",
+    "client_id": "urn:ads:cc:internal",
+    "client_secret": "{your secret here}",
+    "value_service_url": "https://value-service.adsp-uat.alberta.ca/value/v1",
+    "value_service_name_space": "common-capabilities",
+    "value_service_listing_name": "published-index"
+}
