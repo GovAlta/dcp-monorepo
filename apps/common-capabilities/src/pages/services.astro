@@ -1,8 +1,8 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from '../layouts/ClientOnlyRenderLayout.astro';
 import ServicesPage from './services/index';
 ---
 
-<Layout title="Common capabilities-Services">
-  <ServicesPage client:only="react" />
+<Layout title='Common capabilities-Services' contentHeight='2000px'>
+    <ServicesPage client:only="react" />
 </Layout>
