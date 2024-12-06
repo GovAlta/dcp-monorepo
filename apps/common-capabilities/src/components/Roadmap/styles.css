@@ -1,6 +1,6 @@
 dl.roadmap-details {
     margin: 0 0;
-  }
+}
   
 .roadmap-details dt {
     color: var(--goa-color-text-default);
@@ -13,10 +13,11 @@ dl.roadmap-details {
     font: var(--goa-typography-body-m);
 }
 
-.roadmap-impacts {
-    padding-left: 25px;
-}
-
 .roadmap-details dd:last-of-type {
     margin-bottom: 0;
+}
+
+dl.roadmap-details .inline-title {
+    float: left;
+    padding-right: 14px;
 }
