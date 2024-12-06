@@ -398,6 +398,7 @@ div.goa-validation.goa-error p, .form-item--error-message {
 .goa-adm-disclaimer a[target=_blank]:after {
     width: 18px;
     height: 18px;
+    margin-left: 4px;
 }
 
 .goa-adm-recaptcha {
@@ -672,13 +673,13 @@ a.goa-adm-button-link:hover:after {
 
 .goa-adm-cards-info > .goa-adm-cards > .goa-adm-single-card > .goa-adm-single-card-content {
     height: 100%;
-    font-size: 1.5rem;
-    line-height: 2.25rem;
     margin: 1.5rem 0;
 }
 
 .goa-adm-cards-info > .goa-adm-cards > .goa-adm-single-card > .goa-adm-single-card-content > p {
     margin-top: 0;
+    font-size: 1.5rem;
+    line-height: 2.25rem;
 }
 
 .goa-adm-cards > .goa-adm-single-card > h3,
@@ -716,6 +717,7 @@ a.goa-adm-button-link:hover:after {
 }
 
 @media screen and (max-width: 767px) {
+
     section.goa-adm-sign-up-form,
     section.goa-adm-sign-up-form.goa-adm-form-success,
     section#sign-up-form.goa-adm-sign-up-form,
@@ -744,7 +746,8 @@ a.goa-adm-button-link:hover:after {
         text-align: right;
     }
 
-    .goa-adm-coming-soon .goa-adm-coming-soon-container > .goa-adm-coming-soon-content > p {  
+    .goa-adm-coming-soon .goa-adm-coming-soon-container > .goa-adm-coming-soon-content > p,
+    .goa-adm-cards-info > .goa-adm-cards > .goa-adm-single-card > .goa-adm-single-card-content > p {  
         font-size: 1.125rem;
         line-height: 1.75rem;
     }

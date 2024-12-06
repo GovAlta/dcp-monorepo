@@ -197,7 +197,8 @@ p {
     margin: 1.5rem 0 0;
 }
 
-a:hover {
+a:hover,
+a:hover > em {
     color: #333333;
 }
 
@@ -205,6 +206,10 @@ a:focus {
     outline: 3px solid #FFB500;
     border-radius: 4px;    
     outline-offset: 2px;
+}
+
+a > em {
+    color: #006dcc;
 }
 
 .container {
