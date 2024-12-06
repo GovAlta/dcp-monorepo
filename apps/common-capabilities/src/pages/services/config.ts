@@ -6,6 +6,7 @@ export const defaultState = {
     keywords: [],
     status: [],
     functionalGroup: [],
+    provider: [],
   },
 };
 
@@ -15,6 +16,7 @@ export const filtersList = [
   'keywords',
   'status',
   'functionalGroup',
+  'provider',
 ];
 
 export const filterListCustom = [
@@ -33,6 +35,10 @@ export const filterListCustom = [
   {
     title: 'Keywords',
     property: 'keywords',
+  },
+  {
+    title: 'Provider',
+    property: 'provider',
   },
   {
     title: 'Status',
