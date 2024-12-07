@@ -15,6 +15,28 @@ const useForm = (
   const [loading, setLoading] = useState(false);
   const [apiError, setApiError] = useState(null);
 
+  const getErrorsOnChange = (prevErrors:any, name: string) => {
+    let newErrors = prevErrors;
+
+    if (formConfig.properties[name]?.oneOf) {
+      const choicePropErrors =  formConfig.properties[name].oneOf.reduce((acc: any, current: any) => {
+        if (name !== current) {
+          acc[current] = null;
+        }
+
+        return acc;
+      }, {});
+
+      const combinedErrors = Object.assign({}, prevErrors, choicePropErrors);
+    
+      newErrors = Object.fromEntries(
+        Object.entries(combinedErrors).filter(([key, value]) => !!value)
+      );
+    }
+
+    return newErrors;
+  };
+
   const handleChange = (e: {
     target: { name: any; value: any; type: any; checked: any };
   }) => {
@@ -23,6 +45,8 @@ const useForm = (
       ...values,
       [name]: type === 'checkbox' ? checked : value,
     });
+
+    setErrors((prevErrors: any) => getErrorsOnChange(prevErrors, name));
   };
 
   const handleSubmit = async (e: { preventDefault: () => void }) => {

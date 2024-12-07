@@ -2,6 +2,7 @@ export type FormConfig = {
     properties: { 
         [key: string]: {
             required: boolean;
+            oneOf?: string[];
             messages: { 
                 [key: string]: string 
             };
