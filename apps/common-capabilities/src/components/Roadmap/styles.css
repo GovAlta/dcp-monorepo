@@ -5,11 +5,11 @@ dl.roadmap-details {
 .roadmap-details dt {
     color: var(--goa-color-text-default);
     font: var(--goa-typography-heading-s);
-    margin-bottom: var(--goa-space-xs);
+    margin-bottom: var(--goa-space);
 }
 
 .roadmap-details dd {
-    margin: 0 0 var(--goa-space-l);
+    margin: 0 0 var(--goa-space-m);
     font: var(--goa-typography-body-m);
 }
 
