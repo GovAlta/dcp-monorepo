@@ -90,8 +90,8 @@ const { title, page, bodyClass } = Astro.props;
 
   <body class={bodyClass ? bodyClass : ""}>
 
-    <PageLayout client:only page={page}>
-        <slot />
+    <PageLayout client:only="react" page={page}>
+      <slot />
     </PageLayout>
     <!-- "defer" to allow the html to load first -->
     <!-- <script src="/forms.js" defer></script>   -->

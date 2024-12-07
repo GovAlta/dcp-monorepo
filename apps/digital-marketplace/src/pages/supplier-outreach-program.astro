@@ -3,8 +3,7 @@ import BaseLayout from '../layouts/layout.astro';
 import ProcurementConciergePage from './supplier-outreach-program/index';
 ---
 
-<BaseLayout title="Supplier Outreach Program | Alberta Digital Marketplace" page="Supplier Outreach Program">  
-    <main>
+<BaseLayout title="Supplier Outreach Program | Alberta Digital Marketplace" page="Supplier Outreach Program">
     <ProcurementConciergePage client:only="react" />
-    </main>
+    <div slot="fallback" class="skeleton" style="min-height: 2000px;"/>
 </BaseLayout>
