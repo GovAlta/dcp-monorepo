@@ -21,6 +21,7 @@ export const apptFormConfig: FormConfig = {
     },
     email: {
       required: true,
+      oneOf: ['email', 'phone'],
       messages: {
         required: 'Enter your email address',
       },
@@ -34,6 +35,7 @@ export const apptFormConfig: FormConfig = {
     },
     phone: {
       required: true,
+      oneOf: ['email', 'phone'],
       messages: {
         required: 'Enter your phone number',
       },

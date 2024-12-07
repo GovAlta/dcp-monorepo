@@ -40,6 +40,14 @@ export default function ApptForm() {
 
   // Handler to update the selected contact method
   const handleContactMethodChange = (event: any) => {
+    const contactMethod = event.target.value;
+
+    if (contactMethod === ContactType.EMAIL) {
+      handleChange?.({ target: { name: 'phone', value: '' } } as any);
+    } else if (contactMethod === ContactType.PHONE) {
+      handleChange?.({ target: { name: 'email', value: '' } } as any);
+    }
+
     setContactMethod(event.target.value);
   };
 
