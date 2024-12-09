@@ -27,9 +27,9 @@ const getImpactItems = (impacts: string) => {
 
     return (
         <ul>
-            {impacts?.split('\n').map((impact: any) => (
-                <li key={impact}>{impact}</li>
-            ))}
+            {impacts?.split('\n').map((impact: any) => {
+                return (impact && impact.trim().length > 0) ? <li key={impact}>{impact}</li> : null;
+            })}
         </ul>
     );
 }
@@ -44,6 +44,7 @@ export default function Roadmap({ roadmap }: RoadmapProps) {
                             <dt className={inlineTitle ? 'inline-title' : ''}>{title}</dt>
                             <dd>{getValue(item)}</dd>
                         </>
+                        
                     ))
                 }
             </dl>
