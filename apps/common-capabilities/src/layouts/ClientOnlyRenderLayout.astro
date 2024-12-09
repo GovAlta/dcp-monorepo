@@ -1,0 +1,16 @@
+---
+import Layout from './Layout.astro';
+
+export interface Props {
+  title: string;
+  contentHeight?: string;
+}
+
+const { title, contentHeight } = Astro.props;
+---
+
+<Layout title={title}>
+    <div class='skeleton' style=`min-height: ${contentHeight || "1500px"};`>
+        <slot />
+    </div>
+</Layout>
