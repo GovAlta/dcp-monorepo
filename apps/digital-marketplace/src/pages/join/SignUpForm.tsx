@@ -3,6 +3,7 @@ import useForm from '../../contexts/useForm';
 import { signUpFormConfig } from './config';
 import { validateField, validateForm } from '../../utils/forms';
 import FormField from '../../components/Input';
+import { SignupType } from '../../contexts/constants';
 
 export default function SignupForm() {
   const initialValues = {
@@ -20,7 +21,7 @@ export default function SignupForm() {
     success,
     handleChange,
     handleBlur,
-    handleSubmitPartner,
+    handleSubmit,
     loading,
     apiError,
   } = useForm(initialValues, validateForm, validateField, signUpFormConfig);
@@ -59,7 +60,7 @@ export default function SignupForm() {
                             name="signUpType"
                             type="radio"
                             onChange={handleChange}
-                            value="supplier"
+                            value={SignupType.SUPPLIER}
                             required={true}
                         />
                         <label htmlFor="supplier">
@@ -72,7 +73,7 @@ export default function SignupForm() {
                             name="signUpType"
                             type="radio"
                             onChange={handleChange}
-                            value="community-partner"
+                            value={SignupType.COMMUNITY_PARTNER}
                             required={true}
                         />
                         <label htmlFor="community-partner">
@@ -171,7 +172,7 @@ export default function SignupForm() {
                     type="submit"
                     className="goa-adm-button"
                     disabled={loading}
-                    onClick={handleSubmitPartner}
+                    onClick={handleSubmit}
                   >
                     {loading ? 'Submitting...' : 'Submit Form'}
                   </button>

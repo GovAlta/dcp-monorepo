@@ -7,15 +7,21 @@ import Textarea from '../../components/textarea';
 import Flatpickr from 'react-flatpickr';
 import "flatpickr/dist/themes/material_green.css";
 
+enum ContactType {
+  EMAIL = 'Email',
+  PHONE = 'Phone',
+}
+
 export default function ApptForm() {
   const initialValues = {
-    orgName: '',
-    email: '',
+    organization: '',
+    emailAddress: '',
     firstName: '',
     lastName: '',
-    website: '',
     date: '',
-    comments: '',
+    toDiscuss: '',
+    phoneNumber: '',
+    isTechnologyProvider: "false",
     agreement: false,
   };
 
@@ -25,7 +31,7 @@ export default function ApptForm() {
     success,
     handleChange,
     handleBlur,
-    handleSubmitPartner,
+    handleSubmit,
     loading,
     apiError,
   } = useForm(initialValues, validateForm, validateField, apptFormConfig);
@@ -35,7 +41,26 @@ export default function ApptForm() {
 
   // Handler to update the selected contact method
   const handleContactMethodChange = (event: any) => {
+    const contactMethod = event.target.value;
+
+    if (contactMethod === ContactType.EMAIL) {
+      handleChange?.({ target: { name: 'phoneNumber', value: '' } } as any);
+    } else if (contactMethod === ContactType.PHONE) {
+      handleChange?.({ target: { name: 'emailAddress', value: '' } } as any);
+    }
+
     setContactMethod(event.target.value);
+  };
+
+  const handleDateChange = (date: any) => {
+    let dateString;
+
+    if (date?.[0]) {
+      const d = new Date(date?.[0]);
+      dateString = `${d.getMonth() + 1}-${d.getDate()}-${d.getFullYear()}`;
+    }
+
+    handleChange?.({ target: { name: 'date', value: dateString } } as any);
   };
 
   return (
@@ -90,13 +115,13 @@ export default function ApptForm() {
                   </div>
                 </div>
                 <FormField
-                  id="org-name"
-                  name="orgName"
+                  id="organization-name"
+                  name="organization"
                   type="text"
-                  value={values.orgName}
+                  value={values.organization}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  error={errors.orgName}
+                  error={errors.organization}
                   label="Organization name"
                   required={true}
                 />
@@ -106,11 +131,11 @@ export default function ApptForm() {
                     <div className="goa-option">
                         <input
                             id="yes-provider"
-                            name="signUpType"
+                            name="isTechnologyProvider"
                             type="radio"
                             onChange={handleChange}
                             onBlur={handleBlur}
-                            value="yes-provider"
+                            value="true"
                             required={true}
                         />
                         <label htmlFor="yes-provider">
@@ -120,11 +145,11 @@ export default function ApptForm() {
                     <div className="goa-option">
                         <input
                             id="not-provider"
-                            name="signUpType"
+                            name="isTechnologyProvider"
                             type="radio"
                             onChange={handleChange}
                             onBlur={handleBlur}
-                            value="not-provider"
+                            value="false"
                             required={true}
                         />
                         <label htmlFor="not-provider">
@@ -138,12 +163,12 @@ export default function ApptForm() {
                     What would you like to discuss with your advisor? *
                   </label>
                   <Textarea
-                    id="comments"
-                    name="comments"
+                    id="toDiscuss"
+                    name="toDiscuss"
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    value={values.comments}
-                    error={errors.comments}
+                    value={values.toDiscuss}
+                    error={errors.toDiscuss}
                     required={true}
                     />
                 </div>
@@ -155,24 +180,24 @@ export default function ApptForm() {
                           id="email-select"
                           type="radio"
                           name="signUpType"
-                          value="email-select"
-                          checked={contactMethod === 'email-select'}
+                          value={ContactType.EMAIL}
+                          checked={contactMethod === ContactType.EMAIL}
                           onChange={handleContactMethodChange}
                       />
                       <label htmlFor="email-select">
                           Email
                       </label>
-                      {contactMethod === 'email-select' && (
+                      {contactMethod === ContactType.EMAIL && (
                           <>
                           <div className='goa-field goa-contact-input'>
                               <FormField
-                                  id="email"
-                                  name="email"
+                                  id="emailAddress"
+                                  name="emailAddress"
                                   type="email"
-                                  value={values.email}
+                                  value={values.emailAddress}
                                   onChange={handleChange}
                                   onBlur={handleBlur}
-                                  error={errors.email}
+                                  error={errors.emailAddress}
                                   placeholder="Email"
                                   required={true}
                               />
@@ -185,24 +210,24 @@ export default function ApptForm() {
                             id="phone-select"
                             type="radio"
                             name="signUpType"
-                            value="phone-select"
-                            checked={contactMethod === 'phone-select'}
+                            value={ContactType.PHONE}
+                            checked={contactMethod === ContactType.PHONE}
                             onChange={handleContactMethodChange}
                         />
                         <label htmlFor="phone-select">
                             Phone
                         </label>
-                        {contactMethod === 'phone-select' && ( 
+                        {contactMethod === ContactType.PHONE && ( 
                             <>
                             <div className='goa-field goa-contact-input'>
                                 <FormField
-                                    id="phone"
-                                    name="phone"
+                                    id="phoneNumber"
+                                    name="phoneNumber"
                                     type="phone"
-                                    value={values.phone}
+                                    value={values.phoneNumber}
                                     onChange={handleChange}
                                     onBlur={handleBlur}
-                                    error={errors.phone}
+                                    error={errors.phoneNumber}
                                     placeholder="Phone Number"
                                     required={true}
                                 />
@@ -218,19 +243,27 @@ export default function ApptForm() {
                   </label>
                   <div className="goa-field-split">
                     <div className="goa-date" style={{ flex: '1' }}>
-                      <Flatpickr className="goa-date-picker" placeholder="Date" aria-label="Select a Date" options={{  minDate: "today",  altFormat: "F j, Y", dateFormat: "F j, Y", }} />
+                      <Flatpickr 
+                        className="goa-date-picker"
+                        name="date"
+                        placeholder="Date" 
+                        aria-label="Select a Date" 
+                        options={{ minDate: "today",  altFormat: "F j, Y", dateFormat: "F j, Y", }}
+                        onChange={handleDateChange}
+                      />
                     </div>
                     <div className="goa-field goa--required">
                       <select
                         id="time-dateTime"
-                        name="time-dateTime"
+                        name="when"
                         aria-label="Select a Time"
                         required={true}
                         defaultValue={""}
+                        onChange={handleChange as any}
                       >
                           <option value="" disabled>Time</option>
-                          <option value="morning">9:00 AM to 12:00 PM</option>
-                          <option value="afternoon">1:00 PM to 3:00 PM</option>
+                          <option value="AM">9:00 AM to 12:00 PM</option>
+                          <option value="PM">1:00 PM to 3:00 PM</option>
                       </select>
                     </div>
                   </div>
@@ -258,7 +291,7 @@ export default function ApptForm() {
                     type="submit"
                     className="goa-adm-button"
                     disabled={loading}
-                    onClick={handleSubmitPartner}
+                    onClick={handleSubmit}
                   >
                     {loading ? 'Submitting...' : 'Submit Form'}
                   </button>
