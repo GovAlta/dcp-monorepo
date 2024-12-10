@@ -9,6 +9,7 @@ export const signUpFormConfig: FormConfig = {
       },
       validate: [],
       includedInPayload: false,
+      revalidateOnChange: true,
     },
     orgName: {
       required: true,
@@ -26,6 +27,7 @@ export const signUpFormConfig: FormConfig = {
         },
       ],
       includedInPayload: true,
+      revalidateOnChange: false,
     },
     email: {
       required: true,
@@ -39,6 +41,7 @@ export const signUpFormConfig: FormConfig = {
         },
       ],
       includedInPayload: true,
+      revalidateOnChange: false,
     },
     firstName: {
       required: true,
@@ -56,6 +59,7 @@ export const signUpFormConfig: FormConfig = {
         },
       ],
       includedInPayload: true,
+      revalidateOnChange: false,
     },
     lastName: {
       required: true,
@@ -73,6 +77,7 @@ export const signUpFormConfig: FormConfig = {
         },
       ],
       includedInPayload: true,
+      revalidateOnChange: false,
     },
     website: {
       required: false,
@@ -85,12 +90,14 @@ export const signUpFormConfig: FormConfig = {
         },
       ],
       includedInPayload: true,
+      revalidateOnChange: false,
     },
     agreement: {
       required: false,
       messages: {},
       validate: [],
       includedInPayload: true,
+      revalidateOnChange: true,
     },
   },
   getEntityUrl: (gatewayUrl: string, values: any) => `${gatewayUrl}/${values.signUpType}`,

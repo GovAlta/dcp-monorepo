@@ -18,6 +18,7 @@ export const apptFormConfig: FormConfig = {
         },
       ],
       includedInPayload: true,
+      revalidateOnChange: false,
     },
     emailAddress: {
       required: true,
@@ -32,6 +33,7 @@ export const apptFormConfig: FormConfig = {
         },
       ],
       includedInPayload: true,
+      revalidateOnChange: false,
     },
     phoneNumber: {
       required: true,
@@ -46,6 +48,7 @@ export const apptFormConfig: FormConfig = {
         },
       ],
       includedInPayload: true,
+      revalidateOnChange: false,
     },
     firstName: {
       required: true,
@@ -63,6 +66,7 @@ export const apptFormConfig: FormConfig = {
         },
       ],
       includedInPayload: true,
+      revalidateOnChange: false,
     },
     lastName: {
       required: true,
@@ -80,6 +84,16 @@ export const apptFormConfig: FormConfig = {
         },
       ],
       includedInPayload: true,
+      revalidateOnChange: false,
+    },
+    signUpType: {
+      required: true,
+      messages: {
+        required: 'Select one of the options',
+      },
+      validate: [],
+      includedInPayload: false,
+      revalidateOnChange: true,
     },
     isTechnologyProvider: {
       required: true,
@@ -88,6 +102,7 @@ export const apptFormConfig: FormConfig = {
       },
       validate: [],
       includedInPayload: true,
+      revalidateOnChange: true,
     },
     toDiscuss: {
       required: true,
@@ -96,12 +111,16 @@ export const apptFormConfig: FormConfig = {
       },
       validate: [],
       includedInPayload: true,
+      revalidateOnChange: false,
     },
     agreement: {
       required: true,
-      messages: {},
+      messages: {
+        required: 'You will need to agree in order to be contacted',
+      },
       validate: [],
       includedInPayload: true,
+      revalidateOnChange: true,
     },
     date: {
       required: true,
@@ -110,6 +129,7 @@ export const apptFormConfig: FormConfig = {
       },
       validate: [],
       includedInPayload: true,
+      revalidateOnChange: true,
     },
     when: {
       required: true,
@@ -118,6 +138,7 @@ export const apptFormConfig: FormConfig = {
       },
       validate: [],
       includedInPayload: true,
+      revalidateOnChange: true,
     },
   },
   getEntityUrl: (gatewayUrl: string, values: any) => `${gatewayUrl}/${values}`, // TODO replace returned url with a valid one
