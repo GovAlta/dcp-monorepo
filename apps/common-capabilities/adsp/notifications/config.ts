@@ -1,5 +1,13 @@
 const notifications = {
   'common capabilities reviewer': {
+    metaData: {
+      notificationChannels: ['email'],
+      subscribersAllowedManage: true,
+      publicNotification: true,
+      notifyAddress: {
+        addressPath: 'userEmail',
+      },
+    },
     'common-capabilities:listing-submitted-edit-reviewer': {
       email: {
         subject: 'Service Edit Notification',
@@ -52,6 +60,14 @@ const notifications = {
     },
   },
   'common capabilities listings': {
+    metaData: {
+      notificationChannels: ['email'],
+      subscribersAllowedManage: true,
+      publicNotification: true,
+      notifyAddress: {
+        addressPath: 'userEmail',
+      },
+    },
     'common-capabilities:listing-accepted': {
       email: {
         subject: 'Service Submission Approved',

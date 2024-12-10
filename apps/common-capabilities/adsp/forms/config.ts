@@ -55,17 +55,19 @@ const formDefinitions = {
         },
         usageMethod: {
           type: 'string',
-          enum: ['API', 'Code', 'Service'],
+          enum: ['', 'API', 'Code', 'Service', 'Other'],
         },
         status: {
           type: 'string',
           enum: [
+            '',
             'Live',
             'Alpha',
             'Beta',
             'Future',
             'Deprecated',
             'Decommissioned',
+            'Other',
           ],
         },
         version: {
@@ -155,7 +157,7 @@ const formDefinitions = {
             properties: {
               item: {
                 type: 'string',
-                maxLength: 15,
+                maxLength: 25,
                 description: 'Single keyword',
               },
             },
@@ -232,7 +234,7 @@ const formDefinitions = {
         },
         classification: {
           type: 'string',
-          enum: ['Public', 'Protected A', 'Protected B', 'Protected C'],
+          enum: ['', 'Public', 'Protected A', 'Protected B', 'Protected C'],
         },
         controller: {
           type: 'string',
@@ -272,11 +274,12 @@ const formDefinitions = {
               },
               status: {
                 type: 'string',
-                enum: ['Committed', 'Tentative'],
+                enum: ['', 'Committed', 'Tentative'],
               },
               type: {
                 type: 'string',
                 enum: [
+                  '',
                   'Addition',
                   'Alteration',
                   'Deprecation',
@@ -294,6 +297,17 @@ const formDefinitions = {
               impacts: {
                 type: 'string',
                 description: 'A list of impacts',
+              },
+              impactsArray: {
+                type: 'array',
+                items: {
+                  type: 'object',
+                  properties: {
+                    item: {
+                      type: 'string',
+                    },
+                  },
+                },
               },
             },
             required: [
@@ -650,6 +664,8 @@ const formDefinitions = {
                             multi: true,
                             componentProps: {
                               rows: 7,
+                              placeholder:
+                                'A list of impacts.\nPlease separate each item with a new line (enter key)',
                             },
                           },
                         },
