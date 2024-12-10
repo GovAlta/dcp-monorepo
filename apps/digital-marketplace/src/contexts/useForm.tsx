@@ -15,11 +15,12 @@ const useForm = (
   const [loading, setLoading] = useState(false);
   const [apiError, setApiError] = useState(null);
 
-  const getErrorsOnChange = (prevErrors:any, name: string) => {
-    let newErrors = prevErrors;
+  const getErrorsOnChange = (prevErrors:any, name: string, newValue: any) => {
+    let newErrors = Object.assign({}, prevErrors);
+    const config = formConfig.properties[name];
 
-    if (formConfig.properties[name]?.oneOf) {
-      const choicePropErrors =  formConfig.properties[name].oneOf.reduce((acc: any, current: any) => {
+    if (config?.oneOf) {
+      const choicePropErrors =  config.oneOf.reduce((acc: any, current: any) => {
         if (name !== current) {
           acc[current] = null;
         }
@@ -34,6 +35,11 @@ const useForm = (
       );
     }
 
+    if (config?.revalidateOnChange) {
+      const error = validateField(newValue, config);
+      newErrors[name] = error;
+    }
+
     return newErrors;
   };
 
@@ -41,12 +47,14 @@ const useForm = (
     target: { name: any; value: any; type: any; checked: any };
   }) => {
     const { name, value, type, checked } = e.target;
-    setValues({
-      ...values,
-      [name]: type === 'checkbox' ? checked : value,
-    });
+    const newValue = type === 'checkbox' ? checked : value;
+    
+    setValues((prevValues: any) => ({
+      ...prevValues,
+      [name]: newValue,
+    }));
 
-    setErrors((prevErrors: any) => getErrorsOnChange(prevErrors, name));
+    setErrors((prevErrors: any) => getErrorsOnChange(prevErrors, name, newValue));
   };
 
   const handleSubmit = async (e: { preventDefault: () => void }) => {

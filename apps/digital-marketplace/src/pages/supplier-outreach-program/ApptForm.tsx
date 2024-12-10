@@ -21,8 +21,9 @@ export default function ApptForm() {
     date: '',
     toDiscuss: '',
     phoneNumber: '',
-    isTechnologyProvider: "false",
+    isTechnologyProvider: '',
     agreement: false,
+    signUpType: '',
   };
 
   const {
@@ -49,6 +50,7 @@ export default function ApptForm() {
       handleChange?.({ target: { name: 'emailAddress', value: '' } } as any);
     }
 
+    handleChange?.(event);
     setContactMethod(event.target.value);
   };
 
@@ -131,10 +133,10 @@ export default function ApptForm() {
                     <div className="goa-option">
                         <input
                             id="yes-provider"
+                            className={errors.isTechnologyProvider ? "inputError": ""}
                             name="isTechnologyProvider"
                             type="radio"
                             onChange={handleChange}
-                            onBlur={handleBlur}
                             value="true"
                             required={true}
                         />
@@ -145,10 +147,10 @@ export default function ApptForm() {
                     <div className="goa-option">
                         <input
                             id="not-provider"
+                            className={errors.isTechnologyProvider ? "inputError": ""}
                             name="isTechnologyProvider"
                             type="radio"
                             onChange={handleChange}
-                            onBlur={handleBlur}
                             value="false"
                             required={true}
                         />
@@ -156,6 +158,7 @@ export default function ApptForm() {
                             No
                         </label>
                     </div>
+                    { errors.isTechnologyProvider && <strong className="error goa-error">{errors.isTechnologyProvider}</strong> }
                 </fieldset>
 
                 <div className="goa-field">
@@ -178,6 +181,7 @@ export default function ApptForm() {
                     <div className="goa-option">
                       <input
                           id="email-select"
+                          className={errors.signUpType ? "inputError": ""}
                           type="radio"
                           name="signUpType"
                           value={ContactType.EMAIL}
@@ -208,6 +212,7 @@ export default function ApptForm() {
                     <div className="goa-option">
                         <input
                             id="phone-select"
+                            className={errors.signUpType ? "inputError": ""}
                             type="radio"
                             name="signUpType"
                             value={ContactType.PHONE}
@@ -235,6 +240,7 @@ export default function ApptForm() {
                             </>
                         )}
                     </div>
+                    { errors.signUpType && <strong className="error goa-error">{errors.signUpType}</strong> }
                 </fieldset>
 
                 <div className="goa-field goa-date-time goa--required">
@@ -244,18 +250,20 @@ export default function ApptForm() {
                   <div className="goa-field-split">
                     <div className="goa-date" style={{ flex: '1' }}>
                       <Flatpickr 
-                        className="goa-date-picker"
+                        className={`goa-date-picker ${errors.date ? 'inputError' : ''}`}
                         name="date"
                         placeholder="Date" 
                         aria-label="Select a Date" 
                         options={{ minDate: "today",  altFormat: "F j, Y", dateFormat: "F j, Y", }}
                         onChange={handleDateChange}
                       />
+                      { errors.date && <strong className="error goa-error">{errors.date}</strong> }
                     </div>
                     <div className="goa-field goa--required">
                       <select
                         id="time-dateTime"
                         name="when"
+                        className={errors.when ? 'inputError' : ''}
                         aria-label="Select a Time"
                         required={true}
                         defaultValue={""}
@@ -265,6 +273,7 @@ export default function ApptForm() {
                           <option value="AM">9:00 AM to 12:00 PM</option>
                           <option value="PM">1:00 PM to 3:00 PM</option>
                       </select>
+                      { errors.when && <strong className="error goa-error">{errors.when}</strong> }
                     </div>
                   </div>
                 </div>
@@ -275,15 +284,16 @@ export default function ApptForm() {
                       id="agreement"
                       name="agreement"
                       type="checkbox"
+                      className={errors.agreement ? "inputError": ""}
                       checked={values.agreement}
                       onChange={handleChange}
-                      onBlur={handleBlur}
                     />
                     <label htmlFor="agreement">
                       <p>
                       I agree to be contacted by the Government of Alberta about the Digital Marketplace Supplier Outreach Program.<span className="required">*</span></p>
                     </label>
                   </div>
+                  { errors.agreement && <strong className="error goa-error">{errors.agreement}</strong> }
                 </div>
 
                 <div className="goa-adm-buttons">

@@ -13,6 +13,7 @@ export default function SignupForm() {
     lastName: '',
     website: '',
     agreement: false,
+    signUpType: '',
   };
 
   const {
@@ -57,6 +58,7 @@ export default function SignupForm() {
                     <div className="goa-option">
                         <input
                             id="supplier"
+                            className={errors.signUpType ? "inputError": ""}
                             name="signUpType"
                             type="radio"
                             onChange={handleChange}
@@ -70,6 +72,7 @@ export default function SignupForm() {
                     <div className="goa-option">
                         <input
                             id="community-partner"
+                            className={errors.signUpType ? "inputError": ""}
                             name="signUpType"
                             type="radio"
                             onChange={handleChange}
@@ -80,6 +83,7 @@ export default function SignupForm() {
                             Community Partner - Digitally curious Albertan, another government or community organization
                         </label>
                     </div>
+                    { errors.signUpType && <strong className="error goa-error">{errors.signUpType}</strong> }
                 </fieldset>
 
                 <FormField
@@ -158,7 +162,6 @@ export default function SignupForm() {
                       type="checkbox"
                       checked={values.agreement}
                       onChange={handleChange}
-                      onBlur={handleBlur}
                     />
                     <label htmlFor="agreement">
                       I would like to be contacted for future engagements,
