@@ -1,20 +1,40 @@
+const validateFieldAndMarkError = (key: string, value: any, fieldConfig: any, errors: any, validated: Set<string>) => {
+  const error = validateField(value, fieldConfig);
+  validated.add(key);
+  if (error) {
+    errors[key] = error;
+  }
+};
+
 export const validateForm = (
   values: { [x: string]: any },
   config: { [x: string]: any }
 ) => {
+  const validated = new Set<string>();
   const errors: any = {};
-
   for (const key in config) {
-    const fieldConfig = config[key];
-    const error = validateField(key, values[key], fieldConfig);
-    if (error) {
-      errors[key] = error;
+    if (!validated.has(key)) {
+      const fieldConfig = config[key];
+
+      if (fieldConfig.oneOf) {
+        const groupErrors: any = {};
+        fieldConfig.oneOf.forEach((field: any) => {
+          validateFieldAndMarkError(field, values[field], config[field], groupErrors, validated);
+        });
+
+        // If any of the values for properties within oneOf are valid, then we know that the form is valid
+        if (Object.keys(groupErrors).length === fieldConfig.oneOf.length) {
+          Object.assign(errors, groupErrors);
+        }
+      } else {
+        validateFieldAndMarkError(key, values[key], fieldConfig, errors, validated);
+      }
     }
   }
 
   return errors;
 };
-export const validateField = (name: string, rawValue: any, fieldConfig: any) => {
+export const validateField = (rawValue: any, fieldConfig: any) => {
   const value = String(rawValue).trim();
   if (fieldConfig.required && !value) {
     return fieldConfig.messages.required;
