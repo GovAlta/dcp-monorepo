@@ -35,7 +35,7 @@ export const validateForm = (
   return errors;
 };
 export const validateField = (rawValue: any, fieldConfig: any) => {
-  const value = String(rawValue).trim();
+  const value = typeof rawValue === 'string' ? String(rawValue).trim() : rawValue;
   if (fieldConfig.required && !value) {
     return fieldConfig.messages.required;
   }

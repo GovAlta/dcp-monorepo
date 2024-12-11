@@ -11,6 +11,7 @@ export type FormConfig = {
                 failed: string;
             }[];
             includedInPayload: boolean;
+            revalidateOnChange: boolean; // some fields should have immediate feedback on errors, however we dont want some input to be revalidated on every key stroke (onChange)
         }
     };
     getEntityUrl: (gatewayUrl: string, values: any) => string;
