@@ -1,6 +1,7 @@
 import { Logger } from "winston";
 import KeyvCache from "./KeyvWrapper";
 import { type DataCache } from "./types";
+import { environment } from "../environments/environment";
 
 export enum CacheKeys {
     SERVICES = 'services',
@@ -9,7 +10,7 @@ export enum CacheKeys {
 
 export const CacheConfigs = {
     [CacheKeys.SERVICES]: {
-        ttl: 60 * 60 * 1000,  // 1 hour
+        ttl: environment.CACHE_TTL,  // 30 min
     },
     [CacheKeys.SCHEMA]: {
         ttl: 12 * 60 * 60 * 1000, // half a day

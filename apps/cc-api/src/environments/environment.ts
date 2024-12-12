@@ -17,6 +17,7 @@ export const environment = envalid.cleanEnv(
     RECAPTCHA_SECRET: envalid.str({ default: '' }),
     DIRECTORY_URL: envalid.url({ default: 'https://directory-service.adsp-uat.alberta.ca' }),
     REVIEWER_EMAILS: envalid.str({ default: 'subbu.mettu@gov.ab.ca,han.wen@gov.ab.ca' }), // email1,email2
+    CACHE_TTL: envalid.str({ default: '1800000' }), // 30min
   },
   {
     reporter: ({ errors }) => {

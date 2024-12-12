@@ -16,6 +16,7 @@ export const environment = envalid.cleanEnv(
     PORT: envalid.str({ default: "3333" }),
     RECAPTCHA_SECRET: envalid.str({ default: '' }),
     DIRECTORY_URL: envalid.url({ default: 'https://directory-service.adsp-uat.alberta.ca' }),
+    SIGNUP_NOTIFY_EMAILS: envalid.str({ default: 'subbu.mettu@gov.ab.ca,han.wen@gov.ab.ca' }), // email1,email2
   },
   {
     reporter: ({ errors }) => {
