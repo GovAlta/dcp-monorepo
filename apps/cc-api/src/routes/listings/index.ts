@@ -9,6 +9,7 @@ import { createListingsRouter } from './router';
 import { DataCache } from '../../cache/types';
 import { fetchServices } from './services';
 import cron from 'node-cron';
+import { environment } from '../../environments/environment';
 
 const FORM_API_ID = adspId`urn:ads:platform:form-service:v1`;
 const EVENT_API_ID = adspId`urn:ads:platform:event-service:v1`;
@@ -21,7 +22,12 @@ interface MiddlewareOptions {
   cache: DataCache;
 }
 
-async function refreshServicesCache(valueServiceUrl, tokenProvider, cache, logger) {
+async function refreshServicesCache(
+  valueServiceUrl,
+  tokenProvider,
+  cache,
+  logger
+) {
   try {
     await fetchServices(valueServiceUrl, tokenProvider, cache, logger);
   } catch (error) {
@@ -32,7 +38,8 @@ async function refreshServicesCache(valueServiceUrl, tokenProvider, cache, logge
 function initializeCache(valueServiceUrl, tokenProvider, cache, logger) {
   refreshServicesCache(valueServiceUrl, tokenProvider, cache, logger);
 
-  const schedule = '0 * * * *'; // every hour
+  const ttlMinutes = Math.floor(Number(environment.CACHE_TTL) / 60000); // 30min
+  const schedule = `*/${ttlMinutes} * * * *`;
   cron.schedule(schedule, () => {
     logger.info('Refreshing cached data');
     refreshServicesCache(valueServiceUrl, tokenProvider, cache, logger);
@@ -55,7 +62,7 @@ export async function applyGatewayMiddleware(
     valueServiceUrl,
     cache,
   });
-  
+
   app.use('/cc/v1', listingsRouter);
 
   initializeCache(valueServiceUrl, tokenProvider, cache, logger);
