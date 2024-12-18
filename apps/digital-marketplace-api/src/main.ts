@@ -13,6 +13,7 @@ import { configurePassport } from './access/configure';
 import * as passport from 'passport';
 import { applyGatewayMiddleware } from './routes/forms';
 import compression from 'compression';
+import { applyBookingsGatewayMiddleware } from './routes/bookings';
 
 
 const logger = createLogger('digital_marketplace', environment.LOG_LEVEL);
@@ -59,6 +60,12 @@ const initializeApp = async (): Promise<express.Application> => {
 
   app.use("/marketplace", passport.authenticate(['tenant', 'anonymous'], { session: false }))
   await applyGatewayMiddleware(app, {
+    logger,
+    directory,
+    tokenProvider,
+    RECAPTCHA_SECRET: environment.RECAPTCHA_SECRET,
+  });
+  await applyBookingsGatewayMiddleware(app, {
     logger,
     directory,
     tokenProvider,
