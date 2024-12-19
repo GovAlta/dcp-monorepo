@@ -33,6 +33,17 @@ function mapEventData(data) {
     };
   });
 }
+
+function mapBusinessDaysData(data) {
+  return data.map((item) => {
+    return {
+      id: item.id,
+      date: item.date.slice(0, 10),
+      dayOfWeek: item.dayOfWeek,
+    };
+  });
+}
+
 export function getAvailableBookings(
   logger: Logger,
   tokenProvider: TokenProvider,
@@ -42,7 +53,7 @@ export function getAvailableBookings(
     try {
       const token = await tokenProvider.getAccessToken();
 
-      const calendarId = req.query.calendarId;    
+      const calendarId = req.query.calendarId;
 
       // format current date + buffer
       const date = new Date();
@@ -98,18 +109,47 @@ export function getAvailableBookings(
           return getBookingAttendees.data;
         })
       );
-
-      res.status(200).send({
+      const mappedData = {
         currentEvents: mapEventData(getCurrentBookingsAttendees),
+        businessDays: mapBusinessDaysData(getBusinessDates.data.results),
+      };
+      // Initialize the result object with two properties: availableDateToBook and bookingsAvailability
+      const result = {
+        availableDatesToBook: [], // array to store dates that have at least one available period
+        bookingsAvailability: {}, // object to store availability of each period for each date
+      };
+      // Iterate over each business day
+      mappedData.businessDays.forEach((businessDay) => {
+        const date = businessDay.date;
+        const events = mappedData.currentEvents.filter(
+          (event) => event.recordId === businessDay.id.toString()
+        );
+
+        // Initialize the availability object with both AM and PM periods set to true
+        const availability = {
+          AM: true,
+          PM: true,
+        };
+
+        // Iterate over each event for the current date and update the availability object
+        events.forEach((event) => {
+          availability[event.period] = event.isBookable;
+        });
+
+        // Check if at least one period is available for the current date
+        if (Object.values(availability).some((isBookable) => isBookable)) {
+          result.availableDatesToBook.push(date);
+        }
+
+        // Add the availability object to the bookingsAvailability object
+        result.bookingsAvailability[date] = availability;
+      });
+      res.status(200).send({
+        ...result,
       });
     } catch (error) {
       console.log(error);
-      requestErrorHandler(
-        error,
-        logger,
-        'failed to get current bookings',
-        res
-      );
+      requestErrorHandler(error, logger, 'failed to get current bookings', res);
     }
   };
 }
