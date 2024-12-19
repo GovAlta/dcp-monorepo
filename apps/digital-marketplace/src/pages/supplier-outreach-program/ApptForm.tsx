@@ -40,11 +40,11 @@ export default function ApptForm() {
     loading,
     apiError,
   } = useForm(initialValues, validateForm, validateField, apptFormConfig);
-  // const [bookings, setBookings] = useState({
-  //   availableDatesToBook: [],
-  //   bookingsAvailability: {},
-  // });
-  const bookingsUrl = useMemo(() => getBookingsUrl('/bookings/availability?calendarId=subbu-test'), []); 
+
+  const bookingsUrl = useMemo(
+    () => getBookingsUrl('/bookings/availability?calendarId=subbu-test'),
+    []
+  );
   const [bookings, error, isBookingsLoading] = useFetch<Bookings>(bookingsUrl);
   // State to track the selected contact method
   const [contactMethod, setContactMethod] = useState(null);
@@ -65,15 +65,15 @@ export default function ApptForm() {
 
   const handleDateChange = (date: any) => {
     let dateString;
-
     if (date?.[0]) {
       const d = new Date(date?.[0]);
-      dateString = `${d.getMonth() + 1}-${d.getDate()}-${d.getFullYear()}`;
+      dateString = `${d.getFullYear()}-${(d.getMonth() + 1)
+        .toString()
+        .padStart(2, '0')}-${d.getDate().toString().padStart(2, '0')}`;
     }
-
     handleChange?.({ target: { name: 'date', value: dateString } } as any);
   };
-
+  
   return (
     <div className="goa-adm-form-container">
       {success ? (
@@ -306,7 +306,7 @@ export default function ApptForm() {
                             options={{
                               // minDate: 'today',
                               // altFormat: 'F j, Y',
-                              // dateFormat: 'F j, Y',
+                              dateFormat: 'Y-m-d',
                               mode: 'single',
                               enable: bookings?.availableDatesToBook,
                             }}
@@ -328,11 +328,15 @@ export default function ApptForm() {
                             defaultValue={''}
                             onChange={handleChange as any}
                           >
-                            <option value="" disabled>
-                              Time
-                            </option>
-                            <option value="AM">9:00 AM to 12:00 PM</option>
-                            <option value="PM">1:00 PM to 3:00 PM</option>
+                            <option value="">Select a Time</option>
+                            {bookings?.bookingsAvailability[values.date] && (
+                              <>
+                                {bookings.bookingsAvailability[values.date]
+                                  .AM && <option value="AM">9:00 AM to 12:00 PM</option>}
+                                {bookings.bookingsAvailability[values.date]
+                                  .PM && <option value="PM">1:00 PM to 3:00 PM</option>}
+                              </>
+                            )}
                           </select>
                           {errors.when && (
                             <strong className="error goa-error">
