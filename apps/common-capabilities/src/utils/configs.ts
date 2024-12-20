@@ -82,3 +82,7 @@ export function getCaptchaSiteKey() {
       return '?'; // first character == "?" will disable
   }
 }
+
+export function getProperty(obj:any, path:any) {
+  return path.split('.').reduce((acc:any, key:any) => acc?.[key], obj); 
+}

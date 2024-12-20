@@ -1,33 +1,33 @@
 // the names in the filterList and the keys in the defaultState objects should match
 export const defaultState = {
   selectedFilters: {
+    provider: [],
+    functionalGroup: [],
+    status: [],
     environment: [],
     language: [],
-    keywords: [],
-    status: [],
-    functionalGroup: [],
-    provider: [],
+    keywords: []    
   },
 };
 
 export const filtersList = [
+  'provider',
+  'functionalGroup',
+  'status',
   'environment',
   'language',
-  'keywords',
-  'status',
-  'functionalGroup',
-  'provider',
+  'keywords'
 ];
 
 export const filterListCustom = [
   {
-    title: 'Category',
-    property: 'functionalGroup',
-  },
-  {
     title: 'Provider',
     property: 'provider',
   },
+  {
+    title: 'Category',
+    property: 'functionalGroup',
+  },  
   {
     title: 'Status',
     property: 'status',
