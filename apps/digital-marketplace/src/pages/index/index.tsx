@@ -24,14 +24,14 @@ const HomePage = () => {
           <div className="goa-adm-body-header-graphic">
             <div className="goa-adm-home-tablet-graphic">
               <img
-                src={hero_mobile}
+                src={hero_mobile.src}
                 alt="Illustration of Alberta's landscape"
               />
             </div>
             <div className="goa-adm-body-full-side-one">
               <div className="goa-adm-body-full-side-one-img">
                 <img
-                  src={handShakeLine}
+                  src={handShakeLine.src}
                   width="144"
                   height="612"
                   alt="Hand shake line"
@@ -163,7 +163,7 @@ const HomePage = () => {
             <div className="goa-adm-cards">
               <div className="goa-adm-single-card">
                 <div className="goa-adm-single-card-thumb">
-                  <img src={concierge_thumb} alt="Illustration of a handshake" />
+                  <img src={concierge_thumb.src} alt="Illustration of a handshake" />
                 </div>
                 <h3>Supplier Outreach Program</h3>
                 <div className="goa-adm-single-card-content">
@@ -182,7 +182,7 @@ const HomePage = () => {
               </div>
               <div className="goa-adm-single-card">
                 <div className="goa-adm-single-card-thumb">
-                  <img src={join_thumb} alt="Illustration of two people and a plus icon" />
+                  <img src={join_thumb.src} alt="Illustration of two people and a plus icon" />
                 </div>
                 <h3>Join the Alberta Digital Marketplace</h3>
                 <div className="goa-adm-single-card-content">

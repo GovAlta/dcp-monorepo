@@ -23,7 +23,7 @@ const ContactPage = () => {
           <div className="goa-adm-body-header-graphic">
             <div className="goa-adm-home-tablet-graphic">
               <img
-                src={hero_mobile}
+                src={hero_mobile.src}
                 alt="Illustration of Alberta's landscape"
               />
             </div>

@@ -54,7 +54,7 @@ const UnderstandingProcurementPage = () => {
               <div className="goa-adm-cards">
                 <div className="goa-adm-single-card">
                   <div className="goa-adm-single-card-thumb">
-                    <img src={buyers_thumb} alt="Buyers illustration" />
+                    <img src={buyers_thumb.src} alt="Buyers illustration" />
                   </div>
                   <h4>Buyers</h4>
                   <div className="goa-adm-single-card-content">
@@ -65,7 +65,7 @@ const UnderstandingProcurementPage = () => {
                 </div>
                 <div className="goa-adm-single-card">
                   <div className="goa-adm-single-card-thumb">
-                    <img src={suppliers_thumb} alt="Suppliers illustration" />
+                    <img src={suppliers_thumb.src} alt="Suppliers illustration" />
                   </div>
                   <h4>Suppliers</h4>
                   <div className="goa-adm-single-card-content">

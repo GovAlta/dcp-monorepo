@@ -32,7 +32,7 @@ const ProcurementConciergePage = () => {
                     <div className="goa-adm-cards">
                         <div className="goa-adm-single-card">
                             <div className="goa-adm-single-card-thumb">
-                            <img src={appointment_thumb} alt="Book an appoinement icon" />
+                            <img src={appointment_thumb.src} alt="Book an appoinement icon" />
                             </div>
                             <h3>Consult an advisor</h3>
                             <div className="goa-adm-single-card-content">
@@ -51,7 +51,7 @@ const ProcurementConciergePage = () => {
                         </div>
                         <div className="goa-adm-single-card">
                             <div className="goa-adm-single-card-thumb">
-                            <img src={understanding_thumb} alt="Understanding procurement icon" />
+                            <img src={understanding_thumb.src} alt="Understanding procurement icon" />
                             </div>
                             <h3>Procurement guidance</h3>
                             <div className="goa-adm-single-card-content">
@@ -72,7 +72,7 @@ const ProcurementConciergePage = () => {
                     <div className="goa-adm-coming-soon">
                         <div className="goa-adm-coming-soon-container">
                             <div className="goa-adm-coming-soon-icon">
-                                <img src={coming_thumb} alt="Webinars coming soon icon" />
+                                <img src={coming_thumb.src} alt="Webinars coming soon icon" />
                             </div>
                             <div className="goa-adm-coming-soon-content">
                                 <h3>Live webinars</h3>
