@@ -20,32 +20,21 @@ import {
   getAppsFilters,
   generateFilterObject,
   generateFilterCounts,
-} from './utils';
+} from '../utils/serviceListUtils';
 import { defaultState, filtersList, filterListCustom } from './config';
 import useFetch from '../../hooks/useFetch';
 import { getApiUrl } from '../../utils/configs';
 import { ServiceListingResponse } from '../../types/types';
-
-import { roadmaplist } from '../../utils/roadmap'
+import { roadmaplist } from '../../components/Card/ServiceRoadmap'
 
 type Filter = {
   [key: string]: any[];
 };
 
 export default function HomePage(): JSX.Element {
-  
   const [roadmapView, setRoadmapView] = useState({ grouped: true, history: false });  
   const [collapseKey2, setCollapseKey2] = useState(0);
-
   const [roadmapAccordionOpen,setRoadmapAccordionOpen] = useState(false); 
-  
-  // const [roadmapAccordionState, setRoadmapAccordionState] = useState(() => {
-  //   const savedRoadmapAccordionState = localStorage.getItem('roadmapAccordionStateState');
-  //   return savedRoadmapAccordionState
-  //    ? savedRoadmapAccordionState : [];
-  // // ? JSON.parse(savedRoadmapAccordionState) : [];
-  // });
-
   const [collapseKey, setCollapseKey] = useState(0);
   const [searchFilter, setSearchFilter] = useState('');
   const [services, setServices] = useState([]);  
@@ -70,7 +59,7 @@ export default function HomePage(): JSX.Element {
     const savedCheckboxState = localStorage.getItem('selectedCheckboxState');
     return savedCheckboxState
       ? JSON.parse(savedCheckboxState)
-      : generateFilterObject(apps);
+      : generateFilterObject(apps, filtersList);
   });
   const [selectedFiltersState, setSelectedFiltersState] = useState(() => {
     const savedFiltersState = localStorage.getItem('selectedFiltersState');
@@ -187,9 +176,9 @@ export default function HomePage(): JSX.Element {
         ],
       });
       setCheckedFilters({
-        ...generateFilterObject(apps),
+        ...generateFilterObject(apps, filtersList),
         functionalGroup: {
-          ...generateFilterObject(apps).functionalGroup,
+          ...generateFilterObject(apps, filtersList).functionalGroup,
           [category]: true,
         },
       });
@@ -200,10 +189,8 @@ export default function HomePage(): JSX.Element {
     }
   }, [apps]);
 
-  //const recommendedServices = services.filter((item: any) => item.recommended )
   const recommendedServices = services;
   const otherServices = []
-  //const otherServices = services.filter((item: any) => !item.recommended )
   
   const roadmapWhenList = roadmaplist(services,roadmapView.history); 
   const roadmapData = (services, targetWhen) => {
@@ -213,12 +200,6 @@ export default function HomePage(): JSX.Element {
   };
   const checkedProviders = checkedFilters.provider === undefined ? []
   : Object.entries(checkedFilters.provider).filter(([key, value]) => value);
-
-
-// console.log('filterState',selectedFiltersState)
-// console.log('RoadmapState',roadmapAccordionState);
-console.log('Filters',checkedFilters);
-
 
   return isLoading || !data ? (
     <GoACircularProgress variant="fullscreen" size="large" message="Loading service list..." visible={true} />
@@ -258,7 +239,7 @@ console.log('Filters',checkedFilters);
               //reset filters and checkbox state
               localStorage.removeItem('selectedCheckboxState');
               localStorage.removeItem('selectedFiltersState');
-              setCheckedFilters(generateFilterObject(apps));
+              setCheckedFilters(generateFilterObject(apps, filtersList));
               setSelectedFiltersState(defaultState.selectedFilters);
               localStorage.setItem(
                 'searchTimestamp',
@@ -279,7 +260,7 @@ console.log('Filters',checkedFilters);
                 localStorage.removeItem('selectedFiltersState');
 
                 setSearchFilter('');
-                setCheckedFilters(generateFilterObject(apps));
+                setCheckedFilters(generateFilterObject(apps, filtersList));
                 setSelectedFiltersState(defaultState.selectedFilters);
               }}
             >
@@ -338,9 +319,6 @@ console.log('Filters',checkedFilters);
                     key={filter}
                     label={filter}
                     name={filter}
-                    // text={`${filter} (${
-                    //   filtersCount[filterCategory.property][filter]
-                    // })`}
                     text={`${filter}`}
                     checked={checkedFilters[filterCategory.property]?.[filter]}
                     onChange={(name, checked) => {
@@ -415,7 +393,6 @@ console.log('Filters',checkedFilters);
         <GoAButton size="compact" type="secondary"
           onClick={() => {        
             setRoadmapAccordionOpen(true);    
-           // setRoadmapAccordionState(roadmapWhenList.map(() => true));
             setCollapseKey2((prevKey) => prevKey + 1);
             }}
          >Expand all</GoAButton>
@@ -423,7 +400,6 @@ console.log('Filters',checkedFilters);
         <GoAButton size="compact" type="secondary"        
           onClick={() => {        
             setRoadmapAccordionOpen(false);     
-           // setRoadmapAccordionState(roadmapWhenList.map(() => false));
             setCollapseKey2((prevKey) => prevKey + 1);
             }}        
         >Collapse all</GoAButton>
@@ -434,13 +410,11 @@ console.log('Filters',checkedFilters);
         {roadmapWhenList.length > 0 ?
         roadmapWhenList.map((when, index) => (          
           <GoAAccordion 
-          key={`roadmapAcc${index}-${collapseKey2}`}
-          heading={`${when}`} 
-          headingSize="small"        
-          open={roadmapAccordionOpen}
-         // open={roadmapAccordionState[index]}
-         // onChange={() => ( )}
-            >
+            key={`roadmapAcc${index}-${collapseKey2}`}
+            heading={`${when}`} 
+            headingSize="small"        
+            open={roadmapAccordionOpen}
+          >
               <GoAGrid minChildWidth="33ch" gap="xl">
                 {roadmapData(services,when).map(app =>             
                   <Card app={app} roadmapMode={when} />
@@ -449,34 +423,32 @@ console.log('Filters',checkedFilters);
           </GoAAccordion>
           ))
           :
-          <GoACallout type="information" size="medium"
-          heading="No roadmap items found based on your search / filter options"
-          ></GoACallout>          
+          <GoACallout type="information" size="medium" heading="No roadmap items found based on your search / filter options" />         
         }        
       </>)      
       :
-      ( <>
+      (<>
         <GoASpacer vSpacing="l" />
         <span className="last-updated">
-        Showing {recommendedServices.length + otherServices.length} of{' '} {apps.length} results{' '}
-      </span>
-      <GoASpacer vSpacing="s" />
-      <GoAGrid minChildWidth="35ch" gap="2xl">
-        {recommendedServices.length > 0 ? (
-          recommendedServices.map((app) => {
-            return (
-              <Card app={app} roadmapMode={"list"} roadmapHistory={roadmapView.history}               
-              />
-            );
-          })
-        ) : (
-          <GoACallout
-            type="information"
-            size="medium"
-            heading="No recommended services found based on your search / filter options"
-          ></GoACallout>
-        )}
-      </GoAGrid>
+          Showing {recommendedServices.length + otherServices.length} of{' '} {apps.length} results{' '}
+        </span>
+        <GoASpacer vSpacing="s" />
+        <GoAGrid minChildWidth="35ch" gap="2xl">
+          {recommendedServices.length > 0 ? (
+            recommendedServices.map((app) => {
+              return (
+                <Card app={app} roadmapMode={"list"} roadmapHistory={roadmapView.history}               
+                />
+              );
+            })
+          ) : (
+            <GoACallout
+              type="information"
+              size="medium"
+              heading="No recommended services found based on your search / filter options"
+            ></GoACallout>
+          )}
+        </GoAGrid>
       </>)
       }
     </GoAThreeColumnLayout>

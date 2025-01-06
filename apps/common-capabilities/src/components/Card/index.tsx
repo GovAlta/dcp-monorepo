@@ -5,9 +5,7 @@ import {
 } from '@abgov/react-components';
 import React, { useEffect, useState } from 'react';
 import './styles.css';
-import type { array } from 'astro/zod';
-
-import { ServiceRoadmap } from '../../utils/roadmap'
+import { ServiceRoadmap } from './ServiceRoadmap'
 
 interface CardProps {  
   app: any;
@@ -15,21 +13,10 @@ interface CardProps {
   roadmapHistory: any;  
 }
 
-// interface CardProps {
-//   provider: string;
-//   description: string;
-//   title: string;
-//   app: any;
-//   roadmapMode: any;
-//   roadmapHistory: any;  
-// }
-
-  //const Card = ({ provider, description, title, app, roadmapMode, roadmapHistory }: CardProps) => {
-  const Card = ({ app, roadmapMode, roadmapHistory }: CardProps) => {
+const Card = ({ app, roadmapMode, roadmapHistory }: CardProps) => {
   const maxDescriptionLength = 200; // word length for short descpription in tile.
-  const badgesToShow = ['status']; //, 'FunctionalGroup', 'Language', 'Keywords'];
+  const badgesToShow = ['status'];
   const [showBadges, setShowBadges] = useState<JSX.Element[]>([]);
-  const [roadmapItems, setRoadmapItems] = useState<React.ReactNode | undefined>(undefined);
 
   function badgeType(value:any) {    
     if (value == 'Live')
@@ -58,9 +45,7 @@ interface CardProps {
         }
       }
     });
-    setShowBadges(badges);        
-    setRoadmapItems(<ServiceRoadmap roadmapItems={app.roadmap} roadmapMode={roadmapMode} showHistory={roadmapHistory} />)
-    
+    setShowBadges(badges);       
   }, [app,roadmapHistory]);
 
   return (    
@@ -70,8 +55,6 @@ interface CardProps {
         {<div id="service-tile-chips">{showBadges}</div>}
       </div>
 
-      {/* <a id="service-tile-title" href={`/services/details/index.html?id=${app.appId}`} > {title} </a>      
-      <br /> */}
       <a id="service-tile-title"
        href={`/details/index.html?id=${app.appId}`} > {app.serviceName} </a>      
 
@@ -80,7 +63,7 @@ interface CardProps {
         {`${app.summary.substring(0, maxDescriptionLength)}${app.summary.length > maxDescriptionLength ? '.....' : ''}`}
       </p>
       <GoASpacer vSpacing="xs" />
-      {roadmapItems}      
+      <ServiceRoadmap roadmapItems={app.roadmap} roadmapMode={roadmapMode} showHistory={roadmapHistory} />      
     </GoAContainer>    
   );
 };

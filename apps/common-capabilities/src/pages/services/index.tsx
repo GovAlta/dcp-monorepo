@@ -20,7 +20,7 @@ import {
   getAppsFilters,
   generateFilterObject,
   generateFilterCounts,
-} from './utils';
+} from '../utils/serviceListUtils';
 import { defaultState, filtersList, filterListCustom } from './config';
 import useFetch from '../../hooks/useFetch';
 import { getApiUrl } from '../../utils/configs';
@@ -54,7 +54,7 @@ export default function HomePage(): JSX.Element {
     const savedCheckboxState = localStorage.getItem('selectedCheckboxState');
     return savedCheckboxState
       ? JSON.parse(savedCheckboxState)
-      : generateFilterObject(apps);
+      : generateFilterObject(apps, filtersList);
   });
   const [selectedFiltersState, setSelectedFiltersState] = useState(() => {
     const savedFiltersState = localStorage.getItem('selectedFiltersState');
@@ -62,10 +62,6 @@ export default function HomePage(): JSX.Element {
       ? JSON.parse(savedFiltersState)
       : defaultState.selectedFilters;
   });
-
-  
-  // to force re-render UI for filter selection counts = n/a. Replaced by collapseKey
-  //const [rerender, setRerender] = useState('');
 
   // searches for items in the services array that match the search and filter
   // however search takes priority over filters
@@ -171,9 +167,9 @@ export default function HomePage(): JSX.Element {
         ],
       });
       setCheckedFilters({
-        ...generateFilterObject(apps),
+        ...generateFilterObject(apps, filtersList),
         functionalGroup: {
-          ...generateFilterObject(apps).functionalGroup,
+          ...generateFilterObject(apps, filtersList).functionalGroup,
           [category]: true,
         },
       });
@@ -207,7 +203,7 @@ export default function HomePage(): JSX.Element {
               //reset filters and checkbox state
               localStorage.removeItem('selectedCheckboxState');
               localStorage.removeItem('selectedFiltersState');
-              setCheckedFilters(generateFilterObject(apps));
+              setCheckedFilters(generateFilterObject(apps, filtersList));
               setSelectedFiltersState(defaultState.selectedFilters);
               localStorage.setItem(
                 'searchTimestamp',
@@ -228,7 +224,7 @@ export default function HomePage(): JSX.Element {
                 localStorage.removeItem('selectedFiltersState');
 
                 setSearchFilter('');
-                setCheckedFilters(generateFilterObject(apps));
+                setCheckedFilters(generateFilterObject(apps, filtersList));
                 setSelectedFiltersState(defaultState.selectedFilters);
               }}
             >
