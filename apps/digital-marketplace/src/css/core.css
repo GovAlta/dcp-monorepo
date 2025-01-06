@@ -65,7 +65,7 @@ html {
     visibility: hidden !important;
 }
 
-body, select, textarea, button {
+html body, select, textarea, button {
     margin: 0px;
     padding: 90px 0px 0px;
     background: #fff;
@@ -106,12 +106,12 @@ main ol li > a[target=_blank]:hover:after  {
     background-size: cover;
 }
 
-body {
+html body {
     margin: 0;
     padding: 0;
 }
 
-h1, h2, h3, h4, h5, h6, strong, b, dt {
+body h1, body h2, body h3, body h4, body h5, body h6, strong, b, dt {
     font-weight: 700;
 }
 
@@ -132,7 +132,7 @@ ul, ol {
     line-height: 2.25rem;
 }
 
-h1 {
+body h1 {
     margin: 0;
     padding: 0;
     font-size: 4rem;
@@ -141,7 +141,7 @@ h1 {
     color: #0081A2;
 }
 
-h2 {
+body h2 {
     margin: 0;
     padding: 0;
     line-height: 2.75rem;
@@ -151,7 +151,7 @@ h2 {
     color: #005072;
     }
 
-h2:after {
+body h2:after {
     content: '';
     display: block;
     width: 53px;
@@ -163,7 +163,7 @@ h2:after {
     left: 2px;
 }
 
-h3 {
+body h3 {
     padding: 0;    
     font-size: 1.75rem;
     line-height: 2.5rem;
@@ -172,11 +172,11 @@ h3 {
     color: #005072;
 }
 
-h3 + * {
+body h3 + * {
     margin: 2rem 0 0;
 }
 
-h4 {
+body h4 {
     margin: 0;
     padding: 0;    
     word-break: break-word;
@@ -184,7 +184,7 @@ h4 {
     color: #005072;
 }
 
-a {
+body a {
     color: #006dcc;
     overflow-wrap: break-word;
     word-wrap: break-word;
@@ -193,7 +193,7 @@ a {
     text-decoration-thickness: .0625rem;
 }
 
-p {
+body p {
     margin: 1.5rem 0 0;
 }
 
@@ -210,6 +210,8 @@ a:focus {
 
 a > em {
     color: #006dcc;
+    font-size: 0.875rem;
+    line-height: 1.5rem;
 }
 
 .container {
@@ -514,6 +516,7 @@ body:not(.adm-home-page) .goa-adm-body-header > .container {
     display: flex;
     flex-wrap: wrap;
     row-gap: 10px;
+    padding: 0;
 }
 
 .goa-adm-breadcrumbs > ul > li {
@@ -970,6 +973,7 @@ html[dir=rtl] body .adsp-fb button.adsp-fb-form-primary {
         z-index: 1000;
         position: relative;
         box-shadow: 0 4px 6px rgb(51, 51, 51, 0.24);
+        padding: 0;
     }
 
     nav.goa-adm-nav-menu > ul > li {
@@ -1054,17 +1058,17 @@ html[dir=rtl] body .adsp-fb button.adsp-fb-form-primary {
         margin: 3rem 0 0;
     }
 
-    h1 {
+    body h1 {
         font-size: 2.25rem;
         line-height: 2.75rem;
     }
 
-    h2 {
+    body h2 {
         font-size: 1.75rem;
         line-height: 2.25rem;
     }
 
-    h3 {
+    body h3 {
         font-size: 1.5rem;
         line-height: 2rem;
     }
@@ -1076,7 +1080,7 @@ html[dir=rtl] body .adsp-fb button.adsp-fb-form-primary {
         text-decoration-thickness: .0625rem;
     }
 
-    p,
+    body p,
     .goa-adm-body > .container > section > p,
     .goa-adm-body ul li,
     .goa-adm-body ol li  {  

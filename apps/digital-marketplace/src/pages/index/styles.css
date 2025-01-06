@@ -371,13 +371,13 @@ html[dir=rtl] body.adm-home-page .goa-adm-body-header.goa-adm-body-full .goa-adm
 
 .goa-adm-cards-info > .goa-adm-cards > .goa-adm-single-card > .goa-adm-single-card-content {
     height: 100%;
-    font-size: 1.5rem;
-    line-height: 2.25rem;
     margin: 1.5rem 0;
 }
 
 .goa-adm-cards-info > .goa-adm-cards > .goa-adm-single-card > .goa-adm-single-card-content > p {
     margin-top: 0;
+    font-size: 1.5rem;
+    line-height: 2.25rem;
 }
 
 .goa-adm-cards > .goa-adm-single-card > h3,
@@ -627,6 +627,11 @@ a.goa-adm-button-link:hover:after {
 }
 
 @media screen and (max-width: 767px) {
+
+    .goa-adm-cards-info > .goa-adm-cards > .goa-adm-single-card > .goa-adm-single-card-content > p {        
+        font-size: 1.125rem;
+        line-height: 1.75rem;
+    }
 
     /* CALLOUT ****************************/
 
