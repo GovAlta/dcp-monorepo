@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useState } from 'react';
 import { formPostUrl, getCaptchaSiteKey } from '../utils/domain';
-import { FormConfig } from './types';
+import type { FormConfig } from './types';
 
 const useForm = (
   initialValues: any,

@@ -37,7 +37,7 @@ jobs:
         with:
           node-version: '18'
           cache: 'npm'
-      - run: npm i --force
+      - run: npm i
 
       # Determine the last successful build of this (pipeline.yml) workflow and set it as the AFFECTED_BASE.
       - name: Get last successful commit
@@ -68,7 +68,7 @@ jobs:
         #   echo "AFFECTED_APPS=$AFFECTED_APPS" >> $GITHUB_ENV      
         # run: echo "AFFECTED_APPS=$(npx nx affected:apps --plain --base=${{ env.AFFECTED_BASE }})" >> $GITHUB_ENV
         run: echo "AFFECTED_APPS=${{ inputs.AFFECTED_APPS }}" >> $GITHUB_ENV
-      - run: npm prune --production --force
+      - run: npm prune --production
 
       # Run the OC BuildConfigs for create containers.
       - name: OC login

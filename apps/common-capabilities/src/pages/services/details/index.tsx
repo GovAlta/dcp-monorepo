@@ -33,6 +33,7 @@ interface SecurityItem {
   tableTh: any;
   dataSecurityType: string;
   note: string;
+  items: any;
 }
 
 export default function Details(): JSX.Element {
@@ -125,7 +126,7 @@ export default function Details(): JSX.Element {
           </thead>
           <tbody>
              {group.items
-             .filter(item => app[item] !== '')
+             .filter((item: any) => app[item] !== '')
              .map((item: any, index: any) => (
                 <tr key={`tr-${group.name}${index}`}>
                   <td key={`td1-${index}`}> {' '} {displayName(securityData, item)}{' '}  </td>

@@ -1,11 +1,11 @@
 import React, { useEffect, useMemo } from 'react';
 import ServiceFormWrapper from '../../components/ServiceForm/ServiceFormWrapper';
-import { Service } from '../../types/types';
 import useFetch from '../../hooks/useFetch';
 import { GoACircularProgress } from '@abgov/react-components';
 import useForm from '../../hooks/useFormSubmit';
 import { getApiUrl } from '../../utils/configs';
 import BackButton from '../../components/BackButton';
+import type { Service } from '../../types/types';
 
 type ServiceDetailsResponse = {
   serviceInfo: Service

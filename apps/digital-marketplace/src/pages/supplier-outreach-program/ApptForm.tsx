@@ -9,7 +9,7 @@ import 'flatpickr/dist/themes/material_green.css';
 import { GoACircularProgress } from '@abgov/react-components';
 import { getBookingsUrl } from '../../utils/config';
 import useFetch from '../../hooks/useFetch';
-import { Bookings } from './types';
+import type { Bookings } from './types';
 
 enum ContactType {
   EMAIL = 'Email',
@@ -202,8 +202,8 @@ export default function ApptForm() {
                   <Textarea
                     id="toDiscuss"
                     name="toDiscuss"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
+                    onChange={handleChange as any}
+                    onBlur={handleBlur as any}
                     value={values.toDiscuss}
                     error={errors.toDiscuss}
                     required={true}

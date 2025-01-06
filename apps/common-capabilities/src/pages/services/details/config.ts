@@ -1,5 +1,5 @@
-import { Service } from "../../../types/types";
 import { getProperty } from "../utils"; 
+import type { Service } from "../../../types/types";
 
 export const securityGroups = [
     {
