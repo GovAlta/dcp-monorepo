@@ -1,5 +1,3 @@
-import { filtersList } from './config';
-
 export function capitalizeFirstWord(s) {
   return s.replace(/(^|[^a-zA-Z])[a-z]/g, (match) => match.toUpperCase());
 }
@@ -51,7 +49,7 @@ export function getAppsFilters(apps, filterKeys) {
   };
 }
 
-export function generateFilterObject(services) {
+export function generateFilterObject(services, filtersList) {
   const { filters } = getAppsFilters(services, filtersList);
 
   const filterObject = {};
@@ -66,7 +64,7 @@ export function generateFilterObject(services) {
   return filterObject;
 }
 
-export function generateFilterCounts(filteredServices, services) {
+export function generateFilterCounts(filteredServices, services, filtersList) {
   // get list of all filters available
   const { filters } =  getAppsFilters(services, filtersList);
 
@@ -98,8 +96,4 @@ export function generateFilterCounts(filteredServices, services) {
   }
 
   return filterCounts;
-}
-
-export function getProperty(obj, path) {
-  return path.split('.').reduce((acc, key) => acc?.[key], obj); 
 }

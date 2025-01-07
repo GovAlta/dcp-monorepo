@@ -1,10 +1,9 @@
-import { getProperty } from "../utils"; 
-import type { Service } from "../../../types/types";
+import { getProperty } from "../../utils/configs";
+import type { Service } from "../../types/types";
 
 export const securityGroups = [
     {
         "name": "stra",
-        "dataSecurityType": "",
         "title": " General cybersecurity risk assessment",
         "items": [
             "stra"
@@ -14,7 +13,6 @@ export const securityGroups = [
     },
     {
         "name": "cybersecurity",
-        "dataSecurityType": "urity",
         "title": " Cybersecurity consult",
         "items": [
             "cmraReq",
@@ -27,8 +25,7 @@ export const securityGroups = [
         "note": ""
     },
     {
-        "name": "considerations",
-        "dataSecurityType": "ations",
+        "name": "considerations",      
         "title": " Special considerations",
         "items": [
             "classification",
