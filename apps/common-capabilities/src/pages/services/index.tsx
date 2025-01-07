@@ -419,7 +419,7 @@ export default function HomePage(): JSX.Element {
           ></GoACallout>
         )}
       </GoAGrid>
-      <GoASpacer vSpacing="xl" />
+      <GoASpacer vSpacing="3xl" />
       <LastUpdated date={lastUpdated} />
     </GoAThreeColumnLayout>
   );

@@ -324,7 +324,7 @@ export default function Details(): JSX.Element {
             />{' '}
             on this service.
           </div>
-          <GoASpacer vSpacing="xl" />
+          <GoASpacer vSpacing="3xl" />
           <span className="content-bottom">
             <LastUpdated date={app.lastUpdatedDate} name={app.editorName} email={app.editorEmail} />
             <BackToTop />
