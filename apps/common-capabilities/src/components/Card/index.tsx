@@ -5,16 +5,17 @@ import {
 } from '@abgov/react-components';
 import React, { useEffect, useState } from 'react';
 import './styles.css';
-interface CardProps {
-  provider: string;
-  description: string;
-  title: string;
+import { ServiceRoadmap } from './ServiceRoadmap'
+
+interface CardProps {  
   app: any;
+  roadmapMode: any;
+  roadmapHistory: any;  
 }
 
-const Card = ({ provider, description, title, app }: CardProps) => {
+const Card = ({ app, roadmapMode, roadmapHistory }: CardProps) => {
   const maxDescriptionLength = 200; // word length for short descpription in tile.
-  const badgesToShow = ['status']; //, 'FunctionalGroup', 'Language', 'Keywords'];
+  const badgesToShow = ['status'];
   const [showBadges, setShowBadges] = useState<JSX.Element[]>([]);
 
   function badgeType(value:any) {    
@@ -44,9 +45,8 @@ const Card = ({ provider, description, title, app }: CardProps) => {
         }
       }
     });
-
-    setShowBadges(badges);
-  }, [app]);
+    setShowBadges(badges);       
+  }, [app,roadmapHistory]);
 
   return (    
     <GoAContainer accent="thin">
@@ -56,13 +56,14 @@ const Card = ({ provider, description, title, app }: CardProps) => {
       </div>
 
       <a id="service-tile-title"
-        href={`/services/details/index.html?id=${app.appId}`} >
-        {title}        
-      </a>      
+       href={`/details/index.html?id=${app.appId}`} > {app.serviceName} </a>      
+
       <GoASpacer vSpacing="m" />
       <p id="service-tile-content">
-        {`${description.substring(0, maxDescriptionLength)}${description.length > maxDescriptionLength ? '.....' : ''}`}
-      </p>     
+        {`${app.summary.substring(0, maxDescriptionLength)}${app.summary.length > maxDescriptionLength ? '.....' : ''}`}
+      </p>
+      <GoASpacer vSpacing="xs" />
+      <ServiceRoadmap roadmapItems={app.roadmap} roadmapMode={roadmapMode} showHistory={roadmapHistory} />      
     </GoAContainer>    
   );
 };

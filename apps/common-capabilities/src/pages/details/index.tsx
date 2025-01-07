@@ -10,17 +10,17 @@ import {
 } from '@abgov/react-components';
 import React, { useEffect, useState, useMemo } from 'react';
 import './styles.css';
-import ExternalLink from '../../../components/ExternalLink';
-import BackButton from '../../../components/BackButton';
-import BackToTop from '../../../components/BackToTop';
+import ExternalLink from '../../components/ExternalLink';
+import BackButton from '../../components/BackButton';
+import BackToTop from '../../components/BackToTop';
 import {
   securityGroups,
   securityData,
   specifications,
   bodyItems,
 } from './config';
-import useFetch from '../../../hooks/useFetch';
-import { getApiUrl } from '../../../utils/configs';
+import useFetch from '../../hooks/useFetch';
+import { getApiUrl } from '../../utils/configs';
 import Roadmap from 'apps/common-capabilities/src/components/Roadmap';
 
 type ServiceDetailsResponse = {
@@ -30,8 +30,7 @@ type ServiceDetailsResponse = {
 interface SecurityItem {
   name: string;
   title: string;
-  tableTh: any;
-  dataSecurityType: string;
+  tableTh: any;  
   note: string;
 }
 
@@ -286,7 +285,10 @@ export default function Details(): JSX.Element {
             </div>
           }
         >
-          <BackButton text="Back to listing" onClick={() => (window.location.href = '/services/index.html')} />
+          {/* <BackButton text="Back to listing" onClick={() => (window.location.href = '/services/index.html')} /> */}
+          <BackButton text="Back to listing" onClick={() => { history.back(); }} />
+
+
           <GoASpacer vSpacing="l" />
           <div className="service-heading">
           <h2>{app.serviceName}</h2>

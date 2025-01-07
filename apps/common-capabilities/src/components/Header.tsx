@@ -30,6 +30,7 @@ const Header = () => {
         <a href="/about/index.html">About</a>
         <a href="/ecosystem/index.html">Eco-system</a>
         <a href="/services/index.html">Services</a>
+        <a href="/roadmap/index.html">Roadmap</a>
         <a href="/support/index.html">Support</a>
       </GoAAppHeader>
     </>

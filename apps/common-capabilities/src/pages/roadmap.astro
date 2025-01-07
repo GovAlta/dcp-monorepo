@@ -1,0 +1,8 @@
+---
+import Layout from '../layouts/ClientOnlyRenderLayout.astro';
+import ServicesPage from './roadmap/index';
+---
+
+<Layout title='Common capabilities-Roadmap' contentHeight='2000px'>
+    <ServicesPage client:only="react" />
+</Layout>
