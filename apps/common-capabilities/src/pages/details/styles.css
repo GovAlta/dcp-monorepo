@@ -85,3 +85,11 @@ font-weight: 600;
 .td-links {
   vertical-align: sub;
 }
+
+.content-bottom > .last-updated {
+  float: left;
+}
+
+.content-bottom > .back-top {
+  float: right;
+}

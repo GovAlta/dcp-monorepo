@@ -19,7 +19,7 @@ import './styles.css';
 import {
   getAppsFilters,
   generateFilterObject,
-  generateFilterCounts,
+  getLastUpdatedDate,
 } from '../utils/serviceListUtils';
 import { defaultState, filtersList, filterListCustom } from './config';
 import useFetch from '../../hooks/useFetch';
@@ -37,6 +37,7 @@ export default function HomePage(): JSX.Element {
   const [roadmapAccordionOpen,setRoadmapAccordionOpen] = useState(false); 
   const [collapseKey, setCollapseKey] = useState(0);
   const [searchFilter, setSearchFilter] = useState('');
+  const [lastUpdated, setLastUpdated] = useState('');
   const [services, setServices] = useState([]);  
   const [filtersAccordionState, setFiltersAccordionState] = useState({
     environment: false,
@@ -101,6 +102,7 @@ export default function HomePage(): JSX.Element {
   useEffect(() => {
     if (!isLoading && data) {
       setApps(data.services);
+      setLastUpdated(getLastUpdatedDate(data.services));
       setFilterList(getAppsFilters(data.services, filtersList));
     }
   }, [data, isLoading]);
@@ -451,6 +453,8 @@ export default function HomePage(): JSX.Element {
         </GoAGrid>
       </>)
       }
+      <GoASpacer vSpacing="xl" />
+      <LastUpdated date={lastUpdated} />
     </GoAThreeColumnLayout>
   );
 }

@@ -1,0 +1,8 @@
+.last-updated > .label, .value {
+    font: var(--goa-typography-body-s);
+    color: var(--goa-color-greyscale-500);
+}
+
+.last-updated > .value {
+    margin-left: 5px;
+}

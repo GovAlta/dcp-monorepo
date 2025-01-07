@@ -1,12 +1,19 @@
-export function capitalizeFirstWord(s) {
+import dayjs from "dayjs";
+import type { Service } from "../../types/types";
+import type { ServiceFilterKey } from "../services/config";
+import type { RoadmapFilterKey } from "../roadmap/config";
+
+type FilterKey = ServiceFilterKey | RoadmapFilterKey;
+
+export function capitalizeFirstWord(s: string) {
   return s.replace(/(^|[^a-zA-Z])[a-z]/g, (match) => match.toUpperCase());
 }
 
-export function getAppsFilters(apps, filterKeys) {
-  const filters = {};
-  const indexedItems = {};
+export function getAppsFilters(apps: Service[], filterKeys: FilterKey[]) {
+  const filters: any = {};
+  const indexedItems: any = {};
 
-  apps.forEach((app) => {
+  apps.forEach((app: Service) => {
     filterKeys.forEach((key) => {
       if (app[key]) {
         if (Array.isArray(app[key])) {
@@ -18,7 +25,7 @@ export function getAppsFilters(apps, filterKeys) {
             if (typeof element === 'object') {
               filters[key].add(...Object.values(element));
 
-              Object.values(element).forEach((value) => {
+              Object.values(element).forEach((value: any) => {
                 indexedItems[value] = (indexedItems[value] || new Set()).add(app.appId);
               });
             } else {
@@ -49,14 +56,14 @@ export function getAppsFilters(apps, filterKeys) {
   };
 }
 
-export function generateFilterObject(services, filtersList) {
+export function generateFilterObject(services: Service[], filtersList: FilterKey[]) {
   const { filters } = getAppsFilters(services, filtersList);
 
-  const filterObject = {};
+  const filterObject: any = {};
 
   for (const key in filters) {
     filterObject[key] = {};
-    filters[key].forEach((filterValue) => {
+    filters[key].forEach((filterValue: FilterKey) => {
       filterObject[key][filterValue] = false;
     });
   }
@@ -64,36 +71,19 @@ export function generateFilterObject(services, filtersList) {
   return filterObject;
 }
 
-export function generateFilterCounts(filteredServices, services, filtersList) {
-  // get list of all filters available
-  const { filters } =  getAppsFilters(services, filtersList);
+export function getLastUpdatedDate(services: Service[]) {
+  let lastUpdatedDate = dayjs(0);
+  let hasLastUpdatedDate = false;
 
-  const filterCounts = {};
-  for (const filterType of Object.keys(filters)) {
-    filterCounts[filterType] = {};
-    for (const filterValue of filters[filterType]) {
-      filterCounts[filterType][filterValue] = 0;
-    }
-  }
-
-  for (const service of filteredServices) {
-    for (const filterType of Object.keys(filterCounts)) {
-      const filters = service[filterType];
-      if (filters) {
-        if (typeof filters === 'string') {
-          if (filterCounts[filterType][filters] !== undefined) {
-            filterCounts[filterType][filters]++;
-          }
-        } else if (Array.isArray(filters)) {
-          filters.forEach((filter) => {
-            if (filterCounts[filterType][filter] !== undefined) {
-              filterCounts[filterType][filter]++;
-            }
-          });
-        }
+  for (const service of services) {
+    if (service.lastUpdatedDate) {
+      const date = dayjs(service.lastUpdatedDate);
+      if (date > lastUpdatedDate) {
+        lastUpdatedDate = date;
+        hasLastUpdatedDate = true;
       }
     }
   }
 
-  return filterCounts;
+  return hasLastUpdatedDate ? lastUpdatedDate.format() : "";
 }

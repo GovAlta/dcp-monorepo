@@ -25,7 +25,7 @@ type Roadmap = {
 
 export type ServiceListingResponse = {
   services: Array<Service>;
-};
+}
 
 export type Service = {
   appId: string;
@@ -59,7 +59,8 @@ export type Service = {
   filterText: string;
   supportLevel: string;
   audience: Array<{item: string}>;
-  editorName: string,
-  editorEmail: string
-  roadmap: Array<Roadmap>
+  editorName: string;
+  editorEmail: string;
+  roadmap: Array<Roadmap>;
+  lastUpdatedDate: string;
 }

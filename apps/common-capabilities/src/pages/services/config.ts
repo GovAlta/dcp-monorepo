@@ -17,7 +17,9 @@ export const filtersList = [
   'status',
   'functionalGroup',
   'provider',
-];
+] as const;
+
+export type ServiceFilterKey = typeof filtersList[number];
 
 export const filterListCustom = [
   {
