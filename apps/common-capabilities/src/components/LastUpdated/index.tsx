@@ -15,11 +15,11 @@ const LastUpdated = ({ date, name, email }: LastUpdatedProps) => {
         <div className="last-updated">
             <span className="label">Last updated:</span>
             <span className="value">{dayjs(date).format('YYYY-MM-DD')}</span>
-            {name && (
+            {(name || email) && (
                 <>
                     <span className="value">by</span>
                     <span className="value">
-                        { email ? <ExternalLink link={`mailto:${email}`} text={name} /> : name }
+                        { email ? <ExternalLink link={`mailto:${email}`} text={name || email} /> : name }
                     </span>
                 </>
             )}
