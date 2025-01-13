@@ -17,7 +17,9 @@ export const filtersList = [
   'environment',
   'language',
   'keywords'
-];
+] as const;
+
+export type RoadmapFilterKey = typeof filtersList[number];
 
 export const filterListCustom = [
   {

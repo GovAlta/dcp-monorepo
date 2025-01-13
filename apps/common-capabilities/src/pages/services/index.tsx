@@ -19,12 +19,13 @@ import './styles.css';
 import {
   getAppsFilters,
   generateFilterObject,
-  generateFilterCounts,
+  getLastUpdatedDate,
 } from '../utils/serviceListUtils';
 import { defaultState, filtersList, filterListCustom } from './config';
 import useFetch from '../../hooks/useFetch';
 import { getApiUrl } from '../../utils/configs';
 import { ServiceListingResponse } from '../../types/types';
+import LastUpdated from '../../components/LastUpdated';
 
 type Filter = {
   [key: string]: any[];
@@ -33,6 +34,7 @@ type Filter = {
 export default function HomePage(): JSX.Element {
   const [collapseKey, setCollapseKey] = useState(0);
   const [searchFilter, setSearchFilter] = useState('');
+  const [lastUpdated, setLastUpdated] = useState('');
   const [services, setServices] = useState([]);
   const [filtersAccordionState, setFiltersAccordionState] = useState({
     environment: false,
@@ -93,6 +95,7 @@ export default function HomePage(): JSX.Element {
   useEffect(() => {
     if (!isLoading && data) {
       setApps(data.services);
+      setLastUpdated(getLastUpdatedDate(data.services));
       setFilterList(getAppsFilters(data.services, filtersList));
     }
   }, [data, isLoading]);
@@ -416,6 +419,8 @@ export default function HomePage(): JSX.Element {
           ></GoACallout>
         )}
       </GoAGrid>
+      <GoASpacer vSpacing="3xl" />
+      <LastUpdated date={lastUpdated} />
     </GoAThreeColumnLayout>
   );
 }
