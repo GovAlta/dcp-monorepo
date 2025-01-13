@@ -26,6 +26,7 @@ import useFetch from '../../hooks/useFetch';
 import { getApiUrl } from '../../utils/configs';
 import { ServiceListingResponse } from '../../types/types';
 import { roadmaplist } from '../../components/Card/ServiceRoadmap'
+import LastUpdated from '../../components/LastUpdated';
 
 type Filter = {
   [key: string]: any[];
