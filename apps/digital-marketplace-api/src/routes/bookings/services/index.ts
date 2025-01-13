@@ -3,7 +3,12 @@ import { RequestHandler } from 'express';
 import { Logger } from 'winston';
 import axios from 'axios';
 import { environment } from '../../../environments/environment';
-import { CalendarData, CalendarEventsData } from '../types';
+import {
+  BookingRequest,
+  BookingTimeslots,
+  CalendarData,
+  CalendarEventsData,
+} from '../types';
 
 function requestErrorHandler(
   error: Error,
@@ -57,6 +62,10 @@ export function getAvailableBookings(
 
       // format current date + buffer
       const date = new Date();
+      const timeZone = 'America/Edmonton';
+      const timeZoneOffset = new Date().toLocaleString('en-US', { timeZone });
+      const offsetInHours = new Date(timeZoneOffset).getTimezoneOffset() / 60;
+      date.setHours(date.getHours() - offsetInHours);
       date.setDate(date.getDate() + Number(environment.BOOKINGS_DAYS_AHEAD));
       const currentDatePlus5Days = date
         .toISOString()
@@ -114,7 +123,7 @@ export function getAvailableBookings(
         businessDays: mapBusinessDaysData(getBusinessDates.data.results),
       };
       // Initialize the result object with two properties: availableDateToBook and bookingsAvailability
-      const result = {
+      const result: BookingTimeslots = {
         availableDatesToBook: [], // array to store dates that have at least one available period
         bookingsAvailability: {}, // object to store availability of each period for each date
       };
@@ -150,6 +159,144 @@ export function getAvailableBookings(
     } catch (error) {
       console.log(error);
       requestErrorHandler(error, logger, 'failed to get current bookings', res);
+    }
+  };
+}
+
+export function bookEvent(
+  logger: Logger,
+  tokenProvider: TokenProvider,
+  calendarServiceUrl: URL,
+  eventServiceUrl: URL
+): RequestHandler {
+  return async (req, res) => {
+    try {
+      const token = await tokenProvider.getAccessToken();
+      const reqBody: BookingRequest = req.body;
+      const timeslots = {
+        AM: {
+          start: 'T09:00:00-07:00',
+          end: 'T12:00:00-07:00',
+        },
+        PM: {
+          start: 'T13:00:45-07:00',
+          end: 'T15:00:00-07:00',
+        },
+      };
+
+      if (res.locals.existingBooking) {
+
+        // create an attendee
+        await axios.post(
+          `${calendarServiceUrl}/calendars/${reqBody.calendarId}/events/${res.locals.eventAttendees.id}/attendees`,
+          {
+            name: `${reqBody.firstName} ${reqBody.lastName}`,
+            email: reqBody.email,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+      } else {
+        const bookingEventApiCall = await axios.post(
+          `${calendarServiceUrl}/calendars/${reqBody.calendarId}/events`,
+          {
+            name: `${reqBody.date}-${reqBody.slot}`,
+            start: `${reqBody.date}${timeslots[reqBody.slot].start}`, //'2024-12-25T08:00:45-07:00', example
+            recordId: reqBody.date.replace(/-/g, ''), // 20241225, example
+            description: 'consultation request',
+            end: `${reqBody.date}${timeslots[reqBody.slot].end}`,
+            isPublic: 'false',
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        await axios.post(
+          `${calendarServiceUrl}/calendars/${reqBody.calendarId}/events/${bookingEventApiCall.data.id}/attendees`,
+          {
+            name: `${reqBody.firstName} ${reqBody.lastName}`,
+            email: reqBody.email,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+      }
+
+      // notify booking managers
+      const bookingManagerEmails =
+        environment.BOOKING_CONSULTATION_EMAILS.split(',');
+
+      // send emails to staff
+      await Promise.all(
+        bookingManagerEmails.map(async (email) => {
+          await axios.post(
+            `${eventServiceUrl}/events`,
+            {
+              namespace: 'marketplace',
+              name: 'notify-consultation-managers',
+              timestamp: new Date().toISOString(),
+              payload: {
+                userEmail: email,
+                email: reqBody.email,
+                toDiscuss: reqBody.toDiscuss,
+                agreement: reqBody.agreement,
+                orgName: reqBody.orgName,
+                firstName: reqBody.firstName,
+                lastName: reqBody.lastName,
+                techProvider: reqBody.techProvider,
+                date: reqBody.date,
+                slot: reqBody.slot,
+              },
+            },
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
+        })
+      );
+
+      // send email to user who submitted the form
+      await axios.post(
+        `${eventServiceUrl}/events`,
+        {
+          namespace: 'marketplace',
+          name: 'notify-consultation-user',
+          timestamp: new Date().toISOString(),
+          payload: {
+            userEmail: reqBody.email,
+            email: reqBody.email,
+            toDiscuss: reqBody.toDiscuss,
+            orgName: reqBody.orgName,
+            firstName: reqBody.firstName,
+            lastName: reqBody.lastName,
+            date: reqBody.date,
+            slot: reqBody.slot,
+          },
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      res.status(200).send({
+        message: 'success',
+      });
+    } catch (error) {
+      console.log(error);
+      requestErrorHandler(error, logger, 'failed to book event', res);
     }
   };
 }

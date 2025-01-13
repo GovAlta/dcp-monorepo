@@ -2,8 +2,9 @@ import { RequestHandler, Router } from 'express';
 import { Logger } from 'winston';
 import axios from 'axios';
 import { SiteVerifyResponse, RouterOptions } from './types';
-import { getAvailableBookings } from './services';
+import { bookEvent, getAvailableBookings } from './services';
 import { environment } from '../../environments/environment';
+import { validateBookingData } from './middlewares/index';
 
 export function verifyCaptcha(
   logger: Logger,
@@ -57,6 +58,13 @@ export function createBookingsRouter({
   router.get(
     '/bookings/availability',
     getAvailableBookings(logger, tokenProvider, calendarServiceUrl)
+  );
+
+  router.post(
+    '/bookings',
+    verifyCaptcha(logger, environment.RECAPTCHA_SECRET),
+    validateBookingData(logger, tokenProvider, calendarServiceUrl),
+    bookEvent(logger, tokenProvider, calendarServiceUrl, eventServiceUrl)
   );
 
   return router;
