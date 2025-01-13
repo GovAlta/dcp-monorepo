@@ -14,6 +14,20 @@ export interface RouterOptions {
   calendarServiceUrl: URL;
 }
 
+export interface BookingRequest {
+  date: string;
+  slot: 'AM' | 'PM';
+  calendarId: string;
+  email: string;
+  orgName: string;
+  firstName: string;
+  lastName: string;
+  techProvider: boolean;
+  signUpType: 'Email';
+  toDiscuss: string;
+  agreement: boolean;
+}
+
 export interface CalendarData {
   results: CalendarDay[];
   page: {
@@ -51,4 +65,9 @@ export interface CalendarEvent {
   end: string;
   isAllDay: boolean;
   isPublic: boolean;
+  attendees?: Array<{ id: number; name: string; email: string }>;
+}
+export interface BookingTimeslots {
+  availableDatesToBook: string[]; // "2025-01-13",
+  bookingsAvailability: { [date: string]: { [slot in 'AM' | 'PM']: boolean } };
 }

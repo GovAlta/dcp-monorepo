@@ -14,6 +14,7 @@ export default function SignupForm() {
     website: '',
     agreement: false,
     signUpType: '',
+    formType: 'signup'
   };
 
   const {

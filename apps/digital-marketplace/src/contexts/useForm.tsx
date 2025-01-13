@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useState } from 'react';
-import { formPostUrl, getCaptchaSiteKey } from '../utils/domain';
+import { bookingsUrl, formPostUrl, getCaptchaSiteKey } from '../utils/domain';
 import { FormConfig } from './types';
 
 const useForm = (
@@ -15,12 +15,12 @@ const useForm = (
   const [loading, setLoading] = useState(false);
   const [apiError, setApiError] = useState(null);
 
-  const getErrorsOnChange = (prevErrors:any, name: string, newValue: any) => {
+  const getErrorsOnChange = (prevErrors: any, name: string, newValue: any) => {
     let newErrors = Object.assign({}, prevErrors);
     const config = formConfig.properties[name];
 
     if (config?.oneOf) {
-      const choicePropErrors =  config.oneOf.reduce((acc: any, current: any) => {
+      const choicePropErrors = config.oneOf.reduce((acc: any, current: any) => {
         if (name !== current) {
           acc[current] = null;
         }
@@ -29,7 +29,7 @@ const useForm = (
       }, {});
 
       const combinedErrors = Object.assign({}, prevErrors, choicePropErrors);
-    
+
       newErrors = Object.fromEntries(
         Object.entries(combinedErrors).filter(([key, value]) => !!value)
       );
@@ -48,13 +48,15 @@ const useForm = (
   }) => {
     const { name, value, type, checked } = e.target;
     const newValue = type === 'checkbox' ? checked : value;
-    
+
     setValues((prevValues: any) => ({
       ...prevValues,
       [name]: newValue,
     }));
 
-    setErrors((prevErrors: any) => getErrorsOnChange(prevErrors, name, newValue));
+    setErrors((prevErrors: any) =>
+      getErrorsOnChange(prevErrors, name, newValue)
+    );
   };
 
   const handleSubmit = async (e: { preventDefault: () => void }) => {
@@ -67,16 +69,19 @@ const useForm = (
           const entryValue = typeof value === 'string' ? value.trim() : value;
           const fieldConfig = formConfig.properties[key];
           let entry: any = [key, entryValue];
-          
+
           if (fieldConfig) {
-            if (!fieldConfig.includedInPayload || (!fieldConfig.required && entryValue === '')) {
+            if (
+              !fieldConfig.includedInPayload ||
+              (!fieldConfig.required && entryValue === '')
+            ) {
               entry = null;
             }
           }
 
           return entry;
         })
-        .filter(entry => !!entry)
+        .filter((entry) => !!entry)
     );
 
     if (Object.keys(validationErrors).length === 0) {
@@ -96,18 +101,30 @@ const useForm = (
           });
         });
         jsonData['token'] = recaptcha;
-        await axios.post(
-          formConfig.getEntityUrl(formPostUrl(), values),
-          jsonData,
-          {
-            headers: { 'Content-Type': 'application/json' },
-          }
-        );
+        if (values.formType === 'consultation') {
+          await axios.post(
+            bookingsUrl(),
+            jsonData,
+            {
+              headers: { 'Content-Type': 'application/json' },
+            }
+          );
+        }
+        if (values.formType === 'signup') {
+          await axios.post(
+            formConfig.getEntityUrl(formPostUrl(), values),
+            jsonData,
+            {
+              headers: { 'Content-Type': 'application/json' },
+            }
+          );
+        }
         setSuccess(true);
         setValues(initialValues);
         setErrors({});
       } catch (error: any) {
-        setApiError(error.message);
+        setApiError(error.response.data.error);
+        console.error(error);
       } finally {
         setLoading(false);
       }

@@ -25,6 +25,9 @@ export const environment: any = envalid.cleanEnv(
     BOOKINGS_DAYS_AHEAD: envalid.str({ default: '5' }),
     BOOKING_DAYS_AVAILABLE: envalid.str({ default: '15' }),
     MAX_BOOKING_PER_SLOT: envalid.str({ default: '5' }),
+    BOOKING_CONSULTATION_EMAILS: envalid.str({
+      default: 'subbu.mettu@gov.ab.ca',
+    }), // email1,email2
   },
   {
     reporter: ({ errors }) => {

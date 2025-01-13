@@ -2,7 +2,7 @@ import { FormConfig } from "../../contexts/types";
 
 export const apptFormConfig: FormConfig = {
   properties: {
-    organization: {
+    orgName: {
       required: true,
       messages: {
         required: 'Enter your organization name',
@@ -20,9 +20,9 @@ export const apptFormConfig: FormConfig = {
       includedInPayload: true,
       revalidateOnChange: false,
     },
-    emailAddress: {
+    email: {
       required: true,
-      oneOf: ['emailAddress', 'phoneNumber'],
+      oneOf: ['email', 'phoneNumber'],
       messages: {
         required: 'Enter your email address',
       },
@@ -37,7 +37,7 @@ export const apptFormConfig: FormConfig = {
     },
     phoneNumber: {
       required: true,
-      oneOf: ['emailAddress', 'phoneNumber'],
+      oneOf: ['email', 'phoneNumber'],
       messages: {
         required: 'Enter your phone number',
       },
@@ -95,7 +95,7 @@ export const apptFormConfig: FormConfig = {
       includedInPayload: false,
       revalidateOnChange: true,
     },
-    isTechnologyProvider: {
+    techProvider: {
       required: true,
       messages: {
         required: 'Select one of the options',
@@ -131,7 +131,7 @@ export const apptFormConfig: FormConfig = {
       includedInPayload: true,
       revalidateOnChange: true,
     },
-    when: {
+    slot: {
       required: true,
       messages: {
         required: 'Select a time slot',
