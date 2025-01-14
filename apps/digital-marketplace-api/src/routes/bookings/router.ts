@@ -16,9 +16,9 @@ export function verifyCaptcha(
       next();
     } else {
       try {
-        const { captchaToken } = req.body;
+        const { token } = req.body;
         const { data } = await axios.post<SiteVerifyResponse>(
-          `https://www.google.com/recaptcha/api/siteverify?secret=${RECAPTCHA_SECRET}&response=${captchaToken}`
+          `https://www.google.com/recaptcha/api/siteverify?secret=${RECAPTCHA_SECRET}&response=${token}`
         );
         console.log(data);
 

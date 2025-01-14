@@ -9,6 +9,10 @@ import {
   CalendarData,
   CalendarEventsData,
 } from '../types';
+import axiosRetry from "axios-retry";
+
+axiosRetry(axios, { retries: 3, retryDelay: axiosRetry.exponentialDelay });
+
 
 function requestErrorHandler(
   error: Error,
