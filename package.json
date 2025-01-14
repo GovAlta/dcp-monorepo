@@ -8,8 +8,8 @@
   },
   "private": true,
   "devDependencies": {
-    "@abgov/design-tokens": "^1.1.1",
-    "@abgov/jsonforms-components": "^1.40.1",
+    "@abgov/design-tokens": "^1.1.1",    
+    "@abgov/jsonforms-components": "^1.50.4",
     "@abgov/react-components": "4.20.2",
     "@abgov/web-components": "1.20.3",
     "@astrojs/mdx": "^0.19.7",

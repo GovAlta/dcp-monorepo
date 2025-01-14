@@ -35,7 +35,16 @@ const getImpactItems = (impacts: string) => {
 }
 
 export default function Roadmap({ roadmap }: RoadmapProps) {
-    const content = roadmap?.map((item, index) => (
+    const sortedData = [...roadmap].sort((a, b) => {
+        const parseWhen = (when:any) => {
+        if (when === 'TBD') return Infinity;
+        const [year, quarter] = when.split(' ');
+        return parseInt(year) * 10 + parseInt(quarter.replace('Q', ''));
+        };      
+        return parseWhen(a.when) - parseWhen(b.when);
+    });     
+
+    const content = sortedData?.map((item, index) => (    
         <GoAAccordion key={index} heading={`${item.when} - ${item.title}`}>
               <dl className='roadmap-details'>
                 {
