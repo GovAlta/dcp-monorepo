@@ -9,7 +9,7 @@ import {
   CalendarEvent,
   CalendarEventsData,
 } from '../types';
-import axiosRetry from "axios-retry";
+import axiosRetry from 'axios-retry';
 
 axiosRetry(axios, { retries: 3, retryDelay: axiosRetry.exponentialDelay });
 
@@ -91,7 +91,8 @@ export function validateBookingData(
 
     // check if the event is already created else create new event with a new attendee
     const existingBooking = getCurrentBookings.data.results.filter(
-      (booking) => booking.recordId === formattedBookingDate
+      (booking) =>
+        booking.recordId === formattedBookingDate && booking.name.includes(slot)
     );
     res.locals.existingBooking = existingBooking.length > 0;
 
@@ -123,7 +124,12 @@ export function validateBookingData(
           (attendee) => attendee.email === email
         );
         if (isDuplicateAttendee.length > 0) {
-          return res.status(400).send({ error: 'Duplicate attendee, cant make another booking on same day' });
+          return res
+            .status(400)
+            .send({
+              error:
+                'Duplicate attendee, cant make another booking on same day',
+            });
         }
       }
 
