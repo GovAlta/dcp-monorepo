@@ -9,6 +9,9 @@ import {
   CalendarEvent,
   CalendarEventsData,
 } from '../types';
+import axiosRetry from "axios-retry";
+
+axiosRetry(axios, { retries: 3, retryDelay: axiosRetry.exponentialDelay });
 
 /**
  * Validates the booking request data.

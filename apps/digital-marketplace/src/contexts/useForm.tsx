@@ -123,7 +123,7 @@ const useForm = (
         setValues(initialValues);
         setErrors({});
       } catch (error: any) {
-        setApiError(error.response.data.error);
+        setApiError(error.response.data.error || error.response.data);
         console.error(error);
       } finally {
         setLoading(false);
