@@ -28,9 +28,9 @@ export default function ServiceHelp() {
         To build a digitally capable Government of Alberta by growing the knowledge, skills and experience of public servants in digital-era service design and delivery.
       </p>
       <GoASpacer vSpacing="l" />
-      <h3>
+      <h2>
         Program Outcomes
-      </h3>
+      </h2>
       <p>
         <ul className="goa-unordered-list">
           <li>
@@ -47,8 +47,15 @@ export default function ServiceHelp() {
           </li>
         </ul>
       </p>
-      <h3>Learning Pathways and User Groups</h3>
-      <h4>Priority</h4>
+      <GoASpacer vSpacing="l" />
+      <h2>Learning Pathways and User Groups</h2>
+    <p>Digital capability focuses on three pathways with a suite of training and learning supports under each:</p>
+    <ol className="goa-ordered-list">
+      <li>Digital Foundations: Targeted to <b>everyone in the GoA</b>, this pathway aims to provide a common digital foundation to support digital transformation.</li>
+    <li>Digital Practice: <b>Focused on practitioners, product and delivery teams working on digital transformation</b>, this pathway aims to continuously improve services designed around the needs of users by providing tools, community support and skill development.</li>
+    <li>Digital-Era Leadership: This pathway is <b>for executives and emerging leaders in the digital transformation space</b>. The aim is to support transformation by building digitally capable leadership familiar with supporting and governing digital transformation.</li>
+    </ol>
+    <h3>Priority</h3>
       <p>
         <ul className="goa-unordered-list">
           <li>
@@ -64,7 +71,7 @@ export default function ServiceHelp() {
           </li>
         </ul>
       </p>
-      <h4 id="future">Future</h4>
+      <h3 id="future">Future</h3>
       <p>
         <ul className="goa-unordered-list">
           <li>
@@ -79,7 +86,7 @@ export default function ServiceHelp() {
           </li>
         </ul>
       </p>
-      <h4 id="out-of-scope">Out of Scope</h4>
+      <h3 id="out-of-scope">Out of Scope</h3>
       <p>
         <ul className="goa-unordered-list">
           <li>
@@ -90,7 +97,7 @@ export default function ServiceHelp() {
           </li>
         </ul>
       </p>
-      <GoASpacer vSpacing="3xs" />
+      <GoASpacer vSpacing="l" />
       
             <h2 id='core-training'>Core Training: Course Descriptions</h2>
       <GoASpacer vSpacing="l" />
@@ -144,12 +151,14 @@ the DDD context</li>
       <h3>
         Agile Foundations Course Sessions
       </h3>
-<p><b>NOTE:</b> Agile foundations is a pre-requisite for Product Owner Training.
+<p><b>NOTE:</b> Agile Foundations is a pre-requisite for Product Owner Training.
 </p>
 <p>These sessions are virtual half-days, from 9AM to 12 PM.
 </p><p>
-For information on upcoming course offerings check the <ExternalLink link={'https://abgov.sharepoint.com/sites/S300D27-DSH/_layouts/15/Events.aspx?ListGuid=d857e116-d5c9-4d8b-8083-acafd2372cf9&AudienceTarget=true'} text={'Digital Services Hub event listing'}/>. </p>
-</GoAAccordion>
+For information on how to register for Agile Foundations training contact <ExternalLink
+            link={'mailto:goa.digital-capability@gov.ab.ca'}
+            text={'goa.digital-capability@gov.ab.ca'}
+          /> by email.</p></GoAAccordion>
 <GoASpacer vSpacing="l" />
       <GoAAccordion
               headingSize="medium"
