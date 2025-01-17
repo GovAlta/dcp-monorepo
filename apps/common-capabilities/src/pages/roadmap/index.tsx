@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState, useMemo, useCallback } from 'react';
 import {
   GoAGrid,
   GoASpacer,
@@ -24,7 +24,7 @@ import {
 import { defaultState, filtersList, filterListCustom } from './config';
 import useFetch from '../../hooks/useFetch';
 import { getApiUrl } from '../../utils/configs';
-import { ServiceListingResponse } from '../../types/types';
+import { ServiceListingResponse, Status } from '../../types/types';
 import { roadmaplist } from '../../components/Card/ServiceRoadmap'
 import LastUpdated from '../../components/LastUpdated';
 
@@ -39,6 +39,10 @@ export default function HomePage(): JSX.Element {
   const [collapseKey, setCollapseKey] = useState(0);
   const [searchFilter, setSearchFilter] = useState('');
   const [lastUpdated, setLastUpdated] = useState('');
+  const [includeDecommissioned, setIncludeDecommissioned] = useState(() => {
+    const savedincludeDecommissioned = localStorage.getItem('includeDecommissioned');
+    return savedincludeDecommissioned === 'true';
+  });
   const [services, setServices] = useState([]);  
   const [filtersAccordionState, setFiltersAccordionState] = useState({
     environment: false,
@@ -69,6 +73,52 @@ export default function HomePage(): JSX.Element {
       ? JSON.parse(savedFiltersState)
       : defaultState.selectedFilters;
   });
+
+  const getHandleFilterChange = (filterProperty) => (name, checked) => {
+    // handles checkboxes checked state
+    setCheckedFilters((prevFilters) => {
+      const newCheckboxState = {
+        ...prevFilters,
+        [filterProperty]: {
+          ...prevFilters[filterProperty],
+          [name]: checked,
+        },
+      };
+      localStorage.setItem(
+        'selectedCheckboxState',
+        JSON.stringify(newCheckboxState)
+      );
+      return newCheckboxState;
+    });
+
+    // handles what filters are selected
+    setSelectedFiltersState((prevSelectedFiltersState) => {
+      // if the filter checked is true, add it to the selectedFiltersState or vice versa
+      const newSelectedFiltersState = {
+        ...prevSelectedFiltersState,
+        [filterProperty]: checked
+          ? [
+              ...prevSelectedFiltersState[
+                filterProperty
+              ],
+              name,
+            ]
+          : prevSelectedFiltersState[
+            filterProperty
+          ].filter((filter) => filter !== name),
+      };
+      localStorage.setItem(
+        'selectedFiltersState',
+        JSON.stringify(newSelectedFiltersState)
+      );
+      return newSelectedFiltersState;
+    });
+
+    localStorage.setItem(
+      'searchTimestamp',
+      (new Date().getTime() + 5 * 60 * 1000).toString()
+    );
+  };
 
   // to force re-render UI for filter selection counts = n/a. Replaced by collapseKey
   //const [rerender, setRerender] = useState('');
@@ -102,11 +152,12 @@ export default function HomePage(): JSX.Element {
 
   useEffect(() => {
     if (!isLoading && data) {
-      setApps(data.services);
-      setLastUpdated(getLastUpdatedDate(data.services));
-      setFilterList(getAppsFilters(data.services, filtersList));
+      const services = data.services.filter((s) => includeDecommissioned || s.status !== Status.Decommissioned);
+      setApps(services);
+      setLastUpdated(getLastUpdatedDate(services));
+      setFilterList(getAppsFilters(services, filtersList));
     }
-  }, [data, isLoading]);
+  }, [data, isLoading, includeDecommissioned]);
 
 
   // to update the services list when the search value or filters change
@@ -195,10 +246,10 @@ export default function HomePage(): JSX.Element {
   const recommendedServices = services;
   const otherServices = []
   
-  const roadmapWhenList = roadmaplist(services,roadmapView.history); 
+  const roadmapWhenList = roadmaplist(services, roadmapView.history); 
   const roadmapData = (services, targetWhen) => {
     return services.filter(service =>
-      service.roadmap.some(roadmapItem => roadmapItem.when === targetWhen)
+      service.roadmap?.some(roadmapItem => roadmapItem.when === targetWhen)
     );
   };
   const checkedProviders = checkedFilters.provider === undefined ? []
@@ -306,6 +357,20 @@ export default function HomePage(): JSX.Element {
 
           </GoAButtonGroup>
           <GoASpacer vSpacing="xl" />
+          <GoACheckbox
+              key={"includeDecommissioned"}
+              label={"Include decommissioned services"}
+              name={"includeDecommissioned"}
+              text={"Include decommissioned services"}
+              checked={includeDecommissioned}
+              onChange={(name, checked) => {
+                setIncludeDecommissioned(checked);
+                localStorage.setItem('includeDecommissioned', checked);
+                if (!checked) {
+                  getHandleFilterChange('status')(Status.Decommissioned, false);
+                }
+              }}
+            />
           <GoADivider></GoADivider>
           <GoASpacer vSpacing="xl" />
           {filterListCustom.map((filterCategory) => (
@@ -324,51 +389,7 @@ export default function HomePage(): JSX.Element {
                     name={filter}
                     text={`${filter}`}
                     checked={checkedFilters[filterCategory.property]?.[filter]}
-                    onChange={(name, checked) => {
-                      // handles checkboxes checked state
-                      setCheckedFilters((prevFilters) => {
-                        const newCheckboxState = {
-                          ...prevFilters,
-                          [filterCategory.property]: {
-                            ...prevFilters[filterCategory.property],
-                            [name]: checked,
-                          },
-                        };
-                        localStorage.setItem(
-                          'selectedCheckboxState',
-                          JSON.stringify(newCheckboxState)
-                        );
-                        return newCheckboxState;
-                      });
-
-                      // handles what filters are selected
-                      setSelectedFiltersState((prevSelectedFiltersState) => {
-                        // if the filter checked is true, add it to the selectedFiltersState or vice versa
-                        const newSelectedFiltersState = {
-                          ...prevSelectedFiltersState,
-                          [filterCategory.property]: checked
-                            ? [
-                                ...prevSelectedFiltersState[
-                                  filterCategory.property
-                                ],
-                                name,
-                              ]
-                            : prevSelectedFiltersState[
-                                filterCategory.property
-                              ].filter((filter) => filter !== name),
-                        };
-                        localStorage.setItem(
-                          'selectedFiltersState',
-                          JSON.stringify(newSelectedFiltersState)
-                        );
-                        return newSelectedFiltersState;
-                      });
-
-                      localStorage.setItem(
-                        'searchTimestamp',
-                        (new Date().getTime() + 5 * 60 * 1000).toString()
-                      );
-                    }}
+                    onChange={getHandleFilterChange(filterCategory.property)}
                   />
                 ))}{' '}
               </GoAAccordion>
@@ -419,7 +440,7 @@ export default function HomePage(): JSX.Element {
             open={roadmapAccordionOpen}
           >
               <GoAGrid minChildWidth="33ch" gap="xl">
-                {roadmapData(services,when).map(app =>             
+                {roadmapData(services, when).map(app =>             
                   <Card app={app} roadmapMode={when} />
                   )}
               </GoAGrid>

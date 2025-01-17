@@ -27,6 +27,16 @@ export type ServiceListingResponse = {
   services: Array<Service>;
 }
 
+export enum Status {
+  Live = "Live",
+  Alpha = 'Alpha',
+  Beta = 'Beta',
+  Future = 'Future',
+  Deprecated = 'Deprecated',
+  Decommissioned = 'Decommissioned',
+  Other = 'Other',
+}
+
 export type Service = {
   appId: string;
   serviceName: string;
@@ -40,7 +50,7 @@ export type Service = {
   documentation: Array<{url: string, name: string}>;
   keywords: Array<{item: string}>;
   usageMethod: string;
-  status: string;
+  status: Status;
   version: string;
   useCases: string;
   prerequisites: string;
