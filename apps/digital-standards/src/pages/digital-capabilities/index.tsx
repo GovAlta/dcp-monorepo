@@ -21,7 +21,7 @@ export default function ServiceHelp() {
         Back
       </GoAButton>
       <GoASpacer vSpacing="l" />
-      <h1 id="digital-capabilites">Digtial Capabilities</h1>
+      <h1 id="digital-capabilites">Digital Capability Program</h1>
       <GoASpacer vSpacing="l" />
       <h2 id="mandate">Program Mandate</h2>
       <p>
@@ -34,16 +34,16 @@ export default function ServiceHelp() {
       <p>
         <ul className="goa-unordered-list">
           <li>
-            Shared <b>understanding and application of digital ways for working</b> in Digital Design and Delivery (DDD) across Technology and Innovation (TI) and with Ministry partners.
+            Shared <b>understanding and application of digital ways for working</b> in Digital Design and Delivery (DDD) across Technology and Innovation (TI) and with Ministry partners
           </li>
           <li>
-          Strong <b>relationships between Ministry Partners and TI</b> leading to an increased understanding and support to deliver simpler, faster and better GoA services for Albertans.
+          Strong <b>relationships between Ministry Partners and TI</b> leading to an increased understanding and support to deliver simpler, faster and better GoA services for Albertans
           </li>
           <li>
-            <b>Skills and confidence for public servants</b> to thrive in the digital era by understanding and applying a digital mindset and methods in their day to day. 
+            <b>Skills and confidence for public servants</b> to thrive in the digital era by understanding and applying a digital mindset and methods in their day to day 
           </li>
           <li>
-            GoA becomes an <b>employer of choice</b> for digital, data, and technology professionals who seek to create positive impacts on the lives of Albertans. 
+            GoA becomes an <b>employer of choice</b> for digital, data, and technology professionals who seek to create positive impacts on the lives of Albertans 
           </li>
         </ul>
       </p>
@@ -51,19 +51,19 @@ export default function ServiceHelp() {
       <h2>Learning Pathways and User Groups</h2>
     <p>Digital capability focuses on three pathways with a suite of training and learning supports under each:</p>
     <ol className="goa-ordered-list">
-      <li>Digital Foundations: Targeted to <b>everyone in the GoA</b>, this pathway aims to provide a common digital foundation to support digital transformation.</li>
-    <li>Digital Practice: <b>Focused on practitioners, product and delivery teams working on digital transformation</b>, this pathway aims to continuously improve services designed around the needs of users by providing tools, community support and skill development.</li>
-    <li>Digital-Era Leadership: This pathway is <b>for executives and emerging leaders in the digital transformation space</b>. The aim is to support transformation by building digitally capable leadership familiar with supporting and governing digital transformation.</li>
+      <li>Digital Foundations: Targeted to <b>everyone in the GoA</b>, this pathway aims to provide a common digital foundation to support digital transformation</li>
+    <li>Digital Practice: <b>Focused on practitioners, product and delivery teams working on digital transformation</b>, this pathway aims to continuously improve services designed around the needs of users by providing tools, community support and skill development</li>
+    <li>Digital-Era Leadership: This pathway is <b>for executives and emerging leaders in the digital transformation space</b>. The aim is to support transformation by building digitally capable leadership familiar with supporting and governing digital transformation</li>
     </ol>
     <h3>Priority</h3>
       <p>
         <ul className="goa-unordered-list">
           <li>
           TI users who might benefit from hands-on experience with the critical elements of modern digital
-          design and delivery.
+          design and delivery
           </li>
           <li>
-          Internal GoA users in partner Ministries.
+          Internal GoA users in partner Ministries
           </li>
           <li>
           Mixed approach, with curation/adaptation of learning materials from external sources and creation of
@@ -76,10 +76,10 @@ export default function ServiceHelp() {
         <ul className="goa-unordered-list">
           <li>
           Working with PSC to create a more permanent profession of digital, data and technology specialists in
-          the APS.
+          the APS
           </li>
           <li>
-          Building career pathways for specialists and mechanisms for recruitment.
+          Building career pathways for specialists and mechanisms for recruitment
           </li>
           <li>
           Developing role-based digital capabilities such as for policymakers
@@ -90,10 +90,10 @@ export default function ServiceHelp() {
       <p>
         <ul className="goa-unordered-list">
           <li>
-          Capability development for external users.
+          Capability development for external users
           </li>
           <li>
-          Creation of learning materials that are not related to digital capability. 
+          Creation of learning materials that are not related to digital capability 
           </li>
         </ul>
       </p>
@@ -120,11 +120,12 @@ technology
 </ul><GoASpacer vSpacing="l" />
       <h3>
         Digital Foundations Course Sessions
-      </h3><p>
-      For information on upcoming course offerings check the <ExternalLink
-            link={'https://abgov.sharepoint.com/sites/S300D27-DSH/_layouts/15/Events.aspx?ListGuid=d857e116-d5c9-4d8b-8083-acafd2372cf9&AudienceTarget=true'}
+      </h3>
+      <ul className="goa-unordered-list">
+     <li> For information on upcoming course offerings check the <ExternalLink
+            link={'https://abgov.sharepoint.com/sites/S300D27-DSH/_layouts/15/Events.aspx?ListGuid=d857e116-d5c9-4d8b-8083-acafd2372cf9&Category=Digital%20Foundations&StartDate=2025-01-01&EndDate=2031-01-04&AudienceTarget=true'}
             text={'Digital Services Hub event listing'}
-          />. </p>
+          /></li></ul>
 </GoAAccordion>
       <GoASpacer vSpacing="l" />
       <GoAAccordion
@@ -141,7 +142,7 @@ technology
 </li>
 <li>Agile methodologies, including Minimum Viable Products (MVPs) and the importance of MVPs within
 the DDD context</li>
-<li>The DiABLo (Discovery, Alpha, Beta and Life) product lifecycle</li>
+<li>The Discovery, Alpha, Beta and Life product lifecycle</li>
 <li>Epics and User Stories and how to work with these concepts</li>
 <li>Scrum ceremonies, as applied to the DDD project lifecycle</li>
 <li>DDD’s dual track approach to Agile</li>
@@ -153,12 +154,13 @@ the DDD context</li>
       </h3>
 <p><b>NOTE:</b> Agile Foundations is a pre-requisite for Product Owner Training.
 </p>
-<p>These sessions are virtual half-days, from 9AM to 12 PM.
-</p><p>
-For information on how to register for Agile Foundations training contact <ExternalLink
+<ul className="goa-unordered-list">
+<li>These sessions are virtual half-days, from 9AM to 12 PM.</li>
+<li>For information on how to register for Agile Foundations training contact <ExternalLink
             link={'mailto:goa.digital-capability@gov.ab.ca'}
             text={'goa.digital-capability@gov.ab.ca'}
-          /> by email.</p></GoAAccordion>
+          /> by email.</li></ul>
+          </GoAAccordion>
 <GoASpacer vSpacing="l" />
       <GoAAccordion
               headingSize="medium"
@@ -200,15 +202,24 @@ stories (including the INVEST method)</li>
         Product Owner Course Sessions
       </h3>
 <p><b>NOTE:</b> Agile foundations is a pre-requisite for Product Owner Training.
-</p><p>Current Product Owners are given priority; however, other staff may be considered depending on
-availability.</p>
-<p>These sessions are virtual, full-days, from 9AM to 4 PM with a one-hour break 
-</p><p>
-For information on how to register for Product Owner training contact <ExternalLink
+</p>
+<ul className="goa-unordered-list">
+<li>Current Product Owners are given priority; however, other staff may be considered depending on
+availability.</li>
+<li>These sessions are virtual, full-days, from 9AM to 4 PM with a one-hour break 
+</li>
+<li>For information on how to register for Product Owner training contact <ExternalLink
             link={'mailto:goa.digital-capability@gov.ab.ca'}
             text={'goa.digital-capability@gov.ab.ca'}
-          /> by email.</p>
+          /> by email.</li></ul>
 </GoAAccordion>
+<GoASpacer vSpacing="l" />
+      
+            <h2 id='contact'>Contact</h2>
+      <p>For more information or questions on the Digital Capability Program email <ExternalLink
+            link={'mailto:goa.digital-capability@gov.ab.ca'}
+            text={'goa.digital-capability@gov.ab.ca'}
+          />.</p>
       <GoASpacer vSpacing="2xl" />      
       <BackToTop />
     </div>

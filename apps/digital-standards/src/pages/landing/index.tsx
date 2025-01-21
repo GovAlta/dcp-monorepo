@@ -82,7 +82,7 @@ export default function LandingPage() {
         </GoAContainer>
         <GoAContainer type="interactive" accent="thin">
           <a id="service-tile-title" href={`digital-capabilities/index.html`}>
-            Digital Capabilities
+          Digital Capability Program
           </a>
           <GoASpacer vSpacing="m" />
           <p>
