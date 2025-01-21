@@ -19,12 +19,13 @@ import './styles.css';
 import {
   getAppsFilters,
   generateFilterObject,
-  generateFilterCounts,
+  getLastUpdatedDate,
 } from '../utils/serviceListUtils';
 import { defaultState, filtersList, filterListCustom } from './config';
 import useFetch from '../../hooks/useFetch';
 import { getApiUrl } from '../../utils/configs';
-import { ServiceListingResponse } from '../../types/types';
+import { ServiceListingResponse, Status } from '../../types/types';
+import LastUpdated from '../../components/LastUpdated';
 
 type Filter = {
   [key: string]: any[];
@@ -33,6 +34,11 @@ type Filter = {
 export default function HomePage(): JSX.Element {
   const [collapseKey, setCollapseKey] = useState(0);
   const [searchFilter, setSearchFilter] = useState('');
+  const [lastUpdated, setLastUpdated] = useState('');
+  const [includeDecommissioned, setIncludeDecommissioned] = useState(() => {
+    const savedincludeDecommissioned = localStorage.getItem('includeDecommissioned');
+    return savedincludeDecommissioned === 'true';
+  });
   const [services, setServices] = useState([]);
   const [filtersAccordionState, setFiltersAccordionState] = useState({
     environment: false,
@@ -63,6 +69,52 @@ export default function HomePage(): JSX.Element {
       : defaultState.selectedFilters;
   });
 
+  const getHandleFilterChange = (filterProperty) => (name, checked) => {
+    // handles checkboxes checked state
+    setCheckedFilters((prevFilters) => {
+      const newCheckboxState = {
+        ...prevFilters,
+        [filterProperty]: {
+          ...prevFilters[filterProperty],
+          [name]: checked,
+        },
+      };
+      localStorage.setItem(
+        'selectedCheckboxState',
+        JSON.stringify(newCheckboxState)
+      );
+      return newCheckboxState;
+    });
+
+    // handles what filters are selected
+    setSelectedFiltersState((prevSelectedFiltersState) => {
+      // if the filter checked is true, add it to the selectedFiltersState or vice versa
+      const newSelectedFiltersState = {
+        ...prevSelectedFiltersState,
+        [filterProperty]: checked
+          ? [
+              ...prevSelectedFiltersState[
+                filterProperty
+              ],
+              name,
+            ]
+          : prevSelectedFiltersState[
+            filterProperty
+          ].filter((filter) => filter !== name),
+      };
+      localStorage.setItem(
+        'selectedFiltersState',
+        JSON.stringify(newSelectedFiltersState)
+      );
+      return newSelectedFiltersState;
+    });
+
+    localStorage.setItem(
+      'searchTimestamp',
+      (new Date().getTime() + 5 * 60 * 1000).toString()
+    );
+  };
+
   // searches for items in the services array that match the search and filter
   // however search takes priority over filters
   const findServices = (
@@ -92,10 +144,12 @@ export default function HomePage(): JSX.Element {
 
   useEffect(() => {
     if (!isLoading && data) {
-      setApps(data.services);
-      setFilterList(getAppsFilters(data.services, filtersList));
+      const services = data.services.filter((s) => includeDecommissioned || s.status !== Status.Decommissioned);
+      setApps(services);
+      setLastUpdated(getLastUpdatedDate(services));
+      setFilterList(getAppsFilters(services, filtersList));
     }
-  }, [data, isLoading]);
+  }, [data, isLoading, includeDecommissioned]);
 
   // to update the services list when the search value or filters change
   useEffect(() => {
@@ -265,9 +319,22 @@ export default function HomePage(): JSX.Element {
             >
               Expand all            
             </GoAButton>
-
           </GoAButtonGroup>
-          <GoASpacer vSpacing="xl" />
+          <GoASpacer vSpacing="l" />
+          <GoACheckbox
+              key={"includeDecommissioned"}
+              label={"Include Decommissioned services"}
+              name={"includeDecommissioned"}
+              text={"Include Decommissioned services"}
+              checked={includeDecommissioned}
+              onChange={(name, checked) => {
+                setIncludeDecommissioned(checked);
+                localStorage.setItem('includeDecommissioned', checked);
+                if (!checked) {
+                  getHandleFilterChange('status')(Status.Decommissioned, false);
+                }
+              }}
+            />
           <GoADivider></GoADivider>
           <GoASpacer vSpacing="xl" />
           {filterListCustom.map((filterCategory) => (
@@ -285,56 +352,9 @@ export default function HomePage(): JSX.Element {
                     key={filter}
                     label={filter}
                     name={filter}
-                    // text={`${filter} (${
-                    //   filtersCount[filterCategory.property][filter]
-                    // })`}
                     text={`${filter}`}
                     checked={checkedFilters[filterCategory.property]?.[filter]}
-                    onChange={(name, checked) => {
-                      // handles checkboxes checked state
-                      setCheckedFilters((prevFilters) => {
-                        const newCheckboxState = {
-                          ...prevFilters,
-                          [filterCategory.property]: {
-                            ...prevFilters[filterCategory.property],
-                            [name]: checked,
-                          },
-                        };
-                        localStorage.setItem(
-                          'selectedCheckboxState',
-                          JSON.stringify(newCheckboxState)
-                        );
-                        return newCheckboxState;
-                      });
-
-                      // handles what filters are selected
-                      setSelectedFiltersState((prevSelectedFiltersState) => {
-                        // if the filter checked is true, add it to the selectedFiltersState or vice versa
-                        const newSelectedFiltersState = {
-                          ...prevSelectedFiltersState,
-                          [filterCategory.property]: checked
-                            ? [
-                                ...prevSelectedFiltersState[
-                                  filterCategory.property
-                                ],
-                                name,
-                              ]
-                            : prevSelectedFiltersState[
-                                filterCategory.property
-                              ].filter((filter) => filter !== name),
-                        };
-                        localStorage.setItem(
-                          'selectedFiltersState',
-                          JSON.stringify(newSelectedFiltersState)
-                        );
-                        return newSelectedFiltersState;
-                      });
-
-                      localStorage.setItem(
-                        'searchTimestamp',
-                        (new Date().getTime() + 5 * 60 * 1000).toString()
-                      );
-                    }}
+                    onChange={getHandleFilterChange(filterCategory.property)}
                   />
                 ))}{' '}
               </GoAAccordion>
@@ -416,6 +436,8 @@ export default function HomePage(): JSX.Element {
           ></GoACallout>
         )}
       </GoAGrid>
+      <GoASpacer vSpacing="3xl" />
+      <LastUpdated date={lastUpdated} />
     </GoAThreeColumnLayout>
   );
 }

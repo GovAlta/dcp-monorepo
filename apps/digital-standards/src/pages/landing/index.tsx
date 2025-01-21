@@ -80,6 +80,15 @@ export default function LandingPage() {
             established for the evaluation of services. Learn when and how to get an assessment.
           </p>
         </GoAContainer>
+        <GoAContainer type="interactive" accent="thin">
+          <a id="service-tile-title" href={`digital-capabilities/index.html`}>
+            Digital Capabilities
+          </a>
+          <GoASpacer vSpacing="m" />
+          <p>
+          Growing the knowledge, skills and experience of public servants in digital-era service design and delivery.
+          </p>
+        </GoAContainer>
       </GoAGrid>
       <GoASpacer vSpacing="2xl" />      
     </div>

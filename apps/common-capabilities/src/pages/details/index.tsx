@@ -22,6 +22,8 @@ import {
 import useFetch from '../../hooks/useFetch';
 import { getApiUrl } from '../../utils/configs';
 import Roadmap from 'apps/common-capabilities/src/components/Roadmap';
+import LastUpdated from '../../components/LastUpdated';
+import type { Service } from '../../types/types';
 
 type ServiceDetailsResponse = {
   serviceInfo: any;
@@ -321,10 +323,11 @@ export default function Details(): JSX.Element {
             />{' '}
             on this service.
           </div>
-
           <GoASpacer vSpacing="3xl" />
-          <BackToTop />
-
+          <span className="content-bottom">
+            <LastUpdated date={app.lastUpdatedDate} name={app.editorName} email={app.editorEmail} />
+            <BackToTop />
+          </span>
         </GoAThreeColumnLayout>
       </>
   );

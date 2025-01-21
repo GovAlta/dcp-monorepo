@@ -2,8 +2,9 @@ import { RequestHandler, Router } from 'express';
 import { Logger } from 'winston';
 import axios from 'axios';
 import { SiteVerifyResponse, RouterOptions } from './types';
-import { getAvailableBookings } from './services';
+import { bookEvent, getAvailableBookings } from './services';
 import { environment } from '../../environments/environment';
+import { validateBookingData } from './middlewares/index';
 
 export function verifyCaptcha(
   logger: Logger,
@@ -15,9 +16,9 @@ export function verifyCaptcha(
       next();
     } else {
       try {
-        const { captchaToken } = req.body;
+        const { token } = req.body;
         const { data } = await axios.post<SiteVerifyResponse>(
-          `https://www.google.com/recaptcha/api/siteverify?secret=${RECAPTCHA_SECRET}&response=${captchaToken}`
+          `https://www.google.com/recaptcha/api/siteverify?secret=${RECAPTCHA_SECRET}&response=${token}`
         );
         console.log(data);
 
@@ -57,6 +58,13 @@ export function createBookingsRouter({
   router.get(
     '/bookings/availability',
     getAvailableBookings(logger, tokenProvider, calendarServiceUrl)
+  );
+
+  router.post(
+    '/bookings',
+    verifyCaptcha(logger, environment.RECAPTCHA_SECRET),
+    validateBookingData(logger, tokenProvider, calendarServiceUrl),
+    bookEvent(logger, tokenProvider, calendarServiceUrl, eventServiceUrl)
   );
 
   return router;
