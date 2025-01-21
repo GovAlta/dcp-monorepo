@@ -209,7 +209,7 @@ export default function ApptForm() {
                       <Textarea
                         id="toDiscuss"
                         name="toDiscuss"
-                        onChange={handleChange}
+                        onChange={handleChange as unknown as React.ChangeEventHandler<HTMLTextAreaElement>}
                         onBlur={handleBlur}
                         value={values.toDiscuss}
                         error={errors.toDiscuss}
