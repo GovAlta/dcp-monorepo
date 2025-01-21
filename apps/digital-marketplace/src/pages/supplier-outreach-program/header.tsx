@@ -22,7 +22,7 @@ export default function ProcurementConciergeHeader() {
         </div>
 
         <div className="goa-adm-body-header-graphic">
-          <img src={ProcurementConciergeHeaderImg} alt="header-graphic" />
+          <img src={ProcurementConciergeHeaderImg.src} alt="header-graphic" />
         </div>
       </div>
     </div>

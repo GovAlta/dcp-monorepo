@@ -6,8 +6,11 @@ import {
   GoAIcon,
 } from '@abgov/react-components';
 
+declare global {
+  var adspFeedback: any;
+}
+
 const Header = () => {
-  
   useEffect(() => {
     if (globalThis.adspFeedback != undefined) {
       globalThis.adspFeedback.initialize({

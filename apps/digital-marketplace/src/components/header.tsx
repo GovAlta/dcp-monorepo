@@ -27,8 +27,8 @@ const Header = ({ page }: any) => {
             <div className="goa-adm-logo">
               <div className="goa-logo">
                 <a href="/" title="Home" rel="home">
-                  <img className="desktop-logo" src={albertaLogo} alt="Alberta Logo" />
-                  <img className="mobile-logo" src={mobileLogo} alt="Mobile Logo" />
+                  <img className="desktop-logo" src={albertaLogo.src} alt="Alberta Logo" />
+                  <img className="mobile-logo" src={mobileLogo.src} alt="Mobile Logo" />
                 </a>
               </div>
             </div>

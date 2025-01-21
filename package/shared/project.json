@@ -1,0 +1,12 @@
+{
+  "name": "shared",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "package/shared/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "check": {
+      "executor": "@nxtensions/astro:check"
+    }
+  }
+}

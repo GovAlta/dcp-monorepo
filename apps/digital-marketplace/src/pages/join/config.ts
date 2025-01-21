@@ -1,4 +1,4 @@
-import { FormConfig } from "../../contexts/types";
+import type { FormConfig } from "../../contexts/types";
 
 export const signUpFormConfig: FormConfig = {
   properties: {

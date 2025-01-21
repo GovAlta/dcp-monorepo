@@ -15,7 +15,7 @@ const Accordion: React.FC<AccordionProps> = ({ title, content }) => {
     <div className="goa-adm-accordion-item">
       <button className="goa-adm-accordion-title" aria-expanded={isActive ? 'true' : 'false'} onClick={() => setIsActive(!isActive)}>
         <div>{title}</div>
-        <div className="goa-adm-accordion-icon"><img src={isActive ? close_icon : open_icon} alt={isActive ? "Close accordion panel" : "Open accordion panel"} /></div>
+        <div className="goa-adm-accordion-icon"><img src={isActive ? close_icon.src : open_icon.src} alt={isActive ? "Close accordion panel" : "Open accordion panel"} /></div>
       </button>
       <div className={isActive ? "goa-adm-accordion-content expanded" : "goa-adm-accordion-content"}>{content}</div>
     </div>

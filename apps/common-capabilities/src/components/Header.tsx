@@ -5,6 +5,10 @@ import {
   GoAAppHeader,
 } from '@abgov/react-components';
 
+declare global {
+  var adspFeedback: any;
+}
+
 const Header = () => {
   useEffect(() => {
     if (

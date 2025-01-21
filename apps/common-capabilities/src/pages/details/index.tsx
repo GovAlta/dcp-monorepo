@@ -34,6 +34,7 @@ interface SecurityItem {
   title: string;
   tableTh: any;  
   note: string;
+  items: any;
 }
 
 export default function Details(): JSX.Element {
@@ -126,7 +127,7 @@ export default function Details(): JSX.Element {
           </thead>
           <tbody>
              {group.items
-             .filter(item => app[item] !== '')
+             .filter((item: any) => app[item] !== '')
              .map((item: any, index: any) => (
                 <tr key={`tr-${group.name}${index}`}>
                   <td key={`td1-${index}`}> {' '} {displayName(securityData, item)}{' '}  </td>
@@ -287,9 +288,7 @@ export default function Details(): JSX.Element {
             </div>
           }
         >
-          {/* <BackButton text="Back to listing" onClick={() => (window.location.href = '/services/index.html')} /> */}
           <BackButton text="Back to listing" onClick={() => { history.back(); }} />
-
 
           <GoASpacer vSpacing="l" />
           <div className="service-heading">

@@ -43,39 +43,39 @@ export default function HomePage() {
           <div className="technology">
             <div className="img-wrap">
               <noscript>
-                <img src={Astro} alt="" />
+                <img src={Astro.src} alt="" />
               </noscript>
               <img
                 alt=""
                 data-image-id="62478e63266c637821c47343"
                 data-type="image"
-                src={Astro}
+                src={Astro.src}
               />
             </div>
           </div>
           <div className="technology">
             <div className="img-wrap">
               <noscript>
-                <img src={Github} alt="" />
+                <img src={Github.src} alt="" />
               </noscript>
               <img
                 alt=""
                 data-image-id="62478e63266c637821c47346"
                 data-type="image"
-                src={Github}
+                src={Github.src}
               />
             </div>
           </div>
           <div className="technology">
             <div className="img-wrap">
               <noscript>
-                <img src={Script} alt="" />
+                <img src={Script.src} alt="" />
               </noscript>
               <img
                 alt=""
                 data-image-id="62478e63266c637821c47342"
                 data-type="image"
-                src={Script}
+                src={Script.src}
               />
             </div>
           </div>

@@ -15,10 +15,12 @@ export function getAppsFilters(apps: Service[], filterKeys: FilterKey[]) {
 
   apps.forEach((app: Service) => {
     filterKeys.forEach((key) => {
-      if (app[key]) {
-        if (Array.isArray(app[key])) {
+      const propValue: any = app[key];
+
+      if (propValue) {
+        if (Array.isArray(propValue)) {
           // If the property is an array, add each element to the filter
-          app[key].forEach((element) => {
+          propValue.forEach((element: any) => {
             if (!filters[key]) {
               filters[key] = new Set();
             }
@@ -39,7 +41,7 @@ export function getAppsFilters(apps: Service[], filterKeys: FilterKey[]) {
             filters[key] = new Set();
           }
           filters[key].add(app[key]);
-          indexedItems[app[key]] = (indexedItems[app[key]] || new Set()).add(app.appId);
+          indexedItems[propValue] = (indexedItems[propValue] || new Set()).add(app.appId);
         }
       }
     });

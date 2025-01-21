@@ -22,7 +22,7 @@ export default function PartnersHeader() {
         </div>
 
         <div className="goa-adm-body-header-graphic">
-          <img src={JoinHeader} alt="Graphic of person holding up a sign with a letter inside" />
+          <img src={JoinHeader.src} alt="Graphic of person holding up a sign with a letter inside" />
         </div>
       </div>
     </div>

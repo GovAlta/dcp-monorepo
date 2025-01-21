@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { Service } from '../types/types';
 import { getCaptchaSiteKey, getApiUrl } from '../utils/configs';
+import type { Service } from '../types/types';
 
 const useForm = () => {
   const handleSubmit = async (data: Service) => {    

@@ -10,21 +10,21 @@ export interface Props {
 }
 
 const { title } = Astro.props;
-const getHeroImage = (title: string) =>{
-   switch(title){
-    case "Home":
-        return homeImage;
-    case "Who is Involved?":
-        return whoIsInvolved;
-    case "What is Modern Digital Delivery?":
-        return whatIsHero;
-    case "Stories" :
-        return storiesImage;
-    case "Learn More":
-        return learnMoreImage;
-    default:
-        return "";              
-   }
+const getHeroImage = (title: string) => {
+    switch(title) {
+        case "Home":
+            return homeImage.src;
+        case "Who is Involved?":
+            return whoIsInvolved.src;
+        case "What is Modern Digital Delivery?":
+            return whatIsHero.src;
+        case "Stories" :
+            return storiesImage.src;
+        case "Learn More":
+            return learnMoreImage.src;
+        default:
+            return "";              
+    }
 }
 ---
 

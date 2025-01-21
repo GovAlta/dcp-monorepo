@@ -2,9 +2,9 @@ import React, { useMemo } from 'react';
 import ServiceForm from '../../components/ServiceForm';
 import { GoACircularProgress, GoANotification, GoAThreeColumnLayout } from '@abgov/react-components';
 import { getSchemaUrl } from '../../utils/configs';
-import { Service } from '../../types/types';
 import useFetch from '../../hooks/useFetch';
-import { JsonSchema, UISchemaElement } from '@jsonforms/core';
+import type { JsonSchema, UISchemaElement } from '@jsonforms/core';
+import type { Service } from '../../types/types';
 
 type ServiceFormWrapperProps = {
     backLink?: JSX.Element;

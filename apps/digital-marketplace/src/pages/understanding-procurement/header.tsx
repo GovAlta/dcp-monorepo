@@ -22,7 +22,7 @@ export default function UnderstandingHeader() {
         </div>
 
         <div className="goa-adm-body-header-graphic">
-          <img src={UnderstandingHeaderImg} alt="header-graphic" />
+          <img src={UnderstandingHeaderImg.src} alt="header-graphic" />
         </div>
       </div>
     </div>
