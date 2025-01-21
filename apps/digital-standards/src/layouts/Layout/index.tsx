@@ -51,7 +51,7 @@ const Layout = ({ children, hideNav = false, hideHero = true }: any) => {
                     Service Assessments
                   </a>
                   <a href="/digital-capabilities/">
-                    Digital Capabilities
+                  Digital Capability Program
                   </a>
                 </GoASideMenuGroup>
               </GoASideMenu>
