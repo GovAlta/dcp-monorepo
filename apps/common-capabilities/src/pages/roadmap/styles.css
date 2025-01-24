@@ -1,24 +1,47 @@
-@media print { 
+@media print {
   .no-print {
     display: none;
   }
 }
-
-.roadmapGroup h2 {color: rgb(0, 0, 78); padding: 10px;}
-.roadmapGroup {border-radius: 10px; margin-right: 10px; margin-bottom: 10px; margin-top: 8px; padding: 15px;}
-.roadmapGroupB {border: 2px solid grey; background-color: #c7c7c7; }
-.roadmapGroupA {border: 2px solid rgb(87, 158, 69); background-color: rgb(231, 250, 227)   }
-.roadMapList {padding-right: 12px; }
-.left {float: left;}
-.clearleft {clear: both;}
-.whenlink ,a.whenlink  {
-   font-Weight: bold;
-   text-decoration: none;
-   color:rgb(33, 116, 155);
-   margin-left: 10px;   
- }
-
-
+.align-buttons-roadmap {
+  display: flex;
+  justify-content: space-between;
+}
+.roadmapGroup h2 {
+  color: rgb(0, 0, 78);
+  padding: 10px;
+}
+.roadmapGroup {
+  border-radius: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  margin-top: 8px;
+  padding: 15px;
+}
+.roadmapGroupB {
+  border: 2px solid grey;
+  background-color: #c7c7c7;
+}
+.roadmapGroupA {
+  border: 2px solid rgb(87, 158, 69);
+  background-color: rgb(231, 250, 227);
+}
+.roadMapList {
+  padding-right: 12px;
+}
+.left {
+  float: left;
+}
+.clearleft {
+  clear: both;
+}
+.whenlink,
+a.whenlink {
+  font-weight: bold;
+  text-decoration: none;
+  color: rgb(33, 116, 155);
+  margin-left: 10px;
+}
 
 .cc-intro {
   font-size: var(--goa-font-size-4);

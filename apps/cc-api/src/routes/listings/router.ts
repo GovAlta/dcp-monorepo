@@ -2,7 +2,7 @@ import { TokenProvider } from '@abgov/adsp-service-sdk';
 import { RequestHandler, Router } from 'express';
 import { Logger } from 'winston';
 import axios from 'axios';
-import { getService, getServices } from './services';
+import { exportServicesRoadmap, getService, getServices } from './services';
 import { DataCache } from '../../cache/types';
 import { SiteVerifyResponse } from './types';
 import { v4 as uuidv4, validate as uuidValidate } from 'uuid';
@@ -221,6 +221,11 @@ export function createListingsRouter({
   router.get(
     '/listings/services/:serviceId',
     getService(logger, valueServiceUrl, tokenProvider, cache)
+  );
+
+  router.get(
+    '/listings/services/roadmap/export',
+    exportServicesRoadmap(logger, valueServiceUrl, tokenProvider, cache)
   );
 
   router.post('/cache/clear', clearCache(cache));
