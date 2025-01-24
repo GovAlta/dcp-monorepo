@@ -9,6 +9,7 @@ interface Props {
   roadmapItems: RoadmapItem[];
   roadmapMode?:string;
   showHistory?:boolean;
+  condensed?:boolean;
 }
 
 const parseWhen = (when: string) => {
@@ -92,7 +93,7 @@ export const ServiceRoadmap: React.FC<Props> = (props) => {
 
   return (
     <div> 
-      <b>Roadmap: </b>
+      {props.condensed?"": <b>Roadmap: </b>}
           <ul>
             {(hideOldRecords ? filterOldRecords(roadmapItems) : roadmapItems)
               .map((roadmapItem, index) => (

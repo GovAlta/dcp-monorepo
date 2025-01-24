@@ -33,7 +33,7 @@ type Filter = {
 };
 
 export default function HomePage(): JSX.Element {
-  const [roadmapView, setRoadmapView] = useState({ grouped: true, history: false });  
+  const [roadmapView, setRoadmapView] = useState({ grouped: true, history: false, condensed: true });  
   const [collapseKey2, setCollapseKey2] = useState(0);
   const [roadmapAccordionOpen,setRoadmapAccordionOpen] = useState(false); 
   const [collapseKey, setCollapseKey] = useState(0);
@@ -268,14 +268,23 @@ export default function HomePage(): JSX.Element {
           <GoACheckbox id={'roadmapGrouped'} checked={roadmapView.grouped} text="Timeline by quarter"
            description={ roadmapView.grouped ? 
              <span>Only showing roadmap items grouped by quarter.</span>
-            :<span>Provides an overview showing all sevices and exposes any roadmap items. Tip: Works great with Provider filter</span> }
+            :<span>Provides an overview showing ALL sevices and exposes roadmap items. 
+              Intended to be used with the Provider filter.</span> }
            onChange={ (name: string, checked: boolean, value: string) =>                   
             setRoadmapView((prevState) => ({ ...prevState, grouped: checked })) }
           />
+
+          <GoACheckbox id={'roadmapCondensed'} checked={roadmapView.condensed} name="history" text="Minimized view"
+              onChange={ (name: string, checked: boolean, value: string) =>                   
+                  setRoadmapView((prevState) => ({ ...prevState, condensed: checked })) }
+           />
+
           <GoACheckbox id={'roadmapHistory'} checked={roadmapView.history} name="history" text="Show past items"
               onChange={ (name: string, checked: boolean, value: string) =>                   
                   setRoadmapView((prevState) => ({ ...prevState, history: checked })) }
            />
+
+
 
           <GoASpacer vSpacing="l" />
           <GoADivider></GoADivider>
@@ -441,7 +450,7 @@ export default function HomePage(): JSX.Element {
           >
               <GoAGrid minChildWidth="33ch" gap="xl">
                 {roadmapData(services, when).map(app =>             
-                  <Card app={app} roadmapMode={when} />
+                  <Card app={app} roadmapMode={when} condensed={roadmapView.condensed} />
                   )}
               </GoAGrid>
           </GoAAccordion>
@@ -462,6 +471,7 @@ export default function HomePage(): JSX.Element {
             recommendedServices.map((app) => {
               return (
                 <Card app={app} roadmapMode={"list"} roadmapHistory={roadmapView.history}               
+                condensed={roadmapView.condensed}
                 />
               );
             })
