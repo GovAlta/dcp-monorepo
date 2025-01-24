@@ -11,13 +11,14 @@ interface CardProps {
   app: any;
   roadmapMode: any;
   roadmapHistory: any;  
+  condensed:any;
 }
 
-const Card = ({ app, roadmapMode, roadmapHistory }: CardProps) => {
+const Card = ({ app, roadmapMode, roadmapHistory, condensed }: CardProps) => {
   const maxDescriptionLength = 200; // word length for short descpription in tile.
   const badgesToShow = ['status'];
   const [showBadges, setShowBadges] = useState<JSX.Element[]>([]);
-
+  
   function badgeType(value:any) {    
     if (value == 'Live')
       return "success"
@@ -51,19 +52,23 @@ const Card = ({ app, roadmapMode, roadmapHistory }: CardProps) => {
   return (    
     <GoAContainer accent="thin">
 
+      {(!condensed) ? <>
       <div id="service-tile-chips">
         {<div id="service-tile-chips">{showBadges}</div>}
       </div>
+      </> : <></> }
 
       <a id="service-tile-title"
        href={`/details/index.html?id=${app.appId}`} > {app.serviceName} </a>      
 
+      {(!condensed) ? <>
       <GoASpacer vSpacing="m" />
       <p id="service-tile-content">
         {`${app.summary.substring(0, maxDescriptionLength)}${app.summary.length > maxDescriptionLength ? '.....' : ''}`}
       </p>
+      </> : <></> }
       <GoASpacer vSpacing="xs" />
-      <ServiceRoadmap roadmapItems={app.roadmap} roadmapMode={roadmapMode} showHistory={roadmapHistory} />      
+      <ServiceRoadmap roadmapItems={app.roadmap} roadmapMode={roadmapMode} showHistory={roadmapHistory} condensed={condensed} />      
     </GoAContainer>    
   );
 };
