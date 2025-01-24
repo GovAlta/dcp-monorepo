@@ -87,21 +87,7 @@ export async function fetchServices(
           acc[serviceDefinition[SERVICE_DEFINITION_ID]] = serviceDefinition;
         }
 
-        /*************  ✨ Codeium Command ⭐  *************/
-        /**
-         * Return a CSV export of the services roadmaps.
-         *
-         * This function reads the services from the cache (or fetches them from the value service if the cache is empty).
-         * Then it extracts the roadmap data from each service and sorts it by when.
-         * Finally it sends the sorted roadmap data as a CSV file.
-         *
-         * @param logger the logger to use for error logging
-         * @param valueServiceUrl the URL of the value service
-         * @param tokenProvider the token provider to use for fetching the services
-         * @param cache the cache to use for storing the services
-         * @returns a request handler that will send the CSV file
-         */
-        /******  b180cd8d-1143-4c57-ad6a-a677605c30ca  *******/ return acc;
+        return acc;
       }, {});
 
       await cache.set(CacheKeys.SERVICES, result);
