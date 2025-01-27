@@ -3,6 +3,9 @@
   "version": "0.0.0",
   "license": "MIT",
   "private": true,
+  "scripts": {
+    "service": "node"
+  },
   "devDependencies": {
     "@abgov/design-tokens": "^1.1.1",
     "@abgov/jsonforms-components": "^1.40.1",
