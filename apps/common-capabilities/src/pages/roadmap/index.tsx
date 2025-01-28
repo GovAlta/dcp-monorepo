@@ -174,7 +174,15 @@ export default function HomePage(): JSX.Element {
       const url = window.URL.createObjectURL(new Blob([response.data]));
       const a = document.createElement('a');
       a.href = url;
-      a.download = 'roadmap.csv';
+      const date = new Date();
+      const year = date.getFullYear();
+      const month = `0${date.getMonth() + 1}`.slice(-2);
+      const day = `0${date.getDate()}`.slice(-2);
+      const hours = `0${date.getHours() % 12 || 12}`.slice(-2);
+      const minutes = `0${date.getMinutes()}`.slice(-2);
+      const ampm = date.getHours() >= 12 ? ' PM' : ' AM';
+      const timestamp = `${year}-${month}-${day} ${hours}:${minutes}${ampm}`;
+      a.download = `Roadmap ${timestamp}.csv`;
       a.click();
       window.URL.revokeObjectURL(url);
       setExportApiState({ loading: false, error: null });

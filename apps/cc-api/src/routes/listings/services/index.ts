@@ -165,20 +165,24 @@ export function exportServicesRoadmap(
       });
 
       // create the csv content
-      const csvHeaders = Object.keys(csvData[0]);
+      const csvHeaders = Object.keys(csvData[0]).map((header) => {
+        return header.charAt(0).toUpperCase() + header.slice(1).toLowerCase();
+      });
+
       const csvRows = csvData.map((row) =>
-        // wrap description and impacts in double quotes to preserve new lines
-        csvHeaders.map((header) => {
+        Object.keys(row).map((header) => {
+          const value = row[header];
           if (header === 'description' || header === 'impacts') {
-            return `"${row[header]}"`;
+            return `"${value}"`;
           } else {
-            return row[header];
+            return value;
           }
         })
       );
-      const csvContent = [csvHeaders.join(',')]
-        .concat(csvRows.map((row) => row.join(',')))
-        .join('\n');
+
+      const csvContent = [csvHeaders.join(',')].concat(
+        csvRows.map((row) => row.join(','))
+      ).join('\n');
 
       res.setHeader(
         'Content-Disposition',
