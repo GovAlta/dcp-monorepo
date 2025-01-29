@@ -11,6 +11,7 @@ export const environment = envalid.cleanEnv(
     KEYCLOAK_ROOT_URL: envalid.str({ default: 'https://access-uat.alberta.ca' }),
     REALM: envalid.str({ default: '' }),
     CLIENT_ID: envalid.str({ default: 'urn:ads:cc:internal' }),
+    SAML_CLIENT_ID: envalid.str({ default: 'urn:ads:cc:uiam_saml' }),
     CLIENT_SECRET: envalid.str({ default: '' }),
     LOG_LEVEL: envalid.str({ default: 'debug' }),
     PORT: envalid.str({ default: "3333" }),

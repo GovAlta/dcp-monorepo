@@ -7,10 +7,11 @@ import { DataCache } from '../../cache/types';
 import { SiteVerifyResponse } from './types';
 import { v4 as uuidv4, validate as uuidValidate } from 'uuid';
 import { environment } from '../../environments/environment';
+import authorize, { VALUE_SERVICE } from '../../middleware/authorize';
 
 interface RouterOptions {
   logger: Logger;
-  tokenProvider: TokenProvider;
+  offlineAccessTokenProvider: TokenProvider;
   formApiUrl: URL;
   eventServiceUrl: URL;
   valueServiceUrl: URL;
@@ -49,12 +50,11 @@ export function verifyCaptcha(logger: Logger, RECAPTCHA_SECRET: string, SCORE_TH
 export function getFormsSchema(
   logger: Logger,
   formApiUrl: URL,
-  tokenProvider: TokenProvider
 ): RequestHandler {
   return async (req, res) => {
 
     try {
-      const token = await tokenProvider.getAccessToken();
+      const token = req.user.token.bearer;
       const { definitionId } = req.params;
 
       const getFormsSchemaData = await axios.get(
@@ -87,13 +87,12 @@ export function newListing(
   logger: Logger,
   formApiUrl: URL,
   eventServiceUrl: URL,
-  tokenProvider: TokenProvider
 ): RequestHandler {
 
   return async (req, res) => {
 
     try {
-      const token = await tokenProvider.getAccessToken();
+      const token = req.user.token.bearer;
       const requestBody = req.body;
 
       // Submit the listing for review
@@ -187,6 +186,7 @@ export function newListing(
 
 function clearCache(cache: DataCache): RequestHandler {
   return async (req, res) => {
+    console.log(req.user);
     await cache.clear();
     res.status(200).send();
   }
@@ -194,7 +194,6 @@ function clearCache(cache: DataCache): RequestHandler {
 
 export function createListingsRouter({
   logger,
-  tokenProvider,
   formApiUrl,
   valueServiceUrl,
   eventServiceUrl,
@@ -204,31 +203,36 @@ export function createListingsRouter({
 
   router.get(
     '/listings/schema/:definitionId',
-    getFormsSchema(logger, formApiUrl, tokenProvider)
+    authorize([]), // currently no permissions needed as the token is passed used directly with adsp service and no caching
+    getFormsSchema(logger, formApiUrl)
   );
 
   router.post(
     '/listings',
+    authorize([]),
     verifyCaptcha(logger, environment.RECAPTCHA_SECRET, 0.7),
-    newListing(logger, formApiUrl, eventServiceUrl, tokenProvider)
+    newListing(logger, formApiUrl, eventServiceUrl)
   );
 
   router.get(
     '/listings/services',
-    getServices(logger, valueServiceUrl, tokenProvider, cache)
+    authorize([...VALUE_SERVICE.READ]),
+    getServices(logger, valueServiceUrl, cache)
   );
 
   router.get(
     '/listings/services/:serviceId',
-    getService(logger, valueServiceUrl, tokenProvider, cache)
+    authorize([...VALUE_SERVICE.READ]),
+    getService(logger, valueServiceUrl, cache)
   );
 
   router.get(
     '/listings/services/roadmap/export',
-    exportServicesRoadmap(logger, valueServiceUrl, tokenProvider, cache)
+    authorize([...VALUE_SERVICE.READ]),
+    exportServicesRoadmap(logger, valueServiceUrl, cache)
   );
 
-  router.post('/cache/clear', clearCache(cache));
+  router.post('/cache/clear', authorize(['default-admin']), clearCache(cache));
 
   return router;
 }

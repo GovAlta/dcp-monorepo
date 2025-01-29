@@ -10,13 +10,14 @@ export enum CacheKeys {
 
 export const CacheConfigs = {
     [CacheKeys.SERVICES]: {
-        ttl: environment.CACHE_TTL,  // 30 min
+        ttl: parseInt(environment.CACHE_TTL),  // 30 min
     },
     [CacheKeys.SCHEMA]: {
         ttl: 12 * 60 * 60 * 1000, // half a day
     },
 }
 
+// TODO need to make sure user has access to the services that the data are being cached for.
 export function getCache(logger: Logger): DataCache {
     return new KeyvCache(logger);
 }

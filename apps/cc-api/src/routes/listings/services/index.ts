@@ -1,7 +1,7 @@
 import { RequestHandler } from 'express';
 import { DataCache } from '../../../cache/types';
 import { TokenProvider } from '@abgov/adsp-service-sdk';
-import { CacheKeys } from '../../../cache';
+import { CacheConfigs, CacheKeys } from '../../../cache';
 import { Logger } from 'winston';
 import axios from 'axios';
 import axiosRetry from 'axios-retry';
@@ -52,12 +52,11 @@ async function axioGet(url: string, token: string) {
 
 export async function fetchServices(
   valueServiceUrl: URL,
-  tokenProvider: TokenProvider,
+  token: string,
   cache: DataCache,
   logger: Logger
 ) {
   let result = {};
-  const token = await tokenProvider.getAccessToken();
   const serviceListings = await axioGet(
     `${valueServiceUrl}/${VALUE_SERVICE_NAME_SPACE}/values/${VALUE_SERVICE_LISTING_NAME}?top=1`,
     token
@@ -90,7 +89,7 @@ export async function fetchServices(
         return acc;
       }, {});
 
-      await cache.set(CacheKeys.SERVICES, result);
+      await cache.set(CacheKeys.SERVICES, result, CacheConfigs[CacheKeys.SERVICES].ttl);
 
       logger.info(
         `services fetched from ADSP: keySize=${
@@ -105,14 +104,14 @@ export async function fetchServices(
 
 async function getAllServices(
   valueServiceUrl: URL,
-  tokenProvider: TokenProvider,
+  token: string,
   cache: DataCache,
   logger: Logger
 ) {
   let result = await cache.get(CacheKeys.SERVICES);
 
   if (!result) {
-    result = await fetchServices(valueServiceUrl, tokenProvider, cache, logger);
+    result = await fetchServices(valueServiceUrl, token, cache, logger);
   }
 
   return result;
@@ -121,14 +120,14 @@ async function getAllServices(
 export function exportServicesRoadmap(
   logger: Logger,
   valueServiceUrl: URL,
-  tokenProvider: TokenProvider,
   cache: DataCache
 ) {
   return async (req, res) => {
     try {
+      const token = req.user.token.bearer;
       const services = await getAllServices(
         valueServiceUrl,
-        tokenProvider,
+        token,
         cache,
         logger
       );
@@ -204,14 +203,15 @@ export function exportServicesRoadmap(
 export function getServices(
   logger: Logger,
   valueServiceUrl: URL,
-  tokenProvider: TokenProvider,
   cache: DataCache
 ): RequestHandler {
   return async (req, res) => {
+    console.log(req.user);
     try {
+      const token = req.user.token.bearer;
       const services = await getAllServices(
         valueServiceUrl,
-        tokenProvider,
+        token,
         cache,
         logger
       );
@@ -237,16 +237,16 @@ export function getServices(
 export function getService(
   logger: Logger,
   valueServiceUrl: URL,
-  tokenProvider: TokenProvider,
   cache: DataCache
 ): RequestHandler {
   return async (req, res) => {
     const serviceId = req.params.serviceId;
 
     try {
+      const token = req.user.token.bearer;
       const services = await getAllServices(
         valueServiceUrl,
-        tokenProvider,
+        token,
         cache,
         logger
       );

@@ -1,6 +1,5 @@
 import Keyv from 'keyv';
 import type { DataCache } from "./types";
-import { CacheConfigs } from '.';
 import { Logger } from 'winston';
 
 const DEFAULT_TTL = 60 * 60 * 1000; // 1 hour
@@ -19,8 +18,7 @@ export default class KeyvWrapper implements DataCache {
         return this.#cache.get(key);
     }
 
-    async set(key: string, value: object): Promise<void> {
-        const ttl = CacheConfigs[key]?.ttl || DEFAULT_TTL;
+    async set(key: string, value: object, ttl: number = DEFAULT_TTL): Promise<void> {
         return this.#cache.set(key, value, ttl);
     }
 

@@ -1,7 +1,7 @@
 export interface DataCache {
     has(key: string): Promise<boolean>;
     get(key: string): Promise<object | undefined>;
-    set(key: string, value: object): Promise<void>;
+    set(key: string, value: object, ttl: number): Promise<void>;
     delete(key: string): Promise<void>;
     clear(): Promise<void>;
 }
