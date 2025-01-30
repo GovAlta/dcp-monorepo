@@ -1,10 +1,11 @@
 import React, { useMemo } from 'react';
-import ServiceForm from '../../components/ServiceForm';
+import ServiceForm from '.';
 import { GoACircularProgress, GoANotification, GoAThreeColumnLayout } from '@abgov/react-components';
 import { getSchemaUrl } from '../../utils/configs';
 import useFetch from '../../hooks/useFetch';
 import type { JsonSchema, UISchemaElement } from '@jsonforms/core';
 import type { Service } from '../../types/types';
+import { useAuth } from '../../providers/AuthStateProvider';
 
 type ServiceFormWrapperProps = {
     backLink?: JSX.Element;
@@ -18,9 +19,15 @@ type SchemaResponse = {
   uiSchema: UISchemaElement;  
 }
 
-export default function ServiceFormWrapper({backLink,pageHeader, service, handleSubmit}: ServiceFormWrapperProps) {
+export default function ServiceFormWrapper({
+  backLink,
+  pageHeader, 
+  service, 
+  handleSubmit
+}: ServiceFormWrapperProps) {
+  const { authToken } = useAuth();
   const schemaUrl = useMemo(() => getSchemaUrl('common-capabilities-intake'), []);
-  const [data, error, isLoading] = useFetch<SchemaResponse>(schemaUrl);
+  const [data, error, isLoading] = useFetch<SchemaResponse>(schemaUrl, { headers: { Authorization: `Bearer ${authToken}` } });
 
   let content;
   

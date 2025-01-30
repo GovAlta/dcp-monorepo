@@ -206,7 +206,6 @@ export function getServices(
   cache: DataCache
 ): RequestHandler {
   return async (req, res) => {
-    console.log(req.user);
     try {
       const token = req.user.token.bearer;
       const services = await getAllServices(

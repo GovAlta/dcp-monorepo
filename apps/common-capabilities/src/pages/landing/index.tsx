@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
-  GoACallout,
   GoAGrid,
   GoAHeroBanner,
   GoAPageBlock,
@@ -11,8 +10,11 @@ import './styles.css';
 import ExternalLink from '../../components/ExternalLink';
 import Category from './category';
 import { categories } from './config';
+import { useNavigate } from 'react-router-dom';
 
 export default function Landing(): JSX.Element {
+  const navigate = useNavigate();
+
   return (
     <div>
       <GoAHeroBanner
@@ -49,7 +51,7 @@ export default function Landing(): JSX.Element {
           size="normal"
           variant="normal"
           trailingIcon="arrow-forward"
-          onClick={() => (window.location.href = '/services/index.html')}
+          onClick={() => navigate('/services')}
         >
           Browse all services
         </GoAButton>

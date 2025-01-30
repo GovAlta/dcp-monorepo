@@ -21,9 +21,10 @@ import {
 } from './config';
 import useFetch from '../../hooks/useFetch';
 import { getApiUrl } from '../../utils/configs';
-import Roadmap from 'apps/common-capabilities/src/components/Roadmap';
+import Roadmap from '../../components/Roadmap';
 import LastUpdated from '../../components/LastUpdated';
-import type { Service } from '../../types/types';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useAuth } from '../../providers/AuthStateProvider';
 
 type ServiceDetailsResponse = {
   serviceInfo: any;
@@ -38,13 +39,11 @@ interface SecurityItem {
 }
 
 export default function Details(): JSX.Element {
-  const id = useMemo(() => {
-    const urlSearchParams = new URLSearchParams(window.location.search);
-    const params = Object.fromEntries(urlSearchParams.entries());
-    return params.id;
-  }, []);
+  const navigate = useNavigate();
+  const { id } = useParams();
+  const { authToken } = useAuth();
   const detailsUrl = useMemo(() => getApiUrl(`/listings/services/${id}`), []); 
-  const [data, error, isLoading] = useFetch<ServiceDetailsResponse>(detailsUrl);
+  const [data, error, isLoading] = useFetch<ServiceDetailsResponse>(detailsUrl, { headers: { Authorization: `Bearer ${authToken}` } });
   const [app, setApp] = useState<any>(undefined);
   const [items, setItems] = useState<any>({
     content: [],
@@ -295,7 +294,7 @@ export default function Details(): JSX.Element {
           <h2>{app.serviceName}</h2>
           <GoAButton
             type="secondary"
-            onClick={() => (window.location.href = `/updateservice/index.html?id=${app.appId}`)}>
+            onClick={() => navigate(`/updateservice/${app.appId}`)}>
             Update
           </GoAButton>
         </div>

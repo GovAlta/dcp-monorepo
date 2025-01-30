@@ -28,6 +28,7 @@ import { ServiceListingResponse, Status } from '../../types/types';
 import { roadmaplist } from '../../components/Card/ServiceRoadmap';
 import LastUpdated from '../../components/LastUpdated';
 import axios from 'axios';
+import { useAuth } from '../../providers/AuthStateProvider';
 
 type Filter = {
   [key: string]: any[];
@@ -69,8 +70,9 @@ export default function HomePage(): JSX.Element {
     error: null,
   });
 
+  const { authToken } = useAuth();
   const listingUrl = useMemo(() => getApiUrl('/listings/services'), []);
-  const [data, error, isLoading] = useFetch<ServiceListingResponse>(listingUrl);
+  const [data, error, isLoading] = useFetch<ServiceListingResponse>(listingUrl, { headers: { Authorization: `Bearer ${authToken}` } });
   const [apps, setApps] = useState([]);
 
   // filters state

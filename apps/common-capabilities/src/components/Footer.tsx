@@ -4,24 +4,25 @@ import {
   GoAAppFooterMetaSection,
   GoAAppFooterNavSection,
 } from '@abgov/react-components';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
     <>
       <GoAAppFooter maxContentWidth="1500px">
         <GoAAppFooterNavSection maxColumnCount={1}>
-          <a href="/gettingstarted/index.html#getting-started">Getting started</a>
-          <a href="/about/index.html">About</a>
-          <a href="/ecosystem/index.html">Eco-system</a>
+          <Link to="/gettingstarted#getting-started">Getting started</Link>
+          <Link to="/about">About</Link>
+          <Link to="/ecosystem">Eco-system</Link>
         </GoAAppFooterNavSection>
 
         <GoAAppFooterNavSection>
-          <a href="/services/index.html">Services</a>
-          <a href="/support/index.html">Support</a>
+          <Link to="/services">Services</Link>
+          <Link to="/support">Support</Link>
         </GoAAppFooterNavSection>
 
         <GoAAppFooterMetaSection>
-          {/* <a href="disclaimer.html"> Disclaimer </a>           */}
+          {/* <Link to="/disclaimer"> Disclaimer</Link>           */}
         </GoAAppFooterMetaSection>
       </GoAAppFooter>
     </>

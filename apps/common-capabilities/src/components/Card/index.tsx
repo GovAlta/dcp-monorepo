@@ -6,6 +6,7 @@ import {
 import React, { useEffect, useState } from 'react';
 import './styles.css';
 import { ServiceRoadmap } from './ServiceRoadmap'
+import { Link } from 'react-router-dom';
 
 interface CardProps {  
   app: any;
@@ -58,8 +59,8 @@ const Card = ({ app, roadmapMode, roadmapHistory, condensed }: CardProps) => {
       </div>
       </> : <></> }
 
-      <a id="service-tile-title"
-       href={`/details/index.html?id=${app.appId}`} > {app.serviceName} </a>      
+      <Link id="service-tile-title"
+       to={`/details/${app.appId}`} > {app.serviceName} </Link>      
 
       {(!condensed) ? <>
       <GoASpacer vSpacing="m" />

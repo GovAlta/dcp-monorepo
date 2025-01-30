@@ -1,23 +1,8 @@
-<!-- <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Common Capabilities</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
-</html> -->
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <title>Common Capabilities</title>
 
@@ -83,8 +68,8 @@
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
     <!-- recaptcha -->
-    <script>
-      import { getCaptchaSiteKey } from '../utils/configs';
+    <script type="module">
+      import { getCaptchaSiteKey } from './src/utils/configs';
 
       const siteKey = getCaptchaSiteKey();
       if (siteKey) {
@@ -103,12 +88,11 @@
     </script>
   </head>
   <body>
-      <section id="top-page"></section>
-      <div id="root"></div>
-      <script type="module" src="/src/main.jsx"></script>
+    <section id="top-page"></section>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
-
 <style is:global>
   .line-elements {
     display: flex;

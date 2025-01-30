@@ -4,12 +4,16 @@ import {
   GoAMicrositeHeader,
   GoAAppHeader,
 } from '@abgov/react-components';
+import { Link } from 'react-router-dom';
+import { useAuth } from '../providers/AuthStateProvider';
 
 declare global {
   var adspFeedback: any;
 }
 
 const Header = () => {
+  const { isAuthenticated, logout } = useAuth();
+
   useEffect(() => {
     if (
       window.location.hostname ===
@@ -30,12 +34,13 @@ const Header = () => {
         heading="Common capabilities"
         maxContentWidth="1500px"
       >
-        <a href="/gettingstarted/index.html#getting-started">Getting started</a>
-        <a href="/about/index.html">About</a>
-        <a href="/ecosystem/index.html">Eco-system</a>
-        <a href="/services/index.html">Services</a>
-        <a href="/roadmap/index.html">Roadmap</a>
-        <a href="/support/index.html">Support</a>
+        <Link to="/gettingstarted#getting-started">Getting started</Link>
+        <Link to="/about">About</Link>
+        <Link to="/ecosystem">Eco-system</Link>
+        <Link to="/services">Services</Link>
+        <Link to="/roadmap">Roadmap</Link>
+        <Link to="/support">Support</Link>
+        {isAuthenticated && <a onClick={logout} href="#">Logout</a>}
       </GoAAppHeader>
     </>
   );

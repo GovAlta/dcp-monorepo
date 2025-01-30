@@ -26,6 +26,7 @@ import useFetch from '../../hooks/useFetch';
 import { getApiUrl } from '../../utils/configs';
 import { ServiceListingResponse, Status } from '../../types/types';
 import LastUpdated from '../../components/LastUpdated';
+import { useAuth } from '../../providers/AuthStateProvider';
 
 type Filter = {
   [key: string]: any[];
@@ -49,7 +50,8 @@ export default function HomePage(): JSX.Element {
     functionalGroup: false,
   });
   const listingUrl = useMemo(() => getApiUrl('/listings/services'), []); 
-  const [data, error, isLoading] = useFetch<ServiceListingResponse>(listingUrl);
+  const { authToken } = useAuth();
+  const [data, error, isLoading] = useFetch<ServiceListingResponse>(listingUrl, { headers: { Authorization: `Bearer ${authToken}` } });
   const [apps, setApps] = useState([]);
   
   // filters state

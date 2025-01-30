@@ -42,8 +42,6 @@ const verifyCallback = (req, payload, done) => {
       },
     };
 
-    console.log("user", user);
-
     done(null, user, null);
 };
 

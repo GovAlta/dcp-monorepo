@@ -67,7 +67,7 @@ export async function applyGatewayMiddleware(
 
   app.use('/cc/v1', listingsRouter);
 
-  // initializeCache(valueServiceUrl, offlineAccessTokenProvider, cache, logger);
+  initializeCache(valueServiceUrl, offlineAccessTokenProvider, cache, logger);
 
   return app;
 }

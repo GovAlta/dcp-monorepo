@@ -8,6 +8,7 @@ import React, { useEffect, useState } from 'react';
 import { sideNavItems } from './config';
 import './styles.css';
 import BackToTop from '../../components/BackToTop';
+import { Link } from 'react-router-dom';
 
 export default function GettingStartedPage(): JSX.Element {
   const [activeSection, setActiveSection] = useState('getting-started');
@@ -50,9 +51,9 @@ export default function GettingStartedPage(): JSX.Element {
                 <li>Enterprise Solutions</li>
                 <li>Alberta Digital Service Platform (ADSP)</li>
               </ul>
-              <a href="/ecosystem/index.html">
+              <Link to="/ecosystem">
                 Learn more about the teams and the GoA eco-system
-              </a>
+              </Link>
             </li>
             <GoASpacer vSpacing="s" />
             <li>
@@ -72,7 +73,7 @@ export default function GettingStartedPage(): JSX.Element {
               </ul>
             </li>
           </ol>
-          <a href="/services/index.html">Explore services → </a>
+          <Link to="/services">Explore services → </Link>
         </p>
 
         <GoASpacer vSpacing="l" />
@@ -117,25 +118,25 @@ export default function GettingStartedPage(): JSX.Element {
           below:
           <ol className="goa-ordered-list">
             <li>
-              <a href="https://abgov.sharepoint.com/sites/S500D27-SI969/SitePages/SPO-Home.aspx">
+              <Link to="https://abgov.sharepoint.com/sites/S500D27-SI969/SitePages/SPO-Home.aspx">
                 Integration improvement
-              </a>
+              </Link>
               : A repository of services owned and maintained by the Service
               Integration team.
             </li>
 
             <li>
-              <a href="https://abgov.sharepoint.com/sites/S500D27-SI969/SitePages/SPO-Home.aspx">
+              <Link to="https://abgov.sharepoint.com/sites/S500D27-SI969/SitePages/SPO-Home.aspx">
                 ADSP
-              </a>
+              </Link>
               : A repository of services owned and maintained by the Alberta
               Digital Services Platform (ADSP).
             </li>
 
             <li>
-              <a href="https://bernie.gov.ab.ca/esm?id=sc_cat_item&sys_id=f3769a161b0a451464f6b99f034bcbdc">
+              <Link to="https://bernie.gov.ab.ca/esm?id=sc_cat_item&sys_id=f3769a161b0a451464f6b99f034bcbdc">
                 GitHub
-              </a>
+              </Link>
               : Repository to obtain code that can be accessed by generating a
               request on Bernie.
             </li>
