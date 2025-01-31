@@ -1,7 +1,7 @@
 import { Logger } from "winston";
 import { getServices, getService } from "./index";
 import { DataCache } from "../../../cache/types";
-import { CacheKeys } from "../../../cache";
+import { CacheConfigs, CacheKeys } from "../../../cache";
 import { TokenProvider } from "@abgov/adsp-service-sdk";
 import axios from "axios";
 
@@ -26,7 +26,13 @@ describe('services', () => {
     beforeEach(() => {
         jest.resetAllMocks();
 
-        reqMock = {} as unknown as jest.Mocked<Request>;
+        reqMock = {
+            user: {
+                token: {
+                    bearer: 'token'
+                }
+            }
+        } as unknown as jest.Mocked<Request>;
         resMock = {
             status: jest.fn().mockReturnThis(),
             send: jest.fn().mockReturnThis()
@@ -47,7 +53,7 @@ describe('services', () => {
 
     describe('getServices', () => {
         it('should return 200 and list of services from cache', async () => {
-            await getServices(loggerMock, valueServiceUrl, tokenProviderMock, cacheMock)(reqMock, resMock, jest.fn());
+            await getServices(loggerMock, valueServiceUrl, cacheMock)(reqMock, resMock, jest.fn());
 
             expect(resMock.status).toHaveBeenCalledWith(200);
             expect(resMock.send).toHaveBeenCalledWith({services: services});
@@ -83,13 +89,13 @@ describe('services', () => {
                 }
             }});
 
-            await getServices(loggerMock, valueServiceUrl, tokenProviderMock, cacheMock)(reqMock, resMock, jest.fn());
+            await getServices(loggerMock, valueServiceUrl, cacheMock)(reqMock, resMock, jest.fn());
 
             expect(axios.get).toHaveBeenCalledTimes(3);
             expect(axios.get).toHaveBeenNthCalledWith(1, 'http://value.service/common-capabilities/values/published-index?top=1', {headers: {Authorization: `Bearer token`}});
             expect(axios.get).toHaveBeenNthCalledWith(2, 'http://value.service/common-capabilities/values/1?top=1', {headers: {Authorization: `Bearer token`}});
             expect(axios.get).toHaveBeenNthCalledWith(3, 'http://value.service/common-capabilities/values/2?top=1', {headers: {Authorization: `Bearer token`}});
-            expect(cacheMock.set).toHaveBeenCalledWith(CacheKeys.SERVICES, {[services[0].appId]: services[0], [services[1].appId]: services[1]});
+            expect(cacheMock.set).toHaveBeenCalledWith(CacheKeys.SERVICES, {[services[0].appId]: services[0], [services[1].appId]: services[1]}, CacheConfigs[CacheKeys.SERVICES].ttl);
             expect(resMock.status).toHaveBeenCalledWith(200);
             expect(resMock.send).toHaveBeenCalledWith({services: services});
         });
@@ -97,7 +103,7 @@ describe('services', () => {
         it('should return 404 and empty list of services', async () => {
             cacheMock.get = jest.fn().mockResolvedValue(null);
 
-            await getServices(loggerMock, valueServiceUrl, tokenProviderMock, cacheMock)(reqMock, resMock, jest.fn());
+            await getServices(loggerMock, valueServiceUrl, cacheMock)(reqMock, resMock, jest.fn());
 
             expect(resMock.status).toHaveBeenCalledWith(404);
             expect(resMock.send).toHaveBeenCalledWith({error: 'no services found'});
@@ -129,10 +135,10 @@ describe('services', () => {
                 }
             }});
 
-            await getServices(loggerMock, valueServiceUrl, tokenProviderMock, cacheMock)(reqMock, resMock, jest.fn());
+            await getServices(loggerMock, valueServiceUrl, cacheMock)(reqMock, resMock, jest.fn());
 
             expect(axios.get).toHaveBeenCalledTimes(3);
-            expect(cacheMock.set).toHaveBeenCalledWith(CacheKeys.SERVICES, {[services[0].appId]: services[0]});
+            expect(cacheMock.set).toHaveBeenCalledWith(CacheKeys.SERVICES, {[services[0].appId]: services[0]}, CacheConfigs[CacheKeys.SERVICES].ttl);
             expect(resMock.status).toHaveBeenCalledWith(200);
             expect(resMock.send).toHaveBeenCalledWith({services: [services[0]]});
         });
@@ -142,7 +148,7 @@ describe('services', () => {
         it('should return 200 and service info', async () => {
             reqMock.params = {serviceId: services[0].appId};
 
-            await getService(loggerMock, valueServiceUrl, tokenProviderMock, cacheMock)(reqMock, resMock, jest.fn());            
+            await getService(loggerMock, valueServiceUrl, cacheMock)(reqMock, resMock, jest.fn());            
 
             expect(resMock.status).toHaveBeenCalledWith(200);
             expect(resMock.send).toHaveBeenCalledWith({serviceInfo: services[0]});
@@ -151,7 +157,7 @@ describe('services', () => {
         it('should return 404 if service not found', async () => {
             reqMock.params = {serviceId: 'does-not-exist'};
 
-            await getService(loggerMock, valueServiceUrl, tokenProviderMock, cacheMock)(reqMock, resMock, jest.fn());
+            await getService(loggerMock, valueServiceUrl, cacheMock)(reqMock, resMock, jest.fn());
 
             expect(resMock.status).toHaveBeenCalledWith(404);
             expect(resMock.send).toHaveBeenCalledWith({error: 'service not found with id=does-not-exist'});

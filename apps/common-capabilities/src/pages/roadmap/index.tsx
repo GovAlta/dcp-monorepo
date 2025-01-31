@@ -174,6 +174,7 @@ export default function HomePage(): JSX.Element {
     try {
       const response = await axios.get(exportRoadmapUrl, {
         responseType: 'blob',
+        headers: { Authorization: `Bearer ${authToken}` },
       });
 
       const url = window.URL.createObjectURL(new Blob([response.data]));
