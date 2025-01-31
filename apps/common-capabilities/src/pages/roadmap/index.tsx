@@ -479,7 +479,7 @@ export default function HomePage(): JSX.Element {
                 }
               }}
             />
-            <GoADivider></GoADivider>
+            <GoADivider />
             <GoASpacer vSpacing="xl" />
             {filterListCustom.map((filterCategory) => (
               <div key={filterCategory.property}>
@@ -490,9 +490,6 @@ export default function HomePage(): JSX.Element {
                     selectedFiltersState[filterCategory.property].length
                   }) `}
                   open={filtersAccordionState[filterCategory.property]}
-                  onChange={() =>
-                    (window.location.href = '/addservice/index.html')
-                  }
                 >
                   {appFilters.filters[filterCategory.property]?.map((filter) => (
                     <GoACheckbox
@@ -513,12 +510,6 @@ export default function HomePage(): JSX.Element {
       >
         <div className="home-header">
           <h1 id="home-title">Service Roadmaps</h1>
-          <GoAButton
-            type="secondary"
-            onClick={() => nagivate('/addservice')}
-          >
-            <b>Add a new service</b>{' '}
-          </GoAButton>
         </div>
         {checkedProviders.map((item) => (
           <li key={item}>{item}</li>

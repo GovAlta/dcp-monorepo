@@ -75,7 +75,7 @@ export default function Landing(): JSX.Element {
         </ul>
 
         <ExternalLink
-          link={'/gettingstarted/index.html'}
+          link={'/gettingstarted'}
           text={
             'Learn how common capabilities is different from other similar resources that exist within GoA'
           }
