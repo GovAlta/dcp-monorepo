@@ -7,10 +7,8 @@ type AuthContextProps = {
   isAuthenticated: boolean;
 }
 
-// Create an Auth Context
 const AuthContext = createContext<AuthContextProps | undefined>(undefined);
 
-// Initialize Keycloak instance
 let keycloak: Keycloak;
 
 // eslint-disable-next-line react/prop-types
@@ -27,10 +25,9 @@ export const AuthStateProvider = ({ children }: { children: React.ReactNode }) =
 
   const logout = () => {
     setIsAuthenticated(false);
-    keycloak.logout(); // TODO what to do after logging out
+    keycloak.logout();
   }
 
-  // TODO need to verify if token generation can be longer and ask about how long it should be with Sanchit
   useEffect(() => {
     if (!keycloak) {
         keycloak = new Keycloak({
@@ -62,7 +59,6 @@ export const AuthStateProvider = ({ children }: { children: React.ReactNode }) =
                 if (!auth) {
                     login();
                 } else {
-                    console.log("Keycloak initialized with token", keycloak.token); // REMOVE THIS AFTER TESTING
                     setAuthToken(keycloak.token);
                     setIsAuthenticated(true);
                 }
@@ -72,16 +68,15 @@ export const AuthStateProvider = ({ children }: { children: React.ReactNode }) =
   }, []);
 
   return (
-    // <AuthContext.Provider value={{ login, logout, authToken }}>
     <AuthContext.Provider value={{ logout, authToken, isAuthenticated }}>
       {children}
     </AuthContext.Provider>
   );
 };
 
-// Custom hook to use auth context
 export const useAuth = () => {
   const context = useContext(AuthContext);
+
   if (!context) {
     throw new Error("useAuth must be used within an AuthStateProvider");
   }

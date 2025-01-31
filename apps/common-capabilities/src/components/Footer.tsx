@@ -21,9 +21,9 @@ const Footer = () => {
           <Link to="/support">Support</Link>
         </GoAAppFooterNavSection>
 
-        <GoAAppFooterMetaSection>
-          {/* <Link to="/disclaimer"> Disclaimer</Link>           */}
-        </GoAAppFooterMetaSection>
+        {/* <GoAAppFooterMetaSection>
+          <Link to="/disclaimer"> Disclaimer</Link>          
+        </GoAAppFooterMetaSection> */}
       </GoAAppFooter>
     </>
   );

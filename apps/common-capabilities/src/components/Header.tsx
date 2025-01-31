@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useEffect } from 'react';
 import {
   GoAMicrositeHeader,
@@ -11,7 +11,17 @@ declare global {
   var adspFeedback: any;
 }
 
+const headerLinks = [
+  { label: 'Getting started', href: '/gettingstarted#getting-started' },
+  { label: 'About', href: '/about' },
+  { label: 'Eco-system', href: '/ecosystem' },
+  { label: 'Services', href: '/services' },
+  { label: 'Roadmap', href: '/roadmap' },
+  { label: 'Support', href: '/support' },
+];
+
 const Header = () => {
+  const [currentActive, setCurrentActive] = useState(window.location.pathname);
   const { isAuthenticated, logout } = useAuth();
 
   useEffect(() => {
@@ -34,12 +44,9 @@ const Header = () => {
         heading="Common capabilities"
         maxContentWidth="1500px"
       >
-        <Link to="/gettingstarted#getting-started">Getting started</Link>
-        <Link to="/about">About</Link>
-        <Link to="/ecosystem">Eco-system</Link>
-        <Link to="/services">Services</Link>
-        <Link to="/roadmap">Roadmap</Link>
-        <Link to="/support">Support</Link>
+        {headerLinks.map((link) => (
+          <Link key={link.href} to={link.href} className={currentActive === link.href ? 'current' : ''} onClick={() => setCurrentActive(link.href)}>{link.label}</Link>
+        ))}
         {isAuthenticated && <a onClick={logout} href="#">Logout</a>}
       </GoAAppHeader>
     </>

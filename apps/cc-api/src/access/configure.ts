@@ -13,23 +13,19 @@ interface ConfigureOptions {
     logger: Logger;
 }
 
-function resolveRoles(serviceAud, {realm_access, resource_access}) {
+function resolveRoles(serviceAudience, {realm_access, resource_access}) {
     return Object.entries(resource_access || {}).reduce((roles, [client, clientRoles]: [string, {roles: string[]}]) => {
-        // Include client roles of the current service with unqualified names.
-        // These roles are included in both qualified and unqualified forms.
-        if (client === serviceAud) {
+        if (client === serviceAudience) {
           roles.push(...(clientRoles?.roles || []));
         }
     
-        // Include all client roles with qualified names.
         roles.push(...(clientRoles?.roles?.map((clientRole) => `${client}:${clientRole}`) || []));
     
         return roles;
     }, realm_access?.roles || []);
 }
 
-
-const verifyCallback = (req, payload, done) => {
+const verify = (req, payload, done) => {
     const user: Express.User = {
       id: payload.sub,
       name: payload.name || payload.preferred_username,
@@ -38,7 +34,7 @@ const verifyCallback = (req, payload, done) => {
       isCore: false,
       token: {
         ...payload,
-        bearer: req.headers.authorization?.substring(7),
+        bearer: req.headers.authorization?.substring(7), // everything after 'Bearer '
       },
     };
 
@@ -59,7 +55,7 @@ export function configurePassport(
           secretOrKeyProvider: getKeyProvider(cache, logger),
           passReqToCallback: true,
         },
-        verifyCallback
+        verify
     ));
     passport.use('tenant', tenantStrategy);
 

@@ -35,5 +35,3 @@ export default function App() {
         </Router>
     );
 }
-
-// TODO add error boundary here to handle unauthorized errors at the top level

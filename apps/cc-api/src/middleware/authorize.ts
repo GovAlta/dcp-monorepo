@@ -13,6 +13,9 @@ export const VALUE_SERVICE = {
  * Otherwise, it responds with a 403 status code and an error message.
  * 
  * NOTE: Empty array means no role is checked
+ * 
+ * Roles should be in the format of `${ADSP service URN id}:${permission}`.
+ * For a list of service URN ids and permissions see https://govalta.github.io/adsp-monorepo/services/services.html
  */
 
 export default function authorize(allowedRoles: string[]) {
