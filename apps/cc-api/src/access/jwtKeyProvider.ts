@@ -1,8 +1,8 @@
-import { JwksClient } from "jwks-rsa";
-import jwtDecode from 'jwt-decode';
-import { Logger } from "winston";
-import { DataCache } from "../cache/types";
-import { getJwksClient } from "./jwksClient";
+import { JwksClient } from 'jwks-rsa';
+import { jwtDecode } from 'jwt-decode';
+import { Logger } from 'winston';
+import { DataCache } from '../cache/types';
+import { getJwksClient } from './jwksClient';
 
 const LOG_CONTEXT = { context: 'JwtKeyProvider' };
 

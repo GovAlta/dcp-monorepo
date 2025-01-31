@@ -1,7 +1,7 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
-import Keycloak from "keycloak-js";
-import { jwtDecode } from "jwt-decode";
-import { getAdspConfigs, SAML_CLIENT_ID } from "../utils/configs";
+import React, { createContext, useContext, useEffect, useState } from 'react';
+import Keycloak from 'keycloak-js';
+import { jwtDecode } from 'jwt-decode';
+import { getAdspConfigs, SAML_CLIENT_ID } from '../utils/configs';
 
 type JWTUserPayload = {
   given_name: string;
@@ -95,7 +95,7 @@ export const AuthStateProvider = ({ children }: { children: React.ReactNode }) =
                     setIsAuthenticated(true);
                 }
             })
-            .catch((err: Error) => console.error("Keycloak failed to initialize with error=", err));
+            .catch((err: Error) => console.error('Keycloak failed to initialize with error=', err));
         }
   }, []);
 
@@ -110,7 +110,7 @@ export const useAuth = () => {
   const context = useContext(AuthContext);
 
   if (!context) {
-    throw new Error("useAuth must be used within an AuthStateProvider");
+    throw new Error('useAuth must be used within an AuthStateProvider');
   }
   
   return context;

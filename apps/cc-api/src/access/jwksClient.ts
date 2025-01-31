@@ -1,8 +1,8 @@
-import { JwksClient } from "jwks-rsa";
-import { Logger } from "winston";
-import { DataCache } from "../cache/types";
-import { environment } from "../environments/environment";
-import axios from "axios";
+import { JwksClient } from 'jwks-rsa';
+import { Logger } from 'winston';
+import { DataCache } from '../cache/types';
+import { environment } from '../environments/environment';
+import axios from 'axios';
 
 const LOG_CONTEXT = { context: 'JwksClient' };
 const ISSUER_CACHE_TTL = 60 * 60 * 1000; // an hour

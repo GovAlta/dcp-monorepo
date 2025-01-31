@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { AuthStateProvider } from './providers/AuthStateProvider';
 import GoALayout from './layouts/GoALayout';
@@ -13,22 +13,72 @@ import Services from './pages/services';
 import Support from './pages/support';
 import UpdateService from './pages/updateservice';
 
+export const secureRoutes = [
+    {
+        path: '/',
+        element: <LandingPage />,
+        title: 'Common Capabilities',
+    },
+    {
+        path: '/about',
+        element: <About />,
+        title: 'About',
+    },
+    {
+        path: '/addservice',
+        element: <AddService />,
+        title: 'Add Service',
+    },
+    {
+        path: '/details/:id',
+        element: <Details />,
+        title: 'Details',
+        titleRegex: /^\/details\/([a-zA-Z0-9_-]+)$/
+    },
+    {
+        path: '/ecosystem',
+        element: <Ecosystem />,
+        title: 'Ecosystem',
+    },
+    {
+        path: '/gettingstarted',
+        element: <GettingStarted />,
+        title: 'Getting started',
+    },
+    {
+        path: '/roadmap',
+        element: <Roadmap />,
+        title: 'Roadmap',
+    },
+    {
+        path: '/services',
+        element: <Services />,
+        title: 'Services',
+    },
+    {
+        path: '/support',
+        element: <Support />,
+        title: 'Support',
+    },
+    {
+        path: '/updateservice/:id',
+        element: <UpdateService />,
+        title: 'Update Service',
+        titleRegex: /^\/updateservice\/([a-zA-Z0-9_-]+)$/
+    }
+];
+
 export default function App() {
+    const titles = useMemo(() => secureRoutes.map((route) => ({ route: route.path, title: route.title, titleRegex: route.titleRegex })), []);
+
     return (
         <Router>
             <AuthStateProvider>
                 <Routes>
-                    <Route element={<GoALayout authEnforced />}>
-                        <Route path="/" element={<LandingPage />} />
-                        <Route path="/about" element={<About />} />
-                        <Route path="/addservice" element={<AddService />} />
-                        <Route path="/details/:id" element={<Details />} />
-                        <Route path="/ecosystem" element={<Ecosystem />} />
-                        <Route path="/gettingstarted" element={<GettingStarted />} />
-                        <Route path="/roadmap" element={<Roadmap />} />
-                        <Route path="/services" element={<Services />} />
-                        <Route path="/support" element={<Support />} />
-                        <Route path="/updateservice/:id" element={<UpdateService />} />
+                    <Route element={<GoALayout authEnforced titles={titles} />}>
+                        {secureRoutes.map((route) => (
+                            <Route key={route.path} path={route.path} element={route.element} />
+                        ))}
                     </Route>
                 </Routes>
             </AuthStateProvider>
