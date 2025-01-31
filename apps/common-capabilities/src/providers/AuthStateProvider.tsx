@@ -1,11 +1,25 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import Keycloak from "keycloak-js";
+import { jwtDecode } from "jwt-decode";
 import { getAdspConfigs, SAML_CLIENT_ID } from "../utils/configs";
+
+type JWTUserPayload = {
+  given_name: string;
+  family_name: string;
+  email: string;
+}
+
+type UserProfile = {
+  firstName: string;
+  lastName: string;
+  email: string;
+}
 
 type AuthContextProps = {
   logout: () => void;
   authToken?: string;
   isAuthenticated: boolean;
+  user?: UserProfile;
 }
 
 const AuthContext = createContext<AuthContextProps | undefined>(undefined);
@@ -16,6 +30,7 @@ let keycloak: Keycloak;
 export const AuthStateProvider = ({ children }: { children: React.ReactNode }) => {
   const [authToken, setAuthToken] = useState<string | undefined>(undefined);
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+  const [user, setUser] = useState<UserProfile | undefined>(undefined);
 
   const login = () => {
     keycloak.login({
@@ -28,6 +43,20 @@ export const AuthStateProvider = ({ children }: { children: React.ReactNode }) =
     setIsAuthenticated(false);
     keycloak.logout();
   }
+
+  useEffect(() => {
+    if (isAuthenticated && authToken) {
+      const decoded = jwtDecode<JWTUserPayload>(authToken);
+      
+      setUser({ 
+        firstName: decoded.given_name, 
+        lastName: decoded.family_name, 
+        email: decoded.email 
+      });
+    } else {
+      setUser(undefined);
+    }
+  }, [isAuthenticated, authToken]);
 
   useEffect(() => {
     if (!keycloak) {
@@ -71,7 +100,7 @@ export const AuthStateProvider = ({ children }: { children: React.ReactNode }) =
   }, []);
 
   return (
-    <AuthContext.Provider value={{ logout, authToken, isAuthenticated }}>
+    <AuthContext.Provider value={{ logout, authToken, isAuthenticated, user }}>
       {children}
     </AuthContext.Provider>
   );
