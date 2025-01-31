@@ -17,7 +17,6 @@ export const CacheConfigs = {
     },
 }
 
-// TODO need to make sure user has access to the services that the data are being cached for.
 export function getCache(logger: Logger): DataCache {
     return new KeyvCache(logger);
 }
