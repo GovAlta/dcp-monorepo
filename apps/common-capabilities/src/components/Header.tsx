@@ -6,6 +6,7 @@ import {
 } from '@abgov/react-components';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../providers/AuthStateProvider';
+import './styles.css';
 
 declare global {
   var adspFeedback: any;
@@ -47,7 +48,7 @@ const Header = () => {
         {headerLinks.map((link) => (
           <Link key={link.href} to={link.href} className={currentActive === link.href ? 'current' : ''} onClick={() => setCurrentActive(link.href)}>{link.label}</Link>
         ))}
-        {isAuthenticated && <a onClick={logout} href="#">Logout</a>}
+        {isAuthenticated && <a onClick={logout} href="#" className='logout-header'>Logout</a>}
       </GoAAppHeader>
     </>
   );

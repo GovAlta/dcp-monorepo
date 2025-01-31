@@ -243,9 +243,7 @@ export default function HomePage(): JSX.Element {
   const otherServices = services.filter((item: any) => !item.recommended )
 
   let content;
-
-  console.log("error", error);
-
+  
   if (isLoading || (!data && !error)) {
     content = <GoACircularProgress variant="fullscreen" size="large" message="Loading service list..." visible={true} />;
   } else if (error) {
