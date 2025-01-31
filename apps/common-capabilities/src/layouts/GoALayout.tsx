@@ -18,20 +18,18 @@ const GoALayout = ({ authEnforced, titles }: Props) => {
   useEffect(() => {
     console.log(location.pathname);
     const title = titles?.find((t) => {
-      console.log('regex', t.titleRegex, t.titleRegex?.test(location.pathname));
       return t.route === location.pathname || t.titleRegex?.test(location.pathname);
-  })?.title;
+    })?.title;
     if (title) {
       document.title = title;
     }
   }, [location, titles]);
 
-
   useEffect(() => {
     setContentHeight(window.innerHeight - (headerRef?.current?.clientHeight || 0));
   });
 
-  return authEnforced && isAuthenticated ? (
+  return !authEnforced || isAuthenticated ? (
     <>
       <div ref={headerRef}>
         <Header />
