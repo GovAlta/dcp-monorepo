@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import Keycloak from "keycloak-js";
+import { getAdspConfigs, SAML_CLIENT_ID } from "../utils/configs";
 
 type AuthContextProps = {
   logout: () => void;
@@ -30,10 +31,12 @@ export const AuthStateProvider = ({ children }: { children: React.ReactNode }) =
 
   useEffect(() => {
     if (!keycloak) {
+        const adspConfigs = getAdspConfigs();
+
         keycloak = new Keycloak({
-            url: 'https://access-uat.alberta.ca/auth',
-            realm: '9b2d9233-4d9f-432d-9471-9f95861db16d',
-            clientId: 'urn:ads:cc:uiam_saml'
+            url: adspConfigs.auth_url,
+            realm: adspConfigs.realm,
+            clientId: SAML_CLIENT_ID
         });
 
         keycloak.onTokenExpired = () => {

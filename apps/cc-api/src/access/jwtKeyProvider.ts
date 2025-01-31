@@ -12,20 +12,20 @@ export function getKeyProvider(cache: DataCache, logger: Logger) {
             const { kid } = jwtDecode<{ kid: string }>(token, { header: true });
             const { iss } = jwtDecode<{ iss: string }>(token);
 
-            console.log(`Decoded JWT from request with iss '${iss}' and kid '${kid}'...`, LOG_CONTEXT);
+            logger.info(`Decoded JWT from request with iss '${iss}' and kid '${kid}'...`, LOG_CONTEXT);
 
             const client: JwksClient = await getJwksClient(iss, cache, logger);
 
-            console.log(`Retrieving public key from JWKS client...'`, LOG_CONTEXT);
+            logger.info(`Retrieving public key from JWKS client...'`, LOG_CONTEXT);
             
             client.getSigningKey(kid, (err, key) => {
                 if (err) {
-                    console.log(`Error encountered in request to JWKS client. ${err}`, LOG_CONTEXT);
+                    logger.error(`Error encountered in request to JWKS client. ${err}`, LOG_CONTEXT);
                 }
                 done(err, key?.getPublicKey());
             });
         } catch (err) {
-            console.log(`Error encountered verifying token signature. ${err}`);
+            logger.error(`Error encountered verifying token signature. ${err}`);
             done(err);
         }
     };

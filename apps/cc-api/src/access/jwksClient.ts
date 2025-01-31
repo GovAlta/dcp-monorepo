@@ -10,11 +10,11 @@ const ISSUER_CACHE_TTL = 60 * 60 * 1000; // an hour
 let jwksClient: JwksClient | undefined;
 
 export async function getJwksClient(iss: string, cache: DataCache, logger: Logger): Promise<JwksClient> {
-    console.log(`Creating JWKS client for iss '${iss}'...'`, LOG_CONTEXT);
+    logger.info(`Creating JWKS client for iss '${iss}'...'`, LOG_CONTEXT);
 
     const issuerCached = await cache.has(iss);
     if (issuerCached) {
-        console.log(`Found cached JWKS client option for iss '${iss}'.'`, LOG_CONTEXT);
+        logger.info(`Found cached JWKS client option for iss '${iss}'.'`, LOG_CONTEXT);
         return jwksClient;
     }
     
@@ -37,7 +37,7 @@ export async function getJwksClient(iss: string, cache: DataCache, logger: Logge
     // Cant cache jwks client in keyv since its a class instance, only caching the options to recreate the client
     cache.set(iss, clientOptions, ISSUER_CACHE_TTL);
 
-    console.log(`Created and cached JWKS client for iss '${iss}'.'`, LOG_CONTEXT);
+    logger.info(`Created and cached JWKS client for iss '${iss}'.'`, LOG_CONTEXT);
 
     return jwksClient;
 }
