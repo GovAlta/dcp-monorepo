@@ -38,12 +38,6 @@
       ],
       "executor": "@nx/vite:preview-server",
       "options": {}
-    },
-    "check": {
-      "executor": "@nx/vite:check"
-    },
-    "sync": {
-      "executor": "@nx/vite:sync"
     }
   },
   "tags": []
