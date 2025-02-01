@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { AuthStateProvider } from './providers/AuthStateProvider';
 import GoALayout from './layouts/GoALayout';

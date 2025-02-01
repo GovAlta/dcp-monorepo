@@ -79,6 +79,10 @@ export const AuthStateProvider = ({ children }: { children: React.ReactNode }) =
                         setAuthToken(keycloak.token);
                         setIsAuthenticated(true);
                     }
+                })
+                .catch((err: Error) => {
+                    console.log('Failed to refresh token', err);
+                    logout();
                 });
         };
 
