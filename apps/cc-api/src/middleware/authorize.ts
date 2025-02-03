@@ -3,6 +3,8 @@ export const VALUE_SERVICE = {
   WRITE: ['urn:ads:platform:value-service:value-writer']
 }
 
+export const DEFAULT_ADMIN = 'default-admin'; // cc realm role mainly used to perform admin requests
+
 /**
  * Middleware to authorize access based on user roles.
  * 

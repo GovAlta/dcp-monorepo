@@ -7,7 +7,7 @@ import { DataCache } from '../../cache/types';
 import { SiteVerifyResponse } from './types';
 import { v4 as uuidv4, validate as uuidValidate } from 'uuid';
 import { environment } from '../../environments/environment';
-import authorize, { VALUE_SERVICE } from '../../middleware/authorize';
+import authorize, { VALUE_SERVICE, DEFAULT_ADMIN } from '../../middleware/authorize';
 
 interface RouterOptions {
   logger: Logger;
@@ -232,7 +232,7 @@ export function createListingsRouter({
     exportServicesRoadmap(logger, valueServiceUrl, cache)
   );
 
-  router.post('/cache/clear', authorize(['default-admin']), clearCache(cache));
+  router.post('/cache/clear', authorize([DEFAULT_ADMIN]), clearCache(cache));
 
   return router;
 }
