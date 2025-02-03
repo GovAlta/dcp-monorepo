@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import Keycloak from 'keycloak-js';
 import { jwtDecode } from 'jwt-decode';
-import { getAdspConfigs, SAML_CLIENT_ID } from '../utils/configs';
+import { getAdspConfigs } from '../utils/configs';
 
 type JWTUserPayload = {
   given_name: string;
@@ -16,6 +16,7 @@ type UserProfile = {
 }
 
 type AuthContextProps = {
+  login: () => void;
   logout: () => void;
   authToken?: string;
   isAuthenticated: boolean;
@@ -34,8 +35,8 @@ export const AuthStateProvider = ({ children }: { children: React.ReactNode }) =
 
   const login = () => {
     keycloak.login({
-        idpHint: 'saml',
-        redirectUri: window.location.href
+      idpHint: 'saml',
+      redirectUri: window.location.href
     });
   }
 
@@ -63,48 +64,50 @@ export const AuthStateProvider = ({ children }: { children: React.ReactNode }) =
         const adspConfigs = getAdspConfigs();
 
         keycloak = new Keycloak({
-            url: adspConfigs.auth_url,
-            realm: adspConfigs.realm,
-            clientId: SAML_CLIENT_ID
+          url: adspConfigs.auth_url,
+          realm: adspConfigs.realm,
+          clientId: adspConfigs.saml_client_id
         });
 
         keycloak.onTokenExpired = () => {
-            setAuthToken(undefined);
-            setIsAuthenticated(false);
+          setAuthToken(undefined);
+          setIsAuthenticated(false);
 
-            keycloak
-                .updateToken(30)
-                .then((refreshed: boolean) => {
-                    if (refreshed) {
-                        setAuthToken(keycloak.token);
-                        setIsAuthenticated(true);
-                    }
-                })
-                .catch((err: Error) => {
-                    console.log('Failed to refresh token', err);
-                    logout();
-                });
+          keycloak
+            .updateToken(30)
+            .then((refreshed: boolean) => {
+              if (refreshed) {
+                setAuthToken(keycloak.token);
+                setIsAuthenticated(true);
+              }
+            })
+            .catch((err: Error) => {
+              console.log('Failed to refresh token', err);
+              logout();
+            });
         };
 
         keycloak
-            .init({
-                onLoad: 'check-sso',
-                checkLoginIframe: false
-            })
-            .then((auth: boolean) => {
-                if (!auth) {
-                    login();
-                } else {
-                    setAuthToken(keycloak.token);
-                    setIsAuthenticated(true);
-                }
-            })
-            .catch((err: Error) => console.error('Keycloak failed to initialize with error=', err));
+          .init({
+            onLoad: 'check-sso',
+            checkLoginIframe: false
+          })
+          .then((auth: boolean) => {
+              if (!auth) {
+                // If finer control is needed on when to redirect user to SSO login
+                // instead of calling login here, call login in the areas that require login (e.g. a login page endpoint)
+                login();
+              } else {
+                setAuthToken(keycloak.token);
+                setIsAuthenticated(true);
+              }
+          })
+          .catch((err: Error) => console.error('Keycloak failed to initialize with error=', err));
         }
   }, []);
 
   return (
-    <AuthContext.Provider value={{ logout, authToken, isAuthenticated, user }}>
+    <AuthContext.Provider value={{ login, logout, authToken, isAuthenticated, user }}>
       {children}
     </AuthContext.Provider>
   );
