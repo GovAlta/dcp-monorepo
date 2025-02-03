@@ -12,6 +12,7 @@ import Roadmap from './pages/roadmap';
 import Services from './pages/services';
 import Support from './pages/support';
 import UpdateService from './pages/updateservice';
+import { getAdspConfigs } from './utils/configs';
 
 export const secureRoutes = [
     {
@@ -69,11 +70,19 @@ export const secureRoutes = [
 ];
 
 export default function App() {
+    const adpsConfig = useMemo(() => getAdspConfigs(), []);
     const titles = useMemo(() => secureRoutes.map((route) => ({ route: route.path, title: route.title, titleRegex: route.titleRegex })), []);
 
     return (
         <Router>
-            <AuthStateProvider>
+            <AuthStateProvider 
+                keyCloakConfig={{
+                    auth_url: adpsConfig.auth_url,
+                    realm: adpsConfig.realm,
+                    idp_client_id: adpsConfig.idp_client_id,
+                    idp_alias: adpsConfig.idp_alias
+                }}
+            >
                 <Routes>
                     <Route element={<GoALayout authEnforced titles={titles} />}>
                         {secureRoutes.map((route) => (

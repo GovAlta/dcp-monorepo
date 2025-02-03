@@ -16,7 +16,6 @@ const GoALayout = ({ authEnforced, titles }: Props) => {
   const location = useLocation();
 
   useEffect(() => {
-    console.log(location.pathname);
     const title = titles?.find((t) => {
       return t.route === location.pathname || t.titleRegex?.test(location.pathname);
     })?.title;

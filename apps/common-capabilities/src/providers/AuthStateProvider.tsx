@@ -1,7 +1,6 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import Keycloak from 'keycloak-js';
 import { jwtDecode } from 'jwt-decode';
-import { getAdspConfigs } from '../utils/configs';
 
 type JWTUserPayload = {
   given_name: string;
@@ -23,19 +22,29 @@ type AuthContextProps = {
   user?: UserProfile;
 }
 
+type Props = {
+  keyCloakConfig: {
+    auth_url: string;
+    realm: string;
+    idp_client_id: string;
+    idp_alias: string;
+  };
+  children: React.ReactNode;
+}
+
 const AuthContext = createContext<AuthContextProps | undefined>(undefined);
 
 let keycloak: Keycloak;
 
 // eslint-disable-next-line react/prop-types
-export const AuthStateProvider = ({ children }: { children: React.ReactNode }) => {
+export const AuthStateProvider = ({ children, keyCloakConfig }: Props) => {
   const [authToken, setAuthToken] = useState<string | undefined>(undefined);
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
   const [user, setUser] = useState<UserProfile | undefined>(undefined);
 
   const login = () => {
     keycloak.login({
-      idpHint: 'saml',
+      idpHint: keyCloakConfig.idp_alias,
       redirectUri: window.location.href
     });
   }
@@ -61,12 +70,12 @@ export const AuthStateProvider = ({ children }: { children: React.ReactNode }) =
 
   useEffect(() => {
     if (!keycloak) {
-        const adspConfigs = getAdspConfigs();
+        
 
         keycloak = new Keycloak({
-          url: adspConfigs.auth_url,
-          realm: adspConfigs.realm,
-          clientId: adspConfigs.saml_client_id
+          url: keyCloakConfig.auth_url,
+          realm: keyCloakConfig.realm,
+          clientId: keyCloakConfig.idp_client_id
         });
 
         keycloak.onTokenExpired = () => {

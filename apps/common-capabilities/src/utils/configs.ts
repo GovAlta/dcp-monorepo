@@ -12,7 +12,8 @@ type GatewayConfigs = {
 type ADSPConfigs = {
   auth_url: string;
   realm: string;
-  saml_client_id: string
+  idp_client_id: string;
+  idp_alias: string;
 }
 
 type ServiceConfig = {
@@ -25,7 +26,8 @@ type ServiceConfig = {
 const serviceConfigs: ServiceConfig = {
   local: {
     adsp: {
-      saml_client_id: 'urn:ads:cc:uiam_saml',
+      idp_client_id: 'urn:ads:cc:uiam_saml',
+      idp_alias: 'saml',
       auth_url: 'https://access-uat.alberta.ca/auth',
       realm: '9b2d9233-4d9f-432d-9471-9f95861db16d',
     },
@@ -35,7 +37,8 @@ const serviceConfigs: ServiceConfig = {
   },
   dev: {
     adsp: {
-      saml_client_id: 'urn:ads:cc:uiam_saml',
+      idp_client_id: 'urn:ads:cc:uiam_saml',
+      idp_alias: 'saml',
       auth_url: 'https://access-uat.alberta.ca/auth',
       realm: '9b2d9233-4d9f-432d-9471-9f95861db16d',
     },
@@ -45,7 +48,8 @@ const serviceConfigs: ServiceConfig = {
   },
   uat: {
     adsp: {
-      saml_client_id: 'urn:ads:cc:uiam_saml',
+      idp_client_id: 'urn:ads:cc:uiam_saml',
+      idp_alias: 'saml',
       auth_url: 'https://access-uat.alberta.ca/auth',
       realm: '9b2d9233-4d9f-432d-9471-9f95861db16d',
     },
@@ -55,7 +59,8 @@ const serviceConfigs: ServiceConfig = {
   },
   prod: {
     adsp: {
-      saml_client_id: 'urn:ads:cc:uiam_saml',
+      idp_client_id: 'urn:ads:cc:uiam_saml',
+      idp_alias: 'saml',
       auth_url: 'https://access.alberta.ca/auth',
       realm: '650cd96a-1a14-4988-826d-bb108047f2a8',
     },
@@ -72,7 +77,7 @@ function getEnv() {
 
     if (!env) {
       if (url === 'localhost') {
-        return Environment.local;
+        return Environment.uat;
       } else if (url === 'common-capabilities.digital.gov.ab.ca') {
         return Environment.prod;
       }

@@ -22,7 +22,7 @@ export default function authorize(allowedRoles: string[]) {
     return (req, res, next) => {
       const { user } = req
   
-      if (allowedRoles.every((role) => user?.roles?.includes(role))) {
+      if (allowedRoles && allowedRoles.every((role) => user?.roles?.includes(role))) {
         next();
       } else {
         res.status(403).json({message: "You do not have permission to access this resource."});
