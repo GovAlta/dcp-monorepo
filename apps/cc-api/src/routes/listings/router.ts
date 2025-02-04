@@ -7,7 +7,12 @@ import { DataCache } from '../../cache/types';
 import { SiteVerifyResponse } from './types';
 import { v4 as uuidv4, validate as uuidValidate } from 'uuid';
 import { environment } from '../../environments/environment';
-import authorize, { VALUE_SERVICE, DEFAULT_ADMIN } from '../../middleware/authorize';
+import authorize, { 
+  VALUE_SERVICE,
+  DEFAULT_ADMIN,
+  FORM_SERVICE,
+  EVENT_SERVICE
+} from '../../middleware/authorize';
 
 interface RouterOptions {
   logger: Logger;
@@ -203,32 +208,32 @@ export function createListingsRouter({
 
   router.get(
     '/listings/schema/:definitionId',
-    authorize([]), // currently no permissions needed as the token is passed used directly with adsp service and no caching
+    authorize([FORM_SERVICE.WRITE]),
     getFormsSchema(logger, formApiUrl)
   );
 
   router.post(
     '/listings',
-    authorize([]),
+    authorize([FORM_SERVICE.WRITE, EVENT_SERVICE.WRITE]),
     verifyCaptcha(logger, environment.RECAPTCHA_SECRET, 0.7),
     newListing(logger, formApiUrl, eventServiceUrl)
   );
 
   router.get(
     '/listings/services',
-    authorize([...VALUE_SERVICE.READ]),
+    authorize([VALUE_SERVICE.READ]),
     getServices(logger, valueServiceUrl, cache)
   );
 
   router.get(
     '/listings/services/:serviceId',
-    authorize([...VALUE_SERVICE.READ]),
+    authorize([VALUE_SERVICE.READ]),
     getService(logger, valueServiceUrl, cache)
   );
 
   router.get(
     '/listings/services/roadmap/export',
-    authorize([...VALUE_SERVICE.READ]),
+    authorize([VALUE_SERVICE.READ]),
     exportServicesRoadmap(logger, valueServiceUrl, cache)
   );
 
