@@ -1,8 +1,0 @@
----
-import Layout from '../layouts/ClientOnlyRenderLayout.astro';
-import AddServicePage from './addservice/index';
----
-<!--there are issues with injected css in astro (styled components used by json forms see https://github.com/withastro/astro/issues/4432-->
-<Layout title='Common capabilities-Add new' contentHeight='1500px'>
-    <AddServicePage client:only="react" />
-</Layout>

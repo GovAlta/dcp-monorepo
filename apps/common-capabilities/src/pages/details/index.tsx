@@ -6,7 +6,8 @@ import {
   GoASideMenu,
   GoATable,
   GoAButton,
-  GoACircularProgress
+  GoACircularProgress,
+  GoANotification
 } from '@abgov/react-components';
 import React, { useEffect, useState, useMemo } from 'react';
 import './styles.css';
@@ -21,9 +22,10 @@ import {
 } from './config';
 import useFetch from '../../hooks/useFetch';
 import { getApiUrl } from '../../utils/configs';
-import Roadmap from 'apps/common-capabilities/src/components/Roadmap';
+import Roadmap from '../../components/Roadmap';
 import LastUpdated from '../../components/LastUpdated';
-import type { Service } from '../../types/types';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useAuth } from '../../providers/AuthStateProvider';
 
 type ServiceDetailsResponse = {
   serviceInfo: any;
@@ -38,13 +40,11 @@ interface SecurityItem {
 }
 
 export default function Details(): JSX.Element {
-  const id = useMemo(() => {
-    const urlSearchParams = new URLSearchParams(window.location.search);
-    const params = Object.fromEntries(urlSearchParams.entries());
-    return params.id;
-  }, []);
+  const navigate = useNavigate();
+  const { id } = useParams();
+  const { authToken } = useAuth();
   const detailsUrl = useMemo(() => getApiUrl(`/listings/services/${id}`), []); 
-  const [data, error, isLoading] = useFetch<ServiceDetailsResponse>(detailsUrl);
+  const [data, error, isLoading] = useFetch<ServiceDetailsResponse>(detailsUrl, { headers: { Authorization: `Bearer ${authToken}` } });
   const [app, setApp] = useState<any>(undefined);
   const [items, setItems] = useState<any>({
     content: [],
@@ -266,69 +266,75 @@ export default function Details(): JSX.Element {
     } else return <p className="service-content">{app[name]}</p>;
   };
 
-  return (isLoading || !app) ? (
-      <GoACircularProgress variant="fullscreen" size="large" message="Loading service details..." visible={true} />
-    ) : (
-      <>
-        <GoAThreeColumnLayout
-          maxContentWidth="1500px"
-          nav={
-            <div className="details-side-nav" key="details-side-nav">
-              <GoASideMenu key="SideMenu">
-                {items.content.length > 0
-                  ? items.content.map((content: any) => {
-                      return (
-                        <a key={`${content.id}-menu`} href={`#${content.id}`}>
-                          {content.title}
-                        </a>
-                      );
-                    })
-                  : 'No content'}
-              </GoASideMenu>
-            </div>
-          }
-        >
-          <BackButton text="Back to listing" onClick={() => { history.back(); }} />
+  let content;
 
-          <GoASpacer vSpacing="l" />
-          <div className="service-heading">
-          <h2>{app.serviceName}</h2>
-          <GoAButton
-            type="secondary"
-            onClick={() => (window.location.href = `/updateservice/index.html?id=${app.appId}`)}>
-            Update
-          </GoAButton>
-        </div>
-          <GoASpacer vSpacing="l" />
-          <p className="service-content"> {app.description}</p>
-
-          <GoASpacer vSpacing="xl" />
-          {items.content.length > 0 &&
-            items.content.map(({ id, name, title }: any) => {
-              return (
-                <div key={`${id}`}>
-                  <h3 id={`${id}`} className='service-title'>{title}</h3>
-                  {renderContent(name, app)}
-                  <GoASpacer vSpacing="l" />
-                </div>
-              );
-            })}
-
-          <GoASpacer vSpacing="xl" />
-          <div>
-            Please feel free to{' '}
-            <ExternalLink
-              link={`mailto:TI.Softwaredelivery@gov.ab.ca?subject=Common capabilities feedback: ${app.serviceName}`}
-              text={'share feedback'}
-            />{' '}
-            on this service.
+  if (isLoading || (!app && !error))  {
+    content = <GoACircularProgress variant="fullscreen" size="large" message="Loading service details..." visible={true} />;
+  } else if (error) {
+    content = <GoANotification type="emergency" ariaLive="assertive">Failed to load service details. Please try again later. <br/> Error: {error.message}</GoANotification>;
+  } else {
+    content = (
+      <GoAThreeColumnLayout
+        maxContentWidth="1500px"
+        nav={
+          <div className="details-side-nav" key="details-side-nav">
+            <GoASideMenu key="SideMenu">
+              {items.content.length > 0
+                ? items.content.map((content: any) => {
+                    return (
+                      <a key={`${content.id}-menu`} href={`#${content.id}`}>
+                        {content.title}
+                      </a>
+                    );
+                  })
+                : 'No content'}
+            </GoASideMenu>
           </div>
-          <GoASpacer vSpacing="3xl" />
-          <span className="content-bottom">
-            <LastUpdated date={app.lastUpdatedDate} name={app.editorName} email={app.editorEmail} />
-            <BackToTop />
-          </span>
-        </GoAThreeColumnLayout>
-      </>
-  );
+        }
+      >
+        <BackButton text="Back to listing" onClick={() => { history.back(); }} />
+
+        <GoASpacer vSpacing="l" />
+        <div className="service-heading">
+        <h2>{app.serviceName}</h2>
+        <GoAButton
+          type="secondary"
+          onClick={() => navigate(`/updateservice/${app.appId}`)}>
+          Update
+        </GoAButton>
+      </div>
+        <GoASpacer vSpacing="l" />
+        <p className="service-content"> {app.description}</p>
+
+        <GoASpacer vSpacing="xl" />
+        {items.content.length > 0 &&
+          items.content.map(({ id, name, title }: any) => {
+            return (
+              <div key={`${id}`}>
+                <h3 id={`${id}`} className='service-title'>{title}</h3>
+                {renderContent(name, app)}
+                <GoASpacer vSpacing="l" />
+              </div>
+            );
+          })}
+
+        <GoASpacer vSpacing="xl" />
+        <div>
+          Please feel free to{' '}
+          <ExternalLink
+            link={`mailto:TI.Softwaredelivery@gov.ab.ca?subject=Common capabilities feedback: ${app.serviceName}`}
+            text={'share feedback'}
+          />{' '}
+          on this service.
+        </div>
+        <GoASpacer vSpacing="3xl" />
+        <span className="content-bottom">
+          <LastUpdated date={app.lastUpdatedDate} name={app.editorName} email={app.editorEmail} />
+          <BackToTop />
+        </span>
+      </GoAThreeColumnLayout>
+    );
+  }
+
+  return content;
 }

@@ -18,45 +18,47 @@ const VALUE_API_ID = adspId`urn:ads:platform:value-service:v1`;
 interface MiddlewareOptions {
   logger: Logger;
   directory: ServiceDirectory;
-  tokenProvider: TokenProvider;
+  offlineAccessTokenProvider: TokenProvider;
   cache: DataCache;
 }
 
 async function refreshServicesCache(
   valueServiceUrl,
-  tokenProvider,
+  offlineAccessTokenProvider,
   cache,
   logger
 ) {
   try {
-    await fetchServices(valueServiceUrl, tokenProvider, cache, logger);
+    const token = await offlineAccessTokenProvider.getAccessToken();
+    await fetchServices(valueServiceUrl, token, cache, logger);
   } catch (error) {
     logger.error(`Failed to refresh services cache: ${error}`);
   }
 }
 
-function initializeCache(valueServiceUrl, tokenProvider, cache, logger) {
-  refreshServicesCache(valueServiceUrl, tokenProvider, cache, logger);
+function initializeCache(valueServiceUrl, offlineAccessTokenProvider, cache, logger) {
+  refreshServicesCache(valueServiceUrl, offlineAccessTokenProvider, cache, logger);
 
   const ttlMinutes = Math.floor(Number(environment.CACHE_TTL) / 60000); // 30min
   const schedule = `*/${ttlMinutes} * * * *`;
   cron.schedule(schedule, () => {
     logger.info('Refreshing cached data');
-    refreshServicesCache(valueServiceUrl, tokenProvider, cache, logger);
+    refreshServicesCache(valueServiceUrl, offlineAccessTokenProvider, cache, logger);
   });
 }
 
 export async function applyGatewayMiddleware(
   app: Application,
-  { logger, directory, tokenProvider, cache }: MiddlewareOptions
+  { logger, directory, offlineAccessTokenProvider, cache }: MiddlewareOptions
 ) {
+  console.log('applying gateway middleware');
   const formApiUrl = await directory.getServiceUrl(FORM_API_ID);
   const eventServiceUrl = await directory.getServiceUrl(EVENT_API_ID);
   const valueServiceUrl = await directory.getServiceUrl(VALUE_API_ID);
 
   const listingsRouter = createListingsRouter({
     logger,
-    tokenProvider,
+    offlineAccessTokenProvider,
     formApiUrl,
     eventServiceUrl,
     valueServiceUrl,
@@ -65,7 +67,7 @@ export async function applyGatewayMiddleware(
 
   app.use('/cc/v1', listingsRouter);
 
-  initializeCache(valueServiceUrl, tokenProvider, cache, logger);
+  initializeCache(valueServiceUrl, offlineAccessTokenProvider, cache, logger);
 
   return app;
 }

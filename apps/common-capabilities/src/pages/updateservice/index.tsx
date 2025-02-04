@@ -6,20 +6,19 @@ import useForm from '../../hooks/useFormSubmit';
 import { getApiUrl } from '../../utils/configs';
 import BackButton from '../../components/BackButton';
 import type { Service } from '../../types/types';
+import { useParams } from 'react-router-dom';
+import { useAuth } from '../../providers/AuthStateProvider';
 
 type ServiceDetailsResponse = {
   serviceInfo: Service
 }
 
 export default function UpdateServicePage(): JSX.Element {
+  const { id } = useParams();
   const { handleSubmit } = useForm();
-  const id = React.useMemo(() => {
-    const urlSearchParams  = new URLSearchParams(window.location.search);
-    const params = Object.fromEntries(urlSearchParams.entries());
-    return params.id;
-  }, []);
+  const { authToken } = useAuth();
   const serviceUrl = useMemo(() => getApiUrl(`/listings/services/${id}`), []);
-  const [data, error, isLoading] = useFetch<ServiceDetailsResponse>(serviceUrl);
+  const [data, error, isLoading] = useFetch<ServiceDetailsResponse>(serviceUrl, { headers: { Authorization: `Bearer ${authToken}` } });
   const [service, setService] = React.useState<Service | undefined>(undefined);
 
   useEffect(() => {
@@ -39,7 +38,7 @@ export default function UpdateServicePage(): JSX.Element {
       backLink={backLink}
       pageHeader={`Update ${service.serviceName}`}
       service={service}
-      handleSubmit={handleSubmit}
+      handleSubmit={(data) => handleSubmit(data, authToken)}
     />
   );
 }

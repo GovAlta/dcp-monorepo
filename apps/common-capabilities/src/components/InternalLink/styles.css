@@ -8,3 +8,6 @@
   right: 2px;
   margin-left: var(--goa-space-xs);
 }
+a:hover {
+  color: var(--goa-color-interactive-hover);
+}

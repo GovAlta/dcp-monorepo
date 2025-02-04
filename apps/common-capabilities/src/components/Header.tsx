@@ -1,15 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useEffect } from 'react';
 import {
   GoAMicrositeHeader,
   GoAAppHeader,
 } from '@abgov/react-components';
+import { Link } from 'react-router-dom';
+import { useAuth } from '../providers/AuthStateProvider';
+import './styles.css';
 
 declare global {
   var adspFeedback: any;
 }
 
+const headerLinks = [
+  { label: 'Getting started', href: '/gettingstarted#getting-started' },
+  { label: 'About', href: '/about' },
+  { label: 'Eco-system', href: '/ecosystem' },
+  { label: 'Services', href: '/services' },
+  { label: 'Roadmap', href: '/roadmap' },
+  { label: 'Support', href: '/support' },
+];
+
 const Header = () => {
+  const [currentActive, setCurrentActive] = useState(window.location.pathname);
+  const { isAuthenticated, logout } = useAuth();
+
   useEffect(() => {
     if (
       window.location.hostname ===
@@ -30,12 +45,10 @@ const Header = () => {
         heading="Common capabilities"
         maxContentWidth="1500px"
       >
-        <a href="/gettingstarted/index.html#getting-started">Getting started</a>
-        <a href="/about/index.html">About</a>
-        <a href="/ecosystem/index.html">Eco-system</a>
-        <a href="/services/index.html">Services</a>
-        <a href="/roadmap/index.html">Roadmap</a>
-        <a href="/support/index.html">Support</a>
+        {headerLinks.map((link) => (
+          <Link key={link.href} to={link.href} className={currentActive === link.href ? 'current' : ''} onClick={() => setCurrentActive(link.href)}>{link.label}</Link>
+        ))}
+        {isAuthenticated && <a onClick={logout} href="#" className='logout-header'>Logout</a>}
       </GoAAppHeader>
     </>
   );

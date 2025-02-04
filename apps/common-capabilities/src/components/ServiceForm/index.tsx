@@ -15,7 +15,8 @@ import {
   GoANotification 
 } from '@abgov/react-components';
 import type { Service } from '../../types/types';
-import { GoACaptchaSection } from '@abgov/dcp-common';
+import GoACaptchaSection from '../Captcha/GoACaptchaSection';
+import { useNavigate } from 'react-router-dom';
 
 type ServiceFormProps = {
   data?: Service;
@@ -55,6 +56,7 @@ const FormWrapper = ({ data, dataSchema, uiSchema, readOnly }: {
 }
 
 const ServiceForm = ({ data, dataSchema, uiSchema, onSubmit }: ServiceFormProps) => {
+  const navigate = useNavigate();
   const [submitStatus, setSubmitStatus] = useState<SubmitStatus>(SubmitStatus.NotSubmitted);
   const [error, setError] = useState<Error | null>(null);
   const errorRef = useRef<Error | null>();
@@ -103,7 +105,7 @@ const ServiceForm = ({ data, dataSchema, uiSchema, onSubmit }: ServiceFormProps)
         open={submitStatus === SubmitStatus.Submitted} 
         heading="Your service has been successfully submitted for review"
       >
-        <GoAButton type="primary" onClick={()=>  window.location.href='/services/index.html'}>
+        <GoAButton type="primary" onClick={() => navigate('/services')}>
           Back to services
         </GoAButton>
       </GoAModal>

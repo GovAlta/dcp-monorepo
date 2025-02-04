@@ -9,29 +9,61 @@ type GatewayConfigs = {
   baseUrl: string;
 }
 
+type ADSPConfigs = {
+  auth_url: string;
+  realm: string;
+  idp_client_id: string;
+  idp_alias: string;
+}
+
 type ServiceConfig = {
   [key in Environment]: {
+    adsp: ADSPConfigs
     gateway: GatewayConfigs
   }
 }
 
 const serviceConfigs: ServiceConfig = {
   local: {
+    adsp: {
+      idp_client_id: 'urn:ads:cc:uiam_saml',
+      idp_alias: 'saml',
+      auth_url: 'https://access-uat.alberta.ca/auth',
+      realm: '9b2d9233-4d9f-432d-9471-9f95861db16d',
+    },
     gateway: {
       baseUrl: 'http://localhost:3333'
     }
   },
   dev: {
+    adsp: {
+      idp_client_id: 'urn:ads:cc:uiam_saml',
+      idp_alias: 'saml',
+      auth_url: 'https://access-uat.alberta.ca/auth',
+      realm: '9b2d9233-4d9f-432d-9471-9f95861db16d',
+    },
     gateway: {
       baseUrl: 'https://cc-api-dcp-dev.apps.aro.gov.ab.ca',
     }
   },
   uat: {
+    adsp: {
+      idp_client_id: 'urn:ads:cc:uiam_saml',
+      idp_alias: 'saml',
+      auth_url: 'https://access-uat.alberta.ca/auth',
+      realm: '9b2d9233-4d9f-432d-9471-9f95861db16d',
+    },
     gateway: {
       baseUrl: 'https://cc-api-dcp-uat.apps.aro.gov.ab.ca'
     }
   },
   prod: {
+    adsp: {
+      idp_client_id: 'urn:ads:cc:uiam_saml',
+      idp_alias: 'saml',
+      auth_url: 'https://access.alberta.ca/auth',
+      realm: '650cd96a-1a14-4988-826d-bb108047f2a8',
+    },
     gateway: {
       baseUrl: 'https://cc-api-dcp-prod.apps.aro.gov.ab.ca'
     }
@@ -54,16 +86,23 @@ function getEnv() {
   return Environment[env as keyof typeof Environment];
 }
 
-function getGatewayConfigs(env?: Environment) {
+function getConfigs(env?: Environment) {
   env ??= getEnv();
 
-  return serviceConfigs[env].gateway;
+  return serviceConfigs[env];
 }
 
 export function getApiUrl(path: string) {
+  const configs = getConfigs();
   const trimmedPath = path.startsWith('/') ? path.substring(1) : path;
   
-  return `${getGatewayConfigs().baseUrl}/cc/v1/${trimmedPath}`;
+  return `${configs.gateway.baseUrl}/cc/v1/${trimmedPath}`;
+}
+
+export function getAdspConfigs() {
+  const configs = getConfigs();
+  
+  return configs.adsp;
 }
 
 export function getSchemaUrl(definition: string) {

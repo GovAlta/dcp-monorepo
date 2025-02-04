@@ -1,23 +1,64 @@
 import { User } from '@abgov/adsp-service-sdk';
 import { Application } from 'express';
 import { PassportStatic, Strategy } from 'passport';
-import { Strategy as AnonymousStrategy } from 'passport-anonymous';
+import { ExtractJwt, Strategy as JwtStrategy } from 'passport-jwt';
+import { environment } from '../environments/environment';
+import { DataCache } from '../cache/types';
+import { Logger } from 'winston';
+import { getKeyProvider } from './jwtKeyProvider';
 
 interface ConfigureOptions {
     tenantStrategy: Strategy;
+    cache: DataCache;
+    logger: Logger;
 }
+
+function resolveRoles(serviceAudience, {realm_access, resource_access}) {
+    return Object.entries(resource_access || {}).reduce((roles, [client, clientRoles]: [string, {roles: string[]}]) => {
+        if (client === serviceAudience) {
+          roles.push(...(clientRoles?.roles || []));
+        }
+    
+        roles.push(...(clientRoles?.roles?.map((clientRole) => `${client}:${clientRole}`) || []));
+    
+        return roles;
+    }, realm_access?.roles || []);
+}
+
+const verify = (req, payload, done) => {
+    const user: Express.User = {
+      id: payload.sub,
+      name: payload.name || payload.preferred_username,
+      email: payload.email,
+      roles: resolveRoles(environment.SAML_CLIENT_ID, payload),
+      isCore: false,
+      token: {
+        ...payload,
+        bearer: req.headers.authorization?.substring(7), // everything after 'Bearer '
+      },
+    };
+
+    done(null, user, null);
+};
 
 export function configurePassport(
     app: Application,
     passport: PassportStatic,
-    { tenantStrategy }: ConfigureOptions
+    { tenantStrategy, cache, logger }: ConfigureOptions
 ) {
-
-
     app.use(passport.initialize());
 
-    passport.use('anonymous', new AnonymousStrategy());
+    passport.use('jwt', new JwtStrategy(
+        {
+          jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+          audience: null,
+          secretOrKeyProvider: getKeyProvider(cache, logger),
+          passReqToCallback: true,
+        },
+        verify
+    ));
     passport.use('tenant', tenantStrategy);
+
     passport.serializeUser(function (user, done) {
         done(null, user);
     });

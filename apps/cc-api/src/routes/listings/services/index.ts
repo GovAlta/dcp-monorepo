@@ -1,11 +1,9 @@
 import { RequestHandler } from 'express';
 import { DataCache } from '../../../cache/types';
-import { TokenProvider } from '@abgov/adsp-service-sdk';
-import { CacheKeys } from '../../../cache';
+import { CacheConfigs, CacheKeys } from '../../../cache';
 import { Logger } from 'winston';
 import axios from 'axios';
 import axiosRetry from 'axios-retry';
-import { RoadmapCsvData } from '../types';
 
 axiosRetry(axios, { retries: 3, retryDelay: axiosRetry.exponentialDelay });
 
@@ -14,7 +12,7 @@ const VALUE_SERVICE_LISTING_NAME = 'published-index';
 const SERVICE_DEFINITION_ID = 'appId';
 const SERVICE_LISTING_KEY = 'index';
 
-function reqestErrorHandler(
+function requestErrorHandler(
   error: Error,
   logger: Logger,
   customMessage: string,
@@ -46,19 +44,18 @@ function mapServiceInfo(serviceInfo) {
   }
 }
 
-async function axioGet(url: string, token: string) {
+async function axiosGet(url: string, token: string) {
   return axios.get(url, { headers: { Authorization: `Bearer ${token}` } });
 }
 
 export async function fetchServices(
   valueServiceUrl: URL,
-  tokenProvider: TokenProvider,
+  token: string,
   cache: DataCache,
   logger: Logger
 ) {
   let result = {};
-  const token = await tokenProvider.getAccessToken();
-  const serviceListings = await axioGet(
+  const serviceListings = await axiosGet(
     `${valueServiceUrl}/${VALUE_SERVICE_NAME_SPACE}/values/${VALUE_SERVICE_LISTING_NAME}?top=1`,
     token
   );
@@ -73,7 +70,7 @@ export async function fetchServices(
 
   if (serviceIds) {
     const fetchServiceInfos = serviceIds.map((id: string) =>
-      axioGet(
+      axiosGet(
         `${valueServiceUrl}/${VALUE_SERVICE_NAME_SPACE}/values/${id}?top=1`,
         token
       )
@@ -90,7 +87,7 @@ export async function fetchServices(
         return acc;
       }, {});
 
-      await cache.set(CacheKeys.SERVICES, result);
+      await cache.set(CacheKeys.SERVICES, result, CacheConfigs[CacheKeys.SERVICES].ttl);
 
       logger.info(
         `services fetched from ADSP: keySize=${
@@ -105,14 +102,14 @@ export async function fetchServices(
 
 async function getAllServices(
   valueServiceUrl: URL,
-  tokenProvider: TokenProvider,
+  token: string,
   cache: DataCache,
   logger: Logger
 ) {
   let result = await cache.get(CacheKeys.SERVICES);
 
   if (!result) {
-    result = await fetchServices(valueServiceUrl, tokenProvider, cache, logger);
+    result = await fetchServices(valueServiceUrl, token, cache, logger);
   }
 
   return result;
@@ -121,14 +118,14 @@ async function getAllServices(
 export function exportServicesRoadmap(
   logger: Logger,
   valueServiceUrl: URL,
-  tokenProvider: TokenProvider,
   cache: DataCache
 ) {
   return async (req, res) => {
     try {
+      const token = req.user.token.bearer;
       const services = await getAllServices(
         valueServiceUrl,
-        tokenProvider,
+        token,
         cache,
         logger
       );
@@ -191,7 +188,7 @@ export function exportServicesRoadmap(
       res.setHeader('Content-Type', 'text/csv');
       res.send(csvContent);
     } catch (error) {
-      reqestErrorHandler(
+      requestErrorHandler(
         error,
         logger,
         'failed to get a list of services',
@@ -204,19 +201,19 @@ export function exportServicesRoadmap(
 export function getServices(
   logger: Logger,
   valueServiceUrl: URL,
-  tokenProvider: TokenProvider,
   cache: DataCache
 ): RequestHandler {
   return async (req, res) => {
     try {
+      const token = req.user.token.bearer;
       const services = await getAllServices(
         valueServiceUrl,
-        tokenProvider,
+        token,
         cache,
         logger
       );
 
-      if (services) {
+      if (services && Object.keys(services).length > 0) {
         res
           .status(200)
           .send({ services: Object.values(services).filter((s) => !!s) });
@@ -224,7 +221,7 @@ export function getServices(
         res.status(404).send({ error: 'no services found' });
       }
     } catch (error) {
-      reqestErrorHandler(
+      requestErrorHandler(
         error,
         logger,
         'failed to get a list of services',
@@ -237,16 +234,16 @@ export function getServices(
 export function getService(
   logger: Logger,
   valueServiceUrl: URL,
-  tokenProvider: TokenProvider,
   cache: DataCache
 ): RequestHandler {
   return async (req, res) => {
     const serviceId = req.params.serviceId;
 
     try {
+      const token = req.user.token.bearer;
       const services = await getAllServices(
         valueServiceUrl,
-        tokenProvider,
+        token,
         cache,
         logger
       );
@@ -259,7 +256,7 @@ export function getService(
           .send({ error: `service not found with id=${serviceId}` });
       }
     } catch (error) {
-      reqestErrorHandler(
+      requestErrorHandler(
         error,
         logger,
         `failed to get service info for id=${serviceId}`,

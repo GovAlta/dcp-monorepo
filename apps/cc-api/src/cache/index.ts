@@ -10,7 +10,7 @@ export enum CacheKeys {
 
 export const CacheConfigs = {
     [CacheKeys.SERVICES]: {
-        ttl: environment.CACHE_TTL,  // 30 min
+        ttl: parseInt(environment.CACHE_TTL),  // 30 min
     },
     [CacheKeys.SCHEMA]: {
         ttl: 12 * 60 * 60 * 1000, // half a day

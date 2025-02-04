@@ -5,9 +5,10 @@
   "sourceRoot": "apps/common-capabilities/src",
   "targets": {
     "build": {
-      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
-      "executor": "@nxtensions/astro:build",
-      "options": {}
+      "executor": "@nx/vite:build",
+      "options": {
+        "outputPath": "{workspaceRoot}/dist/{projectRoot}"
+      }
     },
     "buildcustom": {
       "executor": "nx:run-commands",
@@ -22,8 +23,11 @@
       }
     },
     "dev": {
-      "executor": "@nxtensions/astro:dev",
-      "options": {}
+      "executor": "@nx/vite:dev-server",
+      "options": {
+        "buildTarget": "common-capabilities:build",
+        "port": 4321
+      }
     },
     "preview": {
       "dependsOn": [
@@ -32,14 +36,8 @@
           "projects": "self"
         }
       ],
-      "executor": "@nxtensions/astro:preview",
+      "executor": "@nx/vite:preview-server",
       "options": {}
-    },
-    "check": {
-      "executor": "@nxtensions/astro:check"
-    },
-    "sync": {
-      "executor": "@nxtensions/astro:sync"
     }
   },
   "tags": []
