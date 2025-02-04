@@ -27,7 +27,7 @@ const Header = () => {
         <a href="/service-standards/">Standards</a>
         <a href="/service-performance/">Performance</a>
         <a href="/service-glossary/">Glossary</a>
-        <a href="/practice-areas/">Practice Areas</a>
+        {/* <a href="/practice-areas/">Practice Areas</a> */}
         <a href="/search/">
           <GoAIcon type="search" />
         </a>
