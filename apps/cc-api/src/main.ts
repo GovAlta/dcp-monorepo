@@ -22,7 +22,13 @@ const initializeApp = async (): Promise<express.Application> => {
   const app = express();
 
   app.use(helmet());
-  app.use(cors());
+  app.use(cors(
+    (_, callback) => {
+      const allowList = environment.ALLOWED_ORIGINS?.split(',') || [];
+
+      callback(null, { origin: allowList });
+    }
+  ));
   app.use(compression());
   app.use(express.json({ limit: '1mb' }));
 
