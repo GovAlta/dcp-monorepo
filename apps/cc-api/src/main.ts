@@ -23,12 +23,10 @@ const initializeApp = async (): Promise<express.Application> => {
 
   app.use(helmet());
   app.use(cors(
-    (req, callback) => {
-      const allowList = environment.ALLOWED_ORIGINS?.split(',');
+    (_, callback) => {
+      const allowList = environment.ALLOWED_ORIGINS?.split(',') || [];
 
-      callback(null, {
-        origin: !!(allowList?.indexOf(req.header('Origin')) !== -1) // only enable cors if origin is not in allowed list
-      });
+      callback(null, { origin: allowList });
     }
   ));
   app.use(compression());
