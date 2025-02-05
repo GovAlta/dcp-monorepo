@@ -54,7 +54,7 @@ const serviceConfigs: ServiceConfig = {
       realm: '9b2d9233-4d9f-432d-9471-9f95861db16d',
     },
     gateway: {
-      baseUrl: 'https://cc-api-dcp-uat.apps.aro.gov.ab.ca'
+      baseUrl: 'https://common-capabilities-api-uat.alberta.ca'
     }
   },
   prod: {
@@ -72,8 +72,8 @@ const serviceConfigs: ServiceConfig = {
 
 function getEnv() {
     const url = window.location.hostname.toLowerCase();
-    const match = url.match(/common-capabilities-dcp-(\w+)\.apps\.aro\.gov\.ab\.ca/);
-    const env = match ? match[1] : null;
+    const match = url.match(/([a-z0-9-]+)-([a-z]+)\.([a-z0-9-]+)/);
+    const env = match ? match[2] : null;
 
     if (!env) {
       if (url === 'localhost') {
