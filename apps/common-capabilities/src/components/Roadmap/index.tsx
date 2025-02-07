@@ -61,7 +61,7 @@ export default function Roadmap({ roadmap }: RoadmapProps) {
     ));
 
     return roadmap ? (
-        <GoAAccordion heading={`Show items (${roadmap.length})`}>
+        <GoAAccordion heading={`${roadmap.length} Roadmap items`}>
             {content }
         </GoAAccordion>
     ) : null;

@@ -12,6 +12,38 @@ interface Props {
   condensed?:boolean;
 }
 
+const MAX_VISIBLE_ROADMAP_ITEMS = 3;
+
+const getVisibleRoadmapItems = (
+  roadmapItems: RoadmapItem[],
+  getVisibleItems?: (roadmapItem: RoadmapItem) => JSX.Element
+) => {
+  const visibleItems = [];
+
+  for (let i = 0; i < roadmapItems.length && visibleItems.length < MAX_VISIBLE_ROADMAP_ITEMS; i++) {
+    const item = roadmapItems[i];
+    
+    if (getVisibleItems) {      
+      visibleItems.push(getVisibleItems(item));
+    } else {
+      visibleItems.push(
+        <li>
+          {item?.title} 
+        </li> 
+      );
+    }
+  }
+
+  const remainingItemsCount = roadmapItems.length - visibleItems.length;
+  if (remainingItemsCount > 0) {
+    visibleItems.push(
+      <strong>(and {remainingItemsCount} more...)</strong>
+    )
+  }
+
+  return visibleItems;
+}
+
 const parseWhen = (when: string) => {
   if (when === 'TBD') {
     return { year: Infinity, quarter: Infinity }; // Ensure TBD is sorted last
@@ -76,32 +108,28 @@ export const ServiceRoadmap: React.FC<Props> = (props) => {
     return null;
   }
 
-  const when = props.roadmapMode == 'list'? "" : props.roadmapMode;
+  const when = props.roadmapMode == 'list' ? "" : props.roadmapMode;
   if (when !== "") {
-    return props.roadmapItems
-      .filter((item) => item.when === when)
-      .map((item) => (
-        <>
-          <strong>{when}:</strong> {item?.title} 
-        </> 
-      ))
+    const roadmapItems = props.roadmapItems.filter((item) => item.when === when);
+
+    return getVisibleRoadmapItems(roadmapItems);
   }
   
   const hideOldRecords = !props.showHistory;
   const roadmapItems = props.roadmapItems
   .sort((a: any, b: any) => roadmapSortFunc(a.when, b.when));
   const filterOldRecords = (roadmap: RoadmapItem[]) => roadmap.filter((item) => roadmapFilterFunc(item.when)); 
+  const visibleItems = hideOldRecords ? filterOldRecords(roadmapItems) : roadmapItems;
 
   return (
     <div> 
       {props.condensed? "" : <b>Roadmap: </b>}
           <ul>
-            {(hideOldRecords ? filterOldRecords(roadmapItems) : roadmapItems)
-              .map((roadmapItem, index) => (
-                <li key={index}>
-                  <strong>{roadmapItem.when}:</strong> {roadmapItem.title}
-                </li>
-              ))}
+            {getVisibleRoadmapItems(hideOldRecords ? filterOldRecords(roadmapItems) : roadmapItems, (item) => (
+              <li key={`${item.when}-${item.title}`}>
+                <strong>{item.when}:</strong> {item.title}
+              </li>
+            ))}
           </ul>
     </div>
   );
