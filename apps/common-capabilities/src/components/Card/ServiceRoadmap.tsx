@@ -55,7 +55,7 @@ const roadmapFilterFunc = (when: any) => {
 
 const { fiscalYear, fiscalQuarter } = getCurrentFiscalQuarter();
 
-export const roadmaplist = (data: any, history: boolean) => { 
+export const roadmapList = (data: any, history: boolean) => { 
   const allWhenValues = data.flatMap((obj: any) =>
     obj.roadmap.map((item:RoadmapItem) => item.when)
   );
@@ -76,14 +76,15 @@ export const ServiceRoadmap: React.FC<Props> = (props) => {
     return null;
   }
 
-  const when = props.roadmapMode == 'list'? "": props.roadmapMode;
+  const when = props.roadmapMode == 'list'? "" : props.roadmapMode;
   if (when !== "") {
-    const rMap = props.roadmapItems.find((item) => item.when === when);
-    return (
-      <>
-        <strong>{when}:</strong> {rMap?.title} 
-      </> 
-    );
+    return props.roadmapItems
+      .filter((item) => item.when === when)
+      .map((item) => (
+        <>
+          <strong>{when}:</strong> {item?.title} 
+        </> 
+      ))
   }
   
   const hideOldRecords = !props.showHistory;
@@ -93,7 +94,7 @@ export const ServiceRoadmap: React.FC<Props> = (props) => {
 
   return (
     <div> 
-      {props.condensed?"": <b>Roadmap: </b>}
+      {props.condensed? "" : <b>Roadmap: </b>}
           <ul>
             {(hideOldRecords ? filterOldRecords(roadmapItems) : roadmapItems)
               .map((roadmapItem, index) => (

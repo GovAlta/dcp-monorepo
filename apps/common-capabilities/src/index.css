@@ -1,3 +1,6 @@
+@import '@abgov/design-tokens/dist/tokens.css';
+@import '@abgov/web-components/index.css';
+
 #root {
   width: 100%;
   height: 100%;
