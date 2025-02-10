@@ -26,7 +26,7 @@ import { defaultState, filtersList, filterListCustom } from './config';
 import useFetch from '../../hooks/useFetch';
 import { getApiUrl } from '../../utils/configs';
 import { ServiceListingResponse, Status } from '../../types/types';
-import { roadmaplist } from '../../components/Card/ServiceRoadmap';
+import { roadmapList } from '../../components/Card/ServiceRoadmap';
 import LastUpdated from '../../components/LastUpdated';
 import axios from 'axios';
 import { useAuth } from '../../providers/AuthStateProvider';
@@ -299,10 +299,7 @@ export default function HomePage(): JSX.Element {
     }
   }, [apps]);
 
-  const recommendedServices = services;
-  const otherServices = [];
-
-  const roadmapWhenList = roadmaplist(services, roadmapView.history);
+  const roadmapWhenList = roadmapList(services, roadmapView.history);
   const roadmapData = (services, targetWhen) => {
     return services.filter((service) =>
       service.roadmap?.some((roadmapItem) => roadmapItem.when === targetWhen)
@@ -584,13 +581,13 @@ export default function HomePage(): JSX.Element {
           <>
             <GoASpacer vSpacing="l" />
             <span className="last-updated">
-              Showing {recommendedServices.length + otherServices.length} of{' '}
+              Showing {services.length} of{' '}
               {apps.length} results{' '}
             </span>
             <GoASpacer vSpacing="s" />
             <GoAGrid minChildWidth="35ch" gap="2xl">
-              {recommendedServices.length > 0 ? (
-                recommendedServices.map((app) => {
+              {services.length > 0 ? (
+                services.map((app) => {
                   return (
                     <Card
                       app={app}
@@ -604,7 +601,7 @@ export default function HomePage(): JSX.Element {
                 <GoACallout
                   type="information"
                   size="medium"
-                  heading="No recommended services found based on your search / filter options"
+                  heading="No roadmap items found based on your search / filter options"
                 ></GoACallout>
               )}
             </GoAGrid>
