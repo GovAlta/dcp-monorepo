@@ -15,7 +15,7 @@ const downloadFormData = async (url: string, fileName: string) => {
 export default function LandingPage() {
   const [isLoading, setIsLoading] = React.useState(false);
 
-  const getDownloadUrl = (role: 'buyer' | 'supplier' | 'partner') => {
+  const getDownloadUrl = (role: 'eventsignup' | 'supplier' | 'partner') => {
     if (
       window.location.hostname ===
         'digital-marketplace-int-dcp-uat.apps.aro.gov.ab.ca' ||
@@ -28,7 +28,7 @@ export default function LandingPage() {
     }
   };
 
-  const downloadFormDataByRole = async (role: 'buyer' | 'supplier' | 'partner') => {
+  const downloadFormDataByRole = async (role: 'eventsignup' | 'supplier' | 'partner') => {
     setIsLoading(true);
     await downloadFormData(getDownloadUrl(role), `${role}_data.csv`);
     setIsLoading(false);
@@ -51,6 +51,12 @@ export default function LandingPage() {
           onClick={() => downloadFormDataByRole('partner')}
         >
           Download partner data
+        </button>        <button
+          disabled={isLoading}
+          className="button"
+          onClick={() => downloadFormDataByRole('eventsignup')}
+        >
+          Download events signup data
         </button>
       </div>
     </div>

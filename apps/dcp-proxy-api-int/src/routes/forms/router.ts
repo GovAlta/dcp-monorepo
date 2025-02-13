@@ -3,8 +3,20 @@ import { RequestHandler, Router } from 'express';
 import { Logger } from 'winston';
 import axios from 'axios';
 
+const formIds = {
+  eventsignup: 'marketplace-event-2-signup',
+  supplier: 'supplier-form',
+  partner: 'partner-form',
+};
+
+interface RouterOptions {
+  logger: Logger;
+  tokenProvider: TokenProvider;
+  formApiUrl: URL;
+}
+
 function formatToMST(dateStr) {
-  const date = new Date(dateStr); 
+  const date = new Date(dateStr);
   const formattedDateMST = new Intl.DateTimeFormat('en-CA', {
     year: 'numeric',
     month: '2-digit',
@@ -12,264 +24,85 @@ function formatToMST(dateStr) {
     hour: '2-digit',
     minute: '2-digit',
     hour12: false,
-    timeZone: 'America/Denver' // Adjusts for MST with DST
+    timeZone: 'America/Denver', // Adjusts for MST with DST
   }).format(date);
 
   return formattedDateMST.replace(',', '');
 }
 
-interface RouterOptions {
-  logger: Logger;
-  tokenProvider: TokenProvider;
-  formApiUrl: URL;
-}
-export function downloadBuyerFormData(
+export function downloadFormData(
   logger: Logger,
   formApiUrl: URL,
-  tokenProvider: TokenProvider
+  tokenProvider: TokenProvider,
+  formId: string
 ): RequestHandler {
   return async (req, res) => {
     try {
       const token = await tokenProvider.getAccessToken();
 
       let after: string | undefined;
-      const submittedBuyerForms: any[] = [];
+      const submittedForms: any[] = [];
       do {
         const { data: res } = await axios.get(
-          `${formApiUrl}/forms?criteria={"definitionIdEquals":"buyer-form"}&top=50${after ? `&after=${after}` : ''}`,
+          `${formApiUrl}/forms?criteria={"definitionIdEquals":"${formId}"}&includeData=true&top=50${
+            after ? `&after=${after}` : ''
+          }`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
             },
           }
         );
-        submittedBuyerForms.push(...res.results);
-        after = res.page.next ? `"${res.page.next}${res.results[res.results.length - 1].id}"` : undefined;
-        console.log("after id",after);
+        submittedForms.push(...res.results);
+        after = res.page.next
+          ? `"${res.page.next}${res.results[res.results.length - 1].id}"`
+          : undefined;
+        console.log('after id', after);
       } while (after !== undefined);
-
-      const submittedForms = submittedBuyerForms;
-      let formDetailsPromises: Promise<any>[] = [];
-      const formDetails: any[] = [];
-      for (const form of submittedForms) {
-        formDetailsPromises.push(
-          axios
-            .get(`${formApiUrl}/forms/${form.id}/data`, {
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
-            })            
-            .then((response) => {
-              response.data.data.created = formatToMST(form.created);
-              return response.data;
-            })
-        );
-
-        if (formDetailsPromises.length >= 20) {
-          const responses = await Promise.all(formDetailsPromises);
-          formDetails.push(...responses);
-          formDetailsPromises = [];
+      const formDefinition = await axios.get(
+        `${formApiUrl}/definitions/${formId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
-      }
-      if (formDetailsPromises.length > 0) {
-        const responses = await Promise.all(formDetailsPromises);
-        formDetails.push(...responses);
-      }
+      );
+      //formatting created date
+      submittedForms.forEach((form) => {
+        if (form) {
+          form.data.created = formatToMST(form.created);
+        }
+      });
 
-      const formDefinition = await axios.get(`${formApiUrl}/definitions/buyer-form`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-
-      const headers = [...Object.keys(formDefinition.data.dataSchema.properties),"created"];      
-      const csv = [headers.map((header) => `"${header.replace(/"/g, '""')}"`).join(",")].concat(
-        formDetails.map((form) => {
-          return headers.map((header) => {
-            const value = form.data[header];
-            return `"${String(value).replace(/"/g, '""').replace(/,/g, '\,')}"`;
-          }).join(",");
+      const headers = [
+        ...Object.keys(formDefinition.data.dataSchema.properties),
+        'created',
+      ];
+      const csv = [
+        headers.map((header) => `"${header.replace(/"/g, '""')}"`).join(','),
+      ].concat(
+        submittedForms.map((form) => {
+          return headers
+            .map((header) => {
+              const value = form.data[header];
+              return `"${String(value)
+                .replace(/"/g, '""')
+                .replace(/,/g, ',')}"`;
+            })
+            .join(',');
         })
       );
 
       res.setHeader('Content-Disposition', 'attachment; filename="forms.csv"');
       res.setHeader('Content-Type', 'text/csv');
-      res.send(Buffer.from(csv.join("\n")));
+      res.send(Buffer.from(csv.join('\n')));
     } catch (e) {
       if (axios.isAxiosError(e)) {
         res.status(e.response.status).send(e.response.data);
-        logger.error(e.response.data, 'Failed to download buyer form data');
+        logger.error(e.response.data, 'Failed to download form data');
       } else {
         res.status(400).send({ error: e });
-        logger.error(e, 'Failed to download buyer form data');
-      }
-    }
-  };
-}
-
-export function downloadSupplierFormData(
-  logger: Logger,
-  formApiUrl: URL,
-  tokenProvider: TokenProvider
-): RequestHandler {
-  return async (req, res) => {
-    try {
-      const token = await tokenProvider.getAccessToken();
-
-      let after: string | undefined;
-      const submittedSupplierForms: any[] = [];
-      do {
-        const { data: res } = await axios.get(
-          `${formApiUrl}/forms?criteria={"definitionIdEquals":"supplier-form"}&top=50${after ? `&after=${after}` : ''}`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
-        submittedSupplierForms.push(...res.results);
-        after = res.page.next ? `"${res.page.next}${res.results[res.results.length - 1].id}"` : undefined;
-//        console.log("after id",after);
-      } while (after !== undefined);
-
-      const submittedForms = submittedSupplierForms;
-      let formDetailsPromises: Promise<any>[] = [];
-      const formDetails: any[] = [];
-      for (const form of submittedForms) {
-        formDetailsPromises.push(
-          axios
-            .get(`${formApiUrl}/forms/${form.id}/data`, {
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
-            })
-            .then((response) => {
-              response.data.data.created = formatToMST(form.created);
-              return response.data;
-            })
-        );
-
-        if (formDetailsPromises.length >= 20) {
-          const responses = await Promise.all(formDetailsPromises);
-          formDetails.push(...responses);
-          formDetailsPromises = [];
-        }
-      }
-      if (formDetailsPromises.length > 0) {
-        const responses = await Promise.all(formDetailsPromises);
-        formDetails.push(...responses);
-      }
-
-      const formDefinition = await axios.get(`${formApiUrl}/definitions/supplier-form`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-
-      const headers = [...Object.keys(formDefinition.data.dataSchema.properties),"created"];
-      const csv = [headers.map((header) => `"${header.replace(/"/g, '""')}"`).join(",")].concat(
-        formDetails.map((form) => {
-          return headers.map((header) => {
-            const value = form.data[header];
-            return `"${String(value).replace(/"/g, '""').replace(/,/g, '\,')}"`;
-          }).join(",");
-        })
-      );
-
-      res.setHeader('Content-Disposition', 'attachment; filename="forms.csv"');
-      res.setHeader('Content-Type', 'text/csv');
-      res.send(Buffer.from(csv.join("\n")));
-    } catch (e) {
-      if (axios.isAxiosError(e)) {
-        res.status(e.response.status).send(e.response.data);
-        logger.error(e.response.data, 'Failed to download supplier form data');
-      } else {
-        res.status(400).send({ error: e });
-        logger.error(e, 'Failed to download supplier form data');
-      }
-    }
-  };
-}
-
-export function downloadPartnerFormData(
-  logger: Logger,
-  formApiUrl: URL,
-  tokenProvider: TokenProvider
-): RequestHandler {
-  return async (req, res) => {
-    try {
-      const token = await tokenProvider.getAccessToken();
-
-      let after: string | undefined;
-      const submittedPartnerForms: any[] = [];
-      do {
-        const { data: res } = await axios.get(
-          `${formApiUrl}/forms?criteria={"definitionIdEquals":"partner-form"}&top=50${after ? `&after=${after}` : ''}`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
-        submittedPartnerForms.push(...res.results);
-        after = res.page.next ? `"${res.page.next}${res.results[res.results.length - 1].id}"` : undefined;
-        console.log("after id",after);
-      } while (after !== undefined);
-
-      const submittedForms = submittedPartnerForms;
-      let formDetailsPromises: Promise<any>[] = [];
-      const formDetails: any[] = [];
-      for (const form of submittedForms) {
-        formDetailsPromises.push(
-          axios
-            .get(`${formApiUrl}/forms/${form.id}/data`, {
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
-            })            
-            .then((response) => {
-              response.data.data.created = formatToMST(form.created);
-              return response.data;
-            })
-        );
-
-        if (formDetailsPromises.length >= 20) {
-          const responses = await Promise.all(formDetailsPromises);
-          formDetails.push(...responses);
-          formDetailsPromises = [];
-        }
-      }
-      if (formDetailsPromises.length > 0) {
-        const responses = await Promise.all(formDetailsPromises);
-        formDetails.push(...responses);
-      }
-
-      const formDefinition = await axios.get(`${formApiUrl}/definitions/partner-form`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-
-      const headers = [...Object.keys(formDefinition.data.dataSchema.properties),"created"];      
-      const csv = [headers.map((header) => `"${header.replace(/"/g, '""')}"`).join(",")].concat(
-        formDetails.map((form) => {
-          return headers.map((header) => {
-            const value = form.data[header];
-            return `"${String(value).replace(/"/g, '""').replace(/,/g, '\,')}"`;
-          }).join(",");
-        })
-      );
-
-      res.setHeader('Content-Disposition', 'attachment; filename="forms.csv"');
-      res.setHeader('Content-Type', 'text/csv');
-      res.send(Buffer.from(csv.join("\n")));
-    } catch (e) {
-      if (axios.isAxiosError(e)) {
-        res.status(e.response.status).send(e.response.data);
-        logger.error(e.response.data, 'Failed to download supplier form data');
-      } else {
-        res.status(400).send({ error: e });
-        logger.error(e, 'Failed to download supplier form data');
+        logger.error(e, 'Failed to download form data');
       }
     }
   };
@@ -282,18 +115,12 @@ export function createFormsRouter({
 }: RouterOptions): Router {
   const router = Router();
 
-  router.get(
-    '/forms/buyer/downloadcsv',
-    downloadBuyerFormData(logger, formApiUrl, tokenProvider)
-  );
-  router.get(
-    '/forms/supplier/downloadcsv',
-    downloadSupplierFormData(logger, formApiUrl, tokenProvider)
-  );
-  router.get(
-    '/forms/partner/downloadcsv',
-    downloadPartnerFormData(logger, formApiUrl, tokenProvider)
-  );
+  Object.keys(formIds).forEach((formType) => {
+    router.get(
+      `/forms/${formType}/downloadcsv`,
+      downloadFormData(logger, formApiUrl, tokenProvider, formIds[formType])
+    );
+  });
 
   return router;
 }
