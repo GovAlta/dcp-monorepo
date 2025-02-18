@@ -72,13 +72,13 @@ const serviceConfigs: ServiceConfig = {
 
 function getEnv() {
     const url = window.location.hostname.toLowerCase();
-    const match = url.match(/([a-z0-9-]+)-([a-z]+)\.([a-z0-9-]+)/);
-    const env = match ? match[2] : null;
+    const match = url.match(/(?<=-)(uat|prod|dev)(?=[.-])/);
+    const env = match ? match[1] : null;
 
     if (!env) {
       if (url === 'localhost') {
         return Environment.uat;
-      } else if (url === 'common-capabilities.digital.gov.ab.ca') {
+      } else if (url === 'common-capabilities.digital.gov.ab.ca' || url === 'common-capabilities.gov.ab.ca') {
         return Environment.prod;
       }
     }
