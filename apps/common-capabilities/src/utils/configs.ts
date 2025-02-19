@@ -65,7 +65,7 @@ const serviceConfigs: ServiceConfig = {
       realm: '650cd96a-1a14-4988-826d-bb108047f2a8',
     },
     gateway: {
-      baseUrl: 'https://cc-api-dcp-prod.apps.aro.gov.ab.ca'
+      baseUrl: 'https://common-capabilities-api.gov.ab.ca'
     }
   }
 }
