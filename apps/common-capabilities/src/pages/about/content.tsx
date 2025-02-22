@@ -89,11 +89,16 @@ export const aboutPageContent = [
           <a
             target="_blank"
             href="https://teams.microsoft.com/l/channel/19%3aTzamGNMm-n21VoLqbCiU68hxpp3TuCKVAqHurh78-j01%40thread.tacv2/General?groupId=169394f7-780d-40eb-ab1e-a0b68b828b76&tenantId=2bb51c06-af9b-42c5-8bf5-3c3b7b10850b"
+            rel="noreferrer"
           >
             Teams
           </a>{' '}
           or at{' '}
-          <a target="_blank" href="mailto:TI.Softwaredelivery@gov.ab.ca">
+          <a
+            target="_blank"
+            href="mailto:TI.Softwaredelivery@gov.ab.ca"
+            rel="noreferrer"
+          >
             TI.Softwaredelivery@gov.ab.ca
           </a>
         </p>

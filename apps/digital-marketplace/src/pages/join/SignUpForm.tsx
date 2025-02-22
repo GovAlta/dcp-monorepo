@@ -14,7 +14,7 @@ export default function SignupForm() {
     website: '',
     agreement: false,
     signUpType: '',
-    formType: 'signup'
+    formType: 'signup',
   };
 
   const {
@@ -55,36 +55,44 @@ export default function SignupForm() {
             <form id="user-form">
               <fieldset>
                 <fieldset className="goa-adm-group-radio adm-single-column">
-                    <legend>Are you a supplier or a community partner? <span className="required">*</span></legend>
-                    <div className="goa-option">
-                        <input
-                            id="supplier"
-                            className={errors.signUpType ? "inputError": ""}
-                            name="signUpType"
-                            type="radio"
-                            onChange={handleChange}
-                            value={SignupType.SUPPLIER}
-                            required={true}
-                        />
-                        <label htmlFor="supplier">
-                            Supplier - Digital services provider
-                        </label>
-                    </div>
-                    <div className="goa-option">
-                        <input
-                            id="community-partner"
-                            className={errors.signUpType ? "inputError": ""}
-                            name="signUpType"
-                            type="radio"
-                            onChange={handleChange}
-                            value={SignupType.COMMUNITY_PARTNER}
-                            required={true}
-                        />
-                        <label htmlFor="community-partner">
-                            Community Partner - Digitally curious Albertan, another government or community organization
-                        </label>
-                    </div>
-                    { errors.signUpType && <strong className="error goa-error">{errors.signUpType}</strong> }
+                  <legend>
+                    Are you a supplier or a community partner?{' '}
+                    <span className="required">*</span>
+                  </legend>
+                  <div className="goa-option">
+                    <input
+                      id="supplier"
+                      className={errors.signUpType ? 'inputError' : ''}
+                      name="signUpType"
+                      type="radio"
+                      onChange={handleChange}
+                      value={SignupType.SUPPLIER}
+                      required={true}
+                    />
+                    <label htmlFor="supplier">
+                      Supplier - Digital services provider
+                    </label>
+                  </div>
+                  <div className="goa-option">
+                    <input
+                      id="community-partner"
+                      className={errors.signUpType ? 'inputError' : ''}
+                      name="signUpType"
+                      type="radio"
+                      onChange={handleChange}
+                      value={SignupType.COMMUNITY_PARTNER}
+                      required={true}
+                    />
+                    <label htmlFor="community-partner">
+                      Community Partner - Digitally curious Albertan, another
+                      government or community organization
+                    </label>
+                  </div>
+                  {errors.signUpType && (
+                    <strong className="error goa-error">
+                      {errors.signUpType}
+                    </strong>
+                  )}
                 </fieldset>
 
                 <FormField
@@ -186,18 +194,24 @@ export default function SignupForm() {
             </form>
             <div className="goa-adm-disclaimer">
               <p>
-                The personal information collected is for the Procurement Concierge Program, Alberta Digital Marketplace, an initiative of Digital Design and Delivery branch, Ministry of Technology and Innovation. This collection is authorized by section 33 of <a
+                The personal information collected is for the Procurement
+                Concierge Program, Alberta Digital Marketplace, an initiative of
+                Digital Design and Delivery branch, Ministry of Technology and
+                Innovation. This collection is authorized by section 33 of{' '}
+                <a
                   href="https://open.alberta.ca/publications/f25"
                   target="_blank"
                 >
-                    <em>Freedom of Information and Protection of Privacy (FOIP) Act
-                    </em>
-                </a>{' '}. For questions about the collection of personal information, contact the Outreach Team at 587-990-5540, by email at <a
-                    href="mailto:digital.Outreach@gov.ab.ca"
-                    target="_blank"
-                >
+                  <em>
+                    Freedom of Information and Protection of Privacy (FOIP) Act
+                  </em>
+                </a>{' '}
+                . For questions about the collection of personal information,
+                contact the Outreach Team at 587-990-5540, by email at{' '}
+                <a href="mailto:digital.Outreach@gov.ab.ca" target="_blank">
                   digital.outreach@gov.ab.ca
-                </a>, or mail to 9942-108 Street, Edmonton, Alberta, T5K 2J5.
+                </a>
+                , or mail to 9942-108 Street, Edmonton, Alberta, T5K 2J5.
               </p>
             </div>
 

@@ -15,20 +15,19 @@ import { applyGatewayMiddleware } from './routes/listings';
 import compression from 'compression';
 import { getCache } from './cache';
 
-
 const logger = createLogger('cc_api', environment.LOG_LEVEL);
 
 const initializeApp = async (): Promise<express.Application> => {
   const app = express();
 
   app.use(helmet());
-  app.use(cors(
-    (_, callback) => {
+  app.use(
+    cors((_, callback) => {
       const allowList = environment.ALLOWED_ORIGINS?.split(',') || [];
 
       callback(null, { origin: allowList });
-    }
-  ));
+    }),
+  );
   app.use(compression());
   app.use(express.json({ limit: '1mb' }));
 
@@ -45,19 +44,20 @@ const initializeApp = async (): Promise<express.Application> => {
     traceHandler,
     tenantStrategy,
     directory,
-    tokenProvider
+    tokenProvider,
   } = await initializeService(
     {
       serviceId,
       realm: environment.REALM,
       displayName: 'cc_api gateway',
-      description: 'Gateway to provide anonymous and session access to some common capabilities app functionality.',
+      description:
+        'Gateway to provide anonymous and session access to some common capabilities app functionality.',
       values: [ServiceMetricsValueDefinition],
       clientSecret: environment.CLIENT_SECRET,
       accessServiceUrl,
-      directoryUrl: new URL(environment.DIRECTORY_URL)
+      directoryUrl: new URL(environment.DIRECTORY_URL),
     },
-    { logger }
+    { logger },
   );
 
   configurePassport(app, passport, { tenantStrategy, cache, logger });
@@ -65,13 +65,13 @@ const initializeApp = async (): Promise<express.Application> => {
   app.use(metricsHandler);
   app.use(traceHandler);
 
-  app.use("/cc", passport.authenticate(['jwt', 'tenant'], { session: false }));
+  app.use('/cc', passport.authenticate(['jwt', 'tenant'], { session: false }));
 
   await applyGatewayMiddleware(app, {
     logger,
     directory,
     offlineAccessTokenProvider: tokenProvider,
-    cache
+    cache,
   });
 
   app.get('/health', async (req, res) => {
@@ -82,12 +82,9 @@ const initializeApp = async (): Promise<express.Application> => {
   return app;
 };
 
-
-
 initializeApp().then((app) => {
   const port = environment.PORT ? Number(environment.PORT) : 3333;
   app.listen(port, () => {
     console.log(`[ ready ] ${environment.PORT}`);
   });
 });
-

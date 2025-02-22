@@ -8,24 +8,22 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <>
-      <GoAAppFooter maxContentWidth="1500px">
-        <GoAAppFooterNavSection maxColumnCount={1}>
-          <Link to="/gettingstarted#getting-started">Getting started</Link>
-          <Link to="/about">About</Link>
-          <Link to="/ecosystem">Eco-system</Link>
-        </GoAAppFooterNavSection>
+    <GoAAppFooter maxContentWidth="1500px">
+      <GoAAppFooterNavSection maxColumnCount={1}>
+        <Link to="/gettingstarted#getting-started">Getting started</Link>
+        <Link to="/about">About</Link>
+        <Link to="/ecosystem">Eco-system</Link>
+      </GoAAppFooterNavSection>
 
-        <GoAAppFooterNavSection>
-          <Link to="/services">Services</Link>
-          <Link to="/support">Support</Link>
-        </GoAAppFooterNavSection>
+      <GoAAppFooterNavSection>
+        <Link to="/services">Services</Link>
+        <Link to="/support">Support</Link>
+      </GoAAppFooterNavSection>
 
-        {/* <GoAAppFooterMetaSection>
+      {/* <GoAAppFooterMetaSection>
           <Link to="/disclaimer"> Disclaimer</Link>          
         </GoAAppFooterMetaSection> */}
-      </GoAAppFooter>
-    </>
+    </GoAAppFooter>
   );
 };
 

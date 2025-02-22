@@ -1,6 +1,10 @@
 import React, { useMemo } from 'react';
 import ServiceForm from '.';
-import { GoACircularProgress, GoANotification, GoAThreeColumnLayout } from '@abgov/react-components';
+import {
+  GoACircularProgress,
+  GoANotification,
+  GoAThreeColumnLayout,
+} from '@abgov/react-components';
 import { getSchemaUrl } from '../../utils/configs';
 import useFetch from '../../hooks/useFetch';
 import type { JsonSchema, UISchemaElement } from '@jsonforms/core';
@@ -8,29 +12,34 @@ import type { Service } from '../../types/types';
 import { useAuth } from '../../providers/AuthStateProvider';
 
 type ServiceFormWrapperProps = {
-    backLink?: JSX.Element;
-    pageHeader: string;
-    service?: Service;
-    handleSubmit: (data: Service) => Promise<any>;
-}
+  backLink?: JSX.Element;
+  pageHeader: string;
+  service?: Service;
+  handleSubmit: (data: Service) => Promise<any>;
+};
 
 type SchemaResponse = {
   dataSchema: JsonSchema;
-  uiSchema: UISchemaElement;  
-}
+  uiSchema: UISchemaElement;
+};
 
 export default function ServiceFormWrapper({
   backLink,
-  pageHeader, 
-  service, 
-  handleSubmit
+  pageHeader,
+  service,
+  handleSubmit,
 }: ServiceFormWrapperProps) {
   const { authToken } = useAuth();
-  const schemaUrl = useMemo(() => getSchemaUrl('common-capabilities-intake'), []);
-  const [data, error, isLoading] = useFetch<SchemaResponse>(schemaUrl, { headers: { Authorization: `Bearer ${authToken}` } });
+  const schemaUrl = useMemo(
+    () => getSchemaUrl('common-capabilities-intake'),
+    [],
+  );
+  const [data, error, isLoading] = useFetch<SchemaResponse>(schemaUrl, {
+    headers: { Authorization: `Bearer ${authToken}` },
+  });
 
   let content;
-  
+
   if (data) {
     content = (
       <ServiceForm
@@ -49,19 +58,22 @@ export default function ServiceFormWrapper({
   }
 
   return (
-    <>
-      <GoAThreeColumnLayout
-        maxContentWidth="1550px"
-        rightColumnWidth="8%"
-        leftColumnWidth="18%"
-      >
-        {backLink}
-        <h1>{pageHeader}</h1>
-        <div className="progress-indicator">
-          <GoACircularProgress variant="inline" size="large" message="Loading form information..." visible={isLoading} />
-        </div>
-        {content}
-      </GoAThreeColumnLayout>
-    </>
+    <GoAThreeColumnLayout
+      maxContentWidth="1550px"
+      rightColumnWidth="8%"
+      leftColumnWidth="18%"
+    >
+      {backLink}
+      <h1>{pageHeader}</h1>
+      <div className="progress-indicator">
+        <GoACircularProgress
+          variant="inline"
+          size="large"
+          message="Loading form information..."
+          visible={isLoading}
+        />
+      </div>
+      {content}
+    </GoAThreeColumnLayout>
   );
 }

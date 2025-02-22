@@ -12,12 +12,15 @@ export default function ProcurementConciergeHeader() {
               <li>
                 <a href="/">Home</a>
               </li>
-              <li className="goa-adm-breadcrumbs-active">Supplier Outreach Program</li>
+              <li className="goa-adm-breadcrumbs-active">
+                Supplier Outreach Program
+              </li>
             </ul>
           </div>
           <h1>Supplier Outreach Program</h1>
           <p className="lede">
-          Tailored guidance to help you understand the government procurement process.
+            Tailored guidance to help you understand the government procurement
+            process.
           </p>
         </div>
 

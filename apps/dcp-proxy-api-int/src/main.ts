@@ -14,12 +14,10 @@ import * as passport from 'passport';
 import { applyGatewayMiddleware } from './routes/forms';
 import compression from 'compression';
 
-
 const logger = createLogger('digital_marketplace', environment.LOG_LEVEL);
 
 const initializeApp = async (): Promise<express.Application> => {
   const app = express();
-
 
   app.use(helmet());
   app.use(cors());
@@ -37,19 +35,20 @@ const initializeApp = async (): Promise<express.Application> => {
     traceHandler,
     tenantStrategy,
     directory,
-    tokenProvider
+    tokenProvider,
   } = await initializeService(
     {
       serviceId,
       realm: environment.REALM,
       displayName: 'dcp-proxy-api-int gateway',
-      description: 'Gateway to provide anonymous and session access to some marketplace functionality.',
+      description:
+        'Gateway to provide anonymous and session access to some marketplace functionality.',
       values: [ServiceMetricsValueDefinition],
       clientSecret: environment.CLIENT_SECRET,
       accessServiceUrl,
-      directoryUrl: new URL(environment.DIRECTORY_URL)
+      directoryUrl: new URL(environment.DIRECTORY_URL),
     },
-    { logger }
+    { logger },
   );
 
   configurePassport(app, passport, { tenantStrategy });
@@ -57,13 +56,15 @@ const initializeApp = async (): Promise<express.Application> => {
   app.use(metricsHandler);
   app.use(traceHandler);
 
-  app.use("/marketplace", passport.authenticate(['tenant', 'anonymous'], { session: false }))
+  app.use(
+    '/marketplace',
+    passport.authenticate(['tenant', 'anonymous'], { session: false }),
+  );
   await applyGatewayMiddleware(app, {
     logger,
     directory,
-    tokenProvider
+    tokenProvider,
   });
-
 
   app.get('/health', async (req, res) => {
     const platform = await healthCheck();
@@ -72,8 +73,6 @@ const initializeApp = async (): Promise<express.Application> => {
 
   return app;
 };
-
-
 
 initializeApp().then((app) => {
   const port = environment.PORT ? Number(environment.PORT) : 3333;

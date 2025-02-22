@@ -48,18 +48,21 @@ export default function HomePage(): JSX.Element {
     environment: false,
     language: false,
     keywords: false,
-    provider:false,
+    provider: false,
     status: false,
     functionalGroup: false,
   });
-  const listingUrl = useMemo(() => getApiUrl('/listings/services'), []); 
+  const listingUrl = useMemo(() => getApiUrl('/listings/services'), []);
   const { authToken } = useAuth();
-  const [data, error, isLoading] = useFetch<ServiceListingResponse>(listingUrl, { headers: { Authorization: `Bearer ${authToken}` } });
+  const [data, error, isLoading] = useFetch<ServiceListingResponse>(
+    listingUrl,
+    { headers: { Authorization: `Bearer ${authToken}` } },
+  );
   const [apps, setApps] = useState([]);
-  
+
   // filters state
   const [appFilters, setFilterList] = useState(
-    getAppsFilters(services, filtersList)
+    getAppsFilters(services, filtersList),
   );
   const [checkedFilters, setCheckedFilters] = useState(() => {
     const savedCheckboxState = localStorage.getItem('selectedCheckboxState');
@@ -86,7 +89,7 @@ export default function HomePage(): JSX.Element {
       };
       localStorage.setItem(
         'selectedCheckboxState',
-        JSON.stringify(newCheckboxState)
+        JSON.stringify(newCheckboxState),
       );
       return newCheckboxState;
     });
@@ -97,26 +100,21 @@ export default function HomePage(): JSX.Element {
       const newSelectedFiltersState = {
         ...prevSelectedFiltersState,
         [filterProperty]: checked
-          ? [
-              ...prevSelectedFiltersState[
-                filterProperty
-              ],
-              name,
-            ]
-          : prevSelectedFiltersState[
-            filterProperty
-          ].filter((filter) => filter !== name),
+          ? [...prevSelectedFiltersState[filterProperty], name]
+          : prevSelectedFiltersState[filterProperty].filter(
+              (filter) => filter !== name,
+            ),
       };
       localStorage.setItem(
         'selectedFiltersState',
-        JSON.stringify(newSelectedFiltersState)
+        JSON.stringify(newSelectedFiltersState),
       );
       return newSelectedFiltersState;
     });
 
     localStorage.setItem(
       'searchTimestamp',
-      (new Date().getTime() + 5 * 60 * 1000).toString()
+      (new Date().getTime() + 5 * 60 * 1000).toString(),
     );
   };
 
@@ -126,7 +124,7 @@ export default function HomePage(): JSX.Element {
     array: any[],
     searchRegExp: RegExp,
     fields: string[],
-    filters: Filter
+    filters: Filter,
   ) => {
     return array.filter((item: any) => {
       const fieldMatch = fields
@@ -139,8 +137,10 @@ export default function HomePage(): JSX.Element {
             return true;
           }
 
-          return filterValues.some((filterValue) => appFilters.indexedItems[filterValue]?.has(item.appId));
-        }
+          return filterValues.some((filterValue) =>
+            appFilters.indexedItems[filterValue]?.has(item.appId),
+          );
+        },
       );
 
       return fieldMatch && filterMatches;
@@ -149,7 +149,9 @@ export default function HomePage(): JSX.Element {
 
   useEffect(() => {
     if (!isLoading && data) {
-      const services = data.services.filter((s) => includeDecommissioned || s.status !== Status.Decommissioned);
+      const services = data.services.filter(
+        (s) => includeDecommissioned || s.status !== Status.Decommissioned,
+      );
       setApps(services);
       setLastUpdated(getLastUpdatedDate(services));
       setFilterList(getAppsFilters(services, filtersList));
@@ -161,24 +163,31 @@ export default function HomePage(): JSX.Element {
     const searchValue = localStorage.getItem('searchFilter') ?? searchFilter;
     const searchRegEx = new RegExp(
       `${searchValue.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`,
-      'i'
+      'i',
     );
     setSearchFilter(localStorage.getItem('searchFilter') || '');
     setServices(
       findServices(
         apps,
         searchRegEx,
-        ['description', 'summary', 'serviceName', 'provider', 'filterText', ...filtersList],
-        selectedFiltersState
-      )
+        [
+          'description',
+          'summary',
+          'serviceName',
+          'provider',
+          'filterText',
+          ...filtersList,
+        ],
+        selectedFiltersState,
+      ),
     );
 
     let timeoutId: NodeJS.Timeout | null = null;
 
     if (localStorage.getItem('searchTimestamp')) {
-      let searchTimestamp = localStorage.getItem('searchTimestamp');
-      let now = new Date().getTime();
-      let remainingTime = searchTimestamp
+      const searchTimestamp = localStorage.getItem('searchTimestamp');
+      const now = new Date().getTime();
+      const remainingTime = searchTimestamp
         ? Number(searchTimestamp) - Number(now)
         : 0;
 
@@ -239,15 +248,27 @@ export default function HomePage(): JSX.Element {
     }
   }, [apps]);
 
-  const recommendedServices = services.filter((item: any) => item.recommended )
-  const otherServices = services.filter((item: any) => !item.recommended )
+  const recommendedServices = services.filter((item: any) => item.recommended);
+  const otherServices = services.filter((item: any) => !item.recommended);
 
   let content;
-  
+
   if (isLoading || (!data && !error)) {
-    content = <GoACircularProgress variant="fullscreen" size="large" message="Loading service list..." visible={true} />;
+    content = (
+      <GoACircularProgress
+        variant="fullscreen"
+        size="large"
+        message="Loading service list..."
+        visible={true}
+      />
+    );
   } else if (error) {
-    content = <GoANotification type="emergency" ariaLive="assertive">Failed to load service details. Please try again later. <br/> Error: {error.message}</GoANotification>;
+    content = (
+      <GoANotification type="emergency" ariaLive="assertive">
+        Failed to load service details. Please try again later. <br /> Error:{' '}
+        {error.message}
+      </GoANotification>
+    );
   } else {
     content = (
       <GoAThreeColumnLayout
@@ -271,7 +292,7 @@ export default function HomePage(): JSX.Element {
                 setSelectedFiltersState(defaultState.selectedFilters);
                 localStorage.setItem(
                   'searchTimestamp',
-                  (new Date().getTime() + 5 * 60 * 1000).toString()
+                  (new Date().getTime() + 5 * 60 * 1000).toString(),
                 );
                 localStorage.setItem('searchFilter', value);
               }}
@@ -303,7 +324,7 @@ export default function HomePage(): JSX.Element {
                     environment: false,
                     language: false,
                     keywords: false,
-                    provider:false,
+                    provider: false,
                     status: false,
                     functionalGroup: false,
                   });
@@ -321,30 +342,30 @@ export default function HomePage(): JSX.Element {
                     environment: true,
                     language: true,
                     keywords: true,
-                    provider:true,
+                    provider: true,
                     status: true,
                     functionalGroup: true,
                   });
                 }}
               >
-                Expand all            
+                Expand all
               </GoAButton>
             </GoAButtonGroup>
             <GoASpacer vSpacing="l" />
             <GoACheckbox
-                key={"includeDecommissioned"}
-                label={"Include Decommissioned services"}
-                name={"includeDecommissioned"}
-                text={"Include Decommissioned services"}
-                checked={includeDecommissioned}
-                onChange={(name, checked) => {
-                  setIncludeDecommissioned(checked);
-                  localStorage.setItem('includeDecommissioned', checked);
-                  if (!checked) {
-                    getHandleFilterChange('status')(Status.Decommissioned, false);
-                  }
-                }}
-              />
+              key={'includeDecommissioned'}
+              label={'Include Decommissioned services'}
+              name={'includeDecommissioned'}
+              text={'Include Decommissioned services'}
+              checked={includeDecommissioned}
+              onChange={(name, checked) => {
+                setIncludeDecommissioned(checked);
+                localStorage.setItem('includeDecommissioned', checked);
+                if (!checked) {
+                  getHandleFilterChange('status')(Status.Decommissioned, false);
+                }
+              }}
+            />
             <GoADivider></GoADivider>
             <GoASpacer vSpacing="xl" />
             {filterListCustom.map((filterCategory) => (
@@ -357,16 +378,22 @@ export default function HomePage(): JSX.Element {
                   headingSize="small"
                   open={filtersAccordionState[filterCategory.property]}
                 >
-                  {appFilters.filters[filterCategory.property]?.map((filter) => (
-                    <GoACheckbox
-                      key={filter}
-                      label={filter}
-                      name={filter}
-                      text={`${filter}`}
-                      checked={checkedFilters[filterCategory.property]?.[filter]}
-                      onChange={getHandleFilterChange(filterCategory.property)}
-                    />
-                  ))}{' '}
+                  {appFilters.filters[filterCategory.property]?.map(
+                    (filter) => (
+                      <GoACheckbox
+                        key={filter}
+                        label={filter}
+                        name={filter}
+                        text={`${filter}`}
+                        checked={
+                          checkedFilters[filterCategory.property]?.[filter]
+                        }
+                        onChange={getHandleFilterChange(
+                          filterCategory.property,
+                        )}
+                      />
+                    ),
+                  )}{' '}
                 </GoAAccordion>
                 <GoASpacer vSpacing="m" />
               </div>
@@ -375,14 +402,9 @@ export default function HomePage(): JSX.Element {
         }
       >
         <div className="home-header">
-          <h1 id="home-title">
-            Services
-          </h1>
-          <GoAButton
-            type="secondary"
-            onClick={() => navigate('/addservice')}
-          >
-          <b>Add a new service</b>
+          <h1 id="home-title">Services</h1>
+          <GoAButton type="secondary" onClick={() => navigate('/addservice')}>
+            <b>Add a new service</b>
           </GoAButton>
         </div>
         {/* <span className="last-updated">Last updated: {formattedDate}</span>   <br /> */}
@@ -393,8 +415,8 @@ export default function HomePage(): JSX.Element {
         <GoASpacer vSpacing="s" />
         <h2>Recommended services listing</h2>
         Recommended services are standard components built for the product teams
-        to reuse. We highly recommend leveraging these standard services with the
-        "Recommended" tag to streamline your development process, maximize
+        to reuse. We highly recommend leveraging these standard services with
+        the "Recommended" tag to streamline your development process, maximize
         efficiency, and optimize costs.
         <GoASpacer vSpacing="xl" />
         <GoAGrid minChildWidth="35ch" gap="2xl">
@@ -421,9 +443,10 @@ export default function HomePage(): JSX.Element {
         <GoASpacer vSpacing="l" />
         <h2>Other services</h2>
         Other services include services built to serve specific use cases and
-        might not be suitable to be used by the product teams. We still encourage
-        you to the reach out to the service providers to collaborate or share
-        knowledge and best practices if you are building something similar.
+        might not be suitable to be used by the product teams. We still
+        encourage you to the reach out to the service providers to collaborate
+        or share knowledge and best practices if you are building something
+        similar.
         <GoASpacer vSpacing="xl" />
         <GoAGrid minChildWidth="35ch" gap="2xl">
           {otherServices.length > 0 ? (

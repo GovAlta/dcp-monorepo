@@ -1,4 +1,12 @@
-const validateFieldAndMarkError = (key: string, value: any, fieldConfig: any, errors: any, validated: Set<string>) => {
+import { FormField } from '../contexts/types';
+
+const validateFieldAndMarkError = (
+  key: string,
+  value: any,
+  fieldConfig: any,
+  errors: any,
+  validated: Set<string>,
+) => {
   const error = validateField(value, fieldConfig);
   validated.add(key);
   if (error) {
@@ -8,7 +16,7 @@ const validateFieldAndMarkError = (key: string, value: any, fieldConfig: any, er
 
 export const validateForm = (
   values: { [x: string]: any },
-  config: { [x: string]: any }
+  config: { [x: string]: any },
 ) => {
   const validated = new Set<string>();
   const errors: any = {};
@@ -19,7 +27,13 @@ export const validateForm = (
       if (fieldConfig.oneOf) {
         const groupErrors: any = {};
         fieldConfig.oneOf.forEach((field: any) => {
-          validateFieldAndMarkError(field, values[field], config[field], groupErrors, validated);
+          validateFieldAndMarkError(
+            field,
+            values[field],
+            config[field],
+            groupErrors,
+            validated,
+          );
         });
 
         // If any of the values for properties within oneOf are valid, then we know that the form is valid
@@ -27,15 +41,22 @@ export const validateForm = (
           Object.assign(errors, groupErrors);
         }
       } else {
-        validateFieldAndMarkError(key, values[key], fieldConfig, errors, validated);
+        validateFieldAndMarkError(
+          key,
+          values[key],
+          fieldConfig,
+          errors,
+          validated,
+        );
       }
     }
   }
 
   return errors;
 };
-export const validateField = (rawValue: any, fieldConfig: any) => {
-  const value = typeof rawValue === 'string' ? String(rawValue).trim() : rawValue;
+export const validateField = (rawValue: any, fieldConfig: FormField) => {
+  const value =
+    typeof rawValue === 'string' ? String(rawValue).trim() : rawValue;
   if (fieldConfig.required && !value) {
     return fieldConfig.messages.required;
   }
@@ -44,7 +65,7 @@ export const validateField = (rawValue: any, fieldConfig: any) => {
   }
   if (fieldConfig.validate) {
     const validationErrors = fieldConfig.validate.filter(
-      (rule: any) => !rule.regEx.test(value)
+      (rule) => !rule.regEx.test(value),
     );
     if (validationErrors.length > 0) {
       return validationErrors[0].failed;

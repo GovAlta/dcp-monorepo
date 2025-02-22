@@ -26,7 +26,7 @@ async function refreshServicesCache(
   valueServiceUrl,
   offlineAccessTokenProvider,
   cache,
-  logger
+  logger,
 ) {
   try {
     const token = await offlineAccessTokenProvider.getAccessToken();
@@ -36,20 +36,35 @@ async function refreshServicesCache(
   }
 }
 
-function initializeCache(valueServiceUrl, offlineAccessTokenProvider, cache, logger) {
-  refreshServicesCache(valueServiceUrl, offlineAccessTokenProvider, cache, logger);
+function initializeCache(
+  valueServiceUrl,
+  offlineAccessTokenProvider,
+  cache,
+  logger,
+) {
+  refreshServicesCache(
+    valueServiceUrl,
+    offlineAccessTokenProvider,
+    cache,
+    logger,
+  );
 
   const ttlMinutes = Math.floor(Number(environment.CACHE_TTL) / 60000); // 30min
   const schedule = `*/${ttlMinutes} * * * *`;
   cron.schedule(schedule, () => {
     logger.info('Refreshing cached data');
-    refreshServicesCache(valueServiceUrl, offlineAccessTokenProvider, cache, logger);
+    refreshServicesCache(
+      valueServiceUrl,
+      offlineAccessTokenProvider,
+      cache,
+      logger,
+    );
   });
 }
 
 export async function applyGatewayMiddleware(
   app: Application,
-  { logger, directory, offlineAccessTokenProvider, cache }: MiddlewareOptions
+  { logger, directory, offlineAccessTokenProvider, cache }: MiddlewareOptions,
 ) {
   console.log('applying gateway middleware');
   const formApiUrl = await directory.getServiceUrl(FORM_API_ID);

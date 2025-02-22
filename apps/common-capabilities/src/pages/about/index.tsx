@@ -16,8 +16,8 @@ export default function AboutPage(): JSX.Element {
   return (
     <GoAThreeColumnLayout
       maxContentWidth="1550px"
-      rightColumnWidth='8%'
-      leftColumnWidth='18%'
+      rightColumnWidth="8%"
+      leftColumnWidth="18%"
       nav={
         <GoASideMenu>
           {aboutPageContent.map((section) => (

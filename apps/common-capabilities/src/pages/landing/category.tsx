@@ -12,8 +12,8 @@ const Category: React.FC<Props> = ({ title, description, link }) => {
   return (
     <div>
       <h3>{title}</h3>
-      <p>{description}</p>      
-      <InternalLink text={'View'} link={link} icon={true} />      
+      <p>{description}</p>
+      <InternalLink text={'View'} link={link} icon={true} />
     </div>
   );
 };

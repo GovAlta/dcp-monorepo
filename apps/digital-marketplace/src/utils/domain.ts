@@ -2,8 +2,8 @@ export function isProd() {
   return (
     window.location.hostname.toLowerCase() == 'digitalmarketplace.alberta.ca' ||
     window.location.hostname.toLowerCase() ==
-      'digital-marketplace-dcp-prod.apps.aro.gov.ab.ca' 
-      // || window.location.hostname.toLowerCase() == 'localhost'
+      'digital-marketplace-dcp-prod.apps.aro.gov.ab.ca'
+    // || window.location.hostname.toLowerCase() == 'localhost'
   );
 }
 

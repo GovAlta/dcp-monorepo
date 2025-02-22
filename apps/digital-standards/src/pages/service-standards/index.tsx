@@ -1,8 +1,4 @@
-import {
-  GoASpacer,
-  GoAAccordion,
-  GoAButton,
-} from '@abgov/react-components';
+import { GoASpacer, GoAAccordion, GoAButton } from '@abgov/react-components';
 import React, { useEffect } from 'react';
 import BackToTop from '../../components/BackToTop';
 
@@ -25,7 +21,7 @@ export default function ServiceStandards(): JSX.Element {
       </GoAButton>
       <GoASpacer vSpacing="l" />
 
-      <h1 id='digital-service-standards'>Digital Service standards</h1>
+      <h1 id="digital-service-standards">Digital Service standards</h1>
       <GoASpacer vSpacing="l" />
       <h2>What are Digital Service Standards?</h2>
       <p>
@@ -40,7 +36,7 @@ export default function ServiceStandards(): JSX.Element {
 
       <GoASpacer vSpacing="3xs" />
 
-      <h2 id='why-digital-service-standards'>Why Digital Service Standards?</h2>
+      <h2 id="why-digital-service-standards">Why Digital Service Standards?</h2>
       <p>
         By aligning to digital service standards, the Government of Alberta sets
         clear expectations on how we will deliver{' '}

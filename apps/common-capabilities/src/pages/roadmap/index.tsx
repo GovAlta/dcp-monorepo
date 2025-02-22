@@ -49,9 +49,7 @@ export default function HomePage(): JSX.Element {
   const [searchFilter, setSearchFilter] = useState('');
   const [lastUpdated, setLastUpdated] = useState('');
   const [includeDecommissioned, setIncludeDecommissioned] = useState(() => {
-    const persistedValue = localStorage.getItem(
-      'includeDecommissioned'
-    );
+    const persistedValue = localStorage.getItem('includeDecommissioned');
     return persistedValue === 'true';
   });
   const [services, setServices] = useState([]);
@@ -66,7 +64,7 @@ export default function HomePage(): JSX.Element {
 
   const exportRoadmapUrl = useMemo(
     () => getApiUrl('/listings/services/roadmap/export'),
-    []
+    [],
   );
   const [exportApi, setExportApiState] = useState({
     loading: false,
@@ -75,12 +73,15 @@ export default function HomePage(): JSX.Element {
 
   const { authToken } = useAuth();
   const listingUrl = useMemo(() => getApiUrl('/listings/services'), []);
-  const [data, error, isLoading] = useFetch<ServiceListingResponse>(listingUrl, { headers: { Authorization: `Bearer ${authToken}` } });
+  const [data, error, isLoading] = useFetch<ServiceListingResponse>(
+    listingUrl,
+    { headers: { Authorization: `Bearer ${authToken}` } },
+  );
   const [apps, setApps] = useState([]);
 
   // filters state
   const [appFilters, setFilterList] = useState(
-    getAppsFilters(services, filtersList)
+    getAppsFilters(services, filtersList),
   );
   const [checkedFilters, setCheckedFilters] = useState(() => {
     const savedCheckboxState = localStorage.getItem('selectedCheckboxState');
@@ -107,7 +108,7 @@ export default function HomePage(): JSX.Element {
       };
       localStorage.setItem(
         'selectedCheckboxState',
-        JSON.stringify(newCheckboxState)
+        JSON.stringify(newCheckboxState),
       );
       return newCheckboxState;
     });
@@ -120,19 +121,19 @@ export default function HomePage(): JSX.Element {
         [filterProperty]: checked
           ? [...prevSelectedFiltersState[filterProperty], name]
           : prevSelectedFiltersState[filterProperty].filter(
-              (filter) => filter !== name
+              (filter) => filter !== name,
             ),
       };
       localStorage.setItem(
         'selectedFiltersState',
-        JSON.stringify(newSelectedFiltersState)
+        JSON.stringify(newSelectedFiltersState),
       );
       return newSelectedFiltersState;
     });
 
     localStorage.setItem(
       'searchTimestamp',
-      (new Date().getTime() + 5 * 60 * 1000).toString()
+      (new Date().getTime() + 5 * 60 * 1000).toString(),
     );
   };
 
@@ -145,7 +146,7 @@ export default function HomePage(): JSX.Element {
     array: any[],
     searchRegExp: RegExp,
     fields: string[],
-    filters: Filter
+    filters: Filter,
   ) => {
     return array.filter((item: any) => {
       const fieldMatch = fields
@@ -159,9 +160,9 @@ export default function HomePage(): JSX.Element {
           }
 
           return filterValues.some((filterValue) =>
-            appFilters.indexedItems[filterValue]?.has(item.appId)
+            appFilters.indexedItems[filterValue]?.has(item.appId),
           );
-        }
+        },
       );
 
       return fieldMatch && filterMatches;
@@ -201,7 +202,7 @@ export default function HomePage(): JSX.Element {
   useEffect(() => {
     if (!isLoading && data) {
       const services = data.services.filter(
-        (s) => includeDecommissioned || s.status !== Status.Decommissioned
+        (s) => includeDecommissioned || s.status !== Status.Decommissioned,
       );
       setApps(services);
       setLastUpdated(getLastUpdatedDate(services));
@@ -214,7 +215,7 @@ export default function HomePage(): JSX.Element {
     const searchValue = localStorage.getItem('searchFilter') ?? searchFilter;
     const searchRegEx = new RegExp(
       `${searchValue.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`,
-      'i'
+      'i',
     );
     setSearchFilter(localStorage.getItem('searchFilter') || '');
     setServices(
@@ -229,16 +230,16 @@ export default function HomePage(): JSX.Element {
           'filterText',
           ...filtersList,
         ],
-        selectedFiltersState
-      )
+        selectedFiltersState,
+      ),
     );
 
     let timeoutId: NodeJS.Timeout | null = null;
 
     if (localStorage.getItem('searchTimestamp')) {
-      let searchTimestamp = localStorage.getItem('searchTimestamp');
-      let now = new Date().getTime();
-      let remainingTime = searchTimestamp
+      const searchTimestamp = localStorage.getItem('searchTimestamp');
+      const now = new Date().getTime();
+      const remainingTime = searchTimestamp
         ? Number(searchTimestamp) - Number(now)
         : 0;
 
@@ -302,7 +303,7 @@ export default function HomePage(): JSX.Element {
   const roadmapWhenList = roadmapList(services, roadmapView.history);
   const roadmapData = (services, targetWhen) => {
     return services.filter((service) =>
-      service.roadmap?.some((roadmapItem) => roadmapItem.when === targetWhen)
+      service.roadmap?.some((roadmapItem) => roadmapItem.when === targetWhen),
     );
   };
   const checkedProviders =
@@ -323,7 +324,10 @@ export default function HomePage(): JSX.Element {
     );
   } else if (error) {
     content = (
-      <GoANotification type="emergency" ariaLive="assertive">Failed to load service details. Please try again later. <br/> Error: {error.message}</GoANotification>
+      <GoANotification type="emergency" ariaLive="assertive">
+        Failed to load service details. Please try again later. <br /> Error:{' '}
+        {error.message}
+      </GoANotification>
     );
   } else {
     content = (
@@ -402,7 +406,7 @@ export default function HomePage(): JSX.Element {
                 setSelectedFiltersState(defaultState.selectedFilters);
                 localStorage.setItem(
                   'searchTimestamp',
-                  (new Date().getTime() + 5 * 60 * 1000).toString()
+                  (new Date().getTime() + 5 * 60 * 1000).toString(),
                 );
                 localStorage.setItem('searchFilter', value);
               }}
@@ -488,16 +492,22 @@ export default function HomePage(): JSX.Element {
                   }) `}
                   open={filtersAccordionState[filterCategory.property]}
                 >
-                  {appFilters.filters[filterCategory.property]?.map((filter) => (
-                    <GoACheckbox
-                      key={filter}
-                      label={filter}
-                      name={filter}
-                      text={`${filter}`}
-                      checked={checkedFilters[filterCategory.property]?.[filter]}
-                      onChange={getHandleFilterChange(filterCategory.property)}
-                    />
-                  ))}{' '}
+                  {appFilters.filters[filterCategory.property]?.map(
+                    (filter) => (
+                      <GoACheckbox
+                        key={filter}
+                        label={filter}
+                        name={filter}
+                        text={`${filter}`}
+                        checked={
+                          checkedFilters[filterCategory.property]?.[filter]
+                        }
+                        onChange={getHandleFilterChange(
+                          filterCategory.property,
+                        )}
+                      />
+                    ),
+                  )}{' '}
                 </GoAAccordion>
                 <GoASpacer vSpacing="m" />
               </div>
@@ -581,8 +591,7 @@ export default function HomePage(): JSX.Element {
           <>
             <GoASpacer vSpacing="l" />
             <span className="last-updated">
-              Showing {services.length} of{' '}
-              {apps.length} results{' '}
+              Showing {services.length} of {apps.length} results{' '}
             </span>
             <GoASpacer vSpacing="s" />
             <GoAGrid minChildWidth="35ch" gap="2xl">

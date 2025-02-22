@@ -10,29 +10,47 @@ import { useParams } from 'react-router-dom';
 import { useAuth } from '../../providers/AuthStateProvider';
 
 type ServiceDetailsResponse = {
-  serviceInfo: Service
-}
+  serviceInfo: Service;
+};
 
 export default function UpdateServicePage(): JSX.Element {
   const { id } = useParams();
   const { handleSubmit } = useForm();
   const { authToken } = useAuth();
   const serviceUrl = useMemo(() => getApiUrl(`/listings/services/${id}`), []);
-  const [data, error, isLoading] = useFetch<ServiceDetailsResponse>(serviceUrl, { headers: { Authorization: `Bearer ${authToken}` } });
+  const [data, error, isLoading] = useFetch<ServiceDetailsResponse>(
+    serviceUrl,
+    { headers: { Authorization: `Bearer ${authToken}` } },
+  );
   const [service, setService] = React.useState<Service | undefined>(undefined);
 
   useEffect(() => {
     if (!isLoading && data) {
       // editor name and email needs to be of current editing user, thus needs to be cleared out from loaded data
-      const serviceInfo = Object.assign({}, data.serviceInfo, { editorName: "", editorEmail: "" });
+      const serviceInfo = Object.assign({}, data.serviceInfo, {
+        editorName: '',
+        editorEmail: '',
+      });
       setService(serviceInfo);
     }
   }, [data, isLoading]);
 
-  const backLink = <BackButton text="Back to details" onClick={() => { history.back(); }} />;
+  const backLink = (
+    <BackButton
+      text="Back to details"
+      onClick={() => {
+        history.back();
+      }}
+    />
+  );
 
   return isLoading || !service ? (
-    <GoACircularProgress variant="fullscreen" size="large" message="Loading service details..." visible={true} />
+    <GoACircularProgress
+      variant="fullscreen"
+      size="large"
+      message="Loading service details..."
+      visible={true}
+    />
   ) : (
     <ServiceFormWrapper
       backLink={backLink}

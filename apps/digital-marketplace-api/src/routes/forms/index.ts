@@ -19,7 +19,7 @@ interface MiddlewareOptions {
 
 export async function applyGatewayMiddleware(
   app: Application,
-  { logger, directory, tokenProvider, RECAPTCHA_SECRET }: MiddlewareOptions
+  { logger, directory, tokenProvider, RECAPTCHA_SECRET }: MiddlewareOptions,
 ) {
   const formApiUrl = await directory.getServiceUrl(FORM_API_ID);
   const eventServiceUrl = await directory.getServiceUrl(EVENT_API_ID);
@@ -29,7 +29,7 @@ export async function applyGatewayMiddleware(
     tokenProvider,
     formApiUrl,
     eventServiceUrl,
-    RECAPTCHA_SECRET
+    RECAPTCHA_SECRET,
   });
   app.use('/marketplace/v1', formsRouter);
 

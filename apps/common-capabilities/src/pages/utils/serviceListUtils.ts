@@ -1,7 +1,7 @@
-import dayjs from "dayjs";
-import type { Service } from "../../types/types";
-import type { ServiceFilterKey } from "../services/config";
-import type { RoadmapFilterKey } from "../roadmap/config";
+import dayjs from 'dayjs';
+import type { Service } from '../../types/types';
+import type { ServiceFilterKey } from '../services/config';
+import type { RoadmapFilterKey } from '../roadmap/config';
 
 type FilterKey = ServiceFilterKey | RoadmapFilterKey;
 
@@ -28,11 +28,15 @@ export function getAppsFilters(apps: Service[], filterKeys: FilterKey[]) {
               filters[key].add(...Object.values(element));
 
               Object.values(element).forEach((value: any) => {
-                indexedItems[value] = (indexedItems[value] || new Set()).add(app.appId);
+                indexedItems[value] = (indexedItems[value] || new Set()).add(
+                  app.appId,
+                );
               });
             } else {
               filters[key].add(element);
-              indexedItems[element] = (indexedItems[element] || new Set()).add(app.appId);
+              indexedItems[element] = (indexedItems[element] || new Set()).add(
+                app.appId,
+              );
             }
           });
         } else {
@@ -41,7 +45,9 @@ export function getAppsFilters(apps: Service[], filterKeys: FilterKey[]) {
             filters[key] = new Set();
           }
           filters[key].add(app[key]);
-          indexedItems[propValue] = (indexedItems[propValue] || new Set()).add(app.appId);
+          indexedItems[propValue] = (indexedItems[propValue] || new Set()).add(
+            app.appId,
+          );
         }
       }
     });
@@ -54,11 +60,14 @@ export function getAppsFilters(apps: Service[], filterKeys: FilterKey[]) {
 
   return {
     filters,
-    indexedItems
+    indexedItems,
   };
 }
 
-export function generateFilterObject(services: Service[], filtersList: FilterKey[]) {
+export function generateFilterObject(
+  services: Service[],
+  filtersList: FilterKey[],
+) {
   const { filters } = getAppsFilters(services, filtersList);
 
   const filterObject: any = {};
@@ -87,5 +96,5 @@ export function getLastUpdatedDate(services: Service[]) {
     }
   }
 
-  return hasLastUpdatedDate ? lastUpdatedDate.format() : "";
+  return hasLastUpdatedDate ? lastUpdatedDate.format() : '';
 }

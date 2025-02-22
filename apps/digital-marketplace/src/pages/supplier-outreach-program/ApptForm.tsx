@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import useForm from '../../contexts/useForm';
 import { apptFormConfig } from './config';
 import { validateField, validateForm } from '../../utils/forms';
@@ -29,7 +29,7 @@ export default function ApptForm() {
     agreement: false,
     signUpType: '',
     formType: 'consultation',
-    slot:'',
+    slot: '',
     calendarId: 'subbu-test',
   };
 
@@ -46,7 +46,7 @@ export default function ApptForm() {
 
   const bookingsUrl = useMemo(
     () => getBookingsUrl('/bookings/availability?calendarId=subbu-test'),
-    []
+    [],
   );
   const [bookings, error, isBookingsLoading] = useFetch<Bookings>(bookingsUrl);
   // State to track the selected contact method
@@ -170,9 +170,7 @@ export default function ApptForm() {
                       <div className="goa-option">
                         <input
                           id="yes-provider"
-                          className={
-                            errors.techProvider ? 'inputError' : ''
-                          }
+                          className={errors.techProvider ? 'inputError' : ''}
                           name="techProvider"
                           type="radio"
                           onChange={handleChange}
@@ -184,9 +182,7 @@ export default function ApptForm() {
                       <div className="goa-option">
                         <input
                           id="not-provider"
-                          className={
-                            errors.techProvider ? 'inputError' : ''
-                          }
+                          className={errors.techProvider ? 'inputError' : ''}
                           name="techProvider"
                           type="radio"
                           onChange={handleChange}
@@ -209,7 +205,9 @@ export default function ApptForm() {
                       <Textarea
                         id="toDiscuss"
                         name="toDiscuss"
-                        onChange={handleChange as unknown as React.ChangeEventHandler<HTMLTextAreaElement>}
+                        onChange={
+                          handleChange as unknown as React.ChangeEventHandler<HTMLTextAreaElement>
+                        }
                         onBlur={handleBlur}
                         value={values.toDiscuss}
                         error={errors.toDiscuss}

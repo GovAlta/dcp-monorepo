@@ -4,11 +4,10 @@ import BackToTop from '../../components/BackToTop';
 import { glossaryItems } from './config';
 import './styles.css';
 
-
 type glossaryItem = {
   term: string;
   definition: string;
-  allowLink:boolean;
+  allowLink: boolean;
 };
 
 const GlossaryPage = () => {
@@ -19,8 +18,9 @@ const GlossaryPage = () => {
     }
   }, []);
   const sortedGlossaryItems = glossaryItems.sort((a, b) =>
-    a.term.localeCompare(b.term)
+    a.term.localeCompare(b.term),
   );
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const groupedItems = sortedGlossaryItems.reduce((acc: any, item) => {
     const firstLetter = item.term[0].toUpperCase();
     if (!acc[firstLetter]) {
@@ -46,7 +46,8 @@ const GlossaryPage = () => {
       <GoASpacer vSpacing="2xl" />
       <h1 id="glossary">Glossary</h1>
       <p>
-        This Glossary is a collection of important terms used by the Digital Service Standards and Product teams.
+        This Glossary is a collection of important terms used by the Digital
+        Service Standards and Product teams.
       </p>
       <GoASpacer vSpacing="l" />
 
@@ -60,7 +61,7 @@ const GlossaryPage = () => {
             <span className="noLink" key={letter}>
               {letter}
             </span>
-          )
+          ),
         )}
       </div>
       <div>
@@ -76,10 +77,13 @@ const GlossaryPage = () => {
                       <h5 id={item.term.replace(/\s+/g, '')}>{item.term}</h5>
                       {/* <span>{item.definition}</span> */}
 
-                      {item.allowLink ?
-                          <span dangerouslySetInnerHTML={{ __html: item.definition }}></span>
-                        : <span>{item.definition}</span>}
-
+                      {item.allowLink ? (
+                        <span
+                          dangerouslySetInnerHTML={{ __html: item.definition }}
+                        ></span>
+                      ) : (
+                        <span>{item.definition}</span>
+                      )}
                     </div>
                     <GoASpacer vSpacing="xs" />
                   </>
@@ -88,7 +92,7 @@ const GlossaryPage = () => {
               <BackToTop />
               <br />
             </>
-          ) : null
+          ) : null,
         )}
       </div>
     </div>

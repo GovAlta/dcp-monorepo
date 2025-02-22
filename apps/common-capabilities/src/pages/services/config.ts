@@ -19,7 +19,7 @@ export const filtersList = [
   'provider',
 ] as const;
 
-export type ServiceFilterKey = typeof filtersList[number];
+export type ServiceFilterKey = (typeof filtersList)[number];
 
 export const filterListCustom = [
   {
@@ -41,9 +41,9 @@ export const filterListCustom = [
   {
     title: 'Language',
     property: 'language',
-  },  
+  },
   {
     title: 'Keywords',
     property: 'keywords',
-  }
+  },
 ];

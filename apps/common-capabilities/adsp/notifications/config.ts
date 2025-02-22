@@ -10,7 +10,8 @@ const notifications = {
     },
     'common-capabilities:listing-submitted-edit-reviewer': {
       email: {
-        subject: 'Confirmation of Submission: Common Capabilities Edit Notification',
+        subject:
+          'Confirmation of Submission: Common Capabilities Edit Notification',
         title: 'submission notification',
         subtitle: '',
         body: `<body>
@@ -35,7 +36,8 @@ const notifications = {
     },
     'common-capabilities:listing-submitted-new-reviewer': {
       email: {
-        subject: 'Confirmation of Submission: Common Capabilities New service Submission',
+        subject:
+          'Confirmation of Submission: Common Capabilities New service Submission',
         title: 'submission notification',
         subtitle: '',
         body: `<body>

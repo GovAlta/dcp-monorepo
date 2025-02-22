@@ -7,7 +7,7 @@ const useForm = (
   initialValues: any,
   validateForm: any,
   validateField: any,
-  formConfig: FormConfig
+  formConfig: FormConfig,
 ) => {
   const [values, setValues] = useState<any>(initialValues);
   const [errors, setErrors] = useState<any>({});
@@ -31,7 +31,7 @@ const useForm = (
       const combinedErrors = Object.assign({}, prevErrors, choicePropErrors);
 
       newErrors = Object.fromEntries(
-        Object.entries(combinedErrors).filter(([key, value]) => !!value)
+        Object.entries(combinedErrors).filter(([key, value]) => !!value),
       );
     }
 
@@ -55,7 +55,7 @@ const useForm = (
     }));
 
     setErrors((prevErrors: any) =>
-      getErrorsOnChange(prevErrors, name, newValue)
+      getErrorsOnChange(prevErrors, name, newValue),
     );
   };
 
@@ -81,7 +81,7 @@ const useForm = (
 
           return entry;
         })
-        .filter((entry) => !!entry)
+        .filter((entry) => !!entry),
     );
 
     if (Object.keys(validationErrors).length === 0) {
@@ -89,26 +89,23 @@ const useForm = (
       try {
         const siteKey = getCaptchaSiteKey();
         const recaptcha = await new Promise((resolve, reject) => {
-          (window as any).grecaptcha.ready(async () => {
+          const { grecaptcha } = window;
+          grecaptcha.ready(async () => {
             try {
-              const token = await (window as any).grecaptcha.execute(siteKey, {
+              const token = await grecaptcha.execute(siteKey, {
                 action: 'submit',
               });
               resolve(token); // Resolve the promise with the recaptcha token
-            } catch (error: any) {
-              reject(new Error(`Recaptcha error: ${error.message}`)); // Reject the promise with an error
+            } catch (error) {
+              reject(new Error(`Recaptcha error: ${(error as Error).message}`)); // Reject the promise with an error
             }
           });
         });
         jsonData['token'] = recaptcha;
         if (values.formType === 'consultation') {
-          await axios.post(
-            bookingsUrl(),
-            jsonData,
-            {
-              headers: { 'Content-Type': 'application/json' },
-            }
-          );
+          await axios.post(bookingsUrl(), jsonData, {
+            headers: { 'Content-Type': 'application/json' },
+          });
         }
         if (values.formType === 'signup') {
           await axios.post(
@@ -116,13 +113,13 @@ const useForm = (
             jsonData,
             {
               headers: { 'Content-Type': 'application/json' },
-            }
+            },
           );
         }
         setSuccess(true);
         setValues(initialValues);
         setErrors({});
-      } catch (error: any) {
+      } catch (error) {
         setApiError(error.response.data.error || error.response.data);
         console.error(error);
       } finally {

@@ -8,7 +8,13 @@ import {
 } from '@abgov/react-components';
 import Footer from '../../components/Footer';
 
-const Layout = ({ children, hideNav = false, hideHero = true }: any) => {
+type Props = {
+  children: React.ReactNode;
+  hideNav?: boolean;
+  hideHero?: boolean;
+};
+
+const Layout = ({ children, hideNav = false, hideHero = true }: Props) => {
   return (
     <>
       <section id="top-page"></section>
@@ -35,23 +41,15 @@ const Layout = ({ children, hideNav = false, hideHero = true }: any) => {
             <div>
               <GoASideMenu>
                 <GoASideMenuGroup heading="Digital Service Standards Program">
-                  <a href="/service-standards/">
-                    Digital Service Standards
-                  </a>
-                  <a href="/service-principles/">
-                    Digital Service Principles
-                  </a>
+                  <a href="/service-standards/">Digital Service Standards</a>
+                  <a href="/service-principles/">Digital Service Principles</a>
                   <a href="/service-help/">
                     How Digital Service Standards team can help
                   </a>
-                  <a href="/service-performance/">
-                    Service Performance
-                  </a>
-                  <a href="/service-assessments/">
-                    Service Assessments
-                  </a>
+                  <a href="/service-performance/">Service Performance</a>
+                  <a href="/service-assessments/">Service Assessments</a>
                   <a href="/digital-capabilities/">
-                  Digital Capability Program
+                    Digital Capability Program
                   </a>
                 </GoASideMenuGroup>
               </GoASideMenu>

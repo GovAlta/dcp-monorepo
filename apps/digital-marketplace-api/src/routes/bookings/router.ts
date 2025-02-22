@@ -9,7 +9,7 @@ import { validateBookingData } from './middlewares/index';
 export function verifyCaptcha(
   logger: Logger,
   RECAPTCHA_SECRET: string,
-  SCORE_THRESHOLD = 0.5
+  SCORE_THRESHOLD = 0.5,
 ): RequestHandler {
   return async (req, _res, next) => {
     if (!RECAPTCHA_SECRET) {
@@ -18,7 +18,7 @@ export function verifyCaptcha(
       try {
         const { token } = req.body;
         const { data } = await axios.post<SiteVerifyResponse>(
-          `https://www.google.com/recaptcha/api/siteverify?secret=${RECAPTCHA_SECRET}&response=${token}`
+          `https://www.google.com/recaptcha/api/siteverify?secret=${RECAPTCHA_SECRET}&response=${token}`,
         );
         console.log(data);
 
@@ -29,13 +29,13 @@ export function verifyCaptcha(
         ) {
           logger.warn(
             `Captcha verification failed for form gateway with result '${data.success}' on action '${data.action}' with score ${data.score}.`,
-            { context: 'DigitalMarketplace' }
+            { context: 'DigitalMarketplace' },
           );
 
           return _res
             .status(401)
             .send(
-              'Request rejected because captcha verification not successful.'
+              'Request rejected because captcha verification not successful.',
             );
         }
 
@@ -57,14 +57,14 @@ export function createBookingsRouter({
 
   router.get(
     '/bookings/availability',
-    getAvailableBookings(logger, tokenProvider, calendarServiceUrl)
+    getAvailableBookings(logger, tokenProvider, calendarServiceUrl),
   );
 
   router.post(
     '/bookings',
     verifyCaptcha(logger, environment.RECAPTCHA_SECRET),
     validateBookingData(logger, tokenProvider, calendarServiceUrl),
-    bookEvent(logger, tokenProvider, calendarServiceUrl, eventServiceUrl)
+    bookEvent(logger, tokenProvider, calendarServiceUrl, eventServiceUrl),
   );
 
   return router;

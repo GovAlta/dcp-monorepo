@@ -1,17 +1,23 @@
 declare global {
   interface Window {
-    grecaptcha: any;
+    grecaptcha: {
+      ready: (callback: () => void) => void;
+      execute: (
+        siteKey: string,
+        { action }: { action: string },
+      ) => Promise<string>;
+    };
   }
 }
 
 type Contact = {
   details: string;
-  methods: Array<{type: string, value: string, url: string}>;
-}
+  methods: Array<{ type: string; value: string; url: string }>;
+};
 
 enum RoadmapStatus {
-  Commited = "Commited",
-  Tentative = "Tentative",
+  Commited = 'Commited',
+  Tentative = 'Tentative',
 }
 
 type Roadmap = {
@@ -20,15 +26,15 @@ type Roadmap = {
   status: RoadmapStatus;
   type: string;
   description: string;
-  impacts: Array<{item: string}>
-}
+  impacts: Array<{ item: string }>;
+};
 
 export type ServiceListingResponse = {
   services: Array<Service>;
-}
+};
 
 export enum Status {
-  Live = "Live",
+  Live = 'Live',
   Alpha = 'Alpha',
   Beta = 'Beta',
   Future = 'Future',
@@ -45,10 +51,10 @@ export type Service = {
   recommended: boolean;
   provider: string;
   functionalGroup: string;
-  environment: Array<{item: string}>;
-  language: Array<{item: string}>;
-  documentation: Array<{url: string, name: string}>;
-  keywords: Array<{item: string}>;
+  environment: Array<{ item: string }>;
+  language: Array<{ item: string }>;
+  documentation: Array<{ url: string; name: string }>;
+  keywords: Array<{ item: string }>;
   usageMethod: string;
   status: Status;
   version: string;
@@ -68,9 +74,9 @@ export type Service = {
   contact: Contact;
   filterText: string;
   supportLevel: string;
-  audience: Array<{item: string}>;
+  audience: Array<{ item: string }>;
   editorName: string;
   editorEmail: string;
   roadmap: Array<Roadmap>;
   lastUpdatedDate: string;
-}
+};

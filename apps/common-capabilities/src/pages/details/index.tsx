@@ -7,7 +7,7 @@ import {
   GoATable,
   GoAButton,
   GoACircularProgress,
-  GoANotification
+  GoANotification,
 } from '@abgov/react-components';
 import React, { useEffect, useState, useMemo } from 'react';
 import './styles.css';
@@ -29,12 +29,12 @@ import { useAuth } from '../../providers/AuthStateProvider';
 
 type ServiceDetailsResponse = {
   serviceInfo: any;
-}
+};
 
 interface SecurityItem {
   name: string;
   title: string;
-  tableTh: any;  
+  tableTh: any;
   note: string;
   items: any;
 }
@@ -43,8 +43,11 @@ export default function Details(): JSX.Element {
   const navigate = useNavigate();
   const { id } = useParams();
   const { authToken } = useAuth();
-  const detailsUrl = useMemo(() => getApiUrl(`/listings/services/${id}`), []); 
-  const [data, error, isLoading] = useFetch<ServiceDetailsResponse>(detailsUrl, { headers: { Authorization: `Bearer ${authToken}` } });
+  const detailsUrl = useMemo(() => getApiUrl(`/listings/services/${id}`), []);
+  const [data, error, isLoading] = useFetch<ServiceDetailsResponse>(
+    detailsUrl,
+    { headers: { Authorization: `Bearer ${authToken}` } },
+  );
   const [app, setApp] = useState<any>(undefined);
   const [items, setItems] = useState<any>({
     content: [],
@@ -66,7 +69,7 @@ export default function Details(): JSX.Element {
 
   useEffect(() => {
     if (app) {
-      let showContent: any = [];
+      const showContent: any = [];
       Object.entries(bodyItems).forEach(([name, obj]) => {
         const hasData = obj.validate ? obj.validate(app) : app[name];
         if (hasData) {
@@ -80,9 +83,13 @@ export default function Details(): JSX.Element {
         }
       });
 
-      let showSpecs: any = [];
+      const showSpecs: any = [];
       Object.entries(specifications).forEach(([name, obj]) => {
-        if (app[name] && app[name] !== 'Other' && app[name][0]?.item !== 'Other') {
+        if (
+          app[name] &&
+          app[name] !== 'Other' &&
+          app[name][0]?.item !== 'Other'
+        ) {
           const newValue = { ...obj, id: `spec-${name.toLowerCase()}` };
           showSpecs.push({ name, ...newValue });
         }
@@ -96,7 +103,6 @@ export default function Details(): JSX.Element {
   }, [app]);
 
   const SecurityBlock: React.FC<{ group: SecurityItem }> = ({ group }) => {
-
     function displayName(obj: any, key: string): string | undefined {
       return obj[key]?.title;
     }
@@ -126,17 +132,20 @@ export default function Details(): JSX.Element {
             )}
           </thead>
           <tbody>
-             {group.items
-             .filter((item: any) => app[item] !== '')
-             .map((item: any, index: any) => (
+            {group.items
+              .filter((item: any) => app[item] !== '')
+              .map((item: any, index: any) => (
                 <tr key={`tr-${group.name}${index}`}>
-                  <td key={`td1-${index}`}> {' '} {displayName(securityData, item)}{' '}  </td>
+                  <td key={`td1-${index}`}>
+                    {' '}
+                    {displayName(securityData, item)}{' '}
+                  </td>
                   <td key={`td2-${index}`} className={'service-content'}>
-                      {' '}
+                    {' '}
                     {app[item]}{' '}
                   </td>
                 </tr>
-            ))}
+              ))}
           </tbody>
         </GoATable>
         <GoASpacer vSpacing="xl" />
@@ -155,25 +164,29 @@ export default function Details(): JSX.Element {
         />
       );
     else if (specification.type == 'textArray')
-
       // To be used when using string arrays:
-      // return <>{app[specification.name].join(', ')}</>;  
-   
-      // using object array:
-      return <>{app[specification.name].map((obj: { item: any; }) => obj.item).join(', ')}</>;
+      // return <>{app[specification.name].join(', ')}</>;
 
+      // using object array:
+      return (
+        <>
+          {app[specification.name]
+            .map((obj: { item: any }) => obj.item)
+            .join(', ')}
+        </>
+      );
     else return <>{specification.type}?</>;
   };
 
   const renderContact = (method: any) => {
     const contactMethods: any = {
-      Slack:      {iconType: 'logo-slack',  linkPrefix: '',},
-      Email:      {iconType: 'mail',  linkPrefix: 'mailto:',},
-      Phone:      {iconType: 'call',  linkPrefix: 'tel:',},
-      BERNIE:     {iconType: 'cart',  linkPrefix: '',},
-      Web:        {iconType: 'globe', linkPrefix: '',},
-      Sharepoint: {iconType: 'share-social',  linkPrefix: '',},
-      GitHub:     {iconType: 'logo-github',   linkPrefix: '',},
+      Slack: { iconType: 'logo-slack', linkPrefix: '' },
+      Email: { iconType: 'mail', linkPrefix: 'mailto:' },
+      Phone: { iconType: 'call', linkPrefix: 'tel:' },
+      BERNIE: { iconType: 'cart', linkPrefix: '' },
+      Web: { iconType: 'globe', linkPrefix: '' },
+      Sharepoint: { iconType: 'share-social', linkPrefix: '' },
+      GitHub: { iconType: 'logo-github', linkPrefix: '' },
     };
     const methodConfig = contactMethods[method.type] || {};
     const iconType = methodConfig.iconType || '';
@@ -196,12 +209,9 @@ export default function Details(): JSX.Element {
   };
 
   const renderRoadmap = (roadmap: any) => {
-    if (!roadmap || roadmap.length === 0)
-      return null;
+    if (!roadmap || roadmap.length === 0) return null;
 
-    return (
-      <Roadmap roadmap={roadmap} />
-    );
+    return <Roadmap roadmap={roadmap} />;
   };
 
   const renderContent = (name: string, app: any) => {
@@ -220,13 +230,17 @@ export default function Details(): JSX.Element {
       return (
         <>
           {app.recommended ? (
-            <GoABadge key="validated" type="information" content="Recommended"  />
+            <GoABadge
+              key="validated"
+              type="information"
+              content="Recommended"
+            />
           ) : null}
           <table>
             <tbody className="specs-table">
               {items.specs.map((obj: any) => (
                 <tr key={obj.id}>
-                  <td className='spec-type' >{obj.title}:</td>
+                  <td className="spec-type">{obj.title}:</td>
                   <td>{renderSpecs(obj)}</td>
                 </tr>
               ))}
@@ -234,25 +248,25 @@ export default function Details(): JSX.Element {
           </table>
         </>
       );
-    } 
-    else if (name === 'roadmap') {
+    } else if (name === 'roadmap') {
       return renderRoadmap(app.roadmap);
-    }
-    else if (name === 'contact') {
+    } else if (name === 'contact') {
       return (
         <>
-        {app.contact.details != '' ? (
+          {app.contact.details != '' ? (
             <>
-            {app.contact.details}
-            <GoASpacer vSpacing="s" />
+              {app.contact.details}
+              <GoASpacer vSpacing="s" />
             </>
           ) : null}
 
-        <table className="contact-table">
-          <tbody>
-            {app.contact?.methods?.map((method: any) => renderContact(method))}
-          </tbody>
-        </table>
+          <table className="contact-table">
+            <tbody>
+              {app.contact?.methods?.map((method: any) =>
+                renderContact(method),
+              )}
+            </tbody>
+          </table>
         </>
       );
     } else if (name === 'security') {
@@ -268,10 +282,22 @@ export default function Details(): JSX.Element {
 
   let content;
 
-  if (isLoading || (!app && !error))  {
-    content = <GoACircularProgress variant="fullscreen" size="large" message="Loading service details..." visible={true} />;
+  if (isLoading || (!app && !error)) {
+    content = (
+      <GoACircularProgress
+        variant="fullscreen"
+        size="large"
+        message="Loading service details..."
+        visible={true}
+      />
+    );
   } else if (error) {
-    content = <GoANotification type="emergency" ariaLive="assertive">Failed to load service details. Please try again later. <br/> Error: {error.message}</GoANotification>;
+    content = (
+      <GoANotification type="emergency" ariaLive="assertive">
+        Failed to load service details. Please try again later. <br /> Error:{' '}
+        {error.message}
+      </GoANotification>
+    );
   } else {
     content = (
       <GoAThreeColumnLayout
@@ -292,17 +318,23 @@ export default function Details(): JSX.Element {
           </div>
         }
       >
-        <BackButton text="Back to listing" onClick={() => { history.back(); }} />
+        <BackButton
+          text="Back to listing"
+          onClick={() => {
+            history.back();
+          }}
+        />
 
         <GoASpacer vSpacing="l" />
         <div className="service-heading">
-        <h2>{app.serviceName}</h2>
-        <GoAButton
-          type="secondary"
-          onClick={() => navigate(`/updateservice/${app.appId}`)}>
-          Update
-        </GoAButton>
-      </div>
+          <h2>{app.serviceName}</h2>
+          <GoAButton
+            type="secondary"
+            onClick={() => navigate(`/updateservice/${app.appId}`)}
+          >
+            Update
+          </GoAButton>
+        </div>
         <GoASpacer vSpacing="l" />
         <p className="service-content"> {app.description}</p>
 
@@ -311,7 +343,9 @@ export default function Details(): JSX.Element {
           items.content.map(({ id, name, title }: any) => {
             return (
               <div key={`${id}`}>
-                <h3 id={`${id}`} className='service-title'>{title}</h3>
+                <h3 id={`${id}`} className="service-title">
+                  {title}
+                </h3>
                 {renderContent(name, app)}
                 <GoASpacer vSpacing="l" />
               </div>
@@ -329,7 +363,11 @@ export default function Details(): JSX.Element {
         </div>
         <GoASpacer vSpacing="3xl" />
         <span className="content-bottom">
-          <LastUpdated date={app.lastUpdatedDate} name={app.editorName} email={app.editorEmail} />
+          <LastUpdated
+            date={app.lastUpdatedDate}
+            name={app.editorName}
+            email={app.editorEmail}
+          />
           <BackToTop />
         </span>
       </GoAThreeColumnLayout>

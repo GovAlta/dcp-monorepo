@@ -9,9 +9,9 @@ import {
   CalendarEvent,
   CalendarEventsData,
 } from '../types';
-import axiosRetry from 'axios-retry';
+import axiosRetry, { exponentialDelay } from 'axios-retry';
 
-axiosRetry(axios, { retries: 3, retryDelay: axiosRetry.exponentialDelay });
+axiosRetry(axios, { retries: 3, retryDelay: exponentialDelay });
 
 /**
  * Validates the booking request data.
@@ -28,7 +28,7 @@ axiosRetry(axios, { retries: 3, retryDelay: axiosRetry.exponentialDelay });
 export function validateBookingData(
   logger: Logger,
   tokenProvider: TokenProvider,
-  calendarServiceUrl: URL
+  calendarServiceUrl: URL,
 ): RequestHandler {
   return async (req, res, next) => {
     const reqBody: BookingRequest = req.body;
@@ -45,7 +45,7 @@ export function validateBookingData(
     const offsetInHours = new Date(timeZoneOffset).getTimezoneOffset() / 60;
     todaysData.setHours(todaysData.getHours() - offsetInHours);
     todaysData.setDate(
-      todaysData.getDate() + Number(environment.BOOKINGS_DAYS_AHEAD)
+      todaysData.getDate() + Number(environment.BOOKINGS_DAYS_AHEAD),
     );
     const currentDatePlus5Days = todaysData
       .toISOString()
@@ -61,7 +61,7 @@ export function validateBookingData(
         headers: {
           Authorization: `Bearer ${token}`,
         },
-      }
+      },
     );
     res.locals.businessDay = getBusinessDates.data.results;
 
@@ -69,7 +69,7 @@ export function validateBookingData(
     const getBusinessDay = getBusinessDates.data.results.filter(
       (businessDay) =>
         businessDay.id.toString() === formattedBookingDate &&
-        businessDay.isBusinessDay
+        businessDay.isBusinessDay,
     );
     res.locals.isNotValidBusinessDay = getBusinessDay.length === 0;
     if (res.locals.isNotValidBusinessDay) {
@@ -85,14 +85,15 @@ export function validateBookingData(
         headers: {
           Authorization: `Bearer ${token}`,
         },
-      }
+      },
     );
     res.locals.currentBookings = getCurrentBookings.data.results;
 
     // check if the event is already created else create new event with a new attendee
     const existingBooking = getCurrentBookings.data.results.filter(
       (booking) =>
-        booking.recordId === formattedBookingDate && booking.name.includes(slot)
+        booking.recordId === formattedBookingDate &&
+        booking.name.includes(slot),
     );
     res.locals.existingBooking = existingBooking.length > 0;
 
@@ -106,10 +107,10 @@ export function validateBookingData(
               headers: {
                 Authorization: `Bearer ${token}`,
               },
-            }
+            },
           );
           return eventAttendees.data;
-        })
+        }),
       );
 
       // combine AM and PM attendees
@@ -121,21 +122,18 @@ export function validateBookingData(
       // check for duplicate attendee
       if (email) {
         const isDuplicateAttendee = combinedAttendees.filter(
-          (attendee) => attendee.email === email
+          (attendee) => attendee.email === email,
         );
         if (isDuplicateAttendee.length > 0) {
-          return res
-            .status(400)
-            .send({
-              error:
-                'Duplicate attendee, cant make another booking on same day',
-            });
+          return res.status(400).send({
+            error: 'Duplicate attendee, cant make another booking on same day',
+          });
         }
       }
 
       // check if the slot is full for the AM or PM slot
       const getSlottedBookings = getEventAttendees.filter((booking) =>
-        booking.name.includes(slot)
+        booking.name.includes(slot),
       );
       const isSlotFull =
         getSlottedBookings[0]?.attendees.length >=

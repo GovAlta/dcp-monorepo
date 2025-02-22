@@ -6,7 +6,7 @@ export const defaultState = {
     status: [],
     environment: [],
     language: [],
-    keywords: []    
+    keywords: [],
   },
 };
 
@@ -16,10 +16,10 @@ export const filtersList = [
   'status',
   'environment',
   'language',
-  'keywords'
+  'keywords',
 ] as const;
 
-export type RoadmapFilterKey = typeof filtersList[number];
+export type RoadmapFilterKey = (typeof filtersList)[number];
 
 export const filterListCustom = [
   {
@@ -29,7 +29,7 @@ export const filterListCustom = [
   {
     title: 'Category',
     property: 'functionalGroup',
-  },  
+  },
   {
     title: 'Status',
     property: 'status',
@@ -41,9 +41,9 @@ export const filterListCustom = [
   {
     title: 'Language',
     property: 'language',
-  },  
+  },
   {
     title: 'Keywords',
     property: 'keywords',
-  }
+  },
 ];

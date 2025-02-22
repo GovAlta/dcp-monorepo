@@ -12,7 +12,9 @@ export default function UnderstandingHeader() {
               <li>
                 <a href="/">Home</a>
               </li>
-              <li className="goa-adm-breadcrumbs-active">Understanding procurement</li>
+              <li className="goa-adm-breadcrumbs-active">
+                Understanding procurement
+              </li>
             </ul>
           </div>
           <h1>Understanding procurement</h1>

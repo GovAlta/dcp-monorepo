@@ -1,7 +1,7 @@
 import { TokenProvider } from '@abgov/adsp-service-sdk';
 import { RequestHandler, Router } from 'express';
 import { Logger } from 'winston';
-import axios from 'axios';
+import axios, { isAxiosError } from 'axios';
 import { SiteVerifyResponse } from './types';
 import { environment } from '../../environments/environment';
 
@@ -16,7 +16,7 @@ interface RouterOptions {
 export function verifyCaptcha(
   logger: Logger,
   RECAPTCHA_SECRET: string,
-  SCORE_THRESHOLD = 0.5
+  SCORE_THRESHOLD = 0.5,
 ): RequestHandler {
   return async (req, _res, next) => {
     if (!RECAPTCHA_SECRET) {
@@ -25,7 +25,7 @@ export function verifyCaptcha(
       try {
         const { token } = req.body;
         const { data } = await axios.post<SiteVerifyResponse>(
-          `https://www.google.com/recaptcha/api/siteverify?secret=${RECAPTCHA_SECRET}&response=${token}`
+          `https://www.google.com/recaptcha/api/siteverify?secret=${RECAPTCHA_SECRET}&response=${token}`,
         );
         console.log(data);
 
@@ -36,13 +36,13 @@ export function verifyCaptcha(
         ) {
           logger.warn(
             `Captcha verification failed for form gateway with result '${data.success}' on action '${data.action}' with score ${data.score}.`,
-            { context: 'DigitalMarketplace' }
+            { context: 'DigitalMarketplace' },
           );
 
           return _res
             .status(401)
             .send(
-              'Request rejected because captcha verification not successful.'
+              'Request rejected because captcha verification not successful.',
             );
         }
 
@@ -57,7 +57,7 @@ export function submitSupplierForm(
   logger: Logger,
   formApiUrl: URL,
   eventServiceUrl: URL,
-  tokenProvider: TokenProvider
+  tokenProvider: TokenProvider,
 ): RequestHandler {
   return async (req, res) => {
     try {
@@ -75,7 +75,7 @@ export function submitSupplierForm(
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        }
+        },
       );
 
       if (submitSupplierForm.data.status === 'submitted') {
@@ -93,7 +93,7 @@ export function submitSupplierForm(
             headers: {
               Authorization: `Bearer ${token}`,
             },
-          }
+          },
         );
 
         const signupEmailsNotify = environment.SIGNUP_NOTIFY_EMAILS.split(',');
@@ -116,9 +116,9 @@ export function submitSupplierForm(
                 headers: {
                   Authorization: `Bearer ${token}`,
                 },
-              }
-            )
-          )
+              },
+            ),
+          ),
         );
       }
 
@@ -129,7 +129,7 @@ export function submitSupplierForm(
         },
       });
     } catch (e) {
-      if (axios.isAxiosError(e)) {
+      if (isAxiosError(e)) {
         res.status(e.response.status).send(e.response.data);
         logger.error(e.response.data, 'Failed to submit supplier form');
       } else {
@@ -143,7 +143,7 @@ export function submitStakeholderForm(
   logger: Logger,
   formApiUrl: URL,
   eventServiceUrl: URL,
-  tokenProvider: TokenProvider
+  tokenProvider: TokenProvider,
 ): RequestHandler {
   return async (req, res) => {
     try {
@@ -161,7 +161,7 @@ export function submitStakeholderForm(
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        }
+        },
       );
 
       if (submitStakeholderForm.data.status === 'submitted') {
@@ -179,7 +179,7 @@ export function submitStakeholderForm(
             headers: {
               Authorization: `Bearer ${token}`,
             },
-          }
+          },
         );
 
         const signupEmailsNotify = environment.SIGNUP_NOTIFY_EMAILS.split(',');
@@ -202,9 +202,9 @@ export function submitStakeholderForm(
                 headers: {
                   Authorization: `Bearer ${token}`,
                 },
-              }
-            )
-          )
+              },
+            ),
+          ),
         );
       }
 
@@ -215,7 +215,7 @@ export function submitStakeholderForm(
         },
       });
     } catch (e) {
-      if (axios.isAxiosError(e)) {
+      if (isAxiosError(e)) {
         res.status(e.response.status).send(e.response.data);
         logger.error(e.response.data, 'Failed to submit stakeholder form');
       } else {
@@ -238,12 +238,12 @@ export function createFormsRouter({
   router.post(
     '/forms/supplier',
     verifyCaptcha(logger, RECAPTCHA_SECRET, 0.7),
-    submitSupplierForm(logger, formApiUrl, eventServiceUrl, tokenProvider)
+    submitSupplierForm(logger, formApiUrl, eventServiceUrl, tokenProvider),
   );
   router.post(
     '/forms/stakeholder',
     verifyCaptcha(logger, RECAPTCHA_SECRET, 0.7),
-    submitStakeholderForm(logger, formApiUrl, eventServiceUrl, tokenProvider)
+    submitStakeholderForm(logger, formApiUrl, eventServiceUrl, tokenProvider),
   );
 
   return router;

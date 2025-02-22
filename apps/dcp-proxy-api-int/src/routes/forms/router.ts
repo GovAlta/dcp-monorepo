@@ -1,7 +1,7 @@
 import { TokenProvider } from '@abgov/adsp-service-sdk';
 import { RequestHandler, Router } from 'express';
 import { Logger } from 'winston';
-import axios from 'axios';
+import axios, { isAxiosError } from 'axios';
 
 const formIds = {
   eventsignup: 'marketplace-event-2-signup',
@@ -34,14 +34,14 @@ export function downloadFormData(
   logger: Logger,
   formApiUrl: URL,
   tokenProvider: TokenProvider,
-  formId: string
+  formId: string,
 ): RequestHandler {
   return async (req, res) => {
     try {
       const token = await tokenProvider.getAccessToken();
 
       let after: string | undefined;
-      const submittedForms: any[] = [];
+      const submittedForms = [];
       do {
         const { data: res } = await axios.get(
           `${formApiUrl}/forms?criteria={"definitionIdEquals":"${formId}"}&includeData=true&top=50${
@@ -51,7 +51,7 @@ export function downloadFormData(
             headers: {
               Authorization: `Bearer ${token}`,
             },
-          }
+          },
         );
         submittedForms.push(...res.results);
         after = res.page.next
@@ -65,7 +65,7 @@ export function downloadFormData(
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        }
+        },
       );
       //formatting created date
       submittedForms.forEach((form) => {
@@ -90,14 +90,14 @@ export function downloadFormData(
                 .replace(/,/g, ',')}"`;
             })
             .join(',');
-        })
+        }),
       );
 
       res.setHeader('Content-Disposition', 'attachment; filename="forms.csv"');
       res.setHeader('Content-Type', 'text/csv');
       res.send(Buffer.from(csv.join('\n')));
     } catch (e) {
-      if (axios.isAxiosError(e)) {
+      if (isAxiosError(e)) {
         res.status(e.response.status).send(e.response.data);
         logger.error(e.response.data, 'Failed to download form data');
       } else {
@@ -118,7 +118,7 @@ export function createFormsRouter({
   Object.keys(formIds).forEach((formType) => {
     router.get(
       `/forms/${formType}/downloadcsv`,
-      downloadFormData(logger, formApiUrl, tokenProvider, formIds[formType])
+      downloadFormData(logger, formApiUrl, tokenProvider, formIds[formType]),
     );
   });
 

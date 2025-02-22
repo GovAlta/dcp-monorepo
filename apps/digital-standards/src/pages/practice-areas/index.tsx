@@ -1,93 +1,115 @@
-import {
-    GoAAccordion,
-    GoAButton,
-    GoASpacer,
-  } from '@abgov/react-components';
-  import React, { useEffect } from 'react';
-  import BackToTop from '../../components/BackToTop';
-  import ExternalLink from '../../components/ExternalLink';
-  
-  export default function ServicePerformance() {
-    useEffect(() => {
-      if (window.location.hash) {
-        const elmnt = document.getElementById(window.location.hash.substring(1));
-        elmnt?.scrollIntoView(true);
-      }
-    }, []);
-    return (
-      <div data-pagefind-body>
-        <GoAButton
-          type="tertiary"
-          size="compact"
-          leadingIcon="arrow-back"
-          onClick={() => (window.location.href = '/')}
-        >
-          Back
-        </GoAButton>
-        <GoASpacer vSpacing="l" />
-        <h1 id="practice-areas">Practice Areas</h1>
+import { GoAAccordion, GoAButton, GoASpacer } from '@abgov/react-components';
+import React, { useEffect } from 'react';
+import BackToTop from '../../components/BackToTop';
+import ExternalLink from '../../components/ExternalLink';
+
+export default function ServicePerformance() {
+  useEffect(() => {
+    if (window.location.hash) {
+      const elmnt = document.getElementById(window.location.hash.substring(1));
+      elmnt?.scrollIntoView(true);
+    }
+  }, []);
+  return (
+    <div data-pagefind-body>
+      <GoAButton
+        type="tertiary"
+        size="compact"
+        leadingIcon="arrow-back"
+        onClick={() => (window.location.href = '/')}
+      >
+        Back
+      </GoAButton>
+      <GoASpacer vSpacing="l" />
+      <h1 id="practice-areas">Practice Areas</h1>
+      <p>
+        Practice areas provide team members with processes, guidence, and
+        support.
+      </p>
+      <GoASpacer vSpacing="l" />
+
+      <GoAAccordion headingSize="medium" heading="UX Design" open={false}>
+        <h4>Director / Manager:</h4>
+        <p>Sheldon Bauld, Director Front End/UX Design</p>
+        <h4>Contact hours:</h4>
+        <p>8:30am to 4:30pm (MST)</p>
+        <h4> Team SharePoint:</h4>
         <p>
-          Practice areas provide team members with processes, guidence, and support. 
-        </p>
-        <GoASpacer vSpacing="l" />
-  
-        <GoAAccordion
-          headingSize="medium"
-          heading="UX Design"
-          open={false}
-        >
-          <h4 >Director / Manager:</h4>
-          <p>Sheldon Bauld, Director Front End/UX Design</p>
-          <h4>Contact hours:</h4>
-          <p>8:30am to 4:30pm (MST)</p>
-          <h4> Team SharePoint:
-          </h4>
-          <p><ExternalLink
-            link={'https://abgov.sharepoint.com/sites/S600D27-DDDUXT/SitePages/Home.aspx?csf=1&web=1&e=wvZDcQ&CID=167a4aa1-14bd-4995-9a9b-b8500166a088'}
+          <ExternalLink
+            link={
+              'https://abgov.sharepoint.com/sites/S600D27-DDDUXT/SitePages/Home.aspx?csf=1&web=1&e=wvZDcQ&CID=167a4aa1-14bd-4995-9a9b-b8500166a088'
+            }
             text={'DDD UX Team SharePoint'}
-          /></p>
-          <h4>Practice Area responsibilities:</h4>
-          <p>UX Design, Research and Design Systems</p>
-          <h4>Guidence audience</h4>
-          <p>Front End Designers</p>
-          <h4>How does the team support others in the GoA?</h4>
-          <p>The User Experience team in the Product Branch is dedicated to establishing best practices to shape and guide our work and meet these new demands.</p>
-          <p>This space includes guidelines and resources to help you follow the processes and approach that align our work and outcomes with the users' expectations and ministry objectives.</p>
-          <p>Modern digital products and services have become a ministry priority. The User Experience team in the Product Branch is dedicated to establishing best practices to shape and guide our work and meet these new demands.</p>
-          <p>Includes guidelines and resources to help you follow the processes and approach that align our work and outcomes with the users' expectations and ministry objectives.</p>
-        
-        </GoAAccordion>
-        <GoASpacer vSpacing="l" />
-        <GoAAccordion
-          heading="Service Design"
-          headingSize="medium"
-        >
-          <h4 >Director / Manager:</h4>
-          <p>Fouad Jallouli, Director Service Design</p>
-          <h4>Contact hours:</h4>
-          <p>8:30am to 4:30pm (MST)</p>
-          <h4> What is the Practice Area responsible for? </h4>
-          <p>Service Design </p>
-          <h4>Guidence audience</h4>
-          <p>Service Designers, Front End Designers, and UX Designers</p>
-          <h4>How does the team support others in the GoA?</h4>
-          <p>Service Designers perform research, design user-focused services and help lead the team in the development and continual improvement of government products and services.
-Service Designers lead and support the product team while working closely with the Product Owner and User Experience Designer.</p>
-        </GoAAccordion>
-        <GoASpacer vSpacing="l" />
-        <GoAAccordion heading="Software Delivery" headingSize="medium">
-        <h4 >Director / Manager:</h4>
-          <p>Ting Zuge, Software Delivery Executive Director</p>
-          <h4>Contact hours:</h4>
-          <p>8:30am to 4:30pm (MST)</p>
-          <h4> What is the Practice Area responsible for? </h4>
-          <p>Collaborating with other teams: Digital Architects work closely with other practice areas such as UX Design, Service Design, DevOps, QA, and Cloud Operations to ensure that the software solutions meet the needs of users and are delivered efficiently </p>
-          <h4>Guidence audience</h4>
-          <p>Digital Architects, UX Design, Service Designer, DevOps, QA, and Cloud Operations </p>
-        </GoAAccordion>
-        <GoASpacer vSpacing="l" />
-  
-        {/*<GoAAccordion heading="Service performance platform" headingSize="medium">
+          />
+        </p>
+        <h4>Practice Area responsibilities:</h4>
+        <p>UX Design, Research and Design Systems</p>
+        <h4>Guidence audience</h4>
+        <p>Front End Designers</p>
+        <h4>How does the team support others in the GoA?</h4>
+        <p>
+          The User Experience team in the Product Branch is dedicated to
+          establishing best practices to shape and guide our work and meet these
+          new demands.
+        </p>
+        <p>
+          This space includes guidelines and resources to help you follow the
+          processes and approach that align our work and outcomes with the
+          users' expectations and ministry objectives.
+        </p>
+        <p>
+          Modern digital products and services have become a ministry priority.
+          The User Experience team in the Product Branch is dedicated to
+          establishing best practices to shape and guide our work and meet these
+          new demands.
+        </p>
+        <p>
+          Includes guidelines and resources to help you follow the processes and
+          approach that align our work and outcomes with the users' expectations
+          and ministry objectives.
+        </p>
+      </GoAAccordion>
+      <GoASpacer vSpacing="l" />
+      <GoAAccordion heading="Service Design" headingSize="medium">
+        <h4>Director / Manager:</h4>
+        <p>Fouad Jallouli, Director Service Design</p>
+        <h4>Contact hours:</h4>
+        <p>8:30am to 4:30pm (MST)</p>
+        <h4> What is the Practice Area responsible for? </h4>
+        <p>Service Design </p>
+        <h4>Guidence audience</h4>
+        <p>Service Designers, Front End Designers, and UX Designers</p>
+        <h4>How does the team support others in the GoA?</h4>
+        <p>
+          Service Designers perform research, design user-focused services and
+          help lead the team in the development and continual improvement of
+          government products and services. Service Designers lead and support
+          the product team while working closely with the Product Owner and User
+          Experience Designer.
+        </p>
+      </GoAAccordion>
+      <GoASpacer vSpacing="l" />
+      <GoAAccordion heading="Software Delivery" headingSize="medium">
+        <h4>Director / Manager:</h4>
+        <p>Ting Zuge, Software Delivery Executive Director</p>
+        <h4>Contact hours:</h4>
+        <p>8:30am to 4:30pm (MST)</p>
+        <h4> What is the Practice Area responsible for? </h4>
+        <p>
+          Collaborating with other teams: Digital Architects work closely with
+          other practice areas such as UX Design, Service Design, DevOps, QA,
+          and Cloud Operations to ensure that the software solutions meet the
+          needs of users and are delivered efficiently{' '}
+        </p>
+        <h4>Guidence audience</h4>
+        <p>
+          Digital Architects, UX Design, Service Designer, DevOps, QA, and Cloud
+          Operations{' '}
+        </p>
+      </GoAAccordion>
+      <GoASpacer vSpacing="l" />
+
+      {/*<GoAAccordion heading="Service performance platform" headingSize="medium">
           <p>
             Service Performance Platform is set up to measure and monitor Key
             Performance Indicators and Metrics to continuously improve the digital
@@ -198,9 +220,8 @@ Service Designers lead and support the product team while working closely with t
             for digital initiatives and Agile methodologies.
           </p>
         </GoAAccordion> */}
-        <GoASpacer vSpacing="2xl" />
-        <BackToTop />
-      </div>
-    );
-  }
-  
+      <GoASpacer vSpacing="2xl" />
+      <BackToTop />
+    </div>
+  );
+}

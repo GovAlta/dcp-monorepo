@@ -1,7 +1,7 @@
 import { TokenProvider } from '@abgov/adsp-service-sdk';
 import { RequestHandler } from 'express';
 import { Logger } from 'winston';
-import axios from 'axios';
+import axios, { isAxiosError } from 'axios';
 import { environment } from '../../../environments/environment';
 import {
   BookingRequest,
@@ -9,19 +9,18 @@ import {
   CalendarData,
   CalendarEventsData,
 } from '../types';
-import axiosRetry from "axios-retry";
+import axiosRetry, { exponentialDelay } from 'axios-retry';
 
-axiosRetry(axios, { retries: 3, retryDelay: axiosRetry.exponentialDelay });
-
+axiosRetry(axios, { retries: 3, retryDelay: exponentialDelay });
 
 function requestErrorHandler(
   error: Error,
   logger: Logger,
   customMessage: string,
   res,
-  status = 400
+  status = 400,
 ) {
-  if (axios.isAxiosError(error)) {
+  if (isAxiosError(error)) {
     logger.error(error.response.data, customMessage);
     res.status(error.response.status).send(error.response.data);
   } else {
@@ -56,7 +55,7 @@ function mapBusinessDaysData(data) {
 export function getAvailableBookings(
   logger: Logger,
   tokenProvider: TokenProvider,
-  calendarServiceUrl: URL
+  calendarServiceUrl: URL,
 ): RequestHandler {
   return async (req, res) => {
     try {
@@ -84,7 +83,7 @@ export function getAvailableBookings(
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        }
+        },
       );
 
       const firstAvailableBusinessDay =
@@ -92,10 +91,10 @@ export function getAvailableBookings(
 
       const formattedFirstAvailableBusinessDay = `${firstAvailableBusinessDay.slice(
         0,
-        4
+        4,
       )}-${firstAvailableBusinessDay.slice(
         4,
-        6
+        6,
       )}-${firstAvailableBusinessDay.slice(6, 8)}`; // YYYY-MM-DD
 
       // get current bookings
@@ -105,7 +104,7 @@ export function getAvailableBookings(
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        }
+        },
       );
 
       // get bookings attendees
@@ -117,10 +116,10 @@ export function getAvailableBookings(
               headers: {
                 Authorization: `Bearer ${token}`,
               },
-            }
+            },
           );
           return getBookingAttendees.data;
-        })
+        }),
       );
       const mappedData = {
         currentEvents: mapEventData(getCurrentBookingsAttendees),
@@ -135,7 +134,7 @@ export function getAvailableBookings(
       mappedData.businessDays.forEach((businessDay) => {
         const date = businessDay.date;
         const events = mappedData.currentEvents.filter(
-          (event) => event.recordId === businessDay.id.toString()
+          (event) => event.recordId === businessDay.id.toString(),
         );
 
         // Initialize the availability object with both AM and PM periods set to true
@@ -171,7 +170,7 @@ export function bookEvent(
   logger: Logger,
   tokenProvider: TokenProvider,
   calendarServiceUrl: URL,
-  eventServiceUrl: URL
+  eventServiceUrl: URL,
 ): RequestHandler {
   return async (req, res) => {
     try {
@@ -189,7 +188,6 @@ export function bookEvent(
       };
 
       if (res.locals.existingBooking) {
-
         // create an attendee
         await axios.post(
           `${calendarServiceUrl}/calendars/${reqBody.calendarId}/events/${res.locals.eventAttendees.id}/attendees`,
@@ -201,7 +199,7 @@ export function bookEvent(
             headers: {
               Authorization: `Bearer ${token}`,
             },
-          }
+          },
         );
       } else {
         const bookingEventApiCall = await axios.post(
@@ -218,7 +216,7 @@ export function bookEvent(
             headers: {
               Authorization: `Bearer ${token}`,
             },
-          }
+          },
         );
 
         await axios.post(
@@ -231,7 +229,7 @@ export function bookEvent(
             headers: {
               Authorization: `Bearer ${token}`,
             },
-          }
+          },
         );
       }
 
@@ -265,9 +263,9 @@ export function bookEvent(
               headers: {
                 Authorization: `Bearer ${token}`,
               },
-            }
+            },
           );
-        })
+        }),
       );
 
       // send email to user who submitted the form
@@ -292,7 +290,7 @@ export function bookEvent(
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        }
+        },
       );
 
       res.status(200).send({

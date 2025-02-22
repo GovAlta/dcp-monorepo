@@ -5,7 +5,7 @@ import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 
 export default defineConfig({
   build: {
-    emptyOutDir: true
+    emptyOutDir: true,
   },
   plugins: [react(), nxViteTsPaths()],
 });

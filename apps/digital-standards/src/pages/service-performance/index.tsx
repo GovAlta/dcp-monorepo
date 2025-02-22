@@ -1,8 +1,4 @@
-import {
-  GoAAccordion,
-  GoAButton,
-  GoASpacer,
-} from '@abgov/react-components';
+import { GoAAccordion, GoAButton, GoASpacer } from '@abgov/react-components';
 import React, { useEffect } from 'react';
 import BackToTop from '../../components/BackToTop';
 
@@ -27,11 +23,11 @@ export default function ServicePerformance() {
       <h1 id="service-performance">Service Performance</h1>
       <p>
         Digital Service Standards and Service Performance are a foundational
-        commitment of the Digital Strategy.
+        commitment of the Digital Strategy.
       </p>
       <p>
         The Government of Alberta is committed to develop Digital Service
-        Standards and Service Performance that are measurable and include clear
+        Standards and Service Performance that are measurable and include clear
         accountabilities.
       </p>
       <p>
@@ -41,7 +37,7 @@ export default function ServicePerformance() {
       </p>
       <p>
         Measuring performance particularly focuses on standard number three
-        which outlines focusing on results - Digital service teams should
+        which outlines focusing on results - Digital service teams should
         continuously monitor how effectively their services meet Albertans’
         expectations by collecting and analyzing data about their service.
         Assessment of services should include:
@@ -51,7 +47,7 @@ export default function ServicePerformance() {
         <li>Scoping, prioritizing, and planning service enhancements.</li>
       </ul>
       <p>
-        This ensures adherence to Digital Service Standards: Standard no. 3 —
+        This ensures adherence to Digital Service Standards: Standard no. 3 —
         Focus on outcomes
       </p>
       <GoASpacer vSpacing="l" />
