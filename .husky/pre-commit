@@ -1,1 +1,1 @@
-npx nx affected -t lint --fix --parallel --uncommitted
+npx lint-staged
