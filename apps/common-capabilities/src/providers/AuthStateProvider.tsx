@@ -56,6 +56,7 @@ export const AuthStateProvider = ({ children, keyCloakConfig }: Props) => {
   };
 
   const logout = () => {
+    setAuthToken(undefined);
     setIsAuthenticated(false);
     keycloak.logout();
   };
@@ -83,15 +84,13 @@ export const AuthStateProvider = ({ children, keyCloakConfig }: Props) => {
       });
 
       keycloak.onTokenExpired = () => {
-        setAuthToken(undefined);
-        setIsAuthenticated(false);
-
         keycloak
           .updateToken(30)
           .then((refreshed: boolean) => {
             if (refreshed) {
               setAuthToken(keycloak.token);
-              setIsAuthenticated(true);
+            } else {
+              logout();
             }
           })
           .catch((err: Error) => {
