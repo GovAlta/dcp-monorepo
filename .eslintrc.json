@@ -5,7 +5,8 @@
     "eslint:recommended",
     "plugin:import/recommended",
     "plugin:security/recommended-legacy",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
+    "prettier"
   ],
   "parser": "@typescript-eslint/parser",
   "plugins": [
@@ -20,6 +21,9 @@
       "node": {
         "extensions": [".ts", ".tsx", ".js", ".jsx"]
       }
+    },
+    "react": {
+      "version": "detect"
     }
   },
   "rules": {

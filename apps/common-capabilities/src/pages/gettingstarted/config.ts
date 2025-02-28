@@ -7,4 +7,8 @@ export const sideNavItems = [
     title: 'Glossary ',
     id: 'glossary',
   },
+  {
+    title: 'FAQ',
+    id: 'faq',
+  },
 ];
