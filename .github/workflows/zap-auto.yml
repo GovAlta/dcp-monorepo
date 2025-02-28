@@ -27,12 +27,12 @@ jobs:
 
       - name: Replace placeholders
         run: |
-          sed -i "s|DOMAIN_PLACEHOLDER|${{ github.event.inputs.DOMAIN }}|g" zap/automation.xml
-          sed -i "s|DOMAIN_POLL_PLACEHOLDER|${{ github.event.inputs.DOMAIN_POLL }}|g" zap/automation.xml
-          sed -i "s|USER_PLACEHOLDER|${{ secrets.ZAP_SSO_USER }}|g" zap/automation.xml
-          sed -i "s|PASSWORD_PLACEHOLDER|${{ secrets.ZAP_SSO_PWD }}|g" zap/automation.xml
+          sed -i "s|DOMAIN_PLACEHOLDER|${{ github.event.inputs.DOMAIN }}|g" zap/automation.yml
+          sed -i "s|DOMAIN_POLL_PLACEHOLDER|${{ github.event.inputs.DOMAIN_POLL }}|g" zap/automation.yml
+          sed -i "s|USER_PLACEHOLDER|${{ secrets.ZAP_SSO_USER }}|g" zap/automation.yml
+          sed -i "s|PASSWORD_PLACEHOLDER|${{ secrets.ZAP_SSO_PWD }}|g" zap/automation.yml
 
       - name: ZAP Automation Framework Scan
         uses: zaproxy/action-af@v0.2.0
         with:
-          plan: 'zap/automation.xml'
+          plan: 'zap/automation.yml'
