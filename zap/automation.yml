@@ -1,0 +1,107 @@
+env:
+  contexts:
+  - name: Authentication Test
+    urls:
+    - DOMAIN_PLACEHOLDER
+    includePaths:
+    - DOMAIN_PLACEHOLDER.*
+    authentication:
+      method: browser
+      parameters:
+        loginPageUrl: DOMAIN_PLACEHOLDER
+        loginPageWait: 5000
+        browserId: firefox
+        steps:
+        - description: Sign in with microsoft
+          type: CLICK
+          xpath: "/html/body/div/goa-one-column-layout/div/goa-page-block/main/goa-container/button[3]"
+          timeout: 30000
+        - description: username
+          type: USERNAME
+          xpath: "/html/body/div/form[1]/div/div/div[2]/div[1]/div/div/div/div/div[1]/div[3]/div/div/div/div[2]/div[2]/div/input[1]"
+          timeout: 5000
+        - description: click next
+          type: CLICK
+          xpath: "/html/body/div/form[1]/div/div/div[2]/div[1]/div/div/div/div/div[1]/div[3]/div/div/div/div[4]/div/div/div/div"
+          timeout: 115000
+        - description: fill pwd
+          type: PASSWORD
+          cssSelector: "#passwordInput"
+          timeout: 5000
+      verification:
+        method: poll
+        loggedInRegex: \Q 200 OK\E
+        loggedOutRegex: \Q 401 Unauthorized\E
+        pollFrequency: 60
+        pollUnits: requests
+        pollUrl: DOMAIN_POLL_PLACEHOLDER
+        pollPostData: ""
+    sessionManagement:
+      method: headers
+      parameters:
+        Cookie: "AUTH_SESSION_ID=fb618556-b8cf-4f4b-a36e-12e1a961e489.access-service-239-l4f86-22853;\
+          \ AUTH_SESSION_ID_LEGACY=fb618556-b8cf-4f4b-a36e-12e1a961e489.access-service-239-l4f86-22853;\
+          \ KEYCLOAK_IDENTITY={%cookie:KEYCLOAK_IDENTITY_LEGACY%}; KEYCLOAK_IDENTITY_LEGACY={%cookie:KEYCLOAK_IDENTITY_LEGACY%};\
+          \ KEYCLOAK_SESSION=9b2d9233-4d9f-432d-9471-9f95861db16d/c16ac1de-8258-4c42-a07b-8bb74c65eafb/fb618556-b8cf-4f4b-a36e-12e1a961e489;\
+          \ KEYCLOAK_SESSION_LEGACY=9b2d9233-4d9f-432d-9471-9f95861db16d/c16ac1de-8258-4c42-a07b-8bb74c65eafb/fb618556-b8cf-4f4b-a36e-12e1a961e489;\
+          \ 1c7b5ce75be9157448723de29fd4172a=41d5b75422976755eb226ae567410d95; Ped.Language=EN;\
+          \ _ga_MP09EZTBEF=GS1.1.1740700627.1.1.1740700642.0.0.0; _ga=GA1.1.1403060534.1740700627"
+    technology: {}
+    structure: {}
+    users:
+    - name: USER_PLACEHOLDER
+      credentials:
+        password: PASSWORD_PLACEHOLDER
+        username: USER_PLACEHOLDER
+  parameters: {}
+jobs:
+- type: passiveScan-config
+  parameters: {}
+- type: spider
+  parameters: {}
+  tests:
+  - name: At least 100 URLs found
+    type: stats
+    onFail: INFO
+    statistic: automation.spider.urls.added
+    operator: '>='
+    value: 100
+- type: spiderAjax
+  parameters: {}
+  tests:
+  - name: At least 100 URLs found
+    type: stats
+    onFail: INFO
+    statistic: spiderAjax.urls.added
+    operator: '>='
+    value: 100
+- type: passiveScan-wait
+  parameters: {}
+- type: activeScan
+  parameters: {}
+  policyDefinition: {}
+- type: report
+  parameters:
+    template: traditional-pdf
+    theme: null
+    reportDir: /Users/e88654/Desktop
+    reportTitle: ZAP by Checkmarx Scanning Report
+    displayReport: true
+  risks:
+  - info
+  - low
+  - medium
+  - high
+  confidences:
+  - falsepositive
+  - low
+  - medium
+  - high
+  - confirmed
+  sections:
+  - instancecount
+  - alertdetails
+  - alertcount
+- type: exitStatus
+  parameters: {}
+
