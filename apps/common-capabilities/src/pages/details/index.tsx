@@ -120,7 +120,10 @@ export default function Details(): JSX.Element {
           app[name] !== 'Other' &&
           (app[name][0] as { item: string })?.item !== 'Other'
         ) {
-          const newValue = { ...value, id: `spec-${name.toLowerCase()}` };
+          const newValue = {
+            ...value,
+            id: `spec-${name.toLowerCase()}`,
+          };
           showSpecs.push({ name, ...newValue });
         }
       });

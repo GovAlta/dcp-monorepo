@@ -356,9 +356,9 @@ export default function HomePage(): JSX.Element {
             <GoASpacer vSpacing="l" />
             <GoACheckbox
               key={'includeDecommissioned'}
-              label={'Include Decommissioned services'}
+              label={'Include decommissioned services'}
               name={'includeDecommissioned'}
-              text={'Include Decommissioned services'}
+              text={'Include decommissioned services'}
               checked={includeDecommissioned}
               onChange={(name, checked) => {
                 setIncludeDecommissioned(checked);

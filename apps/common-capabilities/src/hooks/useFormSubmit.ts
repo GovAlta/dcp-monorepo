@@ -23,7 +23,11 @@ const useForm = () => {
                   {
                     'Content-Type': 'application/json;charset=utf-8',
                   },
-                  authToken ? { Authorization: `Bearer ${authToken}` } : {},
+                  authToken
+                    ? {
+                        Authorization: `Bearer ${authToken}`,
+                      }
+                    : {},
                 ),
               },
             )
