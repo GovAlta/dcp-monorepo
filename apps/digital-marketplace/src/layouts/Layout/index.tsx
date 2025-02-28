@@ -3,17 +3,17 @@ import PageHeader from '../../components/header';
 import PageFooter from '../../components/footer';
 
 export default function PageLayout({
-  children,
-  page,
+    children,
+    page,
 }: {
-  children: React.ReactNode;
-  page: string;
+    children: React.ReactNode;
+    page: string;
 }) {
-  return (
-    <div>
-      <PageHeader page={page} />
-      {children}
-      <PageFooter />
-    </div>
-  );
+    return (
+        <div>
+            <PageHeader page={page} />
+            {children}
+            <PageFooter />
+        </div>
+    );
 }

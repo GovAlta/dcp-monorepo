@@ -27,7 +27,13 @@
     }
   },
   "rules": {
-    "security/detect-object-injection": "off"
+    "security/detect-object-injection": "off",
+    "prettier/prettier": [
+      "error",
+      {
+        "tabWidth": 4
+      }
+    ] 
   },
   "overrides": [
     {

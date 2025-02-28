@@ -1,17 +1,17 @@
 export const VALUE_SERVICE = {
-  READ: ['urn:ads:platform:value-service:value-reader'],
-  WRITE: ['urn:ads:platform:value-service:value-writer'],
+    READ: ['urn:ads:platform:value-service:value-reader'],
+    WRITE: ['urn:ads:platform:value-service:value-writer'],
 };
 
 export const FORM_SERVICE = {
-  WRITE: [
-    'urn:ads:platform:form-service:form-admin',
-    'urn:ads:platform:form-service:intake-application',
-  ],
+    WRITE: [
+        'urn:ads:platform:form-service:form-admin',
+        'urn:ads:platform:form-service:intake-application',
+    ],
 };
 
 export const EVENT_SERVICE = {
-  WRITE: ['urn:ads:platform:event-service:event-sender'],
+    WRITE: ['urn:ads:platform:event-service:event-sender'],
 };
 
 export const DEFAULT_ADMIN = 'default-admin'; // cc realm role mainly used to perform admin requests
@@ -32,20 +32,20 @@ export const DEFAULT_ADMIN = 'default-admin'; // cc realm role mainly used to pe
  */
 
 export default function authorize(allowedRoles: string[] | string[][]) {
-  return (req, res, next) => {
-    const { user } = req;
+    return (req, res, next) => {
+        const { user } = req;
 
-    if (
-      allowedRoles &&
-      allowedRoles
-        .flatMap((roles) => roles)
-        .every((role) => user?.roles?.includes(role))
-    ) {
-      next();
-    } else {
-      res.status(403).json({
-        message: 'You do not have permission to access this resource.',
-      });
-    }
-  };
+        if (
+            allowedRoles &&
+            allowedRoles
+                .flatMap((roles) => roles)
+                .every((role) => user?.roles?.includes(role))
+        ) {
+            next();
+        } else {
+            res.status(403).json({
+                message: 'You do not have permission to access this resource.',
+            });
+        }
+    };
 }

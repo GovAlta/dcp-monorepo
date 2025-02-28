@@ -2,10 +2,10 @@ import express from 'express';
 import cors from 'cors';
 import { environment } from './environments/environment';
 import {
-  AdspId,
-  ServiceMetricsValueDefinition,
-  initializeService,
-  instrumentAxios,
+    AdspId,
+    ServiceMetricsValueDefinition,
+    initializeService,
+    instrumentAxios,
 } from '@abgov/adsp-service-sdk';
 import helmet from 'helmet';
 import { createLogger } from '@abgov/adsp-service-sdk/src/utils';
@@ -18,73 +18,76 @@ import { getCache } from './cache';
 const logger = createLogger('cc_api', environment.LOG_LEVEL);
 
 const initializeApp = async (): Promise<express.Application> => {
-  const app = express();
+    const app = express();
 
-  app.use(helmet());
-  app.use(
-    cors((_, callback) => {
-      const allowList = environment.ALLOWED_ORIGINS?.split(',') || [];
+    app.use(helmet());
+    app.use(
+        cors((_, callback) => {
+            const allowList = environment.ALLOWED_ORIGINS?.split(',') || [];
 
-      callback(null, { origin: allowList });
-    }),
-  );
-  app.use(compression());
-  app.use(express.json({ limit: '1mb' }));
+            callback(null, { origin: allowList });
+        }),
+    );
+    app.use(compression());
+    app.use(express.json({ limit: '1mb' }));
 
-  instrumentAxios(logger);
+    instrumentAxios(logger);
 
-  const serviceId = AdspId.parse(environment.CLIENT_ID);
-  const accessServiceUrl = new URL(environment.KEYCLOAK_ROOT_URL);
-  const cache = getCache(logger);
+    const serviceId = AdspId.parse(environment.CLIENT_ID);
+    const accessServiceUrl = new URL(environment.KEYCLOAK_ROOT_URL);
+    const cache = getCache(logger);
 
-  // need to handle log context for authed calls when using offline initilized service
-  const {
-    healthCheck,
-    metricsHandler,
-    traceHandler,
-    tenantStrategy,
-    directory,
-    tokenProvider,
-  } = await initializeService(
-    {
-      serviceId,
-      realm: environment.REALM,
-      displayName: 'cc_api gateway',
-      description:
-        'Gateway to provide anonymous and session access to some common capabilities app functionality.',
-      values: [ServiceMetricsValueDefinition],
-      clientSecret: environment.CLIENT_SECRET,
-      accessServiceUrl,
-      directoryUrl: new URL(environment.DIRECTORY_URL),
-    },
-    { logger },
-  );
+    // need to handle log context for authed calls when using offline initilized service
+    const {
+        healthCheck,
+        metricsHandler,
+        traceHandler,
+        tenantStrategy,
+        directory,
+        tokenProvider,
+    } = await initializeService(
+        {
+            serviceId,
+            realm: environment.REALM,
+            displayName: 'cc_api gateway',
+            description:
+                'Gateway to provide anonymous and session access to some common capabilities app functionality.',
+            values: [ServiceMetricsValueDefinition],
+            clientSecret: environment.CLIENT_SECRET,
+            accessServiceUrl,
+            directoryUrl: new URL(environment.DIRECTORY_URL),
+        },
+        { logger },
+    );
 
-  configurePassport(app, passport, { tenantStrategy, cache, logger });
+    configurePassport(app, passport, { tenantStrategy, cache, logger });
 
-  app.use(metricsHandler);
-  app.use(traceHandler);
+    app.use(metricsHandler);
+    app.use(traceHandler);
 
-  app.use('/cc', passport.authenticate(['jwt', 'tenant'], { session: false }));
+    app.use(
+        '/cc',
+        passport.authenticate(['jwt', 'tenant'], { session: false }),
+    );
 
-  await applyGatewayMiddleware(app, {
-    logger,
-    directory,
-    offlineAccessTokenProvider: tokenProvider,
-    cache,
-  });
+    await applyGatewayMiddleware(app, {
+        logger,
+        directory,
+        offlineAccessTokenProvider: tokenProvider,
+        cache,
+    });
 
-  app.get('/health', async (req, res) => {
-    const platform = await healthCheck();
-    res.json(platform);
-  });
+    app.get('/health', async (req, res) => {
+        const platform = await healthCheck();
+        res.json(platform);
+    });
 
-  return app;
+    return app;
 };
 
 initializeApp().then((app) => {
-  const port = environment.PORT ? Number(environment.PORT) : 3333;
-  app.listen(port, () => {
-    console.log(`[ ready ] ${environment.PORT}`);
-  });
+    const port = environment.PORT ? Number(environment.PORT) : 3333;
+    app.listen(port, () => {
+        console.log(`[ ready ] ${environment.PORT}`);
+    });
 });
