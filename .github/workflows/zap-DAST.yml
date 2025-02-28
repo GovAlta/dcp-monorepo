@@ -1,44 +1,40 @@
 name: ZAP Full Scan
 
 on:
-    workflow_dispatch:
-      inputs:
-        BRANCH_NAME:
-          description: 'Name of the branch to run the scan on'
-          required: true
-        TARGET_URL:
-          description: 'URL to target for the ZAP scan'
-          required: true
-        DOMAIN:
-          description: 'Domain to use in auth context for the scan'
-          required: true
-        DOMAIN_POLL:
-          description: 'Domain to poll to use in auth context for the scan'
-          required: true
-        SKIP_CONTEXT:
-          description: 'Skip context file for sites with no SSO'
-          required: false
-          default: true
-  
-  jobs:
-    zap_scan:
-      runs-on: ubuntu-latest
-      name: ZAP Full Scan
-      steps:
-        - name: Checkout
-          uses: actions/checkout@v4
-          with:
-            ref: ${{ github.event.inputs.BRANCH_NAME }}
-  
-        - name: Replace placeholders
-          run: |
-            sed -i "s/DOMAIN_PLACEHOLDER/${{ github.event.inputs.DOMAIN }}/g" zap/contexts/auth.xml
-            sed -i "s/DOMAIN_POLL_PLACEHOLDER/${{ github.event.inputs.DOMAIN_POLL }}/g" zap/contexts/auth.xml
-            sed -i "s/USER_PLACEHOLDER/${{ secrets.ZAP_SSO_USER }}/g" zap/contexts/auth.xml
-            sed -i "s/PASSWORD_PLACEHOLDER/${{ secrets.ZAP_SSO_PWD }}/g" zap/contexts/auth.xml
+  workflow_dispatch:
+    inputs:
+      BRANCH_NAME:
+        description: 'Name of the branch to run the scan on'
+        required: true
+      TARGET_URL:
+        description: 'URL to target for the ZAP scan'
+        required: true
+      DOMAIN:
+        description: 'Domain to use in auth context for the scan'
+        required: true
+      DOMAIN_POLL:
+        description: 'Domain to poll to use in auth context for the scan'
+        required: true
 
-        - name: ZAP Scan
-          uses: zaproxy/action-full-scan@v0.12.0
-          with:
-            target: ${{ github.event.inputs.TARGET_URL }}
-            cmd_options: '-n zap/contexts/auth.xml'
+jobs:
+  zap_scan:
+    runs-on: ubuntu-latest
+    name: ZAP Full Scan
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.BRANCH_NAME }}
+
+      - name: Replace placeholders
+        run: |
+          sed -i "s/DOMAIN_PLACEHOLDER/${{ github.event.inputs.DOMAIN }}/g" zap/contexts/auth.xml
+          sed -i "s/DOMAIN_POLL_PLACEHOLDER/${{ github.event.inputs.DOMAIN_POLL }}/g" zap/contexts/auth.xml
+          sed -i "s/USER_PLACEHOLDER/${{ secrets.ZAP_SSO_USER }}/g" zap/contexts/auth.xml
+          sed -i "s/PASSWORD_PLACEHOLDER/${{ secrets.ZAP_SSO_PWD }}/g" zap/contexts/auth.xml
+
+      - name: ZAP Scan
+        uses: zaproxy/action-full-scan@v0.12.0
+        with:
+          target: ${{ github.event.inputs.TARGET_URL }}
+          cmd_options: '-n zap/contexts/auth.xml'
