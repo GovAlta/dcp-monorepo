@@ -4,9 +4,10 @@ import { signUpFormConfig } from './config';
 import { validateField, validateForm } from '../../utils/forms';
 import FormField from '../../components/Input';
 import { SignupType } from '../../contexts/constants';
+import { SignUpFormValues } from '../../contexts/types';
 
 export default function SignupForm() {
-  const initialValues = {
+  const initialValues: SignUpFormValues = {
     orgName: '',
     email: '',
     firstName: '',
@@ -26,7 +27,12 @@ export default function SignupForm() {
     handleSubmit,
     loading,
     apiError,
-  } = useForm(initialValues, validateForm, validateField, signUpFormConfig);
+  } = useForm<SignUpFormValues>(
+    initialValues,
+    validateForm,
+    validateField,
+    signUpFormConfig,
+  );
 
   return (
     <div className="goa-adm-form-container">

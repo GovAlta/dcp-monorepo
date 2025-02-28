@@ -1,10 +1,5 @@
-import React, {
-  createContext,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-} from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
+// eslint-disable-next-line import/no-unresolved
 import Keycloak from 'keycloak-js';
 import { jwtDecode } from 'jwt-decode';
 
@@ -118,7 +113,7 @@ export const AuthStateProvider = ({ children, keyCloakConfig }: Props) => {
           console.error('Keycloak failed to initialize with error=', err),
         );
     }
-  }, []);
+  });
 
   return (
     <AuthContext.Provider

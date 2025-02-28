@@ -137,7 +137,7 @@ export function validateBookingData(
       );
       const isSlotFull =
         getSlottedBookings[0]?.attendees.length >=
-        environment.MAX_BOOKING_PER_SLOT;
+        parseInt(environment.MAX_BOOKING_PER_SLOT);
       res.locals.eventAttendees.id = getSlottedBookings[0].id;
       if (isSlotFull) {
         return res.status(400).send({ error: 'Slot is full' });

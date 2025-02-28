@@ -1,13 +1,19 @@
 import React, { useEffect } from 'react';
 import {
-  GoAAccordion,
   GoAIcon,
+  // eslint-disable-next-line import/named
+  GoAIconType,
   GoASpacer,
   GoAThreeColumnLayout,
 } from '@abgov/react-components';
 import './styles.css';
-import faqs from './faq.json';
 import ExternalLink from '../../components/ExternalLink';
+import { ContactMethod } from '../../types/types';
+
+type ContactMethodConfig = {
+  iconType: string;
+  linkPrefix: string;
+};
 
 export default function SupportPage(): JSX.Element {
   useEffect(() => {
@@ -16,8 +22,8 @@ export default function SupportPage(): JSX.Element {
       elmnt?.scrollIntoView(true);
     }
   }, []);
-  const renderContact = (method: any) => {
-    const contactMethods: any = {
+  const renderContact = (method: ContactMethod) => {
+    const contactMethods: { [key: string]: ContactMethodConfig } = {
       teams: {
         iconType: 'person',
         linkPrefix: '',
@@ -35,7 +41,11 @@ export default function SupportPage(): JSX.Element {
       <tr className="items-color">
         <td className="contact-type">{`${method.type}:  `}</td>
         <td>
-          <GoAIcon type={iconType} size="small" theme="outline" />
+          <GoAIcon
+            type={iconType as GoAIconType}
+            size="small"
+            theme="outline"
+          />
         </td>
         <td className="td-links">
           <ExternalLink
@@ -87,13 +97,6 @@ export default function SupportPage(): JSX.Element {
         </p>
         {renderContactTable()}
         <GoASpacer vSpacing="2xl" />
-        {/* <h3 id="faq-section">Frequently asked questions</h3>
-        {faqs.map((faq) => (
-          <>
-            <GoAAccordion heading={faq.heading}>{faq.content}</GoAAccordion>
-            <GoASpacer vSpacing="m" />
-          </>
-        ))} */}
       </GoAThreeColumnLayout>
     </div>
   );

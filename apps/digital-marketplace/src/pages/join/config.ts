@@ -102,6 +102,5 @@ export const signUpFormConfig: FormConfig = {
       revalidateOnChange: true,
     },
   },
-  getEntityUrl: (gatewayUrl: string, values: { signUpType: string }) =>
-    `${gatewayUrl}/${values.signUpType}`,
+  getEntityUrl: (gatewayUrl, values) => `${gatewayUrl}/${values.signUpType}`,
 };

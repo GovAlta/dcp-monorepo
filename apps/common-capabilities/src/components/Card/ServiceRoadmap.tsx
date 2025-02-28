@@ -1,12 +1,8 @@
 import React from 'react';
-
-interface RoadmapItem {
-  when: string;
-  title: string;
-}
+import { Roadmap, Service } from '../../types/types';
 
 interface Props {
-  roadmapItems: RoadmapItem[];
+  roadmapItems: Roadmap[];
   roadmapMode?: string;
   showHistory?: boolean;
   condensed?: boolean;
@@ -15,8 +11,8 @@ interface Props {
 const MAX_VISIBLE_ROADMAP_ITEMS = 3;
 
 const getVisibleRoadmapItems = (
-  roadmapItems: RoadmapItem[],
-  getVisibleItems?: (roadmapItem: RoadmapItem) => JSX.Element,
+  roadmapItems: Roadmap[],
+  getVisibleItems?: (roadmapItem: Roadmap) => JSX.Element,
 ) => {
   const visibleItems = [];
 
@@ -61,7 +57,7 @@ const getCurrentFiscalQuarter = () => {
   return { fiscalYear, fiscalQuarter };
 };
 
-const roadmapSortFunc = (a: any, b: any) => {
+const roadmapSortFunc = (a: string, b: string) => {
   const aParsed = parseWhen(a);
   const bParsed = parseWhen(b);
 
@@ -73,7 +69,7 @@ const roadmapSortFunc = (a: any, b: any) => {
   return aParsed.quarter - bParsed.quarter;
 };
 
-const roadmapFilterFunc = (when: any) => {
+const roadmapFilterFunc = (when: string) => {
   if (when === 'TBD') return true; // Always include TBD
 
   const { year, quarter } = parseWhen(when);
@@ -83,9 +79,9 @@ const roadmapFilterFunc = (when: any) => {
 
 const { fiscalYear, fiscalQuarter } = getCurrentFiscalQuarter();
 
-export const roadmapList = (data: any, history: boolean) => {
-  const allWhenValues = data.flatMap((obj: any) =>
-    obj.roadmap.map((item: RoadmapItem) => item.when),
+export const roadmapList = (data: Service[], history: boolean) => {
+  const allWhenValues: string[] = data.flatMap((obj: Service) =>
+    obj.roadmap.map((item: Roadmap) => item.when),
   );
 
   const roadMapWhenList = [...new Set(allWhenValues)].sort(roadmapSortFunc);
@@ -113,10 +109,10 @@ export const ServiceRoadmap: React.FC<Props> = (props) => {
   }
 
   const hideOldRecords = !props.showHistory;
-  const roadmapItems = props.roadmapItems.sort((a: any, b: any) =>
+  const roadmapItems = props.roadmapItems.sort((a: Roadmap, b: Roadmap) =>
     roadmapSortFunc(a.when, b.when),
   );
-  const filterOldRecords = (roadmap: RoadmapItem[]) =>
+  const filterOldRecords = (roadmap: Roadmap[]) =>
     roadmap.filter((item) => roadmapFilterFunc(item.when));
   const visibleItems = hideOldRecords
     ? filterOldRecords(roadmapItems)
@@ -126,14 +122,11 @@ export const ServiceRoadmap: React.FC<Props> = (props) => {
     <div>
       {props.condensed ? '' : <b>Roadmap: </b>}
       <ul>
-        {getVisibleRoadmapItems(
-          hideOldRecords ? filterOldRecords(roadmapItems) : roadmapItems,
-          (item) => (
-            <li key={`${item.when}-${item.title}`}>
-              <strong>{item.when}:</strong> {item.title}
-            </li>
-          ),
-        )}
+        {getVisibleRoadmapItems(visibleItems, (item) => (
+          <li key={`${item.when}-${item.title}`}>
+            <strong>{item.when}:</strong> {item.title}
+          </li>
+        ))}
       </ul>
     </div>
   );

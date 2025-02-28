@@ -1,7 +1,62 @@
 import { getProperty } from '../../utils/configs';
 import type { Service } from '../../types/types';
 
-export const securityGroups = [
+export type SecurityGroupConfig = {
+  name: keyof Pick<Service, 'stra' | 'cybersecurity' | 'considerations'>;
+  title: string;
+  items: SecurityItemKey[];
+  tableTh: string[];
+  note: string;
+};
+
+export type BodyConfigDefinition = {
+  title: string;
+  validate: ((service: Service) => boolean) | null;
+};
+
+export type BodyItemKey =
+  | keyof Pick<
+      Service,
+      | 'roadmap'
+      | 'prerequisites'
+      | 'useCases'
+      | 'documentation'
+      | 'comments'
+      | 'contact'
+    >
+  | 'specs'
+  | 'security';
+
+export type BodyConfig = Record<BodyItemKey, BodyConfigDefinition>;
+
+export type SecurityItemKey = keyof Pick<
+  Service,
+  | 'stra'
+  | 'cmraReq'
+  | 'im'
+  | 'data'
+  | 'risk'
+  | 'cybersecurity'
+  | 'classification'
+  | 'controller'
+  | 'considerations'
+>;
+
+export type SpecificationItemKey = keyof Pick<
+  Service,
+  'provider' | 'status' | 'version' | 'language' | 'environment' | 'usageMethod'
+>;
+
+export type SpecConfigDefinition = { title: string; type: string };
+
+export type SpecificationsConfig = Record<
+  SpecificationItemKey,
+  SpecConfigDefinition
+>;
+
+export type SecurityDataConfig = Record<SecurityItemKey, { title: string }>;
+
+export const securityGroups: SecurityGroupConfig[] = [
   {
     name: 'stra',
     title: ' General cybersecurity risk assessment',
@@ -25,7 +80,7 @@ export const securityGroups = [
   },
 ];
 
-export const securityData = {
+export const securityData: SecurityDataConfig = {
   stra: {
     title: 'General cybersecurity risk assessment',
   },
@@ -53,18 +108,9 @@ export const securityData = {
   considerations: {
     title: 'Special considerations',
   },
-  securityStatus: {
-    title: 'Risk assessment completion status',
-  },
-  securityRequired: {
-    title: 'Required before using this service',
-  },
-  securityInfo: {
-    title: 'Security details',
-  },
 };
 
-export const specifications = {
+export const specifications: SpecificationsConfig = {
   provider: {
     title: 'Provider',
     type: 'text',
@@ -96,7 +142,7 @@ export const specifications = {
  * @property {string} title title of the section
  * @property {function} validate checks of the service info has information to populate in the
  */
-export const bodyItems = {
+export const bodyItems: BodyConfig = {
   specs: {
     title: 'Specifications',
     validate: (service: Service) =>

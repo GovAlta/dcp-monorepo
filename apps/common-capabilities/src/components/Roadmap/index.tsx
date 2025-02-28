@@ -1,33 +1,30 @@
 import React from 'react';
 import { GoAAccordion } from '@abgov/react-components';
 import './styles.css';
+import { Roadmap as ServiceRoadMap } from '../../types/types';
 
 type RoadmapProps = {
-  roadmap: {
-    when: string;
-    title: string;
-    type: string;
-    status: string;
-    impacts: string;
-    description: string;
-  }[];
+  roadmap: ServiceRoadMap[];
 };
 
 const roadmapDetailsConfig = [
   {
     title: 'Type:',
-    getValue: (data: any) => data.type || 'N/A',
+    getValue: (data: ServiceRoadMap) => data.type || 'N/A',
     inlineTitle: true,
   },
   {
     title: 'Status:',
-    getValue: (data: any) => data.status || 'N/A',
+    getValue: (data: ServiceRoadMap) => data.status || 'N/A',
     inlineTitle: true,
   },
-  { title: 'Description', getValue: (data: any) => data.description || 'N/A' },
+  {
+    title: 'Description',
+    getValue: (data: ServiceRoadMap) => data.description || 'N/A',
+  },
   {
     title: 'Impacts',
-    getValue: (data: any) =>
+    getValue: (data: ServiceRoadMap) =>
       data.impacts ? getImpactItems(data.impacts) : 'None',
   },
 ];
@@ -39,7 +36,7 @@ const getImpactItems = (impacts: string) => {
 
   return (
     <ul>
-      {impacts?.split('\n').map((impact: any) => {
+      {impacts?.split('\n').map((impact: string) => {
         return impact && impact.trim().length > 0 ? (
           <li key={impact}>{impact}</li>
         ) : null;
@@ -50,7 +47,7 @@ const getImpactItems = (impacts: string) => {
 
 export default function Roadmap({ roadmap }: RoadmapProps) {
   const sortedData = [...roadmap].sort((a, b) => {
-    const parseWhen = (when: any) => {
+    const parseWhen = (when: string) => {
       if (when === 'TBD') return Infinity;
       const [year, quarter] = when.split(' ');
       return parseInt(year) * 10 + parseInt(quarter.replace('Q', ''));

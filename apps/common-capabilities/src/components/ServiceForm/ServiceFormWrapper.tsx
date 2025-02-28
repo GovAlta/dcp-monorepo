@@ -15,7 +15,7 @@ type ServiceFormWrapperProps = {
   backLink?: JSX.Element;
   pageHeader: string;
   service?: Service;
-  handleSubmit: (data: Service) => Promise<any>;
+  handleSubmit: (data: Service) => Promise<unknown>;
 };
 
 type SchemaResponse = {

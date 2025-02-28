@@ -1,10 +1,11 @@
-import { FormField } from '../contexts/types';
+import { FormField, FormProperties, FormValues } from '../contexts/types';
+import { FormErrors } from '../contexts/useForm';
 
 const validateFieldAndMarkError = (
   key: string,
-  value: any,
-  fieldConfig: any,
-  errors: any,
+  value: FormValues[keyof FormValues],
+  fieldConfig: FormField,
+  errors: FormErrors,
   validated: Set<string>,
 ) => {
   const error = validateField(value, fieldConfig);
@@ -14,23 +15,25 @@ const validateFieldAndMarkError = (
   }
 };
 
-export const validateForm = (
-  values: { [x: string]: any },
-  config: { [x: string]: any },
-) => {
+export const validateForm = (values: FormValues, config: FormProperties) => {
   const validated = new Set<string>();
-  const errors: any = {};
+  const errors = {};
   for (const key in config) {
     if (!validated.has(key)) {
-      const fieldConfig = config[key];
+      const fieldConfig = config[key as keyof FormProperties];
+
+      if (!fieldConfig) {
+        continue;
+      }
 
       if (fieldConfig.oneOf) {
-        const groupErrors: any = {};
-        fieldConfig.oneOf.forEach((field: any) => {
+        const groupErrors = {};
+        fieldConfig.oneOf.forEach((value) => {
+          const field = value as keyof FormValues;
           validateFieldAndMarkError(
             field,
             values[field],
-            config[field],
+            fieldConfig,
             groupErrors,
             validated,
           );
@@ -41,9 +44,10 @@ export const validateForm = (
           Object.assign(errors, groupErrors);
         }
       } else {
+        const field = key as keyof FormValues;
         validateFieldAndMarkError(
           key,
-          values[key],
+          values[field],
           fieldConfig,
           errors,
           validated,
@@ -54,7 +58,10 @@ export const validateForm = (
 
   return errors;
 };
-export const validateField = (rawValue: any, fieldConfig: FormField) => {
+export const validateField = (
+  rawValue: FormValues[keyof FormValues],
+  fieldConfig: FormField,
+) => {
   const value =
     typeof rawValue === 'string' ? String(rawValue).trim() : rawValue;
   if (fieldConfig.required && !value) {
@@ -65,7 +72,7 @@ export const validateField = (rawValue: any, fieldConfig: FormField) => {
   }
   if (fieldConfig.validate) {
     const validationErrors = fieldConfig.validate.filter(
-      (rule) => !rule.regEx.test(value),
+      (rule) => !rule.regEx.test(value as string),
     );
     if (validationErrors.length > 0) {
       return validationErrors[0].failed;

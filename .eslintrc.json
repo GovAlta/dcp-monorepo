@@ -22,6 +22,9 @@
       }
     }
   },
+  "rules": {
+    "security/detect-object-injection": "off"
+  },
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],

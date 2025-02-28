@@ -1,10 +1,5 @@
-import React, { useEffect, useMemo } from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  useLocation,
-} from 'react-router-dom';
+import React, { useMemo } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { AuthStateProvider } from './providers/AuthStateProvider';
 import GoALayout from './layouts/GoALayout';
 import LandingPage from './pages/landing';

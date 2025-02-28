@@ -21,7 +21,7 @@ import { useNavigate } from 'react-router-dom';
 type ServiceFormProps = {
   data?: Service;
   dataSchema: JsonSchema;
-  onSubmit?: (data: Service) => Promise<any>;
+  onSubmit?: (data: Service) => Promise<unknown>;
   uiSchema: UISchemaElement;
 };
 
@@ -39,7 +39,7 @@ const FormWrapper = ({
   uiSchema,
   readOnly,
 }: {
-  data?: any;
+  data?: Service;
   dataSchema: JsonSchema;
   uiSchema: UISchemaElement;
   readOnly: boolean;
@@ -90,7 +90,7 @@ const ServiceForm = ({
         }
       }
     },
-    [error, setSubmitStatus, setError, onSubmit],
+    [setSubmitStatus, setError, onSubmit],
   );
 
   const onDialogDismiss = useCallback(() => {

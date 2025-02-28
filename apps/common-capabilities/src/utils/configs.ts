@@ -125,6 +125,7 @@ export function getCaptchaSiteKey() {
   }
 }
 
-export function getProperty(obj: any, path: any) {
-  return path.split('.').reduce((acc: any, key: any) => acc?.[key], obj);
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function getProperty(obj: any, path: string) {
+  return path.split('.').reduce((acc, key) => acc?.[key], obj);
 }

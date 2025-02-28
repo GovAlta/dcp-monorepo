@@ -141,5 +141,5 @@ export const apptFormConfig: FormConfig = {
       revalidateOnChange: true,
     },
   },
-  getEntityUrl: (gatewayUrl: string, values: any) => `${gatewayUrl}/${values}`, // TODO replace returned url with a valid one
+  getEntityUrl: (gatewayUrl, values) => `${gatewayUrl}/${values}`, // TODO replace returned url with a valid one
 };

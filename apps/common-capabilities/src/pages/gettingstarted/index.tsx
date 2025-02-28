@@ -1,5 +1,4 @@
 import {
-  GoAIcon,
   GoASideMenu,
   GoASpacer,
   GoAThreeColumnLayout,

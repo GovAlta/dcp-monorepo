@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-
+import React from 'react';
 import hero_mobile from '../../img/hero-mobile-tablet.svg';
 import concierge_thumb from '../../img/icon-handshake.svg';
 import join_thumb from '../../img/icon-join.svg';

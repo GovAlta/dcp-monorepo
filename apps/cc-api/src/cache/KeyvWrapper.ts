@@ -1,4 +1,4 @@
-import Keyv from 'keyv';
+import KeyV from 'keyv';
 import type { DataCache } from './types';
 import { Logger } from 'winston';
 
@@ -8,7 +8,7 @@ export default class KeyvWrapper implements DataCache {
   #cache;
 
   constructor(logger: Logger) {
-    this.#cache = new Keyv();
+    this.#cache = new KeyV();
     this.#cache.on('error', (error) => logger.error(error));
     this.#cache.on('clear', () => logger.info('Cache cleared'));
     this.#cache.on('disconnect', () => logger.info('Cache disconnected'));

@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-  GoAAppFooter,
-  GoAAppFooterMetaSection,
-  GoAAppFooterNavSection,
-} from '@abgov/react-components';
+import { GoAAppFooter, GoAAppFooterNavSection } from '@abgov/react-components';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
@@ -19,10 +15,6 @@ const Footer = () => {
         <Link to="/services">Services</Link>
         <Link to="/support">Support</Link>
       </GoAAppFooterNavSection>
-
-      {/* <GoAAppFooterMetaSection>
-          <Link to="/disclaimer"> Disclaimer</Link>          
-        </GoAAppFooterMetaSection> */}
     </GoAAppFooter>
   );
 };

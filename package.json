@@ -97,6 +97,7 @@
     "react-flatpickr": "^3.10.13",
     "react-router-dom": "^6.28.2",
     "tslib": "^2.3.0",
+    "use-deep-compare-effect": "^1.8.1",
     "uuid": "^11.0.3",
     "winston": "^3.14.2"
   }

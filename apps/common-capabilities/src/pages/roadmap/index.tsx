@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
-import React, { useEffect, useState, useMemo, useCallback } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import {
   GoAGrid,
   GoASpacer,
@@ -8,7 +10,6 @@ import {
   GoACheckbox,
   GoAButton,
   GoAButtonGroup,
-  GoADetails,
   GoADivider,
   GoAAccordion,
   GoACallout,
@@ -30,14 +31,12 @@ import { roadmapList } from '../../components/Card/ServiceRoadmap';
 import LastUpdated from '../../components/LastUpdated';
 import axios from 'axios';
 import { useAuth } from '../../providers/AuthStateProvider';
-import { useNavigate } from 'react-router-dom';
 
 type Filter = {
   [key: string]: any[];
 };
 
 export default function HomePage(): JSX.Element {
-  const navigate = useNavigate();
   const [roadmapView, setRoadmapView] = useState({
     grouped: true,
     history: false,
@@ -154,7 +153,7 @@ export default function HomePage(): JSX.Element {
         .some(Boolean);
 
       const filterMatches = Object.entries(filters).every(
-        ([filterKey, filterValues]) => {
+        ([, filterValues]) => {
           if (filterValues.length === 0) {
             return true;
           }
@@ -309,7 +308,7 @@ export default function HomePage(): JSX.Element {
   const checkedProviders =
     checkedFilters.provider === undefined
       ? []
-      : Object.entries(checkedFilters.provider).filter(([key, value]) => value);
+      : Object.entries(checkedFilters.provider).filter(([, value]) => value);
 
   let content;
 
@@ -352,7 +351,7 @@ export default function HomePage(): JSX.Element {
                   </span>
                 )
               }
-              onChange={(name: string, checked: boolean, value: string) =>
+              onChange={(name: string, checked: boolean) =>
                 setRoadmapView((prevState) => ({
                   ...prevState,
                   grouped: checked,
@@ -365,7 +364,7 @@ export default function HomePage(): JSX.Element {
               checked={roadmapView.condensed}
               name="history"
               text="Minimized view"
-              onChange={(name: string, checked: boolean, value: string) =>
+              onChange={(name: string, checked: boolean) =>
                 setRoadmapView((prevState) => ({
                   ...prevState,
                   condensed: checked,
@@ -378,7 +377,7 @@ export default function HomePage(): JSX.Element {
               checked={roadmapView.history}
               name="history"
               text="Show past items"
-              onChange={(name: string, checked: boolean, value: string) =>
+              onChange={(name: string, checked: boolean) =>
                 setRoadmapView((prevState) => ({
                   ...prevState,
                   history: checked,
@@ -571,6 +570,7 @@ export default function HomePage(): JSX.Element {
                   <GoAGrid minChildWidth="33ch" gap="xl">
                     {roadmapData(services, when).map((app) => (
                       <Card
+                        key={`grouped-${app.id}`}
                         app={app}
                         roadmapMode={when}
                         condensed={roadmapView.condensed}
@@ -599,6 +599,7 @@ export default function HomePage(): JSX.Element {
                 services.map((app) => {
                   return (
                     <Card
+                      key={`non-grouped-${app.id}`}
                       app={app}
                       roadmapMode={'list'}
                       roadmapHistory={roadmapView.history}

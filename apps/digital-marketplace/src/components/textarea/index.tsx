@@ -7,7 +7,7 @@ interface TextareaProps {
   value: string;
   onChange: React.ChangeEventHandler<HTMLTextAreaElement>;
   onBlur: React.FocusEventHandler<HTMLTextAreaElement>;
-  error?: string;
+  error?: string | null;
   label?: string;
   required?: boolean;
 }

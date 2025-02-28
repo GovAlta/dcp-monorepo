@@ -1,4 +1,9 @@
-import React, { useMemo, useState } from 'react';
+import React, {
+  ChangeEvent,
+  ChangeEventHandler,
+  useMemo,
+  useState,
+} from 'react';
 import useForm from '../../contexts/useForm';
 import { apptFormConfig } from './config';
 import { validateField, validateForm } from '../../utils/forms';
@@ -10,6 +15,7 @@ import { GoACircularProgress } from '@abgov/react-components';
 import { getBookingsUrl } from '../../utils/config';
 import useFetch from '../../hooks/useFetch';
 import type { Bookings } from './types';
+import { ApptFormValues } from '../../contexts/types';
 
 enum ContactType {
   EMAIL = 'Email',
@@ -17,7 +23,7 @@ enum ContactType {
 }
 
 export default function ApptForm() {
-  const initialValues = {
+  const initialValues: ApptFormValues = {
     orgName: '',
     email: '',
     firstName: '',
@@ -42,7 +48,12 @@ export default function ApptForm() {
     handleSubmit,
     loading,
     apiError,
-  } = useForm(initialValues, validateForm, validateField, apptFormConfig);
+  } = useForm<ApptFormValues>(
+    initialValues,
+    validateForm,
+    validateField,
+    apptFormConfig,
+  );
 
   const bookingsUrl = useMemo(
     () => getBookingsUrl('/bookings/availability?calendarId=subbu-test'),
@@ -50,31 +61,37 @@ export default function ApptForm() {
   );
   const [bookings, error, isBookingsLoading] = useFetch<Bookings>(bookingsUrl);
   // State to track the selected contact method
-  const [contactMethod, setContactMethod] = useState(null);
+  const [contactMethod, setContactMethod] = useState<ContactType | null>(null);
 
   // Handler to update the selected contact method
-  const handleContactMethodChange = (event: any) => {
-    const contactMethod = event.target.value;
+  const handleContactMethodChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const contactMethod: ContactType = event.target.value as ContactType;
 
     if (contactMethod === ContactType.EMAIL) {
-      handleChange?.({ target: { name: 'phoneNumber', value: '' } } as any);
+      handleChange?.({
+        target: { name: 'phoneNumber', value: '' },
+      } as ChangeEvent<HTMLInputElement>);
     } else if (contactMethod === ContactType.PHONE) {
-      handleChange?.({ target: { name: 'emailAddress', value: '' } } as any);
+      handleChange?.({
+        target: { name: 'emailAddress', value: '' },
+      } as ChangeEvent<HTMLInputElement>);
     }
 
     handleChange?.(event);
-    setContactMethod(event.target.value);
+    setContactMethod(contactMethod);
   };
 
-  const handleDateChange = (date: any) => {
+  const handleDateChange = (dates: Date[]) => {
     let dateString;
-    if (date?.[0]) {
-      const d = new Date(date?.[0]);
+    if (dates?.[0]) {
+      const d = new Date(dates?.[0]);
       dateString = `${d.getFullYear()}-${(d.getMonth() + 1)
         .toString()
         .padStart(2, '0')}-${d.getDate().toString().padStart(2, '0')}`;
     }
-    handleChange?.({ target: { name: 'date', value: dateString } } as any);
+    handleChange?.({
+      target: { name: 'date', value: dateString },
+    } as ChangeEvent<HTMLInputElement>);
   };
 
   return (
@@ -331,7 +348,9 @@ export default function ApptForm() {
                                 aria-label="Select a Time"
                                 required={true}
                                 defaultValue={''}
-                                onChange={handleChange as any}
+                                onChange={
+                                  handleChange as unknown as ChangeEventHandler<HTMLSelectElement>
+                                }
                               >
                                 <option value="">Select a Time</option>
                                 {bookings?.bookingsAvailability[

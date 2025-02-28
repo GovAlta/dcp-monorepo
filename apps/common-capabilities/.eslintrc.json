@@ -5,7 +5,7 @@
     "plugin:react-hooks/recommended"
   ],
   "plugins": ["react", "react-hooks"],
-  "ignorePatterns": ["!**/*", "node_modules/**", "adsp/**", "data/**", "public/**"],
+  "ignorePatterns": ["!**/*", "node_modules/**", "adsp/**", "data/**", "public/**", "*.config.js"],
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],

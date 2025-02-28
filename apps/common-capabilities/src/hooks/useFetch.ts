@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
+import useDeepCompareEffect from 'use-deep-compare-effect';
 
 export default function useFetch<T>(
   url: string,
@@ -9,7 +10,7 @@ export default function useFetch<T>(
   const [error, setError] = useState<Error | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
+  useDeepCompareEffect(() => {
     async function fetchData() {
       try {
         const response = await axios.get(url, configs);
@@ -22,7 +23,7 @@ export default function useFetch<T>(
     }
 
     fetchData();
-  }, [url]);
+  }, [url, configs]);
 
   return [data, error, isLoading];
 }

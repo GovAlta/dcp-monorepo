@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo } from 'react';
 import ServiceFormWrapper from '../../components/ServiceForm/ServiceFormWrapper';
 import useFetch from '../../hooks/useFetch';
-import { GoACircularProgress } from '@abgov/react-components';
+import { GoACircularProgress, GoANotification } from '@abgov/react-components';
 import useForm from '../../hooks/useFormSubmit';
 import { getApiUrl } from '../../utils/configs';
 import BackButton from '../../components/BackButton';
@@ -17,7 +17,7 @@ export default function UpdateServicePage(): JSX.Element {
   const { id } = useParams();
   const { handleSubmit } = useForm();
   const { authToken } = useAuth();
-  const serviceUrl = useMemo(() => getApiUrl(`/listings/services/${id}`), []);
+  const serviceUrl = useMemo(() => getApiUrl(`/listings/services/${id}`), [id]);
   const [data, error, isLoading] = useFetch<ServiceDetailsResponse>(
     serviceUrl,
     { headers: { Authorization: `Bearer ${authToken}` } },
@@ -44,19 +44,33 @@ export default function UpdateServicePage(): JSX.Element {
     />
   );
 
-  return isLoading || !service ? (
-    <GoACircularProgress
-      variant="fullscreen"
-      size="large"
-      message="Loading service details..."
-      visible={true}
-    />
-  ) : (
-    <ServiceFormWrapper
-      backLink={backLink}
-      pageHeader={`Update ${service.serviceName}`}
-      service={service}
-      handleSubmit={(data) => handleSubmit(data, authToken)}
-    />
-  );
+  let content;
+
+  if (isLoading || (!service && !error)) {
+    content = (
+      <GoACircularProgress
+        variant="fullscreen"
+        size="large"
+        message="Loading service details..."
+        visible={true}
+      />
+    );
+  } else if (service) {
+    content = (
+      <ServiceFormWrapper
+        backLink={backLink}
+        pageHeader={`Update ${service.serviceName}`}
+        service={service}
+        handleSubmit={(data) => handleSubmit(data, authToken)}
+      />
+    );
+  } else {
+    content = (
+      <GoANotification type="emergency" ariaLive="assertive">
+        Failed to load service details. Please try again later.
+      </GoANotification>
+    );
+  }
+
+  return content;
 }

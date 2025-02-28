@@ -26,6 +26,7 @@ const GoALayout = ({ authEnforced, titles }: Props) => {
     }
   }, [location, titles]);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     setContentHeight(
       window.innerHeight - (headerRef?.current?.clientHeight || 0),

@@ -77,7 +77,7 @@ export const aboutPageContent = [
         <p>
           Common capabilities not only allow the teams to operate more
           efficiently but also enables the Government of Alberta to deliver
-          modern, reliable, and secure digital experiences to all Albertans.  
+          modern, reliable, and secure digital experiences to all Albertans.
         </p>
         <p>
           By utilizing common capabilities, we are participating and supporting

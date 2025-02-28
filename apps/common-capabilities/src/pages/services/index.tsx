@@ -1,3 +1,6 @@
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 import React, { useEffect, useState, useMemo } from 'react';
 import {
@@ -8,7 +11,6 @@ import {
   GoACheckbox,
   GoAButton,
   GoAButtonGroup,
-  GoADetails,
   GoADivider,
   GoAAccordion,
   GoACallout,
@@ -132,7 +134,7 @@ export default function HomePage(): JSX.Element {
         .some(Boolean);
 
       const filterMatches = Object.entries(filters).every(
-        ([filterKey, filterValues]) => {
+        ([, filterValues]) => {
           if (filterValues.length === 0) {
             return true;
           }

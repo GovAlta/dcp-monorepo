@@ -3,20 +3,21 @@ import React, { useEffect, useState } from 'react';
 import './styles.css';
 import { ServiceRoadmap } from './ServiceRoadmap';
 import { Link } from 'react-router-dom';
+import { Service, ServiceAttribute } from '../../types/types';
 
 interface CardProps {
-  app: any;
-  roadmapMode: any;
-  roadmapHistory: any;
-  condensed: any;
+  app: Service;
+  roadmapMode: string;
+  roadmapHistory?: boolean;
+  condensed: boolean;
 }
 
 const Card = ({ app, roadmapMode, roadmapHistory, condensed }: CardProps) => {
   const maxDescriptionLength = 200; // word length for short descpription in tile.
-  const badgesToShow = ['status'];
+  const badgesToShow = ['status'] as [ServiceAttribute];
   const [showBadges, setShowBadges] = useState<JSX.Element[]>([]);
 
-  function badgeType(value: any) {
+  function badgeType(value: string) {
     if (value == 'Live') return 'success';
     else return 'midtone';
   }
@@ -30,19 +31,19 @@ const Card = ({ app, roadmapMode, roadmapHistory, condensed }: CardProps) => {
     }
 
     badgesToShow.forEach((badge) => {
-      if (app[badge] !== '' && app[badge]?.length > 0) {
-        if (
-          typeof app[badge] === 'string' &&
-          app[badge].toLowerCase() !== 'other'
-        ) {
-          badges.push(
-            <GoABadge
-              key={badge}
-              type={badgeType(app[badge])}
-              content={app[badge]}
-            />,
-          );
-        }
+      const badgeValue = app[badge] as string;
+      if (
+        typeof badgeValue === 'string' &&
+        badgeValue?.length > 0 &&
+        badgeValue.toLowerCase() !== 'other'
+      ) {
+        badges.push(
+          <GoABadge
+            key={badge}
+            type={badgeType(badgeValue)}
+            content={badgeValue}
+          />,
+        );
       }
     });
     setShowBadges(badges);

@@ -53,10 +53,10 @@ jobs:
         run: echo "AFFECTED_BASE=${{ github.event.inputs.SELECTED_BASE }}" >> $GITHUB_ENV
 
       # Project build steps lint, test, and build
-      # - name: Lint
-      #   run: npx nx affected --target=lint --base=${{ env.AFFECTED_BASE }}
+      - name: Lint
+        run: npx nx affected --target=lint --base=${{ env.AFFECTED_BASE }} --parallel
       - name: Check
-        run: npx nx affected --target=check --base=${{ env.AFFECTED_BASE }} --parallel=1
+        run: npx nx affected --target=check --base=${{ env.AFFECTED_BASE }} --parallel
       # - name: Test
       #   run: npx nx affected --target=test --base=${{ env.AFFECTED_BASE }}
       - name: Build

@@ -10,9 +10,15 @@ declare global {
   }
 }
 
-type Contact = {
+export type ContactMethod = {
+  type: string;
+  value: string;
+  url: string;
+};
+
+export type Contact = {
   details: string;
-  methods: Array<{ type: string; value: string; url: string }>;
+  methods: Array<ContactMethod>;
 };
 
 enum RoadmapStatus {
@@ -20,13 +26,13 @@ enum RoadmapStatus {
   Tentative = 'Tentative',
 }
 
-type Roadmap = {
+export type Roadmap = {
   title: string;
   when: string;
   status: RoadmapStatus;
   type: string;
   description: string;
-  impacts: Array<{ item: string }>;
+  impacts: string;
 };
 
 export type ServiceListingResponse = {
@@ -80,3 +86,5 @@ export type Service = {
   roadmap: Array<Roadmap>;
   lastUpdatedDate: string;
 };
+
+export type ServiceAttribute = keyof Service;
