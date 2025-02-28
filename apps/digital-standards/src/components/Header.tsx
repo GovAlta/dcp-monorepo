@@ -1,5 +1,4 @@
-import React from 'react';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import {
   GoAMicrositeHeader,
   GoAAppHeader,
@@ -7,7 +6,10 @@ import {
 } from '@abgov/react-components';
 
 declare global {
-  var adspFeedback: any;
+  // eslint-disable-next-line no-var
+  var adspFeedback: {
+    initialize: ({ tenant }: { tenant: string }) => void;
+  };
 }
 
 const Header = () => {

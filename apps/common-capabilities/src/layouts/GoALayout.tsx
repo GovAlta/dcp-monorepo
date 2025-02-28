@@ -6,7 +6,7 @@ import { useAuth } from '../providers/AuthStateProvider';
 
 type Props = {
   authEnforced: boolean;
-  titles?: { route: string; title: string, titleRegex?: RegExp }[];
+  titles?: { route: string; title: string; titleRegex?: RegExp }[];
 };
 
 const GoALayout = ({ authEnforced, titles }: Props) => {
@@ -17,15 +17,20 @@ const GoALayout = ({ authEnforced, titles }: Props) => {
 
   useEffect(() => {
     const title = titles?.find((t) => {
-      return t.route === location.pathname || t.titleRegex?.test(location.pathname);
+      return (
+        t.route === location.pathname || t.titleRegex?.test(location.pathname)
+      );
     })?.title;
     if (title) {
       document.title = title;
     }
   }, [location, titles]);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
-    setContentHeight(window.innerHeight - (headerRef?.current?.clientHeight || 0));
+    setContentHeight(
+      window.innerHeight - (headerRef?.current?.clientHeight || 0),
+    );
   });
 
   return !authEnforced || isAuthenticated ? (

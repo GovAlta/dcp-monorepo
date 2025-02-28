@@ -1,6 +1,6 @@
 import axios from 'axios';
-import React, { useEffect } from 'react';
-import './styles.css'
+import React from 'react';
+import './styles.css';
 
 const downloadFormData = async (url: string, fileName: string) => {
   const download = await axios.get(url);
@@ -28,7 +28,9 @@ export default function LandingPage() {
     }
   };
 
-  const downloadFormDataByRole = async (role: 'eventsignup' | 'supplier' | 'partner') => {
+  const downloadFormDataByRole = async (
+    role: 'eventsignup' | 'supplier' | 'partner',
+  ) => {
     setIsLoading(true);
     await downloadFormData(getDownloadUrl(role), `${role}_data.csv`);
     setIsLoading(false);
@@ -37,7 +39,7 @@ export default function LandingPage() {
   return (
     <div className="landing-page">
       <h1>Digital Marketplace portal</h1>
-      <div className="buttons">        
+      <div className="buttons">
         <button
           disabled={isLoading}
           className="button"
@@ -51,7 +53,8 @@ export default function LandingPage() {
           onClick={() => downloadFormDataByRole('partner')}
         >
           Download partner data
-        </button>        <button
+        </button>{' '}
+        <button
           disabled={isLoading}
           className="button"
           onClick={() => downloadFormDataByRole('eventsignup')}
@@ -62,5 +65,3 @@ export default function LandingPage() {
     </div>
   );
 }
-
-

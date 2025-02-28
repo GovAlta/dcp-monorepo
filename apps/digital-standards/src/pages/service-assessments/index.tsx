@@ -1,4 +1,4 @@
-import { GoASpacer, GoAButton, GoAIcon } from '@abgov/react-components';
+import { GoASpacer, GoAButton } from '@abgov/react-components';
 import React, { useEffect } from 'react';
 import BackToTop from '../../components/BackToTop';
 import ExternalLink from '../../components/ExternalLink';
@@ -76,7 +76,9 @@ export default function ServiceAssessments(): JSX.Element {
         complete this tool 24 business hours ahead of the assessment meeting.
       </p>
       <GoASpacer vSpacing="l" />
-      <h2 id="what-will-happen-during-the-assessment">What will happen during the assessment</h2>
+      <h2 id="what-will-happen-during-the-assessment">
+        What will happen during the assessment
+      </h2>
       <p>
         The assessment will be conducted by a minimum of two members of the
         Digital Service Standards team and often will also include a Practice
@@ -105,7 +107,9 @@ export default function ServiceAssessments(): JSX.Element {
         opportunity cards or Executive presentation slide decks.
       </p>
       <GoASpacer vSpacing="l" />
-      <h2 id="what-will-happen-after-the-assessment">What will happen after the assessment</h2>
+      <h2 id="what-will-happen-after-the-assessment">
+        What will happen after the assessment
+      </h2>
       <ul className="goa-unordered-list">
         <li>
           Any follow-up questions from the assessment team will be provided by
@@ -125,7 +129,7 @@ export default function ServiceAssessments(): JSX.Element {
         />
         .
       </p>
-      <GoASpacer vSpacing="2xl" />      
+      <GoASpacer vSpacing="2xl" />
       <BackToTop />
     </div>
   );

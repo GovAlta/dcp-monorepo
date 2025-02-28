@@ -1,9 +1,7 @@
 import React from 'react';
 import albertaLogo from '../img/albertaLogo.svg';
-import mobileLogo from '../img/mobile-logo.svg'
-const Header = ({ page }: any) => {
-  // useEffect(() => { });
-
+import mobileLogo from '../img/mobile-logo.svg';
+const Header = ({ page }: { page: string }) => {
   return (
     <>
       <header>
@@ -16,7 +14,11 @@ const Header = ({ page }: any) => {
 
             <div className="goa-adm-microsite-header-content">
               <p>
-                This is a new <a href="https://www.alberta.ca/" target="_blank">Alberta Government</a> service.
+                This is a new{' '}
+                <a href="https://www.alberta.ca/" target="_blank">
+                  Alberta Government
+                </a>{' '}
+                service.
               </p>
             </div>
           </div>
@@ -27,8 +29,16 @@ const Header = ({ page }: any) => {
             <div className="goa-adm-logo">
               <div className="goa-logo">
                 <a href="/" title="Home" rel="home">
-                  <img className="desktop-logo" src={albertaLogo.src} alt="Alberta Logo" />
-                  <img className="mobile-logo" src={mobileLogo.src} alt="Mobile Logo" />
+                  <img
+                    className="desktop-logo"
+                    src={albertaLogo.src}
+                    alt="Alberta Logo"
+                  />
+                  <img
+                    className="mobile-logo"
+                    src={mobileLogo.src}
+                    alt="Mobile Logo"
+                  />
                 </a>
               </div>
             </div>
@@ -41,11 +51,52 @@ const Header = ({ page }: any) => {
               </div>
               <nav className="goa-adm-nav-menu">
                 <ul>
-                <li className={page === 'About' ? 'goa-adm-nav-active-item' : ''}> <a href="/about-us/">About</a></li>
-                <li className={page === 'Supplier Outreach Program' ? 'goa-adm-nav-active-item' : ''}> <a href="/supplier-outreach-program/">Supplier Outreach Program</a></li>
-                <li className={page === 'Understanding Procurement' ? 'goa-adm-nav-active-item' : ''}> <a href="/understanding-procurement/">Understanding Procurement</a></li>
-                <li className={page === 'Join' ? 'goa-adm-nav-active-item' : ''}> <a href="/join/">Join</a></li>
-                <li className={page === 'Contact'   ? 'goa-adm-nav-active-item' : ''}> <a href="/contact-us/">Contact</a></li>
+                  <li
+                    className={
+                      page === 'About' ? 'goa-adm-nav-active-item' : ''
+                    }
+                  >
+                    {' '}
+                    <a href="/about-us/">About</a>
+                  </li>
+                  <li
+                    className={
+                      page === 'Supplier Outreach Program'
+                        ? 'goa-adm-nav-active-item'
+                        : ''
+                    }
+                  >
+                    {' '}
+                    <a href="/supplier-outreach-program/">
+                      Supplier Outreach Program
+                    </a>
+                  </li>
+                  <li
+                    className={
+                      page === 'Understanding Procurement'
+                        ? 'goa-adm-nav-active-item'
+                        : ''
+                    }
+                  >
+                    {' '}
+                    <a href="/understanding-procurement/">
+                      Understanding Procurement
+                    </a>
+                  </li>
+                  <li
+                    className={page === 'Join' ? 'goa-adm-nav-active-item' : ''}
+                  >
+                    {' '}
+                    <a href="/join/">Join</a>
+                  </li>
+                  <li
+                    className={
+                      page === 'Contact' ? 'goa-adm-nav-active-item' : ''
+                    }
+                  >
+                    {' '}
+                    <a href="/contact-us/">Contact</a>
+                  </li>
                 </ul>
               </nav>
             </div>

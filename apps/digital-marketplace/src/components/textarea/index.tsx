@@ -7,7 +7,7 @@ interface TextareaProps {
   value: string;
   onChange: React.ChangeEventHandler<HTMLTextAreaElement>;
   onBlur: React.FocusEventHandler<HTMLTextAreaElement>;
-  error?: string;
+  error?: string | null;
   label?: string;
   required?: boolean;
 }
@@ -25,8 +25,14 @@ const Textarea: React.FC<TextareaProps> = ({
   return (
     <div className="goa-field">
       {label && (
-        <label className='label' htmlFor={id}>
-          {label} {required ? <span className="required">*</span> : <span className="optional">[optional]</span>}{}
+        <label className="label" htmlFor={id}>
+          {label}{' '}
+          {required ? (
+            <span className="required">*</span>
+          ) : (
+            <span className="optional">[optional]</span>
+          )}
+          {}
         </label>
       )}
 

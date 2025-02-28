@@ -17,7 +17,7 @@ interface MiddlewareOptions {
 
 export async function applyGatewayMiddleware(
   app: Application,
-  { logger, directory, tokenProvider }: MiddlewareOptions
+  { logger, directory, tokenProvider }: MiddlewareOptions,
 ) {
   const formApiUrl = await directory.getServiceUrl(FORM_API_ID);
 

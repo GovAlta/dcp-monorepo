@@ -1,17 +1,17 @@
 import { TokenProvider } from '@abgov/adsp-service-sdk';
 import { RequestHandler, Router } from 'express';
 import { Logger } from 'winston';
-import axios from 'axios';
+import axios, { isAxiosError } from 'axios';
 import { exportServicesRoadmap, getService, getServices } from './services';
 import { DataCache } from '../../cache/types';
 import { SiteVerifyResponse } from './types';
 import { v4 as uuidv4, validate as uuidValidate } from 'uuid';
 import { environment } from '../../environments/environment';
-import authorize, { 
+import authorize, {
   VALUE_SERVICE,
   DEFAULT_ADMIN,
   FORM_SERVICE,
-  EVENT_SERVICE
+  EVENT_SERVICE,
 } from '../../middleware/authorize';
 
 interface RouterOptions {
@@ -23,7 +23,11 @@ interface RouterOptions {
   cache: DataCache;
 }
 
-export function verifyCaptcha(logger: Logger, RECAPTCHA_SECRET: string, SCORE_THRESHOLD = 0.5): RequestHandler {
+export function verifyCaptcha(
+  logger: Logger,
+  RECAPTCHA_SECRET: string,
+  SCORE_THRESHOLD = 0.5,
+): RequestHandler {
   return async (req, _res, next) => {
     if (!RECAPTCHA_SECRET) {
       next();
@@ -31,17 +35,25 @@ export function verifyCaptcha(logger: Logger, RECAPTCHA_SECRET: string, SCORE_TH
       try {
         const { captchaToken } = req.body;
         const { data } = await axios.post<SiteVerifyResponse>(
-          `https://www.google.com/recaptcha/api/siteverify?secret=${RECAPTCHA_SECRET}&response=${captchaToken}`
+          `https://www.google.com/recaptcha/api/siteverify?secret=${RECAPTCHA_SECRET}&response=${captchaToken}`,
         );
         console.log(data);
 
-        if (!data.success || !['submit'].includes(data.action) || data.score < SCORE_THRESHOLD) {
+        if (
+          !data.success ||
+          !['submit'].includes(data.action) ||
+          data.score < SCORE_THRESHOLD
+        ) {
           logger.warn(
             `Captcha verification failed for form gateway with result '${data.success}' on action '${data.action}' with score ${data.score}.`,
-            { context: 'DigitalMarketplace' }
+            { context: 'DigitalMarketplace' },
           );
 
-          return _res.status(401).send('Request rejected because captcha verification not successful.');
+          return _res
+            .status(401)
+            .send(
+              'Request rejected because captcha verification not successful.',
+            );
         }
 
         next();
@@ -57,7 +69,6 @@ export function getFormsSchema(
   formApiUrl: URL,
 ): RequestHandler {
   return async (req, res) => {
-
     try {
       const token = req.user.token.bearer;
       const { definitionId } = req.params;
@@ -68,15 +79,15 @@ export function getFormsSchema(
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        }
-      )
+        },
+      );
 
       res.status(200).send({
         dataSchema: getFormsSchemaData.data.dataSchema,
-        uiSchema: getFormsSchemaData.data.uiSchema
+        uiSchema: getFormsSchemaData.data.uiSchema,
       });
     } catch (e) {
-      if (axios.isAxiosError(e)) {
+      if (isAxiosError(e)) {
         res.status(e.response.status).send(e.response.data);
         logger.error(e.response.data, 'failed to get forms schema');
       } else {
@@ -84,8 +95,7 @@ export function getFormsSchema(
         logger.error(e, 'failed to get forms schema');
       }
     }
-
-  }
+  };
 }
 
 export function newListing(
@@ -93,9 +103,7 @@ export function newListing(
   formApiUrl: URL,
   eventServiceUrl: URL,
 ): RequestHandler {
-
   return async (req, res) => {
-
     try {
       const token = req.user.token.bearer;
       const requestBody = req.body;
@@ -107,61 +115,74 @@ export function newListing(
           definitionId: 'common-capabilities-intake',
           data: {
             ...requestBody.formData,
-            appId: (!requestBody.formData.appId || !uuidValidate(requestBody.formData.appId))
-              ? uuidv4()
-              : requestBody.formData.appId,
+            appId:
+              !requestBody.formData.appId ||
+              !uuidValidate(requestBody.formData.appId)
+                ? uuidv4()
+                : requestBody.formData.appId,
           },
-          submit: true
+          submit: true,
         },
         {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        }
-      )
+        },
+      );
 
       if (listingApiCall.data.status === 'submitted') {
         try {
           // Notify the user about their submission
-          await axios.post(`${eventServiceUrl}/events`, {
-            "namespace": "common-capabilities",
-            "name": requestBody.formData.appId ? "listing-submitted-edit" : "listing-submitted-new",
-            "timestamp": new Date().toISOString(),
-            "payload": {
-              "userEmail": requestBody.formData.editorEmail,
-              appName: requestBody.formData.serviceName,
-              userName: requestBody.formData.editorName
-            }
-          }, {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            }
-          })
-          const reviewerEmails = environment.REVIEWER_EMAILS.split(",");
+          await axios.post(
+            `${eventServiceUrl}/events`,
+            {
+              namespace: 'common-capabilities',
+              name: requestBody.formData.appId
+                ? 'listing-submitted-edit'
+                : 'listing-submitted-new',
+              timestamp: new Date().toISOString(),
+              payload: {
+                userEmail: requestBody.formData.editorEmail,
+                appName: requestBody.formData.serviceName,
+                userName: requestBody.formData.editorName,
+              },
+            },
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            },
+          );
+          const reviewerEmails = environment.REVIEWER_EMAILS.split(',');
 
           // Notify the reviewers
           await Promise.all(
-            reviewerEmails.map(
-              (reviewerEmail) =>
-                axios.post(`${eventServiceUrl}/events`, {
-                  "namespace": "common-capabilities",
-                  "name": requestBody.formData.appId ? "listing-submitted-edit-reviewer" : "listing-submitted-new-reviewer",
-                  "timestamp": new Date().toISOString(),
-                  "payload": {
-                    "userEmail": reviewerEmail,
+            reviewerEmails.map((reviewerEmail) =>
+              axios.post(
+                `${eventServiceUrl}/events`,
+                {
+                  namespace: 'common-capabilities',
+                  name: requestBody.formData.appId
+                    ? 'listing-submitted-edit-reviewer'
+                    : 'listing-submitted-new-reviewer',
+                  timestamp: new Date().toISOString(),
+                  payload: {
+                    userEmail: reviewerEmail,
                     appName: requestBody.formData.serviceName,
                     userName: requestBody.formData.editorName,
-                    editorEmail: requestBody.formData.editorEmail
-                  }
-                }, {
+                    editorEmail: requestBody.formData.editorEmail,
+                  },
+                },
+                {
                   headers: {
                     Authorization: `Bearer ${token}`,
-                  }
-                })
-            )
+                  },
+                },
+              ),
+            ),
           );
         } catch (e) {
-          if (axios.isAxiosError(e)) {
+          if (isAxiosError(e)) {
             res.status(e.response.status).send(e.response.data);
             logger.error(e.response.data, 'failed to notify reviewers');
           } else {
@@ -176,9 +197,8 @@ export function newListing(
           status: listingApiCall.data.status,
         },
       });
-    }
-    catch (e) {
-      if (axios.isAxiosError(e)) {
+    } catch (e) {
+      if (isAxiosError(e)) {
         res.status(e.response.status).send(e.response.data);
         logger.error(e.response.data, 'failed to get forms schema');
       } else {
@@ -186,7 +206,7 @@ export function newListing(
         logger.error(e, 'failed to get forms schema');
       }
     }
-  }
+  };
 }
 
 function clearCache(cache: DataCache): RequestHandler {
@@ -194,7 +214,7 @@ function clearCache(cache: DataCache): RequestHandler {
     console.log(req.user);
     await cache.clear();
     res.status(200).send();
-  }
+  };
 }
 
 export function createListingsRouter({
@@ -209,32 +229,32 @@ export function createListingsRouter({
   router.get(
     '/listings/schema/:definitionId',
     authorize([FORM_SERVICE.WRITE]),
-    getFormsSchema(logger, formApiUrl)
+    getFormsSchema(logger, formApiUrl),
   );
 
   router.post(
     '/listings',
     authorize([FORM_SERVICE.WRITE, EVENT_SERVICE.WRITE]),
     verifyCaptcha(logger, environment.RECAPTCHA_SECRET, 0.7),
-    newListing(logger, formApiUrl, eventServiceUrl)
+    newListing(logger, formApiUrl, eventServiceUrl),
   );
 
   router.get(
     '/listings/services',
     authorize([VALUE_SERVICE.READ]),
-    getServices(logger, valueServiceUrl, cache)
+    getServices(logger, valueServiceUrl, cache),
   );
 
   router.get(
     '/listings/services/:serviceId',
     authorize([VALUE_SERVICE.READ]),
-    getService(logger, valueServiceUrl, cache)
+    getService(logger, valueServiceUrl, cache),
   );
 
   router.get(
     '/listings/services/roadmap/export',
     authorize([VALUE_SERVICE.READ]),
-    exportServicesRoadmap(logger, valueServiceUrl, cache)
+    exportServicesRoadmap(logger, valueServiceUrl, cache),
   );
 
   router.post('/cache/clear', authorize([DEFAULT_ADMIN]), clearCache(cache));

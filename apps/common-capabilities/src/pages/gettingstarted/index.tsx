@@ -1,5 +1,4 @@
 import {
-  GoAIcon,
   GoASideMenu,
   GoASpacer,
   GoAThreeColumnLayout,
@@ -39,10 +38,10 @@ export default function GettingStartedPage(): JSX.Element {
           Common capabilities features two kinds of services:
           <ol className="goa-ordered-list">
             <li>
-              <b>Recommended services:</b> Recommended components built for the DDD
-              product teams to reuse or repurpose as per their use case and
-              development needs. Recommended components are usually provided by the
-              following enterprise and DDD platform teams:
+              <b>Recommended services:</b> Recommended components built for the
+              DDD product teams to reuse or repurpose as per their use case and
+              development needs. Recommended components are usually provided by
+              the following enterprise and DDD platform teams:
               <ul className="goa-unordered-list">
                 <li>Alberta.ca</li>
                 <li>Service Integrations</li>

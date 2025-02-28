@@ -5,9 +5,9 @@ enum Environment {
   prod = 'prod',
 }
 type GatewayConfigs = {
-    baseUrl: string;
-  }
-  
+  baseUrl: string;
+};
+
 type ServiceConfig = {
   [key in Environment]: {
     gateway: GatewayConfigs;
@@ -51,7 +51,7 @@ function getGatewayConfigs(env?: Environment) {
 function getEnv() {
   const url = window.location.hostname.toLowerCase();
   const match = url.match(
-    /digital-marketplace-dcp-(\w+)\.apps\.aro\.gov\.ab\.ca/
+    /digital-marketplace-dcp-(\w+)\.apps\.aro\.gov\.ab\.ca/,
   );
   const env = match ? match[1] : null;
   console.log(url);

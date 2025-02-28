@@ -1,14 +1,10 @@
 import React from 'react';
-import {
-  GoAAppFooter,
-  GoAThreeColumnLayout
-} from '@abgov/react-components';
+import { GoAAppFooter } from '@abgov/react-components';
 
 const Footer = () => {
   return (
     <>
-      <GoAAppFooter maxContentWidth="1500px">
-      </GoAAppFooter>
+      <GoAAppFooter maxContentWidth="1500px"></GoAAppFooter>
     </>
   );
 };

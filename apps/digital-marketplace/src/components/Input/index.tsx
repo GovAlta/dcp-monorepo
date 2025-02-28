@@ -8,7 +8,7 @@ interface FormFieldProps {
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onBlur: (e: React.FocusEvent<HTMLInputElement>) => void;
-  error?: string;
+  error?: string | null;
   label?: string;
   required?: boolean;
   placeholder?: string;
@@ -24,13 +24,19 @@ const FormField: React.FC<FormFieldProps> = ({
   error,
   label,
   required,
-  placeholder
+  placeholder,
 }) => {
   return (
     <div className="goa-field">
       {label && (
-        <label className='label' htmlFor={id}>
-          {label} {required ? <span className="required">*</span> : <span className="optional">[optional]</span>}{}
+        <label className="label" htmlFor={id}>
+          {label}{' '}
+          {required ? (
+            <span className="required">*</span>
+          ) : (
+            <span className="optional">[optional]</span>
+          )}
+          {}
         </label>
       )}
 

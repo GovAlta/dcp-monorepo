@@ -2,26 +2,26 @@ enum Environment {
   local = 'local',
   dev = 'dev',
   uat = 'uat',
-  prod = 'prod'
+  prod = 'prod',
 }
 
 type GatewayConfigs = {
   baseUrl: string;
-}
+};
 
 type ADSPConfigs = {
   auth_url: string;
   realm: string;
   idp_client_id: string;
   idp_alias: string;
-}
+};
 
 type ServiceConfig = {
   [key in Environment]: {
-    adsp: ADSPConfigs
-    gateway: GatewayConfigs
-  }
-}
+    adsp: ADSPConfigs;
+    gateway: GatewayConfigs;
+  };
+};
 
 const serviceConfigs: ServiceConfig = {
   local: {
@@ -32,8 +32,8 @@ const serviceConfigs: ServiceConfig = {
       realm: '9b2d9233-4d9f-432d-9471-9f95861db16d',
     },
     gateway: {
-      baseUrl: 'http://localhost:3333'
-    }
+      baseUrl: 'http://localhost:3333',
+    },
   },
   dev: {
     adsp: {
@@ -44,7 +44,7 @@ const serviceConfigs: ServiceConfig = {
     },
     gateway: {
       baseUrl: 'https://cc-api-dcp-dev.apps.aro.gov.ab.ca',
-    }
+    },
   },
   uat: {
     adsp: {
@@ -54,8 +54,8 @@ const serviceConfigs: ServiceConfig = {
       realm: '9b2d9233-4d9f-432d-9471-9f95861db16d',
     },
     gateway: {
-      baseUrl: 'https://common-capabilities-api-uat.alberta.ca'
-    }
+      baseUrl: 'https://common-capabilities-api-uat.alberta.ca',
+    },
   },
   prod: {
     adsp: {
@@ -65,23 +65,26 @@ const serviceConfigs: ServiceConfig = {
       realm: '650cd96a-1a14-4988-826d-bb108047f2a8',
     },
     gateway: {
-      baseUrl: 'https://common-capabilities-api.gov.ab.ca'
-    }
-  }
-}
+      baseUrl: 'https://common-capabilities-api.gov.ab.ca',
+    },
+  },
+};
 
 function getEnv() {
-    const url = window.location.hostname.toLowerCase();
-    const match = url.match(/(?<=-)(uat|prod|dev)(?=[.-])/);
-    const env = match ? match[1] : null;
+  const url = window.location.hostname.toLowerCase();
+  const match = url.match(/(?<=-)(uat|prod|dev)(?=[.-])/);
+  const env = match ? match[1] : null;
 
-    if (!env) {
-      if (url === 'localhost') {
-        return Environment.uat;
-      } else if (url === 'common-capabilities.digital.gov.ab.ca' || url === 'common-capabilities.gov.ab.ca') {
-        return Environment.prod;
-      }
+  if (!env) {
+    if (url === 'localhost') {
+      return Environment.uat;
+    } else if (
+      url === 'common-capabilities.digital.gov.ab.ca' ||
+      url === 'common-capabilities.gov.ab.ca'
+    ) {
+      return Environment.prod;
     }
+  }
 
   return Environment[env as keyof typeof Environment];
 }
@@ -95,13 +98,13 @@ function getConfigs(env?: Environment) {
 export function getApiUrl(path: string) {
   const configs = getConfigs();
   const trimmedPath = path.startsWith('/') ? path.substring(1) : path;
-  
+
   return `${configs.gateway.baseUrl}/cc/v1/${trimmedPath}`;
 }
 
 export function getAdspConfigs() {
   const configs = getConfigs();
-  
+
   return configs.adsp;
 }
 
@@ -122,6 +125,7 @@ export function getCaptchaSiteKey() {
   }
 }
 
-export function getProperty(obj:any, path:any) {
-  return path.split('.').reduce((acc:any, key:any) => acc?.[key], obj); 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function getProperty(obj: any, path: string) {
+  return path.split('.').reduce((acc, key) => acc?.[key], obj);
 }

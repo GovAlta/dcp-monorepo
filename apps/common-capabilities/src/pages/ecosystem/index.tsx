@@ -3,8 +3,6 @@ import {
   GoASpacer,
   GoATable,
   GoAThreeColumnLayout,
-  GoAOneColumnLayout,
-  GoAIcon,
 } from '@abgov/react-components';
 import React, { useEffect } from 'react';
 import {
@@ -16,6 +14,12 @@ import {
 import './styles.css';
 import BackToTop from '../../components/BackToTop';
 
+type Directory = {
+  name: string;
+  provider: string;
+  designation: string;
+};
+
 export default function EcoSystemPage(): JSX.Element {
   useEffect(() => {
     if (window.location.hash) {
@@ -26,8 +30,8 @@ export default function EcoSystemPage(): JSX.Element {
   return (
     <GoAThreeColumnLayout
       maxContentWidth="1550px"
-      rightColumnWidth='8%'
-      leftColumnWidth='22%'
+      rightColumnWidth="8%"
+      leftColumnWidth="22%"
       nav={
         <GoASideMenu>
           {sideNavItems.map((item) => (
@@ -73,8 +77,8 @@ export default function EcoSystemPage(): JSX.Element {
           </tr>
         </thead>
         <tbody>
-          {enterpriseDirectory.map((provider: any) => (
-            <tr>
+          {enterpriseDirectory.map((provider: Directory) => (
+            <tr key={provider.provider}>
               <td>{provider.provider}</td>
               <td>{provider.name}</td>
               <td>{provider.designation}</td>
@@ -110,8 +114,8 @@ export default function EcoSystemPage(): JSX.Element {
           </tr>
         </thead>
         <tbody>
-          {DDDDirectory.map((provider: any) => (
-            <tr>
+          {DDDDirectory.map((provider: Directory) => (
+            <tr key={provider.provider}>
               <td>{provider.provider}</td>
               <td>{provider.name}</td>
               <td>{provider.designation}</td>
@@ -145,8 +149,8 @@ export default function EcoSystemPage(): JSX.Element {
           </tr>
         </thead>
         <tbody>
-          {portfolioPlatformDirectory.map((provider: any) => (
-            <tr>
+          {portfolioPlatformDirectory.map((provider: Directory) => (
+            <tr key={provider.provider}>
               <td>{provider.provider}</td>
               <td>{provider.name}</td>
               <td>{provider.designation}</td>

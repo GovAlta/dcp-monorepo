@@ -10,14 +10,13 @@ interface LinkProps {
 }
 
 const InternalLink = ({ link, text, icon = true }: LinkProps) => {
-
   return (
     <div className="link-wrapper">
       <Link to={link}>
         {text}
         {icon && (
           <span className="link-icon">
-            <GoAIcon type="arrow-forward" size="small" ></GoAIcon>
+            <GoAIcon type="arrow-forward" size="small"></GoAIcon>
           </span>
         )}
       </Link>

@@ -1,5 +1,5 @@
 import React from 'react';
-const Header = ({ bodyClass, page }: any) => {
+const Header = () => {
   return (
     <>
       <footer>

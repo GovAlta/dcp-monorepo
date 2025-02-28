@@ -4,7 +4,7 @@ import * as util from 'util';
 
 dotenv.config();
 
-export const environment: any = envalid.cleanEnv(
+export const environment = envalid.cleanEnv(
   process.env,
   {
     KEYCLOAK_ROOT_URL: envalid.str({
@@ -35,5 +35,5 @@ export const environment: any = envalid.cleanEnv(
         console.error(`Invalid env vars: ${util.inspect(errors)}`);
       }
     },
-  }
+  },
 );

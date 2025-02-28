@@ -2,10 +2,10 @@ import { RequestHandler } from 'express';
 import { DataCache } from '../../../cache/types';
 import { CacheConfigs, CacheKeys } from '../../../cache';
 import { Logger } from 'winston';
-import axios from 'axios';
-import axiosRetry from 'axios-retry';
+import axios, { isAxiosError } from 'axios';
+import axiosRetry, { exponentialDelay } from 'axios-retry';
 
-axiosRetry(axios, { retries: 3, retryDelay: axiosRetry.exponentialDelay });
+axiosRetry(axios, { retries: 3, retryDelay: exponentialDelay });
 
 const VALUE_SERVICE_NAME_SPACE = 'common-capabilities';
 const VALUE_SERVICE_LISTING_NAME = 'published-index';
@@ -17,9 +17,9 @@ function requestErrorHandler(
   logger: Logger,
   customMessage: string,
   res,
-  status = 400
+  status = 400,
 ) {
-  if (axios.isAxiosError(error)) {
+  if (isAxiosError(error)) {
     logger.error(error.response.data, customMessage);
     res.status(error.response.status).send(error.response.data);
   } else {
@@ -52,12 +52,12 @@ export async function fetchServices(
   valueServiceUrl: URL,
   token: string,
   cache: DataCache,
-  logger: Logger
+  logger: Logger,
 ) {
   let result = {};
   const serviceListings = await axiosGet(
     `${valueServiceUrl}/${VALUE_SERVICE_NAME_SPACE}/values/${VALUE_SERVICE_LISTING_NAME}?top=1`,
-    token
+    token,
   );
   const serviceIds =
     serviceListings?.data?.[VALUE_SERVICE_NAME_SPACE]?.[
@@ -65,15 +65,15 @@ export async function fetchServices(
     ]?.[0]?.value?.[SERVICE_LISTING_KEY];
 
   logger.info(
-    `listing names to be fetched listings=${JSON.stringify(serviceIds)}`
+    `listing names to be fetched listings=${JSON.stringify(serviceIds)}`,
   );
 
   if (serviceIds) {
     const fetchServiceInfos = serviceIds.map((id: string) =>
       axiosGet(
         `${valueServiceUrl}/${VALUE_SERVICE_NAME_SPACE}/values/${id}?top=1`,
-        token
-      )
+        token,
+      ),
     );
 
     await Promise.all(fetchServiceInfos).then(async (serviceInfos) => {
@@ -87,12 +87,16 @@ export async function fetchServices(
         return acc;
       }, {});
 
-      await cache.set(CacheKeys.SERVICES, result, CacheConfigs[CacheKeys.SERVICES].ttl);
+      await cache.set(
+        CacheKeys.SERVICES,
+        result,
+        CacheConfigs[CacheKeys.SERVICES].ttl,
+      );
 
       logger.info(
         `services fetched from ADSP: keySize=${
           Object.keys(result).length
-        }, valueSize=${Object.values(result).length}`
+        }, valueSize=${Object.values(result).length}`,
       );
     });
   }
@@ -104,7 +108,7 @@ async function getAllServices(
   valueServiceUrl: URL,
   token: string,
   cache: DataCache,
-  logger: Logger
+  logger: Logger,
 ) {
   let result = await cache.get(CacheKeys.SERVICES);
 
@@ -118,7 +122,7 @@ async function getAllServices(
 export function exportServicesRoadmap(
   logger: Logger,
   valueServiceUrl: URL,
-  cache: DataCache
+  cache: DataCache,
 ) {
   return async (req, res) => {
     try {
@@ -127,7 +131,7 @@ export function exportServicesRoadmap(
         valueServiceUrl,
         token,
         cache,
-        logger
+        logger,
       );
 
       // extract the roadmap data from each service
@@ -174,16 +178,16 @@ export function exportServicesRoadmap(
           } else {
             return value;
           }
-        })
+        }),
       );
 
-      const csvContent = [csvHeaders.join(',')].concat(
-        csvRows.map((row) => row.join(','))
-      ).join('\n');
+      const csvContent = [csvHeaders.join(',')]
+        .concat(csvRows.map((row) => row.join(',')))
+        .join('\n');
 
       res.setHeader(
         'Content-Disposition',
-        'attachment; filename="services.csv"'
+        'attachment; filename="services.csv"',
       );
       res.setHeader('Content-Type', 'text/csv');
       res.send(csvContent);
@@ -192,7 +196,7 @@ export function exportServicesRoadmap(
         error,
         logger,
         'failed to get a list of services',
-        res
+        res,
       );
     }
   };
@@ -201,7 +205,7 @@ export function exportServicesRoadmap(
 export function getServices(
   logger: Logger,
   valueServiceUrl: URL,
-  cache: DataCache
+  cache: DataCache,
 ): RequestHandler {
   return async (req, res) => {
     try {
@@ -210,7 +214,7 @@ export function getServices(
         valueServiceUrl,
         token,
         cache,
-        logger
+        logger,
       );
 
       if (services && Object.keys(services).length > 0) {
@@ -225,7 +229,7 @@ export function getServices(
         error,
         logger,
         'failed to get a list of services',
-        res
+        res,
       );
     }
   };
@@ -234,7 +238,7 @@ export function getServices(
 export function getService(
   logger: Logger,
   valueServiceUrl: URL,
-  cache: DataCache
+  cache: DataCache,
 ): RequestHandler {
   return async (req, res) => {
     const serviceId = req.params.serviceId;
@@ -245,10 +249,10 @@ export function getService(
         valueServiceUrl,
         token,
         cache,
-        logger
+        logger,
       );
 
-      if (services[serviceId]) {
+      if (typeof serviceId === 'string' && serviceId in services) {
         res.status(200).send({ serviceInfo: services[serviceId] });
       } else {
         res
@@ -260,7 +264,7 @@ export function getService(
         error,
         logger,
         `failed to get service info for id=${serviceId}`,
-        res
+        res,
       );
     }
   };

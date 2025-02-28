@@ -1,11 +1,11 @@
-import type { FormConfig } from "../../contexts/types";
+import type { FormConfig } from '../../contexts/types';
 
 export const signUpFormConfig: FormConfig = {
   properties: {
     signUpType: {
       required: true,
       messages: {
-        required: 'Select one of the options'
+        required: 'Select one of the options',
       },
       validate: [],
       includedInPayload: false,
@@ -85,6 +85,8 @@ export const signUpFormConfig: FormConfig = {
       validate: [
         {
           regEx:
+            // TODO verify the correctness of the regex and enable the rules after
+            // eslint-disable-next-line security/detect-unsafe-regex, no-useless-escape
             /^(https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)$/,
           failed: 'Please check the web address.',
         },
@@ -100,5 +102,5 @@ export const signUpFormConfig: FormConfig = {
       revalidateOnChange: true,
     },
   },
-  getEntityUrl: (gatewayUrl: string, values: any) => `${gatewayUrl}/${values.signUpType}`,
+  getEntityUrl: (gatewayUrl, values) => `${gatewayUrl}/${values.signUpType}`,
 };

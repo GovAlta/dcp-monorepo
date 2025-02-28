@@ -1,4 +1,4 @@
-import type { FormConfig } from "../../contexts/types";
+import type { FormConfig } from '../../contexts/types';
 
 export const apptFormConfig: FormConfig = {
   properties: {
@@ -107,7 +107,7 @@ export const apptFormConfig: FormConfig = {
     toDiscuss: {
       required: true,
       messages: {
-        required: 'Describe what you would like to discuss'
+        required: 'Describe what you would like to discuss',
       },
       validate: [],
       includedInPayload: true,
@@ -141,5 +141,5 @@ export const apptFormConfig: FormConfig = {
       revalidateOnChange: true,
     },
   },
-  getEntityUrl: (gatewayUrl: string, values: any) => `${gatewayUrl}/${values}`, // TODO replace returned url with a valid one
+  getEntityUrl: (gatewayUrl, values) => `${gatewayUrl}/${values}`, // TODO replace returned url with a valid one
 };

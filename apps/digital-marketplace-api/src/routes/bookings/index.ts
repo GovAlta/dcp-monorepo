@@ -19,7 +19,7 @@ interface MiddlewareOptions {
 
 export async function applyBookingsGatewayMiddleware(
   app: Application,
-  { logger, directory, tokenProvider }: MiddlewareOptions
+  { logger, directory, tokenProvider }: MiddlewareOptions,
 ) {
   const eventServiceUrl = await directory.getServiceUrl(EVENT_API_ID);
   const calendarServiceUrl = await directory.getServiceUrl(CALENDAR_API_ID);

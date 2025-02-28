@@ -6,11 +6,16 @@ const BackToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
   return (
-    <div className='back-top'>    
-    <GoAButton type="tertiary" size="compact" trailingIcon="arrow-up-circle" onClick={scrollToTop}>
-    Back to top
-    </GoAButton>    
-    </div>    
+    <div className="back-top">
+      <GoAButton
+        type="tertiary"
+        size="compact"
+        trailingIcon="arrow-up-circle"
+        onClick={scrollToTop}
+      >
+        Back to top
+      </GoAButton>
+    </div>
   );
 };
 

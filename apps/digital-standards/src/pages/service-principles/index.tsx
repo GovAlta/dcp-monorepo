@@ -28,11 +28,11 @@ const StrategyPrinciples = () => {
       <h1 id="digital-service-principles">Digital Service Principles</h1>
       <p>
         A set of 14 Digital Service Principles will guide how we work with
-        in-house and vendor teams to design, deliver, and operate digital
+        in-house and vendor teams to design, deliver, and operate digital
         services. In 2024, these Digital Service Principles will be developed
         into Digital Service Standards that are measurable, include clear
         accountabilities, and will be required as part of all digital service
-        initiatives. 
+        initiatives.
       </p>
       <GoASpacer vSpacing="xl" />
 
@@ -49,7 +49,7 @@ const StrategyPrinciples = () => {
         </GoAContainer>
         <GoAContainer accent="thin" type="non-interactive">
           <h3 id="make-the-service-accessible-and-inclusive">
-            Make the service accessible and inclusive. 
+            Make the service accessible and inclusive.
           </h3>
           <p>
             Design the service for inclusion so that all who need it can use it.
@@ -69,7 +69,7 @@ const StrategyPrinciples = () => {
         </GoAContainer>
         <GoAContainer accent="thin" type="non-interactive">
           <h3 id="design-and-test-the-service-from-end-to-end">
-            Design and test the service from end to end. 
+            Design and test the service from end to end.
           </h3>
           <p>
             Design a seamless, resilient, omnichannel experience that meets user
@@ -79,7 +79,7 @@ const StrategyPrinciples = () => {
         </GoAContainer>
         <GoAContainer accent="thin" type="non-interactive">
           <h3 id="iterate-and-improve-frequently">
-            Iterate and improve frequently. 
+            Iterate and improve frequently.
           </h3>
           <p>
             Start small and scale the service rapidly using agile ways of
@@ -89,7 +89,7 @@ const StrategyPrinciples = () => {
         </GoAContainer>
         <GoAContainer accent="thin" type="non-interactive">
           <h3 id="choose-the-right-tools-and-technology">
-            Choose the right tools and technology. 
+            Choose the right tools and technology.
           </h3>
           <p>
             Choose technology that is scalable, interoperable, secure,
@@ -156,7 +156,7 @@ const StrategyPrinciples = () => {
         </GoAContainer>
         <GoAContainer accent="thin" type="non-interactive">
           <h3 id="make-the-service-simple-to-use">
-            Make the service simple to use. 
+            Make the service simple to use.
           </h3>
           <p>
             Ensure that users can do what they need to do as simply as possible
@@ -174,7 +174,7 @@ const StrategyPrinciples = () => {
           </p>
         </GoAContainer>
       </GoAGrid>
-      
+
       <GoASpacer vSpacing="l" />
       <BackToTop />
     </div>
@@ -182,4 +182,3 @@ const StrategyPrinciples = () => {
 };
 
 export default StrategyPrinciples;
-

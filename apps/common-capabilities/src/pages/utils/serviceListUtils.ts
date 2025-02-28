@@ -1,7 +1,7 @@
-import dayjs from "dayjs";
-import type { Service } from "../../types/types";
-import type { ServiceFilterKey } from "../services/config";
-import type { RoadmapFilterKey } from "../roadmap/config";
+import dayjs from 'dayjs';
+import type { Service } from '../../types/types';
+import type { ServiceFilterKey } from '../services/config';
+import type { RoadmapFilterKey } from '../roadmap/config';
 
 type FilterKey = ServiceFilterKey | RoadmapFilterKey;
 
@@ -10,63 +10,72 @@ export function capitalizeFirstWord(s: string) {
 }
 
 export function getAppsFilters(apps: Service[], filterKeys: FilterKey[]) {
-  const filters: any = {};
-  const indexedItems: any = {};
+  const filters: Partial<Record<FilterKey, Set<string>>> = {};
+  const indexedItems: Record<string, Set<string>> = {};
 
   apps.forEach((app: Service) => {
     filterKeys.forEach((key) => {
-      const propValue: any = app[key];
+      const appPropValue = app[key];
 
-      if (propValue) {
-        if (Array.isArray(propValue)) {
+      if (appPropValue) {
+        if (Array.isArray(appPropValue)) {
           // If the property is an array, add each element to the filter
-          propValue.forEach((element: any) => {
-            if (!filters[key]) {
-              filters[key] = new Set();
-            }
+          appPropValue.forEach((element) => {
             if (typeof element === 'object') {
-              filters[key].add(...Object.values(element));
-
-              Object.values(element).forEach((value: any) => {
-                indexedItems[value] = (indexedItems[value] || new Set()).add(app.appId);
+              Object.values(element).forEach((value) => {
+                (filters[key] ??= new Set()).add(value);
+                indexedItems[value] = (indexedItems[value] || new Set()).add(
+                  app.appId,
+                );
               });
             } else {
-              filters[key].add(element);
-              indexedItems[element] = (indexedItems[element] || new Set()).add(app.appId);
+              (filters[key] ??= new Set()).add(element);
+              indexedItems[element] = (indexedItems[element] || new Set()).add(
+                app.appId,
+              );
             }
           });
         } else {
-          // If the property is not an array, add it directly to the filter
-          if (!filters[key]) {
-            filters[key] = new Set();
-          }
-          filters[key].add(app[key]);
-          indexedItems[propValue] = (indexedItems[propValue] || new Set()).add(app.appId);
+          (filters[key] ??= new Set()).add(appPropValue);
+          indexedItems[appPropValue] = (
+            indexedItems[appPropValue] || new Set()
+          ).add(app.appId);
         }
       }
     });
   });
 
+  const result: Partial<Record<FilterKey, string[]>> = {};
   // Convert Set back to array and add 'Other' to each filter
   for (const key in filters) {
-    filters[key] = Array.from(filters[key]).sort();
+    result[key as FilterKey] = Array.from(
+      filters[key as FilterKey] as Set<string>,
+    ).sort();
   }
 
   return {
-    filters,
-    indexedItems
+    filters: result,
+    indexedItems,
   };
 }
 
-export function generateFilterObject(services: Service[], filtersList: FilterKey[]) {
+export function generateFilterObject(
+  services: Service[],
+  filtersList: FilterKey[],
+) {
   const { filters } = getAppsFilters(services, filtersList);
-
-  const filterObject: any = {};
+  const filterObject: Partial<
+    Record<FilterKey, Partial<Record<string, boolean>>>
+  > = {};
 
   for (const key in filters) {
-    filterObject[key] = {};
-    filters[key].forEach((filterValue: FilterKey) => {
-      filterObject[key][filterValue] = false;
+    const filterKey = key as FilterKey;
+    filterObject[filterKey] = {};
+    filters[filterKey]?.forEach((filterValue) => {
+      const filter = filterObject[filterKey];
+      if (filter) {
+        filter[filterValue] = false;
+      }
     });
   }
 
@@ -87,5 +96,5 @@ export function getLastUpdatedDate(services: Service[]) {
     }
   }
 
-  return hasLastUpdatedDate ? lastUpdatedDate.format() : "";
+  return hasLastUpdatedDate ? lastUpdatedDate.format() : '';
 }

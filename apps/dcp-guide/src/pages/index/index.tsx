@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { GoAIcon, GoAContainer } from '@abgov/react-components';
 import Astro from '../../assets/astro.png';
 import Github from '../../assets/github.png';

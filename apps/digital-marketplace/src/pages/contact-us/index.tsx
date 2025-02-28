@@ -1,9 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import hero_mobile from '../../img/hero-mobile-tablet.svg';
 import './styles.css';
 
 const ContactPage = () => {
-
   return (
     <>
       <div className="goa-adm-body-header goa-adm-body-full">

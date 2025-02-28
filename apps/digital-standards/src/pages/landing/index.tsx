@@ -1,8 +1,4 @@
-import {
-  GoAContainer,
-  GoAGrid,
-  GoASpacer,
-} from '@abgov/react-components';
+import { GoAContainer, GoAGrid, GoASpacer } from '@abgov/react-components';
 import React from 'react';
 import './styles.css';
 
@@ -13,10 +9,9 @@ export default function LandingPage() {
       <p>
         Through the standards, with new supports and guidance, we’re shifting
         how teams develop and produce user-centred products and services for
-        citizens and businesses in a safe and secure manner.​ Positioning
-        Alberta as a technology and innovation hub and creating opportunities
-        for all Albertans to contribute, thrive, and succeed in our digital
-        economy. 
+        citizens and businesses in a safe and secure manner. Positioning as a
+        technology and innovation hub and creating opportunities for all
+        Albertans to contribute, thrive, and succeed in our digital economy.
       </p>
 
       <p>
@@ -77,21 +72,22 @@ export default function LandingPage() {
           <GoASpacer vSpacing="m" />
           <p>
             Based on the Digital Service Standards, clear criteria have been
-            established for the evaluation of services. Learn when and how to get an assessment.
+            established for the evaluation of services. Learn when and how to
+            get an assessment.
           </p>
         </GoAContainer>
         <GoAContainer type="interactive" accent="thin">
           <a id="service-tile-title" href={`digital-capabilities/index.html`}>
-          Digital Capability Program
+            Digital Capability Program
           </a>
           <GoASpacer vSpacing="m" />
           <p>
-          Growing the knowledge, skills and experience of public servants in digital-era service design and delivery.
+            Growing the knowledge, skills and experience of public servants in
+            digital-era service design and delivery.
           </p>
         </GoAContainer>
       </GoAGrid>
-      <GoASpacer vSpacing="2xl" />      
+      <GoASpacer vSpacing="2xl" />
     </div>
-
   );
 }

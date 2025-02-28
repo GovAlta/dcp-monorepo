@@ -82,7 +82,7 @@ export default function ServiceHelp() {
           </li>
         </ul>
       </p>
-      <GoASpacer vSpacing="2xl" />      
+      <GoASpacer vSpacing="2xl" />
       <BackToTop />
     </div>
   );
