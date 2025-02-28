@@ -28,10 +28,10 @@ jobs:
 
       - name: Replace placeholders
         run: |
-          sed -i "s/DOMAIN_PLACEHOLDER/${{ github.event.inputs.DOMAIN }}/g" zap/contexts/auth.xml
-          sed -i "s/DOMAIN_POLL_PLACEHOLDER/${{ github.event.inputs.DOMAIN_POLL }}/g" zap/contexts/auth.xml
-          sed -i "s/USER_PLACEHOLDER/${{ secrets.ZAP_SSO_USER }}/g" zap/contexts/auth.xml
-          sed -i "s/PASSWORD_PLACEHOLDER/${{ secrets.ZAP_SSO_PWD }}/g" zap/contexts/auth.xml
+          sed -i "s|DOMAIN_PLACEHOLDER|${{ github.event.inputs.DOMAIN }}|g" zap/contexts/auth.xml
+            sed -i "s|DOMAIN_POLL_PLACEHOLDER|${{ github.event.inputs.DOMAIN_POLL }}|g" zap/contexts/auth.xml
+            sed -i "s|USER_PLACEHOLDER|${{ secrets.ZAP_SSO_USER }}|g" zap/contexts/auth.xml
+            sed -i "s|PASSWORD_PLACEHOLDER|${{ secrets.ZAP_SSO_PWD }}|g" zap/contexts/auth.xml
 
       - name: ZAP Scan
         uses: zaproxy/action-full-scan@v0.12.0
