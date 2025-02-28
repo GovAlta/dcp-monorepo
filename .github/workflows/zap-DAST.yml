@@ -37,4 +37,4 @@ jobs:
         uses: zaproxy/action-full-scan@v0.12.0
         with:
           target: ${{ github.event.inputs.TARGET_URL }}
-          cmd_options: '-n zap/contexts/auth.xml'
+          cmd_options: '-j -n zap/contexts/auth.xml'
