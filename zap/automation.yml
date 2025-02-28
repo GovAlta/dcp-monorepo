@@ -16,18 +16,18 @@ env:
           type: CLICK
           xpath: "/html/body/div/goa-one-column-layout/div/goa-page-block/main/goa-container/button[3]"
           timeout: 30000
-        - description: username
-          type: USERNAME
-          xpath: "/html/body/div/form[1]/div/div/div[2]/div[1]/div/div/div/div/div[1]/div[3]/div/div/div/div[2]/div[2]/div/input[1]"
-          timeout: 5000
-        - description: click next
-          type: CLICK
-          xpath: "/html/body/div/form[1]/div/div/div[2]/div[1]/div/div/div/div/div[1]/div[3]/div/div/div/div[4]/div/div/div/div"
-          timeout: 115000
-        - description: fill pwd
-          type: PASSWORD
-          cssSelector: "#passwordInput"
-          timeout: 5000
+        # - description: username
+        #   type: USERNAME
+        #   xpath: "/html/body/div/form[1]/div/div/div[2]/div[1]/div/div/div/div/div[1]/div[3]/div/div/div/div[2]/div[2]/div/input[1]"
+        #   timeout: 5000
+        # - description: click next
+        #   type: CLICK
+        #   xpath: "/html/body/div/form[1]/div/div/div[2]/div[1]/div/div/div/div/div[1]/div[3]/div/div/div/div[4]/div/div/div/div"
+        #   timeout: 115000
+        # - description: fill pwd
+        #   type: PASSWORD
+        #   cssSelector: "#passwordInput"
+          # timeout: 5000
       verification:
         method: poll
         loggedInRegex: \Q 200 OK\E
