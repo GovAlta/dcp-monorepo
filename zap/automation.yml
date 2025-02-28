@@ -14,8 +14,8 @@ env:
         steps:
         - description: Sign in with microsoft
           type: CLICK
-          xpath: "/html/body/div/goa-one-column-layout/div/goa-page-block/main/goa-container/button[3]"
-          timeout: 30000
+          cssSelector: button.providerButton:nth-child(9)
+          timeout: 10000
         # - description: username
         #   type: USERNAME
         #   xpath: "/html/body/div/form[1]/div/div/div[2]/div[1]/div/div/div/div/div[1]/div[3]/div/div/div/div[2]/div[2]/div/input[1]"
