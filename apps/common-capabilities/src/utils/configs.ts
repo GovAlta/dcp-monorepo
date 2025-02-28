@@ -89,6 +89,14 @@ function getEnv() {
   return Environment[env as keyof typeof Environment];
 }
 
+function isPublicURL() {
+  const url = window.location.hostname.toLowerCase();
+  return (
+    url === 'common-capabilities-uat.alberta.ca' ||
+    url === 'common-capabilities.gov.ab.ca'
+  );
+}
+
 function getConfigs(env?: Environment) {
   env ??= getEnv();
 
@@ -115,11 +123,19 @@ export function getSchemaUrl(definition: string) {
 export function getCaptchaSiteKey() {
   switch (getEnv()) {
     case Environment.prod:
-      return '6LcaDIMqAAAAANe6sjq3lcjDCMFYeaucnQRQ2h76';
+      if (isPublicURL()) {
+        return '6LcaDIMqAAAAANe6sjq3lcjDCMFYeaucnQRQ2h76';
+      } else {
+        return '6LcaDIMqAAAAANe6sjq3lcjDCMFYeaucnQRQ2h76';
+      }
     case Environment.local:
     case Environment.dev:
     case Environment.uat:
-      return '6LcEDIMqAAAAAFcF-DAoBUVWXIBNYVswsv_7JAgN';
+      if (isPublicURL()) {
+        return '6LcEDIMqAAAAAFcF-DAoBUVWXIBNYVswsv_7JAgN';
+      } else {
+        return '6LcEDIMqAAAAAFcF-DAoBUVWXIBNYVswsv_7JAgN';
+      }
     default:
       return '?'; // first character == "?" will disable
   }
