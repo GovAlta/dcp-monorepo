@@ -5,23 +5,23 @@ import BackButton from '../../components/BackButton';
 import { useAuth } from '../../providers/AuthStateProvider';
 
 export default function AddServicePage() {
-  const { handleSubmit } = useForm();
-  const { authToken } = useAuth();
+    const { handleSubmit } = useForm();
+    const { authToken } = useAuth();
 
-  const backLink = (
-    <BackButton
-      text="Back to listing"
-      onClick={() => {
-        history.back();
-      }}
-    />
-  );
+    const backLink = (
+        <BackButton
+            text="Back to listing"
+            onClick={() => {
+                history.back();
+            }}
+        />
+    );
 
-  return (
-    <ServiceFormWrapper
-      backLink={backLink}
-      pageHeader="Add Service"
-      handleSubmit={(data) => handleSubmit(data, authToken)}
-    />
-  );
+    return (
+        <ServiceFormWrapper
+            backLink={backLink}
+            pageHeader="Add Service"
+            handleSubmit={(data) => handleSubmit(data, authToken)}
+        />
+    );
 }

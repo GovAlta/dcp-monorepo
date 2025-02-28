@@ -5,7 +5,7 @@ import App from './App';
 
 const root = document.getElementById('root')!;
 createRoot(root).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
+    <StrictMode>
+        <App />
+    </StrictMode>,
 );

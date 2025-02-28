@@ -1,9 +1,9 @@
 import React, { useMemo } from 'react';
 import ServiceForm from '.';
 import {
-  GoACircularProgress,
-  GoANotification,
-  GoAThreeColumnLayout,
+    GoACircularProgress,
+    GoANotification,
+    GoAThreeColumnLayout,
 } from '@abgov/react-components';
 import { getSchemaUrl } from '../../utils/configs';
 import useFetch from '../../hooks/useFetch';
@@ -12,68 +12,68 @@ import type { Service } from '../../types/types';
 import { useAuth } from '../../providers/AuthStateProvider';
 
 type ServiceFormWrapperProps = {
-  backLink?: JSX.Element;
-  pageHeader: string;
-  service?: Service;
-  handleSubmit: (data: Service) => Promise<unknown>;
+    backLink?: JSX.Element;
+    pageHeader: string;
+    service?: Service;
+    handleSubmit: (data: Service) => Promise<unknown>;
 };
 
 type SchemaResponse = {
-  dataSchema: JsonSchema;
-  uiSchema: UISchemaElement;
+    dataSchema: JsonSchema;
+    uiSchema: UISchemaElement;
 };
 
 export default function ServiceFormWrapper({
-  backLink,
-  pageHeader,
-  service,
-  handleSubmit,
+    backLink,
+    pageHeader,
+    service,
+    handleSubmit,
 }: ServiceFormWrapperProps) {
-  const { authToken } = useAuth();
-  const schemaUrl = useMemo(
-    () => getSchemaUrl('common-capabilities-intake'),
-    [],
-  );
-  const [data, error, isLoading] = useFetch<SchemaResponse>(schemaUrl, {
-    headers: { Authorization: `Bearer ${authToken}` },
-  });
-
-  let content;
-
-  if (data) {
-    content = (
-      <ServiceForm
-        data={service}
-        dataSchema={data?.dataSchema}
-        onSubmit={handleSubmit}
-        uiSchema={data?.uiSchema}
-      />
+    const { authToken } = useAuth();
+    const schemaUrl = useMemo(
+        () => getSchemaUrl('common-capabilities-intake'),
+        [],
     );
-  } else if (error) {
-    content = (
-      <GoANotification type="emergency" ariaLive="assertive">
-        Failed to load form definitions. Please try again later.
-      </GoANotification>
-    );
-  }
+    const [data, error, isLoading] = useFetch<SchemaResponse>(schemaUrl, {
+        headers: { Authorization: `Bearer ${authToken}` },
+    });
 
-  return (
-    <GoAThreeColumnLayout
-      maxContentWidth="1550px"
-      rightColumnWidth="8%"
-      leftColumnWidth="18%"
-    >
-      {backLink}
-      <h1>{pageHeader}</h1>
-      <div className="progress-indicator">
-        <GoACircularProgress
-          variant="inline"
-          size="large"
-          message="Loading form information..."
-          visible={isLoading}
-        />
-      </div>
-      {content}
-    </GoAThreeColumnLayout>
-  );
+    let content;
+
+    if (data) {
+        content = (
+            <ServiceForm
+                data={service}
+                dataSchema={data?.dataSchema}
+                onSubmit={handleSubmit}
+                uiSchema={data?.uiSchema}
+            />
+        );
+    } else if (error) {
+        content = (
+            <GoANotification type="emergency" ariaLive="assertive">
+                Failed to load form definitions. Please try again later.
+            </GoANotification>
+        );
+    }
+
+    return (
+        <GoAThreeColumnLayout
+            maxContentWidth="1550px"
+            rightColumnWidth="8%"
+            leftColumnWidth="18%"
+        >
+            {backLink}
+            <h1>{pageHeader}</h1>
+            <div className="progress-indicator">
+                <GoACircularProgress
+                    variant="inline"
+                    size="large"
+                    message="Loading form information..."
+                    visible={isLoading}
+                />
+            </div>
+            {content}
+        </GoAThreeColumnLayout>
+    );
 }
