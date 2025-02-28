@@ -10,7 +10,7 @@ env:
       parameters:
         loginPageUrl: DOMAIN_PLACEHOLDER
         loginPageWait: 5000
-        browserId: firefox
+        browserId: firefox-headless
         steps:
         - description: Sign in with microsoft
           type: CLICK
