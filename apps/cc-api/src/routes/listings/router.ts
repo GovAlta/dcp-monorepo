@@ -171,6 +171,7 @@ export function newListing(
                     appName: requestBody.formData.serviceName,
                     userName: requestBody.formData.editorName,
                     editorEmail: requestBody.formData.editorEmail,
+                    formId: listingApiCall?.data?.submission?.id || '',
                   },
                 },
                 {

@@ -25,6 +25,7 @@ export const environment = envalid.cleanEnv(
     }), // email1,email2
     CACHE_TTL: envalid.str({ default: '1800000' }), // 30min
     ALLOWED_ORIGINS: envalid.str({ default: '' }), // comma separated list of allowed urls strings or regex
+    NODE_ENV: envalid.str({ default: 'uat' }),
   },
   {
     reporter: ({ errors }) => {
