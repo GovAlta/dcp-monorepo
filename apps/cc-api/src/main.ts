@@ -28,7 +28,7 @@ const initializeApp = async (): Promise<express.Application> => {
       callback(null, {
         origin:
           environment.NODE_ENV?.toLowerCase() === 'development'
-            ? true // allow all origins for local development
+            ? '*' // allow all origins for local development
             : allowList,
       });
     }),
