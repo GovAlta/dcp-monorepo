@@ -7,9 +7,9 @@ import { Service, ServiceAttribute } from '../../types/types';
 
 interface CardProps {
   app: Service;
-  roadmapMode: string;
+  roadmapMode?: string;
   roadmapHistory?: boolean;
-  condensed: boolean;
+  condensed?: boolean;
 }
 
 const Card = ({ app, roadmapMode, roadmapHistory, condensed }: CardProps) => {

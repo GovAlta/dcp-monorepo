@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-nocheck
 import React, { useEffect, useState, useMemo } from 'react';
 import {
   GoAGrid,
@@ -23,17 +20,32 @@ import {
   generateFilterObject,
   getLastUpdatedDate,
 } from '../utils/serviceListUtils';
-import { defaultState, filtersList, filterListCustom } from './config';
+import {
+  defaultSelectedFilters,
+  filtersList,
+  filterListCustom,
+} from '../common/listview/configs';
 import useFetch from '../../hooks/useFetch';
 import { getApiUrl } from '../../utils/configs';
-import { ServiceListingResponse, Status } from '../../types/types';
+import {
+  Service,
+  ServiceAttribute,
+  ServiceListingResponse,
+  Status,
+} from '../../types/types';
 import { roadmapList } from '../../components/Card/ServiceRoadmap';
 import LastUpdated from '../../components/LastUpdated';
 import axios from 'axios';
 import { useAuth } from '../../providers/AuthStateProvider';
+import {
+  FilterableField,
+  FilterCheckboxState,
+  FilterState,
+} from '../types/types';
 
-type Filter = {
-  [key: string]: any[];
+type ExportAPIState = {
+  loading: boolean;
+  error: string | null;
 };
 
 export default function HomePage(): JSX.Element {
@@ -51,7 +63,7 @@ export default function HomePage(): JSX.Element {
     const persistedValue = localStorage.getItem('includeDecommissioned');
     return persistedValue === 'true';
   });
-  const [services, setServices] = useState([]);
+  const [services, setServices] = useState<Service[]>([]);
   const [filtersAccordionState, setFiltersAccordionState] = useState({
     environment: false,
     language: false,
@@ -65,7 +77,7 @@ export default function HomePage(): JSX.Element {
     () => getApiUrl('/listings/services/roadmap/export'),
     [],
   );
-  const [exportApi, setExportApiState] = useState({
+  const [exportApi, setExportApiState] = useState<ExportAPIState>({
     loading: false,
     error: null,
   });
@@ -76,65 +88,70 @@ export default function HomePage(): JSX.Element {
     listingUrl,
     { headers: { Authorization: `Bearer ${authToken}` } },
   );
-  const [apps, setApps] = useState([]);
+  const [apps, setApps] = useState<Service[]>([]);
 
   // filters state
   const [appFilters, setFilterList] = useState(
     getAppsFilters(services, filtersList),
   );
-  const [checkedFilters, setCheckedFilters] = useState(() => {
-    const savedCheckboxState = localStorage.getItem('selectedCheckboxState');
-    return savedCheckboxState
-      ? JSON.parse(savedCheckboxState)
-      : generateFilterObject(apps, filtersList);
-  });
-  const [selectedFiltersState, setSelectedFiltersState] = useState(() => {
-    const savedFiltersState = localStorage.getItem('selectedFiltersState');
-    return savedFiltersState
-      ? JSON.parse(savedFiltersState)
-      : defaultState.selectedFilters;
-  });
+  const [checkedFilters, setCheckedFilters] = useState<FilterCheckboxState>(
+    () => {
+      const savedCheckboxState = localStorage.getItem('selectedCheckboxState');
+      return savedCheckboxState
+        ? JSON.parse(savedCheckboxState)
+        : generateFilterObject(apps, filtersList);
+    },
+  );
+  const [selectedFiltersState, setSelectedFiltersState] = useState<FilterState>(
+    () => {
+      const savedFiltersState = localStorage.getItem('selectedFiltersState');
+      return savedFiltersState
+        ? JSON.parse(savedFiltersState)
+        : defaultSelectedFilters;
+    },
+  );
 
-  const getHandleFilterChange = (filterProperty) => (name, checked) => {
-    // handles checkboxes checked state
-    setCheckedFilters((prevFilters) => {
-      const newCheckboxState = {
-        ...prevFilters,
-        [filterProperty]: {
-          ...prevFilters[filterProperty],
-          [name]: checked,
-        },
-      };
+  const getHandleFilterChange =
+    (filterProperty: FilterableField) => (name: string, checked: boolean) => {
+      // handles checkboxes checked state
+      setCheckedFilters((prevFilters) => {
+        const newCheckboxState = {
+          ...prevFilters,
+          [filterProperty]: {
+            ...prevFilters[filterProperty],
+            [name]: checked,
+          },
+        };
+        localStorage.setItem(
+          'selectedCheckboxState',
+          JSON.stringify(newCheckboxState),
+        );
+        return newCheckboxState;
+      });
+
+      // handles what filters are selected
+      setSelectedFiltersState((prevSelectedFiltersState) => {
+        // if the filter checked is true, add it to the selectedFiltersState or vice versa
+        const newSelectedFiltersState = {
+          ...prevSelectedFiltersState,
+          [filterProperty]: checked
+            ? [...prevSelectedFiltersState[filterProperty], name]
+            : prevSelectedFiltersState[filterProperty].filter(
+                (filter) => filter !== name,
+              ),
+        };
+        localStorage.setItem(
+          'selectedFiltersState',
+          JSON.stringify(newSelectedFiltersState),
+        );
+        return newSelectedFiltersState;
+      });
+
       localStorage.setItem(
-        'selectedCheckboxState',
-        JSON.stringify(newCheckboxState),
+        'searchTimestamp',
+        (new Date().getTime() + 5 * 60 * 1000).toString(),
       );
-      return newCheckboxState;
-    });
-
-    // handles what filters are selected
-    setSelectedFiltersState((prevSelectedFiltersState) => {
-      // if the filter checked is true, add it to the selectedFiltersState or vice versa
-      const newSelectedFiltersState = {
-        ...prevSelectedFiltersState,
-        [filterProperty]: checked
-          ? [...prevSelectedFiltersState[filterProperty], name]
-          : prevSelectedFiltersState[filterProperty].filter(
-              (filter) => filter !== name,
-            ),
-      };
-      localStorage.setItem(
-        'selectedFiltersState',
-        JSON.stringify(newSelectedFiltersState),
-      );
-      return newSelectedFiltersState;
-    });
-
-    localStorage.setItem(
-      'searchTimestamp',
-      (new Date().getTime() + 5 * 60 * 1000).toString(),
-    );
-  };
+    };
 
   // to force re-render UI for filter selection counts = n/a. Replaced by collapseKey
   //const [rerender, setRerender] = useState('');
@@ -142,14 +159,14 @@ export default function HomePage(): JSX.Element {
   // searches for items in the services array that match the search and filter
   // however search takes priority over filters
   const findServices = (
-    array: any[],
+    array: Service[],
     searchRegExp: RegExp,
-    fields: string[],
-    filters: Filter,
+    fields: ServiceAttribute[],
+    filters: FilterState,
   ) => {
-    return array.filter((item: any) => {
+    return array.filter((item) => {
       const fieldMatch = fields
-        .map((field: string) => searchRegExp.test(item[field]))
+        .map((field) => searchRegExp.test(item[field] as string))
         .some(Boolean);
 
       const filterMatches = Object.entries(filters).every(
@@ -194,7 +211,7 @@ export default function HomePage(): JSX.Element {
       setExportApiState({ loading: false, error: null });
     } catch (error) {
       console.error(error);
-      setExportApiState({ loading: false, error: error.message });
+      setExportApiState({ loading: false, error: (error as Error).message });
     }
   };
 
@@ -279,11 +296,8 @@ export default function HomePage(): JSX.Element {
 
       // set the state of selectedCheckboxState and selectedFiltersState of category in the functional group
       setSelectedFiltersState({
-        ...defaultState.selectedFilters,
-        functionalGroup: [
-          category,
-          ...defaultState.selectedFilters.functionalGroup,
-        ],
+        ...defaultSelectedFilters,
+        functionalGroup: [category, ...defaultSelectedFilters.functionalGroup],
       });
       setCheckedFilters({
         ...generateFilterObject(apps, filtersList),
@@ -300,15 +314,11 @@ export default function HomePage(): JSX.Element {
   }, [apps]);
 
   const roadmapWhenList = roadmapList(services, roadmapView.history);
-  const roadmapData = (services, targetWhen) => {
+  const roadmapData = (services: Service[], targetWhen: string) => {
     return services.filter((service) =>
       service.roadmap?.some((roadmapItem) => roadmapItem.when === targetWhen),
     );
   };
-  const checkedProviders =
-    checkedFilters.provider === undefined
-      ? []
-      : Object.entries(checkedFilters.provider).filter(([, value]) => value);
 
   let content;
 
@@ -340,6 +350,7 @@ export default function HomePage(): JSX.Element {
             <GoACheckbox
               id={'roadmapGrouped'}
               checked={roadmapView.grouped}
+              name={'groupByQuarter'}
               text="Timeline by quarter"
               description={
                 roadmapView.grouped ? (
@@ -377,7 +388,7 @@ export default function HomePage(): JSX.Element {
               checked={roadmapView.history}
               name="history"
               text="Show past items"
-              onChange={(name: string, checked: boolean) =>
+              onChange={(_, checked: boolean) =>
                 setRoadmapView((prevState) => ({
                   ...prevState,
                   history: checked,
@@ -402,7 +413,7 @@ export default function HomePage(): JSX.Element {
                 localStorage.removeItem('selectedCheckboxState');
                 localStorage.removeItem('selectedFiltersState');
                 setCheckedFilters(generateFilterObject(apps, filtersList));
-                setSelectedFiltersState(defaultState.selectedFilters);
+                setSelectedFiltersState(defaultSelectedFilters);
                 localStorage.setItem(
                   'searchTimestamp',
                   (new Date().getTime() + 5 * 60 * 1000).toString(),
@@ -424,7 +435,7 @@ export default function HomePage(): JSX.Element {
 
                   setSearchFilter('');
                   setCheckedFilters(generateFilterObject(apps, filtersList));
-                  setSelectedFiltersState(defaultState.selectedFilters);
+                  setSelectedFiltersState(defaultSelectedFilters);
                 }}
               >
                 Clear all
@@ -467,13 +478,15 @@ export default function HomePage(): JSX.Element {
             <GoASpacer vSpacing="xl" />
             <GoACheckbox
               key={'includeDecommissioned'}
-              label={'Include decommissioned services'}
               name={'includeDecommissioned'}
               text={'Include decommissioned services'}
               checked={includeDecommissioned}
-              onChange={(name, checked) => {
+              onChange={(_, checked) => {
                 setIncludeDecommissioned(checked);
-                localStorage.setItem('includeDecommissioned', checked);
+                localStorage.setItem(
+                  'includeDecommissioned',
+                  checked.toString(),
+                );
                 if (!checked) {
                   getHandleFilterChange('status')(Status.Decommissioned, false);
                 }
@@ -495,7 +508,6 @@ export default function HomePage(): JSX.Element {
                     (filter) => (
                       <GoACheckbox
                         key={filter}
-                        label={filter}
                         name={filter}
                         text={`${filter}`}
                         checked={
@@ -517,9 +529,6 @@ export default function HomePage(): JSX.Element {
         <div className="home-header">
           <h1 id="home-title">Service Roadmaps</h1>
         </div>
-        {checkedProviders.map((item) => (
-          <li key={item}>{item}</li>
-        ))}
 
         {roadmapView.grouped ? (
           <>
@@ -570,7 +579,7 @@ export default function HomePage(): JSX.Element {
                   <GoAGrid minChildWidth="33ch" gap="xl">
                     {roadmapData(services, when).map((app) => (
                       <Card
-                        key={`grouped-${app.id}`}
+                        key={`grouped-${app.appId}`}
                         app={app}
                         roadmapMode={when}
                         condensed={roadmapView.condensed}
@@ -599,7 +608,7 @@ export default function HomePage(): JSX.Element {
                 services.map((app) => {
                   return (
                     <Card
-                      key={`non-grouped-${app.id}`}
+                      key={`non-grouped-${app.appId}`}
                       app={app}
                       roadmapMode={'list'}
                       roadmapHistory={roadmapView.history}
