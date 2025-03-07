@@ -1,9 +1,8 @@
 import dayjs from 'dayjs';
 import type { Service } from '../../types/types';
-import type { ServiceFilterKey } from '../services/config';
-import type { RoadmapFilterKey } from '../roadmap/config';
+import { FilterableField, FilterCheckboxState } from '../types/types';
 
-type FilterKey = ServiceFilterKey | RoadmapFilterKey;
+type FilterKey = FilterableField;
 
 export function capitalizeFirstWord(s: string) {
   return s.replace(/(^|[^a-zA-Z])[a-z]/g, (match) => match.toUpperCase());
@@ -64,9 +63,7 @@ export function generateFilterObject(
   filtersList: FilterKey[],
 ) {
   const { filters } = getAppsFilters(services, filtersList);
-  const filterObject: Partial<
-    Record<FilterKey, Partial<Record<string, boolean>>>
-  > = {};
+  const filterObject: FilterCheckboxState = {} as FilterCheckboxState;
 
   for (const key in filters) {
     const filterKey = key as FilterKey;
