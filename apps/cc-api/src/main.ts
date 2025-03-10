@@ -25,7 +25,12 @@ const initializeApp = async (): Promise<express.Application> => {
     cors((_, callback) => {
       const allowList = environment.ALLOWED_ORIGINS?.split(',') || [];
 
-      callback(null, { origin: allowList });
+      callback(null, {
+        origin:
+          environment.NODE_ENV?.toLowerCase() === 'development'
+            ? '*' // allow all origins for local development
+            : allowList,
+      });
     }),
   );
   app.use(compression());
