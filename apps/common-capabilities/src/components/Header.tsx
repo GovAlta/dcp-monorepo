@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-
 import { GoAMicrositeHeader, GoAAppHeader } from '@abgov/react-components';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../providers/AuthStateProvider';
