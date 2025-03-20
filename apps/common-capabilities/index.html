@@ -8,7 +8,7 @@
     <!-- Google tag (gtag.js) -->
     <script>
       const hostName = window.location.hostname;
-      if (hostName === 'common-capabilities-dcp-uat.apps.aro.gov.ab.ca') {
+      if (hostName === 'common-capabilities-dcp-uat.apps.aro.gov.ab.ca' || hostName === 'common-capabilities-uat.alberta.ca') {
         (function () {
           window.dataLayer = window.dataLayer || [];
           function gtag() {
@@ -28,7 +28,7 @@
           document.head.appendChild(script);
           document.head.appendChild(feedbackscript);
         })();
-      } else if (hostName === 'common-capabilities.digital.gov.ab.ca') {
+      } else if (hostName === 'common-capabilities.digital.gov.ab.ca' || hostName === 'common-capabilities.gov.ab.ca') {
         (function () {
           window.dataLayer = window.dataLayer || [];
           function gtag() {
