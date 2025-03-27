@@ -42,7 +42,6 @@ const initializeApp = async (): Promise<express.Application> => {
   const accessServiceUrl = new URL(environment.KEYCLOAK_ROOT_URL);
   const cache = getCache(logger);
 
-  // need to handle log context for authed calls when using offline initilized service
   const {
     healthCheck,
     metricsHandler,
@@ -65,12 +64,12 @@ const initializeApp = async (): Promise<express.Application> => {
     { logger },
   );
 
-  configurePassport(app, passport, { tenantStrategy, cache, logger });
+  configurePassport(app, passport, { tenantStrategy });
 
   app.use(metricsHandler);
   app.use(traceHandler);
 
-  app.use('/cc', passport.authenticate(['jwt', 'tenant'], { session: false }));
+  app.use('/cc', passport.authenticate(['tenant'], { session: false }));
 
   await applyGatewayMiddleware(app, {
     logger,
