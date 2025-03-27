@@ -80,8 +80,8 @@ const roadmapFilterFunc = (when: string) => {
 const { fiscalYear, fiscalQuarter } = getCurrentFiscalQuarter();
 
 export const roadmapList = (data: Service[], history: boolean) => {
-  const allWhenValues: string[] = data.flatMap((obj: Service) =>
-    obj.roadmap.map((item: Roadmap) => item.when),
+  const allWhenValues: string[] = data.flatMap(
+    (obj: Service) => obj.roadmap?.map((item: Roadmap) => item.when) || [],
   );
 
   const roadMapWhenList = [...new Set(allWhenValues)].sort(roadmapSortFunc);
