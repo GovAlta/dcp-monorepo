@@ -95,7 +95,7 @@ export const roadmapList = (data: Service[], history: boolean) => {
 };
 
 export const ServiceRoadmap: React.FC<Props> = (props) => {
-  if (!props.roadmapMode || props.roadmapItems.length < 1) {
+  if (!props?.roadmapMode || !props?.roadmapItems?.length) {
     return null;
   }
 
