@@ -1,7 +1,7 @@
 import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import '@abgov/web-components';
-import './scripts/loadGtag';
+import './loadScripts';
 import './index.css';
 import App from './App';
 
