@@ -7,6 +7,7 @@ declare global {
         { action }: { action: string },
       ) => Promise<string>;
     };
+    dataLayer: Array<unknown>;
   }
 }
 
