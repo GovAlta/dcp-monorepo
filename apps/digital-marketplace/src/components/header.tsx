@@ -77,7 +77,7 @@ const Header = ({ page }: { page: string }) => {
                   <li
                     className={
                       page === 'Supplier Support' ||
-                      page === 'Understanding Procurement'
+                      page === 'Procurement basics'
                         ? 'goa-adm-nav-active-item'
                         : ''
                     }

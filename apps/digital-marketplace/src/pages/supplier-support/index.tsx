@@ -88,7 +88,7 @@ const ProcurementConciergePage = () => {
                 <div className="goa-adm-single-card-link">
                   <a
                     className="goa-adm-button-link goa-adm-secondary"
-                    href="/understanding-procurement/"
+                    href="/procurement-basics/"
                   >
                     Procurement in GoA
                   </a>

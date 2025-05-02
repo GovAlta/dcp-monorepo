@@ -15,12 +15,10 @@ export default function UnderstandingHeader() {
               <li>
                 <a href="/supplier-support/">Supplier Support</a>
               </li>
-              <li className="goa-adm-breadcrumbs-active">
-                Understanding procurement
-              </li>
+              <li className="goa-adm-breadcrumbs-active">Procurement basics</li>
             </ul>
           </div>
-          <h1>Understanding procurement</h1>
+          <h1>Procurement basics</h1>
           <p className="lede">
             Basics to understand and navigate government procurement.
           </p>
