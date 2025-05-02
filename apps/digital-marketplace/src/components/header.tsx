@@ -61,33 +61,29 @@ const Header = ({ page }: { page: string }) => {
                   </li>
                   <li
                     className={
-                      page === 'Supplier Outreach Program'
+                      page === 'Challenge-based Procurement' ||
+                      page === 'Funded Challenges' ||
+                      page === 'Technology Debt Challenge' ||
+                      page === 'Funded Technology Debt Challenge'
                         ? 'goa-adm-nav-active-item'
                         : ''
                     }
                   >
                     {' '}
-                    <a href="/supplier-outreach-program/">
-                      Supplier Outreach Program
+                    <a href="/challenge-based-procurement/">
+                      Challenge-based Procurement
                     </a>
                   </li>
                   <li
                     className={
+                      page === 'Supplier Support' ||
                       page === 'Understanding Procurement'
                         ? 'goa-adm-nav-active-item'
                         : ''
                     }
                   >
                     {' '}
-                    <a href="/understanding-procurement/">
-                      Understanding Procurement
-                    </a>
-                  </li>
-                  <li
-                    className={page === 'Join' ? 'goa-adm-nav-active-item' : ''}
-                  >
-                    {' '}
-                    <a href="/join/">Join</a>
+                    <a href="/supplier-support/">Supplier Support</a>
                   </li>
                   <li
                     className={

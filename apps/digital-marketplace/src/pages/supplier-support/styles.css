@@ -19,6 +19,10 @@ a[target=_blank]:hover:after {
     background-size: cover;
 }
 
+.goa-adm-body-header > .container > .goa-adm-body-header-graphic {
+    max-height: 285px;
+}
+
 section.goa-adm-sign-up-form {
     border-radius: 16px;
     box-shadow: 0 2px 20px rgb(51, 51, 51, 0.11);
@@ -530,6 +534,8 @@ div.goa-adm-appt-callout {
 
 div.goa-adm-appt-callout > * {
     margin: 0;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
 }
 
 div.goa-adm-appt-callout:before {
@@ -608,8 +614,6 @@ section.goa-adm-sign-up-form > .goa-adm-form-success p.links {
 
 .goa-adm-coming-soon .goa-adm-coming-soon-container > .goa-adm-coming-soon-content > p {
     margin-top: 1rem;
-    font-size: 1.5rem;
-    line-height: 2.25rem;
 }
 
 .goa-field label > p {
@@ -620,7 +624,7 @@ section.goa-adm-sign-up-form > .goa-adm-form-success p.links {
 
 a.goa-adm-button-link {
     text-decoration: none;
-    padding: 8px 2rem 10px 18px;
+    padding: 6px 2.25rem 10px 18px;
     font-weight: 700;
     border-radius: 8px;
     background: #ffffff;
@@ -650,8 +654,8 @@ a.goa-adm-button-link:after {
     background: transparent url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M6.59808 15.0351C6.27264 15.3605 6.27264 15.8882 6.59808 16.2136C6.92352 16.539 7.45116 16.539 7.77659 16.2136L13.4016 10.5886C13.727 10.2632 13.727 9.73553 13.4016 9.41009L7.77659 3.78509C7.45116 3.45966 6.92352 3.45966 6.59808 3.78509C6.27264 4.11053 6.27264 4.63817 6.59808 4.9636L11.5602 9.92569C11.6008 9.96637 11.6008 10.0323 11.5602 10.073L6.59808 15.0351Z' fill='%23006dcc'/%3E%3C/svg%3E%0A") no-repeat center center;
     background-size: cover;
     position: absolute;
-    right: 10px;
-    top: 13px;
+    right: 12px;
+    top: 14px;
 }
 
 a.goa-adm-button-link:hover:after {
@@ -684,10 +688,6 @@ a.goa-adm-button-link:hover:after {
     height: 100%;
 }
 
-.goa-adm-body > .container > section > * + div.goa-adm-cards {
-    margin-top: 90px;
-}
-
 .goa-adm-cards-info > .goa-adm-cards > .goa-adm-single-card > .goa-adm-single-card-content {
     height: 100%;
     margin: 1.5rem 0;
@@ -695,8 +695,6 @@ a.goa-adm-button-link:hover:after {
 
 .goa-adm-cards-info > .goa-adm-cards > .goa-adm-single-card > .goa-adm-single-card-content > p {
     margin-top: 0;
-    font-size: 1.5rem;
-    line-height: 2.25rem;
 }
 
 .goa-adm-cards > .goa-adm-single-card > h3,

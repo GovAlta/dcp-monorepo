@@ -1,0 +1,17 @@
+.goa-adm-body-header > .container > .goa-adm-body-header-graphic {
+    max-height: 285px;
+}
+
+.goa-adm-body > .container section:not(.goa-adm-apc-callout) > h2 + p {
+    margin: 3.5rem 0 0;
+}
+
+.goa-adm-body > .container section:not(:first-child),
+.goa-adm-body > .container section:not(.goa-adm-apc-callout) > h2 + h3 {
+    margin: 4rem 0 0;
+}
+
+.goa-adm-body > .container section:not(.goa-adm-apc-callout) > h3,
+.goa-adm-body > .container section:not(.goa-adm-apc-callout) > h4 {
+    margin: 2.5rem 0 0;
+}

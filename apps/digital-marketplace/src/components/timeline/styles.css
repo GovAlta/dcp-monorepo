@@ -72,12 +72,6 @@
     margin: 1.5rem 0 0;
 }
 
-.goa-adm-timeline-content ul li,
-.goa-adm-timeline-content ol li {
-    font-size: 1.125rem;
-    line-height: 1.75rem;
-}
-
 .goa-adm-timeline-item:last-child .goa-adm-timeline-content {
     padding-bottom: 1rem;
     margin-bottom: 3.5rem;
