@@ -1,0 +1,128 @@
+.goa-adm-body-header > .container > .goa-adm-body-header-graphic {
+    max-height: 285px;
+} 
+
+.goa-adm-body > .container section:not(.goa-adm-apc-callout) > h2 + p {
+    margin: 3.5rem 0 0;
+}
+
+.goa-adm-body > .container section:not(:first-child) {
+    margin: 4rem 0 0;
+}
+
+.goa-adm-body > .container p > a[target=_blank]:after,
+.goa-adm-body > .container ul li > a[target=_blank]:after,
+.goa-adm-body > .container ol li > a[target=_blank]:after {
+    content: "";
+    width: 1.25rem;
+    height: 1.25rem;
+    margin: 0 0 1px 4px;
+}
+
+.goa-adm-body > .container section:not(.goa-adm-apc-callout) > h3, .goa-adm-body > .container section:not(.goa-adm-apc-callout) > h4 {
+    margin: 2.5rem 0 0;
+}
+
+.goa-adm-funded {
+    border-radius: 30px;
+    box-shadow: 0 0px 12px rgb(51, 51, 51, 0.11);
+    padding: 2rem 2rem 2.5rem;
+    margin: 3rem 0 0;
+}
+
+.goa-adm-funded .goa-adm-funded-container {
+    display: grid;
+    align-items: center;
+    gap: 2rem;
+    grid-template-columns: 1fr 2fr;
+}
+
+.goa-adm-funded .goa-adm-funded-container .goa-adm-funded-icon {
+    margin: 0 auto;
+    display: block;
+}
+
+.goa-adm-funded .goa-adm-funded-container > .goa-adm-funded-content > h3 {
+    margin: 0;
+}
+
+.goa-adm-funded .goa-adm-funded-container > .goa-adm-funded-content > p {
+    margin-top: 1rem;
+}
+
+.goa-adm-funded .goa-adm-funded-container > .goa-adm-funded-content > .goa-adm-single-card-link {
+    margin: 1.5rem 0 0;
+}
+
+.goa-adm-cards-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+/* BUTTONS ****************************/
+
+a.goa-adm-button-link {
+    text-decoration: none;
+    padding: 6px 2.25rem 10px 18px;
+    font-weight: 700;
+    border-radius: 8px;
+    background: #ffffff;
+    border: 2px solid #006dcc;
+    color: #006dcc;
+    display: inline-block;
+    position: relative;
+}
+
+a.goa-adm-button-link:hover {
+    border-color: #333333;
+    color: #333333;
+}
+
+a.goa-adm-button-link:focus,
+.goa-adm-nav-button button.goa-adm-button:focus {
+    outline: 3px solid #FFB500;
+    outline-offset: 0;
+}
+
+a.goa-adm-button-link:after {
+    width: 20px;
+    height: 20px;
+    display: block;
+    margin: 0 0 0 8px;
+    content: '';
+    background: transparent url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M6.59808 15.0351C6.27264 15.3605 6.27264 15.8882 6.59808 16.2136C6.92352 16.539 7.45116 16.539 7.77659 16.2136L13.4016 10.5886C13.727 10.2632 13.727 9.73553 13.4016 9.41009L7.77659 3.78509C7.45116 3.45966 6.92352 3.45966 6.59808 3.78509C6.27264 4.11053 6.27264 4.63817 6.59808 4.9636L11.5602 9.92569C11.6008 9.96637 11.6008 10.0323 11.5602 10.073L6.59808 15.0351Z' fill='%23006dcc'/%3E%3C/svg%3E%0A") no-repeat center center;
+    background-size: cover;
+    position: absolute;
+    right: 12px;
+    top: 14px;
+}
+
+a.goa-adm-button-link:hover:after {
+    background: transparent url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M6.59808 15.0351C6.27264 15.3605 6.27264 15.8882 6.59808 16.2136C6.92352 16.539 7.45116 16.539 7.77659 16.2136L13.4016 10.5886C13.727 10.2632 13.727 9.73553 13.4016 9.41009L7.77659 3.78509C7.45116 3.45966 6.92352 3.45966 6.59808 3.78509C6.27264 4.11053 6.27264 4.63817 6.59808 4.9636L11.5602 9.92569C11.6008 9.96637 11.6008 10.0323 11.5602 10.073L6.59808 15.0351Z' fill='%23333333'/%3E%3C/svg%3E%0A") no-repeat center center;
+}
+
+@media screen and (max-width: 767px) {
+
+    .goa-adm-funded .goa-adm-funded-container > .goa-adm-funded-content > p {  
+        font-size: 1.125rem;
+        line-height: 1.75rem;
+    }
+
+    .goa-adm-cards-section {
+        flex-direction: column;
+    }
+
+}
+
+@media screen and (max-width: 549px) {
+
+    .goa-adm-funded .goa-adm-funded-container {
+        grid-template-columns: 1fr;
+        align-items: flex-start;
+    }
+
+    .goa-adm-funded .goa-adm-funded-container .goa-adm-funded-icon {
+        margin: 0;
+    }
+}

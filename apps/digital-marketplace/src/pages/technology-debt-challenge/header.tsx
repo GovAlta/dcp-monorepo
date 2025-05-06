@@ -1,8 +1,8 @@
 import React from 'react';
-import UnderstandingHeaderImg from '../../img/illustration-understanding-procurement.svg';
+import BasedHeader from '../../img/illustration-challenge-based.svg';
 import './styles.css';
 
-export default function UnderstandingHeader() {
+export default function ChallengeHeader() {
   return (
     <div className="goa-adm-body-header">
       <div className="container">
@@ -12,19 +12,27 @@ export default function UnderstandingHeader() {
               <li>
                 <a href="/">Home</a>
               </li>
+              <li>
+                <a href="/challenge-based-procurement/">
+                  Challenge-based Procurement
+                </a>
+              </li>
               <li className="goa-adm-breadcrumbs-active">
-                Understanding procurement
+                Technology Debt Challenge
               </li>
             </ul>
           </div>
-          <h1>Understanding procurement</h1>
+          <h1>Technology Debt Challenge</h1>
           <p className="lede">
-            Basics to understand and navigate government procurement.
+            Tackling Alberta's tech debt with scalable solutions.
           </p>
         </div>
 
         <div className="goa-adm-body-header-graphic">
-          <img src={UnderstandingHeaderImg.src} alt="header-graphic" />
+          <img
+            src={BasedHeader.src}
+            alt="Graphic of person running through a finish line"
+          />
         </div>
       </div>
     </div>

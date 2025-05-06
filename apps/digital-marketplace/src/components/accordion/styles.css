@@ -8,7 +8,7 @@
 
 .goa-adm-accordion-title {
     display: flex;
-    padding: 16px 12px 18px;
+    padding: 18px 12px 20px;
     justify-content: space-between;
     gap: 1rem;
     align-items: center;
@@ -18,10 +18,12 @@
     font-weight: 700;
     color: #333333;
     text-align: left;
+    font-size: 1.25rem;
+    line-height: 2rem;
 }
 
 .goa-adm-accordion-title:hover {
-    background: #D9D9D9;
+    background: #F1F1F1;
 }
 
 .goa-adm-accordion-title:focus {
@@ -62,13 +64,7 @@
 
 .goa-adm-accordion-item ul:not(.no-list-bullet),
 .goa-adm-accordion-item ol:not(.no-list-bullet) {
-    padding-left: 1rem;
-}
-
-.goa-adm-accordion-item ul li,
-.goa-adm-accordion-item ol li {
-    font-size: 1.125rem;
-    line-height: 1.75rem;
+    padding-left: 1.5rem;
 }
 
 ul.no-list-bullet {

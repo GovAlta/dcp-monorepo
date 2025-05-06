@@ -105,8 +105,8 @@ export default function ApptForm() {
             </p>
             <p>Meanwhile, check out the links below:</p>
             <p className="links">
-              <a href="/understanding-procurement/" rel="noopener noreferrer">
-                Understanding procurement
+              <a href="/procurement-basics/" rel="noopener noreferrer">
+                Procurement basics
               </a>
             </p>
             <p className="links">

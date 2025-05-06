@@ -1,0 +1,10 @@
+---
+import BaseLayout from '../layouts/layout.astro';
+import ProcurementConciergePage from './supplier-support/index';
+---
+
+<BaseLayout title="Supplier Support | Alberta Digital Marketplace" page="Supplier Support">
+    <div style="min-height: 1500px;" >
+        <ProcurementConciergePage client:only="react" />
+    </div>
+</BaseLayout>

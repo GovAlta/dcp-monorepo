@@ -81,6 +81,11 @@ a {
 p {
     margin: 1.5rem 0 0;
 }
+
+.goa-adm-body-header > .container > .goa-adm-body-header-graphic {
+    max-height: 285px;
+}
+
 .goa-adm-body.goa-adm-procurement > .container p > a[target=_blank]:after,
 .goa-adm-body.goa-adm-procurement > .container ul li > a[target=_blank]:after,
 .goa-adm-body.goa-adm-procurement > .container ol li > a[target=_blank]:after {
@@ -126,11 +131,6 @@ p {
 
 .goa-adm-body.goa-adm-procurement > .container > .goa-adm-procurement-content > section > ul {
     margin: 1.5rem 0 0;
-}
-
-.goa-adm-body.goa-adm-procurement > .container > .goa-adm-procurement-content > section > ul > li {
-    font-size: 1.125rem;
-    line-height: 1.75rem;
 }
 
 .goa-adm-accordion {

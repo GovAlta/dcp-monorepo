@@ -63,4 +63,14 @@ window.addEventListener(
 window.onload = function () {
   var body = document.querySelector('body');
   body.classList.add('loaded');
+
+  var r = document.querySelectorAll('.goa-adm-breadcrumbs > ul li');
+
+  if (r.length < 3) {
+    var n = document.querySelector(
+      '.goa-adm-breadcrumbs > ul li.goa-adm-breadcrumbs-active',
+    );
+    if (!n) return;
+    n.classList.add('show-active-small');
+  }
 };

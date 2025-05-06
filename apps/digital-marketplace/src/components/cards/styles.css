@@ -1,0 +1,68 @@
+.goa-adm-cards-item {
+    border-radius: 10px;
+    border: 2px solid #005072;
+    flex-basis: 100%;
+    padding: 1.75rem 2rem 2.25rem;
+    display: inline-block;
+    text-decoration: none;
+    /*
+    Add/Replace with the following lines of code for when there are more cards
+
+    border: 3px solid #0070C4;
+    padding: 1.25rem 1.5rem 1.5rem;
+    flex-grow: 3;
+    */
+}
+
+.goa-adm-cards-item:hover {
+    border-color:#333333;   
+}
+
+.goa-adm-cards-item:focus {
+    outline: 3px solid #FEBA35;
+    outline-offset: 0;
+}
+
+.goa-adm-cards-title {
+    font-size: 1.25rem;
+    line-height: 2rem;
+    font-weight: 700;
+    /*color: #0070C4;*/
+    color: #005072;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/*
+Add/Replace with the following lines of code for when there are more cards
+
+.goa-adm-cards-item:hover .goa-adm-cards-title {
+    color: #333333;
+}
+
+.goa-adm-cards-title:after {
+    width: 20px;
+    height: 20px;
+    display: block;
+    margin: 2px -2px 0 6px;
+    content: '';
+    background: transparent url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M6.59808 15.0351C6.27264 15.3605 6.27264 15.8882 6.59808 16.2136C6.92352 16.539 7.45116 16.539 7.77659 16.2136L13.4016 10.5886C13.727 10.2632 13.727 9.73553 13.4016 9.41009L7.77659 3.78509C7.45116 3.45966 6.92352 3.45966 6.59808 3.78509C6.27264 4.11053 6.27264 4.63817 6.59808 4.9636L11.5602 9.92569C11.6008 9.96637 11.6008 10.0323 11.5602 10.073L6.59808 15.0351Z' fill='%23006dcc'/%3E%3C/svg%3E%0A") no-repeat center center;
+    background-size: cover;
+}
+
+.goa-adm-cards-item:hover .goa-adm-cards-title:after {
+    background: transparent url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M6.59808 15.0351C6.27264 15.3605 6.27264 15.8882 6.59808 16.2136C6.92352 16.539 7.45116 16.539 7.77659 16.2136L13.4016 10.5886C13.727 10.2632 13.727 9.73553 13.4016 9.41009L7.77659 3.78509C7.45116 3.45966 6.92352 3.45966 6.59808 3.78509C6.27264 4.11053 6.27264 4.63817 6.59808 4.9636L11.5602 9.92569C11.6008 9.96637 11.6008 10.0323 11.5602 10.073L6.59808 15.0351Z' fill='%23333333'/%3E%3C/svg%3E%0A") no-repeat center center;
+}*/
+
+.goa-adm-cards-date {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    color: #333;
+    font-weight: 400;
+    margin: 4px 0 1rem;
+}
+
+.goa-adm-cards-item .goa-adm-single-card-link {
+    margin-top: 1.5rem;
+}

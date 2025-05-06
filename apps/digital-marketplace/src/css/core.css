@@ -71,8 +71,15 @@ html body, select, textarea, button {
     background: #fff;
     font-family: acumin-pro-semi-condensed, sans-serif;
     font-weight: 400;
-	font-size: 1.125rem;
-    line-height: 1.75rem;
+	font-size: 1.25rem;
+    line-height: 2rem;
+}
+
+html body p,
+.goa-adm-body ul li,
+.goa-adm-body ol li  {
+	font-size: 1.25rem;
+    line-height: 2rem;
 }
 
 a, button {
@@ -128,8 +135,6 @@ ul, ol {
 .goa-adm-body ul li,
 .goa-adm-body ol li {
     margin: 16px 0 0;
-    font-size: 1.5rem;
-    line-height: 2.25rem;
 }
 
 body h1 {
@@ -182,6 +187,8 @@ body h4 {
     word-break: break-word;
     position: relative;
     color: #005072;
+	font-size: 1.25rem;
+    line-height: 2rem;
 }
 
 body a {
@@ -197,8 +204,8 @@ body p {
     margin: 1.5rem 0 0;
 }
 
-a:hover,
-a:hover > em {
+body a:hover,
+body a:hover > em {
     color: #333333;
 }
 
@@ -437,6 +444,8 @@ div.goa-adm-skiplinks a:focus {
     color: #333333;
     font-weight: 700;
     position: relative;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
 }
 
 .goa-adm-nav-menu > ul > li a:before,
@@ -523,6 +532,8 @@ body:not(.adm-home-page) .goa-adm-body-header > .container {
     list-style-type: none;
     padding-left: 0;
     position: relative;
+    display: flex;
+    align-items: center;
 }
 
 .goa-adm-breadcrumbs > ul > li:not(:last-child) {
@@ -535,8 +546,6 @@ body:not(.adm-home-page) .goa-adm-body-header > .container {
 
 .goa-adm-breadcrumbs > ul > li.goa-adm-breadcrumbs-active {
     font-weight: 700;
-    display: flex;
-    align-items: center;
 }
 
 .goa-adm-breadcrumbs > ul > li > a {
@@ -591,12 +600,12 @@ html[dir=rtl] .goa-adm-breadcrumbs > ul > li:not(:last-child) {
 .goa-adm-body > .container > section:not(:first-child),
 .goa-adm-body > .container > .goa-adm-form-container,
 .goa-adm-body > .container section:not(.goa-adm-apc-callout) > h2 + p {
-    margin: 4.5rem 0 0;
+    margin: 3.5rem 0 0;
 }
 
 .goa-adm-body > .container > section > p {
-    font-size: 1.5rem;
-    line-height: 2.25rem;
+    font-size: 1.25rem;
+    line-height: 2rem;
 }
 
 .goa-adm-body > .container > section > p:first-child {
@@ -604,7 +613,7 @@ html[dir=rtl] .goa-adm-breadcrumbs > ul > li:not(:last-child) {
 }
 
 .goa-adm-body > .container > section > * + div:not(.goa-adm-form-container) {
-    margin: 5rem 0 0;
+    margin: 4rem 0 0;
 }
 
 /* FOOTER ****************************/
@@ -698,6 +707,8 @@ body .adsp-fb .adsp-fb-badge {
     height: 105px;
     margin: auto 0;
     text-align: center;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
 }
 
 body .adsp-fb .adsp-fb-container-heading {
@@ -964,7 +975,7 @@ html[dir=rtl] body .adsp-fb button.adsp-fb-form-primary {
     }
 
     nav.goa-adm-nav-menu.mobile-active {
-        bottom: -265px;
+        bottom: -212px;
         transition: bottom 0.75s ease;
     }
 
@@ -1080,7 +1091,7 @@ html[dir=rtl] body .adsp-fb button.adsp-fb-form-primary {
         text-decoration-thickness: .0625rem;
     }
 
-    body p,
+    html body p,
     .goa-adm-body > .container > section > p,
     .goa-adm-body ul li,
     .goa-adm-body ol li  {  
@@ -1128,6 +1139,10 @@ html[dir=rtl] body .adsp-fb button.adsp-fb-form-primary {
 @media screen and (max-width: 549px) {
 
     /* HEADER ****************************/
+
+    .goa-adm-breadcrumbs > ul > li:not(:first-child):not(:nth-last-child(2)):not(.show-active-small) {
+        display: none;
+    }
 
     .goa-adm-microsite-header > .container {
         padding: 12px 1.5rem;

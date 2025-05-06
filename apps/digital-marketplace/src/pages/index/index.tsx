@@ -1,8 +1,9 @@
 import React from 'react';
 import hero_mobile from '../../img/hero-mobile-tablet.svg';
 import concierge_thumb from '../../img/icon-handshake.svg';
-import join_thumb from '../../img/icon-join.svg';
+import funded_thumb from '../../img/icon-challenge-based.svg';
 import handShakeLine from '../../img/handShakeLine.svg';
+import Callout from '../../components/callout';
 import './styles.css';
 
 const HomePage = () => {
@@ -537,11 +538,34 @@ const HomePage = () => {
               <div className="goa-adm-single-card">
                 <div className="goa-adm-single-card-thumb">
                   <img
+                    src={funded_thumb.src}
+                    alt="Illustration of two people and a plus icon"
+                  />
+                </div>
+                <h3>Challenge-based Procurement</h3>
+                <div className="goa-adm-single-card-content">
+                  <p>
+                    A problem-first approach to complex government needs that
+                    breaks away from the traditional RFP process.
+                  </p>
+                </div>
+                <div className="goa-adm-single-card-link">
+                  <a
+                    className="goa-adm-button-link goa-adm-secondary"
+                    href="/challenge-based-procurement/"
+                  >
+                    View challenges
+                  </a>
+                </div>
+              </div>
+              <div className="goa-adm-single-card">
+                <div className="goa-adm-single-card-thumb">
+                  <img
                     src={concierge_thumb.src}
                     alt="Illustration of a handshake"
                   />
                 </div>
-                <h3>Supplier Outreach Program</h3>
+                <h3>Supplier Support</h3>
                 <div className="goa-adm-single-card-content">
                   <p>
                     Boost your procurement knowledge with one-on-one support and
@@ -552,33 +576,9 @@ const HomePage = () => {
                 <div className="goa-adm-single-card-link">
                   <a
                     className="goa-adm-button-link goa-adm-secondary"
-                    href="/supplier-outreach-program/"
+                    href="/supplier-support/"
                   >
                     View program
-                  </a>
-                </div>
-              </div>
-              <div className="goa-adm-single-card">
-                <div className="goa-adm-single-card-thumb">
-                  <img
-                    src={join_thumb.src}
-                    alt="Illustration of two people and a plus icon"
-                  />
-                </div>
-                <h3>Join the Alberta Digital Marketplace</h3>
-                <div className="goa-adm-single-card-content">
-                  <p>
-                    Help us build the future of Alberta's public digital
-                    services by engaging with us on a variety of initiatives to
-                    deliver programs that meet the needs of Albertans.
-                  </p>
-                </div>
-                <div className="goa-adm-single-card-link">
-                  <a
-                    className="goa-adm-button-link goa-adm-secondary"
-                    href="/join/"
-                  >
-                    Sign up
                   </a>
                 </div>
               </div>
@@ -587,23 +587,19 @@ const HomePage = () => {
           {/* CUSTOMIZABLE */}
 
           {/* CUSTOMIZABLE */}
-          <section className="goa-adm-apc-callout">
-            <h2>Have a vision for Alberta's digital future?</h2>
-            <p>
-              The GoA is looking for talented vendors who are passionate about
-              making a real impact. Let's deliver impactful and accessible
-              digital experiences together. For procurement opportunities, visit
-              the Alberta Purchasing Connection (APC).
-            </p>
-            <a
-              className="goa-adm-button-link"
-              href="https://purchasing.alberta.ca/search"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Explore APC opportunities
-            </a>
-          </section>
+          <Callout
+            title="Have a vision for Alberta's digital future?"
+            content={
+              <>
+                The GoA is looking for talented vendors who are passionate about
+                making a real impact. Let's deliver impactful and accessible
+                digital experiences together. For procurement opportunities,
+                visit the Alberta Purchasing Connection (APC).
+              </>
+            }
+            link="https://purchasing.alberta.ca/search"
+            linkText="Explore APC opportunities"
+          />
         </div>
       </div>
     </>
