@@ -67,7 +67,6 @@ const formDefinitions = {
             'Future',
             'Deprecated',
             'Decommissioned',
-            'Other',
           ],
         },
         version: {
@@ -177,14 +176,7 @@ const formDefinitions = {
                 properties: {
                   type: {
                     type: 'string',
-                    enum: [
-                      'BERNIE',
-                      'GitHub',
-                      'Slack',
-                      'Web',
-                      'Phone',
-                      'Email',
-                    ],
+                    enum: ['BERNIE', 'GitHub', 'Web', 'Phone', 'Email'],
                   },
                   value: {
                     type: 'string',
@@ -199,10 +191,11 @@ const formDefinitions = {
                     },
                   },
                 },
+                required: ['type', 'url'],
               },
-              required: ['type', 'url'],
             },
           },
+          required: ['methods'],
         },
         cmra: {
           type: 'string',
@@ -320,6 +313,11 @@ const formDefinitions = {
             ],
           },
         },
+        changeDescription: {
+          type: 'string',
+          description:
+            'Enter details about the service, whether its new or updates being made',
+        },
       },
       required: [
         'serviceName',
@@ -328,9 +326,9 @@ const formDefinitions = {
         'provider',
         'summary',
         'description',
-        'contact',
         'editorName',
         'editorEmail',
+        'changeDescription',
       ],
     },
     uiSchema: {
@@ -370,8 +368,20 @@ const formDefinitions = {
                   label: 'Category',
                 },
                 {
-                  type: 'Control',
-                  scope: '#/properties/status',
+                  type: 'HorizontalLayout',
+                  elements: [
+                    {
+                      type: 'Control',
+                      scope: '#/properties/status',
+                    },
+                    {
+                      type: 'HelpContent',
+                      label: 'Please note',
+                      options: {
+                        help: 'Setting the status as Decomissioned is the same of having the service in an inactive state.',
+                      },
+                    },
+                  ],
                 },
                 {
                   type: 'Control',
@@ -780,6 +790,11 @@ const formDefinitions = {
                   type: 'Control',
                   scope: '#/properties/editorEmail',
                   label: 'Editor email',
+                },
+                {
+                  type: 'Control',
+                  scope: '#/properties/changeDescription',
+                  label: 'Description of the change',
                 },
               ],
             },
