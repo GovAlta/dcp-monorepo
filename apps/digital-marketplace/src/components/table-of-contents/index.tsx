@@ -52,31 +52,31 @@ function TableOfContents() {
         <>
           <ul className={`goa-loader`}>
             <li className={`goa-adm-toc-level-1`}>
-              <GoabSkeleton type="text" size={4}></GoabSkeleton>
+              <GoabSkeleton type="text" size="4"></GoabSkeleton>
             </li>
             <li className={`goa-adm-toc-level-1 short`}>
-              <GoabSkeleton type="text" size={4}></GoabSkeleton>
+              <GoabSkeleton type="text" size="4"></GoabSkeleton>
             </li>
             <li className={`goa-adm-toc-level-2`}>
-              <GoabSkeleton type="text" size={4}></GoabSkeleton>
+              <GoabSkeleton type="text" size="4"></GoabSkeleton>
             </li>
             <li className={`goa-adm-toc-level-2 short`}>
-              <GoabSkeleton type="text" size={4}></GoabSkeleton>
+              <GoabSkeleton type="text" size="4"></GoabSkeleton>
             </li>
             <li className={`goa-adm-toc-level-1`}>
-              <GoabSkeleton type="text" size={4}></GoabSkeleton>
+              <GoabSkeleton type="text" size="4"></GoabSkeleton>
             </li>
             <li className={`goa-adm-toc-level-1`}>
-              <GoabSkeleton type="text" size={4}></GoabSkeleton>
+              <GoabSkeleton type="text" size="4"></GoabSkeleton>
             </li>
             <li className={`goa-adm-toc-level-1 short`}>
-              <GoabSkeleton type="text" size={4}></GoabSkeleton>
+              <GoabSkeleton type="text" size="4"></GoabSkeleton>
             </li>
             <li className={`goa-adm-toc-level-2`}>
-              <GoabSkeleton type="text" size={4}></GoabSkeleton>
+              <GoabSkeleton type="text" size="4"></GoabSkeleton>
             </li>
             <li className={`goa-adm-toc-level-1`}>
-              <GoabSkeleton type="text" size={4}></GoabSkeleton>
+              <GoabSkeleton type="text" size="4"></GoabSkeleton>
             </li>
           </ul>
         </>
