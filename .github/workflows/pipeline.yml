@@ -71,6 +71,10 @@ jobs:
       - run: npm prune --production
 
       # Run the OC BuildConfigs for create containers.
+      - name: Install OpenShift CLI
+        uses: redhat-actions/openshift-tools-installer@v1
+        with:
+          oc: '4'
       - name: OC login
         uses: redhat-actions/oc-login@v1
         with:
@@ -103,6 +107,10 @@ jobs:
     steps:
       # Checkout the source code for manifests
       - uses: actions/checkout@v3
+      - name: Install OpenShift CLI
+        uses: redhat-actions/openshift-tools-installer@v1
+        with:
+          oc: '4'
       - name: Oc login
         uses: redhat-actions/oc-login@v1
         with:
@@ -141,6 +149,10 @@ jobs:
     steps:
       # Checkout the source code for manifests
       - uses: actions/checkout@v3
+      - name: Install OpenShift CLI
+        uses: redhat-actions/openshift-tools-installer@v1
+        with:
+          oc: '4'
       - name: Oc login
         uses: redhat-actions/oc-login@v1
         with:
@@ -179,6 +191,10 @@ jobs:
     steps:
       # Checkout the source code for manifests
       - uses: actions/checkout@v3
+      - name: Install OpenShift CLI
+        uses: redhat-actions/openshift-tools-installer@v1
+        with:
+          oc: '4'
       - name: Oc login
         uses: redhat-actions/oc-login@v1
         with:
