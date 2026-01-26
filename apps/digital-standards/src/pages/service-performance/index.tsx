@@ -242,7 +242,10 @@ export default function ServicePerformance() {
       </GoabAccordion>
       <GoabSpacer vSpacing="l" />
 
-      <GoabAccordion heading="Service performance platform" headingSize="medium">
+      <GoabAccordion
+        heading="Service performance platform"
+        headingSize="medium"
+      >
         <p>
           Service Performance Platform is set up to measure and monitor Key
           Performance Indicators and Metrics to continuously improve the digital
@@ -316,7 +319,10 @@ export default function ServicePerformance() {
       </GoabAccordion>
       <GoabSpacer vSpacing="l" />
 
-      <GoabAccordion heading="Why Measure Digital Services" headingSize="medium">
+      <GoabAccordion
+        heading="Why Measure Digital Services"
+        headingSize="medium"
+      >
         <p>When our services are measured, programs are able to show:</p>
         <p>
           <b>Accountability and Leadership</b>: Ensures accountability to

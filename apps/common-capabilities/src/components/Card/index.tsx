@@ -12,9 +12,10 @@ interface CardProps {
   condensed?: boolean;
 }
 
+const badgesToShow = ['status'] as [ServiceAttribute];
+const maxDescriptionLength = 200; // word length for short descpription in tile.
+
 const Card = ({ app, roadmapMode, roadmapHistory, condensed }: CardProps) => {
-  const maxDescriptionLength = 200; // word length for short descpription in tile.
-  const badgesToShow = ['status'] as [ServiceAttribute];
   const [showBadges, setShowBadges] = useState<JSX.Element[]>([]);
 
   function badgeType(value: string) {
@@ -26,7 +27,11 @@ const Card = ({ app, roadmapMode, roadmapHistory, condensed }: CardProps) => {
     const badges: JSX.Element[] = [];
     if (app.recommended) {
       badges.push(
-        <GoabBadge key="recommended" type="information" content="Recommended" />,
+        <GoabBadge
+          key="recommended"
+          type="information"
+          content="Recommended"
+        />,
       );
     }
 

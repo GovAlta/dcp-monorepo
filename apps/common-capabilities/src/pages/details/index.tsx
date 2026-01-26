@@ -9,7 +9,7 @@ import {
   GoabCircularProgress,
   GoabNotification,
 } from '@abgov/react-components';
-import { GoabIconType } from '@abgov/ui-components-common';
+import type { GoabIconType } from '@abgov/ui-components-common';
 import React, { useEffect, useState, useMemo } from 'react';
 import './styles.css';
 import ExternalLink from '../../components/ExternalLink';
@@ -66,7 +66,7 @@ export default function Details(): JSX.Element {
   const navigate = useNavigate();
   const { id } = useParams();
   const { authToken } = useAuth();
-  const detailsUrl = useMemo(() => getApiUrl(`/listings/services/${id}`), []);
+  const detailsUrl = useMemo(() => getApiUrl(`/listings/services/${id}`), [id]);
   const [data, error, isLoading] = useFetch<ServiceDetailsResponse>(
     detailsUrl,
     { headers: { Authorization: `Bearer ${authToken}` } },

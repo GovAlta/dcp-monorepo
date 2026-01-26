@@ -6,7 +6,10 @@ interface HeroBannerWrapperProps {
   backgroundUrl: string;
 }
 
-export default function HeroBannerWrapper({ title, backgroundUrl }: HeroBannerWrapperProps) {
+export default function HeroBannerWrapper({
+  title,
+  backgroundUrl,
+}: HeroBannerWrapperProps) {
   return (
     <GoabHeroBanner heading="" backgroundUrl={backgroundUrl}>
       {title === 'Home' ? (
@@ -17,7 +20,8 @@ export default function HeroBannerWrapper({ title, backgroundUrl }: HeroBannerWr
           </h1>
           <h4>
             <strong>
-              Using modern digital delivery practices for modern public services.
+              Using modern digital delivery practices for modern public
+              services.
             </strong>
           </h4>
         </div>

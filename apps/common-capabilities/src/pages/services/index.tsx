@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState, useMemo, useCallback } from 'react';
 import {
   GoabGrid,
   GoabSpacer,
@@ -135,32 +135,35 @@ export default function HomePage(): JSX.Element {
 
   // searches for items in the services array that match the search and filter
   // however search takes priority over filters
-  const findServices = (
-    array: Service[],
-    searchRegExp: RegExp,
-    fields: ServiceAttribute[],
-    filters: FilterState,
-  ) => {
-    return array.filter((item: Service) => {
-      const fieldMatch = fields
-        .map((field) => searchRegExp.test(item[field] as string))
-        .some(Boolean);
+  const findServices = useCallback(
+    (
+      array: Service[],
+      searchRegExp: RegExp,
+      fields: ServiceAttribute[],
+      filters: FilterState,
+    ) => {
+      return array.filter((item: Service) => {
+        const fieldMatch = fields
+          .map((field) => searchRegExp.test(item[field] as string))
+          .some(Boolean);
 
-      const filterMatches = Object.entries(filters).every(
-        ([, filterValues]) => {
-          if (filterValues.length === 0) {
-            return true;
-          }
+        const filterMatches = Object.entries(filters).every(
+          ([, filterValues]) => {
+            if (filterValues.length === 0) {
+              return true;
+            }
 
-          return filterValues.some((filterValue) =>
-            appFilters.indexedItems[filterValue]?.has(item.appId),
-          );
-        },
-      );
+            return filterValues.some((filterValue) =>
+              appFilters.indexedItems[filterValue]?.has(item.appId),
+            );
+          },
+        );
 
-      return fieldMatch && filterMatches;
-    });
-  };
+        return fieldMatch && filterMatches;
+      });
+    },
+    [appFilters],
+  );
 
   useEffect(() => {
     if (!isLoading && data) {
@@ -228,7 +231,7 @@ export default function HomePage(): JSX.Element {
         clearTimeout(timeoutId);
       }
     };
-  }, [searchFilter, selectedFiltersState, apps]);
+  }, [searchFilter, selectedFiltersState, apps, findServices]);
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -253,10 +256,10 @@ export default function HomePage(): JSX.Element {
           [category]: true,
         },
       });
-      setFiltersAccordionState({
-        ...filtersAccordionState,
+      setFiltersAccordionState((prevState) => ({
+        ...prevState,
         functionalGroup: true,
-      });
+      }));
     }
   }, [apps]);
 

@@ -4,7 +4,7 @@ import {
   GoabSpacer,
   GoabThreeColumnLayout,
 } from '@abgov/react-components';
-import { GoabIconType } from '@abgov/ui-components-common';
+import type { GoabIconType } from '@abgov/ui-components-common';
 import './styles.css';
 import ExternalLink from '../../components/ExternalLink';
 import { ContactMethod } from '../../types/types';

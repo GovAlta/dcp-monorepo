@@ -1,5 +1,8 @@
 import React from 'react';
-import { GoabAppFooter, GoabAppFooterNavSection } from '@abgov/react-components';
+import {
+  GoabAppFooter,
+  GoabAppFooterNavSection,
+} from '@abgov/react-components';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
