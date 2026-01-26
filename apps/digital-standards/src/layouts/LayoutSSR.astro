@@ -22,7 +22,7 @@ const { hideNav = false, hideHero = true } = Astro.props;
 		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Digital standards</title>
-		<script>
+		<script is:inline>
 			const hostName = window.location.hostname;			
 			if (hostName === 'digital.gov.ab.ca') {	
 				(function () {
@@ -75,14 +75,14 @@ const { hideNav = false, hideHero = true } = Astro.props;
 				})();				
 			}			
 		</script>
-		<script>
+		<script is:inline>
 			import '@abgov/web-components';
 		</script>
-		<script type="module"
+		<script is:inline type="module"
 			src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js">
 	    </script>
 
-		<script nomodule
+		<script is:inline nomodule
 			src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js">
 		</script>
 

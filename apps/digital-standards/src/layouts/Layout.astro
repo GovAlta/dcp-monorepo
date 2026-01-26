@@ -68,14 +68,14 @@ const { hideNav, hideHero } = Astro.props
 				})();				
 			}			
 		</script>
-		<script>
+		<script is:inline>
 			import '@abgov/web-components';
 		</script>
-		<script type="module"
+		<script is:inline type="module"
 			src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js">
 	    </script>
 
-		<script nomodule
+		<script is:inline nomodule
 			src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js">
 		</script>
 
