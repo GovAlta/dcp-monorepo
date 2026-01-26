@@ -23,7 +23,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     env:
       AFFECTED_BASE: 'origin/main'
     outputs:
@@ -94,7 +94,7 @@ jobs:
         run: echo "affected_apps=$AFFECTED_APPS" >> $GITHUB_OUTPUT
 
   deployDev:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     needs: [build]
     env:
       AFFECTED_APPS: ${{ needs.build.outputs.affected_apps }}
@@ -132,7 +132,7 @@ jobs:
           done
 
   deployStaging:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     needs: [build, deployDev]
     env:
       AFFECTED_APPS: ${{ needs.build.outputs.affected_apps }}
@@ -170,7 +170,7 @@ jobs:
           done
 
   deployProd:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     needs: [build, deployStaging]
     env:
       AFFECTED_APPS: ${{ needs.build.outputs.affected_apps }}
