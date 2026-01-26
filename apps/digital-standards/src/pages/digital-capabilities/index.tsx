@@ -1,4 +1,4 @@
-import { GoAButton, GoASpacer, GoAAccordion } from '@abgov/react-components';
+import { GoabButton, GoabSpacer, GoabAccordion } from '@abgov/react-components';
 import React, { useEffect } from 'react';
 import BackToTop from '../../components/BackToTop';
 import ExternalLink from '../../components/ExternalLink';
@@ -12,24 +12,24 @@ export default function ServiceHelp() {
   }, []);
   return (
     <div data-pagefind-body>
-      <GoAButton
+      <GoabButton
         type="tertiary"
         size="compact"
         leadingIcon="arrow-back"
         onClick={() => (window.location.href = '/')}
       >
         Back
-      </GoAButton>
-      <GoASpacer vSpacing="l" />
+      </GoabButton>
+      <GoabSpacer vSpacing="l" />
       <h1 id="digital-capabilites">Digital Capability Program</h1>
-      <GoASpacer vSpacing="l" />
+      <GoabSpacer vSpacing="l" />
       <h2 id="mandate">Program Mandate</h2>
       <p>
         To build a digitally capable Government of Alberta by growing the
         knowledge, skills and experience of public servants in digital-era
         service design and delivery.
       </p>
-      <GoASpacer vSpacing="l" />
+      <GoabSpacer vSpacing="l" />
       <h2>Program Outcomes</h2>
       <p>
         <ul className="goa-unordered-list">
@@ -56,7 +56,7 @@ export default function ServiceHelp() {
           </li>
         </ul>
       </p>
-      <GoASpacer vSpacing="l" />
+      <GoabSpacer vSpacing="l" />
       <h2>Learning Pathways and User Groups</h2>
       <p>
         Digital capability focuses on three pathways with a suite of training
@@ -130,11 +130,11 @@ export default function ServiceHelp() {
           </li>
         </ul>
       </p>
-      <GoASpacer vSpacing="l" />
+      <GoabSpacer vSpacing="l" />
 
       <h2 id="core-training">Core Training: Course Descriptions</h2>
-      <GoASpacer vSpacing="l" />
-      <GoAAccordion
+      <GoabSpacer vSpacing="l" />
+      <GoabAccordion
         headingSize="medium"
         heading="Digital Foundations"
         open={false}
@@ -158,7 +158,7 @@ export default function ServiceHelp() {
           </li>
           <li>Create safe spaces for dialogue and forming connections</li>
         </ul>
-        <GoASpacer vSpacing="l" />
+        <GoabSpacer vSpacing="l" />
         <h3>Digital Foundations Course Sessions</h3>
         <ul className="goa-unordered-list">
           <li>
@@ -172,9 +172,9 @@ export default function ServiceHelp() {
             />
           </li>
         </ul>
-      </GoAAccordion>
-      <GoASpacer vSpacing="l" />
-      <GoAAccordion
+      </GoabAccordion>
+      <GoabSpacer vSpacing="l" />
+      <GoabAccordion
         headingSize="medium"
         heading="Agile Foundations"
         open={false}
@@ -205,7 +205,7 @@ export default function ServiceHelp() {
           The training is a mix of presentations, videos and interactive
           activities to support participants’ learning.
         </p>
-        <GoASpacer vSpacing="l" />
+        <GoabSpacer vSpacing="l" />
         <h3>Agile Foundations Course Sessions</h3>
         <p>
           <b>NOTE:</b> Agile Foundations is a pre-requisite for Product Owner
@@ -223,9 +223,9 @@ export default function ServiceHelp() {
             by email.
           </li>
         </ul>
-      </GoAAccordion>
-      <GoASpacer vSpacing="l" />
-      <GoAAccordion
+      </GoabAccordion>
+      <GoabSpacer vSpacing="l" />
+      <GoabAccordion
         headingSize="medium"
         heading="Product Owner Training"
         open={false}
@@ -270,7 +270,7 @@ export default function ServiceHelp() {
           <li>Using Jira and Confluence</li>
           <li>Product Management Metrics and KPIs</li>
         </ul>
-        <GoASpacer vSpacing="l" />
+        <GoabSpacer vSpacing="l" />
         <h3>Product Owner Course Sessions</h3>
         <p>
           <b>NOTE:</b> Agile foundations is a pre-requisite for Product Owner
@@ -295,8 +295,8 @@ export default function ServiceHelp() {
             by email.
           </li>
         </ul>
-      </GoAAccordion>
-      <GoASpacer vSpacing="l" />
+      </GoabAccordion>
+      <GoabSpacer vSpacing="l" />
 
       <h2 id="contact">Contact</h2>
       <p>
@@ -308,7 +308,7 @@ export default function ServiceHelp() {
         />
         .
       </p>
-      <GoASpacer vSpacing="2xl" />
+      <GoabSpacer vSpacing="2xl" />
       <BackToTop />
     </div>
   );

@@ -1,5 +1,5 @@
 import React from 'react';
-import { GoAIcon, GoAContainer } from '@abgov/react-components';
+import { GoabIcon, GoabContainer } from '@abgov/react-components';
 import Astro from '../../assets/astro.png';
 import Github from '../../assets/github.png';
 import Script from '../../assets/Script.png';
@@ -82,7 +82,7 @@ export default function HomePage() {
         </div>
 
         <div className="services-wrapper">
-          <GoAContainer accent="thin">
+          <GoabContainer accent="thin">
             <div className="service-heading">File Service</div>
             <div className="service-sub-heading">
               Alberta Digital Service Platform (ADSP)
@@ -98,10 +98,10 @@ export default function HomePage() {
             </p>
             <div className="service-contact">
               Contact: <a href="mailto:adsp@gov.ab.ca">ADSP platform</a>
-              <GoAIcon size="small" type="open" />
+              <GoabIcon size="small" type="open" />
             </div>
-          </GoAContainer>
-          <GoAContainer accent="thin">
+          </GoabContainer>
+          <GoabContainer accent="thin">
             <div className="service-heading">PDF Service</div>
             <div className="service-sub-heading">
               Alberta Digital Service Platform (ADSP)
@@ -116,10 +116,10 @@ export default function HomePage() {
             </p>
             <div className="service-contact">
               Contact: <a href="mailto:adsp@gov.ab.ca">ADSP platform</a>
-              <GoAIcon size="small" type="open" />
+              <GoabIcon size="small" type="open" />
             </div>
-          </GoAContainer>
-          <GoAContainer accent="thin">
+          </GoabContainer>
+          <GoabContainer accent="thin">
             <div className="service-heading">Event Service</div>
             <div className="service-sub-heading">
               Alberta Digital Service Platform (ADSP)
@@ -135,9 +135,9 @@ export default function HomePage() {
             </p>
             <div className="service-contact">
               Contact: <a href="mailto:adsp@gov.ab.ca">ADSP platform</a>
-              <GoAIcon size="small" type="open" />
+              <GoabIcon size="small" type="open" />
             </div>
-          </GoAContainer>
+          </GoabContainer>
         </div>
       </main>
     </>

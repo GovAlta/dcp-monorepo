@@ -1,10 +1,10 @@
 import React from 'react';
 import {
-  GoAGrid,
-  GoAHeroBanner,
-  GoAPageBlock,
-  GoASpacer,
-  GoAButton,
+  GoabGrid,
+  GoabHeroBanner,
+  GoabPageBlock,
+  GoabSpacer,
+  GoabButton,
 } from '@abgov/react-components';
 import './styles.css';
 import ExternalLink from '../../components/ExternalLink';
@@ -17,7 +17,7 @@ export default function Landing(): JSX.Element {
 
   return (
     <div>
-      <GoAHeroBanner
+      <GoabHeroBanner
         heading="Discover services designed for product teams within GoA"
         minHeight="20%"
         textColor="#333333"
@@ -28,13 +28,13 @@ export default function Landing(): JSX.Element {
           Built for developers, digital architects, and service integration
           experts to explore existing software, tools, and APIs.
         </div>
-      </GoAHeroBanner>
+      </GoabHeroBanner>
 
-      <GoASpacer vSpacing="l" />
-      <GoAPageBlock width="1200px">
+      <GoabSpacer vSpacing="l" />
+      <GoabPageBlock width="1200px">
         <h2>Browse services by category</h2>
-        <GoASpacer vSpacing="s" />
-        <GoAGrid minChildWidth="30ch" gap="2xl">
+        <GoabSpacer vSpacing="s" />
+        <GoabGrid minChildWidth="30ch" gap="2xl">
           {categories.map((category) => (
             <Category
               key={category.title}
@@ -43,10 +43,10 @@ export default function Landing(): JSX.Element {
               link={category.link}
             />
           ))}
-        </GoAGrid>
+        </GoabGrid>
 
-        <GoASpacer vSpacing="2xl" />
-        <GoAButton
+        <GoabSpacer vSpacing="2xl" />
+        <GoabButton
           type="primary"
           size="normal"
           variant="normal"
@@ -54,9 +54,9 @@ export default function Landing(): JSX.Element {
           onClick={() => navigate('/services')}
         >
           Browse all services
-        </GoAButton>
+        </GoabButton>
 
-        <GoASpacer vSpacing="l" />
+        <GoabSpacer vSpacing="l" />
         <h2>Using common capabilities helps you:</h2>
         <ul className="goa-unordered-list cc-list-design-system">
           <li>
@@ -82,7 +82,7 @@ export default function Landing(): JSX.Element {
           newTab={false}
         />
 
-        <GoASpacer vSpacing="l" />
+        <GoabSpacer vSpacing="l" />
 
         <h2>Start building with the design system</h2>
         <p>
@@ -102,8 +102,8 @@ export default function Landing(): JSX.Element {
           text={'Go to design system'}
         />
 
-        <GoASpacer vSpacing="4xl" />
-      </GoAPageBlock>
+        <GoabSpacer vSpacing="4xl" />
+      </GoabPageBlock>
     </div>
   );
 }

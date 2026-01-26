@@ -1,17 +1,17 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import {
-  GoAGrid,
-  GoASpacer,
-  GoAInput,
-  GoAThreeColumnLayout,
-  GoACheckbox,
-  GoAButton,
-  GoAButtonGroup,
-  GoADivider,
-  GoAAccordion,
-  GoACallout,
-  GoACircularProgress,
-  GoANotification,
+  GoabGrid,
+  GoabSpacer,
+  GoabInput,
+  GoabThreeColumnLayout,
+  GoabCheckbox,
+  GoabButton,
+  GoabButtonGroup,
+  GoabDivider,
+  GoabAccordion,
+  GoabCallout,
+  GoabCircularProgress,
+  GoabNotification,
 } from '@abgov/react-components';
 import Card from '../../components/Card';
 import './styles.css';
@@ -90,7 +90,9 @@ export default function HomePage(): JSX.Element {
   );
 
   const getHandleFilterChange =
-    (filterProperty: FilterableField) => (name: string, checked: boolean) => {
+    (filterProperty: FilterableField) =>
+    ({ name, checked }: { name?: string; checked: boolean }) => {
+      if (!name) return;
       // handles checkboxes checked state
       setCheckedFilters((prevFilters) => {
         const newCheckboxState = {
@@ -265,7 +267,7 @@ export default function HomePage(): JSX.Element {
 
   if (isLoading || (!data && !error)) {
     content = (
-      <GoACircularProgress
+      <GoabCircularProgress
         variant="fullscreen"
         size="large"
         message="Loading service list..."
@@ -274,26 +276,26 @@ export default function HomePage(): JSX.Element {
     );
   } else if (error) {
     content = (
-      <GoANotification type="emergency" ariaLive="assertive">
+      <GoabNotification type="emergency" ariaLive="assertive">
         Failed to load service details. Please try again later. <br /> Error:{' '}
         {error.message}
-      </GoANotification>
+      </GoabNotification>
     );
   } else {
     content = (
-      <GoAThreeColumnLayout
+      <GoabThreeColumnLayout
         leftColumnWidth="23%"
         maxContentWidth="1550px"
         nav={
           <div className="home-sidebar">
             <div id="search-label"> Search</div>
-            <GoAInput
+            <GoabInput
               placeholder="Search"
               width="100%"
               name="search"
               leadingIcon="search"
               value={searchFilter}
-              onChange={(_: string, value: string) => {
+              onChange={({ value }) => {
                 setSearchFilter(value);
                 //reset filters and checkbox state
                 localStorage.removeItem('selectedCheckboxState');
@@ -307,9 +309,9 @@ export default function HomePage(): JSX.Element {
                 localStorage.setItem('searchFilter', value);
               }}
             />
-            <GoASpacer vSpacing="l" />
-            <GoAButtonGroup alignment="start" gap="compact">
-              <GoAButton
+            <GoabSpacer vSpacing="l" />
+            <GoabButtonGroup alignment="start" gap="compact">
+              <GoabButton
                 type="primary"
                 size="compact"
                 onClick={() => {
@@ -324,9 +326,9 @@ export default function HomePage(): JSX.Element {
                 }}
               >
                 Clear all
-              </GoAButton>
+              </GoabButton>
 
-              <GoAButton
+              <GoabButton
                 size="compact"
                 type="secondary"
                 onClick={() => {
@@ -342,9 +344,9 @@ export default function HomePage(): JSX.Element {
                 }}
               >
                 Collapse all
-              </GoAButton>
+              </GoabButton>
 
-              <GoAButton
+              <GoabButton
                 size="compact"
                 type="secondary"
                 onClick={() => {
@@ -359,30 +361,33 @@ export default function HomePage(): JSX.Element {
                 }}
               >
                 Expand all
-              </GoAButton>
-            </GoAButtonGroup>
-            <GoASpacer vSpacing="l" />
-            <GoACheckbox
+              </GoabButton>
+            </GoabButtonGroup>
+            <GoabSpacer vSpacing="l" />
+            <GoabCheckbox
               key={'includeDecommissioned'}
               name={'includeDecommissioned'}
               text={'Include Decommissioned services'}
               checked={includeDecommissioned}
-              onChange={(_, checked) => {
+              onChange={({ checked }) => {
                 setIncludeDecommissioned(checked);
                 localStorage.setItem(
                   'includeDecommissioned',
                   checked.toString(),
                 );
                 if (!checked) {
-                  getHandleFilterChange('status')(Status.Decommissioned, false);
+                  getHandleFilterChange('status')({
+                    name: Status.Decommissioned,
+                    checked: false,
+                  });
                 }
               }}
             />
-            <GoADivider></GoADivider>
-            <GoASpacer vSpacing="xl" />
+            <GoabDivider></GoabDivider>
+            <GoabSpacer vSpacing="xl" />
             {filterListCustom.map((filterCategory) => (
               <div key={filterCategory.property}>
-                <GoAAccordion
+                <GoabAccordion
                   key={`${filterCategory.title} ${collapseKey}`}
                   heading={`${filterCategory.title} (${
                     selectedFiltersState[filterCategory.property].length
@@ -392,7 +397,7 @@ export default function HomePage(): JSX.Element {
                 >
                   {appFilters.filters[filterCategory.property]?.map(
                     (filter) => (
-                      <GoACheckbox
+                      <GoabCheckbox
                         key={filter}
                         name={filter}
                         text={`${filter}`}
@@ -405,8 +410,8 @@ export default function HomePage(): JSX.Element {
                       />
                     ),
                   )}{' '}
-                </GoAAccordion>
-                <GoASpacer vSpacing="m" />
+                </GoabAccordion>
+                <GoabSpacer vSpacing="m" />
               </div>
             ))}
           </div>
@@ -414,59 +419,59 @@ export default function HomePage(): JSX.Element {
       >
         <div className="home-header">
           <h1 id="home-title">Services</h1>
-          <GoAButton type="secondary" onClick={() => navigate('/addservice')}>
+          <GoabButton type="secondary" onClick={() => navigate('/addservice')}>
             <b>Add a new service</b>
-          </GoAButton>
+          </GoabButton>
         </div>
         {/* <span className="last-updated">Last updated: {formattedDate}</span>   <br /> */}
         <span className="last-updated">
           Showing {recommendedServices.length + otherServices.length} of{' '}
           {apps.length} results{' '}
         </span>
-        <GoASpacer vSpacing="s" />
+        <GoabSpacer vSpacing="s" />
         <h2>Recommended services listing</h2>
         Recommended services are standard components built for the product teams
         to reuse. We highly recommend leveraging these standard services with
         the &quot;Recommended&quot; tag to streamline your development process,
         maximize efficiency, and optimize costs.
-        <GoASpacer vSpacing="xl" />
-        <GoAGrid minChildWidth="35ch" gap="2xl">
+        <GoabSpacer vSpacing="xl" />
+        <GoabGrid minChildWidth="35ch" gap="2xl">
           {recommendedServices.length > 0 ? (
             recommendedServices.map((app) => {
               return <Card key={app.appId} app={app} />;
             })
           ) : (
-            <GoACallout
+            <GoabCallout
               type="information"
               size="medium"
               heading="No recommended services found based on your search / filter options"
-            ></GoACallout>
+            ></GoabCallout>
           )}
-        </GoAGrid>
-        <GoASpacer vSpacing="l" />
+        </GoabGrid>
+        <GoabSpacer vSpacing="l" />
         <h2>Other services</h2>
         Other services include services built to serve specific use cases and
         might not be suitable to be used by the product teams. We still
         encourage you to the reach out to the service providers to collaborate
         or share knowledge and best practices if you are building something
         similar.
-        <GoASpacer vSpacing="xl" />
-        <GoAGrid minChildWidth="35ch" gap="2xl">
+        <GoabSpacer vSpacing="xl" />
+        <GoabGrid minChildWidth="35ch" gap="2xl">
           {otherServices.length > 0 ? (
             otherServices.map((app) => {
               return <Card key={app.appId} app={app} />;
             })
           ) : (
-            <GoACallout
+            <GoabCallout
               type="information"
               size="medium"
               heading="No other services found based on your search / filter options"
-            ></GoACallout>
+            ></GoabCallout>
           )}
-        </GoAGrid>
-        <GoASpacer vSpacing="3xl" />
+        </GoabGrid>
+        <GoabSpacer vSpacing="3xl" />
         <LastUpdated date={lastUpdated} />
-      </GoAThreeColumnLayout>
+      </GoabThreeColumnLayout>
     );
   }
 

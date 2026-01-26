@@ -1,9 +1,9 @@
 import React, { useMemo } from 'react';
 import ServiceForm from '.';
 import {
-  GoACircularProgress,
-  GoANotification,
-  GoAThreeColumnLayout,
+  GoabCircularProgress,
+  GoabNotification,
+  GoabThreeColumnLayout,
 } from '@abgov/react-components';
 import { getSchemaUrl } from '../../utils/configs';
 import useFetch from '../../hooks/useFetch';
@@ -51,14 +51,14 @@ export default function ServiceFormWrapper({
     );
   } else if (error) {
     content = (
-      <GoANotification type="emergency" ariaLive="assertive">
+      <GoabNotification type="emergency" ariaLive="assertive">
         Failed to load form definitions. Please try again later.
-      </GoANotification>
+      </GoabNotification>
     );
   }
 
   return (
-    <GoAThreeColumnLayout
+    <GoabThreeColumnLayout
       maxContentWidth="1550px"
       rightColumnWidth="8%"
       leftColumnWidth="18%"
@@ -66,7 +66,7 @@ export default function ServiceFormWrapper({
       {backLink}
       <h1>{pageHeader}</h1>
       <div className="progress-indicator">
-        <GoACircularProgress
+        <GoabCircularProgress
           variant="inline"
           size="large"
           message="Loading form information..."
@@ -74,6 +74,6 @@ export default function ServiceFormWrapper({
         />
       </div>
       {content}
-    </GoAThreeColumnLayout>
+    </GoabThreeColumnLayout>
   );
 }

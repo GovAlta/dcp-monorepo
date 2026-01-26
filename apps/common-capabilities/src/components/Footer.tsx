@@ -1,21 +1,21 @@
 import React from 'react';
-import { GoAAppFooter, GoAAppFooterNavSection } from '@abgov/react-components';
+import { GoabAppFooter, GoabAppFooterNavSection } from '@abgov/react-components';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <GoAAppFooter maxContentWidth="1500px">
-      <GoAAppFooterNavSection maxColumnCount={1}>
+    <GoabAppFooter maxContentWidth="1500px">
+      <GoabAppFooterNavSection maxColumnCount={1}>
         <Link to="/gettingstarted#getting-started">Getting started</Link>
         <Link to="/about">About</Link>
         <Link to="/ecosystem">Eco-system</Link>
-      </GoAAppFooterNavSection>
+      </GoabAppFooterNavSection>
 
-      <GoAAppFooterNavSection>
+      <GoabAppFooterNavSection>
         <Link to="/services">Services</Link>
         <Link to="/support">Support</Link>
-      </GoAAppFooterNavSection>
-    </GoAAppFooter>
+      </GoabAppFooterNavSection>
+    </GoabAppFooter>
   );
 };
 

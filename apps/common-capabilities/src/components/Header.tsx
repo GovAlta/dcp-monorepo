@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { GoAMicrositeHeader, GoAAppHeader } from '@abgov/react-components';
+import { GoabMicrositeHeader, GoabAppHeader } from '@abgov/react-components';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../providers/AuthStateProvider';
 import './styles.css';
@@ -38,8 +38,8 @@ const Header = () => {
 
   return (
     <>
-      <GoAMicrositeHeader type="live" maxContentWidth="1500px" />
-      <GoAAppHeader
+      <GoabMicrositeHeader type="live" maxContentWidth="1500px" />
+      <GoabAppHeader
         url="/"
         heading="Common capabilities"
         maxContentWidth="1500px"
@@ -59,7 +59,7 @@ const Header = () => {
             Logout
           </a>
         )}
-      </GoAAppHeader>
+      </GoabAppHeader>
     </>
   );
 };

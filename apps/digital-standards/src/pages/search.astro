@@ -1,12 +1,12 @@
 ---
 import Layout from '../layouts/Layout';
 import { Search as DCPSearch} from "@abgov/dcp-common"
-import { GoASpacer } from '@abgov/react-components';
+import { GoabSpacer } from '@abgov/react-components';
 
 ---
 <Layout hideNav={true}>
 	<h1>Search</h1>
-	<GoASpacer vSpacing="l" />
-	<DCPSearch client:load title="Digital Standards"/>
+	<GoabSpacer vSpacing="l" />
+	<DCPSearch client:only="react" title="Digital Standards"/>
 </Layout>
 	

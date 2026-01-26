@@ -1,8 +1,8 @@
 import {
-  GoAGrid,
-  GoAContainer,
-  GoAButton,
-  GoASpacer,
+  GoabGrid,
+  GoabContainer,
+  GoabButton,
+  GoabSpacer,
 } from '@abgov/react-components';
 import React, { useEffect } from 'react';
 import BackToTop from '../../components/BackToTop';
@@ -16,15 +16,15 @@ const StrategyPrinciples = () => {
   }, []);
   return (
     <div data-pagefind-body>
-      <GoAButton
+      <GoabButton
         type="tertiary"
         size="compact"
         leadingIcon="arrow-back"
         onClick={() => (window.location.href = '/')}
       >
         Back
-      </GoAButton>
-      <GoASpacer vSpacing="l" />
+      </GoabButton>
+      <GoabSpacer vSpacing="l" />
       <h1 id="digital-service-principles">Digital Service Principles</h1>
       <p>
         A set of 14 Digital Service Principles will guide how we work with
@@ -34,10 +34,10 @@ const StrategyPrinciples = () => {
         accountabilities, and will be required as part of all digital service
         initiatives.
       </p>
-      <GoASpacer vSpacing="xl" />
+      <GoabSpacer vSpacing="xl" />
 
-      <GoAGrid gap="xl" minChildWidth="320px">
-        <GoAContainer type="non-interactive" accent="thin">
+      <GoabGrid gap="xl" minChildWidth="320px">
+        <GoabContainer type="non-interactive" accent="thin">
           <h3 id="understand-users-and-their-needs-before-the-solution">
             Understand users and their needs before the solution.
           </h3>
@@ -46,8 +46,8 @@ const StrategyPrinciples = () => {
             are, how they behave, and what that means for the design and
             evolution of the service.
           </p>
-        </GoAContainer>
-        <GoAContainer accent="thin" type="non-interactive">
+        </GoabContainer>
+        <GoabContainer accent="thin" type="non-interactive">
           <h3 id="make-the-service-accessible-and-inclusive">
             Make the service accessible and inclusive.
           </h3>
@@ -55,8 +55,8 @@ const StrategyPrinciples = () => {
             Design the service for inclusion so that all who need it can use it.
             A diverse, inclusive delivery team improves the chance of success.
           </p>
-        </GoAContainer>
-        <GoAContainer accent="thin" type="non-interactive">
+        </GoabContainer>
+        <GoabContainer accent="thin" type="non-interactive">
           <h3 id="establish-and-empower-the-right-team">
             Establish and empower the right team.
           </h3>
@@ -66,8 +66,8 @@ const StrategyPrinciples = () => {
             skilled product owner, who is empowered to make decisions, should
             lead the team. Design and test the service from end to end.
           </p>
-        </GoAContainer>
-        <GoAContainer accent="thin" type="non-interactive">
+        </GoabContainer>
+        <GoabContainer accent="thin" type="non-interactive">
           <h3 id="design-and-test-the-service-from-end-to-end">
             Design and test the service from end to end.
           </h3>
@@ -76,8 +76,8 @@ const StrategyPrinciples = () => {
             needs. Test end-to-end, early and often, with users to validate
             this.
           </p>
-        </GoAContainer>
-        <GoAContainer accent="thin" type="non-interactive">
+        </GoabContainer>
+        <GoabContainer accent="thin" type="non-interactive">
           <h3 id="iterate-and-improve-frequently">
             Iterate and improve frequently.
           </h3>
@@ -86,8 +86,8 @@ const StrategyPrinciples = () => {
             working. Design with users and continuously improve services based
             on their feedback.
           </p>
-        </GoAContainer>
-        <GoAContainer accent="thin" type="non-interactive">
+        </GoabContainer>
+        <GoabContainer accent="thin" type="non-interactive">
           <h3 id="choose-the-right-tools-and-technology">
             Choose the right tools and technology.
           </h3>
@@ -96,15 +96,15 @@ const StrategyPrinciples = () => {
             accessible, and open, showing a bias to small pieces of technology,
             loosely joined.
           </p>
-        </GoAContainer>
-        <GoAContainer accent="thin" type="non-interactive">
+        </GoabContainer>
+        <GoabContainer accent="thin" type="non-interactive">
           <h3 id="operate-a-reliable-service">Operate a reliable service.</h3>
           <p>
             Sustainably resource the service so it can operate, improve, and
             adapt to changing user needs with minimum disruption for users.
           </p>
-        </GoAContainer>
-        <GoAContainer accent="thin" type="non-interactive">
+        </GoabContainer>
+        <GoabContainer accent="thin" type="non-interactive">
           <h3 id="work-in-the-open">Work in the open.</h3>
           <p>
             Make new source code and non-sensitive data open and reusable.
@@ -113,8 +113,8 @@ const StrategyPrinciples = () => {
             research, learning, and progress openly throughout the service’s
             design, build, and operation.
           </p>
-        </GoAContainer>
-        <GoAContainer accent="thin" type="non-interactive">
+        </GoabContainer>
+        <GoabContainer accent="thin" type="non-interactive">
           <h3 id="structure-budgets-and-contracts-to-support-agile-delivery">
             Structure budgets and contracts to support agile delivery.
           </h3>
@@ -123,8 +123,8 @@ const StrategyPrinciples = () => {
             contracting principles to mitigate risk, avoid vendor lock-in, and
             encourage the delivery of working software to users at pace.
           </p>
-        </GoAContainer>
-        <GoAContainer accent="thin" type="non-interactive">
+        </GoabContainer>
+        <GoabContainer accent="thin" type="non-interactive">
           <h3 id="use-and-contribute-to-open-standards-common-components-and-patterns">
             Use and contribute to open standards, common components and
             patterns.
@@ -134,8 +134,8 @@ const StrategyPrinciples = () => {
             and outside the GoA. Identify and share any patterns and components
             that are developed so that others can use them.
           </p>
-        </GoAContainer>
-        <GoAContainer accent="thin" type="non-interactive">
+        </GoabContainer>
+        <GoabContainer accent="thin" type="non-interactive">
           <h3 id="create-a-secure-ethical-service-that-protects-user-privacy">
             Create a secure, ethical service that protects user privacy
           </h3>
@@ -145,16 +145,16 @@ const StrategyPrinciples = () => {
             measures to protect users as they use the service and afterwards.
             Ensure ethical data usage throughout the service.
           </p>
-        </GoAContainer>
-        <GoAContainer accent="thin" type="non-interactive">
+        </GoabContainer>
+        <GoabContainer accent="thin" type="non-interactive">
           <h3 id="measure-performance">Measure performance.</h3>
           <p>
             Measure how well all parts of the service work for users, including
             how people interact with it in real time and publish performance
             data.
           </p>
-        </GoAContainer>
-        <GoAContainer accent="thin" type="non-interactive">
+        </GoabContainer>
+        <GoabContainer accent="thin" type="non-interactive">
           <h3 id="make-the-service-simple-to-use">
             Make the service simple to use.
           </h3>
@@ -163,8 +163,8 @@ const StrategyPrinciples = () => {
             and succeed the first time with
           </p>
           minimal help.
-        </GoAContainer>
-        <GoAContainer accent="thin" type="non-interactive">
+        </GoabContainer>
+        <GoabContainer accent="thin" type="non-interactive">
           <h3 id="make-data-useable">Make data useable.</h3>
           <p>
             Ensure data will map into other services, and follows standards for
@@ -172,10 +172,10 @@ const StrategyPrinciples = () => {
             ensure that data will support a more precise understanding of
             service performance.
           </p>
-        </GoAContainer>
-      </GoAGrid>
+        </GoabContainer>
+      </GoabGrid>
 
-      <GoASpacer vSpacing="l" />
+      <GoabSpacer vSpacing="l" />
       <BackToTop />
     </div>
   );

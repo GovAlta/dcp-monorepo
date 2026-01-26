@@ -1,10 +1,10 @@
 import React from 'react';
-import { GoAAppFooter } from '@abgov/react-components';
+import { GoabAppFooter } from '@abgov/react-components';
 
 const Footer = () => {
   return (
     <>
-      <GoAAppFooter maxContentWidth="1500px"></GoAAppFooter>
+      <GoabAppFooter maxContentWidth="1500px"></GoabAppFooter>
     </>
   );
 };

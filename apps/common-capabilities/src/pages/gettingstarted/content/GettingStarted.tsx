@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { GoASpacer } from '@abgov/react-components';
+import { GoabSpacer } from '@abgov/react-components';
 
 export default function renderGettingStarted() {
   return (
@@ -14,7 +14,7 @@ export default function renderGettingStarted() {
         alongside other services and are reusable or can be repurposed depending
         on the business context.
       </p>
-      <GoASpacer vSpacing="s" />
+      <GoabSpacer vSpacing="s" />
       <h2>What kind of services does common capabilities feature? </h2>
       <p>
         Common capabilities features two kinds of services:
@@ -36,7 +36,7 @@ export default function renderGettingStarted() {
               Learn more about the teams and the GoA eco-system
             </Link>
           </li>
-          <GoASpacer vSpacing="s" />
+          <GoabSpacer vSpacing="s" />
           <li>
             <p>
               <b>Services built to serve specific use cases</b> and are not
@@ -56,7 +56,7 @@ export default function renderGettingStarted() {
         </ol>
         <Link to="/services">Explore services → </Link>
       </p>
-      <GoASpacer vSpacing="l" />
+      <GoabSpacer vSpacing="l" />
 
       <h2>What do we mean by “reuse” or “repurpose”?</h2>
       <p>
@@ -76,7 +76,7 @@ export default function renderGettingStarted() {
         necessary modifications.
       </p>
 
-      <GoASpacer vSpacing="l" />
+      <GoabSpacer vSpacing="l" />
       <h2>
         How common capabilities is different from other similar resources that
         exist within GoA?

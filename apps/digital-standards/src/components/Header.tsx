@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import {
-  GoAMicrositeHeader,
-  GoAAppHeader,
-  GoAIcon,
+  GoabMicrositeHeader,
+  GoabAppHeader,
+  GoabIcon,
 } from '@abgov/react-components';
 
 declare global {
@@ -23,8 +23,8 @@ const Header = () => {
 
   return (
     <>
-      <GoAMicrositeHeader type="beta" maxContentWidth="1500px" />
-      <GoAAppHeader
+      <GoabMicrositeHeader type="beta" maxContentWidth="1500px" />
+      <GoabAppHeader
         url="/"
         heading="Digital Standards"
         maxContentWidth="1500px"
@@ -34,9 +34,9 @@ const Header = () => {
         <a href="/service-glossary/">Glossary</a>
         {/* <a href="/practice-areas/">Practice Areas</a> */}
         <a href="/search/">
-          <GoAIcon type="search" />
+          <GoabIcon type="search" />
         </a>
-      </GoAAppHeader>
+      </GoabAppHeader>
     </>
   );
 };

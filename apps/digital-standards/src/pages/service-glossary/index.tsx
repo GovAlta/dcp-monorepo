@@ -1,4 +1,4 @@
-import { GoAButton, GoASpacer } from '@abgov/react-components';
+import { GoabButton, GoabSpacer } from '@abgov/react-components';
 import React, { useEffect } from 'react';
 import BackToTop from '../../components/BackToTop';
 import { glossaryItems } from './config';
@@ -35,21 +35,21 @@ const GlossaryPage = () => {
 
   return (
     <div data-pagefind-body>
-      <GoAButton
+      <GoabButton
         type="tertiary"
         size="compact"
         leadingIcon="arrow-back"
         onClick={() => (window.location.href = '/')}
       >
         Back
-      </GoAButton>
-      <GoASpacer vSpacing="2xl" />
+      </GoabButton>
+      <GoabSpacer vSpacing="2xl" />
       <h1 id="glossary">Glossary</h1>
       <p>
         This Glossary is a collection of important terms used by the Digital
         Service Standards and Product teams.
       </p>
-      <GoASpacer vSpacing="l" />
+      <GoabSpacer vSpacing="l" />
 
       <div className="alphabetList">
         {alphabet.map((letter) =>
@@ -85,7 +85,7 @@ const GlossaryPage = () => {
                         <span>{item.definition}</span>
                       )}
                     </div>
-                    <GoASpacer vSpacing="xs" />
+                    <GoabSpacer vSpacing="xs" />
                   </>
                 ))}
               </div>

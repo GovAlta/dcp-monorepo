@@ -1,4 +1,4 @@
-import { GoAIcon } from '@abgov/react-components';
+import { GoabIcon } from '@abgov/react-components';
 import React from 'react';
 import './styles.css';
 
@@ -18,7 +18,7 @@ const ExternalLink = ({ link, text, newTab = true }: LinkProps) => {
         {text}
         {newTab && (
           <span className="link-icon">
-            <GoAIcon type="open" size="small" />
+            <GoabIcon type="open" size="small" />
           </span>
         )}
       </a>

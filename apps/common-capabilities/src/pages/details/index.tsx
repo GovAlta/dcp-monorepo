@@ -1,16 +1,15 @@
 import {
-  GoAThreeColumnLayout,
-  GoASpacer,
-  GoABadge,
-  GoAIcon,
-  GoASideMenu,
-  GoATable,
-  GoAButton,
-  GoACircularProgress,
-  GoANotification,
-  // eslint-disable-next-line import/named
-  GoAIconType,
+  GoabThreeColumnLayout,
+  GoabSpacer,
+  GoabBadge,
+  GoabIcon,
+  GoabSideMenu,
+  GoabTable,
+  GoabButton,
+  GoabCircularProgress,
+  GoabNotification,
 } from '@abgov/react-components';
+import { GoabIconType } from '@abgov/ui-components-common';
 import React, { useEffect, useState, useMemo } from 'react';
 import './styles.css';
 import ExternalLink from '../../components/ExternalLink';
@@ -147,12 +146,12 @@ export default function Details(): JSX.Element {
         {group.tableTh.length > 0 ? <b>{group.title}</b> : null}
         {group.note != '' ? (
           <>
-            <GoASpacer vSpacing="m" />
+            <GoabSpacer vSpacing="m" />
             {group.note}
           </>
         ) : null}
 
-        <GoATable key={group.name} width="70%">
+        <GoabTable key={group.name} width="70%">
           <thead>
             {group.tableTh.length > 0 ? (
               <tr key={'tr2' + group.name}>
@@ -182,8 +181,8 @@ export default function Details(): JSX.Element {
                 </tr>
               ))}
           </tbody>
-        </GoATable>
-        <GoASpacer vSpacing="xl" />
+        </GoabTable>
+        <GoabSpacer vSpacing="xl" />
       </>
     );
   };
@@ -193,7 +192,7 @@ export default function Details(): JSX.Element {
       return <>{app?.[specification.name] as string}</>;
     else if (specification.type == 'status')
       return (
-        <GoABadge
+        <GoabBadge
           key={specification.id}
           type={app?.[specification.name] == 'Live' ? 'success' : 'midtone'}
           content={app?.[specification.name] as string}
@@ -231,8 +230,8 @@ export default function Details(): JSX.Element {
       <tr className="items-color" key={method.type}>
         <td className="contact-type">{`${method.type}:  `}</td>
         <td>
-          <GoAIcon
-            type={iconType as GoAIconType}
+          <GoabIcon
+            type={iconType as GoabIconType}
             size="small"
             theme="outline"
           />
@@ -260,7 +259,7 @@ export default function Details(): JSX.Element {
           return (
             <div key={doc.name}>
               <ExternalLink text={`${doc.name}`} link={doc.url} />
-              <GoASpacer vSpacing="s" />
+              <GoabSpacer vSpacing="s" />
             </div>
           );
         }
@@ -269,7 +268,7 @@ export default function Details(): JSX.Element {
       return (
         <>
           {app.recommended ? (
-            <GoABadge
+            <GoabBadge
               key="validated"
               type="information"
               content="Recommended"
@@ -295,7 +294,7 @@ export default function Details(): JSX.Element {
           {app.contact.details != '' ? (
             <>
               {app.contact.details}
-              <GoASpacer vSpacing="s" />
+              <GoabSpacer vSpacing="s" />
             </>
           ) : null}
 
@@ -326,7 +325,7 @@ export default function Details(): JSX.Element {
 
   if (isLoading || (!app && !error)) {
     content = (
-      <GoACircularProgress
+      <GoabCircularProgress
         variant="fullscreen"
         size="large"
         message="Loading service details..."
@@ -335,11 +334,11 @@ export default function Details(): JSX.Element {
     );
   } else if (app) {
     content = (
-      <GoAThreeColumnLayout
+      <GoabThreeColumnLayout
         maxContentWidth="1500px"
         nav={
           <div className="details-side-nav" key="details-side-nav">
-            <GoASideMenu key="SideMenu">
+            <GoabSideMenu key="SideMenu">
               {items.content.length > 0
                 ? items.content.map((content) => {
                     return (
@@ -349,7 +348,7 @@ export default function Details(): JSX.Element {
                     );
                   })
                 : 'No content'}
-            </GoASideMenu>
+            </GoabSideMenu>
           </div>
         }
       >
@@ -360,20 +359,20 @@ export default function Details(): JSX.Element {
           }}
         />
 
-        <GoASpacer vSpacing="l" />
+        <GoabSpacer vSpacing="l" />
         <div className="service-heading">
           <h2>{app.serviceName}</h2>
-          <GoAButton
+          <GoabButton
             type="secondary"
             onClick={() => navigate(`/updateservice/${app.appId}`)}
           >
             Update
-          </GoAButton>
+          </GoabButton>
         </div>
-        <GoASpacer vSpacing="l" />
+        <GoabSpacer vSpacing="l" />
         <p className="service-content"> {app.description}</p>
 
-        <GoASpacer vSpacing="xl" />
+        <GoabSpacer vSpacing="xl" />
         {items.content.length > 0 &&
           items.content.map(
             ({
@@ -391,13 +390,13 @@ export default function Details(): JSX.Element {
                     {title}
                   </h3>
                   {renderContent(name, app)}
-                  <GoASpacer vSpacing="l" />
+                  <GoabSpacer vSpacing="l" />
                 </div>
               );
             },
           )}
 
-        <GoASpacer vSpacing="xl" />
+        <GoabSpacer vSpacing="xl" />
         <div>
           Please feel free to{' '}
           <ExternalLink
@@ -406,7 +405,7 @@ export default function Details(): JSX.Element {
           />{' '}
           on this service.
         </div>
-        <GoASpacer vSpacing="3xl" />
+        <GoabSpacer vSpacing="3xl" />
         <span className="content-bottom">
           <LastUpdated
             date={app?.lastUpdatedDate}
@@ -415,14 +414,14 @@ export default function Details(): JSX.Element {
           />
           <BackToTop />
         </span>
-      </GoAThreeColumnLayout>
+      </GoabThreeColumnLayout>
     );
   } else {
     content = (
-      <GoANotification type="emergency" ariaLive="assertive">
+      <GoabNotification type="emergency" ariaLive="assertive">
         Failed to load service details. Please try again later. <br /> Error:{' '}
         {error?.message}
-      </GoANotification>
+      </GoabNotification>
     );
   }
 

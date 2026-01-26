@@ -1,4 +1,4 @@
-import { GoAButton, GoASpacer } from '@abgov/react-components';
+import { GoabButton, GoabSpacer } from '@abgov/react-components';
 import React, { useEffect } from 'react';
 import BackToTop from '../../components/BackToTop';
 
@@ -11,17 +11,17 @@ export default function ServiceHelp() {
   }, []);
   return (
     <div data-pagefind-body>
-      <GoAButton
+      <GoabButton
         type="tertiary"
         size="compact"
         leadingIcon="arrow-back"
         onClick={() => (window.location.href = '/')}
       >
         Back
-      </GoAButton>
-      <GoASpacer vSpacing="l" />
+      </GoabButton>
+      <GoabSpacer vSpacing="l" />
       <h1 id="how-dss-will-help">How DSS will help</h1>
-      <GoASpacer vSpacing="l" />
+      <GoabSpacer vSpacing="l" />
       <h2 id="we-are-here-to-help">We are here to help.</h2>
       <p>
         As delivery teams explore and adopt new ways of working, the Digital
@@ -30,7 +30,7 @@ export default function ServiceHelp() {
         any time to work through your questions around Digital Service Standard
         resources, methodologies and assessment processes.
       </p>
-      <GoASpacer vSpacing="l" />
+      <GoabSpacer vSpacing="l" />
       <h3 id="refer-below-for-how-the-digital-service-standards-team-can-assist-you">
         Refer below for how the Digital Service Standards team can assist you.
       </h3>
@@ -82,7 +82,7 @@ export default function ServiceHelp() {
           </li>
         </ul>
       </p>
-      <GoASpacer vSpacing="2xl" />
+      <GoabSpacer vSpacing="2xl" />
       <BackToTop />
     </div>
   );

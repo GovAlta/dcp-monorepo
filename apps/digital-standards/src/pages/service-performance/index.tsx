@@ -1,4 +1,4 @@
-import { GoAAccordion, GoAButton, GoASpacer } from '@abgov/react-components';
+import { GoabAccordion, GoabButton, GoabSpacer } from '@abgov/react-components';
 import React, { useEffect } from 'react';
 import BackToTop from '../../components/BackToTop';
 
@@ -11,15 +11,15 @@ export default function ServicePerformance() {
   }, []);
   return (
     <div data-pagefind-body>
-      <GoAButton
+      <GoabButton
         type="tertiary"
         size="compact"
         leadingIcon="arrow-back"
         onClick={() => (window.location.href = '/')}
       >
         Back
-      </GoAButton>
-      <GoASpacer vSpacing="l" />
+      </GoabButton>
+      <GoabSpacer vSpacing="l" />
       <h1 id="service-performance">Service Performance</h1>
       <p>
         Digital Service Standards and Service Performance are a foundational
@@ -50,9 +50,9 @@ export default function ServicePerformance() {
         This ensures adherence to Digital Service Standards: Standard no. 3 —
         Focus on outcomes
       </p>
-      <GoASpacer vSpacing="l" />
+      <GoabSpacer vSpacing="l" />
 
-      <GoAAccordion
+      <GoabAccordion
         headingSize="medium"
         heading="Standard no. 3 - Focus on outcomes"
         open={false}
@@ -180,10 +180,10 @@ export default function ServicePerformance() {
             the service delivery cycle and after a service is live.
           </li>
         </ul>
-      </GoAAccordion>
-      <GoASpacer vSpacing="l" />
+      </GoabAccordion>
+      <GoabSpacer vSpacing="l" />
 
-      <GoAAccordion heading="The vision" headingSize="medium">
+      <GoabAccordion heading="The vision" headingSize="medium">
         <p>
           Service Performance aim to bring excellent experiences and value to
           all Albertans ensuring services are always measurable, defining
@@ -209,10 +209,10 @@ export default function ServicePerformance() {
             service’s problem statement.
           </li>
         </ul>
-      </GoAAccordion>
-      <GoASpacer vSpacing="l" />
+      </GoabAccordion>
+      <GoabSpacer vSpacing="l" />
 
-      <GoAAccordion
+      <GoabAccordion
         heading="Performance measurement themes"
         headingSize="medium"
       >
@@ -239,10 +239,10 @@ export default function ServicePerformance() {
             request to fulfillment of the service.
           </li>
         </ul>
-      </GoAAccordion>
-      <GoASpacer vSpacing="l" />
+      </GoabAccordion>
+      <GoabSpacer vSpacing="l" />
 
-      <GoAAccordion heading="Service performance platform" headingSize="medium">
+      <GoabAccordion heading="Service performance platform" headingSize="medium">
         <p>
           Service Performance Platform is set up to measure and monitor Key
           Performance Indicators and Metrics to continuously improve the digital
@@ -282,10 +282,10 @@ export default function ServicePerformance() {
           the Treasury Board and Finance, by providing necessary documentation,
           guidance, templates, and training resources.
         </p>
-      </GoAAccordion>
-      <GoASpacer vSpacing="l" />
+      </GoabAccordion>
+      <GoabSpacer vSpacing="l" />
 
-      <GoAAccordion
+      <GoabAccordion
         heading="Some of the major problems in measuring Digital Services"
         headingSize="medium"
       >
@@ -313,10 +313,10 @@ export default function ServicePerformance() {
             designing for end users.
           </li>
         </ul>
-      </GoAAccordion>
-      <GoASpacer vSpacing="l" />
+      </GoabAccordion>
+      <GoabSpacer vSpacing="l" />
 
-      <GoAAccordion heading="Why Measure Digital Services" headingSize="medium">
+      <GoabAccordion heading="Why Measure Digital Services" headingSize="medium">
         <p>When our services are measured, programs are able to show:</p>
         <p>
           <b>Accountability and Leadership</b>: Ensures accountability to
@@ -352,8 +352,8 @@ export default function ServicePerformance() {
           <b>Enhancing Communication</b>: Enhances storytelling, making the case
           for digital initiatives and Agile methodologies.
         </p>
-      </GoAAccordion>
-      <GoASpacer vSpacing="2xl" />
+      </GoabAccordion>
+      <GoabSpacer vSpacing="2xl" />
       <BackToTop />
     </div>
   );

@@ -1,4 +1,4 @@
-import { GoAAccordion, GoASpacer } from '@abgov/react-components';
+import { GoabAccordion, GoabSpacer } from '@abgov/react-components';
 import React from 'react';
 import SoftDelete from './faqdetails/SoftDelete';
 
@@ -19,10 +19,10 @@ export default function FAQ() {
     <>
       {faqs.map((faq) => (
         <>
-          <GoAAccordion key={faq.question} heading={faq.question}>
+          <GoabAccordion key={faq.question} heading={faq.question}>
             {faq.answer}
-          </GoAAccordion>
-          <GoASpacer vSpacing="xs" />
+          </GoabAccordion>
+          <GoabSpacer vSpacing="xs" />
         </>
       ))}
     </>

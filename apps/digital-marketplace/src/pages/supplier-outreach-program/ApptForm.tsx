@@ -11,7 +11,7 @@ import FormField from '../../components/Input';
 import Textarea from '../../components/textarea';
 import Flatpickr from 'react-flatpickr';
 import 'flatpickr/dist/themes/material_green.css';
-import { GoACircularProgress } from '@abgov/react-components';
+import { GoabCircularProgress } from '@abgov/react-components';
 import { getBookingsUrl } from '../../utils/config';
 import useFetch from '../../hooks/useFetch';
 import type { Bookings } from './types';
@@ -309,12 +309,12 @@ export default function ApptForm() {
 
                       <div className="goa-field-split">
                         {isBookingsLoading ? (
-                          <GoACircularProgress
+                          <GoabCircularProgress
                             variant="inline"
                             size="large"
                             message="Loading available dates..."
                             visible={true}
-                          ></GoACircularProgress>
+                          ></GoabCircularProgress>
                         ) : (
                           <>
                             <div className="goa-date" style={{ flex: '1' }}>

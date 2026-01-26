@@ -1,4 +1,4 @@
-import { GoASpacer } from '@abgov/react-components';
+import { GoabSpacer } from '@abgov/react-components';
 import React from 'react';
 
 export default function SoftDelete() {
@@ -13,7 +13,7 @@ export default function SoftDelete() {
           On the update screen, update the <strong>Status</strong> (The current
           status of the service) field of the service to{' '}
           <strong>Decommissioned</strong>.
-          <GoASpacer vSpacing="m" />
+          <GoabSpacer vSpacing="m" />
           Please note the differences between the following statuses:
           <ul>
             <li>
@@ -41,7 +41,7 @@ export default function SoftDelete() {
           <strong>Include decommissioned services</strong> box.
         </li>
       </ol>
-      <GoASpacer vSpacing="m" />
+      <GoabSpacer vSpacing="m" />
       <p>
         For further information, please refer to the DDD&apos;s{' '}
         <a href="https://goa-dio.atlassian.net/wiki/spaces/DIO/pages/3637673998/Guides">
