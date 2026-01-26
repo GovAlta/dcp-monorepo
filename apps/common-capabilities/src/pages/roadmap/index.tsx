@@ -1,17 +1,17 @@
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState, useMemo, useCallback } from 'react';
 import {
-  GoAGrid,
-  GoASpacer,
-  GoAInput,
-  GoAThreeColumnLayout,
-  GoACheckbox,
-  GoAButton,
-  GoAButtonGroup,
-  GoADivider,
-  GoAAccordion,
-  GoACallout,
-  GoACircularProgress,
-  GoANotification,
+  GoabGrid,
+  GoabSpacer,
+  GoabInput,
+  GoabThreeColumnLayout,
+  GoabCheckbox,
+  GoabButton,
+  GoabButtonGroup,
+  GoabDivider,
+  GoabAccordion,
+  GoabCallout,
+  GoabCircularProgress,
+  GoabNotification,
 } from '@abgov/react-components';
 import Card from '../../components/Card';
 import './styles.css';
@@ -112,7 +112,9 @@ export default function HomePage(): JSX.Element {
   );
 
   const getHandleFilterChange =
-    (filterProperty: FilterableField) => (name: string, checked: boolean) => {
+    (filterProperty: FilterableField) =>
+    ({ name, checked }: { name?: string; checked: boolean }) => {
+      if (!name) return;
       // handles checkboxes checked state
       setCheckedFilters((prevFilters) => {
         const newCheckboxState = {
@@ -158,32 +160,35 @@ export default function HomePage(): JSX.Element {
 
   // searches for items in the services array that match the search and filter
   // however search takes priority over filters
-  const findServices = (
-    array: Service[],
-    searchRegExp: RegExp,
-    fields: ServiceAttribute[],
-    filters: FilterState,
-  ) => {
-    return array.filter((item) => {
-      const fieldMatch = fields
-        .map((field) => searchRegExp.test(item[field] as string))
-        .some(Boolean);
+  const findServices = useCallback(
+    (
+      array: Service[],
+      searchRegExp: RegExp,
+      fields: ServiceAttribute[],
+      filters: FilterState,
+    ) => {
+      return array.filter((item) => {
+        const fieldMatch = fields
+          .map((field) => searchRegExp.test(item[field] as string))
+          .some(Boolean);
 
-      const filterMatches = Object.entries(filters).every(
-        ([, filterValues]) => {
-          if (filterValues.length === 0) {
-            return true;
-          }
+        const filterMatches = Object.entries(filters).every(
+          ([, filterValues]) => {
+            if (filterValues.length === 0) {
+              return true;
+            }
 
-          return filterValues.some((filterValue) =>
-            appFilters.indexedItems[filterValue]?.has(item.appId),
-          );
-        },
-      );
+            return filterValues.some((filterValue) =>
+              appFilters.indexedItems[filterValue]?.has(item.appId),
+            );
+          },
+        );
 
-      return fieldMatch && filterMatches;
-    });
-  };
+        return fieldMatch && filterMatches;
+      });
+    },
+    [appFilters],
+  );
 
   const downloadRoadmap = async () => {
     setExportApiState({ loading: true, error: null });
@@ -281,7 +286,7 @@ export default function HomePage(): JSX.Element {
         clearTimeout(timeoutId);
       }
     };
-  }, [searchFilter, selectedFiltersState, apps]);
+  }, [searchFilter, selectedFiltersState, apps, findServices]);
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -306,10 +311,10 @@ export default function HomePage(): JSX.Element {
           [category]: true,
         },
       });
-      setFiltersAccordionState({
-        ...filtersAccordionState,
+      setFiltersAccordionState((prevState) => ({
+        ...prevState,
         functionalGroup: true,
-      });
+      }));
     }
   }, [apps]);
 
@@ -324,7 +329,7 @@ export default function HomePage(): JSX.Element {
 
   if (isLoading || (!data && !error)) {
     content = (
-      <GoACircularProgress
+      <GoabCircularProgress
         variant="fullscreen"
         size="large"
         message="Loading service list..."
@@ -333,21 +338,21 @@ export default function HomePage(): JSX.Element {
     );
   } else if (error) {
     content = (
-      <GoANotification type="emergency" ariaLive="assertive">
+      <GoabNotification type="emergency" ariaLive="assertive">
         Failed to load service details. Please try again later. <br /> Error:{' '}
         {error.message}
-      </GoANotification>
+      </GoabNotification>
     );
   } else {
     content = (
-      <GoAThreeColumnLayout
+      <GoabThreeColumnLayout
         leftColumnWidth="23%"
         maxContentWidth="1550px"
         nav={
           <div className="home-sidebar no-print">
             <h3>Roadmap view:</h3>
 
-            <GoACheckbox
+            <GoabCheckbox
               id={'roadmapGrouped'}
               checked={roadmapView.grouped}
               name={'groupByQuarter'}
@@ -362,7 +367,7 @@ export default function HomePage(): JSX.Element {
                   </span>
                 )
               }
-              onChange={(name: string, checked: boolean) =>
+              onChange={({ checked }) =>
                 setRoadmapView((prevState) => ({
                   ...prevState,
                   grouped: checked,
@@ -370,12 +375,12 @@ export default function HomePage(): JSX.Element {
               }
             />
 
-            <GoACheckbox
+            <GoabCheckbox
               id={'roadmapCondensed'}
               checked={roadmapView.condensed}
               name="history"
               text="Minimized view"
-              onChange={(name: string, checked: boolean) =>
+              onChange={({ checked }) =>
                 setRoadmapView((prevState) => ({
                   ...prevState,
                   condensed: checked,
@@ -383,12 +388,12 @@ export default function HomePage(): JSX.Element {
               }
             />
 
-            <GoACheckbox
+            <GoabCheckbox
               id={'roadmapHistory'}
               checked={roadmapView.history}
               name="history"
               text="Show past items"
-              onChange={(_, checked: boolean) =>
+              onChange={({ checked }) =>
                 setRoadmapView((prevState) => ({
                   ...prevState,
                   history: checked,
@@ -396,18 +401,18 @@ export default function HomePage(): JSX.Element {
               }
             />
 
-            <GoASpacer vSpacing="l" />
-            <GoADivider></GoADivider>
-            <GoASpacer vSpacing="l" />
+            <GoabSpacer vSpacing="l" />
+            <GoabDivider></GoabDivider>
+            <GoabSpacer vSpacing="l" />
 
             <div id="search-label"> Search</div>
-            <GoAInput
+            <GoabInput
               placeholder="Search"
               width="100%"
               name="search"
               leadingIcon="search"
               value={searchFilter}
-              onChange={(name: string, value: string) => {
+              onChange={({ value }) => {
                 setSearchFilter(value);
                 //reset filters and checkbox state
                 localStorage.removeItem('selectedCheckboxState');
@@ -421,10 +426,10 @@ export default function HomePage(): JSX.Element {
                 localStorage.setItem('searchFilter', value);
               }}
             />
-            <GoASpacer vSpacing="l" />
+            <GoabSpacer vSpacing="l" />
 
-            <GoAButtonGroup alignment="start" gap="compact">
-              <GoAButton
+            <GoabButtonGroup alignment="start" gap="compact">
+              <GoabButton
                 type="primary"
                 size="compact"
                 onClick={() => {
@@ -439,8 +444,8 @@ export default function HomePage(): JSX.Element {
                 }}
               >
                 Clear all
-              </GoAButton>
-              <GoAButton
+              </GoabButton>
+              <GoabButton
                 size="compact"
                 type="secondary"
                 onClick={() => {
@@ -456,9 +461,9 @@ export default function HomePage(): JSX.Element {
                 }}
               >
                 Collapse all
-              </GoAButton>
+              </GoabButton>
 
-              <GoAButton
+              <GoabButton
                 size="compact"
                 type="secondary"
                 onClick={() => {
@@ -473,30 +478,33 @@ export default function HomePage(): JSX.Element {
                 }}
               >
                 Expand all
-              </GoAButton>
-            </GoAButtonGroup>
-            <GoASpacer vSpacing="xl" />
-            <GoACheckbox
+              </GoabButton>
+            </GoabButtonGroup>
+            <GoabSpacer vSpacing="xl" />
+            <GoabCheckbox
               key={'includeDecommissioned'}
               name={'includeDecommissioned'}
               text={'Include decommissioned services'}
               checked={includeDecommissioned}
-              onChange={(_, checked) => {
+              onChange={({ checked }) => {
                 setIncludeDecommissioned(checked);
                 localStorage.setItem(
                   'includeDecommissioned',
                   checked.toString(),
                 );
                 if (!checked) {
-                  getHandleFilterChange('status')(Status.Decommissioned, false);
+                  getHandleFilterChange('status')({
+                    name: Status.Decommissioned,
+                    checked: false,
+                  });
                 }
               }}
             />
-            <GoADivider />
-            <GoASpacer vSpacing="xl" />
+            <GoabDivider />
+            <GoabSpacer vSpacing="xl" />
             {filterListCustom.map((filterCategory) => (
               <div key={filterCategory.property}>
-                <GoAAccordion
+                <GoabAccordion
                   key={`${filterCategory.title} ${collapseKey}`}
                   headingSize="small"
                   heading={`${filterCategory.title} (${
@@ -506,7 +514,7 @@ export default function HomePage(): JSX.Element {
                 >
                   {appFilters.filters[filterCategory.property]?.map(
                     (filter) => (
-                      <GoACheckbox
+                      <GoabCheckbox
                         key={filter}
                         name={filter}
                         text={`${filter}`}
@@ -519,8 +527,8 @@ export default function HomePage(): JSX.Element {
                       />
                     ),
                   )}{' '}
-                </GoAAccordion>
-                <GoASpacer vSpacing="m" />
+                </GoabAccordion>
+                <GoabSpacer vSpacing="m" />
               </div>
             ))}
           </div>
@@ -532,10 +540,10 @@ export default function HomePage(): JSX.Element {
 
         {roadmapView.grouped ? (
           <>
-            <GoASpacer vSpacing="xl" />
+            <GoabSpacer vSpacing="xl" />
             <div className="no-print align-buttons-roadmap">
-              <GoAButtonGroup alignment="start" gap="compact">
-                <GoAButton
+              <GoabButtonGroup alignment="start" gap="compact">
+                <GoabButton
                   size="compact"
                   type="secondary"
                   onClick={() => {
@@ -544,9 +552,9 @@ export default function HomePage(): JSX.Element {
                   }}
                 >
                   Expand all
-                </GoAButton>
+                </GoabButton>
 
-                <GoAButton
+                <GoabButton
                   size="compact"
                   type="secondary"
                   onClick={() => {
@@ -555,9 +563,9 @@ export default function HomePage(): JSX.Element {
                   }}
                 >
                   Collapse all
-                </GoAButton>
-              </GoAButtonGroup>
-              <GoAButton
+                </GoabButton>
+              </GoabButtonGroup>
+              <GoabButton
                 size="compact"
                 type="primary"
                 leadingIcon="download"
@@ -565,18 +573,18 @@ export default function HomePage(): JSX.Element {
                 onClick={downloadRoadmap}
               >
                 Download roadmap
-              </GoAButton>
+              </GoabButton>
             </div>
-            <GoASpacer vSpacing="s" />
+            <GoabSpacer vSpacing="s" />
             {roadmapWhenList.length > 0 ? (
               roadmapWhenList.map((when, index) => (
-                <GoAAccordion
+                <GoabAccordion
                   key={`roadmapAcc${index}-${collapseKey2}`}
                   heading={`${when}`}
                   headingSize="small"
                   open={roadmapAccordionOpen}
                 >
-                  <GoAGrid minChildWidth="33ch" gap="xl">
+                  <GoabGrid minChildWidth="33ch" gap="xl">
                     {roadmapData(services, when).map((app) => (
                       <Card
                         key={`grouped-${app.appId}`}
@@ -585,11 +593,11 @@ export default function HomePage(): JSX.Element {
                         condensed={roadmapView.condensed}
                       />
                     ))}
-                  </GoAGrid>
-                </GoAAccordion>
+                  </GoabGrid>
+                </GoabAccordion>
               ))
             ) : (
-              <GoACallout
+              <GoabCallout
                 type="information"
                 size="medium"
                 heading="No roadmap items found based on your search / filter options"
@@ -598,12 +606,12 @@ export default function HomePage(): JSX.Element {
           </>
         ) : (
           <>
-            <GoASpacer vSpacing="l" />
+            <GoabSpacer vSpacing="l" />
             <span className="last-updated">
               Showing {services.length} of {apps.length} results{' '}
             </span>
-            <GoASpacer vSpacing="s" />
-            <GoAGrid minChildWidth="35ch" gap="2xl">
+            <GoabSpacer vSpacing="s" />
+            <GoabGrid minChildWidth="35ch" gap="2xl">
               {services.length > 0 ? (
                 services.map((app) => {
                   return (
@@ -617,18 +625,18 @@ export default function HomePage(): JSX.Element {
                   );
                 })
               ) : (
-                <GoACallout
+                <GoabCallout
                   type="information"
                   size="medium"
                   heading="No roadmap items found based on your search / filter options"
-                ></GoACallout>
+                ></GoabCallout>
               )}
-            </GoAGrid>
+            </GoabGrid>
           </>
         )}
-        <GoASpacer vSpacing="3xl" />
+        <GoabSpacer vSpacing="3xl" />
         <LastUpdated date={lastUpdated} />
-      </GoAThreeColumnLayout>
+      </GoabThreeColumnLayout>
     );
   }
 

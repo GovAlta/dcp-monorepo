@@ -1,8 +1,8 @@
 import {
-  GoASideMenu,
-  GoASpacer,
-  GoATable,
-  GoAThreeColumnLayout,
+  GoabSideMenu,
+  GoabSpacer,
+  GoabTable,
+  GoabThreeColumnLayout,
 } from '@abgov/react-components';
 import React, { useEffect } from 'react';
 import {
@@ -28,18 +28,18 @@ export default function EcoSystemPage(): JSX.Element {
     }
   }, []);
   return (
-    <GoAThreeColumnLayout
+    <GoabThreeColumnLayout
       maxContentWidth="1550px"
       rightColumnWidth="8%"
       leftColumnWidth="22%"
       nav={
-        <GoASideMenu>
+        <GoabSideMenu>
           {sideNavItems.map((item) => (
             <a href={`#${item.id}`} key={item.id}>
               {item.title}
             </a>
           ))}
-        </GoASideMenu>
+        </GoabSideMenu>
       }
     >
       <h1>Eco-system</h1>
@@ -49,7 +49,7 @@ export default function EcoSystemPage(): JSX.Element {
         various platform teams that exist at the enterprise level, divisional
         level, and within specific ministries.
       </p>
-      <GoASpacer vSpacing="l" />
+      <GoabSpacer vSpacing="l" />
       <h2 id="enterprise-platform-team">Enterprise platform team</h2>
       <p>
         The Enterprise Platform Team, at the broader Government of Alberta
@@ -65,10 +65,10 @@ export default function EcoSystemPage(): JSX.Element {
         <li>Access and data management policies</li>
         <li>Cloud and hosting policies</li>
       </ol>
-      <GoASpacer vSpacing="l" />
+      <GoabSpacer vSpacing="l" />
 
       <h3>Enterprise platform teams directory</h3>
-      <GoATable>
+      <GoabTable>
         <thead>
           <tr>
             <th>Provider</th>
@@ -85,8 +85,8 @@ export default function EcoSystemPage(): JSX.Element {
             </tr>
           ))}
         </tbody>
-      </GoATable>
-      <GoASpacer vSpacing="l" />
+      </GoabTable>
+      <GoabSpacer vSpacing="l" />
 
       <h2 id="digital-design-and-delivery">Digital Design and Delivery</h2>
       <p>
@@ -102,10 +102,10 @@ export default function EcoSystemPage(): JSX.Element {
         <li>Design, development, and maintenance directives</li>
         <li>Accessibility directives</li>
       </ol>
-      <GoASpacer vSpacing="3xs" />
+      <GoabSpacer vSpacing="3xs" />
 
       <h3>Digital Design and Delivery directory </h3>
-      <GoATable>
+      <GoabTable>
         <thead>
           <tr>
             <th>Provider</th>
@@ -122,8 +122,8 @@ export default function EcoSystemPage(): JSX.Element {
             </tr>
           ))}
         </tbody>
-      </GoATable>
-      <GoASpacer vSpacing="l" />
+      </GoabTable>
+      <GoabSpacer vSpacing="l" />
       <h2 id="portfolio-platform-team">Portfolio platform team</h2>
       <p>
         The Portfolio Platform Team focuses on serving government portfolios,
@@ -137,10 +137,10 @@ export default function EcoSystemPage(): JSX.Element {
         <li>Integration with broader or legacy systems</li>
         <li>Adherence to portfolio-specific requirements</li>
       </ol>
-      <GoASpacer vSpacing="3xs" />
+      <GoabSpacer vSpacing="3xs" />
 
       <h3>Portfolio platform teams directory</h3>
-      <GoATable>
+      <GoabTable>
         <thead>
           <tr>
             <th>Provider</th>
@@ -157,8 +157,8 @@ export default function EcoSystemPage(): JSX.Element {
             </tr>
           ))}
         </tbody>
-      </GoATable>
-      <GoASpacer vSpacing="l" />
+      </GoabTable>
+      <GoabSpacer vSpacing="l" />
 
       <h2 id="product-team">Product team</h2>
       <p>
@@ -172,7 +172,7 @@ export default function EcoSystemPage(): JSX.Element {
         <li>Customization requirements</li>
         <li>Adherence to development timelines</li>
       </ol>
-      <GoASpacer vSpacing="3xs" />
+      <GoabSpacer vSpacing="3xs" />
 
       <h2 id="product">Product</h2>
       <p>
@@ -186,8 +186,8 @@ export default function EcoSystemPage(): JSX.Element {
       <ol className="goa-ordered-list">
         <li>Specific user requirements</li>
       </ol>
-      <GoASpacer vSpacing="l" />
+      <GoabSpacer vSpacing="l" />
       <BackToTop />
-    </GoAThreeColumnLayout>
+    </GoabThreeColumnLayout>
   );
 }

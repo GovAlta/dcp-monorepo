@@ -1,4 +1,4 @@
-import { GoASpacer, GoAButton } from '@abgov/react-components';
+import { GoabSpacer, GoabButton } from '@abgov/react-components';
 import React, { useEffect } from 'react';
 import BackToTop from '../../components/BackToTop';
 import ExternalLink from '../../components/ExternalLink';
@@ -12,17 +12,17 @@ export default function ServiceAssessments(): JSX.Element {
   }, []);
   return (
     <div data-pagefind-body>
-      <GoAButton
+      <GoabButton
         type="tertiary"
         size="compact"
         leadingIcon="arrow-back"
         onClick={() => (window.location.href = '/')}
       >
         Back
-      </GoAButton>
-      <GoASpacer vSpacing="l" />
+      </GoabButton>
+      <GoabSpacer vSpacing="l" />
       <h1 id="service-assessments">Service Assessments</h1>
-      <GoASpacer vSpacing="l" />
+      <GoabSpacer vSpacing="l" />
       <p>
         If your service is in the discovery phase you should have the following
         in place before booking an assessment:
@@ -51,7 +51,7 @@ export default function ServiceAssessments(): JSX.Element {
           />
         </li>
       </ul>
-      <GoASpacer vSpacing="l" />
+      <GoabSpacer vSpacing="l" />
       <h2 id="who-should-attend-the-assessment">
         Who should attend the assessment
       </h2>
@@ -65,7 +65,7 @@ export default function ServiceAssessments(): JSX.Element {
         <li>Service Designer</li>
         <li>Scrum Master (alpha, beta, and live assessments)</li>
       </ul>
-      <GoASpacer vSpacing="l" />
+      <GoabSpacer vSpacing="l" />
       <h2 id="how-to-prepare-for-an-assessment">
         How to prepare for an assessment
       </h2>
@@ -75,7 +75,7 @@ export default function ServiceAssessments(): JSX.Element {
         questions and topics discussed in the assessment meetings. Please
         complete this tool 24 business hours ahead of the assessment meeting.
       </p>
-      <GoASpacer vSpacing="l" />
+      <GoabSpacer vSpacing="l" />
       <h2 id="what-will-happen-during-the-assessment">
         What will happen during the assessment
       </h2>
@@ -106,7 +106,7 @@ export default function ServiceAssessments(): JSX.Element {
         The team will be asked to provide any relevant documentation like
         opportunity cards or Executive presentation slide decks.
       </p>
-      <GoASpacer vSpacing="l" />
+      <GoabSpacer vSpacing="l" />
       <h2 id="what-will-happen-after-the-assessment">
         What will happen after the assessment
       </h2>
@@ -129,7 +129,7 @@ export default function ServiceAssessments(): JSX.Element {
         />
         .
       </p>
-      <GoASpacer vSpacing="2xl" />
+      <GoabSpacer vSpacing="2xl" />
       <BackToTop />
     </div>
   );

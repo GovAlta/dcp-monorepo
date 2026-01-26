@@ -1,12 +1,12 @@
 import React from 'react';
-import Header from '../../components/Header';
+import Header from '../../components/HeaderComponent';
 import {
-  GoAThreeColumnLayout,
-  GoASideMenu,
-  GoASideMenuGroup,
-  GoAHeroBanner,
+  GoabThreeColumnLayout,
+  GoabSideMenu,
+  GoabSideMenuGroup,
+  GoabHeroBanner,
 } from '@abgov/react-components';
-import Footer from '../../components/Footer';
+import Footer from '../../components/FooterComponent';
 
 type Props = {
   children: React.ReactNode;
@@ -20,7 +20,7 @@ const Layout = ({ children, hideNav = false, hideHero = true }: Props) => {
       <section id="top-page"></section>
       <Header />
       {hideHero ? null : (
-        <GoAHeroBanner
+        <GoabHeroBanner
           heading="Digital Service Standards"
           maxContentWidth="785px"
         >
@@ -29,18 +29,18 @@ const Layout = ({ children, hideNav = false, hideHero = true }: Props) => {
             sets clear expectations on how we will deliver better, faster,
             smarter services.
           </p>
-        </GoAHeroBanner>
+        </GoabHeroBanner>
       )}
 
-      <GoAThreeColumnLayout
+      <GoabThreeColumnLayout
         maxContentWidth="1540px"
         rightColumnWidth="30ch"
         leftColumnWidth="35ch"
         nav={
           hideNav ? null : (
             <div>
-              <GoASideMenu>
-                <GoASideMenuGroup heading="Digital Service Standards Program">
+              <GoabSideMenu>
+                <GoabSideMenuGroup heading="Digital Service Standards Program">
                   <a href="/service-standards/">Digital Service Standards</a>
                   <a href="/service-principles/">Digital Service Principles</a>
                   <a href="/service-help/">
@@ -51,14 +51,14 @@ const Layout = ({ children, hideNav = false, hideHero = true }: Props) => {
                   <a href="/digital-capabilities/">
                     Digital Capability Program
                   </a>
-                </GoASideMenuGroup>
-              </GoASideMenu>
+                </GoabSideMenuGroup>
+              </GoabSideMenu>
             </div>
           )
         }
       >
         {children}
-      </GoAThreeColumnLayout>
+      </GoabThreeColumnLayout>
       <Footer />
     </>
   );

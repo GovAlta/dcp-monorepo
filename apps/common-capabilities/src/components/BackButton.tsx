@@ -1,5 +1,5 @@
 import React from 'react';
-import { GoAButton } from '@abgov/react-components';
+import { GoabButton } from '@abgov/react-components';
 
 type BackButtonProps = {
   text?: string;
@@ -8,13 +8,13 @@ type BackButtonProps = {
 
 export default function BackButton({ text, onClick }: BackButtonProps) {
   return (
-    <GoAButton
+    <GoabButton
       type="tertiary"
       size="compact"
       leadingIcon="arrow-back"
       onClick={onClick}
     >
       {text}
-    </GoAButton>
+    </GoabButton>
   );
 }

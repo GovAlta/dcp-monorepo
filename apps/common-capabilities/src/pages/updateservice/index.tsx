@@ -1,7 +1,10 @@
 import React, { useEffect, useMemo } from 'react';
 import ServiceFormWrapper from '../../components/ServiceForm/ServiceFormWrapper';
 import useFetch from '../../hooks/useFetch';
-import { GoACircularProgress, GoANotification } from '@abgov/react-components';
+import {
+  GoabCircularProgress,
+  GoabNotification,
+} from '@abgov/react-components';
 import useForm from '../../hooks/useFormSubmit';
 import { getApiUrl } from '../../utils/configs';
 import BackButton from '../../components/BackButton';
@@ -48,7 +51,7 @@ export default function UpdateServicePage(): JSX.Element {
 
   if (isLoading || (!service && !error)) {
     content = (
-      <GoACircularProgress
+      <GoabCircularProgress
         variant="fullscreen"
         size="large"
         message="Loading service details..."
@@ -66,9 +69,9 @@ export default function UpdateServicePage(): JSX.Element {
     );
   } else {
     content = (
-      <GoANotification type="emergency" ariaLive="assertive">
+      <GoabNotification type="emergency" ariaLive="assertive">
         Failed to load service details. Please try again later.
-      </GoANotification>
+      </GoabNotification>
     );
   }
 

@@ -1,4 +1,4 @@
-import { GoASideMenu, GoAThreeColumnLayout } from '@abgov/react-components';
+import { GoabSideMenu, GoabThreeColumnLayout } from '@abgov/react-components';
 import React, { useEffect, useState } from 'react';
 import { sideNavItems } from './config';
 import './styles.css';
@@ -19,11 +19,11 @@ export default function GettingStartedPage(): JSX.Element {
   }, []);
 
   return (
-    <GoAThreeColumnLayout
+    <GoabThreeColumnLayout
       maxContentWidth="1550px"
       rightColumnWidth="8%"
       nav={
-        <GoASideMenu>
+        <GoabSideMenu>
           {sideNavItems.map((item) => (
             <a
               href={`#${item.id}`}
@@ -33,7 +33,7 @@ export default function GettingStartedPage(): JSX.Element {
               {item.title}
             </a>
           ))}
-        </GoASideMenu>
+        </GoabSideMenu>
       }
     >
       <>
@@ -42,6 +42,6 @@ export default function GettingStartedPage(): JSX.Element {
         {activeSection === 'faq' && <FAQ />}
         <BackToTop />
       </>
-    </GoAThreeColumnLayout>
+    </GoabThreeColumnLayout>
   );
 }

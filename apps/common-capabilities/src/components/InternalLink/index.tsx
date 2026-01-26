@@ -1,4 +1,4 @@
-import { GoAIcon } from '@abgov/react-components';
+import { GoabIcon } from '@abgov/react-components';
 import React from 'react';
 import './styles.css';
 import { Link } from 'react-router-dom';
@@ -16,7 +16,7 @@ const InternalLink = ({ link, text, icon = true }: LinkProps) => {
         {text}
         {icon && (
           <span className="link-icon">
-            <GoAIcon type="arrow-forward" size="small"></GoAIcon>
+            <GoabIcon type="arrow-forward" size="small"></GoabIcon>
           </span>
         )}
       </Link>

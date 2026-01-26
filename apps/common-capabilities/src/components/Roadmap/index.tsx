@@ -1,5 +1,5 @@
 import React from 'react';
-import { GoAAccordion } from '@abgov/react-components';
+import { GoabAccordion } from '@abgov/react-components';
 import './styles.css';
 import { Roadmap as ServiceRoadMap } from '../../types/types';
 
@@ -56,7 +56,7 @@ export default function Roadmap({ roadmap }: RoadmapProps) {
   });
 
   const content = sortedData?.map((item, index) => (
-    <GoAAccordion key={index} heading={`${item.when} - ${item.title}`}>
+    <GoabAccordion key={index} heading={`${item.when} - ${item.title}`}>
       <dl className="roadmap-details">
         {roadmapDetailsConfig.map(({ title, getValue, inlineTitle }) => (
           <>
@@ -65,12 +65,12 @@ export default function Roadmap({ roadmap }: RoadmapProps) {
           </>
         ))}
       </dl>
-    </GoAAccordion>
+    </GoabAccordion>
   ));
 
   return roadmap ? (
-    <GoAAccordion heading={`${roadmap.length} Roadmap items`}>
+    <GoabAccordion heading={`${roadmap.length} Roadmap items`}>
       {content}
-    </GoAAccordion>
+    </GoabAccordion>
   ) : null;
 }

@@ -1,4 +1,4 @@
-import { GoAContainer, GoASpacer, GoABadge } from '@abgov/react-components';
+import { GoabContainer, GoabSpacer, GoabBadge } from '@abgov/react-components';
 import React, { useEffect, useState } from 'react';
 import './styles.css';
 import { ServiceRoadmap } from './ServiceRoadmap';
@@ -12,9 +12,10 @@ interface CardProps {
   condensed?: boolean;
 }
 
+const badgesToShow = ['status'] as [ServiceAttribute];
+const maxDescriptionLength = 200; // word length for short descpription in tile.
+
 const Card = ({ app, roadmapMode, roadmapHistory, condensed }: CardProps) => {
-  const maxDescriptionLength = 200; // word length for short descpription in tile.
-  const badgesToShow = ['status'] as [ServiceAttribute];
   const [showBadges, setShowBadges] = useState<JSX.Element[]>([]);
 
   function badgeType(value: string) {
@@ -26,7 +27,11 @@ const Card = ({ app, roadmapMode, roadmapHistory, condensed }: CardProps) => {
     const badges: JSX.Element[] = [];
     if (app.recommended) {
       badges.push(
-        <GoABadge key="recommended" type="information" content="Recommended" />,
+        <GoabBadge
+          key="recommended"
+          type="information"
+          content="Recommended"
+        />,
       );
     }
 
@@ -38,7 +43,7 @@ const Card = ({ app, roadmapMode, roadmapHistory, condensed }: CardProps) => {
         badgeValue.toLowerCase() !== 'other'
       ) {
         badges.push(
-          <GoABadge
+          <GoabBadge
             key={badge}
             type={badgeType(badgeValue)}
             content={badgeValue}
@@ -50,7 +55,7 @@ const Card = ({ app, roadmapMode, roadmapHistory, condensed }: CardProps) => {
   }, [app, roadmapHistory]);
 
   return (
-    <GoAContainer accent="thin">
+    <GoabContainer accent="thin">
       {!condensed ? (
         <div id="service-tile-chips">
           {<div id="service-tile-chips">{showBadges}</div>}
@@ -66,7 +71,7 @@ const Card = ({ app, roadmapMode, roadmapHistory, condensed }: CardProps) => {
 
       {!condensed ? (
         <>
-          <GoASpacer vSpacing="m" />
+          <GoabSpacer vSpacing="m" />
           <p id="service-tile-content">
             {`${app.summary.substring(0, maxDescriptionLength)}${app.summary.length > maxDescriptionLength ? '.....' : ''}`}
           </p>
@@ -74,14 +79,14 @@ const Card = ({ app, roadmapMode, roadmapHistory, condensed }: CardProps) => {
       ) : (
         <></>
       )}
-      <GoASpacer vSpacing="xs" />
+      <GoabSpacer vSpacing="xs" />
       <ServiceRoadmap
         roadmapItems={app.roadmap}
         roadmapMode={roadmapMode}
         showHistory={roadmapHistory}
         condensed={condensed}
       />
-    </GoAContainer>
+    </GoabContainer>
   );
 };
 export default Card;

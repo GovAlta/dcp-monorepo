@@ -9,10 +9,10 @@ import type { JsonSchema, UISchemaElement } from '@jsonforms/core';
 import { JsonForms } from '@jsonforms/react';
 import './styles.css';
 import {
-  GoAButton,
-  GoACircularProgress,
-  GoAModal,
-  GoANotification,
+  GoabButton,
+  GoabCircularProgress,
+  GoabModal,
+  GoabNotification,
 } from '@abgov/react-components';
 import type { Service } from '../../types/types';
 import GoACaptchaSection from '../Captcha/GoACaptchaSection';
@@ -100,7 +100,7 @@ const ServiceForm = ({
   return (
     <>
       <div className="progress-indicator">
-        <GoACircularProgress
+        <GoabCircularProgress
           variant="inline"
           size="small"
           message="Submitting your service for review..."
@@ -108,22 +108,22 @@ const ServiceForm = ({
         />
       </div>
       {error && (
-        <GoANotification
+        <GoabNotification
           type="emergency"
           ariaLive="assertive"
           onDismiss={onDialogDismiss}
         >
           {`Error when submitting service form: ${error.message}`}
-        </GoANotification>
+        </GoabNotification>
       )}
-      <GoAModal
+      <GoabModal
         open={submitStatus === SubmitStatus.Submitted}
         heading="Your service has been successfully submitted for review"
       >
-        <GoAButton type="primary" onClick={() => navigate('/services')}>
+        <GoabButton type="primary" onClick={() => navigate('/services')}>
           Back to services
-        </GoAButton>
-      </GoAModal>
+        </GoabButton>
+      </GoabModal>
       <ContextProvider
         submit={{
           submitForm: onSubmitFunction,

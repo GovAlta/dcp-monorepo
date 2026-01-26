@@ -1,4 +1,4 @@
-import { GoAAccordion, GoAButton, GoASpacer } from '@abgov/react-components';
+import { GoabAccordion, GoabButton, GoabSpacer } from '@abgov/react-components';
 import React, { useEffect } from 'react';
 import BackToTop from '../../components/BackToTop';
 import ExternalLink from '../../components/ExternalLink';
@@ -12,23 +12,23 @@ export default function ServicePerformance() {
   }, []);
   return (
     <div data-pagefind-body>
-      <GoAButton
+      <GoabButton
         type="tertiary"
         size="compact"
         leadingIcon="arrow-back"
         onClick={() => (window.location.href = '/')}
       >
         Back
-      </GoAButton>
-      <GoASpacer vSpacing="l" />
+      </GoabButton>
+      <GoabSpacer vSpacing="l" />
       <h1 id="practice-areas">Practice Areas</h1>
       <p>
         Practice areas provide team members with processes, guidence, and
         support.
       </p>
-      <GoASpacer vSpacing="l" />
+      <GoabSpacer vSpacing="l" />
 
-      <GoAAccordion headingSize="medium" heading="UX Design" open={false}>
+      <GoabAccordion headingSize="medium" heading="UX Design" open={false}>
         <h4>Director / Manager:</h4>
         <p>Sheldon Bauld, Director Front End/UX Design</p>
         <h4>Contact hours:</h4>
@@ -68,9 +68,9 @@ export default function ServicePerformance() {
           approach that align our work and outcomes with the users' expectations
           and ministry objectives.
         </p>
-      </GoAAccordion>
-      <GoASpacer vSpacing="l" />
-      <GoAAccordion heading="Service Design" headingSize="medium">
+      </GoabAccordion>
+      <GoabSpacer vSpacing="l" />
+      <GoabAccordion heading="Service Design" headingSize="medium">
         <h4>Director / Manager:</h4>
         <p>Fouad Jallouli, Director Service Design</p>
         <h4>Contact hours:</h4>
@@ -87,9 +87,9 @@ export default function ServicePerformance() {
           the product team while working closely with the Product Owner and User
           Experience Designer.
         </p>
-      </GoAAccordion>
-      <GoASpacer vSpacing="l" />
-      <GoAAccordion heading="Software Delivery" headingSize="medium">
+      </GoabAccordion>
+      <GoabSpacer vSpacing="l" />
+      <GoabAccordion heading="Software Delivery" headingSize="medium">
         <h4>Director / Manager:</h4>
         <p>Ting Zuge, Software Delivery Executive Director</p>
         <h4>Contact hours:</h4>
@@ -106,10 +106,10 @@ export default function ServicePerformance() {
           Digital Architects, UX Design, Service Designer, DevOps, QA, and Cloud
           Operations{' '}
         </p>
-      </GoAAccordion>
-      <GoASpacer vSpacing="l" />
+      </GoabAccordion>
+      <GoabSpacer vSpacing="l" />
 
-      {/*<GoAAccordion heading="Service performance platform" headingSize="medium">
+      {/*<GoabAccordion heading="Service performance platform" headingSize="medium">
           <p>
             Service Performance Platform is set up to measure and monitor Key
             Performance Indicators and Metrics to continuously improve the digital
@@ -149,10 +149,10 @@ export default function ServicePerformance() {
             the Treasury Board and Finance, by providing necessary documentation,
             guidance, templates, and training resources.
           </p>
-        </GoAAccordion>
-        <GoASpacer vSpacing="l" />
+        </GoabAccordion>
+        <GoabSpacer vSpacing="l" />
   
-        <GoAAccordion
+        <GoabAccordion
           heading="Some of the major problems in measuring Digital Services"
           headingSize="medium"
         >
@@ -180,10 +180,10 @@ export default function ServicePerformance() {
               designing for end users.
             </li>
           </ul>
-        </GoAAccordion>
-        <GoASpacer vSpacing="l" />
+        </GoabAccordion>
+        <GoabSpacer vSpacing="l" />
   
-        <GoAAccordion heading="Why Measure Digital Services" headingSize="medium">
+        <GoabAccordion heading="Why Measure Digital Services" headingSize="medium">
           <p>When our services are measured, programs are able to show:</p>
           <p>
             <b>Accountability and Leadership</b>: Ensures accountability to
@@ -219,8 +219,8 @@ export default function ServicePerformance() {
             <b>Enhancing Communication</b>: Enhances storytelling, making the case
             for digital initiatives and Agile methodologies.
           </p>
-        </GoAAccordion> */}
-      <GoASpacer vSpacing="2xl" />
+        </GoabAccordion> */}
+      <GoabSpacer vSpacing="2xl" />
       <BackToTop />
     </div>
   );

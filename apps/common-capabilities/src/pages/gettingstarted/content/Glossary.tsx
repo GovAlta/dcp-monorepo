@@ -1,5 +1,5 @@
 import React from 'react';
-import { GoASpacer } from '@abgov/react-components';
+import { GoabSpacer } from '@abgov/react-components';
 
 export default function renderGlossary() {
   return (
@@ -9,7 +9,7 @@ export default function renderGlossary() {
         Use this glossary to understand the key terms and concepts within the
         context of the common capabilities platform.
       </p>
-      <GoASpacer vSpacing="l" />
+      <GoabSpacer vSpacing="l" />
       <h2>Service attributes</h2>
       <p>
         <span className="bold-text">Provider:</span> The owner of the service,
@@ -55,7 +55,7 @@ export default function renderGlossary() {
         Indicates if or not the General Cybersecurity Risk Assessment has been
         completed for the service.
       </p>
-      <GoASpacer vSpacing="3xs" />
+      <GoabSpacer vSpacing="3xs" />
 
       <h3>Required before using the service</h3>
       <p>
@@ -75,7 +75,7 @@ export default function renderGlossary() {
         <span className="bold-text">Cybersecurity consult:</span> States if or
         not cybersecurity consult is required before using the service.
       </p>
-      <GoASpacer vSpacing="3xs" />
+      <GoabSpacer vSpacing="3xs" />
 
       <h3>Security details</h3>
       <p>

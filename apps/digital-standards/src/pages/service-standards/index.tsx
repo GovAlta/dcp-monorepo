@@ -1,4 +1,4 @@
-import { GoASpacer, GoAAccordion, GoAButton } from '@abgov/react-components';
+import { GoabSpacer, GoabAccordion, GoabButton } from '@abgov/react-components';
 import React, { useEffect } from 'react';
 import BackToTop from '../../components/BackToTop';
 
@@ -11,18 +11,18 @@ export default function ServiceStandards(): JSX.Element {
   }, []);
   return (
     <div data-pagefind-body>
-      <GoAButton
+      <GoabButton
         type="tertiary"
         size="compact"
         leadingIcon="arrow-back"
         onClick={() => (window.location.href = '/')}
       >
         Back
-      </GoAButton>
-      <GoASpacer vSpacing="l" />
+      </GoabButton>
+      <GoabSpacer vSpacing="l" />
 
       <h1 id="digital-service-standards">Digital Service standards</h1>
-      <GoASpacer vSpacing="l" />
+      <GoabSpacer vSpacing="l" />
       <h2>What are Digital Service Standards?</h2>
       <p>
         Digital Service Standards are a set of best practices, policies, or
@@ -34,7 +34,7 @@ export default function ServiceStandards(): JSX.Element {
         a part of all digital service initiatives.
       </p>
 
-      <GoASpacer vSpacing="3xs" />
+      <GoabSpacer vSpacing="3xs" />
 
       <h2 id="why-digital-service-standards">Why Digital Service Standards?</h2>
       <p>
@@ -52,9 +52,9 @@ export default function ServiceStandards(): JSX.Element {
         of digital design and delivery.
       </p>
 
-      <GoASpacer vSpacing="l" />
+      <GoabSpacer vSpacing="l" />
 
-      <GoAAccordion
+      <GoabAccordion
         headingSize="medium"
         heading="Standard no. 1 - Design with users"
         open={false}
@@ -199,10 +199,10 @@ export default function ServiceStandards(): JSX.Element {
             </li>
           </ul>
         </p>
-      </GoAAccordion>
-      <GoASpacer vSpacing="l" />
+      </GoabAccordion>
+      <GoabSpacer vSpacing="l" />
 
-      <GoAAccordion
+      <GoabAccordion
         headingSize="medium"
         heading="Standard no. 2 - Build multidisciplinary & agile teams"
         open={false}
@@ -325,10 +325,10 @@ export default function ServiceStandards(): JSX.Element {
             reflective of a multi-disciplinary approach.
           </li>
         </ul>
-      </GoAAccordion>
-      <GoASpacer vSpacing="l" />
+      </GoabAccordion>
+      <GoabSpacer vSpacing="l" />
 
-      <GoAAccordion
+      <GoabAccordion
         headingSize="medium"
         heading="Standard no. 3 - Focus on outcomes"
         open={false}
@@ -454,10 +454,10 @@ export default function ServiceStandards(): JSX.Element {
             the service delivery cycle and after a service is live.
           </li>
         </ul>
-      </GoAAccordion>
-      <GoASpacer vSpacing="l" />
+      </GoabAccordion>
+      <GoabSpacer vSpacing="l" />
 
-      <GoAAccordion
+      <GoabAccordion
         headingSize="medium"
         heading="Standard no. 4 - Use technology responsibly & transparently"
         open={false}
@@ -592,10 +592,10 @@ export default function ServiceStandards(): JSX.Element {
             of user data.
           </li>
         </ul>
-      </GoAAccordion>
-      <GoASpacer vSpacing="l" />
+      </GoabAccordion>
+      <GoabSpacer vSpacing="l" />
 
-      <GoAAccordion
+      <GoabAccordion
         headingSize="medium"
         heading="Standard no. 5 - Design for safety & trust"
         open={false}
@@ -718,8 +718,8 @@ export default function ServiceStandards(): JSX.Element {
             end-user groups.
           </li>
         </ul>
-      </GoAAccordion>
-      <GoASpacer vSpacing="2xl" />
+      </GoabAccordion>
+      <GoabSpacer vSpacing="2xl" />
       <BackToTop />
     </div>
   );

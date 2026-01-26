@@ -1,4 +1,4 @@
-import { GoAButton } from '@abgov/react-components';
+import { GoabButton } from '@abgov/react-components';
 import React from 'react';
 
 const BackToTop = () => {
@@ -7,14 +7,14 @@ const BackToTop = () => {
   };
   return (
     <div className="back-top">
-      <GoAButton
+      <GoabButton
         type="tertiary"
         size="compact"
         trailingIcon="arrow-up-circle"
         onClick={scrollToTop}
       >
         Back to top
-      </GoAButton>
+      </GoabButton>
     </div>
   );
 };

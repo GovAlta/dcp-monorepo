@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
 import {
-  GoAIcon,
-  // eslint-disable-next-line import/named
-  GoAIconType,
-  GoASpacer,
-  GoAThreeColumnLayout,
+  GoabIcon,
+  GoabSpacer,
+  GoabThreeColumnLayout,
 } from '@abgov/react-components';
+import type { GoabIconType } from '@abgov/ui-components-common';
 import './styles.css';
 import ExternalLink from '../../components/ExternalLink';
 import { ContactMethod } from '../../types/types';
@@ -41,8 +40,8 @@ export default function SupportPage(): JSX.Element {
       <tr className="items-color">
         <td className="contact-type">{`${method.type}:  `}</td>
         <td>
-          <GoAIcon
-            type={iconType as GoAIconType}
+          <GoabIcon
+            type={iconType as GoabIconType}
             size="small"
             theme="outline"
           />
@@ -81,14 +80,14 @@ export default function SupportPage(): JSX.Element {
         padding: '0px 68px',
       }}
     >
-      <GoAThreeColumnLayout maxContentWidth="1500px">
+      <GoabThreeColumnLayout maxContentWidth="1500px">
         <h1>Support</h1>
         <p>
           The common capabilities team is open to feedback, requests, concerns,
           and any inquiries regarding the existing capabilities or about your
           experience using common capabilities platform.{' '}
         </p>
-        <GoASpacer vSpacing="xl" />
+        <GoabSpacer vSpacing="xl" />
         <h2>Have questions or concerns?</h2>
         <p>
           Feel free to reach out to us with any other questions or concerns you
@@ -96,8 +95,8 @@ export default function SupportPage(): JSX.Element {
           or to discuss more in detail.
         </p>
         {renderContactTable()}
-        <GoASpacer vSpacing="2xl" />
-      </GoAThreeColumnLayout>
+        <GoabSpacer vSpacing="2xl" />
+      </GoabThreeColumnLayout>
     </div>
   );
 }

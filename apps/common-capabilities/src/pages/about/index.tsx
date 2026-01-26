@@ -1,7 +1,7 @@
 import {
-  GoASideMenu,
-  GoASpacer,
-  GoAThreeColumnLayout,
+  GoabSideMenu,
+  GoabSpacer,
+  GoabThreeColumnLayout,
 } from '@abgov/react-components';
 import React, { useEffect } from 'react';
 import { aboutPageContent } from './content';
@@ -14,18 +14,18 @@ export default function AboutPage(): JSX.Element {
     }
   }, []);
   return (
-    <GoAThreeColumnLayout
+    <GoabThreeColumnLayout
       maxContentWidth="1550px"
       rightColumnWidth="8%"
       leftColumnWidth="18%"
       nav={
-        <GoASideMenu>
+        <GoabSideMenu>
           {aboutPageContent.map((section) => (
             <a href={`#${section.id}`} key={section.id}>
               {section.title}
             </a>
           ))}
-        </GoASideMenu>
+        </GoabSideMenu>
       }
     >
       <h1>About</h1>
@@ -35,9 +35,9 @@ export default function AboutPage(): JSX.Element {
             <h2 id={section.id}>{section.title}</h2>
             {section.content}
           </React.Fragment>
-          <GoASpacer vSpacing="3xs" />
+          <GoabSpacer vSpacing="3xs" />
         </>
       ))}
-    </GoAThreeColumnLayout>
+    </GoabThreeColumnLayout>
   );
 }

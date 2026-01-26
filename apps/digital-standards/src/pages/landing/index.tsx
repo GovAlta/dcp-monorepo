@@ -1,4 +1,4 @@
-import { GoAContainer, GoAGrid, GoASpacer } from '@abgov/react-components';
+import { GoabContainer, GoabGrid, GoabSpacer } from '@abgov/react-components';
 import React from 'react';
 import './styles.css';
 
@@ -18,76 +18,76 @@ export default function LandingPage() {
         The Digital Service Standards Program has several components to support
         product teams through all phases of the product lifecycle.
       </p>
-      <GoASpacer vSpacing="xl" />
+      <GoabSpacer vSpacing="xl" />
 
-      <GoAGrid gap="xl" minChildWidth="320px">
-        <GoAContainer type="interactive" accent="thin">
+      <GoabGrid gap="xl" minChildWidth="320px">
+        <GoabContainer type="interactive" accent="thin">
           <a id="service-tile-title" href={`service-standards/index.html`}>
             Digital Service Standards
           </a>
-          <GoASpacer vSpacing="m" />
+          <GoabSpacer vSpacing="m" />
           <p>
             The Digital Service Standards are IMT policy, derived from the
             Digital Service Principles, used for designing and delivering
             digital government services.
           </p>
-        </GoAContainer>
-        <GoAContainer type="interactive" accent="thin">
+        </GoabContainer>
+        <GoabContainer type="interactive" accent="thin">
           <a id="service-tile-title" href={`service-principles/index.html`}>
             Digital Service Principles
           </a>
-          <GoASpacer vSpacing="m" />
+          <GoabSpacer vSpacing="m" />
           <p>
             The 14 Digital Service Principles support the vision to deliver
             world-class digital services that are easy to use, fast, efficient,
             and secure.
           </p>
-        </GoAContainer>
-        <GoAContainer type="interactive" accent="thin">
+        </GoabContainer>
+        <GoabContainer type="interactive" accent="thin">
           <a id="service-tile-title" href={`service-help/index.html`}>
             Digital Service Standards Team
           </a>
-          <GoASpacer vSpacing="m" />
+          <GoabSpacer vSpacing="m" />
           <p>
             The Digital Service Standards Team will be available to provide
             guidance and make sure digital teams are on the right track to
             compliance.
           </p>
-        </GoAContainer>
-        <GoAContainer type="interactive" accent="thin">
+        </GoabContainer>
+        <GoabContainer type="interactive" accent="thin">
           <a id="service-tile-title" href={`service-performance/index.html`}>
             Service Performance Program
           </a>
-          <GoASpacer vSpacing="m" />
+          <GoabSpacer vSpacing="m" />
           <p>
             Service Performance aims to bring excellent experiences and value to
             all Albertans ensuring services are always measurable, defining
             service health and performance.
           </p>
-        </GoAContainer>
-        <GoAContainer type="interactive" accent="thin">
+        </GoabContainer>
+        <GoabContainer type="interactive" accent="thin">
           <a id="service-tile-title" href={`service-assessments/index.html`}>
             Digital Service Standards Assessment
           </a>
-          <GoASpacer vSpacing="m" />
+          <GoabSpacer vSpacing="m" />
           <p>
             Based on the Digital Service Standards, clear criteria have been
             established for the evaluation of services. Learn when and how to
             get an assessment.
           </p>
-        </GoAContainer>
-        <GoAContainer type="interactive" accent="thin">
+        </GoabContainer>
+        <GoabContainer type="interactive" accent="thin">
           <a id="service-tile-title" href={`digital-capabilities/index.html`}>
             Digital Capability Program
           </a>
-          <GoASpacer vSpacing="m" />
+          <GoabSpacer vSpacing="m" />
           <p>
             Growing the knowledge, skills and experience of public servants in
             digital-era service design and delivery.
           </p>
-        </GoAContainer>
-      </GoAGrid>
-      <GoASpacer vSpacing="2xl" />
+        </GoabContainer>
+      </GoabGrid>
+      <GoabSpacer vSpacing="2xl" />
     </div>
   );
 }

@@ -1,10 +1,17 @@
 ---
 import '@abgov/design-tokens/dist/tokens.css';
 import '@abgov/web-components/index.css';
-import PageLayout from "./Layout/index"
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import HeroBanner from "./HeroBanner.astro";
+import SideNav from "./SideNav.astro";
 
+export interface Props {
+  hideNav?: boolean;
+  hideHero?: boolean;
+}
 
-const { hideNav, hideHero } = Astro.props
+const { hideNav = false, hideHero = true } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -15,7 +22,7 @@ const { hideNav, hideHero } = Astro.props
 		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Digital standards</title>
-		<script>
+		<script is:inline>
 			const hostName = window.location.hostname;			
 			if (hostName === 'digital.gov.ab.ca') {	
 				(function () {
@@ -82,9 +89,20 @@ const { hideNav, hideHero } = Astro.props
 	</head>
 
 	<body>
-		<PageLayout client:only hideNav={hideNav} hideHero={hideHero}>
-			<slot />
-		</PageLayout>
+		<section id="top-page"></section>
+		<Header />
+		{!hideHero && <HeroBanner />}
+		<goa-three-column-layout maxcontentwidth="1540px" rightcolumnwidth="30ch" leftcolumnwidth="35ch">
+			{!hideNav && (
+				<div slot="nav">
+					<SideNav />
+				</div>
+			)}
+			<div data-pagefind-body>
+				<slot />
+			</div>
+		</goa-three-column-layout>
+		<Footer />
 	</body>
 </html>
 

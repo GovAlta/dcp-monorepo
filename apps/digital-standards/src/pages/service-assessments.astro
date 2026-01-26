@@ -1,7 +1,7 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import LayoutSSR from '../layouts/LayoutSSR.astro';
 import ServiceAssessmentsPage from './service-assessments/index';
 ---
-<Layout>
-    <ServiceAssessmentsPage client:only />
-</Layout>
+<LayoutSSR>
+    <ServiceAssessmentsPage client:load />
+</LayoutSSR>

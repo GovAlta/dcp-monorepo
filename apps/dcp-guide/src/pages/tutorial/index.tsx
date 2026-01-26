@@ -1,11 +1,11 @@
 import React from 'react';
 import {
-  GoAButton,
-  GoAButtonGroup,
-  GoAIcon,
-  GoASideMenu,
-  GoASpacer,
-  GoAThreeColumnLayout,
+  GoabButton,
+  GoabButtonGroup,
+  GoabIcon,
+  GoabSideMenu,
+  GoabSpacer,
+  GoabThreeColumnLayout,
 } from '@abgov/react-components';
 import '../../styles/global.css';
 
@@ -24,9 +24,9 @@ export default function TutorialPage() {
         <h2 className="resetSpacing" id="tutorial-top">
           Developer quickstart
         </h2>
-        <GoASpacer vSpacing="xs" />
+        <GoabSpacer vSpacing="xs" />
         <div className="lastUpdated">Last updated 02/07/2024</div>
-        <GoASpacer vSpacing="l" />
+        <GoabSpacer vSpacing="l" />
         DCP is a platform for digital content products. It includes shared
         libraries and micro-apps for rapid authoring and publishing of content
         with workflows for technical and non-technical writers. This monorepo
@@ -36,101 +36,101 @@ export default function TutorialPage() {
           @nxtensions/astro extension
         </a>{' '}
         for Astro support.
-        <GoASpacer vSpacing="xl" />
+        <GoabSpacer vSpacing="xl" />
         <h3 id="gettingStarted" className="resetSpacing">
           Getting started
         </h3>
-        <GoASpacer vSpacing="m" />
+        <GoabSpacer vSpacing="m" />
         The @nxtensions/astro extension generates projects that use targets
         matching the Astro CLI. For example, use the following command to to run
         a project in a development server:
-        <GoASpacer vSpacing="l" />
+        <GoabSpacer vSpacing="l" />
         <div className="code-details" id="devDCPGuide">
           npx nx dev dcp-guide
         </div>
-        <GoASpacer vSpacing="l" />
+        <GoabSpacer vSpacing="l" />
         This aligns to the dev Astro CLI command instead of the nx convention
         serve target. Similarly the check target is included, instead of the
         lint target, for static checks.
-        <GoASpacer vSpacing="l" />
-        <GoAButton
-          data-testid="devDCPGuideButton"
+        <GoabSpacer vSpacing="l" />
+        <GoabButton
+          testId="devDCPGuideButton"
           type="secondary"
           onClick={async () => {
             await copyToClipBoard('devDCPGuide');
           }}
         >
           Copy code
-        </GoAButton>
-        <GoASpacer vSpacing="xl" />
+        </GoabButton>
+        <GoabSpacer vSpacing="xl" />
         <h3 id="starterApp" className="resetSpacing">
           Generating an astro starter app using pre-built generator
         </h3>
-        <GoASpacer vSpacing="m" />
+        <GoabSpacer vSpacing="m" />
         To generate an Astro app, use the following command, which utilizes a
         custom generator to create an Astro app starter kit and generate the
         necessary deployment files:
-        <GoASpacer vSpacing="l" />
+        <GoabSpacer vSpacing="l" />
         <div className="code-details" id="starterApp">
           npx nx run dcp-common:gen-astro --args="--title=app-title
           --integrations=react,mdx"
         </div>
-        <GoASpacer vSpacing="l" />
-        <GoAButton
+        <GoabSpacer vSpacing="l" />
+        <GoabButton
           type="secondary"
-          data-testid="starterAppButton"
+          testId="starterAppButton"
           onClick={async () => {
             await copyToClipBoard('starterApp');
           }}
         >
           Copy code
-        </GoAButton>
-        <GoASpacer vSpacing="l" />
+        </GoabButton>
+        <GoabSpacer vSpacing="l" />
         After executing the command, a basic Astro app structure will be set up
         in the "app/app-title" directory. You can proceed with customizing and
         developing your Astro app based on your specific requirements.
-        <GoASpacer vSpacing="l" />
+        <GoabSpacer vSpacing="l" />
         <h3 id="microApps" className="resetSpacing">
           Generating micro-apps on your own
         </h3>
-        <GoASpacer vSpacing="m" />
+        <GoabSpacer vSpacing="m" />
         @nxtensions/astro extension includes generators for applications and
         libraries. Run the nx list command to see what is available:
-        <GoASpacer vSpacing="l" />
+        <GoabSpacer vSpacing="l" />
         <div className="code-details" id="generateApps">
           npx nx list @nxtensions/astro
         </div>
-        <GoASpacer vSpacing="l" />
-        <GoAButton
+        <GoabSpacer vSpacing="l" />
+        <GoabButton
           type="secondary"
-          data-testid="starterAppButton"
+          testId="starterAppButton"
           onClick={async () => {
             await copyToClipBoard('generateApps');
           }}
         >
           Copy code
-        </GoAButton>
-        <GoASpacer vSpacing="l" />
+        </GoabButton>
+        <GoabSpacer vSpacing="l" />
         Run the application generator to create a new micro-app:
-        <GoASpacer vSpacing="l" />
+        <GoabSpacer vSpacing="l" />
         <div className="code-details" id="runApps">
           npx nx g @nxtensions/astro:application
         </div>
-        <GoASpacer vSpacing="l" />
-        <GoAButton
+        <GoabSpacer vSpacing="l" />
+        <GoabButton
           type="secondary"
-          data-testid="starterAppButton"
+          testId="starterAppButton"
           onClick={async () => {
             await copyToClipBoard('runApps');
           }}
         >
           Copy code
-        </GoAButton>
-        <GoASpacer vSpacing="s" />
+        </GoabButton>
+        <GoabSpacer vSpacing="s" />
         <h3 id="deployment" className="resetSpacing">
           Deployment
         </h3>
-        <GoASpacer vSpacing="m" />
+        <GoabSpacer vSpacing="m" />
         OpenShift manifests and deployments are maintained in source control and
         the pipeline automatically applies them during deployment stages. This
         is convention based and new applications can follow the existing files
@@ -138,33 +138,33 @@ export default function TutorialPage() {
         files are maintained under {'.openshift/<sub_project_name>'} with a main
         template in {'<sub_project_name>.yml'}. Apply the manifests for one
         environment to create the BuildConfig and ImageStream. For example:
-        <GoASpacer vSpacing="l" />
+        <GoabSpacer vSpacing="l" />
         <div className="code-details" id="openshiftManifest">
           oc login ... oc process -f .openshift/dcp-guide/dcp-guide.yml -p
           PROJECT=dcp-dev -p DEPLOY_TAG=dev | oc apply -f -
         </div>
-        <GoASpacer vSpacing="l" />
-        <GoAButton
+        <GoabSpacer vSpacing="l" />
+        <GoabButton
           type="secondary"
-          data-testid="starterAppButton"
+          testId="starterAppButton"
           onClick={async () => {
             await copyToClipBoard('openshiftManifest');
           }}
         >
           Copy code
-        </GoAButton>
-        <GoASpacer vSpacing="l" />
+        </GoabButton>
+        <GoabSpacer vSpacing="l" />
         Creation of resources in downstream environments is handled by the
         pipeline when promoting new builds.
-        <GoASpacer vSpacing="xl" />
+        <GoabSpacer vSpacing="xl" />
         <h3 className="resetSpacing" id="accessingDeployedApp">
           Accessing the deployed app
         </h3>
-        <GoASpacer vSpacing="m" />
+        <GoabSpacer vSpacing="m" />
         Upon app deployment, you can employ the provided URL structure to access
         it within specific environments. Please note that these URLs are
         exclusively accessible via an internal network.
-        <GoASpacer vSpacing="l" />
+        <GoabSpacer vSpacing="l" />
         <div className="code-details">
           dev: {'https://{app_name}-dcp-dev.apps.aro.gov.ab.ca'}
         </div>
@@ -174,67 +174,67 @@ export default function TutorialPage() {
         <div className="code-details">
           prod: {'https://{app_name}-dcp-prod.apps.aro.gov.ab.ca'}
         </div>
-        <GoASpacer vSpacing="l" />
+        <GoabSpacer vSpacing="l" />
         As an illustration, to access the "common-capabilities" app within the
         development environment, you would use the following URL:
-        <GoASpacer vSpacing="xs" />
+        <GoabSpacer vSpacing="xs" />
         <a
           href="https://common-capabilities-dcp-dev.apps.aro.gov.ab.ca/"
           data-testid="commonCapabilitiesLink"
         >
           https://common-capabilities-dcp-dev.apps.aro.gov.ab.ca
         </a>
-        <GoASpacer vSpacing="xl" />
+        <GoabSpacer vSpacing="xl" />
         <h3 id="documentation" className="resetSpacing">
           Documentation
         </h3>
-        <GoASpacer vSpacing="m" />
+        <GoabSpacer vSpacing="m" />
         <a href="https://github.com/GovAlta/dcp-monorepo">
-          Common capabilities Github <GoAIcon size="small" type="open" />
+          Common capabilities Github <GoabIcon size="small" type="open" />
         </a>
-        <GoASpacer vSpacing="xl" />
+        <GoabSpacer vSpacing="xl" />
         <h3 className="resetSpacing" id="contactUs">
           Contact us
         </h3>
-        <GoASpacer vSpacing="m" />
+        <GoabSpacer vSpacing="m" />
         <div className="line-elements">
-          <GoAIcon type="mail" theme="outline" />
+          <GoabIcon type="mail" theme="outline" />
           <a
             href="mailto:TI.Softwaredelivery@gov.ab.ca?subject=Feedback for Common Capabilities"
             data-testid="emailToLink"
             style={{ margin: '12px' }}
           >
             {' '}
-            Common capabilities team <GoAIcon size="small" type="open" />
+            Common capabilities team <GoabIcon size="small" type="open" />
           </a>
         </div>
-        <GoASpacer vSpacing="xl" />
+        <GoabSpacer vSpacing="xl" />
         <h3 className="resetSpacing" id="slackSupport">
           Slack support channel{' '}
         </h3>
-        <GoASpacer vSpacing="m" />
+        <GoabSpacer vSpacing="m" />
         <div className="line-elements">
-          <GoAIcon type="logo-slack" theme="outline" />
+          <GoabIcon type="logo-slack" theme="outline" />
           <a
             href="https://goa-dio.slack.com/channels/commoncapabilities"
             style={{ margin: '12px' }}
           >
-            Common capabilities team <GoAIcon size="small" type="open" />
+            Common capabilities team <GoabIcon size="small" type="open" />
           </a>
         </div>
-        <GoASpacer vSpacing="3xl" />
-        <GoAButtonGroup alignment="end">
+        <GoabSpacer vSpacing="3xl" />
+        <GoabButtonGroup alignment="end">
           <a href="#tutorial-top">
-            <GoAButton
-              data-testid="backToTopButton"
+            <GoabButton
+              testId="backToTopButton"
               type="tertiary"
               trailingIcon="arrow-up-circle"
             >
               Back to top
-            </GoAButton>
+            </GoabButton>
           </a>
-        </GoAButtonGroup>
-        <GoASpacer vSpacing="4xl" />
+        </GoabButtonGroup>
+        <GoabSpacer vSpacing="4xl" />
       </>
     );
   };
@@ -242,7 +242,7 @@ export default function TutorialPage() {
   const renderAnchorPoints = () => {
     return (
       <>
-        <GoASideMenu>
+        <GoabSideMenu>
           <a href="#gettingStarted" data-testid="gettingStarted">
             Getting started
           </a>
@@ -264,16 +264,16 @@ export default function TutorialPage() {
           <a href="#slackSupport" data-testid="slackSupport">
             Slack support
           </a>
-        </GoASideMenu>
+        </GoabSideMenu>
       </>
     );
   };
 
   return (
     <>
-      <GoAThreeColumnLayout
+      <GoabThreeColumnLayout
         nav={renderAnchorPoints()}
-        side-menu={
+        sideMenu={
           <>
             <h2>Side Menu</h2>
             <p>Add in your content here.</p>
@@ -281,7 +281,7 @@ export default function TutorialPage() {
         }
       >
         {renderContents()}
-      </GoAThreeColumnLayout>
+      </GoabThreeColumnLayout>
     </>
   );
 }

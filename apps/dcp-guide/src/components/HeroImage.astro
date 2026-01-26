@@ -1,5 +1,5 @@
 ---
-import { GoAHeroBanner } from '@abgov/react-components';
+import HeroBannerWrapper from './HeroBannerWrapper';
 import homeImage from '../assets/HomeHero.png';
 import storiesImage from '../assets/StoriesHero.png';
 import learnMoreImage from '../assets/LearnMoreHero.png';
@@ -28,24 +28,4 @@ const getHeroImage = (title: string) =>{
 }
 ---
 
-
-<GoAHeroBanner
-  heading=""
-  backgroundUrl={getHeroImage(title)}
->
-    
-{(title==="Home")&& <div >
-    <h1>Government of Alberta<br/> Digital Delivery Playbook</h1>
-    <h4><strong>Using modern digital delivery practices for modern public services.</strong> </h4>
-
-</div>
-}
-{(title!=="Home")&& 
-    <h1>{title}</h1>
-
-}
-
-
-
-  
-</GoAHeroBanner>
+<HeroBannerWrapper client:only="react" title={title} backgroundUrl={getHeroImage(title)} />

@@ -1,8 +1,8 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import LayoutSSR from '../layouts/LayoutSSR.astro';
 import ServiceHelpPage from './service-help/index';
 ---
 
-<Layout>
-    <ServiceHelpPage client:only />
-</Layout>
+<LayoutSSR>
+    <ServiceHelpPage client:load />
+</LayoutSSR>
