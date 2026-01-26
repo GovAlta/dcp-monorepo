@@ -1,12 +1,12 @@
 import React from 'react';
-import Header from '../../components/Header';
+import Header from '../../components/HeaderComponent';
 import {
   GoabThreeColumnLayout,
   GoabSideMenu,
   GoabSideMenuGroup,
   GoabHeroBanner,
 } from '@abgov/react-components';
-import Footer from '../../components/Footer';
+import Footer from '../../components/FooterComponent';
 
 type Props = {
   children: React.ReactNode;

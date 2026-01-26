@@ -1,8 +1,8 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import LayoutSSR from '../layouts/LayoutSSR.astro';
 import LandingPage from './landing';
 ---
 
-<Layout hideNav={true} hideHero={false}>
-	<LandingPage client:only="react" />
-</Layout>
+<LayoutSSR hideNav={true} hideHero={false}>
+	<LandingPage client:load />
+</LayoutSSR>

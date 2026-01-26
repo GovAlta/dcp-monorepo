@@ -1,8 +1,8 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import LayoutSSR from '../layouts/LayoutSSR.astro';
 import ServiceStandardsPage from './service-standards/index';
 ---
 
-<Layout>
-    <ServiceStandardsPage client:only />
-</Layout>
+<LayoutSSR>
+    <ServiceStandardsPage client:load />
+</LayoutSSR>

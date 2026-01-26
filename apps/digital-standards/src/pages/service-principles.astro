@@ -1,8 +1,8 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import LayoutSSR from '../layouts/LayoutSSR.astro';
 import StrategyPrinciplesPage from './service-principles/index';
 ---
 
-<Layout>
-    <StrategyPrinciplesPage client:only="react" />
-</Layout>
+<LayoutSSR>
+    <StrategyPrinciplesPage client:load />
+</LayoutSSR>

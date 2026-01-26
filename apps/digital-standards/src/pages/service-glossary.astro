@@ -1,8 +1,8 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import LayoutSSR from '../layouts/LayoutSSR.astro';
 import GlossaryPage from './service-glossary/index';
 ---
 
-<Layout hideNav={true}>
-    <GlossaryPage client:only="react" />
-</Layout>
+<LayoutSSR hideNav={true}>
+    <GlossaryPage client:load />
+</LayoutSSR>

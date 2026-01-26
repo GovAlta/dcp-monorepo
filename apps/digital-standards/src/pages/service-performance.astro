@@ -1,8 +1,8 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import LayoutSSR from '../layouts/LayoutSSR.astro';
 import ServicePerformancePage from './service-performance/index';
 ---
 
-<Layout>
-    <ServicePerformancePage client:only="react" />
-</Layout>
+<LayoutSSR>
+    <ServicePerformancePage client:load />
+</LayoutSSR>

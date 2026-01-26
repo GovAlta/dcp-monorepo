@@ -1,12 +1,12 @@
 ---
-import Layout from '../layouts/Layout';
+import LayoutSSR from '../layouts/LayoutSSR.astro';
 import { Search as DCPSearch} from "@abgov/dcp-common"
 import { GoabSpacer } from '@abgov/react-components';
 
 ---
-<Layout hideNav={true}>
+<LayoutSSR hideNav={true}>
 	<h1>Search</h1>
-	<GoabSpacer vSpacing="l" />
-	<DCPSearch client:only="react" title="Digital Standards"/>
-</Layout>
+	<GoabSpacer client:load vSpacing="l" />
+	<DCPSearch client:load title="Digital Standards"/>
+</LayoutSSR>
 	
