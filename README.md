@@ -140,3 +140,79 @@ npx pagefind --site dist/apps/app_name
 Replace `app_name` with the actual name of your app.
 
 This command will index your app's site, making it searchable using the Search component after the build stage.
+
+## Applications in this monorepo
+
+This workspace contains multiple user-facing micro-apps and supporting APIs.
+
+### Frontend applications
+
+| Project | Tech | Purpose |
+|---|---|---|
+| `dcp-guide` | Astro + React islands | Introductory guide to the Digital Content Platform (DCP), including onboarding/tutorial-style content for teams. |
+| `digital-playbook` | Astro + MDX | Digital Delivery Playbook content site for guidance, principles, stories, and team information. |
+| `digital-standards` | Astro + React islands | Digital Service Standards microsite containing standards, principles, assessments, glossary, and related guidance. |
+| `digital-marketplace` | Astro + React islands | Public-facing Alberta Digital Marketplace site with informational pages, contact flows, join forms, and supplier outreach content. |
+| `digital-marketplace-int` | Astro + React island | Internal companion portal for marketplace operations (for example, exporting form submission data as CSV). |
+| `common-capabilities` | Vite + React | Common Capabilities catalog and workflow app with pages for service listings, details, roadmap, ecosystem, support, and service add/update flows. |
+
+### Backend/API applications
+
+| Project | Tech | Purpose |
+|---|---|---|
+| `cc-api` | Node.js + Express (`@nx/esbuild`) | Gateway API for Common Capabilities features. Exposes `/cc/v1` routes and integrates with ADSP services (form, event, value), including cache refresh scheduling. |
+| `dcp-proxy-api-int` | Node.js + Express (`@nx/esbuild`) | Integration proxy for marketplace form endpoints under `/marketplace/v1`, designed for internal integration scenarios. |
+| `digital-marketplace-api` | Node.js + Express (`@nx/esbuild`) | Marketplace API gateway under `/marketplace/v1` supporting forms and bookings flows, including event/calendar integrations and optional reCAPTCHA handling. |
+
+### End-to-end test projects
+
+| Project | Purpose |
+|---|---|
+| `dcp-proxy-api-int-e2e` | Jest-based e2e test project for `dcp-proxy-api-int`. |
+| `digital-marketplace-api-e2e` | Jest-based e2e test project for `digital-marketplace-api`. |
+
+### Shared libraries/packages
+
+| Project | Purpose |
+|---|---|
+| `libs/dcp-common` (`dcp-common`) | Reusable DCP UI/layout assets for microsites, including shared layout, header/footer, search component, and captcha component. Also includes a custom generator target (`gen-astro`) used to scaffold Astro starter apps. |
+| `package/shared` (`shared`) | Small shared utility package used across workspace projects (for example, JSDOM polyfill helpers). |
+
+## Architecture at a glance
+
+- Content-oriented microsites are built primarily with Astro and React islands.
+- Transactional or integration workloads are handled by Express APIs.
+- APIs and frontends commonly integrate with Alberta Digital Service Platform (ADSP) services.
+- Nx is used to orchestrate builds, checks, tests, and project-level task execution.
+
+## Helpful project commands
+
+Run a specific app in development:
+
+```bash
+npx nx dev dcp-guide
+npx nx dev digital-standards
+npx nx dev digital-marketplace
+```
+
+Run React/Vite app in development:
+
+```bash
+npx nx dev common-capabilities
+```
+
+Run API services locally:
+
+```bash
+npx nx serve cc-api
+npx nx serve dcp-proxy-api-int
+npx nx serve digital-marketplace-api
+```
+
+Run tests/checks:
+
+```bash
+npx nx test dcp-proxy-api-int-e2e
+npx nx test digital-marketplace-api-e2e
+npx nx check dcp-guide
+```
