@@ -110,7 +110,6 @@ export function createHttpApp(
   serverFactory: McpServerFactory,
   options?: StartServerOptions,
 ): HttpAppResult {
-
   const app = express();
   app.use(express.json({ limit: '1mb' }));
 

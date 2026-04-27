@@ -4,10 +4,11 @@ import { createHttpApp } from './transport';
 import type { StartServerOptions } from './transport';
 
 function createTestFactory() {
-  return () => createMcpServer({
-    name: 'test-server',
-    version: '0.0.1',
-  });
+  return () =>
+    createMcpServer({
+      name: 'test-server',
+      version: '0.0.1',
+    });
 }
 
 describe('createHttpApp', () => {
