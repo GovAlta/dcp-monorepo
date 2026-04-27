@@ -60,15 +60,12 @@ export interface StartServerOptions {
 /**
  * Start the MCP server.
  *
- * Accepts either a pre-built McpServer (used as-is for stdio) or a factory
- * function (used for HTTP so each session gets its own server instance,
- * avoiding the "Already connected to a transport" error).
- *
- * For stdio, a single server instance is fine because there is exactly one
- * transport for the lifetime of the process.
+ * Requires a factory function that creates a fresh McpServer per session.
+ * For HTTP each session gets its own instance; for stdio the factory is
+ * called once for the single transport.
  */
 export async function startServer(
-  serverOrFactory: McpServer | McpServerFactory,
+  serverFactory: McpServerFactory,
   options?: StartServerOptions,
 ): Promise<void> {
   const transport =
@@ -77,17 +74,9 @@ export async function startServer(
     'stdio';
 
   if (transport === 'http') {
-    const factory =
-      typeof serverOrFactory === 'function'
-        ? serverOrFactory
-        : () => serverOrFactory;
-    await startHttpTransport(factory, options);
+    await startHttpTransport(serverFactory, options);
   } else {
-    const server =
-      typeof serverOrFactory === 'function'
-        ? serverOrFactory()
-        : serverOrFactory;
-    await startStdioTransport(server);
+    await startStdioTransport(serverFactory());
   }
 }
 
@@ -113,21 +102,14 @@ interface HttpAppResult {
  * Exported for testability. Does NOT listen — call `app.listen()` yourself
  * or use `startServer()` which handles listening and graceful shutdown.
  *
- * Accepts a McpServerFactory so each HTTP session gets its own server
+ * Requires a McpServerFactory so each HTTP session gets its own server
  * instance, preventing "Already connected to a transport" errors when
  * clients reconnect or multiple clients connect concurrently.
- *
- * For backward compatibility, a pre-built McpServer is also accepted
- * but will be wrapped in a factory (suitable only for single-session use).
  */
 export function createHttpApp(
-  serverOrFactory: McpServer | McpServerFactory,
+  serverFactory: McpServerFactory,
   options?: StartServerOptions,
 ): HttpAppResult {
-  const serverFactory: McpServerFactory =
-    typeof serverOrFactory === 'function'
-      ? serverOrFactory
-      : () => serverOrFactory;
 
   const app = express();
   app.use(express.json({ limit: '1mb' }));
@@ -157,9 +139,9 @@ export function createHttpApp(
     for (const [id, entry] of sessions) {
       if (now - entry.lastActivity > SESSION_TTL_MS) {
         console.error(`[mcp-common] Cleaning up idle session ${id}`);
-        entry.transport.close?.();
-        entry.server.close?.();
+        // Remove from map FIRST to prevent re-entrant onclose → close loop
         sessions.delete(id);
+        entry.server.close?.();
       }
     }
   }, CLEANUP_INTERVAL_MS);
@@ -233,8 +215,11 @@ export function createHttpApp(
           ([, e]) => e.transport === transport,
         )?.[0];
         if (id) {
-          sessions.get(id)?.server.close?.();
+          // Remove from map FIRST to prevent re-entrant close loop:
+          // server.close() → transport.close() → onclose → server.close() …
+          const entry = sessions.get(id);
           sessions.delete(id);
+          entry?.server.close?.();
         }
       };
 
@@ -265,17 +250,17 @@ export function createHttpApp(
       return;
     }
     const entry = sessions.get(sessionId) as SessionEntry;
-    await entry.transport.handleRequest(req, res);
-    entry.server.close?.();
+    // Remove from map FIRST to prevent re-entrant onclose → close loop
     sessions.delete(sessionId);
+    await entry.transport.handleRequest(req, res);
   });
 
   const cleanup = () => {
     clearInterval(cleanupTimer);
     for (const [id, entry] of sessions) {
-      entry.transport.close?.();
-      entry.server.close?.();
+      // Remove from map FIRST to prevent re-entrant onclose → close loop
       sessions.delete(id);
+      entry.server.close?.();
     }
   };
 

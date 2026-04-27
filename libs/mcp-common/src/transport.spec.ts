@@ -3,8 +3,8 @@ import { createMcpServer } from './server';
 import { createHttpApp } from './transport';
 import type { StartServerOptions } from './transport';
 
-function createTestServer() {
-  return createMcpServer({
+function createTestFactory() {
+  return () => createMcpServer({
     name: 'test-server',
     version: '0.0.1',
   });
@@ -13,8 +13,8 @@ function createTestServer() {
 describe('createHttpApp', () => {
   describe('health endpoint', () => {
     it('returns { status: ok } by default', async () => {
-      const server = createTestServer();
-      const { app, cleanup } = createHttpApp(server);
+      const factory = createTestFactory();
+      const { app, cleanup } = createHttpApp(factory);
 
       const res = await request(app).get('/health');
 
@@ -24,11 +24,11 @@ describe('createHttpApp', () => {
     });
 
     it('merges onHealthCheck output', async () => {
-      const server = createTestServer();
+      const factory = createTestFactory();
       const options: StartServerOptions = {
         onHealthCheck: () => ({ documentsLoaded: 42, adspConnected: true }),
       };
-      const { app, cleanup } = createHttpApp(server, options);
+      const { app, cleanup } = createHttpApp(factory, options);
 
       const res = await request(app).get('/health');
 
@@ -42,13 +42,13 @@ describe('createHttpApp', () => {
     });
 
     it('health is accessible without auth', async () => {
-      const server = createTestServer();
+      const factory = createTestFactory();
       const options: StartServerOptions = {
         authenticate: async () => {
           throw new Error('should not be called');
         },
       };
-      const { app, cleanup } = createHttpApp(server, options);
+      const { app, cleanup } = createHttpApp(factory, options);
 
       const res = await request(app).get('/health');
 
@@ -60,12 +60,12 @@ describe('createHttpApp', () => {
 
   describe('RFC 9728 metadata endpoint', () => {
     it('serves metadata when configured', async () => {
-      const server = createTestServer();
+      const factory = createTestFactory();
       const metadata = {
         resource: 'http://localhost:3000/mcp',
         authorization_servers: ['https://auth.example.com'],
       };
-      const { app, cleanup } = createHttpApp(server, {
+      const { app, cleanup } = createHttpApp(factory, {
         protectedResourceMetadata: metadata,
       });
 
@@ -80,8 +80,8 @@ describe('createHttpApp', () => {
     });
 
     it('returns 404 when metadata not configured', async () => {
-      const server = createTestServer();
-      const { app, cleanup } = createHttpApp(server);
+      const factory = createTestFactory();
+      const { app, cleanup } = createHttpApp(factory);
 
       const res = await request(app).get(
         '/.well-known/oauth-protected-resource',
@@ -94,8 +94,8 @@ describe('createHttpApp', () => {
 
   describe('authentication', () => {
     it('allows /mcp requests when no authenticate callback', async () => {
-      const server = createTestServer();
-      const { app, cleanup } = createHttpApp(server);
+      const factory = createTestFactory();
+      const { app, cleanup } = createHttpApp(factory);
 
       const res = await request(app)
         .post('/mcp')
@@ -106,8 +106,8 @@ describe('createHttpApp', () => {
     });
 
     it('rejects /mcp requests when authenticate throws', async () => {
-      const server = createTestServer();
-      const { app, cleanup } = createHttpApp(server, {
+      const factory = createTestFactory();
+      const { app, cleanup } = createHttpApp(factory, {
         authenticate: async () => {
           throw new Error('Invalid token');
         },
@@ -124,8 +124,8 @@ describe('createHttpApp', () => {
     });
 
     it('sets WWW-Authenticate header on 401 when configured', async () => {
-      const server = createTestServer();
-      const { app, cleanup } = createHttpApp(server, {
+      const factory = createTestFactory();
+      const { app, cleanup } = createHttpApp(factory, {
         authenticate: async () => {
           throw new Error('bad');
         },
@@ -140,8 +140,8 @@ describe('createHttpApp', () => {
     });
 
     it('passes when authenticate resolves', async () => {
-      const server = createTestServer();
-      const { app, cleanup } = createHttpApp(server, {
+      const factory = createTestFactory();
+      const { app, cleanup } = createHttpApp(factory, {
         authenticate: async () => ({ clientId: 'test-client' }),
       });
 
@@ -155,8 +155,8 @@ describe('createHttpApp', () => {
 
     it('extracts bearer token from Authorization header', async () => {
       let receivedHeader: string | undefined;
-      const server = createTestServer();
-      const { app, cleanup } = createHttpApp(server, {
+      const factory = createTestFactory();
+      const { app, cleanup } = createHttpApp(factory, {
         authenticate: async (req) => {
           receivedHeader = req.headers.authorization;
           return { clientId: 'test' };
@@ -175,8 +175,8 @@ describe('createHttpApp', () => {
 
   describe('CORS', () => {
     it('returns CORS headers on preflight', async () => {
-      const server = createTestServer();
-      const { app, cleanup } = createHttpApp(server);
+      const factory = createTestFactory();
+      const { app, cleanup } = createHttpApp(factory);
 
       const res = await request(app).options('/mcp');
 

@@ -59,9 +59,9 @@ jobs:
         run: npx nx affected --target=check --base=${{ github.event.inputs.AFFECTED_BASE || steps.last_successful_commit.outputs.base }} --parallel
       - name: Build
         run: npx nx affected --target=buildcustom --base=${{ github.event.inputs.AFFECTED_BASE || steps.last_successful_commit.outputs.base }} --configuration production
-      - run: npm prune --omit=dev
 
       # Determine affected deployable apps (those with OpenShift manifests).
+      # Must run BEFORE npm prune so the local nx binary is still available.
       - id: set_outputs
         name: Set affected deployable apps
         run: |
@@ -80,6 +80,8 @@ jobs:
             done
           fi
           echo "affected_apps_array=$(echo \"$DEPLOYABLE\" | jq -Rc 'split(",") | if . == [""] then [] else . end')" >> $GITHUB_OUTPUT
+
+      - run: npm prune --omit=dev
 
   buildContainers:
     runs-on: ubuntu-24.04
