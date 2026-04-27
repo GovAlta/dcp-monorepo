@@ -19,6 +19,11 @@ import {
   ConsoleAuditEmitter,
   withLogging,
 } from '@dcp-monorepo/mcp-common';
+import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
+import type {
+  McpServerFactory,
+  WithLoggingOptions,
+} from '@dcp-monorepo/mcp-common';
 import { z } from 'zod';
 import { DataLoader } from './data-loader';
 
@@ -32,21 +37,47 @@ async function main() {
 
   const itemCount = dataLoader.getStats().totalItems;
 
-  const server = createMcpServer({
-    name: 'goa-design-system-mcp',
-    version: '2.0.0',
-    description:
-      'AI-native knowledge base for the Government of Alberta Design System. Provides component details, patterns, and implementation examples.',
-    capabilities: { logging: {} },
-  });
-
   const loggingOptions = {
     namespace: 'design-system-mcp',
     emitters: [auditEmitter],
     stderrLogger: logger,
   };
 
-  // ── Tool: search ──────────────────────────────────────────────────────
+  // Factory: each HTTP session gets its own McpServer instance with
+  // tools registered, avoiding "Already connected to a transport" errors.
+  const createServer: McpServerFactory = () => {
+    const server = createMcpServer({
+      name: 'goa-design-system-mcp',
+      version: '2.0.0',
+      description:
+        'AI-native knowledge base for the Government of Alberta Design System. Provides component details, patterns, and implementation examples.',
+      capabilities: { logging: {} },
+    });
+
+    registerTools(server, dataLoader, loggingOptions);
+    return server;
+  };
+
+  // ── Start server ──────────────────────────────────────────────────────
+  await startServer(createServer, {
+    onHealthCheck: () => ({
+      name: 'goa-design-system-mcp',
+      version: '2.0.0',
+      itemsLoaded: itemCount,
+    }),
+  });
+
+  logger.info(
+    'server',
+    `GoA Design System MCP v2.0 ready (${itemCount} items loaded)`,
+  );
+}
+
+function registerTools(
+  server: McpServer,
+  dataLoader: DataLoader,
+  loggingOptions: WithLoggingOptions,
+) {
   server.tool(
     'search',
     `Search GoA Design System knowledge. Find components, patterns, concepts, and examples.
@@ -112,7 +143,6 @@ Returns matching items with relevance scores.`,
     ),
   );
 
-  // ── Tool: get ─────────────────────────────────────────────────────────
   server.tool(
     'get',
     `Get complete details for a specific item by ID.
@@ -157,20 +187,6 @@ Returns the complete item data including all properties, examples, and guidance.
       },
       loggingOptions,
     ),
-  );
-
-  // ── Start server ──────────────────────────────────────────────────────
-  await startServer(server, {
-    onHealthCheck: () => ({
-      name: 'goa-design-system-mcp',
-      version: '2.0.0',
-      itemsLoaded: itemCount,
-    }),
-  });
-
-  logger.info(
-    'server',
-    `GoA Design System MCP v2.0 ready (${itemCount} items loaded)`,
   );
 }
 

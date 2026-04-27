@@ -1,7 +1,11 @@
 export { createMcpServer } from './server';
 export type { McpServerConfig } from './server';
 export { startServer, createHttpApp } from './transport';
-export type { StartServerOptions, AuthResult } from './transport';
+export type {
+  StartServerOptions,
+  AuthResult,
+  McpServerFactory,
+} from './transport';
 export { RateLimiter, KeyedRateLimiter } from './rate-limiter';
 export { toolError } from './error';
 export type { ToolErrorResult } from './error';

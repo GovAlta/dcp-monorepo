@@ -18,6 +18,12 @@ export interface AuthResult {
   [key: string]: unknown;
 }
 
+/**
+ * Factory that creates a fully-configured McpServer instance.
+ * Called once per HTTP session so each transport gets its own server.
+ */
+export type McpServerFactory = () => McpServer;
+
 export interface StartServerOptions {
   port?: number;
   transport?: 'stdio' | 'http';
@@ -51,8 +57,18 @@ export interface StartServerOptions {
   wwwAuthenticate?: string;
 }
 
+/**
+ * Start the MCP server.
+ *
+ * Accepts either a pre-built McpServer (used as-is for stdio) or a factory
+ * function (used for HTTP so each session gets its own server instance,
+ * avoiding the "Already connected to a transport" error).
+ *
+ * For stdio, a single server instance is fine because there is exactly one
+ * transport for the lifetime of the process.
+ */
 export async function startServer(
-  server: McpServer,
+  serverOrFactory: McpServer | McpServerFactory,
   options?: StartServerOptions,
 ): Promise<void> {
   const transport =
@@ -61,8 +77,16 @@ export async function startServer(
     'stdio';
 
   if (transport === 'http') {
-    await startHttpTransport(server, options);
+    const factory =
+      typeof serverOrFactory === 'function'
+        ? serverOrFactory
+        : () => serverOrFactory;
+    await startHttpTransport(factory, options);
   } else {
+    const server =
+      typeof serverOrFactory === 'function'
+        ? serverOrFactory()
+        : serverOrFactory;
     await startStdioTransport(server);
   }
 }
@@ -74,6 +98,7 @@ async function startStdioTransport(server: McpServer): Promise<void> {
 }
 
 interface SessionEntry {
+  server: McpServer;
   transport: StreamableHTTPServerTransport;
   lastActivity: number;
 }
@@ -87,11 +112,23 @@ interface HttpAppResult {
  * Build the Express app with CORS, health, optional auth, and MCP routes.
  * Exported for testability. Does NOT listen — call `app.listen()` yourself
  * or use `startServer()` which handles listening and graceful shutdown.
+ *
+ * Accepts a McpServerFactory so each HTTP session gets its own server
+ * instance, preventing "Already connected to a transport" errors when
+ * clients reconnect or multiple clients connect concurrently.
+ *
+ * For backward compatibility, a pre-built McpServer is also accepted
+ * but will be wrapped in a factory (suitable only for single-session use).
  */
 export function createHttpApp(
-  server: McpServer,
+  serverOrFactory: McpServer | McpServerFactory,
   options?: StartServerOptions,
 ): HttpAppResult {
+  const serverFactory: McpServerFactory =
+    typeof serverOrFactory === 'function'
+      ? serverOrFactory
+      : () => serverOrFactory;
+
   const app = express();
   app.use(express.json({ limit: '1mb' }));
 
@@ -121,6 +158,7 @@ export function createHttpApp(
       if (now - entry.lastActivity > SESSION_TTL_MS) {
         console.error(`[mcp-common] Cleaning up idle session ${id}`);
         entry.transport.close?.();
+        entry.server.close?.();
         sessions.delete(id);
       }
     }
@@ -182,7 +220,11 @@ export function createHttpApp(
       transport = new StreamableHTTPServerTransport({
         sessionIdGenerator: () => newSessionId,
         onsessioninitialized: (id) => {
-          sessions.set(id, { transport, lastActivity: Date.now() });
+          sessions.set(id, {
+            server: sessionServer,
+            transport,
+            lastActivity: Date.now(),
+          });
         },
       });
 
@@ -190,10 +232,16 @@ export function createHttpApp(
         const id = [...sessions.entries()].find(
           ([, e]) => e.transport === transport,
         )?.[0];
-        if (id) sessions.delete(id);
+        if (id) {
+          sessions.get(id)?.server.close?.();
+          sessions.delete(id);
+        }
       };
 
-      await server.connect(transport);
+      // Each session gets its own McpServer to avoid
+      // "Already connected to a transport" errors on reconnect.
+      const sessionServer = serverFactory();
+      await sessionServer.connect(transport);
     }
 
     await transport.handleRequest(req, res, req.body);
@@ -216,8 +264,9 @@ export function createHttpApp(
       res.status(400).json({ error: 'Invalid or missing session ID' });
       return;
     }
-    const transport = (sessions.get(sessionId) as SessionEntry).transport;
-    await transport.handleRequest(req, res);
+    const entry = sessions.get(sessionId) as SessionEntry;
+    await entry.transport.handleRequest(req, res);
+    entry.server.close?.();
     sessions.delete(sessionId);
   });
 
@@ -225,6 +274,7 @@ export function createHttpApp(
     clearInterval(cleanupTimer);
     for (const [id, entry] of sessions) {
       entry.transport.close?.();
+      entry.server.close?.();
       sessions.delete(id);
     }
   };
@@ -233,12 +283,12 @@ export function createHttpApp(
 }
 
 async function startHttpTransport(
-  server: McpServer,
+  serverFactory: McpServerFactory,
   options?: StartServerOptions,
 ): Promise<void> {
   const resolvedPort =
     options?.port ?? parseInt(process.env['PORT'] ?? '3000', 10);
-  const { app, cleanup } = createHttpApp(server, options);
+  const { app, cleanup } = createHttpApp(serverFactory, options);
 
   return new Promise((resolve) => {
     const httpServer: Server = app.listen(resolvedPort, () => {
