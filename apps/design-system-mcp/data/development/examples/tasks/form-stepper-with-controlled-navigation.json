@@ -1,0 +1,102 @@
+{
+  "$schema": "../recipe-schema.json",
+  "schemaVersion": "2.1.0-ai-context",
+  "recipeId": "form-stepper-with-controlled-navigation",
+  "recipeName": "Form Stepper with Controlled Navigation",
+  "category": "form-pattern",
+  "summary": "Guide users through multi-step forms with controlled navigation, preventing premature access to incomplete steps",
+  "serviceContext": {
+    "useCase": "Organize complex forms into logical steps with controlled progression, ensuring users complete required information before advancing",
+    "userType": "both",
+    "governmentServiceFlows": [
+      "When citizens complete multi-step applications (permits, benefits, registrations)",
+      "When workers process complex case intake forms with required validation at each step",
+      "When forms require sequential completion (personal details → employment → references → review)",
+      "When preventing users from skipping required steps or accessing incomplete sections"
+    ],
+    "relatedPatterns": [
+      "set-the-status-of-step-on-a-form-stepper",
+      "disabled-button-with-a-required-field",
+      "review-page",
+      "confirm-before-navigating-away"
+    ]
+  },
+  "components": [
+    {
+      "componentName": "GoabFormStepper",
+      "role": "Step navigation container",
+      "purpose": "Provide visual step indicator with controlled navigation between form sections"
+    },
+    {
+      "componentName": "GoabFormStep",
+      "role": "Individual step definition",
+      "purpose": "Define each step in the form with descriptive text and status"
+    },
+    {
+      "componentName": "GoabPages",
+      "role": "Content page container",
+      "purpose": "Display the appropriate form content based on current step"
+    },
+    {
+      "componentName": "GoabButton",
+      "role": "Navigation controls",
+      "purpose": "Provide Previous/Next navigation with controlled step progression"
+    },
+    {
+      "componentName": "GoabSkeleton",
+      "role": "Content placeholder",
+      "purpose": "Show loading states or content structure while data loads"
+    }
+  ],
+  "codeReference": {
+    "exampleFile": "form-stepper-with-controlled-navigation.tsx",
+    "linesOfCode": 224,
+    "lastModified": "2024-01-01T00:00:00.000Z"
+  },
+  "implementation": {
+    "complexity": "medium",
+    "keyPatterns": [
+      "Controlled step state management with validation boundaries",
+      "Page navigation with step range validation (1 to max steps)",
+      "Stepper change event handling for direct step selection",
+      "Button-based navigation with Previous/Next controls",
+      "Content synchronization between stepper and page display",
+      "Skeleton loading states for each step content"
+    ],
+    "designPatterns": [
+      "Multi-step form pattern",
+      "Controlled navigation",
+      "Progressive disclosure",
+      "Step validation workflow"
+    ],
+    "accessibility": [
+      "Form stepper provides clear step progression and current position",
+      "Navigation buttons have descriptive labels (Previous/Next)",
+      "Step text clearly describes the content of each section",
+      "Keyboard navigation supported for stepper interaction",
+      "Screen readers can announce step changes and current position"
+    ]
+  },
+  "codeExamples": {
+    "react": {
+      "complete": "import {\n  GoabButton,\n  GoabFormStep,\n  GoabFormStepper,\n  GoabPages,\n  GoabSkeleton,\n  GoabSpacer\n} from \"@abgov/react-components\";\nimport { useState } from \"react\";\n\nexport const FormStepperWithControlledNavigation = () => {\n  const [currentStep, setCurrentStep] = useState(1);\n  const maxSteps = 4;\n\n  function setPage(page: number) {\n    if (page < 1 || page > maxSteps) return;\n    setCurrentStep(page);\n  }\n\n  return (\n    <>\n      <GoabFormStepper step={currentStep} onChange={(event) => setCurrentStep(event.step)}>\n        <GoabFormStep text=\"Personal details\" />\n        <GoabFormStep text=\"Employment history\" />\n        <GoabFormStep text=\"References\" />\n        <GoabFormStep text=\"Review\" />\n      </GoabFormStepper>\n      \n      <GoabPages current={currentStep} mb=\"3xl\" mt=\"xl\" mr=\"xl\" ml=\"xl\">\n        <div>\n          <GoabSkeleton type=\"article\" />\n        </div>\n        <div>\n          <GoabSkeleton type=\"header\" size={'2'} />\n          <GoabSkeleton type=\"text\" />\n          <GoabSkeleton type=\"header\" size={'2'} />\n          <GoabSkeleton type=\"text\" />\n        </div>\n        <div>\n          <GoabSkeleton type=\"text\" />\n          <GoabSpacer vSpacing=\"m\" />\n          <GoabSkeleton type=\"text\" />\n        </div>\n        <div>\n          <GoabSkeleton type=\"header\" size={'2'} />\n          <GoabSkeleton type=\"text\" />\n          <GoabSpacer vSpacing=\"m\" />\n          <GoabSkeleton type=\"text\" />\n        </div>\n      </GoabPages>\n\n      <div style={{ display: \"flex\", justifyContent: \"space-between\" }}>\n        <GoabButton type=\"secondary\" onClick={() => setPage(currentStep - 1)}>\n          Previous\n        </GoabButton>\n        <GoabButton type=\"primary\" onClick={() => setPage(currentStep + 1)}>\n          Next\n        </GoabButton>\n      </div>\n    </>\n  )\n}",
+      "key": "const [currentStep, setCurrentStep] = useState(1);\nconst [isStepValid, setIsStepValid] = useState({ 1: true, 2: false, 3: false, 4: false });\nconst maxSteps = 4;\n\nconst steps = [\n  { text: \"Personal Information\", component: <PersonalInfoForm /> },\n  { text: \"Employment History\", component: <EmploymentForm /> },\n  { text: \"References\", component: <ReferencesForm /> },\n  { text: \"Review\", component: <ReviewForm /> }\n];\n\nconst validateCurrentStep = async (): Promise<boolean> => {\n  // Implement step validation logic here\n  // Return true if step is valid, false otherwise\n  return true;\n};\n\nconst handleNext = async () => {\n  const valid = await validateCurrentStep();\n  if (valid && currentStep < maxSteps) {\n    setIsStepValid(prev => ({ ...prev, [currentStep + 1]: true }));\n    setCurrentStep(currentStep + 1);\n  }\n};\n\nconst handlePrevious = () => {\n  if (currentStep > 1) {\n    setCurrentStep(currentStep - 1);\n  }\n};\n\nconst handleStepChange = (event: { step: number }) => {\n  // Only allow navigation to valid steps\n  if (isStepValid[event.step]) {\n    setCurrentStep(event.step);\n  }\n};\n\n<GoabFormStepper step={currentStep} onChange={handleStepChange}>\n  {steps.map((step, index) => (\n    <GoabFormStep key={index} text={step.text} />\n  ))}\n</GoabFormStepper>\n\n<GoabPages current={currentStep} mb=\"3xl\" mt=\"xl\">\n  {steps.map((step, index) => (\n    <div key={index}>\n      {step.component}\n    </div>\n  ))}\n</GoabPages>\n\n<div style={{ display: \"flex\", justifyContent: \"space-between\" }}>\n  <GoabButton \n    type=\"secondary\" \n    onClick={handlePrevious}\n    disabled={currentStep === 1}>\n    Previous\n  </GoabButton>\n  <GoabButton \n    type=\"primary\" \n    onClick={handleNext}\n    disabled={currentStep === maxSteps}>\n    {currentStep === maxSteps ? 'Submit' : 'Next'}\n  </GoabButton>\n</div>"
+    },
+    "angular": {
+      "complete": "export class FormStepperWithControlledNavigationComponent {\n  step = 1;\n  maxSteps = 4;\n  isStepValid = { 1: true, 2: false, 3: false, 4: false };\n  \n  steps = [\n    { text: 'Personal Information' },\n    { text: 'Employment History' },\n    { text: 'References' },\n    { text: 'Review' }\n  ];\n\n  updateStep(event: GoabFormStepperOnChangeDetail) {\n    // Only allow navigation to valid steps\n    if (this.isStepValid[event.step]) {\n      this.step = event.step;\n    }\n  }\n\n  async validateCurrentStep(): Promise<boolean> {\n    // Implement step validation logic here\n    // Return true if step is valid, false otherwise\n    return true;\n  }\n\n  async handleNext() {\n    const valid = await this.validateCurrentStep();\n    if (valid && this.step < this.maxSteps) {\n      this.isStepValid[this.step + 1] = true;\n      this.step = this.step + 1;\n    }\n  }\n\n  handlePrevious() {\n    if (this.step > 1) {\n      this.step = this.step - 1;\n    }\n  }\n\n  setPage(page: number) {\n    if (page < 1 || page > this.maxSteps) return;\n    if (this.isStepValid[page]) {\n      this.step = page;\n    }\n  }\n}",
+      "key": "step = 1;\nmaxSteps = 4;\nisStepValid = { 1: true, 2: false, 3: false, 4: false };\n\nsteps = [\n  { text: 'Personal Information' },\n  { text: 'Employment History' },\n  { text: 'References' },\n  { text: 'Review' }\n];\n\nupdateStep(event: GoabFormStepperOnChangeDetail) {\n  if (this.isStepValid[event.step]) {\n    this.step = event.step;\n  }\n}\n\nasync handleNext() {\n  const valid = await this.validateCurrentStep();\n  if (valid && this.step < this.maxSteps) {\n    this.isStepValid[this.step + 1] = true;\n    this.step = this.step + 1;\n  }\n}\n\nhandlePrevious() {\n  if (this.step > 1) {\n    this.step = this.step - 1;\n  }\n}\n\nsetPage(page: number) {\n  if (page < 1 || page > this.maxSteps) return;\n  if (this.isStepValid[page]) {\n    this.step = page;\n  }\n}\n\n<!-- Template -->\n<goab-form-stepper [step]=\"step\" (onChange)=\"updateStep($event)\">\n  <goab-form-step *ngFor=\"let stepItem of steps\" [text]=\"stepItem.text\"></goab-form-step>\n</goab-form-stepper>\n\n<goab-pages [current]=\"step\" mb=\"3xl\" mt=\"xl\" mr=\"xl\" ml=\"xl\">\n  <div><!-- Personal Information Form --></div>\n  <div><!-- Employment History Form --></div>\n  <div><!-- References Form --></div>\n  <div><!-- Review Form --></div>\n</goab-pages>\n\n<div style=\"display: flex; justify-content: space-between\">\n  <goab-button \n    type=\"secondary\" \n    (onClick)=\"handlePrevious()\"\n    [disabled]=\"step === 1\">\n    Previous\n  </goab-button>\n  <goab-button \n    type=\"primary\" \n    (onClick)=\"handleNext()\"\n    [disabled]=\"step === maxSteps\">\n    {{ step === maxSteps ? 'Submit' : 'Next' }}\n  </goab-button>\n</div>"
+    }
+  },
+  "tags": [
+    "form-stepper",
+    "multi-step-form",
+    "controlled-navigation",
+    "step-validation",
+    "progressive-disclosure",
+    "navigation-controls",
+    "form-workflow",
+    "pages",
+    "step-progression",
+    "form-organization"
+  ]
+}

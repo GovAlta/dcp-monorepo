@@ -1,0 +1,124 @@
+{
+  "$schema": "../schema/recipe-schema-2.1.0-ai-context.json",
+  "title": "Show number of results per page",
+  "description": "Implement pagination controls with configurable results per page, allowing users to adjust how many items are displayed at once while maintaining their position in the dataset.",
+  "category": "interaction-patterns",
+  "tags": [
+    "pagination",
+    "data-display",
+    "results-per-page",
+    "dropdown",
+    "table-controls"
+  ],
+  "government_service_context": {
+    "citizen_flows": {
+      "applicable": true,
+      "usage": "Citizens browsing search results, applications, or document lists need control over how much information appears per page based on their preferences and connection speed."
+    },
+    "worker_flows": {
+      "applicable": true,
+      "usage": "Government workers reviewing cases, applications, or administrative data need flexible pagination to efficiently process different volumes of information."
+    },
+    "shared_components": {
+      "applicable": true,
+      "usage": "Pagination with configurable page size is universally useful for any interface displaying large datasets or search results."
+    }
+  },
+  "component_analysis": {
+    "primary_components": [
+      {
+        "name": "Results Per Page Dropdown",
+        "role": "Allows users to select how many items to display per page",
+        "purpose": "Gives users control over information density and scrolling behavior"
+      },
+      {
+        "name": "Pagination Component",
+        "role": "Provides navigation between pages of results",
+        "purpose": "Enables users to move through large datasets efficiently"
+      },
+      {
+        "name": "Results Count Display",
+        "role": "Shows current page context (e.g., 'Show 20 of 100')",
+        "purpose": "Helps users understand their position in the complete dataset"
+      },
+      {
+        "name": "Data Table",
+        "role": "Displays the current page of results",
+        "purpose": "Presents the actual data in a structured, scannable format"
+      }
+    ],
+    "accessibility_features": [
+      "Dropdown has proper labeling and keyboard navigation",
+      "Pagination follows standard keyboard interaction patterns",
+      "Results count provides screen reader context",
+      "Page changes maintain focus management",
+      "Clear visual hierarchy separates controls from content"
+    ],
+    "user_experience_notes": [
+      "Page size selection resets to page 1 to avoid confusion",
+      "Common page sizes (10, 20, 30) cater to different user preferences",
+      "Controls are positioned near pagination for logical grouping",
+      "Results count helps users understand data volume",
+      "Immediate feedback when changing page size reduces cognitive load"
+    ]
+  },
+  "implementation": {
+    "react": {
+      "code": "import React, { useState, useEffect } from 'react';\nimport {\n  GoabBlock,\n  GoabDropdown,\n  GoabDropdownItem,\n  GoabPagination,\n  GoabSpacer,\n  GoabTable\n} from '@abgov/react-components';\nimport { GoabDropdownOnChangeDetail } from '@abgov/ui-components-common';\n\ninterface DataItem {\n  id: string;\n  firstName: string;\n  lastName: string;\n  age: number;\n}\n\nfunction ResultsPerPageExample() {\n  const [allData, setAllData] = useState<DataItem[]>([]);\n  const [pageData, setPageData] = useState<DataItem[]>([]);\n  const [currentPage, setCurrentPage] = useState<number>(1);\n  const [itemsPerPage, setItemsPerPage] = useState<number>(10);\n\n  // Generate sample data\n  useEffect(() => {\n    const sampleData: DataItem[] = [];\n    for (let i = 1; i <= 100; i++) {\n      sampleData.push({\n        id: `user-${i}`,\n        firstName: `First${i}`,\n        lastName: `Last${i}`,\n        age: 20 + (i % 40)\n      });\n    }\n    setAllData(sampleData);\n    setPageData(sampleData.slice(0, itemsPerPage));\n  }, [itemsPerPage]);\n\n  const handlePageChange = (newPage: number) => {\n    const startIndex = (newPage - 1) * itemsPerPage;\n    const endIndex = startIndex + itemsPerPage;\n    const newPageData = allData.slice(startIndex, endIndex);\n    \n    setCurrentPage(newPage);\n    setPageData(newPageData);\n  };\n\n  const handleItemsPerPageChange = (event: GoabDropdownOnChangeDetail) => {\n    const newItemsPerPage = parseInt(event.value || '10');\n    setCurrentPage(1); // Reset to first page\n    setItemsPerPage(newItemsPerPage);\n    \n    // Update displayed data for new page size\n    const newPageData = allData.slice(0, newItemsPerPage);\n    setPageData(newPageData);\n  };\n\n  const pageStartIndex = (currentPage - 1) * itemsPerPage + 1;\n  const pageEndIndex = Math.min(currentPage * itemsPerPage, allData.length);\n\n  return (\n    <div>\n      <GoabTable width=\"100%\" mb=\"xl\">\n        <thead>\n          <tr>\n            <th>First name</th>\n            <th>Last name</th>\n            <th>Age</th>\n          </tr>\n        </thead>\n        <tbody>\n          {pageData.map((item) => (\n            <tr key={item.id}>\n              <td>{item.firstName}</td>\n              <td>{item.lastName}</td>\n              <td>{item.age}</td>\n            </tr>\n          ))}\n        </tbody>\n      </GoabTable>\n\n      <GoabBlock alignment=\"center\">\n        <GoabBlock mb=\"m\" alignment=\"center\">\n          Show\n          <GoabDropdown\n            onChange={handleItemsPerPageChange}\n            value={itemsPerPage.toString()}\n            width=\"9ch\"\n            ariaLabel=\"Items per page\"\n          >\n            <GoabDropdownItem value=\"10\" label=\"10\" />\n            <GoabDropdownItem value=\"20\" label=\"20\" />\n            <GoabDropdownItem value=\"30\" label=\"30\" />\n            <GoabDropdownItem value=\"50\" label=\"50\" />\n          </GoabDropdown>\n          <span style={{ width: '120px' }}>per page</span>\n        </GoabBlock>\n\n        <GoabSpacer hSpacing=\"fill\" />\n\n        <GoabBlock alignment=\"center\">\n          <span style={{ marginRight: '16px', fontSize: '14px', color: 'var(--goa-color-text-secondary)' }}>\n            Showing {pageStartIndex}-{pageEndIndex} of {allData.length} results\n          </span>\n          <GoabPagination\n            itemCount={allData.length}\n            perPageCount={itemsPerPage}\n            pageNumber={currentPage}\n            onChange={(event) => handlePageChange(event.page)}\n          />\n        </GoabBlock>\n      </GoabBlock>\n    </div>\n  );\n}\n\n// Reusable hook for pagination logic\nfunction usePagination<T>(data: T[], initialPageSize: number = 10) {\n  const [currentPage, setCurrentPage] = useState(1);\n  const [pageSize, setPageSize] = useState(initialPageSize);\n\n  const totalItems = data.length;\n  const totalPages = Math.ceil(totalItems / pageSize);\n  const startIndex = (currentPage - 1) * pageSize;\n  const endIndex = startIndex + pageSize;\n  const pageData = data.slice(startIndex, endIndex);\n\n  const changePage = (newPage: number) => {\n    setCurrentPage(Math.max(1, Math.min(newPage, totalPages)));\n  };\n\n  const changePageSize = (newSize: number) => {\n    setPageSize(newSize);\n    setCurrentPage(1); // Reset to first page\n  };\n\n  return {\n    currentPage,\n    pageSize,\n    pageData,\n    totalItems,\n    totalPages,\n    startIndex: startIndex + 1,\n    endIndex: Math.min(endIndex, totalItems),\n    changePage,\n    changePageSize\n  };\n}"
+    },
+    "angular": {
+      "code": "import { Component, Input } from '@angular/core';\nimport { GoabDropdownOnChangeDetail, GoabPaginationOnChangeDetail } from '@abgov/ui-components-common';\n\ninterface DataItem {\n  id: string;\n  firstName: string;\n  lastName: string;\n  age: number;\n}\n\n@Component({\n  selector: 'app-results-per-page',\n  template: `\n    <goab-table width=\"100%\" mb=\"xl\">\n      <thead>\n        <tr>\n          <th>First name</th>\n          <th>Last name</th>\n          <th>Age</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr *ngFor=\"let item of pageData\">\n          <td>{{ item.firstName }}</td>\n          <td>{{ item.lastName }}</td>\n          <td>{{ item.age }}</td>\n        </tr>\n      </tbody>\n    </goab-table>\n\n    <goab-block alignment=\"center\">\n      <goab-block mb=\"m\" alignment=\"center\">\n        Show\n        <goab-dropdown\n          (onChange)=\"handleItemsPerPageChange($event)\"\n          [value]=\"itemsPerPage.toString()\"\n          width=\"9ch\"\n          ariaLabel=\"Items per page\"\n        >\n          <goab-dropdown-item value=\"10\" label=\"10\"></goab-dropdown-item>\n          <goab-dropdown-item value=\"20\" label=\"20\"></goab-dropdown-item>\n          <goab-dropdown-item value=\"30\" label=\"30\"></goab-dropdown-item>\n          <goab-dropdown-item value=\"50\" label=\"50\"></goab-dropdown-item>\n        </goab-dropdown>\n        <span style=\"width: 120px\">per page</span>\n      </goab-block>\n\n      <goab-spacer hSpacing=\"fill\"></goab-spacer>\n\n      <goab-block alignment=\"center\">\n        <span style=\"margin-right: 16px; font-size: 14px; color: var(--goa-color-text-secondary)\">\n          Showing {{ pageStartIndex }}-{{ pageEndIndex }} of {{ allData.length }} results\n        </span>\n        <goab-pagination\n          [itemCount]=\"allData.length\"\n          [perPageCount]=\"itemsPerPage\"\n          [pageNumber]=\"currentPage\"\n          (onChange)=\"handlePageChange($event)\"\n        ></goab-pagination>\n      </goab-block>\n    </goab-block>\n  `\n})\nexport class ResultsPerPageComponent {\n  @Input() allData: DataItem[] = [];\n  \n  pageData: DataItem[] = [];\n  currentPage = 1;\n  itemsPerPage = 10;\n\n  ngOnInit() {\n    // Generate sample data if none provided\n    if (this.allData.length === 0) {\n      this.generateSampleData();\n    }\n    this.updatePageData();\n  }\n\n  ngOnChanges() {\n    this.updatePageData();\n  }\n\n  get pageStartIndex(): number {\n    return (this.currentPage - 1) * this.itemsPerPage + 1;\n  }\n\n  get pageEndIndex(): number {\n    return Math.min(this.currentPage * this.itemsPerPage, this.allData.length);\n  }\n\n  handlePageChange(event: GoabPaginationOnChangeDetail) {\n    this.currentPage = event.page;\n    this.updatePageData();\n  }\n\n  handleItemsPerPageChange(event: GoabDropdownOnChangeDetail) {\n    this.itemsPerPage = parseInt(event.value || '10');\n    this.currentPage = 1; // Reset to first page\n    this.updatePageData();\n  }\n\n  private updatePageData() {\n    const startIndex = (this.currentPage - 1) * this.itemsPerPage;\n    const endIndex = startIndex + this.itemsPerPage;\n    this.pageData = this.allData.slice(startIndex, endIndex);\n  }\n\n  private generateSampleData() {\n    for (let i = 1; i <= 100; i++) {\n      this.allData.push({\n        id: `user-${i}`,\n        firstName: `First${i}`,\n        lastName: `Last${i}`,\n        age: 20 + (i % 40)\n      });\n    }\n  }\n}\n\n// Service for reusable pagination logic\n@Injectable({\n  providedIn: 'root'\n})\nexport class PaginationService {\n  calculatePagination(totalItems: number, currentPage: number, pageSize: number) {\n    const totalPages = Math.ceil(totalItems / pageSize);\n    const startIndex = (currentPage - 1) * pageSize + 1;\n    const endIndex = Math.min(currentPage * pageSize, totalItems);\n    \n    return {\n      totalPages,\n      startIndex,\n      endIndex,\n      hasNextPage: currentPage < totalPages,\n      hasPreviousPage: currentPage > 1\n    };\n  }\n\n  getPageData<T>(data: T[], currentPage: number, pageSize: number): T[] {\n    const startIndex = (currentPage - 1) * pageSize;\n    const endIndex = startIndex + pageSize;\n    return data.slice(startIndex, endIndex);\n  }\n}"
+    }
+  },
+  "usage_guidelines": {
+    "when_to_use": [
+      "Tables or lists with more than 20-30 items",
+      "Search results that may return large datasets",
+      "Administrative interfaces where users process varying amounts of data",
+      "Interfaces where users have different screen sizes or preferences",
+      "Data with varying complexity where users might want fewer or more items per view"
+    ],
+    "when_not_to_use": [
+      "Very small datasets (less than 20 items total)",
+      "Real-time data where pagination would disrupt the flow",
+      "Mobile-first interfaces where pagination controls are difficult to use",
+      "When infinite scroll is more appropriate for the use case"
+    ],
+    "best_practices": [
+      "Provide common page size options (10, 20, 30, 50)",
+      "Always reset to page 1 when changing page size",
+      "Show current range context (e.g., 'Showing 1-20 of 100')",
+      "Position page size controls near pagination for logical grouping",
+      "Remember user's page size preference within session",
+      "Ensure pagination works correctly with filtering and sorting",
+      "Test with various dataset sizes to ensure performance"
+    ]
+  },
+  "variations": [
+    {
+      "name": "Compact pagination",
+      "description": "Simplified version for smaller interfaces",
+      "code_change": "Remove result count display and use minimal dropdown options: [10, 25, 50]"
+    },
+    {
+      "name": "Advanced pagination",
+      "description": "Include jump-to-page functionality",
+      "code_change": "Add input field for direct page navigation: <GoabInput type='number' min='1' max={totalPages} />"
+    },
+    {
+      "name": "Infinite scroll option",
+      "description": "Toggle between pagination and infinite scroll",
+      "code_change": "Add toggle: <GoabCheckbox label='Load more automatically' onChange={toggleInfiniteScroll} />"
+    },
+    {
+      "name": "Export all option",
+      "description": "Allow users to download complete dataset",
+      "code_change": "Add export button near pagination: <GoabButton type='tertiary'>Export all {totalItems} results</GoabButton>"
+    }
+  ],
+  "related_patterns": [
+    "filter-data-in-a-table",
+    "show-different-views-of-data-in-a-table",
+    "search"
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "$schema": "../schema/recipe-schema-2.1.0-ai-context.json",
+  "title": "Slotted error text in a form item",
+  "description": "Use rich, formatted content for form validation error messages by leveraging form item slots, enabling complex error messaging with emphasis, links, or structured information.",
+  "category": "form-controls",
+  "tags": [
+    "forms",
+    "validation",
+    "error-handling",
+    "slots",
+    "rich-content"
+  ],
+  "government_service_context": {
+    "citizen_flows": {
+      "applicable": true,
+      "usage": "Citizens completing complex forms need clear, detailed error messages that may include formatting, links to help resources, or structured guidance for correction."
+    },
+    "worker_flows": {
+      "applicable": true,
+      "usage": "Government workers using data entry forms benefit from rich error messages that provide context, examples, or links to relevant procedures and guidelines."
+    },
+    "shared_components": {
+      "applicable": true,
+      "usage": "Rich error messaging is universally useful for any form requiring detailed validation feedback beyond simple text."
+    }
+  },
+  "component_analysis": {
+    "primary_components": [
+      {
+        "name": "Form Item Container",
+        "role": "Provides structured form field layout with error slot support",
+        "purpose": "Creates consistent form field presentation with designated error content area"
+      },
+      {
+        "name": "Slotted Error Content",
+        "role": "Contains rich, formatted error message content",
+        "purpose": "Enables complex error messaging with HTML formatting, links, and structured information"
+      },
+      {
+        "name": "Form Input Control",
+        "role": "The actual form control that triggered validation",
+        "purpose": "Provides the input mechanism while error slot gives detailed feedback"
+      },
+      {
+        "name": "Rich Content Elements",
+        "role": "Formatting elements like emphasis, bold, links within error messages",
+        "purpose": "Improves error message clarity and provides actionable guidance"
+      }
+    ],
+    "accessibility_features": [
+      "Error content is properly associated with form control",
+      "Rich content maintains semantic meaning for screen readers",
+      "Error state is announced when form control receives focus",
+      "Formatted content preserves reading flow and emphasis",
+      "Links within error messages are keyboard accessible"
+    ],
+    "user_experience_notes": [
+      "Rich formatting draws attention to key parts of error messages",
+      "Structured content supports complex validation requirements",
+      "Links in error messages provide immediate access to help resources",
+      "Emphasized text highlights critical information for correction",
+      "Consistent error formatting supports user learning and recognition"
+    ]
+  },
+  "implementation": {
+    "react": {
+      "code": "import React, { useState } from 'react';\nimport {\n  GoabFormItem,\n  GoabInput,\n  GoabTextArea,\n  GoabDropdown,\n  GoabDropdownItem\n} from '@abgov/react-components';\nimport { GoabInputOnChangeDetail } from '@abgov/ui-components-common';\n\nfunction SlottedErrorExample() {\n  const [email, setEmail] = useState('');\n  const [phone, setPhone] = useState('');\n  const [description, setDescription] = useState('');\n  const [category, setCategory] = useState('');\n  \n  const [errors, setErrors] = useState<Record<string, React.ReactNode>>({});\n\n  // Validation functions that return rich error content\n  const validateEmail = (value: string): React.ReactNode | null => {\n    if (!value) {\n      return (\n        <>\n          Email address is <strong>required</strong>. We'll use this to send you updates about your application.\n        </>\n      );\n    }\n    if (!value.includes('@')) {\n      return (\n        <>\n          Please enter a <em>valid email address</em> (e.g., john.doe@example.com)\n        </>\n      );\n    }\n    return null;\n  };\n\n  const validatePhone = (value: string): React.ReactNode | null => {\n    if (!value) {\n      return (\n        <>\n          Phone number is required. Need help? <a href=\"/contact-formats\" target=\"_blank\">View accepted formats</a>\n        </>\n      );\n    }\n    if (value.length < 10) {\n      return (\n        <>\n          Phone number must be <strong>at least 10 digits</strong>. Include area code (e.g., 780-123-4567).\n        </>\n      );\n    }\n    return null;\n  };\n\n  const validateDescription = (value: string): React.ReactNode | null => {\n    if (!value) {\n      return (\n        <>\n          Description is <strong>required</strong>. Please provide details about your request.\n        </>\n      );\n    }\n    if (value.length < 10) {\n      return (\n        <>\n          Description must be <em>at least 10 characters</em>. Current length: <strong>{value.length}</strong>\n        </>\n      );\n    }\n    if (value.length > 500) {\n      return (\n        <>\n          Description is too long (<strong>{value.length}/500 characters</strong>). \n          <a href=\"/help/description-tips\" target=\"_blank\">Tips for concise descriptions</a>\n        </>\n      );\n    }\n    return null;\n  };\n\n  const validateCategory = (value: string): React.ReactNode | null => {\n    if (!value) {\n      return (\n        <>\n          Please select a category. <em>Not sure which category?</em> \n          <a href=\"/help/categories\" target=\"_blank\">View category descriptions</a>\n        </>\n      );\n    }\n    return null;\n  };\n\n  const handleEmailChange = (event: GoabInputOnChangeDetail) => {\n    const value = event.value;\n    setEmail(value);\n    const error = validateEmail(value);\n    setErrors(prev => ({ ...prev, email: error }));\n  };\n\n  const handlePhoneChange = (event: GoabInputOnChangeDetail) => {\n    const value = event.value;\n    setPhone(value);\n    const error = validatePhone(value);\n    setErrors(prev => ({ ...prev, phone: error }));\n  };\n\n  const handleDescriptionChange = (event: GoabInputOnChangeDetail) => {\n    const value = event.value;\n    setDescription(value);\n    const error = validateDescription(value);\n    setErrors(prev => ({ ...prev, description: error }));\n  };\n\n  const handleCategoryChange = (event: any) => {\n    const value = event.value;\n    setCategory(value);\n    const error = validateCategory(value);\n    setErrors(prev => ({ ...prev, category: error }));\n  };\n\n  return (\n    <form>\n      <GoabFormItem \n        label=\"Email Address\" \n        error={errors.email}\n        requirement=\"required\"\n      >\n        <GoabInput \n          onChange={handleEmailChange}\n          value={email}\n          name=\"email\"\n          type=\"email\"\n          error={!!errors.email}\n        />\n      </GoabFormItem>\n\n      <GoabFormItem \n        label=\"Phone Number\" \n        error={errors.phone}\n        requirement=\"required\"\n        mt=\"l\"\n      >\n        <GoabInput \n          onChange={handlePhoneChange}\n          value={phone}\n          name=\"phone\"\n          type=\"tel\"\n          error={!!errors.phone}\n          placeholder=\"780-123-4567\"\n        />\n      </GoabFormItem>\n\n      <GoabFormItem \n        label=\"Request Category\" \n        error={errors.category}\n        requirement=\"required\"\n        mt=\"l\"\n      >\n        <GoabDropdown \n          onChange={handleCategoryChange}\n          value={category}\n          name=\"category\"\n          error={!!errors.category}\n          placeholder=\"Select a category\"\n        >\n          <GoabDropdownItem value=\"general\" label=\"General Inquiry\" />\n          <GoabDropdownItem value=\"technical\" label=\"Technical Support\" />\n          <GoabDropdownItem value=\"billing\" label=\"Billing Question\" />\n          <GoabDropdownItem value=\"complaint\" label=\"Service Complaint\" />\n        </GoabDropdown>\n      </GoabFormItem>\n\n      <GoabFormItem \n        label=\"Description\" \n        error={errors.description}\n        requirement=\"required\"\n        mt=\"l\"\n        helperText=\"Provide details about your request (10-500 characters)\"\n      >\n        <GoabTextArea \n          onChange={handleDescriptionChange}\n          value={description}\n          name=\"description\"\n          error={!!errors.description}\n          rows={4}\n        />\n      </GoabFormItem>\n    </form>\n  );\n}\n\n// Reusable error message components\nfunction RequiredFieldError({ fieldName, helpText }: { fieldName: string; helpText?: string }) {\n  return (\n    <>\n      {fieldName} is <strong>required</strong>.\n      {helpText && (\n        <> {helpText}</>\n      )}\n    </>\n  );\n}\n\nfunction ValidationError({ message, helpLink }: { message: string; helpLink?: { url: string; text: string } }) {\n  return (\n    <>\n      {message}\n      {helpLink && (\n        <> <a href={helpLink.url} target=\"_blank\">{helpLink.text}</a></>\n      )}\n    </>\n  );\n}\n\nfunction LengthError({ current, min, max }: { current: number; min?: number; max?: number }) {\n  if (min && current < min) {\n    return (\n      <>\n        Must be <strong>at least {min} characters</strong>. Current length: <em>{current}</em>\n      </>\n    );\n  }\n  if (max && current > max) {\n    return (\n      <>\n        Too long (<strong>{current}/{max} characters</strong>). Please shorten your input.\n      </>\n    );\n  }\n  return null;\n}"
+    },
+    "angular": {
+      "code": "import { Component } from '@angular/core';\nimport { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';\n\n@Component({\n  selector: 'app-slotted-error-form',\n  template: `\n    <form [formGroup]=\"contactForm\">\n      <goab-form-item \n        label=\"Email Address\" \n        [formGroup]=\"contactForm\"\n        requirement=\"required\"\n      >\n        <goab-input \n          name=\"email\" \n          formControlName=\"email\"\n          type=\"email\"\n          [error]=\"hasError('email')\"\n        ></goab-input>\n        <goab-form-item-slot slot=\"error\" *ngIf=\"hasError('email')\">\n          <span *ngIf=\"getError('email', 'required')\">\n            Email address is <strong>required</strong>. We'll use this to send you updates.\n          </span>\n          <span *ngIf=\"getError('email', 'email')\">\n            Please enter a <em>valid email address</em> (e.g., john.doe@example.com)\n          </span>\n        </goab-form-item-slot>\n      </goab-form-item>\n\n      <goab-form-item \n        label=\"Phone Number\" \n        [formGroup]=\"contactForm\"\n        requirement=\"required\"\n        mt=\"l\"\n      >\n        <goab-input \n          name=\"phone\" \n          formControlName=\"phone\"\n          type=\"tel\"\n          placeholder=\"780-123-4567\"\n          [error]=\"hasError('phone')\"\n        ></goab-input>\n        <goab-form-item-slot slot=\"error\" *ngIf=\"hasError('phone')\">\n          <span *ngIf=\"getError('phone', 'required')\">\n            Phone number is required. Need help? \n            <a href=\"/contact-formats\" target=\"_blank\">View accepted formats</a>\n          </span>\n          <span *ngIf=\"getError('phone', 'minlength')\">\n            Phone number must be <strong>at least 10 digits</strong>. Include area code.\n          </span>\n        </goab-form-item-slot>\n      </goab-form-item>\n\n      <goab-form-item \n        label=\"Request Category\" \n        [formGroup]=\"contactForm\"\n        requirement=\"required\"\n        mt=\"l\"\n      >\n        <goab-dropdown \n          name=\"category\" \n          formControlName=\"category\"\n          placeholder=\"Select a category\"\n          [error]=\"hasError('category')\"\n        >\n          <goab-dropdown-item value=\"general\" label=\"General Inquiry\"></goab-dropdown-item>\n          <goab-dropdown-item value=\"technical\" label=\"Technical Support\"></goab-dropdown-item>\n          <goab-dropdown-item value=\"billing\" label=\"Billing Question\"></goab-dropdown-item>\n          <goab-dropdown-item value=\"complaint\" label=\"Service Complaint\"></goab-dropdown-item>\n        </goab-dropdown>\n        <goab-form-item-slot slot=\"error\" *ngIf=\"hasError('category')\">\n          <span *ngIf=\"getError('category', 'required')\">\n            Please select a category. <em>Not sure which category?</em> \n            <a href=\"/help/categories\" target=\"_blank\">View category descriptions</a>\n          </span>\n        </goab-form-item-slot>\n      </goab-form-item>\n\n      <goab-form-item \n        label=\"Description\" \n        [formGroup]=\"contactForm\"\n        requirement=\"required\"\n        mt=\"l\"\n        helperText=\"Provide details about your request (10-500 characters)\"\n      >\n        <goab-textarea \n          name=\"description\" \n          formControlName=\"description\"\n          rows=\"4\"\n          [error]=\"hasError('description')\"\n        ></goab-textarea>\n        <goab-form-item-slot slot=\"error\" *ngIf=\"hasError('description')\">\n          <span *ngIf=\"getError('description', 'required')\">\n            Description is <strong>required</strong>. Please provide details about your request.\n          </span>\n          <span *ngIf=\"getError('description', 'minlength')\">\n            Description must be <em>at least 10 characters</em>. \n            Current length: <strong>{{ getFieldValue('description')?.length || 0 }}</strong>\n          </span>\n          <span *ngIf=\"getError('description', 'maxlength')\">\n            Description is too long \n            (<strong>{{ getFieldValue('description')?.length || 0 }}/500 characters</strong>). \n            <a href=\"/help/description-tips\" target=\"_blank\">Tips for concise descriptions</a>\n          </span>\n        </goab-form-item-slot>\n      </goab-form-item>\n    </form>\n  `\n})\nexport class SlottedErrorFormComponent {\n  contactForm: FormGroup;\n\n  constructor(private fb: FormBuilder) {\n    this.contactForm = this.fb.group({\n      email: ['', [Validators.required, Validators.email]],\n      phone: ['', [Validators.required, Validators.minLength(10)]],\n      category: ['', [Validators.required]],\n      description: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(500)]]\n    });\n  }\n\n  hasError(fieldName: string): boolean {\n    const field = this.contactForm.get(fieldName);\n    return !!(field && field.invalid && (field.dirty || field.touched));\n  }\n\n  getError(fieldName: string, errorType: string): boolean {\n    const field = this.contactForm.get(fieldName);\n    return !!(field && field.hasError(errorType) && (field.dirty || field.touched));\n  }\n\n  getFieldValue(fieldName: string): any {\n    return this.contactForm.get(fieldName)?.value;\n  }\n}\n\n// Reusable component for common error patterns\n@Component({\n  selector: 'app-rich-error-message',\n  template: `\n    <goab-form-item-slot slot=\"error\">\n      <span *ngIf=\"errorType === 'required'\">\n        {{ fieldLabel }} is <strong>required</strong>.\n        <span *ngIf=\"helpText\"> {{ helpText }}</span>\n      </span>\n      <span *ngIf=\"errorType === 'format'\">\n        Please enter a <em>valid {{ fieldLabel.toLowerCase() }}</em>\n        <span *ngIf=\"example\"> (e.g., {{ example }})</span>\n      </span>\n      <span *ngIf=\"errorType === 'length'\">\n        <span *ngIf=\"currentLength < minLength\">\n          Must be <strong>at least {{ minLength }} characters</strong>. \n          Current length: <em>{{ currentLength }}</em>\n        </span>\n        <span *ngIf=\"currentLength > maxLength\">\n          Too long (<strong>{{ currentLength }}/{{ maxLength }} characters</strong>). \n          Please shorten your input.\n        </span>\n      </span>\n      <span *ngIf=\"helpLink\">\n        <a [href]=\"helpLink.url\" target=\"_blank\">{{ helpLink.text }}</a>\n      </span>\n    </goab-form-item-slot>\n  `,\n  inputs: ['errorType', 'fieldLabel', 'helpText', 'example', 'currentLength', 'minLength', 'maxLength', 'helpLink']\n})\nexport class RichErrorMessageComponent {\n  errorType!: 'required' | 'format' | 'length';\n  fieldLabel!: string;\n  helpText?: string;\n  example?: string;\n  currentLength?: number;\n  minLength?: number;\n  maxLength?: number;\n  helpLink?: { url: string; text: string };\n}"
+    }
+  },
+  "usage_guidelines": {
+    "when_to_use": [
+      "Complex validation requiring detailed explanations",
+      "Error messages that benefit from formatting or emphasis",
+      "Forms where error messages should include helpful links",
+      "Validation that requires examples or structured guidance",
+      "Fields with character count or length requirements"
+    ],
+    "when_not_to_use": [
+      "Simple validation with straightforward error messages",
+      "Forms where plain text errors are sufficient",
+      "Performance-critical forms where rich content adds overhead",
+      "When accessibility of rich content cannot be ensured"
+    ],
+    "best_practices": [
+      "Use formatting to emphasize key parts of error messages",
+      "Include helpful links to additional resources when relevant",
+      "Provide specific examples in error messages when possible",
+      "Use semantic HTML elements (strong, em) for proper screen reader support",
+      "Keep rich content concise while being informative",
+      "Test error message accessibility with screen readers",
+      "Ensure links in error messages open in new tabs/windows"
+    ]
+  },
+  "variations": [
+    {
+      "name": "Error with inline help link",
+      "description": "Include contextual help links within error messages",
+      "code_change": "Add help link: error={<>Field is required. <a href='/help/field-info' target='_blank'>Learn more</a></>}"
+    },
+    {
+      "name": "Character count in error",
+      "description": "Show current vs required character counts",
+      "code_change": "Include count: error={<>Too short ({value.length}/{minLength} characters required)</>}"
+    },
+    {
+      "name": "Multiple validation errors",
+      "description": "Display multiple validation issues in structured format",
+      "code_change": "Use list: error={<ul><li>Must be at least 8 characters</li><li>Must include a number</li></ul>}"
+    },
+    {
+      "name": "Error with example",
+      "description": "Provide format examples within error messages",
+      "code_change": "Add example: error={<>Invalid format. Use format: <em>john.doe@example.com</em></>}"
+    }
+  ],
+  "related_patterns": [
+    "slotted-helper-text-in-a-form-item",
+    "disabled-button-with-a-required-field",
+    "ask-a-user-for-an-address"
+  ]
+}

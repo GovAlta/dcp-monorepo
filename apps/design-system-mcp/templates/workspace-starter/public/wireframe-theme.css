@@ -1,0 +1,649 @@
+/*
+ * GoA Design System - Wireframe Theme
+ * =====================================
+ *
+ * Apply this theme to make GoA components appear as wireframes.
+ * Useful for early-stage validation and stakeholder feedback.
+ *
+ * Visual fidelity signals commitment level:
+ * - Polished UI says "this is decided"
+ * - Wireframe says "let's shape this together"
+ *
+ * Usage:
+ *   Option 1: Add data attribute to html element
+ *   <html data-fidelity="wireframe">
+ *
+ *   Option 2: Include CSS and toggle via JavaScript
+ *   <link rel="stylesheet" href="wireframe-theme.css">
+ *   document.documentElement.dataset.fidelity = 'wireframe'
+ *
+ * Toggle snippet:
+ *   <label>
+ *     <input type="checkbox" onchange="document.documentElement.dataset.fidelity = this.checked ? 'wireframe' : ''">
+ *     Wireframe mode
+ *   </label>
+ *
+ * Note: Spacing tokens are NOT overridden - layout structure remains accurate.
+ *
+ * Version: 2.1 (2024-12-09)
+ * - Improved text contrast for readability
+ * - Added missing component tokens (Details, Popover, Tooltip, Pagination, Skeleton, File Uploader, Date Picker)
+ * - Removed non-functional ::part() selectors
+ * - Removed app-specific class selectors for portability
+ */
+
+/* ==========================================================================
+   WIREFRAME THEME - Scoped to [data-fidelity="wireframe"]
+   ========================================================================== */
+
+:root[data-fidelity="wireframe"] {
+
+  /* ======================
+     COLORS: Interactive
+     All brand/interactive colors → grayscale
+     ====================== */
+  --goa-color-interactive-default: #666666;
+  --goa-color-interactive-hover: #444444;
+  --goa-color-interactive-secondary: #f0f0f0;
+  --goa-color-interactive-focus: #444444;
+  --goa-color-interactive-error: #666666;
+  --goa-color-interactive-disabled: #999999;
+
+  /* ======================
+     COLORS: Brand
+     Government branding → neutral gray
+     ====================== */
+  --goa-color-brand-default: #666666;
+  --goa-color-brand-dark: #444444;
+  --goa-color-brand-light: #e0e0e0;
+
+  /* ======================
+     COLORS: Status
+     Differentiated by value intensity, not hue
+     ====================== */
+
+  /* Info */
+  --goa-color-info-default: #666666;
+  --goa-color-info-light: #f5f5f5;
+  --goa-color-info-border: #cccccc;
+
+  /* Warning */
+  --goa-color-warning-default: #888888;
+  --goa-color-warning-light: #f5f5f5;
+  --goa-color-warning-border: #cccccc;
+
+  /* Emergency/Error */
+  --goa-color-emergency-default: #555555;
+  --goa-color-emergency-light: #f5f5f5;
+  --goa-color-emergency-border: #999999;
+
+  /* Success */
+  --goa-color-success-default: #666666;
+  --goa-color-success-light: #f5f5f5;
+  --goa-color-success-border: #cccccc;
+
+  /* ======================
+     TYPOGRAPHY
+     System fonts for wireframe aesthetic
+     ====================== */
+  --goa-font-family-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --goa-font-family-number: ui-monospace, "SF Mono", "Cascadia Mono", monospace;
+
+  /* ======================
+     SHADOWS
+     All shadows → none (remove polish)
+     ====================== */
+  --goa-shadow-100: none;
+  --goa-shadow-150: none;
+  --goa-shadow-200: none;
+  --goa-shadow-300: none;
+  --goa-shadow-400: none;
+  --goa-shadow-500: none;
+  --goa-shadow-600: none;
+  --goa-shadow-modal: none;
+  --goa-shadow-raised-light: none;
+  --goa-shadow-raised-heavy: none;
+
+  /* ======================
+     BORDER RADIUS
+     Minimal rounding for boxy/structural look
+     ====================== */
+  --goa-border-radius-xs: 2px;
+  --goa-border-radius-s: 2px;
+  --goa-border-radius-m: 2px;
+  --goa-border-radius-l: 2px;
+  --goa-border-radius-xl: 2px;
+  --goa-border-radius-2xl: 2px;
+  --goa-border-radius-3xl: 4px;
+  --goa-border-radius-round: 4px; /* Pills become rectangles */
+
+  /* ======================
+     COMPONENT TOKENS: Button
+     Actual token names from built CSS
+     ====================== */
+  --goa-button-primary-color-bg: #666666;
+  --goa-button-primary-hover-color-bg: #444444;
+  --goa-button-primary-focus-color-bg: #555555;
+  --goa-button-primary-color-text: #ffffff;
+  --goa-button-primary-hover-color-text: #ffffff;
+  --goa-button-primary-focus-color-text: #ffffff;
+
+  --goa-button-secondary-color-bg: #f0f0f0;
+  --goa-button-secondary-hover-color-bg: #e0e0e0;
+  --goa-button-secondary-focus-color-bg: #e8e8e8;
+  --goa-button-secondary-color-text: #333333;
+  --goa-button-secondary-hover-color-text: #333333;
+  --goa-button-secondary-focus-color-text: #333333;
+
+  --goa-button-tertiary-color-bg: transparent;
+  --goa-button-tertiary-hover-color-bg: #f0f0f0;
+  --goa-button-tertiary-focus-color-bg: #f0f0f0;
+  --goa-button-tertiary-color-text: #333333;
+  --goa-button-tertiary-hover-color-text: #333333;
+  --goa-button-tertiary-focus-color-text: #333333;
+
+  --goa-button-primary-destructive-color-bg: #555555;
+  --goa-button-primary-destructive-hover-color-bg: #444444;
+  --goa-button-primary-destructive-focus-color-bg: #4a4a4a;
+
+  --goa-button-border-radius: 2px;
+
+  /* ======================
+     COMPONENT TOKENS: Callout
+     Actual token names (l- and h- prefixes for sizes)
+     ====================== */
+  --goa-callout-l-info-border-color: #999999;
+  --goa-callout-l-important-border-color: #999999;
+  --goa-callout-l-emergency-border-color: #666666;
+  --goa-callout-l-success-border-color: #999999;
+
+  --goa-callout-l-info-content-bg-color: #f5f5f5;
+  --goa-callout-l-important-content-bg-color: #f5f5f5;
+  --goa-callout-l-emergency-content-bg-color: #f5f5f5;
+  --goa-callout-l-success-content-bg-color: #f5f5f5;
+
+  --goa-callout-info-heading-bg-color: #666666;
+  --goa-callout-important-heading-bg-color: #777777;
+  --goa-callout-emergency-heading-bg-color: #555555;
+  --goa-callout-success-heading-bg-color: #666666;
+
+  /* Highlighted (h-) callout heading backgrounds - darker with white text */
+  --goa-callout-h-info-heading-bg-color: #666666;
+  --goa-callout-h-important-heading-bg-color: #777777;
+  --goa-callout-h-emergency-heading-bg-color: #555555;
+  --goa-callout-h-success-heading-bg-color: #666666;
+
+  /* Callout heading text - white on dark backgrounds */
+  --goa-callout-heading-color: #ffffff;
+  --goa-callout-h-info-heading-color: #ffffff;
+  --goa-callout-h-important-heading-color: #ffffff;
+  --goa-callout-h-emergency-heading-color: #ffffff;
+  --goa-callout-h-success-heading-color: #ffffff;
+
+  --goa-callout-info-content-bg-color: #f5f5f5;
+  --goa-callout-important-content-bg-color: #f5f5f5;
+  --goa-callout-emergency-content-bg-color: #f5f5f5;
+  --goa-callout-success-content-bg-color: #f5f5f5;
+
+  --goa-callout-info-icon-color: #ffffff;
+  --goa-callout-important-icon-color: #ffffff;
+  --goa-callout-emergency-icon-color: #ffffff;
+  --goa-callout-success-icon-color: #ffffff;
+
+  /* ======================
+     COMPONENT TOKENS: Input/Form
+     Simple bordered boxes
+     ====================== */
+  --goa-input-color-border-default: #999999;
+  --goa-input-color-border-focus: #444444;
+  --goa-input-color-border-error: #666666;
+  --goa-text-input-color-bg: #ffffff;
+
+  /* ======================
+     COMPONENT TOKENS: Table
+     Actual token names
+     ====================== */
+  --goa-table-color-bg-heading: #f0f0f0;
+  --goa-table-color-bg-heading-hover: #e8e8e8;
+  --goa-table-color-heading: #333333;
+  --goa-table-color-bg-row-hover: #f5f5f5;
+  --goa-table-color-bg-row-selected: #e8e8e8;
+  --goa-table-color-bg-row-selected-hover: #e0e0e0;
+  --goa-table-container-border: 1px solid #cccccc;
+  --goa-table-heading-border: 1px solid #cccccc;
+  --goa-table-data-border: 1px solid #e0e0e0;
+
+  /* ======================
+     COMPONENT TOKENS: Badge
+     Actual token names (color-content, not color-text)
+     ====================== */
+  --goa-badge-info-color-bg: #e0e0e0;
+  --goa-badge-info-color-content: #333333;
+  --goa-badge-success-color-bg: #e0e0e0;
+  --goa-badge-success-color-content: #333333;
+  --goa-badge-emergency-color-bg: #d0d0d0;
+  --goa-badge-emergency-color-content: #333333;
+  --goa-badge-important-color-bg: #d8d8d8;
+  --goa-badge-important-color-content: #333333;
+  --goa-badge-default-color-bg: #e8e8e8;
+  --goa-badge-default-color-content: #333333;
+  --goa-badge-archived-color-bg: #f0f0f0;
+  --goa-badge-archived-color-content: #666666;
+
+  /* Subtle badge variants */
+  --goa-badge-info-subtle-color-bg: #f5f5f5;
+  --goa-badge-info-subtle-color-content: #333333;
+  --goa-badge-info-subtle-border: 1px solid #cccccc;
+  --goa-badge-success-subtle-color-bg: #f5f5f5;
+  --goa-badge-success-subtle-color-content: #333333;
+  --goa-badge-success-subtle-border: 1px solid #cccccc;
+  --goa-badge-emergency-subtle-color-bg: #f5f5f5;
+  --goa-badge-emergency-subtle-color-content: #333333;
+  --goa-badge-emergency-subtle-border: 1px solid #999999;
+
+  /* ======================
+     COMPONENT TOKENS: Checkbox
+     Actual token names
+     ====================== */
+  --goa-checkbox-border: 1px solid #666666;
+  --goa-checkbox-border-hover: 1px solid #444444;
+  --goa-checkbox-border-focus: 1px solid #444444;
+  --goa-checkbox-color-bg: #ffffff;
+  --goa-checkbox-color-bg-checked: #666666;
+  --goa-checkbox-color-bg-checked-hover: #555555;
+
+  /* ======================
+     COMPONENT TOKENS: Radio
+     Actual token names
+     ====================== */
+  --goa-radio-border: 1px solid #666666;
+  --goa-radio-border-hover: 1px solid #444444;
+  --goa-radio-border-focus: 1px solid #444444;
+  --goa-radio-color-bg: #ffffff;
+  --goa-radio-color-bg-checked: #666666;
+
+  /* ======================
+     COMPONENT TOKENS: Dropdown
+     Actual token names
+     ====================== */
+  --goa-dropdown-color-bg: #ffffff;
+  --goa-dropdown-border: 1px solid #999999;
+  --goa-dropdown-border-hover: 1px solid #666666;
+  --goa-dropdown-border-focus: 1px solid #444444;
+  --goa-dropdown-color-bg-option-hover: #f0f0f0;
+  --goa-dropdown-color-bg-option-selected: #e0e0e0;
+
+  /* ======================
+     COMPONENT TOKENS: Modal
+     Actual token names
+     ====================== */
+  --goa-modal-color-bg: #ffffff;
+  --goa-modal-border: 1px solid #cccccc;
+  --goa-modal-shadow: none;
+  --goa-modal-overlay-color: #000000;
+  --goa-modal-overlay-opacity: 0.3;
+
+  /* Modal callout variants */
+  --goa-modal-callout-information-bg: #666666;
+  --goa-modal-callout-information-border: #666666;
+  --goa-modal-callout-important-bg: #777777;
+  --goa-modal-callout-important-border: #777777;
+  --goa-modal-callout-emergency-bg: #555555;
+  --goa-modal-callout-emergency-border: #555555;
+  --goa-modal-callout-success-bg: #666666;
+  --goa-modal-callout-success-border: #666666;
+
+  /* ======================
+     COMPONENT TOKENS: Tabs
+     Actual token names
+     ====================== */
+  --goa-tab-color-text: #666666;
+  --goa-tab-color-text-active: #333333;
+  --goa-tab-color-text-hover: #444444;
+  --goa-tab-color-bg-active: transparent;
+  --goa-tab-border-active: 2px solid #444444;
+
+  /* ======================
+     COMPONENT TOKENS: Form Stepper
+     Actual token names
+     ====================== */
+  --goa-form-stepper-color-bg-active: #666666;
+  --goa-form-stepper-color-bg-complete: #888888;
+  --goa-form-stepper-color-bg-incomplete: #cccccc;
+  --goa-form-stepper-color-text-active: #ffffff;
+  --goa-form-stepper-color-text-complete: #ffffff;
+  --goa-form-stepper-color-text-incomplete: #666666;
+
+  /* ======================
+     COMPONENT TOKENS: Notification Banner
+     Actual token names
+     ====================== */
+  --goa-notification-banner-color-bg-info: #f5f5f5;
+  --goa-notification-banner-color-bg-important: #f5f5f5;
+  --goa-notification-banner-color-bg-emergency: #f5f5f5;
+  --goa-notification-banner-color-bg-event: #f5f5f5;
+  --goa-notification-banner-border-info: 1px solid #999999;
+  --goa-notification-banner-border-important: 1px solid #888888;
+  --goa-notification-banner-border-emergency: 1px solid #666666;
+
+  /* ======================
+     COMPONENT TOKENS: Accordion
+     Actual token names
+     ====================== */
+  --goa-accordion-color-bg-heading: #f5f5f5;
+  --goa-accordion-color-bg-heading-hover: #f0f0f0;
+  --goa-accordion-color-bg-content: #ffffff;
+  --goa-accordion-color-heading: #333333;
+  --goa-accordion-border: 1px solid #cccccc;
+  --goa-accordion-border-hover: 1px solid #999999;
+  --goa-accordion-divider: 1px solid #e0e0e0;
+  --goa-accordion-shadow: none;
+
+  /* ======================
+     COMPONENT TOKENS: Drawer
+     Actual token names
+     ====================== */
+  --goa-drawer-color-bg: #ffffff;
+  --goa-drawer-shadow: none;
+  --goa-drawer-border: 1px solid #cccccc;
+
+  /* ======================
+     COMPONENT TOKENS: App Header
+     Actual token names
+     ====================== */
+  --goa-app-header-color-bg: #f5f5f5;
+  --goa-app-header-color-service-name: #333333;
+  --goa-app-header-color-text-nav-item: #333333;
+  --goa-app-header-color-text-nav-item-current: #333333;
+  --goa-app-header-color-bg-nav-item-current: #e0e0e0;
+  --goa-app-header-border-nav-item-current: 2px solid #666666;
+
+  /* ======================
+     COMPONENT TOKENS: Filter Chip
+     Actual token names
+     ====================== */
+  --goa-filter-chip-color-bg: #f0f0f0;
+  --goa-filter-chip-color-bg-hover: #e8e8e8;
+  --goa-filter-chip-color-text: #333333;
+  --goa-filter-chip-border: 1px solid #cccccc;
+
+  /* ======================
+     COMPONENT TOKENS: Divider
+     Actual token name
+     ====================== */
+  --goa-divider-color: #cccccc;
+
+  /* ======================
+     COMPONENT TOKENS: Details
+     Expandable details/summary element
+     ====================== */
+  --goa-details-color-bg-hover: #f0f0f0;
+  --goa-details-color-text: #555555;
+  --goa-details-color-text-hover: #333333;
+  --goa-details-content-left-border: 4px solid #cccccc;
+  --goa-details-focus-border: 2px solid #444444;
+
+  /* ======================
+     COMPONENT TOKENS: Popover
+     Floating content container
+     ====================== */
+  --goa-popover-color-bg: #ffffff;
+  --goa-popover-border: 0.5px solid #cccccc;
+  --goa-popover-border-radius: 2px;
+  --goa-popover-box-shadow: none;
+  --goa-popover-border-focus: 2px solid #444444;
+
+  /* ======================
+     COMPONENT TOKENS: Tooltip
+     Hover information display
+     ====================== */
+  --goa-tooltip-color-bg: #555555;
+  --goa-tooltip-color-text: #ffffff;
+  --goa-tooltip-border-radius: 2px;
+  --goa-tooltip-border-focus: 2px solid #444444;
+
+  /* ======================
+     COMPONENT TOKENS: Pagination
+     Page navigation controls
+     ====================== */
+  --goa-pagination-text-color: #444444;
+
+  /* ======================
+     COMPONENT TOKENS: Skeleton Loading
+     Content placeholder animation
+     ====================== */
+  --goa-skeleton-loading-color-bg: #e0e0e0;
+
+  /* ======================
+     COMPONENT TOKENS: File Uploader
+     Drag-and-drop file upload area
+     ====================== */
+  --goa-file-upload-border: 1.5px dashed #666666;
+  --goa-file-upload-border-hover: 1.5px dashed #444444;
+  --goa-file-upload-border-active: 1.5px solid #444444;
+  --goa-file-upload-border-drag: 1.5px solid #444444;
+  --goa-file-upload-color-bg: #f5f5f5;
+  --goa-file-upload-color-bg-hover: #f0f0f0;
+  --goa-file-upload-color-bg-active: #f5f5f5;
+  --goa-file-upload-color-bg-drag: #f5f5f5;
+  --goa-file-upload-color-bg-focus: #f0f0f0;
+  --goa-file-upload-instruction-color: #555555;
+  --goa-file-upload-instruction-color-hover: #333333;
+  --goa-file-upload-instruction-color-active: #333333;
+  --goa-file-upload-instruction-color-drag: #333333;
+  --goa-file-upload-instruction-color-focus: #333333;
+  --goa-file-upload-help-text-color: #666666;
+  --goa-file-upload-border-radius: 2px;
+
+  /* ======================
+     COMPONENT TOKENS: Date Picker
+     Calendar date selection
+     ====================== */
+  --goa-date-input-calendar-border-radius: 2px;
+  --goa-date-input-day-border-radius: 2px;
+  --goa-date-input-day-color-text: #444444;
+  --goa-date-input-day-color-bg: transparent;
+  --goa-date-input-day-color-text-hover: #333333;
+  --goa-date-input-day-color-bg-hover: #e0e0e0;
+  --goa-date-input-day-border-focus: 2px solid #444444;
+  --goa-date-input-day-color-text-selected: #ffffff;
+  --goa-date-input-day-color-bg-selected: #666666;
+  --goa-date-input-day-color-text-selected-hover: #ffffff;
+  --goa-date-input-day-color-bg-selected-hover: #444444;
+  --goa-date-input-day-color-text-other-month: #888888;
+  --goa-date-input-day-color-text-disabled: #999999;
+  --goa-date-input-day-underline-today: 2px solid #666666;
+  --goa-date-input-day-underline-today-selected: 2px solid #ffffff;
+}
+
+/* ==========================================================================
+   COMPONENT-SPECIFIC OVERRIDES
+   Some components need direct styling beyond token overrides
+   ========================================================================== */
+
+/* Focus rings - keep visible for accessibility */
+:root[data-fidelity="wireframe"] *:focus-visible {
+  outline: 2px solid #444444 !important;
+  outline-offset: 2px !important;
+}
+
+/* ==========================================================================
+   IMAGES AND LOGO - Grayscale Treatment
+   Make all images appear as wireframe placeholders
+   ========================================================================== */
+
+/*
+ * Grayscale all images, SVGs, and logo elements
+ * - 100% grayscale removes brand colors from logos
+ * - 70% opacity makes images feel more "placeholder-like"
+ * - Applies to <img>, <svg>, <picture>, and elements with "logo" in class name
+ *
+ * Note: These rules apply to light DOM only. Shadow DOM requires special handling.
+ */
+:root[data-fidelity="wireframe"] img,
+:root[data-fidelity="wireframe"] svg,
+:root[data-fidelity="wireframe"] picture,
+:root[data-fidelity="wireframe"] [class*="logo"],
+:root[data-fidelity="wireframe"] [class*="Logo"] {
+  filter: grayscale(100%) opacity(0.7);
+}
+
+/*
+ * GoA Web Components with logos (shadow DOM)
+ * Apply filter to the entire component to affect internal images/SVGs
+ * - goa-work-side-menu: Contains Alberta logo in header
+ * - goa-app-header: Contains Alberta logo
+ * - goa-microsite-header: Contains Alberta logo
+ * - goa-footer: Contains Alberta wordmark
+ */
+:root[data-fidelity="wireframe"] goa-work-side-menu,
+:root[data-fidelity="wireframe"] goa-app-header,
+:root[data-fidelity="wireframe"] goa-microsite-header,
+:root[data-fidelity="wireframe"] goa-footer {
+  filter: grayscale(100%);
+}
+
+/*
+ * Preserve icons at higher opacity for usability
+ * Icons are functional UI elements, not decorative images
+ * - Ionicons (used for GoA component icons)
+ * - Common icon class patterns
+ */
+:root[data-fidelity="wireframe"] ion-icon,
+:root[data-fidelity="wireframe"] [class*="icon"]:not([class*="logo"]),
+:root[data-fidelity="wireframe"] [class*="Icon"]:not([class*="Logo"]) {
+  filter: grayscale(100%) opacity(0.85);
+}
+
+/*
+ * Avatar images - slightly higher opacity since they convey meaning
+ */
+:root[data-fidelity="wireframe"] [class*="avatar"],
+:root[data-fidelity="wireframe"] [class*="Avatar"] {
+  filter: grayscale(100%) opacity(0.75);
+}
+
+/* ==========================================================================
+   SKETCHY ENHANCEMENTS
+   Make wireframe feel more "obviously unfinished"
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   TECHNIQUE 1: Visible Bounding Boxes
+   Add subtle dashed outlines to major containers to show structure
+   -------------------------------------------------------------------------- */
+:root[data-fidelity="wireframe"] [class*="container"],
+:root[data-fidelity="wireframe"] [class*="Container"],
+:root[data-fidelity="wireframe"] [class*="card"],
+:root[data-fidelity="wireframe"] [class*="Card"],
+:root[data-fidelity="wireframe"] section,
+:root[data-fidelity="wireframe"] main,
+:root[data-fidelity="wireframe"] aside {
+  outline: 1px dashed #ccc;
+  outline-offset: -1px;
+}
+
+/* --------------------------------------------------------------------------
+   TECHNIQUE 2: Dashed Borders on Interactive Elements
+   Replace solid borders with dashed on form elements
+   Note: GoA web components don't expose ::part() so we target native elements
+   -------------------------------------------------------------------------- */
+:root[data-fidelity="wireframe"] input:not([type="checkbox"]):not([type="radio"]),
+:root[data-fidelity="wireframe"] textarea,
+:root[data-fidelity="wireframe"] select {
+  border-style: dashed !important;
+}
+
+/* --------------------------------------------------------------------------
+   TECHNIQUE 3: Readable but Draft-like Colors
+   Keep text readable while maintaining wireframe aesthetic
+   -------------------------------------------------------------------------- */
+:root[data-fidelity="wireframe"] {
+  --goa-color-text: #444444;
+  --goa-color-text-default: #444444;
+  --goa-color-text-secondary: #666666;
+  --goa-color-greyscale-black: #444444;
+}
+
+/* Body text - readable but clearly not production */
+:root[data-fidelity="wireframe"] body {
+  color: #444444;
+}
+
+/* Links - distinguishable but grayscale */
+:root[data-fidelity="wireframe"] a {
+  color: #555555;
+}
+
+:root[data-fidelity="wireframe"] a:hover {
+  color: #333333;
+}
+
+/* --------------------------------------------------------------------------
+   TECHNIQUE 4: Blueprint Grid Background
+   Subtle grid pattern suggests "planning/structural" context
+   -------------------------------------------------------------------------- */
+:root[data-fidelity="wireframe"] body {
+  background-color: #f5f5f5;
+  background-image:
+    linear-gradient(#e0e0e0 1px, transparent 1px),
+    linear-gradient(90deg, #e0e0e0 1px, transparent 1px);
+  background-size: 20px 20px;
+  background-position: -1px -1px;
+}
+
+/* Ensure content areas have solid backgrounds so grid only shows in gaps/chrome */
+:root[data-fidelity="wireframe"] main {
+  background-color: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   TECHNIQUE 5: WIREFRAME MODE Banner
+   Fixed banner so it's impossible to mistake for production
+   Uses body::before since :root::before doesn't render visibly
+   -------------------------------------------------------------------------- */
+:root[data-fidelity="wireframe"] body::before {
+  content: "WIREFRAME";
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  background: #666666;
+  color: white;
+  padding: 6px 40px 6px 12px;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  z-index: 99999;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+  pointer-events: none; /* Don't block clicks */
+}
+
+/* Keyboard shortcut badge - inside the container */
+:root[data-fidelity="wireframe"] body::after {
+  content: "⌘.";
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(0,0,0,0.25);
+  color: rgba(255,255,255,0.9);
+  padding: 2px 8px;
+  font-family: ui-monospace, "SF Mono", monospace;
+  font-size: 11px;
+  font-weight: 500;
+  z-index: 100000;
+  border-radius: 3px;
+  pointer-events: none;
+}
+
+/* Ensure wireframe toggle itself isn't affected by wireframe styles */
+:root[data-fidelity="wireframe"] .wireframe-toggle {
+  filter: none !important;
+  outline: none !important;
+  background: #fff;
+}
+
+/* ==========================================================================
+   END WIREFRAME THEME
+   ========================================================================== */

@@ -1,0 +1,124 @@
+{
+  "$schema": "../schema/recipe-schema-2.1.0-ai-context.json",
+  "title": "Slotted helper text in a form item",
+  "description": "Provide rich, formatted helper content for form fields using form item slots, enabling complex guidance with emphasis, links, or structured information to assist users.",
+  "category": "form-controls",
+  "tags": [
+    "forms",
+    "helper-text",
+    "guidance",
+    "slots",
+    "rich-content"
+  ],
+  "government_service_context": {
+    "citizen_flows": {
+      "applicable": true,
+      "usage": "Citizens completing government forms need clear, detailed guidance that may include formatting, examples, links to definitions, or structured instructions for complex fields."
+    },
+    "worker_flows": {
+      "applicable": true,
+      "usage": "Government workers using administrative forms benefit from rich helper text that provides context, procedures, links to policy documents, or detailed instructions."
+    },
+    "shared_components": {
+      "applicable": true,
+      "usage": "Rich helper text is universally useful for any form requiring detailed guidance beyond simple text instructions."
+    }
+  },
+  "component_analysis": {
+    "primary_components": [
+      {
+        "name": "Form Item Container",
+        "role": "Provides structured form field layout with helper text slot support",
+        "purpose": "Creates consistent form field presentation with designated helper content area"
+      },
+      {
+        "name": "Slotted Helper Content",
+        "role": "Contains rich, formatted guidance and instructional content",
+        "purpose": "Enables complex helper messaging with HTML formatting, links, and structured information"
+      },
+      {
+        "name": "Form Input Control",
+        "role": "The actual form control that users interact with",
+        "purpose": "Provides the input mechanism while helper slot gives detailed guidance"
+      },
+      {
+        "name": "Rich Content Elements",
+        "role": "Formatting elements like emphasis, bold, links within helper text",
+        "purpose": "Improves helper text clarity and provides actionable guidance"
+      }
+    ],
+    "accessibility_features": [
+      "Helper content is properly associated with form control via aria-describedby",
+      "Rich content maintains semantic meaning for screen readers",
+      "Helper text is announced when form control receives focus",
+      "Formatted content preserves reading flow and emphasis",
+      "Links within helper text are keyboard accessible"
+    ],
+    "user_experience_notes": [
+      "Rich formatting draws attention to key parts of instructions",
+      "Structured content supports complex form guidance requirements",
+      "Links in helper text provide immediate access to additional resources",
+      "Emphasized text highlights critical information or requirements",
+      "Consistent helper formatting supports user learning and recognition"
+    ]
+  },
+  "implementation": {
+    "react": {
+      "code": "import React, { useState } from 'react';\nimport {\n  GoabFormItem,\n  GoabInput,\n  GoabTextArea,\n  GoabDatePicker,\n  GoabDropdown,\n  GoabDropdownItem\n} from '@abgov/react-components';\nimport { GoabInputOnChangeDetail } from '@abgov/ui-components-common';\n\nfunction SlottedHelperTextExample() {\n  const [sin, setSin] = useState('');\n  const [phone, setPhone] = useState('');\n  const [address, setAddress] = useState('');\n  const [amount, setAmount] = useState('');\n  const [category, setCategory] = useState('');\n\n  const handleChange = (setter: React.Dispatch<React.SetStateAction<string>>) => \n    (event: GoabInputOnChangeDetail) => setter(event.value);\n\n  return (\n    <form>\n      {/* SIN field with rich helper text */}\n      <GoabFormItem \n        label=\"Social Insurance Number (SIN)\"\n        requirement=\"required\"\n        helpText={\n          <>\n            Your <strong>9-digit SIN</strong> (e.g., 123-456-789). \n            <em>Need help finding your SIN?</em> \n            <a href=\"/help/sin-location\" target=\"_blank\">View common locations</a>\n          </>\n        }\n      >\n        <GoabInput \n          onChange={handleChange(setSin)}\n          value={sin}\n          name=\"sin\"\n          placeholder=\"123-456-789\"\n          maxLength={11}\n        />\n      </GoabFormItem>\n\n      {/* Phone field with formatting guidance */}\n      <GoabFormItem \n        label=\"Contact Phone Number\"\n        requirement=\"required\"\n        mt=\"l\"\n        helpText={\n          <>\n            <strong>Include area code</strong> (e.g., 780-123-4567). \n            We accept these formats:\n            <ul style={{ margin: '4px 0', paddingLeft: '20px' }}>\n              <li>780-123-4567</li>\n              <li>(780) 123-4567</li>\n              <li>780.123.4567</li>\n            </ul>\n          </>\n        }\n      >\n        <GoabInput \n          onChange={handleChange(setPhone)}\n          value={phone}\n          name=\"phone\"\n          type=\"tel\"\n          placeholder=\"780-123-4567\"\n        />\n      </GoabFormItem>\n\n      {/* Address field with detailed instructions */}\n      <GoabFormItem \n        label=\"Mailing Address\"\n        requirement=\"required\"\n        mt=\"l\"\n        helpText={\n          <>\n            Provide your <em>complete mailing address</em> including:\n            <br />\n            • Street number and name\n            <br />\n            • City, province, and postal code\n            <br />\n            <strong>Note:</strong> This must match your official government ID. \n            <a href=\"/help/address-verification\" target=\"_blank\">Address verification tips</a>\n          </>\n        }\n      >\n        <GoabTextArea \n          onChange={handleChange(setAddress)}\n          value={address}\n          name=\"address\"\n          rows={3}\n          placeholder=\"123 Main Street\\nEdmonton, AB T5K 2M4\"\n        />\n      </GoabFormItem>\n\n      {/* Amount field with calculation help */}\n      <GoabFormItem \n        label=\"Benefit Amount Requested\"\n        requirement=\"required\"\n        mt=\"l\"\n        helpText={\n          <>\n            Enter amount in <strong>Canadian dollars</strong> (no commas or symbols). \n            <em>Need help calculating?</em> Use our \n            <a href=\"/calculator/benefits\" target=\"_blank\">benefit calculator</a> or \n            <a href=\"/help/benefit-rates\" target=\"_blank\">view current rates</a>.\n          </>\n        }\n      >\n        <GoabInput \n          onChange={handleChange(setAmount)}\n          value={amount}\n          name=\"amount\"\n          type=\"number\"\n          placeholder=\"0.00\"\n          leadingContent=\"$\"\n        />\n      </GoabFormItem>\n\n      {/* Dropdown with category descriptions */}\n      <GoabFormItem \n        label=\"Application Category\"\n        requirement=\"required\"\n        mt=\"l\"\n        helpText={\n          <>\n            Choose the category that <em>best describes</em> your situation:\n            <ul style={{ margin: '4px 0', paddingLeft: '20px', fontSize: '14px' }}>\n              <li><strong>Emergency:</strong> Immediate assistance needed</li>\n              <li><strong>Regular:</strong> Standard processing timeline</li>\n              <li><strong>Review:</strong> Existing benefit review or appeal</li>\n            </ul>\n            <a href=\"/help/categories\" target=\"_blank\">Full category descriptions</a>\n          </>\n        }\n      >\n        <GoabDropdown \n          onChange={(event: any) => setCategory(event.value)}\n          value={category}\n          name=\"category\"\n          placeholder=\"Select a category\"\n        >\n          <GoabDropdownItem value=\"emergency\" label=\"Emergency\" />\n          <GoabDropdownItem value=\"regular\" label=\"Regular\" />\n          <GoabDropdownItem value=\"review\" label=\"Review\" />\n        </GoabDropdown>\n      </GoabFormItem>\n    </form>\n  );\n}\n\n// Reusable helper text components\nfunction RequiredFieldHelper({ fieldName, description }: { fieldName: string; description: string }) {\n  return (\n    <>\n      <strong>{fieldName} is required.</strong> {description}\n    </>\n  );\n}\n\nfunction FormatHelper({ \n  format, \n  examples, \n  helpUrl \n}: { \n  format: string; \n  examples: string[]; \n  helpUrl?: string; \n}) {\n  return (\n    <>\n      Use <strong>{format}</strong> format:\n      <ul style={{ margin: '4px 0', paddingLeft: '20px' }}>\n        {examples.map((example, index) => (\n          <li key={index}>{example}</li>\n        ))}\n      </ul>\n      {helpUrl && (\n        <a href={helpUrl} target=\"_blank\">More formatting help</a>\n      )}\n    </>\n  );\n}\n\nfunction GuidanceHelper({ \n  mainText, \n  steps, \n  helpLink \n}: { \n  mainText: string; \n  steps?: string[]; \n  helpLink?: { url: string; text: string }; \n}) {\n  return (\n    <>\n      {mainText}\n      {steps && (\n        <ul style={{ margin: '4px 0', paddingLeft: '20px' }}>\n          {steps.map((step, index) => (\n            <li key={index}>{step}</li>\n          ))}\n        </ul>\n      )}\n      {helpLink && (\n        <> <a href={helpLink.url} target=\"_blank\">{helpLink.text}</a></>\n      )}\n    </>\n  );\n}"
+    },
+    "angular": {
+      "code": "import { Component } from '@angular/core';\nimport { FormBuilder, FormGroup, Validators } from '@angular/forms';\n\n@Component({\n  selector: 'app-slotted-helper-form',\n  template: `\n    <form [formGroup]=\"applicationForm\">\n      <!-- SIN field with rich helper text -->\n      <goab-form-item \n        label=\"Social Insurance Number (SIN)\" \n        [formGroup]=\"applicationForm\"\n        requirement=\"required\"\n      >\n        <goab-input \n          name=\"sin\" \n          formControlName=\"sin\"\n          placeholder=\"123-456-789\"\n          maxLength=\"11\"\n        ></goab-input>\n        <goab-form-item-slot slot=\"helptext\">\n          Your <strong>9-digit SIN</strong> (e.g., 123-456-789). \n          <em>Need help finding your SIN?</em> \n          <a href=\"/help/sin-location\" target=\"_blank\">View common locations</a>\n        </goab-form-item-slot>\n      </goab-form-item>\n\n      <!-- Phone field with formatting guidance -->\n      <goab-form-item \n        label=\"Contact Phone Number\" \n        [formGroup]=\"applicationForm\"\n        requirement=\"required\"\n        mt=\"l\"\n      >\n        <goab-input \n          name=\"phone\" \n          formControlName=\"phone\"\n          type=\"tel\"\n          placeholder=\"780-123-4567\"\n        ></goab-input>\n        <goab-form-item-slot slot=\"helptext\">\n          <strong>Include area code</strong> (e.g., 780-123-4567). \n          We accept these formats:\n          <ul style=\"margin: 4px 0; padding-left: 20px;\">\n            <li>780-123-4567</li>\n            <li>(780) 123-4567</li>\n            <li>780.123.4567</li>\n          </ul>\n        </goab-form-item-slot>\n      </goab-form-item>\n\n      <!-- Address field with detailed instructions -->\n      <goab-form-item \n        label=\"Mailing Address\" \n        [formGroup]=\"applicationForm\"\n        requirement=\"required\"\n        mt=\"l\"\n      >\n        <goab-textarea \n          name=\"address\" \n          formControlName=\"address\"\n          rows=\"3\"\n          placeholder=\"123 Main Street&#10;Edmonton, AB T5K 2M4\"\n        ></goab-textarea>\n        <goab-form-item-slot slot=\"helptext\">\n          Provide your <em>complete mailing address</em> including:\n          <br />• Street number and name\n          <br />• City, province, and postal code\n          <br /><strong>Note:</strong> This must match your official government ID. \n          <a href=\"/help/address-verification\" target=\"_blank\">Address verification tips</a>\n        </goab-form-item-slot>\n      </goab-form-item>\n\n      <!-- Amount field with calculation help -->\n      <goab-form-item \n        label=\"Benefit Amount Requested\" \n        [formGroup]=\"applicationForm\"\n        requirement=\"required\"\n        mt=\"l\"\n      >\n        <goab-input \n          name=\"amount\" \n          formControlName=\"amount\"\n          type=\"number\"\n          placeholder=\"0.00\"\n          leadingContent=\"$\"\n        ></goab-input>\n        <goab-form-item-slot slot=\"helptext\">\n          Enter amount in <strong>Canadian dollars</strong> (no commas or symbols). \n          <em>Need help calculating?</em> Use our \n          <a href=\"/calculator/benefits\" target=\"_blank\">benefit calculator</a> or \n          <a href=\"/help/benefit-rates\" target=\"_blank\">view current rates</a>.\n        </goab-form-item-slot>\n      </goab-form-item>\n\n      <!-- Dropdown with category descriptions -->\n      <goab-form-item \n        label=\"Application Category\" \n        [formGroup]=\"applicationForm\"\n        requirement=\"required\"\n        mt=\"l\"\n      >\n        <goab-dropdown \n          name=\"category\" \n          formControlName=\"category\"\n          placeholder=\"Select a category\"\n        >\n          <goab-dropdown-item value=\"emergency\" label=\"Emergency\"></goab-dropdown-item>\n          <goab-dropdown-item value=\"regular\" label=\"Regular\"></goab-dropdown-item>\n          <goab-dropdown-item value=\"review\" label=\"Review\"></goab-dropdown-item>\n        </goab-dropdown>\n        <goab-form-item-slot slot=\"helptext\">\n          Choose the category that <em>best describes</em> your situation:\n          <ul style=\"margin: 4px 0; padding-left: 20px; font-size: 14px;\">\n            <li><strong>Emergency:</strong> Immediate assistance needed</li>\n            <li><strong>Regular:</strong> Standard processing timeline</li>\n            <li><strong>Review:</strong> Existing benefit review or appeal</li>\n          </ul>\n          <a href=\"/help/categories\" target=\"_blank\">Full category descriptions</a>\n        </goab-form-item-slot>\n      </goab-form-item>\n    </form>\n  `\n})\nexport class SlottedHelperFormComponent {\n  applicationForm: FormGroup;\n\n  constructor(private fb: FormBuilder) {\n    this.applicationForm = this.fb.group({\n      sin: ['', [Validators.required, Validators.pattern(/^\\d{3}-?\\d{3}-?\\d{3}$/)]],\n      phone: ['', [Validators.required, Validators.minLength(10)]],\n      address: ['', [Validators.required, Validators.minLength(10)]],\n      amount: ['', [Validators.required, Validators.min(0)]],\n      category: ['', [Validators.required]]\n    });\n  }\n}\n\n// Reusable component for common helper patterns\n@Component({\n  selector: 'app-rich-helper-text',\n  template: `\n    <goab-form-item-slot slot=\"helptext\">\n      <span *ngIf=\"helperType === 'required'\">\n        <strong>{{ fieldLabel }} is required.</strong> {{ description }}\n      </span>\n      <span *ngIf=\"helperType === 'format'\">\n        Use <strong>{{ format }}</strong> format:\n        <ul *ngIf=\"examples?.length\" style=\"margin: 4px 0; padding-left: 20px;\">\n          <li *ngFor=\"let example of examples\">{{ example }}</li>\n        </ul>\n      </span>\n      <span *ngIf=\"helperType === 'guidance'\">\n        {{ mainText }}\n        <ul *ngIf=\"steps?.length\" style=\"margin: 4px 0; padding-left: 20px;\">\n          <li *ngFor=\"let step of steps\">{{ step }}</li>\n        </ul>\n      </span>\n      <span *ngIf=\"helpLink\">\n        <a [href]=\"helpLink.url\" target=\"_blank\">{{ helpLink.text }}</a>\n      </span>\n    </goab-form-item-slot>\n  `,\n  inputs: ['helperType', 'fieldLabel', 'description', 'format', 'examples', 'mainText', 'steps', 'helpLink']\n})\nexport class RichHelperTextComponent {\n  helperType!: 'required' | 'format' | 'guidance';\n  fieldLabel?: string;\n  description?: string;\n  format?: string;\n  examples?: string[];\n  mainText?: string;\n  steps?: string[];\n  helpLink?: { url: string; text: string };\n}"
+    }
+  },
+  "usage_guidelines": {
+    "when_to_use": [
+      "Complex form fields requiring detailed explanations",
+      "Fields where formatting examples improve user success",
+      "Helper text that benefits from emphasis or structured content",
+      "Forms where helper text should include helpful links",
+      "Instructions that require lists, steps, or multiple pieces of information"
+    ],
+    "when_not_to_use": [
+      "Simple fields with straightforward helper text",
+      "Forms where plain text instructions are sufficient",
+      "Performance-critical forms where rich content adds overhead",
+      "When accessibility of rich content cannot be ensured"
+    ],
+    "best_practices": [
+      "Use formatting to emphasize key parts of instructions",
+      "Include specific examples to improve user understanding",
+      "Provide helpful links to additional resources when relevant",
+      "Use semantic HTML elements (strong, em, ul) for proper screen reader support",
+      "Keep rich content concise while being comprehensive",
+      "Test helper text accessibility with screen readers",
+      "Ensure links in helper text open in new tabs/windows"
+    ]
+  },
+  "variations": [
+    {
+      "name": "Helper with inline examples",
+      "description": "Include format examples directly in helper text",
+      "code_change": "Add examples: helpText={<>Enter SIN format: <em>123-456-789</em> or <em>123456789</em></>}"
+    },
+    {
+      "name": "Helper with calculation tools",
+      "description": "Link to calculators or tools within helper text",
+      "code_change": "Include tool link: helpText={<>Need help? Use our <a href='/calculator' target='_blank'>online calculator</a></>}"
+    },
+    {
+      "name": "Structured instruction list",
+      "description": "Provide step-by-step instructions in helper text",
+      "code_change": "Add steps: helpText={<>Complete address must include:<ul><li>Street number</li><li>City and province</li></ul></>}"
+    },
+    {
+      "name": "Helper with character limits",
+      "description": "Show character count requirements in helper text",
+      "code_change": "Add limits: helpText={<>Description must be <strong>10-500 characters</strong>. Current: {value.length}</>}"
+    }
+  ],
+  "related_patterns": [
+    "slotted-error-text-in-a-form-item",
+    "ask-a-user-for-an-address",
+    "ask-a-user-for-direct-deposit-information"
+  ]
+}

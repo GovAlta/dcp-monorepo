@@ -1,0 +1,361 @@
+{
+  "name": "Popover",
+  "category": "overlay",
+  "summary": "Contextual information overlay for help text, tooltips, and additional details.",
+  "import": "import { GoabPopover } from '@abgov/react-components'",
+  "customElement": {
+    "tagName": "goa-popover",
+    "reactName": "GoabPopover",
+    "angularSelector": "goab-popover"
+  },
+  "props": [
+    {
+      "name": "testid",
+      "type": "string",
+      "required": false,
+      "default": "popover",
+      "description": "Test identifier",
+      "frameworks": {
+        "webComponent": "testid=\"...\"",
+        "react": "testId={...}",
+        "angular": "[testId]=\"...\""
+      }
+    },
+    {
+      "name": "position",
+      "type": "\"above\" | \"below\" | \"right\" | \"auto\"",
+      "required": false,
+      "default": "auto",
+      "description": "Position relative to trigger",
+      "frameworks": {
+        "webComponent": "position=\"...\"",
+        "react": "position={...}",
+        "angular": "[position]=\"...\""
+      }
+    },
+    {
+      "name": "maxwidth",
+      "type": "string | \"none\"",
+      "required": false,
+      "default": "320px",
+      "description": "Maximum width",
+      "frameworks": {
+        "webComponent": "maxwidth=\"...\"",
+        "react": "maxWidth={...}",
+        "angular": "[maxWidth]=\"...\""
+      }
+    },
+    {
+      "name": "minwidth",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "Minimum width",
+      "frameworks": {
+        "webComponent": "minwidth=\"...\"",
+        "react": "minwidth={...}",
+        "angular": "[minwidth]=\"...\""
+      }
+    },
+    {
+      "name": "width",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "Fixed width",
+      "frameworks": {
+        "webComponent": "width=\"...\"",
+        "react": "width={...}",
+        "angular": "[width]=\"...\""
+      }
+    },
+    {
+      "name": "height",
+      "type": "\"full\" | \"wrap-content\"",
+      "required": false,
+      "default": "wrap-content",
+      "description": "",
+      "frameworks": {
+        "webComponent": "height=\"...\"",
+        "react": "height={...}",
+        "angular": "[height]=\"...\""
+      }
+    },
+    {
+      "name": "preventScrollIntoView",
+      "type": "boolean",
+      "required": false,
+      "default": "false",
+      "description": "",
+      "frameworks": {
+        "webComponent": "prevent-scroll-into-view=\"...\"",
+        "react": "preventScrollIntoView={...}",
+        "angular": "[preventScrollIntoView]=\"...\""
+      }
+    },
+    {
+      "name": "padded",
+      "type": "boolean",
+      "required": false,
+      "default": "true",
+      "description": "Apply default padding",
+      "frameworks": {
+        "webComponent": "padded=\"true\"",
+        "react": "padded={true}",
+        "angular": "[padded]=\"true\""
+      }
+    },
+    {
+      "name": "tabindex",
+      "type": "number",
+      "required": false,
+      "default": "0",
+      "description": "",
+      "frameworks": {
+        "webComponent": "tabindex=\"...\"",
+        "react": "tabindex={...}",
+        "angular": "[tabindex]=\"...\""
+      }
+    },
+    {
+      "name": "relative",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "",
+      "frameworks": {
+        "webComponent": "relative=\"...\"",
+        "react": "relative={...}",
+        "angular": "[relative]=\"...\""
+      }
+    },
+    {
+      "name": "mt",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin top",
+      "frameworks": {
+        "webComponent": "mt=\"...\"",
+        "react": "mt={...}",
+        "angular": "[mt]=\"...\""
+      }
+    },
+    {
+      "name": "mr",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin right",
+      "frameworks": {
+        "webComponent": "mr=\"...\"",
+        "react": "mr={...}",
+        "angular": "[mr]=\"...\""
+      }
+    },
+    {
+      "name": "mb",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin bottom",
+      "frameworks": {
+        "webComponent": "mb=\"...\"",
+        "react": "mb={...}",
+        "angular": "[mb]=\"...\""
+      }
+    },
+    {
+      "name": "ml",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin left",
+      "frameworks": {
+        "webComponent": "ml=\"...\"",
+        "react": "ml={...}",
+        "angular": "[ml]=\"...\""
+      }
+    },
+    {
+      "name": "disableGlobalClosePopover",
+      "type": "boolean",
+      "required": false,
+      "default": "false",
+      "description": "",
+      "frameworks": {
+        "webComponent": "disable-global-close-popover=\"...\"",
+        "react": "disableGlobalClosePopover={...}",
+        "angular": "[disableGlobalClosePopover]=\"...\""
+      }
+    },
+    {
+      "name": "open",
+      "type": "boolean",
+      "required": false,
+      "default": "false",
+      "description": "",
+      "frameworks": {
+        "webComponent": "open=\"true\"",
+        "react": "open={true}",
+        "angular": "[open]=\"true\""
+      }
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "required": false,
+      "default": "false",
+      "description": "",
+      "frameworks": {
+        "webComponent": "disabled=\"true\"",
+        "react": "disabled={true}",
+        "angular": "[disabled]=\"true\""
+      }
+    },
+    {
+      "name": "voffset",
+      "type": "any",
+      "required": false,
+      "default": "",
+      "description": "",
+      "frameworks": {
+        "webComponent": "voffset=\"...\"",
+        "react": "voffset={...}",
+        "angular": "[voffset]=\"...\""
+      }
+    },
+    {
+      "name": "hoffset",
+      "type": "any",
+      "required": false,
+      "default": "",
+      "description": "",
+      "frameworks": {
+        "webComponent": "hoffset=\"...\"",
+        "react": "hoffset={...}",
+        "angular": "[hoffset]=\"...\""
+      }
+    },
+    {
+      "name": "focusborderwidth",
+      "type": "any",
+      "required": false,
+      "default": "var(--goa-border-width-l)",
+      "description": "",
+      "frameworks": {
+        "webComponent": "focusborderwidth=\"...\"",
+        "react": "focusborderwidth={...}",
+        "angular": "[focusborderwidth]=\"...\""
+      }
+    },
+    {
+      "name": "borderradius",
+      "type": "any",
+      "required": false,
+      "default": "var(--goa-border-radius-m)",
+      "description": "",
+      "frameworks": {
+        "webComponent": "borderradius=\"...\"",
+        "react": "borderradius={...}",
+        "angular": "[borderradius]=\"...\""
+      }
+    },
+    {
+      "name": "closeOnClickWithinBounds",
+      "type": "any",
+      "required": false,
+      "default": "false",
+      "description": "",
+      "frameworks": {
+        "webComponent": "close-on-click-within-bounds=\"...\"",
+        "react": "closeOnClickWithinBounds={...}",
+        "angular": "[closeOnClickWithinBounds]=\"...\""
+      }
+    },
+    {
+      "name": "filterablecontext",
+      "type": "boolean",
+      "required": false,
+      "default": "false",
+      "description": "",
+      "frameworks": {
+        "webComponent": "filterablecontext=\"true\"",
+        "react": "filterablecontext={true}",
+        "angular": "[filterablecontext]=\"true\""
+      }
+    },
+    {
+      "name": "externalTarget",
+      "type": "HTMLElement | null",
+      "required": false,
+      "default": null,
+      "description": "",
+      "frameworks": {
+        "webComponent": "external-target=\"...\"",
+        "react": "externalTarget={...}",
+        "angular": "[externalTarget]=\"...\""
+      }
+    }
+  ],
+  "events": [
+    {
+      "name": "goa:closePopover",
+      "type": "(event) => void",
+      "payload": "{ target: _targetEl }",
+      "description": "",
+      "frameworks": {
+        "webComponent": "goa:closePopover custom event",
+        "react": "onGoa:closePopover prop",
+        "angular": "(onGoa:closePopover) event binding"
+      }
+    },
+    {
+      "name": "_open",
+      "type": "(event) => void",
+      "description": "",
+      "frameworks": {
+        "webComponent": "_open custom event",
+        "react": "onOpen prop",
+        "angular": "(onOpen) event binding"
+      }
+    },
+    {
+      "name": "_close",
+      "type": "(event) => void",
+      "description": "",
+      "frameworks": {
+        "webComponent": "_close custom event",
+        "react": "onClose prop",
+        "angular": "(onClose) event binding"
+      }
+    }
+  ],
+  "slots": [
+    {
+      "name": "target",
+      "description": "Trigger element"
+    },
+    {
+      "name": "default",
+      "description": "Popover content"
+    }
+  ],
+  "criticalNotes": [
+    "position='auto' adjusts based on available space",
+    "Use for contextual help, not critical information",
+    "Set padded=false when content needs to be flush with boundaries"
+  ],
+  "basicUsage": {
+    "webComponent": "<goa-popover>\n  <div slot=\"target\"><goa-icon-button icon=\"help\"></goa-icon-button></div>\n  <p>Helpful information about this field.</p>\n</goa-popover>",
+    "react": "<GoabPopover\n  target={<GoabIconButton icon=\"help\" ariaLabel=\"Help\" />}\n>\n  <p>Helpful information about this field.</p>\n</GoabPopover>",
+    "angular": "<goab-popover>\n  <div target><goab-icon-button icon=\"help\"></goab-icon-button></div>\n  <p>Helpful information about this field.</p>\n</goab-popover>"
+  },
+  "relatedExamples": [
+    "show-full-date-in-a-tooltip"
+  ],
+  "relatedComponents": [
+    "IconButton",
+    "Details"
+  ]
+}

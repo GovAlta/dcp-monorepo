@@ -1,0 +1,68 @@
+{
+  "name": "Tab",
+  "category": "component",
+  "summary": "",
+  "import": "import { GoabTab } from '@abgov/react-components'",
+  "customElement": {
+    "tagName": "goa-tab",
+    "reactName": "GoabTab",
+    "angularSelector": "goab-tab"
+  },
+  "props": [
+    {
+      "name": "heading",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "",
+      "frameworks": {
+        "webComponent": "heading=\"...\"",
+        "react": "heading={...}",
+        "angular": "[heading]=\"...\""
+      }
+    },
+    {
+      "name": "open",
+      "type": "boolean",
+      "required": false,
+      "default": "false",
+      "description": "",
+      "frameworks": {
+        "webComponent": "open=\"...\"",
+        "react": "open={...}",
+        "angular": "[open]=\"...\""
+      }
+    }
+  ],
+  "events": [
+    {
+      "name": "tab:mounted",
+      "type": "(event) => void",
+      "description": "",
+      "frameworks": {
+        "webComponent": "tab:mounted custom event",
+        "react": "onTab:mounted prop",
+        "angular": "(onTab:mounted) event binding"
+      }
+    }
+  ],
+  "slots": [
+    {
+      "name": "heading",
+      "description": ""
+    },
+    {
+      "name": "default",
+      "description": ""
+    }
+  ],
+  "criticalNotes": [],
+  "commonMistakes": [],
+  "basicUsage": {
+    "webComponent": "",
+    "react": "",
+    "angular": ""
+  },
+  "relatedExamples": [],
+  "relatedComponents": []
+}

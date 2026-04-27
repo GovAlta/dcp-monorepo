@@ -1,0 +1,170 @@
+{
+  "name": "Tabs",
+  "category": "navigation",
+  "summary": "Navigation for organizing related content into switchable sections.",
+  "import": "import { GoabTabs, GoabTab } from '@abgov/react-components'",
+  "customElement": {
+    "tagName": "goa-tabs",
+    "reactName": "GoabTabs",
+    "angularSelector": "goab-tabs"
+  },
+  "subComponents": {
+    "tab": {
+      "tagName": "goa-tab",
+      "reactName": "GoabTab",
+      "angularSelector": "goab-tab"
+    }
+  },
+  "props": [
+    {
+      "name": "initialtab",
+      "type": "number",
+      "required": false,
+      "default": "-1",
+      "description": "Initially active tab index (0-based)",
+      "frameworks": {
+        "webComponent": "initialtab=\"...\"",
+        "react": "initialtab={...}",
+        "angular": "[initialtab]=\"...\""
+      }
+    },
+    {
+      "name": "testId",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "Test identifier",
+      "frameworks": {
+        "webComponent": "test-id=\"...\"",
+        "react": "testId={...}",
+        "angular": "[testId]=\"...\""
+      }
+    },
+    {
+      "name": "updateurl",
+      "type": "boolean",
+      "required": false,
+      "default": "true",
+      "description": "",
+      "frameworks": {
+        "webComponent": "updateurl=\"true\"",
+        "react": "updateurl={true}",
+        "angular": "[updateurl]=\"true\""
+      }
+    },
+    {
+      "name": "stackonmobile",
+      "type": "boolean",
+      "required": false,
+      "default": "true",
+      "description": "",
+      "frameworks": {
+        "webComponent": "stackonmobile=\"true\"",
+        "react": "stackonmobile={true}",
+        "angular": "[stackonmobile]=\"true\""
+      }
+    },
+    {
+      "name": "mt",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "",
+      "frameworks": {
+        "webComponent": "mt=\"...\"",
+        "react": "mt={...}",
+        "angular": "[mt]=\"...\""
+      }
+    },
+    {
+      "name": "mr",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "",
+      "frameworks": {
+        "webComponent": "mr=\"...\"",
+        "react": "mr={...}",
+        "angular": "[mr]=\"...\""
+      }
+    },
+    {
+      "name": "mb",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "",
+      "frameworks": {
+        "webComponent": "mb=\"...\"",
+        "react": "mb={...}",
+        "angular": "[mb]=\"...\""
+      }
+    },
+    {
+      "name": "ml",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "",
+      "frameworks": {
+        "webComponent": "ml=\"...\"",
+        "react": "ml={...}",
+        "angular": "[ml]=\"...\""
+      }
+    }
+  ],
+  "tabProps": [
+    {
+      "name": "heading",
+      "type": "string",
+      "required": true,
+      "description": "Tab label text"
+    }
+  ],
+  "events": [
+    {
+      "name": "tabs:set-open",
+      "type": "(event) => void",
+      "description": "",
+      "frameworks": {
+        "webComponent": "tabs:set-open custom event",
+        "react": "onTabs:set-open prop",
+        "angular": "(onTabs:set-open) event binding"
+      }
+    },
+    {
+      "name": "_change",
+      "type": "(detail: GoabTabsOnChangeDetail) => void",
+      "description": "Fired when a tab is selected. The detail object contains the 1-based tab index.",
+      "frameworks": {
+        "webComponent": "_change custom event",
+        "react": "onChange prop",
+        "angular": "(onChange) event binding"
+      }
+    }
+  ],
+  "slots": [
+    {
+      "name": "default",
+      "description": "GoabTab components"
+    }
+  ],
+  "criticalNotes": [
+    "Use GoabTab children with heading prop for each tab",
+    "Tab content goes inside each GoabTab",
+    "initialTab is 0-based index"
+  ],
+  "basicUsage": {
+    "webComponent": "<goa-tabs>\n  <goa-tab heading=\"Overview\"><p>Overview content</p></goa-tab>\n  <goa-tab heading=\"Details\"><p>Details content</p></goa-tab>\n  <goa-tab heading=\"History\"><p>History content</p></goa-tab>\n</goa-tabs>",
+    "react": "<GoabTabs>\n  <GoabTab heading=\"Overview\"><p>Overview content</p></GoabTab>\n  <GoabTab heading=\"Details\"><p>Details content</p></GoabTab>\n  <GoabTab heading=\"History\"><p>History content</p></GoabTab>\n</GoabTabs>",
+    "angular": "<goab-tabs>\n  <goab-tab heading=\"Overview\"><p>Overview content</p></goab-tab>\n  <goab-tab heading=\"Details\"><p>Details content</p></goab-tab>\n  <goab-tab heading=\"History\"><p>History content</p></goab-tab>\n</goab-tabs>"
+  },
+  "relatedExamples": [
+    "show-different-views-of-data-in-a-table",
+    "set-a-specific-tab-to-be-active"
+  ],
+  "relatedComponents": [
+    "Accordion",
+    "Container"
+  ]
+}

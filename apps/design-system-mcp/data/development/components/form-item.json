@@ -1,0 +1,194 @@
+{
+  "name": "FormItem",
+  "category": "form",
+  "summary": "Wrapper for form controls providing label, help text, and error display. REQUIRED for all form inputs.",
+  "import": "import { GoabFormItem } from '@abgov/react-components'",
+  "customElement": {
+    "tagName": "goa-form-item",
+    "reactName": "GoabFormItem",
+    "angularSelector": "goab-form-item"
+  },
+  "props": [
+    {
+      "name": "mt",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin top",
+      "frameworks": {
+        "webComponent": "mt=\"...\"",
+        "react": "mt={...}",
+        "angular": "[mt]=\"...\""
+      }
+    },
+    {
+      "name": "mr",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin right",
+      "frameworks": {
+        "webComponent": "mr=\"...\"",
+        "react": "mr={...}",
+        "angular": "[mr]=\"...\""
+      }
+    },
+    {
+      "name": "mb",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin bottom",
+      "frameworks": {
+        "webComponent": "mb=\"...\"",
+        "react": "mb={...}",
+        "angular": "[mb]=\"...\""
+      }
+    },
+    {
+      "name": "ml",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin left",
+      "frameworks": {
+        "webComponent": "ml=\"...\"",
+        "react": "ml={...}",
+        "angular": "[ml]=\"...\""
+      }
+    },
+    {
+      "name": "testId",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "Test identifier",
+      "frameworks": {
+        "webComponent": "test-id=\"...\"",
+        "react": "testId={...}",
+        "angular": "[testId]=\"...\""
+      }
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "Label text for the form control",
+      "frameworks": {
+        "webComponent": "label=\"...\"",
+        "react": "label={...}",
+        "angular": "[label]=\"...\""
+      }
+    },
+    {
+      "name": "labelSize",
+      "type": "\"compact\" | \"regular\" | \"large\"",
+      "required": false,
+      "default": "regular",
+      "description": "Size of label text",
+      "frameworks": {
+        "webComponent": "label-size=\"...\"",
+        "react": "labelSize={...}",
+        "angular": "[labelSize]=\"...\""
+      }
+    },
+    {
+      "name": "helpText",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "Helper text for additional context",
+      "frameworks": {
+        "webComponent": "help-text=\"...\"",
+        "react": "helpText={...}",
+        "angular": "[helpText]=\"...\""
+      }
+    },
+    {
+      "name": "error",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "Error message (overrides helpText)",
+      "frameworks": {
+        "webComponent": "error=\"...\"",
+        "react": "error={...}",
+        "angular": "[error]=\"...\""
+      }
+    },
+    {
+      "name": "requirement",
+      "type": "\"optional\" | \"required\"",
+      "required": false,
+      "default": "",
+      "description": "Field requirement indicator",
+      "frameworks": {
+        "webComponent": "requirement=\"...\"",
+        "react": "requirement={...}",
+        "angular": "[requirement]=\"...\""
+      }
+    },
+    {
+      "name": "maxWidth",
+      "type": "string",
+      "required": false,
+      "default": "none",
+      "description": "Maximum width of form item",
+      "frameworks": {
+        "webComponent": "max-width=\"...\"",
+        "react": "maxWidth={...}",
+        "angular": "[maxWidth]=\"...\""
+      }
+    }
+  ],
+  "events": [],
+  "slots": [
+    {
+      "name": "error",
+      "description": "Rich error message with links"
+    },
+    {
+      "name": "helptext",
+      "description": ""
+    },
+    {
+      "name": "default",
+      "description": "Form control (Input, Dropdown, etc.)"
+    }
+  ],
+  "criticalNotes": [
+    "ALWAYS wrap form inputs in FormItem for proper labeling and accessibility",
+    "Use labelSize='large' for prominent form sections as shown in Figma",
+    "Use mb prop for spacing between form items, not GoabSpacer",
+    "error prop overrides helpText when both are set"
+  ],
+  "commonMistakes": [
+    {
+      "mistake": "Form input without FormItem wrapper",
+      "fix": "Always wrap: <GoabFormItem label='...'><GoabInput /></GoabFormItem>"
+    },
+    {
+      "mistake": "Using GoabSpacer after FormItem",
+      "fix": "Use FormItem mb prop instead"
+    }
+  ],
+  "basicUsage": {
+    "webComponent": "<goa-form-item label=\"Email address\" help-text=\"We'll use this to contact you\" requirement=\"required\" mb=\"l\">\n  <goa-input name=\"email\" type=\"email\" width=\"100%\"></goa-input>\n</goa-form-item>",
+    "react": "<GoabFormItem\n  label=\"Email address\"\n  helpText=\"We'll use this to contact you\"\n  requirement=\"required\"\n  error={errors.email}\n  mb=\"l\"\n>\n  <GoabInput\n    name=\"email\"\n    type=\"email\"\n    width=\"100%\"\n    value={email}\n    onChange={(detail) => setEmail(detail.value)}\n  />\n</GoabFormItem>",
+    "angular": "<goab-form-item\n  label=\"Email address\"\n  helpText=\"We'll use this to contact you\"\n  requirement=\"required\"\n  [error]=\"errors.email\"\n  mb=\"l\">\n  <goab-input\n    name=\"email\"\n    type=\"email\"\n    width=\"100%\"\n    [value]=\"email\"\n    (onChange)=\"onEmailChange($event)\">\n  </goab-input>\n</goab-form-item>"
+  },
+  "relatedExamples": [
+    "slotted-error-text-in-a-form-item",
+    "slotted-helper-text-in-a-form-item",
+    "ask-a-user-for-an-address"
+  ],
+  "relatedComponents": [
+    "Input",
+    "Dropdown",
+    "Checkbox",
+    "Radio",
+    "TextArea",
+    "DatePicker"
+  ]
+}

@@ -1,0 +1,532 @@
+{
+  "name": "Input",
+  "category": "form",
+  "summary": "Single-line text input for collecting user data. Always wrap in GoabFormItem for proper labeling.",
+  "import": "import { GoabInput } from '@abgov/react-components'",
+  "customElement": {
+    "tagName": "goa-input",
+    "reactName": "GoabInput",
+    "angularSelector": "goab-input"
+  },
+  "props": [
+    {
+      "name": "type",
+      "type": "\"text\" | \"number\" | \"password\" | \"email\" | \"date\" | \"datetime-local\" | \"month\" | \"range\" | \"search\" | \"tel\" | \"time\" | \"url\" | \"week\"",
+      "required": false,
+      "default": "text",
+      "description": "Type of input field",
+      "frameworks": {
+        "webComponent": "type=\"...\"",
+        "react": "type={...}",
+        "angular": "[type]=\"...\""
+      }
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "Unique identifier for the input field",
+      "frameworks": {
+        "webComponent": "name=\"...\"",
+        "react": "name={...}",
+        "angular": "[name]=\"...\""
+      }
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "Current value of the input",
+      "frameworks": {
+        "webComponent": "value=\"...\"",
+        "react": "value={...}",
+        "angular": "[value]=\"...\""
+      }
+    },
+    {
+      "name": "autoCapitalize",
+      "type": "\"on\" | \"off\" | \"none\" | \"sentences\" | \"words\" | \"characters\"",
+      "required": false,
+      "default": "off",
+      "description": "",
+      "frameworks": {
+        "webComponent": "auto-capitalize=\"...\"",
+        "react": "autoCapitalize={...}",
+        "angular": "[autoCapitalize]=\"...\""
+      }
+    },
+    {
+      "name": "autoComplete",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "",
+      "frameworks": {
+        "webComponent": "auto-complete=\"...\"",
+        "react": "autoComplete={...}",
+        "angular": "[autoComplete]=\"...\""
+      }
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "Placeholder text shown when input is empty",
+      "frameworks": {
+        "webComponent": "placeholder=\"...\"",
+        "react": "placeholder={...}",
+        "angular": "[placeholder]=\"...\""
+      }
+    },
+    {
+      "name": "leadingIcon",
+      "type": "GoAIconType",
+      "required": false,
+      "default": null,
+      "description": "Icon displayed on the left side",
+      "frameworks": {
+        "webComponent": "leading-icon=\"...\"",
+        "react": "leadingIcon={...}",
+        "angular": "[leadingIcon]=\"...\""
+      }
+    },
+    {
+      "name": "trailingIcon",
+      "type": "GoAIconType",
+      "required": false,
+      "default": null,
+      "description": "Icon displayed on the right side",
+      "frameworks": {
+        "webComponent": "trailing-icon=\"...\"",
+        "react": "trailingIcon={...}",
+        "angular": "[trailingIcon]=\"...\""
+      }
+    },
+    {
+      "name": "variant",
+      "type": "GoAInputVariant",
+      "required": false,
+      "default": "goa",
+      "description": "",
+      "frameworks": {
+        "webComponent": "variant=\"...\"",
+        "react": "variant={...}",
+        "angular": "[variant]=\"...\""
+      }
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "required": false,
+      "default": "false",
+      "description": "Disables the input field",
+      "frameworks": {
+        "webComponent": "disabled=\"true\"",
+        "react": "disabled={true}",
+        "angular": "[disabled]=\"true\""
+      }
+    },
+    {
+      "name": "handleTrailingIconClick",
+      "type": "boolean",
+      "required": false,
+      "default": "false",
+      "description": "",
+      "frameworks": {
+        "webComponent": "handle-trailing-icon-click=\"true\"",
+        "react": "handleTrailingIconClick={true}",
+        "angular": "[handleTrailingIconClick]=\"true\""
+      }
+    },
+    {
+      "name": "focused",
+      "type": "boolean",
+      "required": false,
+      "default": "false",
+      "description": "",
+      "frameworks": {
+        "webComponent": "focused=\"true\"",
+        "react": "focused={true}",
+        "angular": "[focused]=\"true\""
+      }
+    },
+    {
+      "name": "readOnly",
+      "type": "boolean",
+      "required": false,
+      "default": "false",
+      "description": "Makes the input read-only",
+      "frameworks": {
+        "webComponent": "read-only=\"true\"",
+        "react": "readOnly={true}",
+        "angular": "[readOnly]=\"true\""
+      }
+    },
+    {
+      "name": "error",
+      "type": "boolean",
+      "required": false,
+      "default": "false",
+      "description": "Shows error state styling",
+      "frameworks": {
+        "webComponent": "error=\"true\"",
+        "react": "error={true}",
+        "angular": "[error]=\"true\""
+      }
+    },
+    {
+      "name": "testId",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "Data attribute for testing",
+      "frameworks": {
+        "webComponent": "test-id=\"...\"",
+        "react": "testId={...}",
+        "angular": "[testId]=\"...\""
+      }
+    },
+    {
+      "name": "width",
+      "type": "string",
+      "required": false,
+      "default": "30ch",
+      "description": "Width of the input field - REQUIRED for variable length content",
+      "frameworks": {
+        "webComponent": "width=\"...\"",
+        "react": "width={...}",
+        "angular": "[width]=\"...\""
+      }
+    },
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "",
+      "frameworks": {
+        "webComponent": "aria-label=\"...\"",
+        "react": "ariaLabel={...}",
+        "angular": "[ariaLabel]=\"...\""
+      }
+    },
+    {
+      "name": "ariaLabelledBy",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "",
+      "frameworks": {
+        "webComponent": "aria-labelled-by=\"...\"",
+        "react": "ariaLabelledBy={...}",
+        "angular": "[ariaLabelledBy]=\"...\""
+      }
+    },
+    {
+      "name": "min",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "Minimum value for number/date inputs",
+      "frameworks": {
+        "webComponent": "min=\"...\"",
+        "react": "min={...}",
+        "angular": "[min]=\"...\""
+      }
+    },
+    {
+      "name": "max",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "Maximum value for number/date inputs",
+      "frameworks": {
+        "webComponent": "max=\"...\"",
+        "react": "max={...}",
+        "angular": "[max]=\"...\""
+      }
+    },
+    {
+      "name": "step",
+      "type": "number",
+      "required": false,
+      "default": "1",
+      "description": "",
+      "frameworks": {
+        "webComponent": "step=\"...\"",
+        "react": "step={...}",
+        "angular": "[step]=\"...\""
+      }
+    },
+    {
+      "name": "prefix",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "",
+      "frameworks": {
+        "webComponent": "prefix=\"...\"",
+        "react": "prefix={...}",
+        "angular": "[prefix]=\"...\""
+      }
+    },
+    {
+      "name": "suffix",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "",
+      "frameworks": {
+        "webComponent": "suffix=\"...\"",
+        "react": "suffix={...}",
+        "angular": "[suffix]=\"...\""
+      }
+    },
+    {
+      "name": "debounce",
+      "type": "number",
+      "required": false,
+      "default": "0",
+      "description": "",
+      "frameworks": {
+        "webComponent": "debounce=\"...\"",
+        "react": "debounce={...}",
+        "angular": "[debounce]=\"...\""
+      }
+    },
+    {
+      "name": "maxLength",
+      "type": "number | null",
+      "required": false,
+      "default": null,
+      "description": "Maximum number of characters allowed",
+      "frameworks": {
+        "webComponent": "max-length=\"...\"",
+        "react": "maxLength={...}",
+        "angular": "[maxLength]=\"...\""
+      }
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "",
+      "frameworks": {
+        "webComponent": "id=\"...\"",
+        "react": "id={...}",
+        "angular": "[id]=\"...\""
+      }
+    },
+    {
+      "name": "mt",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin top spacing",
+      "frameworks": {
+        "webComponent": "mt=\"...\"",
+        "react": "mt={...}",
+        "angular": "[mt]=\"...\""
+      }
+    },
+    {
+      "name": "mr",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin right spacing",
+      "frameworks": {
+        "webComponent": "mr=\"...\"",
+        "react": "mr={...}",
+        "angular": "[mr]=\"...\""
+      }
+    },
+    {
+      "name": "mb",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin bottom spacing",
+      "frameworks": {
+        "webComponent": "mb=\"...\"",
+        "react": "mb={...}",
+        "angular": "[mb]=\"...\""
+      }
+    },
+    {
+      "name": "ml",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin left spacing",
+      "frameworks": {
+        "webComponent": "ml=\"...\"",
+        "react": "ml={...}",
+        "angular": "[ml]=\"...\""
+      }
+    },
+    {
+      "name": "trailingIconAriaLabel",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "Accessible label for clickable trailing icon",
+      "frameworks": {
+        "webComponent": "trailing-icon-aria-label=\"...\"",
+        "react": "trailingIconAriaLabel={...}",
+        "angular": "[trailingIconAriaLabel]=\"...\""
+      }
+    },
+    {
+      "name": "textAlign",
+      "type": "\"left\" | \"right\"",
+      "required": false,
+      "default": "left",
+      "description": "",
+      "frameworks": {
+        "webComponent": "text-align=\"...\"",
+        "react": "textAlign={...}",
+        "angular": "[textAlign]=\"...\""
+      }
+    },
+    {
+      "name": "size",
+      "type": "\"default\" | \"compact\"",
+      "required": false,
+      "default": "default",
+      "description": "",
+      "frameworks": {
+        "webComponent": "size=\"...\"",
+        "react": "size={...}",
+        "angular": "[size]=\"...\""
+      }
+    }
+  ],
+  "events": [
+    {
+      "name": "_change",
+      "type": "(event) => void",
+      "payload": "{ name",
+      "description": "",
+      "frameworks": {
+        "webComponent": "_change custom event",
+        "react": "onChange prop",
+        "angular": "(onChange) event binding"
+      }
+    },
+    {
+      "name": "_keyPress",
+      "type": "(event) => void",
+      "description": "",
+      "frameworks": {
+        "webComponent": "_keyPress custom event",
+        "react": "onKeyPress prop",
+        "angular": "(onKeyPress) event binding"
+      }
+    },
+    {
+      "name": "_focus",
+      "type": "(event) => void",
+      "description": "",
+      "frameworks": {
+        "webComponent": "_focus custom event",
+        "react": "onFocus prop",
+        "angular": "(onFocus) event binding"
+      }
+    },
+    {
+      "name": "_blur",
+      "type": "(event) => void",
+      "description": "",
+      "frameworks": {
+        "webComponent": "_blur custom event",
+        "react": "onBlur prop",
+        "angular": "(onBlur) event binding"
+      }
+    },
+    {
+      "name": "_trailingIconClick",
+      "type": "(event) => void",
+      "description": "",
+      "frameworks": {
+        "webComponent": "_trailingIconClick custom event",
+        "react": "onTrailingIconClick prop",
+        "angular": "(onTrailingIconClick) event binding"
+      }
+    }
+  ],
+  "slots": [
+    {
+      "name": "leadingContent",
+      "description": ""
+    },
+    {
+      "name": "trailingContent",
+      "description": ""
+    }
+  ],
+  "criticalNotes": [
+    "ALWAYS wrap Input in GoabFormItem for proper labeling and validation",
+    "Must explicitly set width prop for variable length content (width='100%')",
+    "Use FormItem mb prop for spacing, not GoabSpacer after Input",
+    "Text inputs do NOT default to 100% width - must be explicitly set"
+  ],
+  "commonMistakes": [
+    {
+      "mistake": "<GoabInput> without <GoabFormItem> wrapper",
+      "fix": "Always wrap: <GoabFormItem label='...'><GoabInput /></GoabFormItem>"
+    },
+    {
+      "mistake": "Missing width prop on text inputs",
+      "fix": "Add width='100%' for variable length, or specific width for fixed data"
+    },
+    {
+      "mistake": "Using GoabSpacer after FormItem for spacing",
+      "fix": "Use FormItem mb prop instead"
+    }
+  ],
+  "inputWidthStrategy": {
+    "fixedWidths": {
+      "postalCode": "7ch",
+      "suiteUnit": "10ch",
+      "year": "4ch",
+      "age": "3ch",
+      "areaCode": "3ch",
+      "sin": "11ch",
+      "cvc": "3ch"
+    },
+    "fullWidth": {
+      "rule": "Use width='100%' for unknown/variable length content",
+      "applies": [
+        "Street addresses",
+        "City names",
+        "Names (first, last, business)",
+        "Email addresses"
+      ]
+    },
+    "textAreaThreshold": "Use TextArea instead of Input for content longer than 45-75 characters"
+  },
+  "basicUsage": {
+    "webComponent": "<goa-form-item label=\"Email address\" mb=\"l\">\n  <goa-input name=\"email\" type=\"email\" width=\"100%\"></goa-input>\n</goa-form-item>",
+    "react": "<GoabFormItem label=\"Email address\" mb=\"l\">\n  <GoabInput\n    name=\"email\"\n    type=\"email\"\n    width=\"100%\"\n    value={email}\n    onChange={(detail) => setEmail(detail.value)}\n  />\n</GoabFormItem>",
+    "angular": "<goab-form-item label=\"Email address\" mb=\"l\">\n  <goab-input\n    name=\"email\"\n    type=\"email\"\n    width=\"100%\"\n    [value]=\"email\"\n    (onChange)=\"onEmailChange($event)\">\n  </goab-input>\n</goab-form-item>"
+  },
+  "relatedExamples": [
+    "ask-a-user-for-an-address",
+    "ask-a-user-for-a-birthday",
+    "ask-a-user-for-dollar-amounts",
+    "ask-a-user-for-an-indian-registration-number",
+    "search",
+    "slotted-error-text-in-a-form-item",
+    "slotted-helper-text-in-a-form-item"
+  ],
+  "relatedComponents": [
+    "FormItem",
+    "TextArea",
+    "Dropdown"
+  ]
+}

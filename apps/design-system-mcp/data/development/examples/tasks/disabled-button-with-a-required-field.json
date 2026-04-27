@@ -1,0 +1,95 @@
+{
+  "$schema": "../recipe-schema.json",
+  "schemaVersion": "2.1.0-ai-context",
+  "recipeId": "disabled-button-with-a-required-field",
+  "recipeName": "Disabled Button with a Required Field",
+  "category": "form-pattern",
+  "summary": "Conditionally disable form submission buttons until all required fields are completed to prevent invalid submissions",
+  "serviceContext": {
+    "useCase": "Prevent users from submitting incomplete forms by disabling the submit button until all required fields are properly filled out",
+    "userType": "both",
+    "governmentServiceFlows": [
+      "When citizens must complete all required fields before submitting applications",
+      "When workers need to ensure mandatory data is entered before processing records",
+      "When form validation requires all critical information before allowing submission",
+      "When preventing incomplete submissions that would cause processing errors"
+    ],
+    "relatedPatterns": [
+      "slotted-error-text-in-a-form-item",
+      "ask-a-user-one-question-at-a-time",
+      "form-stepper-with-controlled-navigation",
+      "require-user-action-before-continuing"
+    ]
+  },
+  "components": [
+    {
+      "componentName": "GoabFormItem",
+      "role": "Required field wrapper",
+      "purpose": "Provide proper labeling and requirement indication for form fields"
+    },
+    {
+      "componentName": "GoabInput",
+      "role": "User input field",
+      "purpose": "Collect required information from users with change handling"
+    },
+    {
+      "componentName": "GoabButton",
+      "role": "Conditional submission button",
+      "purpose": "Provide disabled state until form requirements are met"
+    },
+    {
+      "componentName": "GoabButtonGroup",
+      "role": "Form action container",
+      "purpose": "Group primary and secondary form actions with proper alignment"
+    }
+  ],
+  "codeReference": {
+    "exampleFile": "disabled-button-with-a-required-field.tsx",
+    "linesOfCode": 108,
+    "lastModified": "2024-01-01T00:00:00.000Z"
+  },
+  "implementation": {
+    "complexity": "medium",
+    "keyPatterns": [
+      "Button disabled state controlled by form validation logic",
+      "Required field indication using FormItem requirement property",
+      "Form state management for tracking completion of required fields",
+      "Conditional button enabling based on form validity",
+      "Secondary button remains enabled for cancellation actions"
+    ],
+    "designPatterns": [
+      "Progressive enhancement pattern",
+      "Form validation feedback",
+      "Conditional interaction states",
+      "Error prevention pattern"
+    ],
+    "accessibility": [
+      "Button disabled state is announced by screen readers",
+      "Required field indication is properly associated with form inputs",
+      "Form structure provides clear input-to-label relationships",
+      "Cancel button remains accessible even when primary action is disabled"
+    ]
+  },
+  "codeExamples": {
+    "react": {
+      "complete": "import { GoabButtonGroup, GoabButton, GoabFormItem, GoabInput } from \"@abgov/react-components\";\nimport { useState } from \"react\";\nimport { GoabInputOnChangeDetail } from \"@abgov/ui-components-common\";\n\nexport const DisabledButtonWithARequiredField = () => {\n  const [name, setName] = useState('');\n  const [isFormValid, setIsFormValid] = useState(false);\n\n  const handleInputChange = (event: GoabInputOnChangeDetail) => {\n    const value = event.value;\n    setName(value);\n    setIsFormValid(value.trim().length > 0);\n  };\n\n  const handleSubmit = () => {\n    if (isFormValid) {\n      // Process form submission\n      console.log('Form submitted with name:', name);\n    }\n  };\n\n  const handleCancel = () => {\n    // Handle cancellation\n    setName('');\n    setIsFormValid(false);\n  };\n\n  return (\n    <form>\n      <GoabFormItem label=\"Name\" requirement=\"required\">\n        <GoabInput \n          name=\"input\" \n          type=\"text\" \n          onChange={handleInputChange} \n          width=\"100%\" \n        />\n      </GoabFormItem>\n\n      <GoabButtonGroup alignment=\"start\" mt=\"l\">\n        <GoabButton disabled={!isFormValid} onClick={handleSubmit}>\n          Confirm\n        </GoabButton>\n        <GoabButton type=\"secondary\" onClick={handleCancel}>\n          Cancel\n        </GoabButton>\n      </GoabButtonGroup>\n    </form>\n  );\n}",
+      "key": "const [formData, setFormData] = useState({ name: '', email: '' });\nconst [isFormValid, setIsFormValid] = useState(false);\n\nconst validateForm = (data: typeof formData) => {\n  return data.name.trim().length > 0 && data.email.trim().length > 0;\n};\n\nconst handleInputChange = (field: string) => (event: GoabInputOnChangeDetail) => {\n  const newData = { ...formData, [field]: event.value };\n  setFormData(newData);\n  setIsFormValid(validateForm(newData));\n};\n\nconst handleSubmit = () => {\n  if (isFormValid) {\n    // Process form submission\n    console.log('Form submitted:', formData);\n  }\n};\n\n<form>\n  <GoabFormItem label=\"Name\" requirement=\"required\">\n    <GoabInput \n      name=\"name\" \n      type=\"text\" \n      onChange={handleInputChange('name')} \n      width=\"100%\" \n    />\n  </GoabFormItem>\n  \n  <GoabFormItem label=\"Email\" requirement=\"required\">\n    <GoabInput \n      name=\"email\" \n      type=\"email\" \n      onChange={handleInputChange('email')} \n      width=\"100%\" \n    />\n  </GoabFormItem>\n\n  <GoabButtonGroup alignment=\"start\" mt=\"l\">\n    <GoabButton disabled={!isFormValid} onClick={handleSubmit}>\n      Submit Application\n    </GoabButton>\n    <GoabButton type=\"secondary\" onClick={handleCancel}>\n      Cancel\n    </GoabButton>\n  </GoabButtonGroup>\n</form>"
+    },
+    "angular": {
+      "complete": "import { FormBuilder, FormGroup, Validators } from '@angular/forms';\n\nexport class DisabledButtonWithARequiredFieldComponent {\n  form!: FormGroup;\n  \n  constructor(private fb: FormBuilder) {\n    this.form = this.fb.group({\n      name: ['', [Validators.required]],\n      email: ['', [Validators.required, Validators.email]]\n    });\n  }\n\n  get isFormValid(): boolean {\n    return this.form.valid;\n  }\n\n  inputOnChange(controlName: string, event: GoabInputOnChangeDetail) {\n    this.form.get(controlName)?.setValue(event.value);\n  }\n\n  onSubmit() {\n    if (this.form.valid) {\n      console.log('Form submitted:', this.form.value);\n    }\n  }\n\n  onCancel() {\n    this.form.reset();\n  }\n}",
+      "key": "form!: FormGroup;\n\nconstructor(private fb: FormBuilder) {\n  this.form = this.fb.group({\n    name: ['', [Validators.required]],\n    email: ['', [Validators.required, Validators.email]]\n  });\n}\n\nget isFormValid(): boolean {\n  return this.form.valid;\n}\n\ninputOnChange(controlName: string, event: GoabInputOnChangeDetail) {\n  this.form.get(controlName)?.setValue(event.value);\n}\n\nonSubmit() {\n  if (this.form.valid) {\n    console.log('Form submitted:', this.form.value);\n  }\n}\n\n<!-- Template -->\n<form [formGroup]=\"form\">\n  <goab-form-item label=\"Name\" requirement=\"required\">\n    <goab-input \n      name=\"name\" \n      type=\"text\" \n      (onChange)=\"inputOnChange('name', $event)\" \n      width=\"100%\">\n    </goab-input>\n  </goab-form-item>\n  \n  <goab-form-item label=\"Email\" requirement=\"required\">\n    <goab-input \n      name=\"email\" \n      type=\"email\" \n      (onChange)=\"inputOnChange('email', $event)\" \n      width=\"100%\">\n    </goab-input>\n  </goab-form-item>\n\n  <goab-button-group alignment=\"start\" mt=\"l\">\n    <goab-button [disabled]=\"!isFormValid\" (onClick)=\"onSubmit()\">\n      Submit Application\n    </goab-button>\n    <goab-button type=\"secondary\" (onClick)=\"onCancel()\">\n      Cancel\n    </goab-button>\n  </goab-button-group>\n</form>"
+    }
+  },
+  "tags": [
+    "form-validation",
+    "required-fields",
+    "disabled-state",
+    "button-control",
+    "form-submission",
+    "input-validation",
+    "conditional-enabling",
+    "user-experience",
+    "error-prevention",
+    "accessibility"
+  ]
+}

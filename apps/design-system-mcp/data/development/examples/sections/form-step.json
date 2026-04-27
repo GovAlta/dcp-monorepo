@@ -1,0 +1,95 @@
+{
+  "id": "form-step",
+  "name": "Form Step",
+  "category": "section",
+  "description": "A single step in a multi-step form wizard. Contains one or a few related questions with consistent header structure, progress indication, and navigation controls.",
+
+  "whenToUse": [
+    "Each step of a multi-step public form wizard",
+    "When breaking long forms into digestible chunks",
+    "For single-question-per-page citizen forms",
+    "Grouping 2-3 closely related questions together"
+  ],
+
+  "components": [
+    {
+      "name": "Back Link",
+      "purpose": "Return to previous step",
+      "usage": "Custom styled button with left arrow icon, placed at top of form"
+    },
+    {
+      "name": "Step Indicator",
+      "purpose": "Show progress through form",
+      "usage": "Text-based 'Step X of Y' format, styled as secondary text"
+    },
+    {
+      "name": "GoabFormItem",
+      "purpose": "Wrap form fields with labels, errors, and help text",
+      "usage": "Required for all form inputs, provides accessibility structure"
+    },
+    {
+      "name": "GoabInput / GoabRadioGroup / GoabCheckbox",
+      "purpose": "Collect user input",
+      "usage": "Type depends on question requirements"
+    },
+    {
+      "name": "GoabButton",
+      "purpose": "Primary action to proceed",
+      "usage": "type='primary' with text 'Save and continue'"
+    }
+  ],
+
+  "structure": {
+    "header": "Back link + Step indicator (text)",
+    "content": "Step title (h1) + Description + Question fields",
+    "footer": "Primary action button, optionally with secondary actions"
+  },
+
+  "example": {
+    "framework": "react",
+    "description": "Single question form step for collecting personal information",
+    "code": "import React, { useState, useCallback } from 'react';\nimport {\n  GoabFormItem,\n  GoabInput,\n  GoabButton,\n  GoabButtonGroup\n} from '@abgov/react-components';\n\ninterface FormStepProps {\n  stepNumber: number;\n  totalSteps: number;\n  title: string;\n  description?: string;\n  onBack: () => void;\n  onContinue: () => void;\n  children: React.ReactNode;\n}\n\nexport function FormStep({\n  stepNumber,\n  totalSteps,\n  title,\n  description,\n  onBack,\n  onContinue,\n  children\n}: FormStepProps) {\n  return (\n    <div className=\"form-page\">\n      <div className=\"form-header\">\n        {stepNumber > 1 && (\n          <button type=\"button\" className=\"back-link\" onClick={onBack}>\n            Back\n          </button>\n        )}\n        <p className=\"step-indicator\">Step {stepNumber} of {totalSteps}</p>\n      </div>\n\n      <h1 className=\"step-title\">{title}</h1>\n      {description && (\n        <p className=\"step-description\">{description}</p>\n      )}\n\n      <form className=\"question-group\" onSubmit={(e) => { e.preventDefault(); onContinue(); }}>\n        {children}\n\n        <div className=\"form-actions\">\n          <GoabButtonGroup alignment=\"start\" gap=\"relaxed\">\n            <GoabButton type=\"primary\" onClick={onContinue}>\n              Save and continue\n            </GoabButton>\n          </GoabButtonGroup>\n        </div>\n      </form>\n    </div>\n  );\n}\n\n// Example usage:\nfunction PersonalInfoStep() {\n  const [name, setName] = useState('');\n  const [nameError, setNameError] = useState('');\n\n  const handleContinue = () => {\n    if (!name.trim()) {\n      setNameError('Enter your full name');\n      return;\n    }\n    // Save and navigate to next step\n    console.log('Proceeding with name:', name);\n  };\n\n  return (\n    <FormStep\n      stepNumber={1}\n      totalSteps={6}\n      title=\"Personal Information\"\n      description=\"Tell us about yourself\"\n      onBack={() => console.log('Go back')}\n      onContinue={handleContinue}\n    >\n      <GoabFormItem\n        label=\"What is your full legal name?\"\n        error={nameError}\n        requirement=\"required\"\n        helpText=\"Enter your name as it appears on official documents\"\n      >\n        <GoabInput\n          name=\"fullName\"\n          value={name}\n          onChange={(e) => { setName(e.value); setNameError(''); }}\n          error={!!nameError}\n          width=\"50ch\"\n        />\n      </GoabFormItem>\n    </FormStep>\n  );\n}"
+  },
+
+  "cssClasses": {
+    "form-page": ".form-page {\n  max-width: 640px;\n  margin: 0 auto;\n  padding: var(--goa-space-xl) var(--goa-space-l);\n}",
+    "form-header": ".form-header {\n  margin-bottom: var(--goa-space-2xl);\n}",
+    "back-link": ".back-link {\n  display: inline-flex;\n  align-items: center;\n  color: var(--goa-color-interactive);\n  text-decoration: underline;\n  background: none;\n  border: none;\n  cursor: pointer;\n  padding: 0;\n  font-size: var(--goa-font-size-m);\n}\n\n.back-link::before {\n  content: '';\n  display: inline-block;\n  width: 20px;\n  height: 20px;\n  margin-right: var(--goa-space-xs);\n  background: url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"%230070C4\" stroke-width=\"2\"><polyline points=\"15 18 9 12 15 6\"></polyline></svg>') center no-repeat;\n}",
+    "step-indicator": ".step-indicator {\n  color: var(--goa-color-text-secondary);\n  font-size: var(--goa-font-size-s);\n  margin-top: var(--goa-space-xl);\n  margin-bottom: var(--goa-space-xs);\n}",
+    "step-title": ".step-title {\n  margin: 0 0 var(--goa-space-s) 0;\n  font-size: var(--goa-font-size-2xl);\n  font-weight: 700;\n}",
+    "step-description": ".step-description {\n  margin: 0 0 var(--goa-space-xl) 0;\n  color: var(--goa-color-text-secondary);\n  font-size: var(--goa-font-size-l);\n}",
+    "question-group": ".question-group {\n  margin-bottom: var(--goa-space-2xl);\n}",
+    "form-actions": ".form-actions {\n  margin-top: var(--goa-space-2xl);\n  padding-top: var(--goa-space-l);\n  border-top: 1px solid var(--goa-color-greyscale-200);\n}"
+  },
+
+  "variants": [
+    {
+      "name": "Single question",
+      "description": "One question per page for maximum focus and simplicity"
+    },
+    {
+      "name": "Grouped questions",
+      "description": "2-3 related questions together (e.g., street, city, postal code)"
+    },
+    {
+      "name": "With conditional questions",
+      "description": "Show/hide follow-up questions based on previous answers"
+    },
+    {
+      "name": "With repeater",
+      "description": "Allow adding multiple entries (e.g., multiple children)"
+    }
+  ],
+
+  "considerations": [
+    "Always use 'Save and continue' not just 'Next' - implies progress is saved",
+    "Show back navigation on all steps except the first",
+    "Use text-based progress (Step X of Y) not progress bars for citizen forms",
+    "Keep step titles action-oriented or descriptive",
+    "Validate on continue, not on every keystroke",
+    "Focus first error field when validation fails",
+    "Use appropriate field widths based on expected content length"
+  ],
+
+  "relatedPatterns": ["public-form", "question-page", "error-summary"]
+}

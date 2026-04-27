@@ -1,0 +1,95 @@
+{
+  "$schema": "../recipe-schema.json",
+  "schemaVersion": "2.1.0-ai-context",
+  "recipeId": "display-user-information",
+  "recipeName": "Display User Information",
+  "category": "layout-pattern",
+  "summary": "Present user contact information and important data in a structured, scannable format with clear visual hierarchy",
+  "serviceContext": {
+    "useCase": "Display user profile information, contact details, and related data in government dashboards and account management interfaces",
+    "userType": "both",
+    "governmentServiceFlows": [
+      "When citizens view their account information and assigned caseworkers",
+      "When workers access client contact information and important dates",
+      "When displaying housing advisor details and upcoming deadlines",
+      "When showing user profile data with associated timelines or schedules"
+    ],
+    "relatedPatterns": [
+      "worker-dashboard-overview",
+      "show-status-in-a-table",
+      "card-view-of-case-files",
+      "basic-page-layout"
+    ]
+  },
+  "components": [
+    {
+      "componentName": "GoabContainer",
+      "role": "Content section wrapper",
+      "purpose": "Group related information with proper spacing and visual separation"
+    },
+    {
+      "componentName": "GoabBlock",
+      "role": "Layout structure for contact information",
+      "purpose": "Organize contact labels and values in aligned columns"
+    },
+    {
+      "componentName": "GoabTable",
+      "role": "Data presentation container",
+      "purpose": "Display structured information like dates and deadlines in tabular format"
+    },
+    {
+      "componentName": "GoabButton",
+      "role": "Action trigger for user tasks",
+      "purpose": "Provide quick access to related functions like calendar integration"
+    }
+  ],
+  "codeReference": {
+    "exampleFile": "display-user-information.tsx",
+    "linesOfCode": 370,
+    "lastModified": "2024-01-01T00:00:00.000Z"
+  },
+  "implementation": {
+    "complexity": "medium",
+    "keyPatterns": [
+      "Structured contact information display using Block components for alignment",
+      "Custom CSS classes for consistent typography and color schemes",
+      "Table with striped rows for improved readability of date information",
+      "Container with actions slot for contextual user actions",
+      "Visual hierarchy using different text sizes and weights"
+    ],
+    "designPatterns": [
+      "Contact information display",
+      "Data table presentation",
+      "Action-oriented interfaces",
+      "Visual hierarchy with typography"
+    ],
+    "accessibility": [
+      "Proper semantic structure with headings and labels",
+      "Table structure provides clear data relationships",
+      "Contact information is properly formatted and accessible",
+      "Action buttons have clear labels and purpose"
+    ]
+  },
+  "codeExamples": {
+    "react": {
+      "complete": "import { GoabBlock, GoabButton, GoabContainer, GoabTable } from \"@abgov/react-components\";\n\nexport const DisplayUserInformation = () => {\n  const handleAddToCalendar = () => {\n    // Handle calendar integration\n    console.log('Adding to calendar');\n  };\n\n  return (\n    <>\n      <GoabContainer>\n        <span className=\"sub-header\">Housing Advisor</span>\n        <p className=\"header\">Tracy Hero</p>\n        <GoabBlock direction=\"row\" gap=\"m\">\n          <GoabBlock direction=\"column\" gap=\"m\">\n            <span className=\"contact-label\">Email</span>\n            <span className=\"contact-label\">Phone</span>\n          </GoabBlock>\n          <GoabBlock direction=\"column\" gap=\"m\">\n            <span className=\"contact-value\">tracyhero@email.com</span>\n            <span className=\"contact-value\">283-203-4921</span>\n          </GoabBlock>\n        </GoabBlock>\n      </GoabContainer>\n\n      <GoabContainer\n        type=\"non-interactive\"\n        accent=\"thick\"\n        heading=\"Upcoming important due dates\"\n        actions={\n          <GoabButton type=\"tertiary\" size=\"compact\" leadingIcon=\"calendar\" onClick={handleAddToCalendar}>\n            Add to calendar\n          </GoabButton>\n        }>\n        <div className=\"data-table-container\">\n          <GoabTable width=\"100%\">\n            <tbody className=\"striped\">\n              <tr>\n                <td>Business plan submission</td>\n                <td className=\"align-right\">June 30, 2024</td>\n              </tr>\n              <tr>\n                <td>Annual review</td>\n                <td className=\"align-right\">October 3, 2024</td>\n              </tr>\n              <tr>\n                <td>Application submission</td>\n                <td className=\"align-right\">December 20, 2024</td>\n              </tr>\n              <tr>\n                <td>Application review</td>\n                <td className=\"align-right\">January 3, 2025</td>\n              </tr>\n            </tbody>\n          </GoabTable>\n        </div>\n      </GoabContainer>\n    </>\n  )\n}",
+      "key": "const userInfo = {\n  role: 'Housing Advisor',\n  name: 'Tracy Hero',\n  email: 'tracyhero@email.com',\n  phone: '283-203-4921'\n};\n\nconst upcomingDates = [\n  { event: 'Business plan submission', date: 'June 30, 2024' },\n  { event: 'Annual review', date: 'October 3, 2024' },\n  { event: 'Application submission', date: 'December 20, 2024' },\n  { event: 'Application review', date: 'January 3, 2025' }\n];\n\nconst handleAddToCalendar = () => {\n  // Integration with calendar API\n  upcomingDates.forEach(item => {\n    console.log(`Adding ${item.event} on ${item.date}`);\n  });\n};\n\n<GoabContainer>\n  <span className=\"sub-header\">{userInfo.role}</span>\n  <p className=\"header\">{userInfo.name}</p>\n  <GoabBlock direction=\"row\" gap=\"m\">\n    <GoabBlock direction=\"column\" gap=\"m\">\n      <span className=\"contact-label\">Email</span>\n      <span className=\"contact-label\">Phone</span>\n    </GoabBlock>\n    <GoabBlock direction=\"column\" gap=\"m\">\n      <span className=\"contact-value\">{userInfo.email}</span>\n      <span className=\"contact-value\">{userInfo.phone}</span>\n    </GoabBlock>\n  </GoabBlock>\n</GoabContainer>\n\n<GoabContainer\n  type=\"non-interactive\"\n  accent=\"thick\"\n  heading=\"Upcoming important due dates\"\n  actions={\n    <GoabButton type=\"tertiary\" size=\"compact\" leadingIcon=\"calendar\" onClick={handleAddToCalendar}>\n      Add to calendar\n    </GoabButton>\n  }>\n  <GoabTable width=\"100%\">\n    <tbody className=\"striped\">\n      {upcomingDates.map((item, index) => (\n        <tr key={index}>\n          <td>{item.event}</td>\n          <td className=\"align-right\">{item.date}</td>\n        </tr>\n      ))}\n    </tbody>\n  </GoabTable>\n</GoabContainer>\n\n/* CSS */\n.sub-header {\n  color: var(--goa-color-greyscale-700);\n  font: var(--goa-typography-body-m);\n}\n\n.header {\n  color: var(--goa-color-greyscale-700);\n  font-size: var(--goa-font-size-7);\n  font-weight: var(--goa-font-weight-bold);\n  line-height: var(--goa-line-height-4);\n  margin-bottom: var(--goa-space-s);\n}\n\n.contact-label {\n  color: var(--goa-color-greyscale-700);\n  font: var(--goa-typography-heading-s);\n}\n\n.contact-value {\n  color: var(--goa-color-greyscale-700);\n  font: var(--goa-typography-body-m);\n}\n\n.striped tr:nth-child(even) {\n  background-color: #F8F8F8;\n}\n\n.align-right {\n  text-align: right;\n}"
+    },
+    "angular": {
+      "complete": "export class DisplayUserInformationComponent {\n  userInfo = {\n    role: 'Housing Advisor',\n    name: 'Tracy Hero',\n    email: 'tracyhero@email.com',\n    phone: '283-203-4921'\n  };\n\n  upcomingDates = [\n    { event: 'Business plan submission', date: 'June 30, 2024' },\n    { event: 'Annual review', date: 'October 3, 2024' },\n    { event: 'Application submission', date: 'December 20, 2024' },\n    { event: 'Application review', date: 'January 3, 2025' }\n  ];\n\n  handleAddToCalendar() {\n    // Integration with calendar API\n    this.upcomingDates.forEach(item => {\n      console.log(`Adding ${item.event} on ${item.date}`);\n    });\n  }\n}",
+      "key": "userInfo = {\n  role: 'Housing Advisor',\n  name: 'Tracy Hero',\n  email: 'tracyhero@email.com',\n  phone: '283-203-4921'\n};\n\nupcomingDates = [\n  { event: 'Business plan submission', date: 'June 30, 2024' },\n  { event: 'Annual review', date: 'October 3, 2024' },\n  { event: 'Application submission', date: 'December 20, 2024' },\n  { event: 'Application review', date: 'January 3, 2025' }\n];\n\nhandleAddToCalendar() {\n  this.upcomingDates.forEach(item => {\n    console.log(`Adding ${item.event} on ${item.date}`);\n  });\n}\n\n<!-- Template -->\n<goab-container>\n  <span class=\"sub-header\">{{ userInfo.role }}</span>\n  <p class=\"header\">{{ userInfo.name }}</p>\n  <goab-block direction=\"row\" gap=\"m\">\n    <goab-block direction=\"column\" gap=\"m\">\n      <span class=\"contact-label\">Email</span>\n      <span class=\"contact-label\">Phone</span>\n    </goab-block>\n    <goab-block direction=\"column\" gap=\"m\">\n      <span class=\"contact-value\">{{ userInfo.email }}</span>\n      <span class=\"contact-value\">{{ userInfo.phone }}</span>\n    </goab-block>\n  </goab-block>\n</goab-container>\n\n<goab-container type=\"non-interactive\" accent=\"thick\">\n  <div slot=\"title\">Upcoming important due dates</div>\n  <div slot=\"actions\">\n    <goab-button type=\"tertiary\" size=\"compact\" leadingIcon=\"calendar\" (onClick)=\"handleAddToCalendar()\">\n      Add to calendar\n    </goab-button>\n  </div>\n  <goab-table width=\"100%\">\n    <tbody class=\"striped\">\n      <tr *ngFor=\"let item of upcomingDates\">\n        <td>{{ item.event }}</td>\n        <td class=\"align-right\">{{ item.date }}</td>\n      </tr>\n    </tbody>\n  </goab-table>\n</goab-container>"
+    }
+  },
+  "tags": [
+    "user-information",
+    "contact-details",
+    "layout",
+    "table",
+    "profile",
+    "advisor",
+    "dates",
+    "calendar",
+    "structured-data",
+    "dashboard"
+  ]
+}

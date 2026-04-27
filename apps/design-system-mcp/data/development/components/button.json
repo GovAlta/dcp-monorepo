@@ -1,0 +1,280 @@
+{
+  "name": "Button",
+  "category": "component",
+  "summary": "Interactive button for triggering actions. Use for form submissions, state changes, and in-app navigation.",
+  "import": "import { GoabButton } from '@abgov/react-components'",
+  "customElement": {
+    "tagName": "goa-button",
+    "reactName": "GoabButton",
+    "angularSelector": "goab-button"
+  },
+  "props": [
+    {
+      "name": "type",
+      "type": "\"primary\" | \"submit\" | \"secondary\" | \"tertiary\" | \"start\"",
+      "required": false,
+      "default": "primary",
+      "description": "Visual style of the button",
+      "frameworks": {
+        "webComponent": "type=\"...\"",
+        "react": "type={...}",
+        "angular": "[type]=\"...\""
+      }
+    },
+    {
+      "name": "size",
+      "type": "\"normal\" | \"compact\"",
+      "required": false,
+      "default": "normal",
+      "description": "Size of the button",
+      "frameworks": {
+        "webComponent": "size=\"...\"",
+        "react": "size={...}",
+        "angular": "[size]=\"...\""
+      }
+    },
+    {
+      "name": "variant",
+      "type": "\"normal\" | \"destructive\" | \"inverse\"",
+      "required": false,
+      "default": "normal",
+      "description": "Visual variant for different contexts",
+      "frameworks": {
+        "webComponent": "variant=\"...\"",
+        "react": "variant={...}",
+        "angular": "[variant]=\"...\""
+      }
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "required": false,
+      "default": "false",
+      "description": "Disables the button interaction",
+      "frameworks": {
+        "webComponent": "disabled=\"true\"",
+        "react": "disabled={true}",
+        "angular": "[disabled]=\"true\""
+      }
+    },
+    {
+      "name": "leadingIcon",
+      "type": "GoAIconType",
+      "required": false,
+      "default": null,
+      "description": "Icon displayed before button text",
+      "frameworks": {
+        "webComponent": "leading-icon=\"...\"",
+        "react": "leadingIcon={...}",
+        "angular": "[leadingIcon]=\"...\""
+      }
+    },
+    {
+      "name": "trailingIcon",
+      "type": "GoAIconType",
+      "required": false,
+      "default": null,
+      "description": "Icon displayed after button text",
+      "frameworks": {
+        "webComponent": "trailing-icon=\"...\"",
+        "react": "trailingIcon={...}",
+        "angular": "[trailingIcon]=\"...\""
+      }
+    },
+    {
+      "name": "testId",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "Sets data-testid for testing",
+      "frameworks": {
+        "webComponent": "test-id=\"...\"",
+        "react": "testId={...}",
+        "angular": "[testId]=\"...\""
+      }
+    },
+    {
+      "name": "width",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "Explicit width for the button",
+      "frameworks": {
+        "webComponent": "width=\"...\"",
+        "react": "width={...}",
+        "angular": "[width]=\"...\""
+      }
+    },
+    {
+      "name": "mt",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin top spacing",
+      "frameworks": {
+        "webComponent": "mt=\"...\"",
+        "react": "mt={...}",
+        "angular": "[mt]=\"...\""
+      }
+    },
+    {
+      "name": "mr",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin right spacing",
+      "frameworks": {
+        "webComponent": "mr=\"...\"",
+        "react": "mr={...}",
+        "angular": "[mr]=\"...\""
+      }
+    },
+    {
+      "name": "mb",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin bottom spacing",
+      "frameworks": {
+        "webComponent": "mb=\"...\"",
+        "react": "mb={...}",
+        "angular": "[mb]=\"...\""
+      }
+    },
+    {
+      "name": "ml",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin left spacing",
+      "frameworks": {
+        "webComponent": "ml=\"...\"",
+        "react": "ml={...}",
+        "angular": "[ml]=\"...\""
+      }
+    }
+  ],
+  "events": [
+    {
+      "name": "_click",
+      "type": "(event) => void",
+      "description": "",
+      "frameworks": {
+        "webComponent": "_click custom event",
+        "react": "onClick prop",
+        "angular": "(onClick) event binding"
+      }
+    }
+  ],
+  "slots": [
+    {
+      "name": "default",
+      "description": "Button text content. Keep text concise and action-oriented."
+    }
+  ],
+  "criticalNotes": [
+    "Use mb prop to control space to next element, not GoabSpacer after Button",
+    "Use Button for actions (submit, save, next), Link for navigation to other pages",
+    "Last page action should use mb='3xl' for footer spacing",
+    "Only one primary button per page/section - others should be secondary or tertiary"
+  ],
+  "commonMistakes": [
+    {
+      "mistake": "Using buttons for navigation to other pages",
+      "fix": "Use GoabLink component for page navigation"
+    },
+    {
+      "mistake": "Multiple primary buttons in the same view",
+      "fix": "Use only one primary button per page/section"
+    },
+    {
+      "mistake": "Using start type for regular actions",
+      "fix": "Use primary type for regular important actions"
+    },
+    {
+      "mistake": "Adding trailingIcon to start type buttons",
+      "fix": "Don't use trailingIcon with start type"
+    },
+    {
+      "mistake": "Using disabled=\"false\" instead of boolean",
+      "fix": "Use boolean values for disabled prop"
+    },
+    {
+      "mistake": "Using submit type outside of forms",
+      "fix": "Use primary type for non-form actions"
+    }
+  ],
+  "strictPropertyEnforcement": {
+    "type": {
+      "validValues": [
+        "primary",
+        "secondary",
+        "tertiary",
+        "start",
+        "submit"
+      ],
+      "invalidExamples": [
+        "default",
+        "normal",
+        "standard"
+      ]
+    },
+    "size": {
+      "validValues": [
+        "normal",
+        "compact"
+      ],
+      "invalidExamples": [
+        "regular",
+        "small",
+        "large"
+      ]
+    },
+    "variant": {
+      "validValues": [
+        "normal",
+        "destructive"
+      ],
+      "invalidExamples": [
+        "default",
+        "danger",
+        "warning"
+      ]
+    }
+  },
+  "buttonVsLink": {
+    "useButton": [
+      "Actions that trigger functionality (submit, save, cancel)",
+      "Navigation within application flow (back, continue, next step)",
+      "Form submissions and data operations",
+      "Any action that changes application state"
+    ],
+    "useLink": [
+      "External links to different websites",
+      "Document downloads",
+      "Reference links within content",
+      "Navigation to different pages/sections"
+    ]
+  },
+  "buttonGrouping": {
+    "useButtonGroup": "For related action buttons with semantic relationship",
+    "useBlock": "For general layout and spacing of mixed components"
+  },
+  "basicUsage": {
+    "webComponent": "<goa-button type=\"primary\">Save changes</goa-button>\n<goa-button type=\"secondary\">Cancel</goa-button>\n<goa-button type=\"tertiary\" leading-icon=\"arrow-back\">Back</goa-button>",
+    "react": "<GoabButton type=\"primary\" onClick={handleSave}>Save changes</GoabButton>\n<GoabButton type=\"secondary\" onClick={handleCancel}>Cancel</GoabButton>\n<GoabButton type=\"tertiary\" leadingIcon=\"arrow-back\" onClick={handleBack}>Back</GoabButton>",
+    "angular": "<goab-button type=\"primary\" (onClick)=\"save()\">Save changes</goab-button>\n<goab-button type=\"secondary\" (onClick)=\"cancel()\">Cancel</goab-button>\n<goab-button type=\"tertiary\" leadingIcon=\"arrow-back\" (onClick)=\"goBack()\">Back</goab-button>"
+  },
+  "relatedExamples": [
+    "start-page",
+    "confirm-a-destructive-action",
+    "disabled-button-with-a-required-field",
+    "show-a-simple-progress-indicator-on-a-question-page",
+    "worker-dashboard-overview"
+  ],
+  "relatedComponents": [
+    "ButtonGroup",
+    "IconButton",
+    "Link"
+  ]
+}

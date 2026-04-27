@@ -1,0 +1,90 @@
+{
+  "$schema": "../recipe-schema.json",
+  "schemaVersion": "2.1.0-ai-context",
+  "recipeId": "copy-to-clipboard",
+  "recipeName": "Copy to Clipboard",
+  "category": "interaction-pattern",
+  "summary": "Enable users to copy text or code snippets to their clipboard with visual feedback and accessibility support",
+  "serviceContext": {
+    "useCase": "Allow users to easily copy important information like reference numbers, code snippets, API keys, or form data without manual selection",
+    "userType": "both",
+    "governmentServiceFlows": [
+      "When citizens need to copy confirmation numbers or reference IDs for their records",
+      "When workers need to copy case numbers, client IDs, or system codes for processing",
+      "When developers need to copy API endpoints, tokens, or configuration values",
+      "When users need to copy addresses, phone numbers, or contact information for external use"
+    ],
+    "relatedPatterns": [
+      "show-a-label-on-an-icon-only-button",
+      "show-full-date-in-a-tooltip",
+      "confirm-that-an-application-was-submitted",
+      "display-user-information"
+    ]
+  },
+  "components": [
+    {
+      "componentName": "GoabIconButton",
+      "role": "Copy action trigger",
+      "purpose": "Provide accessible button interface for clipboard copy functionality"
+    },
+    {
+      "componentName": "GoabTooltip",
+      "role": "Interactive feedback container",
+      "purpose": "Show copy status and provide hover guidance for the copy action"
+    },
+    {
+      "componentName": "GoabBlock",
+      "role": "Layout container for copy elements",
+      "purpose": "Align copy content, text, and button in a cohesive layout"
+    }
+  ],
+  "codeReference": {
+    "exampleFile": "copy-to-clipboard.tsx",
+    "linesOfCode": 155,
+    "lastModified": "2024-01-01T00:00:00.000Z"
+  },
+  "implementation": {
+    "complexity": "medium",
+    "keyPatterns": [
+      "Navigator clipboard API integration for secure copy functionality",
+      "Temporary state management for visual feedback (copied confirmation)",
+      "Tooltip content changes based on copy state for user feedback",
+      "Accessible button implementation with proper icon and action handling",
+      "Layout alignment using Block component for consistent presentation"
+    ],
+    "designPatterns": [
+      "Progressive enhancement pattern",
+      "Temporary state feedback",
+      "Accessible interaction design",
+      "Visual affordance with iconography"
+    ],
+    "accessibility": [
+      "Icon button provides proper semantic action button",
+      "Tooltip provides context and feedback for copy action",
+      "Link text is underlined for clear visual indication",
+      "Keyboard accessible copy functionality through button interaction"
+    ]
+  },
+  "codeExamples": {
+    "react": {
+      "complete": "import { GoabBlock, GoabIconButton, GoabTooltip } from \"@abgov/react-components\";\nimport { useState } from \"react\";\n\nexport const CopyToClipboard = () => {\n  const [isCopied, setIsCopied] = useState(false);\n  const textToCopy = \"$goa-color-interactive-default\";\n\n  function copyCode() {\n    navigator.clipboard.writeText(textToCopy).then(() => {\n      setIsCopied(true);\n      setTimeout(() => setIsCopied(false), 1000);\n    });\n  }\n\n  return (\n    <GoabBlock alignment=\"center\">\n      <div className=\"token-block\" />\n      <a onClick={copyCode}>\n        <u>{textToCopy}</u>\n      </a>\n      <GoabTooltip content={isCopied ? \"Copied\" : \"Copy?\"} position=\"top\">\n        <GoabIconButton icon=\"copy\" onClick={copyCode} mt=\"2xs\" />\n      </GoabTooltip>\n    </GoabBlock>\n  )\n}",
+      "key": "const [isCopied, setIsCopied] = useState(false);\nconst textToCopy = \"Reference: ABC123456\";\n\nconst copyToClipboard = async (text: string) => {\n  try {\n    await navigator.clipboard.writeText(text);\n    setIsCopied(true);\n    setTimeout(() => setIsCopied(false), 2000);\n  } catch (err) {\n    console.error('Failed to copy text: ', err);\n  }\n};\n\nconst handleCopyClick = () => {\n  copyToClipboard(textToCopy);\n};\n\n<GoabBlock alignment=\"center\">\n  <span>{textToCopy}</span>\n  <GoabTooltip content={isCopied ? \"Copied!\" : \"Copy to clipboard\"} position=\"top\">\n    <GoabIconButton \n      icon=\"copy\" \n      onClick={handleCopyClick}\n      ariaLabel=\"Copy to clipboard\"\n      mt=\"2xs\" \n    />\n  </GoabTooltip>\n</GoabBlock>\n\n/* CSS */\n.token-block {\n  background-color: var(--goa-color-interactive-default);\n  height: 22px;\n  width: 24px;\n  border-radius: var(--goa-border-radius-m);\n}"
+    },
+    "angular": {
+      "complete": "export class CopyToClipboardComponent {\n  isCopied = false;\n  textToCopy = '$goa-color-interactive-default';\n\n  async copyCode() {\n    try {\n      await navigator.clipboard.writeText(this.textToCopy);\n      this.isCopied = true;\n      setTimeout(() => this.isCopied = false, 1000);\n    } catch (err) {\n      console.error('Failed to copy text: ', err);\n    }\n  }\n}",
+      "key": "isCopied = false;\ntextToCopy = 'Reference: ABC123456';\n\nasync copyToClipboard(text: string) {\n  try {\n    await navigator.clipboard.writeText(text);\n    this.isCopied = true;\n    setTimeout(() => this.isCopied = false, 2000);\n  } catch (err) {\n    console.error('Failed to copy text: ', err);\n  }\n}\n\nhandleCopyClick() {\n  this.copyToClipboard(this.textToCopy);\n}\n\n<!-- Template -->\n<goab-block alignment=\"center\">\n  <span>{{ textToCopy }}</span>\n  <goab-tooltip [content]=\"isCopied ? 'Copied!' : 'Copy to clipboard'\" position=\"top\">\n    <goab-icon-button \n      icon=\"copy\" \n      (onClick)=\"handleCopyClick()\"\n      ariaLabel=\"Copy to clipboard\"\n      mt=\"2xs\">\n    </goab-icon-button>\n  </goab-tooltip>\n</goab-block>"
+    }
+  },
+  "tags": [
+    "clipboard",
+    "copy",
+    "interaction",
+    "tooltip",
+    "feedback",
+    "accessibility",
+    "icon-button",
+    "reference-number",
+    "code-snippet",
+    "user-experience"
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "name": "GoA Design System Governance",
+  "summary": "How teams work with the design system - process, contribution criteria, and collaboration",
+  "domain": "design",
+
+  "corePhilosophy": {
+    "designSystemFirst": "Start with existing components and patterns - covers ~80% of service needs",
+    "userDriven": "Changes driven by usability testing and real user needs, not preferences",
+    "collaborative": "Work with design system team for decisions and knowledge sharing",
+    "evidenceBased": "Research and testing inform decisions"
+  },
+
+  "communicationChannels": [
+    "Design System Support channel on Slack",
+    "Report a Bug system",
+    "Drop-in Hours sessions"
+  ],
+
+  "workflowSteps": [
+    {
+      "step": 1,
+      "name": "Use the Design System as Default",
+      "description": "Start with existing components - should cover ~80% of needs"
+    },
+    {
+      "step": 2,
+      "name": "Identify User Need Not Handled",
+      "description": "Through usability testing, discover when existing solutions don't meet user needs"
+    },
+    {
+      "step": 3,
+      "name": "Talk to Design System Team",
+      "description": "Collaborate to understand options and make informed decisions"
+    },
+    {
+      "step": 4,
+      "name": "Apply Problem-Solving Hierarchy",
+      "description": "1) Change Content → 2) Change Layout → 3) Design New Components"
+    },
+    {
+      "step": 5,
+      "name": "Test New Solution with Users",
+      "description": "Validate solutions through user feedback and testing"
+    },
+    {
+      "step": 6,
+      "name": "Share Learnings with Design System",
+      "description": "Solutions either added to system or tracked for future consideration"
+    }
+  ],
+
+  "problemSolvingHierarchy": {
+    "principle": "Start simple with content before applying UI solutions",
+    "order": [
+      { "priority": 1, "approach": "Change Content", "examples": ["Clearer labels", "Better instructions", "Simplified language"] },
+      { "priority": 2, "approach": "Change Layout", "examples": ["Rearrange elements", "Adjust spacing", "Improve grouping"] },
+      { "priority": 3, "approach": "Design New Components", "examples": ["New patterns", "Enhanced components", "Custom solutions"] }
+    ]
+  },
+
+  "contributionCriteria": {
+    "useful": "Evidence that component would be useful for many teams or services",
+    "unique": "Does not replicate something already in the design system",
+    "better": "Creates better experience, informed by research",
+    "universal": "Meets or exceeds WCAG 2.1 accessibility standards"
+  },
+
+  "qualityGates": [
+    {
+      "gate": "GoA Compliance",
+      "criteria": ["Uses proper layout structure", "Includes government branding", "Follows component patterns"],
+      "severity": "critical"
+    },
+    {
+      "gate": "Accessibility Standards",
+      "criteria": ["Meets WCAG 2.2 AA", "Proper form labeling", "Keyboard navigation", "Color contrast"],
+      "severity": "critical"
+    },
+    {
+      "gate": "User Experience",
+      "criteria": ["Appropriate for user type", "Follows established patterns", "Clear navigation"],
+      "severity": "high"
+    }
+  ],
+
+  "teamRoles": {
+    "designSystemTeam": "Guide component selection, review compliance, provide expertise, decide what enters shared system",
+    "productTeam": "Define user needs, implement with GoA components, share learnings back",
+    "note": "Product teams can do what they need; design system team decides what becomes shared"
+  },
+
+  "riskIndicators": [
+    "Building custom components that already exist",
+    "Making changes without user validation",
+    "Working in isolation without design system consultation",
+    "Creating solutions that don't meet accessibility standards"
+  ]
+}

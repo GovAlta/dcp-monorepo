@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@abgov/dcp-common": ["libs/dcp-common/src/index.js"]
+      "@abgov/dcp-common": ["libs/dcp-common/src/index.js"],
+      "@dcp-monorepo/mcp-common": ["libs/mcp-common/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -1,0 +1,97 @@
+{
+  "id": "filter-bar",
+  "name": "Filter Bar",
+  "category": "section",
+  "description": "A search and filter toolbar for list pages. Combines text search with sorting, filtering, and optional tabs for quick category switching. This is the primary control bar for data tables and list views.",
+
+  "whenToUse": [
+    "Above data tables or list views",
+    "When users need to search, sort, and filter records",
+    "In case management, client lists, or any searchable data view"
+  ],
+
+  "components": [
+    {
+      "name": "GoabTabs",
+      "purpose": "Quick category switching (e.g., All, To Do, In Progress)",
+      "optional": true
+    },
+    {
+      "name": "GoabFormItem",
+      "purpose": "Wraps search input with error handling"
+    },
+    {
+      "name": "GoabInput",
+      "purpose": "Search field with leadingIcon='search'",
+      "props": ["size='compact'", "leadingIcon='search'", "placeholder"]
+    },
+    {
+      "name": "GoabButton",
+      "purpose": "Search button and filter trigger",
+      "props": ["type='tertiary' or 'secondary'", "size='compact'"]
+    },
+    {
+      "name": "GoabDropdown",
+      "purpose": "Sort field selector",
+      "optional": true
+    },
+    {
+      "name": "GoabFilterChip",
+      "purpose": "Display active filters with dismiss capability"
+    },
+    {
+      "name": "GoabIcon",
+      "purpose": "Filter indicator icon",
+      "props": ["type='filter'"]
+    }
+  ],
+
+  "structure": {
+    "row1": "Tabs (optional) - spans full width",
+    "row2": "Search input + Search button | Sort dropdown + Filter button",
+    "row3": "Filter chips row (when filters are active)"
+  },
+
+  "example": {
+    "framework": "react",
+    "description": "Complete filter bar with tabs, search, sort, and chips",
+    "code": "<div className=\"filter-section\">\n  {/* Tabs for quick filtering */}\n  <GoabTabs initialTab={1} onChange={handleTabChange}>\n    <GoabTab heading=\"All\" />\n    <GoabTab heading=\"To do\" />\n    <GoabTab heading=\"In progress\" />\n    <GoabTab heading=\"Complete\" />\n  </GoabTabs>\n  \n  {/* Search and filter row */}\n  <GoabFormItem id=\"filterInput\" error={inputError} labelSize=\"compact\">\n    <div style={{ display: 'flex', gap: 'var(--goa-space-xs)', alignItems: 'center', flexWrap: 'wrap' }}>\n      <div style={{ display: 'flex', gap: 'var(--goa-space-xs)', flex: 1, minWidth: '200px' }}>\n        <GoabInput\n          name=\"filterInput\"\n          value={inputValue}\n          leadingIcon=\"search\"\n          width=\"100%\"\n          size=\"compact\"\n          placeholder=\"Search...\"\n          onChange={(e) => setInputValue(e.value)}\n          onKeyPress={(e) => e.key === 'Enter' && applyFilter()}\n        />\n        <GoabButton type=\"tertiary\" onClick={applyFilter} size=\"compact\">\n          Search\n        </GoabButton>\n      </div>\n      \n      <div style={{ display: 'flex', gap: 'var(--goa-space-xs)' }}>\n        <GoabDropdown\n          value={sortField}\n          onChange={(e) => setSortField(e.value)}\n          placeholder=\"Sort by\"\n          size=\"compact\"\n          width=\"160px\"\n        >\n          <GoabDropdownItem value=\"dueDate\" label=\"Due date\" />\n          <GoabDropdownItem value=\"priority\" label=\"Priority\" />\n          <GoabDropdownItem value=\"status\" label=\"Status\" />\n        </GoabDropdown>\n        \n        <GoabButton\n          type=\"tertiary\"\n          leadingIcon=\"filter\"\n          size=\"compact\"\n          onClick={() => setFilterDrawerOpen(true)}\n        >\n          Filter\n        </GoabButton>\n      </div>\n    </div>\n  </GoabFormItem>\n</div>\n\n{/* Filter chips row - shown when filters are active */}\n{activeFilters.length > 0 && (\n  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginTop: '1rem' }}>\n    <GoabIcon type=\"filter\" size=\"small\" fillColor=\"var(--goa-color-text-secondary)\" mr=\"2xs\" />\n    {activeFilters.map((chip) => (\n      <GoabFilterChip\n        key={chip}\n        content={chip}\n        onClick={() => removeFilter(chip)}\n      />\n    ))}\n    <GoabButton type=\"tertiary\" size=\"compact\" onClick={clearAllFilters}>\n      Clear all\n    </GoabButton>\n  </div>\n)}"
+  },
+
+  "stateManagement": {
+    "searchValue": "string - controlled input value",
+    "searchChips": "string[] - applied search terms",
+    "sortConfig": "{ key: string, direction: 'asc' | 'desc' | 'none' }",
+    "activeTab": "string or number - current tab",
+    "appliedFilters": "object - filters from drawer (by category)"
+  },
+
+  "variants": [
+    {
+      "name": "Simple (search only)",
+      "description": "Just search input and button, no tabs or advanced filters"
+    },
+    {
+      "name": "With tabs",
+      "description": "Add GoabTabs above search for quick category switching"
+    },
+    {
+      "name": "With filter drawer",
+      "description": "Filter button opens GoabDrawer with checkbox filters by category"
+    },
+    {
+      "name": "Search in header",
+      "description": "Move search to PageHeader actions for a cleaner layout"
+    }
+  ],
+
+  "considerations": [
+    "Use compact size for all components in filter bars",
+    "Handle Enter key on search input for keyboard users",
+    "Show clear error messages for empty or duplicate searches",
+    "Filter chips should always have a 'Clear all' option",
+    "Consider mobile layout - controls should wrap gracefully"
+  ],
+
+  "relatedPatterns": ["data-table", "filter-drawer", "list-page"]
+}

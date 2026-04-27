@@ -1,0 +1,88 @@
+{
+  "$schema": "../recipe-schema.json",
+  "schemaVersion": "2.1.0-ai-context",
+  "recipeId": "ask-a-user-for-direct-deposit-information",
+  "recipeName": "Ask a User for Direct Deposit Information",
+  "category": "form-pattern",
+  "summary": "Collect banking information for direct deposit with appropriate validation, guidance text, and contextual help for finding bank details",
+  "serviceContext": {
+    "useCase": "Government services that need to send payments, benefits, or refunds directly to citizens' bank accounts",
+    "userType": "citizen",
+    "governmentServiceFlows": [
+      "When citizens set up direct deposit for government benefits or payments",
+      "When processing tax refunds or rebates",
+      "When enrolling in recurring government payment programs",
+      "When updating banking information for existing payment arrangements"
+    ],
+    "relatedPatterns": [
+      "ask-a-user-for-an-address",
+      "ask-a-user-for-dollar-amounts",
+      "question-page"
+    ]
+  },
+  "components": [
+    {
+      "componentName": "GoabFormItem",
+      "role": "Container for banking information fields with labels and help text",
+      "purpose": "Provide structured labeling and validation guidance for each banking field"
+    },
+    {
+      "componentName": "GoabInput",
+      "role": "Input fields for bank number, transit number, and account number",
+      "purpose": "Collect banking details with appropriate length constraints and sizing"
+    },
+    {
+      "componentName": "GoabDetails",
+      "role": "Expandable help section with visual guidance",
+      "purpose": "Provide contextual help showing where to find information on cheques"
+    }
+  ],
+  "codeReference": {
+    "exampleFile": "ask-a-user-for-direct-deposit-information.tsx",
+    "linesOfCode": 154,
+    "lastModified": "2024-01-01T00:00:00.000Z"
+  },
+  "implementation": {
+    "complexity": "medium",
+    "keyPatterns": [
+      "Financial information collection with validation",
+      "Appropriate field sizing based on banking number formats",
+      "Maximum length constraints for each banking field",
+      "Contextual guidance text for finding information",
+      "Progressive disclosure of help content using Details component"
+    ],
+    "designPatterns": [
+      "Guided form completion",
+      "Constrained input validation",
+      "Contextual help patterns",
+      "Financial data collection"
+    ],
+    "accessibility": [
+      "Clear heading introduces the section purpose",
+      "Descriptive text explains where to find the required information",
+      "Each field has proper labels and help text indicating expected format",
+      "Details component provides expandable help without cluttering the form",
+      "AriaLabel attributes provide additional context for screen readers"
+    ]
+  },
+  "codeExamples": {
+    "react": {
+      "complete": "import { Sandbox } from \"@components/sandbox\";\nimport { GoabDetails, GoabFormItem, GoabInput } from \"@abgov/react-components\";\nimport { useContext } from \"react\";\nimport { LanguageVersionContext } from \"@contexts/LanguageVersionContext.tsx\";\nimport { CodeSnippet } from \"@components/code-snippet/CodeSnippet.tsx\";\n\nexport const AskAUserForDirectDepositInformation = () => {\n  const {version} = useContext(LanguageVersionContext);\n  const noop = () => {};\n\n  return (\n    <Sandbox flags={[\"reactive\"]} fullWidth allow={[\"form\", \"h2\", \"p\"]} skipRenderOnly={\"react\"}>\n      <h2>Direct deposit information</h2>\n      <p>\n        Find this information on your bank's website or on your personal cheques. Contact your bank\n        if you can't find this information.\n      </p>\n      <form>\n        <GoabFormItem\n          label=\"Bank or Institution number\"\n          id=\"bankNumber\"\n          helpText={\"3-4 digits in length\"}\n          mb=\"xl\">\n          <GoabInput\n            maxLength={4}\n            name=\"bankNumber\"\n            onChange={noop}\n            value={\"\"}\n            ariaLabel=\"bankNumber\"\n            width=\"88px\"\n          />\n        </GoabFormItem>\n        <GoabFormItem\n          label=\"Branch or Transit number\"\n          helpText={\"5 digits in length\"}\n          id=\"transitNumber\"\n          mb=\"xl\">\n          <GoabInput\n            maxLength={5}\n            name=\"transitNumber\"\n            onChange={noop}\n            value={\"\"}\n            ariaLabel=\"transitNumber\"\n            width=\"143px\"\n          />\n        </GoabFormItem>\n        <GoabFormItem label=\"Account number\" helpText=\"3-12 digits in length\" id=\"accountNumber\">\n          <GoabInput\n            maxLength={12}\n            name=\"accountNumber\"\n            value=\"\"\n            onChange={noop}\n            ariaLabel=\"accountNumber\"\n          />\n        </GoabFormItem>\n      </form>\n\n      <GoabDetails heading=\"Where can I find this information on a personal cheque?\" mt=\"l\">\n        <p>\n          Below is an example of where you can find the required bank information on a personal\n          cheque.\n        </p>\n        <img src=\"https://design.alberta.ca/images/details-demo.jpg\" />\n      </GoabDetails>\n    </Sandbox>\n  );\n};",
+      "key": "const [bankNumber, setBankNumber] = useState<string>(\"\");\nconst [transitNumber, setTransitNumber] = useState<string>(\"\");\nconst [accountNumber, setAccountNumber] = useState<string>(\"\");\n\nconst handleBankNumberChange = (event: GoabInputOnChangeDetail) => {\n  setBankNumber(event.value);\n};\n\nconst handleTransitNumberChange = (event: GoabInputOnChangeDetail) => {\n  setTransitNumber(event.value);\n};\n\nconst handleAccountNumberChange = (event: GoabInputOnChangeDetail) => {\n  setAccountNumber(event.value);\n};\n\n<h2>Direct deposit information</h2>\n<p>\n  Find this information on your bank's website or on your personal cheques. Contact your bank\n  if you can't find this information.\n</p>\n\n<GoabFormItem\n  label=\"Bank or Institution number\"\n  helpText=\"3-4 digits in length\"\n  mb=\"xl\"\n>\n  <GoabInput\n    maxLength={4}\n    name=\"bankNumber\"\n    onChange={handleBankNumberChange}\n    value={bankNumber}\n    ariaLabel=\"bankNumber\"\n    width=\"88px\"\n  />\n</GoabFormItem>\n\n<GoabFormItem\n  label=\"Branch or Transit number\"\n  helpText=\"5 digits in length\"\n  mb=\"xl\"\n>\n  <GoabInput\n    maxLength={5}\n    name=\"transitNumber\"\n    onChange={handleTransitNumberChange}\n    value={transitNumber}\n    ariaLabel=\"transitNumber\"\n    width=\"143px\"\n  />\n</GoabFormItem>\n\n<GoabFormItem\n  label=\"Account number\"\n  helpText=\"3-12 digits in length\"\n>\n  <GoabInput\n    maxLength={12}\n    name=\"accountNumber\"\n    onChange={handleAccountNumberChange}\n    value={accountNumber}\n    ariaLabel=\"accountNumber\"\n  />\n</GoabFormItem>\n\n<GoabDetails heading=\"Where can I find this information on a personal cheque?\" mt=\"l\">\n  <p>\n    Below is an example of where you can find the required bank information on a personal cheque.\n  </p>\n  <img src=\"https://design.alberta.ca/images/details-demo.jpg\" alt=\"Example cheque showing location of banking information\" />\n</GoabDetails>"
+    },
+    "angular": {
+      "complete": "export class ExampleComponent {\n  form!: FormGroup;\n\n  constructor(private fb: FormBuilder) {\n    this.form = this.fb.group({\n      bankNumber: [\"\"],\n      transitNumber: [\"\"],\n      accountNumber: [\"\"]\n    })\n  }\n}",
+      "key": "// Reactive Forms\nform!: FormGroup;\n\nconstructor(private fb: FormBuilder) {\n  this.form = this.fb.group({\n    bankNumber: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(4)]],\n    transitNumber: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(5)]],\n    accountNumber: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(12)]]\n  });\n}\n\n// Template-driven Forms\nbankNumber = '';\ntransitNumber = '';\naccountNumber = '';\n\nhandleBankNumberChange(event: GoabInputOnChangeDetail) {\n  this.bankNumber = event.value;\n}\n\nhandleTransitNumberChange(event: GoabInputOnChangeDetail) {\n  this.transitNumber = event.value;\n}\n\nhandleAccountNumberChange(event: GoabInputOnChangeDetail) {\n  this.accountNumber = event.value;\n}"
+    }
+  },
+  "tags": [
+    "direct-deposit",
+    "banking",
+    "financial-information",
+    "payments",
+    "validation",
+    "contextual-help",
+    "government-payments",
+    "citizen-benefits"
+  ]
+}

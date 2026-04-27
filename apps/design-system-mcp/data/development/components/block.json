@@ -1,0 +1,171 @@
+{
+  "name": "Block",
+  "category": "layout",
+  "summary": "Flexible layout container for grouping components with consistent spacing and alignment.",
+  "import": "import { GoabBlock } from '@abgov/react-components'",
+  "customElement": {
+    "tagName": "goa-block",
+    "reactName": "GoabBlock",
+    "angularSelector": "goab-block"
+  },
+  "props": [
+    {
+      "name": "gap",
+      "type": "Spacing",
+      "required": false,
+      "default": "m",
+      "description": "Spacing between items",
+      "frameworks": {
+        "webComponent": "gap=\"...\"",
+        "react": "gap={...}",
+        "angular": "[gap]=\"...\""
+      }
+    },
+    {
+      "name": "direction",
+      "type": "\"row\" | \"column\"",
+      "required": false,
+      "default": "row",
+      "description": "Layout direction (horizontal or vertical)",
+      "frameworks": {
+        "webComponent": "direction=\"...\"",
+        "react": "direction={...}",
+        "angular": "[direction]=\"...\""
+      }
+    },
+    {
+      "name": "alignment",
+      "type": "\"center\" | \"start\" | \"end\" | \"normal\"",
+      "required": false,
+      "default": "normal",
+      "description": "How items align along main axis",
+      "frameworks": {
+        "webComponent": "alignment=\"...\"",
+        "react": "alignment={...}",
+        "angular": "[alignment]=\"...\""
+      }
+    },
+    {
+      "name": "testid",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "Test identifier for automation",
+      "frameworks": {
+        "webComponent": "testid=\"...\"",
+        "react": "testId={...}",
+        "angular": "[testId]=\"...\""
+      }
+    },
+    {
+      "name": "minWidth",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "",
+      "frameworks": {
+        "webComponent": "min-width=\"...\"",
+        "react": "minWidth={...}",
+        "angular": "[minWidth]=\"...\""
+      }
+    },
+    {
+      "name": "maxWidth",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "",
+      "frameworks": {
+        "webComponent": "max-width=\"...\"",
+        "react": "maxWidth={...}",
+        "angular": "[maxWidth]=\"...\""
+      }
+    },
+    {
+      "name": "width",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "",
+      "frameworks": {
+        "webComponent": "width=\"...\"",
+        "react": "width={...}",
+        "angular": "[width]=\"...\""
+      }
+    },
+    {
+      "name": "mt",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin top",
+      "frameworks": {
+        "webComponent": "mt=\"...\"",
+        "react": "mt={...}",
+        "angular": "[mt]=\"...\""
+      }
+    },
+    {
+      "name": "mr",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin right",
+      "frameworks": {
+        "webComponent": "mr=\"...\"",
+        "react": "mr={...}",
+        "angular": "[mr]=\"...\""
+      }
+    },
+    {
+      "name": "mb",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin bottom",
+      "frameworks": {
+        "webComponent": "mb=\"...\"",
+        "react": "mb={...}",
+        "angular": "[mb]=\"...\""
+      }
+    },
+    {
+      "name": "ml",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin left",
+      "frameworks": {
+        "webComponent": "ml=\"...\"",
+        "react": "ml={...}",
+        "angular": "[ml]=\"...\""
+      }
+    }
+  ],
+  "events": [],
+  "slots": [
+    {
+      "name": "default",
+      "description": "Child components to arrange"
+    }
+  ],
+  "criticalNotes": [
+    "Use Block for general layout, ButtonGroup for related action buttons",
+    "Default gap='m' provides balanced spacing for most use cases",
+    "Use direction='column' for vertical stacking"
+  ],
+  "basicUsage": {
+    "webComponent": "<goa-block gap=\"m\" direction=\"row\">\n  <goa-button>Save</goa-button>\n  <goa-button type=\"secondary\">Cancel</goa-button>\n</goa-block>",
+    "react": "<GoabBlock gap=\"m\" direction=\"row\">\n  <GoabButton>Save</GoabButton>\n  <GoabButton type=\"secondary\">Cancel</GoabButton>\n</GoabBlock>",
+    "angular": "<goab-block gap=\"m\" direction=\"row\">\n  <goab-button>Save</goab-button>\n  <goab-button type=\"secondary\">Cancel</goab-button>\n</goab-block>"
+  },
+  "relatedExamples": [
+    "show-number-of-results-per-page",
+    "worker-dashboard-overview"
+  ],
+  "relatedComponents": [
+    "ButtonGroup",
+    "Grid",
+    "Container"
+  ]
+}

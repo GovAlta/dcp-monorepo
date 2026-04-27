@@ -1,0 +1,78 @@
+{
+  "$schema": "../recipe-schema.json",
+  "schemaVersion": "2.1.0-ai-context",
+  "recipeId": "communicate-a-future-service-outage",
+  "recipeName": "Communicate a Future Service Outage",
+  "category": "communication-and-feedback",
+  "summary": "Proactively notify users about planned service maintenance or outages with clear timing, duration, and alternative contact information",
+  "serviceContext": {
+    "useCase": "Government services need to inform users about planned maintenance windows, system updates, or service disruptions to set proper expectations",
+    "userType": "both",
+    "governmentServiceFlows": [
+      "When scheduled maintenance will affect service availability",
+      "When system upgrades require temporary service disruption",
+      "When planned infrastructure changes will impact user access",
+      "When communicating advance notice of service changes or updates"
+    ],
+    "relatedPatterns": [
+      "warn-a-user-of-a-deadline",
+      "confirm-that-an-application-was-submitted",
+      "basic-page-layout"
+    ]
+  },
+  "components": [
+    {
+      "componentName": "GoabNotification",
+      "role": "Primary communication container for service outage information",
+      "purpose": "Provide prominent, attention-getting notification with appropriate visual importance"
+    }
+  ],
+  "codeReference": {
+    "exampleFile": "communicate-a-future-service-outage.tsx",
+    "linesOfCode": 69,
+    "lastModified": "2024-01-01T00:00:00.000Z"
+  },
+  "implementation": {
+    "complexity": "low",
+    "keyPatterns": [
+      "Important notification type for visibility and urgency",
+      "Specific date and time information for clear expectations",
+      "Duration specification (start and end times)",
+      "Alternative contact information for support during outage",
+      "Professional and informative tone"
+    ],
+    "designPatterns": [
+      "Proactive communication",
+      "Expectation management",
+      "Service transparency",
+      "User-centered notification"
+    ],
+    "accessibility": [
+      "Important notification type ensures proper visual prominence",
+      "Clear date and time information aids comprehension",
+      "Contact link provides accessible alternative support option",
+      "Notification component supports screen reader announcements"
+    ]
+  },
+  "codeExamples": {
+    "react": {
+      "complete": "import { Sandbox } from \"@components/sandbox\";\nimport { CodeSnippet } from \"@components/code-snippet/CodeSnippet.tsx\";\nimport { GoabNotification  } from \"@abgov/react-components\";\nimport { useContext } from \"react\";\nimport { LanguageVersionContext } from \"@contexts/LanguageVersionContext.tsx\";\n\nexport const CommunicateAFutureServiceOutage = () => {\n  const {version} = useContext(LanguageVersionContext);\n  return (\n    <>\n      <Sandbox fullWidth allow={['h2', 'h3', 'p']} skipRender>\n          <GoabNotification type=\"important\">\n          Our system will be under maintenance from Thursday, September 15, 2025 at 10 pm \n          to Friday, September 16, 2025 at 10 am. If you have questions or concerns, \n          contact us at <a href=\"mailto:support@example.com\">support@example.com</a>. \n          </GoabNotification>\n      </Sandbox>\n    </>\n  )\n}",
+      "key": "const outageInfo = {\n  startDate: \"Thursday, September 15, 2025 at 10 pm\",\n  endDate: \"Friday, September 16, 2025 at 10 am\",\n  contactEmail: \"support@example.com\",\n  contactPhone: \"1-800-555-0123\"\n};\n\n<GoabNotification type=\"important\">\n  Our system will be under maintenance from {outageInfo.startDate} to {outageInfo.endDate}. \n  If you have questions or concerns, contact us at{' '}\n  <a href={`mailto:${outageInfo.contactEmail}`}>{outageInfo.contactEmail}</a> or call{' '}\n  <a href={`tel:${outageInfo.contactPhone}`}>{outageInfo.contactPhone}</a>.\n</GoabNotification>"
+    },
+    "angular": {
+      "complete": "export class ServiceOutageComponent {\n  outageInfo = {\n    startDate: 'Thursday, September 15, 2025 at 10 pm',\n    endDate: 'Friday, September 16, 2025 at 10 am',\n    contactEmail: 'support@example.com',\n    contactPhone: '1-800-555-0123'\n  };\n}",
+      "key": "outageInfo = {\n  startDate: 'Thursday, September 15, 2025 at 10 pm',\n  endDate: 'Friday, September 16, 2025 at 10 am',\n  contactEmail: 'support@example.com',\n  contactPhone: '1-800-555-0123'\n};\n\n<!-- Template -->\n<goab-notification type=\"important\">\n  Our system will be under maintenance from {{ outageInfo.startDate }} to {{ outageInfo.endDate }}.\n  If you have questions or concerns, contact us at \n  <a [href]=\"'mailto:' + outageInfo.contactEmail\">{{ outageInfo.contactEmail }}</a> or call \n  <a [href]=\"'tel:' + outageInfo.contactPhone\">{{ outageInfo.contactPhone }}</a>.\n</goab-notification>"
+    }
+  },
+  "tags": [
+    "notification",
+    "service-outage",
+    "maintenance",
+    "communication",
+    "proactive",
+    "important",
+    "contact-information",
+    "expectations",
+    "system-status"
+  ]
+}

@@ -1,0 +1,175 @@
+{
+  "name": "Container",
+  "category": "layout",
+  "summary": "Card-like container for visually grouping related content. Use for dashboard widgets, form sections, and status cards - NOT for general layout.",
+  "import": "import { GoabContainer } from '@abgov/react-components'",
+  "customElement": {
+    "tagName": "goa-container",
+    "reactName": "GoabContainer",
+    "angularSelector": "goab-container"
+  },
+  "props": [
+    {
+      "name": "type",
+      "type": "\"interactive\" | \"info\" | \"error\" | \"success\" | \"important\" | \"non-interactive\"",
+      "required": false,
+      "default": "interactive",
+      "description": "Visual style and semantic meaning",
+      "frameworks": {
+        "webComponent": "type=\"...\"",
+        "react": "type={...}",
+        "angular": "[type]=\"...\""
+      }
+    },
+    {
+      "name": "accent",
+      "type": "\"thick\" | \"thin\" | \"filled\"",
+      "required": false,
+      "default": "filled",
+      "description": "Style of accent bar",
+      "frameworks": {
+        "webComponent": "accent=\"...\"",
+        "react": "accent={...}",
+        "angular": "[accent]=\"...\""
+      }
+    },
+    {
+      "name": "padding",
+      "type": "\"relaxed\" | \"compact\"",
+      "required": false,
+      "default": "relaxed",
+      "description": "Internal spacing amount",
+      "frameworks": {
+        "webComponent": "padding=\"...\"",
+        "react": "padding={...}",
+        "angular": "[padding]=\"...\""
+      }
+    },
+    {
+      "name": "width",
+      "type": "\"full\" | \"content\"",
+      "required": false,
+      "default": "full",
+      "description": "How container sizes itself",
+      "frameworks": {
+        "webComponent": "width=\"...\"",
+        "react": "width={...}",
+        "angular": "[width]=\"...\""
+      }
+    },
+    {
+      "name": "maxwidth",
+      "type": "string",
+      "required": false,
+      "default": "none",
+      "description": "Maximum width constraint",
+      "frameworks": {
+        "webComponent": "maxwidth=\"...\"",
+        "react": "maxWidth={...}",
+        "angular": "[maxWidth]=\"...\""
+      }
+    },
+    {
+      "name": "testid",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "Test identifier",
+      "frameworks": {
+        "webComponent": "testid=\"...\"",
+        "react": "testId={...}",
+        "angular": "[testId]=\"...\""
+      }
+    },
+    {
+      "name": "mt",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin top",
+      "frameworks": {
+        "webComponent": "mt=\"...\"",
+        "react": "mt={...}",
+        "angular": "[mt]=\"...\""
+      }
+    },
+    {
+      "name": "mr",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin right",
+      "frameworks": {
+        "webComponent": "mr=\"...\"",
+        "react": "mr={...}",
+        "angular": "[mr]=\"...\""
+      }
+    },
+    {
+      "name": "mb",
+      "type": "Spacing",
+      "required": false,
+      "default": "m",
+      "description": "Margin bottom",
+      "frameworks": {
+        "webComponent": "mb=\"...\"",
+        "react": "mb={...}",
+        "angular": "[mb]=\"...\""
+      }
+    },
+    {
+      "name": "ml",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin left",
+      "frameworks": {
+        "webComponent": "ml=\"...\"",
+        "react": "ml={...}",
+        "angular": "[ml]=\"...\""
+      }
+    }
+  ],
+  "events": [],
+  "slots": [
+    {
+      "name": "title",
+      "description": "Header title (accent='thick' only)"
+    },
+    {
+      "name": "actions",
+      "description": "Header actions (accent='thick' only)"
+    }
+  ],
+  "criticalNotes": [
+    "Only use Container when content needs visual emphasis and grouping",
+    "Use accent='thick' when you need a header with title/actions",
+    "NOT a general layout container - use Block or Grid for that"
+  ],
+  "commonMistakes": [
+    {
+      "mistake": "Using Container for general page layout",
+      "fix": "Use Block, Grid, or native flexbox/grid for layout"
+    },
+    {
+      "mistake": "Using title/actions without accent='thick'",
+      "fix": "Set accent='thick' when using title or actions"
+    }
+  ],
+  "basicUsage": {
+    "webComponent": "<goa-container type=\"info\" accent=\"thick\">\n  <span slot=\"title\">Application Status</span>\n  <p>Your application is being reviewed.</p>\n</goa-container>",
+    "react": "<GoabContainer type=\"info\" accent=\"thick\" title=\"Application Status\">\n  <p>Your application is being reviewed.</p>\n</GoabContainer>",
+    "angular": "<goab-container type=\"info\" accent=\"thick\">\n  <span title>Application Status</span>\n  <p>Your application is being reviewed.</p>\n</goab-container>"
+  },
+  "relatedExamples": [
+    "show-status-on-a-card",
+    "card-view-of-case-files",
+    "card-grid",
+    "worker-dashboard-overview"
+  ],
+  "relatedComponents": [
+    "Callout",
+    "Block",
+    "Accordion"
+  ]
+}

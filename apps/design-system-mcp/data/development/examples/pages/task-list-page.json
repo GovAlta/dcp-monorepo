@@ -1,0 +1,131 @@
+{
+  "$schema": "../schema/recipe-schema-2.1.0-ai-context.json",
+  "title": "Task list page",
+  "description": "Organize complex multi-step services into manageable tasks with clear status indication, allowing users to complete sections in any order and track their progress.",
+  "category": "layout-patterns",
+  "tags": [
+    "task-management",
+    "progress-tracking",
+    "multi-step-forms",
+    "status-indication",
+    "service-organization"
+  ],
+  "government_service_context": {
+    "citizen_flows": {
+      "applicable": true,
+      "usage": "Citizens completing complex applications or multi-step services need clear organization and progress tracking to manage time and complete requirements efficiently."
+    },
+    "worker_flows": {
+      "applicable": true,
+      "usage": "Government workers managing case processing or administrative workflows benefit from task organization and status tracking for complex procedures."
+    },
+    "shared_components": {
+      "applicable": true,
+      "usage": "Task list patterns are universally useful for any interface requiring organized completion of multiple related activities."
+    }
+  },
+  "component_analysis": {
+    "primary_components": [
+      {
+        "name": "Progress Summary Callout",
+        "role": "Shows overall completion status with clear messaging",
+        "purpose": "Provides immediate context about remaining work and motivates completion"
+      },
+      {
+        "name": "Task Sections",
+        "role": "Groups related tasks under logical headings",
+        "purpose": "Organizes complex workflows into manageable, understandable chunks"
+      },
+      {
+        "name": "Task List Tables",
+        "role": "Displays individual tasks with status badges and links",
+        "purpose": "Enables task navigation and provides clear status visibility"
+      },
+      {
+        "name": "Status Badges",
+        "role": "Indicates task completion states using consistent visual language",
+        "purpose": "Allows quick scanning of progress and identification of available actions"
+      },
+      {
+        "name": "Dependency Messaging",
+        "role": "Explains when tasks cannot be started due to prerequisites",
+        "purpose": "Guides users through logical completion order when required"
+      }
+    ],
+    "accessibility_features": [
+      "Status badges include aria-labels for screen reader context",
+      "Task links are descriptive and indicate their purpose",
+      "Heading structure provides logical page organization",
+      "Dependency information is clearly communicated",
+      "Table structure supports assistive technology navigation"
+    ],
+    "user_experience_notes": [
+      "Tasks can be completed in flexible order when possible",
+      "Progress summary provides motivation and clear remaining work",
+      "Status badges use consistent color and text patterns",
+      "Dependency messaging prevents user frustration with blocked tasks",
+      "Section organization matches user mental models for complex processes"
+    ]
+  },
+  "implementation": {
+    "react": {
+      "code": "import React, { useState, useEffect } from 'react';\nimport {\n  GoabBadge,\n  GoabCallout,\n  GoabTable\n} from '@abgov/react-components';\nimport { GoabBadgeType } from '@abgov/ui-components-common';\n\ninterface Task {\n  id: string;\n  title: string;\n  status: 'completed' | 'in-progress' | 'not-started' | 'cannot-start';\n  link?: string;\n  dependencies?: string[];\n}\n\ninterface TaskSection {\n  id: string;\n  title: string;\n  description?: string;\n  tasks: Task[];\n}\n\nfunction TaskListPage() {\n  const [sections, setSections] = useState<TaskSection[]>([\n    {\n      id: 'before-start',\n      title: '1. Before you start',\n      tasks: [\n        {\n          id: 'terms',\n          title: 'Read terms of use',\n          status: 'completed',\n          link: '/terms'\n        }\n      ]\n    },\n    {\n      id: 'prepare-application',\n      title: '2. Prepare application',\n      tasks: [\n        {\n          id: 'contact-details',\n          title: 'Your contact details',\n          status: 'not-started',\n          link: '/contact-details'\n        },\n        {\n          id: 'family-info',\n          title: 'Your family',\n          status: 'not-started',\n          link: '/family',\n          dependencies: ['contact-details']\n        },\n        {\n          id: 'identity-verification',\n          title: 'Verify your identity',\n          status: 'not-started',\n          link: '/verify-identity',\n          dependencies: ['contact-details']\n        }\n      ]\n    },\n    {\n      id: 'schedule-service',\n      title: '3. Schedule service',\n      description: 'You need to complete the previous section before you can start this task.',\n      tasks: [\n        {\n          id: 'email-confirmation',\n          title: 'Receive email confirmation',\n          status: 'cannot-start',\n          dependencies: ['family-info', 'identity-verification']\n        },\n        {\n          id: 'payment',\n          title: 'Pay service fee',\n          status: 'cannot-start',\n          link: '/payment',\n          dependencies: ['email-confirmation']\n        }\n      ]\n    }\n  ]);\n\n  const getStatusConfig = (status: Task['status']): { type: GoabBadgeType; content: string } => {\n    const statusMap = {\n      'completed': { type: 'success' as GoabBadgeType, content: 'Completed' },\n      'in-progress': { type: 'dark' as GoabBadgeType, content: 'In progress' },\n      'not-started': { type: 'information' as GoabBadgeType, content: 'Not started' },\n      'cannot-start': { type: 'light' as GoabBadgeType, content: 'Cannot start yet' }\n    };\n    return statusMap[status];\n  };\n\n  const getCompletionStats = () => {\n    const allTasks = sections.flatMap(section => section.tasks);\n    const completedTasks = allTasks.filter(task => task.status === 'completed');\n    return {\n      completed: completedTasks.length,\n      total: allTasks.length\n    };\n  };\n\n  const updateTaskStatus = (taskId: string, newStatus: Task['status']) => {\n    setSections(prevSections => \n      prevSections.map(section => ({\n        ...section,\n        tasks: section.tasks.map(task => \n          task.id === taskId ? { ...task, status: newStatus } : task\n        )\n      }))\n    );\n  };\n\n  const handleTaskClick = (task: Task) => {\n    if (task.status === 'cannot-start') return;\n    \n    console.log(`Navigating to task: ${task.title}`);\n    if (task.link) {\n      // Navigation logic here\n      // For demo, update status to in-progress\n      if (task.status === 'not-started') {\n        updateTaskStatus(task.id, 'in-progress');\n      }\n    }\n  };\n\n  const completionStats = getCompletionStats();\n  const isApplicationComplete = completionStats.completed === completionStats.total;\n\n  return (\n    <div className=\"task-list-page\">\n      <h2>Apply for Alberta Child Benefit</h2>\n      \n      <div style={{ maxWidth: '22rem', marginTop: '1rem', marginBottom: '2rem' }}>\n        <GoabCallout\n          type={isApplicationComplete ? 'success' : 'important'}\n          size=\"medium\"\n          heading={isApplicationComplete ? 'Application complete' : 'Application incomplete'}\n        >\n          You have completed {completionStats.completed} of {completionStats.total} sections.\n          {isApplicationComplete && ' You can now submit your application.'}\n        </GoabCallout>\n      </div>\n\n      {sections.map((section) => (\n        <div key={section.id} className=\"task-section\">\n          <h3>{section.title}</h3>\n          {section.description && (\n            <p className=\"section-description\">{section.description}</p>\n          )}\n          \n          <GoabTable width=\"100%\" mb=\"2xl\" mt=\"l\">\n            <tbody>\n              {section.tasks.map((task) => {\n                const statusConfig = getStatusConfig(task.status);\n                const isClickable = task.status !== 'cannot-start' && task.link;\n                \n                return (\n                  <tr key={task.id}>\n                    <td>\n                      {isClickable ? (\n                        <a \n                          href={task.link} \n                          onClick={(e) => {\n                            e.preventDefault();\n                            handleTaskClick(task);\n                          }}\n                        >\n                          {task.title}\n                        </a>\n                      ) : (\n                        <span className={task.status === 'cannot-start' ? 'disabled-task' : ''}>\n                          {task.title}\n                        </span>\n                      )}\n                    </td>\n                    <td className=\"goa-table-number-column\">\n                      <GoabBadge\n                        type={statusConfig.type}\n                        content={statusConfig.content}\n                        ariaLabel={statusConfig.content.toLowerCase()}\n                      />\n                    </td>\n                  </tr>\n                );\n              })}\n            </tbody>\n          </GoabTable>\n        </div>\n      ))}\n    </div>\n  );\n}\n\n// Reusable TaskList component\nfunction TaskList({ \n  title, \n  sections, \n  onTaskClick,\n  completionMessage \n}: {\n  title: string;\n  sections: TaskSection[];\n  onTaskClick: (task: Task) => void;\n  completionMessage?: string;\n}) {\n  const getCompletionStats = () => {\n    const allTasks = sections.flatMap(section => section.tasks);\n    const completedTasks = allTasks.filter(task => task.status === 'completed');\n    return { completed: completedTasks.length, total: allTasks.length };\n  };\n\n  const getStatusConfig = (status: Task['status']) => {\n    const statusMap = {\n      'completed': { type: 'success' as GoabBadgeType, content: 'Completed' },\n      'in-progress': { type: 'dark' as GoabBadgeType, content: 'In progress' },\n      'not-started': { type: 'information' as GoabBadgeType, content: 'Not started' },\n      'cannot-start': { type: 'light' as GoabBadgeType, content: 'Cannot start yet' }\n    };\n    return statusMap[status];\n  };\n\n  const stats = getCompletionStats();\n  const isComplete = stats.completed === stats.total;\n\n  return (\n    <div className=\"task-list\">\n      <h2>{title}</h2>\n      \n      <div style={{ maxWidth: '22rem', margin: '1rem 0 2rem 0' }}>\n        <GoabCallout\n          type={isComplete ? 'success' : 'important'}\n          size=\"medium\"\n          heading={isComplete ? 'Tasks complete' : 'Tasks incomplete'}\n        >\n          You have completed {stats.completed} of {stats.total} sections.\n          {isComplete && completionMessage && ` ${completionMessage}`}\n        </GoabCallout>\n      </div>\n\n      {sections.map((section) => (\n        <div key={section.id}>\n          <h3>{section.title}</h3>\n          {section.description && (\n            <p style={{ marginLeft: 'var(--goa-space-xl)', fontSize: 'var(--goa-typography-body-s)', color: 'var(--goa-color-text-secondary)' }}>\n              {section.description}\n            </p>\n          )}\n          \n          <GoabTable width=\"100%\" mb=\"2xl\" mt=\"l\">\n            <tbody>\n              {section.tasks.map((task) => {\n                const statusConfig = getStatusConfig(task.status);\n                const isClickable = task.status !== 'cannot-start' && task.link;\n                \n                return (\n                  <tr key={task.id}>\n                    <td>\n                      {isClickable ? (\n                        <a href=\"#\" onClick={(e) => { e.preventDefault(); onTaskClick(task); }}>\n                          {task.title}\n                        </a>\n                      ) : (\n                        task.title\n                      )}\n                    </td>\n                    <td className=\"goa-table-number-column\">\n                      <GoabBadge\n                        type={statusConfig.type}\n                        content={statusConfig.content}\n                        ariaLabel={statusConfig.content.toLowerCase()}\n                      />\n                    </td>\n                  </tr>\n                );\n              })}\n            </tbody>\n          </GoabTable>\n        </div>\n      ))}\n    </div>\n  );\n}",
+      "styling": ".task-list-page .section-description {\n  margin-left: var(--goa-space-xl);\n  margin-top: var(--goa-space-2xs);\n  font-size: var(--goa-typography-body-s);\n  color: var(--goa-color-text-secondary);\n}\n\n.task-list-page .disabled-task {\n  color: var(--goa-color-text-secondary);\n}\n\n.task-list-page .task-section {\n  margin-bottom: var(--goa-space-xl);\n}\n\n.task-list-page h3 {\n  margin-top: var(--goa-space-xl);\n  margin-bottom: var(--goa-space-s);\n}"
+    },
+    "angular": {
+      "code": "import { Component, Input, Output, EventEmitter } from '@angular/core';\nimport { GoabBadgeType } from '@abgov/ui-components-common';\n\ninterface Task {\n  id: string;\n  title: string;\n  status: 'completed' | 'in-progress' | 'not-started' | 'cannot-start';\n  link?: string;\n  dependencies?: string[];\n}\n\ninterface TaskSection {\n  id: string;\n  title: string;\n  description?: string;\n  tasks: Task[];\n}\n\n@Component({\n  selector: 'app-task-list-page',\n  template: `\n    <div class=\"task-list-page\">\n      <h2>{{ title }}</h2>\n      \n      <div style=\"max-width: 22rem; margin: 1rem 0 2rem 0;\">\n        <goab-callout\n          [type]=\"isComplete ? 'success' : 'important'\"\n          size=\"medium\"\n          [heading]=\"isComplete ? 'Tasks complete' : 'Tasks incomplete'\"\n        >\n          You have completed {{ completedCount }} of {{ totalCount }} sections.\n          <span *ngIf=\"isComplete && completionMessage\"> {{ completionMessage }}</span>\n        </goab-callout>\n      </div>\n\n      <div *ngFor=\"let section of sections\" class=\"task-section\">\n        <h3>{{ section.title }}</h3>\n        <p *ngIf=\"section.description\" class=\"section-description\">\n          {{ section.description }}\n        </p>\n        \n        <goab-table width=\"100%\" mb=\"2xl\" mt=\"l\">\n          <tbody>\n            <tr *ngFor=\"let task of section.tasks\">\n              <td>\n                <a \n                  *ngIf=\"isTaskClickable(task); else nonClickableTask\"\n                  href=\"#\"\n                  (click)=\"handleTaskClick($event, task)\"\n                >\n                  {{ task.title }}\n                </a>\n                <ng-template #nonClickableTask>\n                  <span [class.disabled-task]=\"task.status === 'cannot-start'\">\n                    {{ task.title }}\n                  </span>\n                </ng-template>\n              </td>\n              <td class=\"goa-table-number-column\">\n                <goab-badge\n                  [type]=\"getStatusConfig(task.status).type\"\n                  [content]=\"getStatusConfig(task.status).content\"\n                  [ariaLabel]=\"getStatusConfig(task.status).content.toLowerCase()\"\n                ></goab-badge>\n              </td>\n            </tr>\n          </tbody>\n        </goab-table>\n      </div>\n    </div>\n  `,\n  styleUrls: ['./task-list-page.component.css']\n})\nexport class TaskListPageComponent {\n  @Input() title: string = '';\n  @Input() sections: TaskSection[] = [];\n  @Input() completionMessage?: string;\n  @Output() taskClick = new EventEmitter<Task>();\n\n  get completedCount(): number {\n    const allTasks = this.sections.flatMap(section => section.tasks);\n    return allTasks.filter(task => task.status === 'completed').length;\n  }\n\n  get totalCount(): number {\n    return this.sections.flatMap(section => section.tasks).length;\n  }\n\n  get isComplete(): boolean {\n    return this.completedCount === this.totalCount;\n  }\n\n  getStatusConfig(status: Task['status']): { type: GoabBadgeType; content: string } {\n    const statusMap = {\n      'completed': { type: 'success' as GoabBadgeType, content: 'Completed' },\n      'in-progress': { type: 'dark' as GoabBadgeType, content: 'In progress' },\n      'not-started': { type: 'information' as GoabBadgeType, content: 'Not started' },\n      'cannot-start': { type: 'light' as GoabBadgeType, content: 'Cannot start yet' }\n    };\n    return statusMap[status];\n  }\n\n  isTaskClickable(task: Task): boolean {\n    return task.status !== 'cannot-start' && !!task.link;\n  }\n\n  handleTaskClick(event: Event, task: Task): void {\n    event.preventDefault();\n    this.taskClick.emit(task);\n  }\n}\n\n// Example implementation component\n@Component({\n  selector: 'app-child-benefit-tasks',\n  template: `\n    <app-task-list-page\n      title=\"Apply for Alberta Child Benefit\"\n      [sections]=\"taskSections\"\n      completionMessage=\"You can now submit your application.\"\n      (taskClick)=\"onTaskClick($event)\"\n    ></app-task-list-page>\n  `\n})\nexport class ChildBenefitTasksComponent {\n  taskSections: TaskSection[] = [\n    {\n      id: 'before-start',\n      title: '1. Before you start',\n      tasks: [\n        {\n          id: 'terms',\n          title: 'Read terms of use',\n          status: 'completed',\n          link: '/terms'\n        }\n      ]\n    },\n    {\n      id: 'prepare-application',\n      title: '2. Prepare application',\n      tasks: [\n        {\n          id: 'contact-details',\n          title: 'Your contact details',\n          status: 'not-started',\n          link: '/contact-details'\n        },\n        {\n          id: 'family-info',\n          title: 'Your family',\n          status: 'not-started',\n          link: '/family'\n        },\n        {\n          id: 'identity-verification',\n          title: 'Verify your identity',\n          status: 'not-started',\n          link: '/verify-identity'\n        }\n      ]\n    },\n    {\n      id: 'schedule-service',\n      title: '3. Schedule service',\n      description: 'You need to complete the previous section before you can start this task.',\n      tasks: [\n        {\n          id: 'email-confirmation',\n          title: 'Receive email confirmation',\n          status: 'cannot-start'\n        },\n        {\n          id: 'payment',\n          title: 'Pay service fee',\n          status: 'cannot-start',\n          link: '/payment'\n        }\n      ]\n    }\n  ];\n\n  onTaskClick(task: Task): void {\n    console.log('Task clicked:', task.title);\n    // Handle navigation or task initiation\n    if (task.link) {\n      // Navigation logic\n    }\n  }\n}"
+    }
+  },
+  "usage_guidelines": {
+    "when_to_use": [
+      "Complex multi-step services with multiple related tasks",
+      "Applications where users can complete sections in flexible order",
+      "Services requiring clear progress tracking and status visibility",
+      "Workflows where task dependencies need to be managed",
+      "Long processes that users may complete over multiple sessions"
+    ],
+    "when_not_to_use": [
+      "Simple linear workflows better suited to steppers",
+      "Short processes with only 2-3 steps",
+      "Services where task order is strictly sequential",
+      "When progress tracking adds unnecessary complexity"
+    ],
+    "best_practices": [
+      "Group related tasks into logical sections with clear headings",
+      "Use consistent status badges across all tasks",
+      "Provide clear progress summary at the top of the page",
+      "Allow flexible task completion order when possible",
+      "Clearly indicate when tasks have dependencies",
+      "Use descriptive task titles that indicate what users will accomplish",
+      "Show total progress to motivate completion",
+      "Provide clear navigation back to task list from individual tasks"
+    ]
+  },
+  "variations": [
+    {
+      "name": "Sequential task list",
+      "description": "Tasks must be completed in strict order",
+      "code_change": "Disable tasks until prerequisites complete: status: dependencies.every(dep => isCompleted(dep)) ? 'not-started' : 'cannot-start'"
+    },
+    {
+      "name": "Task list with time estimates",
+      "description": "Show estimated completion time for each task",
+      "code_change": "Add time estimates: <span class='time-estimate'>(~5 minutes)</span>"
+    },
+    {
+      "name": "Task list with optional sections",
+      "description": "Mark some sections as optional",
+      "code_change": "Add optional indicator: <h3>{{ section.title }} <span class='optional'>(Optional)</span></h3>"
+    },
+    {
+      "name": "Expandable task details",
+      "description": "Include collapsible details for each task",
+      "code_change": "Add expandable content: <GoabDetails heading={task.title}><p>{task.description}</p></GoabDetails>"
+    }
+  ],
+  "related_patterns": [
+    "form-stepper-with-controlled-navigation",
+    "start-page",
+    "review-page"
+  ]
+}

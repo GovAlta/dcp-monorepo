@@ -1,0 +1,124 @@
+{
+  "name": "LinkButton",
+  "category": "component",
+  "summary": "",
+  "import": "import { GoabLinkButton } from '@abgov/react-components'",
+  "customElement": {
+    "tagName": "goa-link-button",
+    "reactName": "GoabLinkButton",
+    "angularSelector": "goab-link-button"
+  },
+  "props": [
+    {
+      "name": "color",
+      "type": "\"interactive\" | \"light\"",
+      "required": false,
+      "default": "interactive",
+      "description": "",
+      "frameworks": {
+        "webComponent": "color=\"...\"",
+        "react": "color={...}",
+        "angular": "[color]=\"...\""
+      }
+    },
+    {
+      "name": "leadingIcon",
+      "type": "GoAIconType",
+      "required": true,
+      "default": null,
+      "description": "",
+      "frameworks": {
+        "webComponent": "leading-icon=\"...\"",
+        "react": "leadingIcon={...}",
+        "angular": "[leadingIcon]=\"...\""
+      }
+    },
+    {
+      "name": "trailingIcon",
+      "type": "GoAIconType",
+      "required": true,
+      "default": null,
+      "description": "",
+      "frameworks": {
+        "webComponent": "trailing-icon=\"...\"",
+        "react": "trailingIcon={...}",
+        "angular": "[trailingIcon]=\"...\""
+      }
+    },
+    {
+      "name": "mt",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "",
+      "frameworks": {
+        "webComponent": "mt=\"...\"",
+        "react": "mt={...}",
+        "angular": "[mt]=\"...\""
+      }
+    },
+    {
+      "name": "mr",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "",
+      "frameworks": {
+        "webComponent": "mr=\"...\"",
+        "react": "mr={...}",
+        "angular": "[mr]=\"...\""
+      }
+    },
+    {
+      "name": "mb",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "",
+      "frameworks": {
+        "webComponent": "mb=\"...\"",
+        "react": "mb={...}",
+        "angular": "[mb]=\"...\""
+      }
+    },
+    {
+      "name": "ml",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "",
+      "frameworks": {
+        "webComponent": "ml=\"...\"",
+        "react": "ml={...}",
+        "angular": "[ml]=\"...\""
+      }
+    }
+  ],
+  "events": [
+    {
+      "name": "_click",
+      "type": "(event) => void",
+      "description": "",
+      "frameworks": {
+        "webComponent": "_click custom event",
+        "react": "onClick prop",
+        "angular": "(onClick) event binding"
+      }
+    }
+  ],
+  "slots": [
+    {
+      "name": "default",
+      "description": ""
+    }
+  ],
+  "criticalNotes": [],
+  "commonMistakes": [],
+  "basicUsage": {
+    "webComponent": "",
+    "react": "",
+    "angular": ""
+  },
+  "relatedExamples": [],
+  "relatedComponents": []
+}

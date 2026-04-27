@@ -1,0 +1,112 @@
+{
+  "name": "Scrollable",
+  "category": "component",
+  "summary": "",
+  "import": "import { GoabScrollable } from '@abgov/react-components'",
+  "customElement": {
+    "tagName": "goa-scrollable",
+    "reactName": "GoabScrollable",
+    "angularSelector": "goab-scrollable"
+  },
+  "props": [
+    {
+      "name": "direction",
+      "type": "\"vertical\" | \"horizontal\"",
+      "required": false,
+      "default": "vertical",
+      "description": "",
+      "frameworks": {
+        "webComponent": "direction=\"...\"",
+        "react": "direction={...}",
+        "angular": "[direction]=\"...\""
+      }
+    },
+    {
+      "name": "hpadding",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "",
+      "frameworks": {
+        "webComponent": "hpadding=\"...\"",
+        "react": "hpadding={...}",
+        "angular": "[hpadding]=\"...\""
+      }
+    },
+    {
+      "name": "vpadding",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "",
+      "frameworks": {
+        "webComponent": "vpadding=\"...\"",
+        "react": "vpadding={...}",
+        "angular": "[vpadding]=\"...\""
+      }
+    },
+    {
+      "name": "maxheight",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "",
+      "frameworks": {
+        "webComponent": "maxheight=\"...\"",
+        "react": "maxHeight={...}",
+        "angular": "[maxHeight]=\"...\""
+      }
+    },
+    {
+      "name": "offsetHeight",
+      "type": "number",
+      "required": true,
+      "default": null,
+      "description": "",
+      "frameworks": {
+        "webComponent": "offset-height=\"...\"",
+        "react": "offsetHeight={...}",
+        "angular": "[offsetHeight]=\"...\""
+      }
+    },
+    {
+      "name": "scrollHeight",
+      "type": "number",
+      "required": true,
+      "default": null,
+      "description": "",
+      "frameworks": {
+        "webComponent": "scroll-height=\"...\"",
+        "react": "scrollHeight={...}",
+        "angular": "[scrollHeight]=\"...\""
+      }
+    }
+  ],
+  "events": [
+    {
+      "name": "_scroll",
+      "type": "(event) => void",
+      "description": "",
+      "frameworks": {
+        "webComponent": "_scroll custom event",
+        "react": "onScroll prop",
+        "angular": "(onScroll) event binding"
+      }
+    }
+  ],
+  "slots": [
+    {
+      "name": "default",
+      "description": ""
+    }
+  ],
+  "criticalNotes": [],
+  "commonMistakes": [],
+  "basicUsage": {
+    "webComponent": "",
+    "react": "",
+    "angular": ""
+  },
+  "relatedExamples": [],
+  "relatedComponents": []
+}

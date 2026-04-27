@@ -1,0 +1,65 @@
+{
+  "name": "DataGrid",
+  "category": "component",
+  "summary": "",
+  "import": "import { GoabDataGrid } from '@abgov/react-components'",
+  "customElement": {
+    "tagName": "goa-data-grid",
+    "reactName": "GoabDataGrid",
+    "angularSelector": "goab-data-grid"
+  },
+  "props": [
+    {
+      "name": "keyboardIcon",
+      "type": "string | boolean",
+      "required": false,
+      "default": "true",
+      "description": "",
+      "frameworks": {
+        "webComponent": "keyboard-icon=\"...\"",
+        "react": "keyboardIcon={...}",
+        "angular": "[keyboardIcon]=\"...\""
+      }
+    },
+    {
+      "name": "keyboardIconPosition",
+      "type": "\"left\" | \"right\"",
+      "required": false,
+      "default": "left",
+      "description": "",
+      "frameworks": {
+        "webComponent": "keyboard-icon-position=\"...\"",
+        "react": "keyboardIconPosition={...}",
+        "angular": "[keyboardIconPosition]=\"...\""
+      }
+    },
+    {
+      "name": "keyboardNav",
+      "type": "\"layout\" | \"table\"",
+      "required": false,
+      "default": "table",
+      "description": "",
+      "frameworks": {
+        "webComponent": "keyboard-nav=\"...\"",
+        "react": "keyboardNav={...}",
+        "angular": "[keyboardNav]=\"...\""
+      }
+    }
+  ],
+  "events": [],
+  "slots": [
+    {
+      "name": "default",
+      "description": ""
+    }
+  ],
+  "criticalNotes": [],
+  "commonMistakes": [],
+  "basicUsage": {
+    "webComponent": "",
+    "react": "",
+    "angular": ""
+  },
+  "relatedExamples": [],
+  "relatedComponents": []
+}

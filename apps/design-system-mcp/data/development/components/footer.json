@@ -1,0 +1,60 @@
+{
+  "name": "AppFooter",
+  "category": "navigation",
+  "summary": "Standard government footer with navigation links and meta information.",
+  "import": "import { GoabAppFooter, GoabAppFooterNavSection, GoabAppFooterMetaSection } from '@abgov/react-components'",
+  "customElement": {
+    "tagName": "goa-app-footer",
+    "reactName": "GoabAppFooter",
+    "angularSelector": "goab-app-footer"
+  },
+  "subComponents": {
+    "navSection": {
+      "tagName": "goa-app-footer-nav-section",
+      "reactName": "GoabAppFooterNavSection",
+      "angularSelector": "goab-app-footer-nav-section"
+    },
+    "metaSection": {
+      "tagName": "goa-app-footer-meta-section",
+      "reactName": "GoabAppFooterMetaSection",
+      "angularSelector": "goab-app-footer-meta-section"
+    }
+  },
+
+  "props": [
+    { "name": "maxContentWidth", "type": "string", "required": false, "description": "Max width of footer content" },
+    { "name": "testId", "type": "string", "required": false, "description": "Test identifier" }
+  ],
+
+  "navSectionProps": [
+    { "name": "heading", "type": "string", "required": false, "description": "Section heading" },
+    { "name": "maxColumnCount", "type": "number", "required": false, "default": 1, "description": "Number of link columns" }
+  ],
+
+  "metaSectionProps": [],
+
+  "events": [],
+
+  "slots": [
+    { "name": "default", "description": "Footer nav and meta sections" }
+  ],
+
+  "criticalNotes": [
+    "Include required GoA links (Privacy, Terms of Use, Accessibility)",
+    "Use GoabAppFooterNavSection for navigation link groups",
+    "Use GoabAppFooterMetaSection for copyright and legal text"
+  ],
+
+  "basicUsage": {
+    "webComponent": "<goa-app-footer>\n  <goa-app-footer-nav-section heading=\"Quick Links\">\n    <a href=\"/about\">About</a>\n    <a href=\"/contact\">Contact</a>\n  </goa-app-footer-nav-section>\n  <goa-app-footer-meta-section>\n    <p>&copy; 2024 Government of Alberta</p>\n  </goa-app-footer-meta-section>\n</goa-app-footer>",
+    "react": "<GoabAppFooter>\n  <GoabAppFooterNavSection heading=\"Quick Links\">\n    <a href=\"/about\">About</a>\n    <a href=\"/contact\">Contact</a>\n  </GoabAppFooterNavSection>\n  <GoabAppFooterMetaSection>\n    <p>&copy; 2024 Government of Alberta</p>\n  </GoabAppFooterMetaSection>\n</GoabAppFooter>",
+    "angular": "<goab-app-footer>\n  <goab-app-footer-nav-section heading=\"Quick Links\">\n    <a href=\"/about\">About</a>\n    <a href=\"/contact\">Contact</a>\n  </goab-app-footer-nav-section>\n  <goab-app-footer-meta-section>\n    <p>&copy; 2024 Government of Alberta</p>\n  </goab-app-footer-meta-section>\n</goab-app-footer>"
+  },
+
+  "relatedExamples": [
+    "show-quick-links",
+    "show-links-to-navigation-items"
+  ],
+
+  "relatedComponents": ["AppHeader", "MicrositeHeader"]
+}

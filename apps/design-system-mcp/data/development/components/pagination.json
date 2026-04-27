@@ -1,0 +1,151 @@
+{
+  "name": "Pagination",
+  "category": "navigation",
+  "summary": "Navigation for moving between pages of data with configurable page size.",
+  "import": "import { GoabPagination } from '@abgov/react-components'",
+  "customElement": {
+    "tagName": "goa-pagination",
+    "reactName": "GoabPagination",
+    "angularSelector": "goab-pagination"
+  },
+  "props": [
+    {
+      "name": "pagenumber",
+      "type": "number",
+      "required": true,
+      "default": null,
+      "description": "Current page (1-based)",
+      "frameworks": {
+        "webComponent": "pagenumber=\"...\"",
+        "react": "pagenumber={...}",
+        "angular": "[pagenumber]=\"...\""
+      }
+    },
+    {
+      "name": "itemcount",
+      "type": "number",
+      "required": true,
+      "default": null,
+      "description": "Total number of items",
+      "frameworks": {
+        "webComponent": "itemcount=\"...\"",
+        "react": "itemcount={...}",
+        "angular": "[itemcount]=\"...\""
+      }
+    },
+    {
+      "name": "perpagecount",
+      "type": "number",
+      "required": false,
+      "default": "10",
+      "description": "Items per page",
+      "frameworks": {
+        "webComponent": "perpagecount=\"...\"",
+        "react": "perpagecount={...}",
+        "angular": "[perpagecount]=\"...\""
+      }
+    },
+    {
+      "name": "variant",
+      "type": "\"all\" | \"links-only\"",
+      "required": false,
+      "default": "all",
+      "description": "'all' = full controls, 'links-only' = just prev/next",
+      "frameworks": {
+        "webComponent": "variant=\"...\"",
+        "react": "variant={...}",
+        "angular": "[variant]=\"...\""
+      }
+    },
+    {
+      "name": "testid",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "Test identifier",
+      "frameworks": {
+        "webComponent": "testid=\"...\"",
+        "react": "testId={...}",
+        "angular": "[testId]=\"...\""
+      }
+    },
+    {
+      "name": "mt",
+      "type": "Spacing",
+      "required": false,
+      "default": "none",
+      "description": "Margin top",
+      "frameworks": {
+        "webComponent": "mt=\"...\"",
+        "react": "mt={...}",
+        "angular": "[mt]=\"...\""
+      }
+    },
+    {
+      "name": "mr",
+      "type": "Spacing",
+      "required": false,
+      "default": "none",
+      "description": "Margin right",
+      "frameworks": {
+        "webComponent": "mr=\"...\"",
+        "react": "mr={...}",
+        "angular": "[mr]=\"...\""
+      }
+    },
+    {
+      "name": "mb",
+      "type": "Spacing",
+      "required": false,
+      "default": "m",
+      "description": "Margin bottom",
+      "frameworks": {
+        "webComponent": "mb=\"...\"",
+        "react": "mb={...}",
+        "angular": "[mb]=\"...\""
+      }
+    },
+    {
+      "name": "ml",
+      "type": "Spacing",
+      "required": false,
+      "default": "none",
+      "description": "Margin left",
+      "frameworks": {
+        "webComponent": "ml=\"...\"",
+        "react": "ml={...}",
+        "angular": "[ml]=\"...\""
+      }
+    }
+  ],
+  "events": [
+    {
+      "name": "_change",
+      "type": "(event) => void",
+      "description": "",
+      "frameworks": {
+        "webComponent": "_change custom event",
+        "react": "onChange prop",
+        "angular": "(onChange) event binding"
+      }
+    }
+  ],
+  "slots": [],
+  "criticalNotes": [
+    "itemCount and pageNumber are REQUIRED",
+    "Use variant='links-only' for mobile-friendly simple navigation",
+    "Standard perPageCount values: 10, 20, 25, 50, 100"
+  ],
+  "basicUsage": {
+    "webComponent": "<goa-pagination item-count=\"250\" page-number=\"1\" per-page-count=\"20\"></goa-pagination>",
+    "react": "<GoabPagination\n  itemCount={250}\n  pageNumber={currentPage}\n  perPageCount={20}\n  onChange={(detail) => setCurrentPage(detail.page)}\n/>",
+    "angular": "<goab-pagination\n  [itemCount]=\"250\"\n  [pageNumber]=\"currentPage\"\n  [perPageCount]=\"20\"\n  (onChange)=\"onPageChange($event)\">\n</goab-pagination>"
+  },
+  "relatedExamples": [
+    "show-number-of-results-per-page"
+  ],
+  "relatedComponents": [
+    "Table",
+    "Dropdown"
+  ]
+}

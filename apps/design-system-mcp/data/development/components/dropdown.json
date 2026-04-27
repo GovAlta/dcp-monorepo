@@ -1,0 +1,350 @@
+{
+  "name": "Dropdown",
+  "category": "form",
+  "summary": "Selection component for choosing from predefined options. Always wrap in FormItem for proper labeling.",
+  "import": "import { GoabDropdown, GoabDropdownItem } from '@abgov/react-components'",
+  "customElement": {
+    "tagName": "goa-dropdown",
+    "reactName": "GoabDropdown",
+    "angularSelector": "goab-dropdown"
+  },
+  "subComponents": {
+    "dropdownItem": {
+      "tagName": "goa-dropdown-item",
+      "reactName": "GoabDropdownItem",
+      "angularSelector": "goab-dropdown-item"
+    }
+  },
+  "props": [
+    {
+      "name": "name",
+      "type": "string",
+      "required": true,
+      "default": null,
+      "description": "Form field identifier",
+      "frameworks": {
+        "webComponent": "name=\"...\"",
+        "react": "name={...}",
+        "angular": "[name]=\"...\""
+      }
+    },
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "Accessible label when no visible label",
+      "frameworks": {
+        "webComponent": "aria-label=\"...\"",
+        "react": "ariaLabel={...}",
+        "angular": "[ariaLabel]=\"...\""
+      }
+    },
+    {
+      "name": "ariaLabelledBy",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "",
+      "frameworks": {
+        "webComponent": "aria-labelled-by=\"...\"",
+        "react": "ariaLabelledBy={...}",
+        "angular": "[ariaLabelledBy]=\"...\""
+      }
+    },
+    {
+      "name": "value",
+      "type": "string | undefined",
+      "required": false,
+      "default": "",
+      "description": "Currently selected value",
+      "frameworks": {
+        "webComponent": "value=\"...\"",
+        "react": "value={...}",
+        "angular": "[value]=\"...\""
+      }
+    },
+    {
+      "name": "filterable",
+      "type": "boolean",
+      "required": false,
+      "default": "false",
+      "description": "Enable search/filter",
+      "frameworks": {
+        "webComponent": "filterable=\"true\"",
+        "react": "filterable={true}",
+        "angular": "[filterable]=\"true\""
+      }
+    },
+    {
+      "name": "leadingIcon",
+      "type": "GoAIconType",
+      "required": false,
+      "default": null,
+      "description": "Icon on left side",
+      "frameworks": {
+        "webComponent": "leading-icon=\"...\"",
+        "react": "leadingIcon={...}",
+        "angular": "[leadingIcon]=\"...\""
+      }
+    },
+    {
+      "name": "maxHeight",
+      "type": "string",
+      "required": false,
+      "default": "276px",
+      "description": "Max height of options menu",
+      "frameworks": {
+        "webComponent": "max-height=\"...\"",
+        "react": "maxHeight={...}",
+        "angular": "[maxHeight]=\"...\""
+      }
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "Text when no option selected",
+      "frameworks": {
+        "webComponent": "placeholder=\"...\"",
+        "react": "placeholder={...}",
+        "angular": "[placeholder]=\"...\""
+      }
+    },
+    {
+      "name": "width",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "",
+      "frameworks": {
+        "webComponent": "width=\"...\"",
+        "react": "width={...}",
+        "angular": "[width]=\"...\""
+      }
+    },
+    {
+      "name": "maxWidth",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "",
+      "frameworks": {
+        "webComponent": "max-width=\"...\"",
+        "react": "maxWidth={...}",
+        "angular": "[maxWidth]=\"...\""
+      }
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "required": false,
+      "default": "false",
+      "description": "Disable interaction",
+      "frameworks": {
+        "webComponent": "disabled=\"true\"",
+        "react": "disabled={true}",
+        "angular": "[disabled]=\"true\""
+      }
+    },
+    {
+      "name": "error",
+      "type": "boolean",
+      "required": false,
+      "default": "false",
+      "description": "Show error state",
+      "frameworks": {
+        "webComponent": "error=\"true\"",
+        "react": "error={true}",
+        "angular": "[error]=\"true\""
+      }
+    },
+    {
+      "name": "multiselect",
+      "type": "boolean",
+      "required": false,
+      "default": "false",
+      "description": "Allow multiple selections",
+      "frameworks": {
+        "webComponent": "multiselect=\"true\"",
+        "react": "multiselect={true}",
+        "angular": "[multiselect]=\"true\""
+      }
+    },
+    {
+      "name": "native",
+      "type": "boolean",
+      "required": false,
+      "default": "false",
+      "description": "Use native browser select",
+      "frameworks": {
+        "webComponent": "native=\"true\"",
+        "react": "native={true}",
+        "angular": "[native]=\"true\""
+      }
+    },
+    {
+      "name": "size",
+      "type": "\"default\" | \"compact\"",
+      "required": false,
+      "default": "default",
+      "description": "",
+      "frameworks": {
+        "webComponent": "size=\"...\"",
+        "react": "size={...}",
+        "angular": "[size]=\"...\""
+      }
+    },
+    {
+      "name": "relative",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "",
+      "frameworks": {
+        "webComponent": "relative=\"...\"",
+        "react": "relative={...}",
+        "angular": "[relative]=\"...\""
+      }
+    },
+    {
+      "name": "mt",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin top",
+      "frameworks": {
+        "webComponent": "mt=\"...\"",
+        "react": "mt={...}",
+        "angular": "[mt]=\"...\""
+      }
+    },
+    {
+      "name": "mr",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin right",
+      "frameworks": {
+        "webComponent": "mr=\"...\"",
+        "react": "mr={...}",
+        "angular": "[mr]=\"...\""
+      }
+    },
+    {
+      "name": "mb",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin bottom",
+      "frameworks": {
+        "webComponent": "mb=\"...\"",
+        "react": "mb={...}",
+        "angular": "[mb]=\"...\""
+      }
+    },
+    {
+      "name": "ml",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin left",
+      "frameworks": {
+        "webComponent": "ml=\"...\"",
+        "react": "ml={...}",
+        "angular": "[ml]=\"...\""
+      }
+    },
+    {
+      "name": "autoComplete",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "",
+      "frameworks": {
+        "webComponent": "auto-complete=\"...\"",
+        "react": "autoComplete={...}",
+        "angular": "[autoComplete]=\"...\""
+      }
+    },
+    {
+      "name": "testId",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "Test identifier",
+      "frameworks": {
+        "webComponent": "test-id=\"...\"",
+        "react": "testId={...}",
+        "angular": "[testId]=\"...\""
+      }
+    },
+    {
+      "name": "disableGlobalClosePopover",
+      "type": "boolean",
+      "required": false,
+      "default": "false",
+      "description": "",
+      "frameworks": {
+        "webComponent": "disable-global-close-popover=\"...\"",
+        "react": "disableGlobalClosePopover={...}",
+        "angular": "[disableGlobalClosePopover]=\"...\""
+      }
+    }
+  ],
+  "dropdownItemProps": [
+    {
+      "name": "value",
+      "type": "string",
+      "required": true,
+      "description": "Value for this option"
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false,
+      "description": "Display text (defaults to content)"
+    }
+  ],
+  "events": [
+    {
+      "name": "_change",
+      "type": "(event) => void",
+      "payload": "{ name",
+      "description": "",
+      "frameworks": {
+        "webComponent": "_change custom event",
+        "react": "onChange prop",
+        "angular": "(onChange) event binding"
+      }
+    }
+  ],
+  "slots": [
+    {
+      "name": "default",
+      "description": "GoabDropdownItem components"
+    }
+  ],
+  "criticalNotes": [
+    "Always wrap in GoabFormItem for proper labeling",
+    "NEVER add width prop unless explicitly required by design",
+    "ariaLabel required when not wrapped in FormItem",
+    "multiselect changes payload from string to string[]"
+  ],
+  "basicUsage": {
+    "webComponent": "<goa-form-item label=\"Province\">\n  <goa-dropdown name=\"province\" placeholder=\"Select a province\">\n    <goa-dropdown-item value=\"AB\">Alberta</goa-dropdown-item>\n    <goa-dropdown-item value=\"BC\">British Columbia</goa-dropdown-item>\n  </goa-dropdown>\n</goa-form-item>",
+    "react": "<GoabFormItem label=\"Province\">\n  <GoabDropdown\n    name=\"province\"\n    value={province}\n    placeholder=\"Select a province\"\n    onChange={(detail) => setProvince(detail.value)}\n  >\n    <GoabDropdownItem value=\"AB\">Alberta</GoabDropdownItem>\n    <GoabDropdownItem value=\"BC\">British Columbia</GoabDropdownItem>\n  </GoabDropdown>\n</GoabFormItem>",
+    "angular": "<goab-form-item label=\"Province\">\n  <goab-dropdown\n    name=\"province\"\n    [value]=\"province\"\n    placeholder=\"Select a province\"\n    (onChange)=\"onProvinceChange($event)\">\n    <goab-dropdown-item value=\"AB\">Alberta</goab-dropdown-item>\n    <goab-dropdown-item value=\"BC\">British Columbia</goab-dropdown-item>\n  </goab-dropdown>\n</goab-form-item>"
+  },
+  "relatedExamples": [
+    "dynamically-add-an-item-to-a-dropdown-list",
+    "dynamically-change-items-in-a-dropdown-list",
+    "show-number-of-results-per-page"
+  ],
+  "relatedComponents": [
+    "FormItem",
+    "Radio",
+    "Checkbox"
+  ]
+}

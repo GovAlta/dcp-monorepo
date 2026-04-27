@@ -1,0 +1,95 @@
+{
+  "$schema": "../recipe-schema.json",
+  "schemaVersion": "2.1.0-ai-context",
+  "recipeId": "confirm-that-an-application-was-submitted",
+  "recipeName": "Confirm That an Application Was Submitted",
+  "category": "communication-and-feedback",
+  "summary": "Provide clear confirmation to users after successful application submission with confirmation details and next steps",
+  "serviceContext": {
+    "useCase": "Reassure users that their application or form submission was successful and provide them with confirmation details and guidance on next steps",
+    "userType": "citizen",
+    "governmentServiceFlows": [
+      "When citizens submit applications for benefits, permits, or services",
+      "When users complete multi-step forms and need confirmation of successful submission",
+      "When providing confirmation numbers or reference IDs for tracking purposes",
+      "When directing users to next steps after completing an application process"
+    ],
+    "relatedPatterns": [
+      "result-page",
+      "communicate-a-future-service-outage",
+      "start-page",
+      "basic-page-layout"
+    ]
+  },
+  "components": [
+    {
+      "componentName": "GoabCallout",
+      "role": "Success confirmation container",
+      "purpose": "Provide prominent visual confirmation of successful application submission"
+    },
+    {
+      "componentName": "GoabButtonGroup",
+      "role": "Next action options container",
+      "purpose": "Present clear navigation options for users after submission"
+    },
+    {
+      "componentName": "GoabButton",
+      "role": "Next step navigation",
+      "purpose": "Allow users to navigate to related services or return to dashboard"
+    },
+    {
+      "componentName": "GoabSpacer",
+      "role": "Visual spacing element",
+      "purpose": "Provide appropriate spacing between content sections"
+    }
+  ],
+  "codeReference": {
+    "exampleFile": "confirm-that-an-application-was-submitted.tsx",
+    "linesOfCode": 146,
+    "lastModified": "2024-01-01T00:00:00.000Z"
+  },
+  "implementation": {
+    "complexity": "low",
+    "keyPatterns": [
+      "Success callout with confirmation details and reference number",
+      "Clear page structure with heading, confirmation, and next steps",
+      "Contact information provision for user support",
+      "Action buttons for common next steps (primary and secondary actions)",
+      "Email confirmation notification to set user expectations"
+    ],
+    "designPatterns": [
+      "Success confirmation pattern",
+      "Reference number provision",
+      "Next step guidance",
+      "Contact information display"
+    ],
+    "accessibility": [
+      "Clear heading structure provides page hierarchy",
+      "Success callout uses appropriate semantic type for positive feedback",
+      "Contact links are properly formatted for phone and email",
+      "Action buttons have clear labels indicating their purpose"
+    ]
+  },
+  "codeExamples": {
+    "react": {
+      "complete": "import { GoabButton, GoabButtonGroup, GoabCallout, GoabSpacer } from \"@abgov/react-components\";\n\nexport const ConfirmThatAnApplicationWasSubmitted = () => {\n  const confirmationNumber = \"1234ABC\";\n  const userEmail = \"person@email.com\";\n  \n  return (\n    <>\n      <h2 style={{ marginTop: 0 }}>You have completed the application</h2>\n      \n      <GoabCallout type=\"success\" heading=\"Your application was successful\">\n        <p>You will receive a copy of the confirmation to the email {userEmail}</p>\n        <p style={{ marginBottom: 0 }}>Confirmation number: <strong>{confirmationNumber}</strong></p>\n      </GoabCallout>\n      \n      <h3>Go back to the dashboard, or direct your user somewhere else useful.</h3>\n      <p>\n        Other information about what was just completed, other tertiary information, and/or contact information.<br />\n        Phone: <a href=\"tel:7801234567\">780 123 4567</a><br />\n        Email: <a href=\"mailto:information@gov.ab.ca\">information@gov.ab.ca</a>\n      </p>\n      \n      <GoabSpacer vSpacing=\"l\"></GoabSpacer>\n      \n      <GoabButtonGroup alignment=\"start\">\n        <GoabButton type=\"primary\">Go to application</GoabButton>\n        <GoabButton type=\"secondary\">Back to dashboard</GoabButton>\n      </GoabButtonGroup>\n    </>\n  );\n}",
+      "key": "const confirmationNumber = \"1234ABC\";\nconst userEmail = \"person@email.com\";\nconst contactPhone = \"780 123 4567\";\nconst contactEmail = \"information@gov.ab.ca\";\n\nconst navigateToApplication = () => {\n  // Navigate to application details or status page\n};\n\nconst navigateToDashboard = () => {\n  // Navigate back to main dashboard\n};\n\n<h2>You have completed the application</h2>\n\n<GoabCallout type=\"success\" heading=\"Your application was successful\">\n  <p>You will receive a copy of the confirmation to the email {userEmail}</p>\n  <p>Confirmation number: <strong>{confirmationNumber}</strong></p>\n</GoabCallout>\n\n<h3>Next steps</h3>\n<p>\n  Your application is now being processed. You can check the status at any time using your confirmation number.\n  <br />\n  Phone: <a href={`tel:${contactPhone}`}>{contactPhone}</a>\n  <br />\n  Email: <a href={`mailto:${contactEmail}`}>{contactEmail}</a>\n</p>\n\n<GoabButtonGroup alignment=\"start\">\n  <GoabButton type=\"primary\" onClick={navigateToApplication}>\n    View application status\n  </GoabButton>\n  <GoabButton type=\"secondary\" onClick={navigateToDashboard}>\n    Back to dashboard\n  </GoabButton>\n</GoabButtonGroup>"
+    },
+    "angular": {
+      "complete": "export class ConfirmThatAnApplicationWasSubmittedComponent {\n  confirmationNumber = '1234ABC';\n  userEmail = 'person@email.com';\n  contactPhone = '780 123 4567';\n  contactEmail = 'information@gov.ab.ca';\n  \n  navigateToApplication() {\n    // Navigate to application details or status page\n  }\n  \n  navigateToDashboard() {\n    // Navigate back to main dashboard\n  }\n}",
+      "key": "confirmationNumber = '1234ABC';\nuserEmail = 'person@email.com';\ncontactPhone = '780 123 4567';\ncontactEmail = 'information@gov.ab.ca';\n\nnavigateToApplication() {\n  // Navigate to application details or status page\n}\n\nnavigateToDashboard() {\n  // Navigate back to main dashboard\n}\n\n<!-- Template -->\n<h2>You have completed the application</h2>\n\n<goab-callout type=\"success\" heading=\"Your application was successful\">\n  <p>You will receive a copy of the confirmation to the email {{ userEmail }}</p>\n  <p>Confirmation number: <strong>{{ confirmationNumber }}</strong></p>\n</goab-callout>\n\n<h3>Next steps</h3>\n<p>\n  Your application is now being processed. You can check the status at any time using your confirmation number.\n  <br />\n  Phone: <a [href]=\"'tel:' + contactPhone\">{{ contactPhone }}</a>\n  <br />\n  Email: <a [href]=\"'mailto:' + contactEmail\">{{ contactEmail }}</a>\n</p>\n\n<goab-button-group alignment=\"start\">\n  <goab-button type=\"primary\" (onClick)=\"navigateToApplication()\">\n    View application status\n  </goab-button>\n  <goab-button type=\"secondary\" (onClick)=\"navigateToDashboard()\">\n    Back to dashboard\n  </goab-button>\n</goab-button-group>"
+    }
+  },
+  "tags": [
+    "confirmation",
+    "application-submission",
+    "success-message",
+    "reference-number",
+    "next-steps",
+    "contact-information",
+    "callout",
+    "user-feedback",
+    "completion",
+    "email-confirmation"
+  ]
+}

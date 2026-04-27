@@ -1,0 +1,60 @@
+{
+  "name": "GoA Design System Principles",
+  "summary": "Core design and development principles for teams building with the GoA Design System",
+  "domain": "design",
+
+  "corePrinciples": [
+    {
+      "principle": "Government Service First",
+      "description": "All design decisions must prioritize citizen and worker needs over aesthetic preferences",
+      "application": "Choose components and patterns based on user research and government service requirements"
+    },
+    {
+      "principle": "Accessibility by Default",
+      "description": "WCAG 2.2 AA compliance is non-negotiable, not an add-on",
+      "application": "Use GoA components which provide built-in accessibility features"
+    },
+    {
+      "principle": "Consistency Over Creativity",
+      "description": "Consistent user experience across government services trumps unique design",
+      "application": "Use established GoA patterns rather than inventing new ones"
+    },
+    {
+      "principle": "Component-First Thinking",
+      "description": "Exhaust GoA component library options before building custom components",
+      "application": "Search the component library, check examples, combine existing components creatively"
+    }
+  ],
+
+  "developmentPrinciples": {
+    "componentFirst": {
+      "rule": "Always start with GoA components until those options are fully exhausted before doing any custom components",
+      "process": [
+        "Search for GoA components that solve your need",
+        "Search with multiple terms (e.g., 'button', 'action', 'submit')",
+        "Check examples for similar patterns",
+        "If no component found: Ask the team before building custom"
+      ]
+    },
+    "spacingStrategy": {
+      "rule": "Use component margin props (mb, mr) as the primary spacing approach",
+      "options": [
+        "Component margin props (mb, mr, mt, ml) - preferred",
+        "GoabBlock for flex layouts",
+        "Custom flexbox/grid when needed",
+        "GoabSpacer for explicit gaps (less responsive)"
+      ]
+    },
+    "validationChecklist": [
+      "Verify component properties against documented valid values",
+      "Check design specifications for exact sizing",
+      "Ensure no custom styling - only use component props",
+      "Validate spacing tokens match design system"
+    ]
+  },
+
+  "userTypeGuidance": {
+    "reference": "See design/user-types.json for detailed citizen vs worker patterns",
+    "keyInsight": "Usage frequency matters more than role - a contractor filing daily permits needs efficiency patterns, not guided flows"
+  }
+}

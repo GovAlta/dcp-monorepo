@@ -1,0 +1,102 @@
+{
+  "$schema": "../recipe-schema.json",
+  "schemaVersion": "2.1.0-ai-context",
+  "recipeId": "add-and-edit-lots-of-filters",
+  "recipeName": "Add and Edit Lots of Filters",
+  "category": "interaction-pattern",
+  "summary": "Implement comprehensive filtering functionality with multiple filter types organized in a drawer interface for data management",
+  "serviceContext": {
+    "useCase": "Administrative users need to sort through large datasets with multiple filter criteria for case management or content management systems",
+    "userType": "worker",
+    "governmentServiceFlows": [
+      "When workers need to filter large datasets by multiple criteria simultaneously",
+      "When case management systems require complex filtering by status, region, assignment, and time",
+      "When administrative dashboards need sophisticated data filtering capabilities"
+    ],
+    "relatedPatterns": [
+      "filter-data-in-a-table",
+      "add-a-filter-chip",
+      "remove-a-filter"
+    ]
+  },
+  "components": [
+    {
+      "componentName": "GoabDrawer",
+      "role": "Container for the filtering interface",
+      "purpose": "Provide slide-out panel for comprehensive filter options"
+    },
+    {
+      "componentName": "GoabButton",
+      "role": "Trigger button and apply action",
+      "purpose": "Open filter drawer and apply selected filters"
+    },
+    {
+      "componentName": "GoabFormItem",
+      "role": "Structure filter groups with labels",
+      "purpose": "Organize different filter categories"
+    },
+    {
+      "componentName": "GoabCheckbox",
+      "role": "Multi-select filters for status and regions",
+      "purpose": "Allow multiple selections for regional and status filters"
+    },
+    {
+      "componentName": "GoabDropdown",
+      "role": "Single selection for person assignment",
+      "purpose": "Select specific individuals from predetermined lists"
+    },
+    {
+      "componentName": "GoabRadioGroup",
+      "role": "Exclusive time-based filters",
+      "purpose": "Select time periods with mutually exclusive options"
+    }
+  ],
+  "codeReference": {
+    "exampleFile": "add-and-edit-lots-of-filters.tsx",
+    "linesOfCode": 234,
+    "lastModified": "2024-01-01T00:00:00.000Z"
+  },
+  "implementation": {
+    "complexity": "medium",
+    "keyPatterns": [
+      "Multiple filter type implementation",
+      "Checkbox groups for multi-select regions",
+      "Dropdown selections for person assignment",
+      "Radio groups for exclusive time selection",
+      "Drawer state management for filter UI"
+    ],
+    "designPatterns": [
+      "Controlled component pattern",
+      "Filter state management",
+      "Multi-criteria filtering",
+      "Grouped filter organization"
+    ],
+    "accessibility": [
+      "Form items provide clear filter grouping",
+      "Checkboxes allow multiple region selections",
+      "Radio groups provide exclusive time options",
+      "Drawer has proper heading and navigation"
+    ]
+  },
+  "codeExamples": {
+    "react": {
+      "complete": "import {\n  GoabButton,\n  GoabCheckbox,\n  GoabContainer,\n  GoabDrawer,\n  GoabDropdown,\n  GoabDropdownItem,\n  GoabFormItem,\n  GoabRadioGroup,\n  GoabRadioItem,\n} from \"@abgov/react-components\";\nimport { useState } from \"react\";\nimport { CodeSnippet } from \"@components/code-snippet/CodeSnippet.tsx\";\n\nexport const AddAndEditLotsOfFilters = () => {\n  const [open, setOpen] = useState(false);\n  // const noop = () => {/* do something */};\n  return (\n    <>\n      {/*Don't use a Sandbox because the animation slowing displaying the drawer isn't working if it is inside sandbox*/}\n      <GoabContainer mt=\"none\" mb=\"none\">\n        <div style={{ display: \"flex\", justifyContent: \"center\" }}>\n          <GoabButton onClick={() => setOpen(true)}>Filters</GoabButton>\n        </div>\n        <GoabDrawer\n          heading=\"Filters\"\n          open={open}\n          onClose={() => setOpen(false)}\n          position=\"right\"\n          actions={<GoabButton onClick={() => setOpen(false)}>Apply</GoabButton>}>\n          <GoabFormItem label=\"Entry status\">\n            <GoabCheckbox text=\"Draft\" value=\"draft\" name={\"entryStatus\"}></GoabCheckbox>\n            <GoabCheckbox text=\"Published\" value=\"published\" name={\"entryStatus\"}></GoabCheckbox>\n          </GoabFormItem>\n          <GoabFormItem label=\"Assigned to - Region\">\n            <GoabCheckbox text=\"Calgary\" value=\"calgary\" name={\"region\"}></GoabCheckbox>\n            <GoabCheckbox text=\"Central\" value=\"central\" name={\"region\"}></GoabCheckbox>\n            <GoabCheckbox text=\"Edmonton\" value=\"edmonton\" name={\"region\"}></GoabCheckbox>\n            <GoabCheckbox text=\"North\" value=\"north\" name={\"region\"}></GoabCheckbox>\n            <GoabCheckbox text=\"South\" value=\"south\" name={\"region\"}></GoabCheckbox>\n          </GoabFormItem>\n          <GoabFormItem label=\"Assigned to\">\n            <GoabDropdown\n              name=\"assignedTo\"\n              onChange={() => {\n                /* do something */\n              }}>\n              <GoabDropdownItem value={\"1\"} label=\"Person 1\"></GoabDropdownItem>\n              <GoabDropdownItem value={\"2\"} label=\"Person 2\"></GoabDropdownItem>\n            </GoabDropdown>\n          </GoabFormItem>\n          <GoabFormItem label=\"Taken by - Region\" mt={\"xs\"}>\n            <GoabCheckbox text=\"Calgary\" value=\"calgary\" name={\"region\"}></GoabCheckbox>\n            <GoabCheckbox text=\"Central\" value=\"central\" name={\"region\"}></GoabCheckbox>\n            <GoabCheckbox text=\"Edmonton\" value=\"edmonton\" name={\"region\"}></GoabCheckbox>\n            <GoabCheckbox text=\"North\" value=\"north\" name={\"region\"}></GoabCheckbox>\n            <GoabCheckbox text=\"South\" value=\"south\" name={\"region\"}></GoabCheckbox>\n          </GoabFormItem>\n          <GoabFormItem label=\"Taken by\">\n            <GoabDropdown\n              name=\"takenBy\"\n              onChange={() => {\n                /* do something */\n              }}>\n              <GoabDropdownItem value={\"1\"} label=\"Person 1\"></GoabDropdownItem>\n              <GoabDropdownItem value={\"2\"} label=\"Person 2\"></GoabDropdownItem>\n            </GoabDropdown>\n          </GoabFormItem>\n          <GoabFormItem label=\"Date taken\" mt={\"xs\"}>\n            <GoabRadioGroup\n              name={\"dateTaken\"}\n              onChange={() => {\n                /** do something **/\n              }}>\n              <GoabRadioItem value=\"24\" label=\"Last 24 hours\"></GoabRadioItem>\n              <GoabRadioItem value=\"72\" label=\"Last 72 hours\"></GoabRadioItem>\n            </GoabRadioGroup>\n          </GoabFormItem>\n        </GoabDrawer>\n      </GoabContainer>\n    </>\n  );\n};",
+      "key": "const [open, setOpen] = useState(false);\n\n<GoabButton onClick={() => setOpen(true)}>Filters</GoabButton>\n\n<GoabDrawer\n  heading=\"Filters\"\n  open={open}\n  onClose={() => setOpen(false)}\n  position=\"right\"\n  actions={<GoabButton onClick={() => setOpen(false)}>Apply</GoabButton>}\n>\n  <GoabFormItem label=\"Entry status\">\n    <GoabCheckbox text=\"Draft\" value=\"draft\" name=\"entryStatus\" />\n    <GoabCheckbox text=\"Published\" value=\"published\" name=\"entryStatus\" />\n  </GoabFormItem>\n  \n  <GoabFormItem label=\"Assigned to - Region\">\n    <GoabCheckbox text=\"Calgary\" value=\"calgary\" name=\"region\" />\n    <GoabCheckbox text=\"Edmonton\" value=\"edmonton\" name=\"region\" />\n    <GoabCheckbox text=\"North\" value=\"north\" name=\"region\" />\n  </GoabFormItem>\n  \n  <GoabFormItem label=\"Date taken\">\n    <GoabRadioGroup name=\"dateTaken\" onChange={handleRadioChange}>\n      <GoabRadioItem value=\"24\" label=\"Last 24 hours\" />\n      <GoabRadioItem value=\"72\" label=\"Last 72 hours\" />\n    </GoabRadioGroup>\n  </GoabFormItem>\n</GoabDrawer>"
+    },
+    "angular": {
+      "complete": "export class ExampleComponent {\n  open = false;\n  assignedTo = \"\";\n  takenBy = \"\";\n  onClick() {\n    this.open = true;\n  }\n  onClose() {\n    this.open = false;\n  }\n  radioOnChange(event: GoabRadioGroupOnChangeDetail) {\n    console.log(event);\n  }\n  onChangeAssignedTo(e: GoabDropdownOnChangeDetail) {\n    this.assignedTo = e.value as string;\n  }\n  onChangeTakenBy(e: GoabDropdownOnChangeDetail) {\n    this.takenBy = e.value as string;\n  }\n  closeDrawer() {\n    this.open = false;\n  }\n}",
+      "key": "open = false;\nassignedTo = \"\";\ntakenBy = \"\";\n\nonClick() {\n  this.open = true;\n}\n\nonClose() {\n  this.open = false;\n}\n\nradioOnChange(event: GoabRadioGroupOnChangeDetail) {\n  // Handle time filter changes\n}\n\nonChangeAssignedTo(e: GoabDropdownOnChangeDetail) {\n  this.assignedTo = e.value as string;\n}\n\nonChangeTakenBy(e: GoabDropdownOnChangeDetail) {\n  this.takenBy = e.value as string;\n}"
+    }
+  },
+  "tags": [
+    "filters",
+    "drawer",
+    "checkbox",
+    "radio-group",
+    "dropdown",
+    "multi-criteria",
+    "administrative",
+    "case-management",
+    "data-filtering"
+  ]
+}

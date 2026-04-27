@@ -1,0 +1,83 @@
+{
+  "name": "FileUploadInput",
+  "category": "component",
+  "summary": "",
+  "import": "import { GoabFileUploadInput } from '@abgov/react-components'",
+  "customElement": {
+    "tagName": "goa-file-upload-input",
+    "reactName": "GoabFileUploadInput",
+    "angularSelector": "goab-file-upload-input"
+  },
+  "props": [
+    {
+      "name": "variant",
+      "type": "Variant",
+      "required": false,
+      "default": "dragdrop",
+      "description": "",
+      "frameworks": {
+        "webComponent": "variant=\"...\"",
+        "react": "variant={...}",
+        "angular": "[variant]=\"...\""
+      }
+    },
+    {
+      "name": "accept",
+      "type": "string",
+      "required": false,
+      "default": "*",
+      "description": "",
+      "frameworks": {
+        "webComponent": "accept=\"...\"",
+        "react": "accept={...}",
+        "angular": "[accept]=\"...\""
+      }
+    },
+    {
+      "name": "maxfilesize",
+      "type": "string",
+      "required": false,
+      "default": "5MB",
+      "description": "",
+      "frameworks": {
+        "webComponent": "maxfilesize=\"...\"",
+        "react": "maxfilesize={...}",
+        "angular": "[maxfilesize]=\"...\""
+      }
+    },
+    {
+      "name": "testId",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "",
+      "frameworks": {
+        "webComponent": "test-id=\"...\"",
+        "react": "testId={...}",
+        "angular": "[testId]=\"...\""
+      }
+    }
+  ],
+  "events": [
+    {
+      "name": "_selectFile",
+      "type": "(event) => void",
+      "description": "",
+      "frameworks": {
+        "webComponent": "_selectFile custom event",
+        "react": "onSelectFile prop",
+        "angular": "(onSelectFile) event binding"
+      }
+    }
+  ],
+  "slots": [],
+  "criticalNotes": [],
+  "commonMistakes": [],
+  "basicUsage": {
+    "webComponent": "",
+    "react": "",
+    "angular": ""
+  },
+  "relatedExamples": [],
+  "relatedComponents": []
+}

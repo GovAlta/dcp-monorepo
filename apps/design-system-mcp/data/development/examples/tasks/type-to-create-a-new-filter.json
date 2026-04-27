@@ -1,0 +1,131 @@
+{
+  "$schema": "../schema/recipe-schema-2.1.0-ai-context.json",
+  "title": "Type to create a new filter",
+  "description": "Enable users to create custom filter chips by typing text and pressing Enter, with keyboard shortcuts for quick deletion and intuitive interaction patterns.",
+  "category": "interaction-patterns",
+  "tags": [
+    "dynamic-filtering",
+    "keyboard-interaction",
+    "filter-chips",
+    "user-input",
+    "tag-creation"
+  ],
+  "government_service_context": {
+    "citizen_flows": {
+      "applicable": true,
+      "usage": "Citizens benefit from dynamic filtering when searching through government services, applications, or information databases with flexible, user-defined criteria."
+    },
+    "worker_flows": {
+      "applicable": true,
+      "usage": "Government workers frequently need to create custom filter combinations when processing cases, managing applications, or searching through large datasets with varying criteria."
+    },
+    "shared_components": {
+      "applicable": true,
+      "usage": "Dynamic filter creation is universally useful across any interface requiring flexible, user-defined search and filtering capabilities."
+    }
+  },
+  "component_analysis": {
+    "primary_components": [
+      {
+        "name": "Filter Input Field",
+        "role": "Accepts user text input for creating new filter chips",
+        "purpose": "Provides a clear, accessible interface for users to type custom filter terms"
+      },
+      {
+        "name": "Keyboard Event Handling",
+        "role": "Manages Enter key for chip creation and Backspace for deletion",
+        "purpose": "Enables efficient keyboard-driven workflow without requiring mouse interaction"
+      },
+      {
+        "name": "Dynamic Filter Chips",
+        "role": "Displays created filters as removable chips with click-to-delete functionality",
+        "purpose": "Provides visual feedback and easy management of active filter criteria"
+      },
+      {
+        "name": "State Management",
+        "role": "Tracks input value and array of created filter chips",
+        "purpose": "Maintains consistent interface state and enables proper interaction handling"
+      },
+      {
+        "name": "Input Clearing Logic",
+        "role": "Automatically clears input field after successful chip creation",
+        "purpose": "Prepares interface for next filter entry and prevents duplicate submissions"
+      }
+    ],
+    "accessibility_features": [
+      "Input field is properly labeled for screen readers",
+      "Keyboard navigation supports Enter and Backspace shortcuts",
+      "Filter chips include interactive elements accessible via keyboard",
+      "Clear visual feedback when chips are created or removed",
+      "Input maintains focus after chip creation for continued entry"
+    ],
+    "user_experience_notes": [
+      "Enter key creates chips for natural typing workflow",
+      "Backspace on empty input removes last chip for quick editing",
+      "Visual chips provide immediate feedback on applied filters",
+      "Click-to-remove functionality on chips for easy management",
+      "Input automatically clears after chip creation to continue entry"
+    ]
+  },
+  "implementation": {
+    "react": {
+      "code": "import React, { useState } from 'react';\nimport {\n  GoabContainer,\n  GoabFilterChip,\n  GoabFormItem,\n  GoabInput\n} from '@abgov/react-components';\nimport { GoabInputOnChangeDetail, GoabInputOnKeyPressDetail } from '@abgov/ui-components-common';\n\nfunction TypeToCreateNewFilter() {\n  const [typedChips, setTypedChips] = useState<string[]>([]);\n  const [inputValue, setInputValue] = useState('');\n\n  const handleInputChange = (detail: GoabInputOnChangeDetail) => {\n    const newValue = detail.value.trim();\n    setInputValue(newValue);\n  };\n\n  const handleInputKeyPress = (detail: GoabInputOnKeyPressDetail) => {\n    const newValue = detail.value.trim();\n    if (detail.key === 'Enter' && newValue !== '') {\n      // Create new chip on Enter\n      setTypedChips(prevChips => [...prevChips, newValue]);\n      setTimeout(() => {\n        setInputValue('');\n      }, 0);\n    } else if (detail.key === 'Backspace' && newValue === '' && typedChips.length > 0) {\n      // Remove last chip on Backspace when input is empty\n      setTypedChips(prevChips => prevChips.slice(0, -1));\n    }\n  };\n\n  const removeTypedChip = (chip: string) => {\n    setTypedChips(prevChips => prevChips.filter(c => c !== chip));\n  };\n\n  const clearAllChips = () => {\n    setTypedChips([]);\n  };\n\n  return (\n    <GoabContainer mb=\"none\">\n      <GoabFormItem label=\"Type to create a filter\" mb=\"m\">\n        <GoabInput\n          name=\"chipInput\"\n          value={inputValue}\n          onChange={handleInputChange}\n          onKeyPress={handleInputKeyPress}\n          width=\"100%\"\n          placeholder=\"Type and press Enter to create filter\"\n        />\n      </GoabFormItem>\n      \n      {typedChips.length > 0 && (\n        <div style={{ marginBottom: 'var(--goa-space-m)' }}>\n          <div style={{ marginBottom: 'var(--goa-space-xs)' }}>\n            <span style={{ fontSize: 'var(--goa-typography-body-s)', color: 'var(--goa-color-text-secondary)' }}>\n              {typedChips.length} active filter{typedChips.length !== 1 ? 's' : ''}\n            </span>\n            <button \n              onClick={clearAllChips}\n              style={{ \n                marginLeft: 'var(--goa-space-s)', \n                background: 'none', \n                border: 'none', \n                color: 'var(--goa-color-interactive-default)', \n                textDecoration: 'underline',\n                cursor: 'pointer',\n                fontSize: 'var(--goa-typography-body-s)'\n              }}\n            >\n              Clear all\n            </button>\n          </div>\n          <div>\n            {typedChips.map((typedChip, index) => (\n              <GoabFilterChip\n                key={index}\n                content={typedChip}\n                mb=\"xs\"\n                mr=\"xs\"\n                onClick={() => removeTypedChip(typedChip)}\n              />\n            ))}\n          </div>\n        </div>\n      )}\n      \n      {typedChips.length === 0 && (\n        <p style={{ \n          fontSize: 'var(--goa-typography-body-s)', \n          color: 'var(--goa-color-text-secondary)',\n          fontStyle: 'italic',\n          margin: 'var(--goa-space-s) 0'\n        }}>\n          Type in the field above and press Enter to create filters\n        </p>\n      )}\n    </GoabContainer>\n  );\n}\n\n// Reusable component with more configuration options\nfunction DynamicFilterCreator({\n  label,\n  placeholder,\n  maxChips,\n  onChipsChange,\n  initialChips = [],\n  allowDuplicates = false\n}: {\n  label: string;\n  placeholder?: string;\n  maxChips?: number;\n  onChipsChange?: (chips: string[]) => void;\n  initialChips?: string[];\n  allowDuplicates?: boolean;\n}) {\n  const [chips, setChips] = useState<string[]>(initialChips);\n  const [inputValue, setInputValue] = useState('');\n  const [error, setError] = useState('');\n\n  const updateChips = (newChips: string[]) => {\n    setChips(newChips);\n    onChipsChange?.(newChips);\n  };\n\n  const handleInputChange = (detail: GoabInputOnChangeDetail) => {\n    setInputValue(detail.value);\n    if (error) setError('');\n  };\n\n  const addChip = (value: string) => {\n    const trimmedValue = value.trim();\n    \n    if (!trimmedValue) {\n      setError('Filter cannot be empty');\n      return;\n    }\n    \n    if (!allowDuplicates && chips.includes(trimmedValue)) {\n      setError('This filter already exists');\n      return;\n    }\n    \n    if (maxChips && chips.length >= maxChips) {\n      setError(`Maximum ${maxChips} filters allowed`);\n      return;\n    }\n    \n    updateChips([...chips, trimmedValue]);\n    setInputValue('');\n    setError('');\n  };\n\n  const handleKeyPress = (detail: GoabInputOnKeyPressDetail) => {\n    if (detail.key === 'Enter') {\n      addChip(detail.value);\n    } else if (detail.key === 'Backspace' && !detail.value.trim() && chips.length > 0) {\n      updateChips(chips.slice(0, -1));\n    }\n  };\n\n  const removeChip = (chipToRemove: string) => {\n    updateChips(chips.filter(chip => chip !== chipToRemove));\n  };\n\n  return (\n    <GoabContainer mb=\"none\">\n      <GoabFormItem \n        label={label} \n        mb=\"m\"\n        error={error || undefined}\n      >\n        <GoabInput\n          name=\"dynamicFilterInput\"\n          value={inputValue}\n          onChange={handleInputChange}\n          onKeyPress={handleKeyPress}\n          width=\"100%\"\n          placeholder={placeholder || 'Type and press Enter to add filter'}\n          error={!!error}\n        />\n      </GoabFormItem>\n      \n      {chips.length > 0 && (\n        <div>\n          <div style={{ marginBottom: 'var(--goa-space-xs)' }}>\n            <span style={{ fontSize: 'var(--goa-typography-body-s)', color: 'var(--goa-color-text-secondary)' }}>\n              {chips.length} filter{chips.length !== 1 ? 's' : ''}\n              {maxChips && ` (${maxChips - chips.length} remaining)`}\n            </span>\n          </div>\n          <div>\n            {chips.map((chip, index) => (\n              <GoabFilterChip\n                key={index}\n                content={chip}\n                mb=\"xs\"\n                mr=\"xs\"\n                onClick={() => removeChip(chip)}\n              />\n            ))}\n          </div>\n        </div>\n      )}\n    </GoabContainer>\n  );\n}",
+      "styling": ".filter-creator-container {\n  margin-bottom: var(--goa-space-m);\n}\n\n.filter-status-text {\n  font-size: var(--goa-typography-body-s);\n  color: var(--goa-color-text-secondary);\n  margin-bottom: var(--goa-space-xs);\n}\n\n.clear-all-button {\n  background: none;\n  border: none;\n  color: var(--goa-color-interactive-default);\n  text-decoration: underline;\n  cursor: pointer;\n  font-size: var(--goa-typography-body-s);\n  margin-left: var(--goa-space-s);\n}\n\n.clear-all-button:hover {\n  color: var(--goa-color-interactive-hover);\n}\n\n.clear-all-button:focus {\n  outline: var(--goa-border-width-m) solid var(--goa-color-interactive-focus);\n  outline-offset: var(--goa-border-width-s);\n}\n\n.empty-state-text {\n  font-size: var(--goa-typography-body-s);\n  color: var(--goa-color-text-secondary);\n  font-style: italic;\n  margin: var(--goa-space-s) 0;\n}\n\n.chips-container {\n  display: flex;\n  flex-wrap: wrap;\n  gap: var(--goa-space-xs);\n}"
+    },
+    "angular": {
+      "code": "import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';\nimport { GoabInputOnChangeDetail, GoabInputOnKeyPressDetail } from '@abgov/ui-components-common';\n\ninterface FilterChipState {\n  chips: string[];\n  inputValue: string;\n  error?: string;\n}\n\n@Component({\n  selector: 'app-type-to-create-filter',\n  template: `\n    <goab-container mb=\"none\">\n      <goab-form-item \n        [label]=\"label\" \n        mb=\"m\"\n        [error]=\"state.error\"\n      >\n        <goab-input\n          name=\"chipInput\"\n          [value]=\"state.inputValue\"\n          (onChange)=\"handleInputChange($event)\"\n          (onKeyPress)=\"handleInputKeyPress($event)\"\n          width=\"100%\"\n          [placeholder]=\"placeholder\"\n          [error]=\"!!state.error\"\n        >\n        </goab-input>\n      </goab-form-item>\n      \n      <div *ngIf=\"state.chips.length > 0\" class=\"filter-status\">\n        <div class=\"filter-status-text\">\n          <span>{{ state.chips.length }} filter{{ state.chips.length !== 1 ? 's' : '' }}</span>\n          <span *ngIf=\"maxChips\"> ({{ maxChips - state.chips.length }} remaining)</span>\n          <button \n            *ngIf=\"showClearAll\"\n            class=\"clear-all-button\"\n            (click)=\"clearAllChips()\"\n          >\n            Clear all\n          </button>\n        </div>\n        <div class=\"chips-container\">\n          <goab-filter-chip\n            *ngFor=\"let chip of state.chips; let i = index\"\n            [content]=\"chip\"\n            mb=\"xs\"\n            mr=\"xs\"\n            (onClick)=\"removeChip(chip)\"\n          >\n          </goab-filter-chip>\n        </div>\n      </div>\n      \n      <p *ngIf=\"state.chips.length === 0\" class=\"empty-state-text\">\n        Type in the field above and press Enter to create filters\n      </p>\n    </goab-container>\n  `,\n  styleUrls: ['./type-to-create-filter.component.css']\n})\nexport class TypeToCreateFilterComponent implements OnInit {\n  @Input() label: string = 'Type to create a filter';\n  @Input() placeholder: string = 'Type and press Enter to create filter';\n  @Input() maxChips?: number;\n  @Input() initialChips: string[] = [];\n  @Input() allowDuplicates: boolean = false;\n  @Input() showClearAll: boolean = true;\n  @Output() chipsChange = new EventEmitter<string[]>();\n  @Output() chipAdded = new EventEmitter<string>();\n  @Output() chipRemoved = new EventEmitter<string>();\n\n  state: FilterChipState = {\n    chips: [],\n    inputValue: '',\n    error: undefined\n  };\n\n  ngOnInit() {\n    this.state.chips = [...this.initialChips];\n  }\n\n  handleInputChange(detail: GoabInputOnChangeDetail): void {\n    this.state.inputValue = detail.value;\n    if (this.state.error) {\n      this.state.error = undefined;\n    }\n  }\n\n  handleInputKeyPress(detail: GoabInputOnKeyPressDetail): void {\n    if (detail.key === 'Enter') {\n      this.addChip(detail.value);\n    } else if (detail.key === 'Backspace' && !detail.value.trim() && this.state.chips.length > 0) {\n      this.removeLastChip();\n    }\n  }\n\n  addChip(value: string): void {\n    const trimmedValue = value.trim();\n    \n    if (!trimmedValue) {\n      this.state.error = 'Filter cannot be empty';\n      return;\n    }\n    \n    if (!this.allowDuplicates && this.state.chips.includes(trimmedValue)) {\n      this.state.error = 'This filter already exists';\n      return;\n    }\n    \n    if (this.maxChips && this.state.chips.length >= this.maxChips) {\n      this.state.error = `Maximum ${this.maxChips} filters allowed`;\n      return;\n    }\n    \n    this.state.chips = [...this.state.chips, trimmedValue];\n    this.state.inputValue = '';\n    this.state.error = undefined;\n    \n    this.chipAdded.emit(trimmedValue);\n    this.chipsChange.emit([...this.state.chips]);\n  }\n\n  removeChip(chipToRemove: string): void {\n    this.state.chips = this.state.chips.filter(chip => chip !== chipToRemove);\n    this.chipRemoved.emit(chipToRemove);\n    this.chipsChange.emit([...this.state.chips]);\n  }\n\n  removeLastChip(): void {\n    if (this.state.chips.length > 0) {\n      const removedChip = this.state.chips[this.state.chips.length - 1];\n      this.state.chips = this.state.chips.slice(0, -1);\n      this.chipRemoved.emit(removedChip);\n      this.chipsChange.emit([...this.state.chips]);\n    }\n  }\n\n  clearAllChips(): void {\n    const clearedChips = [...this.state.chips];\n    this.state.chips = [];\n    this.chipsChange.emit([]);\n    \n    // Emit removed event for each chip\n    clearedChips.forEach(chip => this.chipRemoved.emit(chip));\n  }\n\n  getChips(): string[] {\n    return [...this.state.chips];\n  }\n}\n\n// Example usage component\n@Component({\n  selector: 'app-filter-example',\n  template: `\n    <app-type-to-create-filter\n      label=\"Search criteria\"\n      placeholder=\"Type search terms and press Enter\"\n      [maxChips]=\"5\"\n      [allowDuplicates]=\"false\"\n      (chipsChange)=\"onFiltersChanged($event)\"\n      (chipAdded)=\"onFilterAdded($event)\"\n      (chipRemoved)=\"onFilterRemoved($event)\"\n    ></app-type-to-create-filter>\n    \n    <div *ngIf=\"currentFilters.length > 0\" style=\"margin-top: 1rem;\">\n      <h3>Applied Filters:</h3>\n      <p>{{ currentFilters.join(', ') }}</p>\n    </div>\n  `\n})\nexport class FilterExampleComponent {\n  currentFilters: string[] = [];\n\n  onFiltersChanged(filters: string[]): void {\n    this.currentFilters = filters;\n    console.log('Active filters:', filters);\n  }\n\n  onFilterAdded(filter: string): void {\n    console.log('Added filter:', filter);\n  }\n\n  onFilterRemoved(filter: string): void {\n    console.log('Removed filter:', filter);\n  }\n}"
+    }
+  },
+  "usage_guidelines": {
+    "when_to_use": [
+      "Search interfaces requiring custom, user-defined filter criteria",
+      "Tag-based categorization systems where users create their own labels",
+      "Dynamic filtering scenarios with unpredictable filter options",
+      "Workflows where users need to build complex filter combinations",
+      "Applications requiring flexible, keyboard-driven data entry"
+    ],
+    "when_not_to_use": [
+      "Simple filtering with predefined, limited filter options",
+      "Interfaces where filter accuracy is critical and requires validation",
+      "Mobile-first interfaces where typing is cumbersome",
+      "Systems requiring structured filter formats or specific data types"
+    ],
+    "best_practices": [
+      "Provide clear placeholder text explaining the Enter key interaction",
+      "Show visual feedback when chips are created or removed",
+      "Include keyboard shortcuts (Enter to add, Backspace to remove)",
+      "Display count of active filters for user awareness",
+      "Provide 'Clear all' option when multiple filters are present",
+      "Validate input to prevent empty or duplicate filters when appropriate",
+      "Consider maximum filter limits for performance and usability",
+      "Use descriptive labels that indicate the purpose of the filters"
+    ]
+  },
+  "variations": [
+    {
+      "name": "Validated filter creation",
+      "description": "Add validation for specific filter formats or patterns",
+      "code_change": "Add validation: if (!/^[a-zA-Z0-9\\s]+$/.test(trimmedValue)) { setError('Only letters, numbers, and spaces allowed'); return; }"
+    },
+    {
+      "name": "Autocomplete filter suggestions",
+      "description": "Show suggestions as user types based on available options",
+      "code_change": "Add suggestion dropdown: <GoabDropdown options={filteredSuggestions} onSelect={handleSuggestionSelect} />"
+    },
+    {
+      "name": "Categorized filter chips",
+      "description": "Group filter chips by categories with different visual styles",
+      "code_change": "Add category support: <GoabFilterChip content={chip.label} variant={chip.category} />"
+    },
+    {
+      "name": "Filter chip with metadata",
+      "description": "Include additional information or actions on filter chips",
+      "code_change": "Add metadata display: <GoabFilterChip content={chip.label} helperText={chip.count + ' results'} />"
+    }
+  ],
+  "related_patterns": [
+    "add-a-filter-chip",
+    "remove-a-filter",
+    "filter-data-in-a-table"
+  ]
+}

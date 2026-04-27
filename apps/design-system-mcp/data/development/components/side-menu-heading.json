@@ -1,0 +1,57 @@
+{
+  "name": "SideMenuHeading",
+  "category": "component",
+  "summary": "",
+  "import": "import { GoabSideMenuHeading } from '@abgov/react-components'",
+  "customElement": {
+    "tagName": "goa-side-menu-heading",
+    "reactName": "GoabSideMenuHeading",
+    "angularSelector": "goab-side-menu-heading"
+  },
+  "props": [
+    {
+      "name": "icon",
+      "type": "GoAIconType",
+      "required": false,
+      "default": null,
+      "description": "",
+      "frameworks": {
+        "webComponent": "icon=\"...\"",
+        "react": "icon={...}",
+        "angular": "[icon]=\"...\""
+      }
+    },
+    {
+      "name": "testId",
+      "type": "string",
+      "required": false,
+      "default": "section-heading",
+      "description": "",
+      "frameworks": {
+        "webComponent": "test-id=\"...\"",
+        "react": "testId={...}",
+        "angular": "[testId]=\"...\""
+      }
+    }
+  ],
+  "events": [],
+  "slots": [
+    {
+      "name": "meta",
+      "description": ""
+    },
+    {
+      "name": "default",
+      "description": ""
+    }
+  ],
+  "criticalNotes": [],
+  "commonMistakes": [],
+  "basicUsage": {
+    "webComponent": "",
+    "react": "",
+    "angular": ""
+  },
+  "relatedExamples": [],
+  "relatedComponents": []
+}

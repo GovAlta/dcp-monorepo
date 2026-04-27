@@ -1,0 +1,144 @@
+{
+  "name": "MenuButton",
+  "category": "component",
+  "summary": "",
+  "import": "import { GoabMenuButton } from '@abgov/react-components'",
+  "customElement": {
+    "tagName": "goa-menu-button",
+    "reactName": "GoabMenuButton",
+    "angularSelector": "goab-menu-button"
+  },
+  "props": [
+    {
+      "name": "text",
+      "type": "string | undefined",
+      "required": false,
+      "default": null,
+      "description": "",
+      "frameworks": {
+        "webComponent": "text=\"...\"",
+        "react": "text={...}",
+        "angular": "[text]=\"...\""
+      }
+    },
+    {
+      "name": "type",
+      "type": "\"primary\" | \"secondary\" | \"tertiary\"",
+      "required": false,
+      "default": "primary",
+      "description": "",
+      "frameworks": {
+        "webComponent": "type=\"...\"",
+        "react": "type={...}",
+        "angular": "[type]=\"...\""
+      }
+    },
+    {
+      "name": "testId",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "",
+      "frameworks": {
+        "webComponent": "test-id=\"...\"",
+        "react": "testId={...}",
+        "angular": "[testId]=\"...\""
+      }
+    },
+    {
+      "name": "leadingIcon",
+      "type": "GoAIconType",
+      "required": false,
+      "default": null,
+      "description": "",
+      "frameworks": {
+        "webComponent": "leading-icon=\"...\"",
+        "react": "leadingIcon={...}",
+        "angular": "[leadingIcon]=\"...\""
+      }
+    },
+    {
+      "name": "leadingIconTheme",
+      "type": "IconTheme",
+      "required": false,
+      "default": "outline",
+      "description": "",
+      "frameworks": {
+        "webComponent": "leading-icon-theme=\"...\"",
+        "react": "leadingIconTheme={...}",
+        "angular": "[leadingIconTheme]=\"...\""
+      }
+    },
+    {
+      "name": "maxWidth",
+      "type": "string",
+      "required": true,
+      "default": null,
+      "description": "",
+      "frameworks": {
+        "webComponent": "max-width=\"...\"",
+        "react": "maxWidth={...}",
+        "angular": "[maxWidth]=\"...\""
+      }
+    },
+    {
+      "name": "size",
+      "type": "MenuActionSize",
+      "required": false,
+      "default": "normal",
+      "description": "",
+      "frameworks": {
+        "webComponent": "size=\"...\"",
+        "react": "size={...}",
+        "angular": "[size]=\"...\""
+      }
+    }
+  ],
+  "events": [
+    {
+      "name": "goa:closePopover",
+      "type": "(event) => void",
+      "description": "",
+      "frameworks": {
+        "webComponent": "goa:closePopover custom event",
+        "react": "onGoa:closePopover prop",
+        "angular": "(onGoa:closePopover) event binding"
+      }
+    },
+    {
+      "name": "_action",
+      "type": "(event) => void",
+      "description": "",
+      "frameworks": {
+        "webComponent": "_action custom event",
+        "react": "onAction prop",
+        "angular": "(onAction) event binding"
+      }
+    },
+    {
+      "name": "menu-button:init",
+      "type": "(event) => void",
+      "description": "",
+      "frameworks": {
+        "webComponent": "menu-button:init custom event",
+        "react": "onMenu-button:init prop",
+        "angular": "(onMenu-button:init) event binding"
+      }
+    }
+  ],
+  "slots": [
+    {
+      "name": "default",
+      "description": ""
+    }
+  ],
+  "criticalNotes": [],
+  "commonMistakes": [],
+  "basicUsage": {
+    "webComponent": "",
+    "react": "",
+    "angular": ""
+  },
+  "relatedExamples": [],
+  "relatedComponents": []
+}

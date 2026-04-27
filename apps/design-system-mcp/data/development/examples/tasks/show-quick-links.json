@@ -1,0 +1,131 @@
+{
+  "$schema": "../schema/recipe-schema-2.1.0-ai-context.json",
+  "title": "Show quick links",
+  "description": "Display essential quick access links in the footer meta section, providing users with immediate access to common support and administrative functions.",
+  "category": "layout-patterns",
+  "tags": [
+    "footer",
+    "quick-links",
+    "meta-section",
+    "navigation",
+    "accessibility"
+  ],
+  "government_service_context": {
+    "citizen_flows": {
+      "applicable": true,
+      "usage": "Citizens need quick access to feedback, accessibility features, privacy information, and contact options from any page in their service journey."
+    },
+    "worker_flows": {
+      "applicable": true,
+      "usage": "Government workers require easy access to support resources and administrative information while using internal applications."
+    },
+    "shared_components": {
+      "applicable": true,
+      "usage": "Quick links are universally beneficial across all Alberta.ca applications for providing consistent access to essential resources."
+    }
+  },
+  "component_analysis": {
+    "primary_components": [
+      {
+        "name": "App Footer Container",
+        "role": "Provides structured container for quick links",
+        "purpose": "Ensures consistent footer layout and positioning across applications"
+      },
+      {
+        "name": "Footer Meta Section",
+        "role": "Houses administrative and support links",
+        "purpose": "Groups essential quick access links in a recognizable footer pattern"
+      },
+      {
+        "name": "Feedback Link",
+        "role": "Enables users to provide service feedback",
+        "purpose": "Supports continuous improvement and user satisfaction measurement"
+      },
+      {
+        "name": "Accessibility Link",
+        "role": "Provides access to accessibility features and information",
+        "purpose": "Supports inclusive design and accessibility compliance requirements"
+      },
+      {
+        "name": "Privacy Link",
+        "role": "Links to privacy policy and data handling information",
+        "purpose": "Meets legal requirements and builds user trust"
+      },
+      {
+        "name": "Contact Link",
+        "role": "Provides access to support and contact information",
+        "purpose": "Enables users to get help when needed"
+      }
+    ],
+    "accessibility_features": [
+      "Links follow semantic HTML structure with proper anchor tags",
+      "Footer provides landmark navigation for screen readers",
+      "Link text is descriptive and meaningful",
+      "High contrast maintained for footer link visibility",
+      "Keyboard navigation supported for all links"
+    ],
+    "user_experience_notes": [
+      "Quick links are always available regardless of page context",
+      "Essential functions are grouped logically in footer meta section",
+      "Links are positioned consistently with Alberta.ca conventions",
+      "Minimal visual weight prevents distraction from main content",
+      "Familiar footer pattern builds user confidence and trust"
+    ]
+  },
+  "implementation": {
+    "react": {
+      "code": "import React from 'react';\nimport {\n  GoabAppFooter,\n  GoabAppFooterMetaSection\n} from '@abgov/react-components';\n\nfunction QuickLinksFooter() {\n  const quickLinks = [\n    {\n      href: '/feedback',\n      text: 'Give feedback',\n      analyticsLabel: 'footer-feedback'\n    },\n    {\n      href: '/accessibility',\n      text: 'Accessibility',\n      analyticsLabel: 'footer-accessibility'\n    },\n    {\n      href: '/privacy',\n      text: 'Privacy',\n      analyticsLabel: 'footer-privacy'\n    },\n    {\n      href: '/contact',\n      text: 'Contact us',\n      analyticsLabel: 'footer-contact'\n    }\n  ];\n\n  const handleLinkClick = (link: typeof quickLinks[0]) => {\n    // Add analytics tracking\n    console.log(`Quick link clicked: ${link.analyticsLabel}`);\n    \n    // Handle special cases (e.g., feedback modal)\n    if (link.href === '/feedback') {\n      // Could open feedback modal instead of navigating\n    }\n  };\n\n  return (\n    <GoabAppFooter maxContentWidth=\"100%\">\n      <GoabAppFooterMetaSection>\n        {quickLinks.map((link) => (\n          <a \n            key={link.href}\n            href={link.href}\n            onClick={() => handleLinkClick(link)}\n          >\n            {link.text}\n          </a>\n        ))}\n      </GoabAppFooterMetaSection>\n    </GoabAppFooter>\n  );\n}\n\n// Configurable version for different applications\nfunction ConfigurableQuickLinksFooter({\n  links = [],\n  maxContentWidth = \"100%\",\n  showDefaultLinks = true\n}: {\n  links?: Array<{href: string, text: string, external?: boolean}>;\n  maxContentWidth?: string;\n  showDefaultLinks?: boolean;\n}) {\n  const defaultLinks = [\n    { href: '/feedback', text: 'Give feedback' },\n    { href: '/accessibility', text: 'Accessibility' },\n    { href: '/privacy', text: 'Privacy' },\n    { href: '/contact', text: 'Contact us' }\n  ];\n\n  const allLinks = showDefaultLinks \n    ? [...defaultLinks, ...links]\n    : links;\n\n  return (\n    <GoabAppFooter maxContentWidth={maxContentWidth}>\n      <GoabAppFooterMetaSection>\n        {allLinks.map((link) => (\n          <a \n            key={link.href}\n            href={link.href}\n            target={link.external ? '_blank' : undefined}\n            rel={link.external ? 'noopener noreferrer' : undefined}\n          >\n            {link.text}\n            {link.external && ' (opens in new window)'}\n          </a>\n        ))}\n      </GoabAppFooterMetaSection>\n    </GoabAppFooter>\n  );\n}\n\n// Hook for managing quick links state\nfunction useQuickLinks() {\n  const [feedbackModalOpen, setFeedbackModalOpen] = React.useState(false);\n  \n  const openFeedback = () => {\n    setFeedbackModalOpen(true);\n  };\n  \n  const closeFeedback = () => {\n    setFeedbackModalOpen(false);\n  };\n  \n  const trackLinkClick = (linkType: string, destination: string) => {\n    // Analytics tracking implementation\n    console.log(`Quick link analytics: ${linkType} -> ${destination}`);\n  };\n  \n  return {\n    feedbackModalOpen,\n    openFeedback,\n    closeFeedback,\n    trackLinkClick\n  };\n}"
+    },
+    "angular": {
+      "code": "import { Component, Input } from '@angular/core';\n\ninterface QuickLink {\n  href: string;\n  text: string;\n  external?: boolean;\n  analyticsLabel?: string;\n}\n\n@Component({\n  selector: 'app-quick-links-footer',\n  template: `\n    <goab-app-footer [maxContentWidth]=\"maxContentWidth\">\n      <goab-app-footer-meta-section slot=\"meta\">\n        <a \n          *ngFor=\"let link of displayLinks\" \n          [href]=\"link.href\"\n          [target]=\"link.external ? '_blank' : null\"\n          [rel]=\"link.external ? 'noopener noreferrer' : null\"\n          (click)=\"handleLinkClick(link)\"\n        >\n          {{ link.text }}\n          <span *ngIf=\"link.external\"> (opens in new window)</span>\n        </a>\n      </goab-app-footer-meta-section>\n    </goab-app-footer>\n  `\n})\nexport class QuickLinksFooterComponent {\n  @Input() maxContentWidth = '100%';\n  @Input() additionalLinks: QuickLink[] = [];\n  @Input() showDefaultLinks = true;\n\n  defaultLinks: QuickLink[] = [\n    {\n      href: '/feedback',\n      text: 'Give feedback',\n      analyticsLabel: 'footer-feedback'\n    },\n    {\n      href: '/accessibility',\n      text: 'Accessibility',\n      analyticsLabel: 'footer-accessibility'\n    },\n    {\n      href: '/privacy',\n      text: 'Privacy',\n      analyticsLabel: 'footer-privacy'\n    },\n    {\n      href: '/contact',\n      text: 'Contact us',\n      analyticsLabel: 'footer-contact'\n    }\n  ];\n\n  get displayLinks(): QuickLink[] {\n    return this.showDefaultLinks \n      ? [...this.defaultLinks, ...this.additionalLinks]\n      : this.additionalLinks;\n  }\n\n  handleLinkClick(link: QuickLink) {\n    // Add analytics tracking\n    if (link.analyticsLabel) {\n      console.log(`Quick link clicked: ${link.analyticsLabel}`);\n    }\n    \n    // Handle special cases\n    if (link.href === '/feedback') {\n      // Could emit event for parent to handle feedback modal\n      this.openFeedbackModal();\n    }\n  }\n\n  private openFeedbackModal() {\n    // Implementation for opening feedback modal\n    console.log('Opening feedback modal...');\n  }\n}\n\n// Simplified component for basic usage\n@Component({\n  selector: 'app-basic-quick-links',\n  template: `\n    <goab-app-footer maxContentWidth=\"100%\">\n      <goab-app-footer-meta-section slot=\"meta\">\n        <a href=\"/feedback\">Give feedback</a>\n        <a href=\"/accessibility\">Accessibility</a>\n        <a href=\"/privacy\">Privacy</a>\n        <a href=\"/contact\">Contact us</a>\n      </goab-app-footer-meta-section>\n    </goab-app-footer>\n  `\n})\nexport class BasicQuickLinksComponent {}\n\n// Service for managing quick links across application\n@Injectable({\n  providedIn: 'root'\n})\nexport class QuickLinksService {\n  private feedbackUrl = '/feedback';\n  private accessibilityUrl = '/accessibility';\n  private privacyUrl = '/privacy';\n  private contactUrl = '/contact';\n\n  getDefaultLinks(): QuickLink[] {\n    return [\n      { href: this.feedbackUrl, text: 'Give feedback', analyticsLabel: 'footer-feedback' },\n      { href: this.accessibilityUrl, text: 'Accessibility', analyticsLabel: 'footer-accessibility' },\n      { href: this.privacyUrl, text: 'Privacy', analyticsLabel: 'footer-privacy' },\n      { href: this.contactUrl, text: 'Contact us', analyticsLabel: 'footer-contact' }\n    ];\n  }\n\n  trackLinkClick(linkType: string, destination: string) {\n    // Analytics implementation\n    console.log(`Quick link analytics: ${linkType} -> ${destination}`);\n  }\n\n  updateLinkUrls(urls: Partial<{\n    feedback: string;\n    accessibility: string;\n    privacy: string;\n    contact: string;\n  }>) {\n    if (urls.feedback) this.feedbackUrl = urls.feedback;\n    if (urls.accessibility) this.accessibilityUrl = urls.accessibility;\n    if (urls.privacy) this.privacyUrl = urls.privacy;\n    if (urls.contact) this.contactUrl = urls.contact;\n  }\n}"
+    }
+  },
+  "usage_guidelines": {
+    "when_to_use": [
+      "Every page footer in Government of Alberta applications",
+      "Applications requiring access to standard support resources",
+      "Interfaces where users need quick access to feedback mechanisms",
+      "Applications that must meet accessibility and privacy compliance"
+    ],
+    "when_not_to_use": [
+      "Embedded widgets or components where footer context is inappropriate",
+      "Print layouts where links are not functional",
+      "Applications with extreme space constraints"
+    ],
+    "best_practices": [
+      "Include all four standard quick links (feedback, accessibility, privacy, contact)",
+      "Use consistent link text across all Alberta.ca applications",
+      "Ensure links point to appropriate destinations for your application context",
+      "Track link usage for analytics and improvement insights",
+      "Test that all links work correctly and lead to expected destinations",
+      "Consider opening feedback as modal rather than navigation for better UX"
+    ]
+  },
+  "variations": [
+    {
+      "name": "Application-specific links",
+      "description": "Add application-specific quick links alongside standard ones",
+      "code_change": "Include additional links: <a href='/help'>Help</a> <a href='/tutorial'>Tutorial</a>"
+    },
+    {
+      "name": "Modal feedback",
+      "description": "Open feedback form in modal instead of navigating away",
+      "code_change": "Replace href with onClick handler: <a onClick={() => openFeedbackModal()}>Give feedback</a>"
+    },
+    {
+      "name": "Multilingual support",
+      "description": "Provide quick links in multiple languages",
+      "code_change": "Use translation service: <a href={t('links.feedback.url')}>{t('links.feedback.text')}</a>"
+    },
+    {
+      "name": "External link indicators",
+      "description": "Visually indicate links that open in new windows",
+      "code_change": "Add external link icon: <a href='...' target='_blank'>Contact us <GoabIcon type='external-link' /></a>"
+    }
+  ],
+  "related_patterns": [
+    "show-links-to-navigation-items",
+    "link-the-user-to-give-feedback-to-the-service",
+    "link-to-an-external-page"
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "$schema": "../recipe-schema.json",
+  "schemaVersion": "2.1.0-ai-context",
+  "recipeId": "dynamically-change-items-in-a-dropdown-list",
+  "recipeName": "Dynamically Change Items in a Dropdown List",
+  "category": "form-pattern",
+  "summary": "Update dropdown options based on selections from another dropdown, creating dependent or cascading dropdown relationships",
+  "serviceContext": {
+    "useCase": "Enable dependent dropdown selections where the options in one dropdown are filtered or changed based on the user's selection in another dropdown",
+    "userType": "both",
+    "governmentServiceFlows": [
+      "When citizens select a region and need to see municipalities within that region",
+      "When workers select a department and need to see programs within that department",
+      "When users select a service category and need to see specific service types",
+      "When form fields have hierarchical relationships that need to be reflected in the UI"
+    ],
+    "relatedPatterns": [
+      "dynamically-add-an-item-to-a-dropdown-list",
+      "select-one-or-more-from-a-list-of-options",
+      "group-related-questions-together-on-a-question-page",
+      "expand-or-collapse-part-of-a-form"
+    ]
+  },
+  "components": [
+    {
+      "componentName": "GoabDropdown",
+      "role": "Parent and child selection containers",
+      "purpose": "Provide dropdown interface for both the controlling and dependent selections"
+    },
+    {
+      "componentName": "GoabDropdownItem",
+      "role": "Individual option entries",
+      "purpose": "Represent each selectable option with reset mount type for dynamic updates"
+    },
+    {
+      "componentName": "GoabFormItem",
+      "role": "Form field wrapper",
+      "purpose": "Provide proper labeling and structure for dependent dropdown fields"
+    }
+  ],
+  "codeReference": {
+    "exampleFile": "dynamically-change-items-in-a-dropdown-list.tsx",
+    "linesOfCode": 255,
+    "lastModified": "2024-01-01T00:00:00.000Z"
+  },
+  "implementation": {
+    "complexity": "medium",
+    "keyPatterns": [
+      "State management for dynamic option updates based on parent selection",
+      "Event handling that triggers child dropdown option updates",
+      "Mount type 'reset' for proper dropdown re-rendering with new options",
+      "Unique key generation for dynamic dropdown items using crypto.randomUUID()",
+      "Conditional option loading based on parent dropdown values"
+    ],
+    "designPatterns": [
+      "Dependent dropdown pattern",
+      "Cascading selection interface",
+      "Dynamic content updates",
+      "Hierarchical data relationships"
+    ],
+    "accessibility": [
+      "Form items provide proper labeling for both parent and child dropdowns",
+      "Help text explains the dependency relationship between dropdowns",
+      "Dropdown options are dynamically updated with proper semantic associations",
+      "Screen readers can navigate the hierarchical selection flow"
+    ]
+  },
+  "codeExamples": {
+    "react": {
+      "complete": "import { GoabContainer, GoabDropdown, GoabDropdownItem, GoabFormItem } from \"@abgov/react-components\";\nimport { GoabDropdownOnChangeDetail } from \"@abgov/ui-components-common\";\nimport { useState } from \"react\";\n\nexport const DynamicallyChangeItemsInADropdownList = () => {\n  const [children, setChildren] = useState<string[]>([]);\n  const parents = [\"All\", \"Big\", \"Small\"];\n  const childrenAll = [\"Bus\", \"Elephant\", \"Key\", \"Pen\", \"Watch\", \"Truck\"];\n  const childrenBig = [\"Elephant\", \"Truck\", \"Bus\"];\n  const childrenSmall = [\"Key\", \"Pen\", \"Watch\"];\n\n  const loadSchemas = (name: string, values: string[] | string) => {\n    if (typeof values === \"string\") {\n      if (values === \"All\") setChildren(childrenAll);\n      else if (values === \"Big\") setChildren(childrenBig);\n      else setChildren(childrenSmall);\n    }\n  };\n\n  const handleChildChange = () => {\n    console.log(\"Children Changed\");\n  };\n\n  return (\n    <GoabContainer mt=\"none\" mb=\"none\">\n      <div style={{ padding: \"40px\" }}>\n        <GoabFormItem\n          label=\"Size\"\n          requirement=\"optional\"\n          helpText=\"Choose the type to change the list below\">\n          <GoabDropdown\n            name=\"parent\"\n            placeholder=\"Select a value\"\n            onChange={(event: GoabDropdownOnChangeDetail) =>\n              loadSchemas(event.name as string, event.value as string)\n            }>\n            {parents.map(parent => (\n              <GoabDropdownItem key={parent} value={parent} label={parent} />\n            ))}\n          </GoabDropdown>\n        </GoabFormItem>\n        <GoabFormItem label=\"Items\" requirement=\"optional\" mt=\"l\">\n          <GoabDropdown name=\"children\" placeholder=\"Select a value\" onChange={handleChildChange}>\n            {children.map((child, _index) => (\n              <GoabDropdownItem\n                key={crypto.randomUUID()}\n                value={child}\n                label={child}\n                mountType={\"reset\"}\n              />\n            ))}\n          </GoabDropdown>\n        </GoabFormItem>\n      </div>\n    </GoabContainer>\n  );\n}",
+      "key": "const [selectedCategory, setSelectedCategory] = useState<string>(\"\");\nconst [availableItems, setAvailableItems] = useState<string[]>([]);\n\nconst categories = [\"Electronics\", \"Clothing\", \"Books\"];\nconst itemsByCategory = {\n  \"Electronics\": [\"Laptop\", \"Phone\", \"Tablet\"],\n  \"Clothing\": [\"Shirt\", \"Pants\", \"Jacket\"],\n  \"Books\": [\"Fiction\", \"Non-fiction\", \"Biography\"]\n};\n\nconst handleCategoryChange = (event: GoabDropdownOnChangeDetail) => {\n  const category = event.value as string;\n  setSelectedCategory(category);\n  setAvailableItems(itemsByCategory[category] || []);\n};\n\nconst handleItemChange = (event: GoabDropdownOnChangeDetail) => {\n  console.log('Selected item:', event.value);\n};\n\n<GoabFormItem\n  label=\"Category\"\n  requirement=\"required\"\n  helpText=\"Select a category to see available items\">\n  <GoabDropdown\n    name=\"category\"\n    placeholder=\"Choose a category\"\n    onChange={handleCategoryChange}\n    value={selectedCategory}>\n    {categories.map(category => (\n      <GoabDropdownItem key={category} value={category} label={category} />\n    ))}\n  </GoabDropdown>\n</GoabFormItem>\n\n<GoabFormItem label=\"Item\" requirement=\"required\" mt=\"l\">\n  <GoabDropdown\n    name=\"item\"\n    placeholder=\"Select an item\"\n    onChange={handleItemChange}\n    disabled={!selectedCategory}>\n    {availableItems.map(item => (\n      <GoabDropdownItem\n        key={crypto.randomUUID()}\n        value={item}\n        label={item}\n        mountType=\"reset\"\n      />\n    ))}\n  </GoabDropdown>\n</GoabFormItem>"
+    },
+    "angular": {
+      "complete": "export class DynamicallyChangeItemsInADropdownListComponent {\n  changeForm = new FormGroup({\n    parentDropdown: new FormControl(\"\"),\n    childDropdown: new FormControl(\"\"),\n  });\n  \n  parents = [\"All\", \"Big\", \"Small\"];\n  children: string[] = [];\n  \n  childrenAll = [\"Bus\", \"Elephant\", \"Key\", \"Pen\", \"Watch\", \"Truck\"];\n  childrenBig = [\"Elephant\", \"Truck\", \"Bus\"];\n  childrenSmall = [\"Key\", \"Pen\", \"Watch\"];\n\n  ngOnInit() {\n    this.onChange();\n  }\n\n  onChange() {\n    this.changeForm.get(\"parentDropdown\")?.valueChanges\n      .subscribe((value) => {\n        if (value === \"All\") this.children = this.childrenAll;\n        else if (value === \"Big\") this.children = this.childrenBig;\n        else this.children = this.childrenSmall;\n        \n        // Reset child selection when parent changes\n        this.changeForm.get(\"childDropdown\")?.setValue(\"\");\n      });\n  }\n\n  generateUniqueKey(index: number, item: string): string {\n    return `${item}_${index}_${Math.random()}`;\n  }\n}",
+      "key": "changeForm = new FormGroup({\n  categoryDropdown: new FormControl(''),\n  itemDropdown: new FormControl(''),\n});\n\ncategories = ['Electronics', 'Clothing', 'Books'];\navailableItems: string[] = [];\n\nitemsByCategory = {\n  'Electronics': ['Laptop', 'Phone', 'Tablet'],\n  'Clothing': ['Shirt', 'Pants', 'Jacket'],\n  'Books': ['Fiction', 'Non-fiction', 'Biography']\n};\n\nngOnInit() {\n  this.setupCategoryChange();\n}\n\nsetupCategoryChange() {\n  this.changeForm.get('categoryDropdown')?.valueChanges\n    .subscribe((category) => {\n      this.availableItems = this.itemsByCategory[category] || [];\n      // Reset item selection when category changes\n      this.changeForm.get('itemDropdown')?.setValue('');\n    });\n}\n\ngenerateUniqueKey(index: number, item: string): string {\n  return `${item}_${index}_${Math.random()}`;\n}\n\n<!-- Template -->\n<div [formGroup]=\"changeForm\">\n  <goab-form-item label=\"Category\" requirement=\"required\" helpText=\"Select a category to see available items\">\n    <goab-dropdown formControlName=\"categoryDropdown\"\n        placeholder=\"Choose a category\" name=\"category\">\n      <goab-dropdown-item *ngFor=\"let category of categories\"\n           [value]=\"category\" [label]=\"category\" />\n    </goab-dropdown>\n  </goab-form-item>\n  \n  <goab-form-item label=\"Item\" requirement=\"required\">\n    <goab-dropdown formControlName=\"itemDropdown\"\n      placeholder=\"Select an item\" name=\"item\">\n        <ng-container *ngIf=\"availableItems.length > 0\">\n          <goab-dropdown-item\n            *ngFor=\"let item of availableItems; trackBy: generateUniqueKey\"\n            [value]=\"item\"\n            [label]=\"item\"\n            [mountType]=\"'reset'\"\n          />\n        </ng-container>\n    </goab-dropdown>\n  </goab-form-item>\n</div>"
+    }
+  },
+  "tags": [
+    "dependent-dropdown",
+    "cascading-selection",
+    "dynamic-options",
+    "form-interaction",
+    "hierarchical-data",
+    "conditional-display",
+    "state-management",
+    "option-filtering",
+    "parent-child-relationship",
+    "responsive-forms"
+  ]
+}

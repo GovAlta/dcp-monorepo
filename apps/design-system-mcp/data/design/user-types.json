@@ -1,0 +1,76 @@
+{
+  "name": "User Types Framework",
+  "summary": "Two-dimensional classification for government service users - role and frequency determine design approach",
+  "domain": "design",
+
+  "keyInsight": "Usage frequency matters more than role. A contractor filing daily permits needs efficiency patterns, not guided flows - even though they're a 'citizen'.",
+
+  "classification": {
+    "dimension1_role": {
+      "receivingService": {
+        "description": "People accessing or benefiting from government services",
+        "includes": ["Citizens", "Businesses", "Professional intermediaries (lawyers, contractors)"]
+      },
+      "givingService": {
+        "description": "People administering or managing government services",
+        "includes": ["Government workers", "Service providers", "Staff processing applications"]
+      }
+    },
+    "dimension2_frequency": {
+      "guidedInfrequent": {
+        "frequency": "Once in a lifetime, annually, or rare",
+        "mentalModel": "Help me through this process",
+        "needs": ["Step-by-step guidance", "Clear explanations", "Error prevention", "Save progress"]
+      },
+      "expertFrequent": {
+        "frequency": "Daily, weekly, or routine",
+        "mentalModel": "I know what I'm doing, make me efficient",
+        "needs": ["Shortcuts", "Bulk actions", "Dense information", "Speed"]
+      }
+    }
+  },
+
+  "designPatterns": {
+    "guidedUsers": {
+      "approach": [
+        "Progressive disclosure - break into manageable steps",
+        "Plain language at grade 9 reading level",
+        "Error prevention with validation and confirmations",
+        "Inline help and examples",
+        "Allow saving progress across sessions"
+      ],
+      "components": ["GoabFormItem with help text", "GoabCallout for guidance", "GoabDetails for disclosure", "Clear progress indicators"],
+      "layouts": ["Single question per page", "Prominent help", "Large obvious action buttons"]
+    },
+    "expertUsers": {
+      "approach": [
+        "Dense information display",
+        "Keyboard shortcuts and quick actions",
+        "Bulk operations for efficiency",
+        "Advanced filtering and sorting",
+        "Customizable interfaces"
+      ],
+      "components": ["GoabTable with sorting", "GoabButtonGroup for bulk actions", "GoabTabs for density", "GoabPagination"],
+      "layouts": ["Information-dense layouts", "Multiple actions per screen", "Advanced filtering"]
+    }
+  },
+
+  "examples": {
+    "guidedReceiving": {
+      "scenario": "Citizen buying first home",
+      "pattern": "Step-by-step wizard, extensive help, one question per page"
+    },
+    "expertReceiving": {
+      "scenario": "Contractor filing routine permits",
+      "pattern": "Efficient form, bulk submission, saved preferences"
+    },
+    "guidedGiving": {
+      "scenario": "Worker handling complex regulatory exception",
+      "pattern": "Procedural guidance, compliance checklists, validation"
+    },
+    "expertGiving": {
+      "scenario": "Case worker processing daily applications",
+      "pattern": "Dashboard with queues, bulk actions, keyboard shortcuts"
+    }
+  }
+}

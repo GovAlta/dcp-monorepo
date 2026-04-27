@@ -1,0 +1,181 @@
+{
+  "metadataSchemaVersion": "2.1.0-ai-context",
+  "audience": "ai-systems-helping-consumer-developers",
+  "recipeId": "basic-page-layout",
+  "recipeName": "Basic Page Layout",
+  "category": "layout-pattern",
+  "summary": "Standard government service page structure with header, content area, and footer using mandatory one-column layout",
+  
+  "serviceContext": {
+    "useCases": [
+      "Government service landing pages",
+      "Application entry points",
+      "Information display pages",
+      "Service overviews"
+    ],
+    "governmentFlows": [
+      "Service discovery",
+      "Application initiation",
+      "Information consumption",
+      "Service navigation"
+    ],
+    "userType": "both",
+    "designApproach": {
+      "citizenCharacteristics": [
+        "simplified-ui",
+        "accessibility-first",
+        "mobile-optimized"
+      ],
+      "workerCharacteristics": [
+        "desktop-optimized",
+        "information-dense"
+      ]
+    }
+  },
+  
+  "components": [
+    {
+      "name": "GoabOneColumnLayout",
+      "role": "primary",
+      "purpose": "Mandatory page structure wrapper for all government service pages",
+      "props": {},
+      "notes": "Required for compliance and accessibility - always use as page root"
+    },
+    {
+      "name": "GoabMicrositeHeader",
+      "role": "navigation",
+      "purpose": "Government branding and service status display",
+      "props": {
+        "type": "alpha",
+        "version": "UAT"
+      },
+      "notes": "Provides official government website identification"
+    },
+    {
+      "name": "GoabAppHeader",
+      "role": "navigation",
+      "purpose": "Service-specific header with navigation and authentication",
+      "props": {
+        "url": "/",
+        "heading": "Design System"
+      },
+      "notes": "Contains service name and primary navigation"
+    },
+    {
+      "name": "GoabPageBlock",
+      "role": "layout",
+      "purpose": "Main content container with appropriate width constraints",
+      "props": {
+        "width": "704px"
+      },
+      "notes": "Optimal reading width for service pages"
+    },
+    {
+      "name": "GoabAppFooter",
+      "role": "navigation",
+      "purpose": "Government footer with utility links and branding",
+      "props": {},
+      "notes": "Provides consistent government footer across all services"
+    },
+    {
+      "name": "GoabSkeleton",
+      "role": "display",
+      "purpose": "Loading states and content placeholders",
+      "props": {
+        "type": "header",
+        "size": "4"
+      },
+      "notes": "Used for loading states and content structure demonstration"
+    },
+    {
+      "name": "GoabGrid",
+      "role": "layout",
+      "purpose": "Responsive grid layout for content organization",
+      "props": {
+        "minChildWidth": "30ch"
+      },
+      "notes": "Automatically adapts to screen size for optimal content display"
+    }
+  ],
+  
+  "codeReference": {
+    "filePath": "src/examples/basic-page-layout.tsx",
+    "lastModified": "2025-01-15T10:30:00Z",
+    "linesOfCode": 48,
+    "sandboxFlags": ["fullWidth"]
+  },
+  
+  "implementation": {
+    "react": {
+      "dependencies": [
+        "@abgov/react-components"
+      ],
+      "stateManagement": {
+        "required": false,
+        "variables": [],
+        "pattern": "none"
+      },
+      "codeSnippet": "// No state management required for basic layout"
+    }
+  },
+
+  "codeExamples": {
+    "react": {
+      "complete": "import {\n  GoabOneColumnLayout,\n  GoabMicrositeHeader,\n  GoabAppHeader,\n  GoabPageBlock,\n  GoabAppFooter,\n  GoabSkeleton,\n  GoabGrid\n} from '@abgov/react-components';\n\nconst BasicPageLayout = () => {\n  return (\n    <GoabOneColumnLayout>\n      <section slot=\"header\">\n        <GoabMicrositeHeader type=\"alpha\" version=\"UAT\" />\n        <GoabAppHeader url=\"/\" heading=\"Design System\">\n          <a href=\"/login\">Sign in</a>\n        </GoabAppHeader>\n      </section>\n      \n      <GoabPageBlock width=\"704px\">\n        <p>\n          <GoabSkeleton type=\"header\" size=\"4\" />\n          <GoabSkeleton type=\"text\" size=\"1\" />\n        </p>\n        <p>\n          <GoabSkeleton type=\"header\" size=\"4\" />\n          <GoabSkeleton type=\"text\" size=\"1\" />\n        </p>\n        <GoabGrid minChildWidth=\"30ch\">\n          <GoabSkeleton type=\"card\" size=\"2\" />\n          <GoabSkeleton type=\"card\" size=\"2\" />\n        </GoabGrid>\n      </GoabPageBlock>\n      \n      <section slot=\"footer\">\n        <GoabAppFooter />\n      </section>\n    </GoabOneColumnLayout>\n  );\n};\n\nexport default BasicPageLayout;"
+    }
+  },
+  
+  "designPatterns": {
+    "accessibilityConsiderations": [
+      "Semantic HTML structure with proper heading hierarchy",
+      "Skip links and keyboard navigation built into layout components",
+      "Proper landmark roles for screen readers",
+      "Government branding clearly identifies official website"
+    ],
+    "usabilityPrinciples": [
+      "Consistent layout across all government services",
+      "Optimal content width (704px) for reading comprehension",
+      "Clear visual hierarchy with header, content, and footer sections",
+      "Responsive design adapts to all screen sizes"
+    ],
+    "responsiveStrategy": {
+      "approach": "single-layout",
+      "breakpoints": ["mobile", "tablet", "desktop"],
+      "keyComponents": ["GoabOneColumnLayout", "GoabGrid"]
+    }
+  },
+  
+  "variations": [
+    {
+      "name": "With sidebar navigation",
+      "description": "Add sidebar navigation for multi-page services",
+      "additionalComponents": ["GoabSideMenu"],
+      "modifications": ["Use sidebar slot in OneColumnLayout"]
+    },
+    {
+      "name": "Full width content",
+      "description": "For dashboard-style pages requiring more space",
+      "modifications": ["Use width='960px' or width='full' in PageBlock"]
+    },
+    {
+      "name": "With authentication",
+      "description": "Include user authentication in header",
+      "modifications": ["Add authentication links in AppHeader slot"]
+    }
+  ],
+  
+  "relatedRecipes": [
+    "header-with-navigation",
+    "footer-with-links",
+    "responsive-grid-layout"
+  ],
+  
+  "tags": ["layout", "page-structure", "government", "responsive", "mandatory", "foundation"],
+  "status": "published",
+  "lastUpdated": "2025-01-15T10:30:00Z",
+  
+  "derivedFrom": {
+    "exampleFile": "ui-components-docs/src/examples/basic-page-layout.tsx",
+    "note": "Extracted from existing TSX example with enhanced service context"
+  }
+}

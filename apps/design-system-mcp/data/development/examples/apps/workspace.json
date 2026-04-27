@@ -1,0 +1,309 @@
+{
+  "id": "workspace",
+  "name": "Workspace Application",
+  "category": "app",
+  "description": "A complete internal worker application for government case management, permit processing, or queue-based work. Combines a side navigation menu with multiple page types for an efficient workflow.",
+
+  "userType": "worker",
+  "context": "Internal government staff managing cases, applications, permits, or other work items",
+
+  "whenToUse": [
+    "Case management systems (child services, permits, applications)",
+    "Internal processing queues and work assignment",
+    "Staff-facing dashboards and administrative tools",
+    "Any internal government application requiring authentication"
+  ],
+
+  "projectSetup": {
+    "description": "Required setup for workspace apps to function correctly at runtime. Missing any of these will cause runtime failures.",
+    "entryFile": {
+      "description": "main.tsx or index.tsx MUST import web components for GoA styles to load",
+      "required": [
+        "import '@abgov/web-components'"
+      ],
+      "example": "// main.tsx - CRITICAL: Import web components FIRST\nimport '@abgov/web-components'\nimport React from 'react'\nimport ReactDOM from 'react-dom/client'\nimport { BrowserRouter } from 'react-router-dom'\nimport App from './App'\nimport './App.css'\n\nReactDOM.createRoot(document.getElementById('root')!).render(\n  <React.StrictMode>\n    <BrowserRouter>\n      <App />\n    </BrowserRouter>\n  </React.StrictMode>\n)"
+    },
+    "indexHtml": {
+      "description": "index.html MUST include Ionicons CDN scripts for GoA icons to render",
+      "required": [
+        "<script type=\"module\" src=\"https://cdn.jsdelivr.net/npm/ionicons@5.5.2/dist/ionicons/ionicons.esm.js\"></script>",
+        "<script nomodule src=\"https://cdn.jsdelivr.net/npm/ionicons@5.5.2/dist/ionicons/ionicons.js\"></script>"
+      ],
+      "placement": "Add inside <head> tag",
+      "example": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <title>App Name - Government of Alberta</title>\n    <!-- CRITICAL: Ionicons CDN for GoA icons -->\n    <script type=\"module\" src=\"https://cdn.jsdelivr.net/npm/ionicons@5.5.2/dist/ionicons/ionicons.esm.js\"></script>\n    <script nomodule src=\"https://cdn.jsdelivr.net/npm/ionicons@5.5.2/dist/ionicons/ionicons.js\"></script>\n  </head>\n  <body>\n    <div id=\"root\"></div>\n    <script type=\"module\" src=\"/src/main.tsx\"></script>\n  </body>\n</html>"
+    },
+    "typescript": {
+      "description": "TypeScript configuration notes for strict configs",
+      "notes": [
+        "Use `import type { TypeName }` for type-only imports to avoid bundler issues",
+        "Types are imported from '@abgov/ui-components-common'",
+        "Example: import type { GoabBadgeType } from '@abgov/ui-components-common'"
+      ]
+    }
+  },
+
+  "scrollInfrastructure": {
+    "description": "Workspace apps should have scroll-aware headers that collapse and show shadows when content scrolls. This creates a polished, native-feeling experience.",
+    "scrollStates": ["no-scroll", "at-top", "middle", "at-bottom"],
+    "behavior": {
+      "no-scroll": "Content fits without scrolling - full card chrome (all rounded corners, all borders)",
+      "at-top": "User hasn't scrolled yet - top chrome only (rounded top corners)",
+      "middle": "User is scrolling through content - side borders only, header shadow visible",
+      "at-bottom": "User has scrolled to bottom - bottom chrome only (rounded bottom corners)"
+    },
+    "components": {
+      "ScrollStateContext": {
+        "description": "React context that tracks scroll position of the content container",
+        "file": "src/contexts/ScrollStateContext.tsx",
+        "code": "import { createContext, useContext, useState, useEffect, useCallback, ReactNode } from 'react';\nimport { useMenu } from './MenuContext';\n\nexport type ScrollPosition = 'no-scroll' | 'at-top' | 'middle' | 'at-bottom';\n\ninterface ScrollStateContextType {\n  scrollPosition: ScrollPosition;\n  isScrollable: boolean;\n}\n\nconst ScrollStateContext = createContext<ScrollStateContextType | undefined>(undefined);\n\ninterface ScrollStateProviderProps {\n  children: ReactNode;\n}\n\nexport function ScrollStateProvider({ children }: ScrollStateProviderProps) {\n  const [scrollPosition, setScrollPosition] = useState<ScrollPosition>('no-scroll');\n  const [isScrollable, setIsScrollable] = useState(false);\n  const { isMobile } = useMenu();\n\n  const calculateScrollState = useCallback(() => {\n    const containerSelector = isMobile ? '.mobile-content-container' : '.desktop-card-container';\n    const container = document.querySelector(containerSelector);\n\n    if (!container) {\n      setScrollPosition('no-scroll');\n      setIsScrollable(false);\n      return;\n    }\n\n    const { scrollTop, scrollHeight, clientHeight } = container;\n    const hasScroll = scrollHeight > clientHeight;\n    const distanceFromBottom = scrollHeight - scrollTop - clientHeight;\n\n    setIsScrollable(hasScroll);\n\n    if (!hasScroll) {\n      setScrollPosition('no-scroll');\n      return;\n    }\n\n    // Hysteresis thresholds - different values for entering vs exiting states\n    const enterThreshold = 10;\n    const exitThreshold = 30;\n\n    setScrollPosition(prevPosition => {\n      if (prevPosition === 'at-top') {\n        if (scrollTop > exitThreshold) return 'middle';\n        return 'at-top';\n      }\n      if (prevPosition === 'at-bottom') {\n        if (distanceFromBottom > exitThreshold) return 'middle';\n        return 'at-bottom';\n      }\n      if (scrollTop <= enterThreshold) return 'at-top';\n      if (distanceFromBottom <= enterThreshold) return 'at-bottom';\n      return 'middle';\n    });\n  }, [isMobile]);\n\n  useEffect(() => {\n    const containerSelector = isMobile ? '.mobile-content-container' : '.desktop-card-container';\n    const container = document.querySelector(containerSelector);\n    if (!container) return;\n\n    let rafId: number | null = null;\n    const handleScroll = () => {\n      if (rafId) return;\n      rafId = requestAnimationFrame(() => {\n        calculateScrollState();\n        rafId = null;\n      });\n    };\n\n    calculateScrollState();\n    container.addEventListener('scroll', handleScroll, { passive: true });\n\n    const resizeObserver = new ResizeObserver(() => calculateScrollState());\n    resizeObserver.observe(container);\n    for (let i = 0; i < container.children.length; i++) {\n      resizeObserver.observe(container.children[i]);\n    }\n\n    window.addEventListener('resize', () => setTimeout(calculateScrollState, 10), { passive: true });\n\n    return () => {\n      container.removeEventListener('scroll', handleScroll);\n      resizeObserver.disconnect();\n      if (rafId) cancelAnimationFrame(rafId);\n    };\n  }, [isMobile, calculateScrollState]);\n\n  return (\n    <ScrollStateContext.Provider value={{ scrollPosition, isScrollable }}>\n      {children}\n    </ScrollStateContext.Provider>\n  );\n}\n\nexport function useScrollState() {\n  const context = useContext(ScrollStateContext);\n  if (context === undefined) {\n    throw new Error('useScrollState must be used within a ScrollStateProvider');\n  }\n  return context;\n}"
+      },
+      "WorkspaceContent": {
+        "description": "Inner component that applies scroll state to the content container",
+        "code": "function WorkspaceContent({ children }: { children: ReactNode }) {\n  const { isMobile } = useMenu();\n  const { scrollPosition } = useScrollState();\n\n  if (isMobile) {\n    return (\n      <div className=\"mobile-content-container\" style={{ backgroundColor: 'white', height: '100%', overflow: 'auto' }}>\n        <PageHeader />\n        {children}\n      </div>\n    );\n  }\n\n  return (\n    <div className=\"desktop-card-container\" data-scroll-state={scrollPosition}>\n      <PageHeader />\n      {children}\n    </div>\n  );\n}"
+      }
+    },
+    "css": {
+      "description": "Required CSS for adaptive card container based on scroll state",
+      "cardContainer": "/* Card Container - Adaptive padding based on scroll state */\n.card-container {\n  flex: 1;\n  display: flex;\n  overflow: hidden;\n  transition: padding 0.2s ease;\n}\n\n.card-container:has([data-scroll-state=\"no-scroll\"]) {\n  padding: 20px 20px 20px 0;\n}\n\n.card-container:has([data-scroll-state=\"at-top\"]) {\n  padding: 20px 20px 0 0;\n}\n\n.card-container:has([data-scroll-state=\"middle\"]) {\n  padding: 0 20px 0 0;\n}\n\n.card-container:has([data-scroll-state=\"at-bottom\"]) {\n  padding: 0 20px 20px 0;\n}",
+      "desktopCardContainer": "/* Desktop Card Container - Adaptive chrome based on scroll state */\n.desktop-card-container {\n  background-color: white;\n  height: 100%;\n  overflow: auto;\n  flex: 1;\n  transition: border-radius 0.2s ease, border-color 0.2s ease;\n}\n\n.desktop-card-container[data-scroll-state=\"no-scroll\"] {\n  border: 1px solid #E9E9E9;\n  border-radius: 24px;\n}\n\n.desktop-card-container[data-scroll-state=\"at-top\"] {\n  border: 1px solid #E9E9E9;\n  border-bottom: none;\n  border-radius: 24px 24px 0 0;\n}\n\n.desktop-card-container[data-scroll-state=\"middle\"] {\n  border: 1px solid #E9E9E9;\n  border-top: none;\n  border-bottom: none;\n  border-radius: 0;\n}\n\n.desktop-card-container[data-scroll-state=\"at-bottom\"] {\n  border: 1px solid #E9E9E9;\n  border-top: none;\n  border-radius: 0 0 24px 24px;\n}",
+      "pageHeader": "/* Page Header - Sticky with scroll shadow */\n.page-header {\n  position: relative;\n  background-color: white;\n  border-bottom: none;\n  transition: padding 0.2s ease, box-shadow 0.2s ease, border-bottom 0.15s ease;\n}\n\n@media (min-width: 624px) {\n  .desktop-card-container .page-header {\n    position: sticky;\n    top: 0;\n    z-index: 100;\n    background-color: white;\n  }\n\n  .desktop-card-container .page-header--expanded {\n    padding: 24px 32px 16px 32px;\n    border-bottom: none;\n  }\n\n  .desktop-card-container .page-header--collapsed {\n    padding: 12px 32px;\n    border-bottom: 1px solid var(--goa-color-greyscale-200);\n  }\n}\n\n/* Scroll shadow below header */\n.page-header::after {\n  content: '';\n  position: absolute;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  height: 8px;\n  transform: translateY(100%);\n  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.08), transparent);\n  pointer-events: none;\n  opacity: 0;\n  visibility: hidden;\n  transition: opacity 0.15s ease, visibility 0.15s ease;\n}\n\n.page-header--middle::after,\n.page-header--atbottom::after {\n  opacity: 1;\n  visibility: visible;\n}"
+    }
+  },
+
+  "composesPatterns": {
+    "pages": ["dashboard-page", "list-page", "detail-page"],
+    "sections": ["stats-row", "filter-bar", "data-table", "filter-drawer", "case-cards", "empty-state", "loading-skeleton"]
+  },
+
+  "appStructure": {
+    "layout": "Side menu (left) + content area (right)",
+    "navigation": "GoabxWorkSideMenu (EXPERIMENTAL) with primary, secondary, and account sections",
+    "routing": "React Router with nested routes",
+    "state": "Context providers for menu state, page header, notifications"
+  },
+
+  "pages": [
+    {
+      "name": "Dashboard",
+      "path": "/",
+      "pattern": "dashboard-page",
+      "description": "Landing page with personalized metrics and quick access to priority items"
+    },
+    {
+      "name": "My Cases",
+      "path": "/my-cases",
+      "pattern": "list-page",
+      "description": "Filtered list of cases assigned to current user"
+    },
+    {
+      "name": "All Cases",
+      "path": "/cases",
+      "pattern": "list-page",
+      "description": "Full searchable list of all cases with filtering"
+    },
+    {
+      "name": "Case Detail",
+      "path": "/cases/:caseId",
+      "pattern": "detail-page",
+      "description": "View and edit individual case with tabs"
+    },
+    {
+      "name": "Search",
+      "path": "/search",
+      "pattern": "list-page",
+      "description": "Global search across all record types"
+    },
+    {
+      "name": "Notifications",
+      "path": "/notifications",
+      "description": "List of system notifications and alerts"
+    },
+    {
+      "name": "Settings",
+      "path": "/settings",
+      "description": "User preferences and account settings"
+    }
+  ],
+
+  "navigationStructure": {
+    "primary": [
+      { "label": "Dashboard", "icon": "home", "path": "/" },
+      { "label": "My Cases", "icon": "person", "path": "/my-cases", "badge": { "type": "normal", "count": 12 } },
+      { "label": "All Cases", "icon": "folder", "path": "/cases" },
+      {
+        "label": "Search",
+        "icon": "search",
+        "submenu": [
+          { "label": "Cases", "path": "/search?type=cases" },
+          { "label": "Clients", "path": "/search?type=clients" },
+          { "label": "Documents", "path": "/search?type=documents" }
+        ]
+      }
+    ],
+    "secondary": [
+      { "label": "Notifications", "icon": "notifications", "path": "/notifications", "badge": { "type": "emergency", "count": 3 } },
+      { "label": "Support", "icon": "help-circle", "path": "/support" },
+      { "label": "Settings", "icon": "settings", "path": "/settings" }
+    ],
+    "account": [
+      { "label": "Account", "icon": "person", "path": "/account" },
+      { "label": "Logout", "icon": "log-out", "path": "/logout" }
+    ]
+  },
+
+  "cssClasses": {
+    "app-layout": {
+      "purpose": "Main app container with side menu and content",
+      "css": ".app-layout {\n  display: flex;\n  height: 100vh;\n  overflow: hidden;\n  background-color: #F8F8F8;\n}"
+    },
+    "clients-content-padding": {
+      "purpose": "Responsive horizontal padding for page content",
+      "css": ".clients-content-padding {\n  container-type: inline-size;\n  padding-left: 16px;\n  padding-right: 16px;\n}\n\n@media (min-width: 624px) {\n  .clients-content-padding {\n    padding-left: 32px;\n    padding-right: 32px;\n  }\n}"
+    },
+    "table-wrapper": {
+      "purpose": "Margins for tables inside scroll container",
+      "css": ".table-wrapper {\n  margin-left: 16px;\n  margin-right: 16px;\n}\n\n@media (min-width: 624px) {\n  .table-wrapper {\n    margin-left: 32px;\n    margin-right: 32px;\n  }\n}"
+    },
+    "desktop-card-container": {
+      "purpose": "White card container for content area",
+      "css": ".desktop-card-container {\n  background-color: white;\n  height: 100%;\n  overflow: auto;\n  border: 1px solid #E9E9E9;\n  border-radius: 24px;\n}"
+    }
+  },
+
+  "utilities": {
+    "files": [
+      "utils/searchUtils.ts",
+      "utils/badgeUtils.ts",
+      "utils/dateUtils.ts",
+      "utils/mockApi.ts"
+    ],
+    "searchUtils": {
+      "filterData": "Filter array by search chips",
+      "sortData": "Sort array by key and direction",
+      "getEventValue": "Parse event value from CustomEvent or React event",
+      "getEventKey": "Parse key from keyboard event"
+    },
+    "badgeUtils": {
+      "getPriorityBadgeProps": "Map priority to badge type and content",
+      "getStatusBadgeProps": "Map status to badge type and content",
+      "getTypeBadgeProps": "Map record type to badge props"
+    },
+    "dateUtils": {
+      "formatDate": "Format date for display (Dec 10, 2024)",
+      "formatRelativeDate": "Format date relatively (In 3 days)",
+      "isOverdue": "Check if date is past due",
+      "isDueSoon": "Check if date is within threshold"
+    },
+    "mockApi": {
+      "mockFetch": "Simulate API delay for realistic loading states"
+    }
+  },
+
+  "contexts": {
+    "MenuContext": {
+      "purpose": "Manage side menu state (collapsed, mobile drawer)",
+      "values": ["isCollapsed", "isMobile", "toggleMenu", "closeMenu"]
+    },
+    "ScrollStateContext": {
+      "purpose": "Track scroll position for adaptive card chrome and header state",
+      "values": ["scrollPosition", "isScrollable"],
+      "scrollStates": ["no-scroll", "at-top", "middle", "at-bottom"]
+    },
+    "NotificationContext": {
+      "purpose": "Notification state and actions",
+      "values": ["notifications", "unreadCount", "markAsRead", "markAllAsRead"]
+    }
+  },
+
+  "example": {
+    "framework": "react",
+    "description": "Complete workspace app shell with routing, contexts, and scroll state",
+    "code": "// App.tsx - Main application shell\nimport { Routes, Route, Navigate } from 'react-router-dom';\nimport { MenuProvider } from './contexts/MenuContext';\nimport { NotificationProvider } from './contexts/NotificationContext';\nimport { AppLayout } from './components/AppLayout';\nimport { DashboardPage } from './routes/DashboardPage';\nimport { MyCasesPage } from './routes/MyCasesPage';\nimport { AllCasesPage } from './routes/AllCasesPage';\nimport { CaseDetailPage } from './routes/CaseDetailPage';\nimport { SearchPage } from './routes/SearchPage';\nimport { NotificationsPage } from './routes/NotificationsPage';\nimport { SettingsPage } from './routes/SettingsPage';\nimport './App.css';\n\nexport default function App() {\n  return (\n    <MenuProvider>\n      <NotificationProvider>\n        <AppLayout>\n          <Routes>\n            <Route path=\"/\" element={<DashboardPage />} />\n            <Route path=\"/my-cases\" element={<MyCasesPage />} />\n            <Route path=\"/cases\" element={<AllCasesPage />} />\n            <Route path=\"/cases/:caseId\" element={<CaseDetailPage />} />\n            <Route path=\"/search\" element={<SearchPage />} />\n            <Route path=\"/notifications\" element={<NotificationsPage />} />\n            <Route path=\"/settings\" element={<SettingsPage />} />\n            <Route path=\"*\" element={<Navigate to=\"/\" replace />} />\n          </Routes>\n        </AppLayout>\n      </NotificationProvider>\n    </MenuProvider>\n  );\n}\n\n// AppLayout.tsx - Layout with side menu, scroll state, and content area\nimport { ReactNode } from 'react';\nimport { useNavigate } from 'react-router-dom';\nimport {\n  GoabxWorkSideMenu,\n  GoabxWorkSideMenuItem\n} from '@abgov/react-components/experimental';\nimport { useMenu } from '../contexts/MenuContext';\nimport { useNotifications } from '../contexts/NotificationContext';\nimport { ScrollStateProvider, useScrollState } from '../contexts/ScrollStateContext';\nimport { PageHeader } from './PageHeader';\nimport { currentUser } from '../data/mockWorkers';\n\n// Inner component that uses scroll state\nfunction WorkspaceContent({ children }: { children: ReactNode }) {\n  const { isMobile } = useMenu();\n  const { scrollPosition } = useScrollState();\n\n  if (isMobile) {\n    return (\n      <div className=\"mobile-content-container\" style={{ backgroundColor: 'white', height: '100%', overflow: 'auto' }}>\n        <PageHeader />\n        {children}\n      </div>\n    );\n  }\n\n  return (\n    <div className=\"desktop-card-container\" data-scroll-state={scrollPosition}>\n      <PageHeader />\n      {children}\n    </div>\n  );\n}\n\nexport function AppLayout({ children }: { children: ReactNode }) {\n  const navigate = useNavigate();\n  const { isCollapsed, isMobile, toggleMenu } = useMenu();\n  const { unreadCount } = useNotifications();\n\n  const handleNavigate = (path: string) => {\n    navigate(path);\n    if (isMobile) toggleMenu();\n  };\n\n  return (\n    <ScrollStateProvider>\n      <div className=\"app-layout\">\n        <GoabxWorkSideMenu\n          heading=\"Case Management\"\n          url=\"/\"\n          userName={currentUser.name}\n          userSecondaryText={currentUser.email}\n          open={!isCollapsed}\n          onToggle={toggleMenu}\n          primaryContent={\n            <>\n              <GoabxWorkSideMenuItem\n                icon=\"home\"\n                label=\"Dashboard\"\n                url=\"/\"\n                onClick={() => handleNavigate('/')}\n              />\n              <GoabxWorkSideMenuItem\n                icon=\"person\"\n                label=\"My Cases\"\n                badge=\"12\"\n                url=\"/my-cases\"\n                onClick={() => handleNavigate('/my-cases')}\n              />\n              <GoabxWorkSideMenuItem\n                icon=\"folder\"\n                label=\"All Cases\"\n                url=\"/cases\"\n                onClick={() => handleNavigate('/cases')}\n              />\n              <GoabxWorkSideMenuItem\n                icon=\"search\"\n                label=\"Search\"\n                url=\"/search\"\n                onClick={() => handleNavigate('/search')}\n              />\n            </>\n          }\n          secondaryContent={\n            <>\n              <GoabxWorkSideMenuItem\n                icon=\"notifications\"\n                label=\"Notifications\"\n                badge={unreadCount > 0 ? String(unreadCount) : undefined}\n                type={unreadCount > 0 ? 'emergency' : undefined}\n                url=\"/notifications\"\n                onClick={() => handleNavigate('/notifications')}\n              />\n            </>\n          }\n          accountContent={\n            <>\n              <GoabxWorkSideMenuItem\n                icon=\"settings\"\n                label=\"Settings\"\n                url=\"/settings\"\n                onClick={() => handleNavigate('/settings')}\n              />\n              <GoabxWorkSideMenuItem\n                icon=\"log-out\"\n                label=\"Logout\"\n                onClick={() => console.log('Logout')}\n              />\n            </>\n          }\n        />\n\n        <main className=\"card-container\">\n          <WorkspaceContent>{children}</WorkspaceContent>\n        </main>\n      </div>\n    </ScrollStateProvider>\n  );\n}"
+  },
+
+  "dependencies": {
+    "npm": [
+      "@abgov/react-components",
+      "@abgov/web-components",
+      "@abgov/ui-components-common",
+      "react-router-dom@^6"
+    ],
+    "imports": [
+      "import '@abgov/web-components/index.css';",
+      "// For WorkSideMenu (experimental):",
+      "import { GoabxWorkSideMenu, GoabxWorkSideMenuItem } from '@abgov/react-components/experimental';"
+    ],
+    "experimentalNote": "WorkSideMenu components require importing from '@abgov/react-components/experimental' with the Goabx prefix (not Goab)"
+  },
+
+  "fileStructure": {
+    "src/": {
+      "App.tsx": "Main app with routing and providers",
+      "App.css": "Global styles including utility classes",
+      "index.tsx": "Entry point with React DOM render",
+      "components/": {
+        "AppLayout.tsx": "Side menu + content layout",
+        "PageHeader.tsx": "Dynamic page header component",
+        "ScrollContainer.tsx": "Horizontal scroll with shadows",
+        "ErrorBoundary.tsx": "Error boundary wrapper"
+      },
+      "routes/": {
+        "DashboardPage.tsx": "Dashboard with stats and cards",
+        "MyCasesPage.tsx": "Personal case list",
+        "AllCasesPage.tsx": "Full case list with filters",
+        "CaseDetailPage.tsx": "Case detail with tabs",
+        "SearchPage.tsx": "Global search page",
+        "NotificationsPage.tsx": "Notification list",
+        "SettingsPage.tsx": "User settings"
+      },
+      "contexts/": {
+        "MenuContext.tsx": "Side menu state (collapsed, mobile)",
+        "ScrollStateContext.tsx": "Scroll position tracking for adaptive chrome",
+        "NotificationContext.tsx": "Notifications state"
+      },
+      "utils/": {
+        "searchUtils.ts": "Filter and sort utilities",
+        "badgeUtils.ts": "Badge prop mappers",
+        "dateUtils.ts": "Date formatting",
+        "mockApi.ts": "API simulation"
+      },
+      "types/": {
+        "Case.ts": "Case and related types",
+        "User.ts": "User type definitions"
+      },
+      "data/": {
+        "mockCases.json": "Sample case data",
+        "mockWorkers.json": "Sample user data"
+      },
+      "assets/": {
+        "empty-state-illustration.svg": "Empty state graphic"
+      }
+    }
+  },
+
+  "sampleTypes": {
+    "Case": "interface Case {\n  id: string;\n  childName: string;\n  childDateOfBirth: string;\n  status: 'assigned' | 'in-progress' | 'pending' | 'complete';\n  priority: 'high' | 'medium' | 'low';\n  isUrgent: boolean;\n  dueDate: string;\n  createdDate: string;\n  lastUpdated: string;\n  assignedTo: string;\n  assignedToName: string;\n  parentGuardian: ParentGuardian;\n  events: CaseEvent[];\n  notes: CaseNote[];\n}",
+    "User": "interface User {\n  id: string;\n  name: string;\n  email: string;\n  role: string;\n}"
+  },
+
+  "considerations": [
+    "Use GoabxWorkSideMenu for consistent worker app navigation",
+    "Implement responsive behavior (collapsed menu on mobile)",
+    "Use context providers for shared state across pages",
+    "Page header should update dynamically based on current page",
+    "Include notification badges on menu items",
+    "Handle loading states with skeletons on all data-fetching pages",
+    "Implement proper error boundaries for graceful failure",
+    "Use React Router for client-side navigation",
+    "Consider keyboard navigation and accessibility throughout"
+  ],
+
+  "wireframeMode": {
+    "description": "This template supports wireframe mode for early-stage validation. Press Cmd+. (Mac) or Ctrl+. (Windows) to toggle between production and wireframe appearance.",
+    "purpose": "Use wireframe mode when showing early concepts to stakeholders to get structural feedback on flows and navigation, not visual details.",
+    "toggle": "Keyboard shortcut Cmd+. / Ctrl+. toggles wireframe mode",
+    "seeAlso": "wireframe-mode workflow for setup instructions"
+  },
+
+  "relatedPatterns": ["dashboard-page", "list-page", "detail-page", "wireframe-mode"]
+}

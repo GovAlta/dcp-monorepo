@@ -1,0 +1,104 @@
+{
+  "name": "GoA Design System Installation",
+  "summary": "Setup and integration guide for React, Angular, and Web Component frameworks",
+  "domain": "development",
+
+  "quickStart": {
+    "react": {
+      "template": "https://github.com/GovAlta/ui-components-react-template",
+      "steps": ["Use template → Clone → npm install → npm run build → npm run dev"]
+    },
+    "angular": {
+      "template": "https://github.com/GovAlta/ui-components-angular-template",
+      "steps": ["Use template → Clone → npm install → npm run build → npm run start"]
+    }
+  },
+
+  "manualSetup": {
+    "react": {
+      "install": "npm install @abgov/react-components @abgov/web-components",
+      "imports": {
+        "components": "import { GoabButton, GoabInput, GoabFormItem } from '@abgov/react-components';",
+        "webComponents": "import '@abgov/web-components';",
+        "styles": "@import '@abgov/web-components/index.css';"
+      },
+      "naming": "PascalCase with Goab prefix (GoabButton, GoabInput, GoabFormItem)",
+      "ionicons": {
+        "location": "Add to public/index.html head",
+        "scripts": [
+          "<script type=\"module\" src=\"https://cdn.jsdelivr.net/npm/ionicons@latest/dist/ionicons/ionicons.esm.js\"></script>",
+          "<script nomodule src=\"https://cdn.jsdelivr.net/npm/ionicons@latest/dist/ionicons/ionicons.js\"></script>"
+        ]
+      }
+    },
+    "angular": {
+      "install": "npm install @abgov/angular-components @abgov/web-components",
+      "moduleSetup": {
+        "imports": [
+          "import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';",
+          "import '@abgov/web-components';",
+          "import { AngularComponentsModule } from '@abgov/angular-components';"
+        ],
+        "schemas": ["CUSTOM_ELEMENTS_SCHEMA"]
+      },
+      "naming": "kebab-case with goab- prefix (<goab-button>, <goab-input>)",
+      "styles": "@import '@abgov/web-components/index.css';",
+      "ionicons": {
+        "location": "Add to src/index.html head",
+        "scripts": [
+          "<script type=\"module\" src=\"https://cdn.jsdelivr.net/npm/ionicons@latest/dist/ionicons/ionicons.esm.js\"></script>",
+          "<script nomodule src=\"https://cdn.jsdelivr.net/npm/ionicons@latest/dist/ionicons/ionicons.js\"></script>"
+        ]
+      }
+    },
+    "webComponents": {
+      "install": "npm install @abgov/web-components",
+      "imports": {
+        "js": "import '@abgov/web-components';",
+        "css": "@import '@abgov/web-components/index.css';"
+      },
+      "naming": "kebab-case with goa- prefix (<goa-button>, <goa-input>)"
+    }
+  },
+
+  "troubleshooting": {
+    "iconsNotDisplaying": {
+      "problem": "Icons not displaying in components",
+      "solution": "ionicons must be loaded via CDN scripts in HTML head, NOT as npm package import",
+      "incorrect": "import 'ionicons' // This breaks icon display"
+    },
+    "componentsUnstyled": {
+      "problem": "Components appear unstyled",
+      "solution": "Import @abgov/web-components/index.css in your main CSS file"
+    },
+    "angularParseErrors": {
+      "problem": "Angular template parse errors for goa- components",
+      "solution": "Add CUSTOM_ELEMENTS_SCHEMA to your module schemas array"
+    },
+    "reactNotRendering": {
+      "problem": "React components not rendering",
+      "solution": "Ensure both @abgov/react-components and @abgov/web-components are installed and imported"
+    }
+  },
+
+  "packages": {
+    "webComponents": {
+      "name": "@abgov/web-components",
+      "npm": "https://www.npmjs.com/package/@abgov/web-components"
+    },
+    "react": {
+      "name": "@abgov/react-components",
+      "npm": "https://www.npmjs.com/package/@abgov/react-components"
+    },
+    "angular": {
+      "name": "@abgov/angular-components",
+      "npm": "https://www.npmjs.com/package/@abgov/angular-components"
+    }
+  },
+
+  "support": {
+    "documentation": "https://ui-components.alberta.ca/",
+    "github": "https://github.com/GovAlta/ui-components",
+    "issues": "https://github.com/GovAlta/ui-components/issues"
+  }
+}

@@ -1,0 +1,173 @@
+{
+  "metadataSchemaVersion": "2.1.0-ai-context",
+  "audience": "ai-systems-helping-consumer-developers",
+  "recipeId": "ask-user-for-birthday",
+  "recipeName": "Ask a User for a Birthday",
+  "category": "form-pattern",
+  "summary": "Collect birth date using separate fields for month, day, and year to reduce input errors and improve accessibility",
+  
+  "serviceContext": {
+    "useCases": [
+      "Personal information collection",
+      "Age verification for services",
+      "Identity confirmation",
+      "Eligibility determination"
+    ],
+    "governmentFlows": [
+      "Application processes",
+      "Registration forms",
+      "Benefit eligibility verification",
+      "Service enrollment"
+    ],
+    "userType": "citizen",
+    "designApproach": {
+      "citizenCharacteristics": [
+        "simplified-ui",
+        "accessibility-first",
+        "mobile-optimized",
+        "clear-guidance"
+      ]
+    }
+  },
+  
+  "components": [
+    {
+      "name": "GoabFormItem",
+      "role": "primary",
+      "purpose": "Main form wrapper providing label and grouping for date fields",
+      "props": {
+        "label": "What is your date of birth?"
+      },
+      "notes": "Wraps the entire date input group with semantic labeling"
+    },
+    {
+      "name": "GoabBlock",
+      "role": "layout",
+      "purpose": "Horizontal layout of date input fields",
+      "props": {
+        "gap": "m",
+        "direction": "row"
+      },
+      "notes": "Provides consistent spacing between month, day, and year fields"
+    },
+    {
+      "name": "GoabFormItem",
+      "role": "input",
+      "purpose": "Individual field labels for month, day, and year",
+      "props": {
+        "helpText": "Month, Day (DD), Year (YYYY)"
+      },
+      "notes": "Nested FormItems provide specific field guidance"
+    },
+    {
+      "name": "GoabDropdown",
+      "role": "input",
+      "purpose": "Month selection to prevent format errors",
+      "props": {
+        "name": "month"
+      },
+      "notes": "Dropdown prevents invalid month entries and provides clear options"
+    },
+    {
+      "name": "GoabInput",
+      "role": "input",
+      "purpose": "Day and year numeric input",
+      "props": {
+        "width": "2ch",
+        "width": "4ch"
+      },
+      "notes": "Fixed width inputs signal expected input length to users"
+    }
+  ],
+  
+  "codeReference": {
+    "filePath": "src/examples/ask-a-user-for-a-birthday.tsx",
+    "lastModified": "2025-01-15T10:30:00Z",
+    "linesOfCode": 130,
+    "sandboxFlags": ["reactive"]
+  },
+  
+  "implementation": {
+    "react": {
+      "dependencies": [
+        "@abgov/react-components",
+        "react"
+      ],
+      "stateManagement": {
+        "required": true,
+        "variables": ["day", "month", "year"],
+        "pattern": "useState"
+      },
+      "codeSnippet": "const [day, setDay] = useState<string>('');\nconst [month, setMonth] = useState<string | undefined>('');\nconst [year, setYear] = useState<string>('');"
+    },
+    "angular": {
+      "dependencies": [
+        "@abgov/angular-components",
+        "@angular/forms"
+      ],
+      "formPattern": "reactive",
+      "codeSnippet": "this.form = this.fb.group({\n  day: [''],\n  month: [''],\n  year: ['']\n});"
+    }
+  },
+
+  "codeExamples": {
+    "react": {
+      "complete": "import { useState } from 'react';\nimport { GoabFormItem, GoabBlock, GoabDropdown, GoabDropdownItem, GoabInput } from '@abgov/react-components';\n\nconst AskUserForBirthday = () => {\n  const [day, setDay] = useState<string>('');\n  const [month, setMonth] = useState<string | undefined>('');\n  const [year, setYear] = useState<string>('');\n\n  return (\n    <GoabFormItem label=\"What is your date of birth?\">\n      <GoabBlock gap=\"m\" direction=\"row\">\n        <GoabFormItem helpText=\"Month\">\n          <GoabDropdown onChange={(event) => setMonth(event.value)} name=\"month\" value={month}>\n            <GoabDropdownItem label=\"January\" value=\"January\" />\n            <GoabDropdownItem label=\"February\" value=\"February\" />\n            <GoabDropdownItem label=\"March\" value=\"March\" />\n            <GoabDropdownItem label=\"April\" value=\"April\" />\n            <GoabDropdownItem label=\"May\" value=\"May\" />\n            <GoabDropdownItem label=\"June\" value=\"June\" />\n            <GoabDropdownItem label=\"July\" value=\"July\" />\n            <GoabDropdownItem label=\"August\" value=\"August\" />\n            <GoabDropdownItem label=\"September\" value=\"September\" />\n            <GoabDropdownItem label=\"October\" value=\"October\" />\n            <GoabDropdownItem label=\"November\" value=\"November\" />\n            <GoabDropdownItem label=\"December\" value=\"December\" />\n          </GoabDropdown>\n        </GoabFormItem>\n        \n        <GoabFormItem helpText=\"Day (DD)\">\n          <GoabInput onChange={(event) => setDay(event.value)} value={day} name=\"day\" width=\"2ch\" />\n        </GoabFormItem>\n        \n        <GoabFormItem helpText=\"Year (YYYY)\">\n          <GoabInput onChange={(event) => setYear(event.value)} value={year} name=\"year\" width=\"4ch\" />\n        </GoabFormItem>\n      </GoabBlock>\n    </GoabFormItem>\n  );\n};\n\nexport default AskUserForBirthday;",
+      "stateSetup": "const [day, setDay] = useState<string>('');\nconst [month, setMonth] = useState<string | undefined>('');\nconst [year, setYear] = useState<string>('');",
+      "keyFunctions": [
+        "onChange={(event) => setMonth(event.value)}",
+        "onChange={(event) => setDay(event.value)}",
+        "onChange={(event) => setYear(event.value)}"
+      ]
+    },
+    "angular": {
+      "complete": "import { Component } from '@angular/core';\nimport { FormBuilder, FormGroup } from '@angular/forms';\n\n@Component({\n  selector: 'app-ask-user-birthday',\n  template: `\n    <goa-form-item label=\"What is your date of birth?\">\n      <goa-block gap=\"m\" direction=\"row\">\n        <goa-form-item helpText=\"Month\">\n          <goa-dropdown formControlName=\"month\" name=\"month\">\n            <goa-dropdown-item label=\"January\" value=\"January\"></goa-dropdown-item>\n            <goa-dropdown-item label=\"February\" value=\"February\"></goa-dropdown-item>\n            <goa-dropdown-item label=\"March\" value=\"March\"></goa-dropdown-item>\n            <goa-dropdown-item label=\"April\" value=\"April\"></goa-dropdown-item>\n            <goa-dropdown-item label=\"May\" value=\"May\"></goa-dropdown-item>\n            <goa-dropdown-item label=\"June\" value=\"June\"></goa-dropdown-item>\n            <goa-dropdown-item label=\"July\" value=\"July\"></goa-dropdown-item>\n            <goa-dropdown-item label=\"August\" value=\"August\"></goa-dropdown-item>\n            <goa-dropdown-item label=\"September\" value=\"September\"></goa-dropdown-item>\n            <goa-dropdown-item label=\"October\" value=\"October\"></goa-dropdown-item>\n            <goa-dropdown-item label=\"November\" value=\"November\"></goa-dropdown-item>\n            <goa-dropdown-item label=\"December\" value=\"December\"></goa-dropdown-item>\n          </goa-dropdown>\n        </goa-form-item>\n        \n        <goa-form-item helpText=\"Day (DD)\">\n          <goa-input formControlName=\"day\" name=\"day\" width=\"2ch\"></goa-input>\n        </goa-form-item>\n        \n        <goa-form-item helpText=\"Year (YYYY)\">\n          <goa-input formControlName=\"year\" name=\"year\" width=\"4ch\"></goa-input>\n        </goa-form-item>\n      </goa-block>\n    </goa-form-item>\n  `\n})\nexport class AskUserBirthdayComponent {\n  form!: FormGroup;\n  \n  constructor(private fb: FormBuilder) {\n    this.form = this.fb.group({\n      day: [''],\n      month: [''],\n      year: ['']\n    });\n  }\n}",
+      "componentClass": "export class AskUserBirthdayComponent {\n  form!: FormGroup;\n  \n  constructor(private fb: FormBuilder) {\n    this.form = this.fb.group({\n      day: [''],\n      month: [''],\n      year: ['']\n    });\n  }\n}",
+      "template": "<goa-form-item label=\"What is your date of birth?\">\n  <goa-block gap=\"m\" direction=\"row\">\n    <goa-form-item helpText=\"Month\">\n      <goa-dropdown formControlName=\"month\" name=\"month\">\n        <goa-dropdown-item label=\"January\" value=\"January\"></goa-dropdown-item>\n        <goa-dropdown-item label=\"February\" value=\"February\"></goa-dropdown-item>\n        <goa-dropdown-item label=\"March\" value=\"March\"></goa-dropdown-item>\n        <goa-dropdown-item label=\"April\" value=\"April\"></goa-dropdown-item>\n        <goa-dropdown-item label=\"May\" value=\"May\"></goa-dropdown-item>\n        <goa-dropdown-item label=\"June\" value=\"June\"></goa-dropdown-item>\n        <goa-dropdown-item label=\"July\" value=\"July\"></goa-dropdown-item>\n        <goa-dropdown-item label=\"August\" value=\"August\"></goa-dropdown-item>\n        <goa-dropdown-item label=\"September\" value=\"September\"></goa-dropdown-item>\n        <goa-dropdown-item label=\"October\" value=\"October\"></goa-dropdown-item>\n        <goa-dropdown-item label=\"November\" value=\"November\"></goa-dropdown-item>\n        <goa-dropdown-item label=\"December\" value=\"December\"></goa-dropdown-item>\n      </goa-dropdown>\n    </goa-form-item>\n    \n    <goa-form-item helpText=\"Day (DD)\">\n      <goa-input formControlName=\"day\" name=\"day\" width=\"2ch\"></goa-input>\n    </goa-form-item>\n    \n    <goa-form-item helpText=\"Year (YYYY)\">\n      <goa-input formControlName=\"year\" name=\"year\" width=\"4ch\"></goa-input>\n    </goa-form-item>\n  </goa-block>\n</goa-form-item>"
+    }
+  },
+  
+  "designPatterns": {
+    "accessibilityConsiderations": [
+      "Clear labeling for each field with semantic structure",
+      "Logical tab order through month → day → year",
+      "Helper text shows expected format for each field",
+      "Dropdown prevents screen reader confusion with month names"
+    ],
+    "usabilityPrinciples": [
+      "Separate fields reduce cognitive load compared to single date input",
+      "Month dropdown prevents format errors and invalid entries",
+      "Fixed-width inputs visually communicate expected input length",
+      "Progressive disclosure from broad (month) to specific (day/year)"
+    ]
+  },
+  
+  "variations": [
+    {
+      "name": "With validation",
+      "description": "Includes form validation for valid date ranges and required fields",
+      "additionalComponents": ["GoabFormItem with error states"],
+      "modifications": ["Add validation logic for date ranges", "Display error messages for invalid dates"]
+    },
+    {
+      "name": "Optional vs required",
+      "description": "Pattern for optional birth date collection",
+      "modifications": ["requirement='optional' indicator in label"]
+    }
+  ],
+  
+  "relatedRecipes": [
+    "ask-user-for-address",
+    "collect-personal-information",
+    "form-validation-patterns"
+  ],
+  
+  "tags": ["form", "personal-info", "date-input", "citizen-facing", "accessibility", "validation"],
+  "status": "published",
+  "lastUpdated": "2025-01-15T10:30:00Z",
+  
+  "derivedFrom": {
+    "exampleFile": "ui-components-docs/src/examples/ask-a-user-for-a-birthday.tsx",
+    "note": "Extracted from existing TSX example with enhanced service context"
+  }
+}

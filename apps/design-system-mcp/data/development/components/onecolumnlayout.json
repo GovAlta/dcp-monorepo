@@ -1,0 +1,70 @@
+{
+  "name": "OneColumnLayout",
+  "category": "layout",
+  "summary": "Default single-column page layout with header and footer slots, plus centered content area. Required root component for all Alberta Government service pages.",
+  "import": "import { GoabOneColumnLayout, GoabPageBlock, GoabAppHeader, GoabAppFooter } from '@abgov/react-components'",
+  "customElement": {
+    "tagName": "goa-one-column-layout",
+    "reactName": "GoabOneColumnLayout",
+    "angularSelector": "goab-one-column-layout"
+  },
+  "props": [
+    {
+      "name": "testId",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "Data attribute for testing automation"
+    }
+  ],
+  "events": [],
+  "slots": [
+    {
+      "name": "header",
+      "description": "Header content area - use section element with slot=\"header\". Contains GoabMicrositeHeader and/or GoabAppHeader."
+    },
+    {
+      "name": "default",
+      "description": "Main content area - wrap content in GoabPageBlock to control width and get responsive margins."
+    },
+    {
+      "name": "footer",
+      "description": "Footer content area - use section element with slot=\"footer\". Contains GoabAppFooter."
+    }
+  ],
+  "criticalNotes": [
+    "REQUIRED: Every government service page MUST use GoabOneColumnLayout as root",
+    "REQUIRED: Wrap main content in GoabPageBlock with width prop (e.g., '704px' or 'full')",
+    "Use section elements with slot attribute for header and footer areas",
+    "Never use div or GoabContainer as page wrapper - only GoabOneColumnLayout"
+  ],
+  "commonMistakes": [
+    "Using div as page root instead of GoabOneColumnLayout",
+    "Placing content outside of GoabPageBlock",
+    "Missing slot attribute on header/footer sections",
+    "Using GoabContainer as page layout (it's for content grouping, not page structure)"
+  ],
+  "basicUsage": {
+    "webComponent": "<goa-one-column-layout>\n  <section slot=\"header\">\n    <goa-app-header heading=\"My App\" url=\"/\"></goa-app-header>\n  </section>\n  <goa-page-block width=\"704px\">\n    <h1>Page Content</h1>\n  </goa-page-block>\n  <section slot=\"footer\">\n    <goa-app-footer></goa-app-footer>\n  </section>\n</goa-one-column-layout>",
+    "react": "<GoabOneColumnLayout>\n  <section slot=\"header\">\n    <GoabAppHeader heading=\"My App\" url=\"/\" />\n  </section>\n  <GoabPageBlock width=\"704px\">\n    <h1>Page Content</h1>\n  </GoabPageBlock>\n  <section slot=\"footer\">\n    <GoabAppFooter />\n  </section>\n</GoabOneColumnLayout>",
+    "angular": "<goab-one-column-layout>\n  <section slot=\"header\">\n    <goab-app-header heading=\"My App\" url=\"/\"></goab-app-header>\n  </section>\n  <goab-page-block width=\"704px\">\n    <h1>Page Content</h1>\n  </goab-page-block>\n  <section slot=\"footer\">\n    <goab-app-footer></goab-app-footer>\n  </section>\n</goab-one-column-layout>"
+  },
+  "pageBlockWidthOptions": {
+    "704px": "Optimal for forms and article content (reading width)",
+    "960px": "Wider forms with multiple columns",
+    "1200px": "Wide content layouts",
+    "full": "Full width for dashboards and data tables"
+  },
+  "responsiveMargins": {
+    "mobile": "16px (< 624px)",
+    "tablet": "32px (624px - 1024px)",
+    "desktop": "64px (> 1024px)"
+  },
+  "relatedExamples": [],
+  "relatedComponents": [
+    "PageBlock",
+    "AppHeader",
+    "AppFooter",
+    "MicrositeHeader"
+  ]
+}

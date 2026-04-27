@@ -1,0 +1,241 @@
+{
+  "id": "wireframe-mode",
+  "name": "Wireframe Mode",
+  "category": "workflow",
+  "description": "CSS theme that transforms GoA Design System applications into grayscale wireframe appearance for early-stage validation and stakeholder feedback. Visual fidelity signals commitment - wireframe mode says 'let's shape this together' instead of 'this is decided.'",
+
+  "summary": "A standalone CSS file that overrides GoA component styling to create a sketch-like appearance. Use it to get structural feedback instead of detail-focused feedback during early validation.",
+
+  "triggers": [
+    "wireframe",
+    "wireframe mode",
+    "early validation",
+    "stakeholder feedback",
+    "prototype feedback",
+    "looks too polished",
+    "looks too done",
+    "sketch mode",
+    "draft mode",
+    "low fidelity",
+    "lo-fi",
+    "structural feedback",
+    "concept validation",
+    "early concept",
+    "show stakeholders"
+  ],
+
+  "coreInsight": {
+    "problem": "Production components look 'done', which signals commitment and invites nitpicky feedback on colors and details instead of structural feedback on flow and content",
+    "solution": "CSS theme switching - same functional prototype renders at different visual fidelity levels",
+    "benefit": "Match visual fidelity to conversation stage. Early exploration in wireframe, final validation in production."
+  },
+
+  "whenToUse": [
+    "Showing early concepts to stakeholders",
+    "Getting feedback on flow and structure (not visual details)",
+    "Running usability tests focused on navigation and layout",
+    "Comparing alternative approaches side-by-side",
+    "Presenting to people who might think a prototype is 'done'",
+    "Designer exploration before committing to final styling",
+    "Product owner communicating ideas to team"
+  ],
+
+  "whenNotToUse": [
+    "Final validation before development",
+    "Testing specific visual details (colors, typography)",
+    "Stakeholder sign-off on final design",
+    "Developer handoff",
+    "Accessibility testing that requires color contrast validation"
+  ],
+
+  "visualChanges": {
+    "colors": "All brand colors become grayscale (#333, #666, #999, #ccc, #fff)",
+    "typography": "System fonts replace brand fonts (system-ui, -apple-system, sans-serif)",
+    "shadows": "All shadows removed",
+    "borderRadius": "Minimal corners (2px) for boxy, structural appearance",
+    "borders": "Dashed borders on form inputs and containers",
+    "images": "Grayscale filter with reduced opacity on all images, logos, SVGs",
+    "background": "Blueprint grid pattern appears",
+    "banner": "Fixed 'Wireframe - Not final design' banner at top of page"
+  },
+
+  "whatStaysSame": [
+    "All spacing and layout (structure must remain accurate for testing)",
+    "Component functionality and interactions",
+    "Form validation and error handling",
+    "Navigation and routing",
+    "Responsive behavior"
+  ],
+
+  "setup": {
+    "description": "Add wireframe mode to any GoA Design System application in 2 minutes",
+    "steps": [
+      "1. Download wireframe-theme.css and add to your project",
+      "2. Link the CSS file in your HTML head",
+      "3. Add the keyboard shortcut toggle (Cmd+. or Ctrl+.)"
+    ],
+    "fileLocations": {
+      "react-vite": "public/wireframe-theme.css",
+      "react-cra": "public/wireframe-theme.css",
+      "angular": "src/assets/wireframe-theme.css",
+      "plain-html": "Same directory as HTML or assets/ folder"
+    }
+  },
+
+  "integration": {
+    "htmlLink": {
+      "react": "<link rel=\"stylesheet\" href=\"/wireframe-theme.css\">",
+      "angular": "<link rel=\"stylesheet\" href=\"assets/wireframe-theme.css\">",
+      "note": "Add to <head> section of index.html"
+    },
+    "keyboardToggle": {
+      "description": "Recommended: Cmd+. (Mac) or Ctrl+. (Windows) to toggle",
+      "code": "document.addEventListener('keydown', (e) => {\n  if ((e.metaKey || e.ctrlKey) && e.key === '.') {\n    e.preventDefault();\n    const html = document.documentElement;\n    html.dataset.fidelity = html.dataset.fidelity === 'wireframe' ? '' : 'wireframe';\n  }\n});",
+      "placement": {
+        "react-vite": "Add to main.tsx before ReactDOM.createRoot()",
+        "react-cra": "Add to src/index.tsx before ReactDOM.render()",
+        "angular": "Add as @HostListener in AppComponent"
+      }
+    },
+    "checkboxToggle": {
+      "description": "Alternative: visible checkbox for demos",
+      "code": "<label style=\"position: fixed; bottom: 16px; right: 16px; z-index: 9999; background: white; padding: 8px 12px; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); cursor: pointer;\">\n  <input type=\"checkbox\" onchange=\"document.documentElement.dataset.fidelity = this.checked ? 'wireframe' : ''\" />\n  Wireframe mode\n</label>"
+    }
+  },
+
+  "frameworkExamples": {
+    "react-vite": {
+      "mainTsx": "import React from 'react'\nimport ReactDOM from 'react-dom/client'\nimport App from './App'\nimport '@abgov/web-components'\n\n// Wireframe mode toggle: Cmd+. (Mac) or Ctrl+. (Windows)\ndocument.addEventListener('keydown', (e) => {\n  if ((e.metaKey || e.ctrlKey) && e.key === '.') {\n    e.preventDefault();\n    const html = document.documentElement;\n    html.dataset.fidelity = html.dataset.fidelity === 'wireframe' ? '' : 'wireframe';\n  }\n});\n\nReactDOM.createRoot(document.getElementById('root')!).render(\n  <React.StrictMode>\n    <App />\n  </React.StrictMode>,\n)",
+      "indexHtml": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <title>App Name - Government of Alberta</title>\n    <link rel=\"stylesheet\" href=\"/wireframe-theme.css\">\n    <script type=\"module\" src=\"https://cdn.jsdelivr.net/npm/ionicons@5.5.2/dist/ionicons/ionicons.esm.js\"></script>\n    <script nomodule src=\"https://cdn.jsdelivr.net/npm/ionicons@5.5.2/dist/ionicons/ionicons.js\"></script>\n  </head>\n  <body>\n    <div id=\"root\"></div>\n    <script type=\"module\" src=\"/src/main.tsx\"></script>\n  </body>\n</html>"
+    },
+    "angular": {
+      "appComponent": "import { Component, HostListener } from '@angular/core';\n\n@Component({\n  selector: 'app-root',\n  templateUrl: './app.component.html',\n})\nexport class AppComponent {\n  @HostListener('document:keydown', ['$event'])\n  handleKeydown(event: KeyboardEvent) {\n    // Cmd+. (Mac) or Ctrl+. (Windows)\n    if ((event.metaKey || event.ctrlKey) && event.key === '.') {\n      event.preventDefault();\n      const html = document.documentElement;\n      html.dataset['fidelity'] = html.dataset['fidelity'] === 'wireframe' ? '' : 'wireframe';\n    }\n  }\n}",
+      "indexHtml": "<head>\n  <link rel=\"stylesheet\" href=\"assets/wireframe-theme.css\">\n</head>"
+    }
+  },
+
+  "advancedUsage": {
+    "startInWireframe": {
+      "description": "Start app in wireframe mode by default",
+      "html": "<html lang=\"en\" data-fidelity=\"wireframe\">",
+      "javascript": "document.documentElement.dataset.fidelity = 'wireframe';"
+    },
+    "urlParameter": {
+      "description": "Toggle via URL for sharing wireframe views",
+      "code": "const params = new URLSearchParams(window.location.search);\nif (params.get('wireframe') === 'true') {\n  document.documentElement.dataset.fidelity = 'wireframe';\n}",
+      "usage": "https://your-app.com/?wireframe=true"
+    },
+    "persistPreference": {
+      "description": "Remember user's wireframe preference",
+      "code": "// On toggle\nfunction setWireframeMode(enabled) {\n  document.documentElement.dataset.fidelity = enabled ? 'wireframe' : '';\n  localStorage.setItem('wireframe-mode', enabled ? 'true' : 'false');\n}\n\n// On page load\nconst saved = localStorage.getItem('wireframe-mode');\nif (saved === 'true') {\n  document.documentElement.dataset.fidelity = 'wireframe';\n}"
+    },
+    "devOnly": {
+      "description": "Only enable in development environment",
+      "react-vite": "if (import.meta.env.DEV) {\n  // Add keyboard listener\n}",
+      "angular": "import { environment } from '../environments/environment';\n\nif (!environment.production) {\n  // Add keyboard listener\n}"
+    }
+  },
+
+  "troubleshooting": {
+    "wireframeModeDoesNotApply": [
+      "Check CSS is loaded: Open browser dev tools > Network tab > verify wireframe-theme.css loaded",
+      "Check data attribute: Inspect <html> element - should have data-fidelity=\"wireframe\"",
+      "Check CSS order: wireframe-theme.css should load AFTER @abgov/web-components/index.css"
+    ],
+    "someComponentsNotFullyStyled": "Components using Shadow DOM may not fully transform. The CSS applies grayscale filters to entire Shadow DOM components (like goa-app-header) as a workaround.",
+    "keyboardShortcutDoesNotWork": [
+      "Make sure no browser extension or app is capturing Cmd+. / Ctrl+.",
+      "Add console.log to verify event listener was added",
+      "Try the checkbox toggle as an alternative"
+    ],
+    "logoStaysColored": "Ensure wireframe-theme.css includes the Shadow DOM component filter rules for goa-app-header and goa-work-side-menu"
+  },
+
+  "feedbackSignaling": {
+    "concept": "Visual fidelity signals commitment level to stakeholders",
+    "table": [
+      { "fidelity": "Napkin sketch", "signal": "Very early idea", "feedbackType": "Big structural suggestions" },
+      { "fidelity": "Wireframe", "signal": "We're exploring options", "feedbackType": "Flow and content feedback" },
+      { "fidelity": "Lo-fi mockup", "signal": "Direction is set, refining details", "feedbackType": "Layout and copy feedback" },
+      { "fidelity": "Polished UI", "signal": "This is what we're building", "feedbackType": "Nitpicks: colors, alignment, icons" }
+    ],
+    "keyInsight": "Showing polished UI too early pulls feedback toward details when you need feedback on fundamentals"
+  },
+
+  "workflowExamples": {
+    "productOwner": {
+      "scenario": "Exploring an idea with stakeholders",
+      "steps": [
+        "1. Describe concept and generate prototype with MCP",
+        "2. Enable wireframe mode (Cmd+.)",
+        "3. Walk through with stakeholders",
+        "4. Get structural feedback ('should payment come before or after review?')",
+        "5. Iterate on wireframe",
+        "6. When structure is validated, disable wireframe mode",
+        "7. Get final sign-off on polished version"
+      ]
+    },
+    "researcher": {
+      "scenario": "Preparing for usability test",
+      "steps": [
+        "1. Get design concept from team",
+        "2. Generate prototype",
+        "3. Enable wireframe mode",
+        "4. Tell participants: 'This is an early concept, we're deciding how it should work'",
+        "5. Get genuine structural feedback (not 'I don't like that shade of blue')",
+        "6. Report findings to team"
+      ]
+    },
+    "designer": {
+      "scenario": "Exploring alternative patterns",
+      "steps": [
+        "1. Generate form wizard in wireframe mode",
+        "2. See structural flow without GoA styling distractions",
+        "3. Compare with alternative approach",
+        "4. Pick preferred structure",
+        "5. Disable wireframe mode to see with real components",
+        "6. Finalize design decisions"
+      ]
+    }
+  },
+
+  "benefitsByRole": {
+    "productOwners": [
+      "Show ideas without implying commitment",
+      "Get structural feedback, not detail bikeshedding",
+      "Iterate faster when things look 'unfinished'",
+      "Stakeholders more willing to suggest changes"
+    ],
+    "designers": [
+      "See component structure without branding",
+      "Compare layouts without color distraction",
+      "Clients understand 'we're still designing'",
+      "Easier to explore alternatives"
+    ],
+    "researchers": [
+      "Participants give honest feedback on flows",
+      "Avoid 'it's already done' bias",
+      "Can test rough concepts, not just finished designs",
+      "Findings are more actionable"
+    ],
+    "developers": [
+      "Understand intent before polish is applied",
+      "Can see what's structural vs. decorative",
+      "Easier handoff discussions"
+    ]
+  },
+
+  "technicalDetails": {
+    "cssSelector": ":root[data-fidelity=\"wireframe\"]",
+    "dataAttribute": "data-fidelity",
+    "values": ["wireframe", "" ],
+    "mechanism": "CSS custom property overrides scoped to data attribute",
+    "fileSize": "~8KB (unminified)",
+    "performance": "No JavaScript required for styling - pure CSS"
+  },
+
+  "relatedPatterns": ["workspace", "public-form"],
+  "tags": ["validation", "feedback", "stakeholder", "prototype", "wireframe", "fidelity", "early-stage", "discovery"],
+  "status": "stable",
+  "lastUpdated": "2025-12-09"
+}

@@ -1,0 +1,91 @@
+{
+  "$schema": "../recipe-schema.json",
+  "schemaVersion": "2.1.0-ai-context",
+  "recipeId": "include-descriptions-for-items-in-a-checkbox-list",
+  "recipeName": "Include Descriptions for Items in a Checkbox List",
+  "category": "form-pattern",
+  "summary": "Add descriptive text to radio button options to help users understand the implications and details of each choice",
+  "serviceContext": {
+    "useCase": "Provide additional context and clarification for radio button options to help users make informed decisions, especially when choices have different implications or requirements",
+    "userType": "both",
+    "governmentServiceFlows": [
+      "When citizens need to choose between different sign-in methods or account types",
+      "When workers need to select different service categories or processing options",
+      "When users need to understand the implications of different choices before making a selection",
+      "When options have different eligibility requirements or consequences that need explanation"
+    ],
+    "relatedPatterns": [
+      "include-a-link-in-the-helper-text-of-an-option",
+      "select-one-or-more-from-a-list-of-options",
+      "reveal-more-information-to-help-answer-a-question",
+      "ask-a-user-one-question-at-a-time"
+    ]
+  },
+  "components": [
+    {
+      "componentName": "GoabFormItem",
+      "role": "Form field container",
+      "purpose": "Provide proper labeling and structure for the radio button group"
+    },
+    {
+      "componentName": "GoabRadioGroup",
+      "role": "Selection group container",
+      "purpose": "Group related radio button options with shared name and change handling"
+    },
+    {
+      "componentName": "GoabRadioItem",
+      "role": "Individual option with description",
+      "purpose": "Provide radio button option with additional descriptive text for user guidance"
+    }
+  ],
+  "codeReference": {
+    "exampleFile": "include-descriptions-for-items-in-a-checkbox-list.tsx",
+    "linesOfCode": 144,
+    "lastModified": "2024-01-01T00:00:00.000Z"
+  },
+  "implementation": {
+    "complexity": "low",
+    "keyPatterns": [
+      "Radio group with descriptive text for each option",
+      "Clear distinction between option labels and descriptions",
+      "Consistent description formatting across all options",
+      "Form validation and change handling for radio selections",
+      "Proper semantic structure for screen reader accessibility"
+    ],
+    "designPatterns": [
+      "Enhanced radio button options with context",
+      "User guidance through descriptive text",
+      "Clear option differentiation",
+      "Informed decision-making support"
+    ],
+    "accessibility": [
+      "Radio group provides proper grouping and selection semantics",
+      "Option descriptions are associated with their respective radio buttons",
+      "Screen readers can access both labels and descriptions",
+      "Keyboard navigation maintains logical tab order",
+      "Clear visual hierarchy between labels and descriptions"
+    ]
+  },
+  "codeExamples": {
+    "react": {
+      "complete": "import { GoabFormItem, GoabRadioGroup, GoabRadioItem } from \"@abgov/react-components\";\nimport { useState } from \"react\";\n\nexport default function IncludeDescriptionsForItemsInACheckboxList() {\n  const [selectedSignInMethod, setSelectedSignInMethod] = useState(\"1\");\n  const [errors, setErrors] = useState<string[]>([]);\n\n  const signInOptions = [\n    {\n      value: \"1\",\n      label: \"Sign in as a business\",\n      description: \"Use the account associated with the business. You'll need your business registration number and authorized access.\"\n    },\n    {\n      value: \"2\",\n      label: \"Sign in as an individual\",\n      description: \"If you don't have an Alberta.ca login, you can create one. This is for personal applications only.\"\n    },\n    {\n      value: \"3\",\n      label: \"Sign in as a representative\",\n      description: \"If you're acting on behalf of someone else, you'll need proper authorization and documentation.\"\n    }\n  ];\n\n  const handleSignInMethodChange = (event: { value: string }) => {\n    setSelectedSignInMethod(event.value);\n    // Clear any errors when user makes a selection\n    if (errors.length > 0) {\n      setErrors([]);\n    }\n  };\n\n  const handleSubmit = () => {\n    const newErrors: string[] = [];\n    \n    if (!selectedSignInMethod) {\n      newErrors.push(\"Please select a sign-in method\");\n    }\n    \n    if (newErrors.length > 0) {\n      setErrors(newErrors);\n      return;\n    }\n    \n    console.log('Selected sign-in method:', selectedSignInMethod);\n    // Handle form submission\n  };\n\n  const getSelectedOptionLabel = () => {\n    const option = signInOptions.find(opt => opt.value === selectedSignInMethod);\n    return option ? option.label : 'None selected';\n  };\n\n  return (\n    <div className=\"sign-in-options\">\n      <GoabFormItem \n        label=\"How do you want to sign in?\"\n        error={errors.length > 0 ? errors[0] : undefined}>\n        <GoabRadioGroup \n          name=\"selectOne\" \n          value={selectedSignInMethod}\n          onChange={handleSignInMethodChange}>\n          {signInOptions.map((option) => (\n            <GoabRadioItem\n              key={option.value}\n              value={option.value}\n              label={option.label}\n              description={option.description}\n            />\n          ))}\n        </GoabRadioGroup>\n      </GoabFormItem>\n      \n      {selectedSignInMethod && (\n        <div className=\"selection-summary\">\n          <strong>Selected:</strong> {getSelectedOptionLabel()}\n        </div>\n      )}\n    </div>\n  );\n}",
+      "key": "const [selectedOption, setSelectedOption] = useState(\"\");\nconst [formData, setFormData] = useState({});\n\nconst optionsList = [\n  {\n    value: \"1\",\n    label: \"Sign in as a business\",\n    description: \"Use the account associated with the business. You'll need your business registration number and authorized access.\"\n  },\n  {\n    value: \"2\",\n    label: \"Sign in as an individual\",\n    description: \"If you don't have an Alberta.ca login, you can create one. This is for personal applications only.\"\n  },\n  {\n    value: \"3\",\n    label: \"Sign in as a representative\",\n    description: \"If you're acting on behalf of someone else, you'll need proper authorization and documentation.\"\n  }\n];\n\nconst handleOptionChange = (event: { value: string }) => {\n  setSelectedOption(event.value);\n  console.log('Selected option:', event.value);\n  // Update form data or trigger other actions\n};\n\nconst validateSelection = () => {\n  if (!selectedOption) {\n    return \"Please select an option\";\n  }\n  return null;\n};\n\nconst isSelected = (value: string) => {\n  return selectedOption === value;\n};\n\nconst getSelectedOption = () => {\n  return optionsList.find(option => option.value === selectedOption);\n};\n\nconst getDescription = (value: string) => {\n  const option = optionsList.find(opt => opt.value === value);\n  return option ? option.description : '';\n};\n\n<GoabFormItem label=\"How do you want to sign in?\">\n  <GoabRadioGroup \n    name=\"selectOne\" \n    value={selectedOption}\n    onChange={handleOptionChange}>\n    {optionsList.map((option) => (\n      <GoabRadioItem\n        key={option.value}\n        value={option.value}\n        label={option.label}\n        description={option.description}\n      />\n    ))}\n  </GoabRadioGroup>\n</GoabFormItem>\n\n{selectedOption && (\n  <div className=\"selection-info\">\n    <h4>You selected: {getSelectedOption()?.label}</h4>\n    <p>{getSelectedOption()?.description}</p>\n  </div>\n)}\n\n/* CSS */\n.sign-in-options {\n  max-width: 600px;\n}\n\n.sign-in-options .goab-radio-item {\n  margin-bottom: var(--goa-space-m);\n}\n\n.sign-in-options .goab-radio-item:last-child {\n  margin-bottom: 0;\n}\n\n.selection-summary {\n  margin-top: var(--goa-space-l);\n  padding: var(--goa-space-m);\n  background-color: var(--goa-color-success-light);\n  border-radius: var(--goa-border-radius-s);\n  border-left: 4px solid var(--goa-color-success);\n}\n\n.selection-info {\n  margin-top: var(--goa-space-l);\n  padding: var(--goa-space-m);\n  background-color: var(--goa-color-info-light);\n  border-radius: var(--goa-border-radius-s);\n}\n\n.selection-info h4 {\n  margin: 0 0 var(--goa-space-s) 0;\n  color: var(--goa-color-info-dark);\n}\n\n.selection-info p {\n  margin: 0;\n  color: var(--goa-color-info-dark);\n  font-size: var(--goa-font-size-s);\n}"
+    },
+    "angular": {
+      "complete": "export class IncludeDescriptionsForItemsInACheckboxListComponent {\n  selectedSignInMethod = \"1\";\n  errors: string[] = [];\n  \n  signInOptions = [\n    {\n      value: \"1\",\n      label: \"Sign in as a business\",\n      description: \"Use the account associated with the business. You'll need your business registration number and authorized access.\"\n    },\n    {\n      value: \"2\",\n      label: \"Sign in as an individual\",\n      description: \"If you don't have an Alberta.ca login, you can create one. This is for personal applications only.\"\n    },\n    {\n      value: \"3\",\n      label: \"Sign in as a representative\",\n      description: \"If you're acting on behalf of someone else, you'll need proper authorization and documentation.\"\n    }\n  ];\n\n  form: FormGroup;\n\n  constructor(private fb: FormBuilder) {\n    this.form = this.fb.group({\n      selectOne: [this.selectedSignInMethod, Validators.required]\n    });\n  }\n\n  handleSignInMethodChange(event: GoabRadioGroupOnChangeDetail) {\n    this.selectedSignInMethod = event.value;\n    this.form.patchValue({ selectOne: event.value });\n    \n    // Clear errors when user makes a selection\n    if (this.errors.length > 0) {\n      this.errors = [];\n    }\n  }\n\n  handleSubmit() {\n    this.errors = [];\n    \n    if (!this.selectedSignInMethod) {\n      this.errors.push(\"Please select a sign-in method\");\n      return;\n    }\n    \n    if (this.form.valid) {\n      console.log('Selected sign-in method:', this.selectedSignInMethod);\n      // Handle form submission\n    }\n  }\n\n  getSelectedOptionLabel(): string {\n    const option = this.signInOptions.find(opt => opt.value === this.selectedSignInMethod);\n    return option ? option.label : 'None selected';\n  }\n\n  getSelectedOption() {\n    return this.signInOptions.find(opt => opt.value === this.selectedSignInMethod);\n  }\n\n  isSelected(value: string): boolean {\n    return this.selectedSignInMethod === value;\n  }\n}",
+      "key": "selectedSignInMethod = \"1\";\nerrors: string[] = [];\n\nsignInOptions = [\n  {\n    value: \"1\",\n    label: \"Sign in as a business\",\n    description: \"Use the account associated with the business. You'll need your business registration number and authorized access.\"\n  },\n  {\n    value: \"2\",\n    label: \"Sign in as an individual\",\n    description: \"If you don't have an Alberta.ca login, you can create one. This is for personal applications only.\"\n  },\n  {\n    value: \"3\",\n    label: \"Sign in as a representative\",\n    description: \"If you're acting on behalf of someone else, you'll need proper authorization and documentation.\"\n  }\n];\n\nform: FormGroup;\n\nconstructor(private fb: FormBuilder) {\n  this.form = this.fb.group({\n    selectOne: [this.selectedSignInMethod, Validators.required]\n  });\n}\n\nhandleSignInMethodChange(event: GoabRadioGroupOnChangeDetail) {\n  this.selectedSignInMethod = event.value;\n  this.form.patchValue({ selectOne: event.value });\n  \n  if (this.errors.length > 0) {\n    this.errors = [];\n  }\n}\n\nhandleSubmit() {\n  this.errors = [];\n  \n  if (!this.selectedSignInMethod) {\n    this.errors.push(\"Please select a sign-in method\");\n    return;\n  }\n  \n  if (this.form.valid) {\n    console.log('Selected sign-in method:', this.selectedSignInMethod);\n    // Handle form submission\n  }\n}\n\ngetSelectedOptionLabel(): string {\n  const option = this.signInOptions.find(opt => opt.value === this.selectedSignInMethod);\n  return option ? option.label : 'None selected';\n}\n\ngetSelectedOption() {\n  return this.signInOptions.find(opt => opt.value === this.selectedSignInMethod);\n}\n\nisSelected(value: string): boolean {\n  return this.selectedSignInMethod === value;\n}\n\n<!-- Template -->\n<div class=\"sign-in-options\">\n  <goab-form-item \n    label=\"How do you want to sign in?\"\n    [formGroup]=\"form\"\n    [error]=\"errors.length > 0 ? errors[0] : null\">\n    <goab-radio-group \n      name=\"selectOne\" \n      formControlName=\"selectOne\"\n      (onChange)=\"handleSignInMethodChange($event)\">\n      <goab-radio-item\n        *ngFor=\"let option of signInOptions\"\n        [value]=\"option.value\"\n        [label]=\"option.label\"\n        [description]=\"option.description\">\n      </goab-radio-item>\n    </goab-radio-group>\n  </goab-form-item>\n  \n  <div class=\"selection-summary\" *ngIf=\"selectedSignInMethod\">\n    <strong>Selected:</strong> {{ getSelectedOptionLabel() }}\n  </div>\n</div>"
+    }
+  },
+  "tags": [
+    "radio-buttons",
+    "option-descriptions",
+    "form-pattern",
+    "user-guidance",
+    "sign-in-options",
+    "contextual-help",
+    "enhanced-options",
+    "decision-support",
+    "form-clarity",
+    "option-details"
+  ]
+}

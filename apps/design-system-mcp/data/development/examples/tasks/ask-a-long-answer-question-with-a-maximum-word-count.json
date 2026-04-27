@@ -1,0 +1,80 @@
+{
+  "$schema": "../recipe-schema.json",
+  "schemaVersion": "2.1.0-ai-context",
+  "recipeId": "ask-a-long-answer-question-with-a-maximum-word-count",
+  "recipeName": "Ask a Long Answer Question with a Maximum Word Count",
+  "category": "form-pattern",
+  "summary": "Collect detailed written responses with word count limitations and helpful guidance text to ensure quality submissions",
+  "serviceContext": {
+    "useCase": "Government forms requiring detailed explanations, feedback, or descriptions from citizens with proper constraints and guidance",
+    "userType": "citizen",
+    "governmentServiceFlows": [
+      "When citizens need to provide detailed explanations in application forms",
+      "When collecting feedback or comments on government services",
+      "When requesting descriptions that require specific length constraints",
+      "When forms need detailed justifications or reasoning from applicants"
+    ],
+    "relatedPatterns": [
+      "give-context-before-asking-a-long-answer-question",
+      "ask-a-user-one-question-at-a-time",
+      "question-page"
+    ]
+  },
+  "components": [
+    {
+      "componentName": "GoabFormItem",
+      "role": "Form field container with label and help text",
+      "purpose": "Provide structure, labeling, and guidance for the text area"
+    },
+    {
+      "componentName": "GoabTextarea",
+      "role": "Multi-line text input with word counting",
+      "purpose": "Collect detailed written responses with built-in length constraints"
+    }
+  ],
+  "codeReference": {
+    "exampleFile": "ask-a-long-answer-question-with-a-maximum-word-count.tsx",
+    "linesOfCode": 23,
+    "lastModified": "2024-01-01T00:00:00.000Z"
+  },
+  "implementation": {
+    "complexity": "low",
+    "keyPatterns": [
+      "Word count limitation with maxCount property",
+      "Helpful guidance text to prevent sensitive information sharing",
+      "Full-width text area for comfortable writing experience",
+      "Appropriate row count for expected response length"
+    ],
+    "designPatterns": [
+      "Constrained input pattern",
+      "Guided form completion",
+      "Progressive disclosure of constraints"
+    ],
+    "accessibility": [
+      "Form item provides proper label association",
+      "Help text gives clear guidance on what not to include",
+      "Word counter provides real-time feedback to users",
+      "Text area has adequate size for comfortable input"
+    ]
+  },
+  "codeExamples": {
+    "react": {
+      "complete": "import { Sandbox } from \"@components/sandbox\";\nimport {\n  GoabFormItem,\n  GoabTextarea\n} from \"@abgov/react-components\";\n\nexport const AskALongAnswerQuestionWithAMaximumWordCount = () => {\n  const noop = () => {\n  };\n  return (\n    <Sandbox fullWidth>\n\n      <GoabFormItem\n        label=\"Provide more detail\"\n        helpText=\"Do not include personal or financial information, like your National Insurance number or credit card details.\">\n        <GoabTextarea name=\"program\" onChange={noop} width=\"100%\" rows={6} maxCount={500} countBy={\"word\"} />\n      </GoabFormItem>\n\n    </Sandbox>\n  );\n};",
+      "key": "const handleTextChange = (event) => {\n  // Handle text area changes\n};\n\n<GoabFormItem\n  label=\"Provide more detail\"\n  helpText=\"Do not include personal or financial information, like your National Insurance number or credit card details.\"\n>\n  <GoabTextarea\n    name=\"detailedResponse\"\n    onChange={handleTextChange}\n    width=\"100%\"\n    rows={6}\n    maxCount={500}\n    countBy=\"word\"\n  />\n</GoabFormItem>"
+    },
+    "angular": {
+      "complete": "export class LongAnswerComponent {\n  detailedResponse = '';\n\n  onTextChange(event: GoabTextAreaOnChangeDetail) {\n    this.detailedResponse = event.value;\n  }\n}",
+      "key": "detailedResponse = '';\n\nonTextChange(event: GoabTextAreaOnChangeDetail) {\n  this.detailedResponse = event.value;\n}\n\n<!-- Template -->\n<goab-form-item\n  label=\"Provide more detail\"\n  helpText=\"Do not include personal or financial information, like your National Insurance number or credit card details.\">\n  <goab-textarea\n    name=\"detailedResponse\"\n    (onChange)=\"onTextChange($event)\"\n    width=\"100%\"\n    [rows]=\"6\"\n    [maxCount]=\"500\"\n    countBy=\"word\">\n  </goab-textarea>\n</goab-form-item>"
+    }
+  },
+  "tags": [
+    "textarea",
+    "word-count",
+    "long-form",
+    "constraints",
+    "guidance",
+    "detailed-response",
+    "citizen-facing",
+    "form-validation"
+  ]
+}

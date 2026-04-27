@@ -1,0 +1,81 @@
+{
+  "name": "FormStep",
+  "category": "component",
+  "summary": "",
+  "import": "import { GoabFormStep } from '@abgov/react-components'",
+  "customElement": {
+    "tagName": "goa-form-step",
+    "reactName": "GoabFormStep",
+    "angularSelector": "goab-form-step"
+  },
+  "props": [
+    {
+      "name": "text",
+      "type": "string",
+      "required": true,
+      "default": null,
+      "description": "",
+      "frameworks": {
+        "webComponent": "text=\"...\"",
+        "react": "text={...}",
+        "angular": "[text]=\"...\""
+      }
+    },
+    {
+      "name": "status",
+      "type": "FormStepStatus | undefined",
+      "required": false,
+      "default": null,
+      "description": "",
+      "frameworks": {
+        "webComponent": "status=\"...\"",
+        "react": "status={...}",
+        "angular": "[status]=\"...\""
+      }
+    },
+    {
+      "name": "last",
+      "type": "boolean",
+      "required": false,
+      "default": "false",
+      "description": "",
+      "frameworks": {
+        "webComponent": "last=\"true\"",
+        "react": "last={true}",
+        "angular": "[last]=\"true\""
+      }
+    }
+  ],
+  "events": [
+    {
+      "name": "formstep:mounted",
+      "type": "(event) => void",
+      "description": "",
+      "frameworks": {
+        "webComponent": "formstep:mounted custom event",
+        "react": "onFormstep:mounted prop",
+        "angular": "(onFormstep:mounted) event binding"
+      }
+    },
+    {
+      "name": "_click",
+      "type": "(event) => void",
+      "description": "",
+      "frameworks": {
+        "webComponent": "_click custom event",
+        "react": "onClick prop",
+        "angular": "(onClick) event binding"
+      }
+    }
+  ],
+  "slots": [],
+  "criticalNotes": [],
+  "commonMistakes": [],
+  "basicUsage": {
+    "webComponent": "",
+    "react": "",
+    "angular": ""
+  },
+  "relatedExamples": [],
+  "relatedComponents": []
+}

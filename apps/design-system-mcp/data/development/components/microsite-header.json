@@ -1,0 +1,132 @@
+{
+  "name": "MicrositeHeader",
+  "category": "navigation",
+  "summary": "Government microsite header with service status badges and feedback collection.",
+  "import": "import { GoabMicrositeHeader } from '@abgov/react-components'",
+  "customElement": {
+    "tagName": "goa-microsite-header",
+    "reactName": "GoabMicrositeHeader",
+    "angularSelector": "goab-microsite-header"
+  },
+  "props": [
+    {
+      "name": "type",
+      "type": "\"live\" | \"alpha\" | \"beta\"",
+      "required": true,
+      "default": null,
+      "description": "Service status (alpha=orange, beta=blue, live=no badge)",
+      "frameworks": {
+        "webComponent": "type=\"...\"",
+        "react": "type={...}",
+        "angular": "[type]=\"...\""
+      }
+    },
+    {
+      "name": "feedbackurl",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "URL for feedback link",
+      "frameworks": {
+        "webComponent": "feedbackurl=\"...\"",
+        "react": "feedbackurl={...}",
+        "angular": "[feedbackurl]=\"...\""
+      }
+    },
+    {
+      "name": "maxcontentwidth",
+      "type": "any",
+      "required": false,
+      "default": "100%",
+      "description": "Max width of header content",
+      "frameworks": {
+        "webComponent": "maxcontentwidth=\"...\"",
+        "react": "maxcontentwidth={...}",
+        "angular": "[maxcontentwidth]=\"...\""
+      }
+    },
+    {
+      "name": "headerurltarget",
+      "type": "\"self\" | \"blank\"",
+      "required": false,
+      "default": "blank",
+      "description": "How GoA logo link opens",
+      "frameworks": {
+        "webComponent": "headerurltarget=\"...\"",
+        "react": "headerurltarget={...}",
+        "angular": "[headerurltarget]=\"...\""
+      }
+    },
+    {
+      "name": "feedbackurltarget",
+      "type": "\"self\" | \"blank\"",
+      "required": false,
+      "default": "blank",
+      "description": "How feedback link opens",
+      "frameworks": {
+        "webComponent": "feedbackurltarget=\"...\"",
+        "react": "feedbackurltarget={...}",
+        "angular": "[feedbackurltarget]=\"...\""
+      }
+    },
+    {
+      "name": "hasfeedbackhandler",
+      "type": "boolean",
+      "required": false,
+      "default": "false",
+      "description": "",
+      "frameworks": {
+        "webComponent": "hasfeedbackhandler=\"true\"",
+        "react": "hasfeedbackhandler={true}",
+        "angular": "[hasfeedbackhandler]=\"true\""
+      }
+    },
+    {
+      "name": "testId",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "Test identifier",
+      "frameworks": {
+        "webComponent": "test-id=\"...\"",
+        "react": "testId={...}",
+        "angular": "[testId]=\"...\""
+      }
+    }
+  ],
+  "events": [
+    {
+      "name": "_feedbackClick",
+      "type": "(event) => void",
+      "description": "",
+      "frameworks": {
+        "webComponent": "_feedbackClick custom event",
+        "react": "onFeedbackClick prop",
+        "angular": "(onFeedbackClick) event binding"
+      }
+    }
+  ],
+  "slots": [
+    {
+      "name": "version",
+      "description": ""
+    }
+  ],
+  "criticalNotes": [
+    "type is REQUIRED - indicates service development status",
+    "alpha = early testing (orange), beta = public testing (blue), live = production (no badge)",
+    "Use feedbackUrl for external survey links"
+  ],
+  "basicUsage": {
+    "webComponent": "<goa-microsite-header type=\"beta\" feedback-url=\"https://survey.alberta.ca\"></goa-microsite-header>",
+    "react": "<GoabMicrositeHeader type=\"beta\" feedbackUrl=\"https://survey.alberta.ca\" />",
+    "angular": "<goab-microsite-header type=\"beta\" feedbackUrl=\"https://survey.alberta.ca\"></goab-microsite-header>"
+  },
+  "relatedExamples": [
+    "link-the-user-to-give-feedback-to-the-service"
+  ],
+  "relatedComponents": [
+    "AppHeader",
+    "AppFooter"
+  ]
+}

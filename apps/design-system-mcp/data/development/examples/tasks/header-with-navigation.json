@@ -1,0 +1,91 @@
+{
+  "$schema": "../recipe-schema.json",
+  "schemaVersion": "2.1.0-ai-context",
+  "recipeId": "header-with-navigation",
+  "recipeName": "Header with Navigation",
+  "category": "navigation-pattern",
+  "summary": "Implement standard application header with navigation menus and authentication links for government services",
+  "serviceContext": {
+    "useCase": "Provide consistent navigation structure across government service applications with grouped menu items and authentication controls",
+    "userType": "both",
+    "governmentServiceFlows": [
+      "When citizens access government services requiring consistent navigation structure",
+      "When workers need organized navigation for different functional areas (cases, payments, etc.)",
+      "When applications need grouped navigation items with clear hierarchical organization",
+      "When implementing standard government service header patterns across multiple applications"
+    ],
+    "relatedPatterns": [
+      "header-with-menu-click-event",
+      "show-links-to-navigation-items",
+      "show-quick-links"
+    ]
+  },
+  "components": [
+    {
+      "componentName": "GoabAppHeader",
+      "role": "Main application header",
+      "purpose": "Provide consistent application header with service branding and navigation container"
+    },
+    {
+      "componentName": "GoabAppHeaderMenu",
+      "role": "Navigation menu group",
+      "purpose": "Organize related navigation items with dropdown functionality and visual grouping"
+    },
+    {
+      "componentName": "GoabMicrositeHeader",
+      "role": "Government site header",
+      "purpose": "Provide standard Government of Alberta branding header for live services"
+    }
+  ],
+  "codeReference": {
+    "exampleFile": "header-with-navigation.tsx",
+    "linesOfCode": 104,
+    "lastModified": "2024-01-01T00:00:00.000Z"
+  },
+  "implementation": {
+    "complexity": "low",
+    "keyPatterns": [
+      "Standard application header with service name and URL",
+      "Grouped navigation items using GoabAppHeaderMenu for related functions",
+      "Search functionality with leading icon in menu group",
+      "Support and authentication links as separate navigation items",
+      "Interactive styling for authentication actions (sign in/out)",
+      "Government branding integration with microsite header"
+    ],
+    "designPatterns": [
+      "Application header with grouped navigation",
+      "Government service branding pattern",
+      "Consistent navigation structure",
+      "Authentication state management in header"
+    ],
+    "accessibility": [
+      "Header provides clear navigation structure with semantic markup",
+      "Menu items are keyboard accessible and properly labeled",
+      "Navigation groups help screen readers understand content organization",
+      "Interactive elements have appropriate ARIA states and labels",
+      "Government branding header maintains accessibility standards"
+    ]
+  },
+  "codeExamples": {
+    "react": {
+      "complete": "import {\n  GoabAppHeader,\n  GoabAppHeaderMenu,\n  GoabMicrositeHeader\n} from \"@abgov/react-components\";\nimport { useState } from \"react\";\n\nexport default function HeaderWithNavigation() {\n  const [isAuthenticated, setIsAuthenticated] = useState(false);\n  const [activeSection, setActiveSection] = useState('');\n\n  const handleNavigationClick = (section: string) => {\n    setActiveSection(section);\n    console.log('Navigation clicked:', section);\n    // Handle navigation routing logic here\n  };\n\n  const handleAuthAction = () => {\n    if (isAuthenticated) {\n      // Handle sign out\n      setIsAuthenticated(false);\n      console.log('User signed out');\n    } else {\n      // Handle sign in\n      setIsAuthenticated(true);\n      console.log('User signed in');\n    }\n  };\n\n  const handleSupportClick = () => {\n    console.log('Support clicked');\n    // Handle support navigation or modal opening\n  };\n\n  return (\n    <div className=\"header-navigation-example\">\n      <GoabMicrositeHeader type=\"live\" />\n      \n      <GoabAppHeader url=\"https://www.alberta.ca\" heading=\"Service name\">\n        <GoabAppHeaderMenu heading=\"Search\" leadingIcon=\"search\">\n          <a href=\"#\" onClick={() => handleNavigationClick('cases')}>Cases</a>\n          <a href=\"#\" onClick={() => handleNavigationClick('payments')}>Payments</a>\n          <a href=\"#\" onClick={() => handleNavigationClick('outstanding')}>Outstanding</a>\n        </GoabAppHeaderMenu>\n        \n        <a href=\"#\" onClick={handleSupportClick}>Support</a>\n        \n        <a \n          href=\"#\" \n          className=\"interactive\" \n          onClick={handleAuthAction}>\n          {isAuthenticated ? 'Sign out' : 'Sign in'}\n        </a>\n      </GoabAppHeader>\n    </div>\n  );\n}",
+      "key": "const [isAuthenticated, setIsAuthenticated] = useState(false);\nconst [activeSection, setActiveSection] = useState('');\nconst [userProfile, setUserProfile] = useState(null);\n\nconst navigationItems = {\n  search: [\n    { label: 'Cases', href: '/cases', section: 'cases' },\n    { label: 'Payments', href: '/payments', section: 'payments' },\n    { label: 'Outstanding', href: '/outstanding', section: 'outstanding' }\n  ],\n  support: {\n    label: 'Support',\n    href: '/support',\n    section: 'support'\n  },\n  auth: {\n    signIn: { label: 'Sign in', href: '/signin' },\n    signOut: { label: 'Sign out', href: '/signout' }\n  }\n};\n\nconst handleNavigationClick = (section: string, event?: MouseEvent) => {\n  setActiveSection(section);\n  console.log('Navigation clicked:', section);\n  // Handle navigation routing logic\n  // Example: router.navigate(section)\n  \n  if (event) {\n    event.preventDefault();\n  }\n};\n\nconst handleAuthAction = () => {\n  if (isAuthenticated) {\n    // Handle sign out\n    setIsAuthenticated(false);\n    setUserProfile(null);\n    console.log('User signed out');\n  } else {\n    // Handle sign in\n    setIsAuthenticated(true);\n    console.log('User signed in');\n  }\n};\n\nconst handleSupportClick = () => {\n  console.log('Support clicked');\n  // Handle support navigation or modal opening\n};\n\nconst getAuthLabel = () => {\n  if (isAuthenticated && userProfile) {\n    return `Welcome, ${userProfile.name}`;\n  }\n  return isAuthenticated ? 'Sign out' : 'Sign in';\n};\n\n<div className=\"header-navigation-example\">\n  <GoabMicrositeHeader type=\"live\" />\n  \n  <GoabAppHeader url=\"https://www.alberta.ca\" heading=\"Service name\">\n    <GoabAppHeaderMenu heading=\"Search\" leadingIcon=\"search\">\n      {navigationItems.search.map((item) => (\n        <a \n          key={item.section}\n          href={item.href} \n          onClick={() => handleNavigationClick(item.section)}\n          className={activeSection === item.section ? 'active' : ''}>\n          {item.label}\n        </a>\n      ))}\n    </GoabAppHeaderMenu>\n    \n    <a \n      href={navigationItems.support.href} \n      onClick={handleSupportClick}\n      className={activeSection === 'support' ? 'active' : ''}>\n      {navigationItems.support.label}\n    </a>\n    \n    <a \n      href=\"#\" \n      className=\"interactive\" \n      onClick={handleAuthAction}>\n      {getAuthLabel()}\n    </a>\n  </GoabAppHeader>\n</div>\n\n/* CSS */\n.header-navigation-example {\n  width: 100%;\n}\n\n.header-navigation-example .active {\n  font-weight: bold;\n  background-color: var(--goa-color-background-selected);\n}\n\n.header-navigation-example .interactive {\n  font-weight: var(--goa-font-weight-bold);\n  color: var(--goa-color-interactive);\n}\n\n.header-navigation-example .interactive:hover {\n  background-color: var(--goa-color-background-hover);\n}"
+    },
+    "angular": {
+      "complete": "export class HeaderWithNavigationComponent {\n  isAuthenticated = false;\n  activeSection = '';\n  userProfile: any = null;\n\n  navigationItems = {\n    search: [\n      { label: 'Cases', href: '/cases', section: 'cases' },\n      { label: 'Payments', href: '/payments', section: 'payments' },\n      { label: 'Outstanding', href: '/outstanding', section: 'outstanding' }\n    ],\n    support: {\n      label: 'Support',\n      href: '/support',\n      section: 'support'\n    },\n    auth: {\n      signIn: { label: 'Sign in', href: '/signin' },\n      signOut: { label: 'Sign out', href: '/signout' }\n    }\n  };\n\n  handleNavigationClick(section: string, event?: Event) {\n    this.activeSection = section;\n    console.log('Navigation clicked:', section);\n    // Handle navigation routing logic\n    // Example: this.router.navigate([section])\n    \n    if (event) {\n      event.preventDefault();\n    }\n  }\n\n  handleAuthAction() {\n    if (this.isAuthenticated) {\n      // Handle sign out\n      this.isAuthenticated = false;\n      this.userProfile = null;\n      console.log('User signed out');\n    } else {\n      // Handle sign in\n      this.isAuthenticated = true;\n      console.log('User signed in');\n    }\n  }\n\n  handleSupportClick() {\n    console.log('Support clicked');\n    // Handle support navigation or modal opening\n  }\n\n  getAuthLabel(): string {\n    if (this.isAuthenticated && this.userProfile) {\n      return `Welcome, ${this.userProfile.name}`;\n    }\n    return this.isAuthenticated ? 'Sign out' : 'Sign in';\n  }\n\n  isActive(section: string): boolean {\n    return this.activeSection === section;\n  }\n}",
+      "key": "isAuthenticated = false;\nactiveSection = '';\nuserProfile: any = null;\n\nnavigationItems = {\n  search: [\n    { label: 'Cases', href: '/cases', section: 'cases' },\n    { label: 'Payments', href: '/payments', section: 'payments' },\n    { label: 'Outstanding', href: '/outstanding', section: 'outstanding' }\n  ],\n  support: {\n    label: 'Support',\n    href: '/support',\n    section: 'support'\n  }\n};\n\nhandleNavigationClick(section: string, event?: Event) {\n  this.activeSection = section;\n  console.log('Navigation clicked:', section);\n  // Handle navigation routing logic\n  \n  if (event) {\n    event.preventDefault();\n  }\n}\n\nhandleAuthAction() {\n  if (this.isAuthenticated) {\n    this.isAuthenticated = false;\n    this.userProfile = null;\n    console.log('User signed out');\n  } else {\n    this.isAuthenticated = true;\n    console.log('User signed in');\n  }\n}\n\nhandleSupportClick() {\n  console.log('Support clicked');\n  // Handle support navigation or modal opening\n}\n\ngetAuthLabel(): string {\n  if (this.isAuthenticated && this.userProfile) {\n    return `Welcome, ${this.userProfile.name}`;\n  }\n  return this.isAuthenticated ? 'Sign out' : 'Sign in';\n}\n\nisActive(section: string): boolean {\n  return this.activeSection === section;\n}\n\n<!-- Template -->\n<div class=\"header-navigation-example\">\n  <goab-microsite-header type=\"live\"></goab-microsite-header>\n  \n  <goab-app-header url=\"https://www.alberta.ca\" heading=\"Service name\">\n    <goab-app-header-menu heading=\"Search\" leadingIcon=\"search\">\n      <a \n        *ngFor=\"let item of navigationItems.search\"\n        [href]=\"item.href\" \n        (click)=\"handleNavigationClick(item.section, $event)\"\n        [class.active]=\"isActive(item.section)\">\n        {{ item.label }}\n      </a>\n    </goab-app-header-menu>\n    \n    <a \n      [href]=\"navigationItems.support.href\" \n      (click)=\"handleSupportClick()\"\n      [class.active]=\"isActive('support')\">\n      {{ navigationItems.support.label }}\n    </a>\n    \n    <a \n      href=\"#\" \n      class=\"interactive\" \n      (click)=\"handleAuthAction()\">\n      {{ getAuthLabel() }}\n    </a>\n  </goab-app-header>\n</div>"
+    }
+  },
+  "tags": [
+    "app-header",
+    "navigation",
+    "header-menu",
+    "government-branding",
+    "microsite-header",
+    "authentication",
+    "grouped-navigation",
+    "navigation-pattern",
+    "application-header",
+    "support-link"
+  ]
+}

@@ -1,0 +1,177 @@
+{
+  "id": "detail-page",
+  "name": "Detail Page",
+  "category": "page",
+  "description": "A page for viewing and editing a single record's complete details. Organized with tabs for different information categories, includes status badges, key metrics, and interactive sections like notes and timeline.",
+
+  "whenToUse": [
+    "Viewing full details of a case, client, or application",
+    "When users need to see and edit comprehensive record information",
+    "For displaying related data organized by category (details, timeline, notes)",
+    "As the destination when clicking a row in a list page"
+  ],
+
+  "structure": {
+    "pageHeader": "Record name + action buttons (Edit, Update Status)",
+    "statusBadges": "Row of badges showing status, priority, urgency",
+    "metadataGrid": "Quick stats grid (due date, assigned to, created, updated)",
+    "tabs": "Tabbed sections for Details, Timeline, Notes, etc.",
+    "notFoundState": "Error callout when record doesn't exist"
+  },
+
+  "sampleData": {
+    "case": {
+      "id": "CASE-2024-0847",
+      "childName": "Johnson, Emily",
+      "childDateOfBirth": "2020-03-15",
+      "status": "in-progress",
+      "priority": "high",
+      "isUrgent": true,
+      "dueDate": "2024-12-10",
+      "createdDate": "2024-11-01",
+      "lastUpdated": "2024-12-08",
+      "assignedTo": "user-001",
+      "assignedToName": "Sarah Chen",
+      "parentGuardian": {
+        "name": "Robert Johnson",
+        "relationship": "Father",
+        "phone": "780-555-0123",
+        "email": "r.johnson@email.com",
+        "address": {
+          "street": "123 Main Street",
+          "city": "Edmonton",
+          "province": "AB",
+          "postalCode": "T5A 0A1"
+        }
+      },
+      "events": [
+        {
+          "id": "event-1",
+          "date": "2024-12-08",
+          "type": "status-change",
+          "description": "Case moved to In Progress",
+          "author": "Sarah Chen"
+        },
+        {
+          "id": "event-2",
+          "date": "2024-11-15",
+          "type": "document-uploaded",
+          "description": "Birth certificate uploaded",
+          "author": "System"
+        }
+      ],
+      "notes": [
+        {
+          "id": "note-1",
+          "date": "2024-12-07",
+          "author": "Sarah Chen",
+          "content": "Contacted parent regarding missing documentation. Will follow up next week."
+        }
+      ]
+    }
+  },
+
+  "utilities": {
+    "formatDate": "Format date string for display",
+    "formatRelativeDate": "Format date relatively (In 3 days, Yesterday)",
+    "isOverdue": "Check if due date has passed",
+    "getStatusBadgeProps": "Map status to badge type",
+    "getPriorityBadgeProps": "Map priority to badge type"
+  },
+
+  "cssClasses": {
+    "clients-content-padding": "Responsive horizontal padding"
+  },
+
+  "components": [
+    {
+      "name": "GoabText",
+      "purpose": "Display all text content with consistent sizing",
+      "props": ["size", "weight", "color", "mb"]
+    },
+    {
+      "name": "GoabBadge",
+      "purpose": "Status, priority, and urgency indicators"
+    },
+    {
+      "name": "GoabTabs / GoabTab",
+      "purpose": "Organize content into switchable sections"
+    },
+    {
+      "name": "GoabDivider",
+      "purpose": "Visual separation between sections"
+    },
+    {
+      "name": "GoabFormItem",
+      "purpose": "Label wrapper for form inputs"
+    },
+    {
+      "name": "GoabTextArea",
+      "purpose": "Note input field"
+    },
+    {
+      "name": "GoabButton",
+      "purpose": "Actions (Edit, Update Status, Add Note)"
+    },
+    {
+      "name": "GoabButtonGroup",
+      "purpose": "Group header action buttons"
+    },
+    {
+      "name": "GoabCallout",
+      "purpose": "Error state when record not found"
+    },
+    {
+      "name": "GoabSkeleton",
+      "purpose": "Loading state"
+    }
+  ],
+
+  "example": {
+    "framework": "react",
+    "description": "Complete case detail page with tabs for details, timeline, and notes",
+    "code": "import React, { useState, useEffect, useMemo } from 'react';\nimport { useParams, useNavigate } from 'react-router-dom';\nimport {\n  GoabText,\n  GoabButton,\n  GoabButtonGroup,\n  GoabBadge,\n  GoabTabs,\n  GoabTab,\n  GoabDivider,\n  GoabFormItem,\n  GoabTextArea,\n  GoabSkeleton,\n  GoabCallout\n} from '@abgov/react-components';\nimport { usePageHeader } from '../contexts/PageHeaderContext';\nimport { Case, CaseNote } from '../types/Case';\nimport mockCases from '../data/mockCases.json';\nimport { formatDate, formatRelativeDate, isOverdue } from '../utils/dateUtils';\nimport { getStatusBadgeProps, getPriorityBadgeProps } from '../utils/badgeUtils';\nimport { mockFetch } from '../utils/mockApi';\n\nexport function CaseDetailPage() {\n  const { caseId } = useParams<{ caseId: string }>();\n  const navigate = useNavigate();\n  const [caseData, setCaseData] = useState<Case | null>(null);\n  const [isLoading, setIsLoading] = useState(true);\n  const [activeTab, setActiveTab] = useState(0);\n  const [newNote, setNewNote] = useState('');\n\n  // Header actions\n  const headerActions = useMemo(() => (\n    <GoabButtonGroup gap=\"compact\" alignment=\"end\">\n      <GoabButton type=\"secondary\" size=\"compact\">Edit</GoabButton>\n      <GoabButton type=\"primary\" size=\"compact\">Update Status</GoabButton>\n    </GoabButtonGroup>\n  ), []);\n\n  usePageHeader(caseData?.childName || 'Case Details', headerActions);\n\n  // Fetch case data\n  useEffect(() => {\n    const loadCase = async () => {\n      setIsLoading(true);\n      const allCases = await mockFetch<Case[]>(mockCases as Case[]);\n      const foundCase = allCases.find(c => c.id === caseId);\n      setCaseData(foundCase || null);\n      setIsLoading(false);\n    };\n    loadCase();\n  }, [caseId]);\n\n  // Add note handler\n  const handleAddNote = () => {\n    if (!newNote.trim() || !caseData) return;\n\n    const note: CaseNote = {\n      id: `note-${Date.now()}`,\n      date: new Date().toISOString().split('T')[0],\n      author: 'Current User',\n      content: newNote\n    };\n\n    setCaseData({\n      ...caseData,\n      notes: [note, ...caseData.notes]\n    });\n    setNewNote('');\n  };\n\n  // Loading state\n  if (isLoading) {\n    return (\n      <div style={{ maxWidth: '100%', overflow: 'hidden', paddingBottom: '32px' }}>\n        <div className=\"clients-content-padding\">\n          <GoabSkeleton type=\"header\" />\n          <GoabSkeleton type=\"text\" />\n          <GoabSkeleton type=\"text\" />\n        </div>\n      </div>\n    );\n  }\n\n  // Not found state\n  if (!caseData) {\n    return (\n      <div style={{ maxWidth: '100%', overflow: 'hidden', paddingBottom: '32px' }}>\n        <div className=\"clients-content-padding\">\n          <GoabCallout type=\"emergency\" heading=\"Case not found\">\n            The case {caseId} could not be found.\n          </GoabCallout>\n          <GoabButton mt=\"l\" onClick={() => navigate('/cases')}>Back to Cases</GoabButton>\n        </div>\n      </div>\n    );\n  }\n\n  const statusBadge = getStatusBadgeProps(caseData.status);\n  const priorityBadge = getPriorityBadgeProps(caseData.priority);\n  const overdue = isOverdue(caseData.dueDate) && caseData.status !== 'complete';\n\n  return (\n    <div style={{ maxWidth: '100%', overflow: 'hidden', paddingBottom: '32px' }}>\n      <div className=\"clients-content-padding\">\n        {/* Status badges row */}\n        <div style={{ marginBottom: '24px' }}>\n          <div style={{ display: 'flex', gap: '12px', alignItems: 'center', marginBottom: '8px', flexWrap: 'wrap' }}>\n            <GoabBadge type={statusBadge.type} content={statusBadge.content} />\n            <GoabBadge type={priorityBadge.type} content={priorityBadge.content} />\n            {caseData.isUrgent && <GoabBadge type=\"emergency\" content=\"Urgent\" />}\n          </div>\n          <GoabText size=\"body-s\" color=\"secondary\">Case ID: {caseData.id}</GoabText>\n        </div>\n\n        {/* Quick metadata grid */}\n        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '16px', marginBottom: '24px' }}>\n          <div>\n            <GoabText size=\"body-xs\" color=\"secondary\">Due Date</GoabText>\n            <GoabText size=\"body-m\" color={overdue ? 'emergency' : undefined} weight=\"bold\">\n              {formatDate(caseData.dueDate)}\n            </GoabText>\n            <GoabText size=\"body-xs\" color=\"secondary\">{formatRelativeDate(caseData.dueDate)}</GoabText>\n          </div>\n          <div>\n            <GoabText size=\"body-xs\" color=\"secondary\">Assigned To</GoabText>\n            <GoabText size=\"body-m\" weight=\"bold\">{caseData.assignedToName || 'Unassigned'}</GoabText>\n          </div>\n          <div>\n            <GoabText size=\"body-xs\" color=\"secondary\">Created</GoabText>\n            <GoabText size=\"body-m\">{formatDate(caseData.createdDate)}</GoabText>\n          </div>\n          <div>\n            <GoabText size=\"body-xs\" color=\"secondary\">Last Updated</GoabText>\n            <GoabText size=\"body-m\">{formatDate(caseData.lastUpdated)}</GoabText>\n          </div>\n        </div>\n\n        <GoabDivider mb=\"l\" />\n\n        {/* Tabbed content */}\n        <GoabTabs initialTab={activeTab} onChange={(e) => setActiveTab(e.detail.tab)}>\n          <GoabTab heading=\"Details\">\n            <div style={{ padding: '24px 0' }}>\n              {/* Section: Primary info */}\n              <GoabText size=\"heading-s\" mb=\"m\">Child Information</GoabText>\n              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px', marginBottom: '32px' }}>\n                <div>\n                  <GoabText size=\"body-xs\" color=\"secondary\">Name</GoabText>\n                  <GoabText size=\"body-m\">{caseData.childName}</GoabText>\n                </div>\n                <div>\n                  <GoabText size=\"body-xs\" color=\"secondary\">Date of Birth</GoabText>\n                  <GoabText size=\"body-m\">{formatDate(caseData.childDateOfBirth)}</GoabText>\n                </div>\n              </div>\n\n              {/* Section: Contact info */}\n              <GoabText size=\"heading-s\" mb=\"m\">Parent/Guardian Information</GoabText>\n              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px' }}>\n                <div>\n                  <GoabText size=\"body-xs\" color=\"secondary\">Name</GoabText>\n                  <GoabText size=\"body-m\">{caseData.parentGuardian.name}</GoabText>\n                </div>\n                <div>\n                  <GoabText size=\"body-xs\" color=\"secondary\">Relationship</GoabText>\n                  <GoabText size=\"body-m\">{caseData.parentGuardian.relationship}</GoabText>\n                </div>\n                <div>\n                  <GoabText size=\"body-xs\" color=\"secondary\">Phone</GoabText>\n                  <GoabText size=\"body-m\">{caseData.parentGuardian.phone}</GoabText>\n                </div>\n                <div>\n                  <GoabText size=\"body-xs\" color=\"secondary\">Email</GoabText>\n                  <GoabText size=\"body-m\">{caseData.parentGuardian.email}</GoabText>\n                </div>\n                <div style={{ gridColumn: 'span 2' }}>\n                  <GoabText size=\"body-xs\" color=\"secondary\">Address</GoabText>\n                  <GoabText size=\"body-m\">\n                    {caseData.parentGuardian.address.street}, {caseData.parentGuardian.address.city}, {caseData.parentGuardian.address.province} {caseData.parentGuardian.address.postalCode}\n                  </GoabText>\n                </div>\n              </div>\n            </div>\n          </GoabTab>\n\n          <GoabTab heading=\"Timeline\">\n            <div style={{ padding: '24px 0' }}>\n              {caseData.events.length === 0 ? (\n                <GoabText color=\"secondary\">No events recorded yet.</GoabText>\n              ) : (\n                <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>\n                  {caseData.events\n                    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())\n                    .map(event => (\n                      <div key={event.id} style={{ borderLeft: '3px solid var(--goa-color-interactive-default)', paddingLeft: '16px' }}>\n                        <GoabText size=\"body-xs\" color=\"secondary\">{formatDate(event.date)}</GoabText>\n                        <GoabText size=\"body-m\" weight=\"bold\">\n                          {event.type.replace('-', ' ').replace(/\\b\\w/g, l => l.toUpperCase())}\n                        </GoabText>\n                        <GoabText size=\"body-m\">{event.description}</GoabText>\n                        <GoabText size=\"body-xs\" color=\"secondary\">By {event.author}</GoabText>\n                      </div>\n                    ))}\n                </div>\n              )}\n            </div>\n          </GoabTab>\n\n          <GoabTab heading=\"Notes\">\n            <div style={{ padding: '24px 0' }}>\n              {/* Add note form */}\n              <div style={{ marginBottom: '24px' }}>\n                <GoabFormItem label=\"Add a note\">\n                  <GoabTextArea\n                    name=\"newNote\"\n                    value={newNote}\n                    placeholder=\"Enter your note here...\"\n                    rows={3}\n                    onChange={(e) => setNewNote(e.detail.value)}\n                  />\n                </GoabFormItem>\n                <GoabButton\n                  type=\"primary\"\n                  size=\"compact\"\n                  mt=\"s\"\n                  disabled={!newNote.trim()}\n                  onClick={handleAddNote}\n                >\n                  Add Note\n                </GoabButton>\n              </div>\n\n              <GoabDivider mb=\"l\" />\n\n              {/* Notes list */}\n              {caseData.notes.length === 0 ? (\n                <GoabText color=\"secondary\">No notes yet.</GoabText>\n              ) : (\n                <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>\n                  {caseData.notes\n                    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())\n                    .map(note => (\n                      <div key={note.id} style={{ padding: '16px', backgroundColor: 'var(--goa-color-greyscale-100)', borderRadius: '4px' }}>\n                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>\n                          <GoabText size=\"body-s\" weight=\"bold\">{note.author}</GoabText>\n                          <GoabText size=\"body-xs\" color=\"secondary\">{formatDate(note.date)}</GoabText>\n                        </div>\n                        <GoabText size=\"body-m\">{note.content}</GoabText>\n                      </div>\n                    ))}\n                </div>\n              )}\n            </div>\n          </GoabTab>\n        </GoabTabs>\n      </div>\n    </div>\n  );\n}"
+  },
+
+  "stateManagement": {
+    "caseData": "Case | null - The loaded record",
+    "isLoading": "boolean - Loading state for skeleton",
+    "activeTab": "number - Current tab index",
+    "newNote": "string - Note input value"
+  },
+
+  "tabPatterns": {
+    "Details": "Structured data fields organized by category",
+    "Timeline": "Chronological list of events with left border styling",
+    "Notes": "Add note form + list of existing notes",
+    "Documents": "File list with upload capability (optional)",
+    "Activity": "Combined timeline and notes (alternative)"
+  },
+
+  "variants": [
+    {
+      "name": "Read-only detail",
+      "description": "Remove edit capabilities for view-only users"
+    },
+    {
+      "name": "Inline editing",
+      "description": "Edit fields directly on the page without separate edit mode"
+    },
+    {
+      "name": "With sidebar",
+      "description": "Quick actions or related items in a side panel"
+    }
+  ],
+
+  "considerations": [
+    "Use useParams hook to get record ID from URL",
+    "Handle loading and not-found states gracefully",
+    "Dynamic page header title based on loaded record",
+    "Tabs organize content without overwhelming the user",
+    "Timeline uses left border for visual connection",
+    "Notes are sorted newest-first",
+    "Consider optimistic updates for note adding"
+  ],
+
+  "relatedPatterns": ["list-page", "dashboard-page", "workspace-app"]
+}

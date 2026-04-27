@@ -1,0 +1,102 @@
+{
+  "$schema": "../recipe-schema.json",
+  "schemaVersion": "2.1.0-ai-context",
+  "recipeId": "group-related-questions-together-on-a-question-page",
+  "recipeName": "Group Related Questions Together on a Question Page",
+  "category": "form-pattern",
+  "summary": "Organize related form fields together on a single page with clear heading hierarchy and logical grouping",
+  "serviceContext": {
+    "useCase": "Group logically related questions on a single page to reduce cognitive load and improve form completion efficiency",
+    "userType": "both",
+    "governmentServiceFlows": [
+      "When citizens complete address information that includes multiple related fields",
+      "When workers input client information that has natural groupings (contact info, address, etc.)",
+      "When collecting related personal details that are best entered together",
+      "When organizing form fields that have logical relationships and dependencies"
+    ],
+    "relatedPatterns": [
+      "ask-a-user-for-an-address",
+      "question-page",
+      "show-a-section-title-on-a-question-page",
+      "ask-a-user-one-question-at-a-time"
+    ]
+  },
+  "components": [
+    {
+      "componentName": "GoabFormItem",
+      "role": "Form field container",
+      "purpose": "Provide proper labeling and structure for each related input field"
+    },
+    {
+      "componentName": "GoabInput",
+      "role": "Text input field",
+      "purpose": "Allow users to enter text-based information for address fields"
+    },
+    {
+      "componentName": "GoabDropdown",
+      "role": "Selection input",
+      "purpose": "Provide structured selection for provinces/territories with predefined options"
+    },
+    {
+      "componentName": "GoabDropdownItem",
+      "role": "Selection option",
+      "purpose": "Define individual province/territory options with value and label"
+    },
+    {
+      "componentName": "GoabButton",
+      "role": "Form submission control",
+      "purpose": "Allow users to save and continue after completing the grouped questions"
+    }
+  ],
+  "codeReference": {
+    "exampleFile": "group-related-questions-together-on-a-question-page.tsx",
+    "linesOfCode": 119,
+    "lastModified": "2024-01-01T00:00:00.000Z"
+  },
+  "implementation": {
+    "complexity": "medium",
+    "keyPatterns": [
+      "Clear heading hierarchy with section title and descriptive subtitle",
+      "Logical grouping of related address fields on single page",
+      "Consistent spacing between form items using margin top utilities",
+      "Appropriate input widths for different field types (postal code, town/city)",
+      "Back navigation for multi-page forms",
+      "Proper form structure with semantic labeling and ARIA attributes"
+    ],
+    "designPatterns": [
+      "Question page layout",
+      "Form field grouping",
+      "Consistent form spacing",
+      "Responsive input sizing"
+    ],
+    "accessibility": [
+      "Clear heading hierarchy (h2 section title, h3 description)",
+      "Proper form labeling with associated labels for each input",
+      "ARIA attributes for screen reader support",
+      "Logical tab order through related fields",
+      "Descriptive back link for navigation context"
+    ]
+  },
+  "codeExamples": {
+    "react": {
+      "complete": "import {\n  GoabButton,\n  GoabDropdown,\n  GoabDropdownItem,\n  GoabFormItem,\n  GoabInput\n} from \"@abgov/react-components\";\nimport { useState } from \"react\";\n\nexport default function GroupRelatedQuestionsTogetherOnAQuestionPage() {\n  const [address, setAddress] = useState({\n    line1: '',\n    line2: '',\n    city: '',\n    province: '',\n    postalCode: ''\n  });\n  const [errors, setErrors] = useState<Record<string, string>>({});\n\n  const handleInputChange = (field: string, value: string) => {\n    setAddress(prev => ({ ...prev, [field]: value }));\n    // Clear error when user starts typing\n    if (errors[field]) {\n      setErrors(prev => ({ ...prev, [field]: '' }));\n    }\n  };\n\n  const handleSubmit = () => {\n    const newErrors: Record<string, string> = {};\n    \n    if (!address.line1.trim()) {\n      newErrors.line1 = 'Address line 1 is required';\n    }\n    if (!address.city.trim()) {\n      newErrors.city = 'Town or city is required';\n    }\n    if (!address.province) {\n      newErrors.province = 'Province or territory is required';\n    }\n    if (!address.postalCode.trim()) {\n      newErrors.postalCode = 'Postal code is required';\n    }\n    \n    if (Object.keys(newErrors).length > 0) {\n      setErrors(newErrors);\n      return;\n    }\n    \n    console.log('Address submitted:', address);\n    // Handle form submission\n  };\n\n  const handleBack = () => {\n    window.history.back();\n  };\n\n  return (\n    <div className=\"question-page-example\">\n      <a href=\"#\" className=\"back-link\" onClick={handleBack}>\n        Back\n      </a>\n      <h2 className=\"section-title\">Your address</h2>\n      <h3>This is the home address of the person applying</h3>\n      \n      <GoabFormItem label=\"Address line 1\" mt=\"l\" error={errors.line1}>\n        <GoabInput\n          value={address.line1}\n          onChange={(event) => handleInputChange('line1', event.value)}\n          name=\"address-line-1\"\n          ariaLabel=\"Address line 1\"\n          width=\"100%\"\n        />\n      </GoabFormItem>\n      \n      <GoabFormItem label=\"Address line 2\" mt=\"xl\" error={errors.line2}>\n        <GoabInput\n          value={address.line2}\n          onChange={(event) => handleInputChange('line2', event.value)}\n          name=\"address-line-2\"\n          ariaLabel=\"Address line 2\"\n          width=\"100%\"\n        />\n      </GoabFormItem>\n      \n      <GoabFormItem label=\"Town or city\" mt=\"xl\" error={errors.city}>\n        <GoabInput\n          value={address.city}\n          onChange={(event) => handleInputChange('city', event.value)}\n          name=\"town-city\"\n          ariaLabel=\"Town or city name\"\n          width=\"460px\"\n        />\n      </GoabFormItem>\n      \n      <GoabFormItem label=\"Province or territory\" mt=\"xl\" id=\"provinceLabel\" error={errors.province}>\n        <GoabDropdown \n          value={address.province}\n          onChange={(event) => handleInputChange('province', event.value)} \n          name=\"province-territory\" \n          ariaLabelledBy=\"provinceLabel\">\n          <GoabDropdownItem value=\"AB\" label=\"Alberta\" />\n          <GoabDropdownItem value=\"BC\" label=\"British Columbia\" />\n          <GoabDropdownItem value=\"MB\" label=\"Manitoba\" />\n          <GoabDropdownItem value=\"NB\" label=\"New Brunswick\" />\n          <GoabDropdownItem value=\"NL\" label=\"Newfoundland and Labrador\" />\n          <GoabDropdownItem value=\"NS\" label=\"Nova Scotia\" />\n          <GoabDropdownItem value=\"ON\" label=\"Ontario\" />\n          <GoabDropdownItem value=\"PE\" label=\"Prince Edward Island\" />\n          <GoabDropdownItem value=\"QC\" label=\"Quebec\" />\n          <GoabDropdownItem value=\"SK\" label=\"Saskatchewan\" />\n          <GoabDropdownItem value=\"NT\" label=\"Northwest Territories\" />\n          <GoabDropdownItem value=\"NU\" label=\"Nunavut\" />\n          <GoabDropdownItem value=\"YT\" label=\"Yukon\" />\n        </GoabDropdown>\n      </GoabFormItem>\n      \n      <GoabFormItem label=\"Postal code\" mt=\"xl\" error={errors.postalCode}>\n        <GoabInput \n          value={address.postalCode}\n          onChange={(event) => handleInputChange('postalCode', event.value)} \n          name=\"postal-code\" \n          width=\"105px\" \n        />\n      </GoabFormItem>\n      \n      <GoabButton type=\"submit\" mt=\"2xl\" onClick={handleSubmit}>\n        Save and continue\n      </GoabButton>\n    </div>\n  );\n}",
+      "key": "const [formData, setFormData] = useState({\n  line1: '',\n  line2: '',\n  city: '',\n  province: '',\n  postalCode: ''\n});\nconst [validationErrors, setValidationErrors] = useState<Record<string, string>>({});\n\nconst canadianProvinces = [\n  { value: 'AB', label: 'Alberta' },\n  { value: 'BC', label: 'British Columbia' },\n  { value: 'MB', label: 'Manitoba' },\n  { value: 'NB', label: 'New Brunswick' },\n  { value: 'NL', label: 'Newfoundland and Labrador' },\n  { value: 'NS', label: 'Nova Scotia' },\n  { value: 'ON', label: 'Ontario' },\n  { value: 'PE', label: 'Prince Edward Island' },\n  { value: 'QC', label: 'Quebec' },\n  { value: 'SK', label: 'Saskatchewan' },\n  { value: 'NT', label: 'Northwest Territories' },\n  { value: 'NU', label: 'Nunavut' },\n  { value: 'YT', label: 'Yukon' }\n];\n\nconst updateField = (field: string, value: string) => {\n  setFormData(prev => ({ ...prev, [field]: value }));\n  // Clear validation error when user starts typing\n  if (validationErrors[field]) {\n    setValidationErrors(prev => ({ ...prev, [field]: '' }));\n  }\n};\n\nconst validateForm = (): boolean => {\n  const errors: Record<string, string> = {};\n  \n  if (!formData.line1.trim()) errors.line1 = 'Address line 1 is required';\n  if (!formData.city.trim()) errors.city = 'Town or city is required';\n  if (!formData.province) errors.province = 'Province or territory is required';\n  if (!formData.postalCode.trim()) errors.postalCode = 'Postal code is required';\n  \n  setValidationErrors(errors);\n  return Object.keys(errors).length === 0;\n};\n\nconst handleSubmit = () => {\n  if (validateForm()) {\n    console.log('Address information:', formData);\n    // Process form submission\n  }\n};\n\n<div className=\"question-page-example\">\n  <a href=\"#\" className=\"back-link\" onClick={() => window.history.back()}>\n    Back\n  </a>\n  <h2 className=\"section-title\">Your address</h2>\n  <h3>This is the home address of the person applying</h3>\n  \n  <GoabFormItem label=\"Address line 1\" mt=\"l\" error={validationErrors.line1}>\n    <GoabInput\n      value={formData.line1}\n      onChange={(event) => updateField('line1', event.value)}\n      name=\"address-line-1\"\n      ariaLabel=\"Address line 1\"\n      width=\"100%\"\n    />\n  </GoabFormItem>\n  \n  <GoabFormItem label=\"Address line 2\" mt=\"xl\">\n    <GoabInput\n      value={formData.line2}\n      onChange={(event) => updateField('line2', event.value)}\n      name=\"address-line-2\"\n      ariaLabel=\"Address line 2\"\n      width=\"100%\"\n    />\n  </GoabFormItem>\n  \n  <GoabFormItem label=\"Town or city\" mt=\"xl\" error={validationErrors.city}>\n    <GoabInput\n      value={formData.city}\n      onChange={(event) => updateField('city', event.value)}\n      name=\"town-city\"\n      ariaLabel=\"Town or city name\"\n      width=\"460px\"\n    />\n  </GoabFormItem>\n  \n  <GoabFormItem label=\"Province or territory\" mt=\"xl\" id=\"provinceLabel\" error={validationErrors.province}>\n    <GoabDropdown \n      value={formData.province}\n      onChange={(event) => updateField('province', event.value)} \n      name=\"province-territory\" \n      ariaLabelledBy=\"provinceLabel\">\n      {canadianProvinces.map(province => (\n        <GoabDropdownItem key={province.value} value={province.value} label={province.label} />\n      ))}\n    </GoabDropdown>\n  </GoabFormItem>\n  \n  <GoabFormItem label=\"Postal code\" mt=\"xl\" error={validationErrors.postalCode}>\n    <GoabInput \n      value={formData.postalCode}\n      onChange={(event) => updateField('postalCode', event.value)} \n      name=\"postal-code\" \n      width=\"105px\" \n    />\n  </GoabFormItem>\n  \n  <GoabButton type=\"submit\" mt=\"2xl\" onClick={handleSubmit}>\n    Save and continue\n  </GoabButton>\n</div>\n\n/* CSS */\n.question-page-example {\n  max-width: 800px;\n  margin: 0 auto;\n  padding: var(--goa-space-m);\n}\n\n.back-link::before {\n  content: \"\";\n  display: inline-block;\n  width: 42px;\n  height: 24px;\n  vertical-align: middle;\n  background: url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 2 22 22\" fill=\"none\" stroke=\"%230070C4\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"15 18 9 12 15 6\"></polyline></svg>') center center no-repeat;\n}\n\n.back-link {\n  margin-top: var(--goa-space-m);\n}\n\n.back-link + h2 {\n  margin-top: var(--goa-space-2xl);\n}\n\n.section-title {\n  margin-bottom: 0;\n}\n\n.section-title + h3 {\n  margin-top: var(--goa-space-xs);\n}"
+    },
+    "angular": {
+      "complete": "export class GroupRelatedQuestionsTogetherOnAQuestionPageComponent {\n  address = {\n    line1: '',\n    line2: '',\n    city: '',\n    province: '',\n    postalCode: ''\n  };\n  errors: Record<string, string> = {};\n  \n  canadianProvinces = [\n    { value: 'AB', label: 'Alberta' },\n    { value: 'BC', label: 'British Columbia' },\n    { value: 'MB', label: 'Manitoba' },\n    { value: 'NB', label: 'New Brunswick' },\n    { value: 'NL', label: 'Newfoundland and Labrador' },\n    { value: 'NS', label: 'Nova Scotia' },\n    { value: 'ON', label: 'Ontario' },\n    { value: 'PE', label: 'Prince Edward Island' },\n    { value: 'QC', label: 'Quebec' },\n    { value: 'SK', label: 'Saskatchewan' },\n    { value: 'NT', label: 'Northwest Territories' },\n    { value: 'NU', label: 'Nunavut' },\n    { value: 'YT', label: 'Yukon' }\n  ];\n\n  handleInputChange(field: string, event: GoabInputOnChangeDetail) {\n    this.address[field] = event.value;\n    // Clear error when user starts typing\n    if (this.errors[field]) {\n      delete this.errors[field];\n    }\n  }\n\n  handleDropdownChange(event: GoabDropdownOnChangeDetail) {\n    this.address.province = event.value;\n    // Clear error when user makes selection\n    if (this.errors.province) {\n      delete this.errors.province;\n    }\n  }\n\n  handleSubmit() {\n    this.errors = {};\n    \n    if (!this.address.line1.trim()) {\n      this.errors.line1 = 'Address line 1 is required';\n    }\n    if (!this.address.city.trim()) {\n      this.errors.city = 'Town or city is required';\n    }\n    if (!this.address.province) {\n      this.errors.province = 'Province or territory is required';\n    }\n    if (!this.address.postalCode.trim()) {\n      this.errors.postalCode = 'Postal code is required';\n    }\n    \n    if (Object.keys(this.errors).length === 0) {\n      console.log('Address submitted:', this.address);\n      // Handle form submission\n    }\n  }\n\n  handleBack() {\n    window.history.back();\n  }\n}",
+      "key": "address = {\n  line1: '',\n  line2: '',\n  city: '',\n  province: '',\n  postalCode: ''\n};\nerrors: Record<string, string> = {};\n\ncanadianProvinces = [\n  { value: 'AB', label: 'Alberta' },\n  { value: 'BC', label: 'British Columbia' },\n  { value: 'MB', label: 'Manitoba' },\n  { value: 'NB', label: 'New Brunswick' },\n  { value: 'NL', label: 'Newfoundland and Labrador' },\n  { value: 'NS', label: 'Nova Scotia' },\n  { value: 'ON', label: 'Ontario' },\n  { value: 'PE', label: 'Prince Edward Island' },\n  { value: 'QC', label: 'Quebec' },\n  { value: 'SK', label: 'Saskatchewan' },\n  { value: 'NT', label: 'Northwest Territories' },\n  { value: 'NU', label: 'Nunavut' },\n  { value: 'YT', label: 'Yukon' }\n];\n\nhandleInputChange(field: string, event: GoabInputOnChangeDetail) {\n  this.address[field] = event.value;\n  if (this.errors[field]) {\n    delete this.errors[field];\n  }\n}\n\nhandleDropdownChange(event: GoabDropdownOnChangeDetail) {\n  this.address.province = event.value;\n  if (this.errors.province) {\n    delete this.errors.province;\n  }\n}\n\nhandleSubmit() {\n  this.errors = {};\n  \n  if (!this.address.line1.trim()) this.errors.line1 = 'Address line 1 is required';\n  if (!this.address.city.trim()) this.errors.city = 'Town or city is required';\n  if (!this.address.province) this.errors.province = 'Province or territory is required';\n  if (!this.address.postalCode.trim()) this.errors.postalCode = 'Postal code is required';\n  \n  if (Object.keys(this.errors).length === 0) {\n    console.log('Address submitted:', this.address);\n    // Handle form submission\n  }\n}\n\nhandleBack() {\n  window.history.back();\n}\n\n<!-- Template -->\n<div class=\"question-page-example\">\n  <a href=\"#\" class=\"back-link\" (click)=\"handleBack()\">\n    Back\n  </a>\n  <h2 class=\"section-title\">Your address</h2>\n  <h3>This is the home address of the person applying</h3>\n  \n  <goab-form-item label=\"Address line 1\" mt=\"l\" [error]=\"errors.line1\">\n    <goab-input\n      [value]=\"address.line1\"\n      (onChange)=\"handleInputChange('line1', $event)\"\n      name=\"address-line-1\"\n      ariaLabel=\"Address line 1\"\n      width=\"100%\">\n    </goab-input>\n  </goab-form-item>\n  \n  <goab-form-item label=\"Address line 2\" mt=\"xl\">\n    <goab-input\n      [value]=\"address.line2\"\n      (onChange)=\"handleInputChange('line2', $event)\"\n      name=\"address-line-2\"\n      ariaLabel=\"Address line 2\"\n      width=\"100%\">\n    </goab-input>\n  </goab-form-item>\n  \n  <goab-form-item label=\"Town or city\" mt=\"xl\" [error]=\"errors.city\">\n    <goab-input\n      [value]=\"address.city\"\n      (onChange)=\"handleInputChange('city', $event)\"\n      name=\"town-city\"\n      ariaLabel=\"Town or city name\"\n      width=\"460px\">\n    </goab-input>\n  </goab-form-item>\n  \n  <goab-form-item label=\"Province or territory\" mt=\"xl\" id=\"provinceLabel\" [error]=\"errors.province\">\n    <goab-dropdown \n      [value]=\"address.province\"\n      (onChange)=\"handleDropdownChange($event)\" \n      name=\"province-territory\" \n      ariaLabelledBy=\"provinceLabel\">\n      <goab-dropdown-item *ngFor=\"let province of canadianProvinces\" [value]=\"province.value\" [label]=\"province.label\"></goab-dropdown-item>\n    </goab-dropdown>\n  </goab-form-item>\n  \n  <goab-form-item label=\"Postal code\" mt=\"xl\" [error]=\"errors.postalCode\">\n    <goab-input \n      [value]=\"address.postalCode\"\n      (onChange)=\"handleInputChange('postalCode', $event)\" \n      name=\"postal-code\" \n      width=\"105px\">\n    </goab-input>\n  </goab-form-item>\n  \n  <goab-button type=\"submit\" mt=\"2xl\" (onClick)=\"handleSubmit()\">\n    Save and continue\n  </goab-button>\n</div>"
+    }
+  },
+  "tags": [
+    "form-grouping",
+    "question-page",
+    "address-form",
+    "related-questions",
+    "form-layout",
+    "heading-hierarchy",
+    "form-validation",
+    "canadian-provinces",
+    "input-sizing",
+    "form-organization"
+  ]
+}

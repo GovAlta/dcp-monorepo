@@ -1,0 +1,99 @@
+{
+  "id": "validation-error",
+  "name": "Validation Error Summary",
+  "category": "section",
+  "description": "An error summary displayed at the top of a form step when validation fails. Lists all errors with anchor links to the problematic fields, helping users quickly identify and fix issues.",
+
+  "whenToUse": [
+    "When form validation fails on continue/submit",
+    "To provide a summary of all errors at the top of the page",
+    "When users need quick navigation to error fields",
+    "For forms with multiple required fields that may have errors"
+  ],
+
+  "components": [
+    {
+      "name": "Error Container",
+      "purpose": "Visually distinct error message area",
+      "usage": "Red border accent, light red background, prominent placement"
+    },
+    {
+      "name": "Error Heading",
+      "purpose": "Alert users to the presence of errors",
+      "usage": "Standard heading like 'There is a problem'"
+    },
+    {
+      "name": "Error List",
+      "purpose": "List individual errors with links",
+      "usage": "Unordered list with anchor links to each field"
+    },
+    {
+      "name": "GoabCallout",
+      "purpose": "Alternative using GoA component",
+      "usage": "type='emergency' for error callouts"
+    }
+  ],
+
+  "structure": {
+    "container": "Visually distinct error box with emergency/red styling",
+    "heading": "Clear heading indicating problems exist",
+    "list": "Bulleted list of errors, each linking to its field"
+  },
+
+  "example": {
+    "framework": "react",
+    "description": "Error summary component with focus management and anchor links",
+    "code": "import React, { useEffect, useRef } from 'react';\nimport { GoabCallout } from '@abgov/react-components';\n\ninterface ValidationError {\n  field: string;\n  message: string;\n}\n\ninterface ValidationErrorSummaryProps {\n  errors: ValidationError[];\n  headingText?: string;\n}\n\nexport function ValidationErrorSummary({\n  errors,\n  headingText = 'There is a problem'\n}: ValidationErrorSummaryProps) {\n  const summaryRef = useRef<HTMLDivElement>(null);\n\n  // Focus error summary when it appears\n  useEffect(() => {\n    if (errors.length > 0 && summaryRef.current) {\n      summaryRef.current.focus();\n    }\n  }, [errors]);\n\n  if (errors.length === 0) {\n    return null;\n  }\n\n  const handleErrorClick = (e: React.MouseEvent<HTMLAnchorElement>, field: string) => {\n    e.preventDefault();\n    const element = document.querySelector(`[name=\"${field}\"]`) as HTMLElement;\n    if (element) {\n      element.focus();\n      element.scrollIntoView({ behavior: 'smooth', block: 'center' });\n    }\n  };\n\n  return (\n    <div\n      ref={summaryRef}\n      className=\"error-summary\"\n      role=\"alert\"\n      aria-labelledby=\"error-summary-heading\"\n      tabIndex={-1}\n    >\n      <h2 id=\"error-summary-heading\" className=\"error-summary__heading\">\n        {headingText}\n      </h2>\n      <ul className=\"error-summary__list\">\n        {errors.map((error) => (\n          <li key={error.field}>\n            <a\n              href={`#${error.field}`}\n              onClick={(e) => handleErrorClick(e, error.field)}\n            >\n              {error.message}\n            </a>\n          </li>\n        ))}\n      </ul>\n    </div>\n  );\n}\n\n// Alternative using GoabCallout component:\nexport function ValidationErrorCallout({\n  errors,\n  headingText = 'There is a problem'\n}: ValidationErrorSummaryProps) {\n  if (errors.length === 0) {\n    return null;\n  }\n\n  const handleErrorClick = (e: React.MouseEvent<HTMLAnchorElement>, field: string) => {\n    e.preventDefault();\n    const element = document.querySelector(`[name=\"${field}\"]`) as HTMLElement;\n    if (element) {\n      element.focus();\n      element.scrollIntoView({ behavior: 'smooth', block: 'center' });\n    }\n  };\n\n  return (\n    <GoabCallout type=\"emergency\" heading={headingText} mb=\"xl\">\n      <ul className=\"error-summary__list\" style={{ margin: 0, paddingLeft: 'var(--goa-space-l)' }}>\n        {errors.map((error) => (\n          <li key={error.field} style={{ marginBottom: 'var(--goa-space-xs)' }}>\n            <a\n              href={`#${error.field}`}\n              onClick={(e) => handleErrorClick(e, error.field)}\n              style={{ color: 'inherit', textDecoration: 'underline' }}\n            >\n              {error.message}\n            </a>\n          </li>\n        ))}\n      </ul>\n    </GoabCallout>\n  );\n}\n\n// Example usage in a form step:\nfunction ExampleFormStep() {\n  const [name, setName] = useState('');\n  const [email, setEmail] = useState('');\n  const [errors, setErrors] = useState<ValidationError[]>([]);\n\n  const validateForm = (): boolean => {\n    const newErrors: ValidationError[] = [];\n\n    if (!name.trim()) {\n      newErrors.push({\n        field: 'fullName',\n        message: 'Enter your full name'\n      });\n    }\n\n    if (!email.trim()) {\n      newErrors.push({\n        field: 'email',\n        message: 'Enter your email address'\n      });\n    } else if (!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email)) {\n      newErrors.push({\n        field: 'email',\n        message: 'Enter a valid email address'\n      });\n    }\n\n    setErrors(newErrors);\n    return newErrors.length === 0;\n  };\n\n  const handleContinue = () => {\n    if (validateForm()) {\n      // Proceed to next step\n      console.log('Form valid, continuing...');\n    }\n  };\n\n  return (\n    <div className=\"form-page\">\n      <ValidationErrorSummary errors={errors} />\n\n      <h1 className=\"step-title\">Personal Information</h1>\n\n      <form className=\"question-group\">\n        <GoabFormItem\n          label=\"What is your full name?\"\n          error={errors.find(e => e.field === 'fullName')?.message}\n          requirement=\"required\"\n        >\n          <GoabInput\n            name=\"fullName\"\n            id=\"fullName\"\n            value={name}\n            onChange={(e) => setName(e.value)}\n            error={!!errors.find(e => e.field === 'fullName')}\n          />\n        </GoabFormItem>\n\n        <GoabFormItem\n          label=\"What is your email address?\"\n          error={errors.find(e => e.field === 'email')?.message}\n          requirement=\"required\"\n        >\n          <GoabInput\n            name=\"email\"\n            id=\"email\"\n            type=\"email\"\n            value={email}\n            onChange={(e) => setEmail(e.value)}\n            error={!!errors.find(e => e.field === 'email')}\n          />\n        </GoabFormItem>\n\n        <div className=\"form-actions\">\n          <GoabButton type=\"primary\" onClick={handleContinue}>\n            Save and continue\n          </GoabButton>\n        </div>\n      </form>\n    </div>\n  );\n}"
+  },
+
+  "cssClasses": {
+    "error-summary": ".error-summary {\n  background-color: var(--goa-color-emergency-light);\n  border-left: 4px solid var(--goa-color-emergency);\n  padding: var(--goa-space-l);\n  margin-bottom: var(--goa-space-xl);\n  border-radius: var(--goa-border-radius-s);\n}\n\n.error-summary:focus {\n  outline: 3px solid var(--goa-color-interactive-focus);\n  outline-offset: 0;\n}",
+    "error-summary__heading": ".error-summary__heading {\n  margin: 0 0 var(--goa-space-s) 0;\n  color: var(--goa-color-emergency-dark);\n  font-size: var(--goa-font-size-l);\n  font-weight: 700;\n}",
+    "error-summary__list": ".error-summary__list {\n  margin: 0;\n  padding-left: var(--goa-space-l);\n}\n\n.error-summary__list li {\n  margin-bottom: var(--goa-space-xs);\n}\n\n.error-summary__list li:last-child {\n  margin-bottom: 0;\n}\n\n.error-summary__list a {\n  color: var(--goa-color-emergency-dark);\n  text-decoration: underline;\n}\n\n.error-summary__list a:hover {\n  color: var(--goa-color-emergency);\n}"
+  },
+
+  "variants": [
+    {
+      "name": "Using GoabCallout",
+      "description": "Use the GoabCallout component with type='emergency' for consistent styling"
+    },
+    {
+      "name": "Single error",
+      "description": "When only one field has an error, can simplify to inline message"
+    },
+    {
+      "name": "Sectioned errors",
+      "description": "Group errors by form section for longer forms"
+    }
+  ],
+
+  "considerations": [
+    "Focus the error summary when it first appears (tabIndex=-1 + focus())",
+    "Use role='alert' for screen reader announcement",
+    "Error messages should describe what went wrong AND how to fix it",
+    "Link text should match the field label for recognition",
+    "Clicking links should focus AND scroll to the field",
+    "Keep error messages concise and actionable",
+    "Use consistent heading text ('There is a problem')",
+    "Place summary above the form, not below",
+    "Don't show summary until user attempts to continue"
+  ],
+
+  "errorMessageGuidelines": {
+    "required": "Enter [field name] (e.g., 'Enter your email address')",
+    "format": "Enter a valid [field type] (e.g., 'Enter a valid postal code')",
+    "range": "Enter a [field] between [min] and [max]",
+    "pattern": "Enter [field] in the format [example]",
+    "match": "[Field 1] and [Field 2] must match"
+  },
+
+  "accessibilityRequirements": [
+    "Container must have role='alert' or role='alertdialog'",
+    "Container must be focusable (tabIndex=-1) for focus management",
+    "Links must have accessible names matching visible text",
+    "Color must not be only indicator - use icon or text as well",
+    "Error message text must also appear on the individual field"
+  ],
+
+  "relatedPatterns": ["public-form", "form-step", "question-page"]
+}

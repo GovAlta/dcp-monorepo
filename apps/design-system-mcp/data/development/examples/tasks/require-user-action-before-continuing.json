@@ -1,0 +1,90 @@
+{
+  "$schema": "../recipe-schema.json",
+  "schemaVersion": "2.1.0-ai-context",
+  "recipeId": "require-user-action-before-continuing",
+  "recipeName": "Require User Action Before Continuing",
+  "category": "interaction-pattern",
+  "summary": "Present users with a confirmation modal that requires explicit action before proceeding with potentially irreversible operations",
+  "serviceContext": {
+    "useCase": "Prevent users from accidentally proceeding with actions that cannot be undone, providing clear warning and explicit confirmation",
+    "userType": "both",
+    "governmentServiceFlows": [
+      "When citizens are about to submit an irreversible application or form",
+      "When workers are about to delete or modify critical case information",
+      "When users are about to navigate away from unsaved work",
+      "When proceeding with actions that have significant consequences or cannot be undone"
+    ],
+    "relatedPatterns": [
+      "confirm-a-change",
+      "confirm-before-navigating-away",
+      "confirm-that-an-application-was-submitted"
+    ]
+  },
+  "components": [
+    {
+      "componentName": "GoabModal",
+      "role": "Confirmation dialog",
+      "purpose": "Display confirmation message and action buttons requiring user decision"
+    },
+    {
+      "componentName": "GoabButton",
+      "role": "Action trigger",
+      "purpose": "Initiate the confirmation modal and provide primary/secondary actions"
+    },
+    {
+      "componentName": "GoabButtonGroup",
+      "role": "Action container",
+      "purpose": "Group confirmation buttons with proper alignment and spacing"
+    }
+  ],
+  "codeReference": {
+    "exampleFile": "require-user-action-before-continuing.tsx",
+    "linesOfCode": 157,
+    "lastModified": "2024-01-01T00:00:00.000Z"
+  },
+  "implementation": {
+    "complexity": "medium",
+    "keyPatterns": [
+      "Modal state management with useState hook",
+      "Explicit user confirmation through modal interaction",
+      "Clear messaging about consequences of proceeding",
+      "Primary and secondary action buttons with proper labeling",
+      "Proper modal accessibility with role and heading attributes"
+    ],
+    "designPatterns": [
+      "Confirmation dialog pattern",
+      "Destructive action prevention",
+      "User consent validation",
+      "Clear consequence communication"
+    ],
+    "accessibility": [
+      "Modal has proper dialog role for screen reader identification",
+      "Clear heading describes the confirmation requirement",
+      "Action buttons have descriptive labels indicating their purpose",
+      "Modal can be closed with keyboard navigation",
+      "Focus management when modal opens and closes"
+    ]
+  },
+  "codeExamples": {
+    "react": {
+      "complete": "import { GoabButton, GoabButtonGroup, GoabModal } from \"@abgov/react-components\";\nimport { useState } from \"react\";\n\nexport default function RequireUserActionBeforeContinuing() {\n  const [confirmationModalOpen, setConfirmationModalOpen] = useState<boolean>(false);\n  const [processCompleted, setProcessCompleted] = useState<boolean>(false);\n  const [userData, setUserData] = useState({});\n  const [isLoading, setIsLoading] = useState<boolean>(false);\n\n  const handleOpenConfirmation = () => {\n    setConfirmationModalOpen(true);\n  };\n\n  const handleCloseConfirmation = () => {\n    setConfirmationModalOpen(false);\n  };\n\n  const handleConfirmAction = async () => {\n    setIsLoading(true);\n    \n    try {\n      // Simulate API call for irreversible action\n      await new Promise(resolve => setTimeout(resolve, 1000));\n      \n      // Perform the irreversible action\n      console.log('Irreversible action completed');\n      \n      // Update state to reflect completion\n      setProcessCompleted(true);\n      \n      // Close modal after successful completion\n      setConfirmationModalOpen(false);\n      \n      // Optional: Show success message or redirect\n      showSuccessMessage('Action completed successfully');\n      \n    } catch (error) {\n      console.error('Error completing action:', error);\n      showErrorMessage('Action could not be completed. Please try again.');\n    } finally {\n      setIsLoading(false);\n    }\n  };\n\n  const showSuccessMessage = (message: string) => {\n    // Implementation for success feedback\n    console.log('Success:', message);\n  };\n\n  const showErrorMessage = (message: string) => {\n    // Implementation for error feedback\n    console.error('Error:', message);\n  };\n\n  const getConfirmationMessage = () => {\n    return \"You cannot return to this page. Are you sure you want to continue?\";\n  };\n\n  const isActionDisabled = () => {\n    return isLoading || processCompleted;\n  };\n\n  return (\n    <div className=\"action-confirmation-container\">\n      <div className=\"action-trigger-section\">\n        <h2>Complete Your Application</h2>\n        <p>Review your information before submitting. Once submitted, you cannot make changes.</p>\n        \n        <GoabButton \n          onClick={handleOpenConfirmation}\n          disabled={isActionDisabled()}\n          type=\"primary\"\n          aria-describedby=\"action-consequences\">\n          {isLoading ? 'Processing...' : 'Submit Application'}\n        </GoabButton>\n        \n        <p id=\"action-consequences\" className=\"consequence-warning\">\n          <strong>Important:</strong> This action cannot be undone. Please ensure all information is correct.\n        </p>\n      </div>\n\n      <GoabModal\n        heading=\"Are you sure you want to continue?\"\n        role=\"dialog\"\n        open={confirmationModalOpen}\n        onClose={handleCloseConfirmation}\n        aria-labelledby=\"confirmation-heading\"\n        aria-describedby=\"confirmation-message\"\n        actions={\n          <GoabButtonGroup alignment=\"end\">\n            <GoabButton \n              type=\"secondary\" \n              onClick={handleCloseConfirmation}\n              disabled={isLoading}\n              aria-label=\"Cancel and return to previous page\">\n              Back\n            </GoabButton>\n            <GoabButton \n              type=\"primary\" \n              onClick={handleConfirmAction}\n              disabled={isLoading}\n              aria-label=\"Confirm and proceed with action\">\n              {isLoading ? 'Processing...' : 'Continue'}\n            </GoabButton>\n          </GoabButtonGroup>\n        }>\n        <div id=\"confirmation-message\">\n          <p>{getConfirmationMessage()}</p>\n          <div className=\"consequences-list\">\n            <h4>Please confirm you understand:</h4>\n            <ul>\n              <li>You cannot return to edit this information</li>\n              <li>Your application will be submitted immediately</li>\n              <li>You will receive a confirmation email</li>\n              <li>Processing may take 5-10 business days</li>\n            </ul>\n          </div>\n        </div>\n      </GoabModal>\n\n      {processCompleted && (\n        <div className=\"completion-message\" role=\"alert\">\n          <h3>Application Submitted Successfully</h3>\n          <p>Your application has been received and is being processed.</p>\n        </div>\n      )}\n    </div>\n  );\n}",
+      "key": "const [confirmationOpen, setConfirmationOpen] = useState<boolean>(false);\nconst [isProcessing, setIsProcessing] = useState<boolean>(false);\nconst [actionCompleted, setActionCompleted] = useState<boolean>(false);\n\nconst handleOpenConfirmation = () => {\n  setConfirmationOpen(true);\n};\n\nconst handleCloseConfirmation = () => {\n  setConfirmationOpen(false);\n};\n\nconst handleConfirmAction = async () => {\n  setIsProcessing(true);\n  \n  try {\n    // Perform irreversible action\n    await performIrreversibleAction();\n    \n    // Update state\n    setActionCompleted(true);\n    setConfirmationOpen(false);\n    \n    // Show success feedback\n    showSuccessMessage('Action completed successfully');\n    \n  } catch (error) {\n    console.error('Error:', error);\n    showErrorMessage('Action could not be completed');\n  } finally {\n    setIsProcessing(false);\n  }\n};\n\nconst performIrreversibleAction = async () => {\n  // Simulate API call\n  return new Promise(resolve => setTimeout(resolve, 1000));\n};\n\nconst showSuccessMessage = (message: string) => {\n  console.log('Success:', message);\n};\n\nconst showErrorMessage = (message: string) => {\n  console.error('Error:', message);\n};\n\nconst getConfirmationMessage = () => {\n  return \"You cannot return to this page. Are you sure you want to continue?\";\n};\n\nconst isActionDisabled = () => {\n  return isProcessing || actionCompleted;\n};\n\n<div className=\"action-confirmation-container\">\n  <div className=\"action-trigger-section\">\n    <h2>Complete Your Process</h2>\n    <p>This action cannot be undone. Please review before proceeding.</p>\n    \n    <GoabButton \n      onClick={handleOpenConfirmation}\n      disabled={isActionDisabled()}\n      type=\"primary\"\n      aria-describedby=\"action-warning\">\n      {isProcessing ? 'Processing...' : 'Proceed'}\n    </GoabButton>\n    \n    <p id=\"action-warning\" className=\"warning-text\">\n      <strong>Warning:</strong> This action is irreversible.\n    </p>\n  </div>\n\n  <GoabModal\n    heading=\"Are you sure you want to continue?\"\n    role=\"dialog\"\n    open={confirmationOpen}\n    onClose={handleCloseConfirmation}\n    aria-labelledby=\"confirmation-heading\"\n    aria-describedby=\"confirmation-message\"\n    actions={\n      <GoabButtonGroup alignment=\"end\">\n        <GoabButton \n          type=\"secondary\" \n          onClick={handleCloseConfirmation}\n          disabled={isProcessing}\n          aria-label=\"Cancel action\">\n          Back\n        </GoabButton>\n        <GoabButton \n          type=\"primary\" \n          onClick={handleConfirmAction}\n          disabled={isProcessing}\n          aria-label=\"Confirm action\">\n          {isProcessing ? 'Processing...' : 'Continue'}\n        </GoabButton>\n      </GoabButtonGroup>\n    }>\n    <div id=\"confirmation-message\">\n      <p>{getConfirmationMessage()}</p>\n      <div className=\"consequences-info\">\n        <h4>Important:</h4>\n        <ul>\n          <li>This action cannot be undone</li>\n          <li>You will not be able to return to this page</li>\n          <li>Your changes will be saved permanently</li>\n        </ul>\n      </div>\n    </div>\n  </GoabModal>\n\n  {actionCompleted && (\n    <div className=\"success-message\" role=\"alert\">\n      <h3>Action Completed</h3>\n      <p>Your request has been processed successfully.</p>\n    </div>\n  )}\n</div>\n\n/* CSS */\n.action-confirmation-container {\n  max-width: 600px;\n  margin: 0 auto;\n  padding: var(--goa-space-l);\n}\n\n.action-trigger-section {\n  margin-bottom: var(--goa-space-xl);\n}\n\n.consequence-warning,\n.warning-text {\n  margin-top: var(--goa-space-m);\n  color: var(--goa-color-warning-dark);\n  font-size: var(--goa-font-size-s);\n}\n\n.consequences-list,\n.consequences-info {\n  margin-top: var(--goa-space-m);\n  padding: var(--goa-space-m);\n  background-color: var(--goa-color-warning-light);\n  border-left: 4px solid var(--goa-color-warning);\n  border-radius: var(--goa-border-radius-s);\n}\n\n.consequences-list h4,\n.consequences-info h4 {\n  margin: 0 0 var(--goa-space-s) 0;\n  color: var(--goa-color-warning-dark);\n}\n\n.consequences-list ul,\n.consequences-info ul {\n  margin: 0;\n  padding-left: var(--goa-space-m);\n}\n\n.consequences-list li,\n.consequences-info li {\n  margin-bottom: var(--goa-space-xs);\n  color: var(--goa-color-warning-dark);\n}\n\n.completion-message,\n.success-message {\n  margin-top: var(--goa-space-xl);\n  padding: var(--goa-space-m);\n  background-color: var(--goa-color-success-light);\n  border-left: 4px solid var(--goa-color-success);\n  border-radius: var(--goa-border-radius-s);\n}\n\n.completion-message h3,\n.success-message h3 {\n  margin: 0 0 var(--goa-space-s) 0;\n  color: var(--goa-color-success-dark);\n}\n\n.completion-message p,\n.success-message p {\n  margin: 0;\n  color: var(--goa-color-success-dark);\n}"
+    },
+    "angular": {
+      "complete": "export class RequireUserActionBeforeContinuingComponent {\n  confirmationOpen = false;\n  isProcessing = false;\n  actionCompleted = false;\n  \n  handleOpenConfirmation() {\n    this.confirmationOpen = true;\n  }\n\n  handleCloseConfirmation() {\n    this.confirmationOpen = false;\n  }\n\n  async handleConfirmAction() {\n    this.isProcessing = true;\n    \n    try {\n      // Perform irreversible action\n      await this.performIrreversibleAction();\n      \n      // Update state\n      this.actionCompleted = true;\n      this.confirmationOpen = false;\n      \n      // Show success feedback\n      this.showSuccessMessage('Action completed successfully');\n      \n    } catch (error) {\n      console.error('Error:', error);\n      this.showErrorMessage('Action could not be completed');\n    } finally {\n      this.isProcessing = false;\n    }\n  }\n\n  async performIrreversibleAction(): Promise<void> {\n    // Simulate API call\n    return new Promise(resolve => setTimeout(resolve, 1000));\n  }\n\n  showSuccessMessage(message: string) {\n    console.log('Success:', message);\n  }\n\n  showErrorMessage(message: string) {\n    console.error('Error:', message);\n  }\n\n  getConfirmationMessage(): string {\n    return \"You cannot return to this page. Are you sure you want to continue?\";\n  }\n\n  isActionDisabled(): boolean {\n    return this.isProcessing || this.actionCompleted;\n  }\n\n  getButtonText(): string {\n    return this.isProcessing ? 'Processing...' : 'Proceed';\n  }\n\n  getContinueButtonText(): string {\n    return this.isProcessing ? 'Processing...' : 'Continue';\n  }\n}",
+      "key": "confirmationOpen = false;\nisProcessing = false;\nactionCompleted = false;\n\nhandleOpenConfirmation() {\n  this.confirmationOpen = true;\n}\n\nhandleCloseConfirmation() {\n  this.confirmationOpen = false;\n}\n\nasync handleConfirmAction() {\n  this.isProcessing = true;\n  \n  try {\n    await this.performIrreversibleAction();\n    this.actionCompleted = true;\n    this.confirmationOpen = false;\n    this.showSuccessMessage('Action completed successfully');\n  } catch (error) {\n    console.error('Error:', error);\n    this.showErrorMessage('Action could not be completed');\n  } finally {\n    this.isProcessing = false;\n  }\n}\n\nasync performIrreversibleAction(): Promise<void> {\n  return new Promise(resolve => setTimeout(resolve, 1000));\n}\n\nshowSuccessMessage(message: string) {\n  console.log('Success:', message);\n}\n\nshowErrorMessage(message: string) {\n  console.error('Error:', message);\n}\n\ngetConfirmationMessage(): string {\n  return \"You cannot return to this page. Are you sure you want to continue?\";\n}\n\nisActionDisabled(): boolean {\n  return this.isProcessing || this.actionCompleted;\n}\n\ngetButtonText(): string {\n  return this.isProcessing ? 'Processing...' : 'Proceed';\n}\n\ngetContinueButtonText(): string {\n  return this.isProcessing ? 'Processing...' : 'Continue';\n}\n\n<!-- Template -->\n<div class=\"action-confirmation-container\">\n  <div class=\"action-trigger-section\">\n    <h2>Complete Your Process</h2>\n    <p>This action cannot be undone. Please review before proceeding.</p>\n    \n    <goab-button \n      (onClick)=\"handleOpenConfirmation()\"\n      [disabled]=\"isActionDisabled()\"\n      type=\"primary\"\n      aria-describedby=\"action-warning\">\n      {{ getButtonText() }}\n    </goab-button>\n    \n    <p id=\"action-warning\" class=\"warning-text\">\n      <strong>Warning:</strong> This action is irreversible.\n    </p>\n  </div>\n\n  <goab-modal\n    heading=\"Are you sure you want to continue?\"\n    role=\"dialog\"\n    [open]=\"confirmationOpen\"\n    (close)=\"handleCloseConfirmation()\"\n    aria-labelledby=\"confirmation-heading\"\n    aria-describedby=\"confirmation-message\"\n    [actions]=\"modalActions\">\n    <div id=\"confirmation-message\">\n      <p>{{ getConfirmationMessage() }}</p>\n      <div class=\"consequences-info\">\n        <h4>Important:</h4>\n        <ul>\n          <li>This action cannot be undone</li>\n          <li>You will not be able to return to this page</li>\n          <li>Your changes will be saved permanently</li>\n        </ul>\n      </div>\n    </div>\n    <ng-template #modalActions>\n      <goab-button-group alignment=\"end\">\n        <goab-button \n          type=\"secondary\" \n          (onClick)=\"handleCloseConfirmation()\"\n          [disabled]=\"isProcessing\"\n          aria-label=\"Cancel action\">\n          Back\n        </goab-button>\n        <goab-button \n          type=\"primary\" \n          (onClick)=\"handleConfirmAction()\"\n          [disabled]=\"isProcessing\"\n          aria-label=\"Confirm action\">\n          {{ getContinueButtonText() }}\n        </goab-button>\n      </goab-button-group>\n    </ng-template>\n  </goab-modal>\n\n  <div class=\"success-message\" role=\"alert\" *ngIf=\"actionCompleted\">\n    <h3>Action Completed</h3>\n    <p>Your request has been processed successfully.</p>\n  </div>\n</div>"
+    }
+  },
+  "tags": [
+    "confirmation-modal",
+    "user-action",
+    "irreversible-action",
+    "modal-dialog",
+    "action-confirmation",
+    "user-consent",
+    "destructive-action",
+    "confirmation-pattern",
+    "user-safety",
+    "action-validation"
+  ]
+}

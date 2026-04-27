@@ -1,0 +1,48 @@
+{
+  "name": "CardImage",
+  "category": "component",
+  "summary": "",
+  "import": "import { GoabCardImage } from '@abgov/react-components'",
+  "customElement": {
+    "tagName": "goa-card-image",
+    "reactName": "GoabCardImage",
+    "angularSelector": "goab-card-image"
+  },
+  "props": [
+    {
+      "name": "src",
+      "type": "string",
+      "required": true,
+      "default": null,
+      "description": "",
+      "frameworks": {
+        "webComponent": "src=\"...\"",
+        "react": "src={...}",
+        "angular": "[src]=\"...\""
+      }
+    },
+    {
+      "name": "height",
+      "type": "string",
+      "required": false,
+      "default": "100%",
+      "description": "",
+      "frameworks": {
+        "webComponent": "height=\"...\"",
+        "react": "height={...}",
+        "angular": "[height]=\"...\""
+      }
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "criticalNotes": [],
+  "commonMistakes": [],
+  "basicUsage": {
+    "webComponent": "",
+    "react": "",
+    "angular": ""
+  },
+  "relatedExamples": [],
+  "relatedComponents": []
+}

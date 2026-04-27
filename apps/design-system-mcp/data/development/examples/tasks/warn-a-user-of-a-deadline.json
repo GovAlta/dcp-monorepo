@@ -1,0 +1,136 @@
+{
+  "$schema": "../schema/recipe-schema-2.1.0-ai-context.json",
+  "title": "Warn a user of a deadline",
+  "description": "Alert users about critical deadlines or time-sensitive requirements using accessible modal dialogs that ensure they understand important time constraints before proceeding.",
+  "category": "interaction-patterns",
+  "tags": [
+    "deadline-warnings",
+    "time-constraints",
+    "modal-alerts",
+    "user-notifications",
+    "critical-information"
+  ],
+  "government_service_context": {
+    "citizen_flows": {
+      "applicable": true,
+      "usage": "Citizens need clear warnings about application deadlines, service cutoff times, and submission requirements to avoid missing critical government service opportunities."
+    },
+    "worker_flows": {
+      "applicable": true,
+      "usage": "Government workers need deadline alerts for processing requirements, court appearances, administrative deadlines, and compliance obligations."
+    },
+    "shared_components": {
+      "applicable": true,
+      "usage": "Deadline warnings are essential across all interfaces where time-sensitive actions or submissions are required."
+    }
+  },
+  "component_analysis": {
+    "primary_components": [
+      {
+        "name": "Alert Dialog Modal",
+        "role": "Displays critical deadline information in an accessible, focused manner",
+        "purpose": "Ensures users receive and acknowledge important time-sensitive information before proceeding"
+      },
+      {
+        "name": "Trigger Action",
+        "role": "User action that may conflict with deadline requirements",
+        "purpose": "Identifies the point where deadline information becomes relevant to user workflow"
+      },
+      {
+        "name": "Deadline Heading",
+        "role": "Clear, specific statement of the deadline or time constraint",
+        "purpose": "Immediately communicates the critical time requirement without ambiguity"
+      },
+      {
+        "name": "Contextual Explanation",
+        "role": "Detailed explanation of why the deadline matters and consequences",
+        "purpose": "Helps users understand the importance and make informed decisions"
+      },
+      {
+        "name": "Acknowledgment Action",
+        "role": "User confirmation that they understand the deadline warning",
+        "purpose": "Ensures conscious awareness and acceptance of time constraints"
+      },
+      {
+        "name": "Important Callout Styling",
+        "role": "Visual emphasis using important/warning color palette",
+        "purpose": "Draws immediate attention to the critical nature of the deadline"
+      }
+    ],
+    "accessibility_features": [
+      "Uses alertdialog role for immediate screen reader announcement",
+      "Modal traps focus to ensure deadline information is processed",
+      "Clear, descriptive heading states the deadline explicitly",
+      "Single action button prevents confusion about next steps",
+      "Important callout variant provides visual urgency cues"
+    ],
+    "user_experience_notes": [
+      "Appears at the moment when deadline becomes relevant to user action",
+      "Provides specific deadline time and timezone for clarity",
+      "Explains consequences of missing deadline to motivate compliance",
+      "Uses 'I understand' acknowledgment to ensure conscious recognition",
+      "Modal prevents continued workflow until deadline is acknowledged"
+    ]
+  },
+  "implementation": {
+    "react": {
+      "code": "import React, { useState } from 'react';\nimport {\n  GoabButton,\n  GoabButtonGroup,\n  GoabModal\n} from '@abgov/react-components';\n\nfunction WarnUserOfDeadline() {\n  const [deadlineWarningOpen, setDeadlineWarningOpen] = useState(false);\n\n  const handleActionRequiringDeadlineWarning = () => {\n    // Show deadline warning before proceeding with action\n    setDeadlineWarningOpen(true);\n  };\n\n  const handleDeadlineAcknowledged = () => {\n    setDeadlineWarningOpen(false);\n    // Proceed with the original action after acknowledgment\n    console.log('User acknowledged deadline, proceeding with action');\n  };\n\n  return (\n    <>\n      <GoabButton \n        type=\"secondary\" \n        onClick={handleActionRequiringDeadlineWarning}\n      >\n        Save for later\n      </GoabButton>\n      \n      <GoabModal\n        heading=\"Complete submission prior to 1PM\"\n        calloutVariant=\"important\"\n        role=\"alertdialog\"\n        open={deadlineWarningOpen}\n        onClose={() => setDeadlineWarningOpen(false)}\n        actions={\n          <GoabButtonGroup alignment=\"end\">\n            <GoabButton \n              type=\"primary\" \n              onClick={handleDeadlineAcknowledged}\n            >\n              I understand\n            </GoabButton>\n          </GoabButtonGroup>\n        }\n      >\n        <p>\n          You've selected to adjourn a matter that is required to appear today. \n          This Calgary court location does not accept adjournment requests past \n          1PM MST. Please submit your adjournment request as soon as possible.\n        </p>\n      </GoabModal>\n    </>\n  );\n}\n\n// Reusable deadline warning component\nfunction DeadlineWarningModal({\n  isOpen,\n  onClose,\n  onAcknowledge,\n  deadline,\n  context,\n  consequences,\n  actionLabel = \"I understand\"\n}: {\n  isOpen: boolean;\n  onClose: () => void;\n  onAcknowledge: () => void;\n  deadline: string;\n  context: string;\n  consequences: string;\n  actionLabel?: string;\n}) {\n  return (\n    <GoabModal\n      heading={deadline}\n      calloutVariant=\"important\"\n      role=\"alertdialog\"\n      open={isOpen}\n      onClose={onClose}\n      actions={\n        <GoabButtonGroup alignment=\"end\">\n          <GoabButton type=\"primary\" onClick={onAcknowledge}>\n            {actionLabel}\n          </GoabButton>\n        </GoabButtonGroup>\n      }\n    >\n      <p><strong>Context:</strong> {context}</p>\n      <p><strong>Important:</strong> {consequences}</p>\n    </GoabModal>\n  );\n}\n\n// Example with multiple deadline scenarios\nfunction ApplicationDeadlineWarnings() {\n  const [activeWarning, setActiveWarning] = useState<string | null>(null);\n\n  const deadlineScenarios = {\n    'save-draft': {\n      deadline: 'Application expires in 2 hours',\n      context: 'You\\'ve chosen to save your application as a draft.',\n      consequences: 'Draft applications are automatically deleted after 24 hours of inactivity. You have 2 hours remaining before your current progress will be lost.'\n    },\n    'schedule-later': {\n      deadline: 'Appointment must be booked by 5PM today',\n      context: 'You\\'ve selected to schedule your appointment at a later time.',\n      consequences: 'This service requires appointments to be booked by 5PM on the same day. If you wait, you may need to restart your application tomorrow.'\n    },\n    'submit-incomplete': {\n      deadline: 'Missing required documents due by midnight',\n      context: 'You\\'re attempting to submit an application with missing documents.',\n      consequences: 'Applications submitted without required documents after midnight will be automatically rejected and cannot be resubmitted for 30 days.'\n    }\n  };\n\n  const handleActionWithWarning = (scenarioKey: string) => {\n    setActiveWarning(scenarioKey);\n  };\n\n  const handleWarningAcknowledged = () => {\n    const scenario = activeWarning;\n    setActiveWarning(null);\n    \n    // Proceed with the original action based on scenario\n    console.log(`User acknowledged ${scenario} deadline, proceeding`);\n  };\n\n  const currentScenario = activeWarning ? deadlineScenarios[activeWarning as keyof typeof deadlineScenarios] : null;\n\n  return (\n    <div>\n      <h2>Application Actions</h2>\n      \n      <GoabButtonGroup alignment=\"start\" mb=\"l\">\n        <GoabButton \n          type=\"secondary\" \n          onClick={() => handleActionWithWarning('save-draft')}\n        >\n          Save as draft\n        </GoabButton>\n        \n        <GoabButton \n          type=\"secondary\" \n          onClick={() => handleActionWithWarning('schedule-later')}\n        >\n          Schedule later\n        </GoabButton>\n        \n        <GoabButton \n          type=\"primary\" \n          onClick={() => handleActionWithWarning('submit-incomplete')}\n        >\n          Submit application\n        </GoabButton>\n      </GoabButtonGroup>\n\n      {currentScenario && (\n        <DeadlineWarningModal\n          isOpen={!!activeWarning}\n          onClose={() => setActiveWarning(null)}\n          onAcknowledge={handleWarningAcknowledged}\n          deadline={currentScenario.deadline}\n          context={currentScenario.context}\n          consequences={currentScenario.consequences}\n        />\n      )}\n    </div>\n  );\n}\n\n// Time-sensitive warning with countdown\nfunction CountdownDeadlineWarning({\n  deadlineTime,\n  actionLabel,\n  onProceed\n}: {\n  deadlineTime: Date;\n  actionLabel: string;\n  onProceed: () => void;\n}) {\n  const [isOpen, setIsOpen] = useState(false);\n  const [timeRemaining, setTimeRemaining] = useState('');\n\n  React.useEffect(() => {\n    const updateCountdown = () => {\n      const now = new Date();\n      const diff = deadlineTime.getTime() - now.getTime();\n      \n      if (diff <= 0) {\n        setTimeRemaining('Deadline has passed');\n        return;\n      }\n      \n      const hours = Math.floor(diff / (1000 * 60 * 60));\n      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));\n      setTimeRemaining(`${hours} hours, ${minutes} minutes remaining`);\n    };\n\n    updateCountdown();\n    const interval = setInterval(updateCountdown, 60000); // Update every minute\n    \n    return () => clearInterval(interval);\n  }, [deadlineTime]);\n\n  const handleProceedWithWarning = () => {\n    setIsOpen(true);\n  };\n\n  const handleAcknowledged = () => {\n    setIsOpen(false);\n    onProceed();\n  };\n\n  return (\n    <>\n      <GoabButton type=\"secondary\" onClick={handleProceedWithWarning}>\n        {actionLabel}\n      </GoabButton>\n      \n      <GoabModal\n        heading={`Deadline: ${deadlineTime.toLocaleTimeString()}`}\n        calloutVariant=\"important\"\n        role=\"alertdialog\"\n        open={isOpen}\n        onClose={() => setIsOpen(false)}\n        actions={\n          <GoabButtonGroup alignment=\"end\">\n            <GoabButton type=\"primary\" onClick={handleAcknowledged}>\n              Continue with {timeRemaining.toLowerCase()}\n            </GoabButton>\n          </GoabButtonGroup>\n        }\n      >\n        <p><strong>Time remaining:</strong> {timeRemaining}</p>\n        <p>\n          You are about to {actionLabel.toLowerCase()} with limited time before the deadline. \n          Ensure you can complete any required actions before \n          {deadlineTime.toLocaleString()}.\n        </p>\n      </GoabModal>\n    </>\n  );\n}",
+      "styling": ".deadline-warning-modal .goa-modal-content {\n  max-width: 600px;\n}\n\n.deadline-warning-modal .deadline-time {\n  font-weight: var(--goa-font-weight-bold);\n  color: var(--goa-color-status-warning-dark);\n}\n\n.deadline-context {\n  margin-bottom: var(--goa-space-m);\n}\n\n.deadline-consequences {\n  padding: var(--goa-space-s);\n  background-color: var(--goa-color-status-warning-light);\n  border-left: var(--goa-border-width-l) solid var(--goa-color-status-warning);\n  margin: var(--goa-space-m) 0;\n}\n\n.countdown-display {\n  font-family: var(--goa-font-family-mono);\n  font-size: var(--goa-typography-heading-s);\n  text-align: center;\n  padding: var(--goa-space-m);\n  background-color: var(--goa-color-greyscale-100);\n  border-radius: var(--goa-border-radius-m);\n  margin-bottom: var(--goa-space-m);\n}"
+    },
+    "angular": {
+      "code": "import { Component, Input, Output, EventEmitter } from '@angular/core';\n\ninterface DeadlineWarning {\n  deadline: string;\n  context: string;\n  consequences: string;\n  actionLabel?: string;\n}\n\n@Component({\n  selector: 'app-deadline-warning-modal',\n  template: `\n    <goab-modal\n      [heading]=\"warning.deadline\"\n      calloutVariant=\"important\"\n      role=\"alertdialog\"\n      [open]=\"isOpen\"\n      (onClose)=\"handleClose()\"\n      [actions]=\"actions\"\n    >\n      <p><strong>Context:</strong> {{ warning.context }}</p>\n      <p><strong>Important:</strong> {{ warning.consequences }}</p>\n      \n      <ng-template #actions>\n        <goab-button-group alignment=\"end\">\n          <goab-button type=\"primary\" (onClick)=\"handleAcknowledge()\">\n            {{ warning.actionLabel || 'I understand' }}\n          </goab-button>\n        </goab-button-group>\n      </ng-template>\n    </goab-modal>\n  `\n})\nexport class DeadlineWarningModalComponent {\n  @Input() isOpen: boolean = false;\n  @Input() warning!: DeadlineWarning;\n  @Output() close = new EventEmitter<void>();\n  @Output() acknowledge = new EventEmitter<void>();\n\n  handleClose(): void {\n    this.close.emit();\n  }\n\n  handleAcknowledge(): void {\n    this.acknowledge.emit();\n  }\n}\n\n@Component({\n  selector: 'app-warn-user-deadline',\n  template: `\n    <goab-button \n      type=\"secondary\" \n      (onClick)=\"showDeadlineWarning()\"\n    >\n      Save for later\n    </goab-button>\n    \n    <app-deadline-warning-modal\n      [isOpen]=\"deadlineWarningOpen\"\n      [warning]=\"currentWarning\"\n      (close)=\"closeWarning()\"\n      (acknowledge)=\"acknowledgeDeadline()\"\n    ></app-deadline-warning-modal>\n  `\n})\nexport class WarnUserDeadlineComponent {\n  deadlineWarningOpen = false;\n  \n  currentWarning: DeadlineWarning = {\n    deadline: 'Complete submission prior to 1PM',\n    context: 'You\\'ve selected to adjourn a matter that is required to appear today.',\n    consequences: 'This Calgary court location does not accept adjournment requests past 1PM MST. Please submit your adjournment request as soon as possible.'\n  };\n\n  showDeadlineWarning(): void {\n    this.deadlineWarningOpen = true;\n  }\n\n  closeWarning(): void {\n    this.deadlineWarningOpen = false;\n  }\n\n  acknowledgeDeadline(): void {\n    this.deadlineWarningOpen = false;\n    console.log('User acknowledged deadline, proceeding with action');\n    // Proceed with the original action\n  }\n}\n\n// Multiple deadline scenarios component\n@Component({\n  selector: 'app-application-deadline-warnings',\n  template: `\n    <div>\n      <h2>Application Actions</h2>\n      \n      <goab-button-group alignment=\"start\" mb=\"l\">\n        <goab-button \n          type=\"secondary\" \n          (onClick)=\"showWarning('save-draft')\"\n        >\n          Save as draft\n        </goab-button>\n        \n        <goab-button \n          type=\"secondary\" \n          (onClick)=\"showWarning('schedule-later')\"\n        >\n          Schedule later\n        </goab-button>\n        \n        <goab-button \n          type=\"primary\" \n          (onClick)=\"showWarning('submit-incomplete')\"\n        >\n          Submit application\n        </goab-button>\n      </goab-button-group>\n\n      <app-deadline-warning-modal\n        *ngIf=\"activeWarning\"\n        [isOpen]=\"!!activeWarning\"\n        [warning]=\"getWarningForScenario(activeWarning)\"\n        (close)=\"clearWarning()\"\n        (acknowledge)=\"acknowledgeWarning()\"\n      ></app-deadline-warning-modal>\n    </div>\n  `\n})\nexport class ApplicationDeadlineWarningsComponent {\n  activeWarning: string | null = null;\n\n  deadlineScenarios: Record<string, DeadlineWarning> = {\n    'save-draft': {\n      deadline: 'Application expires in 2 hours',\n      context: 'You\\'ve chosen to save your application as a draft.',\n      consequences: 'Draft applications are automatically deleted after 24 hours of inactivity. You have 2 hours remaining before your current progress will be lost.'\n    },\n    'schedule-later': {\n      deadline: 'Appointment must be booked by 5PM today',\n      context: 'You\\'ve selected to schedule your appointment at a later time.',\n      consequences: 'This service requires appointments to be booked by 5PM on the same day. If you wait, you may need to restart your application tomorrow.'\n    },\n    'submit-incomplete': {\n      deadline: 'Missing required documents due by midnight',\n      context: 'You\\'re attempting to submit an application with missing documents.',\n      consequences: 'Applications submitted without required documents after midnight will be automatically rejected and cannot be resubmitted for 30 days.'\n    }\n  };\n\n  showWarning(scenarioKey: string): void {\n    this.activeWarning = scenarioKey;\n  }\n\n  clearWarning(): void {\n    this.activeWarning = null;\n  }\n\n  acknowledgeWarning(): void {\n    const scenario = this.activeWarning;\n    this.activeWarning = null;\n    \n    console.log(`User acknowledged ${scenario} deadline, proceeding`);\n  }\n\n  getWarningForScenario(scenarioKey: string): DeadlineWarning {\n    return this.deadlineScenarios[scenarioKey] || this.deadlineScenarios['save-draft'];\n  }\n}"
+    }
+  },
+  "usage_guidelines": {
+    "when_to_use": [
+      "Actions that may cause users to miss critical deadlines",
+      "Government service submissions with strict time requirements",
+      "Court processes, applications, and administrative deadlines",
+      "Time-sensitive decisions with significant consequences",
+      "Workflow interruptions that could affect deadline compliance"
+    ],
+    "when_not_to_use": [
+      "Routine reminders that don't require immediate attention",
+      "Flexible deadlines with minimal consequences",
+      "General information about future deadlines",
+      "Repetitive warnings that may cause alert fatigue"
+    ],
+    "best_practices": [
+      "Use alertdialog role for critical deadline warnings",
+      "Include specific deadline times with timezone information",
+      "Explain the consequences of missing the deadline clearly",
+      "Require explicit acknowledgment before allowing users to proceed",
+      "Use important/warning visual styling to convey urgency",
+      "Trigger warnings at the moment when deadline becomes relevant",
+      "Provide clear context about why the deadline matters",
+      "Keep warning text concise but comprehensive"
+    ]
+  },
+  "variations": [
+    {
+      "name": "Countdown deadline warning",
+      "description": "Include real-time countdown showing time remaining until deadline",
+      "code_change": "Add countdown display: <div class='countdown'>Time remaining: {timeRemaining}</div>"
+    },
+    {
+      "name": "Multi-step deadline warning",
+      "description": "Break down complex deadline requirements into steps",
+      "code_change": "Add step list: <ol><li>Complete section A by 2PM</li><li>Submit documents by 3PM</li><li>Final submission by 4PM</li></ol>"
+    },
+    {
+      "name": "Grace period warning",
+      "description": "Include information about available extensions or grace periods",
+      "code_change": "Add grace period info: <p><strong>Extension available:</strong> Contact us at 311 if you cannot meet this deadline.</p>"
+    },
+    {
+      "name": "Consequence severity levels",
+      "description": "Use different visual styling based on deadline severity",
+      "code_change": "Add severity variants: calloutVariant={severity === 'critical' ? 'emergency' : 'important'}"
+    }
+  ],
+  "related_patterns": [
+    "confirm-before-navigating-away",
+    "require-user-action-before-continuing",
+    "communicate-a-future-service-outage"
+  ]
+}

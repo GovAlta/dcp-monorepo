@@ -1,0 +1,131 @@
+{
+  "name": "FilterChip",
+  "category": "component",
+  "summary": "",
+  "import": "import { GoabFilterChip } from '@abgov/react-components'",
+  "customElement": {
+    "tagName": "goa-filter-chip",
+    "reactName": "GoabFilterChip",
+    "angularSelector": "goab-filter-chip"
+  },
+  "props": [
+    {
+      "name": "mt",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "",
+      "frameworks": {
+        "webComponent": "mt=\"...\"",
+        "react": "mt={...}",
+        "angular": "[mt]=\"...\""
+      }
+    },
+    {
+      "name": "mr",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "",
+      "frameworks": {
+        "webComponent": "mr=\"...\"",
+        "react": "mr={...}",
+        "angular": "[mr]=\"...\""
+      }
+    },
+    {
+      "name": "mb",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "",
+      "frameworks": {
+        "webComponent": "mb=\"...\"",
+        "react": "mb={...}",
+        "angular": "[mb]=\"...\""
+      }
+    },
+    {
+      "name": "ml",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "",
+      "frameworks": {
+        "webComponent": "ml=\"...\"",
+        "react": "ml={...}",
+        "angular": "[ml]=\"...\""
+      }
+    },
+    {
+      "name": "error",
+      "type": "boolean",
+      "required": false,
+      "default": "false",
+      "description": "",
+      "frameworks": {
+        "webComponent": "error=\"true\"",
+        "react": "error={true}",
+        "angular": "[error]=\"true\""
+      }
+    },
+    {
+      "name": "content",
+      "type": "string",
+      "required": true,
+      "default": null,
+      "description": "",
+      "frameworks": {
+        "webComponent": "content=\"...\"",
+        "react": "content={...}",
+        "angular": "[content]=\"...\""
+      }
+    },
+    {
+      "name": "testId",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "",
+      "frameworks": {
+        "webComponent": "test-id=\"...\"",
+        "react": "testId={...}",
+        "angular": "[testId]=\"...\""
+      }
+    },
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "",
+      "frameworks": {
+        "webComponent": "aria-label=\"...\"",
+        "react": "ariaLabel={...}",
+        "angular": "[ariaLabel]=\"...\""
+      }
+    }
+  ],
+  "events": [
+    {
+      "name": "_click",
+      "type": "(event) => void",
+      "description": "",
+      "frameworks": {
+        "webComponent": "_click custom event",
+        "react": "onClick prop",
+        "angular": "(onClick) event binding"
+      }
+    }
+  ],
+  "slots": [],
+  "criticalNotes": [],
+  "commonMistakes": [],
+  "basicUsage": {
+    "webComponent": "",
+    "react": "",
+    "angular": ""
+  },
+  "relatedExamples": [],
+  "relatedComponents": []
+}

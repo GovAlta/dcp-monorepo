@@ -1,0 +1,77 @@
+{
+  "name": "AppHeaderMenu",
+  "category": "component",
+  "summary": "",
+  "import": "import { GoabAppHeaderMenu } from '@abgov/react-components'",
+  "customElement": {
+    "tagName": "goa-app-header-menu",
+    "reactName": "GoabAppHeaderMenu",
+    "angularSelector": "goab-app-header-menu"
+  },
+  "props": [
+    {
+      "name": "heading",
+      "type": "string",
+      "required": true,
+      "default": null,
+      "description": "",
+      "frameworks": {
+        "webComponent": "heading=\"...\"",
+        "react": "heading={...}",
+        "angular": "[heading]=\"...\""
+      }
+    },
+    {
+      "name": "leadingIcon",
+      "type": "GoAIconType",
+      "required": true,
+      "default": null,
+      "description": "",
+      "frameworks": {
+        "webComponent": "leading-icon=\"...\"",
+        "react": "leadingIcon={...}",
+        "angular": "[leadingIcon]=\"...\""
+      }
+    },
+    {
+      "name": "type",
+      "type": "\"primary\" | \"secondary\"",
+      "required": false,
+      "default": "primary",
+      "description": "",
+      "frameworks": {
+        "webComponent": "type=\"...\"",
+        "react": "type={...}",
+        "angular": "[type]=\"...\""
+      }
+    },
+    {
+      "name": "testId",
+      "type": "string",
+      "required": false,
+      "default": "rootEl",
+      "description": "",
+      "frameworks": {
+        "webComponent": "test-id=\"...\"",
+        "react": "testId={...}",
+        "angular": "[testId]=\"...\""
+      }
+    }
+  ],
+  "events": [],
+  "slots": [
+    {
+      "name": "default",
+      "description": ""
+    }
+  ],
+  "criticalNotes": [],
+  "commonMistakes": [],
+  "basicUsage": {
+    "webComponent": "",
+    "react": "",
+    "angular": ""
+  },
+  "relatedExamples": [],
+  "relatedComponents": []
+}

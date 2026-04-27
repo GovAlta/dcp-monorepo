@@ -1,0 +1,72 @@
+{
+  "name": "Spinner",
+  "category": "component",
+  "summary": "",
+  "import": "import { GoabSpinner } from '@abgov/react-components'",
+  "customElement": {
+    "tagName": "goa-spinner",
+    "reactName": "GoabSpinner",
+    "angularSelector": "goab-spinner"
+  },
+  "props": [
+    {
+      "name": "size",
+      "type": "SpinnerSize",
+      "required": true,
+      "default": null,
+      "description": "",
+      "frameworks": {
+        "webComponent": "size=\"...\"",
+        "react": "size={...}",
+        "angular": "[size]=\"...\""
+      }
+    },
+    {
+      "name": "invert",
+      "type": "boolean",
+      "required": false,
+      "default": "false",
+      "description": "",
+      "frameworks": {
+        "webComponent": "invert=\"...\"",
+        "react": "invert={...}",
+        "angular": "[invert]=\"...\""
+      }
+    },
+    {
+      "name": "progress",
+      "type": "number",
+      "required": false,
+      "default": "-1",
+      "description": "",
+      "frameworks": {
+        "webComponent": "progress=\"...\"",
+        "react": "progress={...}",
+        "angular": "[progress]=\"...\""
+      }
+    },
+    {
+      "name": "testid",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "",
+      "frameworks": {
+        "webComponent": "testid=\"...\"",
+        "react": "testId={...}",
+        "angular": "[testId]=\"...\""
+      }
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "criticalNotes": [],
+  "commonMistakes": [],
+  "basicUsage": {
+    "webComponent": "",
+    "react": "",
+    "angular": ""
+  },
+  "relatedExamples": [],
+  "relatedComponents": []
+}

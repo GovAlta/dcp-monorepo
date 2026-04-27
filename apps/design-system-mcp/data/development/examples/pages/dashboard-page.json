@@ -1,0 +1,118 @@
+{
+  "id": "dashboard-page",
+  "name": "Dashboard Page",
+  "category": "page",
+  "description": "A personalized landing page for workers showing key metrics, urgent items, and upcoming tasks. Provides at-a-glance status and quick access to priority work items.",
+
+  "whenToUse": [
+    "As the default landing page after login for worker applications",
+    "To show personalized summary of the user's workload",
+    "When users need quick access to urgent or time-sensitive items",
+    "To surface important metrics and trends"
+  ],
+
+  "composesPatterns": [
+    "stats-row",
+    "case-cards"
+  ],
+
+  "structure": {
+    "greeting": "Personalized welcome with user's first name",
+    "statsRow": "Key metrics (total cases, urgent, due soon, overdue)",
+    "urgentSection": "Cards for urgent items requiring immediate attention",
+    "upcomingSection": "Cards for items due in the next 7 days"
+  },
+
+  "sampleData": {
+    "currentUser": {
+      "id": "user-001",
+      "name": "Sarah Chen",
+      "email": "sarah.chen@gov.ab.ca",
+      "role": "Case Worker"
+    },
+    "stats": {
+      "total": 12,
+      "urgent": 2,
+      "dueSoon": 4,
+      "overdue": 1
+    },
+    "urgentCases": [
+      {
+        "id": "CASE-2024-0847",
+        "childName": "Johnson, Emily",
+        "dueDate": "2024-12-10",
+        "isUrgent": true
+      },
+      {
+        "id": "CASE-2024-0823",
+        "childName": "Martinez, Carlos",
+        "dueDate": "2024-12-09",
+        "isUrgent": true
+      }
+    ],
+    "dueSoonCases": [
+      {
+        "id": "CASE-2024-0812",
+        "childName": "Smith, Michael",
+        "status": "in-progress",
+        "priority": "medium",
+        "dueDate": "2024-12-15"
+      },
+      {
+        "id": "CASE-2024-0799",
+        "childName": "Williams, Sarah",
+        "status": "assigned",
+        "priority": "high",
+        "dueDate": "2024-12-12"
+      },
+      {
+        "id": "CASE-2024-0785",
+        "childName": "Brown, David",
+        "status": "pending",
+        "priority": "low",
+        "dueDate": "2024-12-18"
+      }
+    ]
+  },
+
+  "utilities": {
+    "formatDate": "Format date string for display (e.g., 'Dec 10, 2024')",
+    "formatRelativeDate": "Format date relatively (e.g., 'In 3 days', 'Yesterday')",
+    "isOverdue": "Check if date is past due",
+    "isDueSoon": "Check if date is within threshold (default 3 days)",
+    "getStatusBadgeProps": "Map status to badge type and content",
+    "getPriorityBadgeProps": "Map priority to badge type and content"
+  },
+
+  "example": {
+    "framework": "react",
+    "description": "Complete dashboard page for case management",
+    "code": "import React, { useMemo } from 'react';\nimport { useNavigate } from 'react-router-dom';\nimport {\n  GoabText,\n  GoabButton,\n  GoabBadge\n} from '@abgov/react-components';\nimport { usePageHeader } from '../contexts/PageHeaderContext';\nimport { Case } from '../types/Case';\nimport { currentUser } from '../data/mockWorkers';\nimport mockCases from '../data/mockCases.json';\nimport { formatDate, formatRelativeDate, isDueSoon, isOverdue } from '../utils/dateUtils';\nimport { getStatusBadgeProps, getPriorityBadgeProps } from '../utils/badgeUtils';\n\n// Reusable card components\nconst StatCard = ({ children }: { children: React.ReactNode }) => (\n  <div style={{\n    backgroundColor: 'white',\n    borderRadius: '8px',\n    padding: '16px',\n    boxShadow: '0 1px 3px rgba(0,0,0,0.1)'\n  }}>\n    {children}\n  </div>\n);\n\nconst CaseCard = ({ children, onClick }: { children: React.ReactNode; onClick?: () => void }) => (\n  <div\n    onClick={onClick}\n    style={{\n      backgroundColor: 'white',\n      borderRadius: '8px',\n      padding: '16px',\n      boxShadow: '0 1px 3px rgba(0,0,0,0.1)',\n      cursor: onClick ? 'pointer' : 'default'\n    }}\n  >\n    {children}\n  </div>\n);\n\nexport function DashboardPage() {\n  usePageHeader('Dashboard');\n  const navigate = useNavigate();\n  const cases = mockCases as Case[];\n\n  // Filter to user's active cases\n  const myCases = useMemo(() =>\n    cases.filter(c => c.assignedTo === currentUser.id && c.status !== 'complete'),\n    [cases]\n  );\n\n  // Calculate stats\n  const stats = useMemo(() => ({\n    total: myCases.length,\n    urgent: myCases.filter(c => c.isUrgent).length,\n    dueSoon: myCases.filter(c => isDueSoon(c.dueDate)).length,\n    overdue: myCases.filter(c => isOverdue(c.dueDate) && c.status !== 'complete').length\n  }), [myCases]);\n\n  // Get urgent cases (up to 3)\n  const urgentCases = useMemo(() =>\n    myCases.filter(c => c.isUrgent).slice(0, 3),\n    [myCases]\n  );\n\n  // Get cases due soon (up to 5)\n  const dueSoonCases = useMemo(() =>\n    myCases\n      .filter(c => isDueSoon(c.dueDate, 7))\n      .sort((a, b) => new Date(a.dueDate).getTime() - new Date(b.dueDate).getTime())\n      .slice(0, 5),\n    [myCases]\n  );\n\n  return (\n    <div style={{ maxWidth: '100%', overflow: 'hidden', paddingBottom: '32px' }}>\n      <div className=\"clients-content-padding\">\n        {/* Personalized greeting */}\n        <GoabText size=\"heading-m\" mb=\"l\">\n          Welcome back, {currentUser.name.split(' ')[0]}\n        </GoabText>\n\n        {/* Stats row */}\n        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '16px', marginBottom: '32px' }}>\n          <StatCard>\n            <GoabText size=\"heading-xl\" mb=\"none\">{stats.total}</GoabText>\n            <GoabText size=\"body-s\" color=\"secondary\">Active Cases</GoabText>\n          </StatCard>\n\n          <StatCard>\n            <GoabText size=\"heading-xl\" mb=\"none\" color={stats.urgent > 0 ? 'emergency' : undefined}>\n              {stats.urgent}\n            </GoabText>\n            <GoabText size=\"body-s\" color=\"secondary\">Urgent</GoabText>\n          </StatCard>\n\n          <StatCard>\n            <GoabText size=\"heading-xl\" mb=\"none\" color={stats.dueSoon > 0 ? 'important' : undefined}>\n              {stats.dueSoon}\n            </GoabText>\n            <GoabText size=\"body-s\" color=\"secondary\">Due This Week</GoabText>\n          </StatCard>\n\n          <StatCard>\n            <GoabText size=\"heading-xl\" mb=\"none\" color={stats.overdue > 0 ? 'emergency' : undefined}>\n              {stats.overdue}\n            </GoabText>\n            <GoabText size=\"body-s\" color=\"secondary\">Overdue</GoabText>\n          </StatCard>\n        </div>\n\n        {/* Urgent cases section */}\n        {urgentCases.length > 0 && (\n          <>\n            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>\n              <GoabText size=\"heading-s\">Urgent Cases</GoabText>\n              <GoabButton type=\"tertiary\" size=\"compact\" onClick={() => navigate('/my-cases?filter=urgent')}>\n                View all\n              </GoabButton>\n            </div>\n\n            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '32px' }}>\n              {urgentCases.map(caseItem => (\n                <CaseCard key={caseItem.id} onClick={() => navigate(`/cases/${caseItem.id}`)}>\n                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>\n                    <div>\n                      <div style={{ display: 'flex', gap: '8px', alignItems: 'center', marginBottom: '4px' }}>\n                        <GoabText size=\"body-m\" weight=\"bold\">{caseItem.childName}</GoabText>\n                        <GoabBadge type=\"emergency\" content=\"Urgent\" />\n                      </div>\n                      <GoabText size=\"body-s\" color=\"secondary\">{caseItem.id}</GoabText>\n                    </div>\n                    <div style={{ textAlign: 'right' }}>\n                      <GoabText size=\"body-s\" color={isOverdue(caseItem.dueDate) ? 'emergency' : undefined}>\n                        Due: {formatRelativeDate(caseItem.dueDate)}\n                      </GoabText>\n                    </div>\n                  </div>\n                </CaseCard>\n              ))}\n            </div>\n          </>\n        )}\n\n        {/* Due soon section */}\n        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>\n          <GoabText size=\"heading-s\">Coming Up</GoabText>\n          <GoabButton type=\"tertiary\" size=\"compact\" onClick={() => navigate('/my-cases')}>\n            View all cases\n          </GoabButton>\n        </div>\n\n        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>\n          {dueSoonCases.length === 0 ? (\n            <GoabText size=\"body-m\" color=\"secondary\">No cases due in the next 7 days</GoabText>\n          ) : (\n            dueSoonCases.map(caseItem => {\n              const statusBadge = getStatusBadgeProps(caseItem.status);\n              const priorityBadge = getPriorityBadgeProps(caseItem.priority);\n\n              return (\n                <CaseCard key={caseItem.id} onClick={() => navigate(`/cases/${caseItem.id}`)}>\n                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>\n                    <div>\n                      <GoabText size=\"body-m\" weight=\"bold\">{caseItem.childName}</GoabText>\n                      <GoabText size=\"body-s\" color=\"secondary\">{caseItem.id}</GoabText>\n                      <div style={{ display: 'flex', gap: '8px', marginTop: '8px' }}>\n                        <GoabBadge type={statusBadge.type} content={statusBadge.content} />\n                        <GoabBadge type={priorityBadge.type} content={priorityBadge.content} />\n                      </div>\n                    </div>\n                    <div style={{ textAlign: 'right' }}>\n                      <GoabText size=\"body-s\">Due: {formatDate(caseItem.dueDate)}</GoabText>\n                      <GoabText size=\"body-xs\" color=\"secondary\">{formatRelativeDate(caseItem.dueDate)}</GoabText>\n                    </div>\n                  </div>\n                </CaseCard>\n              );\n            })\n          )}\n        </div>\n      </div>\n    </div>\n  );\n}"
+  },
+
+  "variants": [
+    {
+      "name": "With notifications section",
+      "description": "Add a recent notifications or alerts section"
+    },
+    {
+      "name": "With quick actions",
+      "description": "Add action buttons for common tasks (Create case, Search)"
+    },
+    {
+      "name": "Team dashboard",
+      "description": "Show team-wide stats instead of personal workload"
+    }
+  ],
+
+  "considerations": [
+    "Personalize with user's first name for friendly greeting",
+    "Use color-coded stats sparingly (only for concerning numbers)",
+    "Limit card lists to 3-5 items with 'View all' for more",
+    "Cards should be clickable with clear hover states",
+    "Consider empty states for each section",
+    "Stats should be clickable to navigate to filtered views"
+  ],
+
+  "relatedPatterns": ["stats-row", "case-cards", "list-page", "workspace-app"]
+}

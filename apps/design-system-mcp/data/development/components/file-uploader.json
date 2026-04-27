@@ -1,0 +1,56 @@
+{
+  "name": "FileUploader",
+  "category": "form",
+  "summary": "File upload component with drag-and-drop and file list display.",
+  "import": "import { GoabFileUploadInput, GoabFileUploadCard } from '@abgov/react-components'",
+  "customElement": {
+    "tagName": "goa-file-upload-input",
+    "reactName": "GoabFileUploadInput",
+    "angularSelector": "goab-file-upload-input"
+  },
+  "subComponents": {
+    "fileUploadCard": {
+      "tagName": "goa-file-upload-card",
+      "reactName": "GoabFileUploadCard",
+      "angularSelector": "goab-file-upload-card"
+    }
+  },
+
+  "props": [
+    { "name": "accept", "type": "string", "required": false, "description": "Accepted file types (e.g., '.pdf,.doc')" },
+    { "name": "maxFileSize", "type": "string", "required": false, "description": "Maximum file size (e.g., '5MB')" },
+    { "name": "multiple", "type": "boolean", "required": false, "default": false, "description": "Allow multiple files" },
+    { "name": "disabled", "type": "boolean", "required": false, "default": false, "description": "Disable upload" },
+    { "name": "testId", "type": "string", "required": false, "description": "Test identifier" }
+  ],
+
+  "events": [
+    {
+      "name": "onSelectFiles",
+      "description": "Fired when files are selected",
+      "payload": "File[]",
+      "frameworks": {
+        "react": "onSelectFiles: (files: File[]) => void",
+        "angular": "(onSelectFiles): EventEmitter<File[]>"
+      }
+    }
+  ],
+
+  "slots": [],
+
+  "criticalNotes": [
+    "Use GoabFileUploadCard to display uploaded files",
+    "Validate file types and sizes on both client and server",
+    "Handle file removal through card's onDelete event"
+  ],
+
+  "basicUsage": {
+    "webComponent": "<goa-file-upload-input accept=\".pdf,.doc,.docx\" max-file-size=\"5MB\"></goa-file-upload-input>",
+    "react": "<GoabFileUploadInput\n  accept=\".pdf,.doc,.docx\"\n  maxFileSize=\"5MB\"\n  onSelectFiles={(files) => handleFiles(files)}\n/>\n{files.map(file => (\n  <GoabFileUploadCard\n    key={file.name}\n    filename={file.name}\n    size={file.size}\n    onDelete={() => removeFile(file)}\n  />\n))}",
+    "angular": "<goab-file-upload-input\n  accept=\".pdf,.doc,.docx\"\n  maxFileSize=\"5MB\"\n  (onSelectFiles)=\"handleFiles($event)\">\n</goab-file-upload-input>"
+  },
+
+  "relatedExamples": [],
+
+  "relatedComponents": ["FormItem", "Input"]
+}

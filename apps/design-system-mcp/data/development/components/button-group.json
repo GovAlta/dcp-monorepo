@@ -1,0 +1,124 @@
+{
+  "name": "ButtonGroup",
+  "category": "layout",
+  "summary": "Container for organizing related buttons with consistent spacing and alignment.",
+  "import": "import { GoabButtonGroup } from '@abgov/react-components'",
+  "customElement": {
+    "tagName": "goa-button-group",
+    "reactName": "GoabButtonGroup",
+    "angularSelector": "goab-button-group"
+  },
+  "props": [
+    {
+      "name": "alignment",
+      "type": "\"start\" | \"end\" | \"center\"",
+      "required": false,
+      "default": "start",
+      "description": "Horizontal alignment of buttons",
+      "frameworks": {
+        "webComponent": "alignment=\"...\"",
+        "react": "alignment={...}",
+        "angular": "[alignment]=\"...\""
+      }
+    },
+    {
+      "name": "gap",
+      "type": "\"relaxed\" | \"compact\"",
+      "required": false,
+      "default": "relaxed",
+      "description": "Space between buttons - match button sizes",
+      "frameworks": {
+        "webComponent": "gap=\"...\"",
+        "react": "gap={...}",
+        "angular": "[gap]=\"...\""
+      }
+    },
+    {
+      "name": "testId",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "Test identifier for automation",
+      "frameworks": {
+        "webComponent": "test-id=\"...\"",
+        "react": "testId={...}",
+        "angular": "[testId]=\"...\""
+      }
+    },
+    {
+      "name": "mt",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "",
+      "frameworks": {
+        "webComponent": "mt=\"...\"",
+        "react": "mt={...}",
+        "angular": "[mt]=\"...\""
+      }
+    },
+    {
+      "name": "mr",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "",
+      "frameworks": {
+        "webComponent": "mr=\"...\"",
+        "react": "mr={...}",
+        "angular": "[mr]=\"...\""
+      }
+    },
+    {
+      "name": "mb",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "",
+      "frameworks": {
+        "webComponent": "mb=\"...\"",
+        "react": "mb={...}",
+        "angular": "[mb]=\"...\""
+      }
+    },
+    {
+      "name": "ml",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "",
+      "frameworks": {
+        "webComponent": "ml=\"...\"",
+        "react": "ml={...}",
+        "angular": "[ml]=\"...\""
+      }
+    }
+  ],
+  "events": [],
+  "slots": [
+    {
+      "name": "default",
+      "description": "Button components to group"
+    }
+  ],
+  "criticalNotes": [
+    "Use 'end' alignment for modal actions",
+    "Use 'relaxed' gap with normal-sized buttons, 'compact' with compact buttons",
+    "Use ButtonGroup for semantically related buttons, Block for general layout"
+  ],
+  "basicUsage": {
+    "webComponent": "<goa-button-group alignment=\"end\">\n  <goa-button type=\"tertiary\">Cancel</goa-button>\n  <goa-button type=\"primary\">Confirm</goa-button>\n</goa-button-group>",
+    "react": "<GoabButtonGroup alignment=\"end\">\n  <GoabButton type=\"tertiary\">Cancel</GoabButton>\n  <GoabButton type=\"primary\">Confirm</GoabButton>\n</GoabButtonGroup>",
+    "angular": "<goab-button-group alignment=\"end\">\n  <goab-button type=\"tertiary\">Cancel</goab-button>\n  <goab-button type=\"primary\">Confirm</goab-button>\n</goab-button-group>"
+  },
+  "relatedExamples": [
+    "confirm-a-destructive-action",
+    "warn-a-user-of-a-deadline",
+    "worker-dashboard-overview"
+  ],
+  "relatedComponents": [
+    "Button",
+    "Block",
+    "Modal"
+  ]
+}

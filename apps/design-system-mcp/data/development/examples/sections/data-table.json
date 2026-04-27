@@ -1,0 +1,123 @@
+{
+  "id": "data-table",
+  "name": "Data Table",
+  "category": "section",
+  "description": "A sortable, filterable data table for displaying lists of records. Includes support for row selection, badges, action menus, and handles loading and empty states gracefully.",
+
+  "whenToUse": [
+    "Displaying lists of clients, cases, applications, or other records",
+    "When users need to sort, filter, and take actions on items",
+    "For case management, queue views, or any tabular data"
+  ],
+
+  "components": [
+    {
+      "name": "GoabTable",
+      "purpose": "Main table container",
+      "props": ["width='100%'", "variant='normal' or 'relaxed'", "striped", "onSort"]
+    },
+    {
+      "name": "GoabTableSortHeader",
+      "purpose": "Sortable column headers",
+      "props": ["name (column key)", "direction ('asc'|'desc'|'none')"]
+    },
+    {
+      "name": "GoabDataGrid",
+      "purpose": "Wraps table for keyboard navigation",
+      "props": ["keyboardNav='table'", "keyboardIconPosition='right'"]
+    },
+    {
+      "name": "GoabCheckbox",
+      "purpose": "Row selection and select-all in header",
+      "props": ["checked", "indeterminate (for header)", "onChange"]
+    },
+    {
+      "name": "GoabBadge",
+      "purpose": "Status and priority indicators",
+      "props": ["type", "content", "emphasis='subtle'"]
+    },
+    {
+      "name": "GoabPopover or GoabMenuButton",
+      "purpose": "Row action menu (Edit, View, Delete)"
+    }
+  ],
+
+  "structure": {
+    "wrapper": "ScrollContainer for horizontal scrolling on mobile",
+    "tableContainer": "div with table-wrapper class for proper padding",
+    "dataGrid": "GoabDataGrid wraps GoabTable for keyboard nav",
+    "table": "GoabTable with thead and tbody"
+  },
+
+  "example": {
+    "framework": "react",
+    "description": "Data table with selection, sorting, badges, and row actions",
+    "code": "<ScrollContainer>\n  <div className=\"table-wrapper\">\n    <GoabDataGrid keyboardNav=\"table\" keyboardIconPosition=\"right\">\n      <GoabTable width=\"100%\" onSort={handleSort} variant=\"relaxed\" striped>\n        <thead>\n          <tr data-grid=\"row\">\n            <th data-grid=\"cell\" className=\"goa-table-cell--checkbox\">\n              <GoabCheckbox\n                name=\"selectAll\"\n                checked={isAllSelected}\n                indeterminate={isIndeterminate}\n                onChange={toggleSelectAll}\n                ariaLabel=\"Select all\"\n              />\n            </th>\n            <th data-grid=\"cell\">\n              <GoabTableSortHeader name=\"status\" direction={sortConfig.key === 'status' ? sortConfig.direction : 'none'}>\n                Status\n              </GoabTableSortHeader>\n            </th>\n            <th data-grid=\"cell\">Name</th>\n            <th data-grid=\"cell\">\n              <GoabTableSortHeader name=\"dueDate\" direction={sortConfig.key === 'dueDate' ? sortConfig.direction : 'none'}>\n                Due date\n              </GoabTableSortHeader>\n            </th>\n            <th data-grid=\"cell\">\n              <GoabTableSortHeader name=\"priority\" direction={sortConfig.key === 'priority' ? sortConfig.direction : 'none'}>\n                Priority\n              </GoabTableSortHeader>\n            </th>\n            <th data-grid=\"cell\"></th>{/* Actions column */}\n          </tr>\n        </thead>\n        <tbody>\n          {isLoading ? (\n            // Loading skeleton rows\n            [...Array(10)].map((_, i) => (\n              <tr key={i} data-grid=\"row\">\n                <td data-grid=\"cell\"><div className=\"skeleton-checkbox\" /></td>\n                <td data-grid=\"cell\"><div className=\"skeleton-badge\" /></td>\n                <td data-grid=\"cell\"><div className=\"skeleton-text\" /></td>\n                <td data-grid=\"cell\"><div className=\"skeleton-text\" /></td>\n                <td data-grid=\"cell\"><div className=\"skeleton-badge\" /></td>\n                <td data-grid=\"cell\"><div className=\"skeleton-icon\" /></td>\n              </tr>\n            ))\n          ) : filteredItems.length === 0 ? (\n            // Empty state\n            <tr>\n              <td colSpan={6} className=\"empty-state-cell\">\n                <div className=\"empty-state\">\n                  <img src={emptyStateIllustration} alt=\"\" />\n                  <span className=\"empty-state__heading\">No results found</span>\n                  <span className=\"empty-state__subline\">Try adjusting your search or filters.</span>\n                  <GoabButton type=\"tertiary\" size=\"compact\" onClick={clearFilters}>\n                    Clear filters\n                  </GoabButton>\n                </div>\n              </td>\n            </tr>\n          ) : (\n            // Data rows\n            filteredItems.map((item) => (\n              <tr key={item.id} data-grid=\"row\" aria-selected={item.selected}>\n                <td data-grid=\"cell\" className=\"goa-table-cell--checkbox\">\n                  <GoabCheckbox\n                    name={`select-${item.id}`}\n                    checked={item.selected}\n                    onChange={() => toggleSelection(item.id)}\n                  />\n                </td>\n                <td data-grid=\"cell\" className=\"goa-table-cell--badge\">\n                  <GoabBadge type={item.status} content={item.statusText} emphasis=\"subtle\" icon />\n                </td>\n                <td data-grid=\"cell\" style={{ whiteSpace: 'nowrap' }}>\n                  <Link to={`/detail/${item.id}`}>{item.name}</Link>\n                </td>\n                <td data-grid=\"cell\">{item.dueDate}</td>\n                <td data-grid=\"cell\" className=\"goa-table-cell--badge\">\n                  <GoabBadge {...getPriorityBadgeProps(item.priority)} />\n                </td>\n                <td data-grid=\"cell\" className=\"goa-table-cell--actions\">\n                  <GoabPopover target={<button><GoabIcon type=\"ellipsis-horizontal\" /></button>}>\n                    <div className=\"action-menu\">\n                      <button onClick={() => handleView(item.id)}>View</button>\n                      <button onClick={() => handleEdit(item.id)}>Edit</button>\n                      <button onClick={() => handleDelete(item.id)}>Delete</button>\n                    </div>\n                  </GoabPopover>\n                </td>\n              </tr>\n            ))\n          )}\n        </tbody>\n      </GoabTable>\n    </GoabDataGrid>\n  </div>\n</ScrollContainer>"
+  },
+
+  "stateManagement": {
+    "items": "T[] - full dataset",
+    "filteredItems": "T[] - after applying filters/sort",
+    "isLoading": "boolean - show skeleton rows",
+    "sortConfig": "{ key: string, direction: 'asc' | 'desc' | 'none' }",
+    "selectedIds": "Set<string> or via item.selected property"
+  },
+
+  "cellTypes": [
+    {
+      "class": "goa-table-cell--checkbox",
+      "description": "Checkbox for row selection"
+    },
+    {
+      "class": "goa-table-cell--badge",
+      "description": "Status or category badge"
+    },
+    {
+      "class": "goa-table-cell--text",
+      "description": "Standard text content"
+    },
+    {
+      "class": "goa-table-cell--actions",
+      "description": "Row action menu (typically last column)"
+    }
+  ],
+
+  "loadingState": {
+    "approach": "Render skeleton divs matching cell content shapes",
+    "rows": "10 skeleton rows is typical",
+    "styling": "Use CSS with greyscale background and border-radius"
+  },
+
+  "emptyState": {
+    "illustration": "Optional SVG illustration",
+    "heading": "Clear message like 'No results found'",
+    "subline": "Helpful suggestion like 'Try adjusting your search'",
+    "action": "Button to clear filters or try again"
+  },
+
+  "variants": [
+    {
+      "name": "Without selection",
+      "description": "Remove checkbox column for read-only lists"
+    },
+    {
+      "name": "With row click",
+      "description": "Make entire row clickable to navigate to detail page"
+    },
+    {
+      "name": "Compact variant",
+      "description": "Use variant='normal' for denser display"
+    }
+  ],
+
+  "considerations": [
+    "Always wrap in ScrollContainer for horizontal scroll on mobile",
+    "Use data-grid attributes for keyboard navigation",
+    "Handle sort events and maintain sort state",
+    "Provide loading and empty states for better UX",
+    "Use aria-selected for selected rows",
+    "Consider mobile: variant='normal' for tighter spacing"
+  ],
+
+  "relatedPatterns": ["filter-bar", "list-page", "empty-state"]
+}

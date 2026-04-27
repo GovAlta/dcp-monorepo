@@ -1,0 +1,121 @@
+{
+  "$schema": "../schema/recipe-schema-2.1.0-ai-context.json",
+  "title": "Show links to navigation items",
+  "description": "Create a comprehensive footer navigation structure with organized links to major service categories and meta information, supporting Government of Alberta's site-wide navigation requirements.",
+  "category": "layout-patterns",
+  "tags": [
+    "footer",
+    "navigation",
+    "links",
+    "site-structure",
+    "accessibility"
+  ],
+  "government_service_context": {
+    "citizen_flows": {
+      "applicable": true,
+      "usage": "Citizens need easy access to all government service categories and essential meta information from any page in their journey."
+    },
+    "worker_flows": {
+      "applicable": true,
+      "usage": "Government workers using internal applications still need access to broader government resources and administrative links."
+    },
+    "shared_components": {
+      "applicable": true,
+      "usage": "Footer navigation is a universal site component that provides consistent access to Alberta.ca structure regardless of user type."
+    }
+  },
+  "component_analysis": {
+    "primary_components": [
+      {
+        "name": "App Footer Container",
+        "role": "Provides structured container for all footer content",
+        "purpose": "Ensures consistent footer layout and responsive behavior across applications"
+      },
+      {
+        "name": "Footer Nav Section",
+        "role": "Contains links to major service categories and topics",
+        "purpose": "Enables discovery and navigation to different government service areas"
+      },
+      {
+        "name": "Footer Meta Section", 
+        "role": "Houses administrative and legal links",
+        "purpose": "Provides access to privacy, accessibility, and site usage information"
+      },
+      {
+        "name": "Service Category Links",
+        "role": "Direct navigation to major Alberta.ca service areas",
+        "purpose": "Supports citizen journey completion and service discovery"
+      }
+    ],
+    "accessibility_features": [
+      "Semantic footer landmark for screen reader navigation",
+      "Clear link text that describes destination content",
+      "Proper heading structure when section headings are used",
+      "High contrast requirements met for footer links",
+      "Keyboard navigation support for all interactive elements"
+    ],
+    "user_experience_notes": [
+      "Footer provides escape routes when users can't find what they need",
+      "Service categories follow Alberta.ca information architecture",
+      "Meta section separates legal/administrative concerns from service content",
+      "Column configuration adapts to available space",
+      "Consistent footer across applications builds user confidence"
+    ]
+  },
+  "implementation": {
+    "react": {
+      "code": "import React from 'react';\nimport {\n  GoabAppFooter,\n  GoabAppFooterNavSection,\n  GoabAppFooterMetaSection\n} from '@abgov/react-components';\n\nfunction NavigationFooter() {\n  const serviceCategories = [\n    { href: '/arts-culture', text: 'Arts and culture' },\n    { href: '/education-training', text: 'Education and training' },\n    { href: '/family-social-supports', text: 'Family and social supports' },\n    { href: '/housing-community', text: 'Housing and community' },\n    { href: '/life-events', text: 'Life events' },\n    { href: '/business-economy', text: 'Business and economy' },\n    { href: '/emergencies-public-safety', text: 'Emergencies and public safety' },\n    { href: '/government', text: 'Government' },\n    { href: '/jobs-employment', text: 'Jobs and employment' },\n    { href: '/moving-to-alberta', text: 'Moving to Alberta' }\n  ];\n\n  const metaLinks = [\n    { href: '/privacy', text: 'Privacy' },\n    { href: '/disclaimer', text: 'Disclaimer' },\n    { href: '/accessibility', text: 'Accessibility' },\n    { href: '/using-alberta', text: 'Using Alberta.ca' }\n  ];\n\n  const handleNavClick = (href: string, text: string) => {\n    console.log(`Navigation to ${text}: ${href}`);\n    // Add analytics tracking for footer navigation\n  };\n\n  const handleMetaClick = (href: string, text: string) => {\n    console.log(`Meta navigation to ${text}: ${href}`);\n    // Add analytics tracking for meta links\n  };\n\n  return (\n    <GoabAppFooter maxContentWidth=\"100%\">\n      <GoabAppFooterNavSection \n        maxColumnCount={3}\n        heading=\"Alberta.ca Services\"\n      >\n        {serviceCategories.map((category) => (\n          <a \n            key={category.href}\n            href={category.href}\n            onClick={() => handleNavClick(category.href, category.text)}\n          >\n            {category.text}\n          </a>\n        ))}\n      </GoabAppFooterNavSection>\n      \n      <GoabAppFooterMetaSection>\n        {metaLinks.map((link) => (\n          <a \n            key={link.href}\n            href={link.href}\n            onClick={() => handleMetaClick(link.href, link.text)}\n          >\n            {link.text}\n          </a>\n        ))}\n      </GoabAppFooterMetaSection>\n    </GoabAppFooter>\n  );\n}\n\n// Configurable version for different applications\nfunction ConfigurableNavigationFooter({\n  serviceLinks = [],\n  metaLinks = [],\n  maxColumns = 3,\n  sectionHeading = \"\",\n  maxContentWidth = \"100%\"\n}: {\n  serviceLinks?: Array<{href: string, text: string}>;\n  metaLinks?: Array<{href: string, text: string}>;\n  maxColumns?: number;\n  sectionHeading?: string;\n  maxContentWidth?: string;\n}) {\n  return (\n    <GoabAppFooter maxContentWidth={maxContentWidth}>\n      {serviceLinks.length > 0 && (\n        <GoabAppFooterNavSection \n          maxColumnCount={maxColumns}\n          heading={sectionHeading}\n        >\n          {serviceLinks.map((link) => (\n            <a key={link.href} href={link.href}>\n              {link.text}\n            </a>\n          ))}\n        </GoabAppFooterNavSection>\n      )}\n      \n      {metaLinks.length > 0 && (\n        <GoabAppFooterMetaSection>\n          {metaLinks.map((link) => (\n            <a key={link.href} href={link.href}>\n              {link.text}\n            </a>\n          ))}\n        </GoabAppFooterMetaSection>\n      )}\n    </GoabAppFooter>\n  );\n}"
+    },
+    "angular": {
+      "code": "import { Component } from '@angular/core';\n\ninterface FooterLink {\n  href: string;\n  text: string;\n}\n\n@Component({\n  selector: 'app-navigation-footer',\n  template: `\n    <goab-app-footer [maxContentWidth]=\"maxContentWidth\">\n      <goab-app-footer-nav-section \n        slot=\"nav\"\n        [maxColumnCount]=\"maxColumns\"\n        [heading]=\"sectionHeading\"\n      >\n        <a \n          *ngFor=\"let category of serviceCategories\" \n          [href]=\"category.href\"\n          (click)=\"handleNavClick(category.href, category.text)\"\n        >\n          {{ category.text }}\n        </a>\n      </goab-app-footer-nav-section>\n      \n      <goab-app-footer-meta-section slot=\"meta\">\n        <a \n          *ngFor=\"let link of metaLinks\" \n          [href]=\"link.href\"\n          (click)=\"handleMetaClick(link.href, link.text)\"\n        >\n          {{ link.text }}\n        </a>\n      </goab-app-footer-meta-section>\n    </goab-app-footer>\n  `\n})\nexport class NavigationFooterComponent {\n  maxContentWidth = '100%';\n  maxColumns = 3;\n  sectionHeading = 'Alberta.ca Services';\n\n  serviceCategories: FooterLink[] = [\n    { href: '/arts-culture', text: 'Arts and culture' },\n    { href: '/education-training', text: 'Education and training' },\n    { href: '/family-social-supports', text: 'Family and social supports' },\n    { href: '/housing-community', text: 'Housing and community' },\n    { href: '/life-events', text: 'Life events' },\n    { href: '/business-economy', text: 'Business and economy' },\n    { href: '/emergencies-public-safety', text: 'Emergencies and public safety' },\n    { href: '/government', text: 'Government' },\n    { href: '/jobs-employment', text: 'Jobs and employment' },\n    { href: '/moving-to-alberta', text: 'Moving to Alberta' }\n  ];\n\n  metaLinks: FooterLink[] = [\n    { href: '/privacy', text: 'Privacy' },\n    { href: '/disclaimer', text: 'Disclaimer' },\n    { href: '/accessibility', text: 'Accessibility' },\n    { href: '/using-alberta', text: 'Using Alberta.ca' }\n  ];\n\n  handleNavClick(href: string, text: string) {\n    console.log(`Navigation to ${text}: ${href}`);\n    // Add analytics tracking for footer navigation\n  }\n\n  handleMetaClick(href: string, text: string) {\n    console.log(`Meta navigation to ${text}: ${href}`);\n    // Add analytics tracking for meta links\n  }\n}\n\n// Configurable component\n@Component({\n  selector: 'app-configurable-footer',\n  template: `\n    <goab-app-footer [maxContentWidth]=\"maxContentWidth\">\n      <goab-app-footer-nav-section \n        *ngIf=\"serviceLinks.length > 0\"\n        slot=\"nav\"\n        [maxColumnCount]=\"maxColumns\"\n        [heading]=\"sectionHeading\"\n      >\n        <a \n          *ngFor=\"let link of serviceLinks\" \n          [href]=\"link.href\"\n        >\n          {{ link.text }}\n        </a>\n      </goab-app-footer-nav-section>\n      \n      <goab-app-footer-meta-section \n        *ngIf=\"metaLinks.length > 0\"\n        slot=\"meta\"\n      >\n        <a \n          *ngFor=\"let link of metaLinks\" \n          [href]=\"link.href\"\n        >\n          {{ link.text }}\n        </a>\n      </goab-app-footer-meta-section>\n    </goab-app-footer>\n  `,\n  inputs: ['serviceLinks', 'metaLinks', 'maxColumns', 'sectionHeading', 'maxContentWidth']\n})\nexport class ConfigurableFooterComponent {\n  serviceLinks: FooterLink[] = [];\n  metaLinks: FooterLink[] = [];\n  maxColumns = 3;\n  sectionHeading = '';\n  maxContentWidth = '100%';\n}"
+    }
+  },
+  "usage_guidelines": {
+    "when_to_use": [
+      "Every page of a Government of Alberta application",
+      "Applications that need to connect to broader Alberta.ca ecosystem",
+      "When users need escape routes to other government services",
+      "Applications requiring standard government footer compliance"
+    ],
+    "when_not_to_use": [
+      "Embedded widgets or components within other sites",
+      "Print-specific layouts where footer links are not functional",
+      "Applications with strict space constraints where footer cannot fit"
+    ],
+    "best_practices": [
+      "Use standard Alberta.ca service category names and organization",
+      "Include all required meta links (Privacy, Disclaimer, Accessibility)",
+      "Configure column count based on available horizontal space",
+      "Ensure footer links work correctly within application routing",
+      "Test footer accessibility with keyboard navigation and screen readers",
+      "Consider analytics tracking for footer link usage"
+    ]
+  },
+  "variations": [
+    {
+      "name": "Single column layout",
+      "description": "Use single column for narrow screens or limited space",
+      "code_change": "Set maxColumnCount={1} for vertical link arrangement"
+    },
+    {
+      "name": "Department-specific links",
+      "description": "Add department or ministry specific navigation",
+      "code_change": "Include additional GoabAppFooterNavSection with department-specific links before meta section"
+    },
+    {
+      "name": "Multilingual footer",
+      "description": "Support French/English language switching",
+      "code_change": "Add language toggle links in meta section and use translated link text"
+    },
+    {
+      "name": "Application-specific meta",
+      "description": "Add application-specific help or support links",
+      "code_change": "Include additional links in meta section: <a href='/help'>Help</a> <a href='/contact'>Contact</a>"
+    }
+  ],
+  "related_patterns": [
+    "header-with-navigation",
+    "show-quick-links",
+    "link-to-an-external-page"
+  ]
+}

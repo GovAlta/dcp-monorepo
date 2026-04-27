@@ -1,0 +1,60 @@
+{
+  "name": "design-system-mcp",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/design-system-mcp/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "platform": "node",
+        "outputPath": "dist/apps/design-system-mcp",
+        "format": ["cjs"],
+        "bundle": false,
+        "main": "apps/design-system-mcp/src/main.ts",
+        "tsConfig": "apps/design-system-mcp/tsconfig.app.json",
+        "assets": [
+          {
+            "glob": "**/*.json",
+            "input": "apps/design-system-mcp/data",
+            "output": "./data"
+          }
+        ],
+        "generatePackageJson": true,
+        "esbuildOptions": {
+          "sourcemap": true,
+          "outExtension": {
+            ".js": ".js"
+          }
+        }
+      },
+      "configurations": {
+        "development": {},
+        "production": {
+          "esbuildOptions": {
+            "sourcemap": false,
+            "outExtension": {
+              ".js": ".js"
+            }
+          }
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "options": {
+        "buildTarget": "design-system-mcp:build:development"
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/design-system-mcp/jest.config.ts"
+      }
+    }
+  }
+}

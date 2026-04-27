@@ -1,0 +1,145 @@
+{
+  "name": "Link",
+  "category": "navigation",
+  "summary": "Enhancement wrapper for anchor elements adding icons and consistent spacing.",
+  "import": "import { GoabLink } from '@abgov/react-components'",
+  "customElement": {
+    "tagName": "goa-link",
+    "reactName": "GoabLink",
+    "angularSelector": "goab-link"
+  },
+  "props": [
+    {
+      "name": "leadingIcon",
+      "type": "GoAIconType",
+      "required": false,
+      "default": null,
+      "description": "Icon before link text",
+      "frameworks": {
+        "webComponent": "leading-icon=\"...\"",
+        "react": "leadingIcon={...}",
+        "angular": "[leadingIcon]=\"...\""
+      }
+    },
+    {
+      "name": "trailingIcon",
+      "type": "GoAIconType",
+      "required": false,
+      "default": null,
+      "description": "Icon after link text (use 'open' for external)",
+      "frameworks": {
+        "webComponent": "trailing-icon=\"...\"",
+        "react": "trailingIcon={...}",
+        "angular": "[trailingIcon]=\"...\""
+      }
+    },
+    {
+      "name": "color",
+      "type": "\"interactive\" | \"dark\" | \"light\"",
+      "required": false,
+      "default": "interactive",
+      "description": "Color theme",
+      "frameworks": {
+        "webComponent": "color=\"...\"",
+        "react": "color={...}",
+        "angular": "[color]=\"...\""
+      }
+    },
+    {
+      "name": "size",
+      "type": "\"xsmall\" | \"small\" | \"medium\" | \"large\"",
+      "required": false,
+      "default": "medium",
+      "description": "",
+      "frameworks": {
+        "webComponent": "size=\"...\"",
+        "react": "size={...}",
+        "angular": "[size]=\"...\""
+      }
+    },
+    {
+      "name": "testId",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "Test identifier",
+      "frameworks": {
+        "webComponent": "test-id=\"...\"",
+        "react": "testId={...}",
+        "angular": "[testId]=\"...\""
+      }
+    },
+    {
+      "name": "mt",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin top",
+      "frameworks": {
+        "webComponent": "mt=\"...\"",
+        "react": "mt={...}",
+        "angular": "[mt]=\"...\""
+      }
+    },
+    {
+      "name": "mr",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin right",
+      "frameworks": {
+        "webComponent": "mr=\"...\"",
+        "react": "mr={...}",
+        "angular": "[mr]=\"...\""
+      }
+    },
+    {
+      "name": "mb",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin bottom",
+      "frameworks": {
+        "webComponent": "mb=\"...\"",
+        "react": "mb={...}",
+        "angular": "[mb]=\"...\""
+      }
+    },
+    {
+      "name": "ml",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin left",
+      "frameworks": {
+        "webComponent": "ml=\"...\"",
+        "react": "ml={...}",
+        "angular": "[ml]=\"...\""
+      }
+    }
+  ],
+  "events": [],
+  "slots": [
+    {
+      "name": "default",
+      "description": "Anchor element with href"
+    }
+  ],
+  "criticalNotes": [
+    "Use Link for navigation, Button for actions",
+    "Use trailingIcon='open' for external links",
+    "Wrap a native <a> element inside GoabLink"
+  ],
+  "basicUsage": {
+    "webComponent": "<goa-link trailing-icon=\"open\">\n  <a href=\"https://alberta.ca\" target=\"_blank\">Visit Alberta.ca</a>\n</goa-link>",
+    "react": "<GoabLink trailingIcon=\"open\">\n  <a href=\"https://alberta.ca\" target=\"_blank\">Visit Alberta.ca</a>\n</GoabLink>",
+    "angular": "<goab-link trailingIcon=\"open\">\n  <a href=\"https://alberta.ca\" target=\"_blank\">Visit Alberta.ca</a>\n</goab-link>"
+  },
+  "relatedExamples": [
+    "link-to-an-external-page"
+  ],
+  "relatedComponents": [
+    "Button",
+    "Icon"
+  ]
+}

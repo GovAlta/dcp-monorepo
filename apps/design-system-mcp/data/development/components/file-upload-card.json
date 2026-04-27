@@ -1,0 +1,96 @@
+{
+  "name": "FileUploadCard",
+  "category": "component",
+  "summary": "",
+  "import": "import { GoabFileUploadCard } from '@abgov/react-components'",
+  "customElement": {
+    "tagName": "goa-file-upload-card",
+    "reactName": "GoabFileUploadCard",
+    "angularSelector": "goab-file-upload-card"
+  },
+  "props": [
+    {
+      "name": "filename",
+      "type": "string",
+      "required": true,
+      "default": null,
+      "description": "",
+      "frameworks": {
+        "webComponent": "filename=\"...\"",
+        "react": "filename={...}",
+        "angular": "[filename]=\"...\""
+      }
+    },
+    {
+      "name": "size",
+      "type": "number",
+      "required": true,
+      "default": null,
+      "description": "",
+      "frameworks": {
+        "webComponent": "size=\"...\"",
+        "react": "size={...}",
+        "angular": "[size]=\"...\""
+      }
+    },
+    {
+      "name": "type",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "",
+      "frameworks": {
+        "webComponent": "type=\"...\"",
+        "react": "type={...}",
+        "angular": "[type]=\"...\""
+      }
+    },
+    {
+      "name": "progress",
+      "type": "number",
+      "required": false,
+      "default": "-1",
+      "description": "",
+      "frameworks": {
+        "webComponent": "progress=\"...\"",
+        "react": "progress={...}",
+        "angular": "[progress]=\"...\""
+      }
+    },
+    {
+      "name": "error",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "",
+      "frameworks": {
+        "webComponent": "error=\"...\"",
+        "react": "error={...}",
+        "angular": "[error]=\"...\""
+      }
+    },
+    {
+      "name": "testId",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "",
+      "frameworks": {
+        "webComponent": "test-id=\"...\"",
+        "react": "testId={...}",
+        "angular": "[testId]=\"...\""
+      }
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "criticalNotes": [],
+  "commonMistakes": [],
+  "basicUsage": {
+    "webComponent": "",
+    "react": "",
+    "angular": ""
+  },
+  "relatedExamples": [],
+  "relatedComponents": []
+}

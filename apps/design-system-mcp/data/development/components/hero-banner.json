@@ -1,0 +1,125 @@
+{
+  "name": "HeroBanner",
+  "category": "layout",
+  "summary": "Prominent page header for landing pages and service introductions with optional background image.",
+  "import": "import { GoabHeroBanner } from '@abgov/react-components'",
+  "customElement": {
+    "tagName": "goa-hero-banner",
+    "reactName": "GoabHeroBanner",
+    "angularSelector": "goab-hero-banner"
+  },
+  "props": [
+    {
+      "name": "heading",
+      "type": "string",
+      "required": true,
+      "default": null,
+      "description": "Main heading (displays as h1)",
+      "frameworks": {
+        "webComponent": "heading=\"...\"",
+        "react": "heading={...}",
+        "angular": "[heading]=\"...\""
+      }
+    },
+    {
+      "name": "backgroundurl",
+      "type": "string",
+      "required": true,
+      "default": null,
+      "description": "Background image URL (adds gradient overlay)",
+      "frameworks": {
+        "webComponent": "backgroundurl=\"...\"",
+        "react": "backgroundurl={...}",
+        "angular": "[backgroundurl]=\"...\""
+      }
+    },
+    {
+      "name": "minheight",
+      "type": "string",
+      "required": true,
+      "default": null,
+      "description": "Minimum height",
+      "frameworks": {
+        "webComponent": "minheight=\"...\"",
+        "react": "minheight={...}",
+        "angular": "[minheight]=\"...\""
+      }
+    },
+    {
+      "name": "maxcontentwidth",
+      "type": "any",
+      "required": false,
+      "default": "100%",
+      "description": "Max width of content",
+      "frameworks": {
+        "webComponent": "maxcontentwidth=\"...\"",
+        "react": "maxcontentwidth={...}",
+        "angular": "[maxcontentwidth]=\"...\""
+      }
+    },
+    {
+      "name": "backgroundcolor",
+      "type": "string",
+      "required": false,
+      "default": "#f8f8f8",
+      "description": "Background color (when no image)",
+      "frameworks": {
+        "webComponent": "backgroundcolor=\"...\"",
+        "react": "backgroundcolor={...}",
+        "angular": "[backgroundcolor]=\"...\""
+      }
+    },
+    {
+      "name": "textcolor",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "Text color override",
+      "frameworks": {
+        "webComponent": "textcolor=\"...\"",
+        "react": "textcolor={...}",
+        "angular": "[textcolor]=\"...\""
+      }
+    },
+    {
+      "name": "testId",
+      "type": "string",
+      "required": false,
+      "default": "background",
+      "description": "Test identifier",
+      "frameworks": {
+        "webComponent": "test-id=\"...\"",
+        "react": "testId={...}",
+        "angular": "[testId]=\"...\""
+      }
+    }
+  ],
+  "events": [],
+  "slots": [
+    {
+      "name": "actions",
+      "description": ""
+    },
+    {
+      "name": "default",
+      "description": "Banner content (description, buttons)"
+    }
+  ],
+  "criticalNotes": [
+    "heading is required and displays as h1",
+    "Background images automatically get gradient overlay for readability",
+    "Use high-quality, accessible images"
+  ],
+  "basicUsage": {
+    "webComponent": "<goa-hero-banner heading=\"Alberta Child Benefit\">\n  <p>Get monthly financial support for raising children.</p>\n  <goa-button type=\"start\">Apply now</goa-button>\n</goa-hero-banner>",
+    "react": "<GoabHeroBanner heading=\"Alberta Child Benefit\">\n  <p>Get monthly financial support for raising children.</p>\n  <GoabButton type=\"start\">Apply now</GoabButton>\n</GoabHeroBanner>",
+    "angular": "<goab-hero-banner heading=\"Alberta Child Benefit\">\n  <p>Get monthly financial support for raising children.</p>\n  <goab-button type=\"start\">Apply now</goab-button>\n</goab-hero-banner>"
+  },
+  "relatedExamples": [
+    "start-page"
+  ],
+  "relatedComponents": [
+    "Button",
+    "Text"
+  ]
+}

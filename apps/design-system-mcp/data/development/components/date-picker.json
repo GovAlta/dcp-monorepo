@@ -1,0 +1,224 @@
+{
+  "name": "DatePicker",
+  "category": "form",
+  "summary": "Date selection with calendar interface. Always wrap in FormItem for proper labeling.",
+  "import": "import { GoabDatePicker } from '@abgov/react-components'",
+  "customElement": {
+    "tagName": "goa-date-picker",
+    "reactName": "GoabDatePicker",
+    "angularSelector": "goab-date-picker"
+  },
+  "props": [
+    {
+      "name": "type",
+      "type": "\"calendar\" | \"input\"",
+      "required": false,
+      "default": "calendar",
+      "description": "calendar = popup, input = separate dropdowns",
+      "frameworks": {
+        "webComponent": "type=\"...\"",
+        "react": "type={...}",
+        "angular": "[type]=\"...\""
+      }
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "Form field identifier",
+      "frameworks": {
+        "webComponent": "name=\"...\"",
+        "react": "name={...}",
+        "angular": "[name]=\"...\""
+      }
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "Selected date value",
+      "frameworks": {
+        "webComponent": "value=\"...\"",
+        "react": "value={...}",
+        "angular": "[value]=\"...\""
+      }
+    },
+    {
+      "name": "error",
+      "type": "boolean",
+      "required": false,
+      "default": "false",
+      "description": "Show error state",
+      "frameworks": {
+        "webComponent": "error=\"true\"",
+        "react": "error={true}",
+        "angular": "[error]=\"true\""
+      }
+    },
+    {
+      "name": "min",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "Earliest selectable date",
+      "frameworks": {
+        "webComponent": "min=\"...\"",
+        "react": "min={...}",
+        "angular": "[min]=\"...\""
+      }
+    },
+    {
+      "name": "max",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "Latest selectable date",
+      "frameworks": {
+        "webComponent": "max=\"...\"",
+        "react": "max={...}",
+        "angular": "[max]=\"...\""
+      }
+    },
+    {
+      "name": "relative",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "",
+      "frameworks": {
+        "webComponent": "relative=\"...\"",
+        "react": "relative={...}",
+        "angular": "[relative]=\"...\""
+      }
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "required": false,
+      "default": "false",
+      "description": "Disable input and calendar",
+      "frameworks": {
+        "webComponent": "disabled=\"true\"",
+        "react": "disabled={true}",
+        "angular": "[disabled]=\"true\""
+      }
+    },
+    {
+      "name": "testId",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "Test identifier",
+      "frameworks": {
+        "webComponent": "test-id=\"...\"",
+        "react": "testId={...}",
+        "angular": "[testId]=\"...\""
+      }
+    },
+    {
+      "name": "width",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "",
+      "frameworks": {
+        "webComponent": "width=\"...\"",
+        "react": "width={...}",
+        "angular": "[width]=\"...\""
+      }
+    },
+    {
+      "name": "mt",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin top",
+      "frameworks": {
+        "webComponent": "mt=\"...\"",
+        "react": "mt={...}",
+        "angular": "[mt]=\"...\""
+      }
+    },
+    {
+      "name": "mr",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin right",
+      "frameworks": {
+        "webComponent": "mr=\"...\"",
+        "react": "mr={...}",
+        "angular": "[mr]=\"...\""
+      }
+    },
+    {
+      "name": "mb",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin bottom",
+      "frameworks": {
+        "webComponent": "mb=\"...\"",
+        "react": "mb={...}",
+        "angular": "[mb]=\"...\""
+      }
+    },
+    {
+      "name": "ml",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin left",
+      "frameworks": {
+        "webComponent": "ml=\"...\"",
+        "react": "ml={...}",
+        "angular": "[ml]=\"...\""
+      }
+    }
+  ],
+  "events": [
+    {
+      "name": "_change",
+      "type": "(event) => void",
+      "payload": "{ name",
+      "description": "",
+      "frameworks": {
+        "webComponent": "_change custom event",
+        "react": "onChange prop",
+        "angular": "(onChange) event binding"
+      }
+    },
+    {
+      "name": "goa:closePopover",
+      "type": "(event) => void",
+      "payload": "{ target: _rootEl }",
+      "description": "",
+      "frameworks": {
+        "webComponent": "goa:closePopover custom event",
+        "react": "onGoa:closePopover prop",
+        "angular": "(onGoa:closePopover) event binding"
+      }
+    }
+  ],
+  "slots": [],
+  "criticalNotes": [
+    "Always wrap in GoabFormItem for proper labeling",
+    "Handle both Date objects and undefined values in onChange",
+    "Set appropriate min/max for your use case (e.g., birthdate vs future dates)"
+  ],
+  "basicUsage": {
+    "webComponent": "<goa-form-item label=\"Date of birth\">\n  <goa-date-picker name=\"dob\" max=\"today\"></goa-date-picker>\n</goa-form-item>",
+    "react": "<GoabFormItem label=\"Date of birth\">\n  <GoabDatePicker\n    name=\"dob\"\n    value={dateOfBirth}\n    max={new Date()}\n    onChange={(detail) => setDateOfBirth(detail.value)}\n  />\n</GoabFormItem>",
+    "angular": "<goab-form-item label=\"Date of birth\">\n  <goab-date-picker\n    name=\"dob\"\n    [value]=\"dateOfBirth\"\n    [max]=\"today\"\n    (onChange)=\"onDateChange($event)\">\n  </goab-date-picker>\n</goab-form-item>"
+  },
+  "relatedExamples": [
+    "ask-a-user-for-a-birthday",
+    "reset-date-picker-field"
+  ],
+  "relatedComponents": [
+    "FormItem",
+    "Input"
+  ]
+}

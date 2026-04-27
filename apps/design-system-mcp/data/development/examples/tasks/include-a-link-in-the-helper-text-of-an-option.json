@@ -1,0 +1,86 @@
+{
+  "$schema": "../recipe-schema.json",
+  "schemaVersion": "2.1.0-ai-context",
+  "recipeId": "include-a-link-in-the-helper-text-of-an-option",
+  "recipeName": "Include a Link in the Helper Text of an Option",
+  "category": "form-pattern",
+  "summary": "Add contextual links within checkbox or option helper text to provide additional information or resources",
+  "serviceContext": {
+    "useCase": "Provide users with additional context or resources through embedded links in option descriptions without disrupting the form completion flow",
+    "userType": "both",
+    "governmentServiceFlows": [
+      "When citizens need additional information about communication preferences or contact methods",
+      "When workers need access to policy documents or procedures related to form options",
+      "When users need clarification about specific options through linked resources",
+      "When providing access to related forms, documents, or external resources within option context"
+    ],
+    "relatedPatterns": [
+      "include-descriptions-for-items-in-a-checkbox-list",
+      "link-to-an-external-page",
+      "reveal-more-information-to-help-answer-a-question",
+      "select-one-or-more-from-a-list-of-options"
+    ]
+  },
+  "components": [
+    {
+      "componentName": "GoabFormItem",
+      "role": "Form field container",
+      "purpose": "Provide proper labeling and structure for the checkbox group"
+    },
+    {
+      "componentName": "GoabCheckbox",
+      "role": "Selection input with description",
+      "purpose": "Provide checkbox options with embedded link support in description text"
+    }
+  ],
+  "codeReference": {
+    "exampleFile": "include-a-link-in-the-helper-text-of-an-option.tsx",
+    "linesOfCode": 100,
+    "lastModified": "2024-01-01T00:00:00.000Z"
+  },
+  "implementation": {
+    "complexity": "low",
+    "keyPatterns": [
+      "JSX elements as description prop values for embedding links",
+      "Inline link integration within descriptive text using span elements",
+      "Consistent checkbox grouping with mixed description and non-description options",
+      "React component composition for complex description content",
+      "Proper semantic markup for links within form option context"
+    ],
+    "designPatterns": [
+      "Contextual help with embedded links",
+      "Form option enhancement with additional resources",
+      "Progressive disclosure through linked information",
+      "Inline help and documentation access"
+    ],
+    "accessibility": [
+      "Links within descriptions are properly accessible to screen readers",
+      "Checkbox options maintain proper labeling and association",
+      "Link text provides clear context about destination or purpose",
+      "Keyboard navigation supports both checkbox selection and link activation",
+      "Focus management maintains logical tab order through options and links"
+    ]
+  },
+  "codeExamples": {
+    "react": {
+      "complete": "import { GoabCheckbox, GoabFormItem } from \"@abgov/react-components\";\nimport { useState } from \"react\";\n\nexport default function IncludeALinkInTheHelperTextOfAnOption() {\n  const [contactPreferences, setContactPreferences] = useState({\n    email: true,\n    phone: false,\n    textMessage: false\n  });\n\n  const handleCheckboxChange = (option: string, checked: boolean) => {\n    setContactPreferences(prev => ({\n      ...prev,\n      [option]: checked\n    }));\n  };\n\n  const handleLinkClick = (linkType: string) => {\n    console.log(`Link clicked: ${linkType}`);\n    // Handle link navigation or modal opening\n  };\n\n  return (\n    <div className=\"contact-preferences\">\n      <GoabFormItem label=\"How would you like to be contacted?\">\n        <GoabCheckbox\n          checked={contactPreferences.email}\n          name=\"optionOne\"\n          text=\"Email\"\n          description={\n            <span>\n              We'll send updates to your registered email address. \n              <a href=\"#\" onClick={() => handleLinkClick('email-settings')}>Manage email preferences</a>.\n            </span>\n          }\n          onChange={(event) => handleCheckboxChange('email', event.checked)}\n        />\n        \n        <GoabCheckbox \n          checked={contactPreferences.phone}\n          name=\"optionTwo\" \n          text=\"Phone\"\n          description={\n            <span>\n              Phone calls during business hours (9 AM - 5 PM). \n              <a href=\"#\" onClick={() => handleLinkClick('phone-hours')}>View detailed hours</a>.\n            </span>\n          }\n          onChange={(event) => handleCheckboxChange('phone', event.checked)}\n        />\n        \n        <GoabCheckbox \n          checked={contactPreferences.textMessage}\n          name=\"optionThree\" \n          text=\"Text message\"\n          description={\n            <span>\n              SMS notifications for urgent updates. \n              <a href=\"#\" onClick={() => handleLinkClick('sms-rates')}>Message rates may apply</a>.\n            </span>\n          }\n          onChange={(event) => handleCheckboxChange('textMessage', event.checked)}\n        />\n      </GoabFormItem>\n    </div>\n  );\n}",
+      "key": "const [selectedOptions, setSelectedOptions] = useState({\n  email: true,\n  phone: false,\n  textMessage: false\n});\n\nconst contactOptions = [\n  {\n    id: 'email',\n    name: 'optionOne',\n    text: 'Email',\n    description: (\n      <span>\n        We'll send updates to your registered email address. \n        <a href=\"/email-settings\" target=\"_blank\">Manage email preferences</a>.\n      </span>\n    )\n  },\n  {\n    id: 'phone',\n    name: 'optionTwo',\n    text: 'Phone',\n    description: (\n      <span>\n        Phone calls during business hours (9 AM - 5 PM). \n        <a href=\"/contact-hours\" target=\"_blank\">View detailed hours</a>.\n      </span>\n    )\n  },\n  {\n    id: 'textMessage',\n    name: 'optionThree',\n    text: 'Text message',\n    description: (\n      <span>\n        SMS notifications for urgent updates. \n        <a href=\"/sms-info\" target=\"_blank\">Message rates may apply</a>.\n      </span>\n    )\n  }\n];\n\nconst handleOptionChange = (optionId: string, checked: boolean) => {\n  setSelectedOptions(prev => ({\n    ...prev,\n    [optionId]: checked\n  }));\n};\n\nconst handleLinkClick = (linkType: string, event: MouseEvent) => {\n  // Prevent checkbox from toggling when link is clicked\n  event.stopPropagation();\n  console.log(`Link clicked: ${linkType}`);\n  // Handle link navigation or modal opening\n};\n\nconst isOptionSelected = (optionId: string) => {\n  return selectedOptions[optionId] || false;\n};\n\nconst getSelectedCount = () => {\n  return Object.values(selectedOptions).filter(Boolean).length;\n};\n\n<GoabFormItem label=\"How would you like to be contacted?\">\n  {contactOptions.map((option) => (\n    <GoabCheckbox\n      key={option.id}\n      checked={isOptionSelected(option.id)}\n      name={option.name}\n      text={option.text}\n      description={option.description}\n      onChange={(event) => handleOptionChange(option.id, event.checked)}\n    />\n  ))}\n  \n  {getSelectedCount() > 0 && (\n    <div className=\"selection-summary\">\n      You have selected {getSelectedCount()} contact method{getSelectedCount() > 1 ? 's' : ''}.\n    </div>\n  )}\n</GoabFormItem>\n\n/* CSS */\n.contact-preferences {\n  max-width: 600px;\n}\n\n.contact-preferences .goab-checkbox {\n  margin-bottom: var(--goa-space-m);\n}\n\n.contact-preferences .goab-checkbox:last-child {\n  margin-bottom: 0;\n}\n\n.contact-preferences a {\n  color: var(--goa-color-interactive);\n  text-decoration: underline;\n}\n\n.contact-preferences a:hover {\n  color: var(--goa-color-interactive-hover);\n}\n\n.contact-preferences a:focus {\n  outline: 2px solid var(--goa-color-interactive-focus);\n  outline-offset: 2px;\n}\n\n.selection-summary {\n  margin-top: var(--goa-space-m);\n  padding: var(--goa-space-s);\n  background-color: var(--goa-color-info-light);\n  border-radius: var(--goa-border-radius-s);\n  font-size: var(--goa-font-size-s);\n  color: var(--goa-color-info-dark);\n}"
+    },
+    "angular": {
+      "complete": "export class IncludeALinkInTheHelperTextOfAnOptionComponent {\n  contactPreferences = {\n    email: true,\n    phone: false,\n    textMessage: false\n  };\n\n  contactOptions = [\n    {\n      id: 'email',\n      name: 'optionOne',\n      text: 'Email',\n      hasDescription: true\n    },\n    {\n      id: 'phone',\n      name: 'optionTwo',\n      text: 'Phone',\n      hasDescription: true\n    },\n    {\n      id: 'textMessage',\n      name: 'optionThree',\n      text: 'Text message',\n      hasDescription: true\n    }\n  ];\n\n  handleCheckboxChange(option: string, checked: boolean) {\n    this.contactPreferences[option] = checked;\n  }\n\n  handleLinkClick(linkType: string, event: Event) {\n    event.stopPropagation();\n    console.log(`Link clicked: ${linkType}`);\n    // Handle link navigation or modal opening\n  }\n\n  isOptionSelected(optionId: string): boolean {\n    return this.contactPreferences[optionId] || false;\n  }\n\n  getSelectedCount(): number {\n    return Object.values(this.contactPreferences).filter(Boolean).length;\n  }\n\n  getEmailDescription() {\n    return `We'll send updates to your registered email address. <a href=\"/email-settings\" target=\"_blank\">Manage email preferences</a>.`;\n  }\n\n  getPhoneDescription() {\n    return `Phone calls during business hours (9 AM - 5 PM). <a href=\"/contact-hours\" target=\"_blank\">View detailed hours</a>.`;\n  }\n\n  getTextMessageDescription() {\n    return `SMS notifications for urgent updates. <a href=\"/sms-info\" target=\"_blank\">Message rates may apply</a>.`;\n  }\n}",
+      "key": "contactPreferences = {\n  email: true,\n  phone: false,\n  textMessage: false\n};\n\ncontactOptions = [\n  {\n    id: 'email',\n    name: 'optionOne',\n    text: 'Email',\n    hasDescription: true\n  },\n  {\n    id: 'phone',\n    name: 'optionTwo',\n    text: 'Phone',\n    hasDescription: true\n  },\n  {\n    id: 'textMessage',\n    name: 'optionThree',\n    text: 'Text message',\n    hasDescription: true\n  }\n];\n\nhandleCheckboxChange(option: string, checked: boolean) {\n  this.contactPreferences[option] = checked;\n}\n\nhandleLinkClick(linkType: string, event: Event) {\n  event.stopPropagation();\n  console.log(`Link clicked: ${linkType}`);\n  // Handle link navigation or modal opening\n}\n\nisOptionSelected(optionId: string): boolean {\n  return this.contactPreferences[optionId] || false;\n}\n\ngetSelectedCount(): number {\n  return Object.values(this.contactPreferences).filter(Boolean).length;\n}\n\n<!-- Template -->\n<div class=\"contact-preferences\">\n  <goab-form-item label=\"How would you like to be contacted?\">\n    <goab-checkbox\n      [checked]=\"isOptionSelected('email')\"\n      name=\"optionOne\"\n      text=\"Email\"\n      (onChange)=\"handleCheckboxChange('email', $event)\">\n      <ng-template #description>\n        <span>We'll send updates to your registered email address. \n          <a href=\"/email-settings\" target=\"_blank\" (click)=\"handleLinkClick('email-settings', $event)\">Manage email preferences</a>.\n        </span>\n      </ng-template>\n    </goab-checkbox>\n    \n    <goab-checkbox\n      [checked]=\"isOptionSelected('phone')\"\n      name=\"optionTwo\"\n      text=\"Phone\"\n      (onChange)=\"handleCheckboxChange('phone', $event)\">\n      <ng-template #description>\n        <span>Phone calls during business hours (9 AM - 5 PM). \n          <a href=\"/contact-hours\" target=\"_blank\" (click)=\"handleLinkClick('phone-hours', $event)\">View detailed hours</a>.\n        </span>\n      </ng-template>\n    </goab-checkbox>\n    \n    <goab-checkbox\n      [checked]=\"isOptionSelected('textMessage')\"\n      name=\"optionThree\"\n      text=\"Text message\"\n      (onChange)=\"handleCheckboxChange('textMessage', $event)\">\n      <ng-template #description>\n        <span>SMS notifications for urgent updates. \n          <a href=\"/sms-info\" target=\"_blank\" (click)=\"handleLinkClick('sms-rates', $event)\">Message rates may apply</a>.\n        </span>\n      </ng-template>\n    </goab-checkbox>\n    \n    <div class=\"selection-summary\" *ngIf=\"getSelectedCount() > 0\">\n      You have selected {{ getSelectedCount() }} contact method<span *ngIf=\"getSelectedCount() > 1\">s</span>.\n    </div>\n  </goab-form-item>\n</div>"
+    }
+  },
+  "tags": [
+    "checkbox",
+    "helper-text",
+    "embedded-links",
+    "form-options",
+    "contextual-help",
+    "option-descriptions",
+    "contact-preferences",
+    "form-pattern",
+    "inline-links",
+    "additional-resources"
+  ]
+}

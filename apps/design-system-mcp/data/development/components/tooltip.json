@@ -1,0 +1,141 @@
+{
+  "name": "Tooltip",
+  "category": "component",
+  "summary": "",
+  "import": "import { GoabTooltip } from '@abgov/react-components'",
+  "customElement": {
+    "tagName": "goa-tooltip",
+    "reactName": "GoabTooltip",
+    "angularSelector": "goab-tooltip"
+  },
+  "props": [
+    {
+      "name": "content",
+      "type": "any",
+      "required": false,
+      "default": "",
+      "description": "",
+      "frameworks": {
+        "webComponent": "content=\"...\"",
+        "react": "content={...}",
+        "angular": "[content]=\"...\""
+      }
+    },
+    {
+      "name": "testid",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "",
+      "frameworks": {
+        "webComponent": "testid=\"...\"",
+        "react": "testId={...}",
+        "angular": "[testId]=\"...\""
+      }
+    },
+    {
+      "name": "position",
+      "type": "\"top\" | \"bottom\" | \"left\" | \"right\"",
+      "required": false,
+      "default": "top",
+      "description": "",
+      "frameworks": {
+        "webComponent": "position=\"...\"",
+        "react": "position={...}",
+        "angular": "[position]=\"...\""
+      }
+    },
+    {
+      "name": "halign",
+      "type": "\"left\" | \"right\" | \"center\"",
+      "required": false,
+      "default": "center",
+      "description": "",
+      "frameworks": {
+        "webComponent": "halign=\"...\"",
+        "react": "halign={...}",
+        "angular": "[halign]=\"...\""
+      }
+    },
+    {
+      "name": "maxwidth",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "",
+      "frameworks": {
+        "webComponent": "maxwidth=\"...\"",
+        "react": "maxWidth={...}",
+        "angular": "[maxWidth]=\"...\""
+      }
+    },
+    {
+      "name": "mt",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "",
+      "frameworks": {
+        "webComponent": "mt=\"...\"",
+        "react": "mt={...}",
+        "angular": "[mt]=\"...\""
+      }
+    },
+    {
+      "name": "mr",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "",
+      "frameworks": {
+        "webComponent": "mr=\"...\"",
+        "react": "mr={...}",
+        "angular": "[mr]=\"...\""
+      }
+    },
+    {
+      "name": "mb",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "",
+      "frameworks": {
+        "webComponent": "mb=\"...\"",
+        "react": "mb={...}",
+        "angular": "[mb]=\"...\""
+      }
+    },
+    {
+      "name": "ml",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "",
+      "frameworks": {
+        "webComponent": "ml=\"...\"",
+        "react": "ml={...}",
+        "angular": "[ml]=\"...\""
+      }
+    }
+  ],
+  "events": [],
+  "slots": [
+    {
+      "name": "content",
+      "description": ""
+    },
+    {
+      "name": "default",
+      "description": ""
+    }
+  ],
+  "criticalNotes": [],
+  "commonMistakes": [],
+  "basicUsage": {
+    "webComponent": "",
+    "react": "",
+    "angular": ""
+  },
+  "relatedExamples": [],
+  "relatedComponents": []
+}

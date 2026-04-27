@@ -1,0 +1,207 @@
+{
+  "name": "IconButton",
+  "category": "component",
+  "summary": "Compact icon-only button for universal actions in space-constrained interfaces.",
+  "import": "import { GoabIconButton } from '@abgov/react-components'",
+  "customElement": {
+    "tagName": "goa-icon-button",
+    "reactName": "GoabIconButton",
+    "angularSelector": "goab-icon-button"
+  },
+  "props": [
+    {
+      "name": "icon",
+      "type": "GoAIconType",
+      "required": true,
+      "default": null,
+      "description": "Icon to display (e.g., 'create', 'trash', 'close')",
+      "frameworks": {
+        "webComponent": "icon=\"...\"",
+        "react": "icon={...}",
+        "angular": "[icon]=\"...\""
+      }
+    },
+    {
+      "name": "size",
+      "type": "IconSize",
+      "required": false,
+      "default": "medium",
+      "description": "Button size",
+      "frameworks": {
+        "webComponent": "size=\"...\"",
+        "react": "size={...}",
+        "angular": "[size]=\"...\""
+      }
+    },
+    {
+      "name": "theme",
+      "type": "IconTheme",
+      "required": false,
+      "default": "outline",
+      "description": "Icon style",
+      "frameworks": {
+        "webComponent": "theme=\"...\"",
+        "react": "theme={...}",
+        "angular": "[theme]=\"...\""
+      }
+    },
+    {
+      "name": "variant",
+      "type": "\"color\" | \"nocolor\" | \"light\" | \"dark\" | \"destructive\"",
+      "required": false,
+      "default": "color",
+      "description": "Visual style",
+      "frameworks": {
+        "webComponent": "variant=\"...\"",
+        "react": "variant={...}",
+        "angular": "[variant]=\"...\""
+      }
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "Tooltip on hover",
+      "frameworks": {
+        "webComponent": "title=\"...\"",
+        "react": "title={...}",
+        "angular": "[title]=\"...\""
+      }
+    },
+    {
+      "name": "testId",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "Test identifier",
+      "frameworks": {
+        "webComponent": "test-id=\"...\"",
+        "react": "testId={...}",
+        "angular": "[testId]=\"...\""
+      }
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "required": false,
+      "default": "false",
+      "description": "Prevents interaction",
+      "frameworks": {
+        "webComponent": "disabled=\"true\"",
+        "react": "disabled={true}",
+        "angular": "[disabled]=\"true\""
+      }
+    },
+    {
+      "name": "inverted",
+      "type": "boolean",
+      "required": false,
+      "default": "false",
+      "description": "",
+      "frameworks": {
+        "webComponent": "inverted=\"true\"",
+        "react": "inverted={true}",
+        "angular": "[inverted]=\"true\""
+      }
+    },
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "REQUIRED: Accessible label describing the action",
+      "frameworks": {
+        "webComponent": "aria-label=\"...\"",
+        "react": "ariaLabel={...}",
+        "angular": "[ariaLabel]=\"...\""
+      }
+    },
+    {
+      "name": "mt",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin top",
+      "frameworks": {
+        "webComponent": "mt=\"...\"",
+        "react": "mt={...}",
+        "angular": "[mt]=\"...\""
+      }
+    },
+    {
+      "name": "mr",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin right",
+      "frameworks": {
+        "webComponent": "mr=\"...\"",
+        "react": "mr={...}",
+        "angular": "[mr]=\"...\""
+      }
+    },
+    {
+      "name": "mb",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin bottom",
+      "frameworks": {
+        "webComponent": "mb=\"...\"",
+        "react": "mb={...}",
+        "angular": "[mb]=\"...\""
+      }
+    },
+    {
+      "name": "ml",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin left",
+      "frameworks": {
+        "webComponent": "ml=\"...\"",
+        "react": "ml={...}",
+        "angular": "[ml]=\"...\""
+      }
+    }
+  ],
+  "events": [
+    {
+      "name": "_click",
+      "type": "(event) => void",
+      "description": "",
+      "frameworks": {
+        "webComponent": "_click custom event",
+        "react": "onClick prop",
+        "angular": "(onClick) event binding"
+      }
+    }
+  ],
+  "slots": [],
+  "criticalNotes": [
+    "ariaLabel is REQUIRED for accessibility - always describe the action",
+    "Use universally understood icons (trash, close, edit)",
+    "variant='destructive' for delete/remove actions"
+  ],
+  "commonMistakes": [
+    {
+      "mistake": "Missing ariaLabel",
+      "fix": "Always provide ariaLabel like 'Delete item' or 'Edit user'"
+    },
+    {
+      "mistake": "Using nocolor variant",
+      "fix": "nocolor is deprecated, use dark instead"
+    }
+  ],
+  "basicUsage": {
+    "webComponent": "<goa-icon-button icon=\"trash\" aria-label=\"Delete record\" variant=\"destructive\"></goa-icon-button>",
+    "react": "<GoabIconButton\n  icon=\"trash\"\n  ariaLabel=\"Delete record\"\n  variant=\"destructive\"\n  onClick={() => handleDelete(id)}\n/>",
+    "angular": "<goab-icon-button\n  icon=\"trash\"\n  ariaLabel=\"Delete record\"\n  variant=\"destructive\"\n  (onClick)=\"delete(id)\">\n</goab-icon-button>"
+  },
+  "relatedExamples": [],
+  "relatedComponents": [
+    "Button",
+    "Icon"
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "id": "review-summary",
+  "name": "Review Summary",
+  "category": "section",
+  "description": "A section on a review page that displays answers from a completed form step. Shows question-answer pairs with the ability to change each section before final submission.",
+
+  "whenToUse": [
+    "Review page before form submission",
+    "Displaying completed form data for verification",
+    "When users need to see all their answers in one place",
+    "Allowing quick navigation back to specific sections to make changes"
+  ],
+
+  "components": [
+    {
+      "name": "Section Header",
+      "purpose": "Identify the form section being displayed",
+      "usage": "h3 with section title and Change link"
+    },
+    {
+      "name": "Definition List",
+      "purpose": "Semantic structure for question-answer pairs",
+      "usage": "dl/dt/dd for accessible Q&A display"
+    },
+    {
+      "name": "Change Link",
+      "purpose": "Navigate back to edit answers",
+      "usage": "Button styled as link, includes screen reader context"
+    }
+  ],
+
+  "structure": {
+    "header": "Section title + Change link (right-aligned)",
+    "content": "Question-answer pairs in definition list format",
+    "separator": "Border bottom between sections"
+  },
+
+  "example": {
+    "framework": "react",
+    "description": "Review summary section showing personal information answers",
+    "code": "import React from 'react';\nimport { useNavigate } from 'react-router-dom';\n\ninterface ReviewQuestion {\n  field: string;\n  question: string;\n  answer: string | null;\n  type?: string;\n}\n\ninterface ReviewSummaryProps {\n  sectionId: string;\n  sectionTitle: string;\n  questions: ReviewQuestion[];\n  onChangeSection: (sectionId: string) => void;\n}\n\nexport function ReviewSummary({\n  sectionId,\n  sectionTitle,\n  questions,\n  onChangeSection\n}: ReviewSummaryProps) {\n  const formatAnswer = (answer: string | null, type?: string): string => {\n    if (answer === null || answer === '' || answer === undefined) {\n      return 'Not provided';\n    }\n    if (type === 'date') {\n      return new Date(answer).toLocaleDateString('en-CA', {\n        year: 'numeric',\n        month: 'long',\n        day: 'numeric'\n      });\n    }\n    if (type === 'phone') {\n      // Format as (780) 555-0123\n      const cleaned = answer.replace(/\\D/g, '');\n      if (cleaned.length === 10) {\n        return `(${cleaned.slice(0, 3)}) ${cleaned.slice(3, 6)}-${cleaned.slice(6)}`;\n      }\n    }\n    return answer;\n  };\n\n  return (\n    <div className=\"review-section\">\n      <div className=\"review-section__header\">\n        <h3>{sectionTitle}</h3>\n        <button\n          type=\"button\"\n          className=\"change-link\"\n          onClick={() => onChangeSection(sectionId)}\n          aria-label={`Change ${sectionTitle} answers`}\n        >\n          Change\n          <span className=\"visually-hidden\"> {sectionTitle}</span>\n        </button>\n      </div>\n\n      <dl className=\"review-list\">\n        {questions.map((q) => (\n          <div key={q.field} className=\"review-item\">\n            <dt className=\"review-item__question\">{q.question}</dt>\n            <dd className={\n              `review-item__answer ${!q.answer ? 'review-item__answer--empty' : ''}`\n            }>\n              {formatAnswer(q.answer, q.type)}\n            </dd>\n          </div>\n        ))}\n      </dl>\n    </div>\n  );\n}\n\n// Example usage:\nfunction ReviewPage() {\n  const navigate = useNavigate();\n\n  const personalInfoData: ReviewQuestion[] = [\n    { field: 'fullName', question: 'What is your full legal name?', answer: 'Sarah Elizabeth Johnson' },\n    { field: 'dateOfBirth', question: 'What is your date of birth?', answer: '1985-06-15', type: 'date' },\n    { field: 'sinNumber', question: 'What is your Social Insurance Number?', answer: '123-456-789' }\n  ];\n\n  const contactInfoData: ReviewQuestion[] = [\n    { field: 'email', question: 'What is your email address?', answer: 'sarah.johnson@email.com' },\n    { field: 'phone', question: 'What is your phone number?', answer: '7805550123', type: 'phone' },\n    { field: 'preferredContact', question: 'How would you prefer we contact you?', answer: 'Email' }\n  ];\n\n  const addressData: ReviewQuestion[] = [\n    { field: 'streetAddress', question: 'What is your street address?', answer: '456 Maple Street' },\n    { field: 'city', question: 'City or town', answer: 'Edmonton' },\n    { field: 'province', question: 'Province', answer: 'Alberta' },\n    { field: 'postalCode', question: 'Postal code', answer: 'T5K 2P3' }\n  ];\n\n  const handleChangeSection = (sectionId: string) => {\n    navigate(`/apply/step/${sectionId}?return=review`);\n  };\n\n  return (\n    <div className=\"form-page\">\n      <h1 className=\"step-title\">Review your application</h1>\n      <p className=\"step-description\">\n        Check your answers before submitting. You can change any answer by clicking the Change link.\n      </p>\n\n      <ReviewSummary\n        sectionId=\"personal-info\"\n        sectionTitle=\"Personal Information\"\n        questions={personalInfoData}\n        onChangeSection={handleChangeSection}\n      />\n\n      <ReviewSummary\n        sectionId=\"contact-info\"\n        sectionTitle=\"Contact Information\"\n        questions={contactInfoData}\n        onChangeSection={handleChangeSection}\n      />\n\n      <ReviewSummary\n        sectionId=\"address\"\n        sectionTitle=\"Address\"\n        questions={addressData}\n        onChangeSection={handleChangeSection}\n      />\n    </div>\n  );\n}"
+  },
+
+  "cssClasses": {
+    "review-section": ".review-section {\n  margin-bottom: var(--goa-space-2xl);\n  padding-bottom: var(--goa-space-xl);\n  border-bottom: 1px solid var(--goa-color-greyscale-200);\n}\n\n.review-section:last-child {\n  border-bottom: none;\n}",
+    "review-section__header": ".review-section__header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  margin-bottom: var(--goa-space-l);\n}\n\n.review-section__header h3 {\n  margin: 0;\n  font-size: var(--goa-font-size-l);\n  font-weight: 700;\n}",
+    "review-list": ".review-list {\n  margin: 0;\n  padding: 0;\n}",
+    "review-item": ".review-item {\n  display: flex;\n  justify-content: space-between;\n  align-items: flex-start;\n  padding: var(--goa-space-m) 0;\n  border-bottom: 1px solid var(--goa-color-greyscale-100);\n}\n\n.review-item:last-child {\n  border-bottom: none;\n}\n\n@media (max-width: 480px) {\n  .review-item {\n    flex-direction: column;\n    gap: var(--goa-space-xs);\n  }\n}",
+    "review-item__question": ".review-item__question {\n  font-weight: 600;\n  color: var(--goa-color-text);\n  flex: 1;\n  margin: 0;\n}",
+    "review-item__answer": ".review-item__answer {\n  color: var(--goa-color-text);\n  text-align: right;\n  margin: 0;\n  margin-left: var(--goa-space-l);\n}\n\n@media (max-width: 480px) {\n  .review-item__answer {\n    text-align: left;\n    margin-left: 0;\n  }\n}",
+    "review-item__answer--empty": ".review-item__answer--empty {\n  color: var(--goa-color-text-secondary);\n  font-style: italic;\n}",
+    "change-link": ".change-link {\n  color: var(--goa-color-interactive);\n  text-decoration: underline;\n  background: none;\n  border: none;\n  cursor: pointer;\n  font-size: var(--goa-font-size-m);\n  padding: 0;\n}\n\n.change-link:hover {\n  color: var(--goa-color-interactive-hover);\n}",
+    "visually-hidden": ".visually-hidden {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  padding: 0;\n  margin: -1px;\n  overflow: hidden;\n  clip: rect(0, 0, 0, 0);\n  white-space: nowrap;\n  border: 0;\n}"
+  },
+
+  "variants": [
+    {
+      "name": "With nested data",
+      "description": "Display repeater fields like multiple children with sub-lists"
+    },
+    {
+      "name": "With inline editing",
+      "description": "Allow editing directly on review page without navigation"
+    },
+    {
+      "name": "Condensed view",
+      "description": "Single line per section for simpler forms"
+    }
+  ],
+
+  "considerations": [
+    "Always show 'Not provided' for empty optional fields (not blank)",
+    "Include hidden text for screen readers on Change links",
+    "Format dates, phones, and other data types for readability",
+    "Pass return=review query param so step knows to return here",
+    "Use semantic dl/dt/dd for accessible question-answer structure",
+    "Keep question text identical to original form for recognition",
+    "Consider mobile layout - stack question/answer on small screens"
+  ],
+
+  "relatedPatterns": ["public-form", "review-page", "form-step"]
+}

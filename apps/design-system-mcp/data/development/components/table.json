@@ -1,0 +1,226 @@
+{
+  "name": "Table",
+  "category": "component",
+  "summary": "Data table component for displaying structured information in rows and columns with optional sorting.",
+  "import": "import { GoabTable, GoabTableSortHeader } from '@abgov/react-components'",
+  "customElement": {
+    "tagName": "goa-table",
+    "reactName": "GoabTable",
+    "angularSelector": "goab-table"
+  },
+  "subComponents": {
+    "tableSortHeader": {
+      "tagName": "goa-table-sort-header",
+      "reactName": "GoabTableSortHeader",
+      "angularSelector": "goab-table-sort-header"
+    }
+  },
+  "props": [
+    {
+      "name": "width",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "Width of the table (percentage or pixels)",
+      "frameworks": {
+        "webComponent": "width=\"...\"",
+        "react": "width={...}",
+        "angular": "[width]=\"...\""
+      }
+    },
+    {
+      "name": "stickyheader",
+      "type": "boolean",
+      "required": false,
+      "default": "false",
+      "description": "",
+      "frameworks": {
+        "webComponent": "stickyheader=\"true\"",
+        "react": "stickyheader={true}",
+        "angular": "[stickyheader]=\"true\""
+      }
+    },
+    {
+      "name": "striped",
+      "type": "boolean",
+      "required": false,
+      "default": "false",
+      "description": "",
+      "frameworks": {
+        "webComponent": "striped=\"true\"",
+        "react": "striped={true}",
+        "angular": "[striped]=\"true\""
+      }
+    },
+    {
+      "name": "variant",
+      "type": "\"normal\" | \"relaxed\"",
+      "required": false,
+      "default": "normal",
+      "description": "Visual density - use 'relaxed' for longer content",
+      "frameworks": {
+        "webComponent": "variant=\"...\"",
+        "react": "variant={...}",
+        "angular": "[variant]=\"...\""
+      }
+    },
+    {
+      "name": "testId",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "Sets data-testid for testing",
+      "frameworks": {
+        "webComponent": "test-id=\"...\"",
+        "react": "testId={...}",
+        "angular": "[testId]=\"...\""
+      }
+    },
+    {
+      "name": "mt",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin top spacing",
+      "frameworks": {
+        "webComponent": "mt=\"...\"",
+        "react": "mt={...}",
+        "angular": "[mt]=\"...\""
+      }
+    },
+    {
+      "name": "mr",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin right spacing",
+      "frameworks": {
+        "webComponent": "mr=\"...\"",
+        "react": "mr={...}",
+        "angular": "[mr]=\"...\""
+      }
+    },
+    {
+      "name": "mb",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin bottom spacing",
+      "frameworks": {
+        "webComponent": "mb=\"...\"",
+        "react": "mb={...}",
+        "angular": "[mb]=\"...\""
+      }
+    },
+    {
+      "name": "ml",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin left spacing",
+      "frameworks": {
+        "webComponent": "ml=\"...\"",
+        "react": "ml={...}",
+        "angular": "[ml]=\"...\""
+      }
+    }
+  ],
+  "tableSortHeaderProps": [
+    {
+      "name": "name",
+      "type": "string",
+      "required": true,
+      "description": "Column identifier for sorting"
+    },
+    {
+      "name": "direction",
+      "type": "asc | desc | none",
+      "required": false,
+      "default": "none",
+      "description": "Current sort direction"
+    }
+  ],
+  "events": [
+    {
+      "name": "_sort",
+      "type": "(detail: GoabTableOnSortDetail) => void",
+      "description": "Fired when a sortable column header is clicked. The detail object contains sortBy (column name) and sortDir (1 for asc, -1 for desc, 0 for none).",
+      "frameworks": {
+        "webComponent": "_sort custom event",
+        "react": "onSort prop",
+        "angular": "(onSort) event binding"
+      }
+    }
+  ],
+  "slots": [
+    {
+      "name": "default",
+      "description": "Standard HTML table elements: thead, tbody, tr, th, td"
+    }
+  ],
+  "criticalNotes": [
+    "ALWAYS wrap GoabTableSortHeader in <th> elements for proper semantics",
+    "Use standard HTML table structure inside: <thead>, <tbody>, <tr>, <th>, <td>",
+    "Handle sort state in parent component, not in headers",
+    "Use variant='relaxed' for tables with longer content"
+  ],
+  "commonMistakes": [
+    {
+      "mistake": "GoabTableSortHeader not wrapped in <th>",
+      "fix": "<th><GoabTableSortHeader>Column</GoabTableSortHeader></th>"
+    },
+    {
+      "mistake": "Forgetting to handle sort state properly",
+      "fix": "Track sortColumn and sortDirection in component state"
+    },
+    {
+      "mistake": "Using className instead of table semantics",
+      "fix": "Use standard <thead>, <tbody>, <tr>, <th>, <td> elements"
+    }
+  ],
+  "strictPropertyEnforcement": {
+    "variant": {
+      "validValues": [
+        "normal",
+        "relaxed"
+      ],
+      "invalidExamples": [
+        "default",
+        "compact",
+        "dense"
+      ]
+    },
+    "width": {
+      "validValues": [
+        "auto",
+        "100%",
+        "specific pixel values"
+      ],
+      "invalidExamples": [
+        "full"
+      ]
+    }
+  },
+  "basicUsage": {
+    "webComponent": "<goa-table width=\"100%\">\n  <thead>\n    <tr>\n      <th>Name</th>\n      <th>Status</th>\n      <th>Date</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>John Smith</td>\n      <td>Active</td>\n      <td>2024-01-15</td>\n    </tr>\n  </tbody>\n</goa-table>",
+    "react": "<GoabTable width=\"100%\">\n  <thead>\n    <tr>\n      <th>Name</th>\n      <th>Status</th>\n      <th>Date</th>\n    </tr>\n  </thead>\n  <tbody>\n    {data.map((row) => (\n      <tr key={row.id}>\n        <td>{row.name}</td>\n        <td>{row.status}</td>\n        <td>{row.date}</td>\n      </tr>\n    ))}\n  </tbody>\n</GoabTable>",
+    "angular": "<goab-table width=\"100%\">\n  <thead>\n    <tr>\n      <th>Name</th>\n      <th>Status</th>\n      <th>Date</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr *ngFor=\"let row of data\">\n      <td>{{ row.name }}</td>\n      <td>{{ row.status }}</td>\n      <td>{{ row.date }}</td>\n    </tr>\n  </tbody>\n</goab-table>"
+  },
+  "sortableExample": {
+    "description": "Table with sortable columns",
+    "react": "// Sort handler receives detail object directly (not wrapped in event)\nconst handleSort = (detail: GoabTableOnSortDetail) => {\n  const { sortBy, sortDir } = detail;\n  setSortColumn(sortBy);\n  setSortDirection(sortDir === 1 ? 'asc' : sortDir === -1 ? 'desc' : 'none');\n};\n\n<GoabTable width=\"100%\" onSort={handleSort}>\n  <thead>\n    <tr>\n      <th>\n        <GoabTableSortHeader name=\"name\" direction={sortColumn === 'name' ? sortDirection : 'none'}>\n          Name\n        </GoabTableSortHeader>\n      </th>\n      <th>\n        <GoabTableSortHeader name=\"date\" direction={sortColumn === 'date' ? sortDirection : 'none'}>\n          Date\n        </GoabTableSortHeader>\n      </th>\n    </tr>\n  </thead>\n  <tbody>...</tbody>\n</GoabTable>"
+  },
+  "relatedExamples": [
+    "filter-data-in-a-table",
+    "show-different-views-of-data-in-a-table",
+    "show-status-in-a-table",
+    "show-number-of-results-per-page",
+    "task-list-page",
+    "worker-dashboard-overview"
+  ],
+  "relatedComponents": [
+    "Pagination",
+    "Badge",
+    "Dropdown"
+  ]
+}

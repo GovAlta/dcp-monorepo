@@ -1,0 +1,107 @@
+{
+  "$schema": "../recipe-schema.json",
+  "schemaVersion": "2.1.0-ai-context",
+  "recipeId": "ask-a-user-for-an-address",
+  "recipeName": "Ask a User for an Address",
+  "category": "form-pattern",
+  "summary": "Collect comprehensive Canadian address information with proper layout, all provinces/territories, and appropriate field sizing",
+  "serviceContext": {
+    "useCase": "Government services requiring address information from users for applications, registrations, or service delivery",
+    "userType": "both",
+    "governmentServiceFlows": [
+      "When citizens need to provide their address for government applications",
+      "When workers collect address information for administrative purposes",
+      "When address verification is required for service eligibility",
+      "When mailing addresses are needed for document delivery or correspondence"
+    ],
+    "relatedPatterns": [
+      "ask-a-user-for-direct-deposit-information",
+      "question-page",
+      "basic-page-layout"
+    ]
+  },
+  "components": [
+    {
+      "componentName": "GoabText",
+      "role": "Page heading for the address section",
+      "purpose": "Provide clear context for what information is being collected"
+    },
+    {
+      "componentName": "GoabBlock",
+      "role": "Layout container for form organization",
+      "purpose": "Structure fields in logical groups with proper spacing"
+    },
+    {
+      "componentName": "GoabFormItem",
+      "role": "Individual field containers with labels",
+      "purpose": "Provide accessible form field structure"
+    },
+    {
+      "componentName": "GoabInput",
+      "role": "Text input fields for address components",
+      "purpose": "Collect street address, suite, city, and postal code"
+    },
+    {
+      "componentName": "GoabDropdown",
+      "role": "Province/territory selection",
+      "purpose": "Provide standardized Canadian province/territory options"
+    },
+    {
+      "componentName": "GoabButtonGroup",
+      "role": "Action button container",
+      "purpose": "Group save and cancel actions with proper alignment"
+    },
+    {
+      "componentName": "GoabButton",
+      "role": "Form submission and cancellation actions",
+      "purpose": "Allow users to save or cancel address entry"
+    }
+  ],
+  "codeReference": {
+    "exampleFile": "ask-a-user-for-an-address.tsx",
+    "linesOfCode": 141,
+    "lastModified": "2024-01-01T00:00:00.000Z"
+  },
+  "implementation": {
+    "complexity": "medium",
+    "keyPatterns": [
+      "Canadian address format with all provinces/territories",
+      "Logical field grouping using Block layouts",
+      "Appropriate field sizing (postal code width)",
+      "Hierarchical layout from general to specific",
+      "Standard form action patterns with primary/secondary buttons"
+    ],
+    "designPatterns": [
+      "Progressive form layout",
+      "Geographic data collection",
+      "Responsive field sizing",
+      "Standard button action patterns"
+    ],
+    "accessibility": [
+      "Clear heading announces the purpose of the form section",
+      "All form fields have proper labels",
+      "Logical tab order through address fields",
+      "Button group provides clear action choices"
+    ]
+  },
+  "codeExamples": {
+    "react": {
+      "complete": "import { Sandbox } from \"@components/sandbox\";\nimport { CodeSnippet } from \"@components/code-snippet/CodeSnippet.tsx\";\nimport {\n  GoabBlock,\n  GoabButton,\n  GoabButtonGroup,\n  GoabDropdown,\n  GoabDropdownItem,\n  GoabFormItem,\n  GoabInput, GoabText\n} from \"@abgov/react-components\";\nimport { LanguageVersionContext } from \"@contexts/LanguageVersionContext.tsx\";\nimport { useContext } from \"react\";\n\nexport const AskAUserForAnAddress = () => {\n  const {version} = useContext(LanguageVersionContext);\n  const noop = () => {}\n  return (\n    <Sandbox flags={version === \"new\" ? [\"reactive\", \"template-driven\"] : [\"reactive\"]}>\n      <GoabText size={\"heading-l\"} mb={\"xl\"}>What is your address?</GoabText>\n      <GoabBlock gap=\"xl\" direction=\"column\">\n          <GoabFormItem label=\"Street Address\">\n            <GoabInput name=\"address\" type=\"text\" value=\"\" onChange={noop} width=\"100%\" />\n          </GoabFormItem>\n          <GoabFormItem label=\"Suite or unit #\">\n            <GoabInput name=\"suite\" type=\"text\" value=\"\" onChange={noop} width=\"100%\" />\n          </GoabFormItem>\n        <GoabFormItem label=\"City or town\">\n            <GoabInput name=\"city\" type=\"text\" value=\"\" onChange={noop} width=\"100%\" />\n          </GoabFormItem>\n\n        <GoabBlock direction={\"row\"} gap=\"xl\">\n          <GoabFormItem label=\"Provice or territory\">\n              <GoabDropdown onChange={noop} name=\"province\" value=\"alberta\">\n                <GoabDropdownItem label=\"Alberta\" value=\"alberta\" />\n                <GoabDropdownItem label=\"British Columbia\" value=\"bc\" />\n                <GoabDropdownItem label=\"Manitoba\" value=\"manitoba\" />\n                <GoabDropdownItem label=\"New Brunswick\" value=\"new-brunswick\" />\n                <GoabDropdownItem label=\"Newfoundland and Labrador\" value=\"newfoundland\" />\n                <GoabDropdownItem label=\"Nova Scotia\" value=\"nova-scotia\" />\n                <GoabDropdownItem label=\"Ontario\" value=\"ontario\" />\n                <GoabDropdownItem label=\"Prince Edward Island\" value=\"prince-edward-island\" />\n                <GoabDropdownItem label=\"Quebec\" value=\"quebec\" />\n                <GoabDropdownItem label=\"Saskatchewan\" value=\"saskatchewan\" />\n              </GoabDropdown>\n            </GoabFormItem>\n\n            <GoabFormItem label=\"Postal Code\">\n              <GoabInput name=\"postalCode\" type=\"text\" value=\"\" onChange={noop} width=\"7ch\" />\n            </GoabFormItem>\n          </GoabBlock>\n      </GoabBlock>\n\n      <GoabButtonGroup alignment=\"start\" mt=\"2xl\">\n        <GoabButton type=\"primary\" onClick={noop}>\n          Save and continue\n        </GoabButton>\n        <GoabButton type=\"secondary\" onClick={noop}>\n          Cancel\n        </GoabButton>\n      </GoabButtonGroup>\n    </Sandbox>\n  );\n};",
+      "key": "const handleInputChange = (event: GoabInputOnChangeDetail) => {\n  // Handle input changes\n};\n\nconst handleProvinceChange = (event: GoabDropdownOnChangeDetail) => {\n  // Handle province selection\n};\n\n<GoabText size=\"heading-l\" mb=\"xl\">What is your address?</GoabText>\n\n<GoabBlock gap=\"xl\" direction=\"column\">\n  <GoabFormItem label=\"Street Address\">\n    <GoabInput name=\"address\" onChange={handleInputChange} width=\"100%\" />\n  </GoabFormItem>\n  \n  <GoabFormItem label=\"Suite or unit #\">\n    <GoabInput name=\"suite\" onChange={handleInputChange} width=\"100%\" />\n  </GoabFormItem>\n  \n  <GoabFormItem label=\"City or town\">\n    <GoabInput name=\"city\" onChange={handleInputChange} width=\"100%\" />\n  </GoabFormItem>\n  \n  <GoabBlock direction=\"row\" gap=\"xl\">\n    <GoabFormItem label=\"Province or territory\">\n      <GoabDropdown onChange={handleProvinceChange} name=\"province\">\n        <GoabDropdownItem label=\"Alberta\" value=\"alberta\" />\n        <GoabDropdownItem label=\"British Columbia\" value=\"bc\" />\n        <GoabDropdownItem label=\"Manitoba\" value=\"manitoba\" />\n        <GoabDropdownItem label=\"New Brunswick\" value=\"new-brunswick\" />\n        <GoabDropdownItem label=\"Newfoundland and Labrador\" value=\"newfoundland\" />\n        <GoabDropdownItem label=\"Nova Scotia\" value=\"nova-scotia\" />\n        <GoabDropdownItem label=\"Ontario\" value=\"ontario\" />\n        <GoabDropdownItem label=\"Prince Edward Island\" value=\"prince-edward-island\" />\n        <GoabDropdownItem label=\"Quebec\" value=\"quebec\" />\n        <GoabDropdownItem label=\"Saskatchewan\" value=\"saskatchewan\" />\n      </GoabDropdown>\n    </GoabFormItem>\n    \n    <GoabFormItem label=\"Postal Code\">\n      <GoabInput name=\"postalCode\" onChange={handleInputChange} width=\"7ch\" />\n    </GoabFormItem>\n  </GoabBlock>\n</GoabBlock>\n\n<GoabButtonGroup alignment=\"start\" mt=\"2xl\">\n  <GoabButton type=\"primary\" onClick={handleSave}>\n    Save and continue\n  </GoabButton>\n  <GoabButton type=\"secondary\" onClick={handleCancel}>\n    Cancel\n  </GoabButton>\n</GoabButtonGroup>"
+    },
+    "angular": {
+      "complete": "export class ExampleComponent {\n  form!: FormGroup;\n  constructor(private fb: FormBuilder) {\n    this.form = this.fb.group({\n      address: [''],\n      suite: [''],\n      city: [''],\n      province: [''],\n      postalCode: ['']\n    });\n  }\n  onClick() {\n    // do nothing.\n  }\n}",
+      "key": "// Reactive Forms\nform!: FormGroup;\n\nconstructor(private fb: FormBuilder) {\n  this.form = this.fb.group({\n    address: [''],\n    suite: [''],\n    city: [''],\n    province: ['alberta'],\n    postalCode: ['']\n  });\n}\n\n// Template-driven Forms\naddress = '';\nsuite = '';\ncity = '';\nprovince = 'alberta';\npostalCode = '';\n\ninputOnChange(event: GoabInputOnChangeDetail) {\n  // Handle input changes\n}\n\ndropdownOnChange(event: GoabDropdownOnChangeDetail) {\n  this.province = event.value;\n}\n\nonSubmit() {\n  // Handle form submission\n}"
+    }
+  },
+  "tags": [
+    "address",
+    "form",
+    "canadian",
+    "provinces",
+    "postal-code",
+    "layout",
+    "geographic-data",
+    "government-forms"
+  ]
+}

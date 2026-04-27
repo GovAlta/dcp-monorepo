@@ -1,0 +1,106 @@
+{
+  "$schema": "../recipe-schema.json",
+  "schemaVersion": "2.1.0-ai-context",
+  "recipeId": "confirm-a-change",
+  "recipeName": "Confirm a Change",
+  "category": "interaction-pattern",
+  "summary": "Confirm user-initiated changes with a modal dialog showing before/after comparison and effective date selection",
+  "serviceContext": {
+    "useCase": "When users make significant changes to important information (addresses, contact details, account settings) that require confirmation before taking effect",
+    "userType": "both",
+    "governmentServiceFlows": [
+      "When citizens update their address for benefit eligibility or service delivery",
+      "When workers modify client information that affects service provision",
+      "When users change contact information that impacts government communications",
+      "When updating details that have legal or compliance implications"
+    ],
+    "relatedPatterns": [
+      "confirm-before-navigating-away",
+      "confirm-that-an-application-was-submitted",
+      "review-and-action",
+      "add-another-item-in-a-modal"
+    ]
+  },
+  "components": [
+    {
+      "componentName": "GoabModal",
+      "role": "Primary confirmation dialog container",
+      "purpose": "Present change confirmation with clear before/after comparison and action options"
+    },
+    {
+      "componentName": "GoabContainer",
+      "role": "Comparison display container",
+      "purpose": "Visually separate and highlight the before/after change information"
+    },
+    {
+      "componentName": "GoabDatePicker",
+      "role": "Effective date selection",
+      "purpose": "Allow users to specify when the change should take effect"
+    },
+    {
+      "componentName": "GoabButtonGroup",
+      "role": "Action button container",
+      "purpose": "Present confirmation and cancellation options with proper alignment"
+    },
+    {
+      "componentName": "GoabButton",
+      "role": "User action triggers",
+      "purpose": "Provide clear options to confirm, undo, or cancel the change"
+    },
+    {
+      "componentName": "GoabFormItem",
+      "role": "Date picker field wrapper",
+      "purpose": "Provide proper labeling and structure for the effective date field"
+    }
+  ],
+  "codeReference": {
+    "exampleFile": "confirm-a-change.tsx",
+    "linesOfCode": 303,
+    "lastModified": "2024-01-01T00:00:00.000Z"
+  },
+  "implementation": {
+    "complexity": "medium",
+    "keyPatterns": [
+      "Modal-based confirmation workflow with clear before/after comparison",
+      "Semantic HTML structure using definition lists (dl/dt/dd) for comparisons",
+      "State management for modal visibility and effective date selection",
+      "Dual action buttons (undo vs confirm) for user choice",
+      "Visual separation using filled accent containers"
+    ],
+    "designPatterns": [
+      "Confirmation dialog pattern",
+      "Before/after comparison display",
+      "Progressive disclosure",
+      "Clear call-to-action hierarchy"
+    ],
+    "accessibility": [
+      "Modal has proper role='dialog' for screen reader announcements",
+      "Definition lists provide semantic structure for before/after comparisons",
+      "Clear button labeling indicates available actions",
+      "Form item provides proper labeling for date picker field",
+      "Modal heading clearly describes the change requiring confirmation"
+    ]
+  },
+  "codeExamples": {
+    "react": {
+      "complete": "import {\n  GoabButton,\n  GoabButtonGroup,\n  GoabContainer,\n  GoabDatePicker,\n  GoabFormItem,\n  GoabModal\n} from \"@abgov/react-components\";\nimport { useState } from \"react\";\nimport { GoabDatePickerOnChangeDetail } from \"@abgov/ui-components-common\";\n\nexport const ConfirmAChange = () => {\n  const [modalOpen, setModalOpen] = useState<boolean>(false);\n  const [effectiveDate, setEffectiveDate] = useState<Date | undefined>(new Date());\n\n  const onChangeEffectiveDate = (detail: GoabDatePickerOnChangeDetail) => {\n    setEffectiveDate(detail.value as Date);\n  };\n\n  return (\n    <>\n      <GoabContainer mt=\"none\" mb=\"none\">\n        <GoabButtonGroup alignment=\"center\">\n          <GoabButton onClick={() => setModalOpen(true)}>Save and continue</GoabButton>\n        </GoabButtonGroup>\n\n        <GoabModal\n          heading=\"Address has changed\"\n          role=\"dialog\"\n          open={modalOpen}\n          actions={\n            <GoabButtonGroup alignment=\"end\">\n              <GoabButton type=\"secondary\" onClick={() => setModalOpen(false)}>\n                Undo address change\n              </GoabButton>\n              <GoabButton type=\"primary\" onClick={() => setModalOpen(false)}>\n                Confirm\n              </GoabButton>\n            </GoabButtonGroup>\n          }>\n          <GoabContainer type=\"non-interactive\" accent=\"filled\" padding=\"compact\" width=\"full\">\n            <dl className=\"change-comparison\">\n              <dt>Before</dt>\n              <dd>123456 78 Ave NW, Edmonton, Alberta</dd>\n            </dl>\n            <dl className=\"change-comparison\">\n              <dt>After</dt>\n              <dd>881 12 Ave NW, Edmonton, Alberta</dd>\n            </dl>\n          </GoabContainer>\n          <GoabFormItem label=\"Effective date\">\n            <GoabDatePicker\n              onChange={onChangeEffectiveDate}\n              name=\"effectiveDate\"\n              value={effectiveDate}>\n            </GoabDatePicker>\n          </GoabFormItem>\n        </GoabModal>\n      </GoabContainer>\n    </>\n  )\n}",
+      "key": "const [modalOpen, setModalOpen] = useState<boolean>(false);\nconst [effectiveDate, setEffectiveDate] = useState<Date | undefined>(new Date());\n\nconst confirmChange = () => {\n  // Handle change confirmation logic\n  setModalOpen(false);\n};\n\nconst undoChange = () => {\n  // Handle undo logic\n  setModalOpen(false);\n};\n\n<GoabModal\n  heading=\"Address has changed\"\n  role=\"dialog\"\n  open={modalOpen}\n  actions={\n    <GoabButtonGroup alignment=\"end\">\n      <GoabButton type=\"secondary\" onClick={undoChange}>\n        Undo address change\n      </GoabButton>\n      <GoabButton type=\"primary\" onClick={confirmChange}>\n        Confirm\n      </GoabButton>\n    </GoabButtonGroup>\n  }>\n  <GoabContainer type=\"non-interactive\" accent=\"filled\" padding=\"compact\" width=\"full\">\n    <dl className=\"change-comparison\">\n      <dt>Before</dt>\n      <dd>{originalValue}</dd>\n    </dl>\n    <dl className=\"change-comparison\">\n      <dt>After</dt>\n      <dd>{newValue}</dd>\n    </dl>\n  </GoabContainer>\n  <GoabFormItem label=\"Effective date\">\n    <GoabDatePicker\n      onChange={onChangeEffectiveDate}\n      name=\"effectiveDate\"\n      value={effectiveDate}>\n    </GoabDatePicker>\n  </GoabFormItem>\n</GoabModal>\n\n/* CSS */\n.change-comparison dt {\n  font: var(--goa-typography-heading-s);\n}\n.change-comparison dd {\n  font: var(--goa-typography-body-m);\n  margin-left: 0;\n}"
+    },
+    "angular": {
+      "complete": "export class ConfirmAChangeComponent {\n  modalOpen = false;\n  effectiveDate = new Date();\n  originalValue = '123456 78 Ave NW, Edmonton, Alberta';\n  newValue = '881 12 Ave NW, Edmonton, Alberta';\n\n  toggleModal() {\n    this.modalOpen = !this.modalOpen;\n  }\n\n  onChangeEffectiveDate(event: GoabDatePickerOnChangeDetail) {\n    this.effectiveDate = event.value as Date;\n  }\n\n  confirmChange() {\n    // Handle change confirmation logic\n    this.modalOpen = false;\n  }\n\n  undoChange() {\n    // Handle undo logic\n    this.modalOpen = false;\n  }\n}",
+      "key": "modalOpen = false;\neffectiveDate = new Date();\noriginalValue = '123456 78 Ave NW, Edmonton, Alberta';\nnewValue = '881 12 Ave NW, Edmonton, Alberta';\n\ntoggleModal() {\n  this.modalOpen = !this.modalOpen;\n}\n\nconfirmChange() {\n  // Handle change confirmation logic\n  this.modalOpen = false;\n}\n\nundoChange() {\n  // Handle undo logic\n  this.modalOpen = false;\n}\n\n<!-- Template -->\n<goab-button (onClick)=\"toggleModal()\">Save and continue</goab-button>\n<goab-modal [open]=\"modalOpen\" role=\"dialog\"\n  (onClose)=\"toggleModal()\" heading=\"Address has changed\" [actions]=\"actions\">\n  <goab-container type=\"non-interactive\" accent=\"filled\" padding=\"compact\" width=\"full\">\n    <dl class=\"change-comparison\">\n      <dt>Before</dt>\n      <dd>{{ originalValue }}</dd>\n    </dl>\n    <dl class=\"change-comparison\">\n      <dt>After</dt>\n      <dd>{{ newValue }}</dd>\n    </dl>\n  </goab-container>\n  <goab-form-item label=\"Effective date\">\n    <goab-date-picker (onChange)=\"onChangeEffectiveDate($event)\" \n      name=\"effectiveDate\" [value]=\"effectiveDate\">\n    </goab-date-picker>\n  </goab-form-item>\n  <ng-template #actions>\n    <goab-button-group alignment=\"end\">\n      <goab-button type=\"secondary\" (onClick)=\"undoChange()\">\n        Undo address change\n      </goab-button>\n      <goab-button type=\"primary\" (onClick)=\"confirmChange()\">\n        Confirm\n      </goab-button>\n    </goab-button-group>\n  </ng-template>\n</goab-modal>"
+    }
+  },
+  "tags": [
+    "confirmation",
+    "modal",
+    "change-management",
+    "before-after",
+    "effective-date",
+    "user-verification",
+    "dialog",
+    "comparison",
+    "address-change",
+    "validation"
+  ]
+}

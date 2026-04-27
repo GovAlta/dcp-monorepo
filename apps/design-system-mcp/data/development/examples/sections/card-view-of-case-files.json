@@ -1,0 +1,94 @@
+{
+  "$schema": "../recipe-schema.json",
+  "schemaVersion": "2.1.0-ai-context",
+  "recipeId": "card-view-of-case-files",
+  "recipeName": "Card View of Case Files",
+  "category": "layout-pattern",
+  "summary": "Display administrative records, case files, or submissions with status indicators and action buttons in a responsive card layout",
+  "serviceContext": {
+    "useCase": "Administrative interfaces where workers need to manage and track multiple cases, files, or submissions with clear status visualization",
+    "userType": "worker",
+    "governmentServiceFlows": [
+      "When workers need to review and manage multiple case files or applications",
+      "When tracking submission status across different time periods (fiscal years, quarters)",
+      "When administrative staff need quick access to case actions (view, edit, approve)",
+      "When displaying file histories with status progression over time"
+    ],
+    "relatedPatterns": [
+      "card-grid",
+      "show-status-on-a-card",
+      "worker-dashboard-overview",
+      "review-and-action"
+    ]
+  },
+  "components": [
+    {
+      "componentName": "GoabContainer",
+      "role": "Individual case file card container",
+      "purpose": "Provide structured layout for each case file with consistent spacing"
+    },
+    {
+      "componentName": "GoabBlock",
+      "role": "Layout organization for content and actions",
+      "purpose": "Structure case information and action buttons with proper alignment"
+    },
+    {
+      "componentName": "GoabBadge",
+      "role": "Status indicator for case files",
+      "purpose": "Provide clear visual indication of case status (approved, pending, needs action)"
+    },
+    {
+      "componentName": "GoabButton",
+      "role": "Action buttons for case management",
+      "purpose": "Allow workers to perform actions on cases (view, edit, review)"
+    }
+  ],
+  "codeReference": {
+    "exampleFile": "card-view-of-case-files.tsx",
+    "linesOfCode": 98,
+    "lastModified": "2024-01-01T00:00:00.000Z"
+  },
+  "implementation": {
+    "complexity": "medium",
+    "keyPatterns": [
+      "Responsive card layout with flexbox positioning",
+      "Status visualization using different badge types",
+      "Consistent action button placement across cards",
+      "Mobile-responsive layout with stacked content",
+      "Temporal organization (fiscal years, dates)"
+    ],
+    "designPatterns": [
+      "Card-based data presentation",
+      "Status-driven visual design",
+      "Responsive layout patterns",
+      "Action-oriented interfaces"
+    ],
+    "accessibility": [
+      "Clear content hierarchy with headings and descriptive text",
+      "Status badges provide visual and semantic status information",
+      "Action buttons have clear labels indicating their purpose",
+      "Responsive design ensures usability across different screen sizes"
+    ]
+  },
+  "codeExamples": {
+    "react": {
+      "complete": "import \"./container/container-case-files-example.css\";\nimport { CodeSnippet } from \"@components/code-snippet/CodeSnippet.tsx\";\nimport { GoabBadge, GoabBlock, GoabButton, GoabContainer } from \"@abgov/react-components\";\nimport { Sandbox } from \"@components/sandbox\";\n\nexport const CardViewOfCaseFiles = () => {\n  return (\n    <Sandbox fullWidth>\n      <GoabContainer mt=\"l\">\n        <div className=\"container-example-2--container\">\n          <GoabBlock direction=\"column\" gap=\"2xs\" alignment=\"start\">\n            <strong>Fiscal year: 2021/2022</strong>\n            <span className=\"container-example-2--body-text\">Submitted: April 23, 2023</span>\n          </GoabBlock>\n          <div className=\"container-example-2--right-content\">\n            <GoabBlock direction=\"row\" alignment=\"center\" gap=\"l\">\n              <GoabBadge type=\"midtone\" content=\"Not started\"></GoabBadge>\n              <GoabButton type=\"tertiary\" size=\"compact\">\n                Edit\n              </GoabButton>\n            </GoabBlock>\n          </div>\n        </div>\n      </GoabContainer>\n\n      <GoabContainer>\n        <div className=\"container-example-2--container\">\n          <GoabBlock direction=\"column\" gap=\"2xs\" alignment=\"start\">\n            <strong>Fiscal year: 2020/2021</strong>\n            <span className=\"container-example-2--body-text\">Submitted: April 9, 2022</span>\n          </GoabBlock>\n          <div className=\"container-example-2--right-content\">\n            <GoabBlock direction=\"row\" alignment=\"center\" gap=\"l\">\n              <GoabBadge type=\"important\" content=\"Information needed\"></GoabBadge>\n              <GoabButton type=\"tertiary\" size=\"compact\">\n                View\n              </GoabButton>\n            </GoabBlock>\n          </div>\n        </div>\n      </GoabContainer>\n\n      <GoabContainer>\n        <div className=\"container-example-2--container\">\n          <GoabBlock direction=\"column\" gap=\"2xs\" alignment=\"start\">\n            <strong>Fiscal year: 2019/2020</strong>\n            <span className=\"container-example-2--body-text\">Submitted: April 14, 2021</span>\n          </GoabBlock>\n          <div className=\"container-example-2--right-content\">\n            <GoabBlock direction=\"row\" alignment=\"center\" gap=\"l\">\n              <GoabBadge type=\"success\" content=\"Approved\"></GoabBadge>\n              <GoabButton type=\"tertiary\" size=\"compact\">\n                View\n              </GoabButton>\n            </GoabBlock>\n          </div>\n        </div>\n      </GoabContainer>\n    </Sandbox>\n  )\n}",
+      "key": "const caseFiles = [\n  {\n    title: \"Fiscal year: 2021/2022\",\n    submitted: \"April 23, 2023\",\n    status: { type: \"midtone\", content: \"Not started\" },\n    action: { label: \"Edit\", handler: () => editCase('2021-2022') }\n  },\n  {\n    title: \"Fiscal year: 2020/2021\",\n    submitted: \"April 9, 2022\",\n    status: { type: \"important\", content: \"Information needed\" },\n    action: { label: \"View\", handler: () => viewCase('2020-2021') }\n  },\n  {\n    title: \"Fiscal year: 2019/2020\",\n    submitted: \"April 14, 2021\",\n    status: { type: \"success\", content: \"Approved\" },\n    action: { label: \"View\", handler: () => viewCase('2019-2020') }\n  }\n];\n\n{caseFiles.map((caseFile, index) => (\n  <GoabContainer key={index}>\n    <div className=\"case-file-container\">\n      <GoabBlock direction=\"column\" gap=\"2xs\" alignment=\"start\">\n        <strong>{caseFile.title}</strong>\n        <span className=\"body-text\">Submitted: {caseFile.submitted}</span>\n      </GoabBlock>\n      <div className=\"actions-content\">\n        <GoabBlock direction=\"row\" alignment=\"center\" gap=\"l\">\n          <GoabBadge \n            type={caseFile.status.type} \n            content={caseFile.status.content}\n          />\n          <GoabButton \n            type=\"tertiary\" \n            size=\"compact\" \n            onClick={caseFile.action.handler}\n          >\n            {caseFile.action.label}\n          </GoabButton>\n        </GoabBlock>\n      </div>\n    </div>\n  </GoabContainer>\n))}\n\n/* CSS */\n.case-file-container {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n\n.body-text {\n  font: var(--goa-typography-body-s);\n}\n\n.actions-content {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n\n@media screen and (max-width: 623px) {\n  .case-file-container {\n    flex-direction: column;\n    justify-content: center;\n    align-items: stretch;\n  }\n  .actions-content {\n    display: block;\n    margin-top: var(--goa-space-xs);\n  }\n}"
+    },
+    "angular": {
+      "complete": "export class CardViewOfCaseFilesComponent {\n  caseFiles = [\n    {\n      title: 'Fiscal year: 2021/2022',\n      submitted: 'April 23, 2023',\n      status: { type: 'midtone', content: 'Not started' },\n      action: { label: 'Edit', handler: 'editCase' }\n    },\n    {\n      title: 'Fiscal year: 2020/2021',\n      submitted: 'April 9, 2022', \n      status: { type: 'important', content: 'Information needed' },\n      action: { label: 'View', handler: 'viewCase' }\n    },\n    {\n      title: 'Fiscal year: 2019/2020',\n      submitted: 'April 14, 2021',\n      status: { type: 'success', content: 'Approved' },\n      action: { label: 'View', handler: 'viewCase' }\n    }\n  ];\n\n  editCase(year: string) {\n    // Handle edit case logic\n  }\n\n  viewCase(year: string) {\n    // Handle view case logic\n  }\n}",
+      "key": "caseFiles = [\n  {\n    title: 'Fiscal year: 2021/2022',\n    submitted: 'April 23, 2023',\n    status: { type: 'midtone', content: 'Not started' },\n    action: { label: 'Edit', handler: 'editCase' }\n  }\n  // ... more case files\n];\n\neditCase(year: string) {\n  // Navigate to edit interface or open edit modal\n}\n\nviewCase(year: string) {\n  // Navigate to detailed view or open case details\n}\n\n<!-- Template -->\n<goab-container *ngFor=\"let caseFile of caseFiles\">\n  <div class=\"case-file-container\">\n    <goab-block direction=\"column\" gap=\"2xs\" alignment=\"start\">\n      <strong>{{ caseFile.title }}</strong>\n      <span class=\"body-text\">Submitted: {{ caseFile.submitted }}</span>\n    </goab-block>\n    <div class=\"actions-content\">\n      <goab-block direction=\"row\" alignment=\"center\" gap=\"l\">\n        <goab-badge \n          [type]=\"caseFile.status.type\" \n          [content]=\"caseFile.status.content\">\n        </goab-badge>\n        <goab-button \n          type=\"tertiary\" \n          size=\"compact\" \n          (onClick)=\"caseFile.action.handler === 'editCase' ? editCase(caseFile.title) : viewCase(caseFile.title)\">\n          {{ caseFile.action.label }}\n        </goab-button>\n      </goab-block>\n    </div>\n  </div>\n</goab-container>"
+    }
+  },
+  "tags": [
+    "case-files",
+    "records",
+    "status-tracking",
+    "administrative",
+    "worker-interface",
+    "badges",
+    "actions",
+    "responsive",
+    "cards"
+  ]
+}

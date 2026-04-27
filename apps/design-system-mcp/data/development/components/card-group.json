@@ -1,0 +1,28 @@
+{
+  "name": "CardGroup",
+  "category": "component",
+  "summary": "",
+  "import": "import { GoabCardGroup } from '@abgov/react-components'",
+  "customElement": {
+    "tagName": "goa-card-group",
+    "reactName": "GoabCardGroup",
+    "angularSelector": "goab-card-group"
+  },
+  "props": [],
+  "events": [],
+  "slots": [
+    {
+      "name": "default",
+      "description": ""
+    }
+  ],
+  "criticalNotes": [],
+  "commonMistakes": [],
+  "basicUsage": {
+    "webComponent": "",
+    "react": "",
+    "angular": ""
+  },
+  "relatedExamples": [],
+  "relatedComponents": []
+}

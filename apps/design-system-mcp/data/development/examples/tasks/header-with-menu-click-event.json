@@ -1,0 +1,95 @@
+{
+  "$schema": "../recipe-schema.json",
+  "schemaVersion": "2.1.0-ai-context",
+  "recipeId": "header-with-menu-click-event",
+  "recipeName": "Header with Menu Click Event",
+  "category": "navigation-pattern",
+  "summary": "Implement application header with custom menu click handling for responsive navigation control",
+  "serviceContext": {
+    "useCase": "Handle custom menu interactions in application headers, particularly for responsive navigation and mobile menu controls",
+    "userType": "both",
+    "governmentServiceFlows": [
+      "When citizens access government services on mobile devices requiring responsive navigation",
+      "When workers use applications that need custom menu handling for different screen sizes",
+      "When applications require specific menu click behaviors beyond default navigation",
+      "When implementing custom mobile menu functionality for government service applications"
+    ],
+    "relatedPatterns": [
+      "header-with-navigation",
+      "show-links-to-navigation-items",
+      "show-quick-links"
+    ]
+  },
+  "components": [
+    {
+      "componentName": "GoabAppHeader",
+      "role": "Application header container",
+      "purpose": "Provide main application header with responsive menu behavior and custom click handling"
+    },
+    {
+      "componentName": "GoabAppHeaderMenu",
+      "role": "Header menu section",
+      "purpose": "Group related navigation items with dropdown functionality and icons"
+    },
+    {
+      "componentName": "GoabRadioGroup",
+      "role": "Device width selector",
+      "purpose": "Allow testing of responsive behavior by simulating different device widths"
+    },
+    {
+      "componentName": "GoabRadioItem",
+      "role": "Device option",
+      "purpose": "Provide options for desktop or mobile responsive testing"
+    }
+  ],
+  "codeReference": {
+    "exampleFile": "header-with-menu-click-event.tsx",
+    "linesOfCode": 208,
+    "lastModified": "2024-01-01T00:00:00.000Z"
+  },
+  "implementation": {
+    "complexity": "medium",
+    "keyPatterns": [
+      "Custom menu click event handling with onMenuClick callback",
+      "Responsive breakpoint control with fullMenuBreakpoint property",
+      "Dynamic device width simulation for testing responsive behavior",
+      "Header menu grouping with icons and dropdown functionality",
+      "Navigation links with interactive styling for authentication actions"
+    ],
+    "designPatterns": [
+      "Application header with responsive menu",
+      "Custom event handling for navigation",
+      "Responsive design testing interface",
+      "Grouped navigation with dropdowns"
+    ],
+    "accessibility": [
+      "Header provides clear application navigation structure",
+      "Menu items are keyboard accessible with proper focus management",
+      "Screen readers can navigate menu structure and interactions",
+      "Custom menu click events maintain accessibility standards",
+      "Navigation links have appropriate semantic markup"
+    ]
+  },
+  "codeExamples": {
+    "react": {
+      "complete": "import {\n  GoabAppHeader,\n  GoabAppHeaderMenu,\n  GoabRadioGroup,\n  GoabRadioItem\n} from \"@abgov/react-components\";\nimport { GoabRadioGroupOnChangeDetail } from \"@abgov/ui-components-common\";\nimport { useState } from \"react\";\n\nexport default function HeaderWithMenuClickEvent() {\n  const [deviceWidth, setDeviceWidth] = useState(\"5000\");\n  const [isMenuOpen, setIsMenuOpen] = useState(false);\n\n  function handleMenuClick() {\n    setIsMenuOpen(!isMenuOpen);\n    console.log('Menu clicked, current state:', !isMenuOpen);\n    // Custom menu handling logic here\n    // For example: show/hide custom navigation drawer\n  }\n\n  function handleDeviceWidthChange(event: GoabRadioGroupOnChangeDetail) {\n    setDeviceWidth(event.value);\n    console.log('Device width changed to:', event.value);\n  }\n\n  function handleNavigationClick(section: string) {\n    console.log('Navigation clicked:', section);\n    // Handle navigation logic\n  }\n\n  return (\n    <div className=\"header-example\">\n      <div className=\"device-selector\">\n        <h3>Test Responsive Behavior</h3>\n        <GoabRadioGroup\n          name=\"device\"\n          value={deviceWidth}\n          onChange={handleDeviceWidthChange}>\n          <GoabRadioItem value=\"600\" label=\"Desktop\" />\n          <GoabRadioItem value=\"5000\" label=\"Mobile\" />\n        </GoabRadioGroup>\n      </div>\n\n      <GoabAppHeader\n        url=\"https://example.com\"\n        heading=\"Design System\"\n        onMenuClick={handleMenuClick}\n        fullMenuBreakpoint={+deviceWidth}>\n        <GoabAppHeaderMenu heading=\"Search\" leadingIcon=\"search\">\n          <a href=\"#\" onClick={() => handleNavigationClick('cases')}>Cases</a>\n          <a href=\"#\" onClick={() => handleNavigationClick('payments')}>Payments</a>\n          <a href=\"#\" onClick={() => handleNavigationClick('outstanding')}>Outstanding</a>\n        </GoabAppHeaderMenu>\n        <a href=\"#\" onClick={() => handleNavigationClick('support')}>Support</a>\n        <a href=\"#\" className=\"interactive\" onClick={() => handleNavigationClick('signin')}>Sign in</a>\n      </GoabAppHeader>\n\n      {isMenuOpen && (\n        <div className=\"custom-menu-overlay\">\n          <p>Custom menu is open - implement your navigation here</p>\n        </div>\n      )}\n    </div>\n  );\n}",
+      "key": "const [deviceWidth, setDeviceWidth] = useState(\"5000\");\nconst [isMenuOpen, setIsMenuOpen] = useState(false);\nconst [activeSection, setActiveSection] = useState('');\n\nconst handleMenuClick = () => {\n  setIsMenuOpen(!isMenuOpen);\n  console.log('Menu clicked, current state:', !isMenuOpen);\n  // Custom menu handling logic\n  // Example: show/hide custom navigation drawer\n  // Example: track analytics for menu interactions\n};\n\nconst handleDeviceWidthChange = (event: GoabRadioGroupOnChangeDetail) => {\n  setDeviceWidth(event.value);\n  // Update responsive behavior based on device width\n};\n\nconst handleNavigationClick = (section: string, event?: MouseEvent) => {\n  setActiveSection(section);\n  console.log('Navigation clicked:', section);\n  // Handle navigation logic\n  // Example: route to different pages\n  // Example: update application state\n};\n\n// Responsive breakpoint configuration\nconst breakpoints = {\n  mobile: 768,\n  tablet: 1024,\n  desktop: 1200\n};\n\nconst getCurrentBreakpoint = () => {\n  const width = parseInt(deviceWidth);\n  if (width <= breakpoints.mobile) return 'mobile';\n  if (width <= breakpoints.tablet) return 'tablet';\n  return 'desktop';\n};\n\n<div className=\"header-example\">\n  <GoabRadioGroup\n    name=\"device\"\n    value={deviceWidth}\n    onChange={handleDeviceWidthChange}>\n    <GoabRadioItem value=\"600\" label=\"Desktop\" />\n    <GoabRadioItem value=\"5000\" label=\"Mobile\" />\n  </GoabRadioGroup>\n\n  <GoabAppHeader\n    url=\"https://example.com\"\n    heading=\"Design System\"\n    onMenuClick={handleMenuClick}\n    fullMenuBreakpoint={+deviceWidth}>\n    <GoabAppHeaderMenu heading=\"Search\" leadingIcon=\"search\">\n      <a href=\"#\" onClick={() => handleNavigationClick('cases')}>Cases</a>\n      <a href=\"#\" onClick={() => handleNavigationClick('payments')}>Payments</a>\n      <a href=\"#\" onClick={() => handleNavigationClick('outstanding')}>Outstanding</a>\n    </GoabAppHeaderMenu>\n    <a href=\"#\" onClick={() => handleNavigationClick('support')}>Support</a>\n    <a href=\"#\" className=\"interactive\" onClick={() => handleNavigationClick('signin')}>Sign in</a>\n  </GoabAppHeader>\n\n  {isMenuOpen && (\n    <div className=\"custom-menu-overlay\">\n      <nav className=\"custom-navigation\">\n        <ul>\n          <li><a href=\"#\" onClick={() => handleNavigationClick('dashboard')}>Dashboard</a></li>\n          <li><a href=\"#\" onClick={() => handleNavigationClick('profile')}>Profile</a></li>\n          <li><a href=\"#\" onClick={() => handleNavigationClick('settings')}>Settings</a></li>\n        </ul>\n      </nav>\n    </div>\n  )}\n</div>\n\n/* CSS */\n.header-example {\n  width: 100%;\n}\n\n.device-selector {\n  margin-bottom: var(--goa-space-l);\n  padding: var(--goa-space-m);\n  border: 1px solid var(--goa-color-border);\n  border-radius: var(--goa-border-radius-m);\n}\n\n.custom-menu-overlay {\n  position: fixed;\n  top: 60px;\n  left: 0;\n  right: 0;\n  background: var(--goa-color-background);\n  border-bottom: 1px solid var(--goa-color-border);\n  z-index: 1000;\n  padding: var(--goa-space-m);\n}\n\n.custom-navigation ul {\n  list-style: none;\n  padding: 0;\n  margin: 0;\n}\n\n.custom-navigation li {\n  margin-bottom: var(--goa-space-s);\n}\n\n.custom-navigation a {\n  display: block;\n  padding: var(--goa-space-s);\n  text-decoration: none;\n  color: var(--goa-color-text);\n  border-radius: var(--goa-border-radius-s);\n}\n\n.custom-navigation a:hover {\n  background-color: var(--goa-color-background-hover);\n}"
+    },
+    "angular": {
+      "complete": "export class HeaderWithMenuClickEventComponent {\n  deviceWidth = '5000';\n  isMenuOpen = false;\n  activeSection = '';\n\n  handleMenuClick() {\n    this.isMenuOpen = !this.isMenuOpen;\n    console.log('Menu clicked, current state:', this.isMenuOpen);\n    // Custom menu handling logic here\n    // For example: show/hide custom navigation drawer\n  }\n\n  changeDeviceWidth(event: GoabRadioGroupOnChangeDetail) {\n    this.deviceWidth = event.value;\n    console.log('Device width changed to:', event.value);\n  }\n\n  handleNavigationClick(section: string, event?: Event) {\n    this.activeSection = section;\n    console.log('Navigation clicked:', section);\n    // Handle navigation logic\n    // Example: route to different pages\n    // Example: update application state\n    \n    if (event) {\n      event.preventDefault();\n    }\n  }\n\n  getCurrentBreakpoint(): string {\n    const width = parseInt(this.deviceWidth);\n    if (width <= 768) return 'mobile';\n    if (width <= 1024) return 'tablet';\n    return 'desktop';\n  }\n\n  closeCustomMenu() {\n    this.isMenuOpen = false;\n  }\n}",
+      "key": "deviceWidth = '5000';\nisMenuOpen = false;\nactiveSection = '';\n\nhandleMenuClick() {\n  this.isMenuOpen = !this.isMenuOpen;\n  console.log('Menu clicked, current state:', this.isMenuOpen);\n  // Custom menu handling logic\n  // Example: show/hide custom navigation drawer\n  // Example: track analytics for menu interactions\n}\n\nchangeDeviceWidth(event: GoabRadioGroupOnChangeDetail) {\n  this.deviceWidth = event.value;\n  // Update responsive behavior based on device width\n}\n\nhandleNavigationClick(section: string, event?: Event) {\n  this.activeSection = section;\n  console.log('Navigation clicked:', section);\n  // Handle navigation logic\n  \n  if (event) {\n    event.preventDefault();\n  }\n}\n\ngetCurrentBreakpoint(): string {\n  const width = parseInt(this.deviceWidth);\n  if (width <= 768) return 'mobile';\n  if (width <= 1024) return 'tablet';\n  return 'desktop';\n}\n\ncloseCustomMenu() {\n  this.isMenuOpen = false;\n}\n\n<!-- Template -->\n<div class=\"header-example\">\n  <div class=\"device-selector\">\n    <h3>Test Responsive Behavior</h3>\n    <goab-radio-group\n      name=\"device\"\n      [value]=\"deviceWidth\"\n      (onChange)=\"changeDeviceWidth($event)\">\n      <goab-radio-item value=\"600\" label=\"Desktop\"></goab-radio-item>\n      <goab-radio-item value=\"5000\" label=\"Mobile\"></goab-radio-item>\n    </goab-radio-group>\n  </div>\n\n  <goab-app-header\n    url=\"https://example.com\"\n    heading=\"Design System\"\n    [fullMenuBreakpoint]=\"+deviceWidth\"\n    (onMenuClick)=\"handleMenuClick()\">\n    <goab-app-header-menu heading=\"Search\" leadingIcon=\"search\">\n      <a href=\"#\" (click)=\"handleNavigationClick('cases', $event)\">Cases</a>\n      <a href=\"#\" (click)=\"handleNavigationClick('payments', $event)\">Payments</a>\n      <a href=\"#\" (click)=\"handleNavigationClick('outstanding', $event)\">Outstanding</a>\n    </goab-app-header-menu>\n    <a href=\"#\" (click)=\"handleNavigationClick('support', $event)\">Support</a>\n    <a href=\"#\" class=\"interactive\" (click)=\"handleNavigationClick('signin', $event)\">Sign in</a>\n  </goab-app-header>\n\n  <div class=\"custom-menu-overlay\" *ngIf=\"isMenuOpen\">\n    <nav class=\"custom-navigation\">\n      <ul>\n        <li><a href=\"#\" (click)=\"handleNavigationClick('dashboard', $event)\">Dashboard</a></li>\n        <li><a href=\"#\" (click)=\"handleNavigationClick('profile', $event)\">Profile</a></li>\n        <li><a href=\"#\" (click)=\"handleNavigationClick('settings', $event)\">Settings</a></li>\n      </ul>\n    </nav>\n    <button class=\"close-menu\" (click)=\"closeCustomMenu()\">Close Menu</button>\n  </div>\n</div>"
+    }
+  },
+  "tags": [
+    "app-header",
+    "menu-click-event",
+    "responsive-navigation",
+    "custom-menu-handling",
+    "mobile-navigation",
+    "header-menu",
+    "navigation-pattern",
+    "event-handling",
+    "responsive-design",
+    "application-header"
+  ]
+}

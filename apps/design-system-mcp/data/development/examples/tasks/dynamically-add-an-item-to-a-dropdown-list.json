@@ -1,0 +1,116 @@
+{
+  "$schema": "../recipe-schema.json",
+  "schemaVersion": "2.1.0-ai-context",
+  "recipeId": "dynamically-add-an-item-to-a-dropdown-list",
+  "recipeName": "Dynamically Add an Item to a Dropdown List",
+  "category": "form-pattern",
+  "summary": "Allow users to add new items to dropdown lists dynamically, with options to position items at the beginning or end of the list",
+  "serviceContext": {
+    "useCase": "Enable users to expand dropdown options on-the-fly when predefined options don't meet their needs, common in form workflows",
+    "userType": "both",
+    "governmentServiceFlows": [
+      "When citizens need to add custom categories or types not in predefined lists",
+      "When workers need to create new classification options during data entry",
+      "When users encounter missing options in department, program, or service lists",
+      "When form workflows require flexibility for user-specific entries"
+    ],
+    "relatedPatterns": [
+      "dynamically-change-items-in-a-dropdown-list",
+      "add-another-item-in-a-modal",
+      "disabled-button-with-a-required-field",
+      "slotted-error-text-in-a-form-item"
+    ]
+  },
+  "components": [
+    {
+      "componentName": "GoabDropdown",
+      "role": "Dynamic list container",
+      "purpose": "Display and manage the expanding list of options with new items"
+    },
+    {
+      "componentName": "GoabDropdownItem",
+      "role": "Individual option entries",
+      "purpose": "Represent each option with mount type configuration for positioning"
+    },
+    {
+      "componentName": "GoabInput",
+      "role": "New item entry field",
+      "purpose": "Allow users to enter the label for new dropdown items"
+    },
+    {
+      "componentName": "GoabRadioGroup",
+      "role": "Position selector",
+      "purpose": "Let users choose whether to add items at the start or end of the list"
+    },
+    {
+      "componentName": "GoabRadioItem",
+      "role": "Position options",
+      "purpose": "Provide mount type selection (prepend/append) for new items"
+    },
+    {
+      "componentName": "GoabFormItem",
+      "role": "Form field wrapper",
+      "purpose": "Provide proper labeling, validation, and help text for form controls"
+    },
+    {
+      "componentName": "GoabButton",
+      "role": "Action triggers",
+      "purpose": "Handle adding new items and resetting the list to default state"
+    },
+    {
+      "componentName": "GoabButtonGroup",
+      "role": "Action container",
+      "purpose": "Group related actions with proper spacing and alignment"
+    }
+  ],
+  "codeReference": {
+    "exampleFile": "dynamically-add-an-item-to-a-dropdown-list.tsx",
+    "linesOfCode": 624,
+    "lastModified": "2024-01-01T00:00:00.000Z"
+  },
+  "implementation": {
+    "complexity": "high",
+    "keyPatterns": [
+      "Dynamic array management with state updates for dropdown items",
+      "Mount type configuration for controlling item positioning (prepend/append)",
+      "Form validation with error handling for required item input",
+      "Reset functionality to restore default list state",
+      "Key-based re-rendering for dropdown component updates",
+      "Value transformation (label to lowercase-hyphenated value format)"
+    ],
+    "designPatterns": [
+      "Dynamic content management",
+      "Form validation with error states",
+      "User-controlled data expansion",
+      "Reset/restore functionality"
+    ],
+    "accessibility": [
+      "Form validation provides clear error messages for required fields",
+      "Radio group allows keyboard navigation for position selection",
+      "Dropdown maintains proper labeling and value associations",
+      "Help text provides context for the add functionality"
+    ]
+  },
+  "codeExamples": {
+    "react": {
+      "complete": "import {\n  GoabButton,\n  GoabButtonGroup,\n  GoabContainer,\n  GoabDivider,\n  GoabDropdown,\n  GoabDropdownItem,\n  GoabFormItem,\n  GoabInput,\n  GoabRadioGroup,\n  GoabRadioItem,\n} from \"@abgov/react-components\";\nimport {\n  GoabDropdownItemMountType,\n  GoabDropdownOnChangeDetail,\n  GoabInputOnChangeDetail,\n  GoabRadioGroupOnChangeDetail,\n} from \"@abgov/ui-components-common\";\nimport { useState } from \"react\";\n\ntype Task = {\n  value: string;\n  label: string;\n  mount: GoabDropdownItemMountType;\n};\n\nexport const DynamicallyAddAnItemToADropdownList = () => {\n  const [taskError, setTaskError] = useState<boolean>(false);\n  const [newTask, setNewTask] = useState<string>(\"\");\n  const [mountType, setNewMountType] = useState<string>(\"append\");\n  const DEFAULT_TASKS: Task[] = [\n    { label: \"Finish Report\", value: \"finish-report\", mount: \"append\" },\n    { label: \"Attend Meeting\", value: \"attend-meeting\", mount: \"append\" },\n    { label: \"Reply Emails\", value: \"reply-emails\", mount: \"append\" },\n  ];\n  const [tasks, setTasks] = useState<Task[]>(DEFAULT_TASKS);\n  const [selectedTask, setSelectedTask] = useState<string>(\"\");\n\n  function onMountTypeChange(value: string | undefined) {\n    setNewMountType(value as string);\n  }\n\n  function addTask() {\n    if (newTask === \"\") {\n      setTaskError(true);\n      return;\n    }\n    setTaskError(false);\n\n    const task = {\n      label: newTask,\n      value: newTask.toLowerCase().replace(\" \", \"-\"),\n      mount: mountType as GoabDropdownItemMountType,\n    };\n    setTasks([...tasks, task]);\n    setNewTask(\"\");\n  }\n\n  function reset() {\n    setTasks(DEFAULT_TASKS);\n    setNewMountType(\"append\");\n    setNewTask(\"\");\n    setSelectedTask(\"\");\n    setTaskError(false);\n  }\n\n  return (\n    <GoabContainer mt=\"none\" mb=\"none\">\n      <div style={{ padding: \"40px\" }}>\n        <GoabFormItem\n          requirement=\"required\"\n          mt=\"m\"\n          label=\"Name of item\"\n          error={taskError ? \"Please enter item name\" : undefined}\n          helpText=\"Add an item to the dropdown list below\">\n          <GoabInput\n            onChange={(event: GoabInputOnChangeDetail) => setNewTask(event.value)}\n            name=\"item\"\n            placeholder=\"\"\n            value={newTask}></GoabInput>\n        </GoabFormItem>\n\n        <GoabFormItem mt=\"m\" label=\"Add to\">\n          <GoabRadioGroup\n            name=\"mountType\"\n            onChange={(event: GoabRadioGroupOnChangeDetail) => onMountTypeChange(event.value)}\n            value={mountType}\n            orientation=\"horizontal\">\n            <GoabRadioItem value=\"prepend\" label=\"Start\" />\n            <GoabRadioItem value=\"append\" label=\"End\" />\n          </GoabRadioGroup>\n        </GoabFormItem>\n\n        <GoabButtonGroup alignment={\"start\"} gap=\"relaxed\">\n          <GoabButton mt=\"m\" type=\"primary\" onClick={addTask}>\n            Add new item\n          </GoabButton>\n          <GoabButton mt=\"m\" type=\"tertiary\" onClick={reset}>\n            Reset list\n          </GoabButton>\n        </GoabButtonGroup>\n\n        <GoabDivider mt=\"m\"></GoabDivider>\n\n        <GoabFormItem mt=\"m\" label=\"All items\">\n          <GoabDropdown\n            key={tasks.length}\n            onChange={(event: GoabDropdownOnChangeDetail) =>\n              setSelectedTask(event.value as string)\n            }\n            value={selectedTask}\n            name=\"selectedTask\">\n            {tasks.map(task => (\n              <GoabDropdownItem\n                key={task.value}\n                value={task.value}\n                mountType={task.mount}\n                label={task.label}></GoabDropdownItem>\n            ))}\n          </GoabDropdown>\n        </GoabFormItem>\n      </div>\n    </GoabContainer>\n  );\n}",
+      "key": "type DropdownOption = {\n  value: string;\n  label: string;\n  mount: GoabDropdownItemMountType;\n};\n\nconst [options, setOptions] = useState<DropdownOption[]>(DEFAULT_OPTIONS);\nconst [newOption, setNewOption] = useState<string>(\"\");\nconst [mountType, setMountType] = useState<string>(\"append\");\nconst [selectedOption, setSelectedOption] = useState<string>(\"\");\nconst [validationError, setValidationError] = useState<boolean>(false);\n\nconst addNewOption = () => {\n  if (newOption.trim() === \"\") {\n    setValidationError(true);\n    return;\n  }\n  setValidationError(false);\n\n  const option: DropdownOption = {\n    label: newOption,\n    value: newOption.toLowerCase().replace(/\\s+/g, \"-\"),\n    mount: mountType as GoabDropdownItemMountType,\n  };\n  \n  setOptions(mountType === \"prepend\" ? [option, ...options] : [...options, option]);\n  setNewOption(\"\");\n};\n\nconst resetOptions = () => {\n  setOptions(DEFAULT_OPTIONS);\n  setMountType(\"append\");\n  setNewOption(\"\");\n  setSelectedOption(\"\");\n  setValidationError(false);\n};\n\n<GoabFormItem\n  requirement=\"required\"\n  label=\"Add new option\"\n  error={validationError ? \"Please enter option name\" : undefined}\n  helpText=\"Enter a new option to add to the list\">\n  <GoabInput\n    onChange={(event: GoabInputOnChangeDetail) => setNewOption(event.value)}\n    name=\"newOption\"\n    value={newOption}\n  />\n</GoabFormItem>\n\n<GoabFormItem label=\"Position\">\n  <GoabRadioGroup\n    name=\"position\"\n    onChange={(event: GoabRadioGroupOnChangeDetail) => setMountType(event.value as string)}\n    value={mountType}\n    orientation=\"horizontal\">\n    <GoabRadioItem value=\"prepend\" label=\"Beginning\" />\n    <GoabRadioItem value=\"append\" label=\"End\" />\n  </GoabRadioGroup>\n</GoabFormItem>\n\n<GoabDropdown\n  key={options.length}\n  onChange={(event: GoabDropdownOnChangeDetail) => setSelectedOption(event.value as string)}\n  value={selectedOption}\n  name=\"dynamicDropdown\">\n  {options.map(option => (\n    <GoabDropdownItem\n      key={option.value}\n      value={option.value}\n      mountType={option.mount}\n      label={option.label}\n    />\n  ))}\n</GoabDropdown>"
+    },
+    "angular": {
+      "complete": "interface DropdownOption {\n  value: string;\n  label: string;\n  mount: GoabDropdownItemMountType;\n}\n\nexport class DynamicallyAddAnItemToADropdownListComponent {\n  defaultOptions: DropdownOption[] = [\n    { label: \"Finish Report\", value: \"finish-report\", mount: \"append\" },\n    { label: \"Attend Meeting\", value: \"attend-meeting\", mount: \"append\" },\n    { label: \"Reply Emails\", value: \"reply-emails\", mount: \"append\" },\n  ];\n  options: DropdownOption[] = this.defaultOptions;\n  newOption = \"\";\n  mountType: GoabDropdownItemMountType = \"append\";\n  selectedOption = \"\";\n  validationError = false;\n  renderTrigger = true;\n\n  onMountTypeChange(event: GoabRadioGroupOnChangeDetail): void {\n    this.mountType = event.value as GoabDropdownItemMountType;\n  }\n\n  onNewOptionChange(event: GoabInputOnChangeDetail): void {\n    this.newOption = event.value;\n    this.validationError = false;\n  }\n\n  onSelectedOptionChange(event: GoabDropdownOnChangeDetail): void {\n    this.selectedOption = event.value as string;\n  }\n\n  addNewOption(): void {\n    if (this.newOption.trim() === \"\") {\n      this.validationError = true;\n      return;\n    }\n    this.validationError = false;\n    \n    const option: DropdownOption = {\n      label: this.newOption,\n      value: this.newOption.toLowerCase().replace(/\\s+/g, \"-\"),\n      mount: this.mountType,\n    };\n    \n    this.options = this.mountType === \"prepend\" ? [option, ...this.options] : [...this.options, option];\n    this.newOption = \"\";\n  }\n\n  resetOptions(): void {\n    this.newOption = \"\";\n    this.selectedOption = \"\";\n    this.validationError = false;\n    this.options = [...this.defaultOptions];\n    this.forceRerender();\n  }\n\n  forceRerender(): void {\n    this.renderTrigger = false;\n    setTimeout(() => {\n      this.renderTrigger = true;\n    }, 0);\n  }\n\n  trackByFn(index: number, item: DropdownOption): string {\n    return item.value;\n  }\n}",
+      "key": "interface DropdownOption {\n  value: string;\n  label: string;\n  mount: GoabDropdownItemMountType;\n}\n\ndefaultOptions: DropdownOption[] = [\n  { label: \"Finish Report\", value: \"finish-report\", mount: \"append\" },\n  { label: \"Attend Meeting\", value: \"attend-meeting\", mount: \"append\" },\n  { label: \"Reply Emails\", value: \"reply-emails\", mount: \"append\" },\n];\noptions: DropdownOption[] = this.defaultOptions;\nnewOption = \"\";\nmountType: GoabDropdownItemMountType = \"append\";\nselectedOption = \"\";\nvalidationError = false;\n\naddNewOption(): void {\n  if (this.newOption.trim() === \"\") {\n    this.validationError = true;\n    return;\n  }\n  this.validationError = false;\n  \n  const option: DropdownOption = {\n    label: this.newOption,\n    value: this.newOption.toLowerCase().replace(/\\s+/g, \"-\"),\n    mount: this.mountType,\n  };\n  \n  this.options = this.mountType === \"prepend\" ? [option, ...this.options] : [...this.options, option];\n  this.newOption = \"\";\n}\n\nresetOptions(): void {\n  this.options = [...this.defaultOptions];\n  this.newOption = \"\";\n  this.selectedOption = \"\";\n  this.validationError = false;\n}\n\n<!-- Template -->\n<goab-form-item\n  requirement=\"required\"\n  label=\"Add new option\"\n  [error]=\"validationError ? 'Please enter option name' : undefined\"\n  helpText=\"Enter a new option to add to the list\">\n  <goab-input\n    name=\"newOption\"\n    [value]=\"newOption\"\n    (onChange)=\"onNewOptionChange($event)\">\n  </goab-input>\n</goab-form-item>\n\n<goab-form-item label=\"Position\">\n  <goab-radio-group\n    name=\"position\"\n    [value]=\"mountType\"\n    orientation=\"horizontal\"\n    (onChange)=\"onMountTypeChange($event)\">\n    <goab-radio-item value=\"prepend\" label=\"Beginning\"></goab-radio-item>\n    <goab-radio-item value=\"append\" label=\"End\"></goab-radio-item>\n  </goab-radio-group>\n</goab-form-item>\n\n<goab-dropdown\n  [value]=\"selectedOption\"\n  name=\"dynamicDropdown\"\n  (onChange)=\"onSelectedOptionChange($event)\">\n  <goab-dropdown-item\n    *ngFor=\"let option of options; trackBy: trackByFn\"\n    [value]=\"option.value\"\n    [mountType]=\"option.mount\"\n    [label]=\"option.label\">\n  </goab-dropdown-item>\n</goab-dropdown>"
+    }
+  },
+  "tags": [
+    "dropdown",
+    "dynamic-content",
+    "form-interaction",
+    "user-input",
+    "list-management",
+    "validation",
+    "mount-type",
+    "position-control",
+    "reset-functionality",
+    "expandable-options"
+  ]
+}

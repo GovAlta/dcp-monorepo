@@ -1,0 +1,294 @@
+{
+  "name": "TextArea",
+  "category": "form",
+  "summary": "Multi-line text input for extended content with optional character/word counting. Always wrap in FormItem.",
+  "import": "import { GoabTextArea } from '@abgov/react-components'",
+  "customElement": {
+    "tagName": "goa-textarea",
+    "reactName": "GoabTextArea",
+    "angularSelector": "goab-textarea"
+  },
+  "props": [
+    {
+      "name": "name",
+      "type": "string",
+      "required": true,
+      "default": null,
+      "description": "Form field identifier",
+      "frameworks": {
+        "webComponent": "name=\"...\"",
+        "react": "name={...}",
+        "angular": "[name]=\"...\""
+      }
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "Current text content",
+      "frameworks": {
+        "webComponent": "value=\"...\"",
+        "react": "value={...}",
+        "angular": "[value]=\"...\""
+      }
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "Placeholder text",
+      "frameworks": {
+        "webComponent": "placeholder=\"...\"",
+        "react": "placeholder={...}",
+        "angular": "[placeholder]=\"...\""
+      }
+    },
+    {
+      "name": "rows",
+      "type": "number",
+      "required": false,
+      "default": "3",
+      "description": "Visible text lines (min 2)",
+      "frameworks": {
+        "webComponent": "rows=\"...\"",
+        "react": "rows={...}",
+        "angular": "[rows]=\"...\""
+      }
+    },
+    {
+      "name": "testId",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "Test identifier",
+      "frameworks": {
+        "webComponent": "test-id=\"...\"",
+        "react": "testId={...}",
+        "angular": "[testId]=\"...\""
+      }
+    },
+    {
+      "name": "width",
+      "type": "string",
+      "required": false,
+      "default": "100%",
+      "description": "CSS width (e.g., '60ch', '100%')",
+      "frameworks": {
+        "webComponent": "width=\"...\"",
+        "react": "width={...}",
+        "angular": "[width]=\"...\""
+      }
+    },
+    {
+      "name": "maxWidth",
+      "type": "string",
+      "required": false,
+      "default": "60ch",
+      "description": "",
+      "frameworks": {
+        "webComponent": "max-width=\"...\"",
+        "react": "maxWidth={...}",
+        "angular": "[maxWidth]=\"...\""
+      }
+    },
+    {
+      "name": "error",
+      "type": "boolean",
+      "required": false,
+      "default": "false",
+      "description": "Error state",
+      "frameworks": {
+        "webComponent": "error=\"true\"",
+        "react": "error={true}",
+        "angular": "[error]=\"true\""
+      }
+    },
+    {
+      "name": "readOnly",
+      "type": "boolean",
+      "required": false,
+      "default": "false",
+      "description": "Read-only mode",
+      "frameworks": {
+        "webComponent": "read-only=\"true\"",
+        "react": "readOnly={true}",
+        "angular": "[readOnly]=\"true\""
+      }
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "required": false,
+      "default": "false",
+      "description": "Disable input",
+      "frameworks": {
+        "webComponent": "disabled=\"true\"",
+        "react": "disabled={true}",
+        "angular": "[disabled]=\"true\""
+      }
+    },
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "Accessible label",
+      "frameworks": {
+        "webComponent": "aria-label=\"...\"",
+        "react": "ariaLabel={...}",
+        "angular": "[ariaLabel]=\"...\""
+      }
+    },
+    {
+      "name": "countby",
+      "type": "\"character\" | \"word\" | \"\"",
+      "required": false,
+      "default": "",
+      "description": "Counter type",
+      "frameworks": {
+        "webComponent": "countby=\"...\"",
+        "react": "countby={...}",
+        "angular": "[countby]=\"...\""
+      }
+    },
+    {
+      "name": "maxCount",
+      "type": "number",
+      "required": false,
+      "default": "-1",
+      "description": "Max characters/words allowed",
+      "frameworks": {
+        "webComponent": "max-count=\"...\"",
+        "react": "maxCount={...}",
+        "angular": "[maxCount]=\"...\""
+      }
+    },
+    {
+      "name": "autoComplete",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "",
+      "frameworks": {
+        "webComponent": "auto-complete=\"...\"",
+        "react": "autoComplete={...}",
+        "angular": "[autoComplete]=\"...\""
+      }
+    },
+    {
+      "name": "size",
+      "type": "SizeType",
+      "required": false,
+      "default": "default",
+      "description": "",
+      "frameworks": {
+        "webComponent": "size=\"...\"",
+        "react": "size={...}",
+        "angular": "[size]=\"...\""
+      }
+    },
+    {
+      "name": "mt",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin top",
+      "frameworks": {
+        "webComponent": "mt=\"...\"",
+        "react": "mt={...}",
+        "angular": "[mt]=\"...\""
+      }
+    },
+    {
+      "name": "mr",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin right",
+      "frameworks": {
+        "webComponent": "mr=\"...\"",
+        "react": "mr={...}",
+        "angular": "[mr]=\"...\""
+      }
+    },
+    {
+      "name": "mb",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin bottom",
+      "frameworks": {
+        "webComponent": "mb=\"...\"",
+        "react": "mb={...}",
+        "angular": "[mb]=\"...\""
+      }
+    },
+    {
+      "name": "ml",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin left",
+      "frameworks": {
+        "webComponent": "ml=\"...\"",
+        "react": "ml={...}",
+        "angular": "[ml]=\"...\""
+      }
+    }
+  ],
+  "events": [
+    {
+      "name": "_change",
+      "type": "(event) => void",
+      "payload": "{ name",
+      "description": "",
+      "frameworks": {
+        "webComponent": "_change custom event",
+        "react": "onChange prop",
+        "angular": "(onChange) event binding"
+      }
+    },
+    {
+      "name": "_blur",
+      "type": "(event) => void",
+      "payload": "{ name",
+      "description": "",
+      "frameworks": {
+        "webComponent": "_blur custom event",
+        "react": "onBlur prop",
+        "angular": "(onBlur) event binding"
+      }
+    },
+    {
+      "name": "_keyPress",
+      "type": "(event) => void",
+      "description": "",
+      "frameworks": {
+        "webComponent": "_keyPress custom event",
+        "react": "onKeyPress prop",
+        "angular": "(onKeyPress) event binding"
+      }
+    }
+  ],
+  "slots": [],
+  "criticalNotes": [
+    "Always wrap in GoabFormItem for proper labeling",
+    "Use for content > 45-75 characters, Input for shorter content",
+    "Use countBy='word' for content guidance, 'character' for limits"
+  ],
+  "basicUsage": {
+    "webComponent": "<goa-form-item label=\"Additional comments\" help-text=\"Maximum 500 characters\">\n  <goa-textarea name=\"comments\" width=\"100%\" rows=\"5\" max-count=\"500\"></goa-textarea>\n</goa-form-item>",
+    "react": "<GoabFormItem label=\"Additional comments\" helpText=\"Maximum 500 characters\">\n  <GoabTextArea\n    name=\"comments\"\n    width=\"100%\"\n    rows={5}\n    maxCount={500}\n    value={comments}\n    onChange={(detail) => setComments(detail.value)}\n  />\n</GoabFormItem>",
+    "angular": "<goab-form-item label=\"Additional comments\" helpText=\"Maximum 500 characters\">\n  <goab-textarea\n    name=\"comments\"\n    width=\"100%\"\n    [rows]=\"5\"\n    [maxCount]=\"500\"\n    [value]=\"comments\"\n    (onChange)=\"onCommentsChange($event)\">\n  </goab-textarea>\n</goab-form-item>"
+  },
+  "relatedExamples": [
+    "ask-a-question-and-give-more-information",
+    "ask-a-long-answer-question-with-a-maximum-word-count"
+  ],
+  "relatedComponents": [
+    "FormItem",
+    "Input"
+  ]
+}

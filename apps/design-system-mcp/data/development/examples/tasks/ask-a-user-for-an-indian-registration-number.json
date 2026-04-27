@@ -1,0 +1,87 @@
+{
+  "$schema": "../recipe-schema.json",
+  "schemaVersion": "2.1.0-ai-context",
+  "recipeId": "ask-a-user-for-an-indian-registration-number",
+  "recipeName": "Ask a User for an Indian Registration Number",
+  "category": "form-pattern",
+  "summary": "Collect structured First Nations registration numbers with appropriate field segmentation, sizing, and validation constraints",
+  "serviceContext": {
+    "useCase": "Government services requiring verification of First Nations status registration for program eligibility or service delivery",
+    "userType": "citizen",
+    "governmentServiceFlows": [
+      "When citizens apply for First Nations-specific programs or benefits",
+      "When verifying eligibility for Indigenous services or supports",
+      "When registering for programs that require status verification",
+      "When accessing treaty rights or status-based services"
+    ],
+    "relatedPatterns": [
+      "ask-a-user-for-an-address",
+      "ask-a-user-for-direct-deposit-information",
+      "question-page"
+    ]
+  },
+  "components": [
+    {
+      "componentName": "GoabFormItem",
+      "role": "Container for registration number section and individual field labels",
+      "purpose": "Provide structured labeling and help text for each component"
+    },
+    {
+      "componentName": "GoabBlock",
+      "role": "Layout container for horizontal field arrangement",
+      "purpose": "Organize the three registration number components in a logical row"
+    },
+    {
+      "componentName": "GoabInput",
+      "role": "Individual input fields for each registration number segment",
+      "purpose": "Collect band number, family number, and position with specific constraints"
+    }
+  ],
+  "codeReference": {
+    "exampleFile": "ask-a-user-for-an-indian-registration-number.tsx",
+    "linesOfCode": 145,
+    "lastModified": "2024-01-01T00:00:00.000Z"
+  },
+  "implementation": {
+    "complexity": "medium",
+    "keyPatterns": [
+      "Structured ID collection with segmented fields",
+      "Specific field width sizing based on expected input length",
+      "Maximum length validation for each segment",
+      "Help text providing clear format guidance",
+      "Horizontal layout for related input fields"
+    ],
+    "designPatterns": [
+      "Segmented input pattern",
+      "Constrained input validation",
+      "Structured government ID collection",
+      "Progressive field sizing"
+    ],
+    "accessibility": [
+      "Main form item provides overall context with large label size",
+      "Each segment has clear labels and help text",
+      "Help text specifies expected input format and length",
+      "Logical tab order through the three input fields"
+    ]
+  },
+  "codeExamples": {
+    "react": {
+      "complete": "import { Sandbox } from \"@components/sandbox\";\nimport { GoabBlock, GoabFormItem, GoabInput } from \"@abgov/react-components\";\nimport { useContext } from \"react\";\nimport { LanguageVersionContext } from \"@contexts/LanguageVersionContext.tsx\";\nimport { CodeSnippet } from \"@components/code-snippet/CodeSnippet.tsx\";\n\nexport const AskAUserForAnIndianRegistrationNumber = () => {\n  const {version} = useContext(LanguageVersionContext);\n  const noop = () => {}\n\n  return (\n    <Sandbox flags={[\"reactive\"]} skipRenderOnly={\"react\"}>\n      <GoabFormItem label=\"Indian registration number\" labelSize=\"large\">\n        <GoabBlock gap=\"m\" direction=\"row\">\n          <GoabFormItem label=\"Band #\" helpText=\"3 digits\">\n            <GoabInput\n              onChange={noop}\n              value=\"\"\n              name=\"bandNo\"\n              width=\"88px\"\n              maxLength={3}\n            />\n          </GoabFormItem>\n          <GoabFormItem label=\"Family\" helpText=\"Up to 5 digits\">\n            <GoabInput\n              onChange={noop}\n              value=\"\"\n              name=\"family\"\n              width=\"105px\"\n              maxLength={5}\n            />\n          </GoabFormItem>\n          <GoabFormItem label=\"Position\" helpText=\"2 digits\">\n            <GoabInput\n              onChange={noop}\n              value=\"\"\n              name=\"position\"\n              width=\"71px\"\n              maxLength={2}\n            />\n          </GoabFormItem>\n        </GoabBlock>\n      </GoabFormItem>\n    </Sandbox>\n  )\n}",
+      "key": "const [bandNo, setBandNo] = useState<string>('');\nconst [family, setFamily] = useState<string>('');\nconst [position, setPosition] = useState<string>('');\n\nconst handleBandChange = (event: GoabInputOnChangeDetail) => {\n  setBandNo(event.value);\n};\n\nconst handleFamilyChange = (event: GoabInputOnChangeDetail) => {\n  setFamily(event.value);\n};\n\nconst handlePositionChange = (event: GoabInputOnChangeDetail) => {\n  setPosition(event.value);\n};\n\n<GoabFormItem label=\"Indian registration number\" labelSize=\"large\">\n  <GoabBlock gap=\"m\" direction=\"row\">\n    <GoabFormItem label=\"Band #\" helpText=\"3 digits\">\n      <GoabInput\n        onChange={handleBandChange}\n        value={bandNo}\n        name=\"bandNo\"\n        width=\"88px\"\n        maxLength={3}\n      />\n    </GoabFormItem>\n    \n    <GoabFormItem label=\"Family\" helpText=\"Up to 5 digits\">\n      <GoabInput\n        onChange={handleFamilyChange}\n        value={family}\n        name=\"family\"\n        width=\"105px\"\n        maxLength={5}\n      />\n    </GoabFormItem>\n    \n    <GoabFormItem label=\"Position\" helpText=\"2 digits\">\n      <GoabInput\n        onChange={handlePositionChange}\n        value={position}\n        name=\"position\"\n        width=\"71px\"\n        maxLength={2}\n      />\n    </GoabFormItem>\n  </GoabBlock>\n</GoabFormItem>"
+    },
+    "angular": {
+      "complete": "export class ExampleComponent {\n  form!: FormGroup;\n  constructor(private fb: FormBuilder) {\n    this.form = this.fb.group({\n      bandNo: [''],\n      family: [''],\n      position: [''],\n    });\n  }\n}",
+      "key": "// Reactive Forms\nform!: FormGroup;\n\nconstructor(private fb: FormBuilder) {\n  this.form = this.fb.group({\n    bandNo: ['', [Validators.maxLength(3)]],\n    family: ['', [Validators.maxLength(5)]],\n    position: ['', [Validators.maxLength(2)]]\n  });\n}\n\n// Template-driven Forms\nbandNo = '';\nfamily = '';\nposition = '';\n\nhandleBandChange(event: GoabInputOnChangeDetail) {\n  this.bandNo = event.value;\n}\n\nhandleFamilyChange(event: GoabInputOnChangeDetail) {\n  this.family = event.value;\n}\n\nhandlePositionChange(event: GoabInputOnChangeDetail) {\n  this.position = event.value;\n}"
+    }
+  },
+  "tags": [
+    "registration-number",
+    "first-nations",
+    "structured-input",
+    "segmented-fields",
+    "government-id",
+    "validation",
+    "indigenous-services",
+    "status-verification"
+  ]
+}

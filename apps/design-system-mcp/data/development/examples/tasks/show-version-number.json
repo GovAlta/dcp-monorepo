@@ -1,0 +1,123 @@
+{
+  "$schema": "../schema/recipe-schema-2.1.0-ai-context.json",
+  "title": "Show version number",
+  "description": "Display application or service version information in the microsite header, providing transparency about software versions and development stages to users and administrators.",
+  "category": "layout-patterns",
+  "tags": [
+    "versioning",
+    "microsite-header",
+    "transparency",
+    "development-stage",
+    "information-display"
+  ],
+  "government_service_context": {
+    "citizen_flows": {
+      "applicable": true,
+      "usage": "Citizens using beta or pilot services need to understand the development stage and provide informed feedback about potential limitations."
+    },
+    "worker_flows": {
+      "applicable": true,
+      "usage": "Government workers using internal applications need version information for support requests, bug reporting, and understanding feature availability."
+    },
+    "shared_components": {
+      "applicable": true,
+      "usage": "Version information is universally useful for applications in development, testing, or requiring technical support tracking."
+    }
+  },
+  "component_analysis": {
+    "primary_components": [
+      {
+        "name": "Microsite Header",
+        "role": "Provides container for version information display",
+        "purpose": "Creates consistent location for application metadata and development stage indication"
+      },
+      {
+        "name": "Version Slot Content",
+        "role": "Contains flexible version information and descriptive text",
+        "purpose": "Allows rich formatting of version details, stage information, and additional context"
+      },
+      {
+        "name": "Development Stage Indicator",
+        "role": "Shows application maturity level (alpha, beta, pilot, etc.)",
+        "purpose": "Sets user expectations about stability, completeness, and potential issues"
+      },
+      {
+        "name": "Version Number",
+        "role": "Displays specific software version identifier",
+        "purpose": "Enables precise tracking for support, bug reports, and feature discussions"
+      }
+    ],
+    "accessibility_features": [
+      "Version information is properly contained within header landmark",
+      "Text content is readable by screen readers",
+      "Semantic markup preserves meaning of version information",
+      "High contrast maintained for version text visibility"
+    ],
+    "user_experience_notes": [
+      "Version placement in header provides consistent discovery location",
+      "Development stage indication manages user expectations appropriately",
+      "Slotted content allows flexible presentation of version details",
+      "Non-intrusive presentation doesn't interfere with primary tasks",
+      "Transparency builds trust and supports informed user feedback"
+    ]
+  },
+  "implementation": {
+    "react": {
+      "code": "import React from 'react';\nimport { GoabMicrositeHeader } from '@abgov/react-components';\n\nfunction VersionedApplicationHeader() {\n  // Version information could come from build process or API\n  const appVersion = '1.23.4';\n  const buildDate = '2023-11-15';\n  const commitHash = 'a1b2c3d';\n  const developmentStage = 'alpha'; // alpha, beta, pilot, or production\n\n  const versionContent = (\n    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', fontSize: '14px' }}>\n      <span>\n        <strong>Version {appVersion}</strong>\n        {developmentStage !== 'production' && (\n          <span style={{ marginLeft: '8px', textTransform: 'uppercase', fontWeight: 'bold' }}>\n            ({developmentStage})\n          </span>\n        )}\n      </span>\n      <span style={{ fontSize: '12px', opacity: 0.8 }}>\n        Build: {buildDate}\n      </span>\n    </div>\n  );\n\n  return (\n    <GoabMicrositeHeader\n      type={developmentStage === 'production' ? undefined : developmentStage}\n      version={versionContent}\n    />\n  );\n}\n\n// Simple version display\nfunction SimpleVersionHeader() {\n  return (\n    <GoabMicrositeHeader\n      type=\"beta\"\n      version={<span><strong>v2.1.0</strong> (Beta)</span>}\n    />\n  );\n}\n\n// Version with additional context\nfunction DetailedVersionHeader() {\n  const versionInfo = {\n    version: '1.5.2',\n    stage: 'pilot',\n    description: 'Public pilot program',\n    feedbackUrl: '/feedback'\n  };\n\n  const versionContent = (\n    <div style={{ textAlign: 'right', fontSize: '14px' }}>\n      <div>\n        <strong>Version {versionInfo.version}</strong>\n        <span style={{ marginLeft: '8px', textTransform: 'uppercase', fontWeight: 'bold' }}>\n          ({versionInfo.stage})\n        </span>\n      </div>\n      <div style={{ fontSize: '12px', marginTop: '2px' }}>\n        {versionInfo.description}\n      </div>\n      <div style={{ fontSize: '12px', marginTop: '2px' }}>\n        <a href={versionInfo.feedbackUrl} style={{ color: 'inherit' }}>\n          Provide feedback\n        </a>\n      </div>\n    </div>\n  );\n\n  return (\n    <GoabMicrositeHeader\n      type={versionInfo.stage}\n      version={versionContent}\n    />\n  );\n}\n\n// Hook for managing version information\nfunction useVersionInfo() {\n  const [versionData, setVersionData] = React.useState({\n    version: '1.0.0',\n    stage: 'alpha',\n    buildDate: new Date().toISOString().split('T')[0],\n    commitHash: 'unknown'\n  });\n\n  // Fetch version info from API or build-time injection\n  React.useEffect(() => {\n    // This could fetch from /api/version or use build-time environment variables\n    const fetchVersionInfo = async () => {\n      try {\n        // Example: const response = await fetch('/api/version');\n        // const data = await response.json();\n        // setVersionData(data);\n        \n        // For now, use build-time or environment variables\n        setVersionData({\n          version: process.env.REACT_APP_VERSION || '1.0.0',\n          stage: process.env.REACT_APP_STAGE || 'development',\n          buildDate: process.env.REACT_APP_BUILD_DATE || new Date().toISOString().split('T')[0],\n          commitHash: process.env.REACT_APP_COMMIT_HASH || 'unknown'\n        });\n      } catch (error) {\n        console.warn('Could not fetch version information:', error);\n      }\n    };\n\n    fetchVersionInfo();\n  }, []);\n\n  const formatVersionDisplay = () => {\n    return (\n      <div style={{ textAlign: 'right', fontSize: '14px' }}>\n        <div>\n          <strong>v{versionData.version}</strong>\n          {versionData.stage !== 'production' && (\n            <span style={{ marginLeft: '8px', textTransform: 'uppercase', fontWeight: 'bold' }}>\n              ({versionData.stage})\n            </span>\n          )}\n        </div>\n        <div style={{ fontSize: '12px', opacity: 0.8 }}>\n          {versionData.buildDate}\n        </div>\n      </div>\n    );\n  };\n\n  return {\n    versionData,\n    versionDisplay: formatVersionDisplay(),\n    isProduction: versionData.stage === 'production'\n  };\n}"
+    },
+    "angular": {
+      "code": "import { Component, Input } from '@angular/core';\nimport { HttpClient } from '@angular/common/http';\nimport { Observable, of } from 'rxjs';\nimport { catchError } from 'rxjs/operators';\n\ninterface VersionInfo {\n  version: string;\n  stage: 'alpha' | 'beta' | 'pilot' | 'production';\n  buildDate: string;\n  commitHash?: string;\n  description?: string;\n}\n\n@Component({\n  selector: 'app-versioned-header',\n  template: `\n    <goab-microsite-header\n      [type]=\"versionInfo.stage === 'production' ? null : versionInfo.stage\"\n      [version]=\"versionTemplate\"\n    >\n      <ng-template #versionTemplate>\n        <div style=\"display: flex; flex-direction: column; align-items: flex-end; font-size: 14px;\">\n          <span>\n            <strong>Version {{ versionInfo.version }}</strong>\n            <span \n              *ngIf=\"versionInfo.stage !== 'production'\"\n              style=\"margin-left: 8px; text-transform: uppercase; font-weight: bold;\"\n            >\n              ({{ versionInfo.stage }})\n            </span>\n          </span>\n          <span style=\"font-size: 12px; opacity: 0.8;\">\n            Build: {{ versionInfo.buildDate }}\n          </span>\n          <span *ngIf=\"versionInfo.description\" style=\"font-size: 12px; margin-top: 2px;\">\n            {{ versionInfo.description }}\n          </span>\n        </div>\n      </ng-template>\n    </goab-microsite-header>\n  `\n})\nexport class VersionedHeaderComponent {\n  @Input() versionInfo: VersionInfo = {\n    version: '1.0.0',\n    stage: 'alpha',\n    buildDate: new Date().toISOString().split('T')[0]\n  };\n}\n\n@Component({\n  selector: 'app-simple-version-header',\n  template: `\n    <goab-microsite-header\n      type=\"beta\"\n      [version]=\"versionTemplate\"\n    >\n      <ng-template #versionTemplate>\n        <span><strong>v2.1.0</strong> (Beta)</span>\n      </ng-template>\n    </goab-microsite-header>\n  `\n})\nexport class SimpleVersionHeaderComponent {}\n\n@Component({\n  selector: 'app-detailed-version-header',\n  template: `\n    <goab-microsite-header\n      [type]=\"versionConfig.stage\"\n      [version]=\"versionTemplate\"\n    >\n      <ng-template #versionTemplate>\n        <div style=\"text-align: right; font-size: 14px;\">\n          <div>\n            <strong>Version {{ versionConfig.version }}</strong>\n            <span style=\"margin-left: 8px; text-transform: uppercase; font-weight: bold;\">\n              ({{ versionConfig.stage }})\n            </span>\n          </div>\n          <div style=\"font-size: 12px; margin-top: 2px;\">\n            {{ versionConfig.description }}\n          </div>\n          <div style=\"font-size: 12px; margin-top: 2px;\">\n            <a [href]=\"versionConfig.feedbackUrl\" style=\"color: inherit;\">\n              Provide feedback\n            </a>\n          </div>\n        </div>\n      </ng-template>\n    </goab-microsite-header>\n  `\n})\nexport class DetailedVersionHeaderComponent {\n  versionConfig = {\n    version: '1.5.2',\n    stage: 'pilot' as const,\n    description: 'Public pilot program',\n    feedbackUrl: '/feedback'\n  };\n}\n\n// Service for managing version information\n@Injectable({\n  providedIn: 'root'\n})\nexport class VersionService {\n  constructor(private http: HttpClient) {}\n\n  private defaultVersionInfo: VersionInfo = {\n    version: '1.0.0',\n    stage: 'development' as any,\n    buildDate: new Date().toISOString().split('T')[0]\n  };\n\n  getVersionInfo(): Observable<VersionInfo> {\n    // Try to fetch from API, fall back to environment variables or defaults\n    return this.http.get<VersionInfo>('/api/version').pipe(\n      catchError(error => {\n        console.warn('Could not fetch version information from API:', error);\n        return of(this.getVersionFromEnvironment());\n      })\n    );\n  }\n\n  private getVersionFromEnvironment(): VersionInfo {\n    // Access Angular environment variables or build-time configuration\n    return {\n      version: (window as any).__APP_VERSION__ || this.defaultVersionInfo.version,\n      stage: (window as any).__APP_STAGE__ || this.defaultVersionInfo.stage,\n      buildDate: (window as any).__BUILD_DATE__ || this.defaultVersionInfo.buildDate,\n      commitHash: (window as any).__COMMIT_HASH__\n    };\n  }\n\n  formatVersionForDisplay(versionInfo: VersionInfo): string {\n    let display = `v${versionInfo.version}`;\n    if (versionInfo.stage !== 'production') {\n      display += ` (${versionInfo.stage.toUpperCase()})`;\n    }\n    return display;\n  }\n\n  isProductionVersion(versionInfo: VersionInfo): boolean {\n    return versionInfo.stage === 'production';\n  }\n}"
+    }
+  },
+  "usage_guidelines": {
+    "when_to_use": [
+      "Applications in development, testing, or pilot phases",
+      "Internal tools where version tracking is important for support",
+      "Services where users need to understand development stage",
+      "Applications with frequent updates or iterative development",
+      "Beta or pilot programs where user feedback is actively sought"
+    ],
+    "when_not_to_use": [
+      "Mature, stable applications where version changes are infrequent",
+      "Simple informational sites without interactive functionality",
+      "Applications where version information would confuse users",
+      "When space constraints make version display impractical"
+    ],
+    "best_practices": [
+      "Use semantic versioning (major.minor.patch) for consistency",
+      "Clearly indicate development stage (alpha, beta, pilot)",
+      "Include build date for support and troubleshooting context",
+      "Provide feedback mechanism for non-production versions",
+      "Use appropriate microsite header type to match development stage",
+      "Consider including commit hash for detailed technical tracking",
+      "Auto-update version information from build process"
+    ]
+  },
+  "variations": [
+    {
+      "name": "Minimal version display",
+      "description": "Show only version number without additional details",
+      "code_change": "Simplify version content: version={<span>v{appVersion}</span>}"
+    },
+    {
+      "name": "Version with feedback link",
+      "description": "Include direct link to feedback form for development versions",
+      "code_change": "Add feedback link: <a href='/feedback'>Report issues</a>"
+    },
+    {
+      "name": "API-driven versioning",
+      "description": "Fetch version information from backend API",
+      "code_change": "Use useEffect to fetch: const [version, setVersion] = useState(); useEffect(() => fetch('/api/version').then(setVersion), []);"
+    },
+    {
+      "name": "Build-time injection",
+      "description": "Inject version info during build process",
+      "code_change": "Use environment variables: version: process.env.REACT_APP_VERSION"
+    }
+  ],
+  "related_patterns": [
+    "header-with-navigation",
+    "show-quick-links",
+    "communicate-a-future-service-outage"
+  ]
+}

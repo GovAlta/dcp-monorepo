@@ -1,0 +1,222 @@
+{
+  "name": "RadioItem",
+  "category": "component",
+  "summary": "",
+  "import": "import { GoabRadioItem } from '@abgov/react-components'",
+  "customElement": {
+    "tagName": "goa-radio-item",
+    "reactName": "GoabRadioItem",
+    "angularSelector": "goab-radio-item"
+  },
+  "props": [
+    {
+      "name": "value",
+      "type": "string",
+      "required": true,
+      "default": null,
+      "description": "",
+      "frameworks": {
+        "webComponent": "value=\"...\"",
+        "react": "value={...}",
+        "angular": "[value]=\"...\""
+      }
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "",
+      "frameworks": {
+        "webComponent": "name=\"...\"",
+        "react": "name={...}",
+        "angular": "[name]=\"...\""
+      }
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "",
+      "frameworks": {
+        "webComponent": "label=\"...\"",
+        "react": "label={...}",
+        "angular": "[label]=\"...\""
+      }
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "",
+      "frameworks": {
+        "webComponent": "description=\"...\"",
+        "react": "description={...}",
+        "angular": "[description]=\"...\""
+      }
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "required": false,
+      "default": "false",
+      "description": "",
+      "frameworks": {
+        "webComponent": "disabled=\"true\"",
+        "react": "disabled={true}",
+        "angular": "[disabled]=\"true\""
+      }
+    },
+    {
+      "name": "error",
+      "type": "boolean",
+      "required": false,
+      "default": "false",
+      "description": "",
+      "frameworks": {
+        "webComponent": "error=\"true\"",
+        "react": "error={true}",
+        "angular": "[error]=\"true\""
+      }
+    },
+    {
+      "name": "checked",
+      "type": "boolean",
+      "required": false,
+      "default": "false",
+      "description": "",
+      "frameworks": {
+        "webComponent": "checked=\"true\"",
+        "react": "checked={true}",
+        "angular": "[checked]=\"true\""
+      }
+    },
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "",
+      "frameworks": {
+        "webComponent": "aria-label=\"...\"",
+        "react": "ariaLabel={...}",
+        "angular": "[ariaLabel]=\"...\""
+      }
+    },
+    {
+      "name": "revealarialabel",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "",
+      "frameworks": {
+        "webComponent": "revealarialabel=\"...\"",
+        "react": "revealarialabel={...}",
+        "angular": "[revealarialabel]=\"...\""
+      }
+    },
+    {
+      "name": "maxWidth",
+      "type": "string",
+      "required": false,
+      "default": "none",
+      "description": "",
+      "frameworks": {
+        "webComponent": "max-width=\"...\"",
+        "react": "maxWidth={...}",
+        "angular": "[maxWidth]=\"...\""
+      }
+    },
+    {
+      "name": "mt",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "",
+      "frameworks": {
+        "webComponent": "mt=\"...\"",
+        "react": "mt={...}",
+        "angular": "[mt]=\"...\""
+      }
+    },
+    {
+      "name": "mr",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "",
+      "frameworks": {
+        "webComponent": "mr=\"...\"",
+        "react": "mr={...}",
+        "angular": "[mr]=\"...\""
+      }
+    },
+    {
+      "name": "mb",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "",
+      "frameworks": {
+        "webComponent": "mb=\"...\"",
+        "react": "mb={...}",
+        "angular": "[mb]=\"...\""
+      }
+    },
+    {
+      "name": "ml",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "",
+      "frameworks": {
+        "webComponent": "ml=\"...\"",
+        "react": "ml={...}",
+        "angular": "[ml]=\"...\""
+      }
+    }
+  ],
+  "events": [
+    {
+      "name": "_revealChange",
+      "type": "(event) => void",
+      "description": "",
+      "frameworks": {
+        "webComponent": "_revealChange custom event",
+        "react": "onRevealChange prop",
+        "angular": "(onRevealChange) event binding"
+      }
+    },
+    {
+      "name": "_radioItemChange",
+      "type": "(event) => void",
+      "description": "",
+      "frameworks": {
+        "webComponent": "_radioItemChange custom event",
+        "react": "onRadioItemChange prop",
+        "angular": "(onRadioItemChange) event binding"
+      }
+    }
+  ],
+  "slots": [
+    {
+      "name": "description",
+      "description": ""
+    },
+    {
+      "name": "reveal",
+      "description": ""
+    }
+  ],
+  "criticalNotes": [],
+  "commonMistakes": [],
+  "basicUsage": {
+    "webComponent": "",
+    "react": "",
+    "angular": ""
+  },
+  "relatedExamples": [],
+  "relatedComponents": []
+}

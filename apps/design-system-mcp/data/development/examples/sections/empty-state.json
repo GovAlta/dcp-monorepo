@@ -1,0 +1,100 @@
+{
+  "id": "empty-state",
+  "name": "Empty State",
+  "category": "section",
+  "description": "A centered display shown when a list or table has no results. Includes an optional illustration, heading, explanatory text, and action button. Used to gracefully handle empty data scenarios and guide users on what to do next.",
+
+  "whenToUse": [
+    "When a filtered list returns no results",
+    "When a data table is empty after search/filter",
+    "When a new user has no items yet",
+    "When all items have been deleted or archived"
+  ],
+
+  "components": [
+    {
+      "name": "GoabButton",
+      "purpose": "Action to resolve empty state (e.g., 'Clear filters', 'Create new')",
+      "props": ["type='tertiary'", "size='compact'"]
+    },
+    {
+      "name": "img",
+      "purpose": "Optional illustration SVG",
+      "note": "Use simple, relevant illustration - not required"
+    }
+  ],
+
+  "cssClasses": {
+    "clients-empty-state-cell": {
+      "purpose": "Table cell wrapper - removes padding and border for full-width empty state",
+      "css": ".clients-empty-state-cell {\n  padding: 0 !important;\n  border: none !important;\n}"
+    },
+    "clients-empty-state": {
+      "purpose": "Container for empty state content",
+      "css": ".clients-empty-state {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  padding: 64px var(--goa-space-m);\n  background-color: var(--goa-color-greyscale-white, #ffffff);\n  text-align: center;\n}"
+    },
+    "clients-empty-state__illustration": {
+      "purpose": "Illustration sizing",
+      "css": ".clients-empty-state__illustration {\n  width: 100px;\n  height: auto;\n  margin-bottom: 32px;\n}"
+    },
+    "clients-empty-state__heading": {
+      "purpose": "Main message",
+      "css": ".clients-empty-state__heading {\n  font: var(--goa-typography-heading-2xs);\n  color: var(--goa-color-text-secondary);\n  margin-bottom: 16px;\n}"
+    },
+    "clients-empty-state__subline": {
+      "purpose": "Supporting explanation",
+      "css": ".clients-empty-state__subline {\n  font: var(--goa-typography-body-s);\n  color: var(--goa-color-greyscale-500);\n  margin-bottom: 32px;\n}"
+    }
+  },
+
+  "example": {
+    "framework": "react",
+    "description": "Empty state for table with no search results",
+    "code": "import emptyStateIllustration from '../assets/empty-state-illustration.svg';\n\n// In table body when filteredItems.length === 0\n{filteredItems.length === 0 && items.length > 0 ? (\n  <tr>\n    <td colSpan={6} className=\"clients-empty-state-cell\">\n      <div className=\"clients-empty-state\">\n        <img \n          src={emptyStateIllustration} \n          alt=\"\" \n          className=\"clients-empty-state__illustration\" \n        />\n        <span className=\"clients-empty-state__heading\">\n          No results found\n        </span>\n        <span className=\"clients-empty-state__subline\">\n          Try adjusting your search or filters.\n        </span>\n        <GoabButton type=\"tertiary\" size=\"compact\" onClick={clearFilters}>\n          Clear filters\n        </GoabButton>\n      </div>\n    </td>\n  </tr>\n) : (\n  // Normal data rows\n  filteredItems.map(item => (...))\n)}"
+  },
+
+  "variants": [
+    {
+      "name": "No results from search",
+      "heading": "No results found",
+      "subline": "Try adjusting your search or filters.",
+      "action": "Clear filters"
+    },
+    {
+      "name": "Empty collection (new user)",
+      "heading": "No items yet",
+      "subline": "Create your first item to get started.",
+      "action": "Create item"
+    },
+    {
+      "name": "All items processed",
+      "heading": "All caught up!",
+      "subline": "You have no pending items.",
+      "action": null
+    },
+    {
+      "name": "Data loading failed",
+      "heading": "Unable to load data",
+      "subline": "Something went wrong. Please try again.",
+      "action": "Retry"
+    }
+  ],
+
+  "contentGuidelines": {
+    "heading": "Short, clear statement of the situation (5-7 words max)",
+    "subline": "One sentence explaining what happened or what to do",
+    "action": "Clear verb that resolves the situation",
+    "illustration": "Simple, relevant SVG - avoid complex graphics"
+  },
+
+  "considerations": [
+    "Use colSpan to span full table width when inside tbody",
+    "Remove table cell padding/border for clean appearance",
+    "Distinguish between 'no search results' (data exists but filtered) vs 'no data' (collection truly empty)",
+    "Action button should directly address the situation (clear filters, create new, retry)",
+    "Keep illustration simple and lightweight",
+    "Empty state illustration alt='' since it's decorative"
+  ],
+
+  "relatedPatterns": ["data-table", "list-page", "loading-skeleton"]
+}

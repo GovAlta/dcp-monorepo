@@ -1,0 +1,64 @@
+{
+  "name": "Form",
+  "category": "component",
+  "summary": "",
+  "import": "import { GoabForm } from '@abgov/react-components'",
+  "customElement": {
+    "tagName": "goa-public-form",
+    "reactName": "GoabForm",
+    "angularSelector": "goab-form"
+  },
+  "props": [
+    {
+      "name": "status",
+      "type": "\"initializing\" | \"complete\"",
+      "required": false,
+      "default": "complete",
+      "description": "",
+      "frameworks": {
+        "webComponent": "status=\"...\"",
+        "react": "status={...}",
+        "angular": "[status]=\"...\""
+      }
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "required": false,
+      "default": "[name] not set",
+      "description": "",
+      "frameworks": {
+        "webComponent": "name=\"...\"",
+        "react": "name={...}",
+        "angular": "[name]=\"...\""
+      }
+    }
+  ],
+  "events": [
+    {
+      "name": "_init",
+      "type": "(event) => void",
+      "description": "",
+      "frameworks": {
+        "webComponent": "_init custom event",
+        "react": "onInit prop",
+        "angular": "(onInit) event binding"
+      }
+    }
+  ],
+  "slots": [
+    {
+      "name": "default",
+      "description": ""
+    }
+  ],
+  "criticalNotes": [],
+  "commonMistakes": [],
+  "basicUsage": {
+    "webComponent": "",
+    "react": "",
+    "angular": ""
+  },
+  "relatedExamples": [],
+  "relatedComponents": []
+}

@@ -1,0 +1,112 @@
+{
+  "$schema": "../schema/recipe-schema-2.1.0-ai-context.json",
+  "title": "Show a simple progress indicator on a question page",
+  "description": "Display question progress using a simple text-based indicator (e.g., 'Question 3 of 9') on a single question page to help users understand their position in a form flow.",
+  "category": "interaction-patterns",
+  "tags": [
+    "progress",
+    "navigation",
+    "forms",
+    "question-page",
+    "user-guidance"
+  ],
+  "government_service_context": {
+    "citizen_flows": {
+      "applicable": true,
+      "usage": "Citizens completing multi-question forms need to understand their progress through applications, registrations, or information submissions."
+    },
+    "worker_flows": {
+      "applicable": true,
+      "usage": "Government workers processing multi-step assessments, reviews, or data collection forms benefit from progress indication."
+    },
+    "shared_components": {
+      "applicable": true,
+      "usage": "Progress indicators are universally helpful in any multi-question flow regardless of user type."
+    }
+  },
+  "component_analysis": {
+    "primary_components": [
+      {
+        "name": "Text Progress Indicator",
+        "role": "Shows current question position in total sequence",
+        "purpose": "Provides orientation and reduces user anxiety about form length"
+      },
+      {
+        "name": "Back Link",
+        "role": "Enables navigation to previous question",
+        "purpose": "Allows users to review and modify previous answers"
+      },
+      {
+        "name": "Question Form",
+        "role": "Contains the actual question and input controls",
+        "purpose": "Collects the required information from the user"
+      }
+    ],
+    "accessibility_features": [
+      "Progress information is conveyed through semantic heading structure",
+      "Back link includes proper focus management",
+      "Form controls have appropriate labels and aria attributes",
+      "Clear visual hierarchy separates progress from question content"
+    ],
+    "user_experience_notes": [
+      "Simple text-based progress is less overwhelming than visual progress bars",
+      "Numbered progression gives users concrete sense of remaining effort",
+      "Consistent positioning and styling creates predictable experience",
+      "Progress indicator is styled as secondary text to not compete with main question"
+    ]
+  },
+  "implementation": {
+    "react": {
+      "code": "import React from 'react';\nimport {\n  GoabButton,\n  GoabFormItem,\n  GoabRadioGroup,\n  GoabRadioItem\n} from '@abgov/react-components';\n\nfunction SimpleProgressQuestionPage() {\n  const handleAnswerChange = (value: string) => {\n    console.log('Answer selected:', value);\n  };\n\n  const handleSubmit = () => {\n    console.log('Proceeding to next question');\n  };\n\n  const handleBack = () => {\n    console.log('Returning to previous question');\n  };\n\n  return (\n    <div className=\"question-page\">\n      <a href=\"#\" className=\"back-link\" onClick={handleBack}>\n        Back\n      </a>\n      <h3 className=\"section-title\">Question 3 of 9</h3>\n      <GoabFormItem \n        mt=\"xs\" \n        label=\"Do you currently live in Canada?\" \n        labelSize=\"large\"\n      >\n        <GoabRadioGroup\n          name=\"canada\"\n          ariaLabel=\"Do you currently live in Canada?\"\n          onChange={handleAnswerChange}\n        >\n          <GoabRadioItem value=\"yes\" label=\"Yes\" />\n          <GoabRadioItem value=\"no\" label=\"No\" />\n        </GoabRadioGroup>\n      </GoabFormItem>\n      <GoabButton type=\"submit\" mt=\"2xl\" onClick={handleSubmit}>\n        Save and continue\n      </GoabButton>\n    </div>\n  );\n}",
+      "styling": ".back-link::before {\n  content: \"\";\n  display: inline-block;\n  width: 42px;\n  height: 24px;\n  vertical-align: middle;\n  background: url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 2 22 22\" fill=\"none\" stroke=\"%230070C4\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"15 18 9 12 15 6\"></polyline></svg>') center center no-repeat;\n}\n\n.back-link:visited::before,\n.back-link:hover::before {\n  background: url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 2 22 22\" fill=\"none\" stroke=\"%23004f84\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"15 18 9 12 15 6\"></polyline></svg>') center center no-repeat;\n}\n\n.back-link {\n  margin-top: var(--goa-space-m);\n}\n\n.section-title {\n  margin-bottom: 0;\n  color: var(--goa-color-text-secondary);\n}\n\n.back-link + .section-title {\n  margin-top: var(--goa-space-2xl);\n}"
+    },
+    "angular": {
+      "code": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'app-simple-progress-question',\n  template: `\n    <div class=\"question-page\">\n      <a href=\"#\" class=\"back-link\" (click)=\"handleBack($event)\">\n        Back\n      </a>\n      <h3 class=\"section-title\">Question 3 of 9</h3>\n      <goab-form-item \n        mt=\"xs\" \n        label=\"Do you currently live in Canada?\" \n        labelSize=\"large\"\n      >\n        <goab-radio-group\n          name=\"canada\"\n          ariaLabel=\"Do you currently live in Canada?\"\n          (onChange)=\"handleAnswerChange($event)\"\n        >\n          <goab-radio-item value=\"yes\" label=\"Yes\"></goab-radio-item>\n          <goab-radio-item value=\"no\" label=\"No\"></goab-radio-item>\n        </goab-radio-group>\n      </goab-form-item>\n      <goab-button type=\"submit\" mt=\"2xl\" (click)=\"handleSubmit()\">\n        Save and continue\n      </goab-button>\n    </div>\n  `\n})\nexport class SimpleProgressQuestionComponent {\n  handleAnswerChange(value: string) {\n    console.log('Answer selected:', value);\n  }\n\n  handleSubmit() {\n    console.log('Proceeding to next question');\n  }\n\n  handleBack(event: Event) {\n    event.preventDefault();\n    console.log('Returning to previous question');\n  }\n}",
+      "styling": ".back-link::before {\n  content: \"\";\n  display: inline-block;\n  width: 42px;\n  height: 24px;\n  vertical-align: middle;\n  background: url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 2 22 22\" fill=\"none\" stroke=\"%230070C4\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"15 18 9 12 15 6\"></polyline></svg>') center center no-repeat;\n}\n\n.back-link:visited::before,\n.back-link:hover::before {\n  background: url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 2 22 22\" fill=\"none\" stroke=\"%23004f84\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"15 18 9 12 15 6\"></polyline></svg>') center center no-repeat;\n}\n\n.back-link {\n  margin-top: var(--goa-space-m);\n}\n\n.section-title {\n  margin-bottom: 0;\n  color: var(--goa-color-text-secondary);\n}\n\n.back-link + .section-title {\n  margin-top: var(--goa-space-2xl);\n}"
+    }
+  },
+  "usage_guidelines": {
+    "when_to_use": [
+      "Multi-question forms where users need orientation",
+      "Sequential workflows with known total number of steps",
+      "When progress information helps reduce user anxiety",
+      "Forms where users might want to gauge remaining effort"
+    ],
+    "when_not_to_use": [
+      "Single question forms",
+      "Workflows where total number of questions is variable",
+      "Very short forms (2-3 questions total)",
+      "When progress might discourage completion due to length"
+    ],
+    "best_practices": [
+      "Use consistent formatting (e.g., 'Question X of Y')",
+      "Position progress indicator prominently but not dominant",
+      "Style as secondary text to maintain focus on main question",
+      "Always include back navigation when showing progress",
+      "Ensure progress information is accessible to screen readers"
+    ]
+  },
+  "variations": [
+    {
+      "name": "Step-based progress",
+      "description": "Use 'Step X of Y' instead of 'Question X of Y' for multi-step processes",
+      "code_change": "Replace progress text with: <h3 className=\"section-title\">Step 3 of 9</h3>"
+    },
+    {
+      "name": "Section-based progress",
+      "description": "Show section progress instead of individual question progress",
+      "code_change": "Use format like: <h3 className=\"section-title\">Section 2 of 4: Personal Information</h3>"
+    },
+    {
+      "name": "Percentage progress",
+      "description": "Show completion percentage alongside question number",
+      "code_change": "Add percentage: <h3 className=\"section-title\">Question 3 of 9 (33% complete)</h3>"
+    }
+  ],
+  "related_patterns": [
+    "show-a-simple-progress-indicator-on-a-question-page-with-multiple-questions",
+    "form-stepper-with-controlled-navigation", 
+    "show-a-section-title-on-a-question-page",
+    "question-page"
+  ]
+}

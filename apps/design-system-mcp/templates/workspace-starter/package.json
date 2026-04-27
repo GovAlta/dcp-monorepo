@@ -1,0 +1,28 @@
+{
+  "name": "goa-workspace-starter",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Government of Alberta workspace app starter template",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "build:check": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@abgov/react-components": "file:../../../ui-components/dist/libs/react-components",
+    "@abgov/ui-components-common": "file:../../../ui-components/dist/libs/common",
+    "@abgov/web-components": "file:../../../ui-components/dist/libs/web-components",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0",
+    "react-router-dom": "^6.22.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "typescript": "^5.3.3",
+    "vite": "^5.4.7"
+  }
+}

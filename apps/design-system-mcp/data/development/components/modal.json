@@ -1,0 +1,161 @@
+{
+  "name": "Modal",
+  "category": "overlay",
+  "summary": "Dialog overlay for focused interactions, confirmations, and critical content with automatic focus management.",
+  "import": "import { GoabModal } from '@abgov/react-components'",
+  "customElement": {
+    "tagName": "goa-modal",
+    "reactName": "GoabModal",
+    "angularSelector": "goab-modal"
+  },
+  "props": [
+    {
+      "name": "heading",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "Title text in modal header",
+      "frameworks": {
+        "webComponent": "heading=\"...\"",
+        "react": "heading={...}",
+        "angular": "[heading]=\"...\""
+      }
+    },
+    {
+      "name": "closable",
+      "type": "boolean",
+      "required": false,
+      "default": "false",
+      "description": "Show close button and allow backdrop click",
+      "frameworks": {
+        "webComponent": "closable=\"true\"",
+        "react": "closable={true}",
+        "angular": "[closable]=\"true\""
+      }
+    },
+    {
+      "name": "open",
+      "type": "boolean",
+      "required": false,
+      "default": "false",
+      "description": "Controls modal visibility",
+      "frameworks": {
+        "webComponent": "open=\"true\"",
+        "react": "open={true}",
+        "angular": "[open]=\"true\""
+      }
+    },
+    {
+      "name": "transition",
+      "type": "\"fast\" | \"slow\" | \"none\"",
+      "required": false,
+      "default": "none",
+      "description": "Animation style",
+      "frameworks": {
+        "webComponent": "transition=\"...\"",
+        "react": "transition={...}",
+        "angular": "[transition]=\"...\""
+      }
+    },
+    {
+      "name": "calloutVariant",
+      "type": "CalloutVariant | null",
+      "required": false,
+      "default": null,
+      "description": "Visual emphasis for critical modals",
+      "frameworks": {
+        "webComponent": "callout-variant=\"...\"",
+        "react": "calloutVariant={...}",
+        "angular": "[calloutVariant]=\"...\""
+      }
+    },
+    {
+      "name": "maxWidth",
+      "type": "string",
+      "required": false,
+      "default": "60ch",
+      "description": "Maximum width",
+      "frameworks": {
+        "webComponent": "max-width=\"...\"",
+        "react": "maxWidth={...}",
+        "angular": "[maxWidth]=\"...\""
+      }
+    },
+    {
+      "name": "testId",
+      "type": "string",
+      "required": false,
+      "default": "modal",
+      "description": "Test identifier",
+      "frameworks": {
+        "webComponent": "test-id=\"...\"",
+        "react": "testId={...}",
+        "angular": "[testId]=\"...\""
+      }
+    },
+    {
+      "name": "width",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "",
+      "frameworks": {
+        "webComponent": "width=\"...\"",
+        "react": "width={...}",
+        "angular": "[width]=\"...\""
+      }
+    }
+  ],
+  "events": [
+    {
+      "name": "_close",
+      "type": "(event) => void",
+      "description": "",
+      "frameworks": {
+        "webComponent": "_close custom event",
+        "react": "onClose prop",
+        "angular": "(onClose) event binding"
+      }
+    }
+  ],
+  "slots": [
+    {
+      "name": "heading",
+      "description": ""
+    },
+    {
+      "name": "content",
+      "description": ""
+    },
+    {
+      "name": "actions",
+      "description": "Footer action buttons"
+    },
+    {
+      "name": "default",
+      "description": "Modal content"
+    }
+  ],
+  "criticalNotes": [
+    "open is REQUIRED - control with parent state",
+    "Always handle onClose to update state",
+    "Use closable=false for critical confirmations requiring explicit action",
+    "Use calloutVariant='emergency' for destructive action confirmations"
+  ],
+  "basicUsage": {
+    "webComponent": "<goa-modal open=\"true\" heading=\"Confirm Delete\" closable=\"false\">\n  <p>This action cannot be undone.</p>\n  <div slot=\"actions\">\n    <goa-button-group alignment=\"end\">\n      <goa-button type=\"tertiary\">Cancel</goa-button>\n      <goa-button type=\"primary\" variant=\"destructive\">Delete</goa-button>\n    </goa-button-group>\n  </div>\n</goa-modal>",
+    "react": "<GoabModal\n  open={isOpen}\n  heading=\"Confirm Delete\"\n  onClose={() => setIsOpen(false)}\n  actions={\n    <GoabButtonGroup alignment=\"end\">\n      <GoabButton type=\"tertiary\" onClick={() => setIsOpen(false)}>Cancel</GoabButton>\n      <GoabButton type=\"primary\" variant=\"destructive\" onClick={handleDelete}>Delete</GoabButton>\n    </GoabButtonGroup>\n  }\n>\n  <p>This action cannot be undone.</p>\n</GoabModal>",
+    "angular": "<goab-modal\n  [open]=\"isOpen\"\n  heading=\"Confirm Delete\"\n  (onClose)=\"closeModal()\">\n  <p>This action cannot be undone.</p>\n  <ng-template #actions>\n    <goab-button-group alignment=\"end\">\n      <goab-button type=\"tertiary\" (onClick)=\"closeModal()\">Cancel</goab-button>\n      <goab-button type=\"primary\" variant=\"destructive\" (onClick)=\"delete()\">Delete</goab-button>\n    </goab-button-group>\n  </ng-template>\n</goab-modal>"
+  },
+  "relatedExamples": [
+    "confirm-a-destructive-action",
+    "confirm-a-change",
+    "warn-a-user-of-a-deadline",
+    "confirm-before-navigating-away"
+  ],
+  "relatedComponents": [
+    "Drawer",
+    "ButtonGroup",
+    "Callout"
+  ]
+}

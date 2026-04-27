@@ -1,0 +1,58 @@
+{
+  "name": "SideMenu",
+  "category": "navigation",
+  "summary": "Hierarchical navigation for organizing content into collapsible groups.",
+  "import": "import { GoabSideMenu, GoabSideMenuHeading, GoabSideMenuGroup } from '@abgov/react-components'",
+  "customElement": {
+    "tagName": "goa-side-menu",
+    "reactName": "GoabSideMenu",
+    "angularSelector": "goab-side-menu"
+  },
+  "subComponents": {
+    "heading": {
+      "tagName": "goa-side-menu-heading",
+      "reactName": "GoabSideMenuHeading",
+      "angularSelector": "goab-side-menu-heading"
+    },
+    "group": {
+      "tagName": "goa-side-menu-group",
+      "reactName": "GoabSideMenuGroup",
+      "angularSelector": "goab-side-menu-group"
+    }
+  },
+
+  "props": [
+    { "name": "testId", "type": "string", "required": false, "description": "Test identifier" }
+  ],
+
+  "headingProps": [
+    { "name": "icon", "type": "string", "required": false, "description": "Icon for heading" }
+  ],
+
+  "groupProps": [
+    { "name": "heading", "type": "string", "required": false, "description": "Group heading text" },
+    { "name": "open", "type": "boolean", "required": false, "default": false, "description": "Whether group is expanded" }
+  ],
+
+  "events": [],
+
+  "slots": [
+    { "name": "default", "description": "Menu headings, groups, and links" }
+  ],
+
+  "criticalNotes": [
+    "Use with OneColumnLayout sidebar slot",
+    "Active state detected automatically from current URL",
+    "Use GoabSideMenuGroup for collapsible sections"
+  ],
+
+  "basicUsage": {
+    "webComponent": "<goa-side-menu>\n  <goa-side-menu-heading icon=\"home\"><a href=\"/\">Home</a></goa-side-menu-heading>\n  <goa-side-menu-group heading=\"Applications\" open=\"true\">\n    <a href=\"/pending\">Pending</a>\n    <a href=\"/approved\">Approved</a>\n  </goa-side-menu-group>\n</goa-side-menu>",
+    "react": "<GoabSideMenu>\n  <GoabSideMenuHeading icon=\"home\"><a href=\"/\">Home</a></GoabSideMenuHeading>\n  <GoabSideMenuGroup heading=\"Applications\" open>\n    <a href=\"/pending\">Pending</a>\n    <a href=\"/approved\">Approved</a>\n  </GoabSideMenuGroup>\n</GoabSideMenu>",
+    "angular": "<goab-side-menu>\n  <goab-side-menu-heading icon=\"home\"><a href=\"/\">Home</a></goab-side-menu-heading>\n  <goab-side-menu-group heading=\"Applications\" [open]=\"true\">\n    <a href=\"/pending\">Pending</a>\n    <a href=\"/approved\">Approved</a>\n  </goab-side-menu-group>\n</goab-side-menu>"
+  },
+
+  "relatedExamples": [],
+
+  "relatedComponents": ["AppHeader", "OneColumnLayout"]
+}

@@ -1,0 +1,81 @@
+{
+  "$schema": "../recipe-schema.json",
+  "schemaVersion": "2.1.0-ai-context",
+  "recipeId": "ask-a-user-for-dollar-amounts",
+  "recipeName": "Ask a User for Dollar Amounts",
+  "category": "form-pattern",
+  "summary": "Collect monetary amounts with proper currency formatting using leading dollar sign indicators for clear financial data entry",
+  "serviceContext": {
+    "useCase": "Government applications requiring financial information such as education costs, expense declarations, or benefit calculations",
+    "userType": "citizen",
+    "governmentServiceFlows": [
+      "When citizens apply for financial assistance or grants requiring cost breakdowns",
+      "When collecting expense information for tax benefits or rebates",
+      "When assessing financial eligibility for government programs",
+      "When users need to declare income, costs, or financial commitments"
+    ],
+    "relatedPatterns": [
+      "ask-a-user-for-direct-deposit-information",
+      "question-page",
+      "give-background-information-before-asking-a-question"
+    ]
+  },
+  "components": [
+    {
+      "componentName": "GoabFormItem",
+      "role": "Container for monetary input fields with labels",
+      "purpose": "Provide structured labeling for each financial amount being collected"
+    },
+    {
+      "componentName": "GoabInput",
+      "role": "Monetary input field with currency formatting",
+      "purpose": "Collect dollar amounts with leading dollar sign for clear visual indication"
+    }
+  ],
+  "codeReference": {
+    "exampleFile": "ask-a-user-for-dollar-amounts.tsx",
+    "linesOfCode": 215,
+    "lastModified": "2024-01-01T00:00:00.000Z"
+  },
+  "implementation": {
+    "complexity": "low",
+    "keyPatterns": [
+      "Currency formatting with leadingContent dollar sign",
+      "Multiple related monetary fields grouped together",
+      "Consistent naming convention for amount fields",
+      "Simple state management for monetary values"
+    ],
+    "designPatterns": [
+      "Currency input pattern",
+      "Related field grouping",
+      "Visual affordance through leadingContent",
+      "Consistent monetary data collection"
+    ],
+    "accessibility": [
+      "Clear labels specify what each amount represents",
+      "Dollar sign provides visual context for monetary input",
+      "Consistent field structure aids form completion",
+      "Logical grouping of related financial information"
+    ]
+  },
+  "codeExamples": {
+    "react": {
+      "complete": "import { Sandbox } from \"@components/sandbox\";\nimport { CodeSnippet } from \"@components/code-snippet/CodeSnippet.tsx\";\nimport { GoabFormItem, GoabInput } from \"@abgov/react-components\";\nimport { useContext } from \"react\";\nimport { LanguageVersionContext } from \"@contexts/LanguageVersionContext.tsx\";\n\nexport const AskAUserForDollarAmounts = () => {\n  const {version} = useContext(LanguageVersionContext);\n\n  const noop = () => {}\n  return (\n    <Sandbox flags={[\"reactive\"]} skipRender>\n      <GoabFormItem label=\"Tuition\">\n        <GoabInput onChange={noop} value=\"\" name=\"tuitionAmount\" leadingContent=\"$\" mb=\"xl\" />\n      </GoabFormItem>\n      <GoabFormItem label=\"Supplies\">\n        <GoabInput onChange={noop} value=\"\" name=\"suppliesAmount\" leadingContent=\"$\" mb=\"xl\" />\n      </GoabFormItem>\n      <GoabFormItem label=\"Other costs\">\n        <GoabInput onChange={noop} value=\"\" name=\"othersAmount\" leadingContent=\"$\" />\n      </GoabFormItem>\n    </Sandbox>\n  )\n}",
+      "key": "const [tuitionAmount, setTuitionAmount] = useState<string>(\"\");\nconst [suppliesAmount, setSuppliesAmount] = useState<string>(\"\");\nconst [othersAmount, setOthersAmount] = useState<string>(\"\");\n\nconst onChangeTuitionAmount = (event: GoabInputOnChangeDetail) => {\n  setTuitionAmount(event.value);\n};\n\nconst onChangeSuppliesAmount = (event: GoabInputOnChangeDetail) => {\n  setSuppliesAmount(event.value);\n};\n\nconst onChangeOthersAmount = (event: GoabInputOnChangeDetail) => {\n  setOthersAmount(event.value);\n};\n\n<GoabFormItem label=\"Tuition\">\n  <GoabInput\n    onChange={onChangeTuitionAmount}\n    value={tuitionAmount}\n    name=\"tuitionAmount\"\n    leadingContent=\"$\"\n  />\n</GoabFormItem>\n\n<GoabFormItem label=\"Books/Supplies/Instruments\">\n  <GoabInput\n    onChange={onChangeSuppliesAmount}\n    value={suppliesAmount}\n    name=\"suppliesAmount\"\n    leadingContent=\"$\"\n  />\n</GoabFormItem>\n\n<GoabFormItem label=\"Other costs\">\n  <GoabInput\n    onChange={onChangeOthersAmount}\n    value={othersAmount}\n    name=\"othersAmount\"\n    leadingContent=\"$\"\n  />\n</GoabFormItem>"
+    },
+    "angular": {
+      "complete": "export class ExampleComponent {\n  costFormGroup = new FormGroup({\n    tuitionFeeAmount: new FormControl(\"\"),\n    suppliesAmount: new FormControl(\"\"),\n    othersAmount: new FormControl(\"\"),\n  });\n}",
+      "key": "// Reactive Forms\ncostFormGroup = new FormGroup({\n  tuitionFeeAmount: new FormControl('', [Validators.pattern(/^\\d+(\\.\\d{1,2})?$/)]),\n  suppliesAmount: new FormControl('', [Validators.pattern(/^\\d+(\\.\\d{1,2})?$/)]),\n  othersAmount: new FormControl('', [Validators.pattern(/^\\d+(\\.\\d{1,2})?$/)]),\n});\n\n// Template-driven Forms\ntuitionAmount: number|undefined;\nsuppliesAmount: number|undefined;\nothersAmount: number|undefined;\n\nonChangeTuitionAmount(event: GoabInputOnChangeDetail) {\n  this.tuitionAmount = parseFloat(event.value) || undefined;\n}\n\nonChangeSuppliesAmount(event: GoabInputOnChangeDetail) {\n  this.suppliesAmount = parseFloat(event.value) || undefined;\n}\n\nonChangeOthersAmount(event: GoabInputOnChangeDetail) {\n  this.othersAmount = parseFloat(event.value) || undefined;\n}"
+    }
+  },
+  "tags": [
+    "monetary",
+    "currency",
+    "dollar-amounts",
+    "financial-input",
+    "leading-content",
+    "costs",
+    "expenses",
+    "funding-applications"
+  ]
+}

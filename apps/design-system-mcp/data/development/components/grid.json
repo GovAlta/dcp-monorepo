@@ -1,0 +1,122 @@
+{
+  "name": "Grid",
+  "category": "layout",
+  "summary": "Responsive grid layout that automatically wraps items based on minimum child width.",
+  "import": "import { GoabGrid } from '@abgov/react-components'",
+  "customElement": {
+    "tagName": "goa-grid",
+    "reactName": "GoabGrid",
+    "angularSelector": "goab-grid"
+  },
+  "props": [
+    {
+      "name": "gap",
+      "type": "Spacing",
+      "required": false,
+      "default": "m",
+      "description": "Space between grid items",
+      "frameworks": {
+        "webComponent": "gap=\"...\"",
+        "react": "gap={...}",
+        "angular": "[gap]=\"...\""
+      }
+    },
+    {
+      "name": "minchildwidth",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "Min width before wrapping (e.g., '280px')",
+      "frameworks": {
+        "webComponent": "minchildwidth=\"...\"",
+        "react": "minchildwidth={...}",
+        "angular": "[minchildwidth]=\"...\""
+      }
+    },
+    {
+      "name": "testid",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "Test identifier",
+      "frameworks": {
+        "webComponent": "testid=\"...\"",
+        "react": "testId={...}",
+        "angular": "[testId]=\"...\""
+      }
+    },
+    {
+      "name": "mt",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin top",
+      "frameworks": {
+        "webComponent": "mt=\"...\"",
+        "react": "mt={...}",
+        "angular": "[mt]=\"...\""
+      }
+    },
+    {
+      "name": "mr",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin right",
+      "frameworks": {
+        "webComponent": "mr=\"...\"",
+        "react": "mr={...}",
+        "angular": "[mr]=\"...\""
+      }
+    },
+    {
+      "name": "mb",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin bottom",
+      "frameworks": {
+        "webComponent": "mb=\"...\"",
+        "react": "mb={...}",
+        "angular": "[mb]=\"...\""
+      }
+    },
+    {
+      "name": "ml",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin left",
+      "frameworks": {
+        "webComponent": "ml=\"...\"",
+        "react": "ml={...}",
+        "angular": "[ml]=\"...\""
+      }
+    }
+  ],
+  "events": [],
+  "slots": [
+    {
+      "name": "default",
+      "description": "Grid items to layout"
+    }
+  ],
+  "criticalNotes": [
+    "minChildWidth is REQUIRED - set based on content's minimum readable width",
+    "Items auto-wrap when container can't fit minimum width",
+    "Use for card grids, dashboard widgets, multi-column layouts"
+  ],
+  "basicUsage": {
+    "webComponent": "<goa-grid min-child-width=\"280px\" gap=\"l\">\n  <goa-container>Card 1</goa-container>\n  <goa-container>Card 2</goa-container>\n  <goa-container>Card 3</goa-container>\n</goa-grid>",
+    "react": "<GoabGrid minChildWidth=\"280px\" gap=\"l\">\n  <GoabContainer>Card 1</GoabContainer>\n  <GoabContainer>Card 2</GoabContainer>\n  <GoabContainer>Card 3</GoabContainer>\n</GoabGrid>",
+    "angular": "<goab-grid minChildWidth=\"280px\" gap=\"l\">\n  <goab-container>Card 1</goab-container>\n  <goab-container>Card 2</goab-container>\n  <goab-container>Card 3</goab-container>\n</goab-grid>"
+  },
+  "relatedExamples": [
+    "card-grid",
+    "worker-dashboard-overview"
+  ],
+  "relatedComponents": [
+    "Block",
+    "Container"
+  ]
+}

@@ -1,0 +1,362 @@
+{
+  "metadataSchemaVersion": "2.1.0-ai-context",
+  "audience": "ai-systems-helping-consumer-developers",
+  "documentType": "technical-architecture",
+  "systemName": "GoA Design System Build Architecture",
+  "summary": "Complete technical architecture for the multi-framework GoA Design System - build tools, compilation pipelines, testing infrastructure, and monorepo management",
+
+  "keywords": [
+    "build system",
+    "vite",
+    "nx",
+    "monorepo",
+    "svelte",
+    "web components",
+    "react wrapper",
+    "angular wrapper",
+    "compilation",
+    "bundler",
+    "testing",
+    "vitest",
+    "playwright"
+  ],
+
+  "architectureOverview": {
+    "description": "Svelte → Web Components → Framework Wrappers multi-layer architecture",
+    "compilationFlow": "Svelte Components (Base) → Web Components (Custom Elements) → React Components + Angular Components",
+    "benefit": "Single source of truth (Svelte) compiled to framework-agnostic Web Components, then wrapped for optimal framework integration",
+    "frameworks": ["Svelte 4.2.19", "React 19.0.0", "Angular 18.0.3"]
+  },
+
+  "componentArchitecture": {
+    "layerBreakdown": {
+      "layer1_svelte": {
+        "description": "Base implementation layer - all component logic and styling",
+        "location": "/ui-components/libs/web-components/src/components/",
+        "technology": "Svelte 4.2.19 with custom element compilation",
+        "tagPrefix": "goa-",
+        "exampleTag": "<goa-button>",
+        "responsibilit ies": [
+          "Component behavior and state management",
+          "Styling using design tokens",
+          "Accessibility implementation",
+          "Event handling and dispatch"
+        ],
+        "customElementConfig": {
+          "description": "Svelte components compiled to Custom Elements via svelte:options",
+          "example": "<svelte:options customElement={{ tag: 'goa-button', props: {...} }} />"
+        }
+      },
+      "layer2_webComponents": {
+        "description": "Framework-agnostic custom elements output",
+        "technology": "Web Components (Custom Elements API)",
+        "build": "Vite compiles Svelte to ES modules",
+        "output": "/ui-components/dist/libs/web-components/",
+        "package": "@abgov/web-components",
+        "usage": "Can be used directly in any framework or vanilla JS"
+      },
+      "layer3_reactWrappers": {
+        "description": "React-specific wrapper components",
+        "location": "/ui-components/libs/react-components/src/lib/",
+        "prefix": "Goab",
+        "exampleComponent": "GoabButton",
+        "package": "@abgov/react-components",
+        "technology": "React 19.0.0",
+        "wrapperPattern": {
+          "description": "React components wrap web components with React-friendly API",
+          "responsibilities": [
+            "Convert React props to web component attributes",
+            "Handle boolean props (convert to 'true'/undefined strings)",
+            "Attach React event listeners to web component events",
+            "Provide TypeScript types for React usage"
+          ],
+          "eventPattern": {
+            "description": "Web components emit custom events with '_' prefix, React wrappers convert to callbacks",
+            "webComponent": "el.addEventListener('_click', handler)",
+            "reactWrapper": "<GoabButton onClick={handler}>"
+          }
+        }
+      },
+      "layer4_angularWrappers": {
+        "description": "Angular-specific wrapper components",
+        "location": "/ui-components/libs/angular-components/src/lib/",
+        "prefix": "goab-",
+        "exampleComponent": "<goab-button>",
+        "package": "@abgov/angular-components",
+        "technology": "Angular 18.0.3"
+      },
+      "commonLibrary": {
+        "description": "Shared TypeScript types, validators, and utilities",
+        "location": "/ui-components/libs/common/src/lib/",
+        "package": "@abgov/ui-components-common",
+        "exports": [
+          "TypeScript type definitions (GoabButtonType, GoabSpinnerSize, etc.)",
+          "Event detail types (GoabInputOnChangeDetail, GoabDropdownOnChangeDetail)",
+          "Common utilities and validators"
+        ],
+        "usage": "Imported by all framework layers for type consistency"
+      }
+    }
+  },
+
+  "monorepoManagement": {
+    "tool": "Nx 21.1.2",
+    "config": "/ui-components/nx.json",
+    "benefits": [
+      "Dependency graph management",
+      "Affected command detection (only build/test what changed)",
+      "Build caching for faster rebuilds",
+      "Parallel task execution"
+    ],
+    "projectStructure": {
+      "libs": {
+        "web-components": "Base Svelte components",
+        "react-components": "React wrappers",
+        "angular-components": "Angular wrappers",
+        "common": "Shared types and utilities"
+      },
+      "playground": {
+        "react": "React development playground (port 4173)",
+        "angular": "Angular development playground (port 4174)",
+        "web": "Web components playground (port 4175)"
+      }
+    },
+    "keyCommands": {
+      "build": "nx affected --base=alpha -t build --exclude=apps/* --exclude=playground/*",
+      "buildAll": "nx run-many -t build --all --prod --exclude=apps/* --exclude=playground/*",
+      "description": "Nx intelligently builds only affected packages based on git changes"
+    }
+  },
+
+  "buildTools": {
+    "webComponents": {
+      "bundler": "Vite 5.4.20",
+      "config": "/ui-components/libs/web-components/vite.config.js",
+      "plugins": [
+        "@sveltejs/vite-plugin-svelte (Svelte compilation)",
+        "vite-plugin-dts (TypeScript declaration generation)",
+        "@nx/vite/plugins/nx-tsconfig-paths.plugin (Path resolution)"
+      ],
+      "compiler": "Svelte compiler with customElement: true",
+      "output": {
+        "format": "ES modules",
+        "location": "/ui-components/dist/libs/web-components/",
+        "files": ["index.js", "index.css", "index.d.ts"]
+      },
+      "cssProcessing": {
+        "postcss": {
+          "description": "PostCSS transforms custom media queries to actual breakpoints",
+          "plugins": ["postcss-replace (media query transformation)", "autoprefixer"],
+          "transformations": {
+            "@media (--mobile)": "@media (max-width: 623px)",
+            "@media (--tablet)": "@media (min-width: 624px) and (max-width: 1023px)",
+            "@media (--desktop)": "@media (min-width: 1024px)",
+            "@media (--not-mobile)": "@media (min-width: 624px)",
+            "@media (--not-desktop)": "@media (max-width: 1023px)"
+          }
+        },
+        "scoping": "Svelte scoped styles via Shadow DOM for web components"
+      }
+    },
+    "reactComponents": {
+      "bundler": "Vite with @vitejs/plugin-react-swc",
+      "typescript": "5.4.5",
+      "output": "/ui-components/dist/libs/react-components/"
+    },
+    "angularComponents": {
+      "builder": "@angular-devkit/build-angular 18.2.20",
+      "compiler": "Angular CLI",
+      "output": "/ui-components/dist/libs/angular-components/"
+    }
+  },
+
+  "testingInfrastructure": {
+    "unitTesting": {
+      "framework": "Vitest 3.2.4",
+      "testingLibraries": [
+        "@testing-library/react 16.1.0",
+        "@testing-library/svelte 4.0.5",
+        "@testing-library/dom 10.1.0"
+      ],
+      "commands": {
+        "watch": "npm run test:unit:watch",
+        "run": "vitest --run --project=*-unit"
+      },
+      "coverage": "@vitest/coverage-v8"
+    },
+    "browserTesting": {
+      "framework": "Vitest browser mode with Playwright 1.50.1",
+      "commands": {
+        "watch": "npm run test:browser:watch",
+        "headless": "npm run test:headless:watch",
+        "run": "vitest --run --project=*-headless"
+      },
+      "browsers": "Chromium, Firefox, WebKit via Playwright"
+    },
+    "angularTesting": {
+      "framework": "Jest 29.7.0 with jest-preset-angular 14.4.2",
+      "command": "npm run test:angular"
+    },
+    "prTestWorkflow": {
+      "command": "npm run test:pr",
+      "steps": [
+        "1. Prebuild: Build common, web-components, react-components",
+        "2. Unit tests: Vitest unit tests for all packages",
+        "3. Browser tests: Vitest headless browser tests",
+        "4. Angular tests: Jest tests for Angular components"
+      ],
+      "description": "Complete validation suite required before merging PRs"
+    }
+  },
+
+  "responsiveDesignSystem": {
+    "description": "PostCSS-based responsive breakpoint system with custom media queries",
+    "breakpoints": {
+      "mobile": {
+        "range": "0-623px",
+        "mediaQuery": "(max-width: 623px)",
+        "shorthand": "@media (--mobile)"
+      },
+      "tablet": {
+        "range": "624-1023px",
+        "mediaQuery": "(min-width: 624px) and (max-width: 1023px)",
+        "shorthand": "@media (--tablet)"
+      },
+      "desktop": {
+        "range": "1024px+",
+        "mediaQuery": "(min-width: 1024px)",
+        "shorthand": "@media (--desktop)"
+      },
+      "notMobile": {
+        "range": "624px+ (tablet and desktop)",
+        "mediaQuery": "(min-width: 624px)",
+        "shorthand": "@media (--not-mobile)"
+      },
+      "notDesktop": {
+        "range": "0-1023px (mobile and tablet)",
+        "mediaQuery": "(max-width: 1023px)",
+        "shorthand": "@media (--not-desktop)"
+      }
+    },
+    "implementation": {
+      "sourceSyntax": "Svelte components use shorthand @media (--mobile)",
+      "buildTransformation": "PostCSS replaces shortcuts with actual media queries",
+      "outputCSS": "Final CSS has standard media queries for browser compatibility"
+    },
+    "componentBehavior": {
+      "description": "Components are responsive by default",
+      "mobileOptimizations": [
+        "Buttons become full-width on mobile",
+        "Form inputs stack vertically",
+        "Navigation collapses to menu",
+        "Text sizes adjust for readability"
+      ],
+      "developerGuidance": "Trust component defaults - don't write custom media queries"
+    }
+  },
+
+  "developmentWorkflow": {
+    "localDevelopment": {
+      "setup": [
+        "1. Navigate to /ui-components/",
+        "2. Run development server for chosen framework",
+        "3. Make changes to components in libs/",
+        "4. Hot reload updates playground automatically"
+      ],
+      "commands": {
+        "serveReact": "npm run serve:react (http://localhost:4173)",
+        "serveAngular": "npm run serve:angular (http://localhost:4174)",
+        "serveWeb": "npm run serve:web (http://localhost:4175)"
+      }
+    },
+    "componentDevelopment": {
+      "primaryLocation": "/ui-components/libs/web-components/src/components/",
+      "steps": [
+        "1. Edit Svelte component (.svelte file)",
+        "2. Update React wrapper if needed (/libs/react-components/)",
+        "3. Update Angular wrapper if needed (/libs/angular-components/)",
+        "4. Update common types if props changed (/libs/common/)",
+        "5. Test in playground",
+        "6. Run npm run test:pr before commit"
+      ],
+      "importantRule": "Most changes happen in Svelte file - wrappers usually just need prop updates"
+    },
+    "buildOutput": {
+      "location": "/ui-components/dist/",
+      "structure": {
+        "libs/web-components/": "Compiled web components (ES modules + CSS)",
+        "libs/react-components/": "React wrappers",
+        "libs/angular-components/": "Angular wrappers"
+      }
+    }
+  },
+
+  "packageDistribution": {
+    "webComponents": {
+      "package": "@abgov/web-components",
+      "entry": "dist/libs/web-components/index.js",
+      "styles": "dist/libs/web-components/index.css",
+      "types": "dist/libs/web-components/index.d.ts"
+    },
+    "reactComponents": {
+      "package": "@abgov/react-components",
+      "peerDependencies": ["react@19", "@abgov/web-components"],
+      "usage": "import { GoabButton } from '@abgov/react-components'"
+    },
+    "angularComponents": {
+      "package": "@abgov/angular-components",
+      "peerDependencies": ["@angular/core@18", "@abgov/web-components"],
+      "usage": "import { GoabButton } from '@abgov/angular-components'"
+    },
+    "commonTypes": {
+      "package": "@abgov/ui-components-common",
+      "exports": "TypeScript types and interfaces only",
+      "usage": "import { GoabButtonType } from '@abgov/ui-components-common'"
+    }
+  },
+
+  "criticalBuildRules": {
+    "buildOrder": {
+      "rule": "MUST build in correct dependency order",
+      "order": ["common", "web-components", "react-components", "angular-components"],
+      "reasoning": "React/Angular depend on web-components, all depend on common types"
+    },
+    "sveltePrimary": {
+      "rule": "All component logic lives in Svelte - wrappers are thin",
+      "reasoning": "Maintains single source of truth, prevents framework-specific bugs",
+      "wrapperResponsibility": "Only convert framework-specific APIs, no business logic"
+    },
+    "noCustomCSS": {
+      "rule": "Styling must use design tokens, not hardcoded values",
+      "location": "Scoped <style> blocks in Svelte components",
+      "pattern": "Use var(--goa-token-name), never hardcoded colors/spacing"
+    }
+  },
+
+  "troubleshooting": {
+    "buildFailures": {
+      "componentNotFound": {
+        "symptom": "Cannot find module '@abgov/web-components'",
+        "solution": "Run pretest build: npx nx run web-components:build"
+      },
+      "typeErrors": {
+        "symptom": "TypeScript errors in wrapper components",
+        "solution": "Rebuild common library: npx nx run common:build"
+      }
+    },
+    "hotReloadNotWorking": {
+      "symptom": "Changes not appearing in playground",
+      "solutions": [
+        "Stop dev server and restart",
+        "Clear Vite cache: rm -rf node_modules/.vite",
+        "Hard refresh browser (Cmd+Shift+R)"
+      ]
+    }
+  },
+
+  "relatedKnowledge": {
+    "designTokens": "See design-token-system.json for token compilation",
+    "fileStructure": "See file-system-navigation.json for directory layout",
+    "responsiveDesign": "See responsive-system.json for breakpoint details"
+  }
+}

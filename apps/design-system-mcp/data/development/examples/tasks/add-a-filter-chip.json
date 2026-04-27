@@ -1,0 +1,81 @@
+{
+  "$schema": "../recipe-schema.json",
+  "schemaVersion": "2.1.0-ai-context",
+  "recipeId": "add-a-filter-chip",
+  "recipeName": "Add a Filter Chip",
+  "category": "interaction-pattern",
+  "summary": "Allow users to dynamically add filter chips to organize and display active filters with the ability to remove them",
+  "serviceContext": {
+    "useCase": "Enable users to apply multiple filters to data sets and see which filters are currently active",
+    "userType": "both",
+    "governmentServiceFlows": [
+      "When users need to filter search results or data tables",
+      "When users need to see active filters and remove them easily",
+      "When multiple filter criteria can be applied simultaneously"
+    ],
+    "relatedPatterns": [
+      "filter-data-in-a-table",
+      "remove-a-filter",
+      "search"
+    ]
+  },
+  "components": [
+    {
+      "componentName": "GoabFilterChip",
+      "role": "Display active filters with remove functionality",
+      "purpose": "Show current filter state and allow removal"
+    },
+    {
+      "componentName": "GoabButton",
+      "role": "Trigger to add new filters",
+      "purpose": "Provide user action to add filters"
+    },
+    {
+      "componentName": "GoabButtonGroup",
+      "role": "Container for filter actions",
+      "purpose": "Group related filter controls"
+    }
+  ],
+  "codeReference": {
+    "exampleFile": "add-a-filter-chip.tsx",
+    "linesOfCode": 174,
+    "lastModified": "2024-01-01T00:00:00.000Z"
+  },
+  "implementation": {
+    "complexity": "medium",
+    "keyPatterns": [
+      "Dynamic array state management",
+      "Filter addition with duplicate checking",
+      "Interactive chip removal",
+      "State synchronization between filters"
+    ],
+    "designPatterns": [
+      "Controlled component pattern",
+      "State lifting",
+      "Event handling"
+    ],
+    "accessibility": [
+      "Filter chips have click handlers for removal",
+      "Visual feedback for active filters",
+      "Keyboard navigation support"
+    ]
+  },
+  "codeExamples": {
+    "react": {
+      "complete": "import { Sandbox } from \"@components/sandbox\";\nimport { GoabButton, GoabButtonGroup, GoabFilterChip } from \"@abgov/react-components\";\nimport { CodeSnippet } from \"@components/code-snippet/CodeSnippet.tsx\";\nimport { useContext, useState } from \"react\";\nimport { LanguageVersionContext } from \"@contexts/LanguageVersionContext.tsx\";\n\nexport const AddAFilterChip = () => {\n  const {version} = useContext(LanguageVersionContext);\n  const [activeFilters, setActiveFilters] = useState<string[]>([]);\n  const addFilter = () => {\n    const randomFilter = `Filter ${Math.floor(Math.random() * 100)}`;\n    if (!activeFilters.includes(randomFilter)) {\n      setActiveFilters(prevFilters => [...prevFilters, randomFilter]);\n    }\n  };\n\n  const removeFilter = (filter: string) => {\n    setActiveFilters(prevFilters => prevFilters.filter(f => f !== filter));\n  };\n\n  return (\n    <Sandbox skipRender>\n      {activeFilters.map(filter => (\n        <GoabFilterChip\n          key={filter}\n          content={filter}\n          onClick={() => removeFilter(filter)}\n          mr=\"s\"\n          mb=\"s\"\n          mt=\"s\"\n        />\n      ))}\n\n      <GoabButtonGroup alignment=\"center\" mt=\"l\">\n        <GoabButton onClick={addFilter}>Add Random Filter</GoabButton>\n      </GoabButtonGroup>\n\n      <CodeSnippet\n        lang=\"typescript\"\n        tags=\"angular\"\n        allowCopy={true}\n        code={`\n               export class FilterChipInteractiveExampleComponent {\n                activeFilters: string[] = [];\n\n                removeFilter(filter: string): void {\n                  this.activeFilters = this.activeFilters.filter((f) => f !== filter);\n                }\n\n                addFilter(): void {\n                  const randomFilter = \"Filter \" + Math.floor(Math.random() * 100);\n                  if (!this.activeFilters.includes(randomFilter)) {\n                    this.activeFilters.push(randomFilter);\n                  }\n                }\n              }\n      `}\n      />\n\n      {version === \"old\" && (\n        <CodeSnippet\n          lang=\"html\"\n          tags=\"angular\"\n          allowCopy={true}\n          code={`\n                      <div>\n                        <goa-filter-chip\n                          *ngFor=\"let filter of activeFilters\"\n                          [content]=\"filter\"\n                          (_click)=\"removeFilter(filter)\"\n                          mr=\"s\">\n                        </goa-filter-chip>\n                      </div>\n                      <goa-button-group alignment=\"center\" mt=\"l\">\n                        <goa-button (click)=\"addFilter()\">Add Random Filter</goa-button>\n                      </goa-button-group>\n                `}\n        />\n      )}\n      {version === \"new\" && (\n        <CodeSnippet\n          lang=\"html\"\n          tags=\"angular\"\n          allowCopy={true}\n          code={`\n                      <div>\n                        <goab-filter-chip\n                          *ngFor=\"let filter of activeFilters\"\n                          [content]=\"filter\"\n                          (onClick)=\"removeFilter(filter)\"\n                          mr=\"s\">\n                        </goab-filter-chip>\n                      </div>\n                      <goab-button-group alignment=\"center\" mt=\"l\">\n                        <goab-button (onClick)=\"addFilter()\">Add Random Filter</goab-button>\n                      </goab-button-group>\n                `}\n        />\n      )}\n\n      <CodeSnippet\n        lang=\"typescript\"\n        tags=\"react\"\n        allowCopy={true}\n        code={`\n                  const [activeFilters, setActiveFilters] = useState<string[]>([]);\n\n                  const removeFilter = (filter: string) => {\n                    setActiveFilters((prevFilters) => prevFilters.filter((f) => f !== filter));\n                  };\n\n                  const addFilter = () => {\n                    const randomFilter = 'Filter ' + Math.floor(Math.random() * 100);\n                    if (!activeFilters.includes(randomFilter)) {\n                      setActiveFilters(prevFilters => [...prevFilters, randomFilter]);\n                    }\n                  };\n                `}\n      />\n\n      {version === \"old\" && (\n        <CodeSnippet\n          lang=\"html\"\n          tags=\"react\"\n          allowCopy={true}\n          code={`\n                  <div>\n                    {activeFilters.map((filter) => (\n                      <GoAFilterChip\n                        key={filter}\n                        content={filter}\n                        onClick={() => removeFilter(filter)}\n                        mr=\"s\"\n                        mb=\"s\"\n                        mt=\"s\"\n                      />\n                    ))}\n                  </div>\n                  <GoAButtonGroup alignment=\"center\" mt=\"l\">\n                    <GoAButton onClick={addFilter}>Add Random Filter</GoAButton>\n                  </GoAButtonGroup>\n                `}\n        />\n      )}\n      {version === \"new\" && (\n        <CodeSnippet\n          lang=\"html\"\n          tags=\"react\"\n          allowCopy={true}\n          code={`\n                  <div>\n                    {activeFilters.map((filter) => (\n                      <GoabFilterChip\n                        key={filter}\n                        content={filter}\n                        onClick={() => removeFilter(filter)}\n                        mr=\"s\"\n                        mb=\"s\"\n                        mt=\"s\"\n                      />\n                    ))}\n                  </div>\n                  <GoabButtonGroup alignment=\"center\" mt=\"l\">\n                    <GoabButton onClick={addFilter}>Add Random Filter</GoabButton>\n                  </GoabButtonGroup>\n                `}\n        />\n      )}\n    </Sandbox>\n  )\n}\n\nexport default AddAFilterChip;",
+      "key": "const [activeFilters, setActiveFilters] = useState<string[]>([]);\n\nconst addFilter = () => {\n  const randomFilter = `Filter ${Math.floor(Math.random() * 100)}`;\n  if (!activeFilters.includes(randomFilter)) {\n    setActiveFilters(prevFilters => [...prevFilters, randomFilter]);\n  }\n};\n\nconst removeFilter = (filter: string) => {\n  setActiveFilters(prevFilters => prevFilters.filter(f => f !== filter));\n};"
+    },
+    "angular": {
+      "complete": "export class FilterChipInteractiveExampleComponent {\n  activeFilters: string[] = [];\n\n  removeFilter(filter: string): void {\n    this.activeFilters = this.activeFilters.filter((f) => f !== filter);\n  }\n\n  addFilter(): void {\n    const randomFilter = \"Filter \" + Math.floor(Math.random() * 100);\n    if (!this.activeFilters.includes(randomFilter)) {\n      this.activeFilters.push(randomFilter);\n    }\n  }\n}",
+      "key": "activeFilters: string[] = [];\n\naddFilter(): void {\n  const randomFilter = \"Filter \" + Math.floor(Math.random() * 100);\n  if (!this.activeFilters.includes(randomFilter)) {\n    this.activeFilters.push(randomFilter);\n  }\n}\n\nremoveFilter(filter: string): void {\n  this.activeFilters = this.activeFilters.filter((f) => f !== filter);\n}"
+    }
+  },
+  "tags": [
+    "filter",
+    "chip",
+    "interactive",
+    "dynamic",
+    "state-management",
+    "array-manipulation"
+  ]
+}

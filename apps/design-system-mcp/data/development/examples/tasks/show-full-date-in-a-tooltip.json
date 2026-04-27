@@ -1,0 +1,117 @@
+{
+  "$schema": "../schema/recipe-schema-2.1.0-ai-context.json",
+  "title": "Show full date in a tooltip",
+  "description": "Display human-readable relative time (e.g., '4 hours ago') with the complete date and time information available on hover through a tooltip.",
+  "category": "interaction-patterns",
+  "tags": [
+    "tooltip",
+    "dates",
+    "time-display",
+    "hover-interaction",
+    "progressive-disclosure"
+  ],
+  "government_service_context": {
+    "citizen_flows": {
+      "applicable": true,
+      "usage": "Citizens need to understand when important events occurred in their applications, payments, or communications while maintaining clean interface design."
+    },
+    "worker_flows": {
+      "applicable": true,
+      "usage": "Government workers reviewing cases, applications, or documents benefit from both quick time scanning and precise timestamp access."
+    },
+    "shared_components": {
+      "applicable": true,
+      "usage": "Time display with tooltip detail is universally useful for any interface showing temporal information."
+    }
+  },
+  "component_analysis": {
+    "primary_components": [
+      {
+        "name": "Relative Time Display",
+        "role": "Shows human-friendly time information (e.g., '4 hours ago')",
+        "purpose": "Provides quick time context without cluttering the interface"
+      },
+      {
+        "name": "Tooltip with Full Date",
+        "role": "Reveals complete timestamp on hover interaction",
+        "purpose": "Gives precise temporal information when needed without taking up space"
+      },
+      {
+        "name": "Secondary Text Styling",
+        "role": "Visually de-emphasizes time information",
+        "purpose": "Maintains focus on primary content while keeping time accessible"
+      }
+    ],
+    "accessibility_features": [
+      "Tooltip content is accessible to screen readers",
+      "Time information follows semantic meaning patterns",
+      "Secondary styling maintains sufficient color contrast",
+      "Hover interaction supplements rather than replaces accessible information"
+    ],
+    "user_experience_notes": [
+      "Relative time is easier to process than absolute timestamps",
+      "Tooltip provides precise information without interface clutter",
+      "Secondary styling indicates supplementary nature of information",
+      "Pattern works within container headings and other layout contexts",
+      "Progressive disclosure matches user mental models for time information"
+    ]
+  },
+  "implementation": {
+    "react": {
+      "code": "import React from 'react';\nimport { GoabContainer, GoabTooltip } from '@abgov/react-components';\n\nfunction DateTooltipExample() {\n  const formatRelativeTime = (date: Date): string => {\n    const now = new Date();\n    const diffMs = now.getTime() - date.getTime();\n    const diffHours = Math.floor(diffMs / (1000 * 60 * 60));\n    const diffDays = Math.floor(diffHours / 24);\n    \n    if (diffHours < 1) {\n      const diffMins = Math.floor(diffMs / (1000 * 60));\n      return `${diffMins} minute${diffMins !== 1 ? 's' : ''} ago`;\n    } else if (diffHours < 24) {\n      return `${diffHours} hour${diffHours !== 1 ? 's' : ''} ago`;\n    } else {\n      return `${diffDays} day${diffDays !== 1 ? 's' : ''} ago`;\n    }\n  };\n\n  const formatFullDate = (date: Date): string => {\n    return date.toLocaleDateString('en-CA', {\n      year: 'numeric',\n      month: 'short',\n      day: 'numeric',\n      hour: 'numeric',\n      minute: '2-digit',\n      hour12: true\n    });\n  };\n\n  const submissionDate = new Date('2023-11-23T10:35:00');\n  const relativeTime = formatRelativeTime(submissionDate);\n  const fullDateTime = formatFullDate(submissionDate);\n\n  return (\n    <GoabContainer\n      type=\"non-interactive\"\n      accent=\"thick\"\n      heading={\n        <span>\n          Joan Smith{' '}\n          <GoabTooltip content={fullDateTime}>\n            <span \n              style={{\n                color: 'var(--goa-color-text-secondary)',\n                font: 'var(--goa-typography-body-xs)'\n              }}\n            >\n              {relativeTime}\n            </span>\n          </GoabTooltip>\n        </span>\n      }\n    >\n      <p>Hover on the time it was added to see the full date and time.</p>\n    </GoabContainer>\n  );\n}\n\n// Standalone time component for reuse\nfunction TimeWithTooltip({ date, className }: { date: Date; className?: string }) {\n  const formatRelativeTime = (date: Date): string => {\n    const now = new Date();\n    const diffMs = now.getTime() - date.getTime();\n    const diffHours = Math.floor(diffMs / (1000 * 60 * 60));\n    const diffDays = Math.floor(diffHours / 24);\n    \n    if (diffHours < 1) {\n      const diffMins = Math.floor(diffMs / (1000 * 60));\n      return `${diffMins} minute${diffMins !== 1 ? 's' : ''} ago`;\n    } else if (diffHours < 24) {\n      return `${diffHours} hour${diffHours !== 1 ? 's' : ''} ago`;\n    } else {\n      return `${diffDays} day${diffDays !== 1 ? 's' : ''} ago`;\n    }\n  };\n\n  const formatFullDate = (date: Date): string => {\n    return date.toLocaleDateString('en-CA', {\n      year: 'numeric',\n      month: 'short',\n      day: 'numeric',\n      hour: 'numeric',\n      minute: '2-digit',\n      hour12: true\n    });\n  };\n\n  return (\n    <GoabTooltip content={formatFullDate(date)}>\n      <span \n        className={className}\n        style={{\n          color: 'var(--goa-color-text-secondary)',\n          font: 'var(--goa-typography-body-xs)'\n        }}\n      >\n        {formatRelativeTime(date)}\n      </span>\n    </GoabTooltip>\n  );\n}"
+    },
+    "angular": {
+      "code": "import { Component, Input } from '@angular/core';\n\n@Component({\n  selector: 'app-date-tooltip',\n  template: `\n    <goab-container\n      type=\"non-interactive\"\n      accent=\"thick\"\n      [heading]=\"containerTitle\"\n    >\n      <ng-template #containerTitle>\n        Joan Smith\n        <goab-tooltip [content]=\"fullDateTime\">\n          <span [style]=\"timeStyle\">{{ relativeTime }}</span>\n        </goab-tooltip>\n      </ng-template>\n      <p>Hover on the time it was added to see the full date and time.</p>\n    </goab-container>\n  `\n})\nexport class DateTooltipComponent {\n  submissionDate = new Date('2023-11-23T10:35:00');\n  \n  timeStyle = {\n    'color': 'var(--goa-color-text-secondary)',\n    'font': 'var(--goa-typography-body-xs)'\n  };\n\n  get relativeTime(): string {\n    return this.formatRelativeTime(this.submissionDate);\n  }\n\n  get fullDateTime(): string {\n    return this.formatFullDate(this.submissionDate);\n  }\n\n  private formatRelativeTime(date: Date): string {\n    const now = new Date();\n    const diffMs = now.getTime() - date.getTime();\n    const diffHours = Math.floor(diffMs / (1000 * 60 * 60));\n    const diffDays = Math.floor(diffHours / 24);\n    \n    if (diffHours < 1) {\n      const diffMins = Math.floor(diffMs / (1000 * 60));\n      return `${diffMins} minute${diffMins !== 1 ? 's' : ''} ago`;\n    } else if (diffHours < 24) {\n      return `${diffHours} hour${diffHours !== 1 ? 's' : ''} ago`;\n    } else {\n      return `${diffDays} day${diffDays !== 1 ? 's' : ''} ago`;\n    }\n  }\n\n  private formatFullDate(date: Date): string {\n    return date.toLocaleDateString('en-CA', {\n      year: 'numeric',\n      month: 'short',\n      day: 'numeric',\n      hour: 'numeric',\n      minute: '2-digit',\n      hour12: true\n    });\n  }\n}\n\n// Reusable time component\n@Component({\n  selector: 'time-with-tooltip',\n  template: `\n    <goab-tooltip [content]=\"fullDateTime\">\n      <span [style]=\"timeStyle\">{{ relativeTime }}</span>\n    </goab-tooltip>\n  `\n})\nexport class TimeWithTooltipComponent {\n  @Input() date!: Date;\n  @Input() className?: string;\n  \n  timeStyle = {\n    'color': 'var(--goa-color-text-secondary)',\n    'font': 'var(--goa-typography-body-xs)'\n  };\n\n  get relativeTime(): string {\n    return this.formatRelativeTime(this.date);\n  }\n\n  get fullDateTime(): string {\n    return this.formatFullDate(this.date);\n  }\n\n  private formatRelativeTime(date: Date): string {\n    const now = new Date();\n    const diffMs = now.getTime() - date.getTime();\n    const diffHours = Math.floor(diffMs / (1000 * 60 * 60));\n    const diffDays = Math.floor(diffHours / 24);\n    \n    if (diffHours < 1) {\n      const diffMins = Math.floor(diffMs / (1000 * 60));\n      return `${diffMins} minute${diffMins !== 1 ? 's' : ''} ago`;\n    } else if (diffHours < 24) {\n      return `${diffHours} hour${diffHours !== 1 ? 's' : ''} ago`;\n    } else {\n      return `${diffDays} day${diffDays !== 1 ? 's' : ''} ago`;\n    }\n  }\n\n  private formatFullDate(date: Date): string {\n    return date.toLocaleDateString('en-CA', {\n      year: 'numeric',\n      month: 'short',\n      day: 'numeric',\n      hour: 'numeric',\n      minute: '2-digit',\n      hour12: true\n    });\n  }\n}"
+    }
+  },
+  "usage_guidelines": {
+    "when_to_use": [
+      "Displaying timestamps for user-generated content or system events",
+      "Case management interfaces showing when actions occurred",
+      "Application status updates with timing information",
+      "Comment or message threads with posting times",
+      "Document or file modification timestamps"
+    ],
+    "when_not_to_use": [
+      "When precise timing is the primary concern (use full dates)",
+      "For legal or compliance contexts requiring visible timestamps",
+      "When space constraints don't require progressive disclosure",
+      "For future dates or scheduling (better to show full date)"
+    ],
+    "best_practices": [
+      "Use consistent relative time formatting across the application",
+      "Ensure tooltip content includes full date and time with clear formatting",
+      "Style relative time as secondary information visually",
+      "Update relative times periodically for active interfaces",
+      "Include timezone information when relevant",
+      "Use semantic HTML time elements when possible for accessibility"
+    ]
+  },
+  "variations": [
+    {
+      "name": "Status update timing",
+      "description": "Show when status changes occurred",
+      "code_change": "Wrap status text: <GoabTooltip content={fullDateTime}><GoabBadge type=\"success\" content={`Approved ${relativeTime}`} /></GoabTooltip>"
+    },
+    {
+      "name": "Table cell timestamps",
+      "description": "Use in table cells for space-efficient time display",
+      "code_change": "In table cell: <td><TimeWithTooltip date={item.createdAt} /></td>"
+    },
+    {
+      "name": "Comment timestamps",
+      "description": "Show when comments or messages were posted",
+      "code_change": "In comment header: <span>John Doe <TimeWithTooltip date={comment.postedAt} /></span>"
+    },
+    {
+      "name": "Real-time updates",
+      "description": "Automatically update relative times as time passes",
+      "code_change": "Add useEffect hook to update relative time every minute for active sessions"
+    }
+  ],
+  "related_patterns": [
+    "show-status-in-a-table",
+    "show-status-on-a-card",
+    "show-a-label-on-an-icon-only-button"
+  ]
+}

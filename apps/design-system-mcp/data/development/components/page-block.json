@@ -1,0 +1,53 @@
+{
+  "name": "PageBlock",
+  "category": "component",
+  "summary": "",
+  "import": "import { GoabPageBlock } from '@abgov/react-components'",
+  "customElement": {
+    "tagName": "goa-page-block",
+    "reactName": "GoabPageBlock",
+    "angularSelector": "goab-page-block"
+  },
+  "props": [
+    {
+      "name": "width",
+      "type": "Size",
+      "required": false,
+      "default": "full",
+      "description": "",
+      "frameworks": {
+        "webComponent": "width=\"...\"",
+        "react": "width={...}",
+        "angular": "[width]=\"...\""
+      }
+    },
+    {
+      "name": "testId",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "",
+      "frameworks": {
+        "webComponent": "test-id=\"...\"",
+        "react": "testId={...}",
+        "angular": "[testId]=\"...\""
+      }
+    }
+  ],
+  "events": [],
+  "slots": [
+    {
+      "name": "default",
+      "description": ""
+    }
+  ],
+  "criticalNotes": [],
+  "commonMistakes": [],
+  "basicUsage": {
+    "webComponent": "",
+    "react": "",
+    "angular": ""
+  },
+  "relatedExamples": [],
+  "relatedComponents": []
+}

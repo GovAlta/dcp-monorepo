@@ -1,0 +1,56 @@
+{
+  "id": "stats-row",
+  "name": "Stats Row",
+  "category": "section",
+  "description": "A horizontal grid of stat cards showing key metrics at a glance. Commonly used at the top of dashboards to give users an immediate overview of important numbers.",
+
+  "whenToUse": [
+    "At the top of dashboard pages to show key metrics",
+    "To summarize counts, totals, or status breakdowns",
+    "When users need quick numeric insights before diving into details"
+  ],
+
+  "components": [
+    {
+      "name": "GoabText",
+      "purpose": "Display stat values and labels",
+      "usage": "size='heading-xl' for numbers, size='body-s' for labels"
+    }
+  ],
+
+  "structure": {
+    "layout": "CSS Grid with auto-fit for responsive columns",
+    "cardStyle": "White background, subtle shadow, rounded corners",
+    "minCardWidth": "150px recommended for responsive behavior"
+  },
+
+  "example": {
+    "framework": "react",
+    "description": "Dashboard stats row showing case counts with color-coded alerts",
+    "code": "const StatCard = ({ children }) => (\n  <div style={{\n    backgroundColor: 'white',\n    borderRadius: '8px',\n    padding: '16px',\n    boxShadow: '0 1px 3px rgba(0,0,0,0.1)'\n  }}>\n    {children}\n  </div>\n);\n\n// Usage:\n<div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '16px', marginBottom: '32px' }}>\n  <StatCard>\n    <GoabText size=\"heading-xl\" mb=\"none\">{stats.total}</GoabText>\n    <GoabText size=\"body-s\" color=\"secondary\">Active Cases</GoabText>\n  </StatCard>\n  \n  <StatCard>\n    <GoabText size=\"heading-xl\" mb=\"none\" color={stats.urgent > 0 ? 'emergency' : undefined}>\n      {stats.urgent}\n    </GoabText>\n    <GoabText size=\"body-s\" color=\"secondary\">Urgent</GoabText>\n  </StatCard>\n  \n  <StatCard>\n    <GoabText size=\"heading-xl\" mb=\"none\" color={stats.overdue > 0 ? 'emergency' : undefined}>\n      {stats.overdue}\n    </GoabText>\n    <GoabText size=\"body-s\" color=\"secondary\">Overdue</GoabText>\n  </StatCard>\n</div>"
+  },
+
+  "variants": [
+    {
+      "name": "With color-coded values",
+      "description": "Use color prop on GoabText to highlight concerning numbers (emergency for high values, important for warnings)"
+    },
+    {
+      "name": "With icons",
+      "description": "Add GoabIcon before each label for visual distinction"
+    },
+    {
+      "name": "Clickable cards",
+      "description": "Wrap in a clickable container to navigate to filtered views"
+    }
+  ],
+
+  "considerations": [
+    "Keep to 4-5 stats maximum to avoid overwhelming users",
+    "Use semantic colors (emergency, important) sparingly for genuinely concerning values",
+    "Consider mobile layout - grid will stack cards automatically",
+    "Stats should link to filtered views when clicked (common pattern)"
+  ],
+
+  "relatedPatterns": ["dashboard-page", "case-cards-list"]
+}

@@ -1,0 +1,57 @@
+{
+  "name": "AppHeader",
+  "category": "navigation",
+  "summary": "Standard government application header with service name and navigation.",
+  "import": "import { GoabAppHeader } from '@abgov/react-components'",
+  "customElement": {
+    "tagName": "goa-app-header",
+    "reactName": "GoabAppHeader",
+    "angularSelector": "goab-app-header"
+  },
+
+  "props": [
+    { "name": "heading", "type": "string", "required": false, "default": "", "description": "Service name displayed in header" },
+    { "name": "url", "type": "string", "required": false, "description": "URL for GoA logo link" },
+    { "name": "maxContentWidth", "type": "string", "required": false, "default": "100%", "description": "Max width of header content" },
+    { "name": "fullMenuBreakpoint", "type": "number", "required": false, "default": 768, "description": "Breakpoint for desktop navigation" },
+    { "name": "testId", "type": "string", "required": false, "description": "Test identifier" },
+    { "name": "mt", "type": "Spacing", "required": false, "description": "Margin top" },
+    { "name": "mr", "type": "Spacing", "required": false, "description": "Margin right" },
+    { "name": "mb", "type": "Spacing", "required": false, "description": "Margin bottom" },
+    { "name": "ml", "type": "Spacing", "required": false, "description": "Margin left" }
+  ],
+
+  "events": [
+    {
+      "name": "onMenuClick",
+      "description": "Fired when mobile menu button is clicked",
+      "frameworks": {
+        "react": "onMenuClick: () => void",
+        "angular": "(onMenuClick): EventEmitter<void>"
+      }
+    }
+  ],
+
+  "slots": [
+    { "name": "default", "description": "Navigation links or menu content" }
+  ],
+
+  "criticalNotes": [
+    "Use consistent maxContentWidth with page layout",
+    "Handle onMenuClick for mobile navigation",
+    "Use clear, descriptive service names"
+  ],
+
+  "basicUsage": {
+    "webComponent": "<goa-app-header heading=\"Vehicle Registration\"></goa-app-header>",
+    "react": "<GoabAppHeader heading=\"Vehicle Registration\">\n  <a href=\"/dashboard\">Dashboard</a>\n  <a href=\"/profile\">Profile</a>\n</GoabAppHeader>",
+    "angular": "<goab-app-header heading=\"Vehicle Registration\">\n  <a href=\"/dashboard\">Dashboard</a>\n  <a href=\"/profile\">Profile</a>\n</goab-app-header>"
+  },
+
+  "relatedExamples": [
+    "header-with-navigation",
+    "header-with-menu-click-event"
+  ],
+
+  "relatedComponents": ["MicrositeHeader", "AppFooter"]
+}

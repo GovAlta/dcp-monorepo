@@ -1,0 +1,354 @@
+{
+  "metadataSchemaVersion": "2.1.0-ai-context",
+  "audience": "ai-systems-helping-consumer-developers",
+  "documentType": "technical-specification",
+  "systemName": "Responsive Design System",
+  "summary": "PostCSS-based responsive breakpoint system with component-level mobile-first optimizations and custom media query shortcuts",
+
+  "keywords": [
+    "responsive design",
+    "breakpoints",
+    "media queries",
+    "mobile first",
+    "postcss",
+    "adaptive layout",
+    "viewport",
+    "responsive components"
+  ],
+
+  "breakpointSystem": {
+    "philosophy": "Mobile-first responsive design with components that adapt automatically",
+    "approach": "Components handle responsive behavior internally - developers trust defaults",
+    "customMediaQueries": {
+      "description": "PostCSS transforms custom media query shortcuts to standard breakpoints during build",
+      "location": "/ui-components/libs/web-components/vite.config.js",
+      "plugin": "postcss-replace"
+    }
+  },
+
+  "breakpointDefinitions": {
+    "mobile": {
+      "description": "Mobile phones and small devices",
+      "range": "0-623px",
+      "maxWidth": "623px",
+      "sourceCode": "@media (--mobile)",
+      "compiledCSS": "@media (max-width: 623px)",
+      "useCases": [
+        "Full-width buttons",
+        "Stacked form layouts",
+        "Collapsed navigation",
+        "Single column content"
+      ],
+      "componentBehaviors": [
+        "GoabButton: Full-width by default",
+        "GoabFormItem: Labels stack above inputs",
+        "GoabAppHeader: Hamburger menu",
+        "GoabBlock: direction='column' on mobile regardless of prop"
+      ]
+    },
+    "tablet": {
+      "description": "Tablets and medium devices",
+      "range": "624-1023px",
+      "minWidth": "624px",
+      "maxWidth": "1023px",
+      "sourceCode": "@media (--tablet)",
+      "compiledCSS": "@media (min-width: 624px) and (max-width: 1023px)",
+      "useCases": [
+        "2-column layouts",
+        "Expanded navigation (sometimes)",
+        "Hybrid touch/mouse interactions"
+      ]
+    },
+    "desktop": {
+      "description": "Desktop and large screens",
+      "range": "1024px and above",
+      "minWidth": "1024px",
+      "sourceCode": "@media (--desktop)",
+      "compiledCSS": "@media (min-width: 1024px)",
+      "useCases": [
+        "Multi-column layouts",
+        "Full navigation visible",
+        "Information-dense displays",
+        "Worker-facing interfaces"
+      ]
+    },
+    "notMobile": {
+      "description": "Tablet and desktop combined (everything except mobile)",
+      "range": "624px and above",
+      "minWidth": "624px",
+      "sourceCode": "@media (--not-mobile)",
+      "compiledCSS": "@media (min-width: 624px)",
+      "useCases": [
+        "Hide mobile-specific elements",
+        "Show desktop/tablet navigation",
+        "Multi-column layouts"
+      ]
+    },
+    "notTablet": {
+      "description": "Mobile and desktop combined (skip tablet-specific rules)",
+      "range": "0-623px OR 1024px+",
+      "sourceCode": "@media (--not-tablet)",
+      "compiledCSS": "@media (max-width: 623px) or (min-width: 1024px)",
+      "useCases": "Rare - used when tablet needs special handling different from mobile AND desktop"
+    },
+    "notDesktop": {
+      "description": "Mobile and tablet combined (everything except desktop)",
+      "range": "0-1023px",
+      "maxWidth": "1023px",
+      "sourceCode": "@media (--not-desktop)",
+      "compiledCSS": "@media (max-width: 1023px)",
+      "useCases": [
+        "Touch-optimized interactions",
+        "Simplified layouts for smaller screens",
+        "Mobile-friendly component variants"
+      ]
+    }
+  },
+
+  "postcssTransformation": {
+    "description": "Build-time transformation of custom media queries to standard CSS",
+    "plugin": "postcss-replace",
+    "config": "/ui-components/libs/web-components/vite.config.js",
+    "transformationRules": [
+      {
+        "pattern": "(--mobile)",
+        "replacement": "(max-width: 623px)"
+      },
+      {
+        "pattern": "(--tablet)",
+        "replacement": "(min-width: 624px) and (max-width: 1023px)"
+      },
+      {
+        "pattern": "(--desktop)",
+        "replacement": "(min-width: 1024px)"
+      },
+      {
+        "pattern": "(--not-mobile)",
+        "replacement": "(min-width: 624px)"
+      },
+      {
+        "pattern": "(--not-tablet)",
+        "replacement": "(max-width: 623px) or (min-width: 1024px)"
+      },
+      {
+        "pattern": "(--not-desktop)",
+        "replacement": "(max-width: 1023px)"
+      }
+    ],
+    "example": {
+      "source": "@media (--mobile) {\n  button { width: 100%; }\n}",
+      "output": "@media (max-width: 623px) {\n  button { width: 100%; }\n}"
+    },
+    "benefit": "Developers write readable shortcuts, browsers receive standard media queries"
+  },
+
+  "componentResponsiveBehaviors": {
+    "description": "Components automatically adapt to viewport - no custom media queries needed",
+    "goabButton": {
+      "mobile": "Full-width by default",
+      "desktop": "Auto-width (content-based)",
+      "override": "Use width prop to force specific width on any viewport"
+    },
+    "goabFormItem": {
+      "mobile": "Label stacks above input (vertical)",
+      "desktop": "Label beside input (horizontal) when space allows"
+    },
+    "goabBlock": {
+      "description": "Layout component with responsive direction",
+      "props": {
+        "direction": "'row' | 'column'",
+        "gap": "spacing token (xs, s, m, l, xl, etc.)"
+      },
+      "mobileBehavior": "Often forces column direction on mobile regardless of prop",
+      "desktopBehavior": "Respects direction prop for row/column layouts"
+    },
+    "goabGrid": {
+      "description": "Automatically responsive grid using minChildWidth",
+      "prop": "minChildWidth (e.g., '30ch')",
+      "behavior": "Creates as many columns as fit based on minChildWidth, automatically wraps to fewer columns on smaller screens",
+      "example": "<GoabGrid minChildWidth='30ch'>...</GoabGrid>"
+    },
+    "goabAppHeader": {
+      "mobile": "Hamburger menu with collapsed navigation",
+      "tablet": "Partially expanded navigation",
+      "desktop": "Full horizontal navigation visible"
+    },
+    "goabOneColumnLayout": {
+      "description": "Mandatory page wrapper - responsive by design",
+      "mobile": "Full-width content with side padding",
+      "desktop": "Centered column with max-width constraint"
+    }
+  },
+
+  "developmentGuidance": {
+    "trustComponentDefaults": {
+      "rule": "Components are already responsive - don't write custom media queries",
+      "reasoning": "GoA components handle breakpoints internally for consistency",
+      "correct": "<GoabButton>Submit</GoabButton> <!-- Automatically full-width on mobile -->",
+      "incorrect": "<div className={isMobile ? 'full-width' : 'auto-width'}><GoabButton>Submit</GoabButton></div>"
+    },
+    "useLayoutComponents": {
+      "rule": "Use GoabBlock and GoabGrid for responsive layouts",
+      "examples": {
+        "stackingOnMobile": "<GoabBlock direction='column' gap='m'>...</GoabBlock>",
+        "responsiveGrid": "<GoabGrid minChildWidth='30ch'>...</GoabGrid>",
+        "flexibleRow": "<GoabBlock direction='row' gap='s'>...</GoabBlock>"
+      }
+    },
+    "avoidCustomMediaQueries": {
+      "rule": "DO NOT write @media queries in application code",
+      "reasoning": [
+        "Components handle responsive behavior",
+        "Custom media queries break design system consistency",
+        "Difficult to maintain across viewport sizes",
+        "May conflict with component internal styles"
+      ],
+      "ifYouMust": "If you absolutely need custom responsive behavior, use layout components (GoabBlock, GoabGrid) instead"
+    },
+    "mobileFirstMindset": {
+      "principle": "Design for mobile first, enhance for larger screens",
+      "approach": [
+        "Start with mobile layout (stacked, full-width)",
+        "Components automatically optimize for desktop",
+        "Test on actual mobile devices, not just browser resize"
+      ]
+    }
+  },
+
+  "testingResponsiveness": {
+    "browserDevTools": {
+      "chrome": "Device toolbar (Cmd+Shift+M)",
+      "firefox": "Responsive Design Mode (Cmd+Opt+M)",
+      "testViewports": [
+        "375px (iPhone SE - mobile)",
+        "768px (iPad - tablet)",
+        "1280px (Desktop)"
+      ]
+    },
+    "realDevices": {
+      "importance": "Browser emulation is helpful but not perfect",
+      "recommendation": "Test on actual mobile devices when possible",
+      "considerations": [
+        "Touch targets (44px minimum)",
+        "Text readability (minimum 16px font size)",
+        "Network conditions (mobile data is slower)",
+        "Actual viewport behavior"
+      ]
+    }
+  },
+
+  "accessibilityConsiderations": {
+    "touchTargets": {
+      "rule": "Minimum 44x44px touch target on mobile",
+      "implementation": "GoA components meet this by default",
+      "validation": "Part of WCAG 2.2 AA compliance"
+    },
+    "textSize": {
+      "mobile": "Minimum 16px base font size to prevent zoom",
+      "desktop": "Can use smaller sizes for dense information",
+      "tokens": "Use typography tokens (body-s, body-m, body-l) which are responsive"
+    },
+    "viewportMeta": {
+      "required": true,
+      "tag": "<meta name='viewport' content='width=device-width, initial-scale=1.0'>",
+      "reasoning": "Enables proper responsive behavior on mobile browsers"
+    }
+  },
+
+  "figmaToCodeMapping": {
+    "extractingBreakpoints": {
+      "description": "Figma designs usually show desktop OR mobile - not both",
+      "approach": "Generate code that works on all viewports using GoA components",
+      "strategy": [
+        "1. Identify if Figma shows mobile or desktop design",
+        "2. Use GoA components that auto-adapt (don't hardcode viewport-specific code)",
+        "3. Trust component responsive defaults",
+        "4. Use layout components (Block, Grid) for structure"
+      ]
+    },
+    "mobileDesigns": {
+      "indicators": [
+        "Narrow width (375px, 414px)",
+        "Stacked elements",
+        "Full-width buttons",
+        "Hamburger menu"
+      ],
+      "codeGeneration": "Generate using standard GoA components - they'll work on desktop too"
+    },
+    "desktopDesigns": {
+      "indicators": [
+        "Wide width (1280px, 1440px)",
+        "Multi-column layouts",
+        "Horizontal navigation",
+        "Side-by-side elements"
+      ],
+      "codeGeneration": "Use GoabGrid or GoabBlock with direction='row' - they'll adapt to mobile"
+    }
+  },
+
+  "commonPatterns": {
+    "twoColumnToSingleColumn": {
+      "description": "Desktop shows side-by-side, mobile stacks vertically",
+      "implementation": {
+        "preferred": "<GoabGrid minChildWidth='30ch'><div>Left</div><div>Right</div></GoabGrid>",
+        "alternative": "<GoabBlock direction='row' gap='m'><!-- Automatically stacks on mobile --></GoabBlock>"
+      }
+    },
+    "conditionalNavigation": {
+      "description": "Different navigation patterns for mobile vs desktop",
+      "solution": "Use GoabAppHeader - handles this internally",
+      "avoidCustom": "Don't build custom nav with media queries"
+    },
+    "fullWidthMobile": {
+      "description": "Buttons/inputs full-width on mobile, auto on desktop",
+      "solution": "GoabButton and GoabInput do this by default",
+      "noCodeNeeded": "No custom width logic required"
+    }
+  },
+
+  "troubleshooting": {
+    "componentsNotResponsive": {
+      "issue": "Components not adapting to viewport",
+      "checklist": [
+        "Is viewport meta tag present?",
+        "Are you using actual GoA components (not custom implementations)?",
+        "Are you overriding component styles with custom CSS?",
+        "Did you test in actual browser/device (not just resize)?",
+        "Is the parent container constraining the component?"
+      ]
+    },
+    "layoutBreaking": {
+      "issue": "Layout breaks on certain viewport sizes",
+      "solutions": [
+        "Use GoabBlock or GoabGrid instead of custom flex/grid",
+        "Check for hardcoded widths in parent containers",
+        "Verify you're not fighting component defaults with custom CSS",
+        "Test with browser dev tools at exact breakpoints (623px, 1024px)"
+      ]
+    }
+  },
+
+  "criticalRules": {
+    "noCustomMediaQueries": {
+      "rule": "NEVER write @media queries in application code",
+      "always": "Use GoA components' built-in responsive behavior",
+      "reasoning": "Maintains consistency and leverages tested component behaviors"
+    },
+    "trustComponentDefaults": {
+      "rule": "Components know how to respond to viewport changes",
+      "always": "Use components as-is without viewport-specific logic",
+      "exception": "Only override if you have specific government service requirements"
+    },
+    "mobileFirst": {
+      "rule": "Design and code for mobile first",
+      "reasoning": "Easier to enhance for desktop than to constrain for mobile",
+      "implementation": "GoA components follow mobile-first by default"
+    }
+  },
+
+  "relatedKnowledge": {
+    "components": "See component definition files for specific responsive behaviors",
+    "layout": "See layout.json for GoabBlock, GoabGrid, GoabOneColumnLayout details",
+    "buildSystem": "See technical-architecture.json for PostCSS configuration"
+  }
+}

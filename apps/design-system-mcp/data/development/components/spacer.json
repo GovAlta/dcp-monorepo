@@ -1,0 +1,76 @@
+{
+  "name": "Spacer",
+  "category": "layout",
+  "summary": "Layout utility for consistent spacing. Prefer component margin props (mb, mt) instead when available.",
+  "import": "import { GoabSpacer } from '@abgov/react-components'",
+  "customElement": {
+    "tagName": "goa-spacer",
+    "reactName": "GoabSpacer",
+    "angularSelector": "goab-spacer"
+  },
+  "props": [
+    {
+      "name": "hspacing",
+      "type": "Spacing",
+      "required": false,
+      "default": "none",
+      "description": "Horizontal spacing",
+      "frameworks": {
+        "webComponent": "hspacing=\"...\"",
+        "react": "hspacing={...}",
+        "angular": "[hspacing]=\"...\""
+      }
+    },
+    {
+      "name": "vspacing",
+      "type": "Spacing",
+      "required": false,
+      "default": "none",
+      "description": "Vertical spacing",
+      "frameworks": {
+        "webComponent": "vspacing=\"...\"",
+        "react": "vspacing={...}",
+        "angular": "[vspacing]=\"...\""
+      }
+    },
+    {
+      "name": "testid",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "Test identifier",
+      "frameworks": {
+        "webComponent": "testid=\"...\"",
+        "react": "testId={...}",
+        "angular": "[testId]=\"...\""
+      }
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "criticalNotes": [
+    "PREFER component margin props (mb, mt) instead of Spacer when available",
+    "Use hSpacing='fill' for full-width horizontal spacing",
+    "Only use Spacer when margin props aren't available on components"
+  ],
+  "commonMistakes": [
+    {
+      "mistake": "Using Spacer after Button for spacing",
+      "fix": "Use Button's mb prop instead: <GoabButton mb='l'>"
+    },
+    {
+      "mistake": "Using Spacer after FormItem",
+      "fix": "Use FormItem's mb prop instead"
+    }
+  ],
+  "basicUsage": {
+    "webComponent": "<goa-spacer v-spacing=\"l\"></goa-spacer>",
+    "react": "<GoabSpacer vSpacing=\"l\" />",
+    "angular": "<goab-spacer vSpacing=\"l\"></goab-spacer>"
+  },
+  "relatedExamples": [],
+  "relatedComponents": [
+    "Block",
+    "Grid"
+  ]
+}

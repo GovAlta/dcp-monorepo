@@ -1,0 +1,134 @@
+{
+  "name": "Details",
+  "category": "layout",
+  "summary": "Progressive disclosure component for optional contextual help and additional explanations.",
+  "import": "import { GoabDetails } from '@abgov/react-components'",
+  "customElement": {
+    "tagName": "goa-details",
+    "reactName": "GoabDetails",
+    "angularSelector": "goab-details"
+  },
+  "props": [
+    {
+      "name": "heading",
+      "type": "string",
+      "required": true,
+      "default": null,
+      "description": "Clickable text that expands/collapses",
+      "frameworks": {
+        "webComponent": "heading=\"...\"",
+        "react": "heading={...}",
+        "angular": "[heading]=\"...\""
+      }
+    },
+    {
+      "name": "maxwidth",
+      "type": "string",
+      "required": false,
+      "default": "75ch",
+      "description": "Maximum width for readability",
+      "frameworks": {
+        "webComponent": "maxwidth=\"...\"",
+        "react": "maxWidth={...}",
+        "angular": "[maxWidth]=\"...\""
+      }
+    },
+    {
+      "name": "mt",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin top",
+      "frameworks": {
+        "webComponent": "mt=\"...\"",
+        "react": "mt={...}",
+        "angular": "[mt]=\"...\""
+      }
+    },
+    {
+      "name": "mr",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin right",
+      "frameworks": {
+        "webComponent": "mr=\"...\"",
+        "react": "mr={...}",
+        "angular": "[mr]=\"...\""
+      }
+    },
+    {
+      "name": "mb",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin bottom",
+      "frameworks": {
+        "webComponent": "mb=\"...\"",
+        "react": "mb={...}",
+        "angular": "[mb]=\"...\""
+      }
+    },
+    {
+      "name": "ml",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin left",
+      "frameworks": {
+        "webComponent": "ml=\"...\"",
+        "react": "ml={...}",
+        "angular": "[ml]=\"...\""
+      }
+    },
+    {
+      "name": "open",
+      "type": "boolean",
+      "required": false,
+      "default": "false",
+      "description": "Controls expanded state",
+      "frameworks": {
+        "webComponent": "open=\"true\"",
+        "react": "open={true}",
+        "angular": "[open]=\"true\""
+      }
+    },
+    {
+      "name": "testid",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "Test identifier",
+      "frameworks": {
+        "webComponent": "testid=\"...\"",
+        "react": "testId={...}",
+        "angular": "[testId]=\"...\""
+      }
+    }
+  ],
+  "events": [],
+  "slots": [
+    {
+      "name": "default",
+      "description": "Content that expands/collapses"
+    }
+  ],
+  "criticalNotes": [
+    "Use for optional help content that supplements main content",
+    "Default maxWidth='75ch' provides good readability",
+    "Use clear heading that indicates what will be revealed"
+  ],
+  "basicUsage": {
+    "webComponent": "<goa-details heading=\"What documents do I need?\">\n  <p>You will need your passport, proof of address, and employment letter.</p>\n</goa-details>",
+    "react": "<GoabDetails heading=\"What documents do I need?\">\n  <p>You will need your passport, proof of address, and employment letter.</p>\n</GoabDetails>",
+    "angular": "<goab-details heading=\"What documents do I need?\">\n  <p>You will need your passport, proof of address, and employment letter.</p>\n</goab-details>"
+  },
+  "relatedExamples": [
+    "reveal-more-information-to-help-answer-a-question",
+    "show-a-list-to-help-answer-a-question"
+  ],
+  "relatedComponents": [
+    "Accordion",
+    "Callout"
+  ]
+}

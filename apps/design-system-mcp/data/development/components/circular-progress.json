@@ -1,0 +1,96 @@
+{
+  "name": "CircularProgress",
+  "category": "component",
+  "summary": "",
+  "import": "import { GoabCircularProgress } from '@abgov/react-components'",
+  "customElement": {
+    "tagName": "goa-circular-progress",
+    "reactName": "GoabCircularProgress",
+    "angularSelector": "goab-circular-progress"
+  },
+  "props": [
+    {
+      "name": "variant",
+      "type": "\"fullscreen\" | \"inline\"",
+      "required": false,
+      "default": "inline",
+      "description": "",
+      "frameworks": {
+        "webComponent": "variant=\"...\"",
+        "react": "variant={...}",
+        "angular": "[variant]=\"...\""
+      }
+    },
+    {
+      "name": "size",
+      "type": "\"small\" | \"large\"",
+      "required": false,
+      "default": "large",
+      "description": "",
+      "frameworks": {
+        "webComponent": "size=\"...\"",
+        "react": "size={...}",
+        "angular": "[size]=\"...\""
+      }
+    },
+    {
+      "name": "message",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "",
+      "frameworks": {
+        "webComponent": "message=\"...\"",
+        "react": "message={...}",
+        "angular": "[message]=\"...\""
+      }
+    },
+    {
+      "name": "progress",
+      "type": "number",
+      "required": false,
+      "default": "-1",
+      "description": "",
+      "frameworks": {
+        "webComponent": "progress=\"...\"",
+        "react": "progress={...}",
+        "angular": "[progress]=\"...\""
+      }
+    },
+    {
+      "name": "visible",
+      "type": "boolean",
+      "required": false,
+      "default": "false",
+      "description": "",
+      "frameworks": {
+        "webComponent": "visible=\"true\"",
+        "react": "visible={true}",
+        "angular": "[visible]=\"true\""
+      }
+    },
+    {
+      "name": "testId",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "",
+      "frameworks": {
+        "webComponent": "test-id=\"...\"",
+        "react": "testId={...}",
+        "angular": "[testId]=\"...\""
+      }
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "criticalNotes": [],
+  "commonMistakes": [],
+  "basicUsage": {
+    "webComponent": "",
+    "react": "",
+    "angular": ""
+  },
+  "relatedExamples": [],
+  "relatedComponents": []
+}

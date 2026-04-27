@@ -1,0 +1,100 @@
+{
+  "id": "filter-drawer",
+  "name": "Filter Drawer",
+  "category": "section",
+  "description": "A side drawer containing categorized filter options with checkboxes. Opens from the right side of the screen, allowing users to select multiple filter criteria before applying them all at once.",
+
+  "whenToUse": [
+    "When you have multiple filter categories (status, priority, assignee, etc.)",
+    "When filter options are too numerous for inline filter chips",
+    "When users need to see all available filter options at once",
+    "In combination with a Filter button in the filter bar"
+  ],
+
+  "components": [
+    {
+      "name": "GoabDrawer",
+      "purpose": "Side drawer container",
+      "props": ["heading", "position='right'", "open", "maxSize='300px'", "onClose", "actions"]
+    },
+    {
+      "name": "GoabFormItem",
+      "purpose": "Labels for each filter category",
+      "props": ["label"]
+    },
+    {
+      "name": "GoabCheckbox",
+      "purpose": "Individual filter options",
+      "props": ["name", "text", "checked", "onChange"]
+    },
+    {
+      "name": "GoabButtonGroup",
+      "purpose": "Apply/Cancel actions in drawer footer",
+      "props": ["alignment='start'", "gap='compact'"]
+    },
+    {
+      "name": "GoabButton",
+      "purpose": "Apply filters and cancel buttons"
+    },
+    {
+      "name": "GoabDivider",
+      "purpose": "Separate Clear All from filter categories"
+    }
+  ],
+
+  "stateManagement": {
+    "pendingFilters": {
+      "type": "object",
+      "description": "Uncommitted filter selections (only applied on 'Apply')",
+      "example": "{ status: string[], priority: string[], assignee: string[] }"
+    },
+    "appliedFilters": {
+      "type": "object",
+      "description": "Currently active filters",
+      "example": "{ status: string[], priority: string[], assignee: string[] }"
+    },
+    "filterDrawerOpen": {
+      "type": "boolean",
+      "description": "Controls drawer visibility"
+    }
+  },
+
+  "example": {
+    "framework": "react",
+    "description": "Complete filter drawer with status, priority, and assignee categories",
+    "code": "// State management\nconst [filterDrawerOpen, setFilterDrawerOpen] = useState(false);\nconst [pendingFilters, setPendingFilters] = useState({\n  status: [] as string[],\n  priority: [] as string[],\n  assignee: [] as string[]\n});\nconst [appliedFilters, setAppliedFilters] = useState({\n  status: [] as string[],\n  priority: [] as string[],\n  assignee: [] as string[]\n});\n\n// Filter options extracted from data\nconst filterOptions = useMemo(() => ({\n  statuses: [...new Set(data.map(item => item.statusText))].sort(),\n  priorities: ['high', 'medium', 'low'],\n  assignees: [...new Set(data.map(item => item.assignedTo))].sort()\n}), [data]);\n\n// Toggle a pending filter value\nconst togglePendingFilter = (category: keyof typeof pendingFilters, value: string) => {\n  setPendingFilters(prev => ({\n    ...prev,\n    [category]: prev[category].includes(value)\n      ? prev[category].filter(v => v !== value)\n      : [...prev[category], value]\n  }));\n};\n\n// Apply pending filters\nconst applyFilters = () => {\n  setAppliedFilters(pendingFilters);\n  setFilterDrawerOpen(false);\n};\n\n// Clear all pending filters\nconst clearAllPending = () => {\n  setPendingFilters({ status: [], priority: [], assignee: [] });\n};\n\n// JSX\n<GoabDrawer\n  heading=\"Filter items\"\n  position=\"right\"\n  open={filterDrawerOpen}\n  maxSize=\"300px\"\n  onClose={() => setFilterDrawerOpen(false)}\n  actions={\n    <GoabButtonGroup alignment=\"start\" gap=\"compact\">\n      <GoabButton type=\"primary\" size=\"compact\" onClick={applyFilters}>\n        Apply filters\n      </GoabButton>\n      <GoabButton type=\"tertiary\" size=\"compact\" onClick={() => setFilterDrawerOpen(false)}>\n        Cancel\n      </GoabButton>\n    </GoabButtonGroup>\n  }\n>\n  <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--goa-space-l)' }}>\n    {/* Status filter */}\n    <GoabFormItem label=\"Status\">\n      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--goa-space-xs)' }}>\n        {filterOptions.statuses.map(status => (\n          <GoabCheckbox\n            key={status}\n            name={`status-${status}`}\n            text={status}\n            checked={pendingFilters.status.includes(status)}\n            onChange={() => togglePendingFilter('status', status)}\n          />\n        ))}\n      </div>\n    </GoabFormItem>\n\n    {/* Priority filter */}\n    <GoabFormItem label=\"Priority\">\n      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--goa-space-xs)' }}>\n        {filterOptions.priorities.map(priority => (\n          <GoabCheckbox\n            key={priority}\n            name={`priority-${priority}`}\n            text={priority.charAt(0).toUpperCase() + priority.slice(1)}\n            checked={pendingFilters.priority.includes(priority)}\n            onChange={() => togglePendingFilter('priority', priority)}\n          />\n        ))}\n      </div>\n    </GoabFormItem>\n\n    {/* Assignee filter */}\n    <GoabFormItem label=\"Assigned to\">\n      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--goa-space-xs)' }}>\n        {filterOptions.assignees.map(assignee => (\n          <GoabCheckbox\n            key={assignee}\n            name={`assignee-${assignee}`}\n            text={assignee}\n            checked={pendingFilters.assignee.includes(assignee)}\n            onChange={() => togglePendingFilter('assignee', assignee)}\n          />\n        ))}\n      </div>\n    </GoabFormItem>\n\n    {/* Clear all button - only shown if any pending filters selected */}\n    {Object.values(pendingFilters).some(arr => arr.length > 0) && (\n      <>\n        <GoabDivider />\n        <GoabButton type=\"tertiary\" size=\"compact\" onClick={clearAllPending}>\n          Clear all filters\n        </GoabButton>\n      </>\n    )}\n  </div>\n</GoabDrawer>"
+  },
+
+  "patternWorkflow": {
+    "step1": "User clicks 'Filter' button in filter bar",
+    "step2": "Drawer opens with pendingFilters initialized from appliedFilters",
+    "step3": "User checks/unchecks filter options",
+    "step4": "User clicks 'Apply filters' to commit or 'Cancel' to discard",
+    "step5": "Applied filters shown as chips in filter bar with option to remove individually"
+  },
+
+  "variants": [
+    {
+      "name": "With search within categories",
+      "description": "Add GoabInput at top of long checkbox lists for searching options"
+    },
+    {
+      "name": "With date range filter",
+      "description": "Include GoabDatePicker for filtering by date ranges"
+    },
+    {
+      "name": "Collapsible categories",
+      "description": "Use GoabAccordion to collapse rarely-used filter categories"
+    }
+  ],
+
+  "considerations": [
+    "Use pending/applied pattern to allow users to make multiple selections before committing",
+    "When opening drawer, copy appliedFilters to pendingFilters so user starts where they left off",
+    "Extract filter options dynamically from data to ensure options match available values",
+    "Consider alphabetical sorting of options for predictability",
+    "Show 'Clear all filters' only when there are selections to clear"
+  ],
+
+  "relatedPatterns": ["filter-bar", "data-table", "list-page"]
+}

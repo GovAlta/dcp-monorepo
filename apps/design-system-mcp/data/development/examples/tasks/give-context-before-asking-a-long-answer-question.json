@@ -1,0 +1,103 @@
+{
+  "$schema": "../recipe-schema.json",
+  "schemaVersion": "2.1.0-ai-context",
+  "recipeId": "give-context-before-asking-a-long-answer-question",
+  "recipeName": "Give Context Before Asking a Long Answer Question",
+  "category": "form-pattern",
+  "summary": "Provide context and helpful guidance before asking users for detailed written responses using a textarea",
+  "serviceContext": {
+    "useCase": "Guide users to provide comprehensive, helpful responses by setting context and expectations before they write detailed answers",
+    "userType": "citizen",
+    "governmentServiceFlows": [
+      "When citizens need to describe their situation for benefit applications or appeals",
+      "When users must provide detailed explanations for eligibility assessments",
+      "When collecting comprehensive feedback or explanations that require thoughtful responses",
+      "When users need guidance on what information to include in their detailed responses"
+    ],
+    "relatedPatterns": [
+      "give-background-information-before-asking-a-question",
+      "ask-a-long-answer-question-with-a-maximum-word-count",
+      "reveal-more-information-to-help-answer-a-question",
+      "question-page"
+    ]
+  },
+  "components": [
+    {
+      "componentName": "GoabButton",
+      "role": "Navigation and form submission",
+      "purpose": "Provide back navigation and form submission controls"
+    },
+    {
+      "componentName": "GoabFormItem",
+      "role": "Form field container",
+      "purpose": "Provide proper labeling and structure for the textarea with help text"
+    },
+    {
+      "componentName": "GoabTextarea",
+      "role": "Long-form input field",
+      "purpose": "Allow users to provide detailed written responses with character counting"
+    },
+    {
+      "componentName": "GoabDetails",
+      "role": "Additional guidance container",
+      "purpose": "Provide expandable contextual help and examples for better responses"
+    },
+    {
+      "componentName": "GoabButtonGroup",
+      "role": "Action button container",
+      "purpose": "Group form submission buttons with proper alignment and spacing"
+    }
+  ],
+  "codeReference": {
+    "exampleFile": "give-context-before-asking-a-long-answer-question.tsx",
+    "linesOfCode": 67,
+    "lastModified": "2024-01-01T00:00:00.000Z"
+  },
+  "implementation": {
+    "complexity": "medium",
+    "keyPatterns": [
+      "Context setting with clear page title and explanatory text",
+      "Form structure with proper labeling and help text",
+      "Character-counted textarea for detailed responses",
+      "Expandable details section for additional guidance",
+      "Back navigation for multi-page forms",
+      "Proper form submission with Continue button"
+    ],
+    "designPatterns": [
+      "Question page with context",
+      "Progressive disclosure for guidance",
+      "Form validation with character limits",
+      "Contextual help and examples"
+    ],
+    "accessibility": [
+      "Proper heading hierarchy with h2 page title",
+      "Form item provides clear labeling and help text association",
+      "Expandable details section is keyboard accessible",
+      "Character counter provides real-time feedback",
+      "Back button provides clear navigation context"
+    ]
+  },
+  "codeExamples": {
+    "react": {
+      "complete": "import {\n  GoabButton,\n  GoabButtonGroup,\n  GoabDetails,\n  GoabFormItem,\n  GoabTextarea\n} from \"@abgov/react-components\";\nimport { useState } from \"react\";\n\nexport default function GiveContextBeforeAskingALongAnswerQuestion() {\n  const [responseText, setResponseText] = useState(\"\");\n  const [errors, setErrors] = useState<string[]>([]);\n\n  const handleTextareaChange = (event: { value: string }) => {\n    setResponseText(event.value);\n    // Clear errors when user starts typing\n    if (errors.length > 0) {\n      setErrors([]);\n    }\n  };\n\n  const handleSubmit = () => {\n    const newErrors: string[] = [];\n    \n    if (!responseText.trim()) {\n      newErrors.push(\"Please provide details about your situation\");\n    }\n    \n    if (newErrors.length > 0) {\n      setErrors(newErrors);\n      return;\n    }\n    \n    console.log('Question submitted:', responseText);\n    // Handle form submission\n  };\n\n  const handleBack = () => {\n    window.history.back();\n  };\n\n  return (\n    <div className=\"question-page\">\n      <GoabButton type=\"tertiary\" leadingIcon=\"arrow-back\" mb=\"m\" onClick={handleBack}>\n        Back\n      </GoabButton>\n\n      <h2>Submit a question about your benefits</h2>\n      <p>\n        If you need clarification about your benefit eligibility, payment schedule, or application status, submit your\n        question here.\n      </p>\n      \n      <form>\n        <GoabFormItem\n          label=\"Provide details about your situation\"\n          helpText=\"Include specific details to help us answer your question quickly.\"\n          error={errors.length > 0 ? errors[0] : undefined}>\n          <GoabTextarea \n            name=\"program\" \n            value={responseText}\n            onChange={handleTextareaChange} \n            maxCount={400} \n            countBy={\"character\"} \n          />\n        </GoabFormItem>\n      </form>\n      \n      <GoabDetails mt={\"m\"} heading=\"What kind of information is useful?\">\n        <p>\n          Include your benefit program name, mention any recent correspondence you received and/or provide any\n          relevant case or reference numbers.\n        </p>\n      </GoabDetails>\n\n      <GoabButtonGroup alignment=\"start\" mt=\"l\">\n        <GoabButton type=\"primary\" onClick={handleSubmit}>\n          Continue\n        </GoabButton>\n      </GoabButtonGroup>\n    </div>\n  );\n}",
+      "key": "const [userResponse, setUserResponse] = useState(\"\");\nconst [isValid, setIsValid] = useState(false);\n\nconst contextInformation = {\n  title: \"Submit a question about your benefits\",\n  description: \"If you need clarification about your benefit eligibility, payment schedule, or application status, submit your question here.\",\n  helpText: \"Include specific details to help us answer your question quickly.\",\n  examples: [\n    \"Include your benefit program name\",\n    \"Mention any recent correspondence you received\",\n    \"Provide any relevant case or reference numbers\"\n  ]\n};\n\nconst handleResponseChange = (event: { value: string }) => {\n  setUserResponse(event.value);\n  setIsValid(event.value.trim().length > 0);\n};\n\nconst handleSubmit = () => {\n  if (isValid) {\n    console.log('User response:', userResponse);\n    // Process the detailed response\n  }\n};\n\n<div className=\"question-page\">\n  <GoabButton type=\"tertiary\" leadingIcon=\"arrow-back\" mb=\"m\" onClick={() => window.history.back()}>\n    Back\n  </GoabButton>\n\n  <h2>{contextInformation.title}</h2>\n  <p>{contextInformation.description}</p>\n  \n  <form>\n    <GoabFormItem\n      label=\"Provide details about your situation\"\n      helpText={contextInformation.helpText}>\n      <GoabTextarea \n        name=\"userResponse\" \n        value={userResponse}\n        onChange={handleResponseChange} \n        maxCount={400} \n        countBy={\"character\"} \n      />\n    </GoabFormItem>\n  </form>\n  \n  <GoabDetails mt={\"m\"} heading=\"What kind of information is useful?\">\n    <ul>\n      {contextInformation.examples.map((example, index) => (\n        <li key={index}>{example}</li>\n      ))}\n    </ul>\n  </GoabDetails>\n\n  <GoabButtonGroup alignment=\"start\" mt=\"l\">\n    <GoabButton type=\"primary\" onClick={handleSubmit} disabled={!isValid}>\n      Continue\n    </GoabButton>\n  </GoabButtonGroup>\n</div>\n\n/* CSS */\n.question-page {\n  max-width: 800px;\n  margin: 0 auto;\n  padding: var(--goa-space-m);\n}\n\n.question-page h2 {\n  margin-bottom: var(--goa-space-m);\n}\n\n.question-page p {\n  margin-bottom: var(--goa-space-l);\n  color: var(--goa-color-text-secondary);\n}"
+    },
+    "angular": {
+      "complete": "export class GiveContextBeforeAskingALongAnswerQuestionComponent {\n  form: FormGroup;\n  responseText = '';\n  errors: string[] = [];\n  \n  contextInformation = {\n    title: 'Submit a question about your benefits',\n    description: 'If you need clarification about your benefit eligibility, payment schedule, or application status, submit your question here.',\n    helpText: 'Include specific details to help us answer your question quickly.',\n    examples: [\n      'Include your benefit program name',\n      'Mention any recent correspondence you received',\n      'Provide any relevant case or reference numbers'\n    ]\n  };\n\n  constructor(private fb: FormBuilder) {\n    this.form = this.fb.group({\n      program: ['', Validators.required]\n    });\n  }\n\n  handleTextareaChange(event: GoabTextareaOnChangeDetail) {\n    this.responseText = event.value;\n    this.form.patchValue({ program: event.value });\n    \n    // Clear errors when user starts typing\n    if (this.errors.length > 0) {\n      this.errors = [];\n    }\n  }\n\n  handleSubmit() {\n    this.errors = [];\n    \n    if (!this.responseText.trim()) {\n      this.errors.push('Please provide details about your situation');\n      return;\n    }\n    \n    if (this.form.valid) {\n      console.log('Question submitted:', this.responseText);\n      // Handle form submission\n    }\n  }\n\n  handleBack() {\n    window.history.back();\n  }\n}",
+      "key": "form: FormGroup;\nresponseText = '';\nerrors: string[] = [];\n\ncontextInformation = {\n  title: 'Submit a question about your benefits',\n  description: 'If you need clarification about your benefit eligibility, payment schedule, or application status, submit your question here.',\n  helpText: 'Include specific details to help us answer your question quickly.',\n  examples: [\n    'Include your benefit program name',\n    'Mention any recent correspondence you received',\n    'Provide any relevant case or reference numbers'\n  ]\n};\n\nconstructor(private fb: FormBuilder) {\n  this.form = this.fb.group({\n    program: ['', Validators.required]\n  });\n}\n\nhandleTextareaChange(event: GoabTextareaOnChangeDetail) {\n  this.responseText = event.value;\n  this.form.patchValue({ program: event.value });\n  \n  if (this.errors.length > 0) {\n    this.errors = [];\n  }\n}\n\nhandleSubmit() {\n  this.errors = [];\n  \n  if (!this.responseText.trim()) {\n    this.errors.push('Please provide details about your situation');\n    return;\n  }\n  \n  if (this.form.valid) {\n    console.log('Question submitted:', this.responseText);\n    // Handle form submission\n  }\n}\n\nhandleBack() {\n  window.history.back();\n}\n\n<!-- Template -->\n<div class=\"question-page\">\n  <goab-button type=\"tertiary\" leadingIcon=\"arrow-back\" mb=\"m\" (onClick)=\"handleBack()\">\n    Back\n  </goab-button>\n\n  <h2>{{ contextInformation.title }}</h2>\n  <p>{{ contextInformation.description }}</p>\n  \n  <form [formGroup]=\"form\">\n    <goab-form-item\n      label=\"Provide details about your situation\"\n      [helpText]=\"contextInformation.helpText\"\n      [error]=\"errors.length > 0 ? errors[0] : null\">\n      <goab-textarea \n        name=\"program\" \n        [value]=\"responseText\"\n        (onChange)=\"handleTextareaChange($event)\" \n        [maxCount]=\"400\" \n        countBy=\"character\">\n      </goab-textarea>\n    </goab-form-item>\n  </form>\n  \n  <goab-details mt=\"m\" heading=\"What kind of information is useful?\">\n    <ul>\n      <li *ngFor=\"let example of contextInformation.examples\">{{ example }}</li>\n    </ul>\n  </goab-details>\n\n  <goab-button-group alignment=\"start\" mt=\"l\">\n    <goab-button type=\"primary\" (onClick)=\"handleSubmit()\" [disabled]=\"!form.valid\">\n      Continue\n    </goab-button>\n  </goab-button-group>\n</div>"
+    }
+  },
+  "tags": [
+    "context",
+    "long-answer",
+    "textarea",
+    "question-page",
+    "guidance",
+    "form-help",
+    "character-limit",
+    "expandable-details",
+    "user-guidance",
+    "benefits-application",
+    "detailed-response"
+  ]
+}

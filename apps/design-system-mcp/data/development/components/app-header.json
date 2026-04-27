@@ -1,0 +1,122 @@
+{
+  "name": "AppHeader",
+  "category": "component",
+  "summary": "",
+  "import": "import { GoabAppHeader } from '@abgov/react-components'",
+  "customElement": {
+    "tagName": "goa-app-header",
+    "reactName": "GoabAppHeader",
+    "angularSelector": "goab-app-header"
+  },
+  "props": [
+    {
+      "name": "heading",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "",
+      "frameworks": {
+        "webComponent": "heading=\"...\"",
+        "react": "heading={...}",
+        "angular": "[heading]=\"...\""
+      }
+    },
+    {
+      "name": "url",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "",
+      "frameworks": {
+        "webComponent": "url=\"...\"",
+        "react": "url={...}",
+        "angular": "[url]=\"...\""
+      }
+    },
+    {
+      "name": "testId",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "",
+      "frameworks": {
+        "webComponent": "test-id=\"...\"",
+        "react": "testId={...}",
+        "angular": "[testId]=\"...\""
+      }
+    },
+    {
+      "name": "maxcontentwidth",
+      "type": "any",
+      "required": false,
+      "default": "",
+      "description": "",
+      "frameworks": {
+        "webComponent": "maxcontentwidth=\"...\"",
+        "react": "maxcontentwidth={...}",
+        "angular": "[maxcontentwidth]=\"...\""
+      }
+    },
+    {
+      "name": "fullmenubreakpoint",
+      "type": "number",
+      "required": false,
+      "default": "TABLET_BP",
+      "description": "",
+      "frameworks": {
+        "webComponent": "fullmenubreakpoint=\"...\"",
+        "react": "fullmenubreakpoint={...}",
+        "angular": "[fullmenubreakpoint]=\"...\""
+      }
+    },
+    {
+      "name": "hasmenuclickhandler",
+      "type": "boolean",
+      "required": false,
+      "default": "false",
+      "description": "",
+      "frameworks": {
+        "webComponent": "hasmenuclickhandler=\"true\"",
+        "react": "hasmenuclickhandler={true}",
+        "angular": "[hasmenuclickhandler]=\"true\""
+      }
+    }
+  ],
+  "events": [
+    {
+      "name": "_menuClick",
+      "type": "(event) => void",
+      "description": "",
+      "frameworks": {
+        "webComponent": "_menuClick custom event",
+        "react": "onMenuClick prop",
+        "angular": "(onMenuClick) event binding"
+      }
+    },
+    {
+      "name": "app-header:changed",
+      "type": "(event) => void",
+      "description": "",
+      "frameworks": {
+        "webComponent": "app-header:changed custom event",
+        "react": "onApp-header:changed prop",
+        "angular": "(onApp-header:changed) event binding"
+      }
+    }
+  ],
+  "slots": [
+    {
+      "name": "default",
+      "description": ""
+    }
+  ],
+  "criticalNotes": [],
+  "commonMistakes": [],
+  "basicUsage": {
+    "webComponent": "",
+    "react": "",
+    "angular": ""
+  },
+  "relatedExamples": [],
+  "relatedComponents": []
+}

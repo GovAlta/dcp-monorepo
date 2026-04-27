@@ -1,0 +1,124 @@
+{
+  "$schema": "../schema/recipe-schema-2.1.0-ai-context.json",
+  "title": "Show status in a table",
+  "description": "Display status information using badges within table cells to provide clear, scannable visual indicators of item states, progress, or conditions.",
+  "category": "interaction-patterns",
+  "tags": [
+    "tables",
+    "status-badges",
+    "data-display",
+    "visual-indicators",
+    "status-tracking"
+  ],
+  "government_service_context": {
+    "citizen_flows": {
+      "applicable": true,
+      "usage": "Citizens need to quickly understand the status of their applications, payments, documents, or service requests through clear visual indicators."
+    },
+    "worker_flows": {
+      "applicable": true,
+      "usage": "Government workers reviewing cases, applications, or administrative items need immediate visual cues about status to prioritize work and make decisions."
+    },
+    "shared_components": {
+      "applicable": true,
+      "usage": "Status indication in tables is universally useful for any interface displaying lists of items with state or progress information."
+    }
+  },
+  "component_analysis": {
+    "primary_components": [
+      {
+        "name": "Status Badge",
+        "role": "Provides visual status indication using color and text",
+        "purpose": "Enables immediate recognition of item state without reading detailed information"
+      },
+      {
+        "name": "Data Table",
+        "role": "Organizes multiple data items with status in structured rows",
+        "purpose": "Allows efficient scanning and comparison of status across multiple items"
+      },
+      {
+        "name": "Action Button",
+        "role": "Provides context-appropriate actions based on status",
+        "purpose": "Enables immediate action-taking based on current item status"
+      },
+      {
+        "name": "Status Column",
+        "role": "Dedicated space for status information in table layout",
+        "purpose": "Creates consistent, scannable status overview across all table rows"
+      }
+    ],
+    "accessibility_features": [
+      "Status badges use semantic color meanings that work with high contrast",
+      "Badge text is descriptive and meaningful to screen readers",
+      "Table headers provide context for status column",
+      "Color is not the only indicator (text content included)",
+      "Consistent badge sizing maintains table row alignment"
+    ],
+    "user_experience_notes": [
+      "Color-coded status badges enable rapid visual scanning",
+      "Status placement in first or prominent column supports left-to-right reading",
+      "Consistent badge types across application build user understanding",
+      "Action buttons reflect available operations based on current status",
+      "Visual hierarchy places status as primary information for each row"
+    ]
+  },
+  "implementation": {
+    "react": {
+      "code": "import React from 'react';\nimport {\n  GoabBadge,\n  GoabButton,\n  GoabTable\n} from '@abgov/react-components';\nimport { GoabBadgeType } from '@abgov/ui-components-common';\n\ninterface TableItem {\n  id: string;\n  name: string;\n  fileNumber: string;\n  status: {\n    type: GoabBadgeType;\n    content: string;\n  };\n}\n\nfunction StatusTable() {\n  const tableData: TableItem[] = [\n    {\n      id: '1',\n      name: 'Application for Building Permit',\n      fileNumber: '1234567890',\n      status: { type: 'important', content: 'Pending' }\n    },\n    {\n      id: '2',\n      name: 'License Renewal Request',\n      fileNumber: '1234567891',\n      status: { type: 'emergency', content: 'Failed' }\n    },\n    {\n      id: '3',\n      name: 'Tax Assessment Review',\n      fileNumber: '1234567892',\n      status: { type: 'success', content: 'Complete' }\n    },\n    {\n      id: '4',\n      name: 'Employment Insurance Claim',\n      fileNumber: '1234567893',\n      status: { type: 'information', content: 'In progress' }\n    },\n    {\n      id: '5',\n      name: 'Property Transfer',\n      fileNumber: '1234567894',\n      status: { type: 'midtone', content: 'Closed' }\n    }\n  ];\n\n  const getActionForStatus = (status: string): { label: string; action: () => void } => {\n    switch (status) {\n      case 'Pending':\n        return {\n          label: 'Review',\n          action: () => console.log('Opening review')\n        };\n      case 'Failed':\n        return {\n          label: 'Retry',\n          action: () => console.log('Retrying process')\n        };\n      case 'Complete':\n        return {\n          label: 'View',\n          action: () => console.log('Viewing completed item')\n        };\n      case 'In progress':\n        return {\n          label: 'Update',\n          action: () => console.log('Updating progress')\n        };\n      case 'Closed':\n        return {\n          label: 'Archive',\n          action: () => console.log('Archiving item')\n        };\n      default:\n        return {\n          label: 'Action',\n          action: () => console.log('Default action')\n        };\n    }\n  };\n\n  const handleItemAction = (item: TableItem) => {\n    const actionConfig = getActionForStatus(item.status.content);\n    console.log(`${actionConfig.label} action for: ${item.name}`);\n    actionConfig.action();\n  };\n\n  return (\n    <GoabTable width=\"100%\">\n      <thead>\n        <tr>\n          <th>Status</th>\n          <th>Name</th>\n          <th className=\"goa-table-number-header\">File number</th>\n          <th></th>\n        </tr>\n      </thead>\n      <tbody>\n        {tableData.map((item) => {\n          const actionConfig = getActionForStatus(item.status.content);\n          return (\n            <tr key={item.id}>\n              <td>\n                <GoabBadge \n                  type={item.status.type} \n                  content={item.status.content} \n                />\n              </td>\n              <td>{item.name}</td>\n              <td className=\"goa-table-number-column\">{item.fileNumber}</td>\n              <td>\n                <GoabButton \n                  size=\"compact\" \n                  type=\"tertiary\" \n                  onClick={() => handleItemAction(item)}\n                >\n                  {actionConfig.label}\n                </GoabButton>\n              </td>\n            </tr>\n          );\n        })}\n      </tbody>\n    </GoabTable>\n  );\n}\n\n// Reusable status configuration\nconst STATUS_CONFIG = {\n  pending: { type: 'important' as GoabBadgeType, content: 'Pending' },\n  failed: { type: 'emergency' as GoabBadgeType, content: 'Failed' },\n  complete: { type: 'success' as GoabBadgeType, content: 'Complete' },\n  inProgress: { type: 'information' as GoabBadgeType, content: 'In progress' },\n  closed: { type: 'midtone' as GoabBadgeType, content: 'Closed' },\n  approved: { type: 'success' as GoabBadgeType, content: 'Approved' },\n  rejected: { type: 'emergency' as GoabBadgeType, content: 'Rejected' },\n  underReview: { type: 'information' as GoabBadgeType, content: 'Under review' }\n};\n\n// Helper function for consistent status display\nfunction getStatusBadge(statusKey: keyof typeof STATUS_CONFIG) {\n  const config = STATUS_CONFIG[statusKey];\n  return <GoabBadge type={config.type} content={config.content} />;\n}"
+    },
+    "angular": {
+      "code": "import { Component } from '@angular/core';\nimport { GoabBadgeType } from '@abgov/ui-components-common';\n\ninterface TableItem {\n  id: string;\n  name: string;\n  fileNumber: string;\n  status: {\n    type: GoabBadgeType;\n    content: string;\n  };\n}\n\ninterface ActionConfig {\n  label: string;\n  handler: () => void;\n}\n\n@Component({\n  selector: 'app-status-table',\n  template: `\n    <goab-table width=\"100%\">\n      <thead>\n        <tr>\n          <th>Status</th>\n          <th>Name</th>\n          <th class=\"goa-table-number-header\">File number</th>\n          <th></th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr *ngFor=\"let item of tableData\">\n          <td>\n            <goab-badge \n              [type]=\"item.status.type\" \n              [content]=\"item.status.content\"\n            ></goab-badge>\n          </td>\n          <td>{{ item.name }}</td>\n          <td class=\"goa-table-number-column\">{{ item.fileNumber }}</td>\n          <td>\n            <goab-button \n              size=\"compact\" \n              type=\"tertiary\" \n              (onClick)=\"handleItemAction(item)\"\n            >\n              {{ getActionLabel(item.status.content) }}\n            </goab-button>\n          </td>\n        </tr>\n      </tbody>\n    </goab-table>\n  `\n})\nexport class StatusTableComponent {\n  tableData: TableItem[] = [\n    {\n      id: '1',\n      name: 'Application for Building Permit',\n      fileNumber: '1234567890',\n      status: { type: 'important', content: 'Pending' }\n    },\n    {\n      id: '2',\n      name: 'License Renewal Request',\n      fileNumber: '1234567891',\n      status: { type: 'emergency', content: 'Failed' }\n    },\n    {\n      id: '3',\n      name: 'Tax Assessment Review',\n      fileNumber: '1234567892',\n      status: { type: 'success', content: 'Complete' }\n    },\n    {\n      id: '4',\n      name: 'Employment Insurance Claim',\n      fileNumber: '1234567893',\n      status: { type: 'information', content: 'In progress' }\n    },\n    {\n      id: '5',\n      name: 'Property Transfer',\n      fileNumber: '1234567894',\n      status: { type: 'midtone', content: 'Closed' }\n    }\n  ];\n\n  private statusActions: Record<string, ActionConfig> = {\n    'Pending': {\n      label: 'Review',\n      handler: () => console.log('Opening review')\n    },\n    'Failed': {\n      label: 'Retry',\n      handler: () => console.log('Retrying process')\n    },\n    'Complete': {\n      label: 'View',\n      handler: () => console.log('Viewing completed item')\n    },\n    'In progress': {\n      label: 'Update',\n      handler: () => console.log('Updating progress')\n    },\n    'Closed': {\n      label: 'Archive',\n      handler: () => console.log('Archiving item')\n    }\n  };\n\n  getActionLabel(status: string): string {\n    return this.statusActions[status]?.label || 'Action';\n  }\n\n  handleItemAction(item: TableItem) {\n    const actionConfig = this.statusActions[item.status.content];\n    if (actionConfig) {\n      console.log(`${actionConfig.label} action for: ${item.name}`);\n      actionConfig.handler();\n    }\n  }\n}\n\n// Service for managing status configurations\n@Injectable({\n  providedIn: 'root'\n})\nexport class StatusConfigService {\n  private statusConfig = {\n    pending: { type: 'important' as GoabBadgeType, content: 'Pending' },\n    failed: { type: 'emergency' as GoabBadgeType, content: 'Failed' },\n    complete: { type: 'success' as GoabBadgeType, content: 'Complete' },\n    inProgress: { type: 'information' as GoabBadgeType, content: 'In progress' },\n    closed: { type: 'midtone' as GoabBadgeType, content: 'Closed' },\n    approved: { type: 'success' as GoabBadgeType, content: 'Approved' },\n    rejected: { type: 'emergency' as GoabBadgeType, content: 'Rejected' },\n    underReview: { type: 'information' as GoabBadgeType, content: 'Under review' }\n  };\n\n  getStatusConfig(statusKey: keyof typeof this.statusConfig) {\n    return this.statusConfig[statusKey];\n  }\n\n  getAllStatuses() {\n    return Object.keys(this.statusConfig);\n  }\n\n  getStatusesByType(type: GoabBadgeType) {\n    return Object.entries(this.statusConfig)\n      .filter(([_, config]) => config.type === type)\n      .map(([key, _]) => key);\n  }\n}"
+    }
+  },
+  "usage_guidelines": {
+    "when_to_use": [
+      "Tables displaying items with distinct states or statuses",
+      "Administrative interfaces tracking application or case progress",
+      "Dashboards showing status overview of multiple items",
+      "Work queues where status determines next actions",
+      "Lists where visual status scanning is important for user efficiency"
+    ],
+    "when_not_to_use": [
+      "Tables with only one status type across all items",
+      "Detailed views where full status explanations are more appropriate",
+      "Very narrow table layouts where badges would crowd other content",
+      "When status changes so frequently that badges would be distracting"
+    ],
+    "best_practices": [
+      "Use consistent badge types and colors across application for same statuses",
+      "Place status column prominently (first or second column)",
+      "Ensure badge text is meaningful and descriptive",
+      "Align actions with status (e.g., 'Review' for pending, 'View' for complete)",
+      "Use appropriate badge types (emergency for failures, success for completion)",
+      "Test color accessibility and ensure text content provides meaning",
+      "Consider sorting or filtering capabilities based on status"
+    ]
+  },
+  "variations": [
+    {
+      "name": "Progress status with percentage",
+      "description": "Show progress completion along with status",
+      "code_change": "Add progress text: <GoabBadge type='information' content='In progress (75%)' />"
+    },
+    {
+      "name": "Status with timestamp",
+      "description": "Include when status was last updated",
+      "code_change": "Add timestamp below badge: <div><GoabBadge .../><small>Updated 2 hours ago</small></div>"
+    },
+    {
+      "name": "Clickable status badges",
+      "description": "Make badges interactive for status details",
+      "code_change": "Wrap badge in button: <GoabButton type='link' onClick={showStatusDetails}><GoabBadge .../></GoabButton>"
+    },
+    {
+      "name": "Status with priority indicators",
+      "description": "Combine status with priority information",
+      "code_change": "Stack badges: <GoabBadge type='emergency' content='High Priority' /><GoabBadge type='important' content='Pending' />"
+    }
+  ],
+  "related_patterns": [
+    "show-status-on-a-card",
+    "show-different-views-of-data-in-a-table",
+    "filter-data-in-a-table"
+  ]
+}

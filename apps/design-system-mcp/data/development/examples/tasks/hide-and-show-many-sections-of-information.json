@@ -1,0 +1,86 @@
+{
+  "$schema": "../recipe-schema.json",
+  "schemaVersion": "2.1.0-ai-context",
+  "recipeId": "hide-and-show-many-sections-of-information",
+  "recipeName": "Hide and Show Many Sections of Information",
+  "category": "interaction-pattern",
+  "summary": "Use accordion components with show/hide all functionality to organize and control visibility of multiple information sections",
+  "serviceContext": {
+    "useCase": "Organize multiple sections of information that can be expanded or collapsed individually or collectively, reducing cognitive load and improving content navigation",
+    "userType": "both",
+    "governmentServiceFlows": [
+      "When citizens need to access FAQ sections or help documentation with multiple topics",
+      "When workers need to review multiple sections of case information or documentation",
+      "When displaying policy sections, requirements, or procedures that users can explore selectively",
+      "When organizing complex information into digestible sections that users can control"
+    ],
+    "relatedPatterns": [
+      "expand-or-collapse-part-of-a-form",
+      "reveal-more-information-to-help-answer-a-question",
+      "show-a-list-to-help-answer-a-question"
+    ]
+  },
+  "components": [
+    {
+      "componentName": "GoabAccordion",
+      "role": "Collapsible content container",
+      "purpose": "Provide expandable sections for organizing information with individual show/hide controls"
+    },
+    {
+      "componentName": "GoabButton",
+      "role": "Global control trigger",
+      "purpose": "Provide show/hide all functionality for managing all accordion sections simultaneously"
+    }
+  ],
+  "codeReference": {
+    "exampleFile": "hide-and-show-many-sections-of-information.tsx",
+    "linesOfCode": 267,
+    "lastModified": "2024-01-01T00:00:00.000Z"
+  },
+  "implementation": {
+    "complexity": "medium",
+    "keyPatterns": [
+      "State management for individual accordion sections and global expand/collapse state",
+      "Synchronized state tracking between individual accordions and global control",
+      "Dynamic button text based on current state (Show all/Hide all)",
+      "Array-based tracking of expanded sections with includes() checking",
+      "useEffect hook for automatic state synchronization",
+      "Event handling for both individual accordion changes and global toggle"
+    ],
+    "designPatterns": [
+      "Progressive disclosure with global controls",
+      "Accordion pattern for content organization",
+      "Synchronized state management",
+      "FAQ and help documentation pattern"
+    ],
+    "accessibility": [
+      "Accordion components provide proper ARIA states for expanded/collapsed content",
+      "Keyboard navigation supported for all accordion sections",
+      "Screen readers announce accordion state changes",
+      "Global show/hide button clearly indicates current state and action",
+      "Proper heading hierarchy maintained within accordion content"
+    ]
+  },
+  "codeExamples": {
+    "react": {
+      "complete": "import { GoabAccordion, GoabButton } from \"@abgov/react-components\";\nimport { useEffect, useState } from \"react\";\n\nexport default function HideAndShowManySectionsOfInformation() {\n  const [expandedAll, setExpandedAll] = useState<boolean>(false);\n  const [expandedList, setExpandedList] = useState<number[]>([]);\n\n  const accordionData = [\n    {\n      id: 1,\n      heading: \"How do I create an account?\",\n      content: \"To create an account, you will need to contact your office admin.\"\n    },\n    {\n      id: 2,\n      heading: \"What verification is needed to sign documents digitally?\",\n      content: \"You will need to verify your identity through our two-factor authentication in addition to the digital signature.\"\n    },\n    {\n      id: 3,\n      heading: \"Can I track the status of my service requests online?\",\n      content: \"Yes, you can see the status of your application on the main service dashboard when you log in. You will receive updates and notifications in your email as your request progresses.\"\n    },\n    {\n      id: 4,\n      heading: \"Are there accessibility features for people with disabilities?\",\n      content: \"Yes, our digital service is designed with accessibility in mind. More information on accessibility.\"\n    }\n  ];\n\n  useEffect(() => {\n    setExpandedAll(expandedList.length === accordionData.length);\n  }, [expandedList.length, accordionData.length]);\n\n  const expandOrCollapseAll = () => {\n    setExpandedAll((prev) => {\n      const newState = !prev;\n      setExpandedList(newState ? accordionData.map(item => item.id) : []);\n      return newState;\n    });\n  };\n\n  const updateAccordion = (order: number, isOpen: boolean) => {\n    setExpandedList((prev) => {\n      if (isOpen) {\n        return prev.includes(order) ? prev : [...prev, order];\n      }\n      return prev.filter((item) => item !== order);\n    });\n  };\n\n  const getButtonText = () => {\n    return expandedAll ? \"Hide all sections\" : \"Show all sections\";\n  };\n\n  return (\n    <div className=\"accordion-sections\">\n      <GoabButton type=\"tertiary\" mb=\"m\" onClick={expandOrCollapseAll}>\n        {getButtonText()}\n      </GoabButton>\n\n      {accordionData.map((item) => (\n        <GoabAccordion\n          key={item.id}\n          open={expandedList.includes(item.id)}\n          heading={item.heading}\n          headingSize=\"medium\"\n          onChange={(open) => updateAccordion(item.id, open)}\n        >\n          {item.content}\n        </GoabAccordion>\n      ))}\n    </div>\n  );\n}",
+      "key": "const [expandedAll, setExpandedAll] = useState<boolean>(false);\nconst [expandedList, setExpandedList] = useState<number[]>([]);\nconst [sectionData, setSectionData] = useState([]);\n\nconst accordionSections = [\n  {\n    id: 1,\n    heading: \"How do I create an account?\",\n    content: \"To create an account, you will need to contact your office admin.\"\n  },\n  {\n    id: 2,\n    heading: \"What verification is needed to sign documents digitally?\",\n    content: \"You will need to verify your identity through our two-factor authentication in addition to the digital signature.\"\n  },\n  {\n    id: 3,\n    heading: \"Can I track the status of my service requests online?\",\n    content: \"Yes, you can see the status of your application on the main service dashboard when you log in. You will receive updates and notifications in your email as your request progresses.\"\n  },\n  {\n    id: 4,\n    heading: \"Are there accessibility features for people with disabilities?\",\n    content: \"Yes, our digital service is designed with accessibility in mind. <a href='/accessibility'>More information on accessibility.</a>\"\n  }\n];\n\nuseEffect(() => {\n  setExpandedAll(expandedList.length === accordionSections.length);\n}, [expandedList.length]);\n\nconst toggleAllSections = () => {\n  setExpandedAll((prev) => {\n    const newState = !prev;\n    setExpandedList(newState ? accordionSections.map(item => item.id) : []);\n    return newState;\n  });\n};\n\nconst handleAccordionChange = (sectionId: number, isOpen: boolean) => {\n  setExpandedList((prev) => {\n    if (isOpen) {\n      return prev.includes(sectionId) ? prev : [...prev, sectionId];\n    }\n    return prev.filter((id) => id !== sectionId);\n  });\n};\n\nconst isExpanded = (sectionId: number) => {\n  return expandedList.includes(sectionId);\n};\n\nconst getToggleButtonText = () => {\n  return expandedAll ? \"Hide all sections\" : \"Show all sections\";\n};\n\nconst getExpandedCount = () => {\n  return expandedList.length;\n};\n\n<div className=\"accordion-sections\">\n  <div className=\"section-controls\">\n    <GoabButton type=\"tertiary\" mb=\"m\" onClick={toggleAllSections}>\n      {getToggleButtonText()}\n    </GoabButton>\n    <span className=\"section-count\">\n      {getExpandedCount()} of {accordionSections.length} sections expanded\n    </span>\n  </div>\n\n  {accordionSections.map((section) => (\n    <GoabAccordion\n      key={section.id}\n      open={isExpanded(section.id)}\n      heading={section.heading}\n      headingSize=\"medium\"\n      onChange={(open) => handleAccordionChange(section.id, open)}\n    >\n      <div dangerouslySetInnerHTML={{ __html: section.content }} />\n    </GoabAccordion>\n  ))}\n</div>\n\n/* CSS */\n.accordion-sections {\n  max-width: 800px;\n  margin: 0 auto;\n}\n\n.section-controls {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  margin-bottom: var(--goa-space-m);\n}\n\n.section-count {\n  font-size: var(--goa-font-size-s);\n  color: var(--goa-color-text-secondary);\n}\n\n.accordion-sections .goab-accordion {\n  margin-bottom: var(--goa-space-xs);\n}\n\n.accordion-sections .goab-accordion:last-child {\n  margin-bottom: 0;\n}"
+    },
+    "angular": {
+      "complete": "export class HideAndShowManySectionsOfInformationComponent {\n  expandedList: boolean[] = [false, false, false, false];\n  expandedAll = false;\n  accordionStatus = \"Show all sections\";\n\n  accordionData = [\n    {\n      heading: \"How do I create an account?\",\n      content: \"To create an account, you will need to contact your office admin.\"\n    },\n    {\n      heading: \"What verification is needed to sign documents digitally?\",\n      content: \"You will need to verify your identity through our two-factor authentication in addition to the digital signature.\"\n    },\n    {\n      heading: \"Can I track the status of my service requests online?\",\n      content: \"Yes, you can see the status of your application on the main service dashboard when you log in. You will receive updates and notifications in your email as your request progresses.\"\n    },\n    {\n      heading: \"Are there accessibility features for people with disabilities?\",\n      content: \"Yes, our digital service is designed with accessibility in mind. <a href='/accessibility'>More information on accessibility.</a>\"\n    }\n  ];\n\n  toggleAccordion(index: number, open: boolean): void {\n    this.expandedList[index] = open;\n    this.updateAccordionStatus();\n  }\n\n  toggleAllSections(): void {\n    const isExpanding = this.expandedList.some(isOpen => !isOpen);\n    this.expandedList = this.expandedList.map(() => isExpanding);\n    this.updateAccordionStatus();\n  }\n\n  private updateAccordionStatus(): void {\n    this.expandedAll = this.expandedList.every(isOpen => isOpen);\n    this.accordionStatus = this.expandedAll ? \"Hide all sections\" : \"Show all sections\";\n  }\n\n  getExpandedCount(): number {\n    return this.expandedList.filter(isOpen => isOpen).length;\n  }\n\n  isExpanded(index: number): boolean {\n    return this.expandedList[index];\n  }\n}",
+      "key": "expandedList: boolean[] = [false, false, false, false];\nexpandedAll = false;\naccordionStatus = \"Show all sections\";\n\naccordionData = [\n  {\n    heading: \"How do I create an account?\",\n    content: \"To create an account, you will need to contact your office admin.\"\n  },\n  {\n    heading: \"What verification is needed to sign documents digitally?\",\n    content: \"You will need to verify your identity through our two-factor authentication in addition to the digital signature.\"\n  },\n  {\n    heading: \"Can I track the status of my service requests online?\",\n    content: \"Yes, you can see the status of your application on the main service dashboard when you log in. You will receive updates and notifications in your email as your request progresses.\"\n  },\n  {\n    heading: \"Are there accessibility features for people with disabilities?\",\n    content: \"Yes, our digital service is designed with accessibility in mind. <a href='/accessibility'>More information on accessibility.</a>\"\n  }\n];\n\ntoggleAccordion(index: number, open: boolean): void {\n  this.expandedList[index] = open;\n  this.updateAccordionStatus();\n}\n\ntoggleAllSections(): void {\n  const isExpanding = this.expandedList.some(isOpen => !isOpen);\n  this.expandedList = this.expandedList.map(() => isExpanding);\n  this.updateAccordionStatus();\n}\n\nprivate updateAccordionStatus(): void {\n  this.expandedAll = this.expandedList.every(isOpen => isOpen);\n  this.accordionStatus = this.expandedAll ? \"Hide all sections\" : \"Show all sections\";\n}\n\ngetExpandedCount(): number {\n  return this.expandedList.filter(isOpen => isOpen).length;\n}\n\nisExpanded(index: number): boolean {\n  return this.expandedList[index];\n}\n\n<!-- Template -->\n<div class=\"accordion-sections\">\n  <div class=\"section-controls\">\n    <goab-button type=\"tertiary\" mb=\"m\" (onClick)=\"toggleAllSections()\">\n      {{ accordionStatus }}\n    </goab-button>\n    <span class=\"section-count\">\n      {{ getExpandedCount() }} of {{ accordionData.length }} sections expanded\n    </span>\n  </div>\n\n  <goab-accordion\n    *ngFor=\"let section of accordionData; let i = index\"\n    [heading]=\"section.heading\"\n    headingSize=\"medium\"\n    [open]=\"isExpanded(i)\"\n    (onChange)=\"toggleAccordion(i, $event)\">\n    <div [innerHTML]=\"section.content\"></div>\n  </goab-accordion>\n</div>"
+    }
+  },
+  "tags": [
+    "accordion",
+    "show-hide-sections",
+    "progressive-disclosure",
+    "content-organization",
+    "FAQ",
+    "information-architecture",
+    "expand-collapse",
+    "global-controls",
+    "state-management",
+    "section-management"
+  ]
+}

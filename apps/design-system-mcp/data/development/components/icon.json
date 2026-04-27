@@ -1,0 +1,259 @@
+{
+  "name": "Icon",
+  "category": "component",
+  "summary": "Display component for 1300+ Ionic icons with consistent sizing and theming.",
+  "import": "import { GoabIcon } from '@abgov/react-components'",
+  "customElement": {
+    "tagName": "goa-icon",
+    "reactName": "GoabIcon",
+    "angularSelector": "goab-icon"
+  },
+  "props": [
+    {
+      "name": "mt",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin top",
+      "frameworks": {
+        "webComponent": "mt=\"...\"",
+        "react": "mt={...}",
+        "angular": "[mt]=\"...\""
+      }
+    },
+    {
+      "name": "mr",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin right",
+      "frameworks": {
+        "webComponent": "mr=\"...\"",
+        "react": "mr={...}",
+        "angular": "[mr]=\"...\""
+      }
+    },
+    {
+      "name": "mb",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin bottom",
+      "frameworks": {
+        "webComponent": "mb=\"...\"",
+        "react": "mb={...}",
+        "angular": "[mb]=\"...\""
+      }
+    },
+    {
+      "name": "ml",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin left",
+      "frameworks": {
+        "webComponent": "ml=\"...\"",
+        "react": "ml={...}",
+        "angular": "[ml]=\"...\""
+      }
+    },
+    {
+      "name": "type",
+      "type": "GoAIconType",
+      "required": true,
+      "default": null,
+      "description": "Icon name (e.g., 'home', 'person', 'warning')",
+      "frameworks": {
+        "webComponent": "type=\"...\"",
+        "react": "type={...}",
+        "angular": "[type]=\"...\""
+      }
+    },
+    {
+      "name": "size",
+      "type": "IconSize",
+      "required": false,
+      "default": "medium",
+      "description": "Icon size",
+      "frameworks": {
+        "webComponent": "size=\"...\"",
+        "react": "size={...}",
+        "angular": "[size]=\"...\""
+      }
+    },
+    {
+      "name": "theme",
+      "type": "IconTheme",
+      "required": false,
+      "default": "outline",
+      "description": "Icon style",
+      "frameworks": {
+        "webComponent": "theme=\"...\"",
+        "react": "theme={...}",
+        "angular": "[theme]=\"...\""
+      }
+    },
+    {
+      "name": "inverted",
+      "type": "boolean",
+      "required": false,
+      "default": "false",
+      "description": "Light style for dark backgrounds",
+      "frameworks": {
+        "webComponent": "inverted=\"true\"",
+        "react": "inverted={true}",
+        "angular": "[inverted]=\"true\""
+      }
+    },
+    {
+      "name": "fillcolor",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "Custom icon color",
+      "frameworks": {
+        "webComponent": "fillcolor=\"...\"",
+        "react": "fillcolor={...}",
+        "angular": "[fillcolor]=\"...\""
+      }
+    },
+    {
+      "name": "opacity",
+      "type": "number",
+      "required": false,
+      "default": "1",
+      "description": "Transparency (0-1)",
+      "frameworks": {
+        "webComponent": "opacity=\"...\"",
+        "react": "opacity={...}",
+        "angular": "[opacity]=\"...\""
+      }
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "Tooltip on hover",
+      "frameworks": {
+        "webComponent": "title=\"...\"",
+        "react": "title={...}",
+        "angular": "[title]=\"...\""
+      }
+    },
+    {
+      "name": "testid",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "Test identifier",
+      "frameworks": {
+        "webComponent": "testid=\"...\"",
+        "react": "testId={...}",
+        "angular": "[testId]=\"...\""
+      }
+    },
+    {
+      "name": "arialabel",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "Accessible label (when icon conveys meaning)",
+      "frameworks": {
+        "webComponent": "arialabel=\"...\"",
+        "react": "ariaLabel={...}",
+        "angular": "[ariaLabel]=\"...\""
+      }
+    },
+    {
+      "name": "ariacontrols",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "",
+      "frameworks": {
+        "webComponent": "ariacontrols=\"...\"",
+        "react": "ariacontrols={...}",
+        "angular": "[ariacontrols]=\"...\""
+      }
+    },
+    {
+      "name": "ariaexpanded",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "",
+      "frameworks": {
+        "webComponent": "ariaexpanded=\"...\"",
+        "react": "ariaexpanded={...}",
+        "angular": "[ariaexpanded]=\"...\""
+      }
+    },
+    {
+      "name": "role",
+      "type": "string",
+      "required": false,
+      "default": "img",
+      "description": "",
+      "frameworks": {
+        "webComponent": "role=\"...\"",
+        "react": "role={...}",
+        "angular": "[role]=\"...\""
+      }
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "criticalNotes": [
+    "Use ONLY valid Ionicons names - invalid names silently fail to render",
+    "Common invalid names: 'dashboard' (use 'home'), 'bell' (use 'notifications'), 'logout' (use 'log-out')",
+    "Provide ariaLabel when icon conveys meaning (not just decoration)",
+    "Use design tokens for fillColor: var(--goa-color-interactive-primary)",
+    "Browse full icon list at https://ionic.io/ionicons",
+    "CRITICAL: Ionicons CDN must be included in index.html for icons to render"
+  ],
+  "basicUsage": {
+    "webComponent": "<goa-icon type=\"warning\" size=\"3\" theme=\"filled\"></goa-icon>",
+    "react": "<GoabIcon type=\"warning\" size={3} theme=\"filled\" />",
+    "angular": "<goab-icon type=\"warning\" size=\"3\" theme=\"filled\"></goab-icon>"
+  },
+  "relatedExamples": [],
+  "relatedComponents": [
+    "IconButton",
+    "Badge"
+  ],
+  "iconReference": {
+    "totalIcons": "168+",
+    "library": "Ionicons-based custom set for government services",
+    "browseAt": "https://ionic.io/ionicons",
+    "cdnRequired": {
+      "description": "Icons require Ionicons CDN in index.html to render",
+      "scripts": [
+        "<script type=\"module\" src=\"https://cdn.jsdelivr.net/npm/ionicons@5.5.2/dist/ionicons/ionicons.esm.js\"></script>",
+        "<script nomodule src=\"https://cdn.jsdelivr.net/npm/ionicons@5.5.2/dist/ionicons/ionicons.js\"></script>"
+      ],
+      "placement": "Add inside <head> tag"
+    },
+    "commonIcons": {
+      "navigation": ["home", "menu", "close", "arrow-back", "arrow-forward", "chevron-back", "chevron-forward", "chevron-down", "chevron-up"],
+      "actions": ["add", "create", "trash", "pencil", "save", "download", "upload", "search", "filter", "refresh"],
+      "status": ["checkmark-circle", "close-circle", "alert-circle", "warning", "information-circle", "help-circle"],
+      "communication": ["call", "mail", "chatbubble", "notifications", "log-out"],
+      "files": ["document", "document-text", "folder", "attach", "link"],
+      "government": ["business", "briefcase", "calendar", "location", "people", "person", "settings"]
+    },
+    "invalidIconNames": {
+      "description": "These commonly-used names are INVALID and will not render",
+      "invalidToValid": {
+        "dashboard": "home",
+        "bell": "notifications",
+        "logout": "log-out",
+        "archive": "folder",
+        "question-circle": "help-circle",
+        "edit": "pencil",
+        "delete": "trash"
+      }
+    },
+    "namingPattern": "kebab-case: [object]-[modifier]-[variant] (e.g., arrow-forward, checkmark-circle, trash-outline)"
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "name": "Text",
+  "category": "component",
+  "summary": "Typography component for consistent text styling with proper semantic structure.",
+  "import": "import { GoabText } from '@abgov/react-components'",
+  "customElement": {
+    "tagName": "goa-text",
+    "reactName": "GoabText",
+    "angularSelector": "goab-text"
+  },
+  "props": [
+    {
+      "name": "as",
+      "type": "TextElement | HeadingElement",
+      "required": false,
+      "default": "div",
+      "description": "",
+      "frameworks": {
+        "webComponent": "as=\"...\"",
+        "react": "as={...}",
+        "angular": "[as]=\"...\""
+      }
+    },
+    {
+      "name": "maxWidth",
+      "type": "string | \"none\"",
+      "required": false,
+      "default": "65ch",
+      "description": "Max width for readability",
+      "frameworks": {
+        "webComponent": "max-width=\"...\"",
+        "react": "maxWidth={...}",
+        "angular": "[maxWidth]=\"...\""
+      }
+    },
+    {
+      "name": "size",
+      "type": "Size | undefined",
+      "required": false,
+      "default": null,
+      "description": "Text size (auto-mapped from tag if not set)",
+      "frameworks": {
+        "webComponent": "size=\"...\"",
+        "react": "size={...}",
+        "angular": "[size]=\"...\""
+      }
+    },
+    {
+      "name": "color",
+      "type": "\"primary\" | \"secondary\"",
+      "required": false,
+      "default": "primary",
+      "description": "Text color",
+      "frameworks": {
+        "webComponent": "color=\"...\"",
+        "react": "color={...}",
+        "angular": "[color]=\"...\""
+      }
+    },
+    {
+      "name": "mt",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin top",
+      "frameworks": {
+        "webComponent": "mt=\"...\"",
+        "react": "mt={...}",
+        "angular": "[mt]=\"...\""
+      }
+    },
+    {
+      "name": "mr",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "",
+      "frameworks": {
+        "webComponent": "mr=\"...\"",
+        "react": "mr={...}",
+        "angular": "[mr]=\"...\""
+      }
+    },
+    {
+      "name": "mb",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin bottom",
+      "frameworks": {
+        "webComponent": "mb=\"...\"",
+        "react": "mb={...}",
+        "angular": "[mb]=\"...\""
+      }
+    },
+    {
+      "name": "ml",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "",
+      "frameworks": {
+        "webComponent": "ml=\"...\"",
+        "react": "ml={...}",
+        "angular": "[ml]=\"...\""
+      }
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "required": false,
+      "default": null,
+      "description": "",
+      "frameworks": {
+        "webComponent": "id=\"...\"",
+        "react": "id={...}",
+        "angular": "[id]=\"...\""
+      }
+    }
+  ],
+  "events": [],
+  "slots": [
+    {
+      "name": "default",
+      "description": "Text content"
+    }
+  ],
+  "criticalNotes": [
+    "Use semantic tags (h1-h6) for proper document structure",
+    "Size auto-maps from tag (h1→heading-xl, p→body-m)",
+    "Use color='secondary' for supporting text"
+  ],
+  "basicUsage": {
+    "webComponent": "<goa-text tag=\"h1\">Page Title</goa-text>\n<goa-text tag=\"p\">Body content goes here.</goa-text>\n<goa-text tag=\"p\" color=\"secondary\">Supporting text.</goa-text>",
+    "react": "<GoabText tag=\"h1\">Page Title</GoabText>\n<GoabText tag=\"p\">Body content goes here.</GoabText>\n<GoabText tag=\"p\" color=\"secondary\">Supporting text.</GoabText>",
+    "angular": "<goab-text tag=\"h1\">Page Title</goab-text>\n<goab-text tag=\"p\">Body content goes here.</goab-text>\n<goab-text tag=\"p\" color=\"secondary\">Supporting text.</goab-text>"
+  },
+  "relatedExamples": [],
+  "relatedComponents": [
+    "List",
+    "Link"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "name": "NotificationBanner",
+  "category": "feedback",
+  "summary": "Page-level notifications for important information and system messages.",
+  "import": "import { GoabNotification } from '@abgov/react-components'",
+  "customElement": {
+    "tagName": "goa-notification",
+    "reactName": "GoabNotification",
+    "angularSelector": "goab-notification"
+  },
+
+  "props": [
+    { "name": "type", "type": "emergency | important | information | event", "required": false, "default": "information", "description": "Visual styling and urgency level" },
+    { "name": "ariaLive", "type": "off | polite | assertive", "required": false, "default": "polite", "description": "Screen reader announcement mode" },
+    { "name": "maxContentWidth", "type": "string", "required": false, "default": "100%", "description": "Max width of content" },
+    { "name": "testId", "type": "string", "required": false, "description": "Test identifier" }
+  ],
+
+  "events": [
+    {
+      "name": "onDismiss",
+      "description": "Fired when user dismisses the notification",
+      "frameworks": {
+        "react": "onDismiss: () => void",
+        "angular": "(onDismiss): EventEmitter<void>"
+      }
+    }
+  ],
+
+  "slots": [
+    { "name": "default", "description": "Notification content" }
+  ],
+
+  "criticalNotes": [
+    "Use 'assertive' ariaLive for urgent messages",
+    "emergency = outages/security, important = deadlines, information = updates",
+    "Place at top of page for maximum visibility"
+  ],
+
+  "basicUsage": {
+    "webComponent": "<goa-notification type=\"important\">\n  <strong>System maintenance</strong> - Service will be unavailable Saturday 2am-4am.\n</goa-notification>",
+    "react": "<GoabNotification type=\"important\">\n  <strong>System maintenance</strong> - Service will be unavailable Saturday 2am-4am.\n</GoabNotification>",
+    "angular": "<goab-notification type=\"important\">\n  <strong>System maintenance</strong> - Service will be unavailable Saturday 2am-4am.\n</goab-notification>"
+  },
+
+  "relatedExamples": [
+    "communicate-a-future-service-outage"
+  ],
+
+  "relatedComponents": ["Callout", "Badge"]
+}

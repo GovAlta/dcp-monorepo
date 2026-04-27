@@ -1,0 +1,97 @@
+{
+  "$schema": "../recipe-schema.json",
+  "schemaVersion": "2.1.0-ai-context",
+  "recipeId": "give-background-information-before-asking-a-question",
+  "recipeName": "Give Background Information Before Asking a Question",
+  "category": "form-pattern",
+  "summary": "Provide context and explanatory information before asking questions to help users understand the purpose and scope of their answers",
+  "serviceContext": {
+    "useCase": "Help users understand complex questions by providing background information, definitions, and context before requesting their input",
+    "userType": "citizen",
+    "governmentServiceFlows": [
+      "When citizens need to understand eligibility criteria before answering qualification questions",
+      "When technical terms or government concepts require explanation before user input",
+      "When the scope of a question needs clarification (e.g., what constitutes 'school' in different contexts)",
+      "When users need guidance on how to interpret or answer complex questions accurately"
+    ],
+    "relatedPatterns": [
+      "give-context-before-asking-a-long-answer-question",
+      "ask-a-user-one-question-at-a-time",
+      "reveal-more-information-to-help-answer-a-question",
+      "question-page"
+    ]
+  },
+  "components": [
+    {
+      "componentName": "GoabFormItem",
+      "role": "Question container",
+      "purpose": "Provide proper labeling and structure for the form question after context"
+    },
+    {
+      "componentName": "GoabRadioGroup",
+      "role": "Answer selection interface",
+      "purpose": "Allow users to choose from predefined options after understanding the context"
+    },
+    {
+      "componentName": "GoabRadioItem",
+      "role": "Individual answer options",
+      "purpose": "Present clear answer choices for the contextualized question"
+    },
+    {
+      "componentName": "GoabButton",
+      "role": "Form submission control",
+      "purpose": "Allow users to proceed after answering the question"
+    }
+  ],
+  "codeReference": {
+    "exampleFile": "give-background-information-before-asking-a-question.tsx",
+    "linesOfCode": 80,
+    "lastModified": "2024-01-01T00:00:00.000Z"
+  },
+  "implementation": {
+    "complexity": "low",
+    "keyPatterns": [
+      "Background information provided before form question",
+      "Clear section heading that relates to the question",
+      "Multiple paragraphs explaining context and scope",
+      "Contact information for additional support",
+      "Proper spacing between context and question using margin utilities",
+      "Back link navigation for multi-page forms"
+    ],
+    "designPatterns": [
+      "Progressive disclosure with context",
+      "Question page layout",
+      "Explanatory content before interaction",
+      "Clear information hierarchy"
+    ],
+    "accessibility": [
+      "Heading structure provides clear content hierarchy",
+      "Background information is associated with the question through logical flow",
+      "Radio group has proper labeling and ARIA attributes",
+      "Back link provides clear navigation context",
+      "Contact information is accessible for users needing help"
+    ]
+  },
+  "codeExamples": {
+    "react": {
+      "complete": "import {\n  GoabButton,\n  GoabFormItem,\n  GoabRadioGroup,\n  GoabRadioItem\n} from \"@abgov/react-components\";\nimport { useState } from \"react\";\n\nexport default function GiveBackgroundInformationBeforeAskingAQuestion() {\n  const [schoolStatus, setSchoolStatus] = useState(\"\");\n\n  const handleSchoolStatusChange = (event: { value: string }) => {\n    setSchoolStatus(event.value);\n  };\n\n  const handleSubmit = () => {\n    console.log('School status:', schoolStatus);\n    // Handle form submission\n  };\n\n  return (\n    <div className=\"question-page-example\">\n      <a href=\"#\" className=\"back-link\">\n        Back\n      </a>\n      <h2 className=\"section-title\">Current school status</h2>\n      <p>\n        School can encompass foundational programs that help individuals gain basic skills for\n        further learning and living, such as literacy and numeracy courses. It also includes\n        skills and employment training programs, designed to equip you with specific skills for\n        the job market.\n      </p>\n      <p>\n        Post-secondary education, such as Bachelor's, Master's, or Doctoral degrees, and\n        continuing education courses for professional or personal development, are also\n        categorized under 'school'.\n      </p>\n      <p>Contact your provider if you're concerned about your school status.</p>\n      <GoabFormItem label=\"Are you currently in school?\" mt=\"xl\">\n        <GoabRadioGroup \n          name=\"school\" \n          ariaLabel=\"are you currently in school?\" \n          onChange={handleSchoolStatusChange}\n          value={schoolStatus}>\n          <GoabRadioItem value=\"yes\" label=\"Yes\"></GoabRadioItem>\n          <GoabRadioItem value=\"no\" label=\"No\"></GoabRadioItem>\n        </GoabRadioGroup>\n      </GoabFormItem>\n      <GoabButton type=\"submit\" mt=\"2xl\" onClick={handleSubmit}>\n        Save and continue\n      </GoabButton>\n    </div>\n  );\n}",
+      "key": "const [userAnswer, setUserAnswer] = useState(\"\");\nconst [showContext, setShowContext] = useState(true);\n\nconst contextInformation = {\n  title: \"Employment Status\",\n  explanation: [\n    \"Employment includes full-time, part-time, contract, and seasonal work. It also covers self-employment, freelance work, and running your own business.\",\n    \"Volunteer work, unpaid internships, and work-study programs are not considered employment for this application.\",\n    \"If you're between jobs or recently laid off, select 'No' and provide details in the next section.\"\n  ],\n  supportContact: \"Contact your case worker if you need help determining your employment status.\"\n};\n\nconst handleAnswerChange = (event: { value: string }) => {\n  setUserAnswer(event.value);\n};\n\nconst handleContinue = () => {\n  // Validate and proceed to next step\n  if (userAnswer) {\n    console.log('User answered:', userAnswer);\n    // Navigate to next page\n  }\n};\n\n<div className=\"question-page\">\n  <a href=\"#\" className=\"back-link\" onClick={() => window.history.back()}>\n    Back\n  </a>\n  \n  <h2 className=\"section-title\">{contextInformation.title}</h2>\n  \n  {contextInformation.explanation.map((paragraph, index) => (\n    <p key={index}>{paragraph}</p>\n  ))}\n  \n  <p><em>{contextInformation.supportContact}</em></p>\n  \n  <GoabFormItem label=\"Are you currently employed?\" mt=\"xl\">\n    <GoabRadioGroup \n      name=\"employment\" \n      ariaLabel=\"are you currently employed?\" \n      onChange={handleAnswerChange}\n      value={userAnswer}>\n      <GoabRadioItem value=\"yes\" label=\"Yes\" />\n      <GoabRadioItem value=\"no\" label=\"No\" />\n    </GoabRadioGroup>\n  </GoabFormItem>\n  \n  <GoabButton \n    type=\"submit\" \n    mt=\"2xl\" \n    onClick={handleContinue}\n    disabled={!userAnswer}>\n    Save and continue\n  </GoabButton>\n</div>\n\n/* CSS */\n.section-title {\n  margin-bottom: var(--goa-space-l);\n}\n\n.back-link::before {\n  content: \"\";\n  display: inline-block;\n  width: 42px;\n  height: 24px;\n  vertical-align: middle;\n  background: url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 2 22 22\" fill=\"none\" stroke=\"%230070C4\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"15 18 9 12 15 6\"></polyline></svg>') center center no-repeat;\n}\n\n.back-link {\n  margin-top: var(--goa-space-m);\n}\n\n.back-link + h2 {\n  margin-top: var(--goa-space-2xl);\n}"
+    },
+    "angular": {
+      "complete": "export class GiveBackgroundInformationBeforeAskingAQuestionComponent {\n  schoolStatus = '';\n  \n  contextInformation = {\n    title: 'Current school status',\n    explanation: [\n      'School can encompass foundational programs that help individuals gain basic skills for further learning and living, such as literacy and numeracy courses. It also includes skills and employment training programs, designed to equip you with specific skills for the job market.',\n      'Post-secondary education, such as Bachelor\\'s, Master\\'s, or Doctoral degrees, and continuing education courses for professional or personal development, are also categorized under \\'school\\'.',\n      'Contact your provider if you\\'re concerned about your school status.'\n    ]\n  };\n\n  handleSchoolStatusChange(event: GoabRadioGroupOnChangeDetail) {\n    this.schoolStatus = event.value as string;\n  }\n\n  handleSubmit() {\n    console.log('School status:', this.schoolStatus);\n    // Handle form submission\n  }\n\n  goBack() {\n    window.history.back();\n  }\n}",
+      "key": "schoolStatus = '';\n\ncontextInformation = {\n  title: 'Current school status',\n  explanation: [\n    'School can encompass foundational programs that help individuals gain basic skills for further learning and living, such as literacy and numeracy courses.',\n    'Post-secondary education, such as Bachelor\\'s, Master\\'s, or Doctoral degrees, and continuing education courses for professional or personal development, are also categorized under \\'school\\'.',\n    'Contact your provider if you\\'re concerned about your school status.'\n  ]\n};\n\nhandleSchoolStatusChange(event: GoabRadioGroupOnChangeDetail) {\n  this.schoolStatus = event.value as string;\n}\n\nhandleSubmit() {\n  if (this.schoolStatus) {\n    console.log('School status:', this.schoolStatus);\n    // Navigate to next page\n  }\n}\n\ngoBack() {\n  window.history.back();\n}\n\n<!-- Template -->\n<div class=\"question-page-example\">\n  <a href=\"#\" class=\"back-link\" (click)=\"goBack()\">\n    Back\n  </a>\n  \n  <h2 class=\"section-title\">{{ contextInformation.title }}</h2>\n  \n  <p *ngFor=\"let paragraph of contextInformation.explanation\">\n    {{ paragraph }}\n  </p>\n  \n  <goab-form-item label=\"Are you currently in school?\" mt=\"xl\">\n    <goab-radio-group \n      name=\"school\" \n      ariaLabel=\"are you currently in school?\" \n      [value]=\"schoolStatus\"\n      (onChange)=\"handleSchoolStatusChange($event)\">\n      <goab-radio-item value=\"yes\" label=\"Yes\"></goab-radio-item>\n      <goab-radio-item value=\"no\" label=\"No\"></goab-radio-item>\n    </goab-radio-group>\n  </goab-form-item>\n  \n  <goab-button \n    type=\"submit\" \n    mt=\"2xl\" \n    (onClick)=\"handleSubmit()\"\n    [disabled]=\"!schoolStatus\">\n    Save and continue\n  </goab-button>\n</div>"
+    }
+  },
+  "tags": [
+    "context",
+    "background-information",
+    "question-page",
+    "explanation",
+    "user-guidance",
+    "form-context",
+    "radio-group",
+    "progressive-disclosure",
+    "user-education",
+    "question-clarity"
+  ]
+}

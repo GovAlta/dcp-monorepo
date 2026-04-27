@@ -1,0 +1,118 @@
+{
+  "$schema": "../recipe-schema.json",
+  "schemaVersion": "2.1.0-ai-context",
+  "recipeId": "filter-data-in-a-table",
+  "recipeName": "Filter Data in a Table",
+  "category": "form-pattern",
+  "summary": "Enable users to filter table data using text input and filter chips with real-time search functionality",
+  "serviceContext": {
+    "useCase": "Allow users to search and filter through large datasets in tables using multiple filter criteria that can be applied and removed individually",
+    "userType": "both",
+    "governmentServiceFlows": [
+      "When citizens need to search through applications, benefits, or service records",
+      "When workers need to filter case files, client records, or administrative data",
+      "When users need to find specific entries in large datasets using multiple criteria",
+      "When displaying search results that can be further refined with additional filters"
+    ],
+    "relatedPatterns": [
+      "add-a-filter-chip",
+      "remove-a-filter",
+      "search",
+      "show-different-views-of-data-in-a-table"
+    ]
+  },
+  "components": [
+    {
+      "componentName": "GoabInput",
+      "role": "Filter input field",
+      "purpose": "Allow users to enter search terms and filter criteria with search icon"
+    },
+    {
+      "componentName": "GoabButton",
+      "role": "Filter action trigger",
+      "purpose": "Apply filters and provide clear all functionality"
+    },
+    {
+      "componentName": "GoabFormItem",
+      "role": "Input field wrapper",
+      "purpose": "Provide error handling and proper form structure for filter input"
+    },
+    {
+      "componentName": "GoabBlock",
+      "role": "Layout container",
+      "purpose": "Organize filter input and button with proper spacing and alignment"
+    },
+    {
+      "componentName": "GoabFilterChip",
+      "role": "Active filter indicator",
+      "purpose": "Display applied filters with removal functionality"
+    },
+    {
+      "componentName": "GoabTable",
+      "role": "Data display container",
+      "purpose": "Present filtered data in structured table format"
+    },
+    {
+      "componentName": "GoabBadge",
+      "role": "Status indicator",
+      "purpose": "Show status information within table cells"
+    },
+    {
+      "componentName": "GoabText",
+      "role": "Filter label",
+      "purpose": "Provide context for active filter chips"
+    }
+  ],
+  "codeReference": {
+    "exampleFile": "filter-data-in-a-table.tsx",
+    "linesOfCode": 916,
+    "lastModified": "2024-01-01T00:00:00.000Z"
+  },
+  "implementation": {
+    "complexity": "high",
+    "keyPatterns": [
+      "Real-time filtering with nested object search capability",
+      "Filter chip management with individual removal and clear all functionality",
+      "Input validation for empty and duplicate filters",
+      "Keyboard support for Enter key to apply filters",
+      "Deep object search using recursive checkNested function",
+      "Dynamic data filtering with multiple criteria support",
+      "Error handling for invalid filter inputs"
+    ],
+    "designPatterns": [
+      "Search and filter interface",
+      "Real-time data filtering",
+      "Chip-based filter management",
+      "Progressive search refinement"
+    ],
+    "accessibility": [
+      "Input field has proper labeling and ARIA attributes",
+      "Filter chips are keyboard accessible with clear removal actions",
+      "Table maintains semantic structure with proper headers",
+      "Error messages provide clear feedback for invalid inputs",
+      "Search functionality supports keyboard navigation"
+    ]
+  },
+  "codeExamples": {
+    "react": {
+      "complete": "import {\n  GoabBadge,\n  GoabBlock,\n  GoabButton,\n  GoabContainer,\n  GoabFilterChip,\n  GoabFormItem,\n  GoabInput,\n  GoabTable,\n  GoabText,\n} from \"@abgov/react-components\";\nimport {\n  GoabBadgeType,\n  GoabInputOnChangeDetail,\n  GoabInputOnKeyPressDetail,\n} from \"@abgov/ui-components-common\";\nimport { useCallback, useEffect, useMemo, useState } from \"react\";\n\nexport const FilterDataInATable = () => {\n  const [typedChips, setTypedChips] = useState<string[]>([]);\n  const [inputValue, setInputValue] = useState(\"\");\n  const [inputError, setInputError] = useState(\"\");\n  const errorEmpty = \"Empty filter\";\n  const errorDuplicate = \"Enter a unique filter\";\n  \n  const data = useMemo(\n    () => [\n      {\n        status: { type: \"information\" as GoabBadgeType, text: \"In progress\" },\n        name: \"Ivan Schmidt\",\n        id: \"7838576954\",\n      },\n      {\n        status: { type: \"success\" as GoabBadgeType, text: \"Completed\" },\n        name: \"Luz Lakin\",\n        id: \"8576953364\",\n      },\n      {\n        status: { type: \"information\" as GoabBadgeType, text: \"In progress\" },\n        name: \"Keith McGlynn\",\n        id: \"9846041345\",\n      },\n      {\n        status: { type: \"success\" as GoabBadgeType, text: \"Completed\" },\n        name: \"Melody Frami\",\n        id: \"7385256175\",\n      },\n      {\n        status: { type: \"important\" as GoabBadgeType, text: \"Updated\" },\n        name: \"Frederick Skiles\",\n        id: \"5807570418\",\n      },\n      {\n        status: { type: \"success\" as GoabBadgeType, text: \"Completed\" },\n        name: \"Dana Pfannerstill\",\n        id: \"5736306857\",\n      },\n    ],\n    []\n  );\n  const [dataFiltered, setDataFiltered] = useState(data);\n\n  const handleInputChange = (detail: GoabInputOnChangeDetail) => {\n    const newValue = detail.value.trim();\n    setInputValue(newValue);\n  };\n\n  const handleInputKeyPress = (detail: GoabInputOnKeyPressDetail) => {\n    if (detail.key === \"Enter\") {\n      applyFilter();\n    }\n  };\n\n  const applyFilter = () => {\n    if (inputValue === \"\") {\n      setInputError(errorEmpty);\n      return;\n    }\n    if (typedChips.length > 0 && typedChips.includes(inputValue)) {\n      setInputError(errorDuplicate);\n      return;\n    }\n    setTypedChips([...typedChips, inputValue]);\n    setTimeout(() => {\n      setInputValue(\"\");\n    }, 0);\n    setInputError(\"\");\n  };\n\n  const removeTypedChip = (chip: string) => {\n    setTypedChips(typedChips.filter(c => c !== chip));\n    setInputError(\"\");\n  };\n\n  const checkNested = useCallback((obj: object, chip: string): boolean => {\n    return Object.values(obj).some(value =>\n      typeof value === \"object\" && value !== null\n        ? checkNested(value, chip)\n        : typeof value === \"string\" && value.toLowerCase().includes(chip.toLowerCase())\n    );\n  }, []);\n\n  const getFilteredData = useCallback(\n    (typedChips: string[]) => {\n      if (typedChips.length === 0) {\n        return data;\n      }\n      const filteredData = data.filter((item: object) =>\n        typedChips.every(chip => checkNested(item, chip))\n      );\n\n      return filteredData;\n    },\n    [checkNested, data]\n  );\n\n  useEffect(() => {\n    setDataFiltered(getFilteredData(typedChips));\n  }, [getFilteredData, typedChips]);\n\n  return (\n    <GoabContainer width=\"full\" mt=\"m\" mb=\"none\">\n      <GoabFormItem id=\"filterChipInput\" error={inputError} mb=\"m\">\n        <GoabBlock gap=\"xs\" direction=\"row\" alignment=\"start\">\n          <GoabInput\n            name=\"filterChipInput\"\n            aria-labelledby=\"filterChipInput\"\n            value={inputValue}\n            leadingIcon=\"search\"\n            onChange={handleInputChange}\n            onKeyPress={handleInputKeyPress}\n          />\n          <GoabButton type=\"secondary\" onClick={applyFilter} leadingIcon=\"filter\">\n            Filter\n          </GoabButton>\n        </GoabBlock>\n      </GoabFormItem>\n\n      {typedChips.length > 0 && (\n        <div>\n          <GoabText tag=\"span\" color=\"secondary\" mb=\"xs\" mr=\"xs\">\n            Filter:\n          </GoabText>\n          {typedChips.length > 0 &&\n            typedChips.map((typedChip, index) => (\n              <GoabFilterChip\n                key={index}\n                content={typedChip}\n                mb=\"xs\"\n                mr=\"xs\"\n                onClick={() => removeTypedChip(typedChip)}\n              />\n            ))}\n          <GoabButton type=\"tertiary\" size=\"compact\" mb=\"xs\" onClick={() => setTypedChips([])}>\n            Clear all\n          </GoabButton>\n        </div>\n      )}\n\n      <GoabTable width=\"100%\">\n        <thead>\n          <tr>\n            <th>Status</th>\n            <th>Name</th>\n            <th className=\"goa-table-number-header\">ID Number</th>\n          </tr>\n        </thead>\n        <tbody>\n          {dataFiltered.map(item => (\n            <tr key={item.id}>\n              <td>\n                <GoabBadge type={item.status.type} content={item.status.text} />\n              </td>\n              <td>{item.name}</td>\n              <td className=\"goa-table-number-column\">{item.id}</td>\n            </tr>\n          ))}\n        </tbody>\n      </GoabTable>\n\n      {dataFiltered.length === 0 && data.length > 0 && (\n        <GoabBlock mt=\"l\" mb=\"l\">\n          No results found\n        </GoabBlock>\n      )}\n    </GoabContainer>\n  );\n}",
+      "key": "const [activeFilters, setActiveFilters] = useState<string[]>([]);\nconst [filterInput, setFilterInput] = useState(\"\");\nconst [filterError, setFilterError] = useState(\"\");\nconst [filteredData, setFilteredData] = useState(originalData);\n\nconst validateFilter = (value: string): string | null => {\n  if (value.trim() === \"\") return \"Filter cannot be empty\";\n  if (activeFilters.includes(value)) return \"Filter already exists\";\n  return null;\n};\n\nconst addFilter = () => {\n  const error = validateFilter(filterInput);\n  if (error) {\n    setFilterError(error);\n    return;\n  }\n  \n  setActiveFilters([...activeFilters, filterInput]);\n  setFilterInput(\"\");\n  setFilterError(\"\");\n};\n\nconst removeFilter = (filterToRemove: string) => {\n  setActiveFilters(activeFilters.filter(filter => filter !== filterToRemove));\n};\n\nconst searchInObject = (obj: any, searchTerm: string): boolean => {\n  return Object.values(obj).some(value => {\n    if (typeof value === \"object\" && value !== null) {\n      return searchInObject(value, searchTerm);\n    }\n    return typeof value === \"string\" && \n           value.toLowerCase().includes(searchTerm.toLowerCase());\n  });\n};\n\nconst filterData = useCallback((filters: string[]) => {\n  if (filters.length === 0) return originalData;\n  \n  return originalData.filter(item => \n    filters.every(filter => searchInObject(item, filter))\n  );\n}, [originalData]);\n\nuseEffect(() => {\n  setFilteredData(filterData(activeFilters));\n}, [activeFilters, filterData]);\n\n<GoabFormItem error={filterError} mb=\"m\">\n  <GoabBlock gap=\"xs\" direction=\"row\" alignment=\"start\">\n    <GoabInput\n      value={filterInput}\n      leadingIcon=\"search\"\n      placeholder=\"Enter filter term\"\n      onChange={(detail) => setFilterInput(detail.value)}\n      onKeyPress={(detail) => detail.key === \"Enter\" && addFilter()}\n    />\n    <GoabButton type=\"secondary\" onClick={addFilter} leadingIcon=\"filter\">\n      Add Filter\n    </GoabButton>\n  </GoabBlock>\n</GoabFormItem>\n\n{activeFilters.length > 0 && (\n  <div>\n    <GoabText tag=\"span\" color=\"secondary\" mb=\"xs\" mr=\"xs\">\n      Active Filters:\n    </GoabText>\n    {activeFilters.map((filter, index) => (\n      <GoabFilterChip\n        key={index}\n        content={filter}\n        mb=\"xs\"\n        mr=\"xs\"\n        onClick={() => removeFilter(filter)}\n      />\n    ))}\n    <GoabButton type=\"tertiary\" size=\"compact\" mb=\"xs\" onClick={() => setActiveFilters([])}>\n      Clear All\n    </GoabButton>\n  </div>\n)}"
+    },
+    "angular": {
+      "complete": "export class FilterDataInATableComponent {\n  typedChips: string[] = [];\n  inputValue = \"\";\n  inputError = \"\";\n  readonly errorEmpty = \"Empty filter\";\n  readonly errorDuplicate = \"Enter a unique filter\";\n  readonly data = [\n    {\n      status: { type: \"information\" as GoabBadgeType, text: \"In progress\" },\n      name: \"Ivan Schmidt\",\n      id: \"7838576954\",\n    },\n    {\n      status: { type: \"success\" as GoabBadgeType, text: \"Completed\" },\n      name: \"Luz Lakin\",\n      id: \"8576953364\",\n    },\n    {\n      status: { type: \"information\" as GoabBadgeType, text: \"In progress\" },\n      name: \"Keith McGlynn\",\n      id: \"9846041345\",\n    },\n    {\n      status: { type: \"success\" as GoabBadgeType, text: \"Completed\" },\n      name: \"Melody Frami\",\n      id: \"7385256175\",\n    },\n    {\n      status: { type: \"important\" as GoabBadgeType, text: \"Updated\" },\n      name: \"Frederick Skiles\",\n      id: \"5807570418\",\n    },\n    {\n      status: { type: \"success\" as GoabBadgeType, text: \"Completed\" },\n      name: \"Dana Pfannerstill\",\n      id: \"5736306857\",\n    },\n  ];\n  dataFiltered = this.getFilteredData(this.typedChips);\n\n  handleInputChange(detail: GoabInputOnChangeDetail): void {\n    const newValue = detail.value.trim();\n    this.inputValue = newValue;\n  }\n\n  handleInputKeyPress(detail: GoabInputOnKeyPressDetail): void {\n    if (detail.key === \"Enter\") {\n      this.applyFilter();\n    }\n  }\n\n  applyFilter() {\n    if (this.inputValue === \"\") {\n      this.inputError = this.errorEmpty;\n      return;\n    }\n    if (this.typedChips.includes(this.inputValue)) {\n      this.inputError = this.errorDuplicate;\n      return;\n    }\n    this.typedChips = [...this.typedChips, this.inputValue];\n    this.inputValue = \"\";\n    this.inputError = \"\";\n    this.dataFiltered = this.getFilteredData(this.typedChips);\n  }\n\n  removeTypedChip(chip: string) {\n    this.typedChips = this.typedChips.filter((c) => c !== chip);\n    this.dataFiltered = this.getFilteredData(this.typedChips);\n    this.inputError = \"\";\n  }\n\n  removeAllTypedChips() {\n    this.typedChips = [];\n    this.dataFiltered = this.getFilteredData(this.typedChips);\n    this.inputError = \"\";\n  }\n\n  getFilteredData(typedChips: string[]) {\n    if (typedChips.length === 0) {\n      return this.data;\n    }\n    const filteredData = this.data.filter((item) =>\n      typedChips.every((chip) => this.checkNested(item, chip)),\n    );\n    return filteredData;\n  }\n\n  checkNested(obj: object, chip: string): boolean {\n    return Object.values(obj).some((value) =>\n      typeof value === \"object\" && value !== null\n        ? this.checkNested(value, chip)\n        : typeof value === \"string\" && value.toLowerCase().includes(chip.toLowerCase()),\n    );\n  }\n}",
+      "key": "typedChips: string[] = [];\ninputValue = \"\";\ninputError = \"\";\nreadonly errorEmpty = \"Empty filter\";\nreadonly errorDuplicate = \"Enter a unique filter\";\ndataFiltered = this.getFilteredData(this.typedChips);\n\nhandleInputChange(detail: GoabInputOnChangeDetail): void {\n  const newValue = detail.value.trim();\n  this.inputValue = newValue;\n}\n\nhandleInputKeyPress(detail: GoabInputOnKeyPressDetail): void {\n  if (detail.key === \"Enter\") {\n    this.applyFilter();\n  }\n}\n\napplyFilter() {\n  if (this.inputValue === \"\") {\n    this.inputError = this.errorEmpty;\n    return;\n  }\n  if (this.typedChips.includes(this.inputValue)) {\n    this.inputError = this.errorDuplicate;\n    return;\n  }\n  this.typedChips = [...this.typedChips, this.inputValue];\n  this.inputValue = \"\";\n  this.inputError = \"\";\n  this.dataFiltered = this.getFilteredData(this.typedChips);\n}\n\nremoveTypedChip(chip: string) {\n  this.typedChips = this.typedChips.filter((c) => c !== chip);\n  this.dataFiltered = this.getFilteredData(this.typedChips);\n  this.inputError = \"\";\n}\n\ngetFilteredData(typedChips: string[]) {\n  if (typedChips.length === 0) {\n    return this.data;\n  }\n  return this.data.filter((item) =>\n    typedChips.every((chip) => this.checkNested(item, chip))\n  );\n}\n\ncheckNested(obj: object, chip: string): boolean {\n  return Object.values(obj).some((value) =>\n    typeof value === \"object\" && value !== null\n      ? this.checkNested(value, chip)\n      : typeof value === \"string\" && value.toLowerCase().includes(chip.toLowerCase())\n  );\n}\n\n<!-- Template -->\n<goab-form-item id=\"filterChipInput\" [error]=\"inputError\" mb=\"m\">\n  <goab-block gap=\"xs\" direction=\"row\" alignment=\"start\">\n    <goab-input\n      name=\"filterChipInput\"\n      aria-labelledby=\"filterChipInput\"\n      [value]=\"inputValue\"\n      leadingIcon=\"search\"\n      (onChange)=\"handleInputChange($event)\"\n      (onKeyPress)=\"handleInputKeyPress($event)\">\n    </goab-input>\n    <goab-button type=\"secondary\" (onClick)=\"applyFilter()\" leadingIcon=\"filter\">\n      Filter\n    </goab-button>\n  </goab-block>\n</goab-form-item>\n\n<ng-container *ngIf=\"typedChips.length > 0\">\n  <goab-text tag=\"span\" color=\"secondary\" mb=\"xs\" mr=\"xs\">\n    Filter:\n  </goab-text>\n  <goab-filter-chip\n    *ngFor=\"let typedChip of typedChips; let index = index\"\n    [content]=\"typedChip\"\n    mb=\"xs\"\n    mr=\"xs\"\n    (onClick)=\"removeTypedChip(typedChip)\">\n  </goab-filter-chip>\n  <goab-button type=\"tertiary\" size=\"compact\" mb=\"xs\" (onClick)=\"removeAllTypedChips()\">\n    Clear all\n  </goab-button>\n</ng-container>"
+    }
+  },
+  "tags": [
+    "table-filter",
+    "search",
+    "filter-chips",
+    "data-filtering",
+    "real-time-search",
+    "nested-search",
+    "validation",
+    "keyboard-support",
+    "table-interaction",
+    "user-input"
+  ]
+}

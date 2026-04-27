@@ -1,0 +1,118 @@
+{
+  "id": "loading-skeleton",
+  "name": "Loading Skeleton",
+  "category": "section",
+  "description": "Placeholder content shown while data is loading. Skeleton rows match the shape and layout of actual content, providing a smooth visual experience while reducing perceived wait time. Used in tables, card lists, and other data-driven sections.",
+
+  "whenToUse": [
+    "While fetching data from an API",
+    "During initial page load with async data",
+    "When refreshing or filtering a large dataset",
+    "To indicate that content is loading without a spinner"
+  ],
+
+  "components": [
+    {
+      "name": "GoabSkeleton",
+      "purpose": "Pre-built skeleton for common types (header, text, card)",
+      "props": ["type='header' | 'text' | 'card'"],
+      "note": "Use for simple skeletons; custom approach for tables"
+    },
+    {
+      "name": "GoabCircularProgress",
+      "purpose": "Alternative for centered loading message",
+      "props": ["variant='inline'", "size='small'", "message", "visible"]
+    }
+  ],
+
+  "customSkeletonApproach": {
+    "description": "For tables, create custom skeleton rows that match cell content shapes",
+    "styling": {
+      "backgroundColor": "var(--goa-color-greyscale-200)",
+      "borderRadius": "4px for text, 12px for badges, 50% for avatars",
+      "animation": "Optional pulse animation via CSS"
+    }
+  },
+
+  "cssClasses": {
+    "clients-loading-state": {
+      "purpose": "Centered loading container (when using CircularProgress)",
+      "css": ".clients-loading-state {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  padding: 64px var(--goa-space-m);\n  background-color: var(--goa-color-greyscale-white, #ffffff);\n}"
+    }
+  },
+
+  "example": {
+    "framework": "react",
+    "description": "Table skeleton rows matching actual data row structure",
+    "code": "// State for loading\nconst [isLoading, setIsLoading] = useState(true);\nconst [data, setData] = useState([]);\n\n// Fetch data on mount\nuseEffect(() => {\n  const fetchData = async () => {\n    setIsLoading(true);\n    const result = await fetch('/api/items');\n    const json = await result.json();\n    setData(json);\n    setIsLoading(false);\n  };\n  fetchData();\n}, []);\n\n// In table body:\n<tbody>\n  {isLoading ? (\n    // Skeleton rows - create 10 placeholder rows\n    [...Array(10)].map((_, i) => (\n      <tr key={i} data-grid=\"row\">\n        {/* Checkbox cell */}\n        <td data-grid=\"cell\" className=\"goa-table-cell--checkbox\">\n          <div style={{\n            width: '18px',\n            height: '18px',\n            borderRadius: '4px',\n            backgroundColor: 'var(--goa-color-greyscale-200)'\n          }} />\n        </td>\n        \n        {/* Badge cell */}\n        <td data-grid=\"cell\">\n          <div style={{\n            height: '22px',\n            width: `${60 + (i % 3) * 15}px`,  // Vary widths for natural look\n            borderRadius: '12px',\n            backgroundColor: 'var(--goa-color-greyscale-200)'\n          }} />\n        </td>\n        \n        {/* Text cells - vary widths */}\n        <td data-grid=\"cell\">\n          <div style={{\n            height: '14px',\n            width: `${50 + (i % 5) * 10}%`,\n            borderRadius: '4px',\n            backgroundColor: 'var(--goa-color-greyscale-200)'\n          }} />\n        </td>\n        \n        <td data-grid=\"cell\">\n          <div style={{\n            height: '14px',\n            width: `${60 + (i % 4) * 10}%`,\n            borderRadius: '4px',\n            backgroundColor: 'var(--goa-color-greyscale-200)'\n          }} />\n        </td>\n        \n        <td data-grid=\"cell\">\n          <div style={{\n            height: '14px',\n            width: `${70 + (i % 3) * 10}%`,\n            borderRadius: '4px',\n            backgroundColor: 'var(--goa-color-greyscale-200)'\n          }} />\n        </td>\n        \n        {/* Action cell */}\n        <td data-grid=\"cell\">\n          <div style={{\n            width: '24px',\n            height: '24px',\n            borderRadius: '4px',\n            backgroundColor: 'var(--goa-color-greyscale-200)'\n          }} />\n        </td>\n      </tr>\n    ))\n  ) : (\n    // Actual data rows\n    data.map(item => (\n      <tr key={item.id}>...</tr>\n    ))\n  )}\n</tbody>"
+  },
+
+  "simpleLoadingExample": {
+    "description": "Centered loading indicator with message",
+    "code": "{isLoading ? (\n  <div className=\"clients-loading-state\">\n    <GoabCircularProgress\n      variant=\"inline\"\n      size=\"small\"\n      message=\"Loading data...\"\n      visible={true}\n    />\n  </div>\n) : (\n  // Content\n)}"
+  },
+
+  "skeletonShapes": {
+    "checkbox": {
+      "width": "18px",
+      "height": "18px",
+      "borderRadius": "4px"
+    },
+    "badge": {
+      "height": "22px",
+      "width": "60-90px",
+      "borderRadius": "12px"
+    },
+    "text": {
+      "height": "14px",
+      "width": "40-80% (vary)",
+      "borderRadius": "4px"
+    },
+    "icon": {
+      "width": "24px",
+      "height": "24px",
+      "borderRadius": "4px"
+    },
+    "avatar": {
+      "width": "32px",
+      "height": "32px",
+      "borderRadius": "50%"
+    }
+  },
+
+  "variants": [
+    {
+      "name": "Table skeleton",
+      "description": "Multiple rows matching table structure, as shown in example"
+    },
+    {
+      "name": "Card skeleton",
+      "description": "Use GoabSkeleton type='card' for card-based layouts"
+    },
+    {
+      "name": "Centered spinner",
+      "description": "GoabCircularProgress for simpler loading states"
+    },
+    {
+      "name": "With pulse animation",
+      "description": "Add CSS animation for subtle pulsing effect"
+    }
+  ],
+
+  "pulseAnimationCss": {
+    "description": "Optional CSS for animated skeleton",
+    "css": "@keyframes skeleton-pulse {\n  0%, 100% { opacity: 1; }\n  50% { opacity: 0.5; }\n}\n\n.skeleton-element {\n  animation: skeleton-pulse 1.5s ease-in-out infinite;\n}"
+  },
+
+  "considerations": [
+    "Match skeleton shapes to actual content (badges = rounded, text = rectangular)",
+    "Vary widths slightly for natural appearance",
+    "10 rows is typical for table skeletons",
+    "Use consistent greyscale-200 background color",
+    "Consider using GoabSkeleton component for simple cases",
+    "Skeleton should span the same columns as actual content",
+    "Keep skeleton visible for minimum ~200ms to avoid flash"
+  ],
+
+  "relatedPatterns": ["data-table", "empty-state", "list-page"]
+}

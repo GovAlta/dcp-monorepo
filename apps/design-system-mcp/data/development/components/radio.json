@@ -1,0 +1,68 @@
+{
+  "name": "Radio",
+  "category": "form",
+  "summary": "Radio button group for single selection from multiple options. Use RadioGroup with RadioItem children.",
+  "import": "import { GoabRadioGroup, GoabRadioItem } from '@abgov/react-components'",
+  "customElement": {
+    "tagName": "goa-radio-group",
+    "reactName": "GoabRadioGroup",
+    "angularSelector": "goab-radio-group"
+  },
+  "subComponents": {
+    "radioItem": {
+      "tagName": "goa-radio-item",
+      "reactName": "GoabRadioItem",
+      "angularSelector": "goab-radio-item"
+    }
+  },
+
+  "props": [
+    { "name": "name", "type": "string", "required": true, "description": "Group identifier for form submission" },
+    { "name": "value", "type": "string", "required": false, "description": "Currently selected value" },
+    { "name": "disabled", "type": "boolean", "required": false, "default": false, "description": "Disable all options" },
+    { "name": "error", "type": "boolean", "required": false, "default": false, "description": "Show error state" },
+    { "name": "orientation", "type": "horizontal | vertical", "required": false, "default": "vertical", "description": "Layout direction" },
+    { "name": "testId", "type": "string", "required": false, "description": "Test identifier" }
+  ],
+
+  "radioItemProps": [
+    { "name": "value", "type": "string", "required": true, "description": "Value for this option" },
+    { "name": "label", "type": "string", "required": false, "description": "Display text" },
+    { "name": "description", "type": "string", "required": false, "description": "Additional description text" }
+  ],
+
+  "events": [
+    {
+      "name": "onChange",
+      "description": "Fired when selection changes",
+      "payload": "{ name: string, value: string }",
+      "frameworks": {
+        "react": "onChange: (detail: GoabRadioGroupOnChangeDetail) => void",
+        "angular": "(onChange): EventEmitter<GoabRadioGroupOnChangeDetail>"
+      }
+    }
+  ],
+
+  "slots": [
+    { "name": "default", "description": "GoabRadioItem components" }
+  ],
+
+  "criticalNotes": [
+    "Always wrap in GoabFormItem for proper labeling",
+    "Use RadioGroup with RadioItem children, not standalone Radio",
+    "Use description for additional context on options"
+  ],
+
+  "basicUsage": {
+    "webComponent": "<goa-form-item label=\"Select payment method\">\n  <goa-radio-group name=\"payment\" value=\"credit\">\n    <goa-radio-item value=\"credit\" label=\"Credit card\"></goa-radio-item>\n    <goa-radio-item value=\"debit\" label=\"Debit card\"></goa-radio-item>\n    <goa-radio-item value=\"cash\" label=\"Cash\"></goa-radio-item>\n  </goa-radio-group>\n</goa-form-item>",
+    "react": "<GoabFormItem label=\"Select payment method\">\n  <GoabRadioGroup\n    name=\"payment\"\n    value={paymentMethod}\n    onChange={(detail) => setPaymentMethod(detail.value)}\n  >\n    <GoabRadioItem value=\"credit\" label=\"Credit card\" />\n    <GoabRadioItem value=\"debit\" label=\"Debit card\" />\n    <GoabRadioItem value=\"cash\" label=\"Cash\" />\n  </GoabRadioGroup>\n</GoabFormItem>",
+    "angular": "<goab-form-item label=\"Select payment method\">\n  <goab-radio-group\n    name=\"payment\"\n    [value]=\"paymentMethod\"\n    (onChange)=\"onPaymentChange($event)\">\n    <goab-radio-item value=\"credit\" label=\"Credit card\"></goab-radio-item>\n    <goab-radio-item value=\"debit\" label=\"Debit card\"></goab-radio-item>\n    <goab-radio-item value=\"cash\" label=\"Cash\"></goab-radio-item>\n  </goab-radio-group>\n</goab-form-item>"
+  },
+
+  "relatedExamples": [
+    "reveal-input-based-on-selection",
+    "include-a-link-in-the-helper-text-of-an-option"
+  ],
+
+  "relatedComponents": ["Checkbox", "FormItem", "Dropdown"]
+}

@@ -1,0 +1,167 @@
+{
+  "id": "types",
+  "name": "Available Types",
+  "summary": "TypeScript types exported from @abgov/ui-components-common for use with GoA components",
+  "package": "@abgov/ui-components-common",
+  "importExample": "import { GoabBadgeType, GoabTableOnSortDetail } from '@abgov/ui-components-common'",
+
+  "categories": {
+    "componentTypes": {
+      "description": "Types for component prop values",
+      "types": [
+        {
+          "name": "GoabBadgeType",
+          "values": ["information", "success", "important", "emergency", "dark", "midtone", "light", "archived", "aqua", "black", "blue", "green", "orange", "pink", "red", "violet", "white", "yellow"],
+          "usage": "Badge type prop"
+        },
+        {
+          "name": "GoabSpinnerType",
+          "values": ["infinite", "progress"],
+          "usage": "Spinner type prop"
+        },
+        {
+          "name": "GoabSpinnerSize",
+          "values": ["small", "medium", "large", "xlarge"],
+          "usage": "Spinner size prop"
+        },
+        {
+          "name": "GoabButtonType",
+          "values": ["primary", "secondary", "tertiary"],
+          "usage": "Button type prop"
+        },
+        {
+          "name": "GoabButtonSize",
+          "values": ["normal", "compact"],
+          "usage": "Button size prop"
+        },
+        {
+          "name": "GoabButtonVariant",
+          "values": ["normal", "destructive"],
+          "usage": "Button variant prop"
+        },
+        {
+          "name": "GoabTableVariant",
+          "values": ["normal", "relaxed"],
+          "usage": "Table variant prop"
+        },
+        {
+          "name": "GoabChipVariant",
+          "values": ["filter"],
+          "usage": "Chip variant prop"
+        },
+        {
+          "name": "GoabInputAutoCapitalize",
+          "values": ["on", "off", "none", "sentences", "words", "characters"],
+          "usage": "Input autoCapitalize prop"
+        },
+        {
+          "name": "GoabDatePickerInputType",
+          "values": ["calendar", "input"],
+          "usage": "DatePicker inputType prop"
+        },
+        {
+          "name": "GoabWorkSideMenuItemType",
+          "values": ["normal", "emergency", "success"],
+          "usage": "WorkSideMenuItem type prop"
+        }
+      ]
+    },
+    "eventDetailTypes": {
+      "description": "Types for event handler parameters. React wrappers pass the detail object directly to event handlers (not wrapped in an event).",
+      "importNote": "In React, event handlers receive the detail object directly. Example: onSort={(detail) => ...} not onSort={(e) => e.detail}",
+      "types": [
+        {
+          "name": "GoabTableOnSortDetail",
+          "structure": "{ sortBy: string; sortDir: number }",
+          "description": "Table sort event. sortDir: 1 (asc), -1 (desc), 0 (none)",
+          "reactExample": "onSort={(detail) => setSortConfig({ key: detail.sortBy, dir: detail.sortDir })}"
+        },
+        {
+          "name": "GoabTabsOnChangeDetail",
+          "structure": "{ tab: number }",
+          "description": "Tabs change event. tab is 1-based index",
+          "reactExample": "onChange={(detail) => setActiveTab(detail.tab)}"
+        },
+        {
+          "name": "GoabInputOnChangeDetail",
+          "structure": "{ name: string; value: string }",
+          "description": "Input change event",
+          "reactExample": "onChange={(detail) => setValue(detail.value)}"
+        },
+        {
+          "name": "GoabInputOnBlurDetail",
+          "structure": "{ name: string; value: string }",
+          "description": "Input blur event"
+        },
+        {
+          "name": "GoabInputOnKeyPressDetail",
+          "structure": "{ name: string; value: string; key: string }",
+          "description": "Input keypress event",
+          "reactExample": "onKeyPress={(detail) => detail.key === 'Enter' && submit()}"
+        },
+        {
+          "name": "GoabDropdownOnChangeDetail",
+          "structure": "{ name: string; value: string }",
+          "description": "Dropdown change event"
+        },
+        {
+          "name": "GoabDatePickerOnChangeDetail",
+          "structure": "{ name: string; value: Date | null }",
+          "description": "DatePicker change event"
+        },
+        {
+          "name": "GoabRadioGroupOnChangeDetail",
+          "structure": "{ name: string; value: string }",
+          "description": "RadioGroup change event"
+        },
+        {
+          "name": "GoabCheckboxListOnChangeDetail",
+          "structure": "{ name: string; value: string[] }",
+          "description": "CheckboxList change event"
+        },
+        {
+          "name": "GoabFormStepperOnChangeDetail",
+          "structure": "{ step: number }",
+          "description": "FormStepper step change event"
+        },
+        {
+          "name": "GoabFileUploadInputOnSelectFileDetail",
+          "structure": "{ file: File }",
+          "description": "FileUpload file selection event"
+        },
+        {
+          "name": "GoabMenuButtonOnActionDetail",
+          "structure": "{ action: string }",
+          "description": "MenuButton action event"
+        }
+      ]
+    },
+    "spacingTypes": {
+      "description": "Margin spacing props available on most components",
+      "props": ["mt", "mr", "mb", "ml"],
+      "values": ["none", "3xs", "2xs", "xs", "s", "m", "l", "xl", "2xl", "3xl", "4xl"],
+      "note": "These are string literals, not numeric values"
+    }
+  },
+
+  "criticalNotes": [
+    "React event handlers receive the detail object DIRECTLY, not wrapped in event. Use (detail) => ... not (e) => e.detail",
+    "Types are imported from '@abgov/ui-components-common', not from '@abgov/react-components'",
+    "Spacing values are string literals like '2xs', not numbers"
+  ],
+
+  "commonMistakes": [
+    {
+      "mistake": "Importing types from '@abgov/react-components'",
+      "fix": "import { GoabBadgeType } from '@abgov/ui-components-common'"
+    },
+    {
+      "mistake": "Using event wrapper in React: onChange={(e) => e.detail.value}",
+      "fix": "onChange={(detail) => detail.value}"
+    },
+    {
+      "mistake": "Using number for spacing: mt={16}",
+      "fix": "mt=\"m\" (use string spacing token)"
+    }
+  ]
+}

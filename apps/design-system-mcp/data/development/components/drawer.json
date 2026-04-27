@@ -1,0 +1,118 @@
+{
+  "name": "Drawer",
+  "category": "overlay",
+  "summary": "Slide-in panel for contextual content and actions without losing main page context.",
+  "import": "import { GoabDrawer } from '@abgov/react-components'",
+  "customElement": {
+    "tagName": "goa-drawer",
+    "reactName": "GoabDrawer",
+    "angularSelector": "goab-drawer"
+  },
+  "props": [
+    {
+      "name": "open",
+      "type": "any",
+      "required": false,
+      "default": "false",
+      "description": "Controls drawer visibility",
+      "frameworks": {
+        "webComponent": "open=\"...\"",
+        "react": "open={...}",
+        "angular": "[open]=\"...\""
+      }
+    },
+    {
+      "name": "position",
+      "type": "DrawerPosition",
+      "required": false,
+      "default": null,
+      "description": "Slide-in direction (right most common)",
+      "frameworks": {
+        "webComponent": "position=\"...\"",
+        "react": "position={...}",
+        "angular": "[position]=\"...\""
+      }
+    },
+    {
+      "name": "heading",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "Header text for drawer",
+      "frameworks": {
+        "webComponent": "heading=\"...\"",
+        "react": "heading={...}",
+        "angular": "[heading]=\"...\""
+      }
+    },
+    {
+      "name": "maxsize",
+      "type": "DrawerSize",
+      "required": false,
+      "default": null,
+      "description": "Max width (left/right) or height (bottom). Default: 320px or 80vh",
+      "frameworks": {
+        "webComponent": "maxsize=\"...\"",
+        "react": "maxsize={...}",
+        "angular": "[maxsize]=\"...\""
+      }
+    },
+    {
+      "name": "testId",
+      "type": "string",
+      "required": false,
+      "default": "drawer",
+      "description": "Test identifier",
+      "frameworks": {
+        "webComponent": "test-id=\"...\"",
+        "react": "testId={...}",
+        "angular": "[testId]=\"...\""
+      }
+    }
+  ],
+  "events": [
+    {
+      "name": "_close",
+      "type": "(event) => void",
+      "payload": "{}",
+      "description": "",
+      "frameworks": {
+        "webComponent": "_close custom event",
+        "react": "onClose prop",
+        "angular": "(onClose) event binding"
+      }
+    }
+  ],
+  "slots": [
+    {
+      "name": "heading",
+      "description": ""
+    },
+    {
+      "name": "actions",
+      "description": "Footer buttons"
+    },
+    {
+      "name": "default",
+      "description": "Main content area"
+    }
+  ],
+  "criticalNotes": [
+    "position='right' is most common for forms and details",
+    "position='bottom' for mobile-friendly bottom sheets",
+    "Always handle onClose to update parent state"
+  ],
+  "basicUsage": {
+    "webComponent": "<goa-drawer open=\"true\" position=\"right\" heading=\"Edit Record\">\n  <form>...form fields...</form>\n  <div slot=\"actions\">\n    <goa-button-group alignment=\"end\">\n      <goa-button type=\"tertiary\">Cancel</goa-button>\n      <goa-button type=\"primary\">Save</goa-button>\n    </goa-button-group>\n  </div>\n</goa-drawer>",
+    "react": "<GoabDrawer\n  open={isOpen}\n  position=\"right\"\n  heading=\"Edit Record\"\n  onClose={() => setIsOpen(false)}\n  actions={\n    <GoabButtonGroup alignment=\"end\">\n      <GoabButton type=\"tertiary\" onClick={() => setIsOpen(false)}>Cancel</GoabButton>\n      <GoabButton type=\"primary\" onClick={handleSave}>Save</GoabButton>\n    </GoabButtonGroup>\n  }\n>\n  <form>...form fields...</form>\n</GoabDrawer>",
+    "angular": "<goab-drawer\n  [open]=\"isOpen\"\n  position=\"right\"\n  heading=\"Edit Record\"\n  (onClose)=\"closeDrawer()\">\n  <form>...form fields...</form>\n  <ng-template #actions>\n    <goab-button-group alignment=\"end\">\n      <goab-button type=\"tertiary\" (onClick)=\"closeDrawer()\">Cancel</goab-button>\n      <goab-button type=\"primary\" (onClick)=\"save()\">Save</goab-button>\n    </goab-button-group>\n  </ng-template>\n</goab-drawer>"
+  },
+  "relatedExamples": [
+    "add-a-record-using-a-drawer",
+    "add-and-edit-lots-of-filters"
+  ],
+  "relatedComponents": [
+    "Modal",
+    "SideMenu"
+  ]
+}

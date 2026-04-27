@@ -1,0 +1,95 @@
+{
+  "$schema": "../recipe-schema.json",
+  "schemaVersion": "2.1.0-ai-context",
+  "recipeId": "ask-a-user-one-question-at-a-time",
+  "recipeName": "Ask a User One Question at a Time",
+  "category": "form-pattern",
+  "summary": "Present focused single-question pages with clear navigation and context to reduce cognitive load and improve completion rates",
+  "serviceContext": {
+    "useCase": "Government applications requiring step-by-step question flows to reduce complexity and improve user completion rates",
+    "userType": "citizen",
+    "governmentServiceFlows": [
+      "When complex forms need to be broken into manageable single-question steps",
+      "When eligibility determination requires focused decision points",
+      "When collecting sensitive information that benefits from isolated context",
+      "When user research shows form abandonment due to complexity"
+    ],
+    "relatedPatterns": [
+      "basic-page-layout",
+      "question-page",
+      "give-background-information-before-asking-a-question",
+      "form-stepper-with-controlled-navigation"
+    ]
+  },
+  "components": [
+    {
+      "componentName": "GoabFormItem",
+      "role": "Main question container with large label and help text",
+      "purpose": "Present the single question with appropriate prominence and context"
+    },
+    {
+      "componentName": "GoabRadioGroup",
+      "role": "Answer option container",
+      "purpose": "Provide mutually exclusive answer choices with accessibility"
+    },
+    {
+      "componentName": "GoabRadioItem",
+      "role": "Individual answer options",
+      "purpose": "Allow users to select their response to the question"
+    },
+    {
+      "componentName": "GoabButton",
+      "role": "Form progression action",
+      "purpose": "Allow users to save their answer and continue to next step"
+    }
+  ],
+  "codeReference": {
+    "exampleFile": "ask-a-user-one-question-at-a-time.tsx",
+    "linesOfCode": 67,
+    "lastModified": "2024-01-01T00:00:00.000Z"
+  },
+  "implementation": {
+    "complexity": "medium",
+    "keyPatterns": [
+      "Single-question page layout with focus on one decision",
+      "Large label size for question prominence",
+      "Contextual help text explaining question scope",
+      "Custom back link with icon styling",
+      "Save and continue progression pattern"
+    ],
+    "designPatterns": [
+      "Progressive disclosure",
+      "Focused task completion",
+      "Step-by-step navigation",
+      "Cognitive load reduction"
+    ],
+    "accessibility": [
+      "Large label size ensures question visibility",
+      "Help text provides additional context without cluttering",
+      "Radio group has proper aria-label for screen readers",
+      "Back link provides clear navigation option",
+      "Submit button clearly indicates next action"
+    ]
+  },
+  "codeExamples": {
+    "react": {
+      "complete": "import { Sandbox } from \"@components/sandbox\";\nimport \"./question-page/question-page-examples.css\";\nimport { CodeSnippet } from \"@components/code-snippet/CodeSnippet.tsx\";\nimport {\n  GoabButton,\n  GoabFormItem,\n  GoabRadioGroup,\n  GoabRadioItem\n} from \"@abgov/react-components\";\nimport { LanguageVersionContext } from \"@contexts/LanguageVersionContext.tsx\";\nimport { useContext } from \"react\";\n\nexport default function AskAUserOneQuestionAtATime() {\n  useContext(LanguageVersionContext);\n  return (\n    <div className=\"question-page-example\">\n      <Sandbox fullWidth allow={[\"a\"]}>\n        <a href=\"#\" className=\"back-link\">\n          Back\n        </a>\n        <GoabFormItem\n          mt=\"2xl\"\n          label=\"Are you currently in school?\"\n          labelSize=\"large\"\n          helpText=\"School includes foundational, skills and employment training, micro-credentials, post-secondary and continuing education.\">\n          <GoabRadioGroup name=\"school\" ariaLabel=\"are you currently in school?\" onChange={() => {\n          }}>\n            <GoabRadioItem value=\"yes\" label=\"Yes\"></GoabRadioItem>\n            <GoabRadioItem value=\"no\" label=\"No\">\n              No\n            </GoabRadioItem>\n          </GoabRadioGroup>\n        </GoabFormItem>\n        <GoabButton type=\"submit\" mt=\"2xl\">\n          Save and continue\n        </GoabButton>\n      </Sandbox>\n    </div>\n  );\n}",
+      "key": "const [selectedAnswer, setSelectedAnswer] = useState<string>('');\n\nconst handleAnswerChange = (event: GoabRadioGroupOnChangeDetail) => {\n  setSelectedAnswer(event.value);\n};\n\nconst handleSubmit = () => {\n  // Save answer and navigate to next question\n};\n\nconst handleBack = () => {\n  // Navigate to previous question or page\n};\n\n<a href=\"#\" className=\"back-link\" onClick={handleBack}>\n  Back\n</a>\n\n<GoabFormItem\n  mt=\"2xl\"\n  label=\"Are you currently in school?\"\n  labelSize=\"large\"\n  helpText=\"School includes foundational, skills and employment training, micro-credentials, post-secondary and continuing education.\"\n>\n  <GoabRadioGroup\n    name=\"school\"\n    ariaLabel=\"are you currently in school?\"\n    onChange={handleAnswerChange}\n  >\n    <GoabRadioItem value=\"yes\" label=\"Yes\" />\n    <GoabRadioItem value=\"no\" label=\"No\" />\n  </GoabRadioGroup>\n</GoabFormItem>\n\n<GoabButton type=\"submit\" mt=\"2xl\" onClick={handleSubmit}>\n  Save and continue\n</GoabButton>"
+    },
+    "angular": {
+      "complete": "export class SingleQuestionComponent {\n  selectedAnswer = '';\n  \n  handleAnswerChange(event: GoabRadioGroupOnChangeDetail) {\n    this.selectedAnswer = event.value;\n  }\n  \n  handleSubmit() {\n    // Save answer and navigate to next question\n  }\n  \n  handleBack() {\n    // Navigate to previous question or page\n  }\n}",
+      "key": "selectedAnswer = '';\n\nhandleAnswerChange(event: GoabRadioGroupOnChangeDetail) {\n  this.selectedAnswer = event.value;\n}\n\nhandleSubmit() {\n  // Save answer and navigate to next question\n  // Could use router.navigate() or form submission\n}\n\nhandleBack() {\n  // Navigate to previous question or page\n  // Could use router.navigate() or browser history\n}\n\n<!-- Template -->\n<a href=\"#\" class=\"back-link\" (click)=\"handleBack()\">\n  Back\n</a>\n\n<goab-form-item\n  mt=\"2xl\"\n  label=\"Are you currently in school?\"\n  labelSize=\"large\"\n  helpText=\"School includes foundational, skills and employment training, micro-credentials, post-secondary and continuing education.\"\n>\n  <goab-radio-group\n    name=\"school\"\n    ariaLabel=\"are you currently in school?\"\n    (onChange)=\"handleAnswerChange($event)\"\n  >\n    <goab-radio-item value=\"yes\" label=\"Yes\"></goab-radio-item>\n    <goab-radio-item value=\"no\" label=\"No\"></goab-radio-item>\n  </goab-radio-group>\n</goab-form-item>\n\n<goab-button type=\"submit\" mt=\"2xl\" (onClick)=\"handleSubmit()\">\n  Save and continue\n</goab-button>"
+    }
+  },
+  "tags": [
+    "single-question",
+    "step-by-step",
+    "radio-group",
+    "navigation",
+    "progressive-disclosure",
+    "form-flow",
+    "cognitive-load",
+    "eligibility",
+    "back-link"
+  ]
+}

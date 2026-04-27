@@ -1,0 +1,116 @@
+{
+  "id": "case-cards",
+  "name": "Case Cards List",
+  "category": "section",
+  "description": "A vertical list of clickable cards displaying case or item summaries. Used on dashboards for quick access to important items like urgent cases, recent updates, or upcoming deadlines. Each card shows key information and navigates to the detail view when clicked.",
+
+  "whenToUse": [
+    "On dashboard pages for quick case access",
+    "To highlight urgent or important items",
+    "For 'recent items' or 'upcoming deadlines' sections",
+    "When cards provide better scannability than tables"
+  ],
+
+  "components": [
+    {
+      "name": "GoabText",
+      "purpose": "Display case name, ID, and metadata",
+      "props": ["size", "weight", "color", "mb"]
+    },
+    {
+      "name": "GoabBadge",
+      "purpose": "Status and urgency indicators",
+      "props": ["type", "content"]
+    },
+    {
+      "name": "GoabButton",
+      "purpose": "Section header 'View all' link",
+      "props": ["type='tertiary'", "size='compact'"]
+    }
+  ],
+
+  "utilities": {
+    "formatDate": {
+      "purpose": "Format date for display (e.g., 'Dec 8, 2025')",
+      "code": "export function formatDate(dateString: string): string {\n  const date = new Date(dateString);\n  return date.toLocaleDateString('en-CA', {\n    year: 'numeric',\n    month: 'short',\n    day: 'numeric'\n  });\n}"
+    },
+    "formatRelativeDate": {
+      "purpose": "Format date relatively (e.g., 'In 3 days', 'Yesterday')",
+      "code": "export function formatRelativeDate(dateString: string): string {\n  const date = new Date(dateString);\n  const now = new Date();\n  const diffMs = date.getTime() - now.getTime();\n  const diffDays = Math.ceil(diffMs / (1000 * 60 * 60 * 24));\n\n  if (diffDays === 0) return 'Today';\n  if (diffDays === 1) return 'Tomorrow';\n  if (diffDays === -1) return 'Yesterday';\n  if (diffDays > 0) return `In ${diffDays} days`;\n  return `${Math.abs(diffDays)} days ago`;\n}"
+    },
+    "isOverdue": {
+      "purpose": "Check if a date is past due",
+      "code": "export function isOverdue(dateString: string): boolean {\n  const date = new Date(dateString);\n  const now = new Date();\n  return date < now;\n}"
+    },
+    "getStatusBadgeProps": {
+      "purpose": "Map status to badge type",
+      "code": "export function getStatusBadgeProps(status: string) {\n  const map: Record<string, { type: string; content: string }> = {\n    'assigned': { type: 'information', content: 'Assigned' },\n    'in-progress': { type: 'important', content: 'In Progress' },\n    'pending': { type: 'inactive', content: 'Pending' },\n    'complete': { type: 'success', content: 'Complete' }\n  };\n  return map[status] || { type: 'inactive', content: status };\n}"
+    },
+    "getPriorityBadgeProps": {
+      "purpose": "Map priority to badge type",
+      "code": "export function getPriorityBadgeProps(priority: 'high' | 'medium' | 'low') {\n  const map = {\n    high: { type: 'emergency', content: 'High' },\n    medium: { type: 'important', content: 'Medium' },\n    low: { type: 'archived', content: 'Low' }\n  };\n  return map[priority];\n}"
+    }
+  },
+
+  "example": {
+    "framework": "react",
+    "description": "Complete case cards section with urgent cases and upcoming deadlines",
+    "code": "// Card component for reuse\nconst CaseCard = ({ children, onClick }: { children: React.ReactNode; onClick?: () => void }) => (\n  <div\n    onClick={onClick}\n    style={{\n      backgroundColor: 'white',\n      borderRadius: '8px',\n      padding: '16px',\n      boxShadow: '0 1px 3px rgba(0,0,0,0.1)',\n      cursor: onClick ? 'pointer' : 'default'\n    }}\n  >\n    {children}\n  </div>\n);\n\n// Urgent cases section\n{urgentCases.length > 0 && (\n  <>\n    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>\n      <GoabText size=\"heading-s\">Urgent Cases</GoabText>\n      <GoabButton type=\"tertiary\" size=\"compact\" onClick={() => navigate('/cases?filter=urgent')}>\n        View all\n      </GoabButton>\n    </div>\n\n    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '32px' }}>\n      {urgentCases.map(caseItem => (\n        <CaseCard key={caseItem.id} onClick={() => navigate(`/cases/${caseItem.id}`)}>\n          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>\n            <div>\n              <div style={{ display: 'flex', gap: '8px', alignItems: 'center', marginBottom: '4px' }}>\n                <GoabText size=\"body-m\" weight=\"bold\">{caseItem.name}</GoabText>\n                <GoabBadge type=\"emergency\" content=\"Urgent\" />\n              </div>\n              <GoabText size=\"body-s\" color=\"secondary\">{caseItem.id}</GoabText>\n            </div>\n            <div style={{ textAlign: 'right' }}>\n              <GoabText size=\"body-s\" color={isOverdue(caseItem.dueDate) ? 'emergency' : undefined}>\n                Due: {formatRelativeDate(caseItem.dueDate)}\n              </GoabText>\n            </div>\n          </div>\n        </CaseCard>\n      ))}\n    </div>\n  </>\n)}\n\n// Coming up section with multiple badges per card\n<div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>\n  <GoabText size=\"heading-s\">Coming Up</GoabText>\n  <GoabButton type=\"tertiary\" size=\"compact\" onClick={() => navigate('/cases')}>\n    View all cases\n  </GoabButton>\n</div>\n\n<div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>\n  {dueSoonCases.length === 0 ? (\n    <GoabText size=\"body-m\" color=\"secondary\">No cases due in the next 7 days</GoabText>\n  ) : (\n    dueSoonCases.map(caseItem => {\n      const statusBadge = getStatusBadgeProps(caseItem.status);\n      const priorityBadge = getPriorityBadgeProps(caseItem.priority);\n\n      return (\n        <CaseCard key={caseItem.id} onClick={() => navigate(`/cases/${caseItem.id}`)}>\n          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>\n            <div>\n              <GoabText size=\"body-m\" weight=\"bold\">{caseItem.name}</GoabText>\n              <GoabText size=\"body-s\" color=\"secondary\">{caseItem.id}</GoabText>\n              <div style={{ display: 'flex', gap: '8px', marginTop: '8px' }}>\n                <GoabBadge type={statusBadge.type} content={statusBadge.content} />\n                <GoabBadge type={priorityBadge.type} content={priorityBadge.content} />\n              </div>\n            </div>\n            <div style={{ textAlign: 'right' }}>\n              <GoabText size=\"body-s\">Due: {formatDate(caseItem.dueDate)}</GoabText>\n              <GoabText size=\"body-xs\" color=\"secondary\">{formatRelativeDate(caseItem.dueDate)}</GoabText>\n            </div>\n          </div>\n        </CaseCard>\n      );\n    })\n  )}\n</div>"
+  },
+
+  "sampleData": {
+    "description": "Realistic case data for testing",
+    "cases": [
+      {
+        "id": "CASE-2024-0847",
+        "name": "Johnson, Emily",
+        "status": "in-progress",
+        "priority": "high",
+        "dueDate": "2025-12-10",
+        "isUrgent": true
+      },
+      {
+        "id": "CASE-2024-0812",
+        "name": "Smith, Michael",
+        "status": "assigned",
+        "priority": "medium",
+        "dueDate": "2025-12-15",
+        "isUrgent": false
+      },
+      {
+        "id": "CASE-2024-0799",
+        "name": "Williams, Sarah",
+        "status": "pending",
+        "priority": "low",
+        "dueDate": "2025-12-20",
+        "isUrgent": false
+      }
+    ]
+  },
+
+  "variants": [
+    {
+      "name": "Compact cards",
+      "description": "Single line per card for denser display"
+    },
+    {
+      "name": "With thumbnail/avatar",
+      "description": "Include user avatar or case type icon"
+    },
+    {
+      "name": "With quick actions",
+      "description": "Add action buttons directly on cards (approve, reassign)"
+    }
+  ],
+
+  "considerations": [
+    "Limit to 3-5 cards per section to avoid overwhelming dashboards",
+    "Always include 'View all' link to full list",
+    "Make entire card clickable for mobile friendliness",
+    "Use color-coded text (emergency) for overdue items sparingly",
+    "Consider keyboard navigation for accessibility",
+    "Cards should have hover state indicating clickability"
+  ],
+
+  "relatedPatterns": ["stats-row", "dashboard-page"]
+}

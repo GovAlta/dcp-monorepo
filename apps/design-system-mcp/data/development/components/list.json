@@ -1,0 +1,44 @@
+{
+  "name": "List",
+  "category": "component",
+  "summary": "Structured lists with customizable styling for sequential or organized content.",
+  "import": "import { GoabList } from '@abgov/react-components'",
+  "customElement": {
+    "tagName": "goa-list",
+    "reactName": "GoabList",
+    "angularSelector": "goab-list"
+  },
+
+  "props": [
+    { "name": "type", "type": "number | bullet | alpha | roman", "required": false, "default": "bullet", "description": "List style type" },
+    { "name": "testId", "type": "string", "required": false, "description": "Test identifier" },
+    { "name": "mt", "type": "Spacing", "required": false, "description": "Margin top" },
+    { "name": "mr", "type": "Spacing", "required": false, "description": "Margin right" },
+    { "name": "mb", "type": "Spacing", "required": false, "description": "Margin bottom" },
+    { "name": "ml", "type": "Spacing", "required": false, "description": "Margin left" }
+  ],
+
+  "events": [],
+
+  "slots": [
+    { "name": "default", "description": "List items (<li> elements)" }
+  ],
+
+  "criticalNotes": [
+    "Use type='number' for sequential steps",
+    "Use type='bullet' for unordered items",
+    "Nest lists for hierarchical content"
+  ],
+
+  "basicUsage": {
+    "webComponent": "<goa-list type=\"number\">\n  <li>First step</li>\n  <li>Second step</li>\n  <li>Third step</li>\n</goa-list>",
+    "react": "<GoabList type=\"number\">\n  <li>First step</li>\n  <li>Second step</li>\n  <li>Third step</li>\n</GoabList>",
+    "angular": "<goab-list type=\"number\">\n  <li>First step</li>\n  <li>Second step</li>\n  <li>Third step</li>\n</goab-list>"
+  },
+
+  "relatedExamples": [
+    "show-a-list-to-help-answer-a-question"
+  ],
+
+  "relatedComponents": ["Text", "Details"]
+}

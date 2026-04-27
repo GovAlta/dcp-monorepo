@@ -1,0 +1,199 @@
+{
+  "name": "Badge",
+  "category": "feedback",
+  "summary": "Small status labels for contextual feedback. Use for status indicators, counts, and categorical labels.",
+  "import": "import { GoabBadge } from '@abgov/react-components'",
+  "typeImport": "import { GoabBadgeType } from '@abgov/ui-components-common'",
+  "customElement": {
+    "tagName": "goa-badge",
+    "reactName": "GoabBadge",
+    "angularSelector": "goab-badge"
+  },
+  "props": [
+    {
+      "name": "type",
+      "type": "\"information\" | \"important\" | \"emergency\" | \"success\" | \"dark\" | \"midtone\" | \"light\" | \"archived\" | \"aqua\" | \"black\" | \"blue\" | \"green\" | \"orange\" | \"pink\" | \"red\" | \"violet\" | \"white\" | \"yellow\" | \"aqua-light\" | \"black-light\" | \"blue-light\" | \"green-light\" | \"orange-light\" | \"pink-light\" | \"red-light\" | \"violet-light\" | \"yellow-light\" | \"sky\" | \"prairie\" | \"lilac\" | \"pasture\" | \"sunset\" | \"dawn\" | \"default\"",
+      "required": true,
+      "default": null,
+      "description": "Visual style and semantic meaning",
+      "frameworks": {
+        "webComponent": "type=\"...\"",
+        "react": "type={...}",
+        "angular": "[type]=\"...\""
+      }
+    },
+    {
+      "name": "testId",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "Test identifier for automation",
+      "frameworks": {
+        "webComponent": "test-id=\"...\"",
+        "react": "testId={...}",
+        "angular": "[testId]=\"...\""
+      }
+    },
+    {
+      "name": "content",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "Text label displayed in badge",
+      "frameworks": {
+        "webComponent": "content=\"...\"",
+        "react": "content={...}",
+        "angular": "[content]=\"...\""
+      }
+    },
+    {
+      "name": "icon",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "Include type-specific icon",
+      "frameworks": {
+        "webComponent": "icon=\"...\"",
+        "react": "icon={...}",
+        "angular": "[icon]=\"...\""
+      }
+    },
+    {
+      "name": "icontype",
+      "type": "GoAIconType",
+      "required": false,
+      "default": null,
+      "description": "",
+      "frameworks": {
+        "webComponent": "icontype=\"...\"",
+        "react": "icontype={...}",
+        "angular": "[icontype]=\"...\""
+      }
+    },
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "Accessible label (required for icon-only badges)",
+      "frameworks": {
+        "webComponent": "aria-label=\"...\"",
+        "react": "ariaLabel={...}",
+        "angular": "[ariaLabel]=\"...\""
+      }
+    },
+    {
+      "name": "size",
+      "type": "\"medium\" | \"large\"",
+      "required": false,
+      "default": "medium",
+      "description": "",
+      "frameworks": {
+        "webComponent": "size=\"...\"",
+        "react": "size={...}",
+        "angular": "[size]=\"...\""
+      }
+    },
+    {
+      "name": "emphasis",
+      "type": "",
+      "required": false,
+      "default": "strong",
+      "description": "",
+      "frameworks": {
+        "webComponent": "emphasis=\"...\"",
+        "react": "emphasis={...}",
+        "angular": "[emphasis]=\"...\""
+      }
+    },
+    {
+      "name": "mt",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin top",
+      "frameworks": {
+        "webComponent": "mt=\"...\"",
+        "react": "mt={...}",
+        "angular": "[mt]=\"...\""
+      }
+    },
+    {
+      "name": "mr",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin right",
+      "frameworks": {
+        "webComponent": "mr=\"...\"",
+        "react": "mr={...}",
+        "angular": "[mr]=\"...\""
+      }
+    },
+    {
+      "name": "mb",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin bottom",
+      "frameworks": {
+        "webComponent": "mb=\"...\"",
+        "react": "mb={...}",
+        "angular": "[mb]=\"...\""
+      }
+    },
+    {
+      "name": "ml",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin left",
+      "frameworks": {
+        "webComponent": "ml=\"...\"",
+        "react": "ml={...}",
+        "angular": "[ml]=\"...\""
+      }
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "criticalNotes": [
+    "Either content or icon (or both) must be provided",
+    "ariaLabel is required when using icon-only badges for accessibility",
+    "Use success for completed, important for pending, emergency for critical"
+  ],
+  "strictPropertyEnforcement": {
+    "type": {
+      "validValues": [
+        "success",
+        "important",
+        "information",
+        "emergency",
+        "dark",
+        "midtone",
+        "light"
+      ],
+      "invalidExamples": [
+        "error",
+        "warning",
+        "primary",
+        "secondary"
+      ]
+    }
+  },
+  "basicUsage": {
+    "webComponent": "<goa-badge type=\"success\" content=\"Approved\"></goa-badge>\n<goa-badge type=\"important\" content=\"Pending\" icon=\"true\"></goa-badge>\n<goa-badge type=\"emergency\" content=\"Urgent\"></goa-badge>",
+    "react": "<GoabBadge type=\"success\" content=\"Approved\" />\n<GoabBadge type=\"important\" content=\"Pending\" icon />\n<GoabBadge type=\"emergency\" content=\"Urgent\" />",
+    "angular": "<goab-badge type=\"success\" content=\"Approved\"></goab-badge>\n<goab-badge type=\"important\" content=\"Pending\" [icon]=\"true\"></goab-badge>\n<goab-badge type=\"emergency\" content=\"Urgent\"></goab-badge>"
+  },
+  "relatedExamples": [
+    "show-status-in-a-table",
+    "show-status-on-a-card",
+    "task-list-page",
+    "worker-dashboard-overview"
+  ],
+  "relatedComponents": [
+    "Chip",
+    "Callout"
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "$schema": "../recipe-schema.json",
+  "schemaVersion": "2.1.0-ai-context",
+  "recipeId": "expand-or-collapse-part-of-a-form",
+  "recipeName": "Expand or Collapse Part of a Form",
+  "category": "form-pattern",
+  "summary": "Organize form content into collapsible sections using accordions to improve scanability and reduce cognitive load",
+  "serviceContext": {
+    "useCase": "Break down lengthy forms or review pages into manageable sections that users can expand or collapse as needed",
+    "userType": "both",
+    "governmentServiceFlows": [
+      "When citizens review their application details before submission",
+      "When workers need to organize case information into logical sections",
+      "When forms contain multiple categories of information that can be grouped",
+      "When displaying complex data that benefits from progressive disclosure"
+    ],
+    "relatedPatterns": [
+      "review-page",
+      "hide-and-show-many-sections-of-information",
+      "reveal-more-information-to-help-answer-a-question",
+      "give-background-information-before-asking-a-question"
+    ]
+  },
+  "components": [
+    {
+      "componentName": "GoabAccordion",
+      "role": "Collapsible section container",
+      "purpose": "Provide expandable/collapsible interface for form sections with clear headings"
+    },
+    {
+      "componentName": "GoabBadge",
+      "role": "Status indicator in accordion header",
+      "purpose": "Highlight important information or status changes within accordion sections"
+    }
+  ],
+  "codeReference": {
+    "exampleFile": "expand-or-collapse-part-of-a-form.tsx",
+    "linesOfCode": 210,
+    "lastModified": "2024-01-01T00:00:00.000Z"
+  },
+  "implementation": {
+    "complexity": "low",
+    "keyPatterns": [
+      "Accordion component usage for collapsible form sections",
+      "Definition list (dl/dt/dd) structure for organized data presentation",
+      "Badge integration in accordion headers for status indication",
+      "Custom CSS styling for proper typography and spacing within accordions",
+      "Progressive disclosure pattern to reduce cognitive load"
+    ],
+    "designPatterns": [
+      "Progressive disclosure",
+      "Information organization",
+      "Accordion interface pattern",
+      "Status indication within collapsible content"
+    ],
+    "accessibility": [
+      "Accordion components provide proper keyboard navigation and screen reader support",
+      "Definition lists create semantic relationships between labels and values",
+      "Badge components announce important status information",
+      "Headings maintain logical hierarchy for form sections"
+    ]
+  },
+  "codeExamples": {
+    "react": {
+      "complete": "import { GoabAccordion, GoabBadge } from \"@abgov/react-components\";\n\nconst ExpandOrCollapsePartOfAForm = () => {\n  const headingContent = <GoabBadge type=\"important\" content=\"Updated\" />;\n  \n  return (\n    <>\n      <h3>Review your application</h3>\n      \n      <GoabAccordion\n        heading=\"Referral details\"\n        headingContent={headingContent}>\n        <dl className=\"form-section\">\n          <dt>Date of referral</dt>\n          <dd>January 27, 2021</dd>\n          <dt>Work safety concerns</dt>\n          <dd>None</dd>\n          <dt>Type of referral</dt>\n          <dd>Word of mouth, internet search</dd>\n          <dt>Intake received from another site</dt>\n          <dd>Yes</dd>\n        </dl>\n      </GoabAccordion>\n      \n      <GoabAccordion heading=\"Contact information\">\n        <dl className=\"form-section\">\n          <dt>Name</dt>\n          <dd>Joan Smith</dd>\n          <dt>Contact preference</dt>\n          <dd>Text message</dd>\n        </dl>\n      </GoabAccordion>\n    </>\n  )\n}",
+      "key": "const formSections = [\n  {\n    title: \"Personal Information\",\n    badge: { type: \"important\", content: \"Required\" },\n    data: [\n      { label: \"Full Name\", value: \"John Doe\" },\n      { label: \"Date of Birth\", value: \"January 15, 1990\" },\n      { label: \"Email\", value: \"john.doe@email.com\" }\n    ]\n  },\n  {\n    title: \"Address Information\",\n    badge: null,\n    data: [\n      { label: \"Street Address\", value: \"123 Main St\" },\n      { label: \"City\", value: \"Edmonton\" },\n      { label: \"Province\", value: \"Alberta\" },\n      { label: \"Postal Code\", value: \"T5J 3N4\" }\n    ]\n  },\n  {\n    title: \"Employment Details\",\n    badge: { type: \"success\", content: \"Verified\" },\n    data: [\n      { label: \"Employer\", value: \"ABC Corporation\" },\n      { label: \"Position\", value: \"Software Developer\" },\n      { label: \"Start Date\", value: \"March 1, 2020\" }\n    ]\n  }\n];\n\n<div className=\"form-review\">\n  <h3>Review your application</h3>\n  \n  {formSections.map((section, index) => (\n    <GoabAccordion\n      key={index}\n      heading={section.title}\n      headingContent={section.badge ? \n        <GoabBadge type={section.badge.type} content={section.badge.content} /> : \n        null\n      }>\n      <dl className=\"form-section\">\n        {section.data.map((item, itemIndex) => (\n          <React.Fragment key={itemIndex}>\n            <dt>{item.label}</dt>\n            <dd>{item.value}</dd>\n          </React.Fragment>\n        ))}\n      </dl>\n    </GoabAccordion>\n  ))}\n</div>\n\n/* CSS */\n.form-section {\n  margin: 0;\n}\n\n.form-section dt {\n  color: var(--goa-color-text-default);\n  font: var(--goa-typography-heading-s);\n  margin-bottom: var(--goa-space-xs);\n}\n\n.form-section dd {\n  margin: 0 0 var(--goa-space-l);\n  font: var(--goa-typography-body-m);\n}\n\n.form-section dd:last-of-type {\n  margin-bottom: 0;\n}"
+    },
+    "angular": {
+      "complete": "export class ExpandOrCollapsePartOfAFormComponent {\n  formSections = [\n    {\n      title: 'Personal Information',\n      badge: { type: 'important', content: 'Required' },\n      data: [\n        { label: 'Full Name', value: 'John Doe' },\n        { label: 'Date of Birth', value: 'January 15, 1990' },\n        { label: 'Email', value: 'john.doe@email.com' }\n      ]\n    },\n    {\n      title: 'Address Information',\n      badge: null,\n      data: [\n        { label: 'Street Address', value: '123 Main St' },\n        { label: 'City', value: 'Edmonton' },\n        { label: 'Province', value: 'Alberta' },\n        { label: 'Postal Code', value: 'T5J 3N4' }\n      ]\n    },\n    {\n      title: 'Employment Details',\n      badge: { type: 'success', content: 'Verified' },\n      data: [\n        { label: 'Employer', value: 'ABC Corporation' },\n        { label: 'Position', value: 'Software Developer' },\n        { label: 'Start Date', value: 'March 1, 2020' }\n      ]\n    }\n  ];\n}",
+      "key": "formSections = [\n  {\n    title: 'Personal Information',\n    badge: { type: 'important', content: 'Required' },\n    data: [\n      { label: 'Full Name', value: 'John Doe' },\n      { label: 'Date of Birth', value: 'January 15, 1990' },\n      { label: 'Email', value: 'john.doe@email.com' }\n    ]\n  },\n  {\n    title: 'Address Information',\n    badge: null,\n    data: [\n      { label: 'Street Address', value: '123 Main St' },\n      { label: 'City', value: 'Edmonton' },\n      { label: 'Province', value: 'Alberta' }\n    ]\n  }\n];\n\n<!-- Template -->\n<div class=\"form-review\">\n  <h3>Review your application</h3>\n  \n  <goab-accordion \n    *ngFor=\"let section of formSections\"\n    [heading]=\"section.title\"\n    [headingContent]=\"section.badge ? badgeTemplate : null\">\n    \n    <ng-template #badgeTemplate>\n      <goab-badge \n        [type]=\"section.badge.type\" \n        [content]=\"section.badge.content\">\n      </goab-badge>\n    </ng-template>\n    \n    <dl class=\"form-section\">\n      <ng-container *ngFor=\"let item of section.data\">\n        <dt>{{ item.label }}</dt>\n        <dd>{{ item.value }}</dd>\n      </ng-container>\n    </dl>\n  </goab-accordion>\n</div>"
+    }
+  },
+  "tags": [
+    "accordion",
+    "collapsible",
+    "form-organization",
+    "progressive-disclosure",
+    "review-page",
+    "sections",
+    "badge",
+    "definition-list",
+    "expandable",
+    "form-structure"
+  ]
+}

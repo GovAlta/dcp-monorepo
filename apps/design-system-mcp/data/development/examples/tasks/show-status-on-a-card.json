@@ -1,0 +1,124 @@
+{
+  "$schema": "../schema/recipe-schema-2.1.0-ai-context.json",
+  "title": "Show status on a card",
+  "description": "Display status information using badges in the actions area of cards, providing prominent visual indicators for card content state or priority.",
+  "category": "layout-patterns",
+  "tags": [
+    "cards",
+    "status-badges",
+    "containers",
+    "visual-indicators",
+    "content-organization"
+  ],
+  "government_service_context": {
+    "citizen_flows": {
+      "applicable": true,
+      "usage": "Citizens viewing their applications, requests, or documents need immediate visual cues about status, priority, or required actions on each item."
+    },
+    "worker_flows": {
+      "applicable": true,
+      "usage": "Government workers reviewing cases, applications, or documents need quick status recognition to prioritize work and understand current states."
+    },
+    "shared_components": {
+      "applicable": true,
+      "usage": "Status indication on cards is universally useful for any interface organizing content into discrete, scannable units."
+    }
+  },
+  "component_analysis": {
+    "primary_components": [
+      {
+        "name": "Container Card",
+        "role": "Provides structured layout with heading, content, and actions areas",
+        "purpose": "Creates consistent, scannable content organization with designated status placement"
+      },
+      {
+        "name": "Status Badge",
+        "role": "Displays status or priority information prominently in actions area",
+        "purpose": "Provides immediate visual recognition of content state without reading details"
+      },
+      {
+        "name": "Card Heading",
+        "role": "Identifies the primary content or subject of the card",
+        "purpose": "Establishes context for the status information and main content"
+      },
+      {
+        "name": "Card Content",
+        "role": "Contains the detailed information related to the card subject",
+        "purpose": "Provides the substantive information while status gives context"
+      }
+    ],
+    "accessibility_features": [
+      "Status badges use semantic color and text meaning",
+      "Card structure provides proper heading hierarchy",
+      "Badge content is descriptive for screen readers",
+      "High contrast maintained between badge and card background",
+      "Logical reading order flows from heading through status to content"
+    ],
+    "user_experience_notes": [
+      "Status placement in actions area creates consistent scanning pattern",
+      "Badge prominence allows quick status triage across multiple cards",
+      "Non-interactive container focuses attention on information rather than actions",
+      "Thick accent provides visual weight appropriate for status importance",
+      "Card organization supports both detailed reading and quick scanning"
+    ]
+  },
+  "implementation": {
+    "react": {
+      "code": "import React from 'react';\nimport {\n  GoabBadge,\n  GoabContainer\n} from '@abgov/react-components';\nimport { GoabBadgeType } from '@abgov/ui-components-common';\n\ninterface StatusCardProps {\n  title: string;\n  content: React.ReactNode;\n  status: {\n    type: GoabBadgeType;\n    content: string;\n  };\n  priority?: {\n    type: GoabBadgeType;\n    content: string;\n  };\n}\n\nfunction StatusCard({ title, content, status, priority }: StatusCardProps) {\n  const actions = (\n    <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>\n      {priority && (\n        <GoabBadge \n          type={priority.type} \n          content={priority.content} \n        />\n      )}\n      <GoabBadge \n        type={status.type} \n        content={status.content} \n      />\n    </div>\n  );\n\n  return (\n    <GoabContainer\n      type=\"non-interactive\"\n      accent=\"thick\"\n      heading={title}\n      actions={actions}\n    >\n      {content}\n    </GoabContainer>\n  );\n}\n\n// Example usage with different status types\nfunction StatusCardExamples() {\n  const cardData = [\n    {\n      id: '1',\n      title: 'Building Permit Application',\n      content: (\n        <div>\n          <p>Application for residential addition at 123 Main Street.</p>\n          <p><strong>Submitted:</strong> November 15, 2023</p>\n          <p><strong>Reference:</strong> BP-2023-001234</p>\n        </div>\n      ),\n      status: { type: 'information' as GoabBadgeType, content: 'Under Review' },\n      priority: { type: 'important' as GoabBadgeType, content: 'High Priority' }\n    },\n    {\n      id: '2',\n      title: 'License Renewal Request',\n      content: (\n        <div>\n          <p>Annual business license renewal for ABC Corporation.</p>\n          <p><strong>Due:</strong> December 31, 2023</p>\n          <p><strong>License #:</strong> BL-456789</p>\n        </div>\n      ),\n      status: { type: 'success' as GoabBadgeType, content: 'Approved' }\n    },\n    {\n      id: '3',\n      title: 'Tax Assessment Appeal',\n      content: (\n        <div>\n          <p>Property tax assessment appeal for 456 Oak Avenue.</p>\n          <p><strong>Assessment Year:</strong> 2023</p>\n          <p><strong>Appeal #:</strong> TA-2023-789</p>\n        </div>\n      ),\n      status: { type: 'emergency' as GoabBadgeType, content: 'Action Required' }\n    },\n    {\n      id: '4',\n      title: 'Employment Insurance Claim',\n      content: (\n        <div>\n          <p>Weekly benefit claim for period November 13-19, 2023.</p>\n          <p><strong>Claim #:</strong> EI-2023-456123</p>\n          <p><strong>Amount:</strong> $573.00</p>\n        </div>\n      ),\n      status: { type: 'midtone' as GoabBadgeType, content: 'Processed' }\n    }\n  ];\n\n  return (\n    <div style={{ display: 'grid', gap: '16px', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))' }}>\n      {cardData.map((card) => (\n        <StatusCard\n          key={card.id}\n          title={card.title}\n          content={card.content}\n          status={card.status}\n          priority={card.priority}\n        />\n      ))}\n    </div>\n  );\n}\n\n// Hook for managing card status\nfunction useCardStatus(initialStatus: string) {\n  const [status, setStatus] = React.useState(initialStatus);\n  \n  const updateStatus = (newStatus: string) => {\n    setStatus(newStatus);\n    console.log(`Status updated to: ${newStatus}`);\n  };\n  \n  const getStatusConfig = (statusValue: string) => {\n    const statusMap: Record<string, { type: GoabBadgeType; content: string }> = {\n      'pending': { type: 'important', content: 'Pending' },\n      'under-review': { type: 'information', content: 'Under Review' },\n      'approved': { type: 'success', content: 'Approved' },\n      'rejected': { type: 'emergency', content: 'Rejected' },\n      'action-required': { type: 'emergency', content: 'Action Required' },\n      'processed': { type: 'midtone', content: 'Processed' },\n      'complete': { type: 'success', content: 'Complete' }\n    };\n    \n    return statusMap[statusValue] || { type: 'midtone', content: statusValue };\n  };\n  \n  return {\n    status,\n    updateStatus,\n    statusConfig: getStatusConfig(status)\n  };\n}"
+    },
+    "angular": {
+      "code": "import { Component, Input } from '@angular/core';\nimport { GoabBadgeType } from '@abgov/ui-components-common';\n\ninterface StatusConfig {\n  type: GoabBadgeType;\n  content: string;\n}\n\ninterface CardData {\n  title: string;\n  content: string;\n  status: StatusConfig;\n  priority?: StatusConfig;\n}\n\n@Component({\n  selector: 'app-status-card',\n  template: `\n    <goab-container\n      type=\"non-interactive\"\n      accent=\"thick\"\n      [title]=\"titleTemplate\"\n      [actions]=\"actionsTemplate\"\n    >\n      <ng-template #titleTemplate>{{ title }}</ng-template>\n      <ng-template #actionsTemplate>\n        <div style=\"display: flex; gap: 8px; align-items: center;\">\n          <goab-badge \n            *ngIf=\"priority\"\n            [type]=\"priority.type\"\n            [content]=\"priority.content\"\n          ></goab-badge>\n          <goab-badge \n            [type]=\"status.type\"\n            [content]=\"status.content\"\n          ></goab-badge>\n        </div>\n      </ng-template>\n      <ng-content></ng-content>\n    </goab-container>\n  `\n})\nexport class StatusCardComponent {\n  @Input() title!: string;\n  @Input() status!: StatusConfig;\n  @Input() priority?: StatusConfig;\n}\n\n@Component({\n  selector: 'app-status-card-examples',\n  template: `\n    <div style=\"display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));\">\n      <app-status-card \n        *ngFor=\"let card of cardData\"\n        [title]=\"card.title\"\n        [status]=\"card.status\"\n        [priority]=\"card.priority\"\n      >\n        <div [innerHTML]=\"card.content\"></div>\n      </app-status-card>\n    </div>\n  `\n})\nexport class StatusCardExamplesComponent {\n  cardData: CardData[] = [\n    {\n      title: 'Building Permit Application',\n      content: `\n        <p>Application for residential addition at 123 Main Street.</p>\n        <p><strong>Submitted:</strong> November 15, 2023</p>\n        <p><strong>Reference:</strong> BP-2023-001234</p>\n      `,\n      status: { type: 'information', content: 'Under Review' },\n      priority: { type: 'important', content: 'High Priority' }\n    },\n    {\n      title: 'License Renewal Request',\n      content: `\n        <p>Annual business license renewal for ABC Corporation.</p>\n        <p><strong>Due:</strong> December 31, 2023</p>\n        <p><strong>License #:</strong> BL-456789</p>\n      `,\n      status: { type: 'success', content: 'Approved' }\n    },\n    {\n      title: 'Tax Assessment Appeal',\n      content: `\n        <p>Property tax assessment appeal for 456 Oak Avenue.</p>\n        <p><strong>Assessment Year:</strong> 2023</p>\n        <p><strong>Appeal #:</strong> TA-2023-789</p>\n      `,\n      status: { type: 'emergency', content: 'Action Required' }\n    },\n    {\n      title: 'Employment Insurance Claim',\n      content: `\n        <p>Weekly benefit claim for period November 13-19, 2023.</p>\n        <p><strong>Claim #:</strong> EI-2023-456123</p>\n        <p><strong>Amount:</strong> $573.00</p>\n      `,\n      status: { type: 'midtone', content: 'Processed' }\n    }\n  ];\n}\n\n// Service for managing status configurations\n@Injectable({\n  providedIn: 'root'\n})\nexport class CardStatusService {\n  private statusConfigs: Record<string, StatusConfig> = {\n    'pending': { type: 'important', content: 'Pending' },\n    'under-review': { type: 'information', content: 'Under Review' },\n    'approved': { type: 'success', content: 'Approved' },\n    'rejected': { type: 'emergency', content: 'Rejected' },\n    'action-required': { type: 'emergency', content: 'Action Required' },\n    'processed': { type: 'midtone', content: 'Processed' },\n    'complete': { type: 'success', content: 'Complete' }\n  };\n\n  getStatusConfig(statusKey: string): StatusConfig {\n    return this.statusConfigs[statusKey] || { type: 'midtone', content: statusKey };\n  }\n\n  getAllStatuses(): string[] {\n    return Object.keys(this.statusConfigs);\n  }\n\n  updateStatus(cardId: string, newStatus: string) {\n    console.log(`Updating card ${cardId} status to: ${newStatus}`);\n    // Implementation for status updates\n  }\n}"
+    }
+  },
+  "usage_guidelines": {
+    "when_to_use": [
+      "Dashboard views displaying multiple items with status information",
+      "Card layouts where status is primary information for user decisions",
+      "Overview pages where users need to quickly scan status across items",
+      "Content organization where status affects user next actions",
+      "Interfaces where visual status indication improves workflow efficiency"
+    ],
+    "when_not_to_use": [
+      "Cards where status is not relevant or meaningful",
+      "Dense layouts where badges would create visual clutter",
+      "Cards with interactive actions where badge might interfere with click targets",
+      "Simple content cards where status would be redundant"
+    ],
+    "best_practices": [
+      "Use consistent badge types for same statuses across application",
+      "Place status badges in actions area for visual prominence",
+      "Combine with priority badges when both dimensions are important",
+      "Ensure badge text is meaningful and action-oriented",
+      "Use appropriate badge types (emergency for urgent, success for completed)",
+      "Test badge visibility against card background colors",
+      "Consider grouping cards by status when appropriate"
+    ]
+  },
+  "variations": [
+    {
+      "name": "Multiple status indicators",
+      "description": "Show both priority and status information",
+      "code_change": "Add priority badge: actions={<><GoabBadge type='important' content='High Priority' /><GoabBadge type='information' content='Under Review' /></>}"
+    },
+    {
+      "name": "Status with timestamp",
+      "description": "Include when status was last updated",
+      "code_change": "Add timestamp: actions={<div><GoabBadge .../><small>Updated 2 hours ago</small></div>}"
+    },
+    {
+      "name": "Interactive status",
+      "description": "Make status badges clickable for details",
+      "code_change": "Wrap in button: actions={<GoabButton type='link' onClick={showStatusDetails}><GoabBadge .../></GoabButton>}"
+    },
+    {
+      "name": "Status with progress",
+      "description": "Show completion percentage along with status",
+      "code_change": "Add progress: actions={<><GoabBadge type='information' content='In Progress (75%)' /></>}"
+    }
+  ],
+  "related_patterns": [
+    "show-status-in-a-table",
+    "card-view-of-case-files",
+    "card-grid"
+  ]
+}

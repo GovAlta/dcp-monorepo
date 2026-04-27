@@ -1,0 +1,108 @@
+{
+  "name": "TemporaryNotification",
+  "category": "component",
+  "summary": "",
+  "import": "import { GoabTemporaryNotification } from '@abgov/react-components'",
+  "customElement": {
+    "tagName": "goa-temp-notification",
+    "reactName": "GoabTemporaryNotification",
+    "angularSelector": "goab-temporary-notification"
+  },
+  "props": [
+    {
+      "name": "message",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "",
+      "frameworks": {
+        "webComponent": "message=\"...\"",
+        "react": "message={...}",
+        "angular": "[message]=\"...\""
+      }
+    },
+    {
+      "name": "type",
+      "type": "TemporaryNotificationType",
+      "required": false,
+      "default": "basic",
+      "description": "",
+      "frameworks": {
+        "webComponent": "type=\"...\"",
+        "react": "type={...}",
+        "angular": "[type]=\"...\""
+      }
+    },
+    {
+      "name": "progress",
+      "type": "number",
+      "required": false,
+      "default": "-1",
+      "description": "",
+      "frameworks": {
+        "webComponent": "progress=\"...\"",
+        "react": "progress={...}",
+        "angular": "[progress]=\"...\""
+      }
+    },
+    {
+      "name": "testId",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "",
+      "frameworks": {
+        "webComponent": "test-id=\"...\"",
+        "react": "testId={...}",
+        "angular": "[testId]=\"...\""
+      }
+    },
+    {
+      "name": "actionText",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "",
+      "frameworks": {
+        "webComponent": "action-text=\"...\"",
+        "react": "actionText={...}",
+        "angular": "[actionText]=\"...\""
+      }
+    },
+    {
+      "name": "visible",
+      "type": "boolean",
+      "required": false,
+      "default": "true",
+      "description": "",
+      "frameworks": {
+        "webComponent": "visible=\"...\"",
+        "react": "visible={...}",
+        "angular": "[visible]=\"...\""
+      }
+    },
+    {
+      "name": "animationDirection",
+      "type": "TemporaryNotificationAnimationDirection",
+      "required": false,
+      "default": "down",
+      "description": "",
+      "frameworks": {
+        "webComponent": "animation-direction=\"...\"",
+        "react": "animationDirection={...}",
+        "angular": "[animationDirection]=\"...\""
+      }
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "criticalNotes": [],
+  "commonMistakes": [],
+  "basicUsage": {
+    "webComponent": "",
+    "react": "",
+    "angular": ""
+  },
+  "relatedExamples": [],
+  "relatedComponents": []
+}

@@ -1,0 +1,100 @@
+{
+  "name": "GoA Design System Anti-Patterns",
+  "summary": "Common anti-patterns and pitfalls to avoid when using the GoA Design System",
+  "domain": "design",
+
+  "designAntiPatterns": [
+    {
+      "id": "custom-over-goa",
+      "name": "Custom Components Over GoA Components",
+      "description": "Building custom components when equivalent GoA components exist",
+      "severity": "high",
+      "detection": ["Custom button, input, or layout components", "Reimplementation of existing patterns"],
+      "solution": "Exhaust GoA library options before building custom. Check examples for similar patterns."
+    },
+    {
+      "id": "wrong-user-pattern",
+      "name": "Mismatched User Type Patterns",
+      "description": "Using citizen patterns for worker tools or vice versa",
+      "severity": "high",
+      "detection": ["Worker dashboards with one-question-per-page", "Citizen forms with high information density"],
+      "solution": "Use appropriate patterns for each user type. See design/user-types.json."
+    },
+    {
+      "id": "layout-inconsistency",
+      "name": "Inconsistent Layout Structure",
+      "description": "Not using proper layout components consistently",
+      "severity": "critical",
+      "detection": ["Missing standard header/footer", "Inconsistent page structure"],
+      "solution": "Use consistent layout patterns across the application."
+    },
+    {
+      "id": "accessibility-afterthought",
+      "name": "Accessibility as Afterthought",
+      "description": "Adding accessibility features after design/development completion",
+      "severity": "critical",
+      "detection": ["Form inputs without labels", "Missing ARIA attributes", "Color contrast issues"],
+      "solution": "Use GoA components which provide accessibility by default. Test early."
+    }
+  ],
+
+  "technicalAntiPatterns": [
+    {
+      "id": "framework-mixing",
+      "name": "Multiple Frontend Frameworks",
+      "description": "Using React, Angular, and other frameworks in same project",
+      "severity": "medium",
+      "detection": ["package.json contains both React and Angular"],
+      "solution": "Choose primary framework and use consistently."
+    },
+    {
+      "id": "custom-styling",
+      "name": "Custom CSS Over Component Props",
+      "description": "Using custom CSS to override GoA component appearance",
+      "severity": "medium",
+      "detection": ["CSS selectors targeting GoA classes", "!important declarations", "Inline styles"],
+      "solution": "Use component props instead. If props don't exist, contact design system team."
+    },
+    {
+      "id": "spacing-abuse",
+      "name": "Overuse of GoabSpacer",
+      "description": "Using GoabSpacer instead of component margin properties",
+      "severity": "low",
+      "detection": ["Many GoabSpacer components", "Spacers between components that support margins"],
+      "solution": "Use component margin props (mb, mt, ml, mr) when available."
+    }
+  ],
+
+  "processAntiPatterns": [
+    {
+      "id": "no-design-review",
+      "name": "Skipping Design System Review",
+      "description": "Implementing designs without checking design system compliance",
+      "severity": "medium",
+      "detection": ["Features shipped without compliance check", "Accessibility issues discovered late"],
+      "solution": "Establish design review checkpoints. Consult design system team."
+    },
+    {
+      "id": "component-gaps-ignored",
+      "name": "Not Reporting Component Gaps",
+      "description": "Working around design system limitations without feedback",
+      "severity": "low",
+      "detection": ["Same custom solutions across multiple teams"],
+      "solution": "Report gaps to design system team. Contribute solutions back."
+    }
+  ],
+
+  "quickFixes": {
+    "custom-over-goa": "Replace CustomButton with GoabButton",
+    "spacing-abuse": "Replace GoabSpacer with component margin props",
+    "custom-styling": "Use component props instead of CSS overrides"
+  },
+
+  "prevention": {
+    "processChecks": [
+      { "when": "Before development", "check": "GoA compliance, accessibility, user type" },
+      { "when": "Before merge", "check": "Proper component usage, no CSS overrides" },
+      { "when": "Before release", "check": "WCAG 2.2 AA compliance" }
+    ]
+  }
+}

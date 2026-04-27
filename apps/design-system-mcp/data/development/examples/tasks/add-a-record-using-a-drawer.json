@@ -1,0 +1,118 @@
+{
+  "$schema": "../recipe-schema.json",
+  "schemaVersion": "2.1.0-ai-context",
+  "recipeId": "add-a-record-using-a-drawer",
+  "recipeName": "Add a Record Using a Drawer",
+  "category": "form-pattern",
+  "summary": "Collect comprehensive educational records through a structured drawer form with multiple input types and conditional fields",
+  "serviceContext": {
+    "useCase": "Administrative data collection for employment verification, professional credentialing, or education management systems",
+    "userType": "worker",
+    "governmentServiceFlows": [
+      "When workers need to collect detailed educational background information",
+      "When comprehensive records must be maintained for compliance or verification",
+      "When structured data entry is required for administrative purposes"
+    ],
+    "relatedPatterns": [
+      "add-another-item-in-a-modal",
+      "question-page",
+      "review-page"
+    ]
+  },
+  "components": [
+    {
+      "componentName": "GoabDrawer",
+      "role": "Main container for the record form",
+      "purpose": "Provide slide-out interface for detailed data entry"
+    },
+    {
+      "componentName": "GoabButton",
+      "role": "Trigger button and form actions",
+      "purpose": "Open drawer and submit form data"
+    },
+    {
+      "componentName": "GoabFormItem",
+      "role": "Structure form fields with labels",
+      "purpose": "Organize form layout and accessibility"
+    },
+    {
+      "componentName": "GoabDropdown",
+      "role": "Education level selection",
+      "purpose": "Provide structured options for education type"
+    },
+    {
+      "componentName": "GoabInput",
+      "role": "Text field inputs",
+      "purpose": "Collect institution names and credential details"
+    },
+    {
+      "componentName": "GoabRadioGroup",
+      "role": "Yes/no questions and location selection",
+      "purpose": "Collect exclusive choice responses"
+    },
+    {
+      "componentName": "GoabDatePicker",
+      "role": "Date selection for start and end dates",
+      "purpose": "Collect temporal information with proper formatting"
+    },
+    {
+      "componentName": "GoabCheckbox",
+      "role": "Mark dates as approximate",
+      "purpose": "Handle uncertainty in date information"
+    },
+    {
+      "componentName": "GoabBlock",
+      "role": "Layout component for date pickers",
+      "purpose": "Arrange date picker and checkbox in horizontal layout"
+    }
+  ],
+  "codeReference": {
+    "exampleFile": "add-a-record-using-a-drawer.tsx",
+    "linesOfCode": 270,
+    "lastModified": "2024-01-01T00:00:00.000Z"
+  },
+  "implementation": {
+    "complexity": "high",
+    "keyPatterns": [
+      "Drawer state management with open/close control",
+      "Complex form with multiple input types",
+      "Date handling with approximate date options",
+      "Multi-level dropdown and radio group selections",
+      "Structured data collection with validation points"
+    ],
+    "designPatterns": [
+      "Controlled component pattern",
+      "Form state management",
+      "Event handling with callbacks",
+      "Layout composition with Block components"
+    ],
+    "accessibility": [
+      "Form items have proper labels and structure",
+      "Radio groups provide clear choice options",
+      "Date pickers support keyboard navigation",
+      "Drawer has proper heading and close functionality"
+    ]
+  },
+  "codeExamples": {
+    "react": {
+      "complete": "import {\n  GoabBlock,\n  GoabButton, GoabCheckbox, GoabContainer, GoabDatePicker,\n  GoabDrawer,\n  GoabDropdown,\n  GoabDropdownItem,\n  GoabFormItem, GoabInput, GoabRadioGroup, GoabRadioItem\n} from \"@abgov/react-components\";\nimport { useState } from \"react\";\nimport { CodeSnippet } from \"@components/code-snippet/CodeSnippet.tsx\";\n\nexport const AddARecordUsingADrawer = () => {\n  const [open, setOpen] = useState(false);\n  const noop = () => {/* do something */}\n  return (\n    <>\n      {/*Don't use a Sandbox because the animation slowing displaying the drawer isn't working if it is inside sandbox*/}\n      <GoabContainer mt=\"none\" mb=\"none\">\n        <div style={{ display: \"flex\", justifyContent: \"center\" }}>\n          <GoabButton leadingIcon={\"add\"} onClick={() => setOpen(true)}>\n            Add Record\n          </GoabButton>\n        </div>\n      </GoabContainer>\n      <GoabDrawer\n        maxSize=\"492px\"\n        open={open}\n        heading={\"Add Record\"}\n        position={\"right\"}\n        onClose={() => setOpen(false)}\n        actions={\n          <GoabButton type=\"primary\" onClick={() => setOpen(false)}>\n            Add\n          </GoabButton>\n        }\n      >\n        <GoabFormItem label=\"Level of education\">\n          <GoabDropdown onChange={noop} name=\"education\" value=\"university\">\n            <GoabDropdownItem value=\"university\" label=\"University Degree\"></GoabDropdownItem>\n          </GoabDropdown>\n        </GoabFormItem>\n        <GoabFormItem label=\"Educational institution\" mt=\"l\" >\n          <GoabInput name=\"education\" type=\"text\" placeholder=\"University of Colorado Boulder\" width=\"100%\" onChange={noop}></GoabInput>\n        </GoabFormItem>\n        <GoabFormItem label=\"Field of study\" requirement=\"optional\" mt=\"l\">\n          <GoabInput name=\"fieldOfStudy\" type=\"text\" placeholder=\"Master of Engineering in Engineering Management\" width=\"100%\" onChange={noop}></GoabInput>\n        </GoabFormItem>\n        <GoabFormItem label=\"Is the person currently attending the training?\" mt=\"l\">\n          <GoabRadioGroup name=\"attendTraining\" onChange={noop}>\n            <GoabRadioItem value=\"yes\" label=\"Yes\"></GoabRadioItem>\n            <GoabRadioItem value=\"no\" label=\"No\"></GoabRadioItem>\n          </GoabRadioGroup>\n        </GoabFormItem>\n        <GoabFormItem label=\"Start date\" mt=\"l\">\n          <GoabBlock direction=\"row\" alignment=\"center\">\n            <GoabDatePicker onChange={noop} value={new Date(\"2022-09-01\")}></GoabDatePicker>\n            <GoabCheckbox name=\"startDateApproximate\" text=\"Approximate date\" value=\"y\"></GoabCheckbox>\n          </GoabBlock>\n        </GoabFormItem>\n        <GoabFormItem label=\"Completion/last attended date\" mt=\"l\">\n          <GoabBlock direction=\"row\" alignment=\"center\">\n            <GoabDatePicker onChange={noop} value={new Date(\"2024-01-31\")}></GoabDatePicker>\n            <GoabCheckbox name=\"endDateApproximate\" text=\"Approximate date\" value=\"y\" checked={true}></GoabCheckbox>\n          </GoabBlock>\n        </GoabFormItem>\n        <GoabFormItem label=\"Credential received?\" mt=\"l\">\n          <GoabRadioGroup name=\"credentialReceived\" onChange={noop}>\n            <GoabRadioItem value=\"yes\" label=\"Yes\"></GoabRadioItem>\n            <GoabRadioItem value=\"no\" label=\"No\"></GoabRadioItem>\n          </GoabRadioGroup>\n        </GoabFormItem>\n        <GoabFormItem label=\"Name of credential\" mt=\"l\">\n          <GoabInput name=\"credentialName\" width=\"100%\" type=\"text\" placeholder=\"Master of Engineering in Engineering Management\" onChange={noop}></GoabInput>\n        </GoabFormItem>\n        <GoabFormItem label=\"Where did this education occur?\" mt=\"l\">\n          <GoabRadioGroup name=\"educationLocation\" onChange={noop}>\n            <GoabRadioItem label=\"In Alberta\" value=\"alberta\"></GoabRadioItem>\n            <GoabRadioItem label=\"In Canada but not in Alberta\" value=\"outsideAlberta\"></GoabRadioItem>\n            <GoabRadioItem label=\"Outside Canada\" value=\"outsideCanada\"></GoabRadioItem>\n          </GoabRadioGroup>\n        </GoabFormItem>\n      </GoabDrawer>\n    </>\n  );\n};",
+      "key": "const [open, setOpen] = useState(false);\n\nconst openDrawer = () => setOpen(true);\nconst closeDrawer = () => setOpen(false);\n\n<GoabButton leadingIcon=\"add\" onClick={openDrawer}>\n  Add Record\n</GoabButton>\n\n<GoabDrawer\n  maxSize=\"492px\"\n  open={open}\n  heading=\"Add Record\"\n  position=\"right\"\n  onClose={closeDrawer}\n  actions={\n    <GoabButton type=\"primary\" onClick={closeDrawer}>\n      Add\n    </GoabButton>\n  }\n>\n  <GoabFormItem label=\"Level of education\">\n    <GoabDropdown onChange={handleChange} name=\"education\">\n      <GoabDropdownItem value=\"university\" label=\"University Degree\" />\n    </GoabDropdown>\n  </GoabFormItem>\n  \n  <GoabFormItem label=\"Start date\" mt=\"l\">\n    <GoabBlock direction=\"row\" alignment=\"center\">\n      <GoabDatePicker onChange={handleDateChange} />\n      <GoabCheckbox name=\"startDateApproximate\" text=\"Approximate date\" />\n    </GoabBlock>\n  </GoabFormItem>\n</GoabDrawer>"
+    },
+    "angular": {
+      "complete": "export class ExampleComponent {\n  open = false;\n  onClick() {\n    this.open = true;\n  }\n  onClose() {\n    this.open = false;\n  }\n  dropdownOnChange(event: GoabDropdownOnChangeDetail) {\n    console.log(event);\n  }\n  inputOnChange(event: GoabInputOnChangeDetail) {\n    console.log(event);\n  }\n  radioOnChange(event: GoabRadioGroupOnChangeDetail) {\n    console.log(event);\n  }\n  dateOnChange(event: GoabDatePickerOnChangeDetail) {\n    console.log(event);\n  }\n  closeDrawer() {\n    this.open = false;\n  }\n}",
+      "key": "open = false;\n\nonClick() {\n  this.open = true;\n}\n\nonClose() {\n  this.open = false;\n}\n\ndropdownOnChange(event: GoabDropdownOnChangeDetail) {\n  // Handle dropdown changes\n}\n\ninputOnChange(event: GoabInputOnChangeDetail) {\n  // Handle input changes\n}\n\nradioOnChange(event: GoabRadioGroupOnChangeDetail) {\n  // Handle radio group changes\n}\n\ndateOnChange(event: GoabDatePickerOnChangeDetail) {\n  // Handle date picker changes\n}"
+    }
+  },
+  "tags": [
+    "drawer",
+    "form",
+    "records",
+    "education",
+    "complex-form",
+    "date-picker",
+    "radio-group",
+    "dropdown",
+    "checkbox",
+    "administrative"
+  ]
+}

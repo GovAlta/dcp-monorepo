@@ -1,0 +1,90 @@
+{
+  "$schema": "../recipe-schema.json",
+  "schemaVersion": "2.1.0-ai-context",
+  "recipeId": "confirm-before-navigating-away",
+  "recipeName": "Confirm Before Navigating Away",
+  "category": "interaction-pattern",
+  "summary": "Prevent accidental navigation away from a page or form with unsaved changes using a confirmation dialog",
+  "serviceContext": {
+    "useCase": "Protect users from losing unsaved work when navigating away from forms, applications, or data entry screens",
+    "userType": "both",
+    "governmentServiceFlows": [
+      "When citizens are filling out lengthy application forms and might lose progress",
+      "When workers are entering case data and could accidentally navigate away",
+      "When users are in the middle of complex multi-step processes",
+      "When unsaved changes exist that would be lost by navigation"
+    ],
+    "relatedPatterns": [
+      "confirm-a-change",
+      "form-stepper-with-controlled-navigation",
+      "require-user-action-before-continuing",
+      "review-and-action"
+    ]
+  },
+  "components": [
+    {
+      "componentName": "GoabModal",
+      "role": "Navigation confirmation dialog",
+      "purpose": "Present alert dialog to confirm navigation intent before proceeding"
+    },
+    {
+      "componentName": "GoabButton",
+      "role": "Navigation trigger and confirmation actions",
+      "purpose": "Provide clear options to cancel or proceed with navigation"
+    },
+    {
+      "componentName": "GoabButtonGroup",
+      "role": "Action button container",
+      "purpose": "Organize confirmation and cancellation buttons with proper alignment"
+    }
+  ],
+  "codeReference": {
+    "exampleFile": "confirm-before-navigating-away.tsx",
+    "linesOfCode": 175,
+    "lastModified": "2024-01-01T00:00:00.000Z"
+  },
+  "implementation": {
+    "complexity": "medium",
+    "keyPatterns": [
+      "Alert dialog pattern using role='alertdialog' for navigation confirmation",
+      "React Router navigation integration with useNavigate hook",
+      "Angular Router service integration for route changes",
+      "Delayed navigation with setTimeout to allow modal transitions",
+      "State management for modal visibility and navigation control"
+    ],
+    "designPatterns": [
+      "Confirmation dialog pattern",
+      "Navigation guard pattern",
+      "Progressive disclosure",
+      "Destructive action prevention"
+    ],
+    "accessibility": [
+      "Modal uses alertdialog role for urgent navigation confirmation",
+      "Clear button labeling indicates navigation consequences",
+      "Focus management keeps users in the confirmation dialog",
+      "Keyboard navigation support for dialog actions"
+    ]
+  },
+  "codeExamples": {
+    "react": {
+      "complete": "import { GoabButton, GoabButtonGroup, GoabModal } from \"@abgov/react-components\";\nimport { useState } from \"react\";\nimport { useNavigate } from \"react-router-dom\";\n\nexport const ConfirmBeforeNavigatingAway = () => {\n  const [modalOpen, setModalOpen] = useState<boolean>(false);\n  const navigate = useNavigate();\n\n  const handleNavigation = (path: string) => {\n    setModalOpen(false);\n    // setTimeout allows modal transitions to complete\n    setTimeout(() => navigate(path), 300);\n  };\n\n  return (\n    <>\n      <GoabButton onClick={() => setModalOpen(true)}>Navigate Away</GoabButton>\n      <GoabModal\n        heading=\"Are you sure you want to change route?\"\n        open={modalOpen}\n        role=\"alertdialog\"\n        onClose={() => setModalOpen(false)}\n        actions={\n          <GoabButtonGroup alignment=\"end\">\n            <GoabButton type=\"secondary\" onClick={() => setModalOpen(false)}>\n              Cancel\n            </GoabButton>\n            <GoabButton\n              type=\"primary\"\n              onClick={() => handleNavigation(\"/components\")}>\n              Change route\n            </GoabButton>\n          </GoabButtonGroup>\n        }>\n      </GoabModal>\n    </>\n  )\n}",
+      "key": "const [modalOpen, setModalOpen] = useState<boolean>(false);\nconst navigate = useNavigate();\nconst [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);\n\nconst handleNavigation = (path: string) => {\n  if (hasUnsavedChanges) {\n    setModalOpen(true);\n  } else {\n    navigate(path);\n  }\n};\n\nconst confirmNavigation = (path: string) => {\n  setModalOpen(false);\n  // Clear unsaved changes state\n  setHasUnsavedChanges(false);\n  // Allow modal transition to complete\n  setTimeout(() => navigate(path), 300);\n};\n\n<GoabModal\n  heading=\"Are you sure you want to leave this page?\"\n  open={modalOpen}\n  role=\"alertdialog\"\n  onClose={() => setModalOpen(false)}\n  actions={\n    <GoabButtonGroup alignment=\"end\">\n      <GoabButton type=\"secondary\" onClick={() => setModalOpen(false)}>\n        Cancel\n      </GoabButton>\n      <GoabButton\n        type=\"primary\"\n        onClick={() => confirmNavigation(targetPath)}>\n        Leave page\n      </GoabButton>\n    </GoabButtonGroup>\n  }>\n  <p>You have unsaved changes that will be lost if you leave this page.</p>\n</GoabModal>"
+    },
+    "angular": {
+      "complete": "import { Router } from \"@angular/router\";\n\nexport class ConfirmBeforeNavigatingAwayComponent {\n  modalOpen = false;\n  hasUnsavedChanges = false;\n  targetPath = '';\n\n  constructor(private router: Router) {}\n\n  handleNavigation(path: string) {\n    if (this.hasUnsavedChanges) {\n      this.targetPath = path;\n      this.modalOpen = true;\n    } else {\n      this.router.navigate([path]);\n    }\n  }\n\n  onOpen() {\n    this.modalOpen = true;\n  }\n\n  onClose() {\n    this.modalOpen = false;\n  }\n\n  confirmNavigation() {\n    this.modalOpen = false;\n    this.hasUnsavedChanges = false;\n    // Allow modal transition to complete\n    setTimeout(() => this.router.navigate([this.targetPath]), 300);\n  }\n}",
+      "key": "modalOpen = false;\nhasUnsavedChanges = false;\ntargetPath = '';\n\nconstructor(private router: Router) {}\n\nhandleNavigation(path: string) {\n  if (this.hasUnsavedChanges) {\n    this.targetPath = path;\n    this.modalOpen = true;\n  } else {\n    this.router.navigate([path]);\n  }\n}\n\nconfirmNavigation() {\n  this.modalOpen = false;\n  this.hasUnsavedChanges = false;\n  setTimeout(() => this.router.navigate([this.targetPath]), 300);\n}\n\n<!-- Template -->\n<goab-button (onClick)=\"handleNavigation('/some-path')\">Navigate Away</goab-button>\n<goab-modal [open]=\"modalOpen\" role=\"alertdialog\" \n  heading=\"Are you sure you want to leave this page?\" [actions]=\"actions\">\n  <p>You have unsaved changes that will be lost if you leave this page.</p>\n  <ng-template #actions>\n    <goab-button-group alignment=\"end\">\n      <goab-button type=\"secondary\" (onClick)=\"onClose()\">Cancel</goab-button>\n      <goab-button type=\"primary\" (onClick)=\"confirmNavigation()\">Leave page</goab-button>\n    </goab-button-group>\n  </ng-template>\n</goab-modal>"
+    }
+  },
+  "tags": [
+    "navigation",
+    "confirmation",
+    "unsaved-changes",
+    "modal",
+    "alertdialog",
+    "route-guard",
+    "form-protection",
+    "user-experience",
+    "data-loss-prevention",
+    "router"
+  ]
+}

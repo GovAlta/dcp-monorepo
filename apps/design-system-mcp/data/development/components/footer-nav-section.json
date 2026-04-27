@@ -1,0 +1,65 @@
+{
+  "name": "FooterNavSection",
+  "category": "component",
+  "summary": "",
+  "import": "import { GoabFooterNavSection } from '@abgov/react-components'",
+  "customElement": {
+    "tagName": "goa-app-footer-nav-section",
+    "reactName": "GoabFooterNavSection",
+    "angularSelector": "goab-footer-nav-section"
+  },
+  "props": [
+    {
+      "name": "heading",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "",
+      "frameworks": {
+        "webComponent": "heading=\"...\"",
+        "react": "heading={...}",
+        "angular": "[heading]=\"...\""
+      }
+    },
+    {
+      "name": "maxcolumncount",
+      "type": "number",
+      "required": false,
+      "default": "1",
+      "description": "",
+      "frameworks": {
+        "webComponent": "maxcolumncount=\"...\"",
+        "react": "maxcolumncount={...}",
+        "angular": "[maxcolumncount]=\"...\""
+      }
+    },
+    {
+      "name": "testId",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "",
+      "frameworks": {
+        "webComponent": "test-id=\"...\"",
+        "react": "testId={...}",
+        "angular": "[testId]=\"...\""
+      }
+    }
+  ],
+  "events": [],
+  "slots": [
+    {
+      "name": "default",
+      "description": ""
+    }
+  ],
+  "criticalNotes": [],
+  "commonMistakes": [],
+  "basicUsage": {
+    "webComponent": "",
+    "react": "",
+    "angular": ""
+  },
+  "relatedExamples": [],
+  "relatedComponents": []
+}

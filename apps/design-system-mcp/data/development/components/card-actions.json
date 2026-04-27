@@ -1,0 +1,28 @@
+{
+  "name": "CardActions",
+  "category": "component",
+  "summary": "",
+  "import": "import { GoabCardActions } from '@abgov/react-components'",
+  "customElement": {
+    "tagName": "goa-card-actions",
+    "reactName": "GoabCardActions",
+    "angularSelector": "goab-card-actions"
+  },
+  "props": [],
+  "events": [],
+  "slots": [
+    {
+      "name": "default",
+      "description": ""
+    }
+  ],
+  "criticalNotes": [],
+  "commonMistakes": [],
+  "basicUsage": {
+    "webComponent": "",
+    "react": "",
+    "angular": ""
+  },
+  "relatedExamples": [],
+  "relatedComponents": []
+}

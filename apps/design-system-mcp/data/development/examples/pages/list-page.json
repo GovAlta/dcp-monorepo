@@ -1,0 +1,141 @@
+{
+  "id": "list-page",
+  "name": "List Page",
+  "category": "page",
+  "description": "A standard page for displaying and managing a list of items (cases, clients, applications). Combines a filter bar with a sortable data table, including loading and empty states. The workhorse of internal government applications.",
+
+  "whenToUse": [
+    "Displaying a collection of records (cases, clients, permits, applications)",
+    "When users need to search, filter, sort, and take actions on items",
+    "As the primary working view in case management systems",
+    "For queue management and work assignment"
+  ],
+
+  "composesPatterns": [
+    "filter-bar",
+    "data-table",
+    "filter-drawer",
+    "loading-skeleton",
+    "empty-state"
+  ],
+
+  "structure": {
+    "pageHeader": "Title + action buttons (Add new, Export)",
+    "filterSection": "Tabs + search + sort + filter button",
+    "chipsRow": "Active filter chips with clear all",
+    "dataTable": "Sortable table with selection, badges, actions",
+    "filterDrawer": "Side panel for detailed filter options",
+    "modals": "Delete confirmation, bulk actions"
+  },
+
+  "sampleData": {
+    "description": "Realistic case management data",
+    "items": [
+      {
+        "id": "CASE-2024-0847",
+        "name": "Johnson, Emily",
+        "status": "in-progress",
+        "statusText": "In Progress",
+        "priority": "high",
+        "dueDate": "2024-12-10",
+        "assignedTo": "Sarah Chen",
+        "jurisdiction": "Edmonton",
+        "fileNumber": "EDM-2024-0847",
+        "category": "todo"
+      },
+      {
+        "id": "CASE-2024-0812",
+        "name": "Smith, Michael",
+        "status": "assigned",
+        "statusText": "Assigned",
+        "priority": "medium",
+        "dueDate": "2024-12-15",
+        "assignedTo": "James Wilson",
+        "jurisdiction": "Calgary",
+        "fileNumber": "CAL-2024-0812",
+        "category": "todo"
+      },
+      {
+        "id": "CASE-2024-0799",
+        "name": "Williams, Sarah",
+        "status": "pending",
+        "statusText": "Pending",
+        "priority": "low",
+        "dueDate": "2024-12-20",
+        "assignedTo": "Maria Garcia",
+        "jurisdiction": "Red Deer",
+        "fileNumber": "RDR-2024-0799",
+        "category": "progress"
+      },
+      {
+        "id": "CASE-2024-0756",
+        "name": "Brown, David",
+        "status": "complete",
+        "statusText": "Complete",
+        "priority": "medium",
+        "dueDate": "2024-12-05",
+        "assignedTo": "Sarah Chen",
+        "jurisdiction": "Edmonton",
+        "fileNumber": "EDM-2024-0756",
+        "category": "complete"
+      }
+    ]
+  },
+
+  "utilities": {
+    "files": ["utils/searchUtils.ts", "utils/badgeUtils.ts", "utils/dateUtils.ts"],
+    "filterData": "Filter array by search chips matching any nested property",
+    "sortData": "Sort array by key and direction with date handling",
+    "getPriorityBadgeProps": "Map priority to badge type and content",
+    "getStatusBadgeProps": "Map status to badge type and content"
+  },
+
+  "cssClasses": {
+    "clients-content-padding": "Responsive horizontal padding (16px mobile, 32px desktop)",
+    "clients-filter-section": "Flex container for tabs + search row",
+    "clients-search-row": "Search input + sort + filter button layout",
+    "clients-search-group": "Search input + button grouping",
+    "clients-actions-group": "Sort dropdown + filter button grouping",
+    "clients-chips-container": "Filter chips row with gap spacing",
+    "table-wrapper": "Table margins for scroll container compatibility",
+    "clear-all-link": "Link-styled button for clearing filters"
+  },
+
+  "stateManagement": {
+    "items": "T[] - Full dataset from API",
+    "isLoading": "boolean - Loading state for skeleton",
+    "activeTab": "string - Current tab filter",
+    "searchValue": "string - Input field value",
+    "searchChips": "string[] - Applied search terms",
+    "sortConfig": "{ key: string, direction: 'asc'|'desc'|'none' }",
+    "appliedFilters": "{ status: string[], priority: string[], ... }",
+    "pendingFilters": "{ ... } - Uncommitted drawer filters",
+    "filterDrawerOpen": "boolean - Drawer visibility",
+    "selectedIds": "Set<string> - Selected row IDs",
+    "deleteModalOpen": "boolean - Delete confirmation visibility",
+    "itemToDelete": "string | null - ID pending deletion"
+  },
+
+  "example": {
+    "framework": "react",
+    "description": "Complete list page for case management",
+    "code": "import React, { useState, useMemo, useCallback, useEffect } from 'react';\nimport { Link } from 'react-router-dom';\nimport {\n  GoabText,\n  GoabButton,\n  GoabButtonGroup,\n  GoabTabs,\n  GoabTab,\n  GoabFormItem,\n  GoabInput,\n  GoabFilterChip,\n  GoabTable,\n  GoabTableSortHeader,\n  GoabCheckbox,\n  GoabBadge,\n  GoabIcon,\n  GoabDropdown,\n  GoabDropdownItem,\n  GoabDrawer,\n  GoabModal,\n  GoabDivider,\n  GoabDataGrid,\n  GoabPopover\n} from '@abgov/react-components';\nimport { usePageHeader } from '../contexts/PageHeaderContext';\nimport { ScrollContainer } from '../components/ScrollContainer';\nimport { filterData, sortData } from '../utils/searchUtils';\nimport { getPriorityBadgeProps } from '../utils/badgeUtils';\nimport { mockFetch } from '../utils/mockApi';\nimport mockData from '../data/mockCases.json';\nimport emptyStateIllustration from '../assets/empty-state-illustration.svg';\n\ninterface Case {\n  id: string;\n  name: string;\n  status: string;\n  statusText: string;\n  priority: 'high' | 'medium' | 'low';\n  dueDate: string;\n  assignedTo: string;\n  jurisdiction: string;\n  fileNumber: string;\n  category: string;\n  selected?: boolean;\n}\n\nexport function CasesPage() {\n  // Page header with actions\n  const headerActions = useMemo(() => (\n    <GoabButtonGroup gap=\"compact\" alignment=\"start\">\n      <GoabButton type=\"secondary\" size=\"compact\">Export</GoabButton>\n      <GoabButton type=\"primary\" size=\"compact\">Add case</GoabButton>\n    </GoabButtonGroup>\n  ), []);\n  usePageHeader('Cases', headerActions);\n\n  // Data state\n  const [cases, setCases] = useState<Case[]>([]);\n  const [isLoading, setIsLoading] = useState(true);\n\n  // Filter state\n  const [activeTab, setActiveTab] = useState('all');\n  const [inputValue, setInputValue] = useState('');\n  const [inputError, setInputError] = useState('');\n  const [typedChips, setTypedChips] = useState<string[]>([]);\n  const [sortConfig, setSortConfig] = useState<{ key: keyof Case | ''; direction: 'asc' | 'desc' | 'none' }>({\n    key: '',\n    direction: 'none'\n  });\n\n  // Drawer filter state\n  const [filterDrawerOpen, setFilterDrawerOpen] = useState(false);\n  const [pendingFilters, setPendingFilters] = useState({\n    status: [] as string[],\n    priority: [] as string[],\n    assignedTo: [] as string[]\n  });\n  const [appliedFilters, setAppliedFilters] = useState({\n    status: [] as string[],\n    priority: [] as string[],\n    assignedTo: [] as string[]\n  });\n\n  // Modal state\n  const [showDeleteModal, setShowDeleteModal] = useState(false);\n  const [caseToDelete, setCaseToDelete] = useState<string | null>(null);\n\n  // Fetch data\n  useEffect(() => {\n    const fetchCases = async () => {\n      setIsLoading(true);\n      const data = await mockFetch<Case[]>(mockData as Case[]);\n      setCases(data);\n      setIsLoading(false);\n    };\n    fetchCases();\n  }, []);\n\n  // Extract filter options from data\n  const filterOptions = useMemo(() => ({\n    statuses: [...new Set(cases.map(c => c.statusText))].sort(),\n    priorities: ['high', 'medium', 'low'],\n    assignees: [...new Set(cases.map(c => c.assignedTo))].sort()\n  }), [cases]);\n\n  // Filter and sort\n  const filteredCases = useMemo(() => {\n    let filtered = cases;\n\n    // Tab filter\n    if (activeTab !== 'all') {\n      filtered = filtered.filter(c => c.category === activeTab);\n    }\n\n    // Search chips\n    filtered = filterData(typedChips, filtered);\n\n    // Drawer filters\n    if (appliedFilters.status.length > 0) {\n      filtered = filtered.filter(c => appliedFilters.status.includes(c.statusText));\n    }\n    if (appliedFilters.priority.length > 0) {\n      filtered = filtered.filter(c => appliedFilters.priority.includes(c.priority));\n    }\n    if (appliedFilters.assignedTo.length > 0) {\n      filtered = filtered.filter(c => appliedFilters.assignedTo.includes(c.assignedTo));\n    }\n\n    return sortData(filtered, sortConfig.key, sortConfig.direction);\n  }, [cases, activeTab, typedChips, sortConfig, appliedFilters]);\n\n  // Selection state\n  const selectedCount = useMemo(() =>\n    filteredCases.filter(c => c.selected).length,\n    [filteredCases]\n  );\n  const isAllSelected = selectedCount > 0 && selectedCount === filteredCases.length;\n  const isIndeterminate = selectedCount > 0 && selectedCount < filteredCases.length;\n\n  // Handlers\n  const applyFilter = (valueOverride?: string) => {\n    const value = valueOverride ?? inputValue;\n    const trimmed = value.trim();\n    if (!trimmed) {\n      setInputError('Search field empty');\n      return;\n    }\n    if (typedChips.includes(trimmed)) {\n      setInputError('Already added');\n      return;\n    }\n    setTypedChips([...typedChips, trimmed]);\n    setInputValue('');\n    setInputError('');\n  };\n\n  const togglePendingFilter = (category: keyof typeof pendingFilters, value: string) => {\n    setPendingFilters(prev => ({\n      ...prev,\n      [category]: prev[category].includes(value)\n        ? prev[category].filter(v => v !== value)\n        : [...prev[category], value]\n    }));\n  };\n\n  const applyFilters = () => {\n    setAppliedFilters(pendingFilters);\n    setFilterDrawerOpen(false);\n  };\n\n  const clearAllFilters = () => {\n    setTypedChips([]);\n    setAppliedFilters({ status: [], priority: [], assignedTo: [] });\n    setPendingFilters({ status: [], priority: [], assignedTo: [] });\n  };\n\n  // Note: onSort receives detail object directly, not wrapped in event\n  const handleSort = (detail: { sortBy: string; sortDir: number }) => {\n    const { sortBy, sortDir } = detail;\n    setSortConfig({\n      key: sortBy as keyof Case,\n      direction: sortDir === 1 ? 'asc' : sortDir === -1 ? 'desc' : 'none'\n    });\n  };\n\n  const confirmDelete = () => {\n    if (caseToDelete) {\n      setCases(cases.filter(c => c.id !== caseToDelete));\n    }\n    setShowDeleteModal(false);\n    setCaseToDelete(null);\n  };\n\n  // Build filter chips for display\n  const filterChips = useMemo(() => {\n    const chips: { category: string; value: string; label: string }[] = [];\n    appliedFilters.status.forEach(v => chips.push({ category: 'status', value: v, label: v }));\n    appliedFilters.priority.forEach(v => chips.push({ category: 'priority', value: v, label: `${v.charAt(0).toUpperCase() + v.slice(1)} priority` }));\n    appliedFilters.assignedTo.forEach(v => chips.push({ category: 'assignedTo', value: v, label: v }));\n    return chips;\n  }, [appliedFilters]);\n\n  return (\n    <div style={{ maxWidth: '100%', overflow: 'hidden', paddingBottom: '32px' }}>\n      {/* Filter section */}\n      <div className=\"clients-content-padding\">\n        <div className=\"clients-filter-section\">\n          <GoabTabs initialTab={1} onChange={(detail) => {\n            // onChange receives detail object directly with { tab: number }\n            const tabMap = ['all', 'todo', 'progress', 'complete'];\n            setActiveTab(tabMap[detail.tab - 1]);\n          }}>\n            <GoabTab heading=\"All\" />\n            <GoabTab heading=\"To do\" />\n            <GoabTab heading=\"In progress\" />\n            <GoabTab heading=\"Complete\" />\n          </GoabTabs>\n\n          <GoabFormItem error={inputError} labelSize=\"compact\">\n            <div className=\"clients-search-row\">\n              <div className=\"clients-search-group\">\n                <GoabInput\n                  name=\"filterInput\"\n                  value={inputValue}\n                  leadingIcon=\"search\"\n                  width=\"100%\"\n                  size=\"compact\"\n                  placeholder=\"Search...\"\n                  onChange={(e) => { setInputValue(e.value); setInputError(''); }}\n                  onKeyPress={(e) => e.key === 'Enter' && applyFilter(e.value)}\n                />\n                <GoabButton type=\"tertiary\" size=\"compact\" onClick={() => applyFilter()}>\n                  Search\n                </GoabButton>\n              </div>\n              <div className=\"clients-actions-group\">\n                <GoabDropdown\n                  value={sortConfig.key}\n                  onChange={(e) => setSortConfig({ key: e.value as keyof Case, direction: 'asc' })}\n                  placeholder=\"Sort by\"\n                  size=\"compact\"\n                  width=\"160px\"\n                >\n                  <GoabDropdownItem value=\"dueDate\" label=\"Due date\" />\n                  <GoabDropdownItem value=\"priority\" label=\"Priority\" />\n                  <GoabDropdownItem value=\"status\" label=\"Status\" />\n                </GoabDropdown>\n                <GoabButton\n                  type=\"tertiary\"\n                  leadingIcon=\"filter\"\n                  size=\"compact\"\n                  onClick={() => { setPendingFilters(appliedFilters); setFilterDrawerOpen(true); }}\n                >\n                  Filter\n                </GoabButton>\n              </div>\n            </div>\n          </GoabFormItem>\n        </div>\n\n        {/* Filter chips */}\n        {(typedChips.length > 0 || filterChips.length > 0) && (\n          <div className=\"clients-chips-container\">\n            <GoabIcon type=\"filter\" size=\"small\" fillColor=\"var(--goa-color-text-secondary)\" mr=\"2xs\" />\n            {typedChips.map(chip => (\n              <GoabFilterChip key={`search-${chip}`} content={chip} onClick={() => setTypedChips(prev => prev.filter(c => c !== chip))} />\n            ))}\n            {filterChips.map(chip => (\n              <GoabFilterChip\n                key={`${chip.category}-${chip.value}`}\n                content={chip.label}\n                onClick={() => setAppliedFilters(prev => ({\n                  ...prev,\n                  [chip.category]: prev[chip.category as keyof typeof prev].filter(v => v !== chip.value)\n                }))}\n              />\n            ))}\n            <GoabButton size=\"compact\" type=\"tertiary\" onClick={clearAllFilters}>Clear all</GoabButton>\n          </div>\n        )}\n      </div>\n\n      {/* Data table */}\n      <ScrollContainer>\n        <div className=\"table-wrapper\">\n          <GoabDataGrid keyboardNav=\"table\" keyboardIconPosition=\"right\">\n            <GoabTable width=\"100%\" onSort={handleSort} variant=\"relaxed\" striped>\n              <thead>\n                <tr data-grid=\"row\">\n                  <th data-grid=\"cell\" className=\"goa-table-cell--checkbox\">\n                    <GoabCheckbox\n                      name=\"selectAll\"\n                      checked={isAllSelected}\n                      indeterminate={isIndeterminate}\n                      onChange={() => setCases(prev => prev.map(c => ({ ...c, selected: !isAllSelected && !isIndeterminate })))}\n                      ariaLabel=\"Select all\"\n                    />\n                  </th>\n                  <th data-grid=\"cell\"><GoabTableSortHeader name=\"status\">Status</GoabTableSortHeader></th>\n                  <th data-grid=\"cell\">Name</th>\n                  <th data-grid=\"cell\">Assigned to</th>\n                  <th data-grid=\"cell\"><GoabTableSortHeader name=\"dueDate\">Due date</GoabTableSortHeader></th>\n                  <th data-grid=\"cell\">Jurisdiction</th>\n                  <th data-grid=\"cell\">File number</th>\n                  <th data-grid=\"cell\"><GoabTableSortHeader name=\"priority\">Priority</GoabTableSortHeader></th>\n                  <th data-grid=\"cell\"></th>\n                </tr>\n              </thead>\n              <tbody>\n                {isLoading ? (\n                  [...Array(10)].map((_, i) => (\n                    <tr key={i} data-grid=\"row\">\n                      <td data-grid=\"cell\"><div style={{ width: 18, height: 18, borderRadius: 4, backgroundColor: 'var(--goa-color-greyscale-200)' }} /></td>\n                      <td data-grid=\"cell\"><div style={{ height: 22, width: 80, borderRadius: 12, backgroundColor: 'var(--goa-color-greyscale-200)' }} /></td>\n                      <td data-grid=\"cell\"><div style={{ height: 14, width: '70%', borderRadius: 4, backgroundColor: 'var(--goa-color-greyscale-200)' }} /></td>\n                      <td data-grid=\"cell\"><div style={{ height: 14, width: '60%', borderRadius: 4, backgroundColor: 'var(--goa-color-greyscale-200)' }} /></td>\n                      <td data-grid=\"cell\"><div style={{ height: 14, width: '50%', borderRadius: 4, backgroundColor: 'var(--goa-color-greyscale-200)' }} /></td>\n                      <td data-grid=\"cell\"><div style={{ height: 14, width: '55%', borderRadius: 4, backgroundColor: 'var(--goa-color-greyscale-200)' }} /></td>\n                      <td data-grid=\"cell\"><div style={{ height: 14, width: '65%', borderRadius: 4, backgroundColor: 'var(--goa-color-greyscale-200)' }} /></td>\n                      <td data-grid=\"cell\"><div style={{ height: 22, width: 60, borderRadius: 12, backgroundColor: 'var(--goa-color-greyscale-200)' }} /></td>\n                      <td data-grid=\"cell\"><div style={{ width: 24, height: 24, borderRadius: 4, backgroundColor: 'var(--goa-color-greyscale-200)' }} /></td>\n                    </tr>\n                  ))\n                ) : filteredCases.length === 0 && cases.length > 0 ? (\n                  <tr>\n                    <td colSpan={9} className=\"clients-empty-state-cell\">\n                      <div className=\"clients-empty-state\">\n                        <img src={emptyStateIllustration} alt=\"\" className=\"clients-empty-state__illustration\" />\n                        <span className=\"clients-empty-state__heading\">No results found</span>\n                        <span className=\"clients-empty-state__subline\">Try adjusting your search or filters.</span>\n                        <GoabButton type=\"tertiary\" size=\"compact\" onClick={clearAllFilters}>Clear filters</GoabButton>\n                      </div>\n                    </td>\n                  </tr>\n                ) : (\n                  filteredCases.map(caseItem => (\n                    <tr key={caseItem.id} data-grid=\"row\" aria-selected={caseItem.selected}>\n                      <td data-grid=\"cell\" className=\"goa-table-cell--checkbox\">\n                        <GoabCheckbox\n                          name={`select-${caseItem.id}`}\n                          checked={caseItem.selected}\n                          onChange={() => setCases(prev => prev.map(c => c.id === caseItem.id ? { ...c, selected: !c.selected } : c))}\n                          ariaLabel={`Select ${caseItem.name}`}\n                        />\n                      </td>\n                      <td data-grid=\"cell\"><GoabBadge type={caseItem.status} content={caseItem.statusText} emphasis=\"subtle\" icon /></td>\n                      <td data-grid=\"cell\" style={{ whiteSpace: 'nowrap' }}>\n                        <Link to={`/case/${caseItem.id}`} className=\"table-row-link\">{caseItem.name}</Link>\n                      </td>\n                      <td data-grid=\"cell\" style={{ whiteSpace: 'nowrap' }}>{caseItem.assignedTo}</td>\n                      <td data-grid=\"cell\" style={{ whiteSpace: 'nowrap' }}>{caseItem.dueDate}</td>\n                      <td data-grid=\"cell\" style={{ whiteSpace: 'nowrap' }}>{caseItem.jurisdiction}</td>\n                      <td data-grid=\"cell\">{caseItem.fileNumber}</td>\n                      <td data-grid=\"cell\"><GoabBadge {...getPriorityBadgeProps(caseItem.priority)} /></td>\n                      <td data-grid=\"cell\">\n                        <GoabPopover target={<button className=\"row-action-trigger\"><GoabIcon type=\"ellipsis-horizontal\" /></button>}>\n                          <div className=\"row-action-menu\">\n                            <button className=\"row-action-menu__item\">View</button>\n                            <button className=\"row-action-menu__item\">Edit</button>\n                            <button className=\"row-action-menu__item row-action-menu__item--destructive\" onClick={() => { setCaseToDelete(caseItem.id); setShowDeleteModal(true); }}>\n                              <GoabIcon type=\"trash\" size=\"small\" />Delete\n                            </button>\n                          </div>\n                        </GoabPopover>\n                      </td>\n                    </tr>\n                  ))\n                )}\n              </tbody>\n            </GoabTable>\n          </GoabDataGrid>\n        </div>\n      </ScrollContainer>\n\n      {/* Filter drawer */}\n      <GoabDrawer heading=\"Filter cases\" position=\"right\" open={filterDrawerOpen} maxSize=\"300px\" onClose={() => setFilterDrawerOpen(false)}\n        actions={\n          <GoabButtonGroup alignment=\"start\" gap=\"compact\">\n            <GoabButton type=\"primary\" size=\"compact\" onClick={applyFilters}>Apply filters</GoabButton>\n            <GoabButton type=\"tertiary\" size=\"compact\" onClick={() => setFilterDrawerOpen(false)}>Cancel</GoabButton>\n          </GoabButtonGroup>\n        }\n      >\n        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--goa-space-l)' }}>\n          <GoabFormItem label=\"Status\">\n            <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--goa-space-xs)' }}>\n              {filterOptions.statuses.map(status => (\n                <GoabCheckbox key={status} name={`status-${status}`} text={status}\n                  checked={pendingFilters.status.includes(status)}\n                  onChange={() => togglePendingFilter('status', status)} />\n              ))}\n            </div>\n          </GoabFormItem>\n          <GoabFormItem label=\"Priority\">\n            <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--goa-space-xs)' }}>\n              {filterOptions.priorities.map(p => (\n                <GoabCheckbox key={p} name={`priority-${p}`} text={p.charAt(0).toUpperCase() + p.slice(1)}\n                  checked={pendingFilters.priority.includes(p)}\n                  onChange={() => togglePendingFilter('priority', p)} />\n              ))}\n            </div>\n          </GoabFormItem>\n          <GoabFormItem label=\"Assigned to\">\n            <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--goa-space-xs)' }}>\n              {filterOptions.assignees.map(a => (\n                <GoabCheckbox key={a} name={`assignee-${a}`} text={a}\n                  checked={pendingFilters.assignedTo.includes(a)}\n                  onChange={() => togglePendingFilter('assignedTo', a)} />\n              ))}\n            </div>\n          </GoabFormItem>\n          {Object.values(pendingFilters).some(arr => arr.length > 0) && (\n            <><GoabDivider />\n            <GoabButton type=\"tertiary\" size=\"compact\" onClick={() => setPendingFilters({ status: [], priority: [], assignedTo: [] })}>Clear all</GoabButton></>\n          )}\n        </div>\n      </GoabDrawer>\n\n      {/* Delete modal */}\n      <GoabModal heading=\"Delete case\" open={showDeleteModal} calloutVariant=\"emergency\"\n        actions={\n          <GoabButtonGroup alignment=\"end\">\n            <GoabButton type=\"tertiary\" size=\"compact\" onClick={() => setShowDeleteModal(false)}>Cancel</GoabButton>\n            <GoabButton type=\"primary\" size=\"compact\" variant=\"destructive\" onClick={confirmDelete}>Delete</GoabButton>\n          </GoabButtonGroup>\n        }\n      >\n        <GoabText mt=\"none\" mb=\"none\">Are you sure you want to delete this case? This action cannot be undone.</GoabText>\n      </GoabModal>\n    </div>\n  );\n}"
+  },
+
+  "variants": [
+    {
+      "name": "Without tabs",
+      "description": "Simpler filter bar without category tabs"
+    },
+    {
+      "name": "Without selection",
+      "description": "Remove checkbox column for read-only views"
+    },
+    {
+      "name": "With bulk actions",
+      "description": "Add bulk action toolbar when items selected"
+    }
+  ],
+
+  "relatedPatterns": ["filter-bar", "data-table", "filter-drawer", "empty-state", "loading-skeleton", "workspace-app"]
+}

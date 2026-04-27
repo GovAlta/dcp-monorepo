@@ -1,0 +1,130 @@
+{
+  "name": "WorkSideMenu",
+  "category": "component",
+  "summary": "",
+  "import": "import { GoabWorkSideMenu } from '@abgov/react-components'",
+  "customElement": {
+    "tagName": "goa-work-side-menu",
+    "reactName": "GoabWorkSideMenu",
+    "angularSelector": "goab-work-side-menu"
+  },
+  "props": [
+    {
+      "name": "heading",
+      "type": "string",
+      "required": true,
+      "default": null,
+      "description": "",
+      "frameworks": {
+        "webComponent": "heading=\"...\"",
+        "react": "heading={...}",
+        "angular": "[heading]=\"...\""
+      }
+    },
+    {
+      "name": "url",
+      "type": "string",
+      "required": true,
+      "default": null,
+      "description": "",
+      "frameworks": {
+        "webComponent": "url=\"...\"",
+        "react": "url={...}",
+        "angular": "[url]=\"...\""
+      }
+    },
+    {
+      "name": "open",
+      "type": "any",
+      "required": false,
+      "default": "false",
+      "description": "",
+      "frameworks": {
+        "webComponent": "open=\"...\"",
+        "react": "open={...}",
+        "angular": "[open]=\"...\""
+      }
+    },
+    {
+      "name": "testId",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "",
+      "frameworks": {
+        "webComponent": "test-id=\"...\"",
+        "react": "testId={...}",
+        "angular": "[testId]=\"...\""
+      }
+    },
+    {
+      "name": "userName",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "",
+      "frameworks": {
+        "webComponent": "user-name=\"...\"",
+        "react": "userName={...}",
+        "angular": "[userName]=\"...\""
+      }
+    },
+    {
+      "name": "userSecondaryText",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "",
+      "frameworks": {
+        "webComponent": "user-secondary-text=\"...\"",
+        "react": "userSecondaryText={...}",
+        "angular": "[userSecondaryText]=\"...\""
+      }
+    }
+  ],
+  "events": [
+    {
+      "name": "_update",
+      "type": "(event) => void",
+      "description": "",
+      "frameworks": {
+        "webComponent": "_update custom event",
+        "react": "onUpdate prop",
+        "angular": "(onUpdate) event binding"
+      }
+    },
+    {
+      "name": "_toggle",
+      "type": "(event) => void",
+      "description": "",
+      "frameworks": {
+        "webComponent": "_toggle custom event",
+        "react": "onToggle prop",
+        "angular": "(onToggle) event binding"
+      }
+    }
+  ],
+  "slots": [
+    {
+      "name": "primary",
+      "description": ""
+    },
+    {
+      "name": "secondary",
+      "description": ""
+    },
+    {
+      "name": "account",
+      "description": ""
+    }
+  ],
+  "criticalNotes": [],
+  "commonMistakes": [],
+  "basicUsage": {
+    "webComponent": "",
+    "react": "",
+    "angular": ""
+  },
+  "relatedExamples": [],
+  "relatedComponents": []
+}

@@ -1,0 +1,200 @@
+{
+  "name": "Callout",
+  "category": "feedback",
+  "summary": "Emphasized message box for important information, alerts, and status updates.",
+  "import": "import { GoabCallout } from '@abgov/react-components'",
+  "customElement": {
+    "tagName": "goa-callout",
+    "reactName": "GoabCallout",
+    "angularSelector": "goab-callout"
+  },
+  "props": [
+    {
+      "name": "mt",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin top",
+      "frameworks": {
+        "webComponent": "mt=\"...\"",
+        "react": "mt={...}",
+        "angular": "[mt]=\"...\""
+      }
+    },
+    {
+      "name": "mr",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin right",
+      "frameworks": {
+        "webComponent": "mr=\"...\"",
+        "react": "mr={...}",
+        "angular": "[mr]=\"...\""
+      }
+    },
+    {
+      "name": "mb",
+      "type": "Spacing",
+      "required": false,
+      "default": "l",
+      "description": "Margin bottom",
+      "frameworks": {
+        "webComponent": "mb=\"...\"",
+        "react": "mb={...}",
+        "angular": "[mb]=\"...\""
+      }
+    },
+    {
+      "name": "ml",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin left",
+      "frameworks": {
+        "webComponent": "ml=\"...\"",
+        "react": "ml={...}",
+        "angular": "[ml]=\"...\""
+      }
+    },
+    {
+      "name": "size",
+      "type": "\"medium\" | \"large\"",
+      "required": false,
+      "default": "large",
+      "description": "Size variant (auto-adjusts on mobile)",
+      "frameworks": {
+        "webComponent": "size=\"...\"",
+        "react": "size={...}",
+        "angular": "[size]=\"...\""
+      }
+    },
+    {
+      "name": "type",
+      "type": "\"emergency\" | \"important\" | \"information\" | \"event\" | \"success\"",
+      "required": true,
+      "default": null,
+      "description": "Visual style and semantic meaning",
+      "frameworks": {
+        "webComponent": "type=\"...\"",
+        "react": "type={...}",
+        "angular": "[type]=\"...\""
+      }
+    },
+    {
+      "name": "emphasis",
+      "type": "\"high\" | \"medium\" | \"low\"",
+      "required": false,
+      "default": "medium",
+      "description": "",
+      "frameworks": {
+        "webComponent": "emphasis=\"...\"",
+        "react": "emphasis={...}",
+        "angular": "[emphasis]=\"...\""
+      }
+    },
+    {
+      "name": "heading",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "Optional heading text",
+      "frameworks": {
+        "webComponent": "heading=\"...\"",
+        "react": "heading={...}",
+        "angular": "[heading]=\"...\""
+      }
+    },
+    {
+      "name": "maxWidth",
+      "type": "string",
+      "required": false,
+      "default": "none",
+      "description": "Maximum width constraint",
+      "frameworks": {
+        "webComponent": "max-width=\"...\"",
+        "react": "maxWidth={...}",
+        "angular": "[maxWidth]=\"...\""
+      }
+    },
+    {
+      "name": "testId",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "Test identifier for automation",
+      "frameworks": {
+        "webComponent": "test-id=\"...\"",
+        "react": "testId={...}",
+        "angular": "[testId]=\"...\""
+      }
+    },
+    {
+      "name": "arialive",
+      "type": "\"off\" | \"assertive\" | \"polite\"",
+      "required": false,
+      "default": "off",
+      "description": "How screen readers announce changes",
+      "frameworks": {
+        "webComponent": "arialive=\"...\"",
+        "react": "arialive={...}",
+        "angular": "[arialive]=\"...\""
+      }
+    },
+    {
+      "name": "icontheme",
+      "type": "IconTheme",
+      "required": false,
+      "default": "outline",
+      "description": "Icon style",
+      "frameworks": {
+        "webComponent": "icontheme=\"...\"",
+        "react": "icontheme={...}",
+        "angular": "[icontheme]=\"...\""
+      }
+    }
+  ],
+  "events": [],
+  "slots": [
+    {
+      "name": "default",
+      "description": "Main content of the callout"
+    }
+  ],
+  "criticalNotes": [
+    "Use 'polite' ariaLive for status updates, 'assertive' for urgent messages",
+    "Keep content focused - one key message per callout",
+    "Default mb='l' provides standard spacing after callout"
+  ],
+  "strictPropertyEnforcement": {
+    "type": {
+      "validValues": [
+        "emergency",
+        "important",
+        "information",
+        "event",
+        "success"
+      ],
+      "invalidExamples": [
+        "error",
+        "warning",
+        "danger",
+        "info"
+      ]
+    }
+  },
+  "basicUsage": {
+    "webComponent": "<goa-callout type=\"success\" heading=\"Application submitted\">\n  <p>Your application has been received. Reference: ABC123</p>\n</goa-callout>",
+    "react": "<GoabCallout type=\"success\" heading=\"Application submitted\">\n  <p>Your application has been received. Reference: ABC123</p>\n</GoabCallout>",
+    "angular": "<goab-callout type=\"success\" heading=\"Application submitted\">\n  <p>Your application has been received. Reference: ABC123</p>\n</goab-callout>"
+  },
+  "relatedExamples": [
+    "confirm-that-an-application-was-submitted",
+    "task-list-page",
+    "worker-dashboard-overview"
+  ],
+  "relatedComponents": [
+    "NotificationBanner",
+    "Badge"
+  ]
+}

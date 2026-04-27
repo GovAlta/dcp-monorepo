@@ -1,0 +1,176 @@
+{
+  "metadataSchemaVersion": "2.1.0-ai-context",
+  "audience": "ai-systems-helping-consumer-developers",
+  "recipeId": "confirm-destructive-action",
+  "recipeName": "Confirm a Destructive Action",
+  "category": "interaction-pattern",
+  "summary": "Modal confirmation dialog for destructive actions like delete, remove, or cancel operations with proper warning and action hierarchy",
+  
+  "serviceContext": {
+    "useCases": [
+      "Delete user records",
+      "Remove applications",
+      "Cancel processes",
+      "Revoke access or permissions"
+    ],
+    "governmentFlows": [
+      "Case management",
+      "User administration",
+      "Application processing",
+      "Data management"
+    ],
+    "userType": "worker",
+    "designApproach": {
+      "workerCharacteristics": [
+        "efficiency-focused",
+        "decision-support",
+        "desktop-optimized"
+      ]
+    }
+  },
+  
+  "components": [
+    {
+      "name": "GoabButton",
+      "role": "action",
+      "purpose": "Trigger button to initiate destructive action",
+      "props": {
+        "type": "tertiary",
+        "leadingIcon": "trash",
+        "variant": "normal"
+      },
+      "notes": "Tertiary button reduces visual weight for destructive trigger"
+    },
+    {
+      "name": "GoabModal",
+      "role": "primary",
+      "purpose": "Confirmation dialog container with proper focus management",
+      "props": {
+        "heading": "Are you sure you want to delete this record?",
+        "open": "boolean state",
+        "role": "alertdialog"
+      },
+      "notes": "Alert dialog role ensures screen reader announces importance"
+    },
+    {
+      "name": "GoabButtonGroup",
+      "role": "layout",
+      "purpose": "Organizes confirmation actions with proper alignment",
+      "props": {
+        "alignment": "end"
+      },
+      "notes": "Right-aligned buttons follow standard modal action patterns"
+    },
+    {
+      "name": "GoabButton",
+      "role": "action",
+      "purpose": "Cancel and confirm actions with proper hierarchy",
+      "props": {
+        "type": "tertiary",
+        "type": "primary",
+        "variant": "destructive"
+      },
+      "notes": "Cancel is tertiary, confirm is primary destructive for clear hierarchy"
+    }
+  ],
+  
+  "codeReference": {
+    "filePath": "src/examples/confirm-a-destructive-action.tsx",
+    "lastModified": "2025-01-15T10:30:00Z",
+    "linesOfCode": 164,
+    "sandboxFlags": ["skipRender"]
+  },
+  
+  "implementation": {
+    "react": {
+      "dependencies": [
+        "@abgov/react-components",
+        "react"
+      ],
+      "stateManagement": {
+        "required": true,
+        "variables": ["destructiveModalOpen"],
+        "pattern": "useState"
+      },
+      "codeSnippet": "const [destructiveModalOpen, setDestructiveModalOpen] = useState<boolean>(false);"
+    },
+    "angular": {
+      "dependencies": [
+        "@abgov/angular-components"
+      ],
+      "formPattern": "none",
+      "codeSnippet": "open = false;\n\ntoggleModal() {\n  this.open = !this.open;\n}"
+    }
+  },
+
+  "codeExamples": {
+    "react": {
+      "complete": "import { useState } from 'react';\nimport { GoabButton, GoabButtonGroup, GoabModal } from '@abgov/react-components';\n\nconst ConfirmDestructiveAction = () => {\n  const [destructiveModalOpen, setDestructiveModalOpen] = useState<boolean>(false);\n  \n  return (\n    <>\n      <GoabButton\n        type=\"tertiary\"\n        leadingIcon=\"trash\"\n        onClick={() => setDestructiveModalOpen(true)}\n      >\n        Delete record\n      </GoabButton>\n      \n      <GoabModal\n        heading=\"Are you sure you want to delete this record?\"\n        open={destructiveModalOpen}\n        role=\"alertdialog\"\n        onClose={() => setDestructiveModalOpen(false)}\n        actions={\n          <GoabButtonGroup alignment=\"end\">\n            <GoabButton \n              type=\"tertiary\" \n              onClick={() => setDestructiveModalOpen(false)}\n            >\n              Cancel\n            </GoabButton>\n            <GoabButton\n              type=\"primary\"\n              variant=\"destructive\"\n              onClick={() => {\n                // Perform destructive action\n                console.log('Record deleted');\n                setDestructiveModalOpen(false);\n              }}\n            >\n              Delete record\n            </GoabButton>\n          </GoabButtonGroup>\n        }\n      >\n        <p>This action cannot be undone.</p>\n      </GoabModal>\n    </>\n  );\n};\n\nexport default ConfirmDestructiveAction;",
+      "stateSetup": "const [destructiveModalOpen, setDestructiveModalOpen] = useState<boolean>(false);",
+      "keyFunctions": [
+        "onClick={() => setDestructiveModalOpen(true)}",
+        "onClick={() => setDestructiveModalOpen(false)}",
+        "onClose={() => setDestructiveModalOpen(false)}"
+      ]
+    },
+    "angular": {
+      "complete": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'app-confirm-destructive-action',\n  template: `\n    <goab-button\n      type=\"tertiary\"\n      leadingIcon=\"trash\"\n      (onClick)=\"toggleModal()\"\n    >\n      Delete record\n    </goab-button>\n    \n    <goab-modal\n      heading=\"Are you sure you want to delete this record?\"\n      [open]=\"open\"\n      role=\"alertdialog\"\n      (onClose)=\"toggleModal()\"\n      [actions]=\"actions\"\n    >\n      <p>This action cannot be undone.</p>\n      \n      <ng-template #actions>\n        <goab-button-group alignment=\"end\">\n          <goab-button type=\"tertiary\" (onClick)=\"toggleModal()\">\n            Cancel\n          </goab-button>\n          <goab-button \n            type=\"primary\" \n            variant=\"destructive\" \n            (onClick)=\"confirmDelete()\"\n          >\n            Delete record\n          </goab-button>\n        </goab-button-group>\n      </ng-template>\n    </goab-modal>\n  `\n})\nexport class ConfirmDestructiveActionComponent {\n  open = false;\n  \n  toggleModal() {\n    this.open = !this.open;\n  }\n  \n  confirmDelete() {\n    // Perform destructive action\n    console.log('Record deleted');\n    this.toggleModal();\n  }\n}",
+      "componentClass": "export class ConfirmDestructiveActionComponent {\n  open = false;\n  \n  toggleModal() {\n    this.open = !this.open;\n  }\n  \n  confirmDelete() {\n    // Perform destructive action\n    console.log('Record deleted');\n    this.toggleModal();\n  }\n}",
+      "template": "<goab-button\n  type=\"tertiary\"\n  leadingIcon=\"trash\"\n  (onClick)=\"toggleModal()\"\n>\n  Delete record\n</goab-button>\n\n<goab-modal\n  heading=\"Are you sure you want to delete this record?\"\n  [open]=\"open\"\n  role=\"alertdialog\"\n  (onClose)=\"toggleModal()\"\n  [actions]=\"actions\"\n>\n  <p>This action cannot be undone.</p>\n  \n  <ng-template #actions>\n    <goab-button-group alignment=\"end\">\n      <goab-button type=\"tertiary\" (onClick)=\"toggleModal()\">\n        Cancel\n      </goab-button>\n      <goab-button \n        type=\"primary\" \n        variant=\"destructive\" \n        (onClick)=\"confirmDelete()\"\n      >\n        Delete record\n      </goab-button>\n    </goab-button-group>\n  </ng-template>\n</goab-modal>"
+    }
+  },
+  
+  "designPatterns": {
+    "accessibilityConsiderations": [
+      "Alert dialog role announces the importance of the decision",
+      "Focus management automatically handled by modal component",
+      "Clear heading describes the action being confirmed",
+      "Keyboard navigation supports Tab and Escape keys"
+    ],
+    "usabilityPrinciples": [
+      "Two-step confirmation prevents accidental destructive actions",
+      "Clear visual hierarchy with destructive styling on confirm button",
+      "Descriptive warning text explains consequences",
+      "Cancel action is easily accessible and visually de-emphasized"
+    ]
+  },
+  
+  "workerSpecificPatterns": {
+    "dashboardElements": [],
+    "bulkOperations": {
+      "hasSelection": false,
+      "selectionPattern": "single-item",
+      "actionTypes": ["delete", "remove", "cancel"]
+    }
+  },
+  
+  "variations": [
+    {
+      "name": "Bulk delete confirmation",
+      "description": "Confirm deletion of multiple selected items",
+      "modifications": ["Update heading to include item count", "Show list of items to be deleted"],
+      "userTypeVariation": "worker"
+    },
+    {
+      "name": "With additional context",
+      "description": "Include more details about the consequences",
+      "additionalComponents": ["GoabCallout for warnings"],
+      "modifications": ["Add warning callout with specific consequences"]
+    }
+  ],
+  
+  "relatedRecipes": [
+    "modal-workflow",
+    "bulk-operations",
+    "worker-actions"
+  ],
+  
+  "tags": ["modal", "confirmation", "destructive", "worker-facing", "interaction", "delete", "safety"],
+  "status": "published",
+  "lastUpdated": "2025-01-15T10:30:00Z",
+  
+  "derivedFrom": {
+    "exampleFile": "ui-components-docs/src/examples/confirm-a-destructive-action.tsx",
+    "note": "Extracted from existing TSX example with enhanced service context"
+  }
+}

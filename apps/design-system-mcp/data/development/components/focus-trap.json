@@ -1,0 +1,53 @@
+{
+  "name": "FocusTrap",
+  "category": "component",
+  "summary": "",
+  "import": "import { GoabFocusTrap } from '@abgov/react-components'",
+  "customElement": {
+    "tagName": "goa-focus-trap",
+    "reactName": "GoabFocusTrap",
+    "angularSelector": "goab-focus-trap"
+  },
+  "props": [
+    {
+      "name": "open",
+      "type": "boolean",
+      "required": false,
+      "default": "false",
+      "description": "",
+      "frameworks": {
+        "webComponent": "open=\"...\"",
+        "react": "open={...}",
+        "angular": "[open]=\"...\""
+      }
+    },
+    {
+      "name": "preventScrollIntoView",
+      "type": "boolean",
+      "required": false,
+      "default": "false",
+      "description": "",
+      "frameworks": {
+        "webComponent": "prevent-scroll-into-view=\"...\"",
+        "react": "preventScrollIntoView={...}",
+        "angular": "[preventScrollIntoView]=\"...\""
+      }
+    }
+  ],
+  "events": [],
+  "slots": [
+    {
+      "name": "default",
+      "description": ""
+    }
+  ],
+  "criticalNotes": [],
+  "commonMistakes": [],
+  "basicUsage": {
+    "webComponent": "",
+    "react": "",
+    "angular": ""
+  },
+  "relatedExamples": [],
+  "relatedComponents": []
+}

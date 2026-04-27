@@ -1,0 +1,197 @@
+{
+  "name": "Accordion",
+  "category": "layout",
+  "summary": "Collapsible content panel for progressive disclosure. Use for FAQs, form sections, and hiding optional details.",
+  "import": "import { GoabAccordion } from '@abgov/react-components'",
+  "customElement": {
+    "tagName": "goa-accordion",
+    "reactName": "GoabAccordion",
+    "angularSelector": "goab-accordion"
+  },
+  "props": [
+    {
+      "name": "open",
+      "type": "boolean",
+      "required": false,
+      "default": "false",
+      "description": "Controls whether accordion starts expanded",
+      "frameworks": {
+        "webComponent": "open=\"true\"",
+        "react": "open={true}",
+        "angular": "[open]=\"true\""
+      }
+    },
+    {
+      "name": "heading",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "Clickable header text that expands/collapses content",
+      "frameworks": {
+        "webComponent": "heading=\"...\"",
+        "react": "heading={...}",
+        "angular": "[heading]=\"...\""
+      }
+    },
+    {
+      "name": "secondarytext",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "Additional text in header (counts, dates, etc.)",
+      "frameworks": {
+        "webComponent": "secondarytext=\"...\"",
+        "react": "secondarytext={...}",
+        "angular": "[secondarytext]=\"...\""
+      }
+    },
+    {
+      "name": "headingsize",
+      "type": "\"small\" | \"medium\"",
+      "required": false,
+      "default": "small",
+      "description": "Visual size of heading text",
+      "frameworks": {
+        "webComponent": "headingsize=\"...\"",
+        "react": "headingsize={...}",
+        "angular": "[headingsize]=\"...\""
+      }
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "",
+      "frameworks": {
+        "webComponent": "id=\"...\"",
+        "react": "id={...}",
+        "angular": "[id]=\"...\""
+      }
+    },
+    {
+      "name": "maxwidth",
+      "type": "string",
+      "required": false,
+      "default": "none",
+      "description": "Maximum width constraint",
+      "frameworks": {
+        "webComponent": "maxwidth=\"...\"",
+        "react": "maxWidth={...}",
+        "angular": "[maxWidth]=\"...\""
+      }
+    },
+    {
+      "name": "testid",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "Test identifier for automation",
+      "frameworks": {
+        "webComponent": "testid=\"...\"",
+        "react": "testId={...}",
+        "angular": "[testId]=\"...\""
+      }
+    },
+    {
+      "name": "mt",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin top",
+      "frameworks": {
+        "webComponent": "mt=\"...\"",
+        "react": "mt={...}",
+        "angular": "[mt]=\"...\""
+      }
+    },
+    {
+      "name": "mr",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin right",
+      "frameworks": {
+        "webComponent": "mr=\"...\"",
+        "react": "mr={...}",
+        "angular": "[mr]=\"...\""
+      }
+    },
+    {
+      "name": "mb",
+      "type": "Spacing",
+      "required": false,
+      "default": "xs",
+      "description": "Margin bottom",
+      "frameworks": {
+        "webComponent": "mb=\"...\"",
+        "react": "mb={...}",
+        "angular": "[mb]=\"...\""
+      }
+    },
+    {
+      "name": "ml",
+      "type": "Spacing",
+      "required": false,
+      "default": null,
+      "description": "Margin left",
+      "frameworks": {
+        "webComponent": "ml=\"...\"",
+        "react": "ml={...}",
+        "angular": "[ml]=\"...\""
+      }
+    },
+    {
+      "name": "iconposition",
+      "type": "\"left\" | \"right\"",
+      "required": false,
+      "default": "left",
+      "description": "",
+      "frameworks": {
+        "webComponent": "iconposition=\"...\"",
+        "react": "iconposition={...}",
+        "angular": "[iconposition]=\"...\""
+      }
+    }
+  ],
+  "events": [
+    {
+      "name": "_change",
+      "type": "(event) => void",
+      "description": "",
+      "frameworks": {
+        "webComponent": "_change custom event",
+        "react": "onChange prop",
+        "angular": "(onChange) event binding"
+      }
+    }
+  ],
+  "slots": [
+    {
+      "name": "headingcontent",
+      "description": ""
+    },
+    {
+      "name": "default",
+      "description": "Main content that expands/collapses"
+    }
+  ],
+  "criticalNotes": [
+    "headingLevel must follow proper heading hierarchy for screen readers",
+    "Use secondaryText for context like 'Last updated' or counts",
+    "Default mb='m' provides standard spacing between accordions"
+  ],
+  "basicUsage": {
+    "webComponent": "<goa-accordion heading=\"Personal Information\" open=\"true\">\n  <p>Content goes here</p>\n</goa-accordion>",
+    "react": "<GoabAccordion heading=\"Personal Information\" open={isOpen} onChange={setIsOpen}>\n  <p>Content goes here</p>\n</GoabAccordion>",
+    "angular": "<goab-accordion heading=\"Personal Information\" [open]=\"isOpen\" (onChange)=\"onToggle($event)\">\n  <p>Content goes here</p>\n</goab-accordion>"
+  },
+  "relatedExamples": [
+    "expand-or-collapse-part-of-a-form",
+    "hide-and-show-many-sections-of-information"
+  ],
+  "relatedComponents": [
+    "Details",
+    "Container"
+  ]
+}

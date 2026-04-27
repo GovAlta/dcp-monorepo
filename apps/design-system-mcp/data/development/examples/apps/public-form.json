@@ -1,0 +1,400 @@
+{
+  "id": "public-form",
+  "name": "Public Form Application",
+  "category": "app",
+  "description": "A complete citizen-facing step-by-step form wizard for government services. Guides users through multi-step applications with clear progress indication, validation, review, and confirmation pages.",
+
+  "userType": "citizen",
+  "context": "Citizens applying for government services, benefits, permits, registrations, or submitting requests to government agencies",
+
+  "whenToUse": [
+    "Citizen-facing benefit applications (child benefits, disability support, housing assistance)",
+    "Permit and license applications (business licenses, building permits, hunting licenses)",
+    "Service registrations (vehicle registration, birth/death registration)",
+    "Government requests and submissions (access to information, feedback, complaints)",
+    "Any multi-step process requiring guided completion from public users"
+  ],
+
+  "designPrinciples": {
+    "oneQuestionPerPage": "Break complex forms into single, focused questions to reduce cognitive load",
+    "progressiveDisclosure": "Show only what's needed at each step, avoid overwhelming users",
+    "plainLanguage": "Write at grade 9 reading level, avoid jargon and government-speak",
+    "errorPrevention": "Validate early and often, prevent errors before they happen",
+    "saveProgress": "Allow users to save and return later for longer forms",
+    "clearNextSteps": "Always tell users what happens next and when"
+  },
+
+  "composesPatterns": {
+    "pages": ["start-page", "question-page", "review-page", "result-page"],
+    "sections": ["form-step", "progress-indicator", "review-summary", "validation-error"]
+  },
+
+  "appStructure": {
+    "layout": "Single column centered content with progress indicator",
+    "navigation": "Linear with back navigation, no side menu for focused completion",
+    "routing": "React Router with step-based routes",
+    "state": "Form context for cross-step data persistence and validation"
+  },
+
+  "pages": [
+    {
+      "name": "Start Page",
+      "path": "/apply",
+      "pattern": "start-page",
+      "description": "Service entry point with requirements, time estimate, and get started button"
+    },
+    {
+      "name": "Question Steps",
+      "path": "/apply/step/:stepId",
+      "pattern": "question-page",
+      "description": "Individual form steps with one or few related questions per page"
+    },
+    {
+      "name": "Review Page",
+      "path": "/apply/review",
+      "pattern": "review-page",
+      "description": "Summary of all answers with ability to change before submission"
+    },
+    {
+      "name": "Confirmation Page",
+      "path": "/apply/confirmation",
+      "pattern": "result-page",
+      "description": "Success message with reference number and next steps"
+    }
+  ],
+
+  "formFlow": {
+    "totalSteps": 6,
+    "steps": [
+      {
+        "id": "personal-info",
+        "stepNumber": 1,
+        "title": "Personal Information",
+        "description": "Tell us about yourself",
+        "questions": [
+          { "field": "fullName", "label": "What is your full legal name?", "type": "text", "required": true },
+          { "field": "dateOfBirth", "label": "What is your date of birth?", "type": "date", "required": true },
+          { "field": "sinNumber", "label": "What is your Social Insurance Number (SIN)?", "type": "text", "required": true, "helpText": "Your 9-digit SIN is on your SIN card, tax return, or Record of Employment" }
+        ]
+      },
+      {
+        "id": "contact-info",
+        "stepNumber": 2,
+        "title": "Contact Information",
+        "description": "How can we reach you",
+        "questions": [
+          { "field": "email", "label": "What is your email address?", "type": "email", "required": true },
+          { "field": "phone", "label": "What is your phone number?", "type": "tel", "required": true },
+          { "field": "preferredContact", "label": "How would you prefer we contact you?", "type": "radio", "required": true, "options": ["Email", "Phone", "Mail"] }
+        ]
+      },
+      {
+        "id": "address",
+        "stepNumber": 3,
+        "title": "Address",
+        "description": "Where do you live",
+        "questions": [
+          { "field": "streetAddress", "label": "What is your street address?", "type": "text", "required": true },
+          { "field": "city", "label": "City or town", "type": "text", "required": true },
+          { "field": "province", "label": "Province", "type": "dropdown", "required": true, "defaultValue": "Alberta" },
+          { "field": "postalCode", "label": "Postal code", "type": "text", "required": true, "width": "14ch" }
+        ]
+      },
+      {
+        "id": "eligibility",
+        "stepNumber": 4,
+        "title": "Eligibility",
+        "description": "Confirm you meet the requirements",
+        "questions": [
+          { "field": "isResident", "label": "Are you a resident of Alberta?", "type": "radio", "required": true, "options": ["Yes", "No"] },
+          { "field": "residencyDuration", "label": "How long have you lived in Alberta?", "type": "radio", "required": true, "options": ["Less than 3 months", "3-12 months", "More than 12 months"], "conditional": { "field": "isResident", "value": "yes" } },
+          { "field": "hasChildren", "label": "Do you have children under 18 years old?", "type": "radio", "required": true, "options": ["Yes", "No"] }
+        ]
+      },
+      {
+        "id": "children",
+        "stepNumber": 5,
+        "title": "Children's Information",
+        "description": "Tell us about your children",
+        "conditional": { "field": "hasChildren", "value": "yes" },
+        "questions": [
+          { "field": "numberOfChildren", "label": "How many children under 18 do you have?", "type": "number", "required": true },
+          { "field": "childrenInfo", "label": "Children's details", "type": "repeater", "required": true, "fields": [
+            { "field": "childName", "label": "Child's full name", "type": "text", "required": true },
+            { "field": "childDob", "label": "Child's date of birth", "type": "date", "required": true }
+          ]}
+        ]
+      },
+      {
+        "id": "declaration",
+        "stepNumber": 6,
+        "title": "Declaration",
+        "description": "Review and confirm",
+        "questions": [
+          { "field": "declarationAccepted", "label": "I declare that the information provided is true and complete to the best of my knowledge.", "type": "checkbox", "required": true },
+          { "field": "termsAccepted", "label": "I have read and agree to the terms and conditions.", "type": "checkbox", "required": true, "link": { "text": "View terms and conditions", "url": "/terms" } }
+        ]
+      }
+    ]
+  },
+
+  "sampleData": {
+    "applicationScenario": "Alberta Child Benefit Application",
+    "applicant": {
+      "fullName": "Sarah Elizabeth Johnson",
+      "dateOfBirth": "1985-06-15",
+      "sinNumber": "123-456-789",
+      "email": "sarah.johnson@email.com",
+      "phone": "780-555-0123",
+      "preferredContact": "email",
+      "streetAddress": "456 Maple Street",
+      "city": "Edmonton",
+      "province": "Alberta",
+      "postalCode": "T5K 2P3",
+      "isResident": "yes",
+      "residencyDuration": "more-than-12-months",
+      "hasChildren": "yes",
+      "numberOfChildren": 2
+    },
+    "children": [
+      {
+        "childName": "Emma Johnson",
+        "childDob": "2018-03-22"
+      },
+      {
+        "childName": "Liam Johnson",
+        "childDob": "2020-11-08"
+      }
+    ],
+    "referenceNumber": "ACB-2024-001234",
+    "submissionDate": "2024-12-08",
+    "processingTime": "4-6 weeks"
+  },
+
+  "cssClasses": {
+    "form-page": {
+      "purpose": "Main form page container with proper content width",
+      "css": ".form-page {\n  max-width: 640px;\n  margin: 0 auto;\n  padding: var(--goa-space-xl) var(--goa-space-l);\n}"
+    },
+    "form-header": {
+      "purpose": "Header section with progress and back navigation",
+      "css": ".form-header {\n  margin-bottom: var(--goa-space-2xl);\n}\n\n.form-header .back-link {\n  display: inline-flex;\n  align-items: center;\n  color: var(--goa-color-interactive);\n  text-decoration: underline;\n  background: none;\n  border: none;\n  cursor: pointer;\n  padding: 0;\n  font-size: var(--goa-font-size-m);\n}\n\n.form-header .back-link::before {\n  content: '';\n  display: inline-block;\n  width: 20px;\n  height: 20px;\n  margin-right: var(--goa-space-xs);\n  background: url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"%230070C4\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"15 18 9 12 15 6\"></polyline></svg>') center no-repeat;\n}"
+    },
+    "step-indicator": {
+      "purpose": "Simple text-based progress indicator",
+      "css": ".step-indicator {\n  color: var(--goa-color-text-secondary);\n  font-size: var(--goa-font-size-s);\n  margin-top: var(--goa-space-xl);\n  margin-bottom: var(--goa-space-xs);\n}"
+    },
+    "step-title": {
+      "purpose": "Current step heading",
+      "css": ".step-title {\n  margin: 0 0 var(--goa-space-s) 0;\n  color: var(--goa-color-text);\n  font-size: var(--goa-font-size-2xl);\n  font-weight: 700;\n}"
+    },
+    "step-description": {
+      "purpose": "Step subheading or description",
+      "css": ".step-description {\n  margin: 0 0 var(--goa-space-xl) 0;\n  color: var(--goa-color-text-secondary);\n  font-size: var(--goa-font-size-l);\n}"
+    },
+    "question-group": {
+      "purpose": "Container for form questions",
+      "css": ".question-group {\n  margin-bottom: var(--goa-space-2xl);\n}\n\n.question-group > *:not(:last-child) {\n  margin-bottom: var(--goa-space-l);\n}"
+    },
+    "form-actions": {
+      "purpose": "Bottom button group for navigation",
+      "css": ".form-actions {\n  margin-top: var(--goa-space-2xl);\n  padding-top: var(--goa-space-l);\n  border-top: 1px solid var(--goa-color-greyscale-200);\n}"
+    },
+    "review-section": {
+      "purpose": "Review page answer groups",
+      "css": ".review-section {\n  margin-bottom: var(--goa-space-2xl);\n  padding-bottom: var(--goa-space-xl);\n  border-bottom: 1px solid var(--goa-color-greyscale-200);\n}\n\n.review-section:last-child {\n  border-bottom: none;\n}\n\n.review-section h3 {\n  margin: 0 0 var(--goa-space-l) 0;\n  font-size: var(--goa-font-size-l);\n  font-weight: 700;\n}"
+    },
+    "review-item": {
+      "purpose": "Individual answer display on review page",
+      "css": ".review-item {\n  display: flex;\n  justify-content: space-between;\n  align-items: flex-start;\n  padding: var(--goa-space-m) 0;\n  border-bottom: 1px solid var(--goa-color-greyscale-100);\n}\n\n.review-item:last-child {\n  border-bottom: none;\n}\n\n.review-item__question {\n  font-weight: 600;\n  color: var(--goa-color-text);\n  flex: 1;\n}\n\n.review-item__answer {\n  color: var(--goa-color-text);\n  text-align: right;\n  margin-left: var(--goa-space-l);\n}\n\n.review-item__answer--empty {\n  color: var(--goa-color-text-secondary);\n  font-style: italic;\n}"
+    },
+    "change-link": {
+      "purpose": "Link to change answers on review page",
+      "css": ".change-link {\n  color: var(--goa-color-interactive);\n  text-decoration: underline;\n  background: none;\n  border: none;\n  cursor: pointer;\n  font-size: var(--goa-font-size-m);\n  padding: 0;\n  margin-left: var(--goa-space-m);\n}\n\n.change-link:hover {\n  color: var(--goa-color-interactive-hover);\n}"
+    },
+    "confirmation-box": {
+      "purpose": "Success confirmation container",
+      "css": ".confirmation-box {\n  background-color: var(--goa-color-success-light);\n  border-left: 4px solid var(--goa-color-success);\n  padding: var(--goa-space-l);\n  margin-bottom: var(--goa-space-xl);\n  border-radius: var(--goa-border-radius-s);\n}\n\n.confirmation-box__heading {\n  display: flex;\n  align-items: center;\n  gap: var(--goa-space-s);\n  margin: 0 0 var(--goa-space-m) 0;\n  font-size: var(--goa-font-size-l);\n  font-weight: 700;\n  color: var(--goa-color-success-dark);\n}"
+    },
+    "reference-number": {
+      "purpose": "Prominent display of application reference",
+      "css": ".reference-number {\n  font-family: monospace;\n  font-size: var(--goa-font-size-xl);\n  font-weight: 700;\n  color: var(--goa-color-primary);\n  letter-spacing: 0.05em;\n  background-color: var(--goa-color-greyscale-100);\n  padding: var(--goa-space-s) var(--goa-space-m);\n  border-radius: var(--goa-border-radius-s);\n  display: inline-block;\n}"
+    },
+    "help-text": {
+      "purpose": "Contextual help for form fields",
+      "css": ".help-text {\n  color: var(--goa-color-text-secondary);\n  font-size: var(--goa-font-size-s);\n  margin-top: var(--goa-space-xs);\n}"
+    },
+    "error-summary": {
+      "purpose": "Validation error summary at top of page",
+      "css": ".error-summary {\n  background-color: var(--goa-color-emergency-light);\n  border-left: 4px solid var(--goa-color-emergency);\n  padding: var(--goa-space-l);\n  margin-bottom: var(--goa-space-xl);\n  border-radius: var(--goa-border-radius-s);\n}\n\n.error-summary__heading {\n  margin: 0 0 var(--goa-space-s) 0;\n  color: var(--goa-color-emergency-dark);\n  font-weight: 700;\n}\n\n.error-summary__list {\n  margin: 0;\n  padding-left: var(--goa-space-l);\n}\n\n.error-summary__list li {\n  margin-bottom: var(--goa-space-xs);\n}\n\n.error-summary__list a {\n  color: var(--goa-color-emergency-dark);\n  text-decoration: underline;\n}"
+    }
+  },
+
+  "utilities": {
+    "files": [
+      "utils/formUtils.ts",
+      "utils/validationUtils.ts",
+      "utils/storageUtils.ts",
+      "utils/dateUtils.ts"
+    ],
+    "formUtils": {
+      "getStepById": "Get step configuration by step ID",
+      "getNextStep": "Get next step in sequence, handling conditionals",
+      "getPreviousStep": "Get previous step in sequence",
+      "isStepComplete": "Check if all required fields in step are filled",
+      "getCompletionPercentage": "Calculate overall form completion percentage",
+      "formatFieldValue": "Format field values for display (dates, phones, etc.)"
+    },
+    "validationUtils": {
+      "validateStep": "Validate all fields in current step, return errors object",
+      "validateField": "Validate single field against its rules",
+      "validateSIN": "Canadian SIN validation with checksum",
+      "validatePostalCode": "Canadian postal code format validation",
+      "validateEmail": "Email format validation",
+      "validatePhone": "Phone number validation",
+      "validateDate": "Date validation with range checks",
+      "getFieldError": "Get human-readable error message for field"
+    },
+    "storageUtils": {
+      "saveProgress": "Save form data to localStorage for later continuation",
+      "loadProgress": "Load previously saved form data",
+      "clearProgress": "Clear saved form data after submission",
+      "hasExistingProgress": "Check if user has saved progress to resume"
+    },
+    "dateUtils": {
+      "formatDisplayDate": "Format date for user display (December 8, 2024)",
+      "formatISODate": "Format date for API submission",
+      "calculateAge": "Calculate age from date of birth",
+      "isValidDateOfBirth": "Check if DOB is reasonable (not future, not too old)"
+    }
+  },
+
+  "contexts": {
+    "FormContext": {
+      "purpose": "Manage form state across all steps",
+      "values": [
+        "formData",
+        "setFormData",
+        "updateField",
+        "currentStep",
+        "setCurrentStep",
+        "totalSteps",
+        "validationErrors",
+        "setValidationErrors",
+        "isSubmitting",
+        "hasUnsavedChanges"
+      ]
+    },
+    "ProgressContext": {
+      "purpose": "Track completion status and navigation",
+      "values": [
+        "completedSteps",
+        "markStepComplete",
+        "canNavigateToStep",
+        "getNextAvailableStep"
+      ]
+    }
+  },
+
+  "example": {
+    "framework": "react",
+    "description": "Complete public form application with routing, validation, and state management",
+    "code": "// App.tsx - Main application shell for public form\nimport React from 'react';\nimport { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';\nimport {\n  GoabMicrositeHeader,\n  GoabAppHeader,\n  GoabOneColumnLayout,\n  GoabPageBlock,\n  GoabAppFooter,\n  GoabAppFooterNavSection,\n  GoabAppFooterMetaSection\n} from '@abgov/react-components';\nimport { FormProvider } from './contexts/FormContext';\nimport { StartPage } from './routes/StartPage';\nimport { FormStep } from './routes/FormStep';\nimport { ReviewPage } from './routes/ReviewPage';\nimport { ConfirmationPage } from './routes/ConfirmationPage';\nimport './App.css';\n\nexport default function App() {\n  return (\n    <BrowserRouter>\n      <FormProvider>\n        <GoabMicrositeHeader type=\"alpha\" version=\"Pre-release\" />\n        <GoabAppHeader heading=\"Alberta Child Benefit\" />\n        \n        <GoabOneColumnLayout>\n          <GoabPageBlock>\n            <Routes>\n              <Route path=\"/\" element={<Navigate to=\"/apply\" replace />} />\n              <Route path=\"/apply\" element={<StartPage />} />\n              <Route path=\"/apply/step/:stepId\" element={<FormStep />} />\n              <Route path=\"/apply/review\" element={<ReviewPage />} />\n              <Route path=\"/apply/confirmation\" element={<ConfirmationPage />} />\n              <Route path=\"*\" element={<Navigate to=\"/apply\" replace />} />\n            </Routes>\n          </GoabPageBlock>\n        </GoabOneColumnLayout>\n        \n        <GoabAppFooter>\n          <GoabAppFooterNavSection heading=\"Support\">\n            <a href=\"/help\">Help</a>\n            <a href=\"/contact\">Contact us</a>\n            <a href=\"/feedback\">Feedback</a>\n          </GoabAppFooterNavSection>\n          <GoabAppFooterMetaSection>\n            <a href=\"/privacy\">Privacy</a>\n            <a href=\"/disclaimer\">Disclaimer</a>\n            <a href=\"/accessibility\">Accessibility</a>\n          </GoabAppFooterMetaSection>\n        </GoabAppFooter>\n      </FormProvider>\n    </BrowserRouter>\n  );\n}\n\n// contexts/FormContext.tsx - Form state management\nimport React, { createContext, useContext, useState, useCallback, ReactNode } from 'react';\nimport { saveProgress, loadProgress, clearProgress } from '../utils/storageUtils';\n\ninterface FormData {\n  fullName: string;\n  dateOfBirth: string;\n  sinNumber: string;\n  email: string;\n  phone: string;\n  preferredContact: string;\n  streetAddress: string;\n  city: string;\n  province: string;\n  postalCode: string;\n  isResident: string;\n  residencyDuration: string;\n  hasChildren: string;\n  numberOfChildren: string;\n  children: Array<{ childName: string; childDob: string }>;\n  declarationAccepted: boolean;\n  termsAccepted: boolean;\n}\n\ninterface ValidationErrors {\n  [field: string]: string;\n}\n\ninterface FormContextType {\n  formData: FormData;\n  setFormData: React.Dispatch<React.SetStateAction<FormData>>;\n  updateField: (field: keyof FormData, value: any) => void;\n  validationErrors: ValidationErrors;\n  setValidationErrors: React.Dispatch<React.SetStateAction<ValidationErrors>>;\n  clearFieldError: (field: string) => void;\n  isSubmitting: boolean;\n  setIsSubmitting: React.Dispatch<React.SetStateAction<boolean>>;\n  saveFormProgress: () => void;\n  loadFormProgress: () => boolean;\n  clearFormProgress: () => void;\n  resetForm: () => void;\n}\n\nconst initialFormData: FormData = {\n  fullName: '',\n  dateOfBirth: '',\n  sinNumber: '',\n  email: '',\n  phone: '',\n  preferredContact: '',\n  streetAddress: '',\n  city: '',\n  province: 'Alberta',\n  postalCode: '',\n  isResident: '',\n  residencyDuration: '',\n  hasChildren: '',\n  numberOfChildren: '',\n  children: [],\n  declarationAccepted: false,\n  termsAccepted: false\n};\n\nconst FormContext = createContext<FormContextType | undefined>(undefined);\n\nexport function FormProvider({ children }: { children: ReactNode }) {\n  const [formData, setFormData] = useState<FormData>(initialFormData);\n  const [validationErrors, setValidationErrors] = useState<ValidationErrors>({});\n  const [isSubmitting, setIsSubmitting] = useState(false);\n\n  const updateField = useCallback((field: keyof FormData, value: any) => {\n    setFormData(prev => ({ ...prev, [field]: value }));\n    // Clear error when field is updated\n    if (validationErrors[field]) {\n      setValidationErrors(prev => {\n        const updated = { ...prev };\n        delete updated[field];\n        return updated;\n      });\n    }\n  }, [validationErrors]);\n\n  const clearFieldError = useCallback((field: string) => {\n    setValidationErrors(prev => {\n      const updated = { ...prev };\n      delete updated[field];\n      return updated;\n    });\n  }, []);\n\n  const saveFormProgress = useCallback(() => {\n    saveProgress('acb-application', formData);\n  }, [formData]);\n\n  const loadFormProgress = useCallback(() => {\n    const saved = loadProgress('acb-application');\n    if (saved) {\n      setFormData(saved);\n      return true;\n    }\n    return false;\n  }, []);\n\n  const clearFormProgress = useCallback(() => {\n    clearProgress('acb-application');\n  }, []);\n\n  const resetForm = useCallback(() => {\n    setFormData(initialFormData);\n    setValidationErrors({});\n    clearFormProgress();\n  }, [clearFormProgress]);\n\n  return (\n    <FormContext.Provider value={{\n      formData,\n      setFormData,\n      updateField,\n      validationErrors,\n      setValidationErrors,\n      clearFieldError,\n      isSubmitting,\n      setIsSubmitting,\n      saveFormProgress,\n      loadFormProgress,\n      clearFormProgress,\n      resetForm\n    }}>\n      {children}\n    </FormContext.Provider>\n  );\n}\n\nexport function useForm() {\n  const context = useContext(FormContext);\n  if (!context) {\n    throw new Error('useForm must be used within a FormProvider');\n  }\n  return context;\n}\n\n// routes/FormStep.tsx - Individual form step component\nimport React, { useMemo, useCallback } from 'react';\nimport { useParams, useNavigate } from 'react-router-dom';\nimport {\n  GoabFormItem,\n  GoabInput,\n  GoabRadioGroup,\n  GoabRadioItem,\n  GoabCheckbox,\n  GoabButton,\n  GoabButtonGroup,\n  GoabDatePicker,\n  GoabCallout\n} from '@abgov/react-components';\nimport { useForm } from '../contexts/FormContext';\nimport { validateStep, getFieldError } from '../utils/validationUtils';\nimport { stepConfig } from '../config/formConfig';\n\nexport function FormStep() {\n  const { stepId } = useParams<{ stepId: string }>();\n  const navigate = useNavigate();\n  const { formData, updateField, validationErrors, setValidationErrors, saveFormProgress } = useForm();\n\n  const currentStep = useMemo(() => {\n    return stepConfig.find(s => s.id === stepId);\n  }, [stepId]);\n\n  const currentStepIndex = useMemo(() => {\n    return stepConfig.findIndex(s => s.id === stepId);\n  }, [stepId]);\n\n  const totalSteps = stepConfig.length;\n\n  const handleBack = useCallback(() => {\n    saveFormProgress();\n    if (currentStepIndex > 0) {\n      navigate(`/apply/step/${stepConfig[currentStepIndex - 1].id}`);\n    } else {\n      navigate('/apply');\n    }\n  }, [currentStepIndex, navigate, saveFormProgress]);\n\n  const handleContinue = useCallback(() => {\n    if (!currentStep) return;\n\n    const errors = validateStep(currentStep, formData);\n    \n    if (Object.keys(errors).length > 0) {\n      setValidationErrors(errors);\n      // Focus first error field\n      const firstErrorField = Object.keys(errors)[0];\n      document.querySelector(`[name=\"${firstErrorField}\"]`)?.focus();\n      return;\n    }\n\n    saveFormProgress();\n\n    if (currentStepIndex < totalSteps - 1) {\n      // Check for conditional next step\n      let nextIndex = currentStepIndex + 1;\n      while (nextIndex < totalSteps) {\n        const nextStep = stepConfig[nextIndex];\n        if (nextStep.conditional) {\n          const conditionValue = formData[nextStep.conditional.field as keyof typeof formData];\n          if (conditionValue?.toLowerCase() !== nextStep.conditional.value) {\n            nextIndex++;\n            continue;\n          }\n        }\n        break;\n      }\n      \n      if (nextIndex < totalSteps) {\n        navigate(`/apply/step/${stepConfig[nextIndex].id}`);\n      } else {\n        navigate('/apply/review');\n      }\n    } else {\n      navigate('/apply/review');\n    }\n  }, [currentStep, currentStepIndex, formData, navigate, saveFormProgress, setValidationErrors, totalSteps]);\n\n  const handleFieldChange = useCallback((field: string, value: string | boolean) => {\n    updateField(field as keyof typeof formData, value);\n  }, [updateField]);\n\n  const renderField = (question: any) => {\n    const value = formData[question.field as keyof typeof formData];\n    const error = validationErrors[question.field];\n\n    switch (question.type) {\n      case 'radio':\n        return (\n          <GoabFormItem\n            key={question.field}\n            label={question.label}\n            error={error}\n            requirement={question.required ? 'required' : 'optional'}\n            helpText={question.helpText}\n          >\n            <GoabRadioGroup\n              name={question.field}\n              value={value as string}\n              onChange={(e) => handleFieldChange(question.field, e.value)}\n              error={!!error}\n            >\n              {question.options.map((option: string) => (\n                <GoabRadioItem\n                  key={option}\n                  value={option.toLowerCase().replace(/\\s+/g, '-')}\n                  label={option}\n                />\n              ))}\n            </GoabRadioGroup>\n          </GoabFormItem>\n        );\n\n      case 'checkbox':\n        return (\n          <GoabFormItem\n            key={question.field}\n            error={error}\n          >\n            <GoabCheckbox\n              name={question.field}\n              checked={value as boolean}\n              onChange={(e) => handleFieldChange(question.field, e.checked)}\n              error={!!error}\n              text={question.label}\n            />\n            {question.link && (\n              <a href={question.link.url} target=\"_blank\" rel=\"noopener noreferrer\" className=\"help-link\">\n                {question.link.text}\n              </a>\n            )}\n          </GoabFormItem>\n        );\n\n      case 'date':\n        return (\n          <GoabFormItem\n            key={question.field}\n            label={question.label}\n            error={error}\n            requirement={question.required ? 'required' : 'optional'}\n            helpText={question.helpText}\n          >\n            <GoabDatePicker\n              name={question.field}\n              value={value as string}\n              onChange={(e) => handleFieldChange(question.field, e.value)}\n              error={!!error}\n            />\n          </GoabFormItem>\n        );\n\n      default:\n        return (\n          <GoabFormItem\n            key={question.field}\n            label={question.label}\n            error={error}\n            requirement={question.required ? 'required' : 'optional'}\n            helpText={question.helpText}\n          >\n            <GoabInput\n              name={question.field}\n              type={question.type || 'text'}\n              value={value as string}\n              onChange={(e) => handleFieldChange(question.field, e.value)}\n              error={!!error}\n              width={question.width || '100%'}\n            />\n          </GoabFormItem>\n        );\n    }\n  };\n\n  if (!currentStep) {\n    return <Navigate to=\"/apply\" replace />;\n  }\n\n  const hasErrors = Object.keys(validationErrors).length > 0;\n\n  return (\n    <div className=\"form-page\">\n      <div className=\"form-header\">\n        <button type=\"button\" className=\"back-link\" onClick={handleBack}>\n          Back\n        </button>\n        <p className=\"step-indicator\">Step {currentStepIndex + 1} of {totalSteps}</p>\n      </div>\n\n      <h1 className=\"step-title\">{currentStep.title}</h1>\n      {currentStep.description && (\n        <p className=\"step-description\">{currentStep.description}</p>\n      )}\n\n      {hasErrors && (\n        <div className=\"error-summary\" role=\"alert\">\n          <h2 className=\"error-summary__heading\">There is a problem</h2>\n          <ul className=\"error-summary__list\">\n            {Object.entries(validationErrors).map(([field, error]) => (\n              <li key={field}>\n                <a href={`#${field}`}>{error}</a>\n              </li>\n            ))}\n          </ul>\n        </div>\n      )}\n\n      <form className=\"question-group\" onSubmit={(e) => { e.preventDefault(); handleContinue(); }}>\n        {currentStep.questions.map(renderField)}\n\n        <div className=\"form-actions\">\n          <GoabButtonGroup alignment=\"start\" gap=\"relaxed\">\n            <GoabButton type=\"primary\" onClick={handleContinue}>\n              Save and continue\n            </GoabButton>\n          </GoabButtonGroup>\n        </div>\n      </form>\n    </div>\n  );\n}\n\n// routes/ReviewPage.tsx - Review before submission\nimport React, { useCallback, useState } from 'react';\nimport { useNavigate, Link } from 'react-router-dom';\nimport {\n  GoabButton,\n  GoabButtonGroup,\n  GoabCallout,\n  GoabText\n} from '@abgov/react-components';\nimport { useForm } from '../contexts/FormContext';\nimport { stepConfig } from '../config/formConfig';\nimport { formatDisplayDate } from '../utils/dateUtils';\nimport { submitApplication } from '../utils/apiUtils';\n\nexport function ReviewPage() {\n  const navigate = useNavigate();\n  const { formData, isSubmitting, setIsSubmitting, clearFormProgress } = useForm();\n  const [submitError, setSubmitError] = useState<string | null>(null);\n\n  const handleBack = useCallback(() => {\n    // Go to last step\n    const lastStep = stepConfig[stepConfig.length - 1];\n    navigate(`/apply/step/${lastStep.id}`);\n  }, [navigate]);\n\n  const handleChange = useCallback((stepId: string) => {\n    navigate(`/apply/step/${stepId}?return=review`);\n  }, [navigate]);\n\n  const handleSubmit = useCallback(async () => {\n    setIsSubmitting(true);\n    setSubmitError(null);\n\n    try {\n      const result = await submitApplication(formData);\n      clearFormProgress();\n      navigate('/apply/confirmation', { state: { referenceNumber: result.referenceNumber } });\n    } catch (error) {\n      console.error('Submission error:', error);\n      setSubmitError('There was a problem submitting your application. Please try again.');\n    } finally {\n      setIsSubmitting(false);\n    }\n  }, [formData, navigate, setIsSubmitting, clearFormProgress]);\n\n  const formatValue = (value: any, type?: string): string => {\n    if (value === undefined || value === null || value === '') {\n      return 'Not provided';\n    }\n    if (type === 'date') {\n      return formatDisplayDate(value);\n    }\n    if (typeof value === 'boolean') {\n      return value ? 'Yes' : 'No';\n    }\n    return String(value);\n  };\n\n  return (\n    <div className=\"form-page\">\n      <div className=\"form-header\">\n        <button type=\"button\" className=\"back-link\" onClick={handleBack}>\n          Back\n        </button>\n      </div>\n\n      <h1 className=\"step-title\">Review your application</h1>\n      <p className=\"step-description\">\n        Check your answers before submitting. You can change any answer by clicking the Change link.\n      </p>\n\n      {submitError && (\n        <GoabCallout type=\"emergency\" heading=\"Submission failed\">\n          <GoabText mt=\"none\" mb=\"none\">{submitError}</GoabText>\n        </GoabCallout>\n      )}\n\n      {stepConfig.map((step) => {\n        // Skip conditional steps that don't apply\n        if (step.conditional) {\n          const conditionValue = formData[step.conditional.field as keyof typeof formData];\n          if (conditionValue?.toString().toLowerCase() !== step.conditional.value) {\n            return null;\n          }\n        }\n\n        return (\n          <div key={step.id} className=\"review-section\">\n            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>\n              <h3>{step.title}</h3>\n              <button\n                type=\"button\"\n                className=\"change-link\"\n                onClick={() => handleChange(step.id)}\n              >\n                Change\n              </button>\n            </div>\n\n            {step.questions.map((question) => (\n              <div key={question.field} className=\"review-item\">\n                <span className=\"review-item__question\">{question.label}</span>\n                <span className={\n                  `review-item__answer ${!formData[question.field as keyof typeof formData] ? 'review-item__answer--empty' : ''}`\n                }>\n                  {formatValue(formData[question.field as keyof typeof formData], question.type)}\n                </span>\n              </div>\n            ))}\n          </div>\n        );\n      })}\n\n      <GoabCallout type=\"information\" heading=\"Ready to submit\">\n        <GoabText mt=\"none\" mb=\"none\">\n          By submitting this application, you confirm that the information provided is true and complete.\n        </GoabText>\n      </GoabCallout>\n\n      <div className=\"form-actions\">\n        <GoabButtonGroup alignment=\"start\" gap=\"relaxed\">\n          <GoabButton\n            type=\"primary\"\n            onClick={handleSubmit}\n            disabled={isSubmitting}\n          >\n            {isSubmitting ? 'Submitting...' : 'Submit application'}\n          </GoabButton>\n          <GoabButton\n            type=\"secondary\"\n            onClick={handleBack}\n            disabled={isSubmitting}\n          >\n            Back\n          </GoabButton>\n        </GoabButtonGroup>\n      </div>\n    </div>\n  );\n}\n\n// routes/ConfirmationPage.tsx - Success confirmation\nimport React from 'react';\nimport { useLocation, Link } from 'react-router-dom';\nimport {\n  GoabButton,\n  GoabButtonGroup,\n  GoabCallout,\n  GoabText,\n  GoabIcon\n} from '@abgov/react-components';\nimport { formatDisplayDate } from '../utils/dateUtils';\n\nexport function ConfirmationPage() {\n  const location = useLocation();\n  const referenceNumber = location.state?.referenceNumber || 'ACB-2024-001234';\n  const submissionDate = formatDisplayDate(new Date().toISOString());\n\n  const handlePrint = () => {\n    window.print();\n  };\n\n  return (\n    <div className=\"form-page\">\n      <div className=\"confirmation-box\">\n        <h1 className=\"confirmation-box__heading\">\n          <GoabIcon type=\"checkmark-circle\" color=\"#00853e\" size=\"large\" />\n          Application submitted\n        </h1>\n        <GoabText size=\"body-m\" mt=\"none\" mb=\"m\">\n          Your application for Alberta Child Benefit has been received.\n        </GoabText>\n        \n        <div style={{ marginTop: 'var(--goa-space-l)' }}>\n          <GoabText size=\"body-s\" mt=\"none\" mb=\"xs\">Your reference number</GoabText>\n          <div className=\"reference-number\">{referenceNumber}</div>\n        </div>\n      </div>\n\n      <section style={{ marginBottom: 'var(--goa-space-2xl)' }}>\n        <h2>What happens next</h2>\n        <ul>\n          <li><GoabText size=\"body-m\" mt=\"none\" mb=\"s\">We will review your application within 4-6 weeks</GoabText></li>\n          <li><GoabText size=\"body-m\" mt=\"none\" mb=\"s\">You will receive an email confirmation at the address you provided</GoabText></li>\n          <li><GoabText size=\"body-m\" mt=\"none\" mb=\"s\">If we need more information, we will contact you</GoabText></li>\n          <li><GoabText size=\"body-m\" mt=\"none\" mb=\"s\">Once approved, benefits will be deposited directly to your bank account</GoabText></li>\n        </ul>\n      </section>\n\n      <section style={{ marginBottom: 'var(--goa-space-2xl)' }}>\n        <h2>Save your confirmation</h2>\n        <GoabText size=\"body-m\" mt=\"none\" mb=\"l\">\n          We recommend saving or printing this page for your records.\n        </GoabText>\n        <GoabButtonGroup alignment=\"start\" gap=\"relaxed\">\n          <GoabButton type=\"secondary\" onClick={handlePrint} leadingIcon=\"print\">\n            Print this page\n          </GoabButton>\n        </GoabButtonGroup>\n      </section>\n\n      <section style={{ marginBottom: 'var(--goa-space-2xl)' }}>\n        <h2>Check your application status</h2>\n        <GoabText size=\"body-m\" mt=\"none\" mb=\"m\">\n          You can check the status of your application online using your reference number.\n        </GoabText>\n        <Link to=\"/status\">Check application status</Link>\n      </section>\n\n      <section>\n        <h2>Contact us</h2>\n        <GoabText size=\"body-m\" mt=\"none\" mb=\"s\">\n          If you have questions about your application:\n        </GoabText>\n        <ul>\n          <li><GoabText size=\"body-m\" mt=\"none\" mb=\"xs\">Email: <a href=\"mailto:acb.support@gov.ab.ca\">acb.support@gov.ab.ca</a></GoabText></li>\n          <li><GoabText size=\"body-m\" mt=\"none\" mb=\"xs\">Phone: 1-877-644-9992 (Monday to Friday, 8:15 AM to 4:30 PM)</GoabText></li>\n        </ul>\n      </section>\n\n      <div className=\"form-actions\">\n        <GoabButton type=\"tertiary\" onClick={() => window.location.href = 'https://alberta.ca'}>\n          Return to Alberta.ca\n        </GoabButton>\n      </div>\n    </div>\n  );\n}"
+  },
+
+  "dependencies": {
+    "npm": [
+      "@abgov/react-components@6.5.0-alpha.4",
+      "@abgov/web-components@1.35.0-alpha.2",
+      "@abgov/ui-components-common@1.5.0-alpha.4",
+      "react-router-dom@^6"
+    ],
+    "imports": [
+      "import '@abgov/web-components/index.css';"
+    ]
+  },
+
+  "fileStructure": {
+    "src/": {
+      "App.tsx": "Main app with routing, header, footer, and providers",
+      "App.css": "Global styles including form page utility classes",
+      "index.tsx": "Entry point with React DOM render",
+      "config/": {
+        "formConfig.ts": "Step configuration and field definitions"
+      },
+      "routes/": {
+        "StartPage.tsx": "Service entry with requirements and get started",
+        "FormStep.tsx": "Dynamic form step renderer",
+        "ReviewPage.tsx": "Review answers before submission",
+        "ConfirmationPage.tsx": "Success message with reference number"
+      },
+      "contexts/": {
+        "FormContext.tsx": "Form state management and persistence"
+      },
+      "components/": {
+        "ProgressIndicator.tsx": "Step counter display",
+        "BackLink.tsx": "Consistent back navigation",
+        "ErrorSummary.tsx": "Validation error list",
+        "ReviewSection.tsx": "Review page answer section"
+      },
+      "utils/": {
+        "formUtils.ts": "Form navigation and completion helpers",
+        "validationUtils.ts": "Field and step validation",
+        "storageUtils.ts": "LocalStorage for save progress",
+        "dateUtils.ts": "Date formatting utilities",
+        "apiUtils.ts": "API submission handler"
+      },
+      "types/": {
+        "FormTypes.ts": "TypeScript interfaces for form data"
+      }
+    }
+  },
+
+  "sampleTypes": {
+    "FormData": "interface FormData {\n  fullName: string;\n  dateOfBirth: string;\n  sinNumber: string;\n  email: string;\n  phone: string;\n  preferredContact: string;\n  streetAddress: string;\n  city: string;\n  province: string;\n  postalCode: string;\n  isResident: string;\n  residencyDuration: string;\n  hasChildren: string;\n  numberOfChildren: string;\n  children: ChildInfo[];\n  declarationAccepted: boolean;\n  termsAccepted: boolean;\n}",
+    "ChildInfo": "interface ChildInfo {\n  childName: string;\n  childDob: string;\n}",
+    "StepConfig": "interface StepConfig {\n  id: string;\n  stepNumber: number;\n  title: string;\n  description?: string;\n  conditional?: {\n    field: string;\n    value: string;\n  };\n  questions: QuestionConfig[];\n}",
+    "QuestionConfig": "interface QuestionConfig {\n  field: string;\n  label: string;\n  type: 'text' | 'email' | 'tel' | 'date' | 'number' | 'radio' | 'checkbox' | 'dropdown' | 'repeater';\n  required: boolean;\n  options?: string[];\n  helpText?: string;\n  width?: string;\n  conditional?: {\n    field: string;\n    value: string;\n  };\n}",
+    "ValidationErrors": "type ValidationErrors = Record<string, string>;"
+  },
+
+  "considerations": [
+    "Use GoabOneColumnLayout for proper content width and centering",
+    "Include GoabMicrositeHeader with pre-release badge for beta services",
+    "Implement save progress to localStorage for forms taking >10 minutes",
+    "Show clear progress indicator (Step X of Y) on every step",
+    "Use 'Save and continue' button text, not just 'Next'",
+    "Provide back navigation on every step except start page",
+    "Validate on continue, not on every keystroke (prevents frustration)",
+    "Show error summary at top of page with anchor links to fields",
+    "Use plain language - Grade 9 reading level maximum",
+    "Include helpful context text for complex questions (SIN, postal code)",
+    "Handle conditional steps (skip irrelevant questions)",
+    "Display 'Not provided' for optional unanswered questions on review",
+    "Generate reference number in format SERVICE-YEAR-NNNNNN",
+    "Provide print option on confirmation page",
+    "Include clear next steps and contact information on confirmation"
+  ],
+
+  "accessibilityRequirements": [
+    "All form fields must have visible labels (GoabFormItem)",
+    "Error messages must be associated with fields via aria-describedby",
+    "Error summary must be focusable and announced to screen readers",
+    "Progress indicator must be announced (aria-live or heading)",
+    "Back link must have clear purpose without visual context",
+    "Radio groups must have fieldset/legend structure",
+    "Focus must move to first error field on validation failure",
+    "Keyboard navigation must work throughout entire form",
+    "Color must not be only indicator of errors (use icons, text)",
+    "Touch targets must be minimum 44x44 pixels"
+  ],
+
+  "wireframeMode": {
+    "description": "This template supports wireframe mode for early-stage validation. Press Cmd+. (Mac) or Ctrl+. (Windows) to toggle between production and wireframe appearance.",
+    "purpose": "Use wireframe mode when showing form flows to stakeholders to get feedback on step structure and question flow, not visual polish.",
+    "toggle": "Keyboard shortcut Cmd+. / Ctrl+. toggles wireframe mode",
+    "seeAlso": "wireframe-mode workflow for setup instructions"
+  },
+
+  "relatedPatterns": ["start-page", "question-page", "review-page", "result-page", "workspace", "wireframe-mode"]
+}

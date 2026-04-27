@@ -1,0 +1,125 @@
+{
+  "$schema": "../schema/recipe-schema-2.1.0-ai-context.json",
+  "title": "Show different views of data in a table",
+  "description": "Use tabs to organize and filter table data into different views, allowing users to switch between comprehensive and filtered perspectives of the same dataset.",
+  "category": "layout-patterns",
+  "tags": [
+    "tables",
+    "tabs",
+    "data-filtering",
+    "data-views",
+    "status-display",
+    "badges"
+  ],
+  "government_service_context": {
+    "citizen_flows": {
+      "applicable": true,
+      "usage": "Citizens can view their applications, payments, or requests in different states (pending, approved, rejected) using tabbed table views."
+    },
+    "worker_flows": {
+      "applicable": true,
+      "usage": "Government workers need to efficiently manage and review cases, applications, or items in different states through organized table views."
+    },
+    "shared_components": {
+      "applicable": true,
+      "usage": "Data organization patterns are universally useful for any interface displaying lists of items with different statuses or categories."
+    }
+  },
+  "component_analysis": {
+    "primary_components": [
+      {
+        "name": "Tabbed Data Tables",
+        "role": "Organizes related data into manageable, filtered views",
+        "purpose": "Reduces cognitive load by segmenting large datasets into logical categories"
+      },
+      {
+        "name": "Status Badges",
+        "role": "Provides immediate visual status indication for each row",
+        "purpose": "Enables quick scanning and status recognition without reading text"
+      },
+      {
+        "name": "Tab Count Indicators",
+        "role": "Shows quantity of items in each category via badges in tab headings",
+        "purpose": "Helps users understand data distribution and prioritize attention"
+      },
+      {
+        "name": "Action Buttons",
+        "role": "Provides context-specific actions for each table row",
+        "purpose": "Enables immediate action-taking without navigation away from overview"
+      }
+    ],
+    "accessibility_features": [
+      "Tables include proper header structure with th elements",
+      "Tab navigation follows standard keyboard interaction patterns",
+      "Status badges provide semantic meaning through type attributes",
+      "Number columns are properly aligned and formatted",
+      "Action buttons maintain consistent labeling and focus management"
+    ],
+    "user_experience_notes": [
+      "All view shows complete dataset context before filtering",
+      "Count badges help users gauge workload in each category",
+      "Consistent table structure across tabs reduces learning curve",
+      "Status-based filtering matches common mental models for task organization",
+      "Immediate action availability reduces workflow friction"
+    ]
+  },
+  "implementation": {
+    "react": {
+      "code": "import React from 'react';\nimport {\n  GoabBadge,\n  GoabButton,\n  GoabTab,\n  GoabTable,\n  GoabTabs\n} from '@abgov/react-components';\n\nfunction DifferentTableViews() {\n  const reviewItems = [\n    { id: 1, text: 'Application #12345', number: '1234567890' },\n    { id: 2, text: 'Application #12346', number: '1234567891' },\n    { id: 3, text: 'Application #12347', number: '1234567892' },\n    { id: 4, text: 'Application #12348', number: '1234567893' }\n  ];\n  \n  const completeItems = [\n    { id: 5, text: 'Application #12349', number: '1234567894' },\n    { id: 6, text: 'Application #12350', number: '1234567895' }\n  ];\n\n  const handleAction = (itemId: number, action: string) => {\n    console.log(`Action '${action}' triggered for item ${itemId}`);\n  };\n\n  const renderTableContent = (items: any[], status: 'review' | 'complete') => (\n    <GoabTable width=\"100%\">\n      <thead>\n        <tr>\n          <th>Status</th>\n          <th>Text</th>\n          <th className=\"goa-table-number-header\">Number</th>\n          <th>Action</th>\n        </tr>\n      </thead>\n      <tbody>\n        {items.map((item) => (\n          <tr key={item.id}>\n            <td>\n              <GoabBadge \n                type={status === 'review' ? 'important' : 'information'} \n                content={status === 'review' ? 'Review pending' : 'Complete'} \n              />\n            </td>\n            <td>{item.text}</td>\n            <td className=\"goa-table-number-column\">{item.number}</td>\n            <td>\n              <GoabButton \n                type=\"tertiary\" \n                onClick={() => handleAction(item.id, status === 'review' ? 'review' : 'view')}\n              >\n                {status === 'review' ? 'Review' : 'View'}\n              </GoabButton>\n            </td>\n          </tr>\n        ))}\n      </tbody>\n    </GoabTable>\n  );\n\n  return (\n    <div style={{ padding: '40px' }}>\n      <GoabTabs initialTab={1}>\n        <GoabTab heading=\"All\">\n          <GoabTable width=\"100%\">\n            <thead>\n              <tr>\n                <th>Status</th>\n                <th>Text</th>\n                <th className=\"goa-table-number-header\">Number</th>\n                <th>Action</th>\n              </tr>\n            </thead>\n            <tbody>\n              {reviewItems.map((item) => (\n                <tr key={item.id}>\n                  <td>\n                    <GoabBadge type=\"important\" content=\"Review pending\" />\n                  </td>\n                  <td>{item.text}</td>\n                  <td className=\"goa-table-number-column\">{item.number}</td>\n                  <td>\n                    <GoabButton \n                      type=\"tertiary\" \n                      onClick={() => handleAction(item.id, 'review')}\n                    >\n                      Review\n                    </GoabButton>\n                  </td>\n                </tr>\n              ))}\n              {completeItems.map((item) => (\n                <tr key={item.id}>\n                  <td>\n                    <GoabBadge type=\"information\" content=\"Complete\" />\n                  </td>\n                  <td>{item.text}</td>\n                  <td className=\"goa-table-number-column\">{item.number}</td>\n                  <td>\n                    <GoabButton \n                      type=\"tertiary\" \n                      onClick={() => handleAction(item.id, 'view')}\n                    >\n                      View\n                    </GoabButton>\n                  </td>\n                </tr>\n              ))}\n            </tbody>\n          </GoabTable>\n        </GoabTab>\n        \n        <GoabTab \n          heading={\n            <>Review pending<GoabBadge type=\"important\" content={reviewItems.length.toString()} /></>\n          }\n        >\n          {renderTableContent(reviewItems, 'review')}\n        </GoabTab>\n        \n        <GoabTab \n          heading={\n            <>Complete<GoabBadge type=\"information\" content=\"338\" /></>\n          }\n        >\n          {renderTableContent(completeItems, 'complete')}\n        </GoabTab>\n      </GoabTabs>\n    </div>\n  );\n}"
+    },
+    "angular": {
+      "code": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'app-different-table-views',\n  template: `\n    <div style=\"padding: 40px\">\n      <goab-tabs>\n        <goab-tab heading=\"All\">\n          <goab-table width=\"100%\">\n            <thead>\n              <tr>\n                <th>Status</th>\n                <th>Text</th>\n                <th class=\"goa-table-number-header\">Number</th>\n                <th>Action</th>\n              </tr>\n            </thead>\n            <tbody>\n              <tr *ngFor=\"let item of reviewItems\">\n                <td><goab-badge type=\"important\" content=\"Review pending\"></goab-badge></td>\n                <td>{{item.text}}</td>\n                <td class=\"goa-table-number-column\">{{item.number}}</td>\n                <td>\n                  <goab-button type=\"tertiary\" (click)=\"handleAction(item.id, 'review')\">\n                    Review\n                  </goab-button>\n                </td>\n              </tr>\n              <tr *ngFor=\"let item of completeItems\">\n                <td><goab-badge type=\"information\" content=\"Complete\"></goab-badge></td>\n                <td>{{item.text}}</td>\n                <td class=\"goa-table-number-column\">{{item.number}}</td>\n                <td>\n                  <goab-button type=\"tertiary\" (click)=\"handleAction(item.id, 'view')\">\n                    View\n                  </goab-button>\n                </td>\n              </tr>\n            </tbody>\n          </goab-table>\n        </goab-tab>\n        \n        <goab-tab [heading]=\"reviewPendingTemplate\">\n          <ng-template #reviewPendingTemplate>\n            Review pending<goab-badge type=\"important\" [content]=\"reviewItems.length.toString()\"></goab-badge>\n          </ng-template>\n          <goab-table width=\"100%\">\n            <thead>\n              <tr>\n                <th>Status</th>\n                <th>Text</th>\n                <th class=\"goa-table-number-header\">Number</th>\n                <th>Action</th>\n              </tr>\n            </thead>\n            <tbody>\n              <tr *ngFor=\"let item of reviewItems\">\n                <td><goab-badge type=\"important\" content=\"Review pending\"></goab-badge></td>\n                <td>{{item.text}}</td>\n                <td class=\"goa-table-number-column\">{{item.number}}</td>\n                <td>\n                  <goab-button type=\"tertiary\" (click)=\"handleAction(item.id, 'review')\">\n                    Review\n                  </goab-button>\n                </td>\n              </tr>\n            </tbody>\n          </goab-table>\n        </goab-tab>\n        \n        <goab-tab [heading]=\"completeTemplate\">\n          <ng-template #completeTemplate>\n            Complete<goab-badge type=\"information\" content=\"338\"></goab-badge>\n          </ng-template>\n          <goab-table width=\"100%\">\n            <thead>\n              <tr>\n                <th>Status</th>\n                <th>Text</th>\n                <th class=\"goa-table-number-header\">Number</th>\n                <th>Action</th>\n              </tr>\n            </thead>\n            <tbody>\n              <tr *ngFor=\"let item of completeItems\">\n                <td><goab-badge type=\"information\" content=\"Complete\"></goab-badge></td>\n                <td>{{item.text}}</td>\n                <td class=\"goa-table-number-column\">{{item.number}}</td>\n                <td>\n                  <goab-button type=\"tertiary\" (click)=\"handleAction(item.id, 'view')\">\n                    View\n                  </goab-button>\n                </td>\n              </tr>\n            </tbody>\n          </goab-table>\n        </goab-tab>\n      </goab-tabs>\n    </div>\n  `\n})\nexport class DifferentTableViewsComponent {\n  reviewItems = [\n    { id: 1, text: 'Application #12345', number: '1234567890' },\n    { id: 2, text: 'Application #12346', number: '1234567891' },\n    { id: 3, text: 'Application #12347', number: '1234567892' },\n    { id: 4, text: 'Application #12348', number: '1234567893' }\n  ];\n  \n  completeItems = [\n    { id: 5, text: 'Application #12349', number: '1234567894' },\n    { id: 6, text: 'Application #12350', number: '1234567895' }\n  ];\n\n  handleAction(itemId: number, action: string) {\n    console.log(`Action '${action}' triggered for item ${itemId}`);\n  }\n}"
+    }
+  },
+  "usage_guidelines": {
+    "when_to_use": [
+      "Managing data with multiple status states (pending, complete, rejected)",
+      "Large datasets that benefit from categorical filtering",
+      "Workflows where users need both overview and focused views",
+      "Task management interfaces with different priority levels",
+      "Case management systems with various processing states"
+    ],
+    "when_not_to_use": [
+      "Simple data that doesn't naturally categorize",
+      "Tables with very few rows where filtering adds no value",
+      "Complex filtering requirements that need multiple criteria",
+      "Real-time data where tab counts would be constantly changing"
+    ],
+    "best_practices": [
+      "Always include an 'All' tab to show complete dataset context",
+      "Use count badges in tab headers to indicate data volume",
+      "Maintain consistent table structure across all tabs",
+      "Choose meaningful badge types that match status semantics",
+      "Ensure tab labels clearly describe the filtering criteria",
+      "Consider loading states for tabs with dynamic data"
+    ]
+  },
+  "variations": [
+    {
+      "name": "Priority-based filtering",
+      "description": "Organize by priority levels instead of status",
+      "code_change": "Replace status badges with priority badges: <GoabBadge type=\"emergency\" content=\"High Priority\" />"
+    },
+    {
+      "name": "Date-based filtering",
+      "description": "Filter by time periods (Today, This Week, This Month)",
+      "code_change": "Add date-based tab logic and modify data filtering based on date ranges"
+    },
+    {
+      "name": "User role filtering",
+      "description": "Show different views based on assigned user or department",
+      "code_change": "Filter data by assignee: <GoabTab heading={<>Assigned to me<GoabBadge content={myItems.length} /></>}>"
+    },
+    {
+      "name": "Search within tabs",
+      "description": "Add search functionality within each filtered view",
+      "code_change": "Include search input above each table for in-tab filtering"
+    }
+  ],
+  "related_patterns": [
+    "filter-data-in-a-table",
+    "show-status-in-a-table",
+    "set-a-specific-tab-to-be-active",
+    "show-status-on-a-card"
+  ]
+}

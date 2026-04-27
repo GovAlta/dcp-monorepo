@@ -1,0 +1,108 @@
+{
+  "$schema": "../recipe-schema.json",
+  "schemaVersion": "2.1.0-ai-context",
+  "recipeId": "add-another-item-in-a-modal",
+  "recipeName": "Add Another Item in a Modal",
+  "category": "form-pattern",
+  "summary": "Create new items through a modal dialog with structured form fields for type, name, and description",
+  "serviceContext": {
+    "useCase": "Allow users to add new items to collections, lists, or databases through a modal interface without leaving the current page",
+    "userType": "both",
+    "governmentServiceFlows": [
+      "When citizens need to add items to their applications (documents, contacts, dependents)",
+      "When workers need to create new records in administrative systems",
+      "When users need to add items to task lists, inventories, or collections",
+      "When forms require dynamic addition of multiple similar items"
+    ],
+    "relatedPatterns": [
+      "add-a-record-using-a-drawer",
+      "confirm-a-change",
+      "question-page"
+    ]
+  },
+  "components": [
+    {
+      "componentName": "GoabModal",
+      "role": "Container for the item creation form",
+      "purpose": "Provide focused interface for new item entry"
+    },
+    {
+      "componentName": "GoabButton",
+      "role": "Trigger button and action buttons",
+      "purpose": "Open modal and handle save/cancel actions"
+    },
+    {
+      "componentName": "GoabButtonGroup",
+      "role": "Group action buttons with proper alignment",
+      "purpose": "Organize cancel and save buttons consistently"
+    },
+    {
+      "componentName": "GoabFormItem",
+      "role": "Structure form fields with labels",
+      "purpose": "Provide consistent form field layout and accessibility"
+    },
+    {
+      "componentName": "GoabDropdown",
+      "role": "Type selection with predefined options",
+      "purpose": "Allow users to categorize the new item"
+    },
+    {
+      "componentName": "GoabInput",
+      "role": "Name field for item identification",
+      "purpose": "Collect the primary identifier for the new item"
+    },
+    {
+      "componentName": "GoabTextarea",
+      "role": "Description field for detailed information",
+      "purpose": "Allow users to provide additional context or details"
+    }
+  ],
+  "codeReference": {
+    "exampleFile": "add-another-item-in-a-modal.tsx",
+    "linesOfCode": 334,
+    "lastModified": "2024-01-01T00:00:00.000Z"
+  },
+  "implementation": {
+    "complexity": "medium",
+    "keyPatterns": [
+      "Modal state management with open/close control",
+      "Form state management with multiple controlled inputs",
+      "Type-safe event handling for different input types",
+      "Structured form layout with proper spacing",
+      "Action button grouping with cancel/save pattern"
+    ],
+    "designPatterns": [
+      "Controlled component pattern",
+      "Modal dialog pattern",
+      "Form state management",
+      "Event handling with typed callbacks"
+    ],
+    "accessibility": [
+      "Modal has proper role and heading attributes",
+      "Form items provide clear labels for all inputs",
+      "Button groups have logical tab order",
+      "Modal supports keyboard navigation and escape to close"
+    ]
+  },
+  "codeExamples": {
+    "react": {
+      "complete": "import {\n  GoabButton,\n  GoabButtonGroup,\n  GoabContainer,\n  GoabDropdown, GoabDropdownItem,\n  GoabFormItem, GoabInput,\n  GoabModal, GoabTextarea\n} from \"@abgov/react-components\";\nimport { CodeSnippet } from \"@components/code-snippet/CodeSnippet.tsx\";\nimport { useContext, useState } from \"react\";\nimport { LanguageVersionContext } from \"@contexts/LanguageVersionContext.tsx\";\nimport { GoabDropdownOnChangeDetail, GoabTextAreaOnChangeDetail } from \"@abgov/ui-components-common\";\n\nexport const AddAnotherItemInAModal = () => {\n  const {version} = useContext(LanguageVersionContext);\n  const [addItemModalOpen, setAddItemModalOpen] = useState<boolean>();\n  const [type, setType] = useState<string>();\n  const [name, setName] = useState<string>();\n  const [description, setDescription] = useState<string>();\n\n  const onChangeName = (value: string) => {\n    setName(value);\n  };\n\n  const onChangeDescription = (event: GoabTextAreaOnChangeDetail) => {\n    setDescription(event.value);\n  };\n  const onChangeType = (event: GoabDropdownOnChangeDetail) => {\n    setType(event.value);\n  };\n\n  return (\n    <>\n      {/*Don't use a Sandbox because the Dropdown inside a modal will make the modal shifts everytime we tab from the dropdown*/}\n      <GoabContainer mt=\"none\" mb=\"none\">\n        <GoabButtonGroup alignment=\"center\">\n          <GoabButton type=\"tertiary\" leadingIcon=\"add\" onClick={() => setAddItemModalOpen(true)}>\n            Add another item\n          </GoabButton>\n        </GoabButtonGroup>\n\n        <GoabModal\n          heading=\"Add a new item\"\n          role=\"dialog\"\n          open={addItemModalOpen}\n          actions={\n            <GoabButtonGroup alignment=\"end\">\n              <GoabButton type=\"tertiary\" onClick={() => setAddItemModalOpen(false)}>\n                Cancel\n              </GoabButton>\n              <GoabButton type=\"primary\" onClick={() => setAddItemModalOpen(false)}>\n                Save new item\n              </GoabButton>\n            </GoabButtonGroup>\n          }>\n          <p>Fill in the information to create a new item</p>\n          <GoabFormItem label=\"Type\" mt=\"xs\">\n            <GoabDropdown onChange={onChangeType} value={type}>\n              <GoabDropdownItem value=\"1\" label=\"Option 1\"></GoabDropdownItem>\n              <GoabDropdownItem value=\"2\" label=\"Option 2\"></GoabDropdownItem>\n            </GoabDropdown>\n          </GoabFormItem>\n          <GoabFormItem label=\"Name\" mt=\"xs\">\n            <GoabInput\n              onChange={event => onChangeName(event.value)}\n              value={name}\n              name=\"name\"></GoabInput>\n          </GoabFormItem>\n          <GoabFormItem label=\"Description\" mt=\"xs\">\n            <GoabTextarea\n              name=\"description\"\n              width=\"80%\"\n              rows={2}\n              onChange={onChangeDescription}\n              value={description}></GoabTextarea>\n          </GoabFormItem>\n        </GoabModal>\n      </GoabContainer>\n    </>\n  )\n}",
+      "key": "const [modalOpen, setModalOpen] = useState(false);\nconst [type, setType] = useState<string>();\nconst [name, setName] = useState<string>();\nconst [description, setDescription] = useState<string>();\n\nconst handleTypeChange = (event: GoabDropdownOnChangeDetail) => {\n  setType(event.value);\n};\n\nconst handleNameChange = (value: string) => {\n  setName(value);\n};\n\nconst handleDescriptionChange = (event: GoabTextAreaOnChangeDetail) => {\n  setDescription(event.value);\n};\n\n<GoabButton type=\"tertiary\" leadingIcon=\"add\" onClick={() => setModalOpen(true)}>\n  Add another item\n</GoabButton>\n\n<GoabModal\n  heading=\"Add a new item\"\n  role=\"dialog\"\n  open={modalOpen}\n  actions={\n    <GoabButtonGroup alignment=\"end\">\n      <GoabButton type=\"tertiary\" onClick={() => setModalOpen(false)}>\n        Cancel\n      </GoabButton>\n      <GoabButton type=\"primary\" onClick={() => setModalOpen(false)}>\n        Save new item\n      </GoabButton>\n    </GoabButtonGroup>\n  }\n>\n  <GoabFormItem label=\"Type\">\n    <GoabDropdown onChange={handleTypeChange} value={type}>\n      <GoabDropdownItem value=\"1\" label=\"Option 1\" />\n      <GoabDropdownItem value=\"2\" label=\"Option 2\" />\n    </GoabDropdown>\n  </GoabFormItem>\n  \n  <GoabFormItem label=\"Name\">\n    <GoabInput onChange={event => handleNameChange(event.value)} value={name} />\n  </GoabFormItem>\n  \n  <GoabFormItem label=\"Description\">\n    <GoabTextarea onChange={handleDescriptionChange} value={description} />\n  </GoabFormItem>\n</GoabModal>"
+    },
+    "angular": {
+      "complete": "export class SomeOtherComponent {\n  open = false;\n  type: string|undefined = \"\";\n  name = \"\";\n  description = \"\";\n\n  toggleModal() {\n    this.open = !this.open;\n  }\n\n  updateType(event: GoabDropdownOnChangeDetail) {\n    this.type = event.value;\n  }\n\n  updateName(event: GoabInputOnChangeDetail) {\n    this.name = event.value;\n  }\n\n  updateDescription(event: GoabTextAreaOnChangeDetail) {\n    this.description = event.value;\n  }\n}",
+      "key": "open = false;\ntype: string|undefined = \"\";\nname = \"\";\ndescription = \"\";\n\ntoggleModal() {\n  this.open = !this.open;\n}\n\nupdateType(event: GoabDropdownOnChangeDetail) {\n  this.type = event.value;\n}\n\nupdateName(event: GoabInputOnChangeDetail) {\n  this.name = event.value;\n}\n\nupdateDescription(event: GoabTextAreaOnChangeDetail) {\n  this.description = event.value;\n}"
+    }
+  },
+  "tags": [
+    "modal",
+    "form",
+    "add-item",
+    "create",
+    "dropdown",
+    "input",
+    "textarea",
+    "dynamic-content",
+    "user-interaction"
+  ]
+}

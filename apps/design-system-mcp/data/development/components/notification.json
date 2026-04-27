@@ -1,0 +1,112 @@
+{
+  "name": "Notification",
+  "category": "component",
+  "summary": "",
+  "import": "import { GoabNotification } from '@abgov/react-components'",
+  "customElement": {
+    "tagName": "goa-notification",
+    "reactName": "GoabNotification",
+    "angularSelector": "goab-notification"
+  },
+  "props": [
+    {
+      "name": "type",
+      "type": "\"emergency\" | \"important\" | \"information\" | \"event\"",
+      "required": false,
+      "default": "",
+      "description": "",
+      "frameworks": {
+        "webComponent": "type=\"...\"",
+        "react": "type={...}",
+        "angular": "[type]=\"...\""
+      }
+    },
+    {
+      "name": "maxcontentwidth",
+      "type": "any",
+      "required": false,
+      "default": "100%",
+      "description": "",
+      "frameworks": {
+        "webComponent": "maxcontentwidth=\"...\"",
+        "react": "maxcontentwidth={...}",
+        "angular": "[maxcontentwidth]=\"...\""
+      }
+    },
+    {
+      "name": "arialive",
+      "type": "\"assertive\" | \"off\" | \"polite\"",
+      "required": false,
+      "default": "polite",
+      "description": "",
+      "frameworks": {
+        "webComponent": "arialive=\"...\"",
+        "react": "arialive={...}",
+        "angular": "[arialive]=\"...\""
+      }
+    },
+    {
+      "name": "testId",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "description": "",
+      "frameworks": {
+        "webComponent": "test-id=\"...\"",
+        "react": "testId={...}",
+        "angular": "[testId]=\"...\""
+      }
+    },
+    {
+      "name": "emphasis",
+      "type": "\"high\" | \"low\"",
+      "required": false,
+      "default": "high",
+      "description": "",
+      "frameworks": {
+        "webComponent": "emphasis=\"...\"",
+        "react": "emphasis={...}",
+        "angular": "[emphasis]=\"...\""
+      }
+    },
+    {
+      "name": "compact",
+      "type": "boolean",
+      "required": false,
+      "default": "false",
+      "description": "",
+      "frameworks": {
+        "webComponent": "compact=\"...\"",
+        "react": "compact={...}",
+        "angular": "[compact]=\"...\""
+      }
+    }
+  ],
+  "events": [
+    {
+      "name": "_dismiss",
+      "type": "(event) => void",
+      "description": "",
+      "frameworks": {
+        "webComponent": "_dismiss custom event",
+        "react": "onDismiss prop",
+        "angular": "(onDismiss) event binding"
+      }
+    }
+  ],
+  "slots": [
+    {
+      "name": "default",
+      "description": ""
+    }
+  ],
+  "criticalNotes": [],
+  "commonMistakes": [],
+  "basicUsage": {
+    "webComponent": "",
+    "react": "",
+    "angular": ""
+  },
+  "relatedExamples": [],
+  "relatedComponents": []
+}

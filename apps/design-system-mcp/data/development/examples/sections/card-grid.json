@@ -1,0 +1,84 @@
+{
+  "$schema": "../recipe-schema.json",
+  "schemaVersion": "2.1.0-ai-context",
+  "recipeId": "card-grid",
+  "recipeName": "Card Grid",
+  "category": "layout-pattern",
+  "summary": "Display multiple services, programs, or options in a responsive card grid layout for easy scanning and navigation",
+  "serviceContext": {
+    "useCase": "Present multiple government services, programs, or navigation options in an organized, scannable format for efficient user decision-making",
+    "userType": "both",
+    "governmentServiceFlows": [
+      "When displaying multiple government services on a portal or dashboard",
+      "When presenting program options for users to choose from",
+      "When creating navigation hubs for different service categories",
+      "When showing related services or next steps after completing an action"
+    ],
+    "relatedPatterns": [
+      "basic-page-layout",
+      "start-page",
+      "worker-dashboard-overview",
+      "card-view-of-case-files"
+    ]
+  },
+  "components": [
+    {
+      "componentName": "GoabGrid",
+      "role": "Responsive grid container for card layout",
+      "purpose": "Provide responsive grid system with consistent gaps and minimum child widths"
+    },
+    {
+      "componentName": "GoabContainer",
+      "role": "Individual card container with accent styling",
+      "purpose": "Create visually distinct cards with consistent styling and spacing"
+    }
+  ],
+  "codeReference": {
+    "exampleFile": "card-grid.tsx",
+    "linesOfCode": 90,
+    "lastModified": "2024-01-01T00:00:00.000Z"
+  },
+  "implementation": {
+    "complexity": "medium",
+    "keyPatterns": [
+      "Responsive grid layout with minimum child width constraints",
+      "Consistent card styling using Container accent property",
+      "Semantic link structure for navigation to services",
+      "Custom CSS for typography and link styling",
+      "Content structure with title and description pattern"
+    ],
+    "designPatterns": [
+      "Card-based layout",
+      "Responsive grid system",
+      "Progressive enhancement",
+      "Content organization"
+    ],
+    "accessibility": [
+      "Links provide clear navigation to related services",
+      "Card structure creates logical content grouping",
+      "Consistent typography hierarchy aids comprehension",
+      "Grid layout adapts to different screen sizes and zoom levels"
+    ]
+  },
+  "codeExamples": {
+    "react": {
+      "complete": "import \"./container/container-card-grid-example.css\";\nimport { CodeSnippet } from \"@components/code-snippet/CodeSnippet.tsx\";\nimport { GoabContainer, GoabGrid } from \"@abgov/react-components\";\nimport { Sandbox } from \"@components/sandbox\";\n\nexport const CardGrid = () => {\n  return (\n    <Sandbox fullWidth>\n      <GoabGrid gap=\"xl\" minChildWidth=\"320px\">\n        <GoabContainer accent=\"thin\" mb=\"none\">\n          <a href=\"\" className=\"container-example-3--container-title\">\n            Waitlist submission\n          </a>\n          <div className=\"container-example-3--container-content\">\n            Enter and maintain information about the households waiting for affordable housing\n            with your organization.\n          </div>\n        </GoabContainer>\n\n        <GoabContainer accent=\"thin\" mb=\"none\">\n          <a href=\"\" className=\"container-example-3--container-title\">\n            Lodge assistance program\n          </a>\n          <div className=\"container-example-3--container-content\">\n            Keep track of the individuals who are placed in lodges and may qualify for the Lodge\n            Assistance Program subsidy.\n          </div>\n        </GoabContainer>\n\n        <GoabContainer accent=\"thin\" mb=\"none\">\n          <a className=\"container-example-3--container-title\">Education Support</a>\n          <div className=\"container-example-3--container-content\">\n            Explore educational resources, enroll in courses, and track your academic progress\n            effortlessly.\n          </div>\n        </GoabContainer>\n\n        <GoabContainer accent=\"thin\" mb=\"none\">\n          <a href=\"\" className=\"container-example-3--container-title\">\n            Social Assistance\n          </a>\n          <div className=\"container-example-3--container-content\">\n            Learn about available support programs, apply for financial aid, and access community\n            resources.\n          </div>\n        </GoabContainer>\n\n        <GoabContainer accent=\"thin\" mb=\"none\">\n          <a href=\"\" className=\"container-example-3--container-title\">\n            Employment Opportunity\n          </a>\n          <div className=\"container-example-3--container-content\">\n            Search for job openings, access career development tools, and receive\n            employment-related updates.\n          </div>\n        </GoabContainer>\n\n        <GoabContainer accent=\"thin\" mb=\"none\">\n          <a href=\"\" className=\"container-example-3--container-title\">\n            Housing Assistance\n          </a>\n          <div className=\"container-example-3--container-content\">\n            Find affordable housing options, apply for housing subsidies, and report maintenance\n            issues seamlessly.\n          </div>\n        </GoabContainer>\n      </GoabGrid>\n    </Sandbox>\n  )\n}",
+      "key": "const services = [\n  {\n    title: \"Waitlist submission\",\n    description: \"Enter and maintain information about the households waiting for affordable housing with your organization.\",\n    link: \"/services/waitlist\"\n  },\n  {\n    title: \"Lodge assistance program\",\n    description: \"Keep track of the individuals who are placed in lodges and may qualify for the Lodge Assistance Program subsidy.\",\n    link: \"/services/lodge-assistance\"\n  },\n  // ... more services\n];\n\n<GoabGrid gap=\"xl\" minChildWidth=\"320px\">\n  {services.map((service, index) => (\n    <GoabContainer key={index} accent=\"thin\" mb=\"none\">\n      <a href={service.link} className=\"service-title\">\n        {service.title}\n      </a>\n      <div className=\"service-content\">\n        {service.description}\n      </div>\n    </GoabContainer>\n  ))}\n</GoabGrid>\n\n/* CSS */\n.service-title {\n  color: var(--goa-color-interactive-default);\n  font: var(--goa-typography-heading-m);\n  text-decoration-line: underline;\n  margin-top: 0;\n  margin-bottom: var(--goa-space-m);\n}\n\n.service-content {\n  font: var(--goa-typography-body-m);\n}"
+    },
+    "angular": {
+      "complete": "export class CardGridComponent {\n  services = [\n    {\n      title: 'Waitlist submission',\n      description: 'Enter and maintain information about the households waiting for affordable housing with your organization.',\n      link: '/services/waitlist'\n    },\n    {\n      title: 'Lodge assistance program', \n      description: 'Keep track of the individuals who are placed in lodges and may qualify for the Lodge Assistance Program subsidy.',\n      link: '/services/lodge-assistance'\n    }\n    // ... more services\n  ];\n}",
+      "key": "services = [\n  {\n    title: 'Waitlist submission',\n    description: 'Enter and maintain information about the households waiting for affordable housing with your organization.',\n    link: '/services/waitlist'\n  },\n  {\n    title: 'Lodge assistance program',\n    description: 'Keep track of the individuals who are placed in lodges and may qualify for the Lodge Assistance Program subsidy.',\n    link: '/services/lodge-assistance'\n  }\n  // ... more services\n];\n\n<!-- Template -->\n<goab-grid gap=\"xl\" minChildWidth=\"320px\">\n  <goab-container *ngFor=\"let service of services\" accent=\"thin\" mb=\"none\">\n    <a [href]=\"service.link\" class=\"service-title\">\n      {{ service.title }}\n    </a>\n    <div class=\"service-content\">\n      {{ service.description }}\n    </div>\n  </goab-container>\n</goab-grid>"
+    }
+  },
+  "tags": [
+    "grid",
+    "cards",
+    "layout",
+    "services",
+    "navigation",
+    "responsive",
+    "dashboard",
+    "programs",
+    "portal"
+  ]
+}
