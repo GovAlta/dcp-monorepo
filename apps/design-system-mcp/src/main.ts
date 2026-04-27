@@ -18,7 +18,6 @@ import {
   StructuredJsonLogger,
   ConsoleAuditEmitter,
   withLogging,
-  READ_ONLY_ANNOTATIONS,
 } from '@dcp-monorepo/mcp-common';
 import { z } from 'zod';
 import { DataLoader } from './data-loader';
@@ -65,14 +64,21 @@ Returns matching items with relevance scores.`,
         .enum(['component', 'pattern', 'concept', 'example', 'system'])
         .optional()
         .describe('Filter by type'),
-      limit: z.number().optional().default(10).describe('Max results (default: 10)'),
+      limit: z
+        .number()
+        .optional()
+        .default(10)
+        .describe('Max results (default: 10)'),
     },
     withLogging(
       'search',
       async (args: { query: string; type?: string; limit?: number }) => {
         rateLimiter.check();
         const { query, type, limit = 10 } = args;
-        const results = await dataLoader.search(query, { type, maxResults: limit });
+        const results = await dataLoader.search(query, {
+          type,
+          maxResults: limit,
+        });
 
         return {
           content: [
@@ -162,7 +168,10 @@ Returns the complete item data including all properties, examples, and guidance.
     }),
   });
 
-  logger.info('server', `GoA Design System MCP v2.0 ready (${itemCount} items loaded)`);
+  logger.info(
+    'server',
+    `GoA Design System MCP v2.0 ready (${itemCount} items loaded)`,
+  );
 }
 
 main().catch((error) => {

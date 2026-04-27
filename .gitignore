@@ -43,3 +43,4 @@ Thumbs.db
 
 # Environment file
 .env
+apps/openshift.txt

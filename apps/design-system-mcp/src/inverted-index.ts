@@ -64,7 +64,7 @@ export class InvertedIndex {
       if (!this.termIndex.has(normalizedTerm)) {
         this.termIndex.set(normalizedTerm, new Set());
       }
-      this.termIndex.get(normalizedTerm)!.add(item.id);
+      (this.termIndex.get(normalizedTerm) as Set<string>).add(item.id);
 
       // Add prefixes for partial matching (2-4 characters)
       for (let i = 2; i <= Math.min(4, normalizedTerm.length); i++) {
@@ -72,7 +72,7 @@ export class InvertedIndex {
         if (!this.prefixIndex.has(prefix)) {
           this.prefixIndex.set(prefix, new Set());
         }
-        this.prefixIndex.get(prefix)!.add(item.id);
+        (this.prefixIndex.get(prefix) as Set<string>).add(item.id);
       }
     });
 
@@ -82,7 +82,7 @@ export class InvertedIndex {
       if (!this.tagIndex.has(normalizedTag)) {
         this.tagIndex.set(normalizedTag, new Set());
       }
-      this.tagIndex.get(normalizedTag)!.add(item.id);
+      (this.tagIndex.get(normalizedTag) as Set<string>).add(item.id);
     });
 
     // Index category
@@ -91,7 +91,7 @@ export class InvertedIndex {
       if (!this.categoryIndex.has(normalizedCategory)) {
         this.categoryIndex.set(normalizedCategory, new Set());
       }
-      this.categoryIndex.get(normalizedCategory)!.add(item.id);
+      (this.categoryIndex.get(normalizedCategory) as Set<string>).add(item.id);
     }
 
     this.updateStats();
@@ -190,9 +190,7 @@ export class InvertedIndex {
   getItemsByType(
     type: 'component' | 'system' | 'workflow' | 'example',
   ): IndexedItem[] {
-    return Array.from(this.items.values()).filter(
-      (item) => item.type === type,
-    );
+    return Array.from(this.items.values()).filter((item) => item.type === type);
   }
 
   /**
@@ -290,7 +288,7 @@ export class InvertedIndex {
       });
     }
 
-    const candidate = candidateScores.get(itemId)!;
+    const candidate = candidateScores.get(itemId) as SearchCandidate;
     candidate.matchCount++;
     candidate.matchTypes.add(matchType);
   }

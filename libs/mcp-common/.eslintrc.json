@@ -8,7 +8,9 @@
     },
     {
       "files": ["*.ts", "*.tsx"],
-      "rules": {}
+      "rules": {
+        "import/no-unresolved": ["error", { "ignore": ["@modelcontextprotocol/sdk"] }]
+      }
     },
     {
       "files": ["*.js", "*.jsx"],

@@ -1,0 +1,20 @@
+  - apiVersion: v1
+    kind: ConfigMap
+    metadata:
+      name: design-system-mcp
+      namespace: dcp-prod
+    data:
+      MCP_TRANSPORT: 'http'
+      PORT: '3333'
+      HOST: '0.0.0.0'
+      CORS_ORIGIN: '*'
+      GOA_RATE_LIMIT: '60'
+      GOA_LOG_LEVEL: 'info'
+      GOA_LOG_ARGS: 'false'
+  - apiVersion: v1
+    kind: Secret
+    metadata:
+      name: design-system-mcp
+      namespace: dcp-prod
+    stringData:
+      MCP_AUTH_TOKEN:

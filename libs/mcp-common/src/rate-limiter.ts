@@ -11,7 +11,7 @@ export class RateLimiter {
       1,
       limit ??
         (parseInt(process.env['GOA_RATE_LIMIT'] ?? '', 10) ||
-          DEFAULT_RATE_LIMIT)
+          DEFAULT_RATE_LIMIT),
     );
     this.windowMs = windowMs ?? RATE_WINDOW_MS;
   }
@@ -25,13 +25,13 @@ export class RateLimiter {
     const now = Date.now();
     while (
       this.timestamps.length > 0 &&
-      this.timestamps[0]! <= now - this.windowMs
+      (this.timestamps[0] as number) <= now - this.windowMs
     ) {
       this.timestamps.shift();
     }
     if (this.timestamps.length >= this.limit) {
       throw new Error(
-        `Rate limit exceeded. Maximum ${this.limit} tool calls per minute.`
+        `Rate limit exceeded. Maximum ${this.limit} tool calls per minute.`,
       );
     }
     this.timestamps.push(now);
@@ -56,7 +56,7 @@ export class KeyedRateLimiter {
       1,
       limit ??
         (parseInt(process.env['GOA_RATE_LIMIT'] ?? '', 10) ||
-          DEFAULT_RATE_LIMIT)
+          DEFAULT_RATE_LIMIT),
     );
     this.windowMs = windowMs ?? RATE_WINDOW_MS;
   }
@@ -74,12 +74,15 @@ export class KeyedRateLimiter {
       this.buckets.set(key, timestamps);
     }
 
-    while (timestamps.length > 0 && timestamps[0]! <= now - this.windowMs) {
+    while (
+      timestamps.length > 0 &&
+      (timestamps[0] as number) <= now - this.windowMs
+    ) {
       timestamps.shift();
     }
     if (timestamps.length >= this.limit) {
       throw new Error(
-        `Rate limit exceeded. Maximum ${this.limit} tool calls per minute.`
+        `Rate limit exceeded. Maximum ${this.limit} tool calls per minute.`,
       );
     }
     timestamps.push(now);

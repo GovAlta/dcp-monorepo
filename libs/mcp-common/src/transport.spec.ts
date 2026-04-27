@@ -70,7 +70,7 @@ describe('createHttpApp', () => {
       });
 
       const res = await request(app).get(
-        '/.well-known/oauth-protected-resource'
+        '/.well-known/oauth-protected-resource',
       );
 
       expect(res.status).toBe(200);
@@ -84,7 +84,7 @@ describe('createHttpApp', () => {
       const { app, cleanup } = createHttpApp(server);
 
       const res = await request(app).get(
-        '/.well-known/oauth-protected-resource'
+        '/.well-known/oauth-protected-resource',
       );
 
       expect(res.status).toBe(404);
@@ -132,9 +132,7 @@ describe('createHttpApp', () => {
         wwwAuthenticate: 'Bearer realm="test"',
       });
 
-      const res = await request(app)
-        .post('/mcp')
-        .send({});
+      const res = await request(app).post('/mcp').send({});
 
       expect(res.status).toBe(401);
       expect(res.headers['www-authenticate']).toContain('Bearer');
@@ -185,7 +183,7 @@ describe('createHttpApp', () => {
       expect(res.status).toBe(204);
       expect(res.headers['access-control-allow-origin']).toBe('*');
       expect(res.headers['access-control-allow-headers']).toContain(
-        'Authorization'
+        'Authorization',
       );
       cleanup();
     });

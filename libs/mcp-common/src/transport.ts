@@ -53,7 +53,7 @@ export interface StartServerOptions {
 
 export async function startServer(
   server: McpServer,
-  options?: StartServerOptions
+  options?: StartServerOptions,
 ): Promise<void> {
   const transport =
     options?.transport ??
@@ -90,7 +90,7 @@ interface HttpAppResult {
  */
 export function createHttpApp(
   server: McpServer,
-  options?: StartServerOptions
+  options?: StartServerOptions,
 ): HttpAppResult {
   const app = express();
   app.use(express.json({ limit: '1mb' }));
@@ -102,7 +102,7 @@ export function createHttpApp(
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, DELETE, OPTIONS');
     res.setHeader(
       'Access-Control-Allow-Headers',
-      'Authorization, Content-Type, mcp-session-id'
+      'Authorization, Content-Type, mcp-session-id',
     );
     res.setHeader('Access-Control-Expose-Headers', 'mcp-session-id');
     if (_req.method === 'OPTIONS') {
@@ -175,7 +175,7 @@ export function createHttpApp(
     let transport: StreamableHTTPServerTransport;
 
     if (sessionId && sessions.has(sessionId)) {
-      transport = sessions.get(sessionId)!.transport;
+      transport = (sessions.get(sessionId) as SessionEntry).transport;
       touchSession(sessionId);
     } else {
       const newSessionId = randomUUID();
@@ -188,7 +188,7 @@ export function createHttpApp(
 
       transport.onclose = () => {
         const id = [...sessions.entries()].find(
-          ([, e]) => e.transport === transport
+          ([, e]) => e.transport === transport,
         )?.[0];
         if (id) sessions.delete(id);
       };
@@ -206,7 +206,7 @@ export function createHttpApp(
       return;
     }
     touchSession(sessionId);
-    const transport = sessions.get(sessionId)!.transport;
+    const transport = (sessions.get(sessionId) as SessionEntry).transport;
     await transport.handleRequest(req, res);
   });
 
@@ -216,7 +216,7 @@ export function createHttpApp(
       res.status(400).json({ error: 'Invalid or missing session ID' });
       return;
     }
-    const transport = sessions.get(sessionId)!.transport;
+    const transport = (sessions.get(sessionId) as SessionEntry).transport;
     await transport.handleRequest(req, res);
     sessions.delete(sessionId);
   });
@@ -234,16 +234,19 @@ export function createHttpApp(
 
 async function startHttpTransport(
   server: McpServer,
-  options?: StartServerOptions
+  options?: StartServerOptions,
 ): Promise<void> {
-  const resolvedPort = options?.port ?? parseInt(process.env['PORT'] ?? '3000', 10);
+  const resolvedPort =
+    options?.port ?? parseInt(process.env['PORT'] ?? '3000', 10);
   const { app, cleanup } = createHttpApp(server, options);
 
   return new Promise((resolve) => {
     const httpServer: Server = app.listen(resolvedPort, () => {
-      const authMode = options?.authenticate ? 'authenticated' : 'unauthenticated';
+      const authMode = options?.authenticate
+        ? 'authenticated'
+        : 'unauthenticated';
       console.error(
-        `[mcp-common] Server running on http://localhost:${resolvedPort} (POST /mcp, GET /health) [${authMode}]`
+        `[mcp-common] Server running on http://localhost:${resolvedPort} (POST /mcp, GET /health) [${authMode}]`,
       );
       resolve();
     });

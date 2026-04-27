@@ -1,6 +1,6 @@
 {
   "extends": ["../../.eslintrc.json"],
-  "ignorePatterns": ["!**/*"],
+  "ignorePatterns": ["!**/*", "templates/**", "scripts/**", "data/**"],
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
@@ -8,7 +8,9 @@
     },
     {
       "files": ["*.ts", "*.tsx"],
-      "rules": {}
+      "rules": {
+        "import/no-unresolved": ["error", { "ignore": ["@modelcontextprotocol/sdk", "@dcp-monorepo/mcp-common"] }]
+      }
     },
     {
       "files": ["*.js", "*.jsx"],

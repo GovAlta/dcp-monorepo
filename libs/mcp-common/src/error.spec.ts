@@ -35,7 +35,7 @@ describe('toolError', () => {
     toolError(new Error('logged'));
     expect(console.error).toHaveBeenCalledWith(
       '[mcp-common] Tool error:',
-      'logged'
+      'logged',
     );
   });
 });
