@@ -175,16 +175,9 @@ jobs:
           oc process -f .openshift/${{ matrix.app }}/${{ matrix.app }}.yml -p PROJECT=dcp-dev -p DEPLOY_TAG=dev | oc apply -f -
       - name: Deploy Dev
         run: |
-          if oc get dc/${{ matrix.app }} 2>/dev/null; then
-            oc rollout latest dc/${{ matrix.app }}
-            oc rollout status dc/${{ matrix.app }}
-          elif oc get deployment/${{ matrix.app }} 2>/dev/null; then
-            oc set triggers deployment/${{ matrix.app }} --auto
-            oc rollout status deployment/${{ matrix.app }}
-            oc set triggers deployment/${{ matrix.app }} --manual
-          else
-            echo 'No DeploymentConfig or Deployment found for ${{ matrix.app }}.'
-          fi
+          oc set triggers deployment/${{ matrix.app }} --auto
+          oc rollout status deployment/${{ matrix.app }} --timeout=180s
+          oc set triggers deployment/${{ matrix.app }} --manual
 
   # Approval gate so matrix items don't each require individual approval.
   deployStagingApproval:
@@ -228,16 +221,9 @@ jobs:
           oc process -f .openshift/${{ matrix.app }}/${{ matrix.app }}.yml -p PROJECT=dcp-uat -p DEPLOY_TAG=test | oc apply -f -
       - name: Deploy Test
         run: |
-          if oc get dc/${{ matrix.app }} 2>/dev/null; then
-            oc rollout latest dc/${{ matrix.app }}
-            oc rollout status dc/${{ matrix.app }}
-          elif oc get deployment/${{ matrix.app }} 2>/dev/null; then
-            oc set triggers deployment/${{ matrix.app }} --auto
-            oc rollout status deployment/${{ matrix.app }}
-            oc set triggers deployment/${{ matrix.app }} --manual
-          else
-            echo 'No DeploymentConfig or Deployment found for ${{ matrix.app }}.'
-          fi
+          oc set triggers deployment/${{ matrix.app }} --auto
+          oc rollout status deployment/${{ matrix.app }} --timeout=180s
+          oc set triggers deployment/${{ matrix.app }} --manual
 
   deployProdApproval:
     runs-on: ubuntu-24.04
@@ -280,13 +266,6 @@ jobs:
           oc process -f .openshift/${{ matrix.app }}/${{ matrix.app }}.yml -p PROJECT=dcp-prod -p DEPLOY_TAG=prod | oc apply -f -
       - name: Deploy Prod
         run: |
-          if oc get dc/${{ matrix.app }} 2>/dev/null; then
-            oc rollout latest dc/${{ matrix.app }}
-            oc rollout status dc/${{ matrix.app }}
-          elif oc get deployment/${{ matrix.app }} 2>/dev/null; then
-            oc set triggers deployment/${{ matrix.app }} --auto
-            oc rollout status deployment/${{ matrix.app }}
-            oc set triggers deployment/${{ matrix.app }} --manual
-          else
-            echo 'No DeploymentConfig or Deployment found for ${{ matrix.app }}.'
-          fi
+          oc set triggers deployment/${{ matrix.app }} --auto
+          oc rollout status deployment/${{ matrix.app }} --timeout=180s
+          oc set triggers deployment/${{ matrix.app }} --manual
