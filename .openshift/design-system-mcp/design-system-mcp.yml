@@ -143,6 +143,7 @@ objects:
           schedulerName: default-scheduler
       triggers:
         - imageChangeParams:
+            automatic: true
             containerNames:
               - ${APP_NAME}
             from:
@@ -160,3 +161,8 @@ objects:
         targetPort: http
       tls:
         termination: edge
+      to:
+        kind: Service
+        name: ${APP_NAME}
+        weight: 100
+      wildcardPolicy: None
