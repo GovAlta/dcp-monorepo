@@ -79,7 +79,7 @@ jobs:
               fi
             done
           fi
-          echo "affected_apps_array=$(echo \"$DEPLOYABLE\" | jq -Rc 'split(",") | if . == [""] then [] else . end')" >> $GITHUB_OUTPUT
+          echo "affected_apps_array=$(echo "$DEPLOYABLE" | jq -Rc 'split(",") | if . == [""] then [] else . end')" >> $GITHUB_OUTPUT
 
       - run: npm prune --omit=dev
 
