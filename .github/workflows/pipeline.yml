@@ -3,6 +3,9 @@
 # creating runtime containers. It does not require a container registry accessible to both OpenShift
 # and GitHub.
 #
+# Triggered automatically on push to main (merge) and pull requests. Only affected apps are built
+# and deployed, determined via nx affected.
+#
 # Secrets (to be manually added):
 # OPENSHIFT_SERVER  - URL to the OpenShift server.
 # OPENSHIFT_TOKEN   - Token for the service account (github-actions) used for OC cli commands.
@@ -12,65 +15,90 @@
 name: Pipeline
 
 on:
+  pull_request:
+    branches:
+      - main
+
+  push:
+    branches:
+      - main
+
   workflow_dispatch:
     inputs:
-      SELECTED_BASE:
+      AFFECTED_BASE:
         description: Value for --base= in nx affected commands
         required: false
-      AFFECTED_APPS:
-        description: Space separated list of affected apps
-        required: true
 
 jobs:
   build:
     runs-on: ubuntu-24.04
-    env:
-      AFFECTED_BASE: 'origin/main'
+    permissions:
+      contents: read
+      actions: read
     outputs:
-      affected_apps: ${{ steps.set_outputs.outputs.affected_apps }}
+      affected_apps_array: ${{ steps.set_outputs.outputs.affected_apps_array }}
     steps:
-      # Checkout the source code.
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           node-version: '18'
           cache: 'npm'
-      - run: npm i
+      - run: npm ci
 
       # Determine the last successful build of this (pipeline.yml) workflow and set it as the AFFECTED_BASE.
       - name: Get last successful commit
         id: last_successful_commit
-        uses: nrwl/nx-set-shas@v3
-      - name: Set AFFECTED_BASE to last successful build commit
-        if: ${{ steps.last_successful_commit.outputs.base }}
-        run: echo "AFFECTED_BASE=${{ steps.last_successful_commit.outputs.base }}" >> $GITHUB_ENV
+        uses: nrwl/nx-set-shas@v4
 
-      # Input for base takes precedence over last successful build.
-      - name: Set AFFECTED_BASE to input for SELECTED_BASE
-        if: ${{ github.event.inputs.SELECTED_BASE }}
-        run: echo "AFFECTED_BASE=${{ github.event.inputs.SELECTED_BASE }}" >> $GITHUB_ENV
-
-      # Project build steps lint, test, and build
+      # Project build steps lint, check, and build
       - name: Lint
-        run: npx nx affected --target=lint --base=${{ env.AFFECTED_BASE }} --parallel
+        run: npx nx affected --target=lint --base=${{ github.event.inputs.AFFECTED_BASE || steps.last_successful_commit.outputs.base }} --parallel
       - name: Check
-        run: npx nx affected --target=check --base=${{ env.AFFECTED_BASE }} --parallel
-      # - name: Test
-      #   run: npx nx affected --target=test --base=${{ env.AFFECTED_BASE }}
-      # Set affected apps to env for later steps and jobs.
-      - name: Set AFFECTED_APPS for OC steps
-        run: echo "AFFECTED_APPS=${{ inputs.AFFECTED_APPS }}" >> $GITHUB_ENV
+        run: npx nx affected --target=check --base=${{ github.event.inputs.AFFECTED_BASE || steps.last_successful_commit.outputs.base }} --parallel
       - name: Build
-        run: |
-          for app in $AFFECTED_APPS
-          do
-            npx nx run $app:buildcustom --configuration production
-          done
-      - run: npm prune --production
+        run: npx nx affected --target=buildcustom --base=${{ github.event.inputs.AFFECTED_BASE || steps.last_successful_commit.outputs.base }} --configuration production
+      - run: npm prune --omit=dev
 
-      # Run the OC BuildConfigs for create containers.
+      # Determine affected deployable apps (those with OpenShift manifests).
+      - id: set_outputs
+        name: Set affected deployable apps
+        run: |
+          ALL_AFFECTED=$(npx nx show projects --affected --type=app --sep=, --base=${{ github.event.inputs.AFFECTED_BASE || steps.last_successful_commit.outputs.base }})
+          DEPLOYABLE=""
+          if [ -n "$ALL_AFFECTED" ]; then
+            IFS=',' read -ra APPS <<< "$ALL_AFFECTED"
+            for app in "${APPS[@]}"; do
+              if [ -f ".openshift/$app/$app.yml" ]; then
+                if [ -n "$DEPLOYABLE" ]; then
+                  DEPLOYABLE="$DEPLOYABLE,$app"
+                else
+                  DEPLOYABLE="$app"
+                fi
+              fi
+            done
+          fi
+          echo "affected_apps_array=$(echo \"$DEPLOYABLE\" | jq -Rc 'split(",") | if . == [""] then [] else . end')" >> $GITHUB_OUTPUT
+
+  buildContainers:
+    runs-on: ubuntu-24.04
+    needs: build
+    if: needs.build.outputs.affected_apps_array != '[]' && github.event_name != 'pull_request'
+    strategy:
+      fail-fast: false
+      matrix:
+        app: ${{ fromJson(needs.build.outputs.affected_apps_array) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+      - run: npm ci
+      - name: Build app
+        run: npx nx run ${{ matrix.app }}:buildcustom --configuration production
+      - run: npm prune --omit=dev
       - name: Install OpenShift CLI
         uses: redhat-actions/openshift-tools-installer@v1
         with:
@@ -81,32 +109,53 @@ jobs:
           openshift_server_url: ${{ secrets.OPENSHIFT_SERVER }}
           openshift_token: ${{ secrets.OPENSHIFT_TOKEN }}
           namespace: dcp-build
-
-          # Disables SSL cert checking. Use this if you don't have the certificate authority data.
           insecure_skip_tls_verify: true
-          # This method is more secure, if the certificate from Step 4 is available
-          # certificate_authority_data: ${{ secrets.CA_DATA }}
-      - name: Build containers
+      - name: Build container
         run: |
-          for app in $AFFECTED_APPS
-          do 
-            oc process -f .openshift/$app/$app.yml  -p PROJECT=dcp-build | oc apply -l apply-build=true -f - 
-            oc start-build $app --from-dir . --follow --wait
-          done
-      # Set build job outputs for subsequent jobs.
-      - id: set_outputs
-        run: echo "affected_apps=$AFFECTED_APPS" >> $GITHUB_OUTPUT
+          oc process -f .openshift/${{ matrix.app }}/${{ matrix.app }}.yml -p PROJECT=dcp-build | oc apply -l apply-build=true -f -
+          oc start-build ${{ matrix.app }} --from-dir . --follow --wait
+
+  ocDryRun:
+    runs-on: ubuntu-24.04
+    needs: build
+    # Only trigger dry run on PR events.
+    if: github.event_name == 'pull_request' && needs.build.outputs.affected_apps_array != '[]'
+    strategy:
+      fail-fast: false
+      matrix:
+        app: ${{ fromJson(needs.build.outputs.affected_apps_array) }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install OpenShift CLI
+        uses: redhat-actions/openshift-tools-installer@v1
+        with:
+          oc: '4'
+      - name: Oc login
+        uses: redhat-actions/oc-login@v1
+        with:
+          openshift_server_url: ${{ secrets.OPENSHIFT_SERVER }}
+          openshift_token: ${{ secrets.OPENSHIFT_TOKEN }}
+          namespace: dcp-build
+          insecure_skip_tls_verify: true
+      - run: oc project dcp-dev
+      - name: Apply Manifests (dry-run)
+        run: |
+          oc process -f .openshift/${{ matrix.app }}/${{ matrix.app }}.yml -p PROJECT=dcp-dev -p DEPLOY_TAG=dev | oc apply --dry-run='server' -f -
 
   deployDev:
     runs-on: ubuntu-24.04
-    needs: [build]
-    env:
-      AFFECTED_APPS: ${{ needs.build.outputs.affected_apps }}
+    needs: [build, buildContainers]
+    # Don't trigger deployment on PR events.
+    if: github.event_name != 'pull_request'
+    strategy:
+      fail-fast: true
+      max-parallel: 2
+      matrix:
+        app: ${{ fromJson(needs.build.outputs.affected_apps_array) }}
     environment:
       name: Dev
     steps:
-      # Checkout the source code for manifests
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Install OpenShift CLI
         uses: redhat-actions/openshift-tools-installer@v1
         with:
@@ -119,36 +168,39 @@ jobs:
           namespace: dcp-build
           insecure_skip_tls_verify: true
       - name: Tag Dev
-        run: |
-          for app in $AFFECTED_APPS
-          do 
-            oc tag $app:latest $app:dev
-          done
+        run: oc tag ${{ matrix.app }}:latest ${{ matrix.app }}:dev
       - run: oc project dcp-dev
       - name: Apply Manifests
         run: |
-          for app in $AFFECTED_APPS
-          do
-            oc process -f .openshift/$app/$app.yml -p PROJECT=dcp-dev -p DEPLOY_TAG=dev | oc apply -f -
-          done
+          oc process -f .openshift/${{ matrix.app }}/${{ matrix.app }}.yml -p PROJECT=dcp-dev -p DEPLOY_TAG=dev | oc apply -f -
       - name: Deploy Dev
         run: |
-          for app in $AFFECTED_APPS
-          do            
-            oc rollout latest dc/$app
-            oc rollout status dc/$app
-          done
+          oc rollout latest dc/${{ matrix.app }}
+          oc rollout status dc/${{ matrix.app }}
+
+  # Approval gate so matrix items don't each require individual approval.
+  deployStagingApproval:
+    runs-on: ubuntu-24.04
+    needs: [build, deployDev]
+    if: github.event_name != 'pull_request'
+    environment:
+      name: Test-gate
+    steps:
+      - run: echo "Staging deployment approved"
 
   deployStaging:
     runs-on: ubuntu-24.04
-    needs: [build, deployDev]
-    env:
-      AFFECTED_APPS: ${{ needs.build.outputs.affected_apps }}
+    needs: [build, deployStagingApproval]
+    if: github.event_name != 'pull_request'
+    strategy:
+      fail-fast: true
+      max-parallel: 2
+      matrix:
+        app: ${{ fromJson(needs.build.outputs.affected_apps_array) }}
     environment:
       name: Test
     steps:
-      # Checkout the source code for manifests
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Install OpenShift CLI
         uses: redhat-actions/openshift-tools-installer@v1
         with:
@@ -161,36 +213,38 @@ jobs:
           namespace: dcp-build
           insecure_skip_tls_verify: true
       - name: Tag Test
-        run: |
-          for app in $AFFECTED_APPS
-          do 
-            oc tag $app:dev $app:test
-          done
+        run: oc tag ${{ matrix.app }}:dev ${{ matrix.app }}:test
       - run: oc project dcp-uat
       - name: Apply Manifests
         run: |
-          for app in $AFFECTED_APPS
-          do
-            oc process -f .openshift/$app/$app.yml -p PROJECT=dcp-uat -p DEPLOY_TAG=test | oc apply -f -
-          done
+          oc process -f .openshift/${{ matrix.app }}/${{ matrix.app }}.yml -p PROJECT=dcp-uat -p DEPLOY_TAG=test | oc apply -f -
       - name: Deploy Test
         run: |
-          for app in $AFFECTED_APPS
-          do            
-            oc rollout latest dc/$app
-            oc rollout status dc/$app
-          done
+          oc rollout latest dc/${{ matrix.app }}
+          oc rollout status dc/${{ matrix.app }}
+
+  deployProdApproval:
+    runs-on: ubuntu-24.04
+    needs: [build, deployStaging]
+    if: github.event_name != 'pull_request'
+    environment:
+      name: Prod-gate
+    steps:
+      - run: echo "Production deployment approved"
 
   deployProd:
     runs-on: ubuntu-24.04
-    needs: [build, deployStaging]
-    env:
-      AFFECTED_APPS: ${{ needs.build.outputs.affected_apps }}
+    needs: [build, deployProdApproval]
+    if: github.event_name != 'pull_request'
+    strategy:
+      fail-fast: true
+      max-parallel: 2
+      matrix:
+        app: ${{ fromJson(needs.build.outputs.affected_apps_array) }}
     environment:
       name: Prod
     steps:
-      # Checkout the source code for manifests
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Install OpenShift CLI
         uses: redhat-actions/openshift-tools-installer@v1
         with:
@@ -203,22 +257,12 @@ jobs:
           namespace: dcp-build
           insecure_skip_tls_verify: true
       - name: Tag Prod
-        run: |
-          for app in $AFFECTED_APPS
-          do 
-            oc tag $app:test $app:prod
-          done
+        run: oc tag ${{ matrix.app }}:test ${{ matrix.app }}:prod
       - run: oc project dcp-prod
       - name: Apply Manifests
         run: |
-          for app in $AFFECTED_APPS
-          do
-            oc process -f .openshift/$app/$app.yml -p PROJECT=dcp-prod -p DEPLOY_TAG=prod | oc apply -f -
-          done
+          oc process -f .openshift/${{ matrix.app }}/${{ matrix.app }}.yml -p PROJECT=dcp-prod -p DEPLOY_TAG=prod | oc apply -f -
       - name: Deploy Prod
         run: |
-          for app in $AFFECTED_APPS
-          do            
-            oc rollout latest dc/$app
-            oc rollout status dc/$app
-          done
+          oc rollout latest dc/${{ matrix.app }}
+          oc rollout status dc/${{ matrix.app }}
