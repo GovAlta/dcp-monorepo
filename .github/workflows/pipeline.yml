@@ -59,9 +59,9 @@ jobs:
         run: npx nx affected --target=check --base=${{ github.event.inputs.AFFECTED_BASE || steps.last_successful_commit.outputs.base }} --parallel
       - name: Build
         run: npx nx affected --target=buildcustom --base=${{ github.event.inputs.AFFECTED_BASE || steps.last_successful_commit.outputs.base }} --configuration production
+      - run: npm prune --omit=dev
 
       # Determine affected deployable apps (those with OpenShift manifests).
-      # Must run BEFORE npm prune so that nx is still available.
       - id: set_outputs
         name: Set affected deployable apps
         run: |
@@ -79,9 +79,7 @@ jobs:
               fi
             done
           fi
-          echo "affected_apps_array=$(echo "$DEPLOYABLE" | jq -Rc 'split(",") | if . == [""] then [] else . end')" >> $GITHUB_OUTPUT
-
-      - run: npm prune --omit=dev
+          echo "affected_apps_array=$(echo \"$DEPLOYABLE\" | jq -Rc 'split(",") | if . == [""] then [] else . end')" >> $GITHUB_OUTPUT
 
   buildContainers:
     runs-on: ubuntu-24.04
@@ -177,8 +175,16 @@ jobs:
           oc process -f .openshift/${{ matrix.app }}/${{ matrix.app }}.yml -p PROJECT=dcp-dev -p DEPLOY_TAG=dev | oc apply -f -
       - name: Deploy Dev
         run: |
-          oc rollout latest dc/${{ matrix.app }} 2>/dev/null || true
-          oc rollout status dc/${{ matrix.app }}
+          if oc get dc/${{ matrix.app }} 2>/dev/null; then
+            oc rollout latest dc/${{ matrix.app }}
+            oc rollout status dc/${{ matrix.app }}
+          elif oc get deployment/${{ matrix.app }} 2>/dev/null; then
+            oc set triggers deployment/${{ matrix.app }} --auto
+            oc rollout status deployment/${{ matrix.app }}
+            oc set triggers deployment/${{ matrix.app }} --manual
+          else
+            echo 'No DeploymentConfig or Deployment found for ${{ matrix.app }}.'
+          fi
 
   # Approval gate so matrix items don't each require individual approval.
   deployStagingApproval:
@@ -222,8 +228,16 @@ jobs:
           oc process -f .openshift/${{ matrix.app }}/${{ matrix.app }}.yml -p PROJECT=dcp-uat -p DEPLOY_TAG=test | oc apply -f -
       - name: Deploy Test
         run: |
-          oc rollout latest dc/${{ matrix.app }} 2>/dev/null || true
-          oc rollout status dc/${{ matrix.app }}
+          if oc get dc/${{ matrix.app }} 2>/dev/null; then
+            oc rollout latest dc/${{ matrix.app }}
+            oc rollout status dc/${{ matrix.app }}
+          elif oc get deployment/${{ matrix.app }} 2>/dev/null; then
+            oc set triggers deployment/${{ matrix.app }} --auto
+            oc rollout status deployment/${{ matrix.app }}
+            oc set triggers deployment/${{ matrix.app }} --manual
+          else
+            echo 'No DeploymentConfig or Deployment found for ${{ matrix.app }}.'
+          fi
 
   deployProdApproval:
     runs-on: ubuntu-24.04
@@ -266,5 +280,13 @@ jobs:
           oc process -f .openshift/${{ matrix.app }}/${{ matrix.app }}.yml -p PROJECT=dcp-prod -p DEPLOY_TAG=prod | oc apply -f -
       - name: Deploy Prod
         run: |
-          oc rollout latest dc/${{ matrix.app }} 2>/dev/null || true
-          oc rollout status dc/${{ matrix.app }}
+          if oc get dc/${{ matrix.app }} 2>/dev/null; then
+            oc rollout latest dc/${{ matrix.app }}
+            oc rollout status dc/${{ matrix.app }}
+          elif oc get deployment/${{ matrix.app }} 2>/dev/null; then
+            oc set triggers deployment/${{ matrix.app }} --auto
+            oc rollout status deployment/${{ matrix.app }}
+            oc set triggers deployment/${{ matrix.app }} --manual
+          else
+            echo 'No DeploymentConfig or Deployment found for ${{ matrix.app }}.'
+          fi
