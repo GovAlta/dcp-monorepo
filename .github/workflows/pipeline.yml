@@ -153,7 +153,6 @@ jobs:
     if: github.event_name != 'pull_request'
     strategy:
       fail-fast: true
-      max-parallel: 2
       matrix:
         app: ${{ fromJson(needs.build.outputs.affected_apps_array) }}
     environment:
@@ -199,7 +198,6 @@ jobs:
     if: github.event_name != 'pull_request'
     strategy:
       fail-fast: true
-      max-parallel: 2
       matrix:
         app: ${{ fromJson(needs.build.outputs.affected_apps_array) }}
     environment:
@@ -244,7 +242,6 @@ jobs:
     if: github.event_name != 'pull_request'
     strategy:
       fail-fast: true
-      max-parallel: 2
       matrix:
         app: ${{ fromJson(needs.build.outputs.affected_apps_array) }}
     environment:
