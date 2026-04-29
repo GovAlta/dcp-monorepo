@@ -87,8 +87,10 @@ jobs:
     runs-on: ubuntu-24.04
     needs: build
     if: needs.build.outputs.affected_apps_array != '[]' && github.event_name != 'pull_request'
+    timeout-minutes: 15
     strategy:
       fail-fast: false
+      max-parallel: 3
       matrix:
         app: ${{ fromJson(needs.build.outputs.affected_apps_array) }}
     steps:
@@ -115,7 +117,7 @@ jobs:
       - name: Build container
         run: |
           oc process -f .openshift/${{ matrix.app }}/${{ matrix.app }}.yml -p PROJECT=dcp-build | oc apply -l apply-build=true -f -
-          oc start-build ${{ matrix.app }} --from-dir . --follow --wait
+          oc start-build ${{ matrix.app }} --from-dir . --follow --wait --build-loglevel 5
 
   ocDryRun:
     runs-on: ubuntu-24.04
