@@ -38,15 +38,22 @@ function resolveDataDir(): string {
 
 export interface SearchResult {
   id: string;
-  type: string;
+  collection: string;
   name?: string;
   summary?: string;
   preview?: string;
   score: number;
+  aliases: string[];
 }
 
 export interface SearchOptions {
-  type?: string;
+  collection?: string;
+  size?: string;
+  productType?: string;
+  framework?: string;
+  status?: string;
+  component?: string;
+  context?: string;
   maxResults?: number;
 }
 
@@ -96,20 +103,42 @@ export class DataLoader {
     query: string,
     options: SearchOptions = {},
   ): Promise<SearchResult[]> {
-    const { type, maxResults = 10 } = options;
+    const { collection, maxResults = 10 } = options;
+    // collection filter applied below; other filters (size, productType,
+    // framework, status, component, context) accepted in SearchOptions but
+    // not yet wired — pending PR #3888 schema fields landing in the data.
 
     const candidates = this.index.search(query, maxResults * 2);
 
+    const collectionToType: Record<string, string> = {
+      components: 'component',
+      examples: 'example',
+    };
+
     let filtered = candidates;
-    if (type) {
-      filtered = candidates.filter((c) => c.item.type === type);
+    if (collection) {
+      const targetType = collectionToType[collection];
+      if (targetType) {
+        filtered = candidates.filter((c) => c.item.type === targetType);
+      } else {
+        // Collection has no current data mapping (e.g. guidance, productTypes
+        // pending PR #3771 / #3888 ingestion)
+        filtered = [];
+      }
     }
+
+    const typeToCollection: Record<string, string> = {
+      component: 'components',
+      example: 'examples',
+      design: 'design',
+    };
 
     return filtered.slice(0, maxResults).map((candidate) => {
       const data = candidate.item.data;
       return {
         id: candidate.item.id,
-        type: candidate.item.type,
+        collection:
+          typeToCollection[candidate.item.type] || candidate.item.type,
         name:
           data.componentName ||
           data.name ||
@@ -118,37 +147,86 @@ export class DataLoader {
         summary: data.summary || data.description || data.purpose,
         preview: this.createPreview(data),
         score: candidate.matchCount,
+        aliases: Array.isArray(data.aliases) ? data.aliases : [],
       };
     });
   }
 
   /**
-   * Get item by ID
+   * Find component IDs that list this example in their relatedExamples field.
+   * Reverse lookup: examples don't list their components directly, but
+   * components list the examples that use them.
    */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  get(id: string): any | null {
+  findComponentsRelatedToExample(exampleId: string): string[] {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const components = this.index.getItemsByType('component' as any);
+    return components
+      .filter(
+        (c) =>
+          Array.isArray(c.data.relatedExamples) &&
+          c.data.relatedExamples.includes(exampleId),
+      )
+      .map((c) => c.id);
+  }
+
+  /**
+   * Get item by ID. Returns a structured wrapper with id, collection,
+   * resolved_via, and data — or null if not found.
+   *
+   * The optional collection param is accepted for forward compatibility;
+   * disambiguation logic is Day 2 work, pending the post-PR-3888 data shape.
+   */
+  get(
+    id: string,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    options: { collection?: string } = {},
+  ): {
+    id: string;
+    collection: string;
+    resolved_via: 'id' | 'alias';
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    data: any;
+  } | null {
+    const typeToCollection: Record<string, string> = {
+      component: 'components',
+      example: 'examples',
+      design: 'design',
+    };
+
     // Try direct lookup
-    let item = this.index.getItem(id.toLowerCase());
+    const directItem = this.index.getItem(id.toLowerCase());
+    if (directItem) {
+      return {
+        id: directItem.id,
+        collection: typeToCollection[directItem.type] || directItem.type,
+        resolved_via: 'id',
+        data: directItem.data,
+      };
+    }
 
-    // Try common variations if not found
-    if (!item) {
-      const variations = [
-        id,
-        id.toLowerCase(),
-        id.replace(/[-_]/g, ''),
-        id
-          .replace(/([A-Z])/g, '-$1')
-          .toLowerCase()
-          .slice(1),
-      ];
+    // Try common variations (treat as alias matches)
+    const variations = [
+      id,
+      id.replace(/[-_]/g, ''),
+      id
+        .replace(/([A-Z])/g, '-$1')
+        .toLowerCase()
+        .slice(1),
+    ];
 
-      for (const variation of variations) {
-        item = this.index.getItem(variation);
-        if (item) break;
+    for (const variation of variations) {
+      const item = this.index.getItem(variation);
+      if (item) {
+        return {
+          id: item.id,
+          collection: typeToCollection[item.type] || item.type,
+          resolved_via: 'alias',
+          data: item.data,
+        };
       }
     }
 
-    return item ? item.data : null;
+    return null;
   }
 
   /**
