@@ -185,6 +185,210 @@ This workspace contains multiple user-facing micro-apps and supporting APIs.
 - APIs and frontends commonly integrate with Alberta Digital Service Platform (ADSP) services.
 - Nx is used to orchestrate builds, checks, tests, and project-level task execution.
 
+## MCP Server Support
+
+The DCP monorepo includes Model Context Protocol (MCP) server infrastructure for building AI-native knowledge bases and tools. This enables seamless integration with Claude and other AI assistants.
+
+### Common MCP Infrastructure
+
+Shared MCP utilities are located in **`libs/mcp-common`**, which provides:
+
+- **Transport Abstraction**: Support for both stdio and HTTP transports
+- **Server Factory**: Creates MCP server instances with proper isolation
+- **Rate Limiting**: Built-in rate limiter to prevent abuse
+- **Logging & Audit**: Structured JSON logging with audit trails and correlation IDs
+- **Error Handling**: Standardized error responses for tools
+
+**Key exports from `libs/mcp-common`:**
+```typescript
+// Server creation
+createMcpServer()           // Create an MCP server instance
+startServer()               // Start with stdio or HTTP transport
+
+// Utilities
+RateLimiter                 // Rate limiting for tool calls
+StructuredJsonLogger        // JSON-based logging
+ConsoleAuditEmitter         // Audit event emission
+withLogging()               // Decorator for tool logging
+toolError()                 // Standard error responses
+```
+
+### MCP Applications
+
+| Project | Purpose |
+|---|---|
+| `design-system-mcp` | AI-native knowledge base for GoA Design System with search and retrieval tools for components, patterns, and examples |
+
+### Setting Up an MCP Server
+
+#### 1. Create a new MCP app
+
+Use the Nx generator to create a new Node.js application:
+
+```bash
+npx nx g @nx/node:app --name my-mcp-server --directory apps
+```
+
+#### 2. Add mcp-common as a dependency
+
+Update `apps/my-mcp-server/project.json` to include the `build` target with proper configuration:
+
+```json
+{
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "options": {
+        "platform": "node",
+        "outputPath": "dist/apps/my-mcp-server",
+        "format": ["cjs"],
+        "main": "apps/my-mcp-server/src/main.ts",
+        "tsConfig": "apps/my-mcp-server/tsconfig.app.json",
+        "generatePackageJson": true
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "options": {
+        "buildTarget": "my-mcp-server:build:development"
+      }
+    }
+  }
+}
+```
+
+#### 3. Implement the server
+
+**`apps/my-mcp-server/src/main.ts`:**
+
+```typescript
+import {
+  createMcpServer,
+  startServer,
+  RateLimiter,
+  StructuredJsonLogger,
+  ConsoleAuditEmitter,
+  withLogging,
+} from '@dcp-monorepo/mcp-common';
+import type { McpServer, McpServerFactory } from '@dcp-monorepo/mcp-common';
+import { z } from 'zod';
+
+const logger = new StructuredJsonLogger();
+const rateLimiter = new RateLimiter();
+const auditEmitter = new ConsoleAuditEmitter(logger);
+
+async function main() {
+  const loggingOptions = {
+    namespace: 'my-mcp-server',
+    emitters: [auditEmitter],
+    stderrLogger: logger,
+  };
+
+  // Factory creates a new server per HTTP session
+  const createServer: McpServerFactory = () => {
+    const server = createMcpServer({
+      name: 'my-mcp-server',
+      version: '1.0.0',
+      description: 'My custom MCP server',
+      capabilities: { logging: {} },
+    });
+
+    registerTools(server, loggingOptions);
+    return server;
+  };
+
+  await startServer(createServer, {
+    onHealthCheck: () => ({
+      name: 'my-mcp-server',
+      version: '1.0.0',
+    }),
+  });
+
+  logger.info('server', 'MCP server started');
+}
+
+function registerTools(server: McpServer, loggingOptions: WithLoggingOptions) {
+  server.tool(
+    'my-tool',
+    'Description of my tool',
+    {
+      input: z.string().describe('Tool input'),
+    },
+    withLogging(
+      'my-tool',
+      async (args: { input: string }) => {
+        rateLimiter.check();
+        // Your tool logic here
+        return {
+          content: [
+            {
+              type: 'text' as const,
+              text: `Processed: ${args.input}`,
+            },
+          ],
+        };
+      },
+      loggingOptions,
+    ),
+  );
+}
+
+main().catch((error) => {
+  logger.error('server', `Server failed: ${error}`);
+  process.exit(1);
+});
+```
+
+### Running MCP Servers
+
+#### Development (stdio transport)
+
+```bash
+npx nx serve design-system-mcp
+```
+
+This starts the server on stdio, suitable for local client testing.
+
+#### Production (HTTP transport)
+
+```bash
+MCP_TRANSPORT=http npx nx serve design-system-mcp
+# Server runs on http://localhost:3000/mcp by default
+```
+
+To specify a custom port:
+
+```bash
+MCP_TRANSPORT=http PORT=3001 npx nx serve design-system-mcp
+```
+
+#### With authentication (HTTP transport)
+
+Update `startServer` options to include authentication:
+
+```typescript
+await startServer(createServer, {
+  transport: 'http',
+  authenticate: async (req) => {
+    const token = req.headers.authorization?.split(' ')[1];
+    if (!token) throw new Error('Unauthorized');
+    return { userId: 'verified-user' };
+  },
+  protectedResourceMetadata: {
+    issuer: 'https://your-auth-provider',
+  },
+  wwwAuthenticate: 'Bearer realm="MCP"',
+});
+```
+
+### Building for Deployment
+
+```bash
+npx nx build design-system-mcp
+```
+
+This generates a production bundle in `dist/apps/design-system-mcp/` with all dependencies included. The bundle can be deployed as a standalone Node.js application or containerized.
+
 ## Helpful project commands
 
 Run a specific app in development:
@@ -207,6 +411,12 @@ Run API services locally:
 npx nx serve cc-api
 npx nx serve dcp-proxy-api-int
 npx nx serve digital-marketplace-api
+```
+
+Run MCP servers locally:
+
+```bash
+npx nx serve design-system-mcp
 ```
 
 Run tests/checks:
