@@ -1,0 +1,21 @@
+{
+  "appliesTo": {
+    "components": [
+      "tooltip"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-form-item label=\"Password\">\n    <goa-input type=\"password\" name=\"password\" />\n    <goa-tooltip content=\"Passwords must be at least 8 characters long and include 1 upper case character.\">\n      <goa-icon type=\"information-circle\" />\n    </goa-tooltip>\n  </goa-form-item>\n</Preview>",
+  "collection": "guidance",
+  "description": "Don't use tooltips for information that is vital to task completion.",
+  "id": "tooltip-vital-info",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "tooltip",
+    "accessibility",
+    "content"
+  ],
+  "topic": "feedback",
+  "type": "dont"
+}

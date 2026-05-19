@@ -1,0 +1,23 @@
+{
+  "appliesTo": {
+    "components": [
+      "form-item"
+    ],
+    "contexts": []
+  },
+  "body": "",
+  "collection": "guidance",
+  "description": "Use labelSize='large' when you want the question to act as the heading on the page. This is often the right choice when there's only one question on a page, so you don't end up with a separate heading and a question saying the same thing.",
+  "id": "formitem-label-size-large",
+  "relatedProps": [
+    "labelSize"
+  ],
+  "status": "published",
+  "tags": [
+    "form-item",
+    "forms",
+    "labels"
+  ],
+  "topic": "sizing",
+  "type": "tip"
+}

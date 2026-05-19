@@ -1,0 +1,457 @@
+{
+  "aliases": [],
+  "angularSelector": "goab-button",
+  "api": {
+    "extractedFrom": "libs/web-components/src/components/button/Button.svelte",
+    "frameworks": {
+      "angular": {
+        "events": [
+          {
+            "description": "Emits when the button is clicked.",
+            "frameworks": [
+              "angular"
+            ],
+            "name": "onClick",
+            "type": "() => void"
+          }
+        ],
+        "props": [
+          {
+            "default": null,
+            "description": "Action identifier passed in click events for event delegation patterns.",
+            "name": "action",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Single argument value passed with the action in click events.",
+            "name": "actionArg",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Multiple argument values passed with the action in click events.",
+            "name": "actionArgs",
+            "required": false,
+            "type": "Record<string, unknown>"
+          },
+          {
+            "default": null,
+            "description": "Sets the disabled state. When true, prevents user interaction and applies disabled styling.",
+            "name": "disabled",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "default": null,
+            "description": "Sets the icon displayed before the button text.",
+            "name": "leadingIcon",
+            "required": false,
+            "type": "GoabIconType"
+          },
+          {
+            "default": null,
+            "description": "Sets the bottom margin spacing token.",
+            "name": "mb",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Sets the left margin spacing token.",
+            "name": "ml",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Sets the right margin spacing token.",
+            "name": "mr",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Sets the top margin spacing token.",
+            "name": "mt",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": "normal",
+            "description": "Sets the size of the button. Use \"compact\" for inline actions or space-constrained layouts.",
+            "name": "size",
+            "required": false,
+            "type": "GoabButtonSize"
+          },
+          {
+            "default": null,
+            "description": "Sets the data-testid attribute for automated testing.",
+            "name": "testId",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Icon displayed after the button text.",
+            "name": "trailingIcon",
+            "required": false,
+            "type": "GoabIconType"
+          },
+          {
+            "default": "primary",
+            "description": "Sets the visual style of the button. Use \"primary\" for main actions, \"secondary\" for alternative actions, \"tertiary\" for low-emphasis actions, \"start\" for prominent call-to-action buttons, and \"text\" for text-only buttons.",
+            "name": "type",
+            "required": false,
+            "type": "GoabButtonType"
+          },
+          {
+            "default": "normal",
+            "description": "Sets the color variant for semantic meaning. Use \"destructive\" for delete or irreversible actions, \"inverse\" for light-colored text on dark backgrounds, and \"dark\" for dark text color on text buttons only. Note: \"dark\" has no effect on non-text button types.",
+            "name": "variant",
+            "required": false,
+            "type": "GoabButtonVariant"
+          },
+          {
+            "default": null,
+            "description": "Sets a custom width for the button (e.g., \"200px\" or \"100%\").",
+            "name": "width",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "slots": []
+      },
+      "react": {
+        "events": [
+          {
+            "description": "Callback fired when the button is clicked.",
+            "frameworks": [
+              "react"
+            ],
+            "name": "onClick",
+            "type": "() => void"
+          }
+        ],
+        "props": [
+          {
+            "default": null,
+            "description": "Action identifier passed in click events for event delegation patterns.",
+            "name": "action",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Single argument value passed with the action in click events.",
+            "name": "actionArg",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Multiple argument values passed with the action in click events.",
+            "name": "actionArgs",
+            "required": false,
+            "type": "Record<string, unknown>"
+          },
+          {
+            "default": null,
+            "description": "When true, prevents user interaction and applies disabled styling.",
+            "name": "disabled",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "default": null,
+            "description": "Icon displayed before the button text.",
+            "name": "leadingIcon",
+            "required": false,
+            "type": "GoabIconType"
+          },
+          {
+            "default": null,
+            "description": "",
+            "name": "mb",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "",
+            "name": "ml",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "",
+            "name": "mr",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "",
+            "name": "mt",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": "normal",
+            "description": "Controls the size of the button. Use \"compact\" for inline actions or space-constrained layouts.",
+            "name": "size",
+            "required": false,
+            "type": "GoabButtonSize"
+          },
+          {
+            "default": null,
+            "description": "Sets a data-testid attribute for automated testing.",
+            "name": "testId",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Icon displayed after the button text.",
+            "name": "trailingIcon",
+            "required": false,
+            "type": "GoabIconType"
+          },
+          {
+            "default": "primary",
+            "description": "Sets the visual style of the button. Use \"primary\" for main actions, \"secondary\" for alternative actions, \"tertiary\" for low-emphasis actions, \"start\" for prominent call-to-action buttons, and \"text\" for text-only buttons.",
+            "name": "type",
+            "required": false,
+            "type": "GoabButtonType"
+          },
+          {
+            "default": "normal",
+            "description": "Sets the color variant for semantic meaning. Use \"destructive\" for delete or irreversible actions, \"inverse\" for light-colored text on dark backgrounds, and \"dark\" for dark text color on text buttons only. Note: \"dark\" has no effect on non-text button types.",
+            "name": "variant",
+            "required": false,
+            "type": "GoabButtonVariant"
+          },
+          {
+            "default": null,
+            "description": "Sets a custom width for the button (e.g., \"200px\" or \"100%\").",
+            "name": "width",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "slots": []
+      },
+      "webComponents": {
+        "events": [
+          {
+            "description": "",
+            "frameworks": [
+              "webComponents"
+            ],
+            "name": "_click",
+            "type": "CustomEvent"
+          }
+        ],
+        "props": [
+          {
+            "default": "",
+            "description": "Action identifier passed in click events for event delegation patterns.",
+            "name": "action",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "",
+            "description": "Single argument value passed with the action in click events.",
+            "name": "action-arg",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "{}",
+            "description": "Multiple argument values passed with the action in click events.",
+            "name": "action-args",
+            "required": false,
+            "type": "Record<string, unknown>"
+          },
+          {
+            "default": "false",
+            "description": "When true, prevents user interaction and applies disabled styling.",
+            "name": "disabled",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "default": null,
+            "description": "Icon displayed before the button text.",
+            "name": "leadingicon",
+            "required": false,
+            "type": "GoabIconType",
+            "typeLabel": "GoabIconType"
+          },
+          {
+            "default": null,
+            "description": "Sets the bottom margin using design system spacing tokens.",
+            "name": "mb",
+            "required": false,
+            "type": "Spacing",
+            "typeLabel": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Sets the left margin using design system spacing tokens.",
+            "name": "ml",
+            "required": false,
+            "type": "Spacing",
+            "typeLabel": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Sets the right margin using design system spacing tokens.",
+            "name": "mr",
+            "required": false,
+            "type": "Spacing",
+            "typeLabel": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Sets the top margin using design system spacing tokens.",
+            "name": "mt",
+            "required": false,
+            "type": "Spacing",
+            "typeLabel": "Spacing"
+          },
+          {
+            "default": "normal",
+            "description": "Controls the size of the button. Use \"compact\" for inline actions or space-constrained layouts.",
+            "name": "size",
+            "required": false,
+            "type": "\"normal\" | \"compact\"",
+            "typeLabel": "GoabButtonSize",
+            "values": [
+              "normal",
+              "compact"
+            ]
+          },
+          {
+            "default": "",
+            "description": "Sets a data-testid attribute for automated testing.",
+            "name": "testid",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Icon displayed after the button text.",
+            "name": "trailingicon",
+            "required": false,
+            "type": "GoabIconType",
+            "typeLabel": "GoabIconType"
+          },
+          {
+            "default": "primary",
+            "description": "Sets the visual style of the button. Use \"primary\" for main actions, \"secondary\" for alternative actions, \"tertiary\" for low-emphasis actions, \"start\" for prominent call-to-action buttons, and \"text\" for text-only buttons.",
+            "name": "type",
+            "required": false,
+            "type": "\"primary\" | \"submit\" | \"secondary\" | \"tertiary\" | \"start\" | \"text\"",
+            "typeLabel": "GoabButtonType",
+            "values": [
+              "primary",
+              "submit",
+              "secondary",
+              "tertiary",
+              "start",
+              "text"
+            ]
+          },
+          {
+            "default": "normal",
+            "description": "Sets the color variant for semantic meaning. Use \"destructive\" for delete or irreversible actions, \"inverse\" for light-colored text on dark backgrounds, and \"dark\" for dark text color on text buttons only. Note: \"dark\" has no effect on non-text button types.",
+            "name": "variant",
+            "required": false,
+            "type": "\"normal\" | \"destructive\" | \"inverse\" | \"dark\"",
+            "typeLabel": "GoabButtonVariant",
+            "values": [
+              "normal",
+              "destructive",
+              "inverse",
+              "dark"
+            ]
+          },
+          {
+            "default": "1",
+            "description": "Design system version for styling.",
+            "name": "version",
+            "required": false,
+            "type": "\"1\" | \"2\"",
+            "typeLabel": "GoabButtonVersion",
+            "values": [
+              "1",
+              "2"
+            ]
+          },
+          {
+            "default": "",
+            "description": "Sets a custom width for the button (e.g., \"200px\" or \"100%\").",
+            "name": "width",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "slots": []
+      }
+    }
+  },
+  "body": "",
+  "category": "inputs-and-actions",
+  "collection": "components",
+  "description": "Carry out an important action or navigate to another page.",
+  "figmaUrl": "https://www.figma.com/design/Jpy1Ea5qglwnp1SgGnagY9/Component-library?node-id=57138-300030",
+  "id": "button",
+  "name": "Button",
+  "reactClassName": "GoabButton",
+  "relatedComponents": [
+    "button-group",
+    "icon-button"
+  ],
+  "relatedGuidance": [
+    "button-avoid-disabled",
+    "button-compact-for-dense-spaces",
+    "button-concise-labels",
+    "button-consistent-sizes",
+    "button-consistent-widths",
+    "button-destructive-descriptive-language",
+    "button-destructive-for-irreversible",
+    "button-destructive-only-final-action",
+    "button-dont-read-icon-class",
+    "button-enabled-with-error-handling",
+    "button-focus-whole-button",
+    "button-full-width-mobile",
+    "button-icon-clear-association",
+    "button-icon-no-unclear-association",
+    "button-icon-only-needs-label",
+    "button-icon-with-text-label",
+    "button-limit-grouped-actions",
+    "button-one-primary-per-page",
+    "button-primary-secondary-pairing",
+    "button-sentence-case",
+    "button-types-overview",
+    "button-use-clear-action-labels",
+    "button-vs-link",
+    "button-when-not-to-use",
+    "button-when-to-use",
+    "buttongroup-alignment",
+    "dont-disable-without-explanation",
+    "link-vs-button"
+  ],
+  "status": "stable",
+  "tags": [
+    "action",
+    "inputs and actions",
+    "submit"
+  ],
+  "webComponentTag": "goa-button"
+}

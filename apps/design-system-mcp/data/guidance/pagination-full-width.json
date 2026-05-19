@@ -1,0 +1,20 @@
+{
+  "appliesTo": {
+    "components": [
+      "pagination"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-pagination page=\"5\" itemcount=\"140\" perpagecount=\"10\"></goa-pagination>\n</Preview>",
+  "collection": "guidance",
+  "description": "Ensure the pagination component is the full width of the table or content it's connected to.",
+  "id": "pagination-full-width",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "pagination",
+    "layout"
+  ],
+  "topic": "layout",
+  "type": "do"
+}

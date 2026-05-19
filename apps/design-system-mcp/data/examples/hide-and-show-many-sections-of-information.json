@@ -1,0 +1,27 @@
+{
+  "aliases": [],
+  "body": "Allow users to expand and collapse multiple accordion sections, with a button to show or hide all sections at once.\n\n## When to use\n\nUse this pattern when:\n\n- Presenting FAQ-style content\n- Users need to scan multiple sections quickly\n- Content is long and would benefit from progressive disclosure\n- Providing a \"show all\" and \"hide all\" option improves usability\n\n## Considerations\n\n- Track the open state of each accordion individually\n- Update the button text based on whether all sections are expanded or collapsed\n- Consider keyboard accessibility for the expand/collapse all functionality\n- Accordion headings should be descriptive and scannable",
+  "collection": "examples",
+  "components": [
+    "accordion",
+    "button"
+  ],
+  "figmaUrl": "https://www.figma.com/design/Jpy1Ea5qglwnp1SgGnagY9/%E2%9D%96-Component-library-%7C-DDD?node-id=63353-171712",
+  "frameworks": [
+    "react",
+    "angular",
+    "web-components"
+  ],
+  "id": "hide-and-show-many-sections-of-information",
+  "previewImage": "/images/examples/hide-and-show-many-sections-of-information.webp",
+  "relatedExamples": [],
+  "size": "section",
+  "status": "published",
+  "tags": [
+    "accordion",
+    "expand",
+    "collapse",
+    "faq"
+  ],
+  "title": "Hide and show many sections of information"
+}

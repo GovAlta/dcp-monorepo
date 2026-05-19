@@ -1,0 +1,24 @@
+{
+  "appliesTo": {
+    "components": [
+      "radio-item",
+      "radio-group"
+    ],
+    "contexts": []
+  },
+  "body": "",
+  "collection": "guidance",
+  "description": "When using the reveal slot, set revealAriaLabel so screen readers announce the newly visible content.",
+  "id": "radioitem-reveal-aria-label",
+  "relatedProps": [
+    "revealAriaLabel"
+  ],
+  "status": "published",
+  "tags": [
+    "radio",
+    "accessibility",
+    "forms"
+  ],
+  "topic": "screen-readers",
+  "type": "warning"
+}

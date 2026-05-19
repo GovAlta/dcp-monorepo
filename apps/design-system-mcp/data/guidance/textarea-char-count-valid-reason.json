@@ -1,0 +1,22 @@
+{
+  "appliesTo": {
+    "components": [
+      "textarea",
+      "form-item"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-form-item label=\"Describe your situation\">\n    <goa-textarea name=\"situation\" value=\"Lorem ipsum dolor sit ame\" countby=\"character\" maxcharcount=\"106\"></goa-textarea>\n  </goa-form-item>\n</Preview>",
+  "collection": "guidance",
+  "description": "Use the character count only when there's a valid reason to limit the number of characters.",
+  "id": "textarea-char-count-valid-reason",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "textarea",
+    "character-count",
+    "validation"
+  ],
+  "topic": "forms",
+  "type": "do"
+}

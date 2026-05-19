@@ -1,0 +1,25 @@
+{
+  "appliesTo": {
+    "components": [
+      "button",
+      "icon-button"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-button type=\"primary\" disabled=\"true\">Submit</goa-button>\n</Preview>\n\nOnly use disabled buttons if research shows it makes the user interface easier to understand.\n\nConsider removing options that are unavailable or not applicable. Show actions that are only relevant and useful to the user at a given time.",
+  "collection": "guidance",
+  "description": "Avoid using disabled buttons. They have poor contrast and can confuse users.",
+  "id": "button-avoid-disabled",
+  "relatedProps": [
+    "disabled"
+  ],
+  "status": "published",
+  "tags": [
+    "button",
+    "disabled",
+    "accessibility",
+    "usability"
+  ],
+  "topic": "states",
+  "type": "dont"
+}

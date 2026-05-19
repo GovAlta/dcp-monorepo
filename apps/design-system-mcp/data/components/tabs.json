@@ -1,0 +1,207 @@
+{
+  "aliases": [],
+  "angularSelector": "goab-tabs",
+  "api": {
+    "extractedFrom": "libs/web-components/src/components/tabs/Tabs.svelte",
+    "frameworks": {
+      "angular": {
+        "events": [
+          {
+            "description": "Emits when the active tab changes. Emits the new tab index as GoabTabsOnChangeDetail.",
+            "frameworks": [
+              "angular"
+            ],
+            "name": "onChange",
+            "type": "(event: GoabTabsOnChangeDetail) => void"
+          }
+        ],
+        "props": [
+          {
+            "default": null,
+            "description": "The initially active tab (1-based index). If not set, the first tab is active.",
+            "name": "initialTab",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "default": null,
+            "description": "Sets the navigation mode for tab switching. \"hash\" updates the URL hash when switching tabs.",
+            "name": "navigation",
+            "required": false,
+            "type": "GoabTabsNavigation"
+          },
+          {
+            "default": null,
+            "description": "Tab layout orientation. \"auto\" stacks vertically on mobile (default), \"horizontal\" keeps horizontal on all screen sizes.",
+            "name": "orientation",
+            "required": false,
+            "type": "GoabTabsOrientation"
+          },
+          {
+            "default": null,
+            "description": "Sets a data-testid attribute for automated testing.",
+            "name": "testId",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Visual style variant. \"segmented\" shows pill-style tabs with animation.",
+            "name": "variant",
+            "required": false,
+            "type": "GoabTabsVariant"
+          }
+        ],
+        "slots": []
+      },
+      "react": {
+        "events": [
+          {
+            "description": "Callback fired when the active tab changes.",
+            "frameworks": [
+              "react"
+            ],
+            "name": "onChange",
+            "type": "(detail: GoabTabsOnChangeDetail) => void"
+          }
+        ],
+        "props": [
+          {
+            "default": null,
+            "description": "The initially active tab (1-based index). If not set, the first tab is active.",
+            "name": "initialTab",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "default": "hash",
+            "description": "Controls URL navigation mode on tab change.",
+            "name": "navigation",
+            "required": false,
+            "type": "GoabTabsNavigation"
+          },
+          {
+            "default": "auto",
+            "description": "Tab layout orientation. \"auto\" stacks vertically on mobile, \"horizontal\" keeps horizontal on all screen sizes.",
+            "name": "orientation",
+            "required": false,
+            "type": "GoabTabsOrientation"
+          },
+          {
+            "default": null,
+            "description": "Sets a data-testid attribute for automated testing.",
+            "name": "testId",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "default",
+            "description": "Visual style variant. \"segmented\" shows pill-style tabs with animation.",
+            "name": "variant",
+            "required": false,
+            "type": "GoabTabsVariant"
+          }
+        ],
+        "slots": []
+      },
+      "webComponents": {
+        "events": [
+          {
+            "description": "",
+            "frameworks": [
+              "webComponents"
+            ],
+            "name": "_change",
+            "type": "CustomEvent<{ tab: number }>"
+          }
+        ],
+        "props": [
+          {
+            "default": "-1",
+            "description": "The initially active tab (1-based index). If not set, the first tab is active.",
+            "name": "initialtab",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "default": "hash",
+            "description": "",
+            "name": "navigation",
+            "required": false,
+            "type": "\"hash\" | \"none\"",
+            "values": [
+              "hash",
+              "none"
+            ]
+          },
+          {
+            "default": "auto",
+            "description": "Tab layout orientation. \"auto\" stacks vertically on mobile, \"horizontal\" keeps horizontal on all screen sizes.",
+            "name": "orientation",
+            "required": false,
+            "type": "\"auto\" | \"horizontal\"",
+            "values": [
+              "auto",
+              "horizontal"
+            ]
+          },
+          {
+            "default": "",
+            "description": "Sets a data-testid attribute for automated testing.",
+            "name": "testid",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "default",
+            "description": "Visual style variant. \"segmented\" shows pill-style tabs with animation.",
+            "name": "variant",
+            "required": false,
+            "type": "\"default\" | \"segmented\"",
+            "values": [
+              "default",
+              "segmented"
+            ]
+          },
+          {
+            "default": "1",
+            "description": "Design system version for styling.",
+            "name": "version",
+            "required": false,
+            "type": "\"1\" | \"2\"",
+            "values": [
+              "1",
+              "2"
+            ]
+          }
+        ],
+        "slots": []
+      }
+    }
+  },
+  "body": "",
+  "category": "structure-and-navigation",
+  "collection": "components",
+  "description": "Let users navigate between related sections of content, displaying one section at a time.",
+  "figmaUrl": "https://www.figma.com/design/Jpy1Ea5qglwnp1SgGnagY9/Component-library?node-id=25293-550667",
+  "id": "tabs",
+  "name": "Tabs",
+  "reactClassName": "GoabTabs",
+  "relatedComponents": [
+    "tab"
+  ],
+  "relatedGuidance": [
+    "tabs-dont-indicate-progress",
+    "tabs-dont-need-multiple-visible",
+    "tabs-dont-nest",
+    "tabs-dont-truncate-labels",
+    "tabs-preselect-on-load"
+  ],
+  "status": "stable",
+  "tags": [
+    "sections",
+    "structure and navigation",
+    "tabbed interface"
+  ],
+  "webComponentTag": "goa-tabs"
+}

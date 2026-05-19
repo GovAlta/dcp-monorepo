@@ -1,0 +1,34 @@
+{
+  "aliases": [],
+  "body": "Collect a complete mailing address from the user, including fields like street, city, and postal code.\n\n## When to use\n\nUse this pattern when:\n\n- Collecting mailing addresses for correspondence\n- Gathering location information for services\n- Users need to provide physical address details\n\n## Considerations\n\n- Pre-select the most common province/territory\n- Use appropriate field widths (postal code is always 7 characters)\n- Consider address autocomplete for improved UX\n- Group related fields (province and postal code on same row)",
+  "collection": "examples",
+  "components": [
+    "form-item",
+    "input",
+    "dropdown",
+    "block",
+    "button",
+    "button-group",
+    "text"
+  ],
+  "figmaUrl": "https://www.figma.com/design/Jpy1Ea5qglwnp1SgGnagY9/%E2%9D%96-Component-library-%7C-DDD?node-id=63353-123425",
+  "frameworks": [
+    "react",
+    "angular",
+    "web-components"
+  ],
+  "id": "ask-a-user-for-an-address",
+  "previewImage": "/images/examples/ask-a-user-for-an-address.webp",
+  "productType": "public-form",
+  "relatedExamples": [
+    "ask-a-user-for-a-birthday"
+  ],
+  "size": "section",
+  "status": "published",
+  "tags": [
+    "forms",
+    "address",
+    "location"
+  ],
+  "title": "Ask a user for an address"
+}

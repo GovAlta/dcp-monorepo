@@ -1,0 +1,21 @@
+{
+  "appliesTo": {
+    "components": [
+      "skeleton"
+    ],
+    "contexts": []
+  },
+  "body": "",
+  "collection": "guidance",
+  "description": "Show an error state if loading takes too long. Don't leave skeletons showing indefinitely without feedback.",
+  "id": "skeleton-error-state-timeout",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "skeleton",
+    "loading",
+    "error-handling"
+  ],
+  "topic": "states",
+  "type": "warning"
+}

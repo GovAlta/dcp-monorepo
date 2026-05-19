@@ -1,0 +1,23 @@
+{
+  "appliesTo": {
+    "components": [
+      "text"
+    ],
+    "contexts": []
+  },
+  "body": "",
+  "collection": "guidance",
+  "description": "Use semantic heading tags (h1-h5) with GoabText for proper document structure and screen reader navigation.",
+  "id": "text-semantic-heading-tags",
+  "relatedProps": [
+    "tag"
+  ],
+  "status": "published",
+  "tags": [
+    "text",
+    "accessibility",
+    "headings"
+  ],
+  "topic": "screen-readers",
+  "type": "warning"
+}

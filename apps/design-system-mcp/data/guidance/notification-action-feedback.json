@@ -1,0 +1,21 @@
+{
+  "appliesTo": {
+    "components": [
+      "notification"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-notification type=\"information\">\n    Nachos have been added to your cart.\n  </goa-notification>\n</Preview>",
+  "collection": "guidance",
+  "description": "Use a temporary notification to communicate actions that have just taken place to the user.",
+  "id": "notification-action-feedback",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "notification",
+    "temporary-notification",
+    "feedback"
+  ],
+  "topic": "feedback",
+  "type": "do"
+}

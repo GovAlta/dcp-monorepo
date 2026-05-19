@@ -1,0 +1,23 @@
+{
+  "appliesTo": {
+    "components": [
+      "link"
+    ],
+    "contexts": []
+  },
+  "body": "",
+  "collection": "guidance",
+  "description": "Use trailingIcon='open' for links that go to external sites so users know they're leaving the service.",
+  "id": "link-trailing-icon-external",
+  "relatedProps": [
+    "trailingIcon"
+  ],
+  "status": "published",
+  "tags": [
+    "link",
+    "external",
+    "icons"
+  ],
+  "topic": "icons",
+  "type": "tip"
+}

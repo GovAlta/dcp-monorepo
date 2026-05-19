@@ -1,0 +1,22 @@
+{
+  "appliesTo": {
+    "components": [
+      "block",
+      "button-group"
+    ],
+    "contexts": []
+  },
+  "body": "",
+  "collection": "guidance",
+  "description": "Use Block for general layout and spacing. Use ButtonGroup for semantically related action buttons.",
+  "id": "block-vs-buttongroup",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "block",
+    "button-group",
+    "layout"
+  ],
+  "topic": "other",
+  "type": "tip"
+}

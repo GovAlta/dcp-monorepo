@@ -1,0 +1,21 @@
+{
+  "appliesTo": {
+    "components": [
+      "data-grid"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-data-grid>\n    <div data-grid=\"row\">\n      <div data-grid=\"cell\">First cell</div>\n      <div data-grid=\"cell\">Second cell</div>\n    </div>\n    <div data-grid=\"row\">\n      <div data-grid=\"cell\">Third cell</div>\n      <div data-grid=\"cell\">Fourth cell</div>\n    </div>\n  </goa-data-grid>\n</Preview>",
+  "collection": "guidance",
+  "description": "Add data-grid attributes to rows and cells for keyboard navigation to work.",
+  "id": "datagrid-attributes",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "data-grid",
+    "keyboard",
+    "accessibility"
+  ],
+  "topic": "keyboard",
+  "type": "do"
+}

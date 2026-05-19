@@ -1,0 +1,21 @@
+{
+  "appliesTo": {
+    "components": [
+      "dropdown"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-dropdown name=\"example\" label=\"The label text is very long here, it starts trun...\"></goa-dropdown>\n</Preview>",
+  "collection": "guidance",
+  "description": "Don't truncate labels. Longer labels should wrap to the next line.",
+  "id": "dropdown-dont-truncate-labels",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "dropdown",
+    "labels",
+    "mobile"
+  ],
+  "topic": "content",
+  "type": "dont"
+}

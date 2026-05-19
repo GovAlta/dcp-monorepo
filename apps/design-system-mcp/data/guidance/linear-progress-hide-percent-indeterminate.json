@@ -1,0 +1,22 @@
+{
+  "appliesTo": {
+    "components": [
+      "linear-progress"
+    ],
+    "contexts": []
+  },
+  "body": "",
+  "collection": "guidance",
+  "description": "Don't show a percentage for indeterminate progress. Showing '0%' when there's no known progress is confusing.",
+  "id": "linear-progress-hide-percent-indeterminate",
+  "relatedProps": [
+    "percentVisibility"
+  ],
+  "status": "published",
+  "tags": [
+    "linear-progress",
+    "loading"
+  ],
+  "topic": "states",
+  "type": "dont"
+}

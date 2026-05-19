@@ -1,0 +1,163 @@
+{
+  "aliases": [],
+  "angularSelector": "goab-work-side-notification-panel",
+  "api": {
+    "extractedFrom": "libs/web-components/src/components/work-side-menu/WorkSideNotificationPanel.svelte",
+    "frameworks": {
+      "angular": {
+        "events": [
+          {
+            "description": "Emits when the user clicks \"Mark all as read\".",
+            "frameworks": [
+              "angular"
+            ],
+            "name": "onMarkAllRead",
+            "type": "() => void"
+          },
+          {
+            "description": "Emits when the user clicks \"View all\".",
+            "frameworks": [
+              "angular"
+            ],
+            "name": "onViewAll",
+            "type": "() => void"
+          }
+        ],
+        "props": [
+          {
+            "default": null,
+            "description": "Sets the initially active tab in the notification panel.",
+            "name": "activeTab",
+            "required": false,
+            "type": "GoabWorkSideNotificationActiveTabType"
+          },
+          {
+            "default": null,
+            "description": "The heading text displayed at the top of the notification panel.",
+            "name": "heading",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Sets a data-testid attribute for automated testing.",
+            "name": "testId",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "slots": []
+      },
+      "react": {
+        "events": [
+          {
+            "description": "Callback fired when the \"Mark all as read\" button is clicked.",
+            "frameworks": [
+              "react"
+            ],
+            "name": "onMarkAllRead",
+            "type": "() => void"
+          },
+          {
+            "description": "Callback fired when the \"View all\" button is clicked.",
+            "frameworks": [
+              "react"
+            ],
+            "name": "onViewAll",
+            "type": "() => void"
+          }
+        ],
+        "props": [
+          {
+            "default": "unread",
+            "description": "Sets the initially active tab.",
+            "name": "activeTab",
+            "required": false,
+            "type": "GoabWorkSideNotificationActiveTabType"
+          },
+          {
+            "default": "Notifications",
+            "description": "Sets the panel heading text.",
+            "name": "heading",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Sets a data-testid attribute for automated testing.",
+            "name": "testId",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "slots": []
+      },
+      "webComponents": {
+        "events": [
+          {
+            "description": "",
+            "frameworks": [
+              "webComponents"
+            ],
+            "name": "_markAllRead",
+            "type": "CustomEvent<void>"
+          },
+          {
+            "description": "",
+            "frameworks": [
+              "webComponents"
+            ],
+            "name": "_viewAll",
+            "type": "CustomEvent<void>"
+          }
+        ],
+        "props": [
+          {
+            "default": "unread",
+            "description": "",
+            "name": "active-tab",
+            "required": false,
+            "type": "\"unread\" | \"urgent\" | \"all\"",
+            "typeLabel": "GoabWorkSideNotificationPanelTabType",
+            "values": [
+              "unread",
+              "urgent",
+              "all"
+            ]
+          },
+          {
+            "default": "Notifications",
+            "description": "",
+            "name": "heading",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "",
+            "description": "",
+            "name": "testid",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "slots": []
+      }
+    }
+  },
+  "body": "",
+  "category": "structure-and-navigation",
+  "collection": "components",
+  "description": "A notification center panel that displays notification items within a work side menu, with tabs for filtering by unread, urgent, and all notifications.",
+  "id": "work-side-notification-panel",
+  "name": "Notification Panel",
+  "relatedComponents": [
+    "work-side-menu",
+    "work-side-notification-item"
+  ],
+  "status": "stable",
+  "tags": [
+    "notifications",
+    "work side menu",
+    "panel"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "appliesTo": {
+    "components": [
+      "container"
+    ],
+    "contexts": []
+  },
+  "body": "",
+  "collection": "guidance",
+  "description": "Use accent='thick' when you need a header area with a title or actions on a container.",
+  "id": "container-accent-thick-for-header",
+  "relatedProps": [
+    "accent"
+  ],
+  "status": "published",
+  "tags": [
+    "container",
+    "header"
+  ],
+  "topic": "types",
+  "type": "tip"
+}

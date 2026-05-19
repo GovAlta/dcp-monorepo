@@ -1,0 +1,105 @@
+{
+  "aliases": [],
+  "angularSelector": "goab-form-step",
+  "api": {
+    "extractedFrom": "libs/web-components/src/components/form-step/FormStep.svelte",
+    "frameworks": {
+      "angular": {
+        "events": [],
+        "props": [
+          {
+            "default": null,
+            "description": "The completion status of the step. Affects visual styling and icons.",
+            "name": "status",
+            "required": false,
+            "type": "GoabFormStepStatus"
+          },
+          {
+            "default": null,
+            "description": "The step label text displayed to users.",
+            "name": "text",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "slots": []
+      },
+      "react": {
+        "events": [],
+        "props": [
+          {
+            "default": null,
+            "description": "The completion status of the step. Affects visual styling and icons.",
+            "name": "status",
+            "required": false,
+            "type": "GoabFormStepStatus"
+          },
+          {
+            "default": null,
+            "description": "The step label text displayed to users.",
+            "name": "text",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "slots": []
+      },
+      "webComponents": {
+        "events": [
+          {
+            "description": "",
+            "frameworks": [
+              "webComponents"
+            ],
+            "name": "_click",
+            "type": "CustomEvent<{ step: unknown }>"
+          }
+        ],
+        "props": [
+          {
+            "default": "false",
+            "description": "Whether this is the last step in the form stepper. Affects styling when complete.",
+            "name": "last",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "default": null,
+            "description": "The completion status of the step. Affects visual styling and icons.",
+            "name": "status",
+            "required": false,
+            "type": "\"complete\" | \"incomplete\" | \"not-started\"",
+            "values": [
+              "complete",
+              "incomplete",
+              "not-started"
+            ]
+          },
+          {
+            "default": null,
+            "description": "The step label text displayed to users.",
+            "name": "text",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "slots": []
+      }
+    }
+  },
+  "body": "",
+  "category": "inputs-and-actions",
+  "collection": "components",
+  "description": "Individual step in a multi-step form.",
+  "hidden": true,
+  "id": "form-step",
+  "name": "Form Step",
+  "reactClassName": "GoabFormStep",
+  "relatedComponents": [
+    "form-stepper"
+  ],
+  "status": "stable",
+  "subcomponent": true,
+  "tags": [],
+  "webComponentTag": "goa-form-step"
+}

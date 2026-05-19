@@ -1,0 +1,20 @@
+{
+  "appliesTo": {
+    "components": [
+      "callout"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-callout type=\"information\" heading=\"Information Callout\">\n    Employment standards set out the rights and obligations of employers and employees in Alberta. This includes the minimum standards that employers must provide. In this section, find out about Alberta's basic employment standards, what to do if you think they are not being followed, and educational materials.\n  </goa-callout>\n</Preview>",
+  "collection": "guidance",
+  "description": "Don't include too much content. Callouts should communicate one important piece of information.",
+  "id": "callout-one-piece-of-info",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "callout",
+    "content"
+  ],
+  "topic": "content",
+  "type": "dont"
+}

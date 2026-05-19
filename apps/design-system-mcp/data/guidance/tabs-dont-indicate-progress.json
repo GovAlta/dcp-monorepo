@@ -1,0 +1,19 @@
+{
+  "appliesTo": {
+    "components": [
+      "tabs"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview bad>\n  <goa-tabs>\n    <goa-tab heading=\"Step 1\">Step 1 content</goa-tab>\n    <goa-tab heading=\"Step 2\">Step 2 content</goa-tab>\n    <goa-tab heading=\"Step 3\">Step 3 content</goa-tab>\n  </goa-tabs>\n</Preview>",
+  "collection": "guidance",
+  "description": "Don't use tabs to indicate progress.",
+  "id": "tabs-dont-indicate-progress",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "tabs"
+  ],
+  "topic": "usage",
+  "type": "dont"
+}

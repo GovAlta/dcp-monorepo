@@ -9,10 +9,15 @@ export interface IndexedItem {
   id: string;
   type:
     | 'component'
+    | 'example'
+    | 'guidance'
+    | 'foundation'
+    | 'get-started'
+    | 'productType'
+    // Legacy types kept for transition compatibility:
     | 'pattern'
     | 'design'
     | 'workflow'
-    | 'example'
     | 'setup'
     | 'reference'
     | 'system';
@@ -322,24 +327,42 @@ export class InvertedIndex {
 export function createSearchableText(data: any): string {
   const parts: string[] = [];
 
-  // Component metadata
-  if (data.componentName) parts.push(data.componentName);
-  if (data.summary) parts.push(data.summary);
+  // Flat shape produced by the docs-site content generator.
+  if (data.name) parts.push(data.name);
+  if (data.title) parts.push(data.title);
   if (data.description) parts.push(data.description);
+  if (data.summary) parts.push(data.summary);
   if (data.purpose) parts.push(data.purpose);
+  if (data.body) parts.push(data.body);
+  if (Array.isArray(data.aliases)) parts.push(data.aliases.join(' '));
+  if (data.webComponentTag) parts.push(data.webComponentTag);
+  if (data.reactClassName) parts.push(data.reactClassName);
+  if (data.angularSelector) parts.push(data.angularSelector);
 
-  // Common use cases
+  // Per-framework API props (data.api.frameworks.{react,angular,webComponents}).
+  if (data.api?.frameworks) {
+    for (const fw of Object.values(data.api.frameworks)) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const frameworkRecord = fw as any;
+      if (Array.isArray(frameworkRecord?.props)) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        frameworkRecord.props.forEach((prop: any) => {
+          if (prop?.name) parts.push(prop.name);
+          if (prop?.description) parts.push(prop.description);
+        });
+      }
+    }
+  }
+
+  // Legacy fields (kept for old data still in flight).
+  if (data.componentName) parts.push(data.componentName);
   if (data.commonUse) parts.push(data.commonUse);
-
-  // Design guidance
   if (data.designGuidance?.whenToUse) {
     parts.push(data.designGuidance.whenToUse.join(' '));
   }
   if (data.designGuidance?.bestPractices) {
     parts.push(data.designGuidance.bestPractices.join(' '));
   }
-
-  // API properties for deep search
   if (data.api?.props) {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     data.api.props.forEach((prop: any) => {
@@ -347,31 +370,6 @@ export function createSearchableText(data: any): string {
       if (prop.description) parts.push(prop.description);
       if (prop.usage) parts.push(prop.usage);
     });
-  }
-
-  // Best practice standards content for search
-  if (data.bestPracticeStandards) {
-    const standards = data.bestPracticeStandards;
-
-    if (standards.sizeTag) parts.push(standards.sizeTag);
-    if (standards.userGoalTags) {
-      standards.userGoalTags.forEach((tag: string) => parts.push(tag));
-    }
-    if (standards.categoryTags) {
-      standards.categoryTags.forEach((tag: string) => parts.push(tag));
-    }
-
-    if (standards.qualityStandards) {
-      const quality = standards.qualityStandards;
-      if (quality.layoutPatterns) parts.push(quality.layoutPatterns.join(' '));
-      if (quality.contentDesign) parts.push(quality.contentDesign.join(' '));
-      if (quality.accessibilityImplementation)
-        parts.push(quality.accessibilityImplementation.join(' '));
-      if (quality.designPatternUsage)
-        parts.push(quality.designPatternUsage.join(' '));
-      if (quality.userExperienceGuidelines)
-        parts.push(quality.userExperienceGuidelines.join(' '));
-    }
   }
 
   return parts.join(' ');
@@ -384,17 +382,33 @@ export function createSearchableText(data: any): string {
 export function extractTags(data: any): string[] {
   const tags: string[] = [];
 
-  // Explicit tags
-  if (data.tags) tags.push(...data.tags);
-  if (data.aiTags) tags.push(...data.aiTags);
+  // Explicit tags / aliases (new flat shape)
+  if (Array.isArray(data.tags)) tags.push(...data.tags);
+  if (Array.isArray(data.aliases)) tags.push(...data.aliases);
+  if (Array.isArray(data.aiTags)) tags.push(...data.aiTags);
 
-  // Category as tag
+  // Category-like fields as tags.
   if (data.category) tags.push(data.category);
-
-  // Status as tag
+  if (Array.isArray(data.categories)) tags.push(...data.categories);
   if (data.status) tags.push(data.status);
+  if (data.scale) tags.push(data.scale);
+  if (data.size) tags.push(data.size);
+  if (data.productType) tags.push(data.productType);
+  if (data.userType) tags.push(data.userType);
+  if (data.topic) tags.push(data.topic);
+  if (data.type) tags.push(data.type);
+  if (data.section) tags.push(data.section);
 
-  // Custom element info
+  // Code identifiers as discoverable tags.
+  if (data.webComponentTag) {
+    tags.push(data.webComponentTag.replace(/^goa-/, ''));
+  }
+  if (data.reactClassName) tags.push(data.reactClassName);
+  if (data.angularSelector) {
+    tags.push(data.angularSelector.replace(/^goab-/, ''));
+  }
+
+  // Legacy custom element shape (old data).
   if (data.customElement?.tagName) {
     tags.push(data.customElement.tagName.replace('goa-', ''));
   }

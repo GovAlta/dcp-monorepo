@@ -1,0 +1,28 @@
+{
+  "aliases": [],
+  "body": "A search input pattern with a search icon and button for users to find content or filter results.\n\n## When to use\n\nUse this pattern when:\n\n- Users need to search through content or data\n- Filtering a list or table by text input\n- Providing a site-wide or section search\n- Quick access to specific records is needed\n\n## Considerations\n\n- Include a leading search icon for clear affordance\n- Use an explicit search button for clarity\n- Consider search suggestions or autocomplete for large datasets\n- Provide clear feedback when no results are found\n- Keep the search input appropriately sized for expected query length",
+  "collection": "examples",
+  "components": [
+    "input",
+    "button",
+    "block",
+    "form-item"
+  ],
+  "figmaUrl": "https://www.figma.com/design/Jpy1Ea5qglwnp1SgGnagY9/%E2%9D%96-Component-library-%7C-DDD?node-id=63353-170522",
+  "frameworks": [
+    "react",
+    "angular",
+    "web-components"
+  ],
+  "id": "search",
+  "previewImage": "/images/examples/search.webp",
+  "relatedExamples": [],
+  "size": "interaction",
+  "status": "published",
+  "tags": [
+    "search",
+    "input",
+    "filtering"
+  ],
+  "title": "Search"
+}

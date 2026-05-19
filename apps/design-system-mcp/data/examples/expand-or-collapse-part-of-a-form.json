@@ -1,0 +1,28 @@
+{
+  "aliases": [],
+  "body": "Use accordions to organize form review sections that users can expand or collapse.\n\n## When to use\n\nUse this pattern when:\n\n- Presenting a review summary of form sections before submission\n- Users need to verify information across multiple categories\n- Sections contain detailed information that may not need constant visibility\n- You want to highlight sections that have been updated\n\n## Considerations\n\n- Use `headingContent` to add badges or status indicators to section headers\n- Use definition lists (`<dl>`) for structured label/value pairs\n- Apply consistent spacing with CSS custom properties\n- Consider defaulting important or recently updated sections to expanded state",
+  "collection": "examples",
+  "components": [
+    "accordion",
+    "badge"
+  ],
+  "figmaUrl": "https://www.figma.com/design/Jpy1Ea5qglwnp1SgGnagY9/%E2%9D%96-Component-library-%7C-DDD?node-id=63353-171610",
+  "frameworks": [
+    "react",
+    "angular",
+    "web-components"
+  ],
+  "id": "expand-or-collapse-part-of-a-form",
+  "previewImage": "/images/examples/expand-or-collapse-part-of-a-form.webp",
+  "relatedExamples": [],
+  "size": "section",
+  "status": "published",
+  "tags": [
+    "accordion",
+    "form",
+    "review",
+    "collapsible",
+    "badge"
+  ],
+  "title": "Expand or collapse part of a form"
+}

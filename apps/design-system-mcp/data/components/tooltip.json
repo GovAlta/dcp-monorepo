@@ -1,0 +1,287 @@
+{
+  "aliases": [],
+  "angularSelector": "goab-tooltip",
+  "api": {
+    "extractedFrom": "libs/web-components/src/components/tooltip/Tooltip.svelte",
+    "frameworks": {
+      "angular": {
+        "events": [],
+        "props": [
+          {
+            "default": null,
+            "description": "The content of the tooltip.",
+            "name": "content",
+            "required": false,
+            "type": "string | TemplateRef<unknown>",
+            "values": [
+              "string",
+              "TemplateRef<unknown>"
+            ]
+          },
+          {
+            "default": "center",
+            "description": "Horizontal alignment to the child element.",
+            "name": "hAlign",
+            "required": false,
+            "type": "GoabTooltipHorizontalAlignment"
+          },
+          {
+            "default": null,
+            "description": "Sets the maximum width of the tooltip. Must use 'px' unit.",
+            "name": "maxWidth",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Sets the bottom margin spacing token.",
+            "name": "mb",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Sets the left margin spacing token.",
+            "name": "ml",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Sets the right margin spacing token.",
+            "name": "mr",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Sets the top margin spacing token.",
+            "name": "mt",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": "top",
+            "description": "Position with respect to the child element.",
+            "name": "position",
+            "required": false,
+            "type": "GoabTooltipPosition"
+          },
+          {
+            "default": null,
+            "description": "Sets the data-testid attribute for automated testing.",
+            "name": "testId",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "slots": [
+          {
+            "description": "The content of the tooltip. Accepts plain text or rich content.",
+            "name": "content",
+            "required": false,
+            "type": "TemplateRef"
+          }
+        ]
+      },
+      "react": {
+        "events": [],
+        "props": [
+          {
+            "default": null,
+            "description": "The content of the tooltip. Accepts plain text or rich content.",
+            "name": "content",
+            "required": false,
+            "type": "string | ReactNode",
+            "values": [
+              "string",
+              "ReactNode"
+            ]
+          },
+          {
+            "default": "center",
+            "description": "Horizontal alignment of the tooltip relative to the child element.",
+            "name": "hAlign",
+            "required": false,
+            "type": "GoabTooltipHorizontalAlignment"
+          },
+          {
+            "default": null,
+            "description": "Sets the maximum width of the tooltip. Must use 'px' unit.",
+            "name": "maxWidth",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "",
+            "name": "mb",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "",
+            "name": "ml",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "",
+            "name": "mr",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "",
+            "name": "mt",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": "top",
+            "description": "Position of the tooltip with respect to the child element.",
+            "name": "position",
+            "required": false,
+            "type": "GoabTooltipPosition"
+          },
+          {
+            "default": null,
+            "description": "Sets a data-testid attribute for automated testing.",
+            "name": "testId",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "slots": [
+          {
+            "description": "The content of the tooltip. Accepts plain text or rich content.",
+            "name": "content",
+            "required": false,
+            "type": "ReactNode"
+          }
+        ]
+      },
+      "webComponents": {
+        "events": [],
+        "props": [
+          {
+            "default": "",
+            "description": "The content of the tooltip.",
+            "name": "content",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "center",
+            "description": "Horizontal alignment to the child element.",
+            "name": "halign",
+            "required": false,
+            "type": "\"left\" | \"right\" | \"center\"",
+            "typeLabel": "GoabTooltipAlignment",
+            "values": [
+              "left",
+              "right",
+              "center"
+            ]
+          },
+          {
+            "default": "",
+            "description": "Sets the maximum width of the tooltip. Must use 'px' unit.",
+            "name": "maxwidth",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Bottom margin.",
+            "name": "mb",
+            "required": false,
+            "type": "Spacing",
+            "typeLabel": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Left margin.",
+            "name": "ml",
+            "required": false,
+            "type": "Spacing",
+            "typeLabel": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Right margin.",
+            "name": "mr",
+            "required": false,
+            "type": "Spacing",
+            "typeLabel": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Top margin.",
+            "name": "mt",
+            "required": false,
+            "type": "Spacing",
+            "typeLabel": "Spacing"
+          },
+          {
+            "default": "top",
+            "description": "Position with respect to the child element.",
+            "name": "position",
+            "required": false,
+            "type": "\"top\" | \"bottom\" | \"left\" | \"right\"",
+            "typeLabel": "GoabTooltipPosition",
+            "values": [
+              "top",
+              "bottom",
+              "left",
+              "right"
+            ]
+          },
+          {
+            "default": "",
+            "description": "Sets a data-testid attribute for automated testing.",
+            "name": "testid",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "slots": [
+          {
+            "description": "The content of the tooltip. Accepts plain text or rich content.",
+            "name": "content",
+            "required": false
+          }
+        ]
+      }
+    }
+  },
+  "body": "",
+  "category": "feedback-and-alerts",
+  "collection": "components",
+  "description": "A small popover that displays more information about an item.",
+  "figmaUrl": "https://www.figma.com/design/Jpy1Ea5qglwnp1SgGnagY9/Component-library?node-id=21932-557085",
+  "id": "tooltip",
+  "name": "Tooltip",
+  "reactClassName": "GoabTooltip",
+  "relatedComponents": [
+    "popover"
+  ],
+  "relatedGuidance": [
+    "no-essential-info-in-tooltips",
+    "tooltip-describe-icon-button",
+    "tooltip-force-scroll",
+    "tooltip-inconsistent-icon-buttons",
+    "tooltip-over-140-chars",
+    "tooltip-too-far",
+    "tooltip-vital-info",
+    "tooltip-when-to-use"
+  ],
+  "status": "stable",
+  "tags": [
+    "feedback and alerts"
+  ],
+  "webComponentTag": "goa-tooltip"
+}

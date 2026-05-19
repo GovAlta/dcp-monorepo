@@ -1,0 +1,23 @@
+{
+  "appliesTo": {
+    "components": [
+      "text-area"
+    ],
+    "contexts": []
+  },
+  "body": "",
+  "collection": "guidance",
+  "description": "Use countBy='word' when suggesting a response length. Use countBy='character' when enforcing a hard limit.",
+  "id": "textarea-countby-word-vs-character",
+  "relatedProps": [
+    "countBy"
+  ],
+  "status": "published",
+  "tags": [
+    "text-area",
+    "forms",
+    "validation"
+  ],
+  "topic": "content",
+  "type": "tip"
+}

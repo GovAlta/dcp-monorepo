@@ -1,0 +1,29 @@
+{
+  "aliases": [],
+  "body": "Prompt the user in a modal before navigating to a new route to preserve context.\n\n## When to use\n\nUse this pattern when:\n\n- The user has unsaved changes that would be lost\n- Navigation would interrupt an important workflow\n- You need to confirm the user's intent to leave the page\n- Context or data would be lost on navigation\n\n## Considerations\n\n- Allow users to cancel and stay on the current page\n- Use setTimeout for route changes after modal closes for smooth transitions\n- The secondary button should cancel the navigation\n- The primary button confirms the route change",
+  "collection": "examples",
+  "components": [
+    "modal",
+    "button",
+    "button-group"
+  ],
+  "figmaUrl": "https://www.figma.com/design/Jpy1Ea5qglwnp1SgGnagY9/%E2%9D%96-Component-library-%7C-DDD?node-id=63353-169736",
+  "frameworks": [
+    "react",
+    "angular",
+    "web-components"
+  ],
+  "id": "confirm-before-navigating-away",
+  "previewImage": "/images/examples/confirm-before-navigating-away.webp",
+  "productType": "workspace",
+  "relatedExamples": [],
+  "size": "interaction",
+  "status": "published",
+  "tags": [
+    "modal",
+    "navigation",
+    "confirmation",
+    "routing"
+  ],
+  "title": "Confirm before navigating away"
+}

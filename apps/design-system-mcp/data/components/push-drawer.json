@@ -1,0 +1,199 @@
+{
+  "aliases": [],
+  "angularSelector": "goab-push-drawer",
+  "api": {
+    "extractedFrom": "libs/web-components/src/components/push-drawer/PushDrawer.svelte",
+    "frameworks": {
+      "angular": {
+        "events": [
+          {
+            "description": "Emits when the push drawer closes.",
+            "frameworks": [
+              "angular"
+            ],
+            "name": "onClose",
+            "type": "() => void"
+          }
+        ],
+        "props": [
+          {
+            "default": null,
+            "description": "Sets the heading text or template for the push drawer.",
+            "name": "heading",
+            "required": false,
+            "type": "string | TemplateRef<any>",
+            "values": [
+              "string",
+              "TemplateRef<any>"
+            ]
+          },
+          {
+            "default": null,
+            "description": "Sets the open state of the push drawer.",
+            "name": "open",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "default": null,
+            "description": "Sets a data-testid attribute for automated testing.",
+            "name": "testId",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Sets the width of the push drawer panel.",
+            "name": "width",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "slots": [
+          {
+            "description": "Content rendered in the actions slot, typically action buttons.",
+            "name": "actions",
+            "required": false,
+            "type": "TemplateRef"
+          }
+        ]
+      },
+      "react": {
+        "events": [
+          {
+            "description": "Callback fired when the push drawer is closed.",
+            "frameworks": [
+              "react"
+            ],
+            "name": "onClose",
+            "type": "() => void"
+          }
+        ],
+        "props": [
+          {
+            "default": null,
+            "description": "Sets the heading text or custom heading content.",
+            "name": "heading",
+            "required": false,
+            "type": "string | ReactNode",
+            "values": [
+              "string",
+              "ReactNode"
+            ]
+          },
+          {
+            "default": null,
+            "description": "Controls the open/closed state of the push drawer.",
+            "name": "open",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "default": null,
+            "description": "Sets a data-testid attribute for automated testing.",
+            "name": "testId",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "492px",
+            "description": "Sets the width of the push drawer panel.",
+            "name": "width",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "slots": [
+          {
+            "description": "Content rendered in the actions slot, typically action buttons.",
+            "name": "actions",
+            "required": false,
+            "type": "ReactNode"
+          }
+        ]
+      },
+      "webComponents": {
+        "events": [
+          {
+            "description": "",
+            "frameworks": [
+              "webComponents"
+            ],
+            "name": "_close",
+            "type": "CustomEvent<void>"
+          }
+        ],
+        "props": [
+          {
+            "default": "",
+            "description": "",
+            "name": "heading",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "false",
+            "description": "",
+            "name": "open",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "default": null,
+            "description": "",
+            "name": "testid",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "",
+            "name": "version",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "492px",
+            "description": "",
+            "name": "width",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "slots": [
+          {
+            "description": "Content rendered in the actions slot, typically action buttons.",
+            "name": "actions",
+            "required": false
+          }
+        ]
+      }
+    }
+  },
+  "body": "See it used in context in the [Workspace](/examples/workspace#push-drawer) for case-action drawers that keep the user on the page while completing a focused task.",
+  "category": "content-layout",
+  "collection": "components",
+  "description": "A panel that pushes the main page content aside on desktop, falling back to an overlay drawer on smaller screens.",
+  "figmaUrl": "https://www.figma.com/design/Jpy1Ea5qglwnp1SgGnagY9/Component-library?node-id=60151-367783",
+  "id": "push-drawer",
+  "name": "Push Drawer",
+  "reactClassName": "GoabPushDrawer",
+  "relatedComponents": [
+    "drawer"
+  ],
+  "relatedGuidance": [
+    "push-drawer-actions-optional",
+    "push-drawer-dont-use-for-focused-tasks",
+    "push-drawer-mobile-fallback",
+    "push-drawer-use-for-reference-tasks"
+  ],
+  "status": "stable",
+  "tags": [
+    "sections",
+    "structure and navigation",
+    "drawer",
+    "sidebar",
+    "panel"
+  ],
+  "webComponentTag": "goa-push-drawer"
+}

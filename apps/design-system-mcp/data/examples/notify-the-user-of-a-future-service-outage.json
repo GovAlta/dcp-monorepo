@@ -1,0 +1,26 @@
+{
+  "aliases": [],
+  "body": "Display a clear message to inform users about an upcoming service outage, including the date, time, and expected impact on service availability.\n\n## When to use\n\nUse this pattern when:\n\n- Scheduled maintenance will affect service availability\n- Users need advance notice about system downtime\n- You need to communicate specific dates and times for an outage\n- Users should know how to get support during the outage\n\n## Considerations\n\n- Use the \"important\" notification type to draw attention\n- Include specific dates, times, and duration of the outage\n- Provide contact information for questions or concerns\n- Place the notification prominently on affected pages",
+  "collection": "examples",
+  "components": [
+    "notification"
+  ],
+  "figmaUrl": "https://www.figma.com/design/Jpy1Ea5qglwnp1SgGnagY9/%E2%9D%96-Component-library-%7C-DDD?node-id=63353-169103",
+  "frameworks": [
+    "react",
+    "angular",
+    "web-components"
+  ],
+  "id": "notify-the-user-of-a-future-service-outage",
+  "previewImage": "/images/examples/notify-the-user-of-a-future-service-outage.webp",
+  "relatedExamples": [],
+  "size": "interaction",
+  "status": "published",
+  "tags": [
+    "notification",
+    "maintenance",
+    "alerts",
+    "system-status"
+  ],
+  "title": "Notify the user of a future service outage"
+}

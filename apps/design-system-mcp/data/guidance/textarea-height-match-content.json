@@ -1,0 +1,21 @@
+{
+  "appliesTo": {
+    "components": [
+      "textarea",
+      "form-item"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-form-item label=\"Input label\" helptext=\"This is some helper text\">\n    <goa-textarea name=\"content\" rows=\"3\"></goa-textarea>\n  </goa-form-item>\n</Preview>",
+  "collection": "guidance",
+  "description": "Make empty text areas as tall as the content they are expected to contain.",
+  "id": "textarea-height-match-content",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "textarea",
+    "sizing"
+  ],
+  "topic": "forms",
+  "type": "do"
+}

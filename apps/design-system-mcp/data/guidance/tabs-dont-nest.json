@@ -1,0 +1,20 @@
+{
+  "appliesTo": {
+    "components": [
+      "tabs"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview bad>\n  <goa-tabs>\n    <goa-tab heading=\"Open\">\n      <goa-tabs>\n        <goa-tab heading=\"Today\">Nested content</goa-tab>\n        <goa-tab heading=\"Yesterday\">Nested content</goa-tab>\n      </goa-tabs>\n    </goa-tab>\n    <goa-tab heading=\"Completed\">Content</goa-tab>\n  </goa-tabs>\n</Preview>",
+  "collection": "guidance",
+  "description": "Avoid nesting tabs inside other tabs.",
+  "id": "tabs-dont-nest",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "tabs",
+    "layout"
+  ],
+  "topic": "usage",
+  "type": "dont"
+}

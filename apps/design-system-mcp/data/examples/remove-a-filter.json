@@ -1,0 +1,24 @@
+{
+  "aliases": [],
+  "body": "Allow users to remove active filters by clicking on filter chips, providing clear visual feedback and dynamic updates to filtered results.\n\n## When to use\n\nUse this pattern when:\n\n- Users have applied filters that need to be removable\n- You want to show active filter state clearly\n- Filters should be easy to remove with a single click\n\n## Considerations\n\n- Each chip should clearly indicate what filter it represents\n- Provide visual feedback when removing filters\n- Results should update immediately when a filter is removed\n- Consider adding an \"x\" icon or clear affordance to indicate removeability",
+  "collection": "examples",
+  "components": [
+    "filter-chip"
+  ],
+  "frameworks": [
+    "react",
+    "angular",
+    "web-components"
+  ],
+  "id": "remove-a-filter",
+  "previewImage": "/images/examples/remove-a-filter.webp",
+  "relatedExamples": [],
+  "size": "interaction",
+  "status": "published",
+  "tags": [
+    "filtering",
+    "chips",
+    "remove"
+  ],
+  "title": "Remove a filter"
+}

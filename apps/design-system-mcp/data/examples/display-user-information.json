@@ -1,0 +1,31 @@
+{
+  "aliases": [],
+  "body": "Display user contact information and related data using containers with clear visual hierarchy.\n\n## When to use\n\nUse this pattern when:\n\n- Showing user profile or contact information\n- Displaying assigned advisor or representative details\n- Presenting upcoming dates or deadlines in a structured format\n- Creating summary views of user-related data\n\n## Considerations\n\n- Use containers to group related information\n- Apply consistent typography for labels and values\n- Use the `accent=\"thick\"` variant for important information sections\n- Include actions (like \"Add to calendar\") when relevant\n- Use tables with striped rows for date lists to improve scanability",
+  "collection": "examples",
+  "components": [
+    "container",
+    "block",
+    "button",
+    "table",
+    "text"
+  ],
+  "frameworks": [
+    "react",
+    "angular",
+    "web-components"
+  ],
+  "id": "display-user-information",
+  "previewImage": "/images/examples/display-user-information.webp",
+  "productType": "workspace",
+  "relatedExamples": [],
+  "size": "section",
+  "status": "published",
+  "tags": [
+    "container",
+    "user-info",
+    "contact",
+    "profile",
+    "table"
+  ],
+  "title": "Display user information"
+}

@@ -1,0 +1,21 @@
+{
+  "appliesTo": {
+    "components": [
+      "details"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-details heading=\"What counts as proof of residency?\">\n    <p>Acceptable documents include utility bills dated within 3 months, bank statements, or government correspondence.</p>\n  </goa-details>\n</Preview>",
+  "collection": "guidance",
+  "description": "Use details to show more information or to help the user make a decision.",
+  "id": "details-for-optional-content",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "details",
+    "help",
+    "disclosure"
+  ],
+  "topic": "content",
+  "type": "do"
+}

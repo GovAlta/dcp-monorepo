@@ -1,0 +1,25 @@
+{
+  "aliases": [],
+  "body": "Allow users to apply filters using selectable chips, which visually represent active filters and can be removed to update results dynamically.\n\n## When to use\n\nUse this pattern when:\n\n- Users need to apply multiple filters to a dataset\n- Filters should be visible and easily removable\n- You want to show active filter state clearly\n\n## Considerations\n\n- Each chip should clearly indicate what filter it represents\n- Provide visual feedback when adding/removing filters\n- Consider the order of chips (most recent, alphabetical, etc.)",
+  "collection": "examples",
+  "components": [
+    "filter-chip",
+    "button"
+  ],
+  "frameworks": [
+    "react",
+    "angular",
+    "web-components"
+  ],
+  "id": "add-a-filter-chip",
+  "previewImage": "/images/examples/add-a-filter-chip.webp",
+  "relatedExamples": [],
+  "size": "interaction",
+  "status": "published",
+  "tags": [
+    "filtering",
+    "chips",
+    "dynamic"
+  ],
+  "title": "Add a filter chip"
+}

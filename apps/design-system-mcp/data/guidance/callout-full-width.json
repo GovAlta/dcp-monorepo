@@ -1,0 +1,21 @@
+{
+  "appliesTo": {
+    "components": [
+      "callout"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-callout type=\"information\" heading=\"Provincial Family Resource Networks\">\n    Provincial Family Resource Networks deliver high quality prevention and early intervention services.\n  </goa-callout>\n</Preview>",
+  "collection": "guidance",
+  "description": "Use full width callouts with a maximum width of 700px.",
+  "id": "callout-full-width",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "callout",
+    "layout",
+    "width"
+  ],
+  "topic": "sizing",
+  "type": "do"
+}

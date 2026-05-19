@@ -1,0 +1,22 @@
+{
+  "appliesTo": {
+    "components": [
+      "notification"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-notification type=\"information\">\n    Your application is being submitted...\n  </goa-notification>\n</Preview>",
+  "collection": "guidance",
+  "description": "End loading messages with an ellipsis to indicate that the action is ongoing.",
+  "id": "notification-loading-ellipsis",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "notification",
+    "temporary-notification",
+    "loading",
+    "content"
+  ],
+  "topic": "feedback",
+  "type": "do"
+}

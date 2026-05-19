@@ -1,0 +1,22 @@
+{
+  "appliesTo": {
+    "components": [
+      "button-group"
+    ],
+    "contexts": []
+  },
+  "body": "",
+  "collection": "guidance",
+  "description": "Match gap to button size. Use 'relaxed' gap with normal-sized buttons and 'compact' gap with compact buttons.",
+  "id": "buttongroup-gap-matches-button-size",
+  "relatedProps": [
+    "gap"
+  ],
+  "status": "published",
+  "tags": [
+    "button-group",
+    "spacing"
+  ],
+  "topic": "sizing",
+  "type": "tip"
+}

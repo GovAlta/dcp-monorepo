@@ -1,0 +1,25 @@
+{
+  "appliesTo": {
+    "components": [
+      "button",
+      "button-group"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-button type=\"primary\">Save</goa-button>\n  <goa-button type=\"secondary\" size=\"compact\" ml=\"s\">Cancel</goa-button>\n</Preview>",
+  "collection": "guidance",
+  "description": "Don't use different button sizes in the same area to emphasize hierarchy.",
+  "id": "button-consistent-sizes",
+  "relatedProps": [
+    "size"
+  ],
+  "status": "published",
+  "tags": [
+    "button",
+    "sizing",
+    "hierarchy",
+    "consistency"
+  ],
+  "topic": "sizing",
+  "type": "dont"
+}

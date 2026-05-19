@@ -1,0 +1,240 @@
+{
+  "aliases": [],
+  "angularSelector": "goab-notification",
+  "api": {
+    "extractedFrom": "libs/web-components/src/components/notification/Notification.svelte",
+    "frameworks": {
+      "angular": {
+        "events": [
+          {
+            "description": "Emits when the notification is dismissed.",
+            "frameworks": [
+              "angular"
+            ],
+            "name": "onDismiss",
+            "type": "() => void"
+          }
+        ],
+        "props": [
+          {
+            "default": null,
+            "description": "Indicates how assistive technology should handle updates to the live region.",
+            "name": "ariaLive",
+            "required": false,
+            "type": "GoabAriaLiveType"
+          },
+          {
+            "default": null,
+            "description": "When true, reduces padding for a more compact notification.",
+            "name": "compact",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "default": "high",
+            "description": "Sets the visual prominence. 'high' for full background, 'low' for medium.",
+            "name": "emphasis",
+            "required": false,
+            "type": "GoabNotificationEmphasis"
+          },
+          {
+            "default": null,
+            "description": "Maximum width of the content area.",
+            "name": "maxContentWidth",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Sets a data-testid attribute for automated testing.",
+            "name": "testId",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "information",
+            "description": "Define the context and colour of the notification.",
+            "name": "type",
+            "required": false,
+            "type": "GoabNotificationType"
+          }
+        ],
+        "slots": []
+      },
+      "react": {
+        "events": [
+          {
+            "description": "Callback fired when the notification is dismissed.",
+            "frameworks": [
+              "react"
+            ],
+            "name": "onDismiss",
+            "type": "() => void"
+          }
+        ],
+        "props": [
+          {
+            "default": "polite",
+            "description": "Indicates how assistive technology should handle updates to the live region.",
+            "name": "ariaLive",
+            "required": false,
+            "type": "GoabAriaLiveType"
+          },
+          {
+            "default": null,
+            "description": "When true, reduces padding for a more compact notification.",
+            "name": "compact",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "default": "high",
+            "description": "Sets the visual prominence. 'high' for full background, 'low' for a bordered style.",
+            "name": "emphasis",
+            "required": false,
+            "type": "GoabNotificationEmphasis"
+          },
+          {
+            "default": "100%",
+            "description": "Maximum width of the content area.",
+            "name": "maxContentWidth",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Sets a data-testid attribute for automated testing.",
+            "name": "testId",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Define the context and colour of the notification.",
+            "name": "type",
+            "required": false,
+            "type": "GoabNotificationType"
+          }
+        ],
+        "slots": []
+      },
+      "webComponents": {
+        "events": [
+          {
+            "description": "",
+            "frameworks": [
+              "webComponents"
+            ],
+            "name": "_dismiss",
+            "type": "CustomEvent"
+          }
+        ],
+        "props": [
+          {
+            "default": "polite",
+            "description": "Indicates how assistive technology should handle updates to the live region.",
+            "name": "arialive",
+            "required": false,
+            "type": "\"assertive\" | \"off\" | \"polite\"",
+            "typeLabel": "GoabNotificationAriaLiveType",
+            "values": [
+              "assertive",
+              "off",
+              "polite"
+            ]
+          },
+          {
+            "default": "false",
+            "description": "When true, reduces padding for a more compact notification.",
+            "name": "compact",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "default": "high",
+            "description": "Sets the visual prominence. 'high' for full background, 'filled' for medium.",
+            "name": "emphasis",
+            "required": false,
+            "type": "\"high\" | \"low\"",
+            "typeLabel": "GoabNotificationEmphasisType",
+            "values": [
+              "high",
+              "low"
+            ]
+          },
+          {
+            "default": "100%",
+            "description": "Maximum width of the content area.",
+            "name": "maxcontentwidth",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "",
+            "description": "Sets a data-testid attribute for automated testing.",
+            "name": "testid",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "",
+            "description": "Define the context and colour of the notification.",
+            "name": "type",
+            "required": false,
+            "type": "\"emergency\" | \"important\" | \"information\" | \"event\"",
+            "typeLabel": "GoabNotificationType",
+            "values": [
+              "emergency",
+              "important",
+              "information",
+              "event"
+            ]
+          },
+          {
+            "default": "1",
+            "description": "Design system version for styling.",
+            "name": "version",
+            "required": false,
+            "type": "\"1\" | \"2\"",
+            "values": [
+              "1",
+              "2"
+            ]
+          }
+        ],
+        "slots": []
+      }
+    }
+  },
+  "body": "",
+  "category": "feedback-and-alerts",
+  "collection": "components",
+  "description": "Display important page level information or notifications.",
+  "figmaUrl": "https://www.figma.com/design/Jpy1Ea5qglwnp1SgGnagY9/Component-library?node-id=56970-485993",
+  "id": "notification",
+  "name": "Notification banner",
+  "reactClassName": "GoabNotification",
+  "relatedComponents": [
+    "callout",
+    "temporary-notification"
+  ],
+  "relatedGuidance": [
+    "notification-above-fixed",
+    "notification-action-feedback",
+    "notification-buttons",
+    "notification-concise",
+    "notification-critical-actions",
+    "notification-loading-ellipsis",
+    "notification-multiple",
+    "notification-one-at-time",
+    "notification-reference-info",
+    "notification-vs-temporary"
+  ],
+  "status": "stable",
+  "tags": [
+    "alert banner",
+    "banner",
+    "feedback and alerts"
+  ],
+  "webComponentTag": "goa-notification"
+}

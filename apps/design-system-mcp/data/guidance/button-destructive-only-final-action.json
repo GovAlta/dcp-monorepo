@@ -1,0 +1,25 @@
+{
+  "appliesTo": {
+    "components": [
+      "button",
+      "modal"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-button variant=\"destructive\">Delete record</goa-button>\n</Preview>",
+  "collection": "guidance",
+  "description": "Don't use a destructive button to trigger a confirmation. Reserve destructive styling for the final action inside the modal.",
+  "id": "button-destructive-only-final-action",
+  "relatedProps": [
+    "variant"
+  ],
+  "status": "published",
+  "tags": [
+    "button",
+    "destructive",
+    "modal",
+    "confirmation"
+  ],
+  "topic": "types",
+  "type": "dont"
+}

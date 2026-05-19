@@ -1,0 +1,22 @@
+{
+  "appliesTo": {
+    "components": [
+      "notification"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-notification type=\"information\">\n    Submit your application <goa-button slot=\"actions\" type=\"tertiary\" size=\"compact\">Submit</goa-button>\n  </goa-notification>\n</Preview>",
+  "collection": "guidance",
+  "description": "Don't put critical actions for the user in a temporary notification as they automatically dismiss.",
+  "id": "notification-critical-actions",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "notification",
+    "temporary-notification",
+    "actions",
+    "accessibility"
+  ],
+  "topic": "feedback",
+  "type": "dont"
+}

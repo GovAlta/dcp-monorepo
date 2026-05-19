@@ -1,0 +1,21 @@
+{
+  "appliesTo": {
+    "components": [
+      "button"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-button type=\"primary\">Submit</goa-button>\n  <goa-button type=\"secondary\" ml=\"s\">Cancel</goa-button>\n</Preview>",
+  "collection": "guidance",
+  "description": "Use one word to explain the function whenever possible, such as \"Save\", \"Submit\", or \"Search\".",
+  "id": "button-concise-labels",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "button",
+    "content",
+    "labeling"
+  ],
+  "topic": "content",
+  "type": "do"
+}

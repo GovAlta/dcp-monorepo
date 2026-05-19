@@ -1,0 +1,28 @@
+{
+  "aliases": [],
+  "body": "Use a modal dialog to require users to confirm an action before proceeding, especially for irreversible operations or important decision points.\n\n## When to use\n\nUse this pattern when:\n\n- The user is about to perform an action that cannot be undone\n- Navigation will cause data loss or prevent returning\n- Important information needs acknowledgment before proceeding\n- Users should confirm before submitting important forms\n\n## Considerations\n\n- Clearly explain the consequences of continuing\n- Provide a way to go back or cancel\n- Use clear, action-oriented button labels\n- Keep the modal content concise and focused\n- Ensure the primary action stands out from secondary options",
+  "collection": "examples",
+  "components": [
+    "modal",
+    "button",
+    "button-group"
+  ],
+  "figmaUrl": "https://www.figma.com/design/Jpy1Ea5qglwnp1SgGnagY9/%E2%9D%96-Component-library-%7C-DDD?node-id=63353-114585",
+  "frameworks": [
+    "react",
+    "angular",
+    "web-components"
+  ],
+  "id": "require-user-action-before-continuing",
+  "previewImage": "/images/examples/require-user-action-before-continuing.webp",
+  "relatedExamples": [],
+  "size": "interaction",
+  "status": "published",
+  "tags": [
+    "modal",
+    "confirmation",
+    "warning",
+    "action"
+  ],
+  "title": "Require user action before continuing"
+}

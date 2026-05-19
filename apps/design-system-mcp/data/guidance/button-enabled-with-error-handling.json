@@ -1,0 +1,24 @@
+{
+  "appliesTo": {
+    "components": [
+      "button"
+    ],
+    "contexts": []
+  },
+  "body": "Instead of disabling a submit button, keep it enabled and provide clear feedback about any missed fields or input errors when the user tries to submit the form.",
+  "collection": "guidance",
+  "description": "Keep buttons enabled and use error handling to provide clear feedback when the user submits.",
+  "id": "button-enabled-with-error-handling",
+  "relatedProps": [
+    "disabled"
+  ],
+  "status": "published",
+  "tags": [
+    "button",
+    "validation",
+    "error-handling",
+    "forms"
+  ],
+  "topic": "states",
+  "type": "do"
+}

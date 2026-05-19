@@ -1,0 +1,26 @@
+{
+  "aliases": [],
+  "body": "Use the helpText slot in a form item to display formatted helper text with custom styling like bold, italic, or links.\n\n## When to use\n\nUse this pattern when:\n\n- You need to display helper text with custom formatting\n- Helper text requires links to additional resources\n- Standard string-based helper text is insufficient\n\n## Considerations\n\n- Keep helper text concise and relevant to the field\n- Use formatting to highlight important information\n- Ensure helper text is accessible to screen readers\n- Consider using links to provide additional guidance without cluttering the form",
+  "collection": "examples",
+  "components": [
+    "form-item",
+    "input"
+  ],
+  "frameworks": [
+    "react",
+    "angular",
+    "web-components"
+  ],
+  "id": "slotted-helper-text-in-a-form-item",
+  "previewImage": "/images/examples/slotted-helper-text-in-a-form-item.webp",
+  "relatedExamples": [],
+  "size": "interaction",
+  "status": "published",
+  "tags": [
+    "form",
+    "form-item",
+    "helper-text",
+    "slot"
+  ],
+  "title": "Slotted helper text in a form item"
+}

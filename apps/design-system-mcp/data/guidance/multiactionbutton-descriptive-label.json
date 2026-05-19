@@ -1,0 +1,20 @@
+{
+  "appliesTo": {
+    "components": [
+      "multi-action-button"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-popover>\n    <goa-button type=\"primary\" slot=\"target\">Actions</goa-button>\n    <div>Delete</div>\n    <div>Schedule for later</div>\n    <div>Move to Draft</div>\n  </goa-popover>\n</Preview>",
+  "collection": "guidance",
+  "description": "Label multi action buttons to describe the category of actions, not vague labels like \"More\".",
+  "id": "multiactionbutton-descriptive-label",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "multi-action-button",
+    "labels"
+  ],
+  "topic": "content",
+  "type": "do"
+}

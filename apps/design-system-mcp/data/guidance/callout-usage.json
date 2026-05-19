@@ -1,0 +1,21 @@
+{
+  "appliesTo": {
+    "components": [
+      "callout"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-callout type=\"important\" heading=\"Application deadline\">\n    Submit your application by March 31, 2024 to be considered.\n  </goa-callout>\n</Preview>",
+  "collection": "guidance",
+  "description": "Keep callouts focused on one key message",
+  "id": "callout-usage",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "callout",
+    "content",
+    "feedback"
+  ],
+  "topic": "content",
+  "type": "do"
+}

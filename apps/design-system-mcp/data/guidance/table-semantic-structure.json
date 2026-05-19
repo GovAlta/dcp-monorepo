@@ -1,0 +1,21 @@
+{
+  "appliesTo": {
+    "components": [
+      "table"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-table width=\"100%\">\n    <thead>\n      <tr>\n        <th>Name</th>\n        <th>Date</th>\n        <th>Status</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr>\n        <td>John Smith</td>\n        <td>Jan 15, 2024</td>\n        <td>Active</td>\n      </tr>\n      <tr>\n        <td>Jane Doe</td>\n        <td>Feb 20, 2024</td>\n        <td>Pending</td>\n      </tr>\n    </tbody>\n  </goa-table>\n</Preview>",
+  "collection": "guidance",
+  "description": "Use proper semantic HTML table structure (thead, tbody, tr, th, td) for accessibility.",
+  "id": "table-semantic-structure",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "table",
+    "accessibility",
+    "semantics"
+  ],
+  "topic": "screen-readers",
+  "type": "do"
+}

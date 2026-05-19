@@ -1,0 +1,22 @@
+{
+  "appliesTo": {
+    "components": [
+      "date-picker"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-form-item label=\"Appointment date\">\n    <goa-date-picker name=\"appointment\"></goa-date-picker>\n  </goa-form-item>\n</Preview>",
+  "collection": "guidance",
+  "description": "Use the calendar date picker for selecting dates relative to today, or when seeing the day of week is helpful.",
+  "id": "datepicker-calendar-variant",
+  "relatedProps": [
+    "variant"
+  ],
+  "status": "published",
+  "tags": [
+    "date-picker",
+    "forms"
+  ],
+  "topic": "types",
+  "type": "do"
+}

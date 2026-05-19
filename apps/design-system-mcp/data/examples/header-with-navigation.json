@@ -1,0 +1,25 @@
+{
+  "aliases": [],
+  "body": "An application header with navigation links, grouped menu items, and a user account menu.\n\n## How it works\n\nThe header has two main slots for content:\n\n- **Navigation** — links and app header menus appear in the navigation bar below the header. Use plain links for single items and app header menu for grouped items with a dropdown.\n- **Utilities** — actions like user account menus appear on the right side of the header. Use menu button for dropdowns with actions.\n\nNavigation items automatically collapse into a \"More\" menu when the screen gets narrow.\n\n## When to use\n\nUse this pattern when your service needs persistent navigation across pages. See the basic page layout example for a simpler header without navigation.",
+  "collection": "examples",
+  "components": [
+    "app-header",
+    "app-header-menu"
+  ],
+  "frameworks": [
+    "react",
+    "angular",
+    "web-components"
+  ],
+  "id": "header-with-navigation",
+  "previewImage": "/images/examples/header-with-navigation.webp",
+  "relatedExamples": [],
+  "size": "section",
+  "status": "published",
+  "tags": [
+    "header",
+    "navigation",
+    "menu"
+  ],
+  "title": "Header with navigation"
+}

@@ -1,0 +1,20 @@
+{
+  "appliesTo": {
+    "components": [
+      "form-stepper"
+    ],
+    "contexts": []
+  },
+  "body": "",
+  "collection": "guidance",
+  "description": "Don't use FormStepper for non-sequential navigation.",
+  "id": "dont-use-stepper-for-nonsequential",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "form-stepper",
+    "navigation"
+  ],
+  "topic": "other",
+  "type": "dont"
+}

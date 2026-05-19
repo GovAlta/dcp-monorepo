@@ -1,0 +1,310 @@
+{
+  "aliases": [],
+  "angularSelector": "goab-filter-chip",
+  "api": {
+    "extractedFrom": "libs/web-components/src/components/filter-chip/FilterChip.svelte",
+    "frameworks": {
+      "angular": {
+        "events": [
+          {
+            "description": "Emits when the filter chip delete button is clicked.",
+            "frameworks": [
+              "angular"
+            ],
+            "name": "onClick",
+            "type": "() => void"
+          }
+        ],
+        "props": [
+          {
+            "default": "",
+            "description": "Text label of the chip.",
+            "name": "content",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Marks the chip as deletable.",
+            "name": "deletable",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "default": null,
+            "description": "Shows an error state.",
+            "name": "error",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "default": null,
+            "description": "Sets the icon theme style for the filter chip.",
+            "name": "iconTheme",
+            "required": false,
+            "type": "GoabChipTheme"
+          },
+          {
+            "default": null,
+            "description": "Icon displayed at the start of the chip.",
+            "name": "leadingIcon",
+            "required": false,
+            "type": "GoabIconType | null",
+            "values": [
+              "GoabIconType"
+            ]
+          },
+          {
+            "default": null,
+            "description": "Sets the bottom margin spacing token.",
+            "name": "mb",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Sets the left margin spacing token.",
+            "name": "ml",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Sets the right margin spacing token.",
+            "name": "mr",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Sets the top margin spacing token.",
+            "name": "mt",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": "",
+            "description": "Secondary text displayed in a smaller size before the main content.",
+            "name": "secondaryText",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Sets the data-testid attribute for automated testing.",
+            "name": "testId",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "slots": []
+      },
+      "react": {
+        "events": [
+          {
+            "description": "Callback fired when the filter chip is clicked to remove it.",
+            "frameworks": [
+              "react"
+            ],
+            "name": "onClick",
+            "type": "() => void"
+          }
+        ],
+        "props": [
+          {
+            "default": null,
+            "description": "Text label of the chip.",
+            "name": "content",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Shows an error state.",
+            "name": "error",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "default": "outline",
+            "description": "Theme style of the leading icon.",
+            "name": "iconTheme",
+            "required": false,
+            "type": "GoabFilterChipTheme"
+          },
+          {
+            "default": null,
+            "description": "Icon displayed at the start of the chip.",
+            "name": "leadingIcon",
+            "required": false,
+            "type": "GoabIconType"
+          },
+          {
+            "default": null,
+            "description": "",
+            "name": "mb",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "",
+            "name": "ml",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "",
+            "name": "mr",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "",
+            "name": "mt",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Secondary text displayed in a smaller size before the main content.",
+            "name": "secondaryText",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Sets a data-testid attribute for automated testing.",
+            "name": "testId",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "slots": []
+      },
+      "webComponents": {
+        "events": [
+          {
+            "description": "",
+            "frameworks": [
+              "webComponents"
+            ],
+            "name": "_click",
+            "type": "CustomEvent"
+          }
+        ],
+        "props": [
+          {
+            "default": "",
+            "description": "Accessible label for the filter chip. Defaults to content with 'removable' suffix.",
+            "name": "arialabel",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Text label of the chip.",
+            "name": "content",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "default": "false",
+            "description": "Shows an error state.",
+            "name": "error",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "default": null,
+            "description": "Icon displayed at the start of the chip.",
+            "name": "leadingicon",
+            "required": false,
+            "type": "GoabIconType",
+            "typeLabel": "GoabIconType"
+          },
+          {
+            "default": null,
+            "description": "Bottom margin.",
+            "name": "mb",
+            "required": false,
+            "type": "Spacing",
+            "typeLabel": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Left margin.",
+            "name": "ml",
+            "required": false,
+            "type": "Spacing",
+            "typeLabel": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Right margin.",
+            "name": "mr",
+            "required": false,
+            "type": "Spacing",
+            "typeLabel": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Top margin.",
+            "name": "mt",
+            "required": false,
+            "type": "Spacing",
+            "typeLabel": "Spacing"
+          },
+          {
+            "default": "",
+            "description": "Secondary text displayed in a smaller size before the main content.",
+            "name": "secondarytext",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "",
+            "description": "Sets a data-testid attribute for automated testing.",
+            "name": "testid",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "1",
+            "description": "Design system version for styling.",
+            "name": "version",
+            "required": false,
+            "type": "\"1\" | \"2\"",
+            "values": [
+              "1",
+              "2"
+            ]
+          }
+        ],
+        "slots": []
+      }
+    }
+  },
+  "body": "",
+  "category": "feedback-and-alerts",
+  "collection": "components",
+  "description": "Allow the user to enter information, filter content, and make selections.",
+  "figmaUrl": "https://www.figma.com/design/Jpy1Ea5qglwnp1SgGnagY9/Component-library?node-id=56969-516598",
+  "id": "filter-chip",
+  "name": "Filter chip",
+  "reactClassName": "GoabFilterChip",
+  "relatedComponents": [
+    "chip"
+  ],
+  "relatedGuidance": [
+    "filterchip-vs-badge"
+  ],
+  "status": "stable",
+  "tags": [
+    "inputs and actions",
+    "pill"
+  ],
+  "webComponentTag": "goa-filter-chip"
+}

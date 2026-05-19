@@ -1,0 +1,24 @@
+{
+  "appliesTo": {
+    "components": [
+      "button"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-button type=\"tertiary\" size=\"compact\">Edit</goa-button>\n</Preview>",
+  "collection": "guidance",
+  "description": "Use compact buttons in dense spaces like tables or container title bars.",
+  "id": "button-compact-for-dense-spaces",
+  "relatedProps": [
+    "size"
+  ],
+  "status": "published",
+  "tags": [
+    "button",
+    "compact",
+    "sizing",
+    "table"
+  ],
+  "topic": "sizing",
+  "type": "do"
+}

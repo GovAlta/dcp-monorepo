@@ -1,0 +1,23 @@
+{
+  "appliesTo": {
+    "components": [
+      "dropdown"
+    ],
+    "contexts": []
+  },
+  "body": "",
+  "collection": "guidance",
+  "description": "When a Dropdown is not wrapped in a FormItem, set ariaLabel to provide an accessible name. Without it, screen readers won't be able to identify the dropdown.",
+  "id": "dropdown-arialabel-without-formitem",
+  "relatedProps": [
+    "ariaLabel"
+  ],
+  "status": "published",
+  "tags": [
+    "dropdown",
+    "accessibility",
+    "forms"
+  ],
+  "topic": "screen-readers",
+  "type": "warning"
+}

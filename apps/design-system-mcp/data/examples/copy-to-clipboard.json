@@ -1,0 +1,27 @@
+{
+  "aliases": [],
+  "body": "Allow users to quickly copy text or data to their clipboard with a single click.\n\n## When to use\n\nUse this pattern when:\n\n- Users need to copy values like tokens, codes, or IDs\n- Quick access to copy functionality improves workflow\n- The copied value is clearly visible alongside the copy action\n- Users benefit from instant feedback when copying\n\n## Considerations\n\n- Show visual feedback (\"Copied\") when the copy action succeeds\n- Use a tooltip to indicate the copy action before and after clicking\n- Position the copy button near the content being copied\n- Reset the \"Copied\" state after a short delay",
+  "collection": "examples",
+  "components": [
+    "block",
+    "icon-button",
+    "tooltip"
+  ],
+  "frameworks": [
+    "react",
+    "angular",
+    "web-components"
+  ],
+  "id": "copy-to-clipboard",
+  "previewImage": "/images/examples/copy-to-clipboard.webp",
+  "relatedExamples": [],
+  "size": "interaction",
+  "status": "published",
+  "tags": [
+    "clipboard",
+    "copy",
+    "tooltip",
+    "icon-button"
+  ],
+  "title": "Copy to clipboard"
+}

@@ -1,0 +1,28 @@
+{
+  "aliases": [],
+  "body": "Display multiple cards in a grid layout, each containing related content or actions.\n\n## When to use\n\nUse this pattern when:\n\n- Presenting multiple related items in a scannable format\n- Creating a dashboard or landing page with navigable sections\n- Users need to choose between several options or services\n- Content can be grouped into discrete, equally-weighted items\n\n## Considerations\n\n- Use consistent card heights where possible for visual alignment\n- Link titles should clearly describe where the user will navigate\n- Keep descriptions concise to maintain scannability\n- Use the grid's minChildWidth to ensure cards wrap appropriately on smaller screens",
+  "collection": "examples",
+  "components": [
+    "container",
+    "grid",
+    "link",
+    "text"
+  ],
+  "frameworks": [
+    "react",
+    "angular",
+    "web-components"
+  ],
+  "id": "card-grid",
+  "previewImage": "/images/examples/card-grid.webp",
+  "relatedExamples": [],
+  "size": "section",
+  "status": "published",
+  "tags": [
+    "cards",
+    "grid",
+    "navigation",
+    "dashboard"
+  ],
+  "title": "Card grid"
+}

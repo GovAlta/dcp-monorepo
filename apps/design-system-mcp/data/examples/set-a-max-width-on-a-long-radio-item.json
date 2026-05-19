@@ -1,0 +1,26 @@
+{
+  "aliases": [],
+  "body": "Set a max width on a long radio item to control line wrapping.\n\n## When to use\n\nUse this pattern when:\n\n- You have radio options with long labels that need width control\n- You want to prevent radio items from becoming too wide on large screens\n- You need consistent radio item sizing across different viewport sizes\n\n## Considerations\n\n- The `maxWidth` property accepts CSS width values like \"300px\" or \"20ch\"\n- Consider the reading experience when setting max widths\n- Ensure the max width still allows for readable label text\n- Use consistent max widths across similar form elements for visual harmony",
+  "collection": "examples",
+  "components": [
+    "form-item",
+    "radio-group",
+    "radio-item"
+  ],
+  "frameworks": [
+    "react",
+    "angular",
+    "web-components"
+  ],
+  "id": "set-a-max-width-on-a-long-radio-item",
+  "previewImage": "/images/examples/set-a-max-width-on-a-long-radio-item.webp",
+  "relatedExamples": [],
+  "size": "interaction",
+  "status": "published",
+  "tags": [
+    "radio",
+    "forms",
+    "layout"
+  ],
+  "title": "Set a max width on a long radio item"
+}

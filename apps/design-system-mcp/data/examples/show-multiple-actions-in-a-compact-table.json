@@ -1,0 +1,30 @@
+{
+  "aliases": [],
+  "body": "Use icon buttons to provide multiple row actions in tables where space is limited, keeping the interface compact while maintaining accessibility through aria labels.\n\n## When to use\n\nUse this pattern when:\n\n- Tables need multiple actions per row\n- Horizontal space is limited\n- Workers are familiar with icon meanings\n- Actions are common (edit, flag, send, etc.)\n\n## Considerations\n\n- Always include aria-label for accessibility\n- Use small size icon buttons for compact tables\n- Group related actions with GoabBlock\n- Ensure icons are universally understood",
+  "collection": "examples",
+  "components": [
+    "table",
+    "icon-button",
+    "badge",
+    "block"
+  ],
+  "frameworks": [
+    "react",
+    "angular",
+    "web-components"
+  ],
+  "id": "show-multiple-actions-in-a-compact-table",
+  "previewImage": "/images/examples/show-multiple-actions-in-a-compact-table.webp",
+  "productType": "workspace",
+  "relatedExamples": [],
+  "size": "section",
+  "status": "published",
+  "tags": [
+    "table",
+    "icon-button",
+    "actions",
+    "compact",
+    "worker-ui"
+  ],
+  "title": "Show multiple actions in a compact table"
+}

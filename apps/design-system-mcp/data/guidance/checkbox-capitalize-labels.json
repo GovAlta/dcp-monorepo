@@ -1,0 +1,21 @@
+{
+  "appliesTo": {
+    "components": [
+      "checkbox"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-block direction=\"column\" gap=\"m\">\n    <goa-checkbox name=\"text\" text=\"Text message\"></goa-checkbox>\n    <goa-checkbox name=\"email\" text=\"Email\"></goa-checkbox>\n    <goa-checkbox name=\"phone\" text=\"Phone call\"></goa-checkbox>\n  </goa-block>\n</Preview>",
+  "collection": "guidance",
+  "description": "Start all checkbox labels with a capital letter.",
+  "id": "checkbox-capitalize-labels",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "checkbox",
+    "content",
+    "casing"
+  ],
+  "topic": "content",
+  "type": "do"
+}

@@ -1,0 +1,176 @@
+{
+  "aliases": [],
+  "angularSelector": "goab-linear-progress",
+  "api": {
+    "extractedFrom": "libs/web-components/src/components/linear-progress/LinearProgress.svelte",
+    "frameworks": {
+      "angular": {
+        "events": [],
+        "props": [
+          {
+            "default": null,
+            "description": "Accessible label for the progress bar.",
+            "name": "ariaLabel",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "ID of the element that labels this progress bar.",
+            "name": "ariaLabelledBy",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Controls visibility of the percentage text.",
+            "name": "percentVisibility",
+            "required": false,
+            "type": "\"visible\" | \"hidden\" | undefined",
+            "values": [
+              "visible",
+              "hidden"
+            ]
+          },
+          {
+            "default": null,
+            "description": "Progress value (0-100). When undefined, shows an indeterminate loading animation.",
+            "name": "progress",
+            "required": false,
+            "type": "number | null | undefined",
+            "values": [
+              "number"
+            ]
+          },
+          {
+            "default": null,
+            "description": "Sets a data-testid attribute for automated testing.",
+            "name": "testid",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "slots": []
+      },
+      "react": {
+        "events": [],
+        "props": [
+          {
+            "default": null,
+            "description": "Accessible label for the progress bar.",
+            "name": "ariaLabel",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "ID of the element that labels this progress bar.",
+            "name": "ariaLabelledBy",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "visible",
+            "description": "Controls visibility of the percentage text.",
+            "name": "percentVisibility",
+            "required": false,
+            "type": "\"visible\" | \"hidden\" | undefined",
+            "values": [
+              "visible",
+              "hidden"
+            ]
+          },
+          {
+            "default": null,
+            "description": "Progress value (0-100). When undefined, shows an indeterminate loading animation.",
+            "name": "progress",
+            "required": false,
+            "type": "number | null",
+            "values": [
+              "number"
+            ]
+          },
+          {
+            "default": null,
+            "description": "Sets a data-testid attribute for automated testing.",
+            "name": "testId",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "slots": []
+      },
+      "webComponents": {
+        "events": [],
+        "props": [
+          {
+            "default": null,
+            "description": "Accessible label for the progress bar.",
+            "name": "aria-label",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "ID of the element that labels this progress bar.",
+            "name": "aria-labelledby",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "visible",
+            "description": "Controls visibility of the percentage text.",
+            "name": "percent-visibility",
+            "required": false,
+            "type": "\"visible\" | \"hidden\"",
+            "values": [
+              "visible",
+              "hidden"
+            ]
+          },
+          {
+            "default": null,
+            "description": "Progress value (0-100). When undefined, shows an indeterminate loading animation.",
+            "name": "progress",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "default": null,
+            "description": "Sets a data-testid attribute for automated testing.",
+            "name": "testid",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "slots": []
+      }
+    }
+  },
+  "body": "",
+  "category": "feedback-and-alerts",
+  "collection": "components",
+  "description": "Provide visual feedback to users while loading.",
+  "figmaUrl": "https://www.figma.com/design/Jpy1Ea5qglwnp1SgGnagY9/Component-library?node-id=14458-398386",
+  "id": "linear-progress",
+  "name": "Linear progress indicator",
+  "reactClassName": "GoabLinearProgress",
+  "relatedComponents": [
+    "circular-progress",
+    "spinner"
+  ],
+  "relatedGuidance": [
+    "linear-progress-hide-percent-indeterminate",
+    "linearprogress-accessibility"
+  ],
+  "status": "stable",
+  "tags": [
+    "progress",
+    "feedback and alerts",
+    "loading",
+    "loader",
+    "loading indicator",
+    "process timer"
+  ],
+  "webComponentTag": "goa-linear-progress"
+}

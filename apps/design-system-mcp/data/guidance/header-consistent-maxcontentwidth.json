@@ -1,0 +1,22 @@
+{
+  "appliesTo": {
+    "components": [
+      "app-header"
+    ],
+    "contexts": []
+  },
+  "body": "",
+  "collection": "guidance",
+  "description": "Use consistent maxContentWidth with your page layout so the header aligns with the content below it.",
+  "id": "header-consistent-maxcontentwidth",
+  "relatedProps": [
+    "maxContentWidth"
+  ],
+  "status": "published",
+  "tags": [
+    "app-header",
+    "layout"
+  ],
+  "topic": "positioning",
+  "type": "tip"
+}

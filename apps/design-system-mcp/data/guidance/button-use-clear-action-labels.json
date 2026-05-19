@@ -1,0 +1,21 @@
+{
+  "appliesTo": {
+    "components": [
+      "button"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-block gap=\"xs\">\n    <goa-button version=\"2\" type=\"primary\">Submit application</goa-button>\n    <goa-button version=\"2\" type=\"secondary\">Save draft</goa-button>\n    <goa-button version=\"2\" type=\"tertiary\">Cancel</goa-button>\n  </goa-block>\n</Preview>",
+  "collection": "guidance",
+  "description": "Button labels should clearly describe what happens when clicked. Use specific verbs like \"Submit application\" or \"Save draft\" instead of generic labels like \"OK\" or \"Click here\".",
+  "id": "button-use-clear-action-labels",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "button",
+    "content",
+    "labeling"
+  ],
+  "topic": "content",
+  "type": "do"
+}

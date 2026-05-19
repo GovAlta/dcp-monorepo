@@ -1,0 +1,22 @@
+{
+  "appliesTo": {
+    "components": [
+      "callout"
+    ],
+    "contexts": []
+  },
+  "body": "",
+  "collection": "guidance",
+  "description": "Use ariaLive='polite' for status updates. Use 'assertive' for urgent messages that should interrupt the user immediately.",
+  "id": "callout-arialive-polite-vs-assertive",
+  "relatedProps": [
+    "ariaLive"
+  ],
+  "status": "published",
+  "tags": [
+    "callout",
+    "accessibility"
+  ],
+  "topic": "screen-readers",
+  "type": "tip"
+}

@@ -1,0 +1,21 @@
+{
+  "appliesTo": {
+    "components": [
+      "notification"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-notification type=\"success\">\n    Your reference number is 123456.\n  </goa-notification>\n</Preview>",
+  "collection": "guidance",
+  "description": "Don't use a temporary notification for success states where important information is displayed for a user to reference since it will disappear.",
+  "id": "notification-reference-info",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "notification",
+    "temporary-notification",
+    "success"
+  ],
+  "topic": "feedback",
+  "type": "dont"
+}

@@ -1,0 +1,31 @@
+{
+  "aliases": [],
+  "body": "Use tabs to organize table data into different views based on status or category, showing counts in each tab to help workers quickly navigate to relevant items.\n\n## When to use\n\nUse this pattern when:\n\n- Workers need to view data filtered by status\n- Different subsets of data require focused attention\n- Quick access to counts of items in each category is helpful\n- Switching between views should preserve context\n\n## Considerations\n\n- Show counts in tab headers using badges\n- Maintain consistent table structure across tabs\n- Default to the most commonly used view\n- Consider which statuses need prominent display",
+  "collection": "examples",
+  "components": [
+    "tabs",
+    "tab",
+    "table",
+    "badge",
+    "button"
+  ],
+  "frameworks": [
+    "react",
+    "angular",
+    "web-components"
+  ],
+  "id": "show-different-views-of-data-in-a-table",
+  "previewImage": "/images/examples/show-different-views-of-data-in-a-table.webp",
+  "productType": "workspace",
+  "relatedExamples": [],
+  "size": "section",
+  "status": "published",
+  "tags": [
+    "table",
+    "tabs",
+    "filtering",
+    "status",
+    "data-views"
+  ],
+  "title": "Show different views of data in a table"
+}

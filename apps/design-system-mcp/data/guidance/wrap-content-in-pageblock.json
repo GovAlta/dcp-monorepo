@@ -1,0 +1,22 @@
+{
+  "appliesTo": {
+    "components": [
+      "page-block"
+    ],
+    "contexts": []
+  },
+  "body": "",
+  "collection": "guidance",
+  "description": "GoabPageBlock with a width prop is one way to constrain main content within OneColumnLayout. It gives you a quick, consistent content width without having to handle that yourself.",
+  "id": "wrap-content-in-pageblock",
+  "relatedProps": [
+    "width"
+  ],
+  "status": "published",
+  "tags": [
+    "page-block",
+    "layout"
+  ],
+  "topic": "other",
+  "type": "tip"
+}

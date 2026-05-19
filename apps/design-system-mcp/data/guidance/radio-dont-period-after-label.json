@@ -1,0 +1,20 @@
+{
+  "appliesTo": {
+    "components": [
+      "radio-group"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview bad>\n  <goa-radio-group name=\"example\">\n    <goa-radio-item value=\"1\" label=\"Radio text label.\"></goa-radio-item>\n  </goa-radio-group>\n</Preview>",
+  "collection": "guidance",
+  "description": "Don't include a period after a radio label.",
+  "id": "radio-dont-period-after-label",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "radio",
+    "labels"
+  ],
+  "topic": "content",
+  "type": "dont"
+}

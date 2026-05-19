@@ -1,13 +1,16 @@
 /**
- * GoA Design System Data Loader v2.0
+ * GoA Design System Data Loader
  *
- * Simple data loading with inverted index search.
- * Loads from the design/development folder structure.
+ * Loads the generator's flat collection output:
+ *   data/components/
+ *   data/examples/
+ *   data/guidance/
+ *   data/foundations/
+ *   data/get-started/
  *
- * Structure:
- *   data/design/          - Design decision knowledge (principles, governance, etc.)
- *   data/development/     - Implementation knowledge (components, patterns, workflows)
- *   data/development/examples/ - Example implementations
+ * The ui-components content-generators pipeline produces this shape from the
+ * docs site. Each JSON file carries an explicit `id` field (canonical, can
+ * contain "/" for nested ids); the filename is a flattened version of that id.
  */
 
 import { readFile, readdir } from 'fs/promises';
@@ -30,6 +33,10 @@ import {
  * during development.
  */
 function resolveDataDir(): string {
+  // Explicit override (smoke tests, alternate-deployment scenarios).
+  if (process.env.GOA_MCP_DATA_DIR) {
+    return process.env.GOA_MCP_DATA_DIR;
+  }
   if (require.main?.filename) {
     return join(dirname(require.main.filename), 'data');
   }
@@ -59,6 +66,7 @@ export interface SearchOptions {
 
 export class DataLoader {
   private index = new InvertedIndex();
+  private aliasMap = new Map<string, string>(); // lowercase alias -> canonical id
   private initialized = false;
 
   async initialize(): Promise<void> {
@@ -69,23 +77,12 @@ export class DataLoader {
 
     const dataDir = resolveDataDir();
 
-    // === DESIGN KNOWLEDGE ===
-    await this.loadFolder(join(dataDir, 'design'), 'design');
-
-    // === DEVELOPMENT KNOWLEDGE ===
-    const devDir = join(dataDir, 'development');
-
-    // Components
-    await this.loadFolder(join(devDir, 'components'), 'component');
-
-    // Standalone development files
-    await this.loadDevelopmentFiles(devDir);
-
-    // === EXAMPLES ===
-    await this.loadFolder(join(devDir, 'examples/apps'), 'example');
-    await this.loadFolder(join(devDir, 'examples/pages'), 'example');
-    await this.loadFolder(join(devDir, 'examples/sections'), 'example');
-    await this.loadFolder(join(devDir, 'examples/tasks'), 'example');
+    await this.loadFolder(join(dataDir, 'components'), 'component');
+    await this.loadFolder(join(dataDir, 'examples'), 'example');
+    await this.loadFolder(join(dataDir, 'guidance'), 'guidance');
+    await this.loadFolder(join(dataDir, 'foundations'), 'foundation');
+    await this.loadFolder(join(dataDir, 'get-started'), 'get-started');
+    await this.loadFolder(join(dataDir, 'productTypes'), 'productType');
 
     this.initialized = true;
 
@@ -103,16 +100,40 @@ export class DataLoader {
     query: string,
     options: SearchOptions = {},
   ): Promise<SearchResult[]> {
-    const { collection, maxResults = 10 } = options;
-    // collection filter applied below; other filters (size, productType,
-    // framework, status, component, context) accepted in SearchOptions but
-    // not yet wired — pending PR #3888 schema fields landing in the data.
+    const {
+      collection,
+      size,
+      productType,
+      framework,
+      status,
+      component,
+      context,
+      maxResults = 10,
+    } = options;
 
-    const candidates = this.index.search(query, maxResults * 2);
+    // Fetch a wider candidate set when filters are stacked, so the final
+    // top-N after filtering still has room. Cheap because the index is O(1).
+    const filterCount = [
+      size,
+      productType,
+      framework,
+      status,
+      component,
+      context,
+    ].filter(Boolean).length;
+    const candidatePoolMultiplier = 2 + filterCount;
+    const candidates = this.index.search(
+      query,
+      maxResults * candidatePoolMultiplier,
+    );
 
     const collectionToType: Record<string, string> = {
       components: 'component',
       examples: 'example',
+      guidance: 'guidance',
+      foundations: 'foundation',
+      'get-started': 'get-started',
+      productTypes: 'productType',
     };
 
     let filtered = candidates;
@@ -121,16 +142,45 @@ export class DataLoader {
       if (targetType) {
         filtered = candidates.filter((c) => c.item.type === targetType);
       } else {
-        // Collection has no current data mapping (e.g. guidance, productTypes
-        // pending PR #3771 / #3888 ingestion)
+        // Collection name not recognized — return empty rather than mixed.
         filtered = [];
       }
+    }
+
+    if (size) filtered = filtered.filter((c) => c.item.data.size === size);
+    if (productType) {
+      filtered = filtered.filter(
+        (c) => c.item.data.productType === productType,
+      );
+    }
+    if (framework) {
+      filtered = filtered.filter((c) => {
+        const frameworks = c.item.data.frameworks;
+        return Array.isArray(frameworks) && frameworks.includes(framework);
+      });
+    }
+    if (status) {
+      filtered = filtered.filter((c) => c.item.data.status === status);
+    }
+    if (component) {
+      filtered = filtered.filter((c) =>
+        recordReferencesComponent(c.item, component),
+      );
+    }
+    if (context) {
+      filtered = filtered.filter((c) => {
+        const contexts = c.item.data.appliesTo?.contexts;
+        return Array.isArray(contexts) && contexts.includes(context);
+      });
     }
 
     const typeToCollection: Record<string, string> = {
       component: 'components',
       example: 'examples',
-      design: 'design',
+      guidance: 'guidance',
+      foundation: 'foundations',
+      'get-started': 'get-started',
+      productType: 'productTypes',
     };
 
     return filtered.slice(0, maxResults).map((candidate) => {
@@ -142,6 +192,7 @@ export class DataLoader {
         name:
           data.componentName ||
           data.name ||
+          data.title ||
           data.patternName ||
           candidate.item.id,
         summary: data.summary || data.description || data.purpose,
@@ -190,11 +241,15 @@ export class DataLoader {
     const typeToCollection: Record<string, string> = {
       component: 'components',
       example: 'examples',
-      design: 'design',
+      guidance: 'guidance',
+      foundation: 'foundations',
+      'get-started': 'get-started',
+      productType: 'productTypes',
     };
 
-    // Try direct lookup
-    const directItem = this.index.getItem(id.toLowerCase());
+    // Try direct lookup (exact id, then lowercased).
+    const directItem =
+      this.index.getItem(id) ?? this.index.getItem(id.toLowerCase());
     if (directItem) {
       return {
         id: directItem.id,
@@ -204,9 +259,24 @@ export class DataLoader {
       };
     }
 
-    // Try common variations (treat as alias matches)
+    // Try explicit aliases recorded from data.aliases.
+    const aliasedId = this.aliasMap.get(id.toLowerCase());
+    if (aliasedId) {
+      const item =
+        this.index.getItem(aliasedId) ??
+        this.index.getItem(aliasedId.toLowerCase());
+      if (item) {
+        return {
+          id: item.id,
+          collection: typeToCollection[item.type] || item.type,
+          resolved_via: 'alias',
+          data: item.data,
+        };
+      }
+    }
+
+    // Try common id variations.
     const variations = [
-      id,
       id.replace(/[-_]/g, ''),
       id
         .replace(/([A-Z])/g, '-$1')
@@ -215,7 +285,9 @@ export class DataLoader {
     ];
 
     for (const variation of variations) {
-      const item = this.index.getItem(variation);
+      const item =
+        this.index.getItem(variation) ??
+        this.index.getItem(variation.toLowerCase());
       if (item) {
         return {
           id: item.id,
@@ -259,14 +331,17 @@ export class DataLoader {
           const content = await readFile(filePath, 'utf8');
           const data = JSON.parse(content);
 
+          // Prefer the explicit `id` field (new flat-shape data). Fall back to
+          // legacy id-bearing fields, then the filename (with __ unflattened
+          // back to / so nested ids like get-started/designers/* round-trip).
           const id =
+            data.id ||
             data.componentName?.toLowerCase() ||
             data.patternId ||
             data.conceptId ||
             data.exampleId ||
-            file.replace('.json', '');
+            file.replace(/\.json$/, '').replace(/__/g, '/');
 
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           const indexed: IndexedItem = {
             id,
             type: type as IndexedItem['type'],
@@ -277,44 +352,21 @@ export class DataLoader {
           };
 
           this.index.addItem(indexed);
+
+          // Register aliases for `get` lookups.
+          if (Array.isArray(data.aliases)) {
+            for (const alias of data.aliases) {
+              if (typeof alias === 'string' && alias.length > 0) {
+                this.aliasMap.set(alias.toLowerCase(), id);
+              }
+            }
+          }
         } catch {
           // Skip invalid files silently
         }
       }
     } catch {
       // Folder doesn't exist - that's okay
-    }
-  }
-
-  private async loadDevelopmentFiles(devDir: string): Promise<void> {
-    const devFiles = [
-      { file: 'installation.json', type: 'setup' },
-      { file: 'tokens.json', type: 'reference' },
-      { file: 'responsive.json', type: 'reference' },
-      { file: 'wireframe-mode.json', type: 'reference' },
-    ];
-
-    for (const { file, type } of devFiles) {
-      try {
-        const filePath = join(devDir, file);
-        const content = await readFile(filePath, 'utf8');
-        const data = JSON.parse(content);
-
-        const id = file.replace('.json', '');
-
-        const indexed: IndexedItem = {
-          id,
-          type: type as IndexedItem['type'],
-          data,
-          searchableText: createSearchableText(data),
-          tags: extractTags(data),
-          category: type,
-        };
-
-        this.index.addItem(indexed);
-      } catch {
-        // Skip missing files
-      }
     }
   }
 
@@ -329,7 +381,24 @@ export class DataLoader {
     if (data.commonUse?.[0]) {
       parts.push(data.commonUse[0]);
     }
+    if (data.description) {
+      parts.push(data.description.slice(0, 120));
+    }
 
     return parts.join(' - ') || '';
   }
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function recordReferencesComponent(item: any, component: string): boolean {
+  if (item.type === 'component') return item.id === component;
+  const data = item.data;
+  if (Array.isArray(data.components) && data.components.includes(component)) {
+    return true;
+  }
+  const appliesTo = data.appliesTo?.components;
+  if (Array.isArray(appliesTo) && appliesTo.includes(component)) {
+    return true;
+  }
+  return false;
 }

@@ -1,0 +1,21 @@
+{
+  "appliesTo": {
+    "components": [
+      "file-upload-input"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-file-upload-input></goa-file-upload-input>\n</Preview>",
+  "collection": "guidance",
+  "description": "Use additional helper text to provide instructions about accepted file types.",
+  "id": "fileuploader-helper-text",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "file-uploader",
+    "helper-text",
+    "forms"
+  ],
+  "topic": "content",
+  "type": "do"
+}

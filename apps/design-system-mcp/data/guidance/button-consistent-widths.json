@@ -1,0 +1,25 @@
+{
+  "appliesTo": {
+    "components": [
+      "button",
+      "button-group"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-block direction=\"column\" gap=\"s\" style=\"width: 200px;\">\n    <goa-button type=\"secondary\">Cancel</goa-button>\n    <goa-button type=\"primary\" width=\"full\">Save</goa-button>\n  </goa-block>\n</Preview>",
+  "collection": "guidance",
+  "description": "Don't stack standard and full width buttons.",
+  "id": "button-consistent-widths",
+  "relatedProps": [
+    "width"
+  ],
+  "status": "published",
+  "tags": [
+    "button",
+    "sizing",
+    "consistency",
+    "mobile"
+  ],
+  "topic": "sizing",
+  "type": "dont"
+}

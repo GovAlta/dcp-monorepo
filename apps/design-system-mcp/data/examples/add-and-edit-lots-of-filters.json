@@ -1,0 +1,34 @@
+{
+  "aliases": [],
+  "body": "Add and edit filters using a drawer. This pattern is useful when you have many filter options that would clutter the main interface.\n\n## When to use\n\nUse this pattern when:\n\n- There are many filter options to manage\n- Filters need to persist across sessions\n- Users need to see current filter state while editing\n\n## Considerations\n\n- Group related filters together\n- Provide clear apply/reset actions\n- Show active filter count on the trigger button",
+  "collection": "examples",
+  "components": [
+    "drawer",
+    "button",
+    "button-group",
+    "form-item",
+    "checkbox-list",
+    "checkbox",
+    "dropdown",
+    "radio-group"
+  ],
+  "figmaUrl": "https://www.figma.com/design/Jpy1Ea5qglwnp1SgGnagY9/%E2%9D%96-Component-library-%7C-DDD?node-id=63353-170251",
+  "frameworks": [
+    "react",
+    "angular",
+    "web-components"
+  ],
+  "id": "add-and-edit-lots-of-filters",
+  "previewImage": "/images/examples/add-and-edit-lots-of-filters.webp",
+  "productType": "workspace",
+  "relatedExamples": [],
+  "size": "section",
+  "status": "published",
+  "tags": [
+    "filtering",
+    "drawer",
+    "forms",
+    "data-management"
+  ],
+  "title": "Add and edit lots of filters"
+}

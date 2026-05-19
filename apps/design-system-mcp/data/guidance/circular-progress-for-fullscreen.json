@@ -1,0 +1,22 @@
+{
+  "appliesTo": {
+    "components": [
+      "circular-progress",
+      "skeleton"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-block alignment=\"center\">\n    <goa-circular-progress visible=\"true\" message=\"Loading your data...\"></goa-circular-progress>\n  </goa-block>\n</Preview>\n\nUse **CircularProgress** for page-level or blocking operations. Use **Skeleton** for content placeholders while loading.",
+  "collection": "guidance",
+  "description": "Choose the right loading indicator for your context.",
+  "id": "circular-progress-for-fullscreen",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "loading",
+    "progress",
+    "feedback"
+  ],
+  "topic": "other",
+  "type": "do"
+}

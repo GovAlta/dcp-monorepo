@@ -1,0 +1,26 @@
+{
+  "aliases": [],
+  "body": "Show a temporary notification with an action button for user interaction.\n\n## When to use\n\nUse this pattern when:\n\n- Users need to take action in response to a notification\n- Providing a quick way to navigate to related content\n- Showing activity notifications that users may want to respond to\n- The action should dismiss the notification when clicked\n\n## Considerations\n\n- Use `actionText` to set the button label in the notification\n- The `action` callback receives the notification UUID for dismissal\n- Use `TemporaryNotification.dismiss(uuid)` to close the notification programmatically\n- Keep action text short and clear (e.g., \"View\", \"Undo\", \"Open\")\n- Consider what happens if the user doesn't click the action before auto-dismiss",
+  "collection": "examples",
+  "components": [
+    "temporary-notification",
+    "button"
+  ],
+  "frameworks": [
+    "react",
+    "angular",
+    "web-components"
+  ],
+  "id": "show-a-notification-with-an-action",
+  "previewImage": "/images/examples/show-a-notification-with-an-action.webp",
+  "relatedExamples": [],
+  "size": "interaction",
+  "status": "published",
+  "tags": [
+    "notification",
+    "feedback",
+    "action",
+    "toast"
+  ],
+  "title": "Show a notification with an action"
+}

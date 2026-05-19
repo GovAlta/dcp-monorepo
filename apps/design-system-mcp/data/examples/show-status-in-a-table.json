@@ -1,0 +1,27 @@
+{
+  "aliases": [],
+  "body": "Display status information within table rows using badges to provide clear visual indicators of item states like pending, complete, failed, or in progress.\n\n## When to use\n\nUse this pattern when:\n\n- Displaying lists of items that have different status states\n- Workers need to quickly scan and identify items requiring action\n- Status needs to be immediately visible alongside other item data\n\n## Considerations\n\n- Use consistent badge types for similar statuses across your application\n- Choose badge colors that clearly differentiate between states (success, warning, error, info)\n- Include action buttons to allow workers to act on items directly from the table\n- Align status badges consistently within the column",
+  "collection": "examples",
+  "components": [
+    "table",
+    "badge",
+    "button"
+  ],
+  "frameworks": [
+    "react",
+    "angular",
+    "web-components"
+  ],
+  "id": "show-status-in-a-table",
+  "previewImage": "/images/examples/show-status-in-a-table.webp",
+  "productType": "workspace",
+  "relatedExamples": [],
+  "size": "section",
+  "status": "published",
+  "tags": [
+    "table",
+    "badge",
+    "status"
+  ],
+  "title": "Show status in a table"
+}

@@ -1,0 +1,22 @@
+{
+  "appliesTo": {
+    "components": [
+      "skeleton"
+    ],
+    "contexts": []
+  },
+  "body": "",
+  "collection": "guidance",
+  "description": "Match the skeleton type to your actual content shape. Accurate shapes reduce perceived load time and prevent layout shifts.",
+  "id": "skeleton-match-content-shape",
+  "relatedProps": [
+    "type"
+  ],
+  "status": "published",
+  "tags": [
+    "skeleton",
+    "loading"
+  ],
+  "topic": "types",
+  "type": "tip"
+}

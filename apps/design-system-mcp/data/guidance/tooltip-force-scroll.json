@@ -1,0 +1,21 @@
+{
+  "appliesTo": {
+    "components": [
+      "tooltip"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <div style=\"height: 80px; overflow: hidden; position: relative;\">\n    <div style=\"position: absolute; bottom: 8px;\">\n      <goa-form-item label=\"Email\">\n        <goa-input name=\"email\" value=\"user@example.com\" />\n      </goa-form-item>\n    </div>\n    <div style=\"position: absolute; bottom: -40px; left: 100px; background: var(--goa-color-greyscale-700); color: var(--goa-color-greyscale-white); padding: 8px 16px; border-radius: var(--goa-border-radius-xs); font-size: 14px;\">\n      We will send important updates to this email address.\n    </div>\n  </div>\n</Preview>",
+  "collection": "guidance",
+  "description": "Don't position a tooltip in a way that forces the user to scroll to view the tooltip content.",
+  "id": "tooltip-force-scroll",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "tooltip",
+    "positioning",
+    "usability"
+  ],
+  "topic": "feedback",
+  "type": "dont"
+}

@@ -1,0 +1,22 @@
+{
+  "appliesTo": {
+    "components": [
+      "tooltip",
+      "icon-button"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-tooltip content=\"Notifications\">\n    <goa-icon-button icon=\"notifications\" />\n  </goa-tooltip>\n</Preview>",
+  "collection": "guidance",
+  "description": "Use tooltips to describe an icon button and provide clarity on what the icon button will do.",
+  "id": "tooltip-describe-icon-button",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "tooltip",
+    "icon-button",
+    "accessibility"
+  ],
+  "topic": "feedback",
+  "type": "do"
+}

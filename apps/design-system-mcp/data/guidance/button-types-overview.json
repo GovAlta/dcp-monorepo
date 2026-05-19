@@ -1,0 +1,22 @@
+{
+  "appliesTo": {
+    "components": [
+      "button",
+      "button-group"
+    ],
+    "contexts": []
+  },
+  "body": "- **Primary** - If there is only one button on a page, it should be a primary button. For citizen facing applications, generally there should only be one primary button on a page.\n- **Secondary** - Use secondary buttons for less important actions on a page. Often paired with a primary action as a secondary action.\n- **Tertiary** - Use tertiary buttons for links that should function like a button, such as \"edit\" or \"cancel\" in applications. It's okay to use more than one tertiary button on a page.",
+  "collection": "guidance",
+  "description": "Button types",
+  "id": "button-types-overview",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "button",
+    "types",
+    "hierarchy"
+  ],
+  "topic": "types",
+  "type": "info"
+}

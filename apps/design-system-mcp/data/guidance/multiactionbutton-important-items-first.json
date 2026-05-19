@@ -1,0 +1,20 @@
+{
+  "appliesTo": {
+    "components": [
+      "multi-action-button"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-popover>\n    <goa-button type=\"primary\" slot=\"target\">Actions</goa-button>\n    <div>Delete</div>\n    <div>Schedule for later</div>\n    <div>Save to Draft</div>\n  </goa-popover>\n</Preview>",
+  "collection": "guidance",
+  "description": "Place the most important or commonly used items at the top of the options list.",
+  "id": "multiactionbutton-important-items-first",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "multi-action-button",
+    "ordering"
+  ],
+  "topic": "content",
+  "type": "do"
+}

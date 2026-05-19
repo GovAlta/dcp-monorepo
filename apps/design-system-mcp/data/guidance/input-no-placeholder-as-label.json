@@ -1,0 +1,26 @@
+{
+  "appliesTo": {
+    "components": [
+      "input",
+      "textarea",
+      "dropdown"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-input name=\"email\" placeholder=\"Email address\" width=\"100%\"></goa-input>\n</Preview>\n\nPlaceholder text disappears when users start typing, leaving them without context for what the field is asking for.\n\nAlways use a visible label above or beside the input field. Placeholder text can provide an example of the expected format, but should never be the only indication of what information is needed.",
+  "collection": "guidance",
+  "description": "Don't use placeholder text as a label",
+  "id": "input-no-placeholder-as-label",
+  "relatedProps": [
+    "placeholder"
+  ],
+  "status": "published",
+  "tags": [
+    "input",
+    "accessibility",
+    "labeling",
+    "forms"
+  ],
+  "topic": "content",
+  "type": "dont"
+}

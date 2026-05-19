@@ -1,0 +1,23 @@
+{
+  "appliesTo": {
+    "components": [
+      "container",
+      "block",
+      "grid"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-container>\n    <goa-container>\n      <p>Header section</p>\n    </goa-container>\n    <goa-container>\n      <p>Main content area</p>\n    </goa-container>\n    <goa-container>\n      <p>Footer section</p>\n    </goa-container>\n  </goa-container>\n</Preview>",
+  "collection": "guidance",
+  "description": "Don't use a container for general page layout. Containers are for visual emphasis and grouping content.",
+  "id": "container-not-for-layout",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "container",
+    "layout",
+    "patterns"
+  ],
+  "topic": "other",
+  "type": "dont"
+}

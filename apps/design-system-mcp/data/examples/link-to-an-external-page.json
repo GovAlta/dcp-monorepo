@@ -1,0 +1,24 @@
+{
+  "aliases": [],
+  "body": "Use an external link indicator to show users when a link will take them to a different website.\n\n## When to use\n\nUse this pattern when:\n\n- Linking to websites outside your service\n- Users should be aware they're leaving the current site\n- Providing references to external resources\n- Following accessibility best practices for external links\n\n## Considerations\n\n- Use the \"open\" trailing icon to indicate external links\n- Consider whether the link should open in a new tab\n- Ensure the link text clearly describes the destination\n- External links should be used sparingly and with purpose",
+  "collection": "examples",
+  "components": [
+    "link"
+  ],
+  "frameworks": [
+    "react",
+    "angular",
+    "web-components"
+  ],
+  "id": "link-to-an-external-page",
+  "previewImage": "/images/examples/link-to-an-external-page.webp",
+  "relatedExamples": [],
+  "size": "interaction",
+  "status": "published",
+  "tags": [
+    "link",
+    "external",
+    "navigation"
+  ],
+  "title": "Link to an external page"
+}

@@ -1,0 +1,419 @@
+{
+  "aliases": [],
+  "angularSelector": "goab-date-picker",
+  "api": {
+    "extractedFrom": "libs/web-components/src/components/date-picker/DatePicker.svelte",
+    "frameworks": {
+      "angular": {
+        "events": [
+          {
+            "description": "Emits when the selected date changes. Emits the date picker change detail including name and value.",
+            "frameworks": [
+              "angular"
+            ],
+            "name": "onChange",
+            "type": "(event: GoabDatePickerOnChangeDetail) => void"
+          }
+        ],
+        "props": [
+          {
+            "default": null,
+            "description": "Sets the disabled state for the control.",
+            "name": "disabled",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "default": null,
+            "description": "Sets the error state for the control.",
+            "name": "error",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "default": null,
+            "description": "Sets the id attribute of the underlying web component.",
+            "name": "id",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Sets the maximum date value allowed.",
+            "name": "max",
+            "required": false,
+            "type": "Date | string",
+            "values": [
+              "Date",
+              "string"
+            ]
+          },
+          {
+            "default": null,
+            "description": "Sets the bottom margin spacing token.",
+            "name": "mb",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Sets the minimum date value allowed.",
+            "name": "min",
+            "required": false,
+            "type": "Date | string",
+            "values": [
+              "Date",
+              "string"
+            ]
+          },
+          {
+            "default": null,
+            "description": "Sets the left margin spacing token.",
+            "name": "ml",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Sets the right margin spacing token.",
+            "name": "mr",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Sets the top margin spacing token.",
+            "name": "mt",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Sets the name of the date field.",
+            "name": "name",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Sets the data-testid attribute for automated testing.",
+            "name": "testId",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "calendar",
+            "description": "Sets the date picker type. 'calendar' shows a calendar popup, 'input' shows just a date input.",
+            "name": "type",
+            "required": false,
+            "type": "GoabDatePickerInputType"
+          },
+          {
+            "default": null,
+            "description": "Sets the value of the calendar date.",
+            "name": "value",
+            "required": false,
+            "type": "Date | string | null | undefined",
+            "values": [
+              "Date",
+              "string"
+            ]
+          },
+          {
+            "default": null,
+            "description": "Sets the width of the date picker input.",
+            "name": "width",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "slots": []
+      },
+      "react": {
+        "events": [
+          {
+            "description": "Callback fired when the selected date changes.",
+            "frameworks": [
+              "react"
+            ],
+            "name": "onChange",
+            "type": "(detail: GoabDatePickerOnChangeDetail) => void"
+          }
+        ],
+        "props": [
+          {
+            "default": null,
+            "description": "Disables the date picker.",
+            "name": "disabled",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "default": null,
+            "description": "Sets the input to an error state.",
+            "name": "error",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "default": null,
+            "description": "Maximum date value allowed.",
+            "name": "max",
+            "required": false,
+            "type": "Date | string",
+            "values": [
+              "Date",
+              "string"
+            ]
+          },
+          {
+            "default": null,
+            "description": "",
+            "name": "mb",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Minimum date value allowed.",
+            "name": "min",
+            "required": false,
+            "type": "Date | string",
+            "values": [
+              "Date",
+              "string"
+            ]
+          },
+          {
+            "default": null,
+            "description": "",
+            "name": "ml",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "",
+            "name": "mr",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "",
+            "name": "mt",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Name of the date field.",
+            "name": "name",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Sets a data-testid attribute for automated testing.",
+            "name": "testId",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "calendar",
+            "description": "Sets the date picker type. 'calendar' shows a calendar popup, 'input' shows just a date input.",
+            "name": "type",
+            "required": false,
+            "type": "GoabDatePickerInputType"
+          },
+          {
+            "default": null,
+            "description": "Value of the calendar date, as a Date object or an ISO date string (yyyy-mm-dd).",
+            "name": "value",
+            "required": false,
+            "type": "Date | string | undefined",
+            "values": [
+              "Date",
+              "string"
+            ]
+          },
+          {
+            "default": null,
+            "description": "Sets the width of the date picker input.",
+            "name": "width",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "slots": []
+      },
+      "webComponents": {
+        "events": [
+          {
+            "description": "",
+            "frameworks": [
+              "webComponents"
+            ],
+            "name": "_change",
+            "type": "CustomEvent<{ name: string; value: Date | string | null; valueStr: string }>"
+          }
+        ],
+        "props": [
+          {
+            "default": "false",
+            "description": "Disables the date picker.",
+            "name": "disabled",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "default": "false",
+            "description": "Sets the input to an error state.",
+            "name": "error",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "default": "",
+            "description": "Maximum date value allowed.",
+            "name": "max",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Bottom margin.",
+            "name": "mb",
+            "required": false,
+            "type": "Spacing",
+            "typeLabel": "Spacing"
+          },
+          {
+            "default": "",
+            "description": "Minimum date value allowed.",
+            "name": "min",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Left margin.",
+            "name": "ml",
+            "required": false,
+            "type": "Spacing",
+            "typeLabel": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Right margin.",
+            "name": "mr",
+            "required": false,
+            "type": "Spacing",
+            "typeLabel": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Top margin.",
+            "name": "mt",
+            "required": false,
+            "type": "Spacing",
+            "typeLabel": "Spacing"
+          },
+          {
+            "default": "",
+            "description": "Name of the date field.",
+            "name": "name",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "default",
+            "description": "Sets the size of the date picker. 'compact' reduces height for dense layouts.",
+            "name": "size",
+            "required": false,
+            "type": "\"default\" | \"compact\"",
+            "values": [
+              "default",
+              "compact"
+            ]
+          },
+          {
+            "default": "",
+            "description": "Sets a data-testid attribute for automated testing.",
+            "name": "testid",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "calendar",
+            "description": "Sets the date picker type. 'calendar' shows a calendar popup, 'input' shows just a date input.",
+            "name": "type",
+            "required": false,
+            "type": "\"calendar\" | \"input\"",
+            "values": [
+              "calendar",
+              "input"
+            ]
+          },
+          {
+            "default": "",
+            "description": "Value of the calendar date.",
+            "name": "value",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "1",
+            "description": "Design system version for styling.",
+            "name": "version",
+            "required": false,
+            "type": "\"1\" | \"2\"",
+            "values": [
+              "1",
+              "2"
+            ]
+          },
+          {
+            "default": "",
+            "description": "Sets the width of the date picker input.",
+            "name": "width",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "slots": []
+      }
+    }
+  },
+  "body": "",
+  "category": "inputs-and-actions",
+  "collection": "components",
+  "description": "Lets users select a date through a calendar without the need to manually type it in a field.",
+  "figmaUrl": "https://www.figma.com/design/Jpy1Ea5qglwnp1SgGnagY9/Component-library?node-id=61102-130736",
+  "id": "date-picker",
+  "name": "Date picker",
+  "reactClassName": "GoabDatePicker",
+  "relatedComponents": [
+    "form-item",
+    "input",
+    "calendar"
+  ],
+  "relatedGuidance": [
+    "datepicker-calendar-variant",
+    "datepicker-indicate-unavailable",
+    "datepicker-input-variant",
+    "datepicker-set-min-max",
+    "dont-disable-without-explanation",
+    "form-inputs-require-formitem",
+    "picking-a-date-component"
+  ],
+  "status": "stable",
+  "tags": [
+    "calendar",
+    "date",
+    "date picker",
+    "inputs and actions",
+    "input"
+  ],
+  "webComponentTag": "goa-date-picker"
+}

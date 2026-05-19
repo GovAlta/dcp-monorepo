@@ -1,0 +1,21 @@
+{
+  "appliesTo": {
+    "components": [
+      "tooltip"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-tooltip content=\"Ctrl+S\">\n    <goa-button type=\"secondary\">Save</goa-button>\n  </goa-tooltip>\n</Preview>",
+  "collection": "guidance",
+  "description": "Use tooltips for additional context that enhances understanding, definitions of terms, or keyboard shortcuts.",
+  "id": "tooltip-when-to-use",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "tooltip",
+    "accessibility",
+    "usability"
+  ],
+  "topic": "other",
+  "type": "do"
+}

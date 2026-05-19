@@ -1,0 +1,550 @@
+{
+  "aliases": [
+    "GoabDropdown",
+    "GoabDropdownItem",
+    "GoabDropdownOption"
+  ],
+  "angularSelector": "goab-dropdown",
+  "api": {
+    "extractedFrom": "libs/web-components/src/components/dropdown/Dropdown.svelte",
+    "frameworks": {
+      "angular": {
+        "events": [
+          {
+            "description": "Emits when the user selects a value from the dropdown. Emits a GoabDropdownOnChangeDetail object with the new value.",
+            "frameworks": [
+              "angular"
+            ],
+            "name": "onChange",
+            "type": "(event: GoabDropdownOnChangeDetail) => void"
+          }
+        ],
+        "props": [
+          {
+            "default": null,
+            "description": "Defines how the selected value will be translated for the screen reader. If not specified it will fall back to the name.",
+            "name": "ariaLabel",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "The aria-labelledby attribute identifies the element(or elements) that labels the dropdown it is applied to. Normally it is the id of the label.",
+            "name": "ariaLabelledBy",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Specifies the autocomplete attribute for the dropdown input. Native only.",
+            "name": "autoComplete",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Sets the disabled state for the control.",
+            "name": "disabled",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "default": null,
+            "description": "Sets the error state for the control.",
+            "name": "error",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "default": null,
+            "description": "When true the dropdown will have the ability to filter options by typing into the input field.",
+            "name": "filterable",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "default": null,
+            "description": "Sets the id attribute of the underlying web component.",
+            "name": "id",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Icon shown to the left of the dropdown input.",
+            "name": "leadingIcon",
+            "required": false,
+            "type": "GoabIconType"
+          },
+          {
+            "default": null,
+            "description": "Maximum height of the dropdown menu. Non-native only.",
+            "name": "maxHeight",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Sets the maximum width of the dropdown. Use a CSS unit (px, %, ch, rem, em).",
+            "name": "maxWidth",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Sets the bottom margin spacing token.",
+            "name": "mb",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Sets the left margin spacing token.",
+            "name": "ml",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Sets the right margin spacing token.",
+            "name": "mr",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Sets the top margin spacing token.",
+            "name": "mt",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Identifier for the dropdown. Should be unique.",
+            "name": "name",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "When true will render the native select HTML element.",
+            "name": "native",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "default": null,
+            "description": "The text displayed for the dropdown before a selection is made. Non-native only.",
+            "name": "placeholder",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "default",
+            "description": "Sets the size of the dropdown. Compact reduces height for dense layouts.",
+            "name": "size",
+            "required": false,
+            "type": "GoabDropdownSize"
+          },
+          {
+            "default": null,
+            "description": "Sets the data-testid attribute for automated testing.",
+            "name": "testId",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Sets the control value used by Angular forms and one-way binding.",
+            "name": "value",
+            "required": false,
+            "type": "string[] | string",
+            "values": [
+              "string[]",
+              "string"
+            ]
+          },
+          {
+            "default": null,
+            "description": "Overrides the autosized menu width. Non-native only.",
+            "name": "width",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "slots": []
+      },
+      "react": {
+        "events": [
+          {
+            "description": "Callback fired when the selected value changes.",
+            "frameworks": [
+              "react"
+            ],
+            "name": "onChange",
+            "type": "(detail: GoabDropdownOnChangeDetail) => void"
+          }
+        ],
+        "props": [
+          {
+            "default": null,
+            "description": "Defines how the selected value will be translated for the screen reader. If not specified it will fall back to the name.",
+            "name": "ariaLabel",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "The aria-labelledby attribute identifies the element that labels the dropdown. Normally it is the id of the label.",
+            "name": "ariaLabelledBy",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Specifies the autocomplete attribute for the dropdown input. Native only.",
+            "name": "autoComplete",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Disables the dropdown control.",
+            "name": "disabled",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "default": null,
+            "description": "Shows an error state on the dropdown.",
+            "name": "error",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "default": null,
+            "description": "When true, allows filtering options by typing into the input field.",
+            "name": "filterable",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "default": null,
+            "description": "The id attribute for the dropdown element.",
+            "name": "id",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Icon shown to the left of the dropdown input.",
+            "name": "leadingIcon",
+            "required": false,
+            "type": "GoabIconType"
+          },
+          {
+            "default": "276px",
+            "description": "Maximum height of the dropdown menu. Non-native only.",
+            "name": "maxHeight",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Sets the maximum width of the dropdown. Use a CSS unit (px, %, ch, rem, em).",
+            "name": "maxWidth",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "",
+            "name": "mb",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "",
+            "name": "ml",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "",
+            "name": "mr",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "",
+            "name": "mt",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Identifier for the dropdown. Should be unique.",
+            "name": "name",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "When true, renders the native select HTML element.",
+            "name": "native",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "default": null,
+            "description": "The text displayed in the dropdown before a selection is made. Non-native only.",
+            "name": "placeholder",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Sets the size of the dropdown. Compact reduces height for dense layouts.",
+            "name": "size",
+            "required": false,
+            "type": "GoabDropdownSize"
+          },
+          {
+            "default": null,
+            "description": "Sets a data-testid attribute for automated testing.",
+            "name": "testId",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "The currently selected value(s) of the dropdown.",
+            "name": "value",
+            "required": false,
+            "type": "string[] | string",
+            "values": [
+              "string[]",
+              "string"
+            ]
+          },
+          {
+            "default": null,
+            "description": "Overrides the autosized menu width. Non-native only.",
+            "name": "width",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "slots": []
+      },
+      "webComponents": {
+        "events": [
+          {
+            "description": "",
+            "frameworks": [
+              "webComponents"
+            ],
+            "name": "_change",
+            "type": "CustomEvent<{ name?: string; value?: string; event: Event }>"
+          }
+        ],
+        "props": [
+          {
+            "default": "",
+            "description": "Defines how the selected value will be translated for the screen reader. If not specified it will fall back to the name.",
+            "name": "arialabel",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "",
+            "description": "The aria-labelledby attribute identifies the element(or elements) that labels the dropdown it is applied to. Normally it is the id of the label.",
+            "name": "arialabelledby",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "",
+            "description": "Specifies the autocomplete attribute for the dropdown input. Native only.",
+            "name": "autocomplete",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "false",
+            "description": "Disable this control.",
+            "name": "disabled",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "default": "false",
+            "description": "Show an error state.",
+            "name": "error",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "default": "false",
+            "description": "When true the dropdown will have the ability to filter options by typing into the input field.",
+            "name": "filterable",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "default": null,
+            "description": "Icon shown to the left of the dropdown input.",
+            "name": "leadingicon",
+            "required": false,
+            "type": "GoabIconType",
+            "typeLabel": "GoabIconType"
+          },
+          {
+            "default": "276px",
+            "description": "Maximum height of the dropdown menu. Non-native only.",
+            "name": "maxheight",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "",
+            "description": "Sets the maximum width of the dropdown. Use a CSS unit (px, %, ch, rem, em).",
+            "name": "maxwidth",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Bottom margin.",
+            "name": "mb",
+            "required": false,
+            "type": "Spacing",
+            "typeLabel": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Left margin.",
+            "name": "ml",
+            "required": false,
+            "type": "Spacing",
+            "typeLabel": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Right margin.",
+            "name": "mr",
+            "required": false,
+            "type": "Spacing",
+            "typeLabel": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Top margin.",
+            "name": "mt",
+            "required": false,
+            "type": "Spacing",
+            "typeLabel": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Identifier for the dropdown. Should be unique.",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "default": "false",
+            "description": "When true will render the native select HTML element.",
+            "name": "native",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "default": "",
+            "description": "The text displayed for the dropdown before a selection is made. Non-native only.",
+            "name": "placeholder",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "default",
+            "description": "Sets the size of the dropdown. Compact reduces height for dense layouts.",
+            "name": "size",
+            "required": false,
+            "type": "\"default\" | \"compact\"",
+            "values": [
+              "default",
+              "compact"
+            ]
+          },
+          {
+            "default": "",
+            "description": "Sets a data-testid attribute for automated testing.",
+            "name": "testid",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "",
+            "description": "Stores the value of the item selected from the dropdown.",
+            "name": "value",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "1",
+            "description": "Design system version for styling.",
+            "name": "version",
+            "required": false,
+            "type": "\"1\" | \"2\"",
+            "values": [
+              "1",
+              "2"
+            ]
+          },
+          {
+            "default": "",
+            "description": "Overrides the autosized menu width. Non-native only.",
+            "name": "width",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "slots": []
+      }
+    }
+  },
+  "body": "",
+  "category": "inputs-and-actions",
+  "collection": "components",
+  "description": "Present a list of options to the user to select from.",
+  "figmaUrl": "https://www.figma.com/design/Jpy1Ea5qglwnp1SgGnagY9/Component-library?node-id=28478-241608",
+  "id": "dropdown",
+  "name": "Dropdown",
+  "reactClassName": "GoabDropdownOption",
+  "relatedComponents": [
+    "dropdown-item",
+    "form-item",
+    "input"
+  ],
+  "relatedGuidance": [
+    "dont-disable-without-explanation",
+    "dropdown-arialabel-without-formitem",
+    "dropdown-consistent-width",
+    "dropdown-default-width",
+    "dropdown-dont-hide-below-viewport",
+    "dropdown-dont-truncate-labels",
+    "form-inputs-require-formitem",
+    "input-no-placeholder-as-label"
+  ],
+  "status": "stable",
+  "tags": [
+    "inputs and actions",
+    "select",
+    "single select dropdown"
+  ],
+  "webComponentTag": "goa-dropdown"
+}

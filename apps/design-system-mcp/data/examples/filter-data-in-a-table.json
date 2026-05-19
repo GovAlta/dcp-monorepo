@@ -1,0 +1,34 @@
+{
+  "aliases": [],
+  "body": "Enable users to filter table data using search input and filter chips.\n\n## When to use\n\nUse this pattern when:\n\n- Users need to narrow down large datasets\n- Multiple filters can be applied simultaneously\n- Filters should be visible and easily removable\n- You want to provide real-time filtering feedback\n\n## Considerations\n\n- Validate filter input to prevent empty or duplicate filters\n- Show applied filters as removable chips for visibility\n- Provide a \"Clear all\" option when multiple filters are applied\n- Display a \"No results found\" message when filters return empty results\n- Use case-insensitive matching for better user experience",
+  "collection": "examples",
+  "components": [
+    "table",
+    "filter-chip",
+    "input",
+    "button",
+    "block",
+    "form-item",
+    "badge",
+    "text"
+  ],
+  "frameworks": [
+    "react",
+    "angular",
+    "web-components"
+  ],
+  "id": "filter-data-in-a-table",
+  "previewImage": "/images/examples/filter-data-in-a-table.webp",
+  "productType": "workspace",
+  "relatedExamples": [],
+  "size": "section",
+  "status": "published",
+  "tags": [
+    "table",
+    "filter",
+    "search",
+    "chips",
+    "data"
+  ],
+  "title": "Filter data in a table"
+}

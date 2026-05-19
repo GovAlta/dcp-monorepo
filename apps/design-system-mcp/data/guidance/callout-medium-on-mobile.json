@@ -1,0 +1,23 @@
+{
+  "appliesTo": {
+    "components": [
+      "callout"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-callout type=\"information\" size=\"medium\" heading=\"Important information\">\n    This callout uses the medium size for mobile viewports.\n  </goa-callout>\n</Preview>",
+  "collection": "guidance",
+  "description": "Use the medium callout on mobile to save space.",
+  "id": "callout-medium-on-mobile",
+  "relatedProps": [
+    "size"
+  ],
+  "status": "published",
+  "tags": [
+    "callout",
+    "mobile",
+    "responsive"
+  ],
+  "topic": "sizing",
+  "type": "do"
+}

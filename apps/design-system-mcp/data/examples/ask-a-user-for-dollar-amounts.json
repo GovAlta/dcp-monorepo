@@ -1,0 +1,26 @@
+{
+  "aliases": [],
+  "body": "Prompt users to enter monetary values using a consistent input format that supports validation and currency symbols.\n\n## When to use\n\nUse this pattern when:\n\n- Collecting cost or expense information\n- Users need to enter multiple monetary values\n- You want consistent currency formatting\n\n## Considerations\n\n- Use the `leadingContent` prop to show the $ symbol\n- Consider if decimal places are needed\n- Group related amounts together\n- Provide clear labels for each amount field",
+  "collection": "examples",
+  "components": [
+    "form-item",
+    "input"
+  ],
+  "frameworks": [
+    "react",
+    "angular",
+    "web-components"
+  ],
+  "id": "ask-a-user-for-dollar-amounts",
+  "previewImage": "/images/examples/ask-a-user-for-dollar-amounts.webp",
+  "productType": "public-form",
+  "relatedExamples": [],
+  "size": "interaction",
+  "status": "published",
+  "tags": [
+    "forms",
+    "currency",
+    "financial"
+  ],
+  "title": "Ask a user for dollar amounts"
+}

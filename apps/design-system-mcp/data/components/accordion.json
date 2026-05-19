@@ -1,0 +1,395 @@
+{
+  "aliases": [],
+  "angularSelector": "goab-accordion",
+  "api": {
+    "extractedFrom": "libs/web-components/src/components/accordion/Accordion.svelte",
+    "frameworks": {
+      "angular": {
+        "events": [
+          {
+            "description": "Emits when the accordion opens or closes. Emits the new open state as a boolean.",
+            "frameworks": [
+              "angular"
+            ],
+            "name": "onChange",
+            "type": "(event: boolean) => void"
+          }
+        ],
+        "props": [
+          {
+            "default": null,
+            "description": "Sets the heading text.",
+            "name": "heading",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Sets the heading size of the accordion container heading.",
+            "name": "headingSize",
+            "required": false,
+            "type": "GoabAccordionHeadingSize"
+          },
+          {
+            "default": null,
+            "description": "Sets the accordion style variant.",
+            "name": "headingType",
+            "required": false,
+            "type": "GoabAccordionHeadingType"
+          },
+          {
+            "default": null,
+            "description": "Sets the position of the expand/collapse icon.",
+            "name": "iconPosition",
+            "required": false,
+            "type": "GoabAccordionIconPosition"
+          },
+          {
+            "default": null,
+            "description": "Sets the maximum width of the accordion.",
+            "name": "maxWidth",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Sets the bottom margin spacing token.",
+            "name": "mb",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Sets the left margin spacing token.",
+            "name": "ml",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Sets the right margin spacing token.",
+            "name": "mr",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Sets the top margin spacing token.",
+            "name": "mt",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Sets the state of the accordion container open or closed.",
+            "name": "open",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "default": null,
+            "description": "Sets secondary text.",
+            "name": "secondaryText",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Sets the data-testid attribute for automated testing.",
+            "name": "testId",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "slots": [
+          {
+            "description": "Sets content rendered in the accordion heading, right-aligned before the expand/collapse icon.",
+            "name": "actions",
+            "required": false,
+            "type": "TemplateRef"
+          },
+          {
+            "description": "Sets content rendered within the accordion heading, alongside the heading text.",
+            "name": "headingContent",
+            "required": false,
+            "type": "TemplateRef"
+          }
+        ]
+      },
+      "react": {
+        "events": [
+          {
+            "description": "Callback fired when the accordion is opened or closed. Receives the new open state as a boolean.",
+            "frameworks": [
+              "react"
+            ],
+            "name": "onChange",
+            "type": "(open: boolean) => void"
+          }
+        ],
+        "props": [
+          {
+            "default": null,
+            "description": "Sets the heading text.",
+            "name": "heading",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "small",
+            "description": "Sets the heading size of the accordion container heading.",
+            "name": "headingSize",
+            "required": false,
+            "type": "GoabAccordionHeadingSize"
+          },
+          {
+            "default": "normal",
+            "description": "Sets the accordion style variant.",
+            "name": "headingType",
+            "required": false,
+            "type": "GoabAccordionHeadingType"
+          },
+          {
+            "default": "left",
+            "description": "Sets the position of the expand/collapse icon.",
+            "name": "iconPosition",
+            "required": false,
+            "type": "GoabAccordionIconPosition"
+          },
+          {
+            "default": "none",
+            "description": "Sets the maximum width of the accordion.",
+            "name": "maxWidth",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "",
+            "name": "mb",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "",
+            "name": "ml",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "",
+            "name": "mr",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "",
+            "name": "mt",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Sets the state of the accordion container open or closed.",
+            "name": "open",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "default": null,
+            "description": "Sets secondary text displayed alongside the heading.",
+            "name": "secondaryText",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Sets a data-testid attribute for automated testing.",
+            "name": "testId",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "slots": [
+          {
+            "description": "Sets content rendered in the accordion heading, right-aligned before the expand/collapse icon.",
+            "name": "actions",
+            "required": false,
+            "type": "ReactNode"
+          },
+          {
+            "description": "Sets content rendered within the accordion heading, alongside the heading text.",
+            "name": "headingContent",
+            "required": false,
+            "type": "ReactNode"
+          }
+        ]
+      },
+      "webComponents": {
+        "events": [
+          {
+            "description": "",
+            "frameworks": [
+              "webComponents"
+            ],
+            "name": "_change",
+            "type": "CustomEvent<{ open: boolean }>"
+          }
+        ],
+        "props": [
+          {
+            "default": "",
+            "description": "Sets the heading text.",
+            "name": "heading",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "default": "normal",
+            "description": "Sets the accordion style variant. @default \"normal\"",
+            "name": "heading-type",
+            "required": false,
+            "type": "\"normal\" | \"filled\"",
+            "typeLabel": "GoabAccordionHeadingType",
+            "values": [
+              "normal",
+              "filled"
+            ]
+          },
+          {
+            "default": "small",
+            "description": "Sets the heading size of the accordion container heading.",
+            "name": "headingsize",
+            "required": false,
+            "type": "\"small\" | \"medium\"",
+            "typeLabel": "GoabAccordionHeadingSize",
+            "values": [
+              "small",
+              "medium"
+            ]
+          },
+          {
+            "default": "left",
+            "description": "Sets the position of the expand/collapse icon.",
+            "name": "iconposition",
+            "required": false,
+            "type": "\"left\" | \"right\"",
+            "typeLabel": "GoabAccordionIconPosition",
+            "values": [
+              "left",
+              "right"
+            ]
+          },
+          {
+            "default": "",
+            "description": "Unique identifier for the accordion.",
+            "name": "id",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "none",
+            "description": "Sets the maximum width of the accordion.",
+            "name": "maxwidth",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "xs",
+            "description": "Bottom margin.",
+            "name": "mb",
+            "required": false,
+            "type": "Spacing",
+            "typeLabel": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Left margin.",
+            "name": "ml",
+            "required": false,
+            "type": "Spacing",
+            "typeLabel": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Right margin.",
+            "name": "mr",
+            "required": false,
+            "type": "Spacing",
+            "typeLabel": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Top margin.",
+            "name": "mt",
+            "required": false,
+            "type": "Spacing",
+            "typeLabel": "Spacing"
+          },
+          {
+            "default": "false",
+            "description": "Sets the state of the accordion container open or closed.",
+            "name": "open",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "default": "",
+            "description": "Sets secondary text.",
+            "name": "secondarytext",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "",
+            "description": "Sets a data-testid attribute for automated testing.",
+            "name": "testid",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "slots": [
+          {
+            "description": "Sets content rendered in the accordion heading, right-aligned before the expand/collapse icon.",
+            "name": "actions",
+            "required": false
+          },
+          {
+            "description": "Sets content rendered within the accordion heading, alongside the heading text.",
+            "name": "headingcontent",
+            "required": false
+          }
+        ]
+      }
+    }
+  },
+  "body": "",
+  "category": "content-layout",
+  "collection": "components",
+  "description": "Let users show and hide sections of related content on a page.",
+  "figmaUrl": "https://www.figma.com/design/Jpy1Ea5qglwnp1SgGnagY9/Component-library?node-id=15932-570754",
+  "id": "accordion",
+  "name": "Accordion",
+  "reactClassName": "GoabAccordion",
+  "relatedComponents": [
+    "details"
+  ],
+  "relatedGuidance": [
+    "accordion-content-left-aligned",
+    "accordion-dont-hide-critical-content",
+    "accordion-line-length",
+    "accordion-secondary-text"
+  ],
+  "status": "stable",
+  "tags": [
+    "expand",
+    "blind",
+    "collapse",
+    "content layout",
+    "expandable panel"
+  ],
+  "webComponentTag": "goa-accordion"
+}

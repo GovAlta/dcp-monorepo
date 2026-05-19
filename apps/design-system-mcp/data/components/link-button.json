@@ -1,0 +1,75 @@
+{
+  "aliases": [],
+  "api": {
+    "extractedFrom": "libs/web-components/src/components/link-button/LinkButton.svelte",
+    "frameworks": {
+      "angular": {
+        "events": [],
+        "props": [],
+        "slots": []
+      },
+      "react": {
+        "events": [],
+        "props": [
+          {
+            "default": null,
+            "description": "",
+            "name": "mb",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "",
+            "name": "ml",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "",
+            "name": "mr",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "",
+            "name": "mt",
+            "required": false,
+            "type": "Spacing"
+          }
+        ],
+        "slots": []
+      },
+      "webComponents": {
+        "events": [
+          {
+            "description": "",
+            "frameworks": [
+              "webComponents"
+            ],
+            "name": "_click",
+            "type": "CustomEvent"
+          }
+        ],
+        "props": [],
+        "slots": []
+      }
+    }
+  },
+  "body": "",
+  "category": "inputs-and-actions",
+  "collection": "components",
+  "description": "Button styled as a link for secondary actions.",
+  "hidden": true,
+  "id": "link-button",
+  "name": "Link Button",
+  "relatedComponents": [
+    "button",
+    "link"
+  ],
+  "status": "deprecated",
+  "tags": [],
+  "webComponentTag": "goa-link-button"
+}

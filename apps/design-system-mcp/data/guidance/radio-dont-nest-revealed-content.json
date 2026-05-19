@@ -1,0 +1,21 @@
+{
+  "appliesTo": {
+    "components": [
+      "radio-group"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview bad>\n  <goa-radio-group name=\"contact\">\n    <goa-radio-item value=\"email\" label=\"Email\"></goa-radio-item>\n    <goa-radio-item value=\"phone\" label=\"Phone\">\n      <goa-radio-group name=\"phone-type\" slot=\"reveal\">\n        <goa-radio-item value=\"call\" label=\"Phone call\"></goa-radio-item>\n        <goa-radio-item value=\"text\" label=\"Text message\"></goa-radio-item>\n      </goa-radio-group>\n    </goa-radio-item>\n  </goa-radio-group>\n</Preview>",
+  "collection": "guidance",
+  "description": "Don't nest multiple layers of conditionally revealed questions.",
+  "id": "radio-dont-nest-revealed-content",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "radio",
+    "forms",
+    "accessibility"
+  ],
+  "topic": "interaction",
+  "type": "dont"
+}

@@ -1,0 +1,28 @@
+{
+  "aliases": [],
+  "body": "Set a specific tab to be active on page load using the initialTab property.\n\n## When to use\n\nUse this pattern when:\n\n- You want to load a specific tab as the default active tab\n- Users should start viewing a particular tab based on context\n- Deep linking to specific tab content is required\n- Showing priority content like items requiring attention\n\n## Considerations\n\n- The `initialTab` property uses zero-based indexing (0 = first tab, 1 = second tab, etc.)\n- Consider which tab provides the most relevant content for users on initial load\n- Badge counts in tab headings help users understand the volume of items in each tab\n- Ensure tab content is accessible and keyboard navigable",
+  "collection": "examples",
+  "components": [
+    "tabs",
+    "tab",
+    "table",
+    "badge",
+    "button"
+  ],
+  "frameworks": [
+    "react",
+    "angular",
+    "web-components"
+  ],
+  "id": "set-a-specific-tab-to-be-active",
+  "previewImage": "/images/examples/set-a-specific-tab-to-be-active.webp",
+  "relatedExamples": [],
+  "size": "interaction",
+  "status": "published",
+  "tags": [
+    "tabs",
+    "navigation",
+    "tables"
+  ],
+  "title": "Set a specific tab to be active"
+}

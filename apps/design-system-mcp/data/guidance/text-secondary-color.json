@@ -1,0 +1,23 @@
+{
+  "appliesTo": {
+    "components": [
+      "text"
+    ],
+    "contexts": []
+  },
+  "body": "",
+  "collection": "guidance",
+  "description": "Use color='secondary' for supporting text that's less prominent than the main content.",
+  "id": "text-secondary-color",
+  "relatedProps": [
+    "color"
+  ],
+  "status": "published",
+  "tags": [
+    "text",
+    "color",
+    "typography"
+  ],
+  "topic": "types",
+  "type": "tip"
+}

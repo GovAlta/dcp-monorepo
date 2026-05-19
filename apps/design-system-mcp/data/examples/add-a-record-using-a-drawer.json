@@ -1,0 +1,34 @@
+{
+  "aliases": [],
+  "body": "Add a record using a drawer. The drawer slides in from the side to allow data entry without navigating away from the current view.\n\n## When to use\n\nUse this pattern when:\n\n- Adding records to a list or table\n- The form is secondary to the main content\n- Users need to see the main view while entering data\n\n## Considerations\n\n- Keep the drawer width appropriate for the form content\n- Provide clear save/cancel actions\n- Consider validation before closing",
+  "collection": "examples",
+  "components": [
+    "drawer",
+    "button",
+    "button-group",
+    "form-item",
+    "dropdown",
+    "input",
+    "radio-group",
+    "block"
+  ],
+  "figmaUrl": "https://www.figma.com/design/Jpy1Ea5qglwnp1SgGnagY9/%E2%9D%96-Component-library-%7C-DDD?node-id=63353-170434",
+  "frameworks": [
+    "react",
+    "angular",
+    "web-components"
+  ],
+  "id": "add-a-record-using-a-drawer",
+  "previewImage": "/images/examples/add-a-record-using-a-drawer.webp",
+  "productType": "workspace",
+  "relatedExamples": [],
+  "size": "section",
+  "status": "published",
+  "tags": [
+    "drawer",
+    "forms",
+    "records",
+    "data-entry"
+  ],
+  "title": "Add a record using a drawer"
+}

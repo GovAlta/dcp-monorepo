@@ -1,0 +1,20 @@
+{
+  "appliesTo": {
+    "components": [
+      "checkbox"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-checkbox name=\"example\" text=\"Checkbox label\"></goa-checkbox>\n</Preview>",
+  "collection": "guidance",
+  "description": "Put the checkbox input to the left of the label.",
+  "id": "checkbox-left-of-label",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "checkbox",
+    "layout"
+  ],
+  "topic": "positioning",
+  "type": "do"
+}

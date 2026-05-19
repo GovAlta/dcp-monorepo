@@ -1,0 +1,438 @@
+{
+  "aliases": [
+    "form-item-slot"
+  ],
+  "angularSelector": "goab-form-item-slot",
+  "api": {
+    "extractedFrom": "libs/web-components/src/components/form-item/FormItem.svelte",
+    "frameworks": {
+      "angular": {
+        "events": [],
+        "props": [
+          {
+            "default": null,
+            "description": "Error text displayed under the form field. Leave blank to indicate a valid field.",
+            "name": "error",
+            "required": false,
+            "type": "string | TemplateRef<any>",
+            "values": [
+              "string",
+              "TemplateRef<any>"
+            ]
+          },
+          {
+            "default": null,
+            "description": "Help text displayed under the form field to provide additional explanation.",
+            "name": "helpText",
+            "required": false,
+            "type": "string | TemplateRef<any>",
+            "values": [
+              "string",
+              "TemplateRef<any>"
+            ]
+          },
+          {
+            "default": null,
+            "description": "Sets the id attribute on the form item element.",
+            "name": "id",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Creates a label for the form item.",
+            "name": "label",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Sets the label size. 'regular' for standard, 'large' for emphasis.",
+            "name": "labelSize",
+            "required": false,
+            "type": "GoabFormItemLabelSize"
+          },
+          {
+            "default": null,
+            "description": "Sets the maximum width of the form item.",
+            "name": "maxWidth",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Sets the bottom margin spacing token.",
+            "name": "mb",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Sets the left margin spacing token.",
+            "name": "ml",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Sets the right margin spacing token.",
+            "name": "mr",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Sets the top margin spacing token.",
+            "name": "mt",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Overrides the label value within the form-summary to provide a shorter description. For public-form use only.",
+            "name": "name",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Marks the field with an optional or required label indicator.",
+            "name": "requirement",
+            "required": false,
+            "type": "GoabFormItemRequirement"
+          },
+          {
+            "default": null,
+            "description": "Sets the data-testid attribute for automated testing.",
+            "name": "testId",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "",
+            "description": "Specifies the input type for appropriate message spacing. Used with checkbox-list or radio-group.",
+            "name": "type",
+            "required": false,
+            "type": "GoabFormItemType"
+          }
+        ],
+        "slots": [
+          {
+            "description": "Error text displayed under the form field. Leave blank to indicate a valid field. Accepts a string or ngTemplate for custom error content.",
+            "name": "error",
+            "required": false,
+            "type": "TemplateRef"
+          },
+          {
+            "description": "Help text displayed under the form field to provide additional explanation. Accepts a string or ngTemplate for custom help content.",
+            "name": "helpText",
+            "required": false,
+            "type": "TemplateRef"
+          }
+        ]
+      },
+      "react": {
+        "events": [],
+        "props": [
+          {
+            "default": null,
+            "description": "Error text displayed under the form field. Leave blank to indicate a valid field. Accepts a string or ReactNode for custom error content.",
+            "name": "error",
+            "required": false,
+            "type": "string | React.ReactNode",
+            "values": [
+              "string",
+              "React.ReactNode"
+            ]
+          },
+          {
+            "default": null,
+            "description": "Help text displayed under the form field to provide additional explanation. Accepts a string or ReactNode for custom help content.",
+            "name": "helpText",
+            "required": false,
+            "type": "string | React.ReactNode",
+            "values": [
+              "string",
+              "React.ReactNode"
+            ]
+          },
+          {
+            "default": null,
+            "description": "Sets the id attribute on the form item element.",
+            "name": "id",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Creates a label for the form item.",
+            "name": "label",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "regular",
+            "description": "Sets the label size. 'regular' for standard, 'large' for emphasis.",
+            "name": "labelSize",
+            "required": false,
+            "type": "GoabFormItemLabelSize"
+          },
+          {
+            "default": "none",
+            "description": "Sets the maximum width of the form item.",
+            "name": "maxWidth",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "",
+            "name": "mb",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "",
+            "name": "ml",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "",
+            "name": "mr",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "",
+            "name": "mt",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Overrides the label value within the form-summary to provide a shorter description. For public-form use only.",
+            "name": "name",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Marks the field with an optional or required label indicator.",
+            "name": "requirement",
+            "required": false,
+            "type": "GoabFormItemRequirement"
+          },
+          {
+            "default": null,
+            "description": "Sets a data-testid attribute for automated testing.",
+            "name": "testId",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Specifies the input type for appropriate message spacing. Used with checkbox-list or radio-group.",
+            "name": "type",
+            "required": false,
+            "type": "GoabFormItemType"
+          }
+        ],
+        "slots": [
+          {
+            "description": "Error text displayed under the form field. Leave blank to indicate a valid field. Accepts a string or ReactNode for custom error content.",
+            "name": "error",
+            "required": false,
+            "type": "ReactNode"
+          },
+          {
+            "description": "Help text displayed under the form field to provide additional explanation. Accepts a string or ReactNode for custom help content.",
+            "name": "helpText",
+            "required": false,
+            "type": "ReactNode"
+          }
+        ]
+      },
+      "webComponents": {
+        "events": [],
+        "props": [
+          {
+            "default": "",
+            "description": "Error text displayed under the form field. Leave blank to indicate a valid field.",
+            "name": "error",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "",
+            "description": "Help text displayed under the form field to provide additional explanation.",
+            "name": "helptext",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "",
+            "description": "Creates a label for the form item.",
+            "name": "label",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "regular",
+            "description": "Sets the label size. 'compact' for dense layouts, 'regular' for standard, 'large' for emphasis.",
+            "name": "labelsize",
+            "required": false,
+            "type": "\"compact\" | \"regular\" | \"large\"",
+            "typeLabel": "GoabFormItemLabelSizeType",
+            "values": [
+              "compact",
+              "regular",
+              "large"
+            ]
+          },
+          {
+            "default": "none",
+            "description": "Sets the maximum width of the form item.",
+            "name": "maxwidth",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Bottom margin.",
+            "name": "mb",
+            "required": false,
+            "type": "Spacing",
+            "typeLabel": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Left margin.",
+            "name": "ml",
+            "required": false,
+            "type": "Spacing",
+            "typeLabel": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Right margin.",
+            "name": "mr",
+            "required": false,
+            "type": "Spacing",
+            "typeLabel": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Top margin.",
+            "name": "mt",
+            "required": false,
+            "type": "Spacing",
+            "typeLabel": "Spacing"
+          },
+          {
+            "default": "blank",
+            "description": "Overrides the label value within the form-summary. For public-form use only.",
+            "name": "name",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "",
+            "description": "Marks the field with an optional or required label indicator.",
+            "name": "requirement",
+            "required": false,
+            "type": "\"optional\" | \"required\"",
+            "typeLabel": "GoabFormItemRequirementType",
+            "values": [
+              "optional",
+              "required"
+            ]
+          },
+          {
+            "default": "",
+            "description": "Sets a data-testid attribute for automated testing.",
+            "name": "testid",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "",
+            "description": "Specifies the input type for appropriate message spacing. Used with checkbox-list or radio-group.",
+            "name": "type",
+            "required": false,
+            "type": "\"text-input\" | \"textarea\" | \"checkbox-list\" | \"radio-group\"",
+            "typeLabel": "GoabFormItemInputType",
+            "values": [
+              "text-input",
+              "textarea",
+              "checkbox-list",
+              "radio-group"
+            ]
+          },
+          {
+            "default": "1",
+            "description": "Design system version for styling.",
+            "name": "version",
+            "required": false,
+            "type": "\"1\" | \"2\"",
+            "typeLabel": "GoabFormItemVersionType",
+            "values": [
+              "1",
+              "2"
+            ]
+          }
+        ],
+        "slots": [
+          {
+            "description": "Error text displayed under the form field. Leave blank to indicate a valid field. Accepts a string or ReactNode for custom error content.",
+            "name": "error",
+            "required": false
+          },
+          {
+            "description": "Help text displayed under the form field to provide additional explanation. Accepts a string or ReactNode for custom help content.",
+            "name": "helptext",
+            "required": false
+          }
+        ]
+      }
+    }
+  },
+  "body": "",
+  "category": "utilities",
+  "collection": "components",
+  "description": "Wraps an input control with a text label, requirement label, helper text, and error text.",
+  "figmaUrl": "https://www.figma.com/design/Jpy1Ea5qglwnp1SgGnagY9/Component-library?node-id=56969-535065",
+  "id": "form-item",
+  "name": "Form item",
+  "reactClassName": "GoabFormItem",
+  "relatedComponents": [
+    "input",
+    "dropdown",
+    "checkbox",
+    "checkbox-list",
+    "date-picker",
+    "file-upload-input",
+    "radio-group",
+    "text-area"
+  ],
+  "relatedGuidance": [
+    "form-inputs-require-formitem",
+    "formitem-label-size-large",
+    "textarea-char-count-predictable",
+    "textarea-char-count-valid-reason",
+    "textarea-height-match-content",
+    "textarea-max-width",
+    "textarea-one-line",
+    "textarea-word-count-suggestion"
+  ],
+  "status": "stable",
+  "tags": [
+    "form",
+    "input",
+    "inputs and actions"
+  ],
+  "webComponentTag": "goa-form-item"
+}

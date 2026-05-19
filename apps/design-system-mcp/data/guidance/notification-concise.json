@@ -1,0 +1,21 @@
+{
+  "appliesTo": {
+    "components": [
+      "notification"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-notification type=\"success\">\n    Your profile was created.\n  </goa-notification>\n</Preview>",
+  "collection": "guidance",
+  "description": "Keep content short and concise.",
+  "id": "notification-concise",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "notification",
+    "temporary-notification",
+    "content"
+  ],
+  "topic": "feedback",
+  "type": "do"
+}

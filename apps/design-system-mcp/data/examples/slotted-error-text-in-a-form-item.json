@@ -1,0 +1,27 @@
+{
+  "aliases": [],
+  "body": "Use the error slot in a form item to display formatted error messages with custom styling like bold or italic text.\n\n## When to use\n\nUse this pattern when:\n\n- You need to display error messages with custom formatting\n- Error text requires links, bold, or other inline styling\n- Standard string-based error messages are insufficient\n\n## Considerations\n\n- Keep error messages clear and actionable\n- Use formatting sparingly to highlight key information\n- Ensure error text is accessible and readable by screen readers\n- The input component should also have its error prop set to true for proper styling",
+  "collection": "examples",
+  "components": [
+    "form-item",
+    "input"
+  ],
+  "frameworks": [
+    "react",
+    "angular",
+    "web-components"
+  ],
+  "id": "slotted-error-text-in-a-form-item",
+  "previewImage": "/images/examples/slotted-error-text-in-a-form-item.webp",
+  "relatedExamples": [],
+  "size": "interaction",
+  "status": "published",
+  "tags": [
+    "form",
+    "form-item",
+    "error",
+    "validation",
+    "slot"
+  ],
+  "title": "Slotted error text in a form item"
+}

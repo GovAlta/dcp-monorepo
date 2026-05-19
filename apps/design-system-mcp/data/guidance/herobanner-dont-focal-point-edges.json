@@ -1,0 +1,20 @@
+{
+  "appliesTo": {
+    "components": [
+      "hero-banner"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview bad>\n  <goa-hero-banner heading=\"Supporting businesses\" backgroundUrl=\"/edge-subject.jpg\">\n    Resources are available to help Alberta entrepreneurs.\n  </goa-hero-banner>\n</Preview>",
+  "collection": "guidance",
+  "description": "Don't select photos with focal points at the edges, as text overlays the imagery.",
+  "id": "herobanner-dont-focal-point-edges",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "hero-banner",
+    "images"
+  ],
+  "topic": "content",
+  "type": "dont"
+}

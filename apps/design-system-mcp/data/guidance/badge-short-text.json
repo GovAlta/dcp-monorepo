@@ -1,0 +1,20 @@
+{
+  "appliesTo": {
+    "components": [
+      "badge"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-badge type=\"success\" content=\"Uploaded\"></goa-badge>\n</Preview>",
+  "collection": "guidance",
+  "description": "Use short, concise text in badges.",
+  "id": "badge-short-text",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "badge",
+    "content"
+  ],
+  "topic": "content",
+  "type": "do"
+}

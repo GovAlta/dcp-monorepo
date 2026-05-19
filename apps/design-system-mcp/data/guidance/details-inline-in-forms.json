@@ -1,0 +1,21 @@
+{
+  "appliesTo": {
+    "components": [
+      "details"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-form-item label=\"What is your yearly household income?\">\n    <goa-input name=\"income\" leadingContent=\"$\"></goa-input>\n  </goa-form-item>\n  <goa-details heading=\"How do I calculate my yearly income?\"></goa-details>\n</Preview>",
+  "collection": "guidance",
+  "description": "Use details inline within a form to disclose more information as needed.",
+  "id": "details-inline-in-forms",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "details",
+    "forms",
+    "usage"
+  ],
+  "topic": "other",
+  "type": "do"
+}

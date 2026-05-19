@@ -1,0 +1,33 @@
+{
+  "aliases": [],
+  "body": "Use a push drawer to house filters alongside a list of records. The push drawer keeps the filter controls accessible while users can still see and interact with the filtered results.\n\n## When to use\n\nUse this pattern when:\n\n- Users need to filter a list or table and see results update alongside the filters\n- The filter panel should be dismissible to reclaim screen space\n- Users go back and forth between adjusting filters and reviewing results\n\n## Considerations\n\n- On smaller screens, the push drawer falls back to an overlay drawer automatically\n- Consider whether filters should apply immediately or require a Save action\n- Consider hiding the trigger button while the drawer is open to reduce visual clutter",
+  "collection": "examples",
+  "components": [
+    "push-drawer",
+    "button",
+    "table",
+    "badge",
+    "checkbox",
+    "checkbox-list",
+    "dropdown",
+    "form-item"
+  ],
+  "frameworks": [
+    "react",
+    "angular",
+    "web-components"
+  ],
+  "id": "filter-a-list-using-a-push-drawer",
+  "previewImage": "/images/examples/filter-a-list-using-a-push-drawer.webp",
+  "productType": "workspace",
+  "relatedExamples": [],
+  "size": "section",
+  "status": "published",
+  "tags": [
+    "push-drawer",
+    "filters",
+    "list",
+    "search"
+  ],
+  "title": "Filter a list using a push drawer"
+}

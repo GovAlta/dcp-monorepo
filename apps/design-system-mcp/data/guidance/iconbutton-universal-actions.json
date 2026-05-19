@@ -1,0 +1,20 @@
+{
+  "appliesTo": {
+    "components": [
+      "icon-button"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-icon-button icon=\"close\"></goa-icon-button>\n</Preview>",
+  "collection": "guidance",
+  "description": "Use icon buttons for universal actions such as closing a modal window.",
+  "id": "iconbutton-universal-actions",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "icon-button",
+    "buttons"
+  ],
+  "topic": "usage",
+  "type": "do"
+}

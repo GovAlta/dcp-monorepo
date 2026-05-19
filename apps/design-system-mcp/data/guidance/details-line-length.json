@@ -1,0 +1,21 @@
+{
+  "appliesTo": {
+    "components": [
+      "details"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-details heading=\"Detail heading\" open=\"true\">\n    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dui integer sagittis, quis felis eu viverra libero.\n  </goa-details>\n</Preview>",
+  "collection": "guidance",
+  "description": "Keep content within 50-75 characters for optimal line length.",
+  "id": "details-line-length",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "details",
+    "readability",
+    "content"
+  ],
+  "topic": "content",
+  "type": "do"
+}

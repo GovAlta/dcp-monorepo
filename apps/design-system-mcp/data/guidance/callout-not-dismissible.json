@@ -1,0 +1,20 @@
+{
+  "appliesTo": {
+    "components": [
+      "callout"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-callout type=\"information\" heading=\"Information Callout\">\n    Changes to employment standards rules are in effect.\n  </goa-callout>\n</Preview>",
+  "collection": "guidance",
+  "description": "Don't allow callouts to be dismissed.",
+  "id": "callout-not-dismissible",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "callout",
+    "interactivity"
+  ],
+  "topic": "other",
+  "type": "dont"
+}

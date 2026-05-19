@@ -1,0 +1,22 @@
+{
+  "appliesTo": {
+    "components": [
+      "modal"
+    ],
+    "contexts": []
+  },
+  "body": "",
+  "collection": "guidance",
+  "description": "Use closable=false for critical confirmations where the user must choose an explicit action, not just dismiss the dialog.",
+  "id": "modal-closable-false-for-critical",
+  "relatedProps": [
+    "closable"
+  ],
+  "status": "published",
+  "tags": [
+    "modal",
+    "confirmation"
+  ],
+  "topic": "other",
+  "type": "tip"
+}

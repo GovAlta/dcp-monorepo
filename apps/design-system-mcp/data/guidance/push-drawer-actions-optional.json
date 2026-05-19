@@ -1,0 +1,21 @@
+{
+  "appliesTo": {
+    "components": [
+      "push-drawer"
+    ],
+    "contexts": []
+  },
+  "body": "",
+  "collection": "guidance",
+  "description": "The actions slot is optional. Include Save or Cancel buttons when the drawer content requires explicit confirmation. Omit them when changes apply immediately, like live filtering.",
+  "id": "push-drawer-actions-optional",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "push-drawer",
+    "actions",
+    "forms"
+  ],
+  "topic": "other",
+  "type": "tip"
+}

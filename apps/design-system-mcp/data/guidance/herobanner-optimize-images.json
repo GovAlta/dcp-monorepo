@@ -1,0 +1,21 @@
+{
+  "appliesTo": {
+    "components": [
+      "hero-banner"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-hero-banner heading=\"Supporting businesses\" backgroundUrl=\"/optimized-image.jpg\" minHeight=\"300px\">\n    Resources are available to help Alberta entrepreneurs.\n  </goa-hero-banner>\n</Preview>",
+  "collection": "guidance",
+  "description": "Enable image optimization for desktop, tablet, and mobile to minimize loading times.",
+  "id": "herobanner-optimize-images",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "hero-banner",
+    "images",
+    "performance"
+  ],
+  "topic": "performance",
+  "type": "do"
+}

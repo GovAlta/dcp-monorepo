@@ -1,0 +1,21 @@
+{
+  "appliesTo": {
+    "components": [
+      "circular-progress"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-circular-progress message=\"The system is now loading the results that match your search criteria...\" visible=\"true\" variant=\"inline\"></goa-circular-progress>\n</Preview>",
+  "collection": "guidance",
+  "description": "Don't place a full sentence in the indicator's label.",
+  "id": "progress-no-full-sentence",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "progress-indicator",
+    "content",
+    "loading"
+  ],
+  "topic": "content",
+  "type": "dont"
+}

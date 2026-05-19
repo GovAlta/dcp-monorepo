@@ -1,0 +1,23 @@
+{
+  "appliesTo": {
+    "components": [
+      "pagination"
+    ],
+    "contexts": []
+  },
+  "body": "",
+  "collection": "guidance",
+  "description": "Use variant='links-only' for a simpler mobile-friendly pagination with just previous and next buttons.",
+  "id": "pagination-links-only-mobile",
+  "relatedProps": [
+    "variant"
+  ],
+  "status": "published",
+  "tags": [
+    "pagination",
+    "responsive",
+    "mobile"
+  ],
+  "topic": "types",
+  "type": "tip"
+}

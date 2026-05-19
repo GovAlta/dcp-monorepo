@@ -1,0 +1,21 @@
+{
+  "appliesTo": {
+    "components": [
+      "dropdown"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-block direction=\"column\" gap=\"m\">\n    <goa-dropdown name=\"fruit\" label=\"Select your favorite fruit\"></goa-dropdown>\n    <goa-dropdown name=\"color\" label=\"Select your favorite color\"></goa-dropdown>\n    <goa-dropdown name=\"movie\" label=\"Select your favorite movie\"></goa-dropdown>\n  </goa-block>\n</Preview>",
+  "collection": "guidance",
+  "description": "Define dropdown widths based on the widest dropdown in the form.",
+  "id": "dropdown-consistent-width",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "dropdown",
+    "forms",
+    "layout"
+  ],
+  "topic": "sizing",
+  "type": "do"
+}

@@ -1,0 +1,291 @@
+{
+  "aliases": [],
+  "api": {
+    "extractedFrom": "libs/web-components/src/components/app-header/AppHeader.svelte",
+    "frameworks": {
+      "angular": {
+        "events": [
+          {
+            "description": "Emits when the menu button is clicked. Used for custom menu handling.",
+            "frameworks": [
+              "angular"
+            ],
+            "name": "onMenuClick",
+            "type": "() => void"
+          }
+        ],
+        "props": [
+          {
+            "default": null,
+            "description": "Sets the breakpoint in px for the full menu to display.",
+            "name": "fullMenuBreakpoint",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "default": null,
+            "description": "Sets the service name to display in the app header.",
+            "name": "heading",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Maximum width of the content area.",
+            "name": "maxContentWidth",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "V2 only: Secondary text displayed under the service name.",
+            "name": "secondaryText",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Sets a data-testid attribute for automated testing.",
+            "name": "testId",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Sets the URL to link from the alberta.ca logo. A full url is required.",
+            "name": "url",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "slots": [
+          {
+            "description": "",
+            "name": "banner",
+            "required": false
+          },
+          {
+            "description": "",
+            "name": "navigation",
+            "required": false
+          },
+          {
+            "description": "",
+            "name": "phase",
+            "required": false
+          },
+          {
+            "description": "",
+            "name": "utilities",
+            "required": false
+          }
+        ]
+      },
+      "react": {
+        "events": [
+          {
+            "description": "Callback fired when the menu button is clicked. When provided, clicking the menu button dispatches a custom event instead of toggling the menu.",
+            "frameworks": [
+              "react"
+            ],
+            "name": "onMenuClick",
+            "type": "() => void"
+          }
+        ],
+        "props": [
+          {
+            "default": null,
+            "description": "Sets the breakpoint in px for the full menu to display.",
+            "name": "fullMenuBreakpoint",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "default": null,
+            "description": "Set the service name to display in the app header.",
+            "name": "heading",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Maximum width of the content area.",
+            "name": "maxContentWidth",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "V2 only: Secondary text displayed under the service name.",
+            "name": "secondaryText",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Sets a data-testid attribute for automated testing.",
+            "name": "testId",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Set the URL to link from the alberta.ca logo. A full url is required.",
+            "name": "url",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "slots": [
+          {
+            "description": "",
+            "name": "banner",
+            "required": false
+          },
+          {
+            "description": "",
+            "name": "navigation",
+            "required": false
+          },
+          {
+            "description": "",
+            "name": "phase",
+            "required": false
+          },
+          {
+            "description": "",
+            "name": "utilities",
+            "required": false
+          }
+        ]
+      },
+      "webComponents": {
+        "events": [
+          {
+            "description": "",
+            "frameworks": [
+              "webComponents"
+            ],
+            "name": "_menuClick",
+            "type": "CustomEvent"
+          }
+        ],
+        "props": [
+          {
+            "default": "TABLET_BP",
+            "description": "Sets the breakpoint in px for the full menu to display.",
+            "name": "fullmenubreakpoint",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "default": "false",
+            "description": "When true, clicking the menu button dispatches _menuClick event instead of toggling the menu. Use for custom menu handling.",
+            "name": "hasmenuclickhandler",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "default": "",
+            "description": "Set the service name to display in the app header.",
+            "name": "heading",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "",
+            "description": "Maximum width of the content area.",
+            "name": "maxcontentwidth",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "",
+            "description": "V2 only: Secondary text displayed under the service name.",
+            "name": "secondarytext",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "",
+            "description": "Sets a data-testid attribute for automated testing.",
+            "name": "testid",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "",
+            "description": "Set the URL to link from the alberta.ca logo. A full url is required.",
+            "name": "url",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "1",
+            "description": "Design system version for styling.",
+            "name": "version",
+            "required": false,
+            "type": "\"1\" | \"2\"",
+            "values": [
+              "1",
+              "2"
+            ]
+          }
+        ],
+        "slots": [
+          {
+            "description": "",
+            "name": "banner",
+            "required": false
+          },
+          {
+            "description": "",
+            "name": "navigation",
+            "required": false
+          },
+          {
+            "description": "",
+            "name": "phase",
+            "required": false
+          },
+          {
+            "description": "",
+            "name": "utilities",
+            "required": false
+          }
+        ]
+      }
+    }
+  },
+  "body": "",
+  "category": "structure-and-navigation",
+  "collection": "components",
+  "description": "Provide structure to help users find their way around the service.",
+  "figmaUrl": "https://www.figma.com/design/Jpy1Ea5qglwnp1SgGnagY9/Component-library?node-id=58757-186832",
+  "id": "app-header",
+  "name": "Header",
+  "reactClassName": "GoabAppHeader",
+  "relatedComponents": [
+    "app-header-menu",
+    "microsite-header"
+  ],
+  "relatedGuidance": [
+    "header-consistent-maxcontentwidth",
+    "header-heading-identifies-service"
+  ],
+  "status": "stable",
+  "tags": [
+    "app header",
+    "global navigation",
+    "header",
+    "header and navigation",
+    "main navigation",
+    "navigation header",
+    "navigation menu",
+    "primary navigation",
+    "service header",
+    "structure and navigation",
+    "top navigation"
+  ],
+  "webComponentTag": "goa-app-header"
+}

@@ -1,0 +1,33 @@
+{
+  "aliases": [],
+  "body": "Create a multi-step form with controlled navigation using Previous/Next buttons.\n\n## When to use\n\nUse this pattern when:\n\n- A form is too long to display on a single page\n- You want to guide users through a sequential process\n- Steps must be completed in order before proceeding\n- Users should not be able to skip ahead to incomplete steps\n\n## Considerations\n\n- Set an initial `step` value >= 1 to enable controlled mode\n- Steps that are \"Not started\" will not be clickable\n- Use Previous/Next buttons to control navigation programmatically\n- Validate step completion before allowing navigation forward\n- Consider showing skeleton content while loading step data",
+  "collection": "examples",
+  "components": [
+    "form-stepper",
+    "form-step",
+    "pages",
+    "button",
+    "skeleton",
+    "spacer"
+  ],
+  "frameworks": [
+    "react",
+    "angular",
+    "web-components"
+  ],
+  "hidden": true,
+  "id": "form-stepper-with-controlled-navigation",
+  "previewImage": "/images/examples/form-stepper-with-controlled-navigation.webp",
+  "relatedExamples": [],
+  "size": "section",
+  "status": "published",
+  "tags": [
+    "stepper",
+    "form",
+    "wizard",
+    "multi-step",
+    "navigation",
+    "pages"
+  ],
+  "title": "Form stepper with controlled navigation"
+}

@@ -1,0 +1,23 @@
+{
+  "appliesTo": {
+    "components": [
+      "grid"
+    ],
+    "contexts": []
+  },
+  "body": "",
+  "collection": "guidance",
+  "description": "minChildWidth is required on Grid. Set it based on the content's minimum readable width so items wrap properly.",
+  "id": "grid-minchildwidth-required",
+  "relatedProps": [
+    "minChildWidth"
+  ],
+  "status": "published",
+  "tags": [
+    "grid",
+    "responsive",
+    "layout"
+  ],
+  "topic": "sizing",
+  "type": "warning"
+}

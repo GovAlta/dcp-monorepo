@@ -8,10 +8,6 @@
  * - get: Get specific item details by ID
  *
  * Philosophy: Rich data, simple tools. The quality of knowledge determines output quality.
- *
- * NOTE: tool surface tightening from Brief 22 is paused at design + impl checkpoint
- * pending Brief 19 (docs-site-as-source-of-truth pipe). End-to-end diagnostic
- * verification will happen with real guidance data after Brief 19 lands.
  */
 
 import {
@@ -98,7 +94,14 @@ Returns: { results: [{ id, collection, name, size?, productType?, summary, alias
     {
       query: z.string().describe("What you're looking for"),
       collection: z
-        .enum(['components', 'guidance', 'examples', 'productTypes'])
+        .enum([
+          'components',
+          'guidance',
+          'examples',
+          'foundations',
+          'get-started',
+          'productTypes',
+        ])
         .optional()
         .describe('Filter by content collection'),
       size: z
@@ -124,7 +127,9 @@ Returns: { results: [{ id, collection, name, size?, productType?, summary, alias
       context: z
         .string()
         .optional()
-        .describe("Scope guidance results to an example context id like 'case-detail'"),
+        .describe(
+          "Scope guidance results to an example context id like 'case-detail'",
+        ),
       limit: z
         .number()
         .optional()
@@ -209,7 +214,14 @@ Returns: { id, collection, resolved_via, entry, related: { components, examples,
         .string()
         .describe('Item ID or alias (from search results or known name)'),
       collection: z
-        .enum(['components', 'guidance', 'examples', 'productTypes'])
+        .enum([
+          'components',
+          'guidance',
+          'examples',
+          'foundations',
+          'get-started',
+          'productTypes',
+        ])
         .optional()
         .describe('Collection to disambiguate against (recommended)'),
       detail: z
@@ -338,10 +350,11 @@ function buildGetNext(
 /**
  * Build the related block for a get response.
  *
- * For components: relatedComponents and relatedExamples are read directly.
+ * For components: relatedComponents and relatedExamples are read directly;
+ * guidance ids on the component are resolved against the guidance collection
+ * and returned as lightweight summaries so an agent can act without a
+ * second round-trip per atom.
  * For examples: components are reverse-looked-up; relatedPatterns surface as examples.
- * Guidance is empty until PR #3771 ingests atoms; the field is present so
- * agents can rely on its shape.
  */
 function buildGetRelated(
   collection: string,
@@ -352,10 +365,11 @@ function buildGetRelated(
 ): {
   components: { id: string }[];
   examples: { id: string }[];
-  guidance: { id: string }[];
+  guidance: GuidanceRelatedEntry[];
 } {
   const components: { id: string }[] = [];
   const examples: { id: string }[] = [];
+  const guidance: GuidanceRelatedEntry[] = [];
 
   if (collection === 'components') {
     if (Array.isArray(data.relatedComponents)) {
@@ -364,25 +378,45 @@ function buildGetRelated(
       );
     }
     if (Array.isArray(data.relatedExamples)) {
-      data.relatedExamples.forEach((eid: string) =>
-        examples.push({ id: eid }),
-      );
+      data.relatedExamples.forEach((eid: string) => examples.push({ id: eid }));
+    }
+    if (Array.isArray(data.relatedGuidance)) {
+      for (const gid of data.relatedGuidance) {
+        const entry = resolveGuidanceSummary(gid, dataLoader);
+        if (entry) guidance.push(entry);
+      }
     }
   } else if (collection === 'examples') {
     dataLoader
       .findComponentsRelatedToExample(id)
       .forEach((cid) => components.push({ id: cid }));
     if (Array.isArray(data.relatedPatterns)) {
-      data.relatedPatterns.forEach((pid: string) =>
-        examples.push({ id: pid }),
-      );
+      data.relatedPatterns.forEach((pid: string) => examples.push({ id: pid }));
     }
   }
 
+  return { components, examples, guidance };
+}
+
+interface GuidanceRelatedEntry {
+  id: string;
+  type?: string;
+  topic?: string;
+  description?: string;
+}
+
+function resolveGuidanceSummary(
+  guidanceId: string,
+  dataLoader: DataLoader,
+): GuidanceRelatedEntry | null {
+  const hit = dataLoader.get(guidanceId, { collection: 'guidance' });
+  if (!hit) return { id: guidanceId };
+  const data = hit.data;
   return {
-    components,
-    examples,
-    guidance: [], // pending PR #3771 atom ingestion
+    id: hit.id,
+    type: data.type,
+    topic: data.topic,
+    description: data.description,
   };
 }
 

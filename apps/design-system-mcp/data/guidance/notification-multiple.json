@@ -1,0 +1,21 @@
+{
+  "appliesTo": {
+    "components": [
+      "notification"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <div style=\"display: flex; flex-direction: column; gap: 8px;\">\n    <goa-notification type=\"success\">\n      Your profile information has been updated.\n    </goa-notification>\n    <goa-notification type=\"success\">\n      Your contact information has been updated.\n    </goa-notification>\n  </div>\n</Preview>",
+  "collection": "guidance",
+  "description": "Don't show multiple temporary notifications at the same time as it can overwhelm users before they time out.",
+  "id": "notification-multiple",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "notification",
+    "temporary-notification",
+    "timing"
+  ],
+  "topic": "feedback",
+  "type": "dont"
+}

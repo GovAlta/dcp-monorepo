@@ -1,0 +1,21 @@
+{
+  "appliesTo": {
+    "components": [
+      "callout"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-callout type=\"information\" heading=\"Family Resource Networks\">\n    Networks deliver high quality prevention and early intervention services. <a href=\"#\">Find a network in your area.</a>\n  </goa-callout>\n</Preview>",
+  "collection": "guidance",
+  "description": "Use inline links when additional information exists on another page.",
+  "id": "callout-inline-links",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "callout",
+    "links",
+    "content"
+  ],
+  "topic": "content",
+  "type": "do"
+}

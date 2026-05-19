@@ -1,0 +1,26 @@
+{
+  "aliases": [],
+  "body": "Add descriptive text to radio button options to help users understand the implications of each choice.\n\n## When to use\n\nUse this pattern when:\n\n- Radio options need additional explanation\n- Users might not understand the difference between options\n- Each option has specific implications or requirements\n- Providing context helps users make informed decisions\n\n## Considerations\n\n- Keep descriptions concise but informative\n- Ensure the label and description work together\n- Use consistent description length across options\n- Consider whether all options need descriptions or just some",
+  "collection": "examples",
+  "components": [
+    "form-item",
+    "radio-group",
+    "radio-item"
+  ],
+  "frameworks": [
+    "react",
+    "angular",
+    "web-components"
+  ],
+  "id": "include-descriptions-for-items-in-a-checkbox-list",
+  "previewImage": "/images/examples/include-descriptions-for-items-in-a-checkbox-list.webp",
+  "relatedExamples": [],
+  "size": "interaction",
+  "status": "published",
+  "tags": [
+    "radio",
+    "descriptions",
+    "forms"
+  ],
+  "title": "Include descriptions for items in a checkbox list"
+}

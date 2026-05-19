@@ -1,0 +1,21 @@
+{
+  "appliesTo": {
+    "components": [
+      "accordion"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-accordion heading=\"Personal information\" open=\"true\">\n    Enter your full legal name as it appears on your government-issued ID.\n  </goa-accordion>\n</Preview>",
+  "collection": "guidance",
+  "description": "Ensure accordion content is left-aligned with the heading, leaving white space on the left side of the container.",
+  "id": "accordion-content-left-aligned",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "accordion",
+    "alignment",
+    "layout"
+  ],
+  "topic": "positioning",
+  "type": "do"
+}

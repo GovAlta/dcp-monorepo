@@ -1,0 +1,25 @@
+{
+  "appliesTo": {
+    "components": [
+      "button"
+    ],
+    "contexts": []
+  },
+  "body": "For icon buttons with both a label and icon, hide the icon from the screen reader so it announces \"Button, add row\" not \"Button, cross icon, add row\".",
+  "collection": "guidance",
+  "description": "Don't read the icon class or description for icon buttons with labels. Screen readers should read the button label only.",
+  "id": "button-dont-read-icon-class",
+  "relatedProps": [
+    "leadingIcon",
+    "trailingIcon"
+  ],
+  "status": "published",
+  "tags": [
+    "button",
+    "accessibility",
+    "screen-readers",
+    "icons"
+  ],
+  "topic": "screen-readers",
+  "type": "dont"
+}
