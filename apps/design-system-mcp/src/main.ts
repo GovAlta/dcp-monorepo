@@ -333,7 +333,7 @@ function buildGetNext(
 
   if (collection === 'components') {
     suggested_calls.push(
-      `search({ collection: 'guidance', component: '${id}' })`,
+      `search({ query: '${id}', collection: 'guidance', component: '${id}' })`,
     );
   } else if (collection === 'examples') {
     if (
