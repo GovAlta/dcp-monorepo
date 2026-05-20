@@ -1,5 +1,6 @@
 {
   "aliases": [],
+  "angularSelector": "goab-menu-action",
   "api": {
     "extractedFrom": "libs/web-components/src/components/menu-button/MenuAction.svelte",
     "frameworks": {
@@ -115,10 +116,12 @@
   "hidden": true,
   "id": "menu-action",
   "name": "Menu Action",
+  "reactClassName": "GoabMenuAction",
   "relatedComponents": [
     "menu-button"
   ],
   "status": "stable",
   "subcomponent": true,
-  "tags": []
+  "tags": [],
+  "webComponentTag": "goa-menu-action"
 }

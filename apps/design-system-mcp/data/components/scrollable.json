@@ -9,6 +9,5 @@
   "name": "Scrollable",
   "relatedComponents": [],
   "status": "stable",
-  "tags": [],
-  "webComponentTag": "goa-scrollable"
+  "tags": []
 }

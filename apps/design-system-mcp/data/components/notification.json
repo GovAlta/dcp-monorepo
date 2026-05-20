@@ -1,5 +1,7 @@
 {
-  "aliases": [],
+  "aliases": [
+    "notification-banner"
+  ],
   "angularSelector": "goab-notification",
   "api": {
     "extractedFrom": "libs/web-components/src/components/notification/Notification.svelte",
@@ -228,7 +230,10 @@
     "notification-multiple",
     "notification-one-at-time",
     "notification-reference-info",
-    "notification-vs-temporary"
+    "notification-vs-temporary",
+    "notificationbanner-dont-middle-of-page",
+    "notificationbanner-dont-multiple-links",
+    "notificationbanner-full-width-top"
   ],
   "status": "stable",
   "tags": [

@@ -1,10 +1,4 @@
 {
-  "appliesTo": {
-    "components": [
-      "one-column-layout"
-    ],
-    "contexts": []
-  },
   "body": "<Preview>\n  <goa-one-column-layout>\n    <section slot=\"header\">\n      <goa-app-header heading=\"My Service\"></goa-app-header>\n    </section>\n    <goa-page-block width=\"704px\">\n      <p>Main content goes here</p>\n    </goa-page-block>\n  </goa-one-column-layout>\n</Preview>",
   "collection": "guidance",
   "description": "Use the one column layout to ensure consistent page structure, proper header/footer placement, and responsive behavior.",

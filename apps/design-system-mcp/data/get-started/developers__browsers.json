@@ -3,7 +3,7 @@
   "collection": "get-started",
   "description": "Browser and operating system support for Design System components",
   "id": "developers/browsers",
-  "order": 6,
+  "order": 7,
   "section": "developers",
   "status": "published",
   "title": "Supported browsers"

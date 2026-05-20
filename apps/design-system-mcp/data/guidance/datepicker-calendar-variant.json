@@ -10,7 +10,7 @@
   "description": "Use the calendar date picker for selecting dates relative to today, or when seeing the day of week is helpful.",
   "id": "datepicker-calendar-variant",
   "relatedProps": [
-    "variant"
+    "type"
   ],
   "status": "published",
   "tags": [

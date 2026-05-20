@@ -3,7 +3,7 @@
   "collection": "get-started",
   "description": "How to verify and report a bug in a Design System component",
   "id": "developers/bug",
-  "order": 4,
+  "order": 5,
   "section": "developers",
   "status": "published",
   "title": "Verify a bug"

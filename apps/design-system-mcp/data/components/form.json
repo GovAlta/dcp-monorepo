@@ -1,16 +1,9 @@
 {
   "aliases": [
-    "GoabFieldset",
     "GoabPublicForm",
-    "GoabPublicFormPage",
-    "GoabPublicFormSummary",
-    "GoabPublicFormTask",
-    "GoabPublicFormTaskList",
-    "GoabPublicSubform",
-    "GoabPublicSubformIndex",
-    "fieldset"
+    "public-form"
   ],
-  "angularSelector": "goab-fieldset",
+  "angularSelector": "goab-public-form",
   "api": {
     "extractedFrom": "libs/web-components/src/components/form/Form.svelte",
     "frameworks": {
@@ -146,12 +139,12 @@
   "hidden": true,
   "id": "form",
   "name": "Form",
-  "reactClassName": "GoabFieldset",
+  "reactClassName": "GoabPublicForm",
   "relatedComponents": [
     "form-item",
     "form-stepper"
   ],
   "status": "stable",
   "tags": [],
-  "webComponentTag": "goa-fieldset"
+  "webComponentTag": "goa-public-form"
 }

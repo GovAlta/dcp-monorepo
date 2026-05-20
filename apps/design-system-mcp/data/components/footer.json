@@ -152,6 +152,10 @@
     "footer-meta-section",
     "footer-nav-section"
   ],
+  "relatedGuidance": [
+    "footer-dont-customize-links",
+    "footer-no-white-space-below"
+  ],
   "status": "stable",
   "tags": [
     "page footer",

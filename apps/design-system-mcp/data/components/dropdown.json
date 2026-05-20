@@ -1,9 +1,5 @@
 {
-  "aliases": [
-    "GoabDropdown",
-    "GoabDropdownItem",
-    "GoabDropdownOption"
-  ],
+  "aliases": [],
   "angularSelector": "goab-dropdown",
   "api": {
     "extractedFrom": "libs/web-components/src/components/dropdown/Dropdown.svelte",
@@ -524,7 +520,7 @@
   "figmaUrl": "https://www.figma.com/design/Jpy1Ea5qglwnp1SgGnagY9/Component-library?node-id=28478-241608",
   "id": "dropdown",
   "name": "Dropdown",
-  "reactClassName": "GoabDropdownOption",
+  "reactClassName": "GoabDropdown",
   "relatedComponents": [
     "dropdown-item",
     "form-item",

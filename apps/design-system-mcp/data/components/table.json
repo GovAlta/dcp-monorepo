@@ -1,8 +1,5 @@
 {
-  "aliases": [
-    "GoabTable",
-    "GoabTableSortHeader"
-  ],
+  "aliases": [],
   "angularSelector": "goab-table",
   "api": {
     "extractedFrom": "libs/web-components/src/components/table/Table.svelte",
@@ -300,10 +297,11 @@
   "figmaUrl": "https://www.figma.com/design/Jpy1Ea5qglwnp1SgGnagY9/Component-library?node-id=27343-613386",
   "id": "table",
   "name": "Table",
-  "reactClassName": "GoabTableSortHeader",
+  "reactClassName": "GoabTable",
   "relatedComponents": [
     "data-grid",
-    "pagination"
+    "pagination",
+    "table-sort-header"
   ],
   "relatedGuidance": [
     "table-relaxed-for-long-content",

@@ -1,8 +1,5 @@
 {
-  "aliases": [
-    "GoabHeroBanner",
-    "GoabHeroBannerActions"
-  ],
+  "aliases": [],
   "angularSelector": "goab-hero-banner",
   "api": {
     "extractedFrom": "libs/web-components/src/components/hero-banner/HeroBanner.svelte",
@@ -201,7 +198,7 @@
   "figmaUrl": "https://www.figma.com/design/Jpy1Ea5qglwnp1SgGnagY9/Component-library?node-id=633-10280",
   "id": "hero-banner",
   "name": "Hero banner",
-  "reactClassName": "GoabHeroBannerActions",
+  "reactClassName": "GoabHeroBanner",
   "relatedComponents": [],
   "relatedGuidance": [
     "herobanner-accessible-alt-text",

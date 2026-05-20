@@ -1,5 +1,8 @@
 {
-  "aliases": [],
+  "aliases": [
+    "GoabDropdownItem",
+    "GoabDropdownOption"
+  ],
   "angularSelector": "goab-dropdown-item",
   "api": {
     "extractedFrom": "libs/web-components/src/components/dropdown/DropdownItem.svelte",
@@ -134,10 +137,12 @@
   "hidden": true,
   "id": "dropdown-item",
   "name": "Dropdown Item",
+  "reactClassName": "GoabDropdownOption",
   "relatedComponents": [
     "dropdown"
   ],
   "status": "stable",
   "subcomponent": true,
-  "tags": []
+  "tags": [],
+  "webComponentTag": "goa-dropdown-item"
 }

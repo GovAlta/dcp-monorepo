@@ -1,10 +1,5 @@
 {
-  "aliases": [
-    "GoabWorkSideMenuGroup",
-    "GoabWorkSideMenuItem",
-    "GoabWorkSideNotificationItem",
-    "GoabWorkSideNotificationPanel"
-  ],
+  "aliases": [],
   "angularSelector": "goab-work-side-menu",
   "api": {
     "extractedFrom": "libs/web-components/src/components/work-side-menu/WorkSideMenu.svelte",

@@ -1,10 +1,10 @@
 {
   "aliases": [
     "GoabTemporaryNotificationCtrl",
-    "temp-notification"
+    "temp-notification-ctrl"
   ],
   "api": {
-    "extractedFrom": "libs/web-components/src/components/temporary-notification/TemporaryNotification.svelte",
+    "extractedFrom": "libs/web-components/src/components/temporary-notification/TemporaryNotificationCtrl.svelte",
     "frameworks": {
       "angular": {
         "events": [],
@@ -82,6 +82,18 @@
             ]
           },
           {
+            "default": "center",
+            "description": "Horizontal position of the notification container.",
+            "name": "horizontal-position",
+            "required": false,
+            "type": "\"left\" | \"center\" | \"right\"",
+            "values": [
+              "left",
+              "center",
+              "right"
+            ]
+          },
+          {
             "default": "",
             "description": "The notification message text to display.",
             "name": "message",
@@ -96,10 +108,10 @@
             "type": "number"
           },
           {
-            "default": "",
+            "default": null,
             "description": "Sets a data-testid attribute for automated testing.",
             "name": "testid",
-            "required": false,
+            "required": true,
             "type": "string"
           },
           {
@@ -114,6 +126,17 @@
               "failure",
               "indeterminate",
               "progress"
+            ]
+          },
+          {
+            "default": "bottom",
+            "description": "Vertical position of the notification container.",
+            "name": "vertical-position",
+            "required": false,
+            "type": "\"top\" | \"bottom\"",
+            "values": [
+              "top",
+              "bottom"
             ]
           },
           {
@@ -149,5 +172,5 @@
     "toast",
     "temporary notification"
   ],
-  "webComponentTag": "goa-temp-notification"
+  "webComponentTag": "goa-temp-notification-ctrl"
 }

@@ -9,6 +9,5 @@
   "name": "Focus Trap",
   "relatedComponents": [],
   "status": "stable",
-  "tags": [],
-  "webComponentTag": "goa-focus-trap"
+  "tags": []
 }

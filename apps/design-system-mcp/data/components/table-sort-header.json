@@ -1,0 +1,126 @@
+{
+  "aliases": [],
+  "angularSelector": "goab-table-sort-header",
+  "api": {
+    "extractedFrom": "libs/web-components/src/components/table/TableSortHeader.svelte",
+    "frameworks": {
+      "angular": {
+        "events": [],
+        "props": [
+          {
+            "default": "none",
+            "description": "Sets the sort direction indicator.",
+            "name": "direction",
+            "required": false,
+            "type": "GoabTableSortDirection"
+          },
+          {
+            "default": null,
+            "description": "Column name identifier for sorting.",
+            "name": "name",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Sort order number for multi-column sort display (\"1\", \"2\", etc).",
+            "name": "sortOrder",
+            "required": false,
+            "type": "GoabTableSortOrder"
+          }
+        ],
+        "slots": []
+      },
+      "react": {
+        "events": [],
+        "props": [
+          {
+            "default": "none",
+            "description": "Sets the sort direction indicator.",
+            "name": "direction",
+            "required": false,
+            "type": "GoabTableSortDirection"
+          },
+          {
+            "default": null,
+            "description": "Column name identifier for sorting.",
+            "name": "name",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Sort order number for multi-column sort display. Used for displaying priority numbers when multiple columns are sorted.",
+            "name": "sortOrder",
+            "required": false,
+            "type": "GoabTableSortOrder"
+          }
+        ],
+        "slots": []
+      },
+      "webComponents": {
+        "events": [],
+        "props": [
+          {
+            "default": "none",
+            "description": "Sets the sort direction indicator.",
+            "name": "direction",
+            "required": false,
+            "type": "\"asc\" | \"desc\" | \"none\"",
+            "values": [
+              "asc",
+              "desc",
+              "none"
+            ]
+          },
+          {
+            "default": "",
+            "description": "Column name identifier for sorting.",
+            "name": "name",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "0",
+            "description": "Sort order number for multi-column sort display (\"1\", \"2\", etc).",
+            "name": "sort-order",
+            "required": false,
+            "type": "\"0\" | \"1\" | \"2\"",
+            "values": [
+              "0",
+              "1",
+              "2"
+            ]
+          },
+          {
+            "default": "1",
+            "description": "Design system version for styling.",
+            "name": "version",
+            "required": false,
+            "type": "\"1\" | \"2\"",
+            "values": [
+              "1",
+              "2"
+            ]
+          }
+        ],
+        "slots": []
+      }
+    }
+  },
+  "body": "",
+  "category": "content-layout",
+  "collection": "components",
+  "description": "Sortable column header used inside a table to let users sort rows by that column.",
+  "hidden": true,
+  "id": "table-sort-header",
+  "name": "Table Sort Header",
+  "reactClassName": "GoabTableSortHeader",
+  "relatedComponents": [
+    "table"
+  ],
+  "status": "stable",
+  "subcomponent": true,
+  "tags": [],
+  "webComponentTag": "goa-table-sort-header"
+}

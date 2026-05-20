@@ -150,6 +150,7 @@
   "description": "A notification center panel that displays notification items within a work side menu, with tabs for filtering by unread, urgent, and all notifications.",
   "id": "work-side-notification-panel",
   "name": "Notification Panel",
+  "reactClassName": "GoabWorkSideNotificationPanel",
   "relatedComponents": [
     "work-side-menu",
     "work-side-notification-item"
@@ -159,5 +160,6 @@
     "notifications",
     "work side menu",
     "panel"
-  ]
+  ],
+  "webComponentTag": "goa-work-side-notification-panel"
 }

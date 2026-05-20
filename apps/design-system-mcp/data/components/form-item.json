@@ -1,8 +1,6 @@
 {
-  "aliases": [
-    "form-item-slot"
-  ],
-  "angularSelector": "goab-form-item-slot",
+  "aliases": [],
+  "angularSelector": "goab-form-item",
   "api": {
     "extractedFrom": "libs/web-components/src/components/form-item/FormItem.svelte",
     "frameworks": {

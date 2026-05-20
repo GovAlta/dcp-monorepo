@@ -116,10 +116,12 @@
   "hidden": true,
   "id": "work-side-menu-group",
   "name": "Work Side Menu Group",
+  "reactClassName": "GoabWorkSideMenuGroup",
   "relatedComponents": [
     "work-side-menu"
   ],
   "status": "stable",
   "subcomponent": true,
-  "tags": []
+  "tags": [],
+  "webComponentTag": "goa-work-side-menu-group"
 }

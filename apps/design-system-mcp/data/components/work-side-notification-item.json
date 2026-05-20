@@ -231,10 +231,12 @@
   "hidden": true,
   "id": "work-side-notification-item",
   "name": "Notification Item",
+  "reactClassName": "GoabWorkSideNotificationItem",
   "relatedComponents": [
     "work-side-notification-panel"
   ],
   "status": "stable",
   "subcomponent": true,
-  "tags": []
+  "tags": [],
+  "webComponentTag": "goa-work-side-notification-item"
 }

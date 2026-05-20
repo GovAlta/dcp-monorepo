@@ -1,5 +1,6 @@
 {
   "aliases": [],
+  "angularSelector": "goab-app-header",
   "api": {
     "extractedFrom": "libs/web-components/src/components/app-header/AppHeader.svelte",
     "frameworks": {

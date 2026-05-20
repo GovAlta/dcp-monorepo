@@ -2,6 +2,7 @@
   "aliases": [
     "textarea"
   ],
+  "angularSelector": "goab-textarea",
   "api": {
     "extractedFrom": "libs/web-components/src/components/text-area/TextArea.svelte",
     "frameworks": {
@@ -551,9 +552,16 @@
   "relatedGuidance": [
     "dont-disable-without-explanation",
     "form-inputs-require-formitem",
+    "input-no-placeholder-as-label",
     "input-width-required",
+    "textarea-char-count-predictable",
+    "textarea-char-count-valid-reason",
     "textarea-countby-word-vs-character",
-    "textarea-vs-input"
+    "textarea-height-match-content",
+    "textarea-max-width",
+    "textarea-one-line",
+    "textarea-vs-input",
+    "textarea-word-count-suggestion"
   ],
   "status": "stable",
   "tags": [

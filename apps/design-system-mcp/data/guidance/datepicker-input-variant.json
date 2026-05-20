@@ -5,12 +5,12 @@
     ],
     "contexts": []
   },
-  "body": "<Preview>\n  <goa-form-item label=\"Date of birth\">\n    <goa-date-picker name=\"dob\" variant=\"input\"></goa-date-picker>\n  </goa-form-item>\n</Preview>",
+  "body": "<Preview>\n  <goa-form-item label=\"Date of birth\">\n    <goa-date-picker name=\"dob\" type=\"input\"></goa-date-picker>\n  </goa-form-item>\n</Preview>",
   "collection": "guidance",
   "description": "Use the input date picker for known dates far in the past or future, such as a birthday.",
   "id": "datepicker-input-variant",
   "relatedProps": [
-    "variant"
+    "type"
   ],
   "status": "published",
   "tags": [

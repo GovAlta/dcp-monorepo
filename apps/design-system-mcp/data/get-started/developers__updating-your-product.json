@@ -3,7 +3,7 @@
   "collection": "get-started",
   "description": "The rationale and practical steps for updating your GoA product to Design System 2.0 using the developer-first approach.",
   "id": "developers/updating-your-product",
-  "order": 3,
+  "order": 4,
   "section": "developers",
   "status": "published",
   "title": "Updating your product"

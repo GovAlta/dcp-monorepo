@@ -1,6 +1,5 @@
 {
   "aliases": [],
-  "angularSelector": "goab-form-stepper",
   "body": "",
   "category": "structure-and-navigation",
   "collection": "components",
@@ -9,7 +8,6 @@
   "hidden": true,
   "id": "form-stepper",
   "name": "Form stepper",
-  "reactClassName": "GoabFormStepper",
   "relatedComponents": [
     "form-step",
     "form"
@@ -26,6 +24,5 @@
     "steps",
     "structure and navigation",
     "wizard"
-  ],
-  "webComponentTag": "goa-form-stepper"
+  ]
 }

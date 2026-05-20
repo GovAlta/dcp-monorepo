@@ -11,7 +11,7 @@
   "id": "badge-arialabel-icon-only",
   "relatedProps": [
     "ariaLabel",
-    "icon"
+    "iconType"
   ],
   "status": "published",
   "tags": [

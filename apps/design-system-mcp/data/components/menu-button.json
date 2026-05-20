@@ -1,10 +1,8 @@
 {
   "aliases": [
-    "GoabMenuAction",
-    "GoabMenuButton",
-    "menu-action"
+    "multi-action-button"
   ],
-  "angularSelector": "goab-menu-action",
+  "angularSelector": "goab-menu-button",
   "api": {
     "extractedFrom": "libs/web-components/src/components/menu-button/MenuButton.svelte",
     "frameworks": {
@@ -255,19 +253,22 @@
   "figmaUrl": "https://www.figma.com/design/Jpy1Ea5qglwnp1SgGnagY9/Component-library?node-id=57138-308450",
   "id": "menu-button",
   "name": "Menu button",
-  "reactClassName": "GoabMenuAction",
+  "reactClassName": "GoabMenuButton",
   "relatedComponents": [
     "button",
     "menu-action",
     "popover"
   ],
   "relatedGuidance": [
-    "menubutton-not-for-navigation"
+    "menubutton-not-for-navigation",
+    "multiactionbutton-descriptive-label",
+    "multiactionbutton-dont-exceed-six-items",
+    "multiactionbutton-important-items-first"
   ],
   "status": "stable",
   "tags": [
     "menu button",
     "split button"
   ],
-  "webComponentTag": "goa-menu-action"
+  "webComponentTag": "goa-menu-button"
 }
