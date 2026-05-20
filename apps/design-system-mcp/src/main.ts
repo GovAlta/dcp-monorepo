@@ -86,7 +86,7 @@ collection: components | guidance | examples | productTypes
 size (examples): interaction (single gesture) | section (card-level) | page (full screen) | task (start to finish) | product (entire app)
 productType (examples): workspace | public-form
 framework (examples): react | angular | web-components
-status: published | draft | deprecated
+status: published | stable | deprecated
 component (guidance scoping): a component id like "goa-table"
 context (guidance scoping): an example id like "case-detail"
 
@@ -117,7 +117,7 @@ Returns: { results: [{ id, collection, name, size?, productType?, summary, alias
         .optional()
         .describe('Filter by framework support (examples only)'),
       status: z
-        .enum(['published', 'draft', 'deprecated'])
+        .enum(['published', 'stable', 'deprecated'])
         .optional()
         .describe('Filter by lifecycle status'),
       component: z
