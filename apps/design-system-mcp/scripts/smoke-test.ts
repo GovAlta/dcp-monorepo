@@ -5,17 +5,37 @@
 
 import { DataLoader } from '../src/data-loader';
 
+let failures = 0;
+
+function assertFound<T>(label: string, value: T | undefined | null): void {
+  if (value === undefined || value === null) {
+    console.error(`  ✗ assertion failed: ${label} returned no result`);
+    failures += 1;
+  }
+}
+
+function assertAtLeast(label: string, actual: number, min: number): void {
+  if (actual < min) {
+    console.error(`  ✗ assertion failed: ${label} expected >= ${min}, got ${actual}`);
+    failures += 1;
+  }
+}
+
 async function main(): Promise<void> {
   const loader = new DataLoader();
   await loader.initialize();
   const stats = loader.getStats();
   process.stdout.write(`\nLoaded ${stats.totalItems} items.\n`);
+  // Sanity floor: the current pipeline ships hundreds of records. A single-
+  // digit count means the data dir didn't resolve.
+  assertAtLeast('initial load', stats.totalItems, 100);
 
   console.log('\n--- search("accordion") top 3 ---');
   const r1 = await loader.search('accordion', { maxResults: 3 });
   for (const r of r1) {
     console.log(`  ${r.collection}/${r.id}: ${r.name} (score: ${r.score})`);
   }
+  assertAtLeast('search("accordion")', r1.length, 1);
 
   console.log('\n--- search("button") collection=components top 3 ---');
   const r2 = await loader.search('button', {
@@ -25,6 +45,7 @@ async function main(): Promise<void> {
   for (const r of r2) {
     console.log(`  ${r.collection}/${r.id}: ${r.name} (score: ${r.score})`);
   }
+  assertAtLeast('search("button", components)', r2.length, 1);
 
   console.log('\n--- search("error page") collection=examples top 3 ---');
   const r3 = await loader.search('error page', {
@@ -34,6 +55,7 @@ async function main(): Promise<void> {
   for (const r of r3) {
     console.log(`  ${r.collection}/${r.id}: ${r.name} (score: ${r.score})`);
   }
+  assertAtLeast('search("error page", examples)', r3.length, 1);
 
   console.log('\n--- get("accordion") ---');
   const g1 = loader.get('accordion');
@@ -44,6 +66,7 @@ async function main(): Promise<void> {
     console.log(`  webComponentTag: ${g1.data.webComponentTag}`);
     console.log(`  relatedGuidance: ${(g1.data.relatedGuidance || []).slice(0, 3).join(', ')}...`);
   } else console.log('  NOT FOUND');
+  assertFound('get("accordion")', g1);
 
   console.log('\n--- get("GoabAppFooter") — alias resolution ---');
   const g2 = loader.get('GoabAppFooter');
@@ -52,6 +75,7 @@ async function main(): Promise<void> {
     console.log(`  id: ${g2.id}`);
     console.log(`  collection: ${g2.collection}`);
   } else console.log('  NOT FOUND');
+  assertFound('get("GoabAppFooter")', g2);
 
   console.log('\n--- get("question-page") ---');
   const g3 = loader.get('question-page');
@@ -61,6 +85,7 @@ async function main(): Promise<void> {
     console.log(`  collection: ${g3.collection}`);
     console.log(`  aliases: ${(g3.data.aliases || []).join(', ')}`);
   } else console.log('  NOT FOUND');
+  assertFound('get("question-page")', g3);
 
   console.log('\n--- get("ask-a-user-one-question-at-a-time") — alias of question-page ---');
   const g4 = loader.get('ask-a-user-one-question-at-a-time');
@@ -68,6 +93,7 @@ async function main(): Promise<void> {
     console.log(`  resolved_via: ${g4.resolved_via}`);
     console.log(`  id: ${g4.id}`);
   } else console.log('  NOT FOUND');
+  assertFound('get(alias of question-page)', g4);
 
   console.log('\n--- get("confirm-that-an-application-was-submitted") — alias of result-page ---');
   const g5 = loader.get('confirm-that-an-application-was-submitted');
@@ -75,6 +101,7 @@ async function main(): Promise<void> {
     console.log(`  resolved_via: ${g5.resolved_via}`);
     console.log(`  id: ${g5.id}`);
   } else console.log('  NOT FOUND');
+  assertFound('get(alias of result-page)', g5);
 
   console.log('\n--- get("designers/designing-with-ds") — nested id ---');
   const g6 = loader.get('designers/designing-with-ds');
@@ -83,6 +110,7 @@ async function main(): Promise<void> {
     console.log(`  collection: ${g6.collection}`);
     console.log(`  title: ${g6.data.title}`);
   } else console.log('  NOT FOUND');
+  assertFound('get("designers/designing-with-ds")', g6);
 
   console.log('\n--- get("anti-patterns") — foundation ---');
   const g7 = loader.get('anti-patterns');
@@ -91,6 +119,7 @@ async function main(): Promise<void> {
     console.log(`  collection: ${g7.collection}`);
     console.log(`  title: ${g7.data.title}`);
   } else console.log('  NOT FOUND');
+  assertFound('get("anti-patterns")', g7);
 
   console.log('\n--- search "checkbox" — guidance match ---');
   const r4 = await loader.search('checkbox content', {
@@ -99,6 +128,12 @@ async function main(): Promise<void> {
   });
   for (const r of r4) {
     console.log(`  ${r.collection}/${r.id}`);
+  }
+  assertAtLeast('search("checkbox", guidance)', r4.length, 1);
+
+  if (failures > 0) {
+    console.error(`\n${failures} assertion(s) failed.`);
+    process.exit(1);
   }
 
   console.log('\nDone.\n');

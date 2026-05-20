@@ -13,6 +13,7 @@
  * contain "/" for nested ids); the filename is a flattened version of that id.
  */
 
+import { existsSync } from 'fs';
 import { readFile, readdir } from 'fs/promises';
 import { join, dirname } from 'path';
 import {
@@ -25,22 +26,37 @@ import {
 /**
  * Resolve the data directory.
  *
- * When esbuild runs with `bundle: false`, the compiled entry point lives at
- * `dist/apps/design-system-mcp/main.js` (a shim that requires the real code
- * from a nested subdirectory). The data/ assets are always copied to the same
- * level as that root shim, so we resolve relative to `require.main.filename`
- * (the shim). Falls back to `__dirname/../data` for local ts-node / tsx usage
- * during development.
+ * Probes a handful of locations relative to the running entry point and
+ * returns the first one that contains a `components/` subfolder. Handles
+ * both production layouts (compiled `dist/apps/design-system-mcp/main.js`
+ * sitting next to `data/`) and dev / script layouts (e.g. `npx tsx` on
+ * `scripts/smoke-test.ts`, where `require.main.filename` is the script
+ * itself and `data/` is one level up).
+ *
+ * Set `GOA_MCP_DATA_DIR` to override entirely.
  */
 function resolveDataDir(): string {
-  // Explicit override (smoke tests, alternate-deployment scenarios).
   if (process.env.GOA_MCP_DATA_DIR) {
     return process.env.GOA_MCP_DATA_DIR;
   }
+
+  const candidates: string[] = [];
   if (require.main?.filename) {
-    return join(dirname(require.main.filename), 'data');
+    const mainDir = dirname(require.main.filename);
+    // dist/main.js shim sits next to data/.
+    candidates.push(join(mainDir, 'data'));
+    // scripts/<name>.ts is one level under data/'s sibling.
+    candidates.push(join(mainDir, '..', 'data'));
   }
-  return join(__dirname, '../data');
+  // src/data-loader.ts → ../data when imported directly during dev.
+  candidates.push(join(__dirname, '..', 'data'));
+
+  for (const candidate of candidates) {
+    if (existsSync(join(candidate, 'components'))) return candidate;
+  }
+  // No probe matched; return the first guess so the caller's load attempt
+  // surfaces a clear ENOENT instead of silently loading nothing.
+  return candidates[0] ?? join(__dirname, '..', 'data');
 }
 
 export interface SearchResult {
