@@ -64,24 +64,6 @@
         "events": [],
         "props": [
           {
-            "default": "",
-            "description": "Text for the optional action button. When provided, displays a clickable link button.",
-            "name": "action-text",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "default": "down",
-            "description": "Direction the notification animates from when appearing or disappearing.",
-            "name": "animation-direction",
-            "required": false,
-            "type": "\"up\" | \"down\"",
-            "values": [
-              "up",
-              "down"
-            ]
-          },
-          {
             "default": "center",
             "description": "Horizontal position of the notification container.",
             "name": "horizontal-position",
@@ -94,39 +76,11 @@
             ]
           },
           {
-            "default": "",
-            "description": "The notification message text to display.",
-            "name": "message",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "default": "-1",
-            "description": "Progress value from 0-100. Use -1 to hide the progress bar. Only applies when type is \"progress\".",
-            "name": "progress",
-            "required": false,
-            "type": "number"
-          },
-          {
             "default": null,
             "description": "Sets a data-testid attribute for automated testing.",
             "name": "testid",
             "required": true,
             "type": "string"
-          },
-          {
-            "default": "basic",
-            "description": "The notification type which determines the visual style and icon.",
-            "name": "type",
-            "required": false,
-            "type": "\"basic\" | \"success\" | \"failure\" | \"indeterminate\" | \"progress\"",
-            "values": [
-              "basic",
-              "success",
-              "failure",
-              "indeterminate",
-              "progress"
-            ]
           },
           {
             "default": "bottom",
@@ -138,13 +92,6 @@
               "top",
               "bottom"
             ]
-          },
-          {
-            "default": "true",
-            "description": "Controls whether the notification is visible.",
-            "name": "visible",
-            "required": false,
-            "type": "boolean"
           }
         ],
         "slots": []
