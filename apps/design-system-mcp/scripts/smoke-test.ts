@@ -21,6 +21,22 @@ function assertAtLeast(label: string, actual: number, min: number): void {
   }
 }
 
+function assertAllEqual(label: string, values: number[]): void {
+  if (!values.every((v) => v === values[0])) {
+    console.error(
+      `  ✗ assertion failed: ${label} expected all equal, got ${values.join(', ')}`,
+    );
+    failures += 1;
+  }
+}
+
+function assertNull<T>(label: string, value: T | undefined | null): void {
+  if (value !== undefined && value !== null) {
+    console.error(`  ✗ assertion failed: ${label} expected null, got a result`);
+    failures += 1;
+  }
+}
+
 async function main(): Promise<void> {
   const loader = new DataLoader();
   await loader.initialize();
@@ -130,6 +146,38 @@ async function main(): Promise<void> {
     console.log(`  ${r.collection}/${r.id}`);
   }
   assertAtLeast('search("checkbox", guidance)', r4.length, 1);
+
+  console.log('\n--- component filter normalizes spellings (notification guidance) ---');
+  const componentForms = [
+    'notification',
+    'notification-banner',
+    'GoabNotificationBanner',
+    'goa-notification',
+  ];
+  const formCounts: number[] = [];
+  for (const form of componentForms) {
+    const hits = await loader.search('notification', {
+      component: form,
+      collection: 'guidance',
+      maxResults: 50,
+    });
+    console.log(`  component="${form}" -> ${hits.length} guidance hits`);
+    formCounts.push(hits.length);
+  }
+  assertAtLeast('component filter (canonical name)', formCounts[0], 1);
+  assertAllEqual('component filter matches every spelling', formCounts);
+
+  console.log('\n--- get scopes by collection ---');
+  const buttonInComponents = loader.get('button', { collection: 'components' });
+  const buttonInGuidance = loader.get('button', { collection: 'guidance' });
+  console.log(
+    `  get("button", components) -> ${buttonInComponents ? buttonInComponents.id : 'null'}`,
+  );
+  console.log(
+    `  get("button", guidance)   -> ${buttonInGuidance ? buttonInGuidance.id : 'null'}`,
+  );
+  assertFound('get("button", collection=components)', buttonInComponents);
+  assertNull('get("button", collection=guidance)', buttonInGuidance);
 
   if (failures > 0) {
     console.error(`\n${failures} assertion(s) failed.`);

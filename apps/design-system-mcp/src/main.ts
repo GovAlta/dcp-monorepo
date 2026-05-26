@@ -82,12 +82,12 @@ function registerTools(
     'search',
     `Search the GoA Design System. Good for discovery: describe what you're trying to build ("worker case-management tool") or name something fuzzy ("table with filters"). For known IDs, use \`get\` instead. Filters narrow what comes back.
 
-collection: components | guidance | examples | productTypes
+collection: components | guidance | examples | foundations | get-started | productTypes
 size (examples): interaction (single gesture) | section (card-level) | page (full screen) | task (start to finish) | product (entire app)
 productType (examples): workspace | public-form
 framework (examples): react | angular | web-components
 status: published | stable | deprecated
-component (guidance scoping): a component id like "goa-table"
+component (guidance scoping): a component named in any form (table, goa-table, GoabTable, app-footer)
 context (guidance scoping): an example id like "case-detail"
 
 Returns: { results: [{ id, collection, name, size?, productType?, summary, aliases }], next: { suggested_call, why } }`,
@@ -123,7 +123,9 @@ Returns: { results: [{ id, collection, name, size?, productType?, summary, alias
       component: z
         .string()
         .optional()
-        .describe("Scope guidance results to a component id like 'goa-table'"),
+        .describe(
+          "Scope results to a component, named in any form ('table', 'goa-table', 'GoabTable')",
+        ),
       context: z
         .string()
         .optional()
@@ -205,7 +207,7 @@ Returns: { results: [{ id, collection, name, size?, productType?, summary, alias
     'get',
     `Fetch one item by ID or alias. Use for known IDs, or after \`search\` returns a high-confidence match. Aliases work too. Old slugs like "confirm-that-an-application-was-submitted" resolve to current entries ("result-page"). The response's resolved_via field tells you which path matched.
 
-collection: components | guidance | examples | productTypes (recommended; resolution order without it: productTypes, components, examples, guidance)
+collection: components | guidance | examples | foundations | get-started | productTypes (optional; scopes the lookup to one collection. Omit it and the first id or alias match wins.)
 detail: summary (default, ~1KB) | full (entire entry)
 
 Returns: { id, collection, resolved_via, entry, related: { components, examples, guidance }, next: { suggested_calls } }`,
@@ -223,7 +225,7 @@ Returns: { id, collection, resolved_via, entry, related: { components, examples,
           'productTypes',
         ])
         .optional()
-        .describe('Collection to disambiguate against (recommended)'),
+        .describe('Scope the lookup to one collection (optional)'),
       detail: z
         .enum(['summary', 'full'])
         .optional()

@@ -180,7 +180,9 @@ export class DataLoader {
     }
     if (component) {
       filtered = filtered.filter((c) =>
-        recordReferencesComponent(c.item, component),
+        recordReferencesComponent(c.item, component, (raw) =>
+          this.normalizeComponentId(raw),
+        ),
       );
     }
     if (context) {
@@ -240,12 +242,13 @@ export class DataLoader {
    * Get item by ID. Returns a structured wrapper with id, collection,
    * resolved_via, and data — or null if not found.
    *
-   * The optional collection param is accepted for forward compatibility;
-   * disambiguation logic is Day 2 work, pending the post-PR-3888 data shape.
+   * When `collection` is supplied, the lookup is scoped to that collection:
+   * a match in any other collection is ignored, so the same id in two
+   * collections resolves predictably. Without it, the first id/alias match
+   * wins (no id is shared across collections in the current data).
    */
   get(
     id: string,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     options: { collection?: string } = {},
   ): {
     id: string;
@@ -262,11 +265,28 @@ export class DataLoader {
       'get-started': 'get-started',
       productType: 'productTypes',
     };
+    const collectionToType: Record<string, string> = {
+      components: 'component',
+      examples: 'example',
+      guidance: 'guidance',
+      foundations: 'foundation',
+      'get-started': 'get-started',
+      productTypes: 'productType',
+    };
+
+    // Scope to a collection when asked. An unrecognized name matches nothing.
+    let targetType: string | undefined;
+    if (options.collection) {
+      targetType = collectionToType[options.collection];
+      if (!targetType) return null;
+    }
+    const inCollection = (item: IndexedItem): boolean =>
+      !targetType || item.type === targetType;
 
     // Try direct lookup (exact id, then lowercased).
     const directItem =
       this.index.getItem(id) ?? this.index.getItem(id.toLowerCase());
-    if (directItem) {
+    if (directItem && inCollection(directItem)) {
       return {
         id: directItem.id,
         collection: typeToCollection[directItem.type] || directItem.type,
@@ -281,7 +301,7 @@ export class DataLoader {
       const item =
         this.index.getItem(aliasedId) ??
         this.index.getItem(aliasedId.toLowerCase());
-      if (item) {
+      if (item && inCollection(item)) {
         return {
           id: item.id,
           collection: typeToCollection[item.type] || item.type,
@@ -304,7 +324,7 @@ export class DataLoader {
       const item =
         this.index.getItem(variation) ??
         this.index.getItem(variation.toLowerCase());
-      if (item) {
+      if (item && inCollection(item)) {
         return {
           id: item.id,
           collection: typeToCollection[item.type] || item.type,
@@ -315,6 +335,28 @@ export class DataLoader {
     }
 
     return null;
+  }
+
+  /**
+   * Collapse any framework spelling of a component name to its canonical id.
+   * Handles React PascalCase (GoabTable), web-component / Angular prefixes
+   * (goa-table, goab-table), casing, and legacy slugs recorded as aliases
+   * (app-footer -> footer). Both the query and the stored refs run through
+   * this, so a name in any form lines up with a ref stored in any form.
+   */
+  private normalizeComponentId(raw: string): string {
+    const lower = raw.trim().toLowerCase();
+    // Direct alias hit on the raw spelling (alias keys are stored lowercased,
+    // e.g. "goabappfooter" -> "footer", "app-footer" -> "footer").
+    const directAlias = this.aliasMap.get(lower);
+    if (directAlias) return directAlias;
+    // React PascalCase -> kebab, then drop the framework prefix.
+    const kebab = raw
+      .trim()
+      .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
+      .toLowerCase()
+      .replace(/^goab?-/, '');
+    return this.aliasMap.get(kebab) ?? kebab;
   }
 
   /**
@@ -405,15 +447,26 @@ export class DataLoader {
   }
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function recordReferencesComponent(item: any, component: string): boolean {
-  if (item.type === 'component') return item.id === component;
+function recordReferencesComponent(
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  item: any,
+  component: string,
+  normalize: (raw: string) => string,
+): boolean {
+  const target = normalize(component);
+  if (item.type === 'component') return normalize(item.id) === target;
   const data = item.data;
-  if (Array.isArray(data.components) && data.components.includes(component)) {
+  if (
+    Array.isArray(data.components) &&
+    data.components.some((c: string) => normalize(c) === target)
+  ) {
     return true;
   }
   const appliesTo = data.appliesTo?.components;
-  if (Array.isArray(appliesTo) && appliesTo.includes(component)) {
+  if (
+    Array.isArray(appliesTo) &&
+    appliesTo.some((c: string) => normalize(c) === target)
+  ) {
     return true;
   }
   return false;
