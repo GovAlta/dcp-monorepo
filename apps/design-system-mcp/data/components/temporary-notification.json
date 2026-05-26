@@ -1,8 +1,10 @@
 {
   "aliases": [
     "GoabTemporaryNotificationCtrl",
-    "temp-notification-ctrl"
+    "temp-notification-ctrl",
+    "temporary-notification-ctrl"
   ],
+  "angularSelector": "goab-temporary-notification-ctrl",
   "api": {
     "extractedFrom": "libs/web-components/src/components/temporary-notification/TemporaryNotificationCtrl.svelte",
     "frameworks": {

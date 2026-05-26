@@ -1,7 +1,6 @@
 {
   "aliases": [
-    "GoabDropdownItem",
-    "GoabDropdownOption"
+    "GoabDropdownItem"
   ],
   "angularSelector": "goab-dropdown-item",
   "api": {
@@ -137,7 +136,7 @@
   "hidden": true,
   "id": "dropdown-item",
   "name": "Dropdown Item",
-  "reactClassName": "GoabDropdownOption",
+  "reactClassName": "GoabDropdownItem",
   "relatedComponents": [
     "dropdown"
   ],

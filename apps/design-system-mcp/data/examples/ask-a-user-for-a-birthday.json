@@ -1,5 +1,5 @@
 {
-  "accessibilityNotes": "|",
+  "accessibilityNotes": "The date picker component handles accessibility automatically.\nEnsure the form-item label clearly describes what date is being requested.",
   "aliases": [],
   "body": "Asks for a user's birthday using the date picker component.\n\n## When to use\n\nUse this pattern when you need to collect a date of birth for:\n\n- Age verification\n- Identity confirmation\n- Benefits eligibility\n\n## Considerations\n\n- Consider whether you really need exact birthday vs just year or age range\n- The date picker provides a consistent, accessible date selection experience\n- Users can type the date directly or use the calendar picker",
   "collection": "examples",
