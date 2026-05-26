@@ -1,0 +1,150 @@
+{
+  "aliases": [
+    "GoabPublicForm",
+    "public-form"
+  ],
+  "angularSelector": "goab-public-form",
+  "api": {
+    "extractedFrom": "libs/web-components/src/components/form/Form.svelte",
+    "frameworks": {
+      "angular": {
+        "events": [
+          {
+            "description": "Emits when the form is complete. Emits the form state.",
+            "frameworks": [
+              "angular"
+            ],
+            "name": "onComplete",
+            "type": "(event: GoabFormState) => void"
+          },
+          {
+            "description": "Emits when the form is initialized.",
+            "frameworks": [
+              "angular"
+            ],
+            "name": "onInit",
+            "type": "(event: Event) => void"
+          },
+          {
+            "description": "Emits when the form state changes. Emits the updated form state.",
+            "frameworks": [
+              "angular"
+            ],
+            "name": "onStateChange",
+            "type": "(event: GoabFormState) => void"
+          }
+        ],
+        "props": [
+          {
+            "default": null,
+            "description": "A name identifier for the form. Useful for debugging complex forms with multiple nested forms.",
+            "name": "name",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "complete",
+            "description": "The initialization status of the form. Set to \"initializing\" while loading external state, then \"complete\" when ready.",
+            "name": "status",
+            "required": false,
+            "type": "GoabPublicFormStatus"
+          }
+        ],
+        "slots": []
+      },
+      "react": {
+        "events": [
+          {
+            "description": "Callback fired when the form is completed.",
+            "frameworks": [
+              "react"
+            ],
+            "name": "onComplete",
+            "type": "(event: GoabFormState) => void"
+          },
+          {
+            "description": "Callback fired when the form is initialized.",
+            "frameworks": [
+              "react"
+            ],
+            "name": "onInit",
+            "type": "(event: Event) => void"
+          },
+          {
+            "description": "Callback fired when the form state changes.",
+            "frameworks": [
+              "react"
+            ],
+            "name": "onStateChange",
+            "type": "(event: GoabFormState) => void"
+          }
+        ],
+        "props": [
+          {
+            "default": null,
+            "description": "A name identifier for the form. Useful for debugging complex forms with multiple nested forms.",
+            "name": "name",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "complete",
+            "description": "The initialization status of the form. Set to \"initializing\" while loading external state, then \"complete\" when ready.",
+            "name": "status",
+            "required": false,
+            "type": "GoabPublicFormStatus"
+          }
+        ],
+        "slots": []
+      },
+      "webComponents": {
+        "events": [
+          {
+            "description": "",
+            "frameworks": [
+              "webComponents"
+            ],
+            "name": "_init",
+            "type": "CustomEvent<{ el: unknown }>"
+          }
+        ],
+        "props": [
+          {
+            "default": "[name] not set",
+            "description": "A name identifier for the form. Useful for debugging complex forms with multiple nested forms.",
+            "name": "name",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "complete",
+            "description": "The initialization status of the form. Set to \"initializing\" while loading external state, then \"complete\" when ready.",
+            "name": "status",
+            "required": false,
+            "type": "\"initializing\" | \"complete\"",
+            "values": [
+              "initializing",
+              "complete"
+            ]
+          }
+        ],
+        "slots": []
+      }
+    }
+  },
+  "body": "",
+  "category": "inputs-and-actions",
+  "collection": "components",
+  "description": "Container for form inputs and validation.",
+  "hidden": true,
+  "id": "form",
+  "name": "Form",
+  "reactClassName": "GoabPublicForm",
+  "relatedComponents": [
+    "form-item",
+    "form-stepper"
+  ],
+  "status": "stable",
+  "tags": [],
+  "webComponentTag": "goa-public-form"
+}

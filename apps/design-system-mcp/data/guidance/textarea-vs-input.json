@@ -1,0 +1,22 @@
+{
+  "appliesTo": {
+    "components": [
+      "text-area",
+      "input"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-form-item label=\"Describe your issue\">\n    <goa-textarea name=\"description\" rows=\"4\" width=\"100%\"></goa-textarea>\n  </goa-form-item>\n</Preview>",
+  "collection": "guidance",
+  "description": "Use a text area to input content longer than a single line, such as descriptions, comments, or feedback.",
+  "id": "textarea-vs-input",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "textarea",
+    "input",
+    "forms"
+  ],
+  "topic": "types",
+  "type": "do"
+}

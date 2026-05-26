@@ -1,0 +1,291 @@
+{
+  "aliases": [],
+  "angularSelector": "goab-pagination",
+  "api": {
+    "extractedFrom": "libs/web-components/src/components/pagination/Pagination.svelte",
+    "frameworks": {
+      "angular": {
+        "events": [
+          {
+            "description": "Emits when the page changes. Emits the new page number as part of the change detail.",
+            "frameworks": [
+              "angular"
+            ],
+            "name": "onChange",
+            "type": "(event: GoabPaginationOnChangeDetail) => void"
+          }
+        ],
+        "props": [
+          {
+            "default": null,
+            "description": "Total number of data items within all pages.",
+            "name": "itemCount",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "default": null,
+            "description": "Sets the bottom margin spacing token.",
+            "name": "mb",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Sets the left margin spacing token.",
+            "name": "ml",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Sets the right margin spacing token.",
+            "name": "mr",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Sets the top margin spacing token.",
+            "name": "mt",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "The current page being viewed (non-zero based).",
+            "name": "pageNumber",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "default": "10",
+            "description": "Number of data items shown per page.",
+            "name": "perPageCount",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "default": null,
+            "description": "Sets the data-testid attribute for automated testing.",
+            "name": "testId",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "all",
+            "description": "Controls which nav controls are visible.",
+            "name": "variant",
+            "required": false,
+            "type": "GoabPaginationVariant"
+          }
+        ],
+        "slots": []
+      },
+      "react": {
+        "events": [
+          {
+            "description": "Callback fired when the user navigates to a different page.",
+            "frameworks": [
+              "react"
+            ],
+            "name": "onChange",
+            "type": "(detail: GoabPaginationOnChangeDetail) => void"
+          }
+        ],
+        "props": [
+          {
+            "default": null,
+            "description": "Total number of data items within all pages.",
+            "name": "itemCount",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "default": null,
+            "description": "",
+            "name": "mb",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "",
+            "name": "ml",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "",
+            "name": "mr",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "",
+            "name": "mt",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "The current page being viewed (non-zero based).",
+            "name": "pageNumber",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "default": "10",
+            "description": "Number of data items shown per page.",
+            "name": "perPageCount",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "default": null,
+            "description": "Sets a data-testid attribute for automated testing.",
+            "name": "testId",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "all",
+            "description": "Controls which nav controls are visible.",
+            "name": "variant",
+            "required": false,
+            "type": "\"all\" | \"links-only\"",
+            "values": [
+              "all",
+              "links-only"
+            ]
+          }
+        ],
+        "slots": []
+      },
+      "webComponents": {
+        "events": [
+          {
+            "description": "",
+            "frameworks": [
+              "webComponents"
+            ],
+            "name": "_change",
+            "type": "CustomEvent<{ page: number }>"
+          }
+        ],
+        "props": [
+          {
+            "default": null,
+            "description": "Total number of data items within all pages.",
+            "name": "itemcount",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "default": "m",
+            "description": "Bottom margin.",
+            "name": "mb",
+            "required": false,
+            "type": "Spacing",
+            "typeLabel": "Spacing"
+          },
+          {
+            "default": "none",
+            "description": "Left margin.",
+            "name": "ml",
+            "required": false,
+            "type": "Spacing",
+            "typeLabel": "Spacing"
+          },
+          {
+            "default": "none",
+            "description": "Right margin.",
+            "name": "mr",
+            "required": false,
+            "type": "Spacing",
+            "typeLabel": "Spacing"
+          },
+          {
+            "default": "none",
+            "description": "Top margin.",
+            "name": "mt",
+            "required": false,
+            "type": "Spacing",
+            "typeLabel": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "The current page being viewed (non-zero based).",
+            "name": "pagenumber",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "default": "10",
+            "description": "Number of data items shown per page.",
+            "name": "perpagecount",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "default": "",
+            "description": "Sets a data-testid attribute for automated testing.",
+            "name": "testid",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "all",
+            "description": "Controls which nav controls are visible.",
+            "name": "variant",
+            "required": false,
+            "type": "\"all\" | \"links-only\"",
+            "typeLabel": "GoabPaginationVariant",
+            "values": [
+              "all",
+              "links-only"
+            ]
+          },
+          {
+            "default": "1",
+            "description": "Design system version for styling.",
+            "name": "version",
+            "required": false,
+            "type": "\"1\" | \"2\"",
+            "values": [
+              "1",
+              "2"
+            ]
+          }
+        ],
+        "slots": []
+      }
+    }
+  },
+  "body": "",
+  "category": "structure-and-navigation",
+  "collection": "components",
+  "description": "Help users navigation between multiple pages or screens as part of a set.",
+  "figmaUrl": "https://www.figma.com/design/Jpy1Ea5qglwnp1SgGnagY9/Component-library?node-id=26318-193264",
+  "id": "pagination",
+  "name": "Pagination",
+  "reactClassName": "GoabPagination",
+  "relatedComponents": [
+    "data-grid",
+    "table"
+  ],
+  "relatedGuidance": [
+    "pagination-disable-at-bounds",
+    "pagination-full-width",
+    "pagination-links-only-mobile"
+  ],
+  "status": "stable",
+  "tags": [
+    "pager",
+    "pagination controls",
+    "structure and navigation"
+  ],
+  "webComponentTag": "goa-pagination"
+}

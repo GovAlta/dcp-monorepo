@@ -1,0 +1,21 @@
+{
+  "appliesTo": {
+    "components": [
+      "details"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-block direction=\"column\" gap=\"m\">\n    <goa-details heading=\"How do I calculate my yearly income?\"></goa-details>\n    <goa-details heading=\"What is income?\"></goa-details>\n    <goa-details heading=\"When does my fiscal year start?\"></goa-details>\n    <goa-details heading=\"What else do I need to know?\"></goa-details>\n  </goa-block>\n</Preview>",
+  "collection": "guidance",
+  "description": "Don't stack multiple details together. Use an accordion instead for sets of information.",
+  "id": "details-dont-stack",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "details",
+    "accordion",
+    "usage"
+  ],
+  "topic": "other",
+  "type": "dont"
+}

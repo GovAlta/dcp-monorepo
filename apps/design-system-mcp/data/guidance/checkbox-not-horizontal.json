@@ -1,0 +1,20 @@
+{
+  "appliesTo": {
+    "components": [
+      "checkbox"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-block direction=\"row\" gap=\"l\">\n    <goa-checkbox name=\"a\" text=\"Option A\"></goa-checkbox>\n    <goa-checkbox name=\"b\" text=\"Option B\"></goa-checkbox>\n    <goa-checkbox name=\"c\" text=\"Option C\"></goa-checkbox>\n  </goa-block>\n</Preview>",
+  "collection": "guidance",
+  "description": "Don't list options horizontally when showing more than two options.",
+  "id": "checkbox-not-horizontal",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "checkbox",
+    "layout"
+  ],
+  "topic": "positioning",
+  "type": "dont"
+}

@@ -1,0 +1,50 @@
+{
+  "aliases": [
+    "ask-a-user-one-question-at-a-time",
+    "give-more-information-before-asking-a-question-a",
+    "give-more-information-before-asking-a-question-b",
+    "group-related-questions-together-on-a-question-page",
+    "show-a-list-to-help-answer-a-question",
+    "show-a-section-title-on-a-question-page",
+    "show-a-simple-progress-indicator-on-a-question-page",
+    "show-a-simple-progress-indicator-on-a-question-page-with-multiple-questions",
+    "show-more-information-to-help-answer-a-question"
+  ],
+  "body": "import PreviewContainer from \"../../../components/PreviewContainer.astro\";\n\n## Types of question pages\n\n### Ask one question at a time\n\nThe default question page. One idea per page reduces cognitive load and keeps users moving through the flow.\n\n<PreviewContainer\n  image=\"/images/examples/question-page-one-question.png\"\n  alt=\"Question page asking one question at a time\"\n  previewUrl=\"/examples/question-page/variants/one-question/preview\"\n  reactSourceUrl=\"https://github.com/GovAlta/ui-components/blob/dev/docs/src/content/examples/question-page/variants/one-question/react.tsx\"\n  angularSourceUrl=\"https://github.com/GovAlta/ui-components/tree/dev/docs/src/content/examples/question-page/variants/one-question\"\n/>\n\n- Lead with a clear, plain-language question.\n- Use a large label size to make the question prominent.\n- Provide help text when the question could be ambiguous.\n- Pair a primary action button with a back link.\n\n### Show a section title\n\nAdd a section title above the question to tell users which part of the form they are completing. Useful in multi-section forms divided into logical groups like \"Personal information\" or \"Employment history.\"\n\n<PreviewContainer\n  image=\"/images/examples/question-page-section-title.png\"\n  alt=\"Question page with a section title\"\n  previewUrl=\"/examples/question-page/variants/section-title/preview\"\n  reactSourceUrl=\"https://github.com/GovAlta/ui-components/blob/dev/docs/src/content/examples/question-page/variants/section-title/react.tsx\"\n  angularSourceUrl=\"https://github.com/GovAlta/ui-components/tree/dev/docs/src/content/examples/question-page/variants/section-title\"\n/>\n\n- Use a subdued text color so the section title sits above the question without competing with it.\n- Keep the title concise and descriptive.\n- Maintain consistent spacing between back link, section title, and question across the form.\n\n### Show a progress indicator\n\nShow progress to help users understand how far they are through the form. Use \"Question X of Y\" for single-question pages, or \"Step X of Y\" when grouping multiple related questions into sections.\n\n<PreviewContainer\n  image=\"/images/examples/question-page-progress-indicator.png\"\n  alt=\"Question page with a simple progress indicator\"\n  previewUrl=\"/examples/question-page/variants/progress-indicator/preview\"\n  reactSourceUrl=\"https://github.com/GovAlta/ui-components/blob/dev/docs/src/content/examples/question-page/variants/progress-indicator/react.tsx\"\n  angularSourceUrl=\"https://github.com/GovAlta/ui-components/tree/dev/docs/src/content/examples/question-page/variants/progress-indicator\"\n/>\n\n- Display progress consistently across the form (\"Question X of Y\" for single-question pages, \"Step X of Y\" for multi-question sections).\n- Use a subdued text color so the indicator sits above the question.\n- Position above the question, below the back link.\n\nFor step-based progress when grouping multiple questions into sections, see the [progress-indicator-multi variant on GitHub](https://github.com/GovAlta/ui-components/tree/dev/docs/src/content/examples/question-page/variants/progress-indicator-multi).\n\n### Give background information before asking\n\nProvide explanatory context before a question when the question requires domain knowledge or terms that may need clarification.\n\n<PreviewContainer\n  image=\"/images/examples/question-page-background-radio.png\"\n  alt=\"Question page with background context above the question\"\n  previewUrl=\"/examples/question-page/variants/background-radio/preview\"\n  reactSourceUrl=\"https://github.com/GovAlta/ui-components/blob/dev/docs/src/content/examples/question-page/variants/background-radio/react.tsx\"\n  angularSourceUrl=\"https://github.com/GovAlta/ui-components/tree/dev/docs/src/content/examples/question-page/variants/background-radio\"\n/>\n\n- Place context information before the question, not after.\n- Use plain language citizens can understand.\n- Suggest where users can get additional help if needed.\n\nFor an open-ended question with a long-answer textarea, the same pattern applies with a Details component for additional guidance. See the [background-textarea variant on GitHub](https://github.com/GovAlta/ui-components/tree/dev/docs/src/content/examples/question-page/variants/background-textarea).\n\n### Reveal more information to help answer\n\nUse the Details component to provide optional context that explains why a question is being asked, or that lists examples of qualifying items. The expandable shape keeps the form uncluttered for users who do not need the help.\n\n<PreviewContainer\n  image=\"/images/examples/question-page-help-details.png\"\n  alt=\"Question page with expandable Details for additional help\"\n  previewUrl=\"/examples/question-page/variants/help-details/preview\"\n  reactSourceUrl=\"https://github.com/GovAlta/ui-components/blob/dev/docs/src/content/examples/question-page/variants/help-details/react.tsx\"\n  angularSourceUrl=\"https://github.com/GovAlta/ui-components/tree/dev/docs/src/content/examples/question-page/variants/help-details\"\n/>\n\n- Place the Details component after the question input.\n- Phrase the Details heading as a question (e.g. \"Why are we asking this question?\") so users know it provides clarification.\n- Keep the expanded content concise, scannable, and easy to act on.\n\nWhen the help content is a list of examples (what to include, what to exclude), structure the expanded content with clear headings. See the [help-list variant on GitHub](https://github.com/GovAlta/ui-components/tree/dev/docs/src/content/examples/question-page/variants/help-list).\n\n### Group related questions on one page\n\nWhen fields are tightly related and harder to answer in isolation, group them on one page. The typical case is collecting an address, where street, town, province, and postal code naturally belong together.\n\n<PreviewContainer\n  image=\"/images/examples/question-page-grouped.png\"\n  alt=\"Question page with grouped address fields\"\n  previewUrl=\"/examples/question-page/variants/grouped/preview\"\n  reactSourceUrl=\"https://github.com/GovAlta/ui-components/blob/dev/docs/src/content/examples/question-page/variants/grouped/react.tsx\"\n  angularSourceUrl=\"https://github.com/GovAlta/ui-components/tree/dev/docs/src/content/examples/question-page/variants/grouped\"\n/>\n\n- Group fields only when the whole group answers one logical question. Do not group unrelated questions just to fit them on one page.\n- Use clear, descriptive labels per field.\n- Add a section title above the group to provide context.\n- Use input widths appropriate to the expected content (postal code narrower than street).\n\n## When to use\n\nUse this pattern when:\n\n- Building multi-step forms or wizards where users complete one decision at a time\n- Asking for information that requires focused attention or careful consideration\n- The form has branching logic based on previous answers\n- You want to reduce errors and improve mobile and accessibility outcomes\n\n## Considerations\n\n- Each page should contain one idea: one question, one decision, or one logically grouped set of fields\n- Include a back link so users can revise previous answers\n- Use a large label size to make the question prominent\n- Provide help text when wording could be ambiguous\n- A clear primary action progresses the user; a back link returns them\n- Progress indicators are optional. Test the form without one before adding one.\n- Consider adaptive questioning where subsequent questions depend on previous answers",
+  "collection": "examples",
+  "components": [
+    "form-item",
+    "input",
+    "text-area",
+    "radio-group",
+    "radio-item",
+    "dropdown",
+    "dropdown-item",
+    "details",
+    "block",
+    "button",
+    "button-group"
+  ],
+  "description": "A question page presents one focused step in a multi-step form. Several variants adapt the shape: section titles, progress indicators, supporting context, expandable help, and grouped fields.",
+  "id": "question-page",
+  "previewImage": "/images/examples/question-page.png",
+  "productType": "public-form",
+  "relatedExamples": [],
+  "size": "page",
+  "status": "published",
+  "tags": [
+    "forms",
+    "question",
+    "wizard",
+    "one-thing-per-page",
+    "public-form",
+    "section-title",
+    "progress",
+    "context",
+    "help",
+    "details",
+    "grouped-fields",
+    "address"
+  ],
+  "title": "Question page"
+}

@@ -1,0 +1,20 @@
+{
+  "appliesTo": {
+    "components": [
+      "radio-group"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview bad>\n  <goa-radio-group name=\"fruit\">\n    <goa-radio-item value=\"apple\" label=\"Apple\"></goa-radio-item>\n    <goa-radio-item value=\"banana\" label=\"Banana\"></goa-radio-item>\n    <goa-radio-item value=\"pear\" label=\"Pear\"></goa-radio-item>\n    <goa-radio-item value=\"kiwi\" label=\"Kiwi\"></goa-radio-item>\n    <goa-radio-item value=\"strawberry\" label=\"Strawberry\"></goa-radio-item>\n    <goa-radio-item value=\"orange\" label=\"Orange\"></goa-radio-item>\n    <goa-radio-item value=\"starfruit\" label=\"Star fruit\"></goa-radio-item>\n    <goa-radio-item value=\"pineapple\" label=\"Pineapple\"></goa-radio-item>\n  </goa-radio-group>\n</Preview>",
+  "collection": "guidance",
+  "description": "Don't use radios when there are more than 7 options - use a dropdown instead.",
+  "id": "radio-dont-more-than-seven",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "radio",
+    "dropdown"
+  ],
+  "topic": "usage",
+  "type": "dont"
+}

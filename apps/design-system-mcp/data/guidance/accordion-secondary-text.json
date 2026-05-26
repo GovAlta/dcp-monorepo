@@ -1,0 +1,22 @@
+{
+  "appliesTo": {
+    "components": [
+      "accordion"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-accordion heading=\"Personal information\" secondarytext=\"Last updated: Dec 15, 2024\">\n    Content here\n  </goa-accordion>\n</Preview>",
+  "collection": "guidance",
+  "description": "Use secondaryText for contextual information in accordions",
+  "id": "accordion-secondary-text",
+  "relatedProps": [
+    "secondaryText"
+  ],
+  "status": "published",
+  "tags": [
+    "accordion",
+    "content"
+  ],
+  "topic": "content",
+  "type": "do"
+}

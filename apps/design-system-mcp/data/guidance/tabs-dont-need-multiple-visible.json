@@ -1,0 +1,19 @@
+{
+  "appliesTo": {
+    "components": [
+      "tabs"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview bad>\n  <goa-tabs>\n    <goa-tab heading=\"Open\">Data the user needs to compare...</goa-tab>\n    <goa-tab heading=\"Completed\">...with data in another tab</goa-tab>\n  </goa-tabs>\n</Preview>",
+  "collection": "guidance",
+  "description": "Don't use tabs if users need to see content from multiple tabs simultaneously.",
+  "id": "tabs-dont-need-multiple-visible",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "tabs"
+  ],
+  "topic": "usage",
+  "type": "dont"
+}

@@ -1,0 +1,27 @@
+{
+  "aliases": [],
+  "body": "Display indeterminate progress for operations where completion time cannot be estimated, such as complex searches or external system queries.\n\n## When to use\n\nUse this pattern when:\n\n- The operation duration cannot be predicted\n- You're querying external systems with variable response times\n- Searching across multiple data sources\n- Users need to know something is happening but not a specific percentage\n\n## Considerations\n\n- Use `type=\"indeterminate\"` for unknown duration operations\n- Always provide a cancel option\n- Show success or failure notification when complete\n- Include meaningful context in the notification message",
+  "collection": "examples",
+  "components": [
+    "temporary-notification",
+    "button"
+  ],
+  "frameworks": [
+    "react",
+    "angular",
+    "web-components"
+  ],
+  "id": "show-a-user-progress-when-the-time-is-unknown",
+  "previewImage": "/images/examples/show-a-user-progress-when-the-time-is-unknown.webp",
+  "relatedExamples": [],
+  "size": "interaction",
+  "status": "published",
+  "tags": [
+    "progress",
+    "notification",
+    "indeterminate",
+    "search",
+    "feedback"
+  ],
+  "title": "Show a user progress when the time is unknown"
+}

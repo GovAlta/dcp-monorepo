@@ -1,0 +1,29 @@
+{
+  "aliases": [],
+  "body": "Gather banking details from users to enable direct deposit, including account number and financial institution information.\n\n## When to use\n\nUse this pattern when:\n\n- Setting up direct deposit for payments or refunds\n- Collecting banking information for recurring transactions\n- Users need to provide financial institution details\n\n## Considerations\n\n- Provide clear help text about where to find each number\n- Use the details component to show visual guidance (cheque image)\n- Set appropriate field widths based on expected input length\n- Be clear about security and how the information will be used",
+  "collection": "examples",
+  "components": [
+    "form-item",
+    "input",
+    "details",
+    "text"
+  ],
+  "figmaUrl": "https://www.figma.com/design/Jpy1Ea5qglwnp1SgGnagY9/%E2%9D%96-Component-library-%7C-DDD?node-id=63353-114484",
+  "frameworks": [
+    "react",
+    "angular",
+    "web-components"
+  ],
+  "id": "ask-a-user-for-direct-deposit-information",
+  "previewImage": "/images/examples/ask-a-user-for-direct-deposit-information.webp",
+  "productType": "public-form",
+  "relatedExamples": [],
+  "size": "section",
+  "status": "published",
+  "tags": [
+    "forms",
+    "banking",
+    "financial"
+  ],
+  "title": "Ask a user for direct deposit information"
+}

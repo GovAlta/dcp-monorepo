@@ -1,0 +1,28 @@
+{
+  "aliases": [],
+  "body": "Request a user's Indian registration number with appropriate validation and context.\n\n## When to use\n\nUse this pattern when:\n\n- Collecting Indigenous identity information\n- The registration number is required for benefits or services\n- You need to validate the format (3-digit band, up to 5-digit family, 2-digit position)\n\n## Considerations\n\n- Use separate fields for each component of the number\n- Set appropriate field widths to hint at expected input length\n- Provide clear help text for each field\n- Be respectful of the cultural significance of this information",
+  "collection": "examples",
+  "components": [
+    "form-item",
+    "input",
+    "block"
+  ],
+  "figmaUrl": "https://www.figma.com/design/Jpy1Ea5qglwnp1SgGnagY9/%E2%9D%96-Component-library-%7C-DDD?node-id=63353-123763",
+  "frameworks": [
+    "react",
+    "angular",
+    "web-components"
+  ],
+  "id": "ask-a-user-for-an-indian-registration-number",
+  "previewImage": "/images/examples/ask-a-user-for-an-indian-registration-number.webp",
+  "productType": "public-form",
+  "relatedExamples": [],
+  "size": "interaction",
+  "status": "published",
+  "tags": [
+    "forms",
+    "identity",
+    "registration"
+  ],
+  "title": "Ask a user for an Indian registration number"
+}

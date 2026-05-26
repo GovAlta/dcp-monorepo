@@ -1,0 +1,29 @@
+{
+  "aliases": [],
+  "body": "Disable a submit button until required form fields are completed.\n\n## When to use\n\nUse this pattern when:\n\n- A form has required fields that must be filled before submission\n- You want to provide visual feedback that the form is incomplete\n- Preventing invalid form submissions is important\n\n## Considerations\n\n- Ensure the disabled state is visually distinct and accessible\n- Consider showing validation messages when users try to interact with disabled buttons\n- Use the `requirement=\"required\"` prop on form items to indicate mandatory fields\n- Enable the button as soon as all required fields have valid values",
+  "collection": "examples",
+  "components": [
+    "button",
+    "button-group",
+    "form-item",
+    "input"
+  ],
+  "frameworks": [
+    "react",
+    "angular",
+    "web-components"
+  ],
+  "id": "disabled-button-with-a-required-field",
+  "previewImage": "/images/examples/disabled-button-with-a-required-field.webp",
+  "relatedExamples": [],
+  "size": "interaction",
+  "status": "published",
+  "tags": [
+    "button",
+    "form",
+    "validation",
+    "disabled",
+    "required"
+  ],
+  "title": "Disabled button with a required field"
+}

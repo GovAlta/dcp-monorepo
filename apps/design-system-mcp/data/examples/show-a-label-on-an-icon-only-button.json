@@ -1,0 +1,27 @@
+{
+  "aliases": [],
+  "body": "Show a label on an icon-only button using a tooltip to improve discoverability.\n\n## When to use\n\nUse this pattern when:\n\n- Using icon buttons without visible text labels\n- Users might not recognize what an icon means\n- You want to provide context for icon-only actions\n- Building toolbars or action bars with multiple icon buttons\n\n## Considerations\n\n- Always include an `ariaLabel` on icon buttons for screen reader accessibility\n- Tooltips provide visual context but should not be the only way to understand the action\n- Keep tooltip content short and descriptive\n- Group related icon buttons together using a button group\n- Consider using text labels instead of tooltips for critical actions",
+  "collection": "examples",
+  "components": [
+    "icon-button",
+    "tooltip",
+    "button-group"
+  ],
+  "frameworks": [
+    "react",
+    "angular",
+    "web-components"
+  ],
+  "id": "show-a-label-on-an-icon-only-button",
+  "previewImage": "/images/examples/show-a-label-on-an-icon-only-button.webp",
+  "relatedExamples": [],
+  "size": "interaction",
+  "status": "published",
+  "tags": [
+    "buttons",
+    "icons",
+    "accessibility",
+    "tooltip"
+  ],
+  "title": "Show a label on an icon only button"
+}

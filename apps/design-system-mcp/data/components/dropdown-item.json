@@ -1,0 +1,147 @@
+{
+  "aliases": [
+    "GoabDropdownItem"
+  ],
+  "angularSelector": "goab-dropdown-item",
+  "api": {
+    "extractedFrom": "libs/web-components/src/components/dropdown/DropdownItem.svelte",
+    "frameworks": {
+      "angular": {
+        "events": [],
+        "props": [
+          {
+            "default": null,
+            "description": "Text used to filter and match this item in typeahead search.",
+            "name": "filter",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Display label for the dropdown item.",
+            "name": "label",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Controls how the item is registered with the parent dropdown.",
+            "name": "mountType",
+            "required": false,
+            "type": "GoabDropdownItemMountType"
+          },
+          {
+            "default": null,
+            "description": "Sets the name attribute of the dropdown item.",
+            "name": "name",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "The value submitted when this item is selected.",
+            "name": "value",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "slots": []
+      },
+      "react": {
+        "events": [],
+        "props": [
+          {
+            "default": null,
+            "description": "Text used to filter and match this item in typeahead search.",
+            "name": "filter",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Display label for the dropdown item.",
+            "name": "label",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Controls how the item is registered with the parent dropdown.",
+            "name": "mountType",
+            "required": false,
+            "type": "GoabDropdownItemMountType"
+          },
+          {
+            "default": null,
+            "description": "Sets a data-testid attribute for automated testing.",
+            "name": "testId",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "The value submitted when this item is selected.",
+            "name": "value",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "slots": []
+      },
+      "webComponents": {
+        "events": [],
+        "props": [
+          {
+            "default": "",
+            "description": "Text used to filter and match this item in typeahead search.",
+            "name": "filter",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "",
+            "description": "Display label for the dropdown item.",
+            "name": "label",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "reset",
+            "description": "Controls how the item is registered with the parent dropdown.",
+            "name": "mount",
+            "required": false,
+            "type": "\"append\" | \"prepend\" | \"reset\"",
+            "values": [
+              "append",
+              "prepend",
+              "reset"
+            ]
+          },
+          {
+            "default": "",
+            "description": "The value submitted when this item is selected.",
+            "name": "value",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "slots": []
+      }
+    }
+  },
+  "body": "",
+  "category": "inputs-and-actions",
+  "collection": "components",
+  "description": "An individual option within a dropdown.",
+  "hidden": true,
+  "id": "dropdown-item",
+  "name": "Dropdown Item",
+  "reactClassName": "GoabDropdownItem",
+  "relatedComponents": [
+    "dropdown"
+  ],
+  "status": "stable",
+  "subcomponent": true,
+  "tags": [],
+  "webComponentTag": "goa-dropdown-item"
+}

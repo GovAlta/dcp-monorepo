@@ -1,0 +1,22 @@
+{
+  "appliesTo": {
+    "components": [
+      "table"
+    ],
+    "contexts": []
+  },
+  "body": "",
+  "collection": "guidance",
+  "description": "Use variant='relaxed' for tables with longer content that needs more breathing room between rows.",
+  "id": "table-relaxed-for-long-content",
+  "relatedProps": [
+    "variant"
+  ],
+  "status": "published",
+  "tags": [
+    "table",
+    "content"
+  ],
+  "topic": "types",
+  "type": "tip"
+}

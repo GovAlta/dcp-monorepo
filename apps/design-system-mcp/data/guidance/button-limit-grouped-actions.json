@@ -1,0 +1,23 @@
+{
+  "appliesTo": {
+    "components": [
+      "button",
+      "button-group"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-button type=\"secondary\">Submit</goa-button>\n  <goa-button type=\"tertiary\" ml=\"s\">Edit</goa-button>\n  <goa-button type=\"tertiary\" ml=\"s\">Save</goa-button>\n  <goa-button type=\"tertiary\" ml=\"s\">Copy</goa-button>\n  <goa-button type=\"tertiary\" ml=\"s\">Draft</goa-button>\n</Preview>",
+  "collection": "guidance",
+  "description": "Don't group more than 3 actions together. Consider using an overflow menu for additional options.",
+  "id": "button-limit-grouped-actions",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "button",
+    "button-group",
+    "overflow",
+    "actions"
+  ],
+  "topic": "positioning",
+  "type": "dont"
+}

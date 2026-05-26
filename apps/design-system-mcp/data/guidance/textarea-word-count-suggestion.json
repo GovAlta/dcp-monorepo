@@ -1,0 +1,22 @@
+{
+  "appliesTo": {
+    "components": [
+      "textarea",
+      "form-item"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-form-item label=\"What do you need funding for?\">\n    <goa-textarea name=\"funding\" value=\"A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with\" countby=\"word\"></goa-textarea>\n  </goa-form-item>\n</Preview>",
+  "collection": "guidance",
+  "description": "If you suggest a specific length for an answer to a question, display a word count to help guide the user.",
+  "id": "textarea-word-count-suggestion",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "textarea",
+    "word-count",
+    "content"
+  ],
+  "topic": "forms",
+  "type": "do"
+}

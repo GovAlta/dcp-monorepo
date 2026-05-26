@@ -1,0 +1,28 @@
+{
+  "appliesTo": {
+    "components": [
+      "input",
+      "text-area",
+      "dropdown",
+      "date-picker",
+      "radio-group",
+      "checkbox-list",
+      "checkbox",
+      "form-item"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-form-item label=\"Email address\" helptext=\"We'll use this to contact you\">\n    <goa-input name=\"email\" type=\"email\" width=\"100%\"></goa-input>\n  </goa-form-item>\n</Preview>\n\nThe form item automatically associates the label with the input for screen readers, ensuring your form is accessible.",
+  "collection": "guidance",
+  "description": "Use a form item wrapper on all inputs to add a label, helper text, error message, and more.",
+  "id": "form-inputs-require-formitem",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "forms",
+    "accessibility",
+    "labeling"
+  ],
+  "topic": "other",
+  "type": "do"
+}

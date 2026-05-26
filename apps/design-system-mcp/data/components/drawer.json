@@ -1,0 +1,251 @@
+{
+  "aliases": [],
+  "angularSelector": "goab-drawer",
+  "api": {
+    "extractedFrom": "libs/web-components/src/components/drawer/Drawer.svelte",
+    "frameworks": {
+      "angular": {
+        "events": [
+          {
+            "description": "Emits when the drawer is closed.",
+            "frameworks": [
+              "angular"
+            ],
+            "name": "onClose",
+            "type": "() => void"
+          }
+        ],
+        "props": [
+          {
+            "default": null,
+            "description": "The heading text displayed at the top of the drawer.",
+            "name": "heading",
+            "required": false,
+            "type": "string | TemplateRef<any>",
+            "values": [
+              "string",
+              "TemplateRef<any>"
+            ]
+          },
+          {
+            "default": null,
+            "description": "Sets max height on bottom position, sets width on left and right position.",
+            "name": "maxSize",
+            "required": false,
+            "type": "GoabDrawerSize"
+          },
+          {
+            "default": null,
+            "description": "Whether the drawer is open.",
+            "name": "open",
+            "required": true,
+            "type": "boolean"
+          },
+          {
+            "default": null,
+            "description": "The position of the drawer.",
+            "name": "position",
+            "required": true,
+            "type": "GoabDrawerPosition"
+          },
+          {
+            "default": null,
+            "description": "Sets a data-testid attribute for automated testing.",
+            "name": "testId",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "slots": [
+          {
+            "description": "Action elements rendered in the drawer footer slot.",
+            "name": "actions",
+            "required": false,
+            "type": "TemplateRef"
+          },
+          {
+            "description": "The heading text displayed at the top of the drawer. Accepts a string or a ngTemplate for custom heading content.",
+            "name": "heading",
+            "required": false,
+            "type": "TemplateRef"
+          }
+        ]
+      },
+      "react": {
+        "events": [
+          {
+            "description": "Callback fired when the drawer requests to be closed.",
+            "frameworks": [
+              "react"
+            ],
+            "name": "onClose",
+            "type": "() => void"
+          }
+        ],
+        "props": [
+          {
+            "default": null,
+            "description": "The heading text displayed at the top of the drawer. Accepts a string or a ReactNode for custom heading content.",
+            "name": "heading",
+            "required": false,
+            "type": "string | ReactNode",
+            "values": [
+              "string",
+              "ReactNode"
+            ]
+          },
+          {
+            "default": null,
+            "description": "Sets max height on bottom position, sets width on left and right position.",
+            "name": "maxSize",
+            "required": false,
+            "type": "GoabDrawerSize"
+          },
+          {
+            "default": null,
+            "description": "Whether the drawer is open.",
+            "name": "open",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "default": null,
+            "description": "The position of the drawer.",
+            "name": "position",
+            "required": true,
+            "type": "GoabDrawerPosition"
+          },
+          {
+            "default": null,
+            "description": "Sets a data-testid attribute for automated testing.",
+            "name": "testId",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "slots": [
+          {
+            "description": "Action elements rendered in the drawer footer slot.",
+            "name": "actions",
+            "required": false,
+            "type": "ReactNode"
+          },
+          {
+            "description": "The heading text displayed at the top of the drawer. Accepts a string or a ReactNode for custom heading content.",
+            "name": "heading",
+            "required": false,
+            "type": "ReactNode"
+          }
+        ]
+      },
+      "webComponents": {
+        "events": [
+          {
+            "description": "",
+            "frameworks": [
+              "webComponents"
+            ],
+            "name": "_close",
+            "type": "CustomEvent<void>"
+          }
+        ],
+        "props": [
+          {
+            "default": "visible",
+            "description": "Controls visibility of the close button and header.",
+            "name": "close-button-visibility",
+            "required": false,
+            "type": "\"visible\" | \"hidden\"",
+            "values": [
+              "visible",
+              "hidden"
+            ]
+          },
+          {
+            "default": "",
+            "description": "The heading text displayed at the top of the drawer.",
+            "name": "heading",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Sets max height on bottom position, sets width on left and right position.",
+            "name": "maxsize",
+            "required": false,
+            "type": "DrawerSize"
+          },
+          {
+            "default": "false",
+            "description": "Whether the drawer is open.",
+            "name": "open",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "default": null,
+            "description": "The position of the drawer.",
+            "name": "position",
+            "required": false,
+            "type": "DrawerPosition"
+          },
+          {
+            "default": "drawer",
+            "description": "Sets a data-testid attribute for automated testing.",
+            "name": "testid",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "1",
+            "description": "Design system version for styling.",
+            "name": "version",
+            "required": false,
+            "type": "\"1\" | \"2\"",
+            "values": [
+              "1",
+              "2"
+            ]
+          }
+        ],
+        "slots": [
+          {
+            "description": "Action elements rendered in the drawer footer slot.",
+            "name": "actions",
+            "required": false
+          },
+          {
+            "description": "The heading text displayed at the top of the drawer. Accepts a string or a ReactNode for custom heading content.",
+            "name": "heading",
+            "required": false
+          }
+        ]
+      }
+    }
+  },
+  "body": "",
+  "category": "structure-and-navigation",
+  "collection": "components",
+  "description": "A panel that slides in from the side of the screen to display additional content or actions without navigating away from the current view.",
+  "figmaUrl": "https://www.figma.com/design/Jpy1Ea5qglwnp1SgGnagY9/Component-library?node-id=60158-687174",
+  "id": "drawer",
+  "name": "Drawer",
+  "reactClassName": "GoabDrawer",
+  "relatedComponents": [
+    "modal",
+    "push-drawer"
+  ],
+  "relatedGuidance": [
+    "drawer-position-right-vs-bottom",
+    "push-drawer-dont-use-for-focused-tasks"
+  ],
+  "status": "stable",
+  "tags": [
+    "sections",
+    "structure and navigation",
+    "sheet",
+    "sidesheet",
+    "sidepanel"
+  ],
+  "webComponentTag": "goa-drawer"
+}

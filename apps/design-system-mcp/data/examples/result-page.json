@@ -1,0 +1,28 @@
+{
+  "aliases": [
+    "confirm-that-an-application-was-submitted"
+  ],
+  "body": "## When to use a result page\n\nUse a result page when a user has submitted a form, application, or task, and there is a result to show them.\n\n## What content to include\n\n- details of what happens next, and when\n- a reference number, if applicable\n- a link to save a record of the confirmation, for example as a PDF\n- a link to give feedback on the service\n- contact details for the service\n- links to information or services that users are likely to need next\n\n## Considerations\n\n- Use a success callout to clearly indicate the submission was received\n- Mention where a confirmation email will be sent, if applicable\n- Keep the success message clear, reassuring, and short\n- Surface contact information so users can reach out if something is wrong",
+  "collection": "examples",
+  "components": [
+    "block",
+    "callout",
+    "button",
+    "button-group"
+  ],
+  "description": "A result page shown after a citizen has submitted a form, application, or task. Confirms success, explains what happens next, and points the user at any follow-up actions.",
+  "id": "result-page",
+  "previewImage": "/images/examples/result-page.png",
+  "productType": "public-form",
+  "relatedExamples": [],
+  "size": "page",
+  "status": "published",
+  "tags": [
+    "confirmation",
+    "success",
+    "completion",
+    "forms",
+    "application"
+  ],
+  "title": "Result page"
+}

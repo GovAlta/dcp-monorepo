@@ -1,0 +1,23 @@
+{
+  "appliesTo": {
+    "components": [
+      "button",
+      "link"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-button version=\"2\" type=\"primary\">Submit form</goa-button>\n</Preview>\n\nThis distinction matters for screen reader users who expect different behaviors, keyboard navigation patterns, and browser history.",
+  "collection": "guidance",
+  "description": "Use a button for actions that trigger functionality (submit, save, cancel). Use a link for navigation to different pages or external websites.",
+  "id": "button-vs-link",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "button",
+    "link",
+    "navigation",
+    "semantics"
+  ],
+  "topic": "types",
+  "type": "do"
+}

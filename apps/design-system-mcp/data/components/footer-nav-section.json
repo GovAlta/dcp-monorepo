@@ -1,0 +1,116 @@
+{
+  "aliases": [
+    "GoabAppFooterNavSection",
+    "app-footer-nav-section"
+  ],
+  "angularSelector": "goab-app-footer-nav-section",
+  "api": {
+    "extractedFrom": "libs/web-components/src/components/footer-nav-section/FooterNavSection.svelte",
+    "frameworks": {
+      "angular": {
+        "events": [],
+        "props": [
+          {
+            "default": null,
+            "description": "The section heading displayed above the navigation links.",
+            "name": "heading",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "1",
+            "description": "Maximum number of columns to display links in on larger screens.",
+            "name": "maxColumnCount",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "default": null,
+            "description": "Sets the slot to \"nav\" to render the section in the correct footer position.",
+            "name": "slot",
+            "required": true,
+            "type": "\"nav\""
+          },
+          {
+            "default": null,
+            "description": "Sets a data-testid attribute for automated testing.",
+            "name": "testId",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "slots": []
+      },
+      "react": {
+        "events": [],
+        "props": [
+          {
+            "default": null,
+            "description": "The section heading displayed above the navigation links.",
+            "name": "heading",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "1",
+            "description": "Maximum number of columns to display links in on larger screens.",
+            "name": "maxColumnCount",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "default": null,
+            "description": "Sets a data-testid attribute for automated testing.",
+            "name": "testId",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "slots": []
+      },
+      "webComponents": {
+        "events": [],
+        "props": [
+          {
+            "default": "",
+            "description": "The section heading displayed above the navigation links.",
+            "name": "heading",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "1",
+            "description": "Maximum number of columns to display links in on larger screens.",
+            "name": "maxcolumncount",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "default": "",
+            "description": "Sets a data-testid attribute for automated testing.",
+            "name": "testid",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "slots": []
+      }
+    }
+  },
+  "body": "",
+  "category": "structure-and-navigation",
+  "collection": "components",
+  "description": "Navigation links section in footer.",
+  "hidden": true,
+  "id": "footer-nav-section",
+  "name": "Footer Nav Section",
+  "reactClassName": "GoabAppFooterNavSection",
+  "relatedComponents": [
+    "footer",
+    "link"
+  ],
+  "status": "stable",
+  "subcomponent": true,
+  "tags": [],
+  "webComponentTag": "goa-app-footer-nav-section"
+}

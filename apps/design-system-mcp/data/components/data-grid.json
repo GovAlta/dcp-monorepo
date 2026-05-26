@@ -1,0 +1,150 @@
+{
+  "aliases": [],
+  "angularSelector": "goab-data-grid",
+  "api": {
+    "extractedFrom": "libs/web-components/src/components/data-grid/DataGrid.svelte",
+    "frameworks": {
+      "angular": {
+        "events": [],
+        "props": [
+          {
+            "default": "left",
+            "description": "Position of the keyboard navigation indicator icon.",
+            "name": "keyboardIconPosition",
+            "required": false,
+            "type": "\"left\" | \"right\"",
+            "values": [
+              "left",
+              "right"
+            ]
+          },
+          {
+            "default": "visible",
+            "description": "Controls visibility of the keyboard navigation indicator icon. Use \"visible\" to show or \"hidden\" to hide.",
+            "name": "keyboardIconVisibility",
+            "required": false,
+            "type": "\"visible\" | \"hidden\"",
+            "values": [
+              "visible",
+              "hidden"
+            ]
+          },
+          {
+            "default": null,
+            "description": "Navigation mode. \"table\" navigates like a table (up/down between rows), \"layout\" allows wrapping between rows with left/right arrows.",
+            "name": "keyboardNav",
+            "required": true,
+            "type": "\"layout\" | \"table\"",
+            "values": [
+              "layout",
+              "table"
+            ]
+          }
+        ],
+        "slots": []
+      },
+      "react": {
+        "events": [],
+        "props": [
+          {
+            "default": "left",
+            "description": "Position of the keyboard navigation indicator icon.",
+            "name": "keyboardIconPosition",
+            "required": false,
+            "type": "\"left\" | \"right\"",
+            "values": [
+              "left",
+              "right"
+            ]
+          },
+          {
+            "default": "visible",
+            "description": "Controls visibility of the keyboard navigation indicator icon.",
+            "name": "keyboardIconVisibility",
+            "required": false,
+            "type": "\"visible\" | \"hidden\"",
+            "values": [
+              "visible",
+              "hidden"
+            ]
+          },
+          {
+            "default": null,
+            "description": "Navigation mode. 'table' navigates like a table (up/down between rows), 'layout' allows wrapping between rows with left/right arrows.",
+            "name": "keyboardNav",
+            "required": true,
+            "type": "\"layout\" | \"table\"",
+            "values": [
+              "layout",
+              "table"
+            ]
+          }
+        ],
+        "slots": []
+      },
+      "webComponents": {
+        "events": [],
+        "props": [
+          {
+            "default": "left",
+            "description": "Position of the keyboard navigation indicator icon.",
+            "name": "keyboard-icon-position",
+            "required": false,
+            "type": "\"left\" | \"right\"",
+            "values": [
+              "left",
+              "right"
+            ]
+          },
+          {
+            "default": "visible",
+            "description": "Controls visibility of the keyboard navigation indicator icon. Use \"visible\" to show or \"hidden\" to hide.",
+            "name": "keyboard-icon-visibility",
+            "required": false,
+            "type": "\"visible\" | \"hidden\"",
+            "values": [
+              "visible",
+              "hidden"
+            ]
+          },
+          {
+            "default": "table",
+            "description": "Navigation mode. \"table\" navigates like a table (up/down between rows), \"layout\" allows wrapping between rows with left/right arrows.",
+            "name": "keyboard-nav",
+            "required": false,
+            "type": "\"layout\" | \"table\"",
+            "values": [
+              "layout",
+              "table"
+            ]
+          }
+        ],
+        "slots": []
+      }
+    }
+  },
+  "body": "",
+  "category": "content-layout",
+  "collection": "components",
+  "description": "Advanced table with sorting and selection.",
+  "id": "data-grid",
+  "name": "Data Grid",
+  "reactClassName": "GoabDataGrid",
+  "relatedComponents": [
+    "table",
+    "pagination"
+  ],
+  "relatedGuidance": [
+    "datagrid-attributes"
+  ],
+  "status": "stable",
+  "tags": [
+    "table",
+    "grid",
+    "content layout",
+    "data table",
+    "sorting",
+    "selection"
+  ],
+  "webComponentTag": "goa-data-grid"
+}

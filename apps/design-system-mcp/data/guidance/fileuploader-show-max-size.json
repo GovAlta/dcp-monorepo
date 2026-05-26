@@ -1,0 +1,20 @@
+{
+  "appliesTo": {
+    "components": [
+      "file-upload-input"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-file-upload-input maxfilesize=\"100MB\"></goa-file-upload-input>\n</Preview>",
+  "collection": "guidance",
+  "description": "Show maximum file size in the file drop zone.",
+  "id": "fileuploader-show-max-size",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "file-uploader",
+    "usability"
+  ],
+  "topic": "content",
+  "type": "do"
+}

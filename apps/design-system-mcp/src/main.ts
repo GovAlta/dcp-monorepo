@@ -80,21 +80,58 @@ function registerTools(
 ) {
   server.tool(
     'search',
-    `Search GoA Design System knowledge. Find components, patterns, concepts, and examples.
+    `Search the GoA Design System. Good for discovery: describe what you're trying to build ("worker case-management tool") or name something fuzzy ("table with filters"). For known IDs, use \`get\` instead. Filters narrow what comes back.
 
-Use for:
-- Finding components: "button", "form input", "table"
-- Finding patterns: "dashboard layout", "form wizard", "data table"
-- Finding concepts: "citizen vs worker", "accessibility", "spacing"
-- Finding examples: "login form", "case management", "file upload"
+collection: components | guidance | examples | foundations | get-started | productTypes
+size (examples): interaction (single gesture) | section (card-level) | page (full screen) | task (start to finish) | product (entire app)
+productType (examples): workspace | public-form
+framework (examples): react | angular | web-components
+status: published | stable | deprecated
+component (guidance scoping): a component named in any form (table, goa-table, GoabTable, app-footer)
+context (guidance scoping): an example id like "case-detail"
 
-Returns matching items with relevance scores.`,
+Returns: { results: [{ id, collection, name, size?, productType?, summary, aliases }], next: { suggested_call, why } }`,
     {
       query: z.string().describe("What you're looking for"),
-      type: z
-        .enum(['component', 'pattern', 'concept', 'example', 'system'])
+      collection: z
+        .enum([
+          'components',
+          'guidance',
+          'examples',
+          'foundations',
+          'get-started',
+          'productTypes',
+        ])
         .optional()
-        .describe('Filter by type'),
+        .describe('Filter by content collection'),
+      size: z
+        .enum(['interaction', 'section', 'page', 'task', 'product'])
+        .optional()
+        .describe('Filter by size (examples only)'),
+      productType: z
+        .enum(['workspace', 'public-form'])
+        .optional()
+        .describe('Filter by product type (examples only)'),
+      framework: z
+        .enum(['react', 'angular', 'web-components'])
+        .optional()
+        .describe('Filter by framework support (examples only)'),
+      status: z
+        .enum(['published', 'stable', 'deprecated'])
+        .optional()
+        .describe('Filter by lifecycle status'),
+      component: z
+        .string()
+        .optional()
+        .describe(
+          "Scope results to a component, named in any form ('table', 'goa-table', 'GoabTable')",
+        ),
+      context: z
+        .string()
+        .optional()
+        .describe(
+          "Scope guidance results to an example context id like 'case-detail'",
+        ),
       limit: z
         .number()
         .optional()
@@ -103,11 +140,37 @@ Returns matching items with relevance scores.`,
     },
     withLogging(
       'search',
-      async (args: { query: string; type?: string; limit?: number }) => {
+      async (args: {
+        query: string;
+        collection?: string;
+        size?: string;
+        productType?: string;
+        framework?: string;
+        status?: string;
+        component?: string;
+        context?: string;
+        limit?: number;
+      }) => {
         rateLimiter.check();
-        const { query, type, limit = 10 } = args;
+        const {
+          query,
+          collection,
+          size,
+          productType,
+          framework,
+          status,
+          component,
+          context,
+          limit = 10,
+        } = args;
         const results = await dataLoader.search(query, {
-          type,
+          collection,
+          size,
+          productType,
+          framework,
+          status,
+          component,
+          context,
           maxResults: limit,
         });
 
@@ -121,16 +184,13 @@ Returns matching items with relevance scores.`,
                   count: results.length,
                   results: results.map((r) => ({
                     id: r.id,
-                    type: r.type,
+                    collection: r.collection,
                     name: r.name || r.id,
                     summary: r.summary,
                     score: r.score,
-                    preview: r.preview,
+                    aliases: r.aliases,
                   })),
-                  tip:
-                    results.length === 0
-                      ? `No matches for "${query}". Try simpler terms or different type filter.`
-                      : `Use 'get' tool with an id to see full details.`,
+                  next: buildSearchNext(results),
                 },
                 null,
                 2,
@@ -145,26 +205,45 @@ Returns matching items with relevance scores.`,
 
   server.tool(
     'get',
-    `Get complete details for a specific item by ID.
+    `Fetch one item by ID or alias. Use for known IDs, or after \`search\` returns a high-confidence match. Aliases work too. Old slugs like "confirm-that-an-application-was-submitted" resolve to current entries ("result-page"). The response's resolved_via field tells you which path matched.
 
-Use after searching to get full details:
-- Component: "button", "input", "table", "modal"
-- Pattern: "dashboard-page", "list-page", "form-wizard"
-- Concept: "user-types", "accessibility", "service-types"
-- Example: "login-form", "case-detail", "file-upload"
+collection: components | guidance | examples | foundations | get-started | productTypes (optional; scopes the lookup to one collection. Omit it and the first id or alias match wins.)
+detail: summary (default, ~1KB) | full (entire entry)
 
-Returns the complete item data including all properties, examples, and guidance.`,
+Returns: { id, collection, resolved_via, entry, related: { components, examples, guidance }, next: { suggested_calls } }`,
     {
-      id: z.string().describe('Item ID (from search results or known name)'),
+      id: z
+        .string()
+        .describe('Item ID or alias (from search results or known name)'),
+      collection: z
+        .enum([
+          'components',
+          'guidance',
+          'examples',
+          'foundations',
+          'get-started',
+          'productTypes',
+        ])
+        .optional()
+        .describe('Scope the lookup to one collection (optional)'),
+      detail: z
+        .enum(['summary', 'full'])
+        .optional()
+        .default('summary')
+        .describe("Output detail level (default: 'summary')"),
     },
     withLogging(
       'get',
-      async (args: { id: string }) => {
+      async (args: {
+        id: string;
+        collection?: string;
+        detail?: 'summary' | 'full';
+      }) => {
         rateLimiter.check();
-        const { id } = args;
-        const item = dataLoader.get(id);
+        const { id, collection, detail = 'summary' } = args;
+        const result = dataLoader.get(id, { collection });
 
-        if (!item) {
+        if (!result) {
           const suggestions = await dataLoader.search(id, { maxResults: 5 });
           return toolError(
             new Error(
@@ -176,11 +255,30 @@ Returns the complete item data including all properties, examples, and guidance.
           );
         }
 
+        const entry =
+          detail === 'summary' ? toSummaryEntry(result.data) : result.data;
+
         return {
           content: [
             {
               type: 'text' as const,
-              text: JSON.stringify(item, null, 2),
+              text: JSON.stringify(
+                {
+                  id: result.id,
+                  collection: result.collection,
+                  resolved_via: result.resolved_via,
+                  entry,
+                  related: buildGetRelated(
+                    result.collection,
+                    result.id,
+                    result.data,
+                    dataLoader,
+                  ),
+                  next: buildGetNext(result.collection, result.id, result.data),
+                },
+                null,
+                2,
+              ),
             },
           ],
         };
@@ -188,6 +286,140 @@ Returns the complete item data including all properties, examples, and guidance.
       loggingOptions,
     ),
   );
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function toSummaryEntry(data: any): Record<string, unknown> {
+  const summary: Record<string, unknown> = {
+    name: data.componentName || data.name || data.patternName,
+    summary: data.summary || data.description || data.purpose,
+    status: data.status,
+    size: data.size,
+    productType: data.productType,
+    aliases: data.aliases,
+  };
+  return Object.fromEntries(
+    Object.entries(summary).filter(([, v]) => v !== undefined),
+  );
+}
+
+/**
+ * Build a hint for the most likely next call after a search response.
+ */
+function buildSearchNext(
+  results: { id: string; score: number }[],
+): { suggested_call: string; why: string } | undefined {
+  if (results.length === 0) return undefined;
+  if (results.length === 1) {
+    return {
+      suggested_call: `get({ id: '${results[0].id}' })`,
+      why: 'Single match. Fetch the full entry.',
+    };
+  }
+  return {
+    suggested_call: `get({ id: '${results[0].id}' })`,
+    why: `Top match (score ${results[0].score}). Fetch its full entry.`,
+  };
+}
+
+/**
+ * Build a hint for the most likely next call after a get response.
+ */
+function buildGetNext(
+  collection: string,
+  id: string,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  data: any,
+): { suggested_calls: string[] } {
+  const suggested_calls: string[] = [];
+
+  if (collection === 'components') {
+    suggested_calls.push(
+      `search({ query: '${id}', collection: 'guidance', component: '${id}' })`,
+    );
+  } else if (collection === 'examples') {
+    if (
+      Array.isArray(data.relatedPatterns) &&
+      data.relatedPatterns.length > 0
+    ) {
+      suggested_calls.push(`get({ id: '${data.relatedPatterns[0]}' })`);
+    }
+  }
+
+  return { suggested_calls };
+}
+
+/**
+ * Build the related block for a get response.
+ *
+ * For components: relatedComponents and relatedExamples are read directly;
+ * guidance ids on the component are resolved against the guidance collection
+ * and returned as lightweight summaries so an agent can act without a
+ * second round-trip per atom.
+ * For examples: components are reverse-looked-up; relatedPatterns surface as examples.
+ */
+function buildGetRelated(
+  collection: string,
+  id: string,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  data: any,
+  dataLoader: DataLoader,
+): {
+  components: { id: string }[];
+  examples: { id: string }[];
+  guidance: GuidanceRelatedEntry[];
+} {
+  const components: { id: string }[] = [];
+  const examples: { id: string }[] = [];
+  const guidance: GuidanceRelatedEntry[] = [];
+
+  if (collection === 'components') {
+    if (Array.isArray(data.relatedComponents)) {
+      data.relatedComponents.forEach((cid: string) =>
+        components.push({ id: cid }),
+      );
+    }
+    if (Array.isArray(data.relatedExamples)) {
+      data.relatedExamples.forEach((eid: string) => examples.push({ id: eid }));
+    }
+    if (Array.isArray(data.relatedGuidance)) {
+      for (const gid of data.relatedGuidance) {
+        const entry = resolveGuidanceSummary(gid, dataLoader);
+        if (entry) guidance.push(entry);
+      }
+    }
+  } else if (collection === 'examples') {
+    dataLoader
+      .findComponentsRelatedToExample(id)
+      .forEach((cid) => components.push({ id: cid }));
+    if (Array.isArray(data.relatedPatterns)) {
+      data.relatedPatterns.forEach((pid: string) => examples.push({ id: pid }));
+    }
+  }
+
+  return { components, examples, guidance };
+}
+
+interface GuidanceRelatedEntry {
+  id: string;
+  type?: string;
+  topic?: string;
+  description?: string;
+}
+
+function resolveGuidanceSummary(
+  guidanceId: string,
+  dataLoader: DataLoader,
+): GuidanceRelatedEntry | null {
+  const hit = dataLoader.get(guidanceId, { collection: 'guidance' });
+  if (!hit) return { id: guidanceId };
+  const data = hit.data;
+  return {
+    id: hit.id,
+    type: data.type,
+    topic: data.topic,
+    description: data.description,
+  };
 }
 
 main().catch((error) => {

@@ -1,0 +1,28 @@
+{
+  "aliases": [],
+  "body": "Update dropdown options based on the selection in another dropdown (cascading/dependent dropdowns).\n\n## When to use\n\nUse this pattern when:\n\n- Options in one dropdown depend on the selection in another\n- You need to filter available choices based on a category\n- Building hierarchical selection interfaces (e.g., country/state/city)\n\n## Considerations\n\n- Use `mountType=\"reset\"` to clear and repopulate dropdown items\n- Generate unique keys for items to ensure proper re-rendering\n- Provide placeholder text to guide users when no selection is made\n- Consider loading states if data fetching is required",
+  "collection": "examples",
+  "components": [
+    "dropdown",
+    "dropdown-item",
+    "form-item"
+  ],
+  "frameworks": [
+    "react",
+    "angular",
+    "web-components"
+  ],
+  "id": "dynamically-change-items-in-a-dropdown-list",
+  "previewImage": "/images/examples/dynamically-change-items-in-a-dropdown-list.webp",
+  "relatedExamples": [],
+  "size": "interaction",
+  "status": "published",
+  "tags": [
+    "dropdown",
+    "dynamic",
+    "cascading",
+    "dependent",
+    "form"
+  ],
+  "title": "Dynamically change items in a dropdown list"
+}

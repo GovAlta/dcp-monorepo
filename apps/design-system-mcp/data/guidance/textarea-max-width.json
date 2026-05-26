@@ -1,0 +1,22 @@
+{
+  "appliesTo": {
+    "components": [
+      "textarea",
+      "form-item"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-form-item label=\"Text label (Optional)\">\n    <goa-textarea name=\"content\" width=\"45ch\"></goa-textarea>\n  </goa-form-item>\n</Preview>",
+  "collection": "guidance",
+  "description": "Ensure that the text area width is no longer than 75 characters per line; ideal line length is 45-75 characters.",
+  "id": "textarea-max-width",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "textarea",
+    "sizing",
+    "readability"
+  ],
+  "topic": "forms",
+  "type": "do"
+}

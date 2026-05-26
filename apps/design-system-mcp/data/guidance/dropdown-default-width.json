@@ -1,0 +1,21 @@
+{
+  "appliesTo": {
+    "components": [
+      "dropdown"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-form-item label=\"Province or territory\">\n    <goa-dropdown name=\"province\">\n      <goa-dropdown-item value=\"AB\" label=\"Alberta\"></goa-dropdown-item>\n      <goa-dropdown-item value=\"BC\" label=\"British Columbia\"></goa-dropdown-item>\n      <goa-dropdown-item value=\"MB\" label=\"Manitoba\"></goa-dropdown-item>\n      <goa-dropdown-item value=\"NB\" label=\"New Brunswick\"></goa-dropdown-item>\n      <goa-dropdown-item value=\"NL\" label=\"Newfoundland and Labrador\"></goa-dropdown-item>\n      <goa-dropdown-item value=\"NS\" label=\"Nova Scotia\"></goa-dropdown-item>\n      <goa-dropdown-item value=\"NT\" label=\"Northwest Territories\"></goa-dropdown-item>\n      <goa-dropdown-item value=\"NU\" label=\"Nunavut\"></goa-dropdown-item>\n      <goa-dropdown-item value=\"ON\" label=\"Ontario\"></goa-dropdown-item>\n      <goa-dropdown-item value=\"PE\" label=\"Prince Edward Island\"></goa-dropdown-item>\n      <goa-dropdown-item value=\"QC\" label=\"Quebec\"></goa-dropdown-item>\n      <goa-dropdown-item value=\"SK\" label=\"Saskatchewan\"></goa-dropdown-item>\n      <goa-dropdown-item value=\"YT\" label=\"Yukon\"></goa-dropdown-item>\n    </goa-dropdown>\n  </goa-form-item>\n</Preview>",
+  "collection": "guidance",
+  "description": "Use the default width for dropdowns. The dropdown automatically sets its width based on the length of the options.",
+  "id": "dropdown-default-width",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "dropdown",
+    "forms",
+    "sizing"
+  ],
+  "topic": "sizing",
+  "type": "do"
+}

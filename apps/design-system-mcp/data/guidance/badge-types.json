@@ -1,0 +1,23 @@
+{
+  "appliesTo": {
+    "components": [
+      "badge"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-block gap=\"xs\">\n    <goa-badge type=\"success\" content=\"Approved\"></goa-badge>\n    <goa-badge type=\"important\" content=\"Pending review\"></goa-badge>\n    <goa-badge type=\"emergency\" content=\"Action required\"></goa-badge>\n    <goa-badge type=\"information\" content=\"New\"></goa-badge>\n  </goa-block>\n</Preview>",
+  "collection": "guidance",
+  "description": "Match badge type to the status it represents",
+  "id": "badge-types",
+  "relatedProps": [
+    "type"
+  ],
+  "status": "published",
+  "tags": [
+    "badge",
+    "status",
+    "feedback"
+  ],
+  "topic": "types",
+  "type": "do"
+}

@@ -1,0 +1,21 @@
+{
+  "appliesTo": {
+    "components": [
+      "icon-button"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-tooltip content=\"Open in new window\">\n    <goa-icon-button icon=\"open\"></goa-icon-button>\n  </goa-tooltip>\n</Preview>",
+  "collection": "guidance",
+  "description": "Use a tooltip to clearly indicate an icon button's function when there's no visible label.",
+  "id": "iconbutton-tooltip-for-clarity",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "icon-button",
+    "tooltip",
+    "accessibility"
+  ],
+  "topic": "accessibility",
+  "type": "do"
+}

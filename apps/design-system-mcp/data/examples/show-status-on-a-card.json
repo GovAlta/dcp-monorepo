@@ -1,0 +1,27 @@
+{
+  "aliases": [],
+  "body": "Display status indicators on cards using badges in the actions slot, allowing workers to quickly see the priority or state of each item.\n\n## When to use\n\nUse this pattern when:\n\n- Displaying items in a card-based layout that have status or priority levels\n- Workers need to quickly identify high-priority or important items\n- Status should be prominently visible in the card header area\n\n## Considerations\n\n- Use the actions slot to position the badge in the card header\n- Choose badge types that clearly communicate priority or status\n- Keep badge content concise (one or two words)\n- Ensure the card heading and badge work well together visually",
+  "collection": "examples",
+  "components": [
+    "container",
+    "badge"
+  ],
+  "frameworks": [
+    "react",
+    "angular",
+    "web-components"
+  ],
+  "id": "show-status-on-a-card",
+  "previewImage": "/images/examples/show-status-on-a-card.webp",
+  "productType": "workspace",
+  "relatedExamples": [],
+  "size": "interaction",
+  "status": "published",
+  "tags": [
+    "card",
+    "container",
+    "badge",
+    "status"
+  ],
+  "title": "Show status on a card"
+}

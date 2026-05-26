@@ -1,0 +1,31 @@
+{
+  "aliases": [],
+  "body": "Combine pagination with a dropdown selector to let users control how many results appear per page, improving data browsing for different use cases.\n\n## When to use\n\nUse this pattern when:\n\n- Displaying paginated data in tables\n- Users may want to see more or fewer items\n- Different tasks benefit from different page sizes\n- The total result count should be visible\n\n## Considerations\n\n- Show \"of X\" to indicate total results\n- Reset to page 1 when changing page size\n- Use reasonable default (10 is common)\n- Provide sensible options (10, 20, 30, etc.)",
+  "collection": "examples",
+  "components": [
+    "pagination",
+    "dropdown",
+    "dropdown-item",
+    "table",
+    "block",
+    "spacer"
+  ],
+  "frameworks": [
+    "react",
+    "angular",
+    "web-components"
+  ],
+  "id": "show-number-of-results-per-page",
+  "previewImage": "/images/examples/show-number-of-results-per-page.webp",
+  "relatedExamples": [],
+  "size": "section",
+  "status": "published",
+  "tags": [
+    "pagination",
+    "table",
+    "dropdown",
+    "results",
+    "per-page"
+  ],
+  "title": "Show number of results per page"
+}

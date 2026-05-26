@@ -1,0 +1,26 @@
+{
+  "aliases": [],
+  "body": "Display multiple badges together using GoabBlock with tight spacing to show multiple statuses or categories for a single item.\n\n## When to use\n\nUse this pattern when:\n\n- An item has multiple statuses or categories\n- You need to show related metadata together\n- Visual grouping of badges improves scanning\n- Items can have multiple applicable labels\n\n## Considerations\n\n- Use `gap=\"xs\"` for tight spacing between badges\n- Keep badge count reasonable (2-4 typically)\n- Choose badge types that provide visual contrast\n- Consider reading order and importance",
+  "collection": "examples",
+  "components": [
+    "badge",
+    "block"
+  ],
+  "frameworks": [
+    "react",
+    "angular",
+    "web-components"
+  ],
+  "id": "show-multiple-tags-together",
+  "previewImage": "/images/examples/show-multiple-tags-together.webp",
+  "relatedExamples": [],
+  "size": "interaction",
+  "status": "published",
+  "tags": [
+    "badge",
+    "tags",
+    "status",
+    "grouping"
+  ],
+  "title": "Show multiple tags together"
+}

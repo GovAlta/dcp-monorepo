@@ -1,0 +1,20 @@
+{
+  "appliesTo": {
+    "components": [
+      "menu-button"
+    ],
+    "contexts": []
+  },
+  "body": "",
+  "collection": "guidance",
+  "description": "Don't use MenuButton for navigation menus. Use AppHeaderMenu or SideMenu for navigation. MenuButton is for action lists.",
+  "id": "menubutton-not-for-navigation",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "menu-button",
+    "navigation"
+  ],
+  "topic": "other",
+  "type": "dont"
+}

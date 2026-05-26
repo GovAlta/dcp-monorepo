@@ -1,0 +1,26 @@
+{
+  "aliases": [],
+  "angularSourceUrl": "https://github.com/GovAlta/goa-workspace-angular/tree/main/src/app/pages/dashboard",
+  "body": "## When to use\n\nUse a dashboard as the landing view of a workspace when staff need to see priorities and act quickly.\n\n## What to include\n\nInclude the information that helps staff understand priorities and act quickly, such as:\n\n- counts or status summaries\n- trends or workload charts\n- links to assigned or high-priority work\n\n## Layout\n\nThe layout uses [containers](/components/container) and [blocks](/components/block) to organize content into scannable sections.\n\n## Considerations\n\nPrioritize the two or three things staff need to see on arrival. Surface everything else from deeper navigation rather than crowding the dashboard.",
+  "collection": "examples",
+  "components": [
+    "container",
+    "block",
+    "badge"
+  ],
+  "description": "Gives staff an overview of their work with counts, trends, and assigned items.",
+  "id": "workspace-dashboard",
+  "previewImage": "/thumbnails/workspace-dashboard.png",
+  "previewUrl": "https://digital-service-demo-v2.netlify.app/workspace",
+  "productType": "workspace",
+  "reactSourceUrl": "https://github.com/GovAlta/goa-workspace-playground/tree/main/src/routes/dashboard",
+  "relatedExamples": [],
+  "size": "page",
+  "status": "published",
+  "tags": [
+    "workspace",
+    "dashboard",
+    "worker"
+  ],
+  "title": "Dashboard"
+}

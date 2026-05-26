@@ -1,0 +1,22 @@
+{
+  "appliesTo": {
+    "components": [
+      "radio-item",
+      "radio-group"
+    ],
+    "contexts": []
+  },
+  "body": "",
+  "collection": "guidance",
+  "description": "Use the reveal slot to show additional content when a radio option is selected, like a follow-up question or input field.",
+  "id": "radioitem-reveal-slot",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "radio",
+    "forms",
+    "conditional-content"
+  ],
+  "topic": "other",
+  "type": "tip"
+}

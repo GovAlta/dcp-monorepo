@@ -1,0 +1,13 @@
+{
+  "aliases": [],
+  "body": "",
+  "category": "utilities",
+  "collection": "components",
+  "description": "Trap focus within a container for accessibility.",
+  "hidden": true,
+  "id": "focus-trap",
+  "name": "Focus Trap",
+  "relatedComponents": [],
+  "status": "stable",
+  "tags": []
+}

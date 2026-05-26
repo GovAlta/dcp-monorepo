@@ -1,0 +1,13 @@
+{
+  "aliases": [],
+  "body": "",
+  "category": "utilities",
+  "collection": "components",
+  "description": "Container with overflow scrolling.",
+  "hidden": true,
+  "id": "scrollable",
+  "name": "Scrollable",
+  "relatedComponents": [],
+  "status": "stable",
+  "tags": []
+}

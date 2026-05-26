@@ -1,0 +1,21 @@
+{
+  "appliesTo": {
+    "components": [
+      "badge"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-badge type=\"success\" content=\"Online\"></goa-badge>\n  <goa-button type=\"primary\" size=\"compact\" ml=\"xs\">Edit</goa-button>\n</Preview>",
+  "collection": "guidance",
+  "description": "Don't use a primary button to edit a badge.",
+  "id": "badge-dont-primary-button-to-edit",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "badge",
+    "button",
+    "interactivity"
+  ],
+  "topic": "other",
+  "type": "dont"
+}

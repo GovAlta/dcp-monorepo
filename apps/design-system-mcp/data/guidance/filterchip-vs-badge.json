@@ -1,0 +1,21 @@
+{
+  "appliesTo": {
+    "components": [
+      "filter-chip",
+      "badge"
+    ],
+    "contexts": []
+  },
+  "body": "",
+  "collection": "guidance",
+  "description": "FilterChip is for removable filters that users can dismiss. For static labels or status indicators, use Badge instead.",
+  "id": "filterchip-vs-badge",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "filter-chip",
+    "badge"
+  ],
+  "topic": "types",
+  "type": "tip"
+}

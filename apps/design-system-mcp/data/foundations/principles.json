@@ -1,0 +1,15 @@
+{
+  "body": "## Core Principles\n\n### Government Service First\n\nAll design decisions must prioritize citizen and worker needs over aesthetic preferences.\n\n**Application:** Choose components and patterns based on user research and government service requirements.\n\n### Accessibility by Default\n\nWCAG 2.2 AA compliance is non-negotiable, not an add-on.\n\n**Application:** Use GoA components which provide built-in accessibility features.\n\n### Consistency Over Creativity\n\nConsistent user experience across government services trumps unique design.\n\n**Application:** Use established GoA patterns rather than inventing new ones.\n\n### Component-First Thinking\n\nExhaust GoA component library options before building custom components.\n\n**Application:** Search the component library, check examples, combine existing components creatively.\n\n## Development Principles\n\n### Component-First Process\n\nAlways start with GoA components until those options are fully exhausted before doing any custom components.\n\n1. Search for GoA components that solve your need\n2. Search with multiple terms (e.g., 'button', 'action', 'submit')\n3. Check examples for similar patterns\n4. If no component found: Ask the team before building custom\n\n### Spacing Strategy\n\nUse component margin props (mb, mr) as the primary spacing approach.\n\n- Component margin props (mb, mr, mt, ml) - preferred\n- GoabBlock for flex layouts\n- Custom flexbox/grid when needed\n- GoabSpacer for explicit gaps (less responsive)\n\n### Validation Checklist\n\n- Verify component properties against documented valid values\n- Check design specifications for exact sizing\n- Ensure no custom styling - only use component props\n- Validate spacing tokens match design system",
+  "category": "design",
+  "collection": "foundations",
+  "description": "Core design and development principles for teams building with the GoA Design System",
+  "id": "principles",
+  "status": "published",
+  "tags": [
+    "government-service",
+    "accessibility",
+    "component-first",
+    "spacing"
+  ],
+  "title": "Design Principles"
+}

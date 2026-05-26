@@ -1,0 +1,21 @@
+{
+  "appliesTo": {
+    "components": [
+      "tooltip"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <div style=\"position: relative; height: 100px;\">\n    <goa-icon-button icon=\"help\" />\n    <div style=\"position: absolute; top: 60px; left: 80px; background: var(--goa-color-greyscale-700); color: var(--goa-color-greyscale-white); padding: 8px 16px; border-radius: var(--goa-border-radius-xs); font-size: 14px;\">\n      Tooltip\n    </div>\n  </div>\n</Preview>",
+  "collection": "guidance",
+  "description": "Don't position a tooltip too far from the element.",
+  "id": "tooltip-too-far",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "tooltip",
+    "positioning",
+    "usability"
+  ],
+  "topic": "feedback",
+  "type": "dont"
+}

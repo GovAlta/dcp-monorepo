@@ -1,0 +1,37 @@
+{
+  "aliases": [
+    "401-error-page",
+    "404-error-page",
+    "500-error-page"
+  ],
+  "body": "import PreviewContainer from \"../../../components/PreviewContainer.astro\";\n\n## Types of error pages\n\n### Restricted access (401)\n\nThe user is not authorized, either because they need to sign in or because they lack the right permission.\n\n<PreviewContainer\n  image=\"/thumbnails/error-pages-401.png\"\n  alt=\"Restricted access (401) error page\"\n  previewUrl=\"/examples/error-pages/401/preview\"\n  reactSourceUrl=\"https://github.com/GovAlta/ui-components/blob/dev/docs/src/content/examples/error-pages/401/react.tsx\"\n  angularSourceUrl=\"https://github.com/GovAlta/ui-components/tree/dev/docs/src/content/examples/error-pages/401\"\n/>\n\n### Page not found (404)\n\nThe page does not exist, usually because of a typo, a stale bookmark, or a deleted resource.\n\n<PreviewContainer\n  image=\"/thumbnails/error-pages-404.png\"\n  alt=\"Page not found (404) error page\"\n  previewUrl=\"/examples/error-pages/404/preview\"\n  reactSourceUrl=\"https://github.com/GovAlta/ui-components/blob/dev/docs/src/content/examples/error-pages/404/react.tsx\"\n  angularSourceUrl=\"https://github.com/GovAlta/ui-components/tree/dev/docs/src/content/examples/error-pages/404\"\n/>\n\n### Server problem (500)\n\nA server-side error has interrupted the request, and there is nothing the user can do to fix it.\n\n<PreviewContainer\n  image=\"/thumbnails/error-pages-500.png\"\n  alt=\"Server problem (500) error page\"\n  previewUrl=\"/examples/error-pages/500/preview\"\n  reactSourceUrl=\"https://github.com/GovAlta/ui-components/blob/dev/docs/src/content/examples/error-pages/500/react.tsx\"\n  angularSourceUrl=\"https://github.com/GovAlta/ui-components/tree/dev/docs/src/content/examples/error-pages/500\"\n/>\n\n## When to use\n\nEvery service needs a story for the moments where something has gone wrong. These pages are the baseline. Each one is a small, self-contained page composition you drop into an existing service as a single route, no starter repo needed. Use them as the routes behind your router's catch-all outlets, or as the fallback view your outer error boundary renders when nothing else caught the failure.\n\n## Considerations\n\n- **Use plain language.** Explain what happened in one short sentence. \"Page not found\" beats \"HTTP 404 resource unavailable\".\n- **Offer a way back.** A home link is the usual fallback. Add a contact link when the user may need help.\n- **Keep the tone helpful, not accusatory.** Do not blame the user for the error, especially for 500-level failures the user could not have caused.\n- **Avoid exposing technical detail** like raw error codes, stack traces, or correlation IDs. Log them instead. If support needs a correlation id, give the user only what is useful.\n- **Do not render the service's navigation** on the error page. The error page is its own context.\n\n## How these pages are built\n\nEach error page is a composition of GoA components: `goa-page-block`, `goa-block`, `goa-text`, `goa-icon`, `goa-button`, and `goa-link` (on 401). A small amount of custom CSS covers the icon-in-circle treatment, accent bar, centred text, and icon scaling. Those are gaps the design system has not absorbed yet and are tracked for follow-up.\n\nFramework variants for React, Angular, and Web Components live alongside each preview route as sibling files. Click the React or Angular icon on a preview to open the folder on GitHub and copy the framework file you need.",
+  "collection": "examples",
+  "components": [
+    "page-block",
+    "block",
+    "text",
+    "icon",
+    "link",
+    "button"
+  ],
+  "description": "Standard error screens for Government of Alberta services. Use when a user lands somewhere that is missing, forbidden, or broken so they understand what happened and what to do next.",
+  "id": "error-pages",
+  "previewImage": "/thumbnails/error-pages-404.png",
+  "relatedExamples": [],
+  "size": "page",
+  "status": "published",
+  "tags": [
+    "error",
+    "error page",
+    "401",
+    "404",
+    "500",
+    "page not found",
+    "unauthorized",
+    "restricted access",
+    "server error",
+    "server problem",
+    "page-structure"
+  ],
+  "title": "Error pages"
+}

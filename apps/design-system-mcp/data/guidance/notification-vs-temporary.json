@@ -1,0 +1,22 @@
+{
+  "appliesTo": {
+    "components": [
+      "notification",
+      "temporary-notification"
+    ],
+    "contexts": []
+  },
+  "body": "",
+  "collection": "guidance",
+  "description": "For temporary toast-style messages, use TemporaryNotification instead of Notification. Notification stays on screen until dismissed.",
+  "id": "notification-vs-temporary",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "notification",
+    "temporary-notification",
+    "feedback"
+  ],
+  "topic": "types",
+  "type": "tip"
+}

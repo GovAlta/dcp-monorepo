@@ -1,0 +1,20 @@
+{
+  "appliesTo": {
+    "components": [
+      "button"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-button version=\"2\" type=\"primary\">Submit application</goa-button>\n</Preview>",
+  "collection": "guidance",
+  "description": "Use a button when you need users to take a specific action, such as submitting a form, starting a process, or confirming a decision.",
+  "id": "button-when-to-use",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "button",
+    "usage"
+  ],
+  "topic": "types",
+  "type": "do"
+}

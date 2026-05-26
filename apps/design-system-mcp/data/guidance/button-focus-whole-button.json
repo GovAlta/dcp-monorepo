@@ -1,0 +1,23 @@
+{
+  "appliesTo": {
+    "components": [
+      "button",
+      "icon-button"
+    ],
+    "contexts": []
+  },
+  "body": "",
+  "collection": "guidance",
+  "description": "Don't focus on just the icon within a button. Focus the button as a whole.",
+  "id": "button-focus-whole-button",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "button",
+    "accessibility",
+    "focus",
+    "icons"
+  ],
+  "topic": "focus",
+  "type": "dont"
+}

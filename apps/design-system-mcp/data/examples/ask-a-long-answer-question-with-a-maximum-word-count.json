@@ -1,0 +1,27 @@
+{
+  "aliases": [],
+  "body": "Restrict a long answer input to a maximum number of words or characters.\n\n## When to use\n\nUse this pattern when:\n\n- Collecting open-ended responses\n- You need to limit response length\n- Users benefit from seeing remaining word count\n\n## Considerations\n\n- Choose between word count or character count based on the use case\n- Provide clear guidance on expected response length\n- Show remaining count to help users gauge their response",
+  "collection": "examples",
+  "components": [
+    "form-item",
+    "text-area"
+  ],
+  "frameworks": [
+    "react",
+    "angular",
+    "web-components"
+  ],
+  "id": "ask-a-long-answer-question-with-a-maximum-word-count",
+  "previewImage": "/images/examples/ask-a-long-answer-question-with-a-maximum-word-count.webp",
+  "productType": "public-form",
+  "relatedExamples": [],
+  "size": "interaction",
+  "status": "published",
+  "tags": [
+    "forms",
+    "text-area",
+    "validation",
+    "word-count"
+  ],
+  "title": "Ask a long answer question with a maximum word count"
+}

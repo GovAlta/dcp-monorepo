@@ -1,0 +1,23 @@
+{
+  "appliesTo": {
+    "components": [
+      "drawer"
+    ],
+    "contexts": []
+  },
+  "body": "",
+  "collection": "guidance",
+  "description": "Use position='right' for forms and detail panels. Use position='bottom' for mobile-friendly bottom sheets.",
+  "id": "drawer-position-right-vs-bottom",
+  "relatedProps": [
+    "position"
+  ],
+  "status": "published",
+  "tags": [
+    "drawer",
+    "layout",
+    "responsive"
+  ],
+  "topic": "types",
+  "type": "tip"
+}

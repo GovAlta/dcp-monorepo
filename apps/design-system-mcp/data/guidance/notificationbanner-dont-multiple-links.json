@@ -1,0 +1,20 @@
+{
+  "appliesTo": {
+    "components": [
+      "notification-banner"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview bad>\n  <goa-notification-banner type=\"information\">\n    <a href=\"/first\">First link</a> and a <a href=\"/second\">Second link</a>\n  </goa-notification-banner>\n</Preview>",
+  "collection": "guidance",
+  "description": "Don't include more than one link in a notification banner.",
+  "id": "notificationbanner-dont-multiple-links",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "notification-banner",
+    "links"
+  ],
+  "topic": "content",
+  "type": "dont"
+}

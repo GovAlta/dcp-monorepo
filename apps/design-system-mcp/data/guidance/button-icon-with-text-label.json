@@ -1,0 +1,25 @@
+{
+  "appliesTo": {
+    "components": [
+      "button"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-button type=\"secondary\" leadingIcon=\"add\">Add new</goa-button>\n</Preview>",
+  "collection": "guidance",
+  "description": "Use a text label with an icon, especially for public-facing applications and novice users.",
+  "id": "button-icon-with-text-label",
+  "relatedProps": [
+    "leadingIcon",
+    "trailingIcon"
+  ],
+  "status": "published",
+  "tags": [
+    "button",
+    "icons",
+    "accessibility",
+    "labeling"
+  ],
+  "topic": "icons",
+  "type": "do"
+}

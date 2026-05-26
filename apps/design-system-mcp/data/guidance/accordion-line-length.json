@@ -1,0 +1,21 @@
+{
+  "appliesTo": {
+    "components": [
+      "accordion"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-accordion heading=\"Details\" open=\"true\">\n    Lorem ipsum dolor sit amet consectetur. Felis mauris in interdum congue amet curabitur diam enim. Sem nec ut sed tristique mauris nibh ac.\n  </goa-accordion>\n</Preview>",
+  "collection": "guidance",
+  "description": "Don't exceed 75 characters in line length within expanded accordion content.",
+  "id": "accordion-line-length",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "accordion",
+    "readability",
+    "content"
+  ],
+  "topic": "content",
+  "type": "dont"
+}

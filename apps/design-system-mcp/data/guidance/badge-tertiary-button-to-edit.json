@@ -1,0 +1,21 @@
+{
+  "appliesTo": {
+    "components": [
+      "badge"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-badge type=\"success\" content=\"Online\"></goa-badge>\n  <goa-button type=\"tertiary\" size=\"compact\" ml=\"xs\">Edit</goa-button>\n</Preview>",
+  "collection": "guidance",
+  "description": "Use a tertiary button next to a badge if it needs to be manually updated.",
+  "id": "badge-tertiary-button-to-edit",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "badge",
+    "button",
+    "interactivity"
+  ],
+  "topic": "other",
+  "type": "do"
+}

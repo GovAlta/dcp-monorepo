@@ -1,0 +1,20 @@
+{
+  "appliesTo": {
+    "components": [
+      "radio-group"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-radio-group name=\"dependants\" orientation=\"horizontal\">\n    <goa-radio-item value=\"yes\" label=\"Yes\"></goa-radio-item>\n    <goa-radio-item value=\"no\" label=\"No\"></goa-radio-item>\n  </goa-radio-group>\n</Preview>",
+  "collection": "guidance",
+  "description": "Consider horizontal listing when presenting 2-3 short options like Yes/No.",
+  "id": "radio-horizontal-short-options",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "radio",
+    "layout"
+  ],
+  "topic": "layout",
+  "type": "do"
+}

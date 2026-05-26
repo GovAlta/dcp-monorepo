@@ -1,0 +1,24 @@
+{
+  "appliesTo": {
+    "components": [
+      "radio-item",
+      "radio-group"
+    ],
+    "contexts": []
+  },
+  "body": "",
+  "collection": "guidance",
+  "description": "Use the description prop to add context on radio options where the label alone isn't enough to explain the choice.",
+  "id": "radio-description-for-context",
+  "relatedProps": [
+    "description"
+  ],
+  "status": "published",
+  "tags": [
+    "radio",
+    "labels",
+    "forms"
+  ],
+  "topic": "content",
+  "type": "tip"
+}

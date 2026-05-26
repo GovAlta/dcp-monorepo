@@ -1,0 +1,23 @@
+{
+  "appliesTo": {
+    "components": [
+      "button-group"
+    ],
+    "contexts": []
+  },
+  "body": "",
+  "collection": "guidance",
+  "description": "Use 'end' alignment for modal action buttons so they sit at the bottom right, following the natural reading flow.",
+  "id": "buttongroup-end-alignment-modal",
+  "relatedProps": [
+    "alignment"
+  ],
+  "status": "published",
+  "tags": [
+    "button-group",
+    "modal",
+    "alignment"
+  ],
+  "topic": "positioning",
+  "type": "tip"
+}

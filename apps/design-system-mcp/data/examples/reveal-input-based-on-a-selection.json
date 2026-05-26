@@ -1,0 +1,30 @@
+{
+  "aliases": [],
+  "body": "Progressively reveal additional form fields based on user selections, reducing visual complexity while gathering necessary information.\n\n## When to use\n\nUse this pattern when:\n\n- Additional information is only needed for certain options\n- You want to reduce initial form complexity\n- Follow-up questions depend on user choices\n- Creating a more focused, less overwhelming form experience\n\n## Considerations\n\n- The revealed input should appear directly below the triggering selection\n- Use clear labels that explain what information is needed\n- Ensure the reveal animation is smooth and noticeable\n- Consider what happens to data if the user changes their selection\n- Works with both radio groups (single selection) and checkboxes (multiple selections)",
+  "collection": "examples",
+  "components": [
+    "radio-group",
+    "radio-item",
+    "checkbox",
+    "form-item",
+    "input"
+  ],
+  "frameworks": [
+    "react",
+    "angular",
+    "web-components"
+  ],
+  "id": "reveal-input-based-on-a-selection",
+  "previewImage": "/images/examples/reveal-input-based-on-a-selection.webp",
+  "relatedExamples": [],
+  "size": "interaction",
+  "status": "published",
+  "tags": [
+    "conditional",
+    "reveal",
+    "radio",
+    "checkbox",
+    "progressive-disclosure"
+  ],
+  "title": "Reveal input based on a selection"
+}

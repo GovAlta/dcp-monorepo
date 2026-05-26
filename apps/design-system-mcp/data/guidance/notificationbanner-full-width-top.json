@@ -1,0 +1,20 @@
+{
+  "appliesTo": {
+    "components": [
+      "notification-banner"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-notification-banner type=\"information\">\n    Please note the application deadline has been extended by 3 months.\n  </goa-notification-banner>\n</Preview>",
+  "collection": "guidance",
+  "description": "Place notification banners at full width at the top of the page, right after the header.",
+  "id": "notificationbanner-full-width-top",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "notification-banner",
+    "layout"
+  ],
+  "topic": "positioning",
+  "type": "do"
+}

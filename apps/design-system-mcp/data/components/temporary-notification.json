@@ -1,0 +1,125 @@
+{
+  "aliases": [
+    "GoabTemporaryNotificationCtrl",
+    "temp-notification-ctrl",
+    "temporary-notification-ctrl"
+  ],
+  "angularSelector": "goab-temporary-notification-ctrl",
+  "api": {
+    "extractedFrom": "libs/web-components/src/components/temporary-notification/TemporaryNotificationCtrl.svelte",
+    "frameworks": {
+      "angular": {
+        "events": [],
+        "props": [
+          {
+            "default": "center",
+            "description": "Horizontal position of the notification container.",
+            "name": "horizontalPosition",
+            "required": false,
+            "type": "SnackbarHorizontalPosition"
+          },
+          {
+            "default": null,
+            "description": "Sets a data-testid attribute for automated testing.",
+            "name": "testId",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "bottom",
+            "description": "Vertical position of the notification container.",
+            "name": "verticalPosition",
+            "required": false,
+            "type": "SnackbarVerticalPosition"
+          }
+        ],
+        "slots": []
+      },
+      "react": {
+        "events": [],
+        "props": [
+          {
+            "default": "center",
+            "description": "Horizontal position of the notification container.",
+            "name": "horizontalPosition",
+            "required": false,
+            "type": "SnackbarHorizontalPosition"
+          },
+          {
+            "default": null,
+            "description": "Sets a data-testid attribute for automated testing.",
+            "name": "testId",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "bottom",
+            "description": "Vertical position of the notification container.",
+            "name": "verticalPosition",
+            "required": false,
+            "type": "SnackbarVerticalPosition"
+          }
+        ],
+        "slots": []
+      },
+      "webComponents": {
+        "events": [],
+        "props": [
+          {
+            "default": "center",
+            "description": "Horizontal position of the notification container.",
+            "name": "horizontal-position",
+            "required": false,
+            "type": "\"left\" | \"center\" | \"right\"",
+            "values": [
+              "left",
+              "center",
+              "right"
+            ]
+          },
+          {
+            "default": null,
+            "description": "Sets a data-testid attribute for automated testing.",
+            "name": "testid",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "default": "bottom",
+            "description": "Vertical position of the notification container.",
+            "name": "vertical-position",
+            "required": false,
+            "type": "\"top\" | \"bottom\"",
+            "values": [
+              "top",
+              "bottom"
+            ]
+          }
+        ],
+        "slots": []
+      }
+    }
+  },
+  "body": "",
+  "category": "feedback-and-alerts",
+  "collection": "components",
+  "description": "A notification that appears at the bottom of the screen.",
+  "figmaUrl": "https://www.figma.com/design/Jpy1Ea5qglwnp1SgGnagY9/Component-library?node-id=33183-290309",
+  "id": "temporary-notification",
+  "name": "Temporary notification",
+  "reactClassName": "GoabTemporaryNotificationCtrl",
+  "relatedComponents": [
+    "notification"
+  ],
+  "relatedGuidance": [
+    "notification-vs-temporary",
+    "temporary-notification-not-for-errors"
+  ],
+  "status": "stable",
+  "tags": [
+    "snackbar",
+    "toast",
+    "temporary notification"
+  ],
+  "webComponentTag": "goa-temp-notification-ctrl"
+}

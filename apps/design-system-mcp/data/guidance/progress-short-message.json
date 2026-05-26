@@ -1,0 +1,21 @@
+{
+  "appliesTo": {
+    "components": [
+      "circular-progress"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-circular-progress message=\"Loading search results...\" visible=\"true\" variant=\"inline\"></goa-circular-progress>\n</Preview>",
+  "collection": "guidance",
+  "description": "Keep loading messages short and concise.",
+  "id": "progress-short-message",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "progress-indicator",
+    "content",
+    "loading"
+  ],
+  "topic": "content",
+  "type": "do"
+}

@@ -1,0 +1,242 @@
+{
+  "aliases": [],
+  "angularSelector": "goab-work-side-notification-item",
+  "api": {
+    "extractedFrom": "libs/web-components/src/components/work-side-menu/WorkSideNotificationItem.svelte",
+    "frameworks": {
+      "angular": {
+        "events": [
+          {
+            "description": "Emits when the notification item is clicked.",
+            "frameworks": [
+              "angular"
+            ],
+            "name": "onClick",
+            "type": "() => void"
+          }
+        ],
+        "props": [
+          {
+            "default": null,
+            "description": "The description text of the notification item.",
+            "name": "description",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Sets the priority level of the notification.",
+            "name": "priority",
+            "required": false,
+            "type": "GoabWorkSideNotificationPriority"
+          },
+          {
+            "default": null,
+            "description": "Indicates whether the notification is read or unread.",
+            "name": "readStatus",
+            "required": false,
+            "type": "GoabWorkSideNotificationReadStatus"
+          },
+          {
+            "default": null,
+            "description": "Sets a data-testid attribute for automated testing.",
+            "name": "testId",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "The timestamp for when the notification was created.",
+            "name": "timestamp",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "The title text of the notification item.",
+            "name": "title",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Sets the visual style of the notification item.",
+            "name": "type",
+            "required": false,
+            "type": "GoabWorkSideNotificationItemType"
+          }
+        ],
+        "slots": []
+      },
+      "react": {
+        "events": [
+          {
+            "description": "Callback fired when the notification item is clicked.",
+            "frameworks": [
+              "react"
+            ],
+            "name": "onClick",
+            "type": "() => void"
+          }
+        ],
+        "props": [
+          {
+            "default": null,
+            "description": "The body text content of the notification card.",
+            "name": "description",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "default": "normal",
+            "description": "Sets the urgency level of the notification.",
+            "name": "priority",
+            "required": false,
+            "type": "GoabWorkSideNotificationPriority"
+          },
+          {
+            "default": "unread",
+            "description": "Indicates whether the notification has been read or is unread.",
+            "name": "readStatus",
+            "required": false,
+            "type": "GoabWorkSideNotificationReadStatus"
+          },
+          {
+            "default": null,
+            "description": "Sets a data-testid attribute for automated testing.",
+            "name": "testId",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "ISO timestamp string representing when the notification occurred.",
+            "name": "timestamp",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Title text displayed in the notification card header.",
+            "name": "title",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "default",
+            "description": "Sets the visual type/style of the notification item.",
+            "name": "type",
+            "required": false,
+            "type": "GoabWorkSideNotificationItemType"
+          }
+        ],
+        "slots": []
+      },
+      "webComponents": {
+        "events": [
+          {
+            "description": "",
+            "frameworks": [
+              "webComponents"
+            ],
+            "name": "_click",
+            "type": "CustomEvent<void>"
+          },
+          {
+            "description": "",
+            "frameworks": [
+              "webComponents"
+            ],
+            "name": "_notificationItemRead",
+            "type": "CustomEvent<{ el: unknown; readStatus: unknown }>"
+          }
+        ],
+        "props": [
+          {
+            "default": "",
+            "description": "",
+            "name": "description",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "normal",
+            "description": "",
+            "name": "priority",
+            "required": false,
+            "type": "\"normal\" | \"urgent\"",
+            "typeLabel": "GoabWorkSideNotificationItemPriority",
+            "values": [
+              "normal",
+              "urgent"
+            ]
+          },
+          {
+            "default": "unread",
+            "description": "",
+            "name": "read-status",
+            "required": false,
+            "type": "\"read\" | \"unread\"",
+            "typeLabel": "GoabWorkSideNotificationItemReadStatu",
+            "values": [
+              "read",
+              "unread"
+            ]
+          },
+          {
+            "default": "",
+            "description": "",
+            "name": "testid",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "",
+            "description": "",
+            "name": "timestamp",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "",
+            "description": "",
+            "name": "title",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "default",
+            "description": "",
+            "name": "type",
+            "required": false,
+            "type": "\"default\" | \"success\" | \"critical\" | \"warning\" | \"info\"",
+            "typeLabel": "GoabWorkSideNotificationItemType",
+            "values": [
+              "default",
+              "success",
+              "critical",
+              "warning",
+              "info"
+            ]
+          }
+        ],
+        "slots": []
+      }
+    }
+  },
+  "body": "",
+  "category": "structure-and-navigation",
+  "collection": "components",
+  "description": "Individual notification card within a notification panel, with read/unread states, priority levels, and type badges.",
+  "hidden": true,
+  "id": "work-side-notification-item",
+  "name": "Notification Item",
+  "reactClassName": "GoabWorkSideNotificationItem",
+  "relatedComponents": [
+    "work-side-notification-panel"
+  ],
+  "status": "stable",
+  "subcomponent": true,
+  "tags": [],
+  "webComponentTag": "goa-work-side-notification-item"
+}

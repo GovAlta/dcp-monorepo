@@ -1,0 +1,22 @@
+{
+  "appliesTo": {
+    "components": [
+      "file-upload-input",
+      "file-upload-card"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-block direction=\"column\" gap=\"m\">\n    <goa-file-upload-input></goa-file-upload-input>\n    <goa-file-upload-card filename=\"document.pdf\" size=\"2048000\" progress=\"100\"></goa-file-upload-card>\n  </goa-block>\n</Preview>",
+  "collection": "guidance",
+  "description": "Use file upload input with file upload card for complete file upload experiences.",
+  "id": "fileupload-pair-input-card",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "file-upload",
+    "forms",
+    "components"
+  ],
+  "topic": "other",
+  "type": "do"
+}

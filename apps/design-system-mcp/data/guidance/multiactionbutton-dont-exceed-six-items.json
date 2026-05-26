@@ -1,0 +1,20 @@
+{
+  "appliesTo": {
+    "components": [
+      "multi-action-button"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview bad>\n  <goa-popover>\n    <goa-button type=\"primary\" slot=\"target\">Actions</goa-button>\n    <div>Enter result</div>\n    <div>Exit and Save</div>\n    <div>Exit without Save</div>\n    <div>Save to Draft</div>\n    <div>Exit and Export</div>\n    <div>Delete</div>\n    <div>Exit</div>\n  </goa-popover>\n</Preview>",
+  "collection": "guidance",
+  "description": "Don't exceed six menu items in a multi action button.",
+  "id": "multiactionbutton-dont-exceed-six-items",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "multi-action-button",
+    "limits"
+  ],
+  "topic": "usage",
+  "type": "dont"
+}

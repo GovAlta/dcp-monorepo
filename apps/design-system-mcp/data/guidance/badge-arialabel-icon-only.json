@@ -1,0 +1,24 @@
+{
+  "appliesTo": {
+    "components": [
+      "badge"
+    ],
+    "contexts": []
+  },
+  "body": "",
+  "collection": "guidance",
+  "description": "When using an icon-only badge, ariaLabel is required so screen readers can identify it.",
+  "id": "badge-arialabel-icon-only",
+  "relatedProps": [
+    "ariaLabel",
+    "iconType"
+  ],
+  "status": "published",
+  "tags": [
+    "badge",
+    "accessibility",
+    "icons"
+  ],
+  "topic": "screen-readers",
+  "type": "warning"
+}

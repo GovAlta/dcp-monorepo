@@ -1,0 +1,20 @@
+{
+  "appliesTo": {
+    "components": [
+      "modal"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview bad>\n  <goa-modal heading=\"Dialog title\" closable=\"true\" open=\"true\">\n    Submitting the assessment will inform the proponent.\n    <goa-button-group alignment=\"end\" slot=\"actions\">\n      <goa-button type=\"secondary\">Secondary</goa-button>\n      <goa-button type=\"primary\">Primary</goa-button>\n    </goa-button-group>\n  </goa-modal>\n</Preview>",
+  "collection": "guidance",
+  "description": "Don't provide both action buttons and a close button on the same modal.",
+  "id": "modal-dont-actions-and-close",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "modal",
+    "buttons"
+  ],
+  "topic": "interaction",
+  "type": "dont"
+}

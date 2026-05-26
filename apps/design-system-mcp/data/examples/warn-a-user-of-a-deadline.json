@@ -1,0 +1,28 @@
+{
+  "aliases": [],
+  "body": "Use a modal with important callout styling to warn users about time-sensitive deadlines that could affect their submission or action.\n\n## When to use\n\nUse this pattern when:\n\n- Users are about to take an action with a time constraint\n- Missing a deadline could have significant consequences\n- The warning requires acknowledgment before proceeding\n\n## Considerations\n\n- Be specific about the deadline (time, date, timezone)\n- Explain the consequences of missing the deadline\n- Provide a clear acknowledgment action\n- Use the \"important\" callout variant for urgency\n- Keep the message concise but informative",
+  "collection": "examples",
+  "components": [
+    "modal",
+    "button",
+    "button-group"
+  ],
+  "figmaUrl": "https://www.figma.com/design/Jpy1Ea5qglwnp1SgGnagY9/%E2%9D%96-Component-library-%7C-DDD?node-id=63353-169758",
+  "frameworks": [
+    "react",
+    "angular",
+    "web-components"
+  ],
+  "id": "warn-a-user-of-a-deadline",
+  "previewImage": "/images/examples/warn-a-user-of-a-deadline.webp",
+  "relatedExamples": [],
+  "size": "section",
+  "status": "published",
+  "tags": [
+    "modal",
+    "warning",
+    "deadline",
+    "callout"
+  ],
+  "title": "Warn a user of a deadline"
+}

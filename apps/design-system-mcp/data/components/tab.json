@@ -1,0 +1,140 @@
+{
+  "aliases": [],
+  "angularSelector": "goab-tab",
+  "api": {
+    "extractedFrom": "libs/web-components/src/components/tab/Tab.svelte",
+    "frameworks": {
+      "angular": {
+        "events": [],
+        "props": [
+          {
+            "default": null,
+            "description": "When true, disables the tab.",
+            "name": "disabled",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "default": null,
+            "description": "The text label for this tab. Can also use the heading slot for custom content.",
+            "name": "heading",
+            "required": false,
+            "type": "string | TemplateRef<any>",
+            "values": [
+              "string",
+              "TemplateRef<any>"
+            ]
+          },
+          {
+            "default": null,
+            "description": "Sets the URL slug for the tab.",
+            "name": "slug",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "slots": [
+          {
+            "description": "The text label for this tab. Can also pass React nodes for custom heading content.",
+            "name": "heading",
+            "required": false,
+            "type": "TemplateRef"
+          }
+        ]
+      },
+      "react": {
+        "events": [],
+        "props": [
+          {
+            "default": null,
+            "description": "When true, disables the tab so it cannot be selected.",
+            "name": "disabled",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "default": null,
+            "description": "The text label for this tab. Can also pass React nodes for custom heading content.",
+            "name": "heading",
+            "required": false,
+            "type": "string | React.ReactNode",
+            "values": [
+              "string",
+              "React.ReactNode"
+            ]
+          },
+          {
+            "default": null,
+            "description": "URL-friendly identifier for the tab, used for hash-based navigation.",
+            "name": "slug",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "slots": [
+          {
+            "description": "The text label for this tab. Can also pass React nodes for custom heading content.",
+            "name": "heading",
+            "required": false,
+            "type": "ReactNode"
+          }
+        ]
+      },
+      "webComponents": {
+        "events": [],
+        "props": [
+          {
+            "default": "false",
+            "description": "",
+            "name": "disabled",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "default": "",
+            "description": "The text label for this tab. Can also use the heading slot for custom content.",
+            "name": "heading",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "false",
+            "description": "Whether this tab is currently selected/active.",
+            "name": "open",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "default": "",
+            "description": "",
+            "name": "slug",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "slots": [
+          {
+            "description": "The text label for this tab. Can also pass React nodes for custom heading content.",
+            "name": "heading",
+            "required": false
+          }
+        ]
+      }
+    }
+  },
+  "body": "",
+  "category": "structure-and-navigation",
+  "collection": "components",
+  "description": "Individual tab within a tabs component.",
+  "hidden": true,
+  "id": "tab",
+  "name": "Tab",
+  "reactClassName": "GoabTab",
+  "relatedComponents": [
+    "tabs"
+  ],
+  "status": "stable",
+  "subcomponent": true,
+  "tags": [],
+  "webComponentTag": "goa-tab"
+}

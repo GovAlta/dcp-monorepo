@@ -1,0 +1,352 @@
+{
+  "aliases": [],
+  "angularSelector": "goab-popover",
+  "api": {
+    "extractedFrom": "libs/web-components/src/components/popover/Popover.svelte",
+    "frameworks": {
+      "angular": {
+        "events": [],
+        "props": [
+          {
+            "default": "320px",
+            "description": "Sets the maximum width of the popover container.",
+            "name": "maxWidth",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Sets the bottom margin spacing token.",
+            "name": "mb",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Sets the minimum width of the popover container.",
+            "name": "minWidth",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Sets the left margin spacing token.",
+            "name": "ml",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Sets the right margin spacing token.",
+            "name": "mr",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Sets the top margin spacing token.",
+            "name": "mt",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": "true",
+            "description": "Sets if the popover has padding. Use false when content needs to be flush with boundaries.",
+            "name": "padded",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "default": null,
+            "description": "Provides control to where the popover content is positioned.",
+            "name": "position",
+            "required": false,
+            "type": "GoabPopoverPosition"
+          },
+          {
+            "default": null,
+            "description": "Sets the data-testid attribute for automated testing.",
+            "name": "testId",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "slots": [
+          {
+            "description": "Sets the element used as the popover trigger.",
+            "name": "target",
+            "required": true,
+            "type": "TemplateRef"
+          }
+        ]
+      },
+      "react": {
+        "events": [],
+        "props": [
+          {
+            "default": "320px",
+            "description": "Sets the maximum width of the popover container.",
+            "name": "maxWidth",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "",
+            "name": "mb",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Sets the minimum width of the popover container.",
+            "name": "minWidth",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "",
+            "name": "ml",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "",
+            "name": "mr",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "",
+            "name": "mt",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": "true",
+            "description": "Sets if the popover has padding. Use false when content needs to be flush with boundaries.",
+            "name": "padded",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "default": "auto",
+            "description": "Provides control to where the popover content is positioned.",
+            "name": "position",
+            "required": false,
+            "type": "GoabPopoverPosition"
+          },
+          {
+            "default": null,
+            "description": "Sets a data-testid attribute for automated testing.",
+            "name": "testId",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "slots": [
+          {
+            "description": "Sets the element used as the popover trigger.",
+            "name": "target",
+            "required": true,
+            "type": "ReactNode"
+          }
+        ]
+      },
+      "webComponents": {
+        "events": [
+          {
+            "description": "",
+            "frameworks": [
+              "webComponents"
+            ],
+            "name": "_close",
+            "type": "CustomEvent<void>"
+          },
+          {
+            "description": "",
+            "frameworks": [
+              "webComponents"
+            ],
+            "name": "_open",
+            "type": "CustomEvent<void>"
+          }
+        ],
+        "props": [
+          {
+            "default": "var(--goa-border-radius-m)",
+            "description": "Border radius of the popover window.",
+            "name": "borderradius",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "false",
+            "description": "Disables the popover interaction. Used by parent components like Dropdown.",
+            "name": "disabled",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "default": "var(--goa-border-width-l)",
+            "description": "Width of the focus outline border.",
+            "name": "focusborderwidth",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "wrap-content",
+            "description": "Controls the height behavior. 'full' stretches to parent height, 'wrap-content' fits content.",
+            "name": "height",
+            "required": false,
+            "type": "\"full\" | \"wrap-content\"",
+            "values": [
+              "full",
+              "wrap-content"
+            ]
+          },
+          {
+            "default": "",
+            "description": "Additional horizontal offset added to the popover's position.",
+            "name": "hoffset",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "320px",
+            "description": "Sets the maximum width of the popover container.",
+            "name": "maxwidth",
+            "required": false,
+            "type": "string | \"none\"",
+            "values": [
+              "string",
+              "none"
+            ]
+          },
+          {
+            "default": null,
+            "description": "Bottom margin.",
+            "name": "mb",
+            "required": false,
+            "type": "Spacing",
+            "typeLabel": "Spacing"
+          },
+          {
+            "default": "",
+            "description": "Sets the minimum width of the popover container.",
+            "name": "minwidth",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Left margin.",
+            "name": "ml",
+            "required": false,
+            "type": "Spacing",
+            "typeLabel": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Right margin.",
+            "name": "mr",
+            "required": false,
+            "type": "Spacing",
+            "typeLabel": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Top margin.",
+            "name": "mt",
+            "required": false,
+            "type": "Spacing",
+            "typeLabel": "Spacing"
+          },
+          {
+            "default": "false",
+            "description": "Controls the open state of the popover programmatically. Used by Dropdown, AppHeaderMenu.",
+            "name": "open",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "default": "true",
+            "description": "Sets if the popover has padding. Use false when content needs to be flush with boundaries.",
+            "name": "padded",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "default": "auto",
+            "description": "Provides control to where the popover content is positioned.",
+            "name": "position",
+            "required": false,
+            "type": "\"above\" | \"below\" | \"right\" | \"auto\"",
+            "values": [
+              "above",
+              "below",
+              "right",
+              "auto"
+            ]
+          },
+          {
+            "default": "0",
+            "description": "Sets the tabindex. Use -1 to skip tabbing when a parent handles keyboard events.",
+            "name": "tabindex",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "default": "popover",
+            "description": "Sets a data-testid attribute for automated testing.",
+            "name": "testid",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "",
+            "description": "Additional vertical offset added to the popover's position.",
+            "name": "voffset",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "",
+            "description": "Sets a fixed width for the popover container.",
+            "name": "width",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "slots": [
+          {
+            "description": "Sets the element used as the popover trigger.",
+            "name": "target",
+            "required": true
+          }
+        ]
+      }
+    }
+  },
+  "body": "",
+  "category": "content-layout",
+  "collection": "components",
+  "description": "A small overlay that opens on demand, used in other components.",
+  "figmaUrl": "https://www.figma.com/design/Jpy1Ea5qglwnp1SgGnagY9/Component-library?node-id=32486-707969",
+  "id": "popover",
+  "name": "Popover",
+  "reactClassName": "GoabPopover",
+  "relatedComponents": [
+    "tooltip",
+    "menu-button"
+  ],
+  "status": "stable",
+  "tags": [
+    "content layout",
+    "show more information"
+  ],
+  "webComponentTag": "goa-popover"
+}

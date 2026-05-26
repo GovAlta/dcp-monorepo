@@ -1,0 +1,20 @@
+{
+  "appliesTo": {
+    "components": [
+      "tabs"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview bad>\n  <goa-tabs>\n    <goa-tab heading=\"Justice and ot...\">Content</goa-tab>\n    <goa-tab heading=\"Completed\">Content</goa-tab>\n    <goa-tab heading=\"Archived\">Content</goa-tab>\n  </goa-tabs>\n</Preview>",
+  "collection": "guidance",
+  "description": "Don't truncate tab labels - use short labels instead.",
+  "id": "tabs-dont-truncate-labels",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "tabs",
+    "labels"
+  ],
+  "topic": "content",
+  "type": "dont"
+}

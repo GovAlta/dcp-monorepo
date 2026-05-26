@@ -1,0 +1,24 @@
+{
+  "appliesTo": {
+    "components": [
+      "button"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-button type=\"tertiary\" leadingIcon=\"add\">Add item</goa-button>\n</Preview>",
+  "collection": "guidance",
+  "description": "Use icons with a clear visual association to the action.",
+  "id": "button-icon-clear-association",
+  "relatedProps": [
+    "leadingIcon",
+    "trailingIcon"
+  ],
+  "status": "published",
+  "tags": [
+    "button",
+    "icons",
+    "clarity"
+  ],
+  "topic": "icons",
+  "type": "do"
+}

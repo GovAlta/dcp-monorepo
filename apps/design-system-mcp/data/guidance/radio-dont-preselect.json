@@ -1,0 +1,20 @@
+{
+  "appliesTo": {
+    "components": [
+      "radio-group"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview bad>\n  <goa-radio-group name=\"example\" value=\"yes\">\n    <goa-radio-item value=\"yes\" label=\"Yes\"></goa-radio-item>\n    <goa-radio-item value=\"no\" label=\"No\"></goa-radio-item>\n  </goa-radio-group>\n</Preview>",
+  "collection": "guidance",
+  "description": "Don't preselect radio items - users might miss the question or submit the wrong answer.",
+  "id": "radio-dont-preselect",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "radio",
+    "defaults"
+  ],
+  "topic": "interaction",
+  "type": "dont"
+}

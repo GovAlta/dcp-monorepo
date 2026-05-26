@@ -1,0 +1,21 @@
+{
+  "appliesTo": {
+    "components": [
+      "tooltip"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-form-item label=\"Password\">\n    <goa-block alignment=\"center\" gap=\"xs\">\n      <goa-input name=\"password\" type=\"password\" width=\"200px\"></goa-input>\n      <goa-tooltip content=\"Must be at least 8 characters with one number\">\n        <goa-icon type=\"information-circle\"></goa-icon>\n      </goa-tooltip>\n    </goa-block>\n  </goa-form-item>\n</Preview>",
+  "collection": "guidance",
+  "description": "Don't use tooltips to communicate essential information such as required field indicators, error messages, critical instructions, or information needed to complete a task.",
+  "id": "no-essential-info-in-tooltips",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "tooltip",
+    "accessibility",
+    "usability"
+  ],
+  "topic": "other",
+  "type": "dont"
+}

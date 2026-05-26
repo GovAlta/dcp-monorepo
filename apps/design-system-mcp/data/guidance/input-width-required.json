@@ -1,0 +1,24 @@
+{
+  "appliesTo": {
+    "components": [
+      "input",
+      "text-area"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-block direction=\"column\" gap=\"m\">\n    <goa-form-item label=\"Postal code\">\n      <goa-input name=\"postalCode\" width=\"88px\"></goa-input>\n    </goa-form-item>\n    <goa-form-item label=\"Full name\">\n      <goa-input name=\"name\" width=\"100%\"></goa-input>\n    </goa-form-item>\n  </goa-block>\n</Preview>\n\n**Known input length:** Use fixed-width inputs for content with a specific length, such as postal code (7 characters) or year (4 characters).\n\n**Unknown input length:** If you don't know how many characters the user will need (like their name), make your text input 100% of the container.",
+  "collection": "guidance",
+  "description": "Size text inputs based on the expected content length to help users understand what information is needed.",
+  "id": "input-width-required",
+  "relatedProps": [
+    "width"
+  ],
+  "status": "published",
+  "tags": [
+    "input",
+    "forms",
+    "layout"
+  ],
+  "topic": "sizing",
+  "type": "do"
+}

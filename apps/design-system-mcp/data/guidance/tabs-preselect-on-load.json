@@ -1,0 +1,20 @@
+{
+  "appliesTo": {
+    "components": [
+      "tabs"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-tabs>\n    <goa-tab heading=\"Open\">Open content</goa-tab>\n    <goa-tab heading=\"Completed\">Completed content</goa-tab>\n    <goa-tab heading=\"Archived\">Archived content</goa-tab>\n  </goa-tabs>\n</Preview>",
+  "collection": "guidance",
+  "description": "Always have one of the tabs pre-selected on page load.",
+  "id": "tabs-preselect-on-load",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "tabs",
+    "defaults"
+  ],
+  "topic": "interaction",
+  "type": "do"
+}

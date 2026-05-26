@@ -1,0 +1,20 @@
+{
+  "appliesTo": {
+    "components": [
+      "pagination"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-pagination page=\"1\" itemcount=\"60\" perpagecount=\"10\"></goa-pagination>\n</Preview>",
+  "collection": "guidance",
+  "description": "Disable the Previous button on the first page, and the Next button on the last page.",
+  "id": "pagination-disable-at-bounds",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "pagination",
+    "buttons"
+  ],
+  "topic": "interaction",
+  "type": "do"
+}

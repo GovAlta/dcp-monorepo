@@ -1,0 +1,26 @@
+{
+  "aliases": [],
+  "body": "Create a hero banner with a call-to-action button to guide users toward the primary task on a landing page.\n\n## When to use\n\nUse this pattern when:\n\n- Creating a landing page for a service\n- You need a prominent call-to-action\n- Introducing users to a service or feature\n- Building a start page for public forms\n\n## Considerations\n\n- Use the \"start\" button type for primary actions\n- Keep the banner text concise and action-oriented\n- The actions slot positions the button appropriately\n- Ensure the heading clearly describes the service purpose",
+  "collection": "examples",
+  "components": [
+    "hero-banner",
+    "button"
+  ],
+  "frameworks": [
+    "react",
+    "angular",
+    "web-components"
+  ],
+  "id": "hero-banner-with-actions",
+  "previewImage": "/images/examples/hero-banner-with-actions.webp",
+  "relatedExamples": [],
+  "size": "section",
+  "status": "published",
+  "tags": [
+    "hero",
+    "banner",
+    "cta",
+    "landing"
+  ],
+  "title": "Hero banner with actions"
+}

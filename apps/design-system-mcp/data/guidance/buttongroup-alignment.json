@@ -1,0 +1,22 @@
+{
+  "appliesTo": {
+    "components": [
+      "button-group",
+      "button",
+      "icon-button"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-button-group>\n    <goa-button type=\"primary\">Submit</goa-button>\n    <goa-button type=\"tertiary\">Cancel</goa-button>\n  </goa-button-group>\n</Preview>",
+  "collection": "guidance",
+  "description": "Use a button group when putting multiple buttons together.",
+  "id": "buttongroup-alignment",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "button-group",
+    "layout"
+  ],
+  "topic": "positioning",
+  "type": "do"
+}

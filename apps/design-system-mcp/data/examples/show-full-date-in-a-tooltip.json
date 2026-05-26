@@ -1,0 +1,26 @@
+{
+  "aliases": [],
+  "body": "Display relative time (like \"4 hours ago\") while providing the full date and time on hover via tooltip for users who need exact timestamps.\n\n## When to use\n\nUse this pattern when:\n\n- Displaying relative time like \"4 hours ago\" or \"2 days ago\"\n- Users may need access to the exact date and time\n- Space is limited for full date display\n- Context cards or comments show timestamps\n\n## Considerations\n\n- Keep the relative time format consistent\n- Include both date and time in the tooltip\n- Style the hoverable text subtly (secondary color, smaller font)\n- Ensure tooltip is keyboard accessible",
+  "collection": "examples",
+  "components": [
+    "tooltip",
+    "container"
+  ],
+  "frameworks": [
+    "react",
+    "angular",
+    "web-components"
+  ],
+  "id": "show-full-date-in-a-tooltip",
+  "previewImage": "/images/examples/show-full-date-in-a-tooltip.webp",
+  "relatedExamples": [],
+  "size": "interaction",
+  "status": "published",
+  "tags": [
+    "tooltip",
+    "date",
+    "relative-time",
+    "hover"
+  ],
+  "title": "Show full date in a tooltip"
+}

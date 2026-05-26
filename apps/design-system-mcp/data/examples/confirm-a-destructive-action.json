@@ -1,0 +1,28 @@
+{
+  "aliases": [],
+  "body": "Confirm a destructive action like deletion to prevent accidental data loss.\n\n## When to use\n\nUse this pattern when:\n\n- A user is about to delete data permanently\n- The action cannot be undone\n- You need to prevent accidental destructive actions\n- Data loss would have significant impact\n\n## Considerations\n\n- Use the destructive button variant to emphasize the danger\n- Clearly state that the action cannot be undone\n- Provide a cancel option that's easy to access\n- Use a tertiary button with a trash icon for the initial action",
+  "collection": "examples",
+  "components": [
+    "modal",
+    "button",
+    "button-group"
+  ],
+  "figmaUrl": "https://www.figma.com/design/Jpy1Ea5qglwnp1SgGnagY9/%E2%9D%96-Component-library-%7C-DDD?node-id=63353-169783",
+  "frameworks": [
+    "react",
+    "angular",
+    "web-components"
+  ],
+  "id": "confirm-a-destructive-action",
+  "previewImage": "/images/examples/confirm-a-destructive-action.webp",
+  "relatedExamples": [],
+  "size": "interaction",
+  "status": "published",
+  "tags": [
+    "modal",
+    "confirmation",
+    "delete",
+    "destructive"
+  ],
+  "title": "Confirm a destructive action"
+}

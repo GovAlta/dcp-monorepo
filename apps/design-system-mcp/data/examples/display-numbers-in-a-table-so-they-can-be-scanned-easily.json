@@ -1,0 +1,27 @@
+{
+  "aliases": [],
+  "body": "Right-align numeric columns in tables to make them easier to scan and compare.\n\n## When to use\n\nUse this pattern when:\n\n- Displaying numeric data in table columns (IDs, amounts, counts)\n- Users need to quickly scan and compare values\n- The table contains a mix of text and numeric data\n\n## Considerations\n\n- Use the `goa-table-number-header` class on `<th>` elements for numeric column headers\n- Use the `goa-table-number-column` class on `<td>` elements for numeric data cells\n- Right-alignment helps users visually compare magnitudes of numbers\n- Consider consistent decimal formatting for financial data",
+  "collection": "examples",
+  "components": [
+    "table"
+  ],
+  "frameworks": [
+    "react",
+    "angular",
+    "web-components"
+  ],
+  "id": "display-numbers-in-a-table-so-they-can-be-scanned-easily",
+  "previewImage": "/images/examples/display-numbers-in-a-table-so-they-can-be-scanned-easily.webp",
+  "productType": "workspace",
+  "relatedExamples": [],
+  "size": "section",
+  "status": "published",
+  "tags": [
+    "table",
+    "numbers",
+    "data",
+    "alignment",
+    "scanning"
+  ],
+  "title": "Display numbers in a table so they can be scanned easily"
+}

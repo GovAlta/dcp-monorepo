@@ -1,0 +1,22 @@
+{
+  "appliesTo": {
+    "components": [
+      "circular-progress"
+    ],
+    "contexts": []
+  },
+  "body": "",
+  "collection": "guidance",
+  "description": "CircularProgress is hidden by default. Always set visible={true} to show it.",
+  "id": "circular-progress-hidden-by-default",
+  "relatedProps": [
+    "visible"
+  ],
+  "status": "published",
+  "tags": [
+    "circular-progress",
+    "loading"
+  ],
+  "topic": "states",
+  "type": "warning"
+}

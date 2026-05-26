@@ -1,0 +1,34 @@
+{
+  "aliases": [],
+  "body": "A side-by-side layout for workers to review case details while taking an action, commonly used in case management and approval workflows.\n\n## When to use\n\nUse this pattern when:\n\n- Workers need to review information while making decisions\n- Processing applications, requests, or case files\n- The decision requires context from existing case data\n- Actions like approve, deny, or escalate are needed\n\n## Considerations\n\n- Place read-only review information on the left\n- Place action form controls on the right\n- Use containers to group related information\n- Provide clear labels for all case details\n- Include reason fields when denying requests\n- Consider responsive behavior for smaller screens",
+  "collection": "examples",
+  "components": [
+    "container",
+    "grid",
+    "block",
+    "form-item",
+    "radio-group",
+    "dropdown",
+    "text-area",
+    "button"
+  ],
+  "frameworks": [
+    "react",
+    "angular",
+    "web-components"
+  ],
+  "id": "review-and-action",
+  "previewImage": "/images/examples/review-and-action.webp",
+  "productType": "workspace",
+  "relatedExamples": [],
+  "size": "section",
+  "status": "published",
+  "tags": [
+    "review",
+    "action",
+    "container",
+    "case-management",
+    "worker"
+  ],
+  "title": "Review and action"
+}

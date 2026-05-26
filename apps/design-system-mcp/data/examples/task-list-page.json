@@ -1,0 +1,24 @@
+{
+  "aliases": [],
+  "body": "## When to use a task list page\n\nUse a task list page to provide a structure for multiple steps in a service. Show a task list page when a citizen begins a service, and when they return to the service.\n\nWhen using a task list, group related actions into tasks and show the status of the tasks.\n\n## How to define a task\n\nThe size and complexity of a task is determined by the service and content. A task can be defined as small as a single action, such as \"sign a document\" or \"upload a file\", or it can be as big as an entire section of a form with multiple question pages and a review page.\n\nUse tasks to break down the steps in a service in an understandable way.\n\n## Show status of tasks\n\nMake it clear which tasks a user has completed and which they still need to complete.\n\n### Suggested statuses\n\n- **Completed** — success\n- **In progress** — dark grey\n- **Not started** — information\n- **Cannot start yet** — light grey\n\nInclude a summary above the task list to say how many tasks have been completed. This also makes it clearer to the user that there are still tasks left to complete.\n\n### How is a task list different from a stepper?\n\n**Stepper:**\n\n- a visual navigation within a form\n- shown at the top of every page in a form\n- scope: sections of a form\n\n**Task list:**\n\n- can be used to outline more than just sections of a form\n- not shown on every page\n\n### Completing tasks in order\n\nWhen possible, allow users to complete tasks in any order. This will help them plan their time and complete sections as and when they can.\n\n## Anatomy\n\n1. **Page title** — heading-large\n2. **Status of completed sections** — `goa-callout`\n3. **Section** — task-list-section\n4. **Section heading** — heading-medium\n5. **Task** — `goa-table`",
+  "collection": "examples",
+  "components": [
+    "table",
+    "badge",
+    "callout"
+  ],
+  "description": "A page that provides structure for multiple steps in a service. Use a task list to outline the entire process and show the status of each task as users move through it.",
+  "id": "task-list-page",
+  "previewImage": "/images/examples/task-list-page.png",
+  "productType": "public-form",
+  "relatedExamples": [],
+  "size": "page",
+  "status": "published",
+  "tags": [
+    "page",
+    "task-list",
+    "progress",
+    "form"
+  ],
+  "title": "Task list page"
+}

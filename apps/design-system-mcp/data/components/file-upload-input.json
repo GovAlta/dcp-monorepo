@@ -1,0 +1,214 @@
+{
+  "aliases": [],
+  "angularSelector": "goab-file-upload-input",
+  "api": {
+    "extractedFrom": "libs/web-components/src/components/file-upload-input/FileUploadInput.svelte",
+    "frameworks": {
+      "angular": {
+        "events": [
+          {
+            "description": "Emits when a file is selected. Emits the selected file details.",
+            "frameworks": [
+              "angular"
+            ],
+            "name": "onSelectFile",
+            "type": "(event: GoabFileUploadInputOnSelectFileDetail) => void"
+          }
+        ],
+        "props": [
+          {
+            "default": null,
+            "description": "Accepted file types as a comma-separated list of MIME types or file extensions (e.g., \"image/*,.pdf\").",
+            "name": "accept",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "",
+            "description": "Sets the id attribute on the file upload input element.",
+            "name": "id",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "5MB",
+            "description": "Maximum file size with unit (e.g., \"5MB\", \"100KB\", \"1GB\"). Files exceeding this will be rejected.",
+            "name": "maxFileSize",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Sets the bottom margin spacing token.",
+            "name": "mb",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Sets the left margin spacing token.",
+            "name": "ml",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Sets the right margin spacing token.",
+            "name": "mr",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Sets the top margin spacing token.",
+            "name": "mt",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Sets the data-testid attribute for automated testing.",
+            "name": "testId",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "dragdrop",
+            "description": "The input display variant. \"dragdrop\" shows a drag-and-drop area, \"button\" shows a simple button.",
+            "name": "variant",
+            "required": false,
+            "type": "GoabFileUploadInputVariant"
+          }
+        ],
+        "slots": []
+      },
+      "react": {
+        "events": [
+          {
+            "description": "Callback fired when a valid file is selected or dropped.",
+            "frameworks": [
+              "react"
+            ],
+            "name": "onSelectFile",
+            "type": "(detail: GoabFileUploadInputOnSelectFileDetail) => void"
+          }
+        ],
+        "props": [
+          {
+            "default": null,
+            "description": "Accepted file types as a comma-separated list of MIME types or file extensions (e.g., \"image/*,.pdf\").",
+            "name": "accept",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "5MB",
+            "description": "Maximum file size with unit (e.g., \"5MB\", \"100KB\", \"1GB\"). Files exceeding this will be rejected.",
+            "name": "maxFileSize",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Sets a data-testid attribute for automated testing.",
+            "name": "testId",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "dragdrop",
+            "description": "The input display variant. \"dragdrop\" shows a drag-and-drop area, \"button\" shows a simple button.",
+            "name": "variant",
+            "required": false,
+            "type": "GoabFileUploadInputVariant"
+          }
+        ],
+        "slots": []
+      },
+      "webComponents": {
+        "events": [
+          {
+            "description": "",
+            "frameworks": [
+              "webComponents"
+            ],
+            "name": "_selectFile",
+            "type": "CustomEvent<{ file: File; event: Event }>"
+          }
+        ],
+        "props": [
+          {
+            "default": "*",
+            "description": "Accepted file types as a comma-separated list of MIME types or file extensions (e.g., \"image/*,.pdf\").",
+            "name": "accept",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "5MB",
+            "description": "Maximum file size with unit (e.g., \"5MB\", \"100KB\", \"1GB\"). Defaults to 5MB. Files exceeding this will be rejected.",
+            "name": "maxfilesize",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "",
+            "description": "Sets a data-testid attribute for automated testing.",
+            "name": "testid",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "dragdrop",
+            "description": "The input display variant. \"dragdrop\" shows a drag-and-drop area, \"button\" shows a simple button.",
+            "name": "variant",
+            "required": false,
+            "type": "\"dragdrop\" | \"button\"",
+            "values": [
+              "dragdrop",
+              "button"
+            ]
+          },
+          {
+            "default": "1",
+            "description": "Design system version for styling.",
+            "name": "version",
+            "required": false,
+            "type": "\"1\" | \"2\"",
+            "values": [
+              "1",
+              "2"
+            ]
+          }
+        ],
+        "slots": []
+      }
+    }
+  },
+  "body": "",
+  "category": "inputs-and-actions",
+  "collection": "components",
+  "description": "Help users select and upload a file.",
+  "figmaUrl": "https://www.figma.com/design/Jpy1Ea5qglwnp1SgGnagY9/Component-library?node-id=14458-398119",
+  "id": "file-upload-input",
+  "name": "File uploader",
+  "reactClassName": "GoabFileUploadInput",
+  "relatedComponents": [
+    "file-upload-card",
+    "form-item"
+  ],
+  "relatedGuidance": [
+    "fileupload-pair-input-card",
+    "fileuploader-helper-text",
+    "fileuploader-show-max-size",
+    "validate-files-before-upload"
+  ],
+  "status": "stable",
+  "tags": [
+    "drag and drop",
+    "file upload",
+    "inputs and actions",
+    "uploader"
+  ],
+  "webComponentTag": "goa-file-upload-input"
+}

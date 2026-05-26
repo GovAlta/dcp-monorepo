@@ -1,0 +1,21 @@
+{
+  "appliesTo": {
+    "components": [
+      "badge"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-badge type=\"information\" content=\"Online\"></goa-badge>\n</Preview>",
+  "collection": "guidance",
+  "description": "Don't use interactive colours. These are reserved for links, buttons, and other interactive elements.",
+  "id": "badge-dont-use-interactive-colours",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "badge",
+    "colours",
+    "accessibility"
+  ],
+  "topic": "types",
+  "type": "dont"
+}

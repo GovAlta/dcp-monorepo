@@ -1,0 +1,23 @@
+{
+  "appliesTo": {
+    "components": [
+      "input"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-block direction=\"column\" gap=\"m\">\n    <goa-form-item label=\"Email address\">\n      <goa-input name=\"email\" type=\"email\" width=\"100%\"></goa-input>\n    </goa-form-item>\n    <goa-form-item label=\"Phone number\">\n      <goa-input name=\"phone\" type=\"tel\" width=\"100%\"></goa-input>\n    </goa-form-item>\n    <goa-form-item label=\"Password\">\n      <goa-input name=\"password\" type=\"password\" width=\"100%\"></goa-input>\n    </goa-form-item>\n  </goa-block>\n</Preview>",
+  "collection": "guidance",
+  "description": "Use the appropriate input type for your context to give a better experience.",
+  "id": "input-appropriate-type",
+  "relatedProps": [
+    "type"
+  ],
+  "status": "published",
+  "tags": [
+    "input",
+    "accessibility",
+    "mobile"
+  ],
+  "topic": "types",
+  "type": "do"
+}

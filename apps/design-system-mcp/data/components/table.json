@@ -1,0 +1,318 @@
+{
+  "aliases": [],
+  "angularSelector": "goab-table",
+  "api": {
+    "extractedFrom": "libs/web-components/src/components/table/Table.svelte",
+    "frameworks": {
+      "angular": {
+        "events": [
+          {
+            "description": "Emits when multi-column sorting changes. Emits an array of sort entries as GoabTableOnMultiSortDetail.",
+            "frameworks": [
+              "angular"
+            ],
+            "name": "onMultiSort",
+            "type": "(event: GoabTableOnMultiSortDetail) => void"
+          },
+          {
+            "description": "Emits when a table column is sorted. Emits the sort column and direction as GoabTableOnSortDetail.",
+            "frameworks": [
+              "angular"
+            ],
+            "name": "onSort",
+            "type": "(event: GoabTableOnSortDetail) => void"
+          }
+        ],
+        "props": [
+          {
+            "default": null,
+            "description": "Sets the bottom margin spacing token.",
+            "name": "mb",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Sets the left margin spacing token.",
+            "name": "ml",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Sets the right margin spacing token.",
+            "name": "mr",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Sets the top margin spacing token.",
+            "name": "mt",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Sets sort mode: \"single\" allows one column, \"multi\" allows up to 2 columns.",
+            "name": "sortMode",
+            "required": false,
+            "type": "GoabTableSortMode"
+          },
+          {
+            "default": null,
+            "description": "When true, alternates row background colors for improved readability.",
+            "name": "striped",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "default": null,
+            "description": "Sets the data-testid attribute for automated testing.",
+            "name": "testId",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": null,
+            "description": "Sets a relaxed variant of the table with more vertical padding for the cells.",
+            "name": "variant",
+            "required": false,
+            "type": "GoabTableVariant"
+          },
+          {
+            "default": null,
+            "description": "Width of the table. By default it will fit the enclosed content.",
+            "name": "width",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "slots": []
+      },
+      "react": {
+        "events": [
+          {
+            "description": "Callback fired when multi-column sorting changes.",
+            "frameworks": [
+              "react"
+            ],
+            "name": "onMultiSort",
+            "type": "(detail: GoabTableOnMultiSortDetail) => void"
+          },
+          {
+            "description": "Callback fired when a single-column sort header is clicked.",
+            "frameworks": [
+              "react"
+            ],
+            "name": "onSort",
+            "type": "(detail: GoabTableOnSortDetail) => void"
+          }
+        ],
+        "props": [
+          {
+            "default": null,
+            "description": "",
+            "name": "mb",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "",
+            "name": "ml",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "",
+            "name": "mr",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "",
+            "name": "mt",
+            "required": false,
+            "type": "Spacing"
+          },
+          {
+            "default": "single",
+            "description": "Sort mode: \"single\" allows one column, \"multi\" allows up to 2 columns.",
+            "name": "sortMode",
+            "required": false,
+            "type": "GoabTableSortMode"
+          },
+          {
+            "default": null,
+            "description": "When true, alternates row background colors for improved readability.",
+            "name": "striped",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "default": null,
+            "description": "Sets a data-testid attribute for automated testing.",
+            "name": "testId",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "normal",
+            "description": "A relaxed variant of the table with more vertical padding for the cells.",
+            "name": "variant",
+            "required": false,
+            "type": "GoabTableVariant"
+          },
+          {
+            "default": null,
+            "description": "Width of the table. By default it will fit the enclosed content.",
+            "name": "width",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "slots": []
+      },
+      "webComponents": {
+        "events": [
+          {
+            "description": "",
+            "frameworks": [
+              "webComponents"
+            ],
+            "name": "_multisort",
+            "type": "CustomEvent<{ sorts: { column: string; direction: \"asc\" | \"desc\" }[] }>"
+          },
+          {
+            "description": "",
+            "frameworks": [
+              "webComponents"
+            ],
+            "name": "_sort",
+            "type": "CustomEvent<{ sortBy: string; sortDir: number }>"
+          }
+        ],
+        "props": [
+          {
+            "default": null,
+            "description": "Bottom margin.",
+            "name": "mb",
+            "required": false,
+            "type": "Spacing",
+            "typeLabel": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Left margin.",
+            "name": "ml",
+            "required": false,
+            "type": "Spacing",
+            "typeLabel": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Right margin.",
+            "name": "mr",
+            "required": false,
+            "type": "Spacing",
+            "typeLabel": "Spacing"
+          },
+          {
+            "default": null,
+            "description": "Top margin.",
+            "name": "mt",
+            "required": false,
+            "type": "Spacing",
+            "typeLabel": "Spacing"
+          },
+          {
+            "default": "single",
+            "description": "Sort mode: \"single\" allows one column, \"multi\" allows up to 2 columns.",
+            "name": "sort-mode",
+            "required": false,
+            "type": "\"single\" | \"multi\"",
+            "typeLabel": "GoabTableSortMode",
+            "values": [
+              "single",
+              "multi"
+            ]
+          },
+          {
+            "default": "false",
+            "description": "When true, alternates row background colors for improved readability.",
+            "name": "striped",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "default": "",
+            "description": "Sets a data-testid attribute for automated testing.",
+            "name": "testid",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "normal",
+            "description": "A relaxed variant of the table with more vertical padding for the cells.",
+            "name": "variant",
+            "required": false,
+            "type": "\"normal\" | \"relaxed\"",
+            "typeLabel": "GoabTableVariant",
+            "values": [
+              "normal",
+              "relaxed"
+            ]
+          },
+          {
+            "default": "1",
+            "description": "Design system version for styling.",
+            "name": "version",
+            "required": false,
+            "type": "\"1\" | \"2\"",
+            "typeLabel": "GoabTableVersionType",
+            "values": [
+              "1",
+              "2"
+            ]
+          },
+          {
+            "default": "",
+            "description": "Width of the table. By default it will fit the enclosed content.",
+            "name": "width",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "slots": []
+      }
+    }
+  },
+  "body": "",
+  "category": "content-layout",
+  "collection": "components",
+  "description": "A set of structured data that is easy for a user to scan, examine, and compare.",
+  "figmaUrl": "https://www.figma.com/design/Jpy1Ea5qglwnp1SgGnagY9/Component-library?node-id=27343-613386",
+  "id": "table",
+  "name": "Table",
+  "reactClassName": "GoabTable",
+  "relatedComponents": [
+    "data-grid",
+    "pagination",
+    "table-sort-header"
+  ],
+  "relatedGuidance": [
+    "table-relaxed-for-long-content",
+    "table-semantic-structure"
+  ],
+  "status": "stable",
+  "tags": [
+    "data table",
+    "content layout",
+    "interactive table",
+    "sortable table"
+  ],
+  "webComponentTag": "goa-table"
+}

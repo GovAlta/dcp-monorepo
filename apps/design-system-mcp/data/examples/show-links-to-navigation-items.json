@@ -1,0 +1,27 @@
+{
+  "aliases": [],
+  "body": "Use the app footer to display comprehensive navigation links organized into sections, along with meta links for common utilities like privacy and accessibility.\n\n## When to use\n\nUse this pattern when:\n\n- Building a full-featured government service\n- Users need access to site-wide navigation in the footer\n- Meta links (privacy, accessibility, etc.) are required\n- Organizing footer links into logical categories helps navigation\n\n## Considerations\n\n- Group related links in the nav section\n- Keep meta section for utility links (privacy, accessibility, contact)\n- Control column layout with maxColumnCount prop\n- Ensure all links are properly labeled and functional",
+  "collection": "examples",
+  "components": [
+    "footer",
+    "footer-nav-section",
+    "footer-meta-section"
+  ],
+  "frameworks": [
+    "react",
+    "angular",
+    "web-components"
+  ],
+  "id": "show-links-to-navigation-items",
+  "previewImage": "/images/examples/show-links-to-navigation-items.webp",
+  "relatedExamples": [],
+  "size": "section",
+  "status": "published",
+  "tags": [
+    "footer",
+    "navigation",
+    "links",
+    "sitemap"
+  ],
+  "title": "Show links to navigation items"
+}

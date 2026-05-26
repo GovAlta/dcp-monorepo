@@ -1,0 +1,22 @@
+{
+  "appliesTo": {
+    "components": [
+      "link",
+      "button"
+    ],
+    "contexts": []
+  },
+  "body": "",
+  "collection": "guidance",
+  "description": "Use Link for navigation to other pages. Use Button for actions that change state or trigger functionality.",
+  "id": "link-vs-button",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "link",
+    "button",
+    "navigation"
+  ],
+  "topic": "other",
+  "type": "tip"
+}

@@ -1,0 +1,27 @@
+{
+  "accessibilityNotes": "When using icons in buttons, the button text provides the accessible name.\nThe icon is decorative and should be hidden from screen readers with aria-hidden.",
+  "aliases": [],
+  "body": "Shows how to add leading or trailing icons to buttons for enhanced visual communication.\n\n## Use cases\n\n- Back navigation buttons with arrow icon\n- Add buttons with plus icon\n- Download buttons with download icon\n- External link buttons with external icon\n\n## Considerations\n\n- Keep icon and text semantically aligned\n- Don't use icons just for decoration\n- Leading icons for actions that \"go back\" or \"add\"\n- Trailing icons for actions that \"go forward\" or \"external\"",
+  "collection": "examples",
+  "components": [
+    "button",
+    "button-group",
+    "icon"
+  ],
+  "frameworks": [
+    "react",
+    "angular",
+    "web-components"
+  ],
+  "id": "button-with-icon",
+  "previewImage": "/images/examples/button-with-icon.webp",
+  "relatedExamples": [],
+  "size": "interaction",
+  "status": "published",
+  "tags": [
+    "icons",
+    "buttons",
+    "actions"
+  ],
+  "title": "Button with Icon"
+}

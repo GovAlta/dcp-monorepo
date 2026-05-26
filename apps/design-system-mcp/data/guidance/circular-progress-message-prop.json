@@ -1,0 +1,22 @@
+{
+  "appliesTo": {
+    "components": [
+      "circular-progress"
+    ],
+    "contexts": []
+  },
+  "body": "",
+  "collection": "guidance",
+  "description": "Provide a message prop to explain what operation is in progress, like \"Loading your application\" or \"Saving changes.\"",
+  "id": "circular-progress-message-prop",
+  "relatedProps": [
+    "message"
+  ],
+  "status": "published",
+  "tags": [
+    "circular-progress",
+    "loading"
+  ],
+  "topic": "content",
+  "type": "tip"
+}

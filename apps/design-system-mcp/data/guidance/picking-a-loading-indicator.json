@@ -1,0 +1,24 @@
+{
+  "appliesTo": {
+    "components": [
+      "circular-progress",
+      "skeleton"
+    ],
+    "contexts": []
+  },
+  "body": "",
+  "collection": "guidance",
+  "description": "Pick the loading indicator that matches the context. Use CircularProgress with the inline variant for a section of the page that's loading. Use the fullscreen variant when the whole page is loading and the user can't do anything else yet. Use Skeleton when part of the page can show while the rest loads, so users see structure right away instead of an empty space.",
+  "id": "picking-a-loading-indicator",
+  "relatedProps": [
+    "variant"
+  ],
+  "status": "published",
+  "tags": [
+    "circular-progress",
+    "skeleton",
+    "loading"
+  ],
+  "topic": "types",
+  "type": "tip"
+}

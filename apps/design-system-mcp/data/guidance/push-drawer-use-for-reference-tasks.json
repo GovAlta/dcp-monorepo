@@ -1,0 +1,21 @@
+{
+  "appliesTo": {
+    "components": [
+      "push-drawer"
+    ],
+    "contexts": []
+  },
+  "body": "",
+  "collection": "guidance",
+  "description": "Use a push drawer when users need to reference or interact with page content while the panel is open, such as filtering a list, viewing record details, or adjusting settings.",
+  "id": "push-drawer-use-for-reference-tasks",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "push-drawer",
+    "drawer",
+    "layout"
+  ],
+  "topic": "other",
+  "type": "do"
+}

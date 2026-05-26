@@ -1,0 +1,21 @@
+{
+  "appliesTo": {
+    "components": [
+      "callout"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-callout type=\"emergency\" heading=\"Incorrect Username\">\n    The username you entered did not match our records.\n  </goa-callout>\n</Preview>",
+  "collection": "guidance",
+  "description": "Don't use callouts for form or field validation. Use error messages instead.",
+  "id": "callout-not-for-validation",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "callout",
+    "validation",
+    "forms"
+  ],
+  "topic": "other",
+  "type": "dont"
+}

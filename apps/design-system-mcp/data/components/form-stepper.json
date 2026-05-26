@@ -1,0 +1,28 @@
+{
+  "aliases": [],
+  "body": "",
+  "category": "structure-and-navigation",
+  "collection": "components",
+  "description": "Provides a visual representation of a form through a series of steps.",
+  "figmaUrl": "https://www.figma.com/design/Jpy1Ea5qglwnp1SgGnagY9/Component-library?node-id=27335-606356",
+  "hidden": true,
+  "id": "form-stepper",
+  "name": "Form stepper",
+  "relatedComponents": [
+    "form-step",
+    "form"
+  ],
+  "relatedGuidance": [
+    "dont-use-stepper-for-nonsequential"
+  ],
+  "status": "deprecated",
+  "tags": [
+    "form stepper",
+    "horizontal step navigation",
+    "process overview",
+    "progress indicator",
+    "steps",
+    "structure and navigation",
+    "wizard"
+  ]
+}

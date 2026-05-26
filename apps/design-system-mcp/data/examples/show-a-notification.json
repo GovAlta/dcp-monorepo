@@ -1,0 +1,26 @@
+{
+  "aliases": [],
+  "body": "Show a temporary notification to confirm an action was completed successfully.\n\n## When to use\n\nUse this pattern when:\n\n- Confirming that a save operation completed successfully\n- Providing immediate feedback after a user action\n- The notification should automatically dismiss after a few seconds\n- Users need non-intrusive confirmation of their action\n\n## Considerations\n\n- Use the `type` option to indicate the nature of the notification (success, information, etc.)\n- Import `TemporaryNotification` from `@abgov/ui-components-common`\n- Include a `<GoabTemporaryNotificationCtrl />` component in your app to render notifications\n- Keep notification messages concise and action-oriented\n- Notifications auto-dismiss after a default duration",
+  "collection": "examples",
+  "components": [
+    "temporary-notification",
+    "button"
+  ],
+  "frameworks": [
+    "react",
+    "angular",
+    "web-components"
+  ],
+  "id": "show-a-notification",
+  "previewImage": "/images/examples/show-a-notification.webp",
+  "relatedExamples": [],
+  "size": "interaction",
+  "status": "published",
+  "tags": [
+    "notification",
+    "feedback",
+    "success",
+    "toast"
+  ],
+  "title": "Show a notification"
+}

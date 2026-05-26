@@ -1,0 +1,20 @@
+{
+  "appliesTo": {
+    "components": [
+      "notification-banner"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview bad>\n  <div style=\"display: flex; flex-direction: column; gap: 1rem;\">\n    <div>Page content above...</div>\n    <goa-notification-banner type=\"emergency\">\n      System outage notification\n    </goa-notification-banner>\n    <div>Page content below...</div>\n  </div>\n</Preview>",
+  "collection": "guidance",
+  "description": "Don't place notification banners in the middle of a page.",
+  "id": "notificationbanner-dont-middle-of-page",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "notification-banner",
+    "layout"
+  ],
+  "topic": "positioning",
+  "type": "dont"
+}

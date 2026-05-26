@@ -1,0 +1,21 @@
+{
+  "appliesTo": {
+    "components": [
+      "checkbox"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-checkbox name=\"option1\" text=\"Option 1\"></goa-checkbox>\n  <goa-checkbox name=\"option2\" text=\"Option 2\" checked=\"true\"></goa-checkbox>\n  <goa-checkbox name=\"option3\" text=\"Option 3\" checked=\"true\"></goa-checkbox>\n</Preview>",
+  "collection": "guidance",
+  "description": "Use checkboxes when the user can select more than one option.",
+  "id": "checkbox-for-multiple-selection",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "checkbox",
+    "usage",
+    "forms"
+  ],
+  "topic": "other",
+  "type": "do"
+}

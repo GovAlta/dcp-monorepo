@@ -1,0 +1,27 @@
+{
+  "aliases": [],
+  "angularSourceUrl": "https://github.com/GovAlta/goa-workspace-angular/tree/main/src/app/pages/cases",
+  "body": "## When to use\n\nUse the case detail view when staff need to review and act on a single record.\n\n## Structure\n\nBreak long content into sections using [accordions](/components/accordion) to organize submitted data into collapsible sections. A table-of-contents sidebar helps users navigate long case content. [Badges](/components/badge) show case status, and action buttons in the header provide quick access to review, assign, and comment actions.\n\n## Actions\n\nFor focused work that should happen without leaving the page, pair case detail with a [push drawer](/components/push-drawer).\n\n## Considerations\n\nKeep the accordion section headings short and consistent. When the list of sections is long, the TOC sidebar becomes essential.",
+  "collection": "examples",
+  "components": [
+    "accordion",
+    "badge",
+    "button",
+    "drawer"
+  ],
+  "description": "A single-record view for reviewing and acting on one case. Uses accordion sections, a table-of-contents sidebar, badges for status, and header actions for quick operations.",
+  "id": "workspace-case-detail",
+  "previewImage": "/thumbnails/workspace-case-detail.png",
+  "previewUrl": "https://digital-service-demo-v2.netlify.app/workspace/application/ef12df7d-74e7-4a82-9495-51589a0498ae",
+  "productType": "workspace",
+  "reactSourceUrl": "https://github.com/GovAlta/goa-workspace-playground/tree/main/src/routes/cases",
+  "relatedExamples": [],
+  "size": "page",
+  "status": "published",
+  "tags": [
+    "workspace",
+    "case-detail",
+    "worker"
+  ],
+  "title": "Case detail"
+}

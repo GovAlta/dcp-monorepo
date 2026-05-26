@@ -1,0 +1,21 @@
+{
+  "appliesTo": {
+    "components": [
+      "radio-group",
+      "radio-item"
+    ],
+    "contexts": []
+  },
+  "body": "",
+  "collection": "guidance",
+  "description": "Always use RadioGroup as the parent for sets of RadioItem children. Don't try to build radio button sets manually.",
+  "id": "use-radiogroup-with-radioitem",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "radio",
+    "forms"
+  ],
+  "topic": "other",
+  "type": "tip"
+}

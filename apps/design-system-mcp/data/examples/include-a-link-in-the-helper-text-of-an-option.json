@@ -1,0 +1,26 @@
+{
+  "aliases": [],
+  "body": "Add links within the description text of checkbox options to provide additional context or resources while users are making selections.\n\n## When to use\n\nUse this pattern when:\n\n- Checkbox options need additional context via links\n- Users might need more information before making a selection\n- Linking to terms, policies, or detailed explanations\n- The link is directly relevant to the specific option\n\n## Considerations\n\n- Keep description text concise even with links\n- Ensure link text is descriptive and accessible\n- Consider whether the link should open in a new tab\n- Use the description prop (React) or ng-template (Angular) for custom content",
+  "collection": "examples",
+  "components": [
+    "checkbox",
+    "form-item"
+  ],
+  "frameworks": [
+    "react",
+    "angular",
+    "web-components"
+  ],
+  "id": "include-a-link-in-the-helper-text-of-an-option",
+  "previewImage": "/images/examples/include-a-link-in-the-helper-text-of-an-option.webp",
+  "relatedExamples": [],
+  "size": "interaction",
+  "status": "published",
+  "tags": [
+    "checkbox",
+    "helper-text",
+    "links",
+    "forms"
+  ],
+  "title": "Include a link in the helper text of an option"
+}

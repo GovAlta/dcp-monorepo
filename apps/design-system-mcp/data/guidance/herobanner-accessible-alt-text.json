@@ -1,0 +1,21 @@
+{
+  "appliesTo": {
+    "components": [
+      "hero-banner"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-hero-banner heading=\"Supporting businesses\" backgroundUrl=\"/image.jpg\" alt=\"Communications tower against a cloudy sky\">\n    Resources are available to help Alberta entrepreneurs.\n  </goa-hero-banner>\n</Preview>",
+  "collection": "guidance",
+  "description": "Ensure hero banner images are accessible by using descriptive alt text.",
+  "id": "herobanner-accessible-alt-text",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "hero-banner",
+    "images",
+    "accessibility"
+  ],
+  "topic": "accessibility",
+  "type": "do"
+}

@@ -1,0 +1,23 @@
+{
+  "appliesTo": {
+    "components": [
+      "checkbox",
+      "checkbox-list"
+    ],
+    "contexts": []
+  },
+  "body": "",
+  "collection": "guidance",
+  "description": "Use the description prop to add context on complex options where the label alone isn't enough.",
+  "id": "checkbox-description-for-context",
+  "relatedProps": [
+    "description"
+  ],
+  "status": "published",
+  "tags": [
+    "checkbox",
+    "labels"
+  ],
+  "topic": "content",
+  "type": "tip"
+}

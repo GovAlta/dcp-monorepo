@@ -1,0 +1,23 @@
+{
+  "appliesTo": {
+    "components": [
+      "textarea",
+      "input",
+      "form-item"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-form-item label=\"Input label\" helptext=\"This is some helper text\">\n    <goa-textarea name=\"oneline\" rows=\"1\"></goa-textarea>\n  </goa-form-item>\n</Preview>",
+  "collection": "guidance",
+  "description": "Don't use a text area which is only one line high; instead, use text input if just one line is needed.",
+  "id": "textarea-one-line",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "textarea",
+    "input",
+    "sizing"
+  ],
+  "topic": "forms",
+  "type": "dont"
+}

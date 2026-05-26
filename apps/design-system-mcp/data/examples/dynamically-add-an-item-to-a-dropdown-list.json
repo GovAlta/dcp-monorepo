@@ -1,0 +1,30 @@
+{
+  "aliases": [],
+  "body": "Allow users to add new items to a dropdown list dynamically.\n\n## When to use\n\nUse this pattern when:\n\n- Users need to add custom options to a predefined list\n- The list of options can grow based on user input\n- You want to provide flexibility while maintaining structure\n\n## Considerations\n\n- Use the `mountType` prop to control where new items appear (prepend or append)\n- Validate input before adding to prevent empty or duplicate entries\n- Provide a reset option to restore the original list\n- Show clear feedback when items are added successfully",
+  "collection": "examples",
+  "components": [
+    "dropdown",
+    "dropdown-item",
+    "form-item",
+    "input",
+    "button"
+  ],
+  "frameworks": [
+    "react",
+    "angular",
+    "web-components"
+  ],
+  "id": "dynamically-add-an-item-to-a-dropdown-list",
+  "previewImage": "/images/examples/dynamically-add-an-item-to-a-dropdown-list.webp",
+  "relatedExamples": [],
+  "size": "interaction",
+  "status": "published",
+  "tags": [
+    "dropdown",
+    "dynamic",
+    "form",
+    "input",
+    "radio"
+  ],
+  "title": "Dynamically add an item to a dropdown list"
+}

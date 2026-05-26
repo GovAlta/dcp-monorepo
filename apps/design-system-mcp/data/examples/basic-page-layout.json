@@ -1,0 +1,23 @@
+{
+  "aliases": [],
+  "body": "A basic page template to use as a starting point.\n\n## When to use\n\nUse this pattern when:\n\n- Starting a new government service or application\n- You need a standard page structure with header and footer\n- Building pages that need consistent layout across your service\n\n## Considerations\n\n- Use page-block to constrain content width appropriately\n- The skeleton loaders show content areas during loading states\n- Always include an app footer for consistent navigation and required links",
+  "collection": "examples",
+  "components": [
+    "app-header",
+    "footer",
+    "page-block",
+    "skeleton",
+    "grid"
+  ],
+  "id": "basic-page-layout",
+  "previewImage": "/images/examples/basic-page-layout.webp",
+  "relatedExamples": [],
+  "size": "page",
+  "status": "published",
+  "tags": [
+    "layout",
+    "page-structure",
+    "template"
+  ],
+  "title": "Basic page layout"
+}

@@ -1,0 +1,26 @@
+{
+  "aliases": [],
+  "body": "Use the app footer meta section to display essential quick links like feedback, accessibility, privacy, and contact information without the full navigation structure.\n\n## When to use\n\nUse this pattern when:\n\n- Building a simpler service that doesn't need full navigation\n- Essential utility links are required in the footer\n- The service needs quick access to feedback/contact\n- Full footer navigation would be excessive\n\n## Considerations\n\n- Keep the meta section links focused and essential\n- Include accessibility and privacy links as required\n- Order links by importance or frequency of use\n- Use consistent link text across government services",
+  "collection": "examples",
+  "components": [
+    "footer",
+    "footer-meta-section"
+  ],
+  "frameworks": [
+    "react",
+    "angular",
+    "web-components"
+  ],
+  "id": "show-quick-links",
+  "previewImage": "/images/examples/show-quick-links.webp",
+  "relatedExamples": [],
+  "size": "section",
+  "status": "published",
+  "tags": [
+    "footer",
+    "navigation",
+    "meta-links",
+    "quick-access"
+  ],
+  "title": "Show quick links"
+}

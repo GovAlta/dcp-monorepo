@@ -1,0 +1,21 @@
+{
+  "appliesTo": {
+    "components": [
+      "accordion"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-accordion heading=\"I want to receive benefits\">\n    <goa-button type=\"primary\">Submit</goa-button>\n  </goa-accordion>\n</Preview>",
+  "collection": "guidance",
+  "description": "Don't hide key functionality in collapsed accordions. If content is critical to the workflow, it should be visible when the page loads.",
+  "id": "accordion-dont-hide-critical-content",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "accordion",
+    "usability",
+    "content"
+  ],
+  "topic": "other",
+  "type": "dont"
+}

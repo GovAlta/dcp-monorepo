@@ -1,0 +1,24 @@
+{
+  "appliesTo": {
+    "components": [
+      "linear-progress"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-linear-progress progress=\"45\" arialabel=\"Uploading document\"></goa-linear-progress>\n</Preview>",
+  "collection": "guidance",
+  "description": "Provide accessible labels for LinearProgress",
+  "id": "linearprogress-accessibility",
+  "relatedProps": [
+    "ariaLabel",
+    "ariaLabelledBy"
+  ],
+  "status": "published",
+  "tags": [
+    "linear-progress",
+    "accessibility",
+    "progress"
+  ],
+  "topic": "screen-readers",
+  "type": "do"
+}

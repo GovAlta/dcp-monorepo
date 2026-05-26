@@ -1,0 +1,20 @@
+{
+  "appliesTo": {
+    "components": [
+      "date-picker"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-date-picker name=\"appointment\" min=\"2023-05-15\"></goa-date-picker>\n</Preview>",
+  "collection": "guidance",
+  "description": "Indicate unavailable dates to help users avoid invalid selections.",
+  "id": "datepicker-indicate-unavailable",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "date-picker",
+    "usability"
+  ],
+  "topic": "other",
+  "type": "do"
+}

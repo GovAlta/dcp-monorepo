@@ -1,0 +1,25 @@
+{
+  "aliases": [],
+  "body": "Use the microsite header's feedback functionality to collect user feedback during alpha or beta phases of a service.\n\n## When to use\n\nUse this pattern when:\n\n- Your service is in alpha or beta phase\n- You want to actively collect user feedback\n- Building a citizen-facing government service\n- The service is still being developed and improved\n\n## Considerations\n\n- Use the `onFeedbackClick` handler to define feedback behavior\n- Consider linking to a feedback form or opening a modal\n- The feedback link appears automatically on alpha/beta headers\n- Ensure the feedback mechanism is accessible and easy to use",
+  "collection": "examples",
+  "components": [
+    "microsite-header"
+  ],
+  "frameworks": [
+    "react",
+    "angular",
+    "web-components"
+  ],
+  "id": "link-the-user-to-give-feedback-to-the-service",
+  "previewImage": "/images/examples/link-the-user-to-give-feedback-to-the-service.webp",
+  "relatedExamples": [],
+  "size": "interaction",
+  "status": "published",
+  "tags": [
+    "feedback",
+    "microsite-header",
+    "alpha",
+    "beta"
+  ],
+  "title": "Link the user to give feedback to the service"
+}

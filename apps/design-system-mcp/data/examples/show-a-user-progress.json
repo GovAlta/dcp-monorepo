@@ -1,0 +1,26 @@
+{
+  "aliases": [],
+  "body": "Display progress feedback during long-running operations like downloads, showing percentage completion with the ability to cancel and receive success confirmation.\n\n## When to use\n\nUse this pattern when:\n\n- An operation takes more than a few seconds\n- Progress can be measured as a percentage (0-100%)\n- Users need the ability to cancel the operation\n- Success or failure confirmation is needed\n\n## Considerations\n\n- Always provide a cancel option for long operations\n- Show a success notification when complete\n- Use `type=\"progress\"` for operations with known duration\n- Handle errors gracefully with failure notifications",
+  "collection": "examples",
+  "components": [
+    "temporary-notification",
+    "button"
+  ],
+  "frameworks": [
+    "react",
+    "angular",
+    "web-components"
+  ],
+  "id": "show-a-user-progress",
+  "previewImage": "/images/examples/show-a-user-progress.webp",
+  "relatedExamples": [],
+  "size": "interaction",
+  "status": "published",
+  "tags": [
+    "progress",
+    "notification",
+    "download",
+    "feedback"
+  ],
+  "title": "Show a user progress"
+}

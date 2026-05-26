@@ -1,0 +1,26 @@
+{
+  "appliesTo": {
+    "components": [
+      "button",
+      "modal"
+    ],
+    "contexts": []
+  },
+  "body": "<Preview>\n  <goa-button variant=\"destructive\">Cancel application</goa-button>\n</Preview>",
+  "collection": "guidance",
+  "description": "Use descriptive language in both modal content and button text to inform users of the resulting destructive action.",
+  "id": "button-destructive-descriptive-language",
+  "relatedProps": [
+    "variant"
+  ],
+  "status": "published",
+  "tags": [
+    "button",
+    "destructive",
+    "modal",
+    "content",
+    "labeling"
+  ],
+  "topic": "content",
+  "type": "do"
+}

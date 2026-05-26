@@ -1,0 +1,31 @@
+{
+  "aliases": [],
+  "body": "Add a new item within a modal window without navigating away from the current context.\n\n## When to use\n\nUse this pattern when:\n\n- Adding items to an existing list\n- The form is short and focused\n- Users need to stay in context of the main view\n\n## Considerations\n\n- Keep modal forms focused and brief\n- Provide clear cancel and save actions\n- Validate input before allowing save",
+  "collection": "examples",
+  "components": [
+    "modal",
+    "button",
+    "button-group",
+    "form-item",
+    "dropdown",
+    "input",
+    "text-area"
+  ],
+  "figmaUrl": "https://www.figma.com/design/Jpy1Ea5qglwnp1SgGnagY9/%E2%9D%96-Component-library-%7C-DDD?node-id=63353-169649",
+  "frameworks": [
+    "react",
+    "angular",
+    "web-components"
+  ],
+  "id": "add-another-item-in-a-modal",
+  "previewImage": "/images/examples/add-another-item-in-a-modal.webp",
+  "relatedExamples": [],
+  "size": "section",
+  "status": "published",
+  "tags": [
+    "modal",
+    "forms",
+    "data-entry"
+  ],
+  "title": "Add another item in a modal"
+}

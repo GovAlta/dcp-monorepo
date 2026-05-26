@@ -1,0 +1,23 @@
+{
+  "appliesTo": {
+    "components": [
+      "icon-button",
+      "badge",
+      "icon"
+    ],
+    "contexts": []
+  },
+  "body": "Icon-only interactive elements must have an accessible label so screen reader users understand their purpose.\n\n**For IconButton:** The `ariaLabel` prop is required.\n\n```jsx\n// Good - describes the action\n<GoabIconButton icon=\"trash\" ariaLabel=\"Delete item\" />\n\n// Bad - no label for screen readers\n<GoabIconButton icon=\"trash\" />\n```\n\n**For Badge with icon only:** Provide `ariaLabel` when there's no visible text.\n\n```jsx\n<GoabBadge icon=\"warning\" ariaLabel=\"Warning\" type=\"important\" />\n```\n\n**For Icon:** Use `ariaLabel` when the icon conveys meaning, not just decoration.\n\nThe label should describe:\n- What action happens (for buttons): \"Delete\", \"Edit\", \"Close\"\n- What the icon represents (for informational icons): \"Warning\", \"Success\"",
+  "collection": "guidance",
+  "description": "Don't use icon-only elements without an accessible label",
+  "id": "accessible-icons-need-label",
+  "relatedProps": [],
+  "status": "published",
+  "tags": [
+    "accessibility",
+    "icons",
+    "wcag"
+  ],
+  "topic": "screen-readers",
+  "type": "dont"
+}
