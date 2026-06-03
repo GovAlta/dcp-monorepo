@@ -1,8 +1,0 @@
-.alphabetList {
- display: flex;
- gap: 16px; 
-}
-
-.noLink { 
-  color: rgb(161, 161, 161)
-}
