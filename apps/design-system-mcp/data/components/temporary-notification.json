@@ -98,7 +98,94 @@
         ],
         "slots": []
       }
-    }
+    },
+    "staticMethods": [
+      {
+        "description": "Displays a temporary notification from your component. Returns the notification's UUID, which you can use to dismiss it or update its progress.",
+        "name": "show",
+        "params": [
+          {
+            "description": "The message to display in the notification.",
+            "name": "message",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The type of notification, which determines its styling and icon. Use \"indeterminate\" to show an animated progress bar while work of unknown length runs, or \"progress\" to show a progress bar you update with setProgress(). Defaults to \"basic\".",
+            "name": "options.type",
+            "required": false,
+            "type": "GoabTemporaryNotificationType",
+            "values": [
+              "basic",
+              "success",
+              "failure",
+              "indeterminate",
+              "progress"
+            ]
+          },
+          {
+            "description": "How long the notification stays before it auto-dismisses: \"short\" (about 3 seconds), \"medium\" (about 4 seconds), \"long\" (about 6 seconds), or a number of milliseconds. Only \"basic\", \"success\", and \"failure\" notifications auto-dismiss (default \"short\"). \"indeterminate\" and \"progress\" notifications have no default duration and stay until you dismiss them.",
+            "name": "options.duration",
+            "required": false,
+            "type": "\"long\" | \"medium\" | \"short\" | number"
+          },
+          {
+            "description": "Text for an action button. When set, the notification shows a button the user can select.",
+            "name": "options.actionText",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Function to run when the action button is selected.",
+            "name": "options.action",
+            "required": false,
+            "type": "() => void"
+          },
+          {
+            "description": "UUID of an existing notification to cancel when this one is shown.",
+            "name": "options.cancelUUID",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "returnType": "string",
+        "signature": "TemporaryNotification.show(message, options)"
+      },
+      {
+        "description": "Hides a notification, using the UUID that show() returns.",
+        "name": "dismiss",
+        "params": [
+          {
+            "description": "The UUID of the notification to dismiss. This is the value that show() returns.",
+            "name": "uuid",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "returnType": "void",
+        "signature": "TemporaryNotification.dismiss(uuid)"
+      },
+      {
+        "description": "Updates the progress shown on a progress notification, using the UUID that show() returns.",
+        "name": "setProgress",
+        "params": [
+          {
+            "description": "The UUID of the progress notification to update. This is the value that show() returns.",
+            "name": "uuid",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The progress to display, from 0 to 100.",
+            "name": "progress",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "returnType": "void",
+        "signature": "TemporaryNotification.setProgress(uuid, progress)"
+      }
+    ]
   },
   "body": "",
   "category": "feedback-and-alerts",

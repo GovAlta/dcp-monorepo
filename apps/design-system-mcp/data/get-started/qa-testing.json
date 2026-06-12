@@ -4,7 +4,7 @@
   "description": "Testing process for Design System components",
   "id": "qa-testing",
   "order": 1,
-  "section": "appendix",
+  "section": "qa-testing",
   "status": "published",
   "title": "QA testing"
 }
