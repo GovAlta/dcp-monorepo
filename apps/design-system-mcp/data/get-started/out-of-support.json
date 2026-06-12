@@ -3,8 +3,8 @@
   "collection": "get-started",
   "description": "Design System versions that are no longer supported",
   "id": "out-of-support",
-  "order": 3,
-  "section": "appendix",
+  "order": 1,
+  "section": "out-of-support",
   "status": "published",
   "title": "Out of support versions"
 }

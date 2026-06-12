@@ -3,8 +3,8 @@
   "collection": "get-started",
   "description": "How to contribute to the GoA Design System",
   "id": "contribute",
-  "order": 2,
-  "section": "appendix",
+  "order": 1,
+  "section": "contribute",
   "status": "published",
   "title": "Contribute"
 }
