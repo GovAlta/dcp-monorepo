@@ -1,0 +1,14 @@
+node_modules/
+.git/
+.nx/
+coverage/
+apps/
+libs/
+.github/
+*.md
+*.log
+.env
+.env.*
+tsconfig*.json
+jest.config*
+.eslint*

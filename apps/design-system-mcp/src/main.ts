@@ -82,6 +82,8 @@ function registerTools(
     'search',
     `Search the GoA Design System. Good for discovery: describe what you're trying to build ("worker case-management tool") or name something fuzzy ("table with filters"). For known IDs, use \`get\` instead. Filters narrow what comes back.
 
+IMPORTANT — omit \`collection\` for discovery queries ("what should I use for X"). Only pass it when you already know the content type you want (e.g. you need guidance on a specific component, or you want examples only). The word "component" in a query does NOT mean you should set collection:"components" — omit the filter so results span all collections.
+
 collection: components | guidance | examples | foundations | get-started | productTypes
 size (examples): interaction (single gesture) | section (card-level) | page (full screen) | task (start to finish) | product (entire app)
 productType (examples): workspace | public-form

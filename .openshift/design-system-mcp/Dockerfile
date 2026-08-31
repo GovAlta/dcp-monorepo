@@ -1,9 +1,15 @@
 FROM registry.redhat.io/rhel9/nodejs-18
 
-ARG PROJECT
+ARG PROJECT=design-system-mcp
 
-COPY . .
+USER 0
 
-ENV PROJECT ${PROJECT}
-RUN echo "PROJECT=${PROJECT}"
-CMD npm run -d service dist/apps/${PROJECT}/main.js
+WORKDIR /app
+
+COPY dist/apps/${PROJECT}/ .
+
+RUN npm install --omit=dev --ignore-scripts
+
+USER 1001
+
+CMD node main.js
