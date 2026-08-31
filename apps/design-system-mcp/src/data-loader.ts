@@ -129,6 +129,8 @@ export class DataLoader {
 
     // Fetch a wider candidate set when filters are stacked, so the final
     // top-N after filtering still has room. Cheap because the index is O(1).
+    // When a collection filter is active, fetch all indexed items — the
+    // top-20 unfiltered candidates may all be from other collections.
     const filterCount = [
       size,
       productType,
@@ -137,11 +139,11 @@ export class DataLoader {
       component,
       context,
     ].filter(Boolean).length;
-    const candidatePoolMultiplier = 2 + filterCount;
-    const candidates = this.index.search(
-      query,
-      maxResults * candidatePoolMultiplier,
-    );
+    const totalItems = this.index.getStats().totalItems;
+    const candidatePoolSize = collection
+      ? totalItems
+      : maxResults * (2 + filterCount);
+    const candidates = this.index.search(query, candidatePoolSize);
 
     const collectionToType: Record<string, string> = {
       components: 'component',
@@ -157,10 +159,8 @@ export class DataLoader {
       const targetType = collectionToType[collection];
       if (targetType) {
         filtered = candidates.filter((c) => c.item.type === targetType);
-      } else {
-        // Collection name not recognized — return empty rather than mixed.
-        filtered = [];
       }
+      // Unrecognized collection: ignore the filter rather than returning nothing.
     }
 
     if (size) filtered = filtered.filter((c) => c.item.data.size === size);
