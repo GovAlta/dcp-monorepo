@@ -51,7 +51,7 @@
     "@vitejs/plugin-react": "^4.3.4",
     "astro": "^4.16.8",
     "cypress": "^15.9.0",
-    "esbuild": "^0.19.2",
+    "esbuild": "^0.28.1",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-cypress": "2.13.4",
